@@ -2,6 +2,8 @@
 
 AsciiDoc port of _The ALAN Adventure Language Reference Manual_ (WIP).
 
+__[Click here for an HTML Live Preview][HTML Live Preview]__
+
 > __NOTE__ — This document was created using [Asciidoctor], the Ruby implementation of AsciiDoc; some used features might not be available in [AsciiDoc Python]!
 
 
@@ -22,7 +24,7 @@ AsciiDoc port of _The ALAN Adventure Language Reference Manual_ (WIP).
 # Folder Contents
 
 - [`manual.asciidoc`](./manual.asciidoc) — The Alan Manual.
-- [`manual.html`](./manual.html) — HTML preview of The Alan Manual.
+- [`manual.html`](./manual.html) — [HTML preview][HTML Live Preview] of The Alan Manual.
 - [`Manual_TOC.txt`](./Manual_TOC.txt) — Manual TOC in plaintext (for reference).
 - [`RegExs.txt`](./RegExs.txt) — frequently needed regular expressions for S&R operations.
 - [`SNIPPTES.adoc`](./SNIPPTES.adoc) — useful snippets to copy and paste.
@@ -93,5 +95,8 @@ Although some styles were lost in the process, the final ADoc was a rather good 
 [AsciiDoc Python]: http://asciidoc.org/ "Visit AsciiDoc website (original Python implementation)"
 
 [Rouge]: http://rouge.jneen.net/ "Visti Rouge website (code highlighter in Ruby)"
+
+
+[HTML Live Preview]: http://htmlpreview.github.io/?https://github.com/tajmone/alan-docs/blob/master/manual/manual.html "Preview 'The Alan Manual' via GitHub & BitBucket HTML Preview"
 
 <!-- EOF -->
