@@ -1,0 +1,249 @@
+Table of Contents
+
+1 INTRODUCTION
+  1.1 Programmer’s Pitch
+  1.2 To the Reader
+
+2 CONCEPTS
+  2.1 What Is An Adventure?
+  2.2 Elements Of Adventures
+  2.3 Alan Fundamentals
+    What Is A Language?
+    The Alan Idea
+    What’s Happening?
+    The Map
+    The Things
+    Other People and Monsters
+    Acting
+    The Input
+  2.4 Introduction to the Language
+    Notation
+    The Locations
+    The Objects
+    The Actors
+    Inheritance and Object Orientation
+        Inheritance and Instances
+        Polymorphism
+        Every and The
+        The Pre-defined Classes
+        Creating Classes and Instances
+        Specialising and Overriding
+    Containment , Classes and Transitivity
+        Containers Containing Containers
+        Transitivity
+    The Verb Construct
+        Checking Things
+    The Syntax
+    Text Output Formatting
+  2.5 Strict and Safe
+
+3 LANGUAGE REFERENCE
+  General Rules
+  3.1 An Adventure
+  3.2 Options
+  3.3 Types
+    Basic, Simple and Compound Types
+    Instance Type
+    Event Type
+    Set Type
+    Type Compatibility
+    Type Requirements
+  3.4 Import
+  3.5 Classes
+    Inheritance
+  3.6 Instances
+    Entities
+    Things
+    Objects
+    Actors
+        The Hero
+    Locations
+    Literals
+  3.7 Properties
+    Inheriting Properties
+    Initial Location
+    Names
+        Inheriting Names
+        Displaying Instances
+    Pronouns
+    Attributes
+        Boolean Attributes
+        Numeric and String Attributes
+        Event Attributes
+        Reference Attributes
+        Set Type Attributes
+        Inheriting Attributes
+    Initialize
+    Description
+    Articles and Forms
+        Articles
+        Form
+        Printing
+        Mentioned
+    Container Properties
+        Limits
+        Header and Else
+        Extract
+    Verbs
+    Entered
+    Exits
+    Scripts
+        Steps
+  3.8 Additions
+  3.9 Syntax Definitions
+    Indicators
+    Parameter Restrictions
+    Syntax Synonyms
+    Default Syntax
+    Scope
+  3.10 Verbs
+    Meta Verbs
+    Verbs in Locations
+    Verb Checks
+    Does-clause
+    Verb Alternatives
+    Verb Qualification
+    Verb Execution
+        Controlling Execution with Qualifiers
+  3.11 Events
+  3.12 Rules
+  3.13 Synonyms
+  3.14 Messages
+    Message parameters
+  3.15 Prompt Section
+  3.16 Start Section
+  3.17 Statements
+    Output Statements
+        String Statement
+        Style Statement
+        Describe Statement
+        Say Statement
+        List Statement
+    Multi-media Statements
+        Show Statement
+        Play Statement
+    Manipulation Statements
+        Locate Statement
+        Empty Statement
+        Strip Statement
+    Event Statements
+        Schedule Statement
+        Cancel Statement
+    Assignment Statements
+        Make Statement
+        Increase and Decrease Statements
+        Set Statement
+        Include Statement
+        Exclude Statement
+    Conditional Statements
+        If Statement
+        Depending On Statement
+    Actor Statements
+        Use Statement
+        Stop Statement
+        Repetition Statements
+    Special Statements
+        Quit Statement
+        Look Statement
+        Save and Restore Statements
+        Score Statement
+        Visits Statement
+        Transcript Statement
+  3.18 WHERE Specifications
+  3.19 WHAT Specifications
+  3.20 Expressions
+    Types of Expressions
+    Literal Values
+    Attribute References
+        Location Of
+    Random Values
+    Logical Expressions
+    Class Expressions
+    Binary Operators
+    Relational and Equality Operators
+    String Containment
+    Current Entities
+    This Instance
+    The Whereabouts of an Entity
+    Aggregates
+  3.21 Filters
+
+4 LEXICAL DEFINITIONS
+  4.1 Comments
+  4.2 Words, Identifiers and Names
+  4.3 Numbers
+  4.4 Strings
+  4.5 Filenames
+
+5 RUNNING AN ADVENTURE
+  5.1 A Turn of Events
+  5.2 Player Input
+  5.3 Run-time Contexts
+  5.4 Moving Actors
+  5.5 Undoing
+  5.6 Scripting and Commenting
+
+6 HINTS AND TIPS
+  6.1 Use of Attributes
+  6.2 Descriptions
+  6.3 Common Verbs
+  6.4 Distant Events
+  6.5 Doors
+  6.6 Questions and Answers
+  6.7 Actors
+  6.8 Vehicles
+  6.9 Floating Objects
+    Body Parts
+    Outdoors and Indoors
+    Nested Locations as a Solution
+  6.10 Darkness and Light Sources
+  6.11 Distant & Imaginary Objects
+    A Mountain
+    The Melody
+  6.12 Using Events as Functions
+  6.13 Structure
+  6.14 Debugging
+    Command Logs and Game Transcripts
+    Interpreter and Instruction Trace
+    Debug mode
+    Using the Debugger
+
+7 ADVENTURE CONSTRUCTION
+  7.1 Getting an Idea
+  7.2 Elaborating the Story
+  7.3 Implementing it
+  7.4 Polishing the Adventure
+  7.5 Beta Testing
+
+Appendix A: How To Use The System
+
+Appendix B: A Sample Interaction
+
+Appendix C: Run-time Messages
+    Player Errors
+    Author Errors
+    Implementor Errors
+
+Appendix D: Language Grammar
+
+Appendix E: Predefined player words
+    English
+    Swedish
+    German
+
+Appendix F: Compiler Messages
+
+Appendix G: Localization
+
+Appendix H: Portability of Games
+
+Appendix I: Copying Conditions
+    Preamble
+    Definitions
+    Permission for Use and Modification Without Distribution
+    Permissions for Redistribution of the Standard Version
+    Distribution of Modified Versions of the Package as Source
+    Distribution of Compiled Forms of the Standard Version or Modified Versions without the Source
+    Aggregating or Linking the Package
+    Items That are Not Considered Part of a Modified Version
+    General Provisions
