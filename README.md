@@ -1,6 +1,6 @@
 # Alan IF Documentation Project
 
-- https://github.com/tajmone/alan-docs
+- https://github.com/alan-if/alan-docs
 
 This temporary repository was created by [Tristano Ajmone] for the conversion of Alan documentation to AsciiDoc.
 
@@ -15,11 +15,15 @@ This temporary repository was created by [Tristano Ajmone] for the conversion of
 - [Project Contents](#project-contents)
 - [Project Dependencies](#project-dependencies)
     - [AsciiDoctor](#asciidoctor)
+- [Syntax Highlighting](#syntax-highlighting)
 - [Work Tools](#work-tools)
     - [Asciidoc FX](#asciidoc-fx)
     - [Sublime Text Asciidoctor](#sublime-text-asciidoctor)
 - [License Terms](#license-terms)
 - [External Links](#external-links)
+    - [Alan](#alan)
+    - [AsciiDoctor](#asciidoctor-1)
+    - [Highlight](#highlight)
 
 <!-- /MarkdownTOC -->
 
@@ -49,7 +53,19 @@ This is the environemnt setup I'm using to work on the project:
 
     Ruby 2.5.1p57 (2018-03-29 revision 63029) [x64-mingw32]
     Asciidoctor 1.5.7.1
-    Asciidoc FX v1.6.6
+    Asciidoc FX v1.6.7
+
+
+# Syntax Highlighting
+
+- [Highlight website]
+- [Highlight repository]
+
+[Tristano Ajmone] has created an Alan syntax definition for Highlight, the cross platform syntax highlighter by André Simon. The Alan syntax is now part of the official Highlight distribution:
+
+- https://gitlab.com/saalen/highlight/blob/master/langDefs/alan.lang
+
+We're planning to integrate Hihglight into the Asciidoctor workflow in order to syntax highlight the code examples in the documentation. For more info, see [Issue #2106] at [Asciidoctor].
 
 
 # Work Tools
@@ -83,9 +99,22 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 
 # External Links
 
+## Alan
+
+- [Alan website]
 - [Alan IF Yahoo group]
 - [Alan Git repository]
-- [Alan website]
+
+## AsciiDoctor
+
+- [AsciiDoc Syntax Quick Reference]
+- [Asciidoctor User Manual]
+
+## Highlight
+
+- [Highlight website]
+- [Highlight repository]
+- [Highlight's Alan syntax definition]
 
 
 <!-----------------------------------------------------------------------------
@@ -107,6 +136,23 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 [Alan IF Yahoo group]: https://groups.yahoo.com/neo/groups/alan-if/info "Visit the Alan IF group at Yahoo! Groups"
 [Alan Git repository]: https://bitbucket.org/alanif/alan "Visit Alan Git repository on Bitbucket"
 [Alan website]: https://www.alanif.se/ "Visit Alan official website"
+
+
+<!-- AsciiDoctor -->
+
+[AsciiDoc Syntax Quick Reference]: https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+
+[Asciidoctor User Manual]: https://asciidoctor.org/docs/user-manual/
+
+[Asciidoctor]: https://github.com/asciidoctor/asciidoctor/ "Visit Asciidoctor repository at GitHub"
+[Issue #2106]: https://github.com/asciidoctor/asciidoctor/issues/2106 "Issue #2106 — Add extension point for integrating an alternative source highlighter"
+
+
+<!-- External Tools and Dependencies -->
+
+[Highlight website]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
+[Highlight repository]: https://gitlab.com/saalen/highlight "Visit Highlight Git repository at GitLab"
+[Highlight's Alan syntax definition]: https://gitlab.com/saalen/highlight/blob/master/langDefs/alan.lang "View the sourcefile of the Alan syntax definition for Highlight"
 
 <!-- Project Files ----------------------------------------------------------->
 
