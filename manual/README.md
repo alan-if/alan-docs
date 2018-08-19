@@ -15,6 +15,8 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 
 - [Folder Contents](#folder-contents)
 - [Document Status](#document-status)
+- [Work Notes](#work-notes)
+    - [Splitting Into Multiple Files](#splitting-into-multiple-files)
 - [Conversion from ODT to AsciiDoc](#conversion-from-odt-to-asciidoc)
 
 <!-- /MarkdownTOC -->
@@ -35,15 +37,15 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 This is an aproximate status report and pending tasks list of the current document. As I'll keep working closer on the document, more issues/tasks are likely to come up, so task-trees that are now marked as _done_ might be reset to _undone_ as new needs come to attention.
 
 - [ ] Document header:
-    + [ ] Basci info added.
-    + [x] Missing author.
-    + [x] Missing license terms.
+    + [x] Basic info added.
+    + [ ] Missing author.
+    + [x] Missing license (although full license is available in Appendix I).
 - [ ] Structural reconstruction:
     + [x] Reconstruct all headings/sections levels.
     + [x] Handle section numbering.
     + [x] Add special Appendix headings.
     + [x] Exclude _Appendix I_ (License) sub-headings from TOC.
-    + [ ] Fix all cross-reference links.
+    + [ ] Fix all cross-reference links (_after_ splitting into multiple files!).
     + [ ] Rebuild _Index_
 - [ ] Add missing images
 - [x] Global styles reconstruction:
@@ -63,11 +65,18 @@ This is an aproximate status report and pending tasks list of the current docume
     + [ ] Decide how to handle:
         * [ ] Curly single/double quotes (ie: AsciiDoc way vs use ofUTF8 chars)
         * [ ] Special chars substitutions (em dash, etc.)
+- [ ] Split book into multiple files (once all search-&-replace work is done).
 - [ ] Proof-reading:
     + [ ] Go through whole document and fix inline styles, typos, etc.
 - [ ] Syntax highlighting
-    + [ ] Test how Highlight can be integrated into AsciiDoctor to handle Alan and EBNF code.
+    + [ ] Test how Highlight can be integrated into AsciiDoctor to handle Alan and EBNF code (See [Issue #2106]).
     + [ ] Consider creating an Alan syntax definition for [Rouge].
+
+# Work Notes
+
+## Splitting Into Multiple Files
+
+The manual will be split into chapters, with each chapter in its own file. Right now, I'm keeping it as a single document because it simplifies some global search-&-replace operations to fix styles, etc.; once these are done with I'll proceed with multi-file splitting of the source doc.
 
 # Conversion from ODT to AsciiDoc
 
@@ -86,17 +95,24 @@ pandoc ^
 
 Although some styles were lost in the process, the final ADoc was a rather good starting point.
 
+
+
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
+
+[HTML Live Preview]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html "Preview 'The Alan Manual' via GitHub & BitBucket HTML Preview"
+
+<!-- AsciiDoctor -->
 
 [Asciidoctor]: https://asciidoctor.org/ "Visit AsciiDoctor website (Ruby implementation)"
 
 [AsciiDoc Python]: http://asciidoc.org/ "Visit AsciiDoc website (original Python implementation)"
 
+[Issue #2106]: https://github.com/asciidoctor/asciidoctor/issues/2106 "Issue #2106 — Add extension point for integrating an alternative source highlighter"
+
 [Rouge]: http://rouge.jneen.net/ "Visti Rouge website (code highlighter in Ruby)"
 
 
-[HTML Live Preview]: http://htmlpreview.github.io/?https://github.com/tajmone/alan-docs/blob/master/manual/manual.html "Preview 'The Alan Manual' via GitHub & BitBucket HTML Preview"
 
 <!-- EOF -->

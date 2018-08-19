@@ -1,6 +1,6 @@
 :doctitle: The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.0
-:revdate: August 15, 2018
+:revnumber: 0.1.1
+:revdate: August 19, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
 :encoding: utf-8
@@ -192,7 +192,14 @@ The following sections describe a number of the fundamental concepts that are pr
 
 The scene for the game is a map of a number of connected locations. A location has a description that is presented to the player when that location is entered. A location may also have a number of exits stating in which direction there are exits and to which locations they lead. Alan places no restrictions on the layout of the map, any topology is allowed.
 
-1.  In Alan, exits are always one-way, and an explicit declaration of a backward path (if such is desired) must be made. Although, normally you would probably want them to be two-way, if they where automatically two-way, it would be very hard to handle the rare, but important, cases when you want them to not be.
+
+
+[NOTE]
+================================================================================
+In Alan, exits are always one-way, and an explicit declaration of a backward path (if such is desired) must be made. Although, normally you would probably want them to be two-way, if they where automatically two-way, it would be very hard to handle the rare, but important, cases when you want them to not be.
+================================================================================
+
+
 
 
 ==== The Things
@@ -412,8 +419,20 @@ The *Make* statement changes Boolean (or True/False) attributes. The *Set* state
 Set level Of bottle To 4.
 --------------------------------------------------------------------------------
 
-1.  These statements only change attributes. The implications of such a change must be implemented by writing Alan code that test these attributes and provides differing text output to the player. This is what gives the player _the illusion_ of a door being open or closed for example.
-2.  Alan does not understand, or enforce, any semantic in the identifiers for attributes, they are only identifiers. The illusion of the effects of differences in the value must be implemented by varying the output. In addition, Alan does not understand that an attribute ‘closed’, for a human would be the opposite of an attribute ‘open’. You should choose one and stick to it.
+
+
+[NOTE]
+================================================================================
+These statements only change attributes. The implications of such a change must be implemented by writing Alan code that test these attributes and provides differing text output to the player. This is what gives the player _the illusion_ of a door being open or closed for example.
+================================================================================
+
+
+[NOTE]
+================================================================================
+Alan does not understand, or enforce, any semantic in the identifiers for attributes, they are only identifiers. The illusion of the effects of differences in the value must be implemented by varying the output. In addition, Alan does not understand that an attribute ‘closed’, for a human would be the opposite of an attribute ‘open’. You should choose one and stick to it.
+================================================================================
+
+
 
 Of course, attributes are not only available on objects, but on locations and other types of entities also.
 
@@ -618,7 +637,14 @@ There are two other types, namely DIRECT and INDIRECT transitivity. Direct trans
 
 Finally, indirect transitivity means instances indirectly contained by a container. In a way it is the opposite of direct transitivity, all instances recursively contained _except_ the directly contained. Here's a rule to remember:
 
-1.  Transitive = Direct + Indirect
+
+
+[TIP]
+================================================================================
+Transitive = Direct + Indirect
+================================================================================
+
+
 
 What this means is that if you use transitive containment you get the same instances that direct _and_ indirect will give you. And it is usually the indirect ones that you should look out for.
 
@@ -1070,7 +1096,14 @@ The Set type is a compound type since it is not complete without a member type. 
 
 If the Set includes instances, the subclass compatibility rule applies. All members in the set must inherit from the same class. See the section on type compatibility below.
 
-1.  The fact that an instance is in a Set does not affect the instance. In fact, there is no way to find out in which Sets, if any, a particular instance is included. In particular, it does not affect the instances location.
+
+
+[NOTE]
+================================================================================
+The fact that an instance is in a Set does not affect the instance. In fact, there is no way to find out in which Sets, if any, a particular instance is included. In particular, it does not affect the instances location.
+================================================================================
+
+
 
 
 ==== Type Compatibility
@@ -1245,7 +1278,14 @@ So, if you want an instance to always be available but invisible, create an inst
 
 Creating an instance of *thing* is a good choice if you want an invisible instance that should only be available at particular locations, or under specific _*circumstances*_.
 
-1.  Note that a *thing* can be put in a container, but that container will not show any visible traces of that thing. It will be rendered as empty if listed. The *thing* is however subject to other effects of being part of a container, such as the removal rules and selection by a random selection of items in the container. See _Random Values_ on page _143_ for a description of random selections of container items.
+
+
+[NOTE]
+================================================================================
+Note that a *thing* can be put in a container, but that container will not show any visible traces of that thing. It will be rendered as empty if listed. The *thing* is however subject to other effects of being part of a container, such as the removal rules and selection by a random selection of items in the container. See _Random Values_ on page _143_ for a description of random selections of container items.
+================================================================================
+
+
 
 
 ==== Objects
@@ -5092,7 +5132,14 @@ Using the import mechanism of the Alan language (see _Import_ on page _54_) you 
 
 A very easy way to get a lot of functionality, and learn about using the language, is to use the Alan standard library. You you can download it from the Alan Home Pages. It implements many of the things described below, and loads of other handy things for you to use directly. For details on how to use that library, refer to its documentation.
 
-1.  The following examples, hints and tips does _not_ use any library, only plain vanilla Alan code.
+
+
+[NOTE]
+================================================================================
+The following examples, hints and tips does _not_ use any library, only plain vanilla Alan code.
+================================================================================
+
+
 
 
 
@@ -6740,7 +6787,14 @@ The contents of any message may be modified using the *Message* statement (see s
 
 All messages are available in all supported languages but below the English texts are shown.
 
-1.  Although the default values of the messages are static strings, it is possible to create messages that are more dynamic. The *Message* statement allows any statements, not only strings, and supplies dynamic values as parameters for many messages. See _Messages_ on page _113_ for details.
+
+
+[NOTE]
+================================================================================
+Although the default values of the messages are static strings, it is possible to create messages that are more dynamic. The *Message* statement allows any statements, not only strings, and supplies dynamic values as parameters for many messages. See _Messages_ on page _113_ for details.
+================================================================================
+
+
 
 UNKNOWN_WORD : "I don't know the word ‘$1’."
 
@@ -6803,7 +6857,14 @@ The player referred to an object or actor that was not present.
 
 *parameter1* is an instance referring to an instance.
 
-1.  If there did not actually even exist an instance in the game with the combination of the adjectives and nouns that the player used, the interpreter uses any instance matching the noun. This still allows inflecting in accordance with the noun case, which is common in many languages (English being one of few exceptions).
+
+
+[NOTE]
+================================================================================
+If there did not actually even exist an instance in the game with the combination of the adjectives and nouns that the player used, the interpreter uses any instance matching the noun. This still allows inflecting in accordance with the noun case, which is common in many languages (English being one of few exceptions).
+================================================================================
+
+
 
 NO_WAY : "You can't go that way."
 
@@ -6901,7 +6962,14 @@ QUIT_ACTION : "Do you want to RESTART, RESTORE, QUIT or UNDO?"
 
 The *Quit* statement requests an action from the player.
 
-1.  The possible answers are currently hard-wired into the interpreter, so changing *RESTART*, *RESTORE*, *QUIT* or *UNDO* will probably confuse the player!
+
+
+[NOTE]
+================================================================================
+The possible answers are currently hard-wired into the interpreter, so changing *RESTART*, *RESTORE*, *QUIT* or *UNDO* will probably confuse the player!
+================================================================================
+
+
 
 UNDONE : "’$1’ undone."
 
@@ -6969,7 +7037,14 @@ Incompatible version of ACODE program.
 
 The version of the interpreter you are using is different than the Alan compiler used to compile the adventure. Use a different Arun or recompile the adventure with the matching compiler.
 
-1.  the Arun switch *‘-d’* will, beside entering debug mode, also print the version of both the Arun interpreter and the version of the Alan compiler used to compile the adventure.
+
+
+[NOTE]
+================================================================================
+the Arun switch *‘-d’* will, beside entering debug mode, also print the version of both the Arun interpreter and the version of the Alan compiler used to compile the adventure.
+================================================================================
+
+
 
 Index not in container in 'containerMember()'
 
@@ -6987,7 +7062,14 @@ Non-existing parameter referenced.
 
 A parameter that wasn’t available was referenced. This is probably due to using a parameter shorthand such as $2 inside a string in a context where the syntax was restricted to only one parameter. This may avoided by using the *Say* statement instead of the embedded string parameter references, which would allow compile time checking, thus avoiding the risk of having this happen to the player.
 
-1.  Parameter references embedded in strings are currently _not_ checked during compile time.
+
+
+[NOTE]
+================================================================================
+Parameter references embedded in strings are currently _not_ checked during compile time.
+================================================================================
+
+
 
 Interpreter recursion.
 
