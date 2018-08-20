@@ -47,7 +47,8 @@ This is an aproximate status report and pending tasks list of the current docume
     + [x] Exclude _Appendix I_ (License) sub-headings from TOC.
     + [ ] Fix all cross-reference links (_after_ splitting into multiple files!).
     + [ ] Rebuild _Index_
-- [ ] Add missing images
+- [ ] Add missing images:
+    + [x] Alan logo (cover)
 - [x] Global styles reconstruction:
     + [x] Alan code examples:
         * [x] Paste-over original examples, fix curly quotes, and indent them properly.
@@ -60,6 +61,8 @@ This is an aproximate status report and pending tasks list of the current docume
         + [x] Convert them to example blocks (`[EXAMPLE,role="gametranscript"]`).
     + [x] Fix notes (as Admonition notes).
     + [ ] Fix tables.
+- [ ] Global styles fixing:
+    + [x] Style as inline-code keywords and code snippets within paragraphs, admonitons, etc. — eccept headings and tables (tables will be dealt with separately).
 - [ ] Typography cleanup:
     + [x] Delete all non-breaking hyphens.
     + [ ] Decide how to handle:
