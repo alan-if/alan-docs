@@ -1,5 +1,5 @@
 :doctitle: The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.2
+:revnumber: 0.1.3
 :revdate: August 20, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
@@ -34,9 +34,7 @@ This document is subjected to the https://bitbucket.org/alanif/alan/src/master/C
 ********************************************************************************
 
 
-image:image1.jpeg[image,width=342,height=312]
-
-
+image:alan-logo.png[Alan Logo,500,458]
 
 
 
