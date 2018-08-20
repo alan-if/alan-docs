@@ -422,7 +422,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.5,</span>
+<span id="revnumber">version 0.1.6,</span>
 <span id="revdate">August 21, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -432,7 +432,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.5
+<pre>Doc version: 0.1.6
 Last edited: August 21, 2018</pre>
 </div>
 </div>
@@ -1157,11 +1157,11 @@ You are outside your grandma&#8217;s house.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The kitchen Isa location
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The kitchen IsA location
   Exit east To hallway.
 End The Kitchen.
 
-The hallway Isa location
+The hallway IsA location
   Exit west To kitchen.
 End The hallway.
 
@@ -1198,7 +1198,7 @@ Start At kitchen.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The hallway Isa location
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The hallway IsA location
   Description
     "In front of you is a long hallway. In one end
      is the front door, in the other a doorway. From
@@ -1242,7 +1242,7 @@ End Exit west.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The door Isa object At hallway
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The door IsA object At hallway
   Is closed.
     Description
     "The door to the kitchen is a sliding door."
@@ -1351,7 +1351,7 @@ End The door.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The charlie_chaplin Isa actor Name charlie chaplin
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The charlie_chaplin IsA actor Name charlie chaplin
   Script going_out
     Step
      Locate Actor At outside_house.
@@ -1392,13 +1392,13 @@ End The charlie_chaplin.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every mammal Isa vertebrate …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every mammal IsA vertebrate …
 
-The house_pet Isa cat …</code></pre>
+The house_pet IsA cat …</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>Every</code>-construct defines a class and its properties, including inheriting from another, even more general class. The <code>The</code>-construct declares an instance, which in this example inherits from the class &#8216;cat&#8217;. The <code>Isa</code>-construct defines from which class properties are inherited.</p>
+<p>The <code>Every</code>-construct defines a class and its properties, including inheriting from another, even more general class. The <code>The</code>-construct declares an instance, which in this example inherits from the class &#8216;cat&#8217;. The <code>IsA</code>-construct defines from which class properties are inherited.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1439,7 +1439,7 @@ The house_pet Isa cat …</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The _&lt;instance_ _identifier&gt;_ Isa _&lt;class identifier&gt;_ …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The _&lt;instance_ _identifier&gt;_ IsA _&lt;class identifier&gt;_ …</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1455,14 +1455,14 @@ The house_pet Isa cat …</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every door Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every door IsA object
 End Every.
 
-Every openable_door Isa door
+Every openable_door IsA door
   Is open.
 End Every.
 
-The kitchen_door Isa openable_door
+The kitchen_door IsA openable_door
 End The kitchen_door.</code></pre>
 </div>
 </div>
@@ -1480,7 +1480,7 @@ End The kitchen_door.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every closed_openable_door Isa openable_door
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every closed_openable_door IsA openable_door
   Is Not open.
 End Every.</code></pre>
 </div>
@@ -1508,14 +1508,14 @@ End Every.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every subobject Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every subobject IsA object
 End Every subobject.
 
-The cont Isa object
+The cont IsA object
   Container Taking subobject.
 End The cont.
 
-The inst Isa subobject
+The inst IsA subobject
   Container Taking object.
 End The inst.</code></pre>
 </div>
@@ -1584,7 +1584,7 @@ End Verb open.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The kitchen_door Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The kitchen_door IsA object
   Verb open
     Does
       Make kitchen_door open.
@@ -1597,7 +1597,7 @@ End The kitchen_door.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every door Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every door IsA object
   Verb open
     Does
       Make This open.
@@ -1719,9 +1719,9 @@ End Verb take.</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Syntax
   put_in = 'put' (obj) 'in' (cont)
-    Where obj Isa object
+    Where obj IsA object
       Else "You can't put that into anything."
-    And cont Isa Container
+    And cont IsA Container
       Else "Nothing fits inside that."</code></pre>
 </div>
 </div>
@@ -1755,9 +1755,9 @@ End Verb take.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The postmen Isa actor At postoffice …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The postmen IsA actor At postoffice …
 
-The postoffice Isa location
+The postoffice IsA location
   Description
     Describe postmen.
 …</code></pre>
@@ -1804,11 +1804,11 @@ Postmen are working behind the counters.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">1. Every animal Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">1. Every animal IsA object
 2.   Has fur.
 3. End Every animal.
 4.
-5. The house_cat Isa object …
+5. The house_cat IsA object …
 6.   …
 7.
 8.   If house_cat Has fur Then …</code></pre>
@@ -1831,7 +1831,7 @@ Postmen are working behind the counters.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan"> 1. The cont Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan"> 1. The cont IsA object
  2.   Container Taking thing.
  3. End The cont.
  4.
@@ -1839,7 +1839,7 @@ Postmen are working behind the counters.</p>
  6.   Has someAttribute.
  7. End Add.
  8.
- 9. The box Isa object
+ 9. The box IsA object
 10.   Container Taking object.
 11. End The.
 12. …
@@ -1863,7 +1863,7 @@ Postmen are working behind the counters.</p>
 <p>change the transitivity of the filter in the loop (<code>Directly In</code>)</p>
 </li>
 <li>
-<p>add a class-restricting filter in the loop (<code>Isa object</code>)</p>
+<p>add a class-restricting filter in the loop (<code>IsA object</code>)</p>
 </li>
 <li>
 <p>rethink your class hierarchy</p>
@@ -2241,7 +2241,7 @@ Start At city.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The door Isa object …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The door IsA object …</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2249,7 +2249,7 @@ Start At city.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every coin Isa treasure …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every coin IsA treasure …</code></pre>
 </div>
 </div>
 </div>
@@ -2282,7 +2282,7 @@ Start At city.</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The red_ball
-  Isa object
+  IsA object
   At bedroom
   Name red ball
   Is hidden.
@@ -2297,7 +2297,7 @@ Start At city.</code></pre>
 End The red_ball.
 
 The mr_brown
-  Isa actor
+  IsA actor
   Name Mr Brown
   Article "".
   Pronoun him.
@@ -2366,7 +2366,7 @@ End The mr_brown.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The kirk Isa actor Name Captain Kirk At control_room
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The kirk IsA actor Name Captain Kirk At control_room
   Has health 25.
   Container
     Header "Kirk is carrying"
@@ -2375,7 +2375,7 @@ End The mr_brown.</code></pre>
     "Your superior, Captain Kirk, is in the room."
 End The kirk.
 
-The george Isa actor
+The george IsA actor
   Name George Formby
   Description
     "George Formby is here."
@@ -2400,7 +2400,7 @@ The george Isa actor
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The hero Isa actor
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The hero IsA actor
   Name me
   Is Not hungry.
   Verb examine Does
@@ -2603,7 +2603,7 @@ End The hero.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The chest Isa object At treasury
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The chest IsA object At treasury
 …</code></pre>
 </div>
 </div>
@@ -2629,10 +2629,10 @@ End The hero.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The south_door Isa object At south_of_house
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The south_door IsA object At south_of_house
   Name door
 …
-The south_of_house Isa location
+The south_of_house IsA location
   Name 'South of House'
 …</code></pre>
 </div>
@@ -2642,7 +2642,7 @@ The south_of_house Isa location
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The chair3 Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The chair3 IsA object
   Name little wooden chair</code></pre>
 </div>
 </div>
@@ -2682,7 +2682,7 @@ The south_of_house Isa location
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The rod Isa object At grate
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The rod IsA object At grate
   Name rusty rod
   Name dynamite
   ...</code></pre>
@@ -2701,11 +2701,11 @@ The south_of_house Isa location
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every fruit Isa object Name fruit …
-Every apple Isa fruit Name apple …
-Every pear Isa fruit Name pear …
-The gravensteiner Isa apple …
-The macintosh Isa apple …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every fruit IsA object Name fruit …
+Every apple IsA fruit Name apple …
+Every pear IsA fruit Name pear …
+The gravensteiner IsA apple …
+The macintosh IsA apple …</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2838,7 +2838,7 @@ The combination_lock Has numbers {1,2,4,8}</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every person Isa animal …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every person IsA animal …
   Is
     human.
 …</code></pre>
@@ -2893,7 +2893,7 @@ message "Enter password:".</code></pre>
   Set e Of l To e2.
 End Event.
 
-The l Isa location
+The l IsA location
   Has e e1.
 End The l.</code></pre>
 </div>
@@ -2909,7 +2909,7 @@ End The l.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The east_door Isa door.
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The east_door IsA door.
   Has otherside west_door.
   …</code></pre>
 </div>
@@ -2922,11 +2922,11 @@ End The l.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every door Isa object …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every door IsA object …
   Has otherside door.
 End Every door.
 
-The east_door Isa door.
+The east_door IsA door.
   Has otherside west_door.
   …</code></pre>
 </div>
@@ -2982,19 +2982,19 @@ The east_door Isa door.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every door Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every door IsA object
   Has otherside someDoor.
 End Every door.
 
-Every lockable_door Isa door.
+Every lockable_door IsA door.
   Has otherside someLockableDoor.
 End Every lockable_door.
 
-The someDoor Isa door
+The someDoor IsA door
   Has otherside someLockableDoor.
 End The someDoor.
 
-The someLockableDoor Isa lockable_door
+The someLockableDoor IsA lockable_door
   Has otherside someDoor.
 End The someLockableDoor.</code></pre>
 </div>
@@ -3007,19 +3007,19 @@ End The someLockableDoor.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every door Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every door IsA object
   Has otherside door.
 End Every door.
 
-Every lockable_door Isa door.
+Every lockable_door IsA door.
   Has otherside lockable_door.
 End Every lockable_door.
 
-The someDoor Isa door
+The someDoor IsA door
   Has otherside someLockableDoor.
 End The someDoor.
 
-The someLockableDoor Isa lockable_door
+The someLockableDoor IsA lockable_door
   Has otherside someDoor.
 End The someLockableDoor.</code></pre>
 </div>
@@ -3098,7 +3098,7 @@ End The someLockableDoor.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The south_of_house Isa location
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The south_of_house IsA location
   Name 'South of House'
   Is outdoors.
   Description
@@ -3107,7 +3107,7 @@ End The someLockableDoor.</code></pre>
      windows are barred."
   …
 
-The door Isa object
+The door IsA object
   Description
     "In the north wall there is a large wooden door."
     If door Is closed Then
@@ -3129,7 +3129,7 @@ The door Isa object
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every dark_location Isa location
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every dark_location IsA location
   Description
     Check Sum Of light_source Here &gt; 1
       Else "It is pitch black. You are likely
@@ -3230,7 +3230,7 @@ article_or_form = 'ARTICLE' {statement}
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The owl Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The owl IsA object
   Indefinite Article "an"
 :</code></pre>
 </div>
@@ -3372,7 +3372,7 @@ You are carrying an owl.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The chest Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The chest IsA object
   With Container
     Limits …
     Header …
@@ -3392,7 +3392,7 @@ End The chest.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The drawer Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The drawer IsA object
   With Opaque Container
     Header "The drawer contains"
   Verb open
@@ -3553,7 +3553,7 @@ Empty
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The waiter Isa actor
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The waiter IsA actor
   At bar.
   Is Not annoyed.
   Description
@@ -3701,14 +3701,14 @@ exit_body = [checks] [does] 'END' 'EXIT' [id]</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The east_end Isa location Name 'East End of Hall'
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The east_end IsA location Name 'East End of Hall'
   Description
     "This is the east end of a vast hall. Far
      away to the west you can see the west end."
   Exit w To west_end.
 End The east_end.
 
-The west_end Isa location Name 'West End of Hall'
+The west_end IsA location Name 'West End of Hall'
   Description
     "From this western end of the large hall it
      is almost impossible to discern the
@@ -4075,7 +4075,7 @@ restriction_class = id
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Syntax
   take = 'take' (obj)
-    Where obj Isa object
+    Where obj IsA object
       Else "You can't take that."</code></pre>
 </div>
 </div>
@@ -4089,10 +4089,10 @@ restriction_class = id
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Syntax
   talk_about = 'talk' 'to' (act) 'about' (sub)!
-    Where act Isa actor
+    Where act IsA actor
       Else "Don't you think talking to a person
             might be better?!?!"
-    And sub Isa subject
+    And sub IsA subject
       Else
         Say act. "does not know anything about
                   that."
@@ -4107,16 +4107,16 @@ restriction_class = id
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Where obj Isa object Else …
-  And obj Isa openable_object Else …
-  And obj Isa door Else …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Where obj IsA object Else …
+  And obj IsA openable_object Else …
+  And obj IsA door Else …</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>References to attributes in the source are only allowed if it can be guaranteed that they exist during run-time. The class restrictions placed on a parameter are used by the compiler to make this guarantee for code executed by player input (verb bodies). The same applies for other semantic restrictions, e.g. you can only use a parameter in a <code>List</code> statement if it has been restricted to having the container property.</p>
 </div>
 <div class="paragraph">
-<p>You can use <code>Isa Container</code> to restrict instances to only those entities that are containers (have the container property).</p>
+<p>You can use <code>IsA Container</code> to restrict instances to only those entities that are containers (have the container property).</p>
 </div>
 <div class="paragraph">
 <p>If there is no restriction for a parameter, it is restricted to the class <code>object</code>.</p>
@@ -4304,7 +4304,7 @@ End Verb.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The high_wire Isa location
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The high_wire IsA location
   Verb drop
     Does Only
       Locate o At limbo. –- Instead of "here".
@@ -4346,7 +4346,7 @@ End Verb take.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The jumpless Isa Location
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The jumpless IsA Location
   Verb jump
     Check "You can't do that here."
   End Verb jump.
@@ -4444,7 +4444,7 @@ End Verb take.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The feather Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The feather IsA object
   Verb break_with
     When o Does
       "The feather is even more flat than before."
@@ -4616,7 +4616,7 @@ End The feather.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The bomb Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The bomb IsA object
   Verb take
     Does Only
       "Your curious fingering at the intricate
@@ -4705,11 +4705,11 @@ End When.</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The kitchen Isa location
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The kitchen IsA location
   Exit x To kitchen.
 End The kitchen.
 
-When Count Isa actor, At kitchen = 1
+When Count IsA actor, At kitchen = 1
   Then Schedule whee At actor After 0.
 End When.
 
@@ -5333,7 +5333,7 @@ into_clause = 'INTO' expression</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The eliza Isa actor
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The eliza IsA actor
   Has topic "".
   Verb talk_to
     Does
@@ -5613,7 +5613,7 @@ else_part = 'ELSE' expression 'THEN' statements</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>If</code> statement is essential for varying output and otherwise change the activities in the game. The expression is evaluated (see <em>Expressions</em> on page <em>141</em> for details and examples of expression) and if it evaluates to true, the statements following the <code>Then</code> are executed. Otherwise, the expressions in any following <code>Elsif</code> clauses are evaluated (in order) and the statements following the first expression that results in a true value is executed. If none of the expressions in the <code>Elsif</code> clauses evaluated to true, or there are no <code>Elsif</code> clauses, the statements following the <code>Else</code> are executed. The <code>Else</code> clause is optional.</p>
+<p>The <code>If</code> statement is essential for varying output and otherwise change the activities in the game. The expression is evaluated (see <em>Expressions</em> on page <em>141</em> for details and examples of expression) and if it evaluates to true, the statements following the <code>Then</code> are executed. Otherwise, the expressions in any following <code>ElsIf</code> clauses are evaluated (in order) and the statements following the first expression that results in a true value is executed. If none of the expressions in the <code>ElsIf</code> clauses evaluated to true, or there are no <code>ElsIf</code> clauses, the statements following the <code>Else</code> are executed. The <code>Else</code> clause is optional.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5625,7 +5625,7 @@ Else
 End If.
 If level Of bottle = 0 Then
   "You have no water."
-Elsif level Of bottle &lt; 5 Then
+ElsIf level Of bottle &lt; 5 Then
   "You have almost no water left."
 Else
   "You have plenty of water."
@@ -5633,11 +5633,11 @@ End If.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>If</code> statements which have an <code>Isa</code>-expression (see <em>Class Expressions</em> on page <em>145</em>) are particularly important. As an <code>Isa</code>-expression test for the class of an instance, an <code>If</code> statement like</p>
+<p><code>If</code> statements which have an <code>IsA</code>-expression (see <em>Class Expressions</em> on page <em>145</em>) are particularly important. As an <code>IsA</code>-expression test for the class of an instance, an <code>If</code> statement like</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If i Isa actor Then …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If i IsA actor Then …</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5648,10 +5648,10 @@ End If.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">For Each e Isa entity, Here Do
-  If e Isa actor Then …
-  If e Isa object Then …
-  If e Isa container_object Then …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">For Each e IsA entity, Here Do
+  If e IsA actor Then …
+  If e IsA object Then …
+  If e IsA container_object Then …
 End For.</code></pre>
 </div>
 </div>
@@ -5697,9 +5697,9 @@ End Depend.</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If weight Of object = 1 Then "light as a feather"
-Elsif weight Of object Between 2 And 10 Then "carryable"
-Elsif weight Of object Between 10 And 20 Then "heavy"
-Elsif weight Of object &gt; 20 Then "immobile"
+ElsIf weight Of object Between 2 And 10 Then "carryable"
+ElsIf weight Of object Between 10 And 20 Then "heavy"
+ElsIf weight Of object &gt; 20 Then "immobile"
 Else "weightless"
 End If.</code></pre>
 </div>
@@ -5789,7 +5789,7 @@ filters = filter { ',' filter }
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">For Each creature Isa actor Do
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">For Each creature IsA actor Do
   If creature Here Then
     …
   End If.
@@ -5940,7 +5940,7 @@ End Verb restore.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The secret_cave Isa location
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The secret_cave IsA location
   Description
     "This is the secret cave. You have visited it"
     Say visits Of This.
@@ -6288,7 +6288,7 @@ Decrease temp Of room By Random 0 To temp Of Room.</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If kalif Here And mood Of sultan Is 0 Then …
-If o Isa treasure And (size Of o &gt; capacity Of c
+If o IsA treasure And (size Of o &gt; capacity Of c
   Or thief Is greedy) Then …</code></pre>
 </div>
 </div>
@@ -6305,8 +6305,8 @@ If o Isa treasure And (size Of o &gt; capacity Of c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If p Isa object Then …
-If opponent Isa enemy Then …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If p IsA object Then …
+If opponent IsA enemy Then …</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6366,7 +6366,7 @@ If weather Of world Not &lt; protection Of hero Then …</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Syntax put_in = 'put' (o) 'in' (c)
-  Where c Isa Container
+  Where c IsA Container
     Else "You can't put anything in the" Say c.
 Verb put_in
   Check o &lt;&gt; c
@@ -6438,7 +6438,7 @@ Verb put_in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every openable Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every openable IsA object
   Is Not open.
   Verb open
     Check …
@@ -6447,7 +6447,7 @@ Verb put_in
   End Verb.
 End Every openable.
 
-The door Isa openable
+The door IsA openable
 End The door.</code></pre>
 </div>
 </div>
@@ -6546,12 +6546,12 @@ aggregate = 'COUNT' | 'SUM' | 'MAX' | 'MIN'</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">"You are carrying"
-Say Count Isa object, In inventory, Is big.
+Say Count IsA object, In inventory, Is big.
 "big objects."</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example there are three filters applied, <code>Isa object</code>, <code>In inventory</code> and <code>Is big</code>. All of these filters must pass before an instance is counted. The result of that count is an integer, which is then printed using the <code>Say</code> statement.</p>
+<p>In this example there are three filters applied, <code>IsA object</code>, <code>In inventory</code> and <code>Is big</code>. All of these filters must pass before an instance is counted. The result of that count is an integer, which is then printed using the <code>Say</code> statement.</p>
 </div>
 <div class="paragraph">
 <p>The <code>Sum</code>, <code>Min</code> and <code>Max</code> aggregates return the sum, minimum and maximum value respectively, of an attribute of all instances in the filtered set.</p>
@@ -6566,7 +6566,7 @@ Say Count Isa object, In inventory, Is big.
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If Sum Of weight At bridge &gt; 500 Then …
 If Max Of size In inventory &gt; size Of small_door Then …
-If Count Isa lightsource, Is lit, Here &gt; 0 Then
+If Count IsA lightsource, Is lit, Here &gt; 0 Then
   "Let there be light...""
 End If.</code></pre>
 </div>
@@ -6588,10 +6588,10 @@ filter = 'ISA' class
 </div>
 </div>
 <div class="paragraph">
-<p>Filters can be used to filter out only particular instances to loop or aggregate over. If one of the filters is a <strong>Isa &lt;class&gt;</strong>, only instances of that class will be bound to the loop variable or considered in the aggregation. In particular this is required if any of the other filters refer to attributes, which is only allowed if the class is known and that class is guaranteed to have that attribute. Other ways to restrict the filtered instances is to use a <code>Where</code> filter which implicitly restricts to instances available at or in that location, container or set. See <em>The Whereabouts of an Entity</em> on page <em>148</em> for details on the various forms of the <code>Where</code> expression.</p>
+<p>Filters can be used to filter out only particular instances to loop or aggregate over. If one of the filters is a <strong>IsA &lt;class&gt;</strong>, only instances of that class will be bound to the loop variable or considered in the aggregation. In particular this is required if any of the other filters refer to attributes, which is only allowed if the class is known and that class is guaranteed to have that attribute. Other ways to restrict the filtered instances is to use a <code>Where</code> filter which implicitly restricts to instances available at or in that location, container or set. See <em>The Whereabouts of an Entity</em> on page <em>148</em> for details on the various forms of the <code>Where</code> expression.</p>
 </div>
 <div class="paragraph">
-<p>Multiple filters can be listed separated with a comma. Each filter must enumerate the set of values to a compatible set, e.g. using two <code>Isa</code> filters for actors and locations respectively is not allowed since those two sets can never be compatible.</p>
+<p>Multiple filters can be listed separated with a comma. Each filter must enumerate the set of values to a compatible set, e.g. using two <code>IsA</code> filters for actors and locations respectively is not allowed since those two sets can never be compatible.</p>
 </div>
 </div>
 </div>
@@ -6647,7 +6647,7 @@ End Verb 'look'.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The pluto Isa location Name 'At the Rim of Pluto Crater'
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The pluto IsA location Name 'At the Rim of Pluto Crater'
   Description
     …</code></pre>
 </div>
@@ -7046,7 +7046,7 @@ end for</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The bottle Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The bottle IsA object
   Has level 3.
   Verb drink
     Does
@@ -7065,7 +7065,7 @@ End The bottle.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The mirror Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The mirror IsA object
   Is Not broken.
   Verb break
     Does
@@ -7130,22 +7130,22 @@ End Verb take.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every vehicle Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every vehicle IsA object
 End Every vehicle.
 
-Every car Isa vehicle
+Every car IsA vehicle
   Verb drive
     Does "Yoooohooooo!"
   End Verb.
 End Every car.
 
-Every bus Isa vehicle
+Every bus IsA vehicle
 End Every bus.
 
-The car1 Isa car At l
+The car1 IsA car At l
 End The car1.
 
-The bus1 Isa bus At l
+The bus1 IsA bus At l
 End The bus1.</code></pre>
 </div>
 </div>
@@ -7184,7 +7184,7 @@ Yoooohooooo!</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The mirror Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The mirror IsA object
   Is Not broken.
   Description
     "On the wall there is a beautiful mirror with an
@@ -7204,7 +7204,7 @@ End The mirror.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The bottle Isa object
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The bottle IsA object
   Has level 3.
   Article ""
   Mentioned
@@ -7280,7 +7280,7 @@ If Hero Nearby Then
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The treasury_door Isa object At hallway
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The treasury_door IsA object At hallway
   Name treasury door
   Is Not open.
   Verb open
@@ -7290,14 +7290,14 @@ If Hero Nearby Then
   End Verb open.
 End The treasury_door.
 
-The hallway Isa location
+The hallway IsA location
   Exit east To treasury
     Check treasury_door Is open
       Else "The door to the treasury is closed."
   End Exit.
 End The hallway.
 
-The hallway_door Isa object At treasury
+The hallway_door IsA object At treasury
   Name hallway door
   Is Not open.
   Verb open
@@ -7307,7 +7307,7 @@ The hallway_door Isa object At treasury
   End Verb open.
 End The hallway_door.
 
-The treasury Isa location
+The treasury IsA location
   Exit west TO hallway
     Check hallway_door Is open
       Else "The door to the hallway is closed."
@@ -7326,7 +7326,7 @@ End The treasury.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The hero Isa actor
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The hero IsA actor
   Is Not quitting.
 End The hero.
 
@@ -7384,7 +7384,7 @@ Locate charlie_chaplin At outside_house.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The george Isa actor
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The george IsA actor
   Name George Formby
   Is
     Not cleaning_windows.
@@ -7392,7 +7392,7 @@ Locate charlie_chaplin At outside_house.
   Description
     If george Is cleaning_windows Then
       "George Formby is here cleaning windows."
-    Elsif george Is tuning Then
+    ElsIf george Is tuning Then
       "George Formby is tuning his ukelele."
     Else
       "George Formby is here."
@@ -7405,7 +7405,7 @@ Locate charlie_chaplin At outside_house.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The george Isa actor
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The george IsA actor
   Name George Formby
   Description
     "George Formby is here."
@@ -7445,10 +7445,10 @@ End Event.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The garage Isa location
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The garage IsA location
 End The garage.
 
-The parking_lot Isa location Name 'Large Parking Lot'
+The parking_lot IsA location Name 'Large Parking Lot'
 End The parking_lot.</code></pre>
 </div>
 </div>
@@ -7457,7 +7457,7 @@ End The parking_lot.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The car Isa object Name little red sporty ferrari Name car
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The car IsA object Name little red sporty ferrari Name car
   At garage
   Is Not running.
   Has position 0.
@@ -7475,7 +7475,7 @@ End The car.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The inside_car Isa location Name 'Inside the Ferrari'
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The inside_car IsA location Name 'Inside the Ferrari'
   Description
     "This sporty little red vehicle can really take you
      places..."
@@ -7575,12 +7575,12 @@ End Event drive_to_garage.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The body_parts Isa entity
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The body_parts IsA entity
   Container
 End The body_parts.
 
-The right_arm Isa object Name right arm In body_parts …
-The head Isa object Name head In body_parts …</code></pre>
+The right_arm IsA object Name right arm In body_parts …
+The head IsA object Name head In body_parts …</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7588,7 +7588,7 @@ The head Isa object Name head In body_parts …</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The belt Isa entity
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The belt IsA entity
   Container
     Header
       If Count In hero &gt; 0 Then "and"
@@ -7604,7 +7604,7 @@ End The belt.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The hero Isa actor
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The hero IsA actor
   Container
     Header "You are carrying"
     Else "You are empty-handed"
@@ -7654,16 +7654,16 @@ You are empty-handed but in your belt you have a knife.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The outdoor_things Isa entity
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The outdoor_things IsA entity
   Container
 End The outdoor_things.
 
-The outdoor_things_storage Isa object At limbo
+The outdoor_things_storage IsA object At limbo
   Container
 End The outdoor_things_storage.
 
-The air Isa object In outdoor_things_storage …
-The sky Isa object In outdoor_things_storage …
+The air IsA object In outdoor_things_storage …
+The sky IsA object In outdoor_things_storage …
 
 When location Of hero Is outdoors =&gt;
   Empty outdoor_things_storage In outdoor_things.
@@ -7696,8 +7696,8 @@ When location Of hero Is Not outdoors =&gt;
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">When location Of hero Isa outdoors_location =&gt; …
-When location Of hero Isa indoors_location =&gt; …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">When location Of hero IsA outdoors_location =&gt; …
+When location Of hero IsA indoors_location =&gt; …</code></pre>
 </div>
 </div>
 </div>
@@ -7708,10 +7708,10 @@ When location Of hero Isa indoors_location =&gt; …</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The outdoor_region Isa location
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The outdoor_region IsA location
 End The outdoor_region.
 
-The park Isa location At outdoor_region
+The park IsA location At outdoor_region
 End The park.</code></pre>
 </div>
 </div>
@@ -7762,7 +7762,7 @@ End Add To.</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Verb 'look'
   Check Current Location Is lit
-    Or Count Isa object, Is lightsource, Here &gt; 0
+    Or Count IsA object, Is lightsource, Here &gt; 0
   Else
     "You cannot see anything without any light."
   Does
@@ -7781,7 +7781,7 @@ End Verb.</code></pre>
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Add To Every location
   Description
   Check Current Location Is lit
-    Or Count Isa object, Is lightsource, Here &gt; 0
+    Or Count IsA object, Is lightsource, Here &gt; 0
   Else
     "You cannot see anything without any light."
 End Add To.</code></pre>
@@ -7800,18 +7800,18 @@ End Add To.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The hills Isa location
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The hills IsA location
   :
 End The hills.
 
-The mountain Isa object At hills
+The mountain IsA object At hills
   :
 End The mountain.
 
-The scenic_vista Isa location Name Scenic Vista
+The scenic_vista IsA location Name Scenic Vista
 End The scenic_vista.
 
-The shadow_mountain Isa object AT scenic_vista
+The shadow_mountain IsA object AT scenic_vista
   Name distant mountain
   Description
     "Far in the distance you can see the Pebbly
@@ -7849,7 +7849,7 @@ towards the sky.<br></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The scenic_vista Isa location Name Scenic Vista
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The scenic_vista IsA location Name Scenic Vista
   Exit east To path
     Does
       Locate shadow_mountain At path.
@@ -7868,7 +7868,7 @@ End The scenic_vista.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The melody Isa entity …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The melody IsA entity …
 Syntax 'whistle' = 'whistle' (m) …</code></pre>
 </div>
 </div>
@@ -7877,7 +7877,7 @@ Syntax 'whistle' = 'whistle' (m) …</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The melody Isa object …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The melody IsA object …
 Syntax 'whistle' = 'whistle' (m)! …</code></pre>
 </div>
 </div>
@@ -8237,7 +8237,7 @@ Instances:
 
 adbg&gt; _instance 13_
 
-The old book [13] Isa object[4]
+The old book [13] IsA object[4]
 
 Location: at First Floor [12]
 
@@ -8307,7 +8307,7 @@ to the floor through your fingers.
 
 adbg&gt; instance 13
 
-The old book [13] Isa object[4]
+The old book [13] IsA object[4]
 
 Location: at nowhere [3]
 
@@ -10265,8 +10265,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.5<br>
-Last updated 2018-08-21 01:39:01 E
+Version 0.1.6<br>
+Last updated 2018-08-21 01:58:22 E
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">

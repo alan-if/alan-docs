@@ -1,5 +1,5 @@
 :doctitle: The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.5
+:revnumber: 0.1.6
 :revdate: August 21, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
@@ -302,11 +302,11 @@ In fact, this is all that is necessary in a location, so lets look at an example
 
 [source,alan]
 --------------------------------------------------------------------------------
-The kitchen Isa location
+The kitchen IsA location
   Exit east To hallway.
 End The Kitchen.
 
-The hallway Isa location
+The hallway IsA location
   Exit west To kitchen.
 End The hallway.
 
@@ -336,7 +336,7 @@ However, just the name of the location is not much of a description. So in order
 
 [source,alan]
 --------------------------------------------------------------------------------
-The hallway Isa location
+The hallway IsA location
   Description
     "In front of you is a long hallway. In one end
      is the front door, in the other a doorway. From
@@ -374,7 +374,7 @@ Objects, like locations, have identifiers and descriptions, so you might guess t
 
 [source,alan]
 --------------------------------------------------------------------------------
-The door Isa object At hallway
+The door IsA object At hallway
   Is closed.
     Description
     "The door to the kitchen is a sliding door."
@@ -458,7 +458,7 @@ An actor may have a `Description` and attributes like objects and locations. An 
 
 [source,alan]
 --------------------------------------------------------------------------------
-The charlie_chaplin Isa actor Name charlie chaplin
+The charlie_chaplin IsA actor Name charlie chaplin
   Script going_out
     Step
      Locate Actor At outside_house.
@@ -500,12 +500,12 @@ The Alan language supports object orientation and inheritance with two construct
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every mammal Isa vertebrate …
+Every mammal IsA vertebrate …
 
-The house_pet Isa cat …
+The house_pet IsA cat …
 --------------------------------------------------------------------------------
 
-The `Every`-construct defines a class and its properties, including inheriting from another, even more general class. The `The`-construct declares an instance, which in this example inherits from the class '`cat`'. The `Isa`-construct defines from which class properties are inherited.
+The `Every`-construct defines a class and its properties, including inheriting from another, even more general class. The `The`-construct declares an instance, which in this example inherits from the class '`cat`'. The `IsA`-construct defines from which class properties are inherited.
 
 
 
@@ -546,7 +546,7 @@ In the sections above about locations, objects and actors the examples show how 
 
 [source,alan]
 --------------------------------------------------------------------------------
-The _<instance_ _identifier>_ Isa _<class identifier>_ …
+The _<instance_ _identifier>_ IsA _<class identifier>_ …
 --------------------------------------------------------------------------------
 
 To define a class you do much what you would expect:
@@ -560,14 +560,14 @@ After this, declarations of all the properties for that class follow. This could
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every door Isa object
+Every door IsA object
 End Every.
 
-Every openable_door Isa door
+Every openable_door IsA door
   Is open.
 End Every.
 
-The kitchen_door Isa openable_door
+The kitchen_door IsA openable_door
 End The kitchen_door.
 --------------------------------------------------------------------------------
 
@@ -584,7 +584,7 @@ However, a sub-class can also redefine a feature. In the example above a class n
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every closed_openable_door Isa openable_door
+Every closed_openable_door IsA openable_door
   Is Not open.
 End Every.
 --------------------------------------------------------------------------------
@@ -609,14 +609,14 @@ Consider e.g. a container, _cont_, that takes a subclass of __object__**,** _sub
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every subobject Isa object
+Every subobject IsA object
 End Every subobject.
 
-The cont Isa object
+The cont IsA object
   Container Taking subobject.
 End The cont.
 
-The inst Isa subobject
+The inst IsA subobject
   Container Taking object.
 End The inst.
 --------------------------------------------------------------------------------
@@ -675,7 +675,7 @@ A `Verb` is either a simple command taking no parameters, like '`look`', '`save`
 
 [source,alan]
 --------------------------------------------------------------------------------
-The kitchen_door Isa object
+The kitchen_door IsA object
   Verb open
     Does
       Make kitchen_door open.
@@ -688,7 +688,7 @@ This defines the effects of applying the `open` verb to that precise door. The i
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every door Isa object
+Every door IsA object
   Verb open
     Does
       Make This open.
@@ -800,9 +800,9 @@ It is also possible to restrict the types of the parameters:
 --------------------------------------------------------------------------------
 Syntax
   put_in = 'put' (obj) 'in' (cont)
-    Where obj Isa object
+    Where obj IsA object
       Else "You can't put that into anything."
-    And cont Isa Container
+    And cont IsA Container
       Else "Nothing fits inside that."
 --------------------------------------------------------------------------------
 
@@ -826,9 +826,9 @@ Secondly, a few special cases are also handled automatically:
 
 [source,alan]
 --------------------------------------------------------------------------------
-The postmen Isa actor At postoffice …
+The postmen IsA actor At postoffice …
 
-The postoffice Isa location
+The postoffice IsA location
   Description
     Describe postmen.
 …
@@ -865,11 +865,11 @@ A simple example is
 // FIXME: Code With Line-Numbers
 [source,alan]
 --------------------------------------------------------------------------------
-1. Every animal Isa object
+1. Every animal IsA object
 2.   Has fur.
 3. End Every animal.
 4.
-5. The house_cat Isa object …
+5. The house_cat IsA object …
 6.   …
 7.
 8.   If house_cat Has fur Then …
@@ -888,7 +888,7 @@ A more complicated example is this
 // FIXME: Code With Line-Numbers
 [source,alan]
 --------------------------------------------------------------------------------
- 1. The cont Isa object
+ 1. The cont IsA object
  2.   Container Taking thing.
  3. End The cont.
  4.
@@ -896,7 +896,7 @@ A more complicated example is this
  6.   Has someAttribute.
  7. End Add.
  8.
- 9. The box Isa object
+ 9. The box IsA object
 10.   Container Taking object.
 11. End The.
 12. …
@@ -912,7 +912,7 @@ Is it? Well, the variable _f_ (in the loop) enumerates all things in the box and
 There are a number of ways to fix this of course:
 
 * change the transitivity of the filter in the loop (`Directly In`)
-* add a class-restricting filter in the loop (`Isa object`)
+* add a class-restricting filter in the loop (`IsA object`)
 * rethink your class hierarchy
 
 The Alan compiler is trying to protect you, and your players, but sometimes the error can be hard to spot.
@@ -1197,14 +1197,14 @@ For example
 
 [source,alan]
 --------------------------------------------------------------------------------
-The door Isa object …
+The door IsA object …
 --------------------------------------------------------------------------------
 
 and
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every coin Isa treasure …
+Every coin IsA treasure …
 --------------------------------------------------------------------------------
 
 
@@ -1236,7 +1236,7 @@ Here are two examples of instance declarations following the rules above:
 [source,alan]
 --------------------------------------------------------------------------------
 The red_ball
-  Isa object
+  IsA object
   At bedroom
   Name red ball
   Is hidden.
@@ -1251,7 +1251,7 @@ The red_ball
 End The red_ball.
 
 The mr_brown
-  Isa actor
+  IsA actor
   Name Mr Brown
   Article "".
   Pronoun him.
@@ -1309,7 +1309,7 @@ Actors also exhibit special behaviour when they are described, e.g. when they ar
 
 [source,alan]
 --------------------------------------------------------------------------------
-The kirk Isa actor Name Captain Kirk At control_room
+The kirk IsA actor Name Captain Kirk At control_room
   Has health 25.
   Container
     Header "Kirk is carrying"
@@ -1318,7 +1318,7 @@ The kirk Isa actor Name Captain Kirk At control_room
     "Your superior, Captain Kirk, is in the room."
 End The kirk.
 
-The george Isa actor
+The george IsA actor
   Name George Formby
   Description
     "George Formby is here."
@@ -1344,7 +1344,7 @@ One situation when this is required is if you need attributes on the hero, such 
 
 [source,alan]
 --------------------------------------------------------------------------------
-The hero Isa actor
+The hero IsA actor
   Name me
   Is Not hungry.
   Verb examine Does
@@ -1470,7 +1470,7 @@ Only the `At` `what` and `In` `what` forms of the `Where` construct (see _WHERE 
 
 [source,alan]
 --------------------------------------------------------------------------------
-The chest Isa object At treasury
+The chest IsA object At treasury
 …
 --------------------------------------------------------------------------------
 
@@ -1493,10 +1493,10 @@ The identifiers given in the `Name` clause is used when the instance is presente
 
 [source,alan]
 --------------------------------------------------------------------------------
-The south_door Isa object At south_of_house
+The south_door IsA object At south_of_house
   Name door
 …
-The south_of_house Isa location
+The south_of_house IsA location
   Name 'South of House'
 …
 --------------------------------------------------------------------------------
@@ -1506,7 +1506,7 @@ The quoted identifier used in the last example makes the name be one single text
 
 [source,alan]
 --------------------------------------------------------------------------------
-The chair3 Isa object
+The chair3 IsA object
   Name little wooden chair
 --------------------------------------------------------------------------------
 
@@ -1529,7 +1529,7 @@ It is possible to give an instance multiple names by listing a number of name cl
 
 [source,alan]
 --------------------------------------------------------------------------------
-The rod Isa object At grate
+The rod IsA object At grate
   Name rusty rod
   Name dynamite
   ...
@@ -1548,11 +1548,11 @@ Names can of course be inherited. This is done in an additive way so that any na
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every fruit Isa object Name fruit …
-Every apple Isa fruit Name apple …
-Every pear Isa fruit Name pear …
-The gravensteiner Isa apple …
-The macintosh Isa apple …
+Every fruit IsA object Name fruit …
+Every apple IsA fruit Name apple …
+Every pear IsA fruit Name pear …
+The gravensteiner IsA apple …
+The macintosh IsA apple …
 --------------------------------------------------------------------------------
 
 In this example, both the pear and the apple would be possible to refer to using the word "`fruit`". Both the gravensteiner and the macintosh would be apples, not only by name, but also by all other properties of apples.
@@ -1658,7 +1658,7 @@ The attribute `human` will now be available in all instances of the class, witho
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every person Isa animal …
+Every person IsA animal …
   Is
     human.
 …
@@ -1712,7 +1712,7 @@ Event e1
   Set e Of l To e2.
 End Event.
 
-The l Isa location
+The l IsA location
   Has e e1.
 End The l.
 --------------------------------------------------------------------------------
@@ -1725,7 +1725,7 @@ Reference attributes stores references to instances. Such an attribute is of ins
 
 [source,alan]
 --------------------------------------------------------------------------------
-The east_door Isa door.
+The east_door IsA door.
   Has otherside west_door.
   …
 --------------------------------------------------------------------------------
@@ -1737,11 +1737,11 @@ Inside a class declaration, reference attributes may be initialized with a class
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every door Isa object …
+Every door IsA object …
   Has otherside door.
 End Every door.
 
-The east_door Isa door.
+The east_door IsA door.
   Has otherside west_door.
   …
 --------------------------------------------------------------------------------
@@ -1777,19 +1777,19 @@ This also applies to classes of instances in the reference and set types attribu
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every door Isa object
+Every door IsA object
   Has otherside someDoor.
 End Every door.
 
-Every lockable_door Isa door.
+Every lockable_door IsA door.
   Has otherside someLockableDoor.
 End Every lockable_door.
 
-The someDoor Isa door
+The someDoor IsA door
   Has otherside someLockableDoor.
 End The someDoor.
 
-The someLockableDoor Isa lockable_door
+The someLockableDoor IsA lockable_door
   Has otherside someDoor.
 End The someLockableDoor.
 --------------------------------------------------------------------------------
@@ -1801,19 +1801,19 @@ As a contrast, the same example can be used with abstract reference attributes (
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every door Isa object
+Every door IsA object
   Has otherside door.
 End Every door.
 
-Every lockable_door Isa door.
+Every lockable_door IsA door.
   Has otherside lockable_door.
 End Every lockable_door.
 
-The someDoor Isa door
+The someDoor IsA door
   Has otherside someLockableDoor.
 End The someDoor.
 
-The someLockableDoor Isa lockable_door
+The someLockableDoor IsA lockable_door
   Has otherside someDoor.
 End The someLockableDoor.
 --------------------------------------------------------------------------------
@@ -1877,7 +1877,7 @@ Here are some examples of simple description declarations
 
 [source,alan]
 --------------------------------------------------------------------------------
-The south_of_house Isa location
+The south_of_house IsA location
   Name 'South of House'
   Is outdoors.
   Description
@@ -1886,7 +1886,7 @@ The south_of_house Isa location
      windows are barred."
   …
 
-The door Isa object
+The door IsA object
   Description
     "In the north wall there is a large wooden door."
     If door Is closed Then
@@ -1907,7 +1907,7 @@ You can guard the description with a check in the same form as with verb bodies 
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every dark_location Isa location
+Every dark_location IsA location
   Description
     Check Sum Of light_source Here > 1
       Else "It is pitch black. You are likely
@@ -1991,7 +1991,7 @@ For example
 
 [source,alan]
 --------------------------------------------------------------------------------
-The owl Isa object
+The owl IsA object
   Indefinite Article "an"
 :
 --------------------------------------------------------------------------------
@@ -2129,7 +2129,7 @@ For example
 
 [source,alan]
 --------------------------------------------------------------------------------
-The chest Isa object
+The chest IsA object
   With Container
     Limits …
     Header …
@@ -2148,7 +2148,7 @@ By default, containers expose their content, but by placing the keyword `Opaque`
 
 [source,alan]
 --------------------------------------------------------------------------------
-The drawer Isa object
+The drawer IsA object
   With Opaque Container
     Header "The drawer contains"
   Verb open
@@ -2287,7 +2287,7 @@ An example use of the `Extract` clause is to prohibit, put restrictions on, or m
 
 [source,alan]
 --------------------------------------------------------------------------------
-The waiter Isa actor
+The waiter IsA actor
   At bar.
   Is Not annoyed.
   Description
@@ -2383,14 +2383,14 @@ Two interconnected locations might be declared like:
 
 [source,alan]
 --------------------------------------------------------------------------------
-The east_end Isa location Name 'East End of Hall'
+The east_end IsA location Name 'East End of Hall'
   Description
     "This is the east end of a vast hall. Far
      away to the west you can see the west end."
   Exit w To west_end.
 End The east_end.
 
-The west_end Isa location Name 'West End of Hall'
+The west_end IsA location Name 'West End of Hall'
   Description
     "From this western end of the large hall it
      is almost impossible to discern the
@@ -2694,7 +2694,7 @@ The following example describes the syntax for a verb that only allows ``object`
 --------------------------------------------------------------------------------
 Syntax
   take = 'take' (obj)
-    Where obj Isa object
+    Where obj IsA object
       Else "You can't take that."
 --------------------------------------------------------------------------------
 
@@ -2706,10 +2706,10 @@ A more elaborate example of prerequisites for conversation might look like:
 --------------------------------------------------------------------------------
 Syntax
   talk_about = 'talk' 'to' (act) 'about' (sub)!
-    Where act Isa actor
+    Where act IsA actor
       Else "Don't you think talking to a person
             might be better?!?!"
-    And sub Isa subject
+    And sub IsA subject
       Else
         Say act. "does not know anything about
                   that."
@@ -2723,14 +2723,14 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Where obj Isa object Else …
-  And obj Isa openable_object Else …
-  And obj Isa door Else …
+Where obj IsA object Else …
+  And obj IsA openable_object Else …
+  And obj IsA door Else …
 --------------------------------------------------------------------------------
 
 References to attributes in the source are only allowed if it can be guaranteed that they exist during run-time. The class restrictions placed on a parameter are used by the compiler to make this guarantee for code executed by player input (verb bodies). The same applies for other semantic restrictions, e.g. you can only use a parameter in a `List` statement if it has been restricted to having the container property.
 
-You can use `Isa Container` to restrict instances to only those entities that are containers (have the container property).
+You can use `IsA Container` to restrict instances to only those entities that are containers (have the container property).
 
 If there is no restriction for a parameter, it is restricted to the class `object`.
 
@@ -2867,7 +2867,7 @@ A special case is a verb declared in, or inherited by, the location where the pl
 
 [source,alan]
 --------------------------------------------------------------------------------
-The high_wire Isa location
+The high_wire IsA location
   Verb drop
     Does Only
       Locate o At limbo. –- Instead of "here".
@@ -2908,7 +2908,7 @@ If no expression is specified for a check, that check will always fail, in effec
 
 [source,alan]
 --------------------------------------------------------------------------------
-The jumpless Isa Location
+The jumpless IsA Location
   Verb jump
     Check "You can't do that here."
   End Verb jump.
@@ -2993,7 +2993,7 @@ If used with the `delicate_vase` actions could differ if it occurs as the direct
 
 [source,alan]
 --------------------------------------------------------------------------------
-The feather Isa object
+The feather IsA object
   Verb break_with
     When o Does
       "The feather is even more flat than before."
@@ -3086,7 +3086,7 @@ An example of the use of qualifiers is to ensure that only the verb body within 
 
 [source,alan]
 --------------------------------------------------------------------------------
-The bomb Isa object
+The bomb IsA object
   Verb take
     Does Only
       "Your curious fingering at the intricate
@@ -3162,15 +3162,15 @@ Rules are executed at no location. Therefore it is not possible to communicate d
 
 The following is a complete game using a rule:
 
-// FIXME: Render 'Count Isa actor, At kitchen = 1' in different BG color!
+// FIXME: Render 'Count IsA actor, At kitchen = 1' in different BG color!
 
 [source,alan]
 --------------------------------------------------------------------------------
-The kitchen Isa location
+The kitchen IsA location
   Exit x To kitchen.
 End The kitchen.
 
-When Count Isa actor, At kitchen = 1
+When Count IsA actor, At kitchen = 1
   Then Schedule whee At actor After 0.
 End When.
 
@@ -3727,7 +3727,7 @@ A short example
 
 [source,alan]
 --------------------------------------------------------------------------------
-The eliza Isa actor
+The eliza IsA actor
   Has topic "".
   Verb talk_to
     Does
@@ -3976,7 +3976,7 @@ elsif_part = 'ELSIF' expression 'THEN' statements
 else_part = 'ELSE' expression 'THEN' statements
 --------------------------------------------------------------------------------
 
-The `If` statement is essential for varying output and otherwise change the activities in the game. The expression is evaluated (see _Expressions_ on page _141_ for details and examples of expression) and if it evaluates to true, the statements following the `Then` are executed. Otherwise, the expressions in any following `Elsif` clauses are evaluated (in order) and the statements following the first expression that results in a true value is executed. If none of the expressions in the `Elsif` clauses evaluated to true, or there are no `Elsif` clauses, the statements following the `Else` are executed. The `Else` clause is optional.
+The `If` statement is essential for varying output and otherwise change the activities in the game. The expression is evaluated (see _Expressions_ on page _141_ for details and examples of expression) and if it evaluates to true, the statements following the `Then` are executed. Otherwise, the expressions in any following `ElsIf` clauses are evaluated (in order) and the statements following the first expression that results in a true value is executed. If none of the expressions in the `ElsIf` clauses evaluated to true, or there are no `ElsIf` clauses, the statements following the `Else` are executed. The `Else` clause is optional.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3988,18 +3988,18 @@ Else
 End If.
 If level Of bottle = 0 Then
   "You have no water."
-Elsif level Of bottle < 5 Then
+ElsIf level Of bottle < 5 Then
   "You have almost no water left."
 Else
   "You have plenty of water."
 End If.
 --------------------------------------------------------------------------------
 
-`If` statements which have an `Isa`-expression (see _Class Expressions_ on page _145_) are particularly important. As an `Isa`-expression test for the class of an instance, an `If` statement like
+`If` statements which have an `IsA`-expression (see _Class Expressions_ on page _145_) are particularly important. As an `IsA`-expression test for the class of an instance, an `If` statement like
 
 [source,alan]
 --------------------------------------------------------------------------------
-If i Isa actor Then …
+If i IsA actor Then …
 --------------------------------------------------------------------------------
 
 will quarantee that for any statement inside the `Then`-part of that statement, the `i` will be of the class `actor`. This means that references to attributes, container properties and actor scripts etc. as if `i` belongs to the class `actor`, even if that was not known outside of the If-statement.
@@ -4008,10 +4008,10 @@ A typical example where this is helpful is inside verbs where parameters can be 
 
 [source,alan]
 --------------------------------------------------------------------------------
-For Each e Isa entity, Here Do
-  If e Isa actor Then …
-  If e Isa object Then …
-  If e Isa container_object Then …
+For Each e IsA entity, Here Do
+  If e IsA actor Then …
+  If e IsA object Then …
+  If e IsA container_object Then …
 End For.
 --------------------------------------------------------------------------------
 
@@ -4056,9 +4056,9 @@ The tests are thus equivalent to
 [source,alan]
 --------------------------------------------------------------------------------
 If weight Of object = 1 Then "light as a feather"
-Elsif weight Of object Between 2 And 10 Then "carryable"
-Elsif weight Of object Between 10 And 20 Then "heavy"
-Elsif weight Of object > 20 Then "immobile"
+ElsIf weight Of object Between 2 And 10 Then "carryable"
+ElsIf weight Of object Between 10 And 20 Then "heavy"
+ElsIf weight Of object > 20 Then "immobile"
 Else "weightless"
 End If.
 --------------------------------------------------------------------------------
@@ -4142,7 +4142,7 @@ You can use any statements inside the repetition, e.g. to check for further cond
 
 [source,alan]
 --------------------------------------------------------------------------------
-For Each creature Isa actor Do
+For Each creature IsA actor Do
   If creature Here Then
     …
   End If.
@@ -4265,7 +4265,7 @@ Associated with this is a pre-defined attribute, `visits`, that exists for all i
 
 [source,alan]
 --------------------------------------------------------------------------------
-The secret_cave Isa location
+The secret_cave IsA location
   Description
     "This is the secret cave. You have visited it"
     Say visits Of This.
@@ -4537,7 +4537,7 @@ The `And` and `Or` operators are standard binary Boolean operators, meaning that
 [source,alan]
 --------------------------------------------------------------------------------
 If kalif Here And mood Of sultan Is 0 Then …
-If o Isa treasure And (size Of o > capacity Of c
+If o IsA treasure And (size Of o > capacity Of c
   Or thief Is greedy) Then …
 --------------------------------------------------------------------------------
 
@@ -4556,8 +4556,8 @@ It is possible to check if an instance belongs to, or inherits from, a particula
 
 [source,alan]
 --------------------------------------------------------------------------------
-If p Isa object Then …
-If opponent Isa enemy Then …
+If p IsA object Then …
+If opponent IsA enemy Then …
 --------------------------------------------------------------------------------
 
 
@@ -4613,7 +4613,7 @@ Two values of instance type may be compared with the `=` and `<>` operators, and
 [source,alan]
 --------------------------------------------------------------------------------
 Syntax put_in = 'put' (o) 'in' (c)
-  Where c Isa Container
+  Where c IsA Container
     Else "You can't put anything in the" Say c.
 Verb put_in
   Check o <> c
@@ -4673,7 +4673,7 @@ An example is the code for objects that can be opened:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every openable Isa object
+Every openable IsA object
   Is Not open.
   Verb open
     Check …
@@ -4682,7 +4682,7 @@ Every openable Isa object
   End Verb.
 End Every openable.
 
-The door Isa openable
+The door IsA openable
 End The door.
 --------------------------------------------------------------------------------
 
@@ -4772,12 +4772,12 @@ You can use filters to filter out instances belonging to a particular class, at 
 [source,alan]
 --------------------------------------------------------------------------------
 "You are carrying"
-Say Count Isa object, In inventory, Is big.
+Say Count IsA object, In inventory, Is big.
 "big objects."
 --------------------------------------------------------------------------------
 
 
-In this example there are three filters applied, `Isa object`, `In inventory` and `Is big`. All of these filters must pass before an instance is counted. The result of that count is an integer, which is then printed using the `Say` statement.
+In this example there are three filters applied, `IsA object`, `In inventory` and `Is big`. All of these filters must pass before an instance is counted. The result of that count is an integer, which is then printed using the `Say` statement.
 
 The `Sum`, `Min` and `Max` aggregates return the sum, minimum and maximum value respectively, of an attribute of all instances in the filtered set.
 
@@ -4789,7 +4789,7 @@ Some examples:
 --------------------------------------------------------------------------------
 If Sum Of weight At bridge > 500 Then …
 If Max Of size In inventory > size Of small_door Then …
-If Count Isa lightsource, Is lit, Here > 0 Then
+If Count IsA lightsource, Is lit, Here > 0 Then
   "Let there be light...""
 End If.
 --------------------------------------------------------------------------------
@@ -4812,9 +4812,9 @@ filter = 'ISA' class
 
 
 
-Filters can be used to filter out only particular instances to loop or aggregate over. If one of the filters is a *Isa <class>*, only instances of that class will be bound to the loop variable or considered in the aggregation. In particular this is required if any of the other filters refer to attributes, which is only allowed if the class is known and that class is guaranteed to have that attribute. Other ways to restrict the filtered instances is to use a `Where` filter which implicitly restricts to instances available at or in that location, container or set. See _The Whereabouts of an Entity_ on page _148_ for details on the various forms of the `Where` expression.
+Filters can be used to filter out only particular instances to loop or aggregate over. If one of the filters is a *IsA <class>*, only instances of that class will be bound to the loop variable or considered in the aggregation. In particular this is required if any of the other filters refer to attributes, which is only allowed if the class is known and that class is guaranteed to have that attribute. Other ways to restrict the filtered instances is to use a `Where` filter which implicitly restricts to instances available at or in that location, container or set. See _The Whereabouts of an Entity_ on page _148_ for details on the various forms of the `Where` expression.
 
-Multiple filters can be listed separated with a comma. Each filter must enumerate the set of values to a compatible set, e.g. using two `Isa` filters for actors and locations respectively is not allowed since those two sets can never be compatible.
+Multiple filters can be listed separated with a comma. Each filter must enumerate the set of values to a compatible set, e.g. using two `IsA` filters for actors and locations respectively is not allowed since those two sets can never be compatible.
 
 
 
@@ -4867,7 +4867,7 @@ Quoted identifiers retain their exact content. They may contain spaces and other
 
 [source,alan]
 --------------------------------------------------------------------------------
-The pluto Isa location Name 'At the Rim of Pluto Crater'
+The pluto IsA location Name 'At the Rim of Pluto Crater'
   Description
     …
 --------------------------------------------------------------------------------
@@ -5157,7 +5157,7 @@ Attributes are primarily used for holding status information about the instance 
 
 [source,alan]
 --------------------------------------------------------------------------------
-The bottle Isa object
+The bottle IsA object
   Has level 3.
   Verb drink
     Does
@@ -5175,7 +5175,7 @@ Another example is the broken mirror.
 
 [source,alan]
 --------------------------------------------------------------------------------
-The mirror Isa object
+The mirror IsA object
   Is Not broken.
   Verb break
     Does
@@ -5234,22 +5234,22 @@ Further more, you don't need to define a syntax for a single parameter verb if i
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every vehicle Isa object
+Every vehicle IsA object
 End Every vehicle.
 
-Every car Isa vehicle
+Every car IsA vehicle
   Verb drive
     Does "Yoooohooooo!"
   End Verb.
 End Every car.
 
-Every bus Isa vehicle
+Every bus IsA vehicle
 End Every bus.
 
-The car1 Isa car At l
+The car1 IsA car At l
 End The car1.
 
-The bus1 Isa bus At l
+The bus1 IsA bus At l
 End The bus1.
 --------------------------------------------------------------------------------
 
@@ -5284,7 +5284,7 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-The mirror Isa object
+The mirror IsA object
   Is Not broken.
   Description
     "On the wall there is a beautiful mirror with an
@@ -5304,7 +5304,7 @@ If you also use this feature with the short descriptions will make the adventure
 
 [source,alan]
 --------------------------------------------------------------------------------
-The bottle Isa object
+The bottle IsA object
   Has level 3.
   Article ""
   Mentioned
@@ -5379,7 +5379,7 @@ A common feature in adventure games is the closed door. Here's one way implement
 
 [source,alan]
 --------------------------------------------------------------------------------
-The treasury_door Isa object At hallway
+The treasury_door IsA object At hallway
   Name treasury door
   Is Not open.
   Verb open
@@ -5389,14 +5389,14 @@ The treasury_door Isa object At hallway
   End Verb open.
 End The treasury_door.
 
-The hallway Isa location
+The hallway IsA location
   Exit east To treasury
     Check treasury_door Is open
       Else "The door to the treasury is closed."
   End Exit.
 End The hallway.
 
-The hallway_door Isa object At treasury
+The hallway_door IsA object At treasury
   Name hallway door
   Is Not open.
   Verb open
@@ -5406,7 +5406,7 @@ The hallway_door Isa object At treasury
   End Verb open.
 End The hallway_door.
 
-The treasury Isa location
+The treasury IsA location
   Exit west TO hallway
     Check hallway_door Is open
       Else "The door to the hallway is closed."
@@ -5425,7 +5425,7 @@ Sometimes it may be necessary to ask the player for an answer to some question. 
 
 [source,alan]
 --------------------------------------------------------------------------------
-The hero Isa actor
+The hero IsA actor
   Is Not quitting.
 End The hero.
 
@@ -5481,7 +5481,7 @@ An actor is described, for example, when a location is entered or as the result 
 
 [source,alan]
 --------------------------------------------------------------------------------
-The george Isa actor
+The george IsA actor
   Name George Formby
   Is
     Not cleaning_windows.
@@ -5489,7 +5489,7 @@ The george Isa actor
   Description
     If george Is cleaning_windows Then
       "George Formby is here cleaning windows."
-    Elsif george Is tuning Then
+    ElsIf george Is tuning Then
       "George Formby is tuning his ukelele."
     Else
       "George Formby is here."
@@ -5501,7 +5501,7 @@ Although quite feasible, this is a bit tedious. As, at least a part of, the stat
 
 [source,alan]
 --------------------------------------------------------------------------------
-The george Isa actor
+The george IsA actor
   Name George Formby
   Description
     "George Formby is here."
@@ -5537,10 +5537,10 @@ Let's start with the geography:
 
 [source,alan]
 --------------------------------------------------------------------------------
-The garage Isa location
+The garage IsA location
 End The garage.
 
-The parking_lot Isa location Name 'Large Parking Lot'
+The parking_lot IsA location Name 'Large Parking Lot'
 End The parking_lot.
 --------------------------------------------------------------------------------
 
@@ -5548,7 +5548,7 @@ Then we need the actual car:
 
 [source,alan]
 --------------------------------------------------------------------------------
-The car Isa object Name little red sporty ferrari Name car
+The car IsA object Name little red sporty ferrari Name car
   At garage
   Is Not running.
   Has position 0.
@@ -5565,7 +5565,7 @@ We also need a description of the inside of it. We will use another location for
 
 [source,alan]
 --------------------------------------------------------------------------------
-The inside_car Isa location Name 'Inside the Ferrari'
+The inside_car IsA location Name 'Inside the Ferrari'
   Description
     "This sporty little red vehicle can really take you
      places..."
@@ -5659,12 +5659,12 @@ So to have the hero's body parts available wherever the hero goes you can use:
 
 [source,alan]
 --------------------------------------------------------------------------------
-The body_parts Isa entity
+The body_parts IsA entity
   Container
 End The body_parts.
 
-The right_arm Isa object Name right arm In body_parts …
-The head Isa object Name head In body_parts …
+The right_arm IsA object Name right arm In body_parts …
+The head IsA object Name head In body_parts …
 --------------------------------------------------------------------------------
 
 
@@ -5672,7 +5672,7 @@ Using entity containers is also a simple way to create other compartments on the
 
 [source,alan]
 --------------------------------------------------------------------------------
-The belt Isa entity
+The belt IsA entity
   Container
     Header
       If Count In hero > 0 Then "and"
@@ -5687,7 +5687,7 @@ You can combine that with the following definitions of the hero and the 'invent'
 
 [source,alan]
 --------------------------------------------------------------------------------
-The hero Isa actor
+The hero IsA actor
   Container
     Header "You are carrying"
     Else "You are empty-handed"
@@ -5726,16 +5726,16 @@ Of course, you would not want outdoor things to be available when you are indoor
 
 [source,alan]
 --------------------------------------------------------------------------------
-The outdoor_things Isa entity
+The outdoor_things IsA entity
   Container
 End The outdoor_things.
 
-The outdoor_things_storage Isa object At limbo
+The outdoor_things_storage IsA object At limbo
   Container
 End The outdoor_things_storage.
 
-The air Isa object In outdoor_things_storage …
-The sky Isa object In outdoor_things_storage …
+The air IsA object In outdoor_things_storage …
+The sky IsA object In outdoor_things_storage …
 
 When location Of hero Is outdoors =>
   Empty outdoor_things_storage In outdoor_things.
@@ -5760,8 +5760,8 @@ An alternative to the location attribute, is to use classes. Define an outdoor_l
 
 [source,alan]
 --------------------------------------------------------------------------------
-When location Of hero Isa outdoors_location => …
-When location Of hero Isa indoors_location => …
+When location Of hero IsA outdoors_location => …
+When location Of hero IsA indoors_location => …
 --------------------------------------------------------------------------------
 
 
@@ -5772,10 +5772,10 @@ Yet another option would be to make use of the nested locations feature. Put all
 
 [source,alan]
 --------------------------------------------------------------------------------
-The outdoor_region Isa location
+The outdoor_region IsA location
 End The outdoor_region.
 
-The park Isa location At outdoor_region
+The park IsA location At outdoor_region
 End The park.
 --------------------------------------------------------------------------------
 
@@ -5820,7 +5820,7 @@ We can now count the number of instances at the current location having the attr
 --------------------------------------------------------------------------------
 Verb 'look'
   Check Current Location Is lit
-    Or Count Isa object, Is lightsource, Here > 0
+    Or Count IsA object, Is lightsource, Here > 0
   Else
     "You cannot see anything without any light."
   Does
@@ -5838,7 +5838,7 @@ Of course, we must also modify the dark locations so that they don't display the
 Add To Every location
   Description
   Check Current Location Is lit
-    Or Count Isa object, Is lightsource, Here > 0
+    Or Count IsA object, Is lightsource, Here > 0
   Else
     "You cannot see anything without any light."
 End Add To.
@@ -5860,18 +5860,18 @@ For objects that need to be visible from a distance, the easiest method is to in
 
 [source,alan]
 --------------------------------------------------------------------------------
-The hills Isa location
+The hills IsA location
   :
 End The hills.
 
-The mountain Isa object At hills
+The mountain IsA object At hills
   :
 End The mountain.
 
-The scenic_vista Isa location Name Scenic Vista
+The scenic_vista IsA location Name Scenic Vista
 End The scenic_vista.
 
-The shadow_mountain Isa object AT scenic_vista
+The shadow_mountain IsA object AT scenic_vista
   Name distant mountain
   Description
     "Far in the distance you can see the Pebbly
@@ -5908,7 +5908,7 @@ This will ensure that whenever the hero moves to any of the places from where th
 
 [source,alan]
 --------------------------------------------------------------------------------
-The scenic_vista Isa location Name Scenic Vista
+The scenic_vista IsA location Name Scenic Vista
   Exit east To path
     Does
       Locate shadow_mountain At path.
@@ -5926,7 +5926,7 @@ To allow the player to 'whistle the melody' for example, there are two different
 
 [source,alan]
 --------------------------------------------------------------------------------
-The melody Isa entity …
+The melody IsA entity …
 Syntax 'whistle' = 'whistle' (m) …
 --------------------------------------------------------------------------------
 
@@ -5934,7 +5934,7 @@ The other route would be to make it an actual `object`. In this case the syntax 
 
 [source,alan]
 --------------------------------------------------------------------------------
-The melody Isa object …
+The melody IsA object …
 Syntax 'whistle' = 'whistle' (m)! …
 --------------------------------------------------------------------------------
 
@@ -6254,7 +6254,7 @@ Instances:
 
 adbg> _instance 13_
 
-The old book [13] Isa object[4]
+The old book [13] IsA object[4]
 
 Location: at First Floor [12]
 
@@ -6324,7 +6324,7 @@ to the floor through your fingers.
 
 adbg> instance 13
 
-The old book [13] Isa object[4]
+The old book [13] IsA object[4]
 
 Location: at nowhere [3]
 
