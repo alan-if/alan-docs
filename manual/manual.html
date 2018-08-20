@@ -422,7 +422,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.4,</span>
+<span id="revnumber">version 0.1.5,</span>
 <span id="revdate">August 21, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -432,7 +432,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.4
+<pre>Doc version: 0.1.5
 Last edited: August 21, 2018</pre>
 </div>
 </div>
@@ -889,7 +889,7 @@ downloaded from:</p>
 <p>As long as man has been around there have been stories, fairy tales and fantasies. In the early days, storytellers told their stories to silent and astonished audiences. After Gutenberg, the stories were printed and the readers partook in the fantasies of the author. In our days, passive viewers are fed from the silver screen or through the tube.</p>
 </div>
 <div class="paragraph">
-<p>In our time, at last, there has evolved a way for the “audience” to take part in the story themselves. It started in the forties and fifties and continued to develop into the games today known as Dungeon and Dragons, Tunnels and Trolls, etc. Games where a game leader designs the story, but the players decide (and perform) the actions of the characters in the story.</p>
+<p>In our time, at last, there has evolved a way for the &#8220;audience&#8221; to take part in the story themselves. It started in the forties and fifties and continued to develop into the games today known as Dungeon and Dragons, Tunnels and Trolls, etc. Games where a game leader designs the story, but the players decide (and perform) the actions of the characters in the story.</p>
 </div>
 <div class="paragraph">
 <p>These games, of course, have a computerized counterpart.</p>
@@ -1057,7 +1057,7 @@ downloaded from:</p>
 <div class="sect3">
 <h4 id="trueacting"><a class="anchor" href="#trueacting"></a>Acting</h4>
 <div class="paragraph">
-<p>The player commands action by typing imperative statements. These statements are analysed and results in execution (“calls”) to verbs. The effects of these commands must be declared in verbs by the game author, either in an object (describing the effects of the verb when applied to an object) or as a general (global) verb that only applies without object.</p>
+<p>The player commands action by typing imperative statements. These statements are analysed and results in execution (&#8220;calls&#8221;) to verbs. The effects of these commands must be declared in verbs by the game author, either in an object (describing the effects of the verb when applied to an object) or as a general (global) verb that only applies without object.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1144,7 +1144,7 @@ You are outside your grandma&#8217;s house.</p>
 <div class="sect3">
 <h4 id="truethe-locations"><a class="anchor" href="#truethe-locations"></a>The Locations</h4>
 <div class="paragraph">
-<p>The scene for your adventure is a series of “rooms” or, rather, locations. Locations are connected by exits, leading out of one location into another. This makes it possible for the hero to travel through the world of your design, exploring it and solving the puzzles.</p>
+<p>The scene for your adventure is a series of &#8220;rooms&#8221; or, rather, locations. Locations are connected by exits, leading out of one location into another. This makes it possible for the hero to travel through the world of your design, exploring it and solving the puzzles.</p>
 </div>
 <div class="paragraph">
 <p>What is required if we want to describe a location? Every location must have an identifier. This is so that you, the designer, may refer to that location easily, instead of having to remember a magic number for it.</p>
@@ -1169,7 +1169,7 @@ Start At kitchen.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This is a complete Alan adventure (although very primitive). As you see, every Alan construct ends with a period (<code>.</code>) and there is a “<code>Start At</code>” sentence at the end, indicating in which location to put the hero when the game starts.</p>
+<p>This is a complete Alan adventure (although very primitive). As you see, every Alan construct ends with a period (<code>.</code>) and there is a &#8220;<code>Start At</code>&#8221; sentence at the end, indicating in which location to put the hero when the game starts.</p>
 </div>
 <div class="paragraph">
 <p>Type the above text into a text file, e.g. using a notepad program. Run this little Alan source through the Alan compiler and try the adventure (see Appendix <em>A</em>, <em>How To Use The System</em>, on page <em>202</em> on how to do this). After starting the adventure, two lines will be shown on your screen.</p>
@@ -1185,7 +1185,7 @@ Start At kitchen.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The first line contains “Kitchen”, the name of the initial location, and the second a “&gt;”, which is the default prompt for the player to input a command. Now try typing “east” and press the return/enter key. The word “Hallway” and the prompt will appear. Typing “west” will take you back to “Kitchen” again. (Use Ctrl-C to exit the game if you are running it in a console window.)</p>
+<p>The first line contains &#8220;Kitchen&#8221;, the name of the initial location, and the second a &#8220;&gt;&#8221;, which is the default prompt for the player to input a command. Now try typing &#8220;east&#8221; and press the return/enter key. The word &#8220;Hallway&#8221; and the prompt will appear. Typing &#8220;west&#8221; will take you back to &#8220;Kitchen&#8221; again. (Use Ctrl-C to exit the game if you are running it in a console window.)</p>
 </div>
 <div class="paragraph">
 <p>The identifier for a location is automatically used as a description, a heading, shown when that room is entered. And the words listed in the <code>Exit</code>-parts are translated into directional commands the player can use in his input.</p>
@@ -1194,7 +1194,7 @@ Start At kitchen.</code></pre>
 <p>You should remember that exits are strictly one-way. An <code>Exit</code> from one location to another does not automatically imply the opposite path. Thus, you must explicitly declare the path back, in the definition of the other location.</p>
 </div>
 <div class="paragraph">
-<p>However, just the name of the location is not much of a description. So in order to provide the “purple prose” descriptions often found in many adventures there is an optional <code>Description</code>-clause that you can use. Let us describe the Hallway.</p>
+<p>However, just the name of the location is not much of a description. So in order to provide the &#8220;purple prose&#8221; descriptions often found in many adventures there is an optional <code>Description</code>-clause that you can use. Let us describe the Hallway.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1235,7 +1235,7 @@ End Exit west.</code></pre>
 <div class="sect3">
 <h4 id="truethe-objects"><a class="anchor" href="#truethe-objects"></a>The Objects</h4>
 <div class="paragraph">
-<p>Another essential feature in Alan are the objects. Like the location, the object is a means to describe the “physical” world where your adventure is taking place. Many objects are probably used to provide puzzles, such as closed doors, keys and so on, but other objects should be promoted to objects too. A large number of objects that can be examined and manipulated make a game so much more enjoyable.</p>
+<p>Another essential feature in Alan are the objects. Like the location, the object is a means to describe the &#8220;physical&#8221; world where your adventure is taking place. Many objects are probably used to provide puzzles, such as closed doors, keys and so on, but other objects should be promoted to objects too. A large number of objects that can be examined and manipulated make a game so much more enjoyable.</p>
 </div>
 <div class="paragraph">
 <p>Objects, like locations, have identifiers and descriptions, so you might guess the general structure of an object:</p>
@@ -1270,7 +1270,7 @@ End The door.</code></pre>
 <p>Instead, let&#8217;s look at some other statements in relation to objects.</p>
 </div>
 <div class="paragraph">
-<p>It must of course be possible to change the value of attributes of an object. You can do this using the <code>Make</code> statement or the <code>Set</code> statement. For example if the door should be opened (the player having said “open door”, perhaps) this could be performed by stating</p>
+<p>It must of course be possible to change the value of attributes of an object. You can do this using the <code>Make</code> statement or the <code>Set</code> statement. For example if the door should be opened (the player having said &#8220;open door&#8221;, perhaps) this could be performed by stating</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1533,7 +1533,7 @@ End The inst.</code></pre>
 <p>For many scenarios the above works well, and as expected. But for other cases the notion of transitivity is introduced. Transitivity describes how e.g. containment should be interpreted.</p>
 </div>
 <div class="paragraph">
-<p>The scenario above may be described as “transitive containment” meaning that something is in a container if it is in that container or in any container it contains, recursively.</p>
+<p>The scenario above may be described as &#8220;transitive containment&#8221; meaning that something is in a container if it is in that container or in any container it contains, recursively.</p>
 </div>
 <div class="paragraph">
 <p>There are two other types, namely DIRECT and INDIRECT transitivity. Direct transitivity actually means no transitivity. If you investigate a container with direct transitivity you will only get the direct content of it, not the content of the containers within it.</p>
@@ -1655,7 +1655,7 @@ End Verb take.</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You can never destroy an instance or remove it from the game. Instead, you can define a limbo location, i.e. a location that is not accessible to the player and may thus be used as a storage for “destroyed” objects and other things the player is not supposed to see.</p>
+<p>You can never destroy an instance or remove it from the game. Instead, you can define a limbo location, i.e. a location that is not accessible to the player and may thus be used as a storage for &#8220;destroyed&#8221; objects and other things the player is not supposed to see.</p>
 </div>
 </td>
 </tr>
@@ -1958,7 +1958,7 @@ End Exit.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can look up the meaning of the rules “where” and “statement” elsewhere in this chapter.</p>
+<p>You can look up the meaning of the rules &#8220;where&#8221; and &#8220;statement&#8221; elsewhere in this chapter.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2396,7 +2396,7 @@ The george Isa actor
 <p>There is one very special actor, the hero, which represents the player. This actor is always pre-declared with some basic properties, so you don&#8217;t have to declare it. But if necessary, it may be re-declared in the same way as any other actor.</p>
 </div>
 <div class="paragraph">
-<p>One situation when this is required is if you need attributes on the hero, such as “sleepy” or “hungry”. A declaration like the following can then be used:</p>
+<p>One situation when this is required is if you need attributes on the hero, such as &#8220;sleepy&#8221; or &#8220;hungry&#8221;. A declaration like the following can then be used:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2414,14 +2414,14 @@ End The hero.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The hero is predefined with a simple container property taking objects with no limits. It seems natural to use that as the “inventory” of the player, the storage for everything the player is picking up and carrying around. You will probably need to handle carried items in some manner, and the pre-declared container is one suggestion. You can also redeclare the container property of the hero so that it suits your needs.</p>
+<p>The hero is predefined with a simple container property taking objects with no limits. It seems natural to use that as the &#8220;inventory&#8221; of the player, the storage for everything the player is picking up and carrying around. You will probably need to handle carried items in some manner, and the pre-declared container is one suggestion. You can also redeclare the container property of the hero so that it suits your needs.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="truelocations"><a class="anchor" href="#truelocations"></a>Locations</h4>
 <div class="paragraph">
-<p>A location is a declaration of a place (a “room”) in the game that (normally) can be visited by the player, and have objects lying around, etc. In fact, the map of your game is a set of interconnected locations. A location is any instance inheriting directly or indirectly from the predefined class <code>location</code>. Inheriting from <code>location</code> implies the following semantic properties:</p>
+<p>A location is a declaration of a place (a &#8220;room&#8221;) in the game that (normally) can be visited by the player, and have objects lying around, etc. In fact, the map of your game is a set of interconnected locations. A location is any instance inheriting directly or indirectly from the predefined class <code>location</code>. Inheriting from <code>location</code> implies the following semantic properties:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2452,7 +2452,7 @@ End The hero.</code></pre>
 <p>When a location is described (for example when entering it) it is presented with a heading (the location name), the description (in the description clause) followed by descriptions of any present objects and actors not already, explicitly, described (using a <code>describe</code> statement) in the description.</p>
 </div>
 <div class="paragraph">
-<p>An interesting property of locations is that a location can be located at another, both initially and during run-time. The result of having such nested locations is that all things present at the “outer” location are also present in the inner. This can be used in multiple levels to allow access to sky, ground and other scenery items available at many locations at once. It can also be used for grouping locations into sets of similar locations and for implementing vehicles.</p>
+<p>An interesting property of locations is that a location can be located at another, both initially and during run-time. The result of having such nested locations is that all things present at the &#8220;outer&#8221; location are also present in the inner. This can be used in multiple levels to allow access to sky, ground and other scenery items available at many locations at once. It can also be used for grouping locations into sets of similar locations and for implementing vehicles.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2614,7 +2614,7 @@ End The hero.</code></pre>
 <div class="sect3">
 <h4 id="truenames"><a class="anchor" href="#truenames"></a>Names</h4>
 <div class="paragraph">
-<p>By default, the identifier (“author name”) for an instance is also the name shown to the player, and by which he will be able to refer to it. Normally you would want to override this with more elaborate and alternative names. You can do that using the <code>Name</code> clause.</p>
+<p>By default, the identifier (&#8220;author name&#8221;) for an instance is also the name shown to the player, and by which he will be able to refer to it. Normally you would want to override this with more elaborate and alternative names. You can do that using the <code>Name</code> clause.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2647,7 +2647,7 @@ The south_of_house Isa location
 </div>
 </div>
 <div class="paragraph">
-<p>In this example, the name is a sequence of words. The semantics of this declaration is that the word “chair” is a noun and “little” and “wooden” become adjectives. When the player, in a command, want to refer to the object with the author name (identifier) <code>chair3</code>, he may use just “chair” if it is the only accessible object with “chair” as its noun, or he may distinguish between multiple chairs by also giving one or more adjectives to be more precise about which chair he meant.</p>
+<p>In this example, the name is a sequence of words. The semantics of this declaration is that the word &#8220;chair&#8221; is a noun and &#8220;little&#8221; and &#8220;wooden&#8221; become adjectives. When the player, in a command, want to refer to the object with the author name (identifier) <code>chair3</code>, he may use just &#8220;chair&#8221; if it is the only accessible object with &#8220;chair&#8221; as its noun, or he may distinguish between multiple chairs by also giving one or more adjectives to be more precise about which chair he meant.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2709,7 +2709,7 @@ The macintosh Isa apple …</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example, both the pear and the apple would be possible to refer to using the word “fruit”. Both the gravensteiner and the macintosh would be apples, not only by name, but also by all other properties of apples.</p>
+<p>In this example, both the pear and the apple would be possible to refer to using the word &#8220;fruit&#8221;. Both the gravensteiner and the macintosh would be apples, not only by name, but also by all other properties of apples.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2737,7 +2737,7 @@ The macintosh Isa apple …</code></pre>
 <div class="sect3">
 <h4 id="truepronouns"><a class="anchor" href="#truepronouns"></a>Pronouns</h4>
 <div class="paragraph">
-<p>In player input, it is often handy and natural to refer to items using pronouns, such as “it”, “them” or “her”. Alan provides a means to define with which pronouns each instance can be associated.</p>
+<p>In player input, it is often handy and natural to refer to items using pronouns, such as &#8220;it&#8221;, &#8220;them&#8221; or &#8220;her&#8221;. Alan provides a means to define with which pronouns each instance can be associated.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2755,7 +2755,7 @@ The macintosh Isa apple …</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the priest has been associated with the pronoun “him” and the bible with the pronoun “it”, the next command could be</p>
+<p>If the priest has been associated with the pronoun &#8220;him&#8221; and the bible with the pronoun &#8220;it&#8221;, the next command could be</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -2775,7 +2775,7 @@ The macintosh Isa apple …</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The pre-defined class <code>entity</code> defines the pronoun “it” (or equivalent for other supported languages).</p>
+<p>The pre-defined class <code>entity</code> defines the pronoun &#8220;it&#8221; (or equivalent for other supported languages).</p>
 </div>
 </td>
 </tr>
@@ -3091,7 +3091,7 @@ End The someLockableDoor.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the <code>Description</code> clause is missing for an instance (and no description is inherited), the Alan system will supply a default description such as “There is a round ball here.”. If there is a <code>Description</code> clause but it contains no statements, the object will be &#8216;invisible&#8217;, i.e. no description of it will be printed, not even a default one. This can be useful for objects already described by the location description, or of objects with particular properties.</p>
+<p>If the <code>Description</code> clause is missing for an instance (and no description is inherited), the Alan system will supply a default description such as &#8220;There is a round ball here.&#8221;. If there is a <code>Description</code> clause but it contains no statements, the object will be &#8216;invisible&#8217;, i.e. no description of it will be printed, not even a default one. This can be useful for objects already described by the location description, or of objects with particular properties.</p>
 </div>
 <div class="paragraph">
 <p>Here are some examples of simple description declarations</p>
@@ -3141,7 +3141,7 @@ End Every dark_location.</code></pre>
 <p>Note that it does not specify any description statements. This is because the checks and the actual description are inherited separately, as described in the table on page <em>62</em>. The actual descriptions are left for the instances.</p>
 </div>
 <div class="paragraph">
-<p>If multiple description checks are available in the inheritance chain, they are all tested and must be met before any description is attempted. So the inheritance of description checks is “additive”.</p>
+<p>If multiple description checks are available in the inheritance chain, they are all tested and must be met before any description is attempted. So the inheritance of description checks is &#8220;additive&#8221;.</p>
 </div>
 <div class="paragraph">
 <p>If any check fails, the description will not be executed. This particularly also implies that the default listings and description of present objects and actors in location instances will not occur either. Note, however, that any events and actor actions <em>will</em> be shown. See <em>Locations</em> below for a description of default description mechanism for locations.</p>
@@ -3214,7 +3214,7 @@ article_or_form = 'ARTICLE' {statement}
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The predefined base class <code>entity</code> defines the default definite, indefinite and negative article to be “the”, "a" and “any” (if using English). You may override this by using an <code>Add</code> statement.</p>
+<p>The predefined base class <code>entity</code> defines the default definite, indefinite and negative article to be &#8220;the&#8221;, "a" and &#8220;any&#8221; (if using English). You may override this by using an <code>Add</code> statement.</p>
 </div>
 </td>
 </tr>
@@ -3385,7 +3385,7 @@ End The chest.</code></pre>
 <p>A container is something that can contain instances. By default, the instances it can contain must be inheriting from the base class <code>object</code>, but by using the <code>Taking</code> clause, you can allow any instances.</p>
 </div>
 <div class="paragraph">
-<p>Instances with the container property, “inherits” a special, pre-defined, Boolean attribute, <code>opaque</code>. This attribute can be manipulated in the same way as any other attribute. Its current value indicates if the instances inside the container are visible and accessible or not.</p>
+<p>Instances with the container property, &#8220;inherits&#8221; a special, pre-defined, Boolean attribute, <code>opaque</code>. This attribute can be manipulated in the same way as any other attribute. Its current value indicates if the instances inside the container are visible and accessible or not.</p>
 </div>
 <div class="paragraph">
 <p>By default, containers expose their content, but by placing the keyword <code>Opaque</code> in the container declaration, you indicate that this container declaration will initially prohibit access to the contained instances. A typical use of this is to prohibit access to contents of closed cases, drawers and boxes. Once open such containers usually reveal the content, which then can be accessed. You can implement such behaviour by modifying the built in <code>opaque</code> attribute. For example:</p>
@@ -4034,7 +4034,7 @@ syntax_end = parameter_restrictions
 </div>
 </div>
 <div class="paragraph">
-<p>Even if only one of the syntax declarations indicate that the first parameter should allow multiple instances, both syntaxes will actually allow this because they have the same syntax part before the parameter, in this case the verb “put”.</p>
+<p>Even if only one of the syntax declarations indicate that the first parameter should allow multiple instances, both syntaxes will actually allow this because they have the same syntax part before the parameter, in this case the verb &#8220;put&#8221;.</p>
 </div>
 </div>
 <div class="sect3">
@@ -4280,7 +4280,7 @@ End Verb.</code></pre>
 <p>If your verb has multiple definitions, e.g. for various classes, applying <code>Meta</code> to any one of them will make the verb a meta verb, meaning that if the player uses that verb in any context and on any instance, it will take no tick, even if that particular definition did not have the <code>Meta</code> property explicitly expressed. A library might decide that 'score' was a meta verb and there is nothing you, as an author, can do to override that short of editing the library source.</p>
 </div>
 <div class="paragraph">
-<p>A <code>Meta</code> verb also does not trigger evaluation of rules and events so they are genuinely “outside” the game and should only be used with verbs that are not considered part of the players progression inside the game.</p>
+<p>A <code>Meta</code> verb also does not trigger evaluation of rules and events so they are genuinely &#8220;outside&#8221; the game and should only be used with verbs that are not considered part of the players progression inside the game.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4354,7 +4354,7 @@ End The jumpless.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If any check should fail, the execution of the current verb is interrupted and the statements following the failing check are executed. The user (player) is then prompted for another command. So in the above example, the verb “jump” will always result in “You can&#8217;t do that here.” at the location “jumpless”.</p>
+<p>If any check should fail, the execution of the current verb is interrupted and the statements following the failing check are executed. The user (player) is then prompted for another command. So in the above example, the verb &#8220;jump&#8221; will always result in &#8220;You can&#8217;t do that here.&#8221; at the location &#8220;jumpless&#8221;.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4564,7 +4564,7 @@ End The feather.</code></pre>
 <p>Qualifiers control the order of execution of verb bodies. How does this work?</p>
 </div>
 <div class="paragraph">
-<p>First, starting at the “innermost” according to the table above, the verb in the last parameter (if any) is investigated and, if any of its (inherited) verb bodies have the <code>Before</code> or <code>Only</code> qualifier it is executed. If the qualifier was <code>Only</code> the execution is also aborted at this stage and no more verb definitions are examined, otherwise the other parameters are examined in the same way.</p>
+<p>First, starting at the &#8220;innermost&#8221; according to the table above, the verb in the last parameter (if any) is investigated and, if any of its (inherited) verb bodies have the <code>Before</code> or <code>Only</code> qualifier it is executed. If the qualifier was <code>Only</code> the execution is also aborted at this stage and no more verb definitions are examined, otherwise the other parameters are examined in the same way.</p>
 </div>
 <div class="paragraph">
 <p>In the next step, the current location is examined and, if it contains (or inherits) a verb definition with a <code>Before</code> or <code>Only</code> qualifier, that definition is now executed (and if the qualifier was <code>Only</code>, execution is aborted). Since locations can be nested, the surrounding locations are then examined in the same way.</p>
@@ -4721,7 +4721,7 @@ Start At kitchen.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example the rule conditional (the text marked with grey) is using an aggregation (“count”, see <em>Aggregates</em> on page <em>150</em>) over two filters (see section <em>3.21</em> <em>Filters</em> on page <em>151</em>) that will count the number of actors at the kitchen, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.</p>
+<p>In this example the rule conditional (the text marked with grey) is using an aggregation (<code>count</code>, see <em>Aggregates</em> on page <em>150</em>) over two filters (see section <em>3.21</em> <em>Filters</em> on page <em>151</em>) that will count the number of actors at the kitchen, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.</p>
 </div>
 <div class="paragraph">
 <p>Again, remember that rules are checked after each actor has moved. What happens if there are more actors in play and they move in and out of the kitchen, is left as an exercise to the reader.</p>
@@ -4839,7 +4839,7 @@ There is no exit in that direction.</p>
 <p>Message sections must be declared at the global level, but to make it possible to create high-quality messages the message sections have parameters available. Which parameters are available vary depending on the message, the details for each message is available in Appendix <em>Input Response Messages</em> on page <em>210</em>.</p>
 </div>
 <div class="paragraph">
-<p>The parameters can be used in the same way as in verb bodies. The names of the parameters are “parameter1”, “parameter2”, etc. The type of the parameters will also vary.</p>
+<p>The parameters can be used in the same way as in verb bodies. The names of the parameters are &#8220;parameter1&#8221;, &#8220;parameter2&#8221;, etc. The type of the parameters will also vary.</p>
 </div>
 <div class="paragraph">
 <p>For some messages, a parameter is an instance. In these cases, the instance is always of the pre-defined <code>entity</code> class. Any attribute available for this class will be available in message sections with instance parameters.</p>
@@ -5040,7 +5040,7 @@ $_    Print this as a '$' if in conflict with other symbols</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You might want to output “$400” but “$4” will be interpreted as the indefinite form of the fourth parameter, as described below. So you need to use the &#8216;&#95;&#8217; to make that happen (“$&#95;400”).</p>
+<p>You might want to output &#8220;$400&#8221; but &#8220;$4&#8221; will be interpreted as the indefinite form of the fourth parameter, as described below. So you need to use the &#8216;&#95;&#8217; to make that happen (&#8220;$&#95;400&#8221;).</p>
 </div>
 </td>
 </tr>
@@ -5051,7 +5051,7 @@ $_    Print this as a '$' if in conflict with other symbols</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>$&lt;n&gt;     The parameter &lt;n&gt; (&lt;n&gt; is a digit &gt; 0, e.g. “$1”)
+<pre>$&lt;n&gt;     The parameter &lt;n&gt; (&lt;n&gt; is a digit &gt; 0, e.g. "$1")
 $+&lt;n&gt;    Definite form of parameter &lt;n&gt;
 $0&lt;n&gt;    Indefinite form of parameter &lt;n&gt;
 $-&lt;n&gt;    Negative form of parameter &lt;n&gt;
@@ -5146,7 +5146,7 @@ style = 'NORMAL'
  many years."
 DESCRIBE desk.
 "To the west is an open door, and to the east you can see the
- staircase.”</code></pre>
+ staircase.""</code></pre>
 </div>
 </div>
 </div>
@@ -5215,7 +5215,7 @@ End If.</code></pre>
 <p>Image and sound files are analyzed by the compiler and copied into an Alan v3 resource file (file extension <strong>.a3r</strong>) that must be distributed with your game file, otherwise they will not be available during game play. The original file will be left untouched.</p>
 </div>
 <div class="paragraph">
-<p>The format of the resource file follows the standard Interactive Fiction resource file format “blorb” and supports images of JPEG and PNG types, and sounds of MOD and AIFF formats.</p>
+<p>The format of the resource file follows the standard Interactive Fiction resource file format &#8220;blorb&#8221; and supports images of JPEG and PNG types, and sounds of MOD and AIFF formats.</p>
 </div>
 <div class="paragraph">
 <p>If a resource file is referenced from multiple statements, it will only be copied once. The Alan compiler uses the file extension to determine the media type of the file. The following extensions are recognized: <strong>.jpg</strong>, <strong>.jpeg</strong>, <strong>.png</strong>, <strong>.mod</strong>, <strong>.aif</strong> and <strong>.aiff</strong>.</p>
@@ -5929,7 +5929,7 @@ End Verb restore.</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The handling of descriptions is rather conservative in that it also takes modified attributes into account. If the visits calculation would indicate no full description, a modified attribute of the location will cause the full description to be shown the next time. That attribute might have caused the description of the location to change. So the visits handling ensures that the player will “see” all changes to the location. If you set attributes of the location every time they are visited, the built-in visits handling will not work as you expect.</p>
+<p>The handling of descriptions is rather conservative in that it also takes modified attributes into account. If the visits calculation would indicate no full description, a modified attribute of the location will cause the full description to be shown the next time. That attribute might have caused the description of the location to change. So the visits handling ensures that the player will &#8220;see&#8221; all changes to the location. If you set attributes of the location every time they are visited, the built-in visits handling will not work as you expect.</p>
 </div>
 </td>
 </tr>
@@ -6316,7 +6316,7 @@ If opponent Isa enemy Then …</code></pre>
 <p>This is used by the compiler to allow references to attributes, scripts, container properties etc. that otherwise would not be allowed.</p>
 </div>
 <div class="paragraph">
-<p>A very common use of this is to restrict parameters in a <code>Syntax</code> to a more general class, like thing or entity, and then doing “manual” restrictions using <code>If</code>-statements to ensure that usage does not conflict with the actual properties of the instance. Also see the section on <em>If Statement</em> on page <em>130</em>.</p>
+<p>A very common use of this is to restrict parameters in a <code>Syntax</code> to a more general class, like thing or entity, and then doing &#8220;manual&#8221; restrictions using <code>If</code>-statements to ensure that usage does not conflict with the actual properties of the instance. Also see the section on <em>If Statement</em> on page <em>130</em>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -6551,7 +6551,7 @@ Say Count Isa object, In inventory, Is big.
 </div>
 </div>
 <div class="paragraph">
-<p>In this example there are three filters applied, “Isa object”, “In inventory” and “Is big”. All of these filters must pass before an instance is counted. The result of that count is an integer, which is then printed using the <code>Say</code> statement.</p>
+<p>In this example there are three filters applied, <code>Isa object</code>, <code>In inventory</code> and <code>Is big</code>. All of these filters must pass before an instance is counted. The result of that count is an integer, which is then printed using the <code>Say</code> statement.</p>
 </div>
 <div class="paragraph">
 <p>The <code>Sum</code>, <code>Min</code> and <code>Max</code> aggregates return the sum, minimum and maximum value respectively, of an attribute of all instances in the filtered set.</p>
@@ -6688,7 +6688,7 @@ End Verb 'look'.</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Any one of the occurrences of a word might define its capitalization, which one is unspecified. This might affect the output if you use capitalization for names of locations, such as “Name Shore of Great Sea”. Such names can inadvertently make the game use “Great” for all “great” things in your game. You can avoid this by using a quoted identifier for the complete name of the location.</p>
+<p>Any one of the occurrences of a word might define its capitalization, which one is unspecified. This might affect the output if you use capitalization for names of locations, such as &#8220;Name Shore of Great Sea&#8221;. Such names can inadvertently make the game use &#8220;Great&#8221; for all &#8220;great&#8221; things in your game. You can avoid this by using a quoted identifier for the complete name of the location.</p>
 </div>
 </td>
 </tr>
@@ -6825,7 +6825,7 @@ end for</pre>
 <div class="sect2">
 <h3 id="trueplayer-input"><a class="anchor" href="#trueplayer-input"></a>5.2. Player Input</h3>
 <div class="paragraph">
-<p>The syntax defined in the Alan source is the basis for what the player is allowed to input. Commands with the formats expressed in the syntaxes form the basic statements available to the player. In addition, there are various combinations and variations are possible using special characters and words. The words are of course different for different languages, but in the following generic English words, like “<strong>AND</strong>-word”, will be used to denote all words that can be used in the same manner. The exact list of these words for every language with built-in support is available in Appendix <em>E</em>.</p>
+<p>The syntax defined in the Alan source is the basis for what the player is allowed to input. Commands with the formats expressed in the syntaxes form the basic statements available to the player. In addition, there are various combinations and variations are possible using special characters and words. The words are of course different for different languages, but in the following generic English words, like &#8220;<strong>AND</strong>-word&#8221;, will be used to denote all words that can be used in the same manner. The exact list of these words for every language with built-in support is available in Appendix <em>E</em>.</p>
 </div>
 <div class="paragraph">
 <p>The following built in syntax variations are available to the player:</p>
@@ -7087,7 +7087,7 @@ End The mirror.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>then all objects receive the attribute “takeable” and unless the attribute is specifically redeclared for a particular instance they will not be take-able. Note however that the semantic meaning (what actually happens, such as preventing the “taking”) of “takeable” must be implemented e.g. in the verb “take”:</p>
+<p>then all objects receive the attribute &#8220;takeable&#8221; and unless the attribute is specifically redeclared for a particular instance they will not be take-able. Note however that the semantic meaning (what actually happens, such as preventing the &#8220;taking&#8221;) of &#8220;takeable&#8221; must be implemented e.g. in the verb &#8220;take&#8221;:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7100,7 +7100,7 @@ End Verb take.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the same way restrictions concerning what is possible to eat, drink, open etc. may be implemented. This use of attributes to classify instances is “action- oriented”, i.e. they imply that a particular action (verb) is applicable to the instance.</p>
+<p>In the same way restrictions concerning what is possible to eat, drink, open etc. may be implemented. This use of attributes to classify instances is &#8220;action-oriented&#8221;, i.e. they imply that a particular action (verb) is applicable to the instance.</p>
 </div>
 <div class="paragraph">
 <p>An alternate approach is to use attributes to classify instances after their characteristics. Consider:</p>
@@ -7231,7 +7231,7 @@ You are carrying an empty bottle.</p>
 <div class="sect2">
 <h3 id="truecommon-verbs"><a class="anchor" href="#truecommon-verbs"></a>6.3. Common Verbs</h3>
 <div class="paragraph">
-<p>As your library of adventures grow you will find that some verbs are often needed, and always function the same way. Examples are “take”, “drop”, “invent”, “look”, “quit” and so on. It is advisable to put them in a file which may then be imported into your games. See section <em>3.4</em> <em>Import</em> on page <em>54</em> about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a default attribute declaration in this file.</p>
+<p>As your library of adventures grow you will find that some verbs are often needed, and always function the same way. Examples are &#8220;take&#8221;, &#8220;drop&#8221;, &#8220;invent&#8221;, &#8220;look&#8221;, &#8220;quit&#8221; and so on. It is advisable to put them in a file which may then be imported into your games. See section <em>3.4</em> <em>Import</em> on page <em>54</em> about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a default attribute declaration in this file.</p>
 </div>
 <div class="paragraph">
 <p>All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure. All that this takes is some thought as to what names to use for the attributes as discussed in <em>Use of Attributes</em> on page <em>167</em>.</p>
@@ -7514,7 +7514,7 @@ End The inside_car.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>We must make sure that the player can just say “drive” and “park” by defining the syntax for those single word commands:</p>
+<p>We must make sure that the player can just say &#8220;drive&#8221; and &#8220;park&#8221; by defining the syntax for those single word commands:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7672,7 +7672,7 @@ When location Of hero Is Not outdoors =&gt;
 </div>
 </div>
 <div class="paragraph">
-<p>You need to add the boolean attribute “<code>outdoors</code>” to every location to the make the rules work, of course.</p>
+<p>You need to add the boolean attribute <code>outdoors</code> to every location to the make the rules work, of course.</p>
 </div>
 <div class="paragraph">
 <p>And Voilà, every time the hero arrives at an outdoor location he will find the air and the sky. And every time he enters a location that has the attribute <code>outdoors</code> set to false he will not find them available.</p>
@@ -7716,7 +7716,7 @@ End The park.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then the outdoor items can stay at this “region” location, no need for rules or extra containers.</p>
+<p>Then the outdoor items can stay at this &#8220;region&#8221; location, no need for rules or extra containers.</p>
 </div>
 </div>
 </div>
@@ -7791,7 +7791,7 @@ End Add To.</code></pre>
 <div class="sect2">
 <h3 id="truedistant-imaginary-objects"><a class="anchor" href="#truedistant-imaginary-objects"></a>6.11. Distant &amp; Imaginary Objects</h3>
 <div class="paragraph">
-<p>Sometimes you need to make it possible for the player to refer to things either far away, that are not really objects or that may be at many places at once. Examples of these are a distant mountain that may be examined through a set of binoculars, the melody in “whistle the melody”, and water or walls. One way of handling this is to use entities, since they are “everywhere”. But sometimes you need better control over when they are available and when not.</p>
+<p>Sometimes you need to make it possible for the player to refer to things either far away, that are not really objects or that may be at many places at once. Examples of these are a distant mountain that may be examined through a set of binoculars, the melody in &#8220;whistle the melody&#8221;, and water or walls. One way of handling this is to use entities, since they are &#8220;everywhere&#8221;. But sometimes you need better control over when they are available and when not.</p>
 </div>
 <div class="sect3">
 <h4 id="truea-mountain"><a class="anchor" href="#truea-mountain"></a>A Mountain</h4>
@@ -8512,7 +8512,7 @@ ee1: RETURN
 <p>At last, it is time to sit down at the terminal. Divide the adventure text into files containing global verbs, the map (possibly divided further according to the scenes), the actors (perhaps one file for each actor) and a main file including the other files. This makes it easy to handle the adventure and you might ask your friend to participate in the development by giving him a few files to work with.</p>
 </div>
 <div class="paragraph">
-<p>First, just declare the locations and connect them with exits. Do not work on the “purple prose” descriptions yet. The Alan system supplies good defaults for descriptions and so on so use these while developing the structure of the adventure. Do not bother even with the details of making it impossible to pick up the elephant, etc.</p>
+<p>First, just declare the locations and connect them with exits. Do not work on the &#8220;purple prose&#8221; descriptions yet. The Alan system supplies good defaults for descriptions and so on so use these while developing the structure of the adventure. Do not bother even with the details of making it impossible to pick up the elephant, etc.</p>
 </div>
 <div class="paragraph">
 <p>Play the adventure continuously during the development, but do not try the things you plan to make impossible later. Just go through it according to the line you planned the story to follow. A hint here is to use a separate file for the start section. In this file you can easily set up the situation you wish to test while not having to tire yourself by playing the adventure from the start every time.</p>
@@ -8587,11 +8587,13 @@ ee1: RETURN
 <div class="paragraph">
 <p>Although there are other options, like a prototype AlanIDE, WinAlan et al., basic use of the Alan Adventure Development System is through a traditional command line batch compiler. This means that the actual development system is a compiler that reads text files created using any standard text editor. To compile an adventure use the following command in a command shell:</p>
 </div>
-<div class="paragraph">
-<p>alan &lt;adventure&gt;</p>
+<div class="literalblock">
+<div class="content">
+<pre>alan &lt;adventure&gt;</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>where &lt;adventure&gt; is the name of the main file containing your adventure source text. The compiler will assume an extension of <strong>“.alan”</strong> if none is supplied. The option <code>-help</code> will give a brief help on other options to the compiler.</p>
+<p>where <code>&lt;adventure&gt;</code> is the name of the main file containing your adventure source text. The compiler will assume an extension of <strong>&#8220;.alan&#8221;</strong> if none is supplied. The option <code>-help</code> will give a brief help on other options to the compiler.</p>
 </div>
 <div class="paragraph">
 <p>The primary output from the compiler is an adventure code file <strong><em>adventure</em>.a3c</strong>.</p>
@@ -8962,7 +8964,7 @@ You are in the living room. There is a door to the east. To the west is a wooden
 <p>WHAT_WORD : "I don&#8217;t know what you mean by '$1'."</p>
 </div>
 <div class="paragraph">
-<p>The player input a multiple word, such as ”all”, “them” or a pronoun, but the Arun parser could not find any objects or actors that it could refer to.</p>
+<p>The player input a multiple word, such as &#8220;all&#8221;, &#8220;them&#8221; or a pronoun, but the Arun parser could not find any objects or actors that it could refer to.</p>
 </div>
 <div class="paragraph">
 <p><strong>parameter1</strong> is a string which is the word used by the player.</p>
@@ -9385,7 +9387,7 @@ Checksum error in Acode (.A3C) file (%1 instead of %2).</p>
 <p>Each item that is an identifier (<code>options</code>, <code>declaration</code> etc.), is a construct that in turn is defined by other rules, possibly elsewhere in the manual.</p>
 </div>
 <div class="paragraph">
-<p>The equal sign (<code>=</code>) may be read as “consists of” or “is defined as”. Optional parts are surrounded by square brackets (<code>[</code> and <code>]</code>). Parts that may be repeated are enclosed in curly braces (<code>{</code> and <code>}</code>).</p>
+<p>The equal sign (<code>=</code>) may be read as &#8220;consists of&#8221; or &#8220;is defined as&#8221;. Optional parts are surrounded by square brackets (<code>[</code> and <code>]</code>). Parts that may be repeated are enclosed in curly braces (<code>{</code> and <code>}</code>).</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -10025,7 +10027,7 @@ No detected warnings.<br>
 <p>The only way to translate messages in the library is to translate the library. This is probably what you want to do anyway, since most of the verbs would be in English.</p>
 </div>
 <div class="paragraph">
-<p>Messages built into the compiler are generated automatically into the game file, e.g. as error messages like “You can&#8217;t do that.” These can either be changed by the Language option (if the language of your choice is already supported), or translated using the Message statement. Appendix <em>Run-time Messages</em> on page <em>210</em> lists all such messages and their content.</p>
+<p>Messages built into the compiler are generated automatically into the game file, e.g. as error messages like &#8220;You can&#8217;t do that.&#8221; These can either be changed by the Language option (if the language of your choice is already supported), or translated using the Message statement. Appendix <em>Run-time Messages</em> on page <em>210</em> lists all such messages and their content.</p>
 </div>
 <div class="paragraph">
 <p>There are a few special words that are currently not author translatable, as described in Appendix <em>Predefined player words</em> on page <em>224</em>.</p>
@@ -10058,7 +10060,7 @@ No detected warnings.<br>
 </ol>
 </div>
 <div class="paragraph">
-<p>TBD. &lt;Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes. Or does it? With the noun first is it possible to implement “das buch nehmen” with the syntax take = (o) nehmen?&gt;</p>
+<p>TBD. &lt;Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes. Or does it? With the noun first is it possible to implement &#8220;das buch nehmen&#8221; with the syntax take = (o) nehmen?&gt;</p>
 </div>
 </div>
 </div>
@@ -10263,8 +10265,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.4<br>
-Last updated 2018-08-21 01:20:18 E
+Version 0.1.5<br>
+Last updated 2018-08-21 01:39:01 E
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">

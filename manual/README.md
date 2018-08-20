@@ -65,9 +65,10 @@ This is an aproximate status report and pending tasks list of the current docume
     + [x] Style as inline-code keywords and code snippets within paragraphs, admonitons, etc. — eccept headings and tables (tables will be dealt with separately).
 - [ ] Typography cleanup:
     + [x] Delete all non-breaking hyphens.
-    + [ ] Decide how to handle:
-        * [ ] Curly single/double quotes (ie: AsciiDoc way vs use ofUTF8 chars)
-        * [ ] Special chars substitutions (em dash, etc.)
+    + [ ] Fix Smart Typography (from UTF8 chars to AsciiDoc smart punctuation):
+        * [x] Substitute curly single quotes and apostrophes.
+        * [x] Substitute curly dounble quotes
+        * [ ] Special chars substitutions (em dash, ellipsis, etc.)
 - [ ] Split book into multiple files (once all search-&-replace work is done).
 - [ ] Proof-reading:
     + [ ] Go through whole document and fix inline styles, typos, etc.

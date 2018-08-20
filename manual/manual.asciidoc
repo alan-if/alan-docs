@@ -1,5 +1,5 @@
 :doctitle: The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.4
+:revnumber: 0.1.5
 :revdate: August 21, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
@@ -86,7 +86,7 @@ But I would suggest that you read through it anyway since it introduces some imp
 
 As long as man has been around there have been stories, fairy tales and fantasies. In the early days, storytellers told their stories to silent and astonished audiences. After Gutenberg, the stories were printed and the readers partook in the fantasies of the author. In our days, passive viewers are fed from the silver screen or through the tube.
 
-In our time, at last, there has evolved a way for the “audience” to take part in the story themselves. It started in the forties and fifties and continued to develop into the games today known as Dungeon and Dragons, Tunnels and Trolls, etc. Games where a game leader designs the story, but the players decide (and perform) the actions of the characters in the story.
+In our time, at last, there has evolved a way for the "`audience`" to take part in the story themselves. It started in the forties and fifties and continued to develop into the games today known as Dungeon and Dragons, Tunnels and Trolls, etc. Games where a game leader designs the story, but the players decide (and perform) the actions of the characters in the story.
 
 These games, of course, have a computerized counterpart.
 
@@ -224,7 +224,7 @@ One of the interesting things about playing adventure games with actors is to fi
 
 ==== Acting
 
-The player commands action by typing imperative statements. These statements are analysed and results in execution (“calls”) to verbs. The effects of these commands must be declared in verbs by the game author, either in an object (describing the effects of the verb when applied to an object) or as a general (global) verb that only applies without object.
+The player commands action by typing imperative statements. These statements are analysed and results in execution ("`calls`") to verbs. The effects of these commands must be declared in verbs by the game author, either in an object (describing the effects of the verb when applied to an object) or as a general (global) verb that only applies without object.
 
 
 
@@ -291,7 +291,7 @@ And this is a note!
 
 ==== The Locations
 
-The scene for your adventure is a series of “rooms” or, rather, locations. Locations are connected by exits, leading out of one location into another. This makes it possible for the hero to travel through the world of your design, exploring it and solving the puzzles.
+The scene for your adventure is a series of "`rooms`" or, rather, locations. Locations are connected by exits, leading out of one location into another. This makes it possible for the hero to travel through the world of your design, exploring it and solving the puzzles.
 
 What is required if we want to describe a location? Every location must have an identifier. This is so that you, the designer, may refer to that location easily, instead of having to remember a magic number for it.
 
@@ -314,7 +314,7 @@ Start At kitchen.
 --------------------------------------------------------------------------------
 
 
-This is a complete Alan adventure (although very primitive). As you see, every Alan construct ends with a period (`.`) and there is a “`Start At`” sentence at the end, indicating in which location to put the hero when the game starts.
+This is a complete Alan adventure (although very primitive). As you see, every Alan construct ends with a period (`.`) and there is a "```Start At```" sentence at the end, indicating in which location to put the hero when the game starts.
 
 Type the above text into a text file, e.g. using a notepad program. Run this little Alan source through the Alan compiler and try the adventure (see Appendix _A_, _How To Use The System_, on page _202_ on how to do this). After starting the adventure, two lines will be shown on your screen.
 
@@ -326,13 +326,13 @@ Type the above text into a text file, e.g. using a notepad program. Run this lit
 ================================================================================
 
 
-The first line contains “Kitchen”, the name of the initial location, and the second a “>”, which is the default prompt for the player to input a command. Now try typing “east” and press the return/enter key. The word “Hallway” and the prompt will appear. Typing “west” will take you back to “Kitchen” again. (Use Ctrl-C to exit the game if you are running it in a console window.)
+The first line contains "`Kitchen`", the name of the initial location, and the second a "`>`", which is the default prompt for the player to input a command. Now try typing "`east`" and press the return/enter key. The word "`Hallway`" and the prompt will appear. Typing "`west`" will take you back to "`Kitchen`" again. (Use Ctrl-C to exit the game if you are running it in a console window.)
 
 The identifier for a location is automatically used as a description, a heading, shown when that room is entered. And the words listed in the `Exit`-parts are translated into directional commands the player can use in his input.
 
 You should remember that exits are strictly one-way. An `Exit` from one location to another does not automatically imply the opposite path. Thus, you must explicitly declare the path back, in the definition of the other location.
 
-However, just the name of the location is not much of a description. So in order to provide the “purple prose” descriptions often found in many adventures there is an optional `Description`-clause that you can use. Let us describe the Hallway.
+However, just the name of the location is not much of a description. So in order to provide the "`purple prose`" descriptions often found in many adventures there is an optional `Description`-clause that you can use. Let us describe the Hallway.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -368,7 +368,7 @@ End Exit west.
 
 ==== The Objects
 
-Another essential feature in Alan are the objects. Like the location, the object is a means to describe the “physical” world where your adventure is taking place. Many objects are probably used to provide puzzles, such as closed doors, keys and so on, but other objects should be promoted to objects too. A large number of objects that can be examined and manipulated make a game so much more enjoyable.
+Another essential feature in Alan are the objects. Like the location, the object is a means to describe the "`physical`" world where your adventure is taking place. Many objects are probably used to provide puzzles, such as closed doors, keys and so on, but other objects should be promoted to objects too. A large number of objects that can be examined and manipulated make a game so much more enjoyable.
 
 Objects, like locations, have identifiers and descriptions, so you might guess the general structure of an object:
 
@@ -396,7 +396,7 @@ We also introduce another Alan statement, the `If`-statement. The `If`-statement
 
 Instead, let's look at some other statements in relation to objects.
 
-It must of course be possible to change the value of attributes of an object. You can do this using the `Make` statement or the `Set` statement. For example if the door should be opened (the player having said “open door”, perhaps) this could be performed by stating
+It must of course be possible to change the value of attributes of an object. You can do this using the `Make` statement or the `Set` statement. For example if the door should be opened (the player having said "`open door`", perhaps) this could be performed by stating
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -633,7 +633,7 @@ This might lead to, completely correct, but surprising, error messages from the 
 
 For many scenarios the above works well, and as expected. But for other cases the notion of transitivity is introduced. Transitivity describes how e.g. containment should be interpreted.
 
-The scenario above may be described as “transitive containment” meaning that something is in a container if it is in that container or in any container it contains, recursively.
+The scenario above may be described as "`transitive containment`" meaning that something is in a container if it is in that container or in any container it contains, recursively.
 
 There are two other types, namely DIRECT and INDIRECT transitivity. Direct transitivity actually means no transitivity. If you investigate a container with direct transitivity you will only get the direct content of it, not the content of the containers within it.
 
@@ -742,7 +742,7 @@ Here we also encounter a variation on the `Locate` statement - the capability to
 
 [NOTE]
 ================================================================================
-You can never destroy an instance or remove it from the game. Instead, you can define a limbo location, i.e. a location that is not accessible to the player and may thus be used as a storage for “destroyed” objects and other things the player is not supposed to see.
+You can never destroy an instance or remove it from the game. Instead, you can define a limbo location, i.e. a location that is not accessible to the player and may thus be used as a storage for "`destroyed`" objects and other things the player is not supposed to see.
 ================================================================================
 
 
@@ -996,7 +996,7 @@ Start At bedroom.
      starting to feel the blood flowing through them..."
 --------------------------------------------------------------------------------
 
-You can look up the meaning of the rules “where” and “statement” elsewhere in this chapter.
+You can look up the meaning of the rules "`where`" and "`statement`" elsewhere in this chapter.
 
 
 
@@ -1340,7 +1340,7 @@ The george Isa actor
 
 There is one very special actor, the hero, which represents the player. This actor is always pre-declared with some basic properties, so you don't have to declare it. But if necessary, it may be re-declared in the same way as any other actor.
 
-One situation when this is required is if you need attributes on the hero, such as “sleepy” or “hungry”. A declaration like the following can then be used:
+One situation when this is required is if you need attributes on the hero, such as "`sleepy`" or "`hungry`". A declaration like the following can then be used:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1357,13 +1357,13 @@ The hero Isa actor
 End The hero.
 --------------------------------------------------------------------------------
 
-The hero is predefined with a simple container property taking objects with no limits. It seems natural to use that as the “inventory” of the player, the storage for everything the player is picking up and carrying around. You will probably need to handle carried items in some manner, and the pre-declared container is one suggestion. You can also redeclare the container property of the hero so that it suits your needs.
+The hero is predefined with a simple container property taking objects with no limits. It seems natural to use that as the "`inventory`" of the player, the storage for everything the player is picking up and carrying around. You will probably need to handle carried items in some manner, and the pre-declared container is one suggestion. You can also redeclare the container property of the hero so that it suits your needs.
 
 
 
 ==== Locations
 
-A location is a declaration of a place (a “room”) in the game that (normally) can be visited by the player, and have objects lying around, etc. In fact, the map of your game is a set of interconnected locations. A location is any instance inheriting directly or indirectly from the predefined class `location`. Inheriting from `location` implies the following semantic properties:
+A location is a declaration of a place (a "`room`") in the game that (normally) can be visited by the player, and have objects lying around, etc. In fact, the map of your game is a set of interconnected locations. A location is any instance inheriting directly or indirectly from the predefined class `location`. Inheriting from `location` implies the following semantic properties:
 
 * only locations can be visited by the player
 * only locations may have the `Entered`-clause
@@ -1375,7 +1375,7 @@ A location is a declaration of a place (a “room”) in the game that (normally
 
 When a location is described (for example when entering it) it is presented with a heading (the location name), the description (in the description clause) followed by descriptions of any present objects and actors not already, explicitly, described (using a `describe` statement) in the description.
 
-An interesting property of locations is that a location can be located at another, both initially and during run-time. The result of having such nested locations is that all things present at the “outer” location are also present in the inner. This can be used in multiple levels to allow access to sky, ground and other scenery items available at many locations at once. It can also be used for grouping locations into sets of similar locations and for implementing vehicles.
+An interesting property of locations is that a location can be located at another, both initially and during run-time. The result of having such nested locations is that all things present at the "`outer`" location are also present in the inner. This can be used in multiple levels to allow access to sky, ground and other scenery items available at many locations at once. It can also be used for grouping locations into sets of similar locations and for implementing vehicles.
 
 
 
@@ -1480,7 +1480,7 @@ An instance inheriting from `location` cannot have an initial location that is `
 
 ==== Names
 
-By default, the identifier (“author name”) for an instance is also the name shown to the player, and by which he will be able to refer to it. Normally you would want to override this with more elaborate and alternative names. You can do that using the `Name` clause.
+By default, the identifier ("`author name`") for an instance is also the name shown to the player, and by which he will be able to refer to it. Normally you would want to override this with more elaborate and alternative names. You can do that using the `Name` clause.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -1511,7 +1511,7 @@ The chair3 Isa object
 --------------------------------------------------------------------------------
 
 
-In this example, the name is a sequence of words. The semantics of this declaration is that the word “chair” is a noun and “little” and “wooden” become adjectives. When the player, in a command, want to refer to the object with the author name (identifier) `chair3`, he may use just “chair” if it is the only accessible object with “chair” as its noun, or he may distinguish between multiple chairs by also giving one or more adjectives to be more precise about which chair he meant.
+In this example, the name is a sequence of words. The semantics of this declaration is that the word "`chair`" is a noun and "`little`" and "`wooden`" become adjectives. When the player, in a command, want to refer to the object with the author name (identifier) `chair3`, he may use just "`chair`" if it is the only accessible object with "`chair`" as its noun, or he may distinguish between multiple chairs by also giving one or more adjectives to be more precise about which chair he meant.
 
 
 [NOTE]
@@ -1555,7 +1555,7 @@ The gravensteiner Isa apple …
 The macintosh Isa apple …
 --------------------------------------------------------------------------------
 
-In this example, both the pear and the apple would be possible to refer to using the word “fruit”. Both the gravensteiner and the macintosh would be apples, not only by name, but also by all other properties of apples.
+In this example, both the pear and the apple would be possible to refer to using the word "`fruit`". Both the gravensteiner and the macintosh would be apples, not only by name, but also by all other properties of apples.
 
 
 
@@ -1575,7 +1575,7 @@ The interpreter also uses this principle when constructing lists of instances in
 
 ====  Pronouns
 
-In player input, it is often handy and natural to refer to items using pronouns, such as “it”, “them” or “her”. Alan provides a means to define with which pronouns each instance can be associated.
+In player input, it is often handy and natural to refer to items using pronouns, such as "`it`", "`them`" or "`her`". Alan provides a means to define with which pronouns each instance can be associated.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -1591,7 +1591,7 @@ The effect of associating a pronoun with an instance is that the player can refe
 
 
 
-If the priest has been associated with the pronoun “him” and the bible with the pronoun “it”, the next command could be
+If the priest has been associated with the pronoun "`him`" and the bible with the pronoun "`it`", the next command could be
 
 [EXAMPLE,role="gametranscript"]
 ================================================================================
@@ -1605,7 +1605,7 @@ Pronouns are inherited as any other property, but are overridden as soon as a pr
 
 [NOTE]
 ================================================================================
-The pre-defined class `entity` defines the pronoun “it” (or equivalent for other supported languages).
+The pre-defined class `entity` defines the pronoun "`it`" (or equivalent for other supported languages).
 ================================================================================
 
 ==== Attributes
@@ -1871,7 +1871,7 @@ The syntax for simple descriptions is:
 description = 'DESCRIPTION' {statement}
 --------------------------------------------------------------------------------
 
-If the `Description` clause is missing for an instance (and no description is inherited), the Alan system will supply a default description such as “There is a round ball here.”. If there is a `Description` clause but it contains no statements, the object will be '`invisible`', i.e. no description of it will be printed, not even a default one. This can be useful for objects already described by the location description, or of objects with particular properties.
+If the `Description` clause is missing for an instance (and no description is inherited), the Alan system will supply a default description such as "`There is a round ball here.`". If there is a `Description` clause but it contains no statements, the object will be '`invisible`', i.e. no description of it will be printed, not even a default one. This can be useful for objects already described by the location description, or of objects with particular properties.
 
 Here are some examples of simple description declarations
 
@@ -1919,7 +1919,7 @@ End Every dark_location.
 
 Note that it does not specify any description statements. This is because the checks and the actual description are inherited separately, as described in the table on page _62_. The actual descriptions are left for the instances.
 
-If multiple description checks are available in the inheritance chain, they are all tested and must be met before any description is attempted. So the inheritance of description checks is “additive”.
+If multiple description checks are available in the inheritance chain, they are all tested and must be met before any description is attempted. So the inheritance of description checks is "`additive`".
 
 If any check fails, the description will not be executed. This particularly also implies that the default listings and description of present objects and actors in location instances will not occur either. Note, however, that any events and actor actions _will_ be shown. See _Locations_ below for a description of default description mechanism for locations.
 
@@ -1977,7 +1977,7 @@ I can't see any door here.
 
 [NOTE]
 ================================================================================
-The predefined base class `entity` defines the default definite, indefinite and negative article to be “the”, "a" and “any” (if using English). You may override this by using an `Add` statement.
+The predefined base class `entity` defines the default definite, indefinite and negative article to be "`the`", "a" and "`any`" (if using English). You may override this by using an `Add` statement.
 ================================================================================
 
 
@@ -2141,7 +2141,7 @@ End The chest.
 
 A container is something that can contain instances. By default, the instances it can contain must be inheriting from the base class `object`, but by using the `Taking` clause, you can allow any instances.
 
-Instances with the container property, “inherits” a special, pre-defined, Boolean attribute, `opaque`. This attribute can be manipulated in the same way as any other attribute. Its current value indicates if the instances inside the container are visible and accessible or not.
+Instances with the container property, "`inherits`" a special, pre-defined, Boolean attribute, `opaque`. This attribute can be manipulated in the same way as any other attribute. Its current value indicates if the instances inside the container are visible and accessible or not.
 
 By default, containers expose their content, but by placing the keyword `Opaque` in the container declaration, you indicate that this container declaration will initially prohibit access to the contained instances. A typical use of this is to prohibit access to contents of closed cases, drawers and boxes. Once open such containers usually reveal the content, which then can be accessed. You can implement such behaviour by modifying the built in `opaque` attribute. For example:
 
@@ -2659,7 +2659,7 @@ and
 
 
 
-Even if only one of the syntax declarations indicate that the first parameter should allow multiple instances, both syntaxes will actually allow this because they have the same syntax part before the parameter, in this case the verb “put”.
+Even if only one of the syntax declarations indicate that the first parameter should allow multiple instances, both syntaxes will actually allow this because they have the same syntax part before the parameter, in this case the verb "`put`".
 
 
 
@@ -2849,7 +2849,7 @@ End Verb.
 
 If your verb has multiple definitions, e.g. for various classes, applying `Meta` to any one of them will make the verb a meta verb, meaning that if the player uses that verb in any context and on any instance, it will take no tick, even if that particular definition did not have the `Meta` property explicitly expressed. A library might decide that 'score' was a meta verb and there is nothing you, as an author, can do to override that short of editing the library source.
 
-A `Meta` verb also does not trigger evaluation of rules and events so they are genuinely “outside” the game and should only be used with verbs that are not considered part of the players progression inside the game.
+A `Meta` verb also does not trigger evaluation of rules and events so they are genuinely "`outside`" the game and should only be used with verbs that are not considered part of the players progression inside the game.
 
 
 [NOTE]
@@ -2915,7 +2915,7 @@ The jumpless Isa Location
 End The jumpless.
 --------------------------------------------------------------------------------
 
-If any check should fail, the execution of the current verb is interrupted and the statements following the failing check are executed. The user (player) is then prompted for another command. So in the above example, the verb “jump” will always result in “You can't do that here.” at the location “jumpless”.
+If any check should fail, the execution of the current verb is interrupted and the statements following the failing check are executed. The user (player) is then prompted for another command. So in the above example, the verb "`jump`" will always result in "`You can't do that here.`" at the location "`jumpless`".
 
 
 [NOTE]
@@ -3054,7 +3054,7 @@ There are cases where you don't want all the bodies to be executed, or there is 
 
 Qualifiers control the order of execution of verb bodies. How does this work?
 
-First, starting at the “innermost” according to the table above, the verb in the last parameter (if any) is investigated and, if any of its (inherited) verb bodies have the `Before` or `Only` qualifier it is executed. If the qualifier was `Only` the execution is also aborted at this stage and no more verb definitions are examined, otherwise the other parameters are examined in the same way.
+First, starting at the "`innermost`" according to the table above, the verb in the last parameter (if any) is investigated and, if any of its (inherited) verb bodies have the `Before` or `Only` qualifier it is executed. If the qualifier was `Only` the execution is also aborted at this stage and no more verb definitions are examined, otherwise the other parameters are examined in the same way.
 
 In the next step, the current location is examined and, if it contains (or inherits) a verb definition with a `Before` or `Only` qualifier, that definition is now executed (and if the qualifier was `Only`, execution is aborted). Since locations can be nested, the surrounding locations are then examined in the same way.
 
@@ -3182,7 +3182,7 @@ Start At kitchen.
 --------------------------------------------------------------------------------
 
 
-In this example the rule conditional (the text marked with grey) is using an aggregation (“count”, see _Aggregates_ on page _150_) over two filters (see section _3.21_ _Filters_ on page _151_) that will count the number of actors at the kitchen, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.
+In this example the rule conditional (the text marked with grey) is using an aggregation (`count`, see _Aggregates_ on page _150_) over two filters (see section _3.21_ _Filters_ on page _151_) that will count the number of actors at the kitchen, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.
 
 Again, remember that rules are checked after each actor has moved. What happens if there are more actors in play and they move in and out of the kitchen, is left as an exercise to the reader.
 
@@ -3294,7 +3294,7 @@ The standard message for `Noway` is replaced by the output from the statements i
 
 Message sections must be declared at the global level, but to make it possible to create high-quality messages the message sections have parameters available. Which parameters are available vary depending on the message, the details for each message is available in Appendix _Input Response Messages_ on page _210_.
 
-The parameters can be used in the same way as in verb bodies. The names of the parameters are “parameter1”, “parameter2”, etc. The type of the parameters will also vary.
+The parameters can be used in the same way as in verb bodies. The names of the parameters are "`parameter1`", "`parameter2`", etc. The type of the parameters will also vary.
 
 For some messages, a parameter is an instance. In these cases, the instance is always of the pre-defined `entity` class. Any attribute available for this class will be available in message sections with instance parameters.
 
@@ -3473,7 +3473,7 @@ $_    Print this as a '$' if in conflict with other symbols
 
 [NOTE]
 ================================================================================
-You might want to output “$400” but “$4” will be interpreted as the indefinite form of the fourth parameter, as described below. So you need to use the '`&#95;`' to make that happen (“$&#95;400”).
+You might want to output "`$400`" but "`$4`" will be interpreted as the indefinite form of the fourth parameter, as described below. So you need to use the '`&#95;`' to make that happen ("`$&#95;400`").
 ================================================================================
 
 
@@ -3483,7 +3483,7 @@ The following can be used to refer to parameters while executing a verb, but the
 
 // FIXME: Find a way to make chars on the left bold styled!
 ................................................................................
-$<n>     The parameter <n> (<n> is a digit > 0, e.g. “$1”)
+$<n>     The parameter <n> (<n> is a digit > 0, e.g. "$1")
 $+<n>    Definite form of parameter <n>
 $0<n>    Indefinite form of parameter <n>
 $-<n>    Negative form of parameter <n>
@@ -3554,7 +3554,7 @@ If a `Describe` statement is executed for another instance during the execution 
  many years."
 DESCRIBE desk.
 "To the west is an open door, and to the east you can see the
- staircase.”
+ staircase.""
 --------------------------------------------------------------------------------
 
 
@@ -3617,7 +3617,7 @@ The Alan compiler will always support the multi-media statements, but a particul
 
 Image and sound files are analyzed by the compiler and copied into an Alan v3 resource file (file extension *.a3r*) that must be distributed with your game file, otherwise they will not be available during game play. The original file will be left untouched.
 
-The format of the resource file follows the standard Interactive Fiction resource file format “blorb” and supports images of JPEG and PNG types, and sounds of MOD and AIFF formats.
+The format of the resource file follows the standard Interactive Fiction resource file format "`blorb`" and supports images of JPEG and PNG types, and sounds of MOD and AIFF formats.
 
 If a resource file is referenced from multiple statements, it will only be copied once. The Alan compiler uses the file extension to determine the media type of the file. The following extensions are recognized: *.jpg*, *.jpeg*, *.png*, *.mod*, *.aif* and *.aiff*.
 
@@ -4256,7 +4256,7 @@ The classic and familiar commands *verbose*, *brief* etc. can be imitated using 
 
 [NOTE]
 ================================================================================
-The handling of descriptions is rather conservative in that it also takes modified attributes into account. If the visits calculation would indicate no full description, a modified attribute of the location will cause the full description to be shown the next time. That attribute might have caused the description of the location to change. So the visits handling ensures that the player will “see” all changes to the location. If you set attributes of the location every time they are visited, the built-in visits handling will not work as you expect.
+The handling of descriptions is rather conservative in that it also takes modified attributes into account. If the visits calculation would indicate no full description, a modified attribute of the location will cause the full description to be shown the next time. That attribute might have caused the description of the location to change. So the visits handling ensures that the player will "`see`" all changes to the location. If you set attributes of the location every time they are visited, the built-in visits handling will not work as you expect.
 ================================================================================
 
 
@@ -4565,7 +4565,7 @@ There is a subtle but very important side effect of checking for an instance cla
 
 This is used by the compiler to allow references to attributes, scripts, container properties etc. that otherwise would not be allowed.
 
-A very common use of this is to restrict parameters in a `Syntax` to a more general class, like thing or entity, and then doing “manual” restrictions using `If`-statements to ensure that usage does not conflict with the actual properties of the instance. Also see the section on _If Statement_ on page _130_.
+A very common use of this is to restrict parameters in a `Syntax` to a more general class, like thing or entity, and then doing "`manual`" restrictions using `If`-statements to ensure that usage does not conflict with the actual properties of the instance. Also see the section on _If Statement_ on page _130_.
 
 
 
@@ -4777,7 +4777,7 @@ Say Count Isa object, In inventory, Is big.
 --------------------------------------------------------------------------------
 
 
-In this example there are three filters applied, “Isa object”, “In inventory” and “Is big”. All of these filters must pass before an instance is counted. The result of that count is an integer, which is then printed using the `Say` statement.
+In this example there are three filters applied, `Isa object`, `In inventory` and `Is big`. All of these filters must pass before an instance is counted. The result of that count is an integer, which is then printed using the `Say` statement.
 
 The `Sum`, `Min` and `Max` aggregates return the sum, minimum and maximum value respectively, of an attribute of all instances in the filtered set.
 
@@ -4894,7 +4894,7 @@ Do _NOT_ use a single quoted identifier with spaces or special characters in the
 
 [NOTE]
 ================================================================================
-Any one of the occurrences of a word might define its capitalization, which one is unspecified. This might affect the output if you use capitalization for names of locations, such as “Name Shore of Great Sea”. Such names can inadvertently make the game use “Great” for all “great” things in your game. You can avoid this by using a quoted identifier for the complete name of the location.
+Any one of the occurrences of a word might define its capitalization, which one is unspecified. This might affect the output if you use capitalization for names of locations, such as "`Name Shore of Great Sea`". Such names can inadvertently make the game use "`Great`" for all "`great`" things in your game. You can avoid this by using a quoted identifier for the complete name of the location.
 ================================================================================
 
 
@@ -5001,7 +5001,7 @@ If the player inputs an empty command, this is equivalent to forfeiting his turn
 
 === Player Input
 
-The syntax defined in the Alan source is the basis for what the player is allowed to input. Commands with the formats expressed in the syntaxes form the basic statements available to the player. In addition, there are various combinations and variations are possible using special characters and words. The words are of course different for different languages, but in the following generic English words, like “*AND*-word”, will be used to denote all words that can be used in the same manner. The exact list of these words for every language with built-in support is available in Appendix _E_.
+The syntax defined in the Alan source is the basis for what the player is allowed to input. Commands with the formats expressed in the syntaxes form the basic statements available to the player. In addition, there are various combinations and variations are possible using special characters and words. The words are of course different for different languages, but in the following generic English words, like "`*AND*-word`", will be used to denote all words that can be used in the same manner. The exact list of these words for every language with built-in support is available in Appendix _E_.
 
 The following built in syntax variations are available to the player:
 
@@ -5195,7 +5195,7 @@ Add To Every object
   Not takeable.
 --------------------------------------------------------------------------------
 
-then all objects receive the attribute “takeable” and unless the attribute is specifically redeclared for a particular instance they will not be take-able. Note however that the semantic meaning (what actually happens, such as preventing the “taking”) of “takeable” must be implemented e.g. in the verb “take”:
+then all objects receive the attribute "`takeable`" and unless the attribute is specifically redeclared for a particular instance they will not be take-able. Note however that the semantic meaning (what actually happens, such as preventing the "`taking`") of "`takeable`" must be implemented e.g. in the verb "`take`":
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -5207,7 +5207,7 @@ Verb take
 End Verb take.
 --------------------------------------------------------------------------------
 
-In the same way restrictions concerning what is possible to eat, drink, open etc. may be implemented. This use of attributes to classify instances is “action- oriented”, i.e. they imply that a particular action (verb) is applicable to the instance.
+In the same way restrictions concerning what is possible to eat, drink, open etc. may be implemented. This use of attributes to classify instances is "`action-oriented`", i.e. they imply that a particular action (verb) is applicable to the instance.
 
 An alternate approach is to use attributes to classify instances after their characteristics. Consider:
 
@@ -5333,7 +5333,7 @@ You are carrying an empty bottle.
 
 === Common Verbs
 
-As your library of adventures grow you will find that some verbs are often needed, and always function the same way. Examples are “take”, “drop”, “invent”, “look”, “quit” and so on. It is advisable to put them in a file which may then be imported into your games. See section _3.4_ _Import_ on page _54_ about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a default attribute declaration in this file.
+As your library of adventures grow you will find that some verbs are often needed, and always function the same way. Examples are "`take`", "`drop`", "`invent`", "`look`", "`quit`" and so on. It is advisable to put them in a file which may then be imported into your games. See section _3.4_ _Import_ on page _54_ about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a default attribute declaration in this file.
 
 All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure. All that this takes is some thought as to what names to use for the attributes as discussed in _Use of Attributes_ on page _167_.
 
@@ -5604,7 +5604,7 @@ End The inside_car.
 --------------------------------------------------------------------------------
 
 
-We must make sure that the player can just say “drive” and “park” by defining the syntax for those single word commands:
+We must make sure that the player can just say "`drive`" and "`park`" by defining the syntax for those single word commands:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -5744,7 +5744,7 @@ When location Of hero Is Not outdoors =>
 --------------------------------------------------------------------------------
 
 
-You need to add the boolean attribute “`outdoors`” to every location to the make the rules work, of course.
+You need to add the boolean attribute `outdoors` to every location to the make the rules work, of course.
 
 And Voilà, every time the hero arrives at an outdoor location he will find the air and the sky. And every time he enters a location that has the attribute `outdoors` set to false he will not find them available.
 
@@ -5780,7 +5780,7 @@ End The park.
 --------------------------------------------------------------------------------
 
 
-Then the outdoor items can stay at this “region” location, no need for rules or extra containers.
+Then the outdoor items can stay at this "`region`" location, no need for rules or extra containers.
 
 
 
@@ -5850,7 +5850,7 @@ End Add To.
 
 === Distant & Imaginary Objects
 
-Sometimes you need to make it possible for the player to refer to things either far away, that are not really objects or that may be at many places at once. Examples of these are a distant mountain that may be examined through a set of binoculars, the melody in “whistle the melody”, and water or walls. One way of handling this is to use entities, since they are “everywhere”. But sometimes you need better control over when they are available and when not.
+Sometimes you need to make it possible for the player to refer to things either far away, that are not really objects or that may be at many places at once. Examples of these are a distant mountain that may be examined through a set of binoculars, the melody in "`whistle the melody`", and water or walls. One way of handling this is to use entities, since they are "`everywhere`". But sometimes you need better control over when they are available and when not.
 
 
 
@@ -6520,7 +6520,7 @@ This also applies to the narrator, i.e. the imaginary person or creature that ca
 
 At last, it is time to sit down at the terminal. Divide the adventure text into files containing global verbs, the map (possibly divided further according to the scenes), the actors (perhaps one file for each actor) and a main file including the other files. This makes it easy to handle the adventure and you might ask your friend to participate in the development by giving him a few files to work with.
 
-First, just declare the locations and connect them with exits. Do not work on the “purple prose” descriptions yet. The Alan system supplies good defaults for descriptions and so on so use these while developing the structure of the adventure. Do not bother even with the details of making it impossible to pick up the elephant, etc.
+First, just declare the locations and connect them with exits. Do not work on the "`purple prose`" descriptions yet. The Alan system supplies good defaults for descriptions and so on so use these while developing the structure of the adventure. Do not bother even with the details of making it impossible to pick up the elephant, etc.
 
 Play the adventure continuously during the development, but do not try the things you plan to make impossible later. Just go through it according to the line you planned the story to follow. A hint here is to use a separate file for the start section. In this file you can easily set up the situation you wish to test while not having to tire yourself by playing the adventure from the start every time.
 
@@ -6575,9 +6575,11 @@ A.  Compiling
 
 Although there are other options, like a prototype AlanIDE, WinAlan et al., basic use of the Alan Adventure Development System is through a traditional command line batch compiler. This means that the actual development system is a compiler that reads text files created using any standard text editor. To compile an adventure use the following command in a command shell:
 
+................................................................................
 alan <adventure>
+................................................................................
 
-where <adventure> is the name of the main file containing your adventure source text. The compiler will assume an extension of *“.alan”* if none is supplied. The option `-help` will give a brief help on other options to the compiler.
+where `<adventure>` is the name of the main file containing your adventure source text. The compiler will assume an extension of *"`.alan`"* if none is supplied. The option `-help` will give a brief help on other options to the compiler.
 
 The primary output from the compiler is an adventure code file *_adventure_.a3c*.
 
@@ -6811,7 +6813,7 @@ The input did not follow any syntax the Arun parser knows about. I.e. the input 
 
 WHAT_WORD : "I don't know what you mean by '$1'."
 
-The player input a multiple word, such as ”all”, “them” or a pronoun, but the Arun parser could not find any objects or actors that it could refer to.
+The player input a multiple word, such as "`all`", "`them`" or a pronoun, but the Arun parser could not find any objects or actors that it could refer to.
 
 *parameter1* is a string which is the word used by the player.
 
@@ -7109,7 +7111,7 @@ adventure = [options] {declaration} start_section
 
 Each item that is an identifier (`options`, `declaration` etc.), is a construct that in turn is defined by other rules, possibly elsewhere in the manual.
 
-The equal sign (`=`) may be read as “consists of” or “is defined as”. Optional parts are surrounded by square brackets (`[` and `]`). Parts that may be repeated are enclosed in curly braces (`{` and `}`).
+The equal sign (`=`) may be read as "`consists of`" or "`is defined as`". Optional parts are surrounded by square brackets (`[` and `]`). Parts that may be repeated are enclosed in curly braces (`{` and `}`).
 
 
 
@@ -7563,7 +7565,7 @@ There are two main types of messages that are output by interpreter to the playe
 
 The only way to translate messages in the library is to translate the library. This is probably what you want to do anyway, since most of the verbs would be in English.
 
-Messages built into the compiler are generated automatically into the game file, e.g. as error messages like “You can't do that.” These can either be changed by the Language option (if the language of your choice is already supported), or translated using the Message statement. Appendix _Run-time Messages_ on page _210_ lists all such messages and their content.
+Messages built into the compiler are generated automatically into the game file, e.g. as error messages like "`You can't do that.`" These can either be changed by the Language option (if the language of your choice is already supported), or translated using the Message statement. Appendix _Run-time Messages_ on page _210_ lists all such messages and their content.
 
 There are a few special words that are currently not author translatable, as described in Appendix _Predefined player words_ on page _224_.
 
@@ -7577,7 +7579,7 @@ TBD. <Text about using multiple names for the same objects & synonyms, and how t
 
 A.  Word order
 
-TBD. <Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes. Or does it? With the noun first is it possible to implement “das buch nehmen” with the syntax take = (o) nehmen?>
+TBD. <Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes. Or does it? With the noun first is it possible to implement "`das buch nehmen`" with the syntax take = (o) nehmen?>
 
 // ==============================================================================
 //                        Appendix H: Portability of Games
