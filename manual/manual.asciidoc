@@ -1,6 +1,6 @@
 :doctitle: The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.3
-:revdate: August 20, 2018
+:revnumber: 0.1.4
+:revdate: August 21, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
 :encoding: utf-8
@@ -55,7 +55,7 @@ In this version modern and novel object orientation features has been incorporat
 
 
 
-=== Programmer’s Pitch
+=== Programmer's Pitch
 
 Alan is an application-oriented language. It features constructs that are natural to an author of Interactive Fiction. Alan is a strictly typed, compiled, object-oriented language with single inheritance. Classes inherit properties from their super-classes. The class system allows polymorphism so that instances of subclasses are valid wherever a super-class is specified. There are no explicit type declarations, except for instances of classes; instead, types are automatically inferred from expressions such as integers, strings or instances of a particular class.
 
@@ -96,7 +96,7 @@ Crowther & Woods started this form of games in the late sixties when they design
 
 Later, Dave Lebling & Co started Infocom, a company where they continued to develop their technique, first with _Zork I_, _II_ and _III_ (the first a re-implementation of Dungeon, the others equally successful sequels). Since then, a host of games has been released (_Starcross_, _Witness_, _Enchanter_ are some of the names that come to mind). Although the original authors are long scattered, the Infocom games are still highly appreciated even today.
 
-Other companies have followed Infocom’s example and a handful of them seem to make a living out of creating adventure games. However, today most of the works are created by devoted people that do it for the fun of it, releasing their games as shareware or completely free.
+Other companies have followed Infocom's example and a handful of them seem to make a living out of creating adventure games. However, today most of the works are created by devoted people that do it for the fun of it, releasing their games as shareware or completely free.
 
 There have been many attempts to use computer graphics to display the surroundings and objects in adventure games. Some of the more successful early examples are the Sierra games (notably the _Leisure Suit Larry_ and the _Kings Quest_ series) which had mouse oriented moves but also allowed single line text commands, games from ICOM Simulations (_DejaVu_ and _The Uninvited_) which were purely graphics games with mouse and icon interfaces. Other manufacturers have tried to use (sometimes optional) pictures to accompany the text, for example Magnetic Scrolls games (e.g. _the Pawn_), which shift the picture automatically as you move around using the normal directional commands.
 
@@ -110,7 +110,7 @@ The main feature of adventures is the interaction between the player and the gam
 
 === Elements Of Adventures
 
-The success of all Infocom games can probably be attributed to three distinctive features. First, they all have a ‘believable’ and consistent plot, which is flavoured with humour and wittiness. Second, the descriptions are extensive and give a lot of atmosphere to the game. Third, the command handler recognizes and understands a large vocabulary and complex input. Add to this the worlds best graphics device (the human brain) and you are unbeatable!
+The success of all Infocom games can probably be attributed to three distinctive features. First, they all have a '`believable`' and consistent plot, which is flavoured with humour and wittiness. Second, the descriptions are extensive and give a lot of atmosphere to the game. Third, the command handler recognizes and understands a large vocabulary and complex input. Add to this the worlds best graphics device (the human brain) and you are unbeatable!
 
 Looking at adventures in more detail, we can see some common features. There is always the world or universe (called the map) where the adventure is taking place. Although you can move around quite freely there are usually some problems getting into certain parts of the world (e.g. locked doors, no air to breathe or even finding the entrance). The size of the map ranges from hundreds of locations to just two or three, or even a single location.
 
@@ -160,7 +160,7 @@ The Alan _system_ consists of two computer programs, one of which analyses an in
 // compiler, a game file and the interpreter, or, in other words, authoring and
 // playing.
 
-To create works of interactive fiction using Alan, you also need a program with which to construct your Alan source code, a standard text editor, like Notepad or similar programs. However, you cannot use a word processor, like Microsoft Word, since the files created with those usually contains formatting information that the Alan compiler don’t understand.
+To create works of interactive fiction using Alan, you also need a program with which to construct your Alan source code, a standard text editor, like Notepad or similar programs. However, you cannot use a word processor, like Microsoft Word, since the files created with those usually contains formatting information that the Alan compiler don't understand.
 
 There are also special editors, or additions to standard editors, available, which supports Alan coding and helps with formatting and even compiling and running your game.
 
@@ -180,7 +180,7 @@ In order to understand the rules of the Alan language, which this manual is all 
 
 
 
-==== What’s Happening?
+==== What's Happening?
 
 The execution of an adventure is primarily driven by the input of player commands. A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source. After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source. Scheduled events are then run, and then the player takes another turn. This is described in more detailed in section _5.1_, _A Turn of Events_ on page _159_.
 
@@ -202,7 +202,7 @@ In Alan, exits are always one-way, and an explicit declaration of a backward pat
 
 ==== The Things
 
-Most objects in an adventure are things that in real life would be objects too, like a knife or a key. In addition, other things that should be possible to manipulate by the player, e.g. parts of the scenery, must be declared as an object. For example if you require the player to ‘whistle the melody’, then the melody must be an Alan object.
+Most objects in an adventure are things that in real life would be objects too, like a knife or a key. In addition, other things that should be possible to manipulate by the player, e.g. parts of the scenery, must be declared as an object. For example if you require the player to '`whistle the melody`', then the melody must be an Alan object.
 
 Objects, like locations, have a description that is presented when they are encountered during the game.
 
@@ -279,7 +279,7 @@ Later in the manual, you will find semi-formal definitions, grammar rules, for h
 The rules for the rules are available in Appendix _L_ on page _221_.
 ................................................................................
 
-In running text, words that are keywords or signify an Alan construct is written in a mono-spaced, bold, font. This helps distinguish the English word ‘the’ from the Alan keyword ‘`The`’.
+In running text, words that are keywords or signify an Alan construct is written in a mono-spaced, bold, font. This helps distinguish the English word '`the`' from the Alan keyword `The`.
 
 As shown in the last example, Alan keywords are written with the first letter capitalized. This is simply a convention and has no effect other than the visual. A keyword can be written `Keyword`, `KEYWORD`, `keyword`, or even `KeYwOrD` (if you are keen to show how good you are with a keyboard…). This manual tries to be consistent with using the first version (except in grammar rules).
 
@@ -314,7 +314,7 @@ Start At kitchen.
 --------------------------------------------------------------------------------
 
 
-This is a complete Alan adventure (although very primitive). As you see, every Alan construct ends with a period (‘`.`’) and there is a “`Start At`” sentence at the end, indicating in which location to put the hero when the game starts.
+This is a complete Alan adventure (although very primitive). As you see, every Alan construct ends with a period (`.`) and there is a “`Start At`” sentence at the end, indicating in which location to put the hero when the game starts.
 
 Type the above text into a text file, e.g. using a notepad program. Run this little Alan source through the Alan compiler and try the adventure (see Appendix _A_, _How To Use The System_, on page _202_ on how to do this). After starting the adventure, two lines will be shown on your screen.
 
@@ -394,7 +394,7 @@ Alternatively, attributes may be numeric (e.g. `Has weight 5`) or be of string t
 
 We also introduce another Alan statement, the `If`-statement. The `If`-statement allows you to select which statements to execute according to some condition. In the example, the `closed` attribute of the door selects which description to show. There are further variations of expressions and the `If`-statement, but we will come back to these later (_Expressions_ on page _141_ and _If_ on page _130_).
 
-Instead, let’s look at some other statements in relation to objects.
+Instead, let's look at some other statements in relation to objects.
 
 It must of course be possible to change the value of attributes of an object. You can do this using the `Make` statement or the `Set` statement. For example if the door should be opened (the player having said “open door”, perhaps) this could be performed by stating
 
@@ -427,7 +427,7 @@ These statements only change attributes. The implications of such a change must 
 
 [NOTE]
 ================================================================================
-Alan does not understand, or enforce, any semantic in the identifiers for attributes, they are only identifiers. The illusion of the effects of differences in the value must be implemented by varying the output. In addition, Alan does not understand that an attribute ‘closed’, for a human would be the opposite of an attribute ‘open’. You should choose one and stick to it.
+Alan does not understand, or enforce, any semantic in the identifiers for attributes, they are only identifiers. The illusion of the effects of differences in the value must be implemented by varying the output. In addition, Alan does not understand that an attribute '`closed`', for a human would be the opposite of an attribute '`open`'. You should choose one and stick to it.
 ================================================================================
 
 
@@ -505,7 +505,7 @@ Every mammal Isa vertebrate …
 The house_pet Isa cat …
 --------------------------------------------------------------------------------
 
-The `Every`-construct defines a class and its properties, including inheriting from another, even more general class. The `The`-construct declares an instance, which in this example inherits from the class ‘cat’. The `Isa`-construct defines from which class properties are inherited.
+The `Every`-construct defines a class and its properties, including inheriting from another, even more general class. The `The`-construct declares an instance, which in this example inherits from the class '`cat`'. The `Isa`-construct defines from which class properties are inherited.
 
 
 
@@ -670,7 +670,7 @@ End Verb open.
 
 
 
-A `Verb` is either a simple command taking no parameters, like ‘look’, ‘save’ or ‘help’, or it involves one or more parameters that the player can reference. Simple verbs should be declared at the top level, globally, i.e. outside of any other declaration. Verbs taking parameters, on the other hand, must be declared within the class or instance, with which it is associated. For example, if a verb will handle objects it should be declared in the object class. The example above should probably best be placed in the door object itself.
+A `Verb` is either a simple command taking no parameters, like '`look`', '`save`' or '`help`', or it involves one or more parameters that the player can reference. Simple verbs should be declared at the top level, globally, i.e. outside of any other declaration. Verbs taking parameters, on the other hand, must be declared within the class or instance, with which it is associated. For example, if a verb will handle objects it should be declared in the object class. The example above should probably best be placed in the door object itself.
 
 
 [source,alan]
@@ -757,7 +757,7 @@ Normally a verb acts on one object or actor, henceforth called a parameter, refe
 
 
 
-This form, or syntax, is the default form if you don’t specify anything else. The default syntax might thus be described as
+This form, or syntax, is the default form if you don't specify anything else. The default syntax might thus be described as
 
 // @PSEUDOCODE: The following code examples might not highlight well due to the
 //              presence of '...' ot square brackets placeholder!
@@ -784,7 +784,7 @@ Syntax
 
 
 
-This syntax defines the `put_in` verb to be executed when the player has input the word ‘`put`’ followed by a reference to an object or actor (a parameter named `obj`), followed by the word `in` followed by a reference to a second parameter (the container, referred to as `cont`), as in
+This syntax defines the `put_in` verb to be executed when the player has input the word '`put`' followed by a reference to an object or actor (a parameter named `obj`), followed by the word `in` followed by a reference to a second parameter (the container, referred to as `cont`), as in
 
 [EXAMPLE,role="gametranscript"]
 ================================================================================
@@ -822,7 +822,7 @@ Therefore, the Alan system takes care of some specific formatting issues. First,
 
 Secondly, a few special cases are also handled automatically:
 
-* After a full stop (period, the character ‘.’), an exclamation (‘!’) or a question mark (‘?’) and in the beginning of paragraphs, including location headings, the first character will be guaranteed to be upper case, automatically converted if necessary. This means for example that you don’t have to consider the case when the name of an object might be printed as the first thing in a sentence. The name will automatically be capitalized. For example:
+* After a full stop (period, the character '`.`'), an exclamation ('`!`') or a question mark ('`?`') and in the beginning of paragraphs, including location headings, the first character will be guaranteed to be upper case, automatically converted if necessary. This means for example that you don't have to consider the case when the name of an object might be printed as the first thing in a sentence. The name will automatically be capitalized. For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -847,7 +847,7 @@ This would be the case even if the description of the postmen started with a low
 
 * Two outputs following each other will automatically be separated by a space (a blank character). Except for the following case:
 +
-If an output is immediately followed by another output starting with a full stop (period, the character ‘.’), an exclamation, a question mark or a comma, and it is the only character in that output or it is followed by a space (blank character), no space will be inserted before that output. This rule will make sure that the full stop in the following source is automatically adjacent to the previous text, without the need to suppress spacing.
+If an output is immediately followed by another output starting with a full stop (period, the character '`.`'), an exclamation, a question mark or a comma, and it is the only character in that output or it is followed by a space (blank character), no space will be inserted before that output. This rule will make sure that the full stop in the following source is automatically adjacent to the previous text, without the need to suppress spacing.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -928,7 +928,7 @@ This chapter describes the Alan language in detail. Within each section, grammar
 
 === General Rules
 
-The Alan language is divided into syntactic components of different kinds. Each component may be composed of text and/or other components. A component is terminated by a period or full stop (‘.’). This indicates that that component is complete. Some components start with a keyword or initial phrase, such as ‘`Description`’ or ‘`Exit east To kitchen`’. If it is to be followed by further components, such as statements or output strings, that keyword or phrase should normally _not_ be followed by a period, but by its continuing components. For example:
+The Alan language is divided into syntactic components of different kinds. Each component may be composed of text and/or other components. A component is terminated by a period or full stop ('`.`'). This indicates that that component is complete. Some components start with a keyword or initial phrase, such as `Description` or `Exit east To kitchen`. If it is to be followed by further components, such as statements or output strings, that keyword or phrase should normally _not_ be followed by a period, but by its continuing components. For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1124,7 +1124,7 @@ These rules ensure that attribute references and other properties are always ret
 
 Some statements require their arguments to be of a specific type. This is enforced by the compiler. The compatibility rules apply here also, given that the required type is given by the statement itself.
 
-Examples include the conditional `If` statement that requires a Boolean value (or expression) to test and the `Use` statement, which requires references to instances that are subclasses of the predefined class ‘actor’.
+Examples include the conditional `If` statement that requires a Boolean value (or expression) to test and the `Use` statement, which requires references to instances that are subclasses of the predefined class `actor`.
 
 
 
@@ -1370,7 +1370,7 @@ A location is a declaration of a place (a “room”) in the game that (normally
 * things and locations may be located to locations
 * exits can only lead to locations and only locations can have exits
 * the start location must be a location
-* locations can’t have container properties
+* locations can't have container properties
 * verbs in locations are executed only when the hero is at that location
 
 When a location is described (for example when entering it) it is presented with a heading (the location name), the description (in the description clause) followed by descriptions of any present objects and actors not already, explicitly, described (using a `describe` statement) in the description.
@@ -1445,7 +1445,7 @@ Accumulated, you can add further attributes in a class or instance.
 |*Articles & Forms* |Overridden.
 |*Mentioned* |Overridden. Also overrides names.
 |*Container* |Overridden, all clauses are overridden.
-|*Verb declarations* |Accumulated. Verb bodies are accumulated for verbs with the same name as the inherited. Use qualifiers (see Verb Qualification 106) if you don’t want all of them to execute.
+|*Verb declarations* |Accumulated. Verb bodies are accumulated for verbs with the same name as the inherited. Use qualifiers (see Verb Qualification 106) if you don't want all of them to execute.
 |*Scripts* |Overridden, for same script name.
 |*Entered* |Accumulated. Entered-clauses in nested locations are executed from the outside in. Entered-clauses in parent classes are executed first. So the first clause to be executed is the parent of an outer location.
 |*Exits* |Overridden, for same direction.
@@ -1536,7 +1536,7 @@ The rod Isa object At grate
 --------------------------------------------------------------------------------
 
 
-This would allow the player to refer to the object using either ‘rusty rod’ or ‘dynamite’. (Or as a side effect ‘rusty dynamite’.) The first name clause is used for building a default description, if necessary (see _Description_ on page _75_).
+This would allow the player to refer to the object using either '`rusty rod`' or '`dynamite`'. (Or as a side effect '`rusty dynamite`'.) The first name clause is used for building a default description, if necessary (see _Description_ on page _75_).
 
 The character case used in any word is retained for output, but player input will always be matched without considering case. This way you can e.g. give capitalized names to people giving a correct output.
 
@@ -1871,14 +1871,14 @@ The syntax for simple descriptions is:
 description = 'DESCRIPTION' {statement}
 --------------------------------------------------------------------------------
 
-If the `Description` clause is missing for an instance (and no description is inherited), the Alan system will supply a default description such as “There is a round ball here.”. If there is a `Description` clause but it contains no statements, the object will be ‘invisible’, i.e. no description of it will be printed, not even a default one. This can be useful for objects already described by the location description, or of objects with particular properties.
+If the `Description` clause is missing for an instance (and no description is inherited), the Alan system will supply a default description such as “There is a round ball here.”. If there is a `Description` clause but it contains no statements, the object will be '`invisible`', i.e. no description of it will be printed, not even a default one. This can be useful for objects already described by the location description, or of objects with particular properties.
 
 Here are some examples of simple description declarations
 
 [source,alan]
 --------------------------------------------------------------------------------
 The south_of_house Isa location
-  Name ‘South of House’
+  Name 'South of House'
   Is outdoors.
   Description
     "You are facing the south side of a white
@@ -1966,7 +1966,7 @@ The negative forms are used in standard messages of the type:
 
 [EXAMPLE,role="gametranscript"]
 ================================================================================
-I can’t see any door here.
+I can't see any door here.
 ================================================================================
 
 
@@ -2021,7 +2021,7 @@ An article is not used when the instance is displayed when acting on multiple ob
 
 
 
-For instances that should not have any article at all, like ‘some money’, or ‘mr Andersson’, an `Indefinite Article` clause containing no statements must be used:
+For instances that should not have any article at all, like '`some money`', or '`mr Andersson`', an `Indefinite Article` clause containing no statements must be used:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2216,7 +2216,7 @@ The `Count` limit considers all instances in the container. This might differ fr
 
 
 
-Container properties are inherited in its entirety. Locations can’t have container properties.
+Container properties are inherited in its entirety. Locations can't have container properties.
 
 
 
@@ -2383,14 +2383,14 @@ Two interconnected locations might be declared like:
 
 [source,alan]
 --------------------------------------------------------------------------------
-The east_end Isa location Name ‘East End of Hall’
+The east_end Isa location Name 'East End of Hall'
   Description
     "This is the east end of a vast hall. Far
      away to the west you can see the west end."
   Exit w To west_end.
 End The east_end.
 
-The west_end Isa location Name ‘West End of Hall’
+The west_end Isa location Name 'West End of Hall'
   Description
     "From this western end of the large hall it
      is almost impossible to discern the
@@ -2414,7 +2414,7 @@ Exits are only allowed in classes or instances inheriting from the pre-defined c
 
 ==== Scripts
 
-The `Script` is the actor’s way of performing things. In a way, it corresponds to what the hero is ordered to do by the player’s typed-in commands.
+The `Script` is the actor's way of performing things. In a way, it corresponds to what the hero is ordered to do by the player's typed-in commands.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -2578,9 +2578,9 @@ indicator = '*'' | '!''
 
 There are two indicators available:
 
-*‘*’* This parameter can reference multiple instances (for example by the player using *all* or concatenating a number of parameters using a conjunction like *and*, see _Player Input_ on page _160_).
+* '```+```' This parameter can reference multiple instances (for example by the player using *all* or concatenating a number of parameters using a conjunction like *and*, see _Player Input_ on page _160_).
 
-*‘!’* The parameter (the instance the player refers to in this position in the syntax) need not be present at the current location. The default case is that the Alan interpreter requires that a referenced instance must be present at the same location as the hero (if the parameter inherits from `thing`. Note that *entities* are always accessible). For cases when the player must be able to refer to objects and actors that are not present (e.g. in a verb like `talk_about`) this omnipotent indicator can be used to force the interpreter to accept references to any object or actor.
+* '```!```' The parameter (the instance the player refers to in this position in the syntax) need not be present at the current location. The default case is that the Alan interpreter requires that a referenced instance must be present at the same location as the hero (if the parameter inherits from `thing`. Note that *entities* are always accessible). For cases when the player must be able to refer to objects and actors that are not present (e.g. in a verb like `talk_about`) this omnipotent indicator can be used to force the interpreter to accept references to any object or actor.
 
 An example
 
@@ -2615,7 +2615,7 @@ Refer to _Player Input_ on page _160_ for details on the input of references to 
 
 
 
-This is because the syntax for the verb `drop` does not allow multiple references by not including the multiple-indicator. Another example using the ‘!’ indicator:
+This is because the syntax for the verb `drop` does not allow multiple references by not including the multiple-indicator. Another example using the `!` indicator:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2763,7 +2763,7 @@ Syntax <1> = <1> (<2>).
 
 The place-holders represents 1) the name of the verb, and 2) the class in which the verb is first encountered.
 
-The first template is used for verbs that are declared globally, i.e. outside of any class or instance. Since these are only applied when no parameters are used, this will effectively work for simple ‘verb-only’ ``Verb``s, such as `quit`, `look`, `save` etc.
+The first template is used for verbs that are declared globally, i.e. outside of any class or instance. Since these are only applied when no parameters are used, this will effectively work for simple '`verb-only`' ``Verb``s, such as `quit`, `look`, `save` etc.
 
 Verbs declared in an instance or a class, for which there is no syntax, by default receives a syntax of the common verb/object type corresponding to the second template above. This is a reasonable syntax for many cases and restricts the parameters to instances of the class where the verb was declared. It also implies that the default name for the single parameter is the same as the name of that class, e.g. `object`, `actor`, `thing`, etc. (See _WHAT Specifications_ on page _140_ for the implications of this.)
 
@@ -2803,9 +2803,9 @@ When all parameter positions in the syntax have been resolved in this way, the r
 
 [source,ebnf]
 --------------------------------------------------------------------------------
-verb = ['META'] 'VERB’ id {',’ id}
+verb = ['META'] 'VERB' id {',' id}
            verb_body
-       'END’ 'VERB’ [id] '.’
+       'END' 'VERB' [id] '.'
 
 verb_body = simple_verb_body
           | {verb_alternative}
@@ -2827,7 +2827,7 @@ A global declaration will only be considered when the verb is not applied to any
 
 A verb declaration inside a class definition or an instance will be considered if that instance (or an instance inheriting from that class) is used as a parameter in the input.
 
-The identifiers in the list (‘take’ and ‘get’ in the example above) will be player words that by default can be used to invoke the verb. But if a `Syntax` is declared for the `Verb` (see _Syntax Definitions_ on page _92_), the identifiers in the list will not be accessible to the player, instead the sequence of words and parameters specified in the `Syntax` must be used.
+The identifiers in the list (`take` and `get` in the example above) will be player words that by default can be used to invoke the verb. But if a `Syntax` is declared for the `Verb` (see _Syntax Definitions_ on page _92_), the identifiers in the list will not be accessible to the player, instead the sequence of words and parameters specified in the `Syntax` must be used.
 
 If there is more than one identifier in the list, as in the example above, this can be viewed as a short hand for declaring identical checks and bodies for all the verbs in the list. This will create synonymous actions for different verbs on the level where the verb declaration is. They may differ in implementation at other places, i.e. if they are declared in the same verb declaration on one level in an inheritance tree, they can still have different bodies on another level.
 
@@ -3050,7 +3050,7 @@ If you add a verb to the class `entity`, it will be inherited by all instances, 
 
 ===== Controlling Execution with Qualifiers
 
-There are cases where you don’t want all the bodies to be executed, or there is a special need to execute them in a different order. The most common case is to prohibit other bodies to be executed, e.g. a verb body in a location might want to stop the player from throwing any object. This verb body must then ensure that it is the only verb bodies to be executed. This can be done using the `Only` qualifier (see _Verb Qualification_ on page _106_).
+There are cases where you don't want all the bodies to be executed, or there is a special need to execute them in a different order. The most common case is to prohibit other bodies to be executed, e.g. a verb body in a location might want to stop the player from throwing any object. This verb body must then ensure that it is the only verb bodies to be executed. This can be done using the `Only` qualifier (see _Verb Qualification_ on page _106_).
 
 Qualifiers control the order of execution of verb bodies. How does this work?
 
@@ -3219,7 +3219,7 @@ Syntax
 Verb look_at …
 --------------------------------------------------------------------------------
 
-This will result in an error message indicating that the synonym word `look_at` is not defined. This is because the `Syntax` (see section _3.8_) defined the verb `look_at` to have the specified syntax (including the player words ‘look’ and ‘at’), the player word `look_at` is not defined, which is as well as the player would not be able to input a word with an underscore (see _Player Input_ on page _160_).
+This will result in an error message indicating that the synonym word `look_at` is not defined. This is because the `Syntax` (see section _3.8_) defined the verb `look_at` to have the specified syntax (including the player words '`look`' and '`at`'), the player word `look_at` is not defined, which is as well as the player would not be able to input a word with an underscore (see _Player Input_ on page _160_).
 
 You can achieve the desired effect by instead giving multiple verb identifiers in the verb declarations; this will give the same verb bodies (checks and actions) to multiple verbs. See the section on _Verbs_ on page _100_ for details on verb declarations.
 
@@ -3235,13 +3235,13 @@ The Alan system has a number of standard messages built in. These messages are p
 [EXAMPLE,role="gametranscript"]
 ================================================================================
 &gt; go north +
-You can’t go that way.
+You can't go that way.
 ================================================================================
 
 
 
 
-The response "You can’t go that way." is a typical example of such system messages (for details see Appendix _C.1_, _Input Response Messages_).
+The response "You can't go that way." is a typical example of such system messages (for details see Appendix _C.1_, _Input Response Messages_).
 
 To make the user dialogue more adapted to the settings you select, Alan allows you to define your own version of these messages. The grammar for this is
 
@@ -3393,7 +3393,7 @@ Start At outside_house.
   Schedule bird_chirp After 5.
 --------------------------------------------------------------------------------
 
-Only the ‘`At What`’ form of the `Where` construct (see _WHERE Specifications_ on page _138_) is allowed in the `Start` section. Any statements are allowed in the start section but they cannot refer to any parameters.
+Only the `At What` form of the `Where` construct (see _WHERE Specifications_ on page _138_) is allowed in the `Start` section. Any statements are allowed in the start section but they cannot refer to any parameters.
 
 The start section must be the last declaration in an Alan source.
 
@@ -3461,7 +3461,7 @@ $$    Escape from automatic space insertion and capitalization
 $a    The name of the actor that is executing
 $l    The name of the current location
 $v    The verb the player used (the first word)
-$_    Print this as a ‘$’ if in conflict with other symbols
+$_    Print this as a '$' if in conflict with other symbols
 ................................................................................
 
 
@@ -3470,17 +3470,12 @@ $_    Print this as a ‘$’ if in conflict with other symbols
 //        The problem is only in ST, and the original compiled well, but it broke
 //        up the whole document syntax from this point on, making it impossible
 //        to work on it using Sublime text.
-//        Below is the commented out original Note Admonition block.
 
 [NOTE]
 ================================================================================
-You might want to output “$400” but “$4” will be interpreted as the indefinite form of the fourth parameter, as described below. So you need to use the ‘&#95;’ to make that happen (“$&#95;400”).
+You might want to output “$400” but “$4” will be interpreted as the indefinite form of the fourth parameter, as described below. So you need to use the '`&#95;`' to make that happen (“$&#95;400”).
 ================================================================================
 
-// [NOTE]
-// ================================================================================
-// You might want to output “$400” but “$4” will be interpreted as the indefinite form of the fourth parameter, as described below. So you need to use the ‘_’ to make that happen (“$_400”).
-// ================================================================================
 
 
 
@@ -3591,7 +3586,7 @@ End If.
 
 If the *what* part refers to an instance, the optional `form` may be used to control in which form the instance will be output.
 
-If ‘`THE`’ is used the form used will be the definite form, usually the short form preceded by a definite article. Correspondingly, the use of ‘`AN`’ indicates an indefinite form. A third form, using ‘`NO`’, is available. It indicates that the negative form as defined by the negative article or form should be output. Refer to _Articles and Forms_ on page _78_ for a description of the definite/indefinite articles and forms. Finally, the ‘`IT`’ form will print the pronoun associated with the instance.
+If `THE` is used the form used will be the definite form, usually the short form preceded by a definite article. Correspondingly, the use of `AN` indicates an indefinite form. A third form, using `NO`, is available. It indicates that the negative form as defined by the negative article or form should be output. Refer to _Articles and Forms_ on page _78_ for a description of the definite/indefinite articles and forms. Finally, the `IT` form will print the pronoun associated with the instance.
 
 
 
@@ -3618,7 +3613,7 @@ Of course, the instance being listed must be an instance that has the container 
 
 Alan has some multimedia provisions, although they may not be available on every platform and implementation. The `Show` statement, presents an image in the output window, and the `Play` statement plays a sound.
 
-The Alan compiler will always support the multi-media statements, but a particular interpreter might not do so. Most GLK-based interpreters will support it but others might also. The game will still play fine, but the multi-media resources will silently be ignored. There is also no way to check for this in your source code. So, don’t rely on them for your story, particularly do not give the player necessary information only through pictures.
+The Alan compiler will always support the multi-media statements, but a particular interpreter might not do so. Most GLK-based interpreters will support it but others might also. The game will still play fine, but the multi-media resources will silently be ignored. There is also no way to check for this in your source code. So, don't rely on them for your story, particularly do not give the player necessary information only through pictures.
 
 Image and sound files are analyzed by the compiler and copied into an Alan v3 resource file (file extension *.a3r*) that must be distributed with your game file, otherwise they will not be available during game play. The original file will be left untouched.
 
@@ -3769,7 +3764,7 @@ The number of moves can be zero, i.e. `After 0` means that the event will occur 
 
 An important case is when a `Schedule` statement without a `where`-clause is executed inside a `Rule`. Since rules are executed at nowhere so will the event. This means that any printout will be done nowhere and thus will be invisible to the player.
 
-If the `where`-expression has the form `At id`, and the identifier represents an instance not inheriting from `location`, the event will occur wherever that instance is when the event occurs. The event will ‘follow’ the instance.
+If the `where`-expression has the form `At id`, and the identifier represents an instance not inheriting from `location`, the event will occur wherever that instance is when the event occurs. The event will '`follow`' the instance.
 
 Executing a second `Schedule` statement for the same event before it has occurred will reschedule the event to the new time. An event can only be scheduled for one execution at a time.
 
@@ -4220,7 +4215,7 @@ Score 25.
 
 
 
-The first time every such statement is executed the points given are added to the player’s current score. `Score` without any arguments prints a message indicating the current accumulated score.
+The first time every such statement is executed the points given are added to the player's current score. `Score` without any arguments prints a message indicating the current accumulated score.
 
 
 [NOTE]
@@ -4603,7 +4598,7 @@ string1 + " " + anotherString
 
 ==== Relational and Equality Operators
 
-Equality (‘*=*’, meaning equals) and relational operators (‘*<*’, ‘*>*’, ‘*<=*’, ‘*>=*’, meaning: less than, greater than, less than or equal, greater than or equal respectively) are used to compare expressions. The result is true or false and may be negated by using an optional `Not`.
+Equality (`=`, meaning equals) and relational operators (`<`, `>`, `+<=+`, `>=`, meaning: less than, greater than, less than or equal, greater than or equal respectively) are used to compare expressions. The result is true or false and may be negated by using an optional `Not`.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -4611,9 +4606,9 @@ If temperature Of oven Not > 100 Then …
 If weather Of world Not < protection Of hero Then …
 --------------------------------------------------------------------------------
 
-Comparing two string expressions using the binary equality operator ‘*=*‘ will make a case insensitive comparison, i.e. it will give a true value if the strings are the same without considering the case of the characters. The special identity operator, ‘*==*‘, only works on strings and compares the strings for an exact match (i.e. considering character case).
+Comparing two string expressions using the binary equality operator `=` will make a case insensitive comparison, i.e. it will give a true value if the strings are the same without considering the case of the characters. The special identity operator, `==`, only works on strings and compares the strings for an exact match (i.e. considering character case).
 
-Two values of instance type may be compared with the ‘*=*‘ and ‘*<>*‘ operators, and may e.g. be used to test if a parameter refers to a particular instance or is the same as another parameter. For example
+Two values of instance type may be compared with the `=` and `<>` operators, and may e.g. be used to test if a parameter refers to a particular instance or is the same as another parameter. For example
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -4819,7 +4814,7 @@ filter = 'ISA' class
 
 Filters can be used to filter out only particular instances to loop or aggregate over. If one of the filters is a *Isa <class>*, only instances of that class will be bound to the loop variable or considered in the aggregation. In particular this is required if any of the other filters refer to attributes, which is only allowed if the class is known and that class is guaranteed to have that attribute. Other ways to restrict the filtered instances is to use a `Where` filter which implicitly restricts to instances available at or in that location, container or set. See _The Whereabouts of an Entity_ on page _148_ for details on the various forms of the `Where` expression.
 
-Multiple filters can be listed separated with a comma. Each filter must enumerate the set of values to a compatible set, e.g. using two ‘`Isa`’ filters for actors and locations respectively is not allowed since those two sets can never be compatible.
+Multiple filters can be listed separated with a comma. Each filter must enumerate the set of values to a compatible set, e.g. using two `Isa` filters for actors and locations respectively is not allowed since those two sets can never be compatible.
 
 
 
@@ -4829,7 +4824,7 @@ Multiple filters can be listed separated with a comma. Each filter must enumerat
 
 === Comments
 
-Comments may be placed anywhere in the Alan source. A comment starts with double hyphens (‘--’) and extends to the end of the line.
+Comments may be placed anywhere in the Alan source. A comment starts with double hyphens (`--`) and extends to the end of the line.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -4887,7 +4882,7 @@ Identifiers and words retain their capitalization. An example is
 The eiffel_tower Name Eiffel tower …
 --------------------------------------------------------------------------------
 
-The first word in the name will always be printed with a capital ‘E’. However, when comparing the word to player input and other occurrences of the same word in the source, case will be ignored. This means that you cannot have two words or identifiers that differ only in case, they will be the same and stored in the game data as one of the occurrences, which one is implementation dependent.
+The first word in the name will always be printed with a capital '`E`'. However, when comparing the word to player input and other occurrences of the same word in the source, case will be ignored. This means that you cannot have two words or identifiers that differ only in case, they will be the same and stored in the game data as one of the occurrences, which one is implementation dependent.
 
 
 [NOTE]
@@ -4909,7 +4904,7 @@ Be careful when using quoted identifiers, especially if the player is supposed t
 
 [NOTE]
 ================================================================================
-To get a single quote within a quoted identifier repeat it (‘Tom’’s Diner’).
+To get a single quote within a quoted identifier repeat it (`'Tom''s Diner'`).
 ================================================================================
 
 
@@ -4938,7 +4933,7 @@ The string is the main lexical component in an Alan source. This is how you desc
 string = double_quote {any_character} double_quote
 --------------------------------------------------------------------------------
 
-When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in _Output Statements_ on page _117_). You may therefore write your strings any way you like; they will always be neatly formatted on the player’s screen. You can use special codes (see _String Statement_ on page _118_ for a list) to indicate (but not precisely control) the formatting.
+When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in _Output Statements_ on page _117_). You may therefore write your strings any way you like; they will always be neatly formatted on the player's screen. You can use special codes (see _String Statement_ on page _118_ for a list) to indicate (but not precisely control) the formatting.
 
 
 [NOTE]
@@ -5080,7 +5075,7 @@ The pronouns have to be defined by the author in his source (see _Pronouns_ on p
 
 The reference to multiple objects (or actors) in a position is only possible if the adventure author has allowed it by using a multiple indicator in the syntax definition (see _Syntax Definitions_ on page _91_). All the variations above are built in and handled automatically by the run-time system.
 
-The interpreter also automatically restricts parameter references to things reachable according to the semantic rules of each built-in base class (see _Instances_ on page _56_ for the complete details). For example objects are only possible to refer to if they are present at the current location, except if the syntax for the command uses the omnipotent ‘!’ indicator (see _Syntax Definitions_ on page _91_ for details). For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to _Distant & Imaginary Objects_ on page _183_.
+The interpreter also automatically restricts parameter references to things reachable according to the semantic rules of each built-in base class (see _Instances_ on page _56_ for the complete details). For example objects are only possible to refer to if they are present at the current location, except if the syntax for the command uses the omnipotent `!` indicator (see _Syntax Definitions_ on page _91_ for details). For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to _Distant & Imaginary Objects_ on page _183_.
 
 If the player uses *ALL* instead of a reference to an instance in his command, the verb will be applied to all appropriate instances at the current location, _except_ the ones that do not pass all checks for the verb (see _Verbs_ on page _100_ for further details on this).
 
@@ -5090,7 +5085,7 @@ A restriction placed on the player input by the interpreter is that the words th
 
 === Run-time Contexts
 
-When the player enters a command, the Alan run-time system evaluates the various constructs from the adventure description (source) as described above. Depending on the player’s command evaluation of different parts of the adventure may be triggered. These parts all have different conditions under which they are evaluated and have different contexts. Four different execution contexts can be identified:
+When the player enters a command, the Alan run-time system evaluates the various constructs from the adventure description (source) as described above. Depending on the player's command evaluation of different parts of the adventure may be triggered. These parts all have different conditions under which they are evaluated and have different contexts. Four different execution contexts can be identified:
 
 * Execution of a verb. During the execution of a verb (the syntax and verb checks and the verb bodies), which is the result of the player entering a command that was not a directional command, parameters are defined and may be referenced in the statements and expressions. In addition, the `Current Actor` is set to the hero and `Current Location` to the location where the hero is (`Here` refers to the location of the hero).
 * Execution of descriptions. These are started as the response to a directional command, a `Look` or `Describe` statement, or a `Locate` statement operating on the hero. During this, no parameters are defined, `Current Actor` is set to the hero, and `Current Location` of course to the location being described. The description clauses for objects and locations, as well as the `Entered` clause of locations, are evaluated in this context. `Entered` clauses are executed for all actors entering a location with `Current Actor` set to the moving actor.
@@ -5130,9 +5125,9 @@ Most versions of the Alan interpreter, Arun, supports both taking a transcript o
 
 This is very convenient during development of a game where you can play through the game up to a point and start from there, or even automatically test your game.
 
-To make Arun read input from a script file you can use the special command character ‘@’, which should be followed by the name of the text file in which your commands are listed.
+To make Arun read input from a script file you can use the special command character '```@```', which should be followed by the name of the text file in which your commands are listed.
 
-You can add comments to each line in a script file. The interpreter will not read beyond a semicolon, ‘;’, so anything after it can be seen as a comment. Note that this also works for direct player input.
+You can add comments to each line in a script file. The interpreter will not read beyond a semicolon, '```;```', so anything after it can be seen as a comment. Note that this also works for direct player input.
 
 
 
@@ -5206,7 +5201,7 @@ then all objects receive the attribute “takeable” and unless the attribute i
 --------------------------------------------------------------------------------
 Verb take
   Check Object Is takeable
-    Else "You can’t take the $o."
+    Else "You can't take the $o."
   Does
     Locate Object In inventory.
 End Verb take.
@@ -5363,7 +5358,7 @@ Event explosion
 End Event.
 --------------------------------------------------------------------------------
 
-If the hero isn’t at the location where the event is executed, he will never know anything about what has happened. The solution is to create an event that goes of where the hero is.
+If the hero isn't at the location where the event is executed, he will never know anything about what has happened. The solution is to create an event that goes of where the hero is.
 
 --------------------------------------------------------------------------------
 Event distant_explosion
@@ -5380,7 +5375,7 @@ If Hero Nearby Then
 
 === Doors
 
-A common feature in adventure games is the closed door. Here’s one way implement it:
+A common feature in adventure games is the closed door. Here's one way implement it:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -5466,7 +5461,7 @@ End Event unquit.
 
 === Actors
 
-Actors are vital components to make a story dynamic. They move around and act according to their scripts. To make the player aware of the other actor’s actions they need to be described. This must be done so that the player always get the correct perspective on the actions of the actors.
+Actors are vital components to make a story dynamic. They move around and act according to their scripts. To make the player aware of the other actor's actions they need to be described. This must be done so that the player always get the correct perspective on the actions of the actors.
 
 A way to ensure this is to rely on the fact that output statements are not shown unless the hero is at the location where the output is taking place. This means that for every actor action, especially movement, you need to first describe the actions, then let the actor perform them and, finally, possibly describe the effects.
 
@@ -5482,7 +5477,7 @@ Locate charlie_chaplin At outside_house.
 "Charlie Chaplin comes out from the nearest house."
 --------------------------------------------------------------------------------
 
-An actor is described, for example, when a location is entered or as the result of a *Look,* in the same way as objects are. This means that a good idea is to include the description of an actor’s activities in the description of him. One way to do this would be to use attributes to keep track of the actors state and test these in the description clause.
+An actor is described, for example, when a location is entered or as the result of a *Look,* in the same way as objects are. This means that a good idea is to include the description of an actor's activities in the description of him. One way to do this would be to use attributes to keep track of the actors state and test these in the description clause.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -5523,14 +5518,14 @@ The george Isa actor
 …
 --------------------------------------------------------------------------------
 
-This makes it easier to keep track of what an actor is doing. Another hint here is to describe the change in an actor’s activities at the same time as executing the `Use` statement, like
+This makes it easier to keep track of what an actor is doing. Another hint here is to describe the change in an actor's activities at the same time as executing the `Use` statement, like
 
 Event start_cleaning +
 Use Script cleaning For george. +
 "All of a sudden, George starts to clean the windows." +
 End Event.
 
-This makes the descriptions of changes to be shown when it takes place and the description of the actor is always consistent. You can, of course, still have attributes describing the actor’s state to customize the description of the actor on an even more detailed level, but it generally suffices to describe an actor in terms of what script he is executing.
+This makes the descriptions of changes to be shown when it takes place and the description of the actor is always consistent. You can, of course, still have attributes describing the actor's state to customize the description of the actor on an even more detailed level, but it generally suffices to describe an actor in terms of what script he is executing.
 
 
 
@@ -5640,7 +5635,7 @@ End Event drive_to_garage.
 
 The main idea is that the player/reader is inside the car, and the events are executed at this location thus emulating movement.
 
-There is a multitude of solutions for this problem. One possibility is to exchange the car object for an actor and the events for script steps. However, in this solution the car object is not where the hero is (’inside_car’) so the output from the scripts for the car will not automatically be shown to the player. There are (at least) two different ways to deal with this (one involving attributes, the other involving an extra object), but the solutions are left as an exercise to the reader!
+There is a multitude of solutions for this problem. One possibility is to exchange the car object for an actor and the events for script steps. However, in this solution the car object is not where the hero is (`inside_car`) so the output from the scripts for the car will not automatically be shown to the player. There are (at least) two different ways to deal with this (one involving attributes, the other involving an extra object), but the solutions are left as an exercise to the reader!
 
 As Alan allows nesting locations (locating a location at another as if it was an object or actor), yet another solution would be to actually move the car location between the garage and the parking lot.
 
@@ -5660,7 +5655,7 @@ One example of floating objects is the various parts of the hero's body.
 
 To create floating objects you can use a particular feature of entities, namely the fact that they are always located where the hero is. Such an entity can of course have the container property to allow it to contain a number of other instances.
 
-So to have the hero’s body parts available wherever the hero goes you can use:
+So to have the hero's body parts available wherever the hero goes you can use:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -5861,7 +5856,7 @@ Sometimes you need to make it possible for the player to refer to things either 
 
 ==== A Mountain
 
-For objects that need to be visible from a distance, the easiest method is to introduce a ‘shadow object’. This is a second object acting on behalf of, or representing, the distant object at the locations where it should be possible to refer to it. For example:
+For objects that need to be visible from a distance, the easiest method is to introduce a '`shadow object`'. This is a second object acting on behalf of, or representing, the distant object at the locations where it should be possible to refer to it. For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -5909,7 +5904,7 @@ When hero At scenic_vista Or hero At hill_road =>
   Locate shadow_mountain At hero.
 --------------------------------------------------------------------------------
 
-This will ensure that whenever the hero moves to any of the places from where the mountain is visible, the `shadow_mountain` is sure to follow. However, as the rules are executed _after_ the hero already has moved, a better strategy might be to make the `shadow_mountain` ‘silent’, i.e. to have no description. Instead, the description of it should then be embedded in the description of the adjacent locations. Yet, another possibility would be to move the pseudo-object around using statements in the exits, like
+This will ensure that whenever the hero moves to any of the places from where the mountain is visible, the `shadow_mountain` is sure to follow. However, as the rules are executed _after_ the hero already has moved, a better strategy might be to make the `shadow_mountain` '`silent`', i.e. to have no description. Instead, the description of it should then be embedded in the description of the adjacent locations. Yet, another possibility would be to move the pseudo-object around using statements in the exits, like
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -5962,9 +5957,9 @@ In both cases you would most likely need to restrict the parameters for the synt
 
 === Structure
 
-A good thing to do when designing an interactive fiction story is to separate the geography from the story. In Alan, you can use the import facility to structure your Alan source. One approach could be to place the description of each location in a separate file together with any objects that could be considered part of the scenery or at least is not only a tool in a puzzle. These files can then be included in a ’map’ file, which in turn is included by the top-level file.
+A good thing to do when designing an interactive fiction story is to separate the geography from the story. In Alan, you can use the import facility to structure your Alan source. One approach could be to place the description of each location in a separate file together with any objects that could be considered part of the scenery or at least is not only a tool in a puzzle. These files can then be included in a '`map`' file, which in turn is included by the top-level file.
 
-The story line can be divided into files too, one for each ’scene’. A scene being comments describing the important things that are suppose to happen, any prerequisites and objects, events, rules etc. which are specific for this part of the story.
+The story line can be divided into files too, one for each `scene`. A scene being comments describing the important things that are suppose to happen, any prerequisites and objects, events, rules etc. which are specific for this part of the story.
 
 This strategy will both give you a better structure of your adventure as well as help you design a better story, much like the storyboarding technique used in making movies or plays.
 
@@ -5972,7 +5967,7 @@ This strategy will both give you a better structure of your adventure as well as
 
 === Debugging
 
-Occasionally your Alan code is flawed and you really can’t understand what is actually happening. To aid in discovering which part of your code is run when, the interpreter Arun incorporates some features for debugging. There are a few debugging switches available when starting the interpreter from the command line:
+Occasionally your Alan code is flawed and you really can't understand what is actually happening. To aid in discovering which part of your code is run when, the interpreter Arun incorporates some features for debugging. There are a few debugging switches available when starting the interpreter from the command line:
 
 
 // FIXME: Find a way to style option on the left in bold.
@@ -6037,7 +6032,7 @@ Abug may also be entered during the execution of an adventure. To do this you is
 
 The game must have been compiled with the debug option or the command will be sent to the game which probably does not recognize it.
 
-Typing a question mark or ‘help’ in response to the debug prompt will give a brief listing of the commands available in Abug:
+Typing a question mark or '`help`' in response to the debug prompt will give a brief listing of the commands available in Abug:
 
 
 // FIXME: Current ADBG Help has changed slightly.
@@ -6489,7 +6484,7 @@ ee1: RETURN
 ................................................................................
 
 
-In the instruction trace, lines of ‘’+’ characters indicates the start of interpretation, thus they can be present inside other single step traces (like the `Look` in the example above). Lines of dashes, indicates the return from one such level of interpretation.
+In the instruction trace, lines of '`+`' characters indicates the start of interpretation, thus they can be present inside other single step traces (like the `Look` in the example above). Lines of dashes, indicates the return from one such level of interpretation.
 
 
 
@@ -6511,7 +6506,7 @@ When you have a good idea, try to refrain from typing it in directly in a text e
 
 === Elaborating the Story
 
-After having rewritten the story line once or twice, start creating the scenery. If your setting is small, you could draw a map of the locations needed, but a better way is probably to make a list of major locations first (those essential to the story). For each location note what important properties the location must have and which objects are necessary (just as notes, _don’t_ create the Alan declarations yet!). For each object, make a small note on why the object is needed (by the player!).
+After having rewritten the story line once or twice, start creating the scenery. If your setting is small, you could draw a map of the locations needed, but a better way is probably to make a list of major locations first (those essential to the story). For each location note what important properties the location must have and which objects are necessary (just as notes, _don't_ create the Alan declarations yet!). For each object, make a small note on why the object is needed (by the player!).
 
 This may also be done using a scene-by-scene approach. By this, we mean that the story is segmented into scenes (and maybe also acts) like in a play. For each act and scene, you do the above. This makes it easier to get an overview over a larger adventure.
 
@@ -6533,7 +6528,7 @@ Play the adventure continuously during the development, but do not try the thing
 
 === Polishing the Adventure
 
-There, now you have a working adventure, it’s still a bit bare bones, but still the story plays the way you planned. Now it is time to insert all the nice descriptions, the limitations and perhaps the extra things to divert and hinder the hero. Just be careful not to fall into the locked-door-syndrome. Too many adventures have been tedious to play because you need to find-key/get-key/unlock-door- with-key/open-door (anyway, why do people go around locking doors and throwing away the keys). Think big.
+There, now you have a working adventure, it's still a bit bare bones, but still the story plays the way you planned. Now it is time to insert all the nice descriptions, the limitations and perhaps the extra things to divert and hinder the hero. Just be careful not to fall into the locked-door-syndrome. Too many adventures have been tedious to play because you need to find-key/get-key/unlock-door- with-key/open-door (anyway, why do people go around locking doors and throwing away the keys). Think big.
 
 Start by fixing the verbs so that they prohibit the impossible. Introduce as many synonyms as you can think of, this makes the adventure so much more playable.
 
@@ -6547,7 +6542,7 @@ Lastly, fill in the adjectives for the objects, their descriptions and short des
 
 === Beta Testing
 
-Now you might think that you can start distributing your game. But, wait! As any complex computer program, the game may have various kinds of bugs. Bugs in a work of interactive fiction range from misspellings and grammar errors in your descriptions, logic errors in your implementation of puzzles or events or omissions in the descriptions of surroundings that make the player miss or misunderstand how to act, to inconsistencies in the settings or story, plots that don’t work.
+Now you might think that you can start distributing your game. But, wait! As any complex computer program, the game may have various kinds of bugs. Bugs in a work of interactive fiction range from misspellings and grammar errors in your descriptions, logic errors in your implementation of puzzles or events or omissions in the descriptions of surroundings that make the player miss or misunderstand how to act, to inconsistencies in the settings or story, plots that don't work.
 
 So how do you find these? Your only help are the beta testers. They are the people that you now should consider first a first trial beta release of your game. They should be people who you trust do give their honest opinion and really play it through to find any problems.
 
@@ -6610,7 +6605,7 @@ Here are some examples of other switches:
 * `-summary` produce a summary about number of actors, size of adventure files, timing information etc.
 * `-dump` print the internal form (developers use mainly)
 
-Giving an extra hyphen before the option reverses its meaning (where appropriate), e.g. `--warnings` means don’t show warnings. Switches may be abbreviated as long as they are unambiguous.
+Giving an extra hyphen before the option reverses its meaning (where appropriate), e.g. `--warnings` means don't show warnings. Switches may be abbreviated as long as they are unambiguous.
 
 A.  Running the Adventure
 
@@ -6645,11 +6640,11 @@ Debugging support is described in _Debugging_ on page _187_.
 [appendix]
 == A Sample Interaction
 
-In order to give you an idea of what playing an adventure might be like, if you do not have done that, this appendix lists a typical, and authentic, interaction between a player and a game. Player input is preceded by a prompt (‘>’) and is emphasised for clarity.
+In order to give you an idea of what playing an adventure might be like, if you do not have done that, this appendix lists a typical, and authentic, interaction between a player and a game. Player input is preceded by a prompt ('`>`') and is emphasised for clarity.
 
-In reading this through, you will find that it is possible to use more or less full imperative statements to communicate with the game. However, you may leave out non-important words and the game usually provides a set of common abbreviations, such as ‘w’ for ‘west’, which really means ‘go west’.
+In reading this through, you will find that it is possible to use more or less full imperative statements to communicate with the game. However, you may leave out non-important words and the game usually provides a set of common abbreviations, such as '`w`' for '`west`', which really means '`go west`'.
 
-It is also common to provide possibility to refer to multiple objects in a command, either by use of ‘all’ or specifically listing the objects.
+It is also common to provide possibility to refer to multiple objects in a command, either by use of '`all`' or specifically listing the objects.
 
 Your input is in italics.
 
@@ -6804,7 +6799,7 @@ Although the default values of the messages are static strings, it is possible t
 
 
 
-UNKNOWN_WORD : "I don't know the word ‘$1’."
+UNKNOWN_WORD : "I don't know the word '$1'."
 
 A word not in the dictionary was used by the player.
 
@@ -6854,7 +6849,7 @@ Multiple objects (or actors) matched the words given by the player. More adjecti
 
 For each message, *parameter1* is a reference to the alternative instance.
 
-WHICH_PRONOUN_START : "I don’t know if you by ‘$1’" +
+WHICH_PRONOUN_START : "I don't know if you by '$1'" +
 WHICH_PRONOUN_FIRST : "mean $+1"
 
 When a pronoun given in a command matched multiple parameter in the previous command, these messages are issued to explain this and which the alternatives where. Note that the message is different from the multiple match above only for the start of the message, the list of alternatives are the same, i.e. WHICH_COMMA (repeated) and WHICH_OR (the final).
@@ -6981,7 +6976,7 @@ The possible answers are currently hard-wired into the interpreter, so changing 
 
 
 
-UNDONE : "’$1’ undone."
+UNDONE : "'$1' undone."
 
 When an action is undone, this message is presented to confirm the player action.
 
@@ -7014,7 +7009,7 @@ System errors are errors caused by internal malfunctions. Mainly these are imple
 
 As you enter the twilight zone of Adventures, you stumble and fall to your knees. In front of you, you can vaguely see the outlines of an Adventure that never was. +
  +
-SYSTEM ERROR: Can’t open adventure code file.
+SYSTEM ERROR: Can't open adventure code file.
 
 
 
@@ -7023,7 +7018,7 @@ SYSTEM ERROR: Can’t open adventure code file.
 
 These errors are usually caused by incorrect arguments or file names entered by the player.
 
-Can’t open adventure code file.
+Can't open adventure code file.
 
 The player attempted to run an adventure for which there were no code file available, probably a misspelling.
 
@@ -7051,7 +7046,7 @@ The version of the interpreter you are using is different than the Alan compiler
 
 [NOTE]
 ================================================================================
-the Arun switch *‘-d’* will, beside entering debug mode, also print the version of both the Arun interpreter and the version of the Alan compiler used to compile the adventure.
+the Arun switch `-d` will, beside entering debug mode, also print the version of both the Arun interpreter and the version of the Alan compiler used to compile the adventure.
 ================================================================================
 
 
@@ -7070,7 +7065,7 @@ This means that an attempt to locate a location inside itself has been made. Pro
 
 Non-existing parameter referenced.
 
-A parameter that wasn’t available was referenced. This is probably due to using a parameter shorthand such as $2 inside a string in a context where the syntax was restricted to only one parameter. This may avoided by using the `Say` statement instead of the embedded string parameter references, which would allow compile time checking, thus avoiding the risk of having this happen to the player.
+A parameter that wasn't available was referenced. This is probably due to using a parameter shorthand such as $2 inside a string in a context where the syntax was restricted to only one parameter. This may avoided by using the `Say` statement instead of the embedded string parameter references, which would allow compile time checking, thus avoiding the risk of having this happen to the player.
 
 
 
@@ -7112,9 +7107,9 @@ adventure = [options] {declaration} start_section
 
 
 
-Each item that is an identifier (‘options’, ‘declaration’ etc.), is a construct that in turn is defined by other rules, possibly elsewhere in the manual.
+Each item that is an identifier (`options`, `declaration` etc.), is a construct that in turn is defined by other rules, possibly elsewhere in the manual.
 
-The equal sign (=) may be read as “consists of” or “is defined as”. Optional parts are surrounded by square brackets (‘[‘ and ‘]’). Parts that may be repeated are enclosed in curly braces (‘\{‘ and ‘}’).
+The equal sign (`=`) may be read as “consists of” or “is defined as”. Optional parts are surrounded by square brackets (`[` and `]`). Parts that may be repeated are enclosed in curly braces (`{` and `}`).
 
 
 
@@ -7126,9 +7121,9 @@ The equal sign (=) may be read as “consists of” or “is defined as”. Opti
 {} : 'zero or more times'
 ......................
 
-So the rule might be read as ‘an adventure consists of `options` which are optional, zero or more *declarations* and a `start_section`’.
+So the rule might be read as "`an adventure consists of `options` which are optional, zero or more *declarations* and a ```start_section```".
 
-If the item to the left of the equal sign may be defined in multiple ways, the alternatives are divided by a vertical bar (‘|’). For example
+If the item to the left of the equal sign may be defined in multiple ways, the alternatives are divided by a vertical bar (`|`). For example
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -7153,7 +7148,7 @@ The basic component of the language is reserved words and symbols. These are in 
 random_expression = 'RANDOM' 'IN' expression
 --------------------------------------------------------------------------------
 
-The reserved words ‘random’ and ‘in’ can be followed by an expression (which, to make sense, must refer to a container instance) to form a 'random_expression' (which in itself is an expression).
+The reserved words `random` and `in` can be followed by an expression (which, to make sense, must refer to a container instance) to form a 'random_expression' (which in itself is an expression).
 
 === Keywords
 
@@ -7257,9 +7252,9 @@ For information on how to select which levels of messages to show and where outp
 
 A.  Message explanations
 
-For each message, a short description of the error, possible causes etc. are given. Each message reported also indicates the severity of that error. The message is supplemented with an indication of its severity. An informational message (indicated by the letter ‘I’) simply gives some information to the user, a warning message (‘W’) indicates an error but the compilation still generates a valid output (although not always what the user intended). Error messages (‘E’) indicate errors that have made it impossible to generate any output, but the compiler will continue to process all input. Fatal (‘F’) and system (‘S’) messages always terminate the compilation process immediately.
+For each message, a short description of the error, possible causes etc. are given. Each message reported also indicates the severity of that error. The message is supplemented with an indication of its severity. An informational message (indicated by the letter '`I`') simply gives some information to the user, a warning message ('`W`') indicates an error but the compilation still generates a valid output (although not always what the user intended). Error messages ('`E`') indicate errors that have made it impossible to generate any output, but the compiler will continue to process all input. Fatal ('`F`') and system ('`S`') messages always terminate the compilation process immediately.
 
-The message descriptions below may also contain the special insertion markers ‘`%n`’ (where `n` is a digit), which indicate that text will be inserted at that point in the message during compile time, e.g. the offending identifier or a file name.
+The message descriptions below may also contain the special insertion markers `%n` (where `n` is a digit), which indicate that text will be inserted at that point in the message during compile time, e.g. the offending identifier or a file name.
 
 100 Parsing resumed here.
 
@@ -7281,7 +7276,7 @@ A syntax error was discovered and one or more symbols were replaced by one or mo
 
 An intricate syntax error was discovered. A complete construct was skipped in an attempt to recover.
 
-105 Syntax error, couldn’t recover. +
+105 Syntax error, couldn't recover. +
 106 Parse stack overflow. +
 107 Parse table error. +
 108 Parsing terminated.
@@ -7304,12 +7299,12 @@ The indicated output file could not be opened, probably because the directory di
 
 The source file given on the command line did not exist. The Alan compiler adds the *.alan* extension to the file name given, if it did not include a period.
 
-201 Mismatched block identifier, ’%1’ assumed.
+201 Mismatched block identifier, '%1' assumed.
 
 The identifier following a terminating `END` did not match the one given at the beginning of the construct. This indicates an illegal nesting or a missed `END IF`. The identifier indicates to which block the `END` is assumed to belong.
 
-202 Multiple usage of direction ’%1’ in this Exit. +
-203 Multiple definition of Exit ’%1’ in this location.
+202 Multiple usage of direction '%1' in this Exit. +
+203 Multiple definition of Exit '%1' in this location.
 
 The directional word indicated was used more than once, either in the same, or different exit declaration from the location. This is contradictory and not legal.
 
@@ -7317,7 +7312,7 @@ The directional word indicated was used more than once, either in the same, or d
 
 Only one declaration of default attributes per type is allowed. The second declaration is ignored.
 
-205 Multiple usage of ’%1’ in this VERB definition.
+205 Multiple usage of '%1' in this VERB definition.
 
 When specifying actions for multiple verbs in the same declaration, the indicated word occurred twice.
 
@@ -7325,11 +7320,11 @@ When specifying actions for multiple verbs in the same declaration, the indicate
 
 More than one syntax definition for the same verb was found. This is an error. You should remove the offending one.
 
-207 VERB ’%1’ is not defined.
+207 VERB '%1' is not defined.
 
 A `SYNTAX` construct defined the syntax for a verb that was never defined.
 
-208 ’%1’ is not a VERB.
+208 '%1' is not a VERB.
 
 The identifier on the left hand side of a `SYNTAX` definition was defined as something that was not a `VERB`.
 
@@ -7345,7 +7340,7 @@ The `BEFORE`, `AFTER` and `ONLY` qualifiers may not be used in a `DOES`-clause i
 
 You specified a `where` expression in the `START` section that did not specify an explicit location. The start section specifies where the hero starts and must be a `LOCATION`.
 
-212 Syntax parameter ’%1’ overrides symbol.
+212 Syntax parameter '%1' overrides symbol.
 
 The `SYNTAX` definition valid in this context defined a symbol that is the same as an entity (class or instance). The syntax parameter will take precedence.
 
@@ -7353,15 +7348,15 @@ The `SYNTAX` definition valid in this context defined a symbol that is the same 
 
 You may only specify different verb body alternatives within objects. The global verb body and the verb body in the location may not have alternatives.
 
-214 Parameter not defined in syntax for ’%1’.
+214 Parameter not defined in syntax for '%1'.
 
 The identifier given as the selector in a verb body alternative was not defined in the syntax for that verb.
 
-215 Syntax not compatible with syntax for ’%1’.
+215 Syntax not compatible with syntax for '%1'.
 
 To be able to use the same body for different verbs by supplying them in a comma-separated list in the verb header they must all be compatible. This means that they have the same number of parameters and the parameters have the same names. Otherwise conflicts will arise when figuring out which parameter to use.
 
-216 Parameter ’%1’ multiply defined in this SYNTAX.
+216 Parameter '%1' multiply defined in this SYNTAX.
 
 The parameter was defined more than once in the same SYNTAX definition.
 
@@ -7369,27 +7364,27 @@ The parameter was defined more than once in the same SYNTAX definition.
 
 To be able to use multiple parameters in a player command only one parameter may be marked as referring to multiple objects or actors using ALL or conjugations. This is a warning, the syntax will be as if the first multiple marker was the only one.
 
-218 Multiple definition of attribute ’%1’.
+218 Multiple definition of attribute '%1'.
 
 The indicated attribute name was defined more than once in the same context (default attribute list or within the same entity). Remove one definition.
 
-220 Multiple definition of ’%1’.
+220 Multiple definition of '%1'.
 
 The indicated word has multiple, and possibly different, definitions.
 
-221 Multiple class restriction for parameter ’%1’.
+221 Multiple class restriction for parameter '%1'.
 
 The same parameter occurred more than once in the list of class restriction in the same `SYNTAX` definition.
 
-222 Identifier ’%1’ in class definition is not a parameter.
+222 Identifier '%1' in class definition is not a parameter.
 
 Only the parameters in the syntax may be referenced in the class-restricting clause of a `SYNTAX` definition.
 
-230 No syntax defined for this verb, assumed ’%1 (object)’.
+230 No syntax defined for this verb, assumed '%1 (object)'.
 
 This message is a warning to indicate that the default syntax handling has been used.
 
-310 Identifier ’%1’ not defined.
+310 Identifier '%1' not defined.
 
 The indicated word was never defined. It must be declared either as a location, an object, a container, an actor or an event.
 
@@ -7399,25 +7394,25 @@ The construct indicated does not refer to the correct kind of item, the message 
 
 312 Parameter not uniquely defined as %1, which is required.
 
-In certain contexts it is necessary to refer to a particular type of entity, e.g. the `IN` expression must refer to a container or an object with the container property. If the reference (the WHAT part) is a parameter identifier, this parameter must be restricted to be of the required type by use of parameter restrictions (such as ‘`WHERE c ISA CONTAINER`’).
+In certain contexts it is necessary to refer to a particular type of entity, e.g. the `IN` expression must refer to a container or an object with the container property. If the reference (the WHAT part) is a parameter identifier, this parameter must be restricted to be of the required type by use of parameter restrictions (such as `WHERE c ISA CONTAINER`).
 
-315 Attribute not defined for ’%1’.
+315 Attribute not defined for '%1'.
 
 The indicated attribute is not defined for the particular object, location or actor. It must either be a default attribute or be locally declared.
 
-318 Entity ’%1’ is not a Container.
+318 Entity '%1' is not a Container.
 
 The referenced entity (object or actor) was not declared to have the container property, although the context required a container.
 
-320 Word ’%1’ belongs to multiple word classes (%2 and %3).
+320 Word '%1' belongs to multiple word classes (%2 and %3).
 
 A word was declared as to belong to different word classes such as noun, verb, adjective etc. Only multiple declarations that may lead to unexpected behaviour are reported, usually because of limitations in the current implementation. Generally it is allowed to declare a word e.g. as both an adjective and a noun.
 
-321 Synonym target word ’%1’ not defined.
+321 Synonym target word '%1' not defined.
 
 To define a synonym its target word (the word on the left side of the equal sign) must be defined as a proper word elsewhere in the source.
 
-322 Word ’%1’ already defined as a synonym.
+322 Word '%1' already defined as a synonym.
 
 A word may not be declared as a synonym for different target words.
 
@@ -7433,11 +7428,11 @@ The two values in an expression with a binary operator did not have compatible t
 
 An attribute declared locally (within an object, actor or location) that has the same name as a default attribute, has to have the same type (Boolean, integer or string).
 
-333 The word ’%1’ is defined as a synonym as well as of another word class.
+333 The word '%1' is defined as a synonym as well as of another word class.
 
 Synonyms must be words _not_ defined elsewhere.
 
-400 Script not defined for Actor ’%1’.
+400 Script not defined for Actor '%1'.
 
 No script with the indicated identity was defined for the actor.
 
@@ -7445,11 +7440,11 @@ No script with the indicated identity was defined for the actor.
 
 Inside an actor specification it is permissible to leave out the actor reference in a `USE` statement in which case the surrounding actor is assumed. Outside actor specifications, the actor reference must always be supplied.
 
-402 An Actor can’t be inside a Container.
+402 An Actor can't be inside a Container.
 
 The `LOCATE` statement tried to locate an actor inside a container. This is not allowed.
 
-403 Script number multiply defined for Actor ’%1’.
+403 Script number multiply defined for Actor '%1'.
 
 The indicated number was used for more than one script for the same actor.
 
@@ -7481,11 +7476,11 @@ No parameter is defined in the context where a reference to `OBJECT` was made. P
 
 In certain statements a parameter may not be used at all.
 
-411 %1 ignored for Actor ’hero’.
+411 %1 ignored for Actor 'hero'.
 
 It is allowed to redefine the predefined actor `HERO` (the player). This makes it possible to define local attributes and descriptions for the hero. However any definition of scripts or initial location is ignored (the script is supplied by the player in his input and the initial location is defined in the `START` section).
 
-412 ’ACTOR’ is not allowed inside events.
+412 'ACTOR' is not allowed inside events.
 
 In events no actor is active. This means that no reference to the active actor can be made. See _Run-time Contexts_ _162_.
 
@@ -7517,19 +7512,19 @@ The aggregates `MAX` and `SUM` can only perform their calculation on integers.
 
 In the indicated context only integer and string type expressions may be used.
 
-501 LOCATION ’%1’ has no Exits.
+501 LOCATION '%1' has no Exits.
 
 In case the hero is located at the indicated location he may not be able to escape from that location. This may be intentional (as for a limbo location or a location with magic words to use as an escape) but the warning is presented as a reminder.
 
-600 Multiple use of option ’%1’, ignored.
+600 Multiple use of option '%1', ignored.
 
 The indicated option was used more than once, this occurrence is ignored and the previous setting used.
 
-601 Unknown option, ’%1’.
+601 Unknown option, '%1'.
 
 A word was given in the option section that was not the name of an option.
 
-602 Illegal value for option ’%1’.
+602 Illegal value for option '%1'.
 
 The indicated option does not allow the value used.
 
@@ -7742,7 +7737,7 @@ So, in short, the interpreter Arun and any game produced using the Alan System i
 
 The documentation and examples are free to copy or place on any BBS'es or FTP-sites if their contents are not changed.
 
-If you create a game using the Alan System, we’d very much like to see it. Send us a copy (preferably in source) and any documentation or a description of the game and its novel features. We will of course honour any copy-restrictions that you might want to place on it.
+If you create a game using the Alan System, we'd very much like to see it. Send us a copy (preferably in source) and any documentation or a description of the game and its novel features. We will of course honour any copy-restrictions that you might want to place on it.
 
 Short games or samples of Alan source are also most welcome as examples that we might use and distribute to other users. Sending an example means that you waive all rights to it. If you also supply a walkthrough to your example it will be added to the growing suite of test data and thus help us further improve the quality of the Alan system.
 
