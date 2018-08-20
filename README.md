@@ -39,8 +39,10 @@ Other members of the Alan group are also working on porting other Alan documents
 
 # Project Contents
 
-- [`/manual/`](./manual) — _The Alan Manual_ ported to AsciiDoc (WIP).
-- [`/originals/`](./originals) — copy of the original docs being ported.
+- [`/assets-src/`](./assets-src/):
+    + [`/alan-logo/`](./assets-src/alan-logo/) — Alan logo reconstructed as vector image.
+- [`/manual/`](./manual/) — _The Alan Manual_ ported to AsciiDoc (WIP).
+- [`/originals/`](./originals/) — copy of the original docs being ported.
 - [`LICENSE`](./LICENSE) — the [Artistic License 2.0].
 
 # Project Dependencies
