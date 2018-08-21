@@ -1,5 +1,5 @@
 :doctitle: The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.7
+:revnumber: 0.1.8
 :revdate: August 21, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
@@ -28,7 +28,7 @@ The above version number and date refer to the editing status of the conversion 
 This document was converted from the original _Alan Manual_ (in ODT format), version 3.0beta5 (August 9, 2018),
 downloaded from:
 
-- https://bitbucket.org/alanif/alan/src/fb81645/doc/manual/
+* https://bitbucket.org/alanif/alan/src/fb81645/doc/manual/
 
 This document is subjected to the https://bitbucket.org/alanif/alan/src/master/COPYING[Artistic License 2.0] terms.
 ********************************************************************************
@@ -281,7 +281,7 @@ The rules for the rules are available in Appendix _L_ on page _221_.
 
 In running text, words that are keywords or signify an Alan construct is written in a mono-spaced, bold, font. This helps distinguish the English word '`the`' from the Alan keyword `The`.
 
-As shown in the last example, Alan keywords are written with the first letter capitalized. This is simply a convention and has no effect other than the visual. A keyword can be written `Keyword`, `KEYWORD`, `keyword`, or even `KeYwOrD` (if you are keen to show how good you are with a keyboard…). This manual tries to be consistent with using the first version (except in grammar rules).
+As shown in the last example, Alan keywords are written with the first letter capitalized. This is simply a convention and has no effect other than the visual. A keyword can be written `Keyword`, `KEYWORD`, `keyword`, or even `KeYwOrD` (if you are keen to show how good you are with a keyboard...). This manual tries to be consistent with using the first version (except in grammar rules).
 
 [NOTE]
 ================================================================================
@@ -326,7 +326,7 @@ Type the above text into a text file, e.g. using a notepad program. Run this lit
 ================================================================================
 
 
-The first line contains "`Kitchen`", the name of the initial location, and the second a "`>`", which is the default prompt for the player to input a command. Now try typing "`east`" and press the return/enter key. The word "`Hallway`" and the prompt will appear. Typing "`west`" will take you back to "`Kitchen`" again. (Use Ctrl-C to exit the game if you are running it in a console window.)
+The first line contains "`Kitchen`", the name of the initial location, and the second a "`>`", which is the default prompt for the player to input a command. Now try typing "`east`" and press the kbd:[RETURN]/kbd:[ENTER] key. The word "`Hallway`" and the prompt will appear. Typing "`west`" will take you back to "`Kitchen`" again. (Use kbd:[Ctrl+C] to exit the game if you are running it in a console window.)
 
 The identifier for a location is automatically used as a description, a heading, shown when that room is entered. And the words listed in the `Exit`-parts are translated into directional commands the player can use in his input.
 
@@ -348,7 +348,7 @@ End The hallway.
 
 We introduce another feature in this example, namely the text enclosed in double quotation marks (") which is called a *String* or, when used on its own like this, an output statement. When executed this string will be presented to the player and formatted to suit the format of his screen.
 
-Invent a description for the Kitchen, enter it in the Alan source and run the changed adventure. You notice, of course, that the text in the output statements is reformatted during output to suit your screen, in order to make room for as much text as possible. Note also that you do not have to worry about this at all - in your source file, you may format the text any way you like, even spanning multiple lines with extra white-space included.
+Invent a description for the Kitchen, enter it in the Alan source and run the changed adventure. You notice, of course, that the text in the output statements is reformatted during output to suit your screen, in order to make room for as much text as possible. Note also that you do not have to worry about this at all -- in your source file, you may format the text any way you like, even spanning multiple lines with extra white-space included.
 
 This type of output statement is just one of the statements in the Alan Language, and we will see more of them later.
 
@@ -500,9 +500,9 @@ The Alan language supports object orientation and inheritance with two construct
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every mammal IsA vertebrate …
+Every mammal IsA vertebrate ...
 
-The house_pet IsA cat …
+The house_pet IsA cat ...
 --------------------------------------------------------------------------------
 
 The `Every`-construct defines a class and its properties, including inheriting from another, even more general class. The `The`-construct declares an instance, which in this example inherits from the class '`cat`'. The `IsA`-construct defines from which class properties are inherited.
@@ -546,14 +546,14 @@ In the sections above about locations, objects and actors the examples show how 
 
 [source,alan]
 --------------------------------------------------------------------------------
-The _<instance_ _identifier>_ IsA _<class identifier>_ …
+The _<instance_ _identifier>_ IsA _<class identifier>_ ...
 --------------------------------------------------------------------------------
 
 To define a class you do much what you would expect:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every _<class identifier>_ …
+Every _<class identifier>_ ...
 --------------------------------------------------------------------------------
 
 After this, declarations of all the properties for that class follow. This could include inheriting from another class, e.g.
@@ -738,7 +738,7 @@ End Verb take.
 
 
 
-Here we also encounter a variation on the `Locate` statement - the capability to place an object inside a container (the inventory).
+Here we also encounter a variation on the `Locate` statement -- the capability to place an object inside a container (the inventory).
 
 [NOTE]
 ================================================================================
@@ -826,12 +826,12 @@ Secondly, a few special cases are also handled automatically:
 
 [source,alan]
 --------------------------------------------------------------------------------
-The postmen IsA actor At postoffice …
+The postmen IsA actor At postoffice ...
 
 The postoffice IsA location
   Description
     Describe postmen.
-…
+...
 --------------------------------------------------------------------------------
 
 Given the above snippet from a game source, the transcript would read:
@@ -869,10 +869,10 @@ A simple example is
 2.   Has fur.
 3. End Every animal.
 4.
-5. The house_cat IsA object …
-6.   …
+5. The house_cat IsA object ...
+6.   ...
 7.
-8.   If house_cat Has fur Then …
+8.   If house_cat Has fur Then ...
 --------------------------------------------------------------------------------
 
 At line 8 we will get an error saying that the _house_cat_ does not have the attribute _fur_.
@@ -899,10 +899,10 @@ A more complicated example is this
  9. The box IsA object
 10.   Container Taking object.
 11. End The.
-12. …
+12. ...
 13.   For Each f In box Do
 14.     If f Has someAttribute Then
-15. …
+15. ...
 --------------------------------------------------------------------------------
 
 On line 14 we will get an error saying that _someAttribute_ is not available since the class _f_ can only be guaranteed to be _thing_.
@@ -941,7 +941,7 @@ But
 --------------------------------------------------------------------------------
 Exit east To Kitchen
   Check kitchenDoor Is open
-  …
+  ...
 End Exit.
 --------------------------------------------------------------------------------
 
@@ -1197,14 +1197,14 @@ For example
 
 [source,alan]
 --------------------------------------------------------------------------------
-The door IsA object …
+The door IsA object ...
 --------------------------------------------------------------------------------
 
 and
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every coin IsA treasure …
+Every coin IsA treasure ...
 --------------------------------------------------------------------------------
 
 
@@ -1471,7 +1471,7 @@ Only the `At` `what` and `In` `what` forms of the `Where` construct (see _WHERE 
 [source,alan]
 --------------------------------------------------------------------------------
 The chest IsA object At treasury
-…
+...
 --------------------------------------------------------------------------------
 
 An instance inheriting from `location` cannot have an initial location that is `In` something, but it can be `At` some other location, creating a nesting of locations.
@@ -1495,10 +1495,10 @@ The identifiers given in the `Name` clause is used when the instance is presente
 --------------------------------------------------------------------------------
 The south_door IsA object At south_of_house
   Name door
-…
+...
 The south_of_house IsA location
   Name 'South of House'
-…
+...
 --------------------------------------------------------------------------------
 
 
@@ -1548,11 +1548,11 @@ Names can of course be inherited. This is done in an additive way so that any na
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every fruit IsA object Name fruit …
-Every apple IsA fruit Name apple …
-Every pear IsA fruit Name pear …
-The gravensteiner IsA apple …
-The macintosh IsA apple …
+Every fruit IsA object Name fruit ...
+Every apple IsA fruit Name apple ...
+Every pear IsA fruit Name pear ...
+The gravensteiner IsA apple ...
+The macintosh IsA apple ...
 --------------------------------------------------------------------------------
 
 In this example, both the pear and the apple would be possible to refer to using the word "`fruit`". Both the gravensteiner and the macintosh would be apples, not only by name, but also by all other properties of apples.
@@ -1648,20 +1648,20 @@ Attributes that you want every instance of a class to have must be declared in t
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every animal …
+Every animal ...
   Is
     Not human.
-…
+...
 --------------------------------------------------------------------------------
 
 The attribute `human` will now be available in all instances of the class, without further declarations, and it will be false. If you want the attribute to have another value in a particular instance, you must declare it specifically in that instance and give it its desired value, which will be effective only for that instance. You can override the value in a subclass, e.g.
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every person IsA animal …
+Every person IsA animal ...
   Is
     human.
-…
+...
 --------------------------------------------------------------------------------
 
 
@@ -1727,7 +1727,7 @@ Reference attributes stores references to instances. Such an attribute is of ins
 --------------------------------------------------------------------------------
 The east_door IsA door.
   Has otherside west_door.
-  …
+  ...
 --------------------------------------------------------------------------------
 
 
@@ -1737,13 +1737,13 @@ Inside a class declaration, reference attributes may be initialized with a class
 
 [source,alan]
 --------------------------------------------------------------------------------
-Every door IsA object …
+Every door IsA object ...
   Has otherside door.
 End Every door.
 
 The east_door IsA door.
   Has otherside west_door.
-  …
+  ...
 --------------------------------------------------------------------------------
 
 
@@ -1884,7 +1884,7 @@ The south_of_house IsA location
     "You are facing the south side of a white
      house. There is no door here, and all the
      windows are barred."
-  …
+  ...
 
 The door IsA object
   Description
@@ -1892,7 +1892,7 @@ The door IsA object
     If door Is closed Then
       "It is closed."
     End If.
-  …
+  ...
 --------------------------------------------------------------------------------
 
 Before executing a description, you can check for various conditions to be met. A common example is the dark room. If there is no light source present, the description should not be printed. The syntax for such a description is
@@ -2131,9 +2131,9 @@ For example
 --------------------------------------------------------------------------------
 The chest IsA object
   With Container
-    Limits …
-    Header …
-  Description …
+    Limits ...
+    Header ...
+  Description ...
   :
 End The chest.
 --------------------------------------------------------------------------------
@@ -2339,7 +2339,7 @@ Entered clauses are inherited and locations can be nested (see section _Location
 
 [cols=",,,",]
 |=========================================
-| |*Outer Region* |*…* |*Current Location*
+| |*Outer Region* |*...* |*Current Location*
 |*Base class* |Outermost | |
 |*:* | | |
 |*Leaf class* | | |
@@ -2433,11 +2433,11 @@ Actor george
   Script cleaning.
     Description
       "George Formby is here cleaning windows."
-    Step …
+    Step ...
   Script tuning.
     Description
       "George Formby is tuning his ukelele."
-    Step …
+    Step ...
 :
 --------------------------------------------------------------------------------
 
@@ -2543,7 +2543,7 @@ After the player input has been matched to an allowed syntax, the parameters are
 --------------------------------------------------------------------------------
 Syntax open = open (obj).
 :
-  If obj Is open Then …
+  If obj Is open Then ...
 :
 --------------------------------------------------------------------------------
 
@@ -2713,7 +2713,7 @@ Syntax
       Else
         Say act. "does not know anything about
                   that."
-…
+...
 --------------------------------------------------------------------------------
 
 
@@ -2723,9 +2723,9 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Where obj IsA object Else …
-  And obj IsA openable_object Else …
-  And obj IsA door Else …
+Where obj IsA object Else ...
+  And obj IsA openable_object Else ...
+  And obj IsA door Else ...
 --------------------------------------------------------------------------------
 
 References to attributes in the source are only allowed if it can be guaranteed that they exist during run-time. The class restrictions placed on a parameter are used by the compiler to make this guarantee for code executed by player input (verb bodies). The same applies for other semantic restrictions, e.g. you can only use a parameter in a `List` statement if it has been restricted to having the container property.
@@ -2742,8 +2742,8 @@ It is possible to create multiple syntax declarations for the same verb. The sem
 
 [source,alan]
 --------------------------------------------------------------------------------
-Syntax give = give (o) to (p) …
-Syntax give = give (p) (o) …
+Syntax give = give (o) to (p) ...
+Syntax give = give (p) (o) ...
 --------------------------------------------------------------------------------
 The syntaxes must be compatible in the sense that the parameters must be named the same. However, the order of the parameters may differ, they will automatically be mapped as appropriate.
 
@@ -2817,7 +2817,7 @@ A verb declaration specifies what to check and the effects of something the play
 [source,alan]
 --------------------------------------------------------------------------------
 Verb take, get
-  …
+  ...
 End Verb take.
 --------------------------------------------------------------------------------
 
@@ -2900,7 +2900,7 @@ A typical use of a check is to verify if the parameter has a particular property
 Verb take
   Check obj Is moveable
     Else "You can't take that."
-  …
+  ...
 End Verb take.
 --------------------------------------------------------------------------------
 
@@ -3031,7 +3031,7 @@ First all parameters are evaluated according to the syntax restrictions (see _Pa
 
 [cols=",,,,,,",]
 |===================================================================================
-| |*Outer Region* |*…* |*Current Location* |*First parameter* |*…* |*Last parameter*
+| |*Outer Region* |*...* |*Current Location* |*First parameter* |*...* |*Last parameter*
 |*Base class (entity)* |Outermost | | | | |
 |*:* | | | | | |
 |*Leaf class* | | | | | |
@@ -3215,7 +3215,7 @@ Synonyms
   'examine' = look_at.
 Syntax
   look_at = 'look' 'at' (obj).
-Verb look_at …
+Verb look_at ...
 --------------------------------------------------------------------------------
 
 This will result in an error message indicating that the synonym word `look_at` is not defined. This is because the `Syntax` (see section _3.8_) defined the verb `look_at` to have the specified syntax (including the player words '`look`' and '`at`'), the player word `look_at` is not defined, which is as well as the player would not be able to input a word with an underscore (see _Player Input_ on page _160_).
@@ -3998,7 +3998,7 @@ End If.
 
 [source,alan]
 --------------------------------------------------------------------------------
-If i IsA actor Then …
+If i IsA actor Then ...
 --------------------------------------------------------------------------------
 
 will quarantee that for any statement inside the `Then`-part of that statement, the `i` will be of the class `actor`. This means that references to attributes, container properties and actor scripts etc. as if `i` belongs to the class `actor`, even if that was not known outside of the If-statement.
@@ -4008,9 +4008,9 @@ A typical example where this is helpful is inside verbs where parameters can be 
 [source,alan]
 --------------------------------------------------------------------------------
 For Each e IsA entity, Here Do
-  If e IsA actor Then …
-  If e IsA object Then …
-  If e IsA container_object Then …
+  If e IsA actor Then ...
+  If e IsA object Then ...
+  If e IsA container_object Then ...
 End For.
 --------------------------------------------------------------------------------
 
@@ -4143,7 +4143,7 @@ You can use any statements inside the repetition, e.g. to check for further cond
 --------------------------------------------------------------------------------
 For Each creature IsA actor Do
   If creature Here Then
-    …
+    ...
   End If.
 End For.
 --------------------------------------------------------------------------------
@@ -4448,14 +4448,14 @@ For example
 
 [source,alan]
 --------------------------------------------------------------------------------
-If bottle Is empty Then …
+If bottle Is empty Then ...
 --------------------------------------------------------------------------------
 
 The test can be reversed by adding a `Not`:
 
 [source,alan]
 --------------------------------------------------------------------------------
-If hero Is Not hungry Then …
+If hero Is Not hungry Then ...
 --------------------------------------------------------------------------------
 
 
@@ -4535,9 +4535,9 @@ The `And` and `Or` operators are standard binary Boolean operators, meaning that
 
 [source,alan]
 --------------------------------------------------------------------------------
-If kalif Here And mood Of sultan Is 0 Then …
+If kalif Here And mood Of sultan Is 0 Then ...
 If o IsA treasure And (size Of o > capacity Of c
-  Or thief Is greedy) Then …
+  Or thief Is greedy) Then ...
 --------------------------------------------------------------------------------
 
 
@@ -4555,8 +4555,8 @@ It is possible to check if an instance belongs to, or inherits from, a particula
 
 [source,alan]
 --------------------------------------------------------------------------------
-If p IsA object Then …
-If opponent IsA enemy Then …
+If p IsA object Then ...
+If opponent IsA enemy Then ...
 --------------------------------------------------------------------------------
 
 
@@ -4601,8 +4601,8 @@ Equality (`=`, meaning equals) and relational operators (`<`, `>`, `+<=+`, `>=`,
 
 [source,alan]
 --------------------------------------------------------------------------------
-If temperature Of oven Not > 100 Then …
-If weather Of world Not < protection Of hero Then …
+If temperature Of oven Not > 100 Then ...
+If weather Of world Not < protection Of hero Then ...
 --------------------------------------------------------------------------------
 
 Comparing two string expressions using the binary equality operator `=` will make a case insensitive comparison, i.e. it will give a true value if the strings are the same without considering the case of the characters. The special identity operator, `==`, only works on strings and compares the strings for an exact match (i.e. considering character case).
@@ -4618,7 +4618,7 @@ Verb put_in
   Check o <> c
     Else "That would be a good trick if you could do it!!"
   Does
-…
+...
 --------------------------------------------------------------------------------
 
 
@@ -4628,7 +4628,7 @@ A special relational operator is the `Between` operator which makes it possible 
 
 [source,alan]
 --------------------------------------------------------------------------------
-If level Of water Between 2 And capacity Of bottle Then …
+If level Of water Between 2 And capacity Of bottle Then ...
 --------------------------------------------------------------------------------
 
 
@@ -4675,7 +4675,7 @@ An example is the code for objects that can be opened:
 Every openable IsA object
   Is Not open.
   Verb open
-    Check …
+    Check ...
     Does
       Make This open.
   End Verb.
@@ -4711,14 +4711,14 @@ An expression following the above pattern can be used to test if a particular in
 
 [source,alan]
 --------------------------------------------------------------------------------
-If bottle In inventory Then …
+If bottle In inventory Then ...
 --------------------------------------------------------------------------------
 
 or
 
 [source,alan]
 --------------------------------------------------------------------------------
-If hero Not Nearby Then …
+If hero Not Nearby Then ...
 --------------------------------------------------------------------------------
 
 The forms available for the `Where` expression are described in detail in _WHERE Specifications_ on page _138_.
@@ -4738,7 +4738,7 @@ In addition, another qualifying keyword, `Directly`, can be used to indicate tha
 
 [source,alan]
 --------------------------------------------------------------------------------
-If key Directly At treasury Then …
+If key Directly At treasury Then ...
 --------------------------------------------------------------------------------
 
 
@@ -4786,8 +4786,8 @@ Some examples:
 
 [source,alan]
 --------------------------------------------------------------------------------
-If Sum Of weight At bridge > 500 Then …
-If Max Of size In inventory > size Of small_door Then …
+If Sum Of weight At bridge > 500 Then ...
+If Max Of size In inventory > size Of small_door Then ...
 If Count IsA lightsource, Is lit, Here > 0 Then
   "Let there be light...""
 End If.
@@ -4868,7 +4868,7 @@ Quoted identifiers retain their exact content. They may contain spaces and other
 --------------------------------------------------------------------------------
 The pluto IsA location Name 'At the Rim of Pluto Crater'
   Description
-    …
+    ...
 --------------------------------------------------------------------------------
 
 
@@ -4878,7 +4878,7 @@ Identifiers and words retain their capitalization. An example is
 
 [source,alan]
 --------------------------------------------------------------------------------
-The eiffel_tower Name Eiffel tower …
+The eiffel_tower Name Eiffel tower ...
 --------------------------------------------------------------------------------
 
 The first word in the name will always be printed with a capital '`E`'. However, when comparing the word to player input and other occurrences of the same word in the source, case will be ignored. This means that you cannot have two words or identifiers that differ only in case, they will be the same and stored in the game data as one of the occurrences, which one is implementation dependent.
@@ -5094,10 +5094,10 @@ When the player enters a command, the Alan run-time system evaluates the various
 
 So, the execution of various parts of the adventure source can also be said to have a number of different focuses, meaning where the action is considered to take place:
 
-* The hero - the actions of the player are always focused on the hero and the actions performed are always related to where the hero is
-* An actor - steps executed by an actor are always focused where the actor is
-* An event - code executed in events are focused where the event was specified to take place
-* A rule - rules are executed after each actor (including the hero) and after each event with the focus set to the complete game world
+* The hero -- the actions of the player are always focused on the hero and the actions performed are always related to where the hero is
+* An actor -- steps executed by an actor are always focused where the actor is
+* An event -- code executed in events are focused where the event was specified to take place
+* A rule -- rules are executed after each actor (including the hero) and after each event with the focus set to the complete game world
 
 
 
@@ -5363,10 +5363,10 @@ If the hero isn't at the location where the event is executed, he will never kno
 Event distant_explosion
   "Somewhere far away you can hear an explosion."
 End Event.
-…
+...
 If Hero Nearby Then
   Schedule distant_explosion At Hero After 0.
-…
+...
 --------------------------------------------------------------------------------
 
 
@@ -5493,7 +5493,7 @@ The george IsA actor
     Else
       "George Formby is here."
     End If.
-…
+...
 --------------------------------------------------------------------------------
 
 Although quite feasible, this is a bit tedious. As, at least a part of, the state is indicated by the script the actor is executing, this could be used to avoid the potentially large `If`-chain. The optional descriptions tied to each script will be executed instead of the main description when the actor is following that script. So this would allow us to simplify to:
@@ -5508,13 +5508,13 @@ The george IsA actor
     Description
       "George Formby is here cleaning windows."
     Step
-      …
+      ...
   Script tuning.
     Description
       "George Formby is tuning his ukelele."
     Step
-      …
-…
+      ...
+...
 --------------------------------------------------------------------------------
 
 This makes it easier to keep track of what an actor is doing. Another hint here is to describe the change in an actor's activities at the same time as executing the `Use` statement, like
@@ -5662,8 +5662,8 @@ The body_parts IsA entity
   Container
 End The body_parts.
 
-The right_arm IsA object Name right arm In body_parts …
-The head IsA object Name head In body_parts …
+The right_arm IsA object Name right arm In body_parts ...
+The head IsA object Name head In body_parts ...
 --------------------------------------------------------------------------------
 
 
@@ -5733,8 +5733,8 @@ The outdoor_things_storage IsA object At limbo
   Container
 End The outdoor_things_storage.
 
-The air IsA object In outdoor_things_storage …
-The sky IsA object In outdoor_things_storage …
+The air IsA object In outdoor_things_storage ...
+The sky IsA object In outdoor_things_storage ...
 
 When location Of hero Is outdoors =>
   Empty outdoor_things_storage In outdoor_things.
@@ -5759,8 +5759,8 @@ An alternative to the location attribute, is to use classes. Define an outdoor_l
 
 [source,alan]
 --------------------------------------------------------------------------------
-When location Of hero IsA outdoors_location => …
-When location Of hero IsA indoors_location => …
+When location Of hero IsA outdoors_location => ...
+When location Of hero IsA indoors_location => ...
 --------------------------------------------------------------------------------
 
 
@@ -5925,16 +5925,16 @@ To allow the player to 'whistle the melody' for example, there are two different
 
 [source,alan]
 --------------------------------------------------------------------------------
-The melody IsA entity …
-Syntax 'whistle' = 'whistle' (m) …
+The melody IsA entity ...
+Syntax 'whistle' = 'whistle' (m) ...
 --------------------------------------------------------------------------------
 
 The other route would be to make it an actual `object`. In this case the syntax for the whistle verb would need to indicate omnipotence, meaning that the player can refer to instances (even those inheriting from `object`) to be used as parameters even from afar.
 
 [source,alan]
 --------------------------------------------------------------------------------
-The melody IsA object …
-Syntax 'whistle' = 'whistle' (m)! …
+The melody IsA object ...
+Syntax 'whistle' = 'whistle' (m)! ...
 --------------------------------------------------------------------------------
 
 The melody then does not have to be reachable, near or even be at any location at all, for the player to be able to refer to it.
@@ -7587,7 +7587,7 @@ TBD. <Text about how the rigid word order (verb first, possibly prefixed with a 
 [appendix]
 == Portability of Games
 
-The adventure files produced by the Alan compiler is compatible across all supported platforms. This means that by copying the binary _*.a3c*_ file (and any _*.a3r*_ file if available) to another machine it should be possible to run the game on that new machine without any changes. Note however that the files must be transferred in _binary_ mode (where applicable). All characters are automatically converted to the native set allowing multi-national characters to be presented correctly even on machines that do not support the IS0 8859-1 standard. This is of course restricted to characters having a representation in the current native character set.
+The adventure files produced by the Alan compiler is compatible across all supported platforms. This means that by copying the binary _*.a3c*_ file (and any _*.a3r*_ file if available) to another machine it should be possible to run the game on that new machine without any changes. Note however that the files must be transferred in _binary_ mode (where applicable). All characters are automatically converted to the native set allowing multi-national characters to be presented correctly even on machines that do not support the ISO-8859-1 standard. This is of course restricted to characters having a representation in the current native character set.
 
 It is a strong goal to achieve complete portability of the games to be able to provide games for all supported platforms without re-compilation. Game authors are encouraged to seriously consider this when designing games and not use any system specific characters, character combinations or special commands that may be available on some systems.
 

@@ -67,8 +67,10 @@ This is an aproximate status report and pending tasks list of the current docume
     + [x] Delete all non-breaking hyphens.
     + [ ] Fix Smart Typography (from UTF8 chars to AsciiDoc smart punctuation):
         * [x] Substitute curly single quotes and apostrophes.
-        * [x] Substitute curly dounble quotes
-        * [ ] Special chars substitutions (em dash, ellipsis, etc.)
+        * [x] Substitute curly double quotes.
+        * [x] Substitute ellipses chars with `...`.
+        * [x] Apply em dashes (as `--`) instead of hyphens, where due.
+        * [ ] Check for presence of other non-Ascii chars.
 - [ ] Split book into multiple files (once all search-&-replace work is done).
 - [ ] Proof-reading:
     + [ ] Go through whole document and fix inline styles, typos, etc.

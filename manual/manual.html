@@ -422,7 +422,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.7,</span>
+<span id="revnumber">version 0.1.8,</span>
 <span id="revdate">August 21, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -432,7 +432,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.7
+<pre>Doc version: 0.1.8
 Last edited: August 21, 2018</pre>
 </div>
 </div>
@@ -1124,7 +1124,7 @@ You are outside your grandma&#8217;s house.</p>
 <p>In running text, words that are keywords or signify an Alan construct is written in a mono-spaced, bold, font. This helps distinguish the English word &#8216;the&#8217; from the Alan keyword <code>The</code>.</p>
 </div>
 <div class="paragraph">
-<p>As shown in the last example, Alan keywords are written with the first letter capitalized. This is simply a convention and has no effect other than the visual. A keyword can be written <code>Keyword</code>, <code>KEYWORD</code>, <code>keyword</code>, or even <code>KeYwOrD</code> (if you are keen to show how good you are with a keyboard…). This manual tries to be consistent with using the first version (except in grammar rules).</p>
+<p>As shown in the last example, Alan keywords are written with the first letter capitalized. This is simply a convention and has no effect other than the visual. A keyword can be written <code>Keyword</code>, <code>KEYWORD</code>, <code>keyword</code>, or even <code>KeYwOrD</code> (if you are keen to show how good you are with a keyboard&#8230;&#8203;). This manual tries to be consistent with using the first version (except in grammar rules).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1185,7 +1185,7 @@ Start At kitchen.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The first line contains &#8220;Kitchen&#8221;, the name of the initial location, and the second a &#8220;&gt;&#8221;, which is the default prompt for the player to input a command. Now try typing &#8220;east&#8221; and press the return/enter key. The word &#8220;Hallway&#8221; and the prompt will appear. Typing &#8220;west&#8221; will take you back to &#8220;Kitchen&#8221; again. (Use Ctrl-C to exit the game if you are running it in a console window.)</p>
+<p>The first line contains &#8220;Kitchen&#8221;, the name of the initial location, and the second a &#8220;&gt;&#8221;, which is the default prompt for the player to input a command. Now try typing &#8220;east&#8221; and press the <kbd>RETURN</kbd>/<kbd>ENTER</kbd> key. The word &#8220;Hallway&#8221; and the prompt will appear. Typing &#8220;west&#8221; will take you back to &#8220;Kitchen&#8221; again. (Use <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>C</kbd></span> to exit the game if you are running it in a console window.)</p>
 </div>
 <div class="paragraph">
 <p>The identifier for a location is automatically used as a description, a heading, shown when that room is entered. And the words listed in the <code>Exit</code>-parts are translated into directional commands the player can use in his input.</p>
@@ -1212,7 +1212,7 @@ End The hallway.</code></pre>
 <p>We introduce another feature in this example, namely the text enclosed in double quotation marks (") which is called a <strong>String</strong> or, when used on its own like this, an output statement. When executed this string will be presented to the player and formatted to suit the format of his screen.</p>
 </div>
 <div class="paragraph">
-<p>Invent a description for the Kitchen, enter it in the Alan source and run the changed adventure. You notice, of course, that the text in the output statements is reformatted during output to suit your screen, in order to make room for as much text as possible. Note also that you do not have to worry about this at all - in your source file, you may format the text any way you like, even spanning multiple lines with extra white-space included.</p>
+<p>Invent a description for the Kitchen, enter it in the Alan source and run the changed adventure. You notice, of course, that the text in the output statements is reformatted during output to suit your screen, in order to make room for as much text as possible. Note also that you do not have to worry about this at all&#8201;&#8212;&#8201;in your source file, you may format the text any way you like, even spanning multiple lines with extra white-space included.</p>
 </div>
 <div class="paragraph">
 <p>This type of output statement is just one of the statements in the Alan Language, and we will see more of them later.</p>
@@ -1392,9 +1392,9 @@ End The charlie_chaplin.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every mammal IsA vertebrate …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every mammal IsA vertebrate ...
 
-The house_pet IsA cat …</code></pre>
+The house_pet IsA cat ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1439,7 +1439,7 @@ The house_pet IsA cat …</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The _&lt;instance_ _identifier&gt;_ IsA _&lt;class identifier&gt;_ …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The _&lt;instance_ _identifier&gt;_ IsA _&lt;class identifier&gt;_ ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1447,7 +1447,7 @@ The house_pet IsA cat …</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every _&lt;class identifier&gt;_ …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every _&lt;class identifier&gt;_ ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1645,7 +1645,7 @@ End Verb take.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Here we also encounter a variation on the <code>Locate</code> statement - the capability to place an object inside a container (the inventory).</p>
+<p>Here we also encounter a variation on the <code>Locate</code> statement&#8201;&#8212;&#8201;the capability to place an object inside a container (the inventory).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1755,12 +1755,12 @@ End Verb take.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The postmen IsA actor At postoffice …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The postmen IsA actor At postoffice ...
 
 The postoffice IsA location
   Description
     Describe postmen.
-…</code></pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1808,10 +1808,10 @@ Postmen are working behind the counters.</p>
 2.   Has fur.
 3. End Every animal.
 4.
-5. The house_cat IsA object …
-6.   …
+5. The house_cat IsA object ...
+6.   ...
 7.
-8.   If house_cat Has fur Then …</code></pre>
+8.   If house_cat Has fur Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1842,10 +1842,10 @@ Postmen are working behind the counters.</p>
  9. The box IsA object
 10.   Container Taking object.
 11. End The.
-12. …
+12. ...
 13.   For Each f In box Do
 14.     If f Has someAttribute Then
-15. …</code></pre>
+15. ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1899,7 +1899,7 @@ Postmen are working behind the counters.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Exit east To Kitchen
   Check kitchenDoor Is open
-  …
+  ...
 End Exit.</code></pre>
 </div>
 </div>
@@ -2241,7 +2241,7 @@ Start At city.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The door IsA object …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The door IsA object ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2249,7 +2249,7 @@ Start At city.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every coin IsA treasure …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every coin IsA treasure ...</code></pre>
 </div>
 </div>
 </div>
@@ -2604,7 +2604,7 @@ End The hero.</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The chest IsA object At treasury
-…</code></pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2631,10 +2631,10 @@ End The hero.</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The south_door IsA object At south_of_house
   Name door
-…
+...
 The south_of_house IsA location
   Name 'South of House'
-…</code></pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2701,11 +2701,11 @@ The south_of_house IsA location
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every fruit IsA object Name fruit …
-Every apple IsA fruit Name apple …
-Every pear IsA fruit Name pear …
-The gravensteiner IsA apple …
-The macintosh IsA apple …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every fruit IsA object Name fruit ...
+Every apple IsA fruit Name apple ...
+Every pear IsA fruit Name pear ...
+The gravensteiner IsA apple ...
+The macintosh IsA apple ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2827,10 +2827,10 @@ The combination_lock Has numbers {1,2,4,8}</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every animal …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every animal ...
   Is
     Not human.
-…</code></pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2838,10 +2838,10 @@ The combination_lock Has numbers {1,2,4,8}</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every person IsA animal …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every person IsA animal ...
   Is
     human.
-…</code></pre>
+...</code></pre>
 </div>
 </div>
 <div class="sect4">
@@ -2911,7 +2911,7 @@ End The l.</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The east_door IsA door.
   Has otherside west_door.
-  …</code></pre>
+  ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2922,13 +2922,13 @@ End The l.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every door IsA object …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every door IsA object ...
   Has otherside door.
 End Every door.
 
 The east_door IsA door.
   Has otherside west_door.
-  …</code></pre>
+  ...</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -3105,7 +3105,7 @@ End The someLockableDoor.</code></pre>
     "You are facing the south side of a white
      house. There is no door here, and all the
      windows are barred."
-  …
+  ...
 
 The door IsA object
   Description
@@ -3113,7 +3113,7 @@ The door IsA object
     If door Is closed Then
       "It is closed."
     End If.
-  …</code></pre>
+  ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3374,9 +3374,9 @@ You are carrying an owl.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The chest IsA object
   With Container
-    Limits …
-    Header …
-  Description …
+    Limits ...
+    Header ...
+  Description ...
   :
 End The chest.</code></pre>
 </div>
@@ -3617,7 +3617,7 @@ End The waiter.</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Outer Region</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>…</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>&#8230;&#8203;</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Current Location</strong></p></td>
 </tr>
 <tr>
@@ -3759,11 +3759,11 @@ End The west_end.</code></pre>
   Script cleaning.
     Description
       "George Formby is here cleaning windows."
-    Step …
+    Step ...
   Script tuning.
     Description
       "George Formby is tuning his ukelele."
-    Step …
+    Step ...
 :</code></pre>
 </div>
 </div>
@@ -3889,7 +3889,7 @@ syntax_end = parameter_restrictions
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Syntax open = open (obj).
 :
-  If obj Is open Then …
+  If obj Is open Then ...
 :</code></pre>
 </div>
 </div>
@@ -4096,7 +4096,7 @@ restriction_class = id
       Else
         Say act. "does not know anything about
                   that."
-…</code></pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4107,9 +4107,9 @@ restriction_class = id
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Where obj IsA object Else …
-  And obj IsA openable_object Else …
-  And obj IsA door Else …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Where obj IsA object Else ...
+  And obj IsA openable_object Else ...
+  And obj IsA door Else ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4129,8 +4129,8 @@ restriction_class = id
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Syntax give = give (o) to (p) …
-Syntax give = give (p) (o) …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Syntax give = give (o) to (p) ...
+Syntax give = give (p) (o) ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4241,7 +4241,7 @@ simple_verb_body = [check] [does]</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Verb take, get
-  …
+  ...
 End Verb take.</code></pre>
 </div>
 </div>
@@ -4337,7 +4337,7 @@ check_list = 'CHECK' expression 'ELSE' {statement}
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Verb take
   Check obj Is moveable
     Else "You can't take that."
-  …
+  ...
 End Verb take.</code></pre>
 </div>
 </div>
@@ -4494,10 +4494,10 @@ End The feather.</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Outer Region</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>…</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>&#8230;&#8203;</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Current Location</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>First parameter</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>…</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>&#8230;&#8203;</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Last parameter</strong></p></td>
 </tr>
 <tr>
@@ -4758,7 +4758,7 @@ synonym_declaration = word {',' word} '=' word '.'</code></pre>
   'examine' = look_at.
 Syntax
   look_at = 'look' 'at' (obj).
-Verb look_at …</code></pre>
+Verb look_at ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5637,7 +5637,7 @@ End If.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If i IsA actor Then …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If i IsA actor Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5649,9 +5649,9 @@ End If.</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">For Each e IsA entity, Here Do
-  If e IsA actor Then …
-  If e IsA object Then …
-  If e IsA container_object Then …
+  If e IsA actor Then ...
+  If e IsA object Then ...
+  If e IsA container_object Then ...
 End For.</code></pre>
 </div>
 </div>
@@ -5791,7 +5791,7 @@ filters = filter { ',' filter }
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">For Each creature IsA actor Do
   If creature Here Then
-    …
+    ...
   End If.
 End For.</code></pre>
 </div>
@@ -6181,7 +6181,7 @@ End Verb.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If bottle Is empty Then …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If bottle Is empty Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6189,7 +6189,7 @@ End Verb.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If hero Is Not hungry Then …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If hero Is Not hungry Then ...</code></pre>
 </div>
 </div>
 <div class="sect4">
@@ -6287,9 +6287,9 @@ Decrease temp Of room By Random 0 To temp Of Room.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If kalif Here And mood Of sultan Is 0 Then …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If kalif Here And mood Of sultan Is 0 Then ...
 If o IsA treasure And (size Of o &gt; capacity Of c
-  Or thief Is greedy) Then …</code></pre>
+  Or thief Is greedy) Then ...</code></pre>
 </div>
 </div>
 </div>
@@ -6305,8 +6305,8 @@ If o IsA treasure And (size Of o &gt; capacity Of c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If p IsA object Then …
-If opponent IsA enemy Then …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If p IsA object Then ...
+If opponent IsA enemy Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6353,8 +6353,8 @@ If opponent IsA enemy Then …</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If temperature Of oven Not &gt; 100 Then …
-If weather Of world Not &lt; protection Of hero Then …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If temperature Of oven Not &gt; 100 Then ...
+If weather Of world Not &lt; protection Of hero Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6372,7 +6372,7 @@ Verb put_in
   Check o &lt;&gt; c
     Else "That would be a good trick if you could do it!!"
   Does
-…</code></pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6383,7 +6383,7 @@ Verb put_in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If level Of water Between 2 And capacity Of bottle Then …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If level Of water Between 2 And capacity Of bottle Then ...</code></pre>
 </div>
 </div>
 </div>
@@ -6441,7 +6441,7 @@ Verb put_in
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">Every openable IsA object
   Is Not open.
   Verb open
-    Check …
+    Check ...
     Does
       Make This open.
   End Verb.
@@ -6474,7 +6474,7 @@ End The door.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If bottle In inventory Then …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If bottle In inventory Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6482,7 +6482,7 @@ End The door.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If hero Not Nearby Then …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If hero Not Nearby Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6504,7 +6504,7 @@ End The door.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If key Directly At treasury Then …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If key Directly At treasury Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6564,8 +6564,8 @@ Say Count IsA object, In inventory, Is big.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If Sum Of weight At bridge &gt; 500 Then …
-If Max Of size In inventory &gt; size Of small_door Then …
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">If Sum Of weight At bridge &gt; 500 Then ...
+If Max Of size In inventory &gt; size Of small_door Then ...
 If Count IsA lightsource, Is lit, Here &gt; 0 Then
   "Let there be light...""
 End If.</code></pre>
@@ -6649,7 +6649,7 @@ End Verb 'look'.</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The pluto IsA location Name 'At the Rim of Pluto Crater'
   Description
-    …</code></pre>
+    ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6660,7 +6660,7 @@ End Verb 'look'.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The eiffel_tower Name Eiffel tower …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The eiffel_tower Name Eiffel tower ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6964,16 +6964,16 @@ end for</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>The hero - the actions of the player are always focused on the hero and the actions performed are always related to where the hero is</p>
+<p>The hero&#8201;&#8212;&#8201;the actions of the player are always focused on the hero and the actions performed are always related to where the hero is</p>
 </li>
 <li>
-<p>An actor - steps executed by an actor are always focused where the actor is</p>
+<p>An actor&#8201;&#8212;&#8201;steps executed by an actor are always focused where the actor is</p>
 </li>
 <li>
-<p>An event - code executed in events are focused where the event was specified to take place</p>
+<p>An event&#8201;&#8212;&#8201;code executed in events are focused where the event was specified to take place</p>
 </li>
 <li>
-<p>A rule - rules are executed after each actor (including the hero) and after each event with the focus set to the complete game world</p>
+<p>A rule&#8201;&#8212;&#8201;rules are executed after each actor (including the hero) and after each event with the focus set to the complete game world</p>
 </li>
 </ul>
 </div>
@@ -7266,10 +7266,10 @@ End Event.</code></pre>
 <pre>Event distant_explosion
   "Somewhere far away you can hear an explosion."
 End Event.
-…
+...
 If Hero Nearby Then
   Schedule distant_explosion At Hero After 0.
-…</pre>
+...</pre>
 </div>
 </div>
 </div>
@@ -7397,7 +7397,7 @@ Locate charlie_chaplin At outside_house.
     Else
       "George Formby is here."
     End If.
-…</code></pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7413,13 +7413,13 @@ Locate charlie_chaplin At outside_house.
     Description
       "George Formby is here cleaning windows."
     Step
-      …
+      ...
   Script tuning.
     Description
       "George Formby is tuning his ukelele."
     Step
-      …
-…</code></pre>
+      ...
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7579,8 +7579,8 @@ End Event drive_to_garage.</code></pre>
   Container
 End The body_parts.
 
-The right_arm IsA object Name right arm In body_parts …
-The head IsA object Name head In body_parts …</code></pre>
+The right_arm IsA object Name right arm In body_parts ...
+The head IsA object Name head In body_parts ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7662,8 +7662,8 @@ The outdoor_things_storage IsA object At limbo
   Container
 End The outdoor_things_storage.
 
-The air IsA object In outdoor_things_storage …
-The sky IsA object In outdoor_things_storage …
+The air IsA object In outdoor_things_storage ...
+The sky IsA object In outdoor_things_storage ...
 
 When location Of hero Is outdoors =&gt;
   Empty outdoor_things_storage In outdoor_things.
@@ -7696,8 +7696,8 @@ When location Of hero Is Not outdoors =&gt;
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">When location Of hero IsA outdoors_location =&gt; …
-When location Of hero IsA indoors_location =&gt; …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">When location Of hero IsA outdoors_location =&gt; ...
+When location Of hero IsA indoors_location =&gt; ...</code></pre>
 </div>
 </div>
 </div>
@@ -7868,8 +7868,8 @@ End The scenic_vista.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The melody IsA entity …
-Syntax 'whistle' = 'whistle' (m) …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The melody IsA entity ...
+Syntax 'whistle' = 'whistle' (m) ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7877,8 +7877,8 @@ Syntax 'whistle' = 'whistle' (m) …</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The melody IsA object …
-Syntax 'whistle' = 'whistle' (m)! …</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan" data-lang="alan">The melody IsA object ...
+Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -10068,7 +10068,7 @@ No detected warnings.<br>
 <h2 id="trueportability-of-games"><a class="anchor" href="#trueportability-of-games"></a>Appendix H: Portability of Games</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The adventure files produced by the Alan compiler is compatible across all supported platforms. This means that by copying the binary <em>*.a3c*</em> file (and any <em>*.a3r*</em> file if available) to another machine it should be possible to run the game on that new machine without any changes. Note however that the files must be transferred in <em>binary</em> mode (where applicable). All characters are automatically converted to the native set allowing multi-national characters to be presented correctly even on machines that do not support the IS0 8859-1 standard. This is of course restricted to characters having a representation in the current native character set.</p>
+<p>The adventure files produced by the Alan compiler is compatible across all supported platforms. This means that by copying the binary <em>*.a3c*</em> file (and any <em>*.a3r*</em> file if available) to another machine it should be possible to run the game on that new machine without any changes. Note however that the files must be transferred in <em>binary</em> mode (where applicable). All characters are automatically converted to the native set allowing multi-national characters to be presented correctly even on machines that do not support the ISO-8859-1 standard. This is of course restricted to characters having a representation in the current native character set.</p>
 </div>
 <div class="paragraph">
 <p>It is a strong goal to achieve complete portability of the games to be able to provide games for all supported platforms without re-compilation. Game authors are encouraged to seriously consider this when designing games and not use any system specific characters, character combinations or special commands that may be available on some systems.</p>
@@ -10265,8 +10265,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.7<br>
-Last updated 2018-08-21 02:06:52 E
+Version 0.1.8<br>
+Last updated 2018-08-21 02:27:19 E
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
