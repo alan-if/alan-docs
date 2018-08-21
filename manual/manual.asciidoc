@@ -1,5 +1,5 @@
 :doctitle: The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.6
+:revnumber: 0.1.7
 :revdate: August 21, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
@@ -3075,19 +3075,18 @@ The qualifiers are a powerful but confusing concept. The normal order of executi
 
 [NOTE]
 ================================================================================
-All checks for a `Verb` will always be run in the normal order regardless of any *Before/After/Only* qualifiers.
+All checks for a `Verb` will always be run in the normal order regardless of any `Before`/`After`/`Only` qualifiers.
 ================================================================================
 
 
 
 An example of the use of qualifiers is to ensure that only the verb body within the object is executed:
 
-// FIXME: 'End Verb examine.' should be 'take'!
 
 [source,alan]
 --------------------------------------------------------------------------------
 The bomb IsA object
-  Verb take
+  Verb examine
     Does Only
       "Your curious fingering at the intricate
        mechanism sets it of. BOOOM!"
