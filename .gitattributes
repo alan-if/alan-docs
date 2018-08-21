@@ -17,9 +17,11 @@
 ## ==========
 ## EXCEPTIONS
 ## ==========
+# manual/manual.html  text eol=lf
 
-# Asciidoc FX always uses LF in converted HTML docs:
-manual/manual.html  text eol=lf
+# NOTES:
+# - Asciidoc FX always uses LF in converted HTML docs.
+# - AsciiDoctor uses native EOL in converted HTML docs.
 
 
 ## ==========

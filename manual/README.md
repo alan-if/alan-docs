@@ -16,8 +16,7 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 - [Folder Contents](#folder-contents)
 - [Document Status](#document-status)
 - [Work Notes](#work-notes)
-    - [Splitting Into Multiple Files](#splitting-into-multiple-files)
-- [Conversion from ODT to AsciiDoc](#conversion-from-odt-to-asciidoc)
+    - [Conversion from ODT to AsciiDoc](#conversion-from-odt-to-asciidoc)
 
 <!-- /MarkdownTOC -->
 
@@ -25,8 +24,26 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 
 # Folder Contents
 
-- [`manual.asciidoc`](./manual.asciidoc) — The Alan Manual.
-- [`manual.html`](./manual.html) — [HTML preview][HTML Live Preview] of The Alan Manual.
+- [`BUILD_HTML.bat`][BUILD_HTML.bat] — batch script to create `manual.html` document (fully standalone).
+- [`manual.asciidoc`][man] — The main Alan Manual file that imports all other chapters:
+    + [`manual_01.asciidoc`][man 01] — _1. Introduction_
+    + [`manual_02.asciidoc`][man 02] — _2. Concepts_
+    + [`manual_03.asciidoc`][man 03] — _3. Lexical Definitions_
+    + [`manual_04.asciidoc`][man 04] — _4. Language Reference_
+    + [`manual_05.asciidoc`][man 05] — _5. Running An Adventure_
+    + [`manual_06.asciidoc`][man 06] — _6. Hints And Tips_
+    + [`manual_07.asciidoc`][man 07] — _7. Adventure Construction_
+    + [`manual_08.asciidoc`][man 08] — _Appendix A: How To Use The System_
+    + [`manual_09.asciidoc`][man 09] — _Appendix B: A Sample Interaction_
+    + [`manual_10.asciidoc`][man 10] — _Appendix C: Run-time Messages_
+    + [`manual_11.asciidoc`][man 11] — _Appendix D: Language Grammar_
+    + [`manual_12.asciidoc`][man 12] — _Appendix E: Predefined player words_
+    + [`manual_13.asciidoc`][man 13] — _Appendix F: Compiler Messages_
+    + [`manual_14.asciidoc`][man 14] — _Appendix G: Localization_
+    + [`manual_15.asciidoc`][man 15] — _Appendix H: Portability of Games_
+    + [`manual_16.asciidoc`][man 16] — _Appendix I: Copying Conditions_
+    + [`manual_17.asciidoc`][man 17] — _Index_
+- [`manual.html`](./manual.html) — Alan Manual converted to standalone HTML5 ([HTML Live Preview]).
 - [`Manual_TOC.txt`](./Manual_TOC.txt) — Manual TOC in plaintext (for reference).
 - [`RegExs.txt`](./RegExs.txt) — frequently needed regular expressions for S&R operations.
 - [`SNIPPTES.adoc`](./SNIPPTES.adoc) — useful snippets to copy and paste.
@@ -71,7 +88,7 @@ This is an aproximate status report and pending tasks list of the current docume
         * [x] Substitute ellipses chars with `...`.
         * [x] Apply em dashes (as `--`) instead of hyphens, where due.
         * [ ] Check for presence of other non-Ascii chars.
-- [ ] Split book into multiple files (once all search-&-replace work is done).
+- [x] Split book into multiple files (once all search-&-replace work is done).
 - [ ] Proof-reading:
     + [ ] Go through whole document and fix inline styles, typos, etc.
 - [ ] Syntax highlighting
@@ -80,11 +97,7 @@ This is an aproximate status report and pending tasks list of the current docume
 
 # Work Notes
 
-## Splitting Into Multiple Files
-
-The manual will be split into chapters, with each chapter in its own file. Right now, I'm keeping it as a single document because it simplifies some global search-&-replace operations to fix styles, etc.; once these are done with I'll proceed with multi-file splitting of the source doc.
-
-# Conversion from ODT to AsciiDoc
+## Conversion from ODT to AsciiDoc
 
 The original ODT document was first exported to __Office Open XML__ using LibreOffice, and the resulting `.docx` file was then converted to AsciiDoc using pandoc:
 
@@ -119,6 +132,27 @@ Although some styles were lost in the process, the final ADoc was a rather good 
 
 [Rouge]: http://rouge.jneen.net/ "Visti Rouge website (code highlighter in Ruby)"
 
+<!-- Project Files -->
 
+[man]: ./manual.asciidoc
+[man 01]: ./manual_01.asciidoc "Source file of Chapter 1. Introduction"
+[man 02]: ./manual_02.asciidoc "Source file of Chapter 2. Concepts"
+[man 03]: ./manual_03.asciidoc "Source file of Chapter 3. Lexical Definitions"
+[man 04]: ./manual_04.asciidoc "Source file of Chapter 4. Language Reference"
+[man 05]: ./manual_05.asciidoc "Source file of Chapter 5. Running An Adventure"
+[man 06]: ./manual_06.asciidoc "Source file of Chapter 6. Hints And Tips"
+[man 07]: ./manual_07.asciidoc "Source file of Chapter 7. Adventure Construction"
+[man 08]: ./manual_08.asciidoc "Source file of Appendix A: How To Use The System"
+[man 09]: ./manual_09.asciidoc "Source file of Appendix B: A Sample Interaction"
+[man 10]: ./manual_10.asciidoc "Source file of Appendix C: Run-time Messages"
+[man 11]: ./manual_11.asciidoc "Source file of Appendix D: Language Grammar"
+[man 12]: ./manual_12.asciidoc "Source file of Appendix E: Predefined player words"
+[man 13]: ./manual_13.asciidoc "Source file of Appendix F: Compiler Messages"
+[man 14]: ./manual_14.asciidoc "Source file of Appendix G: Localization"
+[man 15]: ./manual_15.asciidoc "Source file of Appendix H: Portability of Games"
+[man 16]: ./manual_16.asciidoc "Source file of Appendix I: Copying Conditions"
+[man 17]: ./manual_17.asciidoc "Source file of Index"
+
+[BUILD_HTML.bat]: ./BUILD_HTML.bat "Batch script to convert Alan Manual to a single-file standalone HTML5 document."
 
 <!-- EOF -->

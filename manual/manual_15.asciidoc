@@ -1,0 +1,10 @@
+[appendix]
+= Portability of Games
+
+The adventure files produced by the Alan compiler is compatible across all supported platforms. This means that by copying the binary _*.a3c*_ file (and any _*.a3r*_ file if available) to another machine it should be possible to run the game on that new machine without any changes. Note however that the files must be transferred in _binary_ mode (where applicable). All characters are automatically converted to the native set allowing multi-national characters to be presented correctly even on machines that do not support the ISO-8859-1 standard. This is of course restricted to characters having a representation in the current native character set.
+
+It is a strong goal to achieve complete portability of the games to be able to provide games for all supported platforms without re-compilation. Game authors are encouraged to seriously consider this when designing games and not use any system specific characters, character combinations or special commands that may be available on some systems.
+
+Portability between different versions of the system is not guaranteed. Again, it is a strong goal to be backwards compatible, at least between different builds within the same major version. This means that the most recent v3 interpreter should run games from all previous v3 compilers.
+
+Changes in the game file format may occur between versions, which may or may not be compatible. Conversion tools may be available, older interpreter versions can be requested.

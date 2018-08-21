@@ -1,0 +1,311 @@
+[appendix]
+= Run-time Messages
+
+This appendix describes the errors that may occur during the running of the adventure, i.e. during interpretation of the generated Acode. There are two classes of errors, player input response messages and system errors.
+
+Input response errors are not fatal but abort the execution of the current player command and discard the rest of the user input, which is a normal part of the interaction between the player and the Alan run-time system. System errors _are_ fatal and abort the execution of the adventure.
+
+A.  Input Response Messages
+
+Various messages are printed for the benefit of the player. Most messages probably come from the adventure itself, i.e. they where provided by the adventure author. However, some messages can be given directly by the Arun interpreter. They are presented below using the Alan STRING-format, i.e. containing the special character combinations described in _Output Statements_ on page _117_. These standard messages exist for all languages and the default value of the texts are selected depending upon the setting of the language option.
+
+The contents of any message may be modified using the `Message` statement (see section _Messages_ on page _113_). The identifier on the first line of a message explanation is the identifier that should be used in the `Message` statement to change the contents of that message. The text after the colon on the first line is the default English message text. Then follows a short explanation, including possible availability of parameters and their types.
+
+All messages are available in all supported languages but below the English texts are shown.
+
+
+
+[NOTE]
+================================================================================
+Although the default values of the messages are static strings, it is possible to create messages that are more dynamic. The `Message` statement allows any statements, not only strings, and supplies dynamic values as parameters for many messages. See _Messages_ on page _113_ for details.
+================================================================================
+
+
+
+UNKNOWN_WORD : "I don't know the word '$1'."
+
+A word not in the dictionary was used by the player.
+
+*parameter1* is a string containing the word used.
+
+WHAT : "I don't understand."
+
+The input did not follow any syntax the Arun parser knows about. I.e. the input could not be matched to any of the defined syntaxes.
+
+WHAT_WORD : "I don't know what you mean by '$1'."
+
+The player input a multiple word, such as "`all`", "`them`" or a pronoun, but the Arun parser could not find any objects or actors that it could refer to.
+
+*parameter1* is a string which is the word used by the player.
+
+MULTIPLE : "You can't refer to multiple objects with '$v'."
+
+The syntax matched for the indicated verb did not allow multiple parameters.
+
+NOUN : "You must supply a noun."
+
+The player started to specify an object or actor but only supplied the adjectives.
+
+AFTER_BUT : "You must give at least one object after '$1'."
+
+In a command containing *ALL BUT*, the player must also give the object or objects excluded.
+
+*parameter1* is a string containing the *BUT*-word the player used.
+
+BUT_ALL : "You can only use '$1' after '$2'."
+
+The *BUT*-words may only be used after an *ALL*-word.
+
+*parameter1* is a string containing the *BUT*-word used by the player.
+
+*parameter2* is a string containing the *ALL*-word used by the player.
+
+NOT_MUCH : "That doesn't leave much to $v!"
+
+The player used an *ALL BUT* construct, which explicitly excluded everything matched by the *ALL*.
+
+WHICH_START : "I don't know if you mean $+1" +
+WHICH_COMMA : ", $+1" +
+WHICH_OR : "or $+1."
+
+Multiple objects (or actors) matched the words given by the player. More adjectives are necessary to distinguish between them. The three messages are used to list the possibilities. The player can repeat the command with a more precise wording. The first message is used for the first alternative, the last for the last alternative and the middle for all the middle alternatives.
+
+For each message, *parameter1* is a reference to the alternative instance.
+
+WHICH_PRONOUN_START : "I don't know if you by '$1'" +
+WHICH_PRONOUN_FIRST : "mean $+1"
+
+When a pronoun given in a command matched multiple parameter in the previous command, these messages are issued to explain this and which the alternatives where. Note that the message is different from the multiple match above only for the start of the message, the list of alternatives are the same, i.e. WHICH_COMMA (repeated) and WHICH_OR (the final).
+
+NO_SUCH : "I can't see any $1 here."
+
+The player referred to an object or actor that was not present.
+
+*parameter1* is an instance referring to an instance.
+
+
+
+[NOTE]
+================================================================================
+If there did not actually even exist an instance in the game with the combination of the adjectives and nouns that the player used, the interpreter uses any instance matching the noun. This still allows inflecting in accordance with the noun case, which is common in many languages (English being one of few exceptions).
+================================================================================
+
+
+
+NO_WAY : "You can't go that way."
+
+A directional word was used but there is no exit in that direction.
+
+CANT0 : "You can't do that.",
+
+The interpreter could match the input to some syntax, but did not find any verb body to execute. This may be a situation overlooked by the author or the player may be trying to do something that is not possible.
+
+SEE_START : "There is $01" +
+SEE_COMMA : ", $01" +
+SEE_AND : "and $01" +
+SEE_END : "here. "
+
+These messages are used to construct the default text for describing ``thing``s present at the current location that have no description clause. The message parts are used as in "_There is <indefinite form_ __object1>, <indefinite form object2> and <indefinite form object3> here__." The underlined parts are the ones in the messages and each object is printed in its indefinite form as appropriate.
+
+CONTAINS : "$+1 contains" +
+CARRIES : "$+1 carries"
+
+The messages above are used to construct the default headers for listing containers. The CARRIES message is used if the container instance is an `actor`.
+
+CONTAINS_COMMA : "$01," +
+CONTAINS_AND : "$01 and" +
+CONTAINS_END : "$01."
+
+The messages above are used to construct the contents listing of a container in much the same way as for the object listing above. The messages are used according to the pattern "_<header for_ _container> contains <indefinite form_ _contents1>, <_ _indefinite form contents2> and <_ _indefinite form contents3>._"
+
+You can modify these messages to change the formatting of listings. e.g. to one element per line.
+
+CAN_NOT_CONTAIN : "$+1 can not contain $+2."
+
+If an attempt to put something in a container that does not meet the class restrictions for the container, this message will be delivered.
+
+IS_EMPTY : "$+1 is empty."
+
+The default messages for empty containers.
+
+EMPTY_HANDED : "$+1 is empty-handed."
+
+The default messages for empty containers that are ``actor``s.
+
+HAVE_SCORED : "You have scored $1 points out of $2."
+
+This is the default message for presenting scores, if you use the `Score` statement.
+
+*parameter1* is an integer containing the current score.
+
+*parameter2* is an integer containing the maximum score possible.
+
+MORE : "<More>"
+
+// TODO: Add keystroke style to **RETUNR**
+
+The classic message when the screen is full. The player should press kbd:[RETURN] to proceed.
+
+AGAIN : "(again)"
+
+This message is presented immediately after the location name if the location has been visited before to give the player the information that he has visited this location before (a good thing in some adventures). If you wish to disable this, set this message to an empty string.
+
+SAVE_WHERE : "Enter file name to save in"
+
+When executing a `Save` the player can enter the name of the file to save in. The name used in the previous `Save` is used as a default.
+
+SAVE_OVERWRITE : "That file already exists, overwrite (y) ? "
+
+If the save file already existed the player must confirm overwriting.
+
+SAVE_FAILED : "Sorry, save failed."
+
+When executing a `Save`, the file system indicated some error, usually a write protected directory or full disks.
+
+RESTORE_FROM : "Enter file name to restore from"
+
+A `Restore` statement can restore from any named file. The previously used file name is used as the default.
+
+SAVE_MISSING : "Sorry, could not open the save file."
+
+When executing a `Restore`, Arun could not find, or open, a save file with the name entered.
+
+NOT_A_SAVEFILE :"That file does not seem to be an Alan game save file."
+
+The save file found by the `Restore` statement was not Alan game save file.
+
+SAVE_VERSION : "Sorry, the save file was created by a different version."
+
+The save file found by the `Restore` statement was created by a different version of the Alan interpreter or the game.
+
+SAVE_NAME : "Sorry, the save file did not contain a save for this adventure."
+
+The indicated save file did not contain a save of this adventure.
+
+REALLY : "Are you sure (RETURN confirms) ? "
+
+This is the confirmation prompt, e.g. before overwriting an already existing save file.
+
+QUIT_ACTION : "Do you want to RESTART, RESTORE, QUIT or UNDO?"
+
+The `Quit` statement requests an action from the player.
+
+
+
+[NOTE]
+================================================================================
+The possible answers are currently hard-wired into the interpreter, so changing `RESTART`, `RESTORE`, `QUIT` or `UNDO` will probably confuse the player!
+================================================================================
+
+
+
+UNDONE : "'$1' undone."
+
+When an action is undone, this message is presented to confirm the player action.
+
+*parameter1* is a string containing the player command that was undone. Note that since only commands that change any state in the game world are logged the command might very well not be the last command.
+
+NO_UNDO : "No further undo available."
+
+If the player tries to undo an action and no further actions where recorded (because of lack of memory, undone to beginning of session, etc.) this message is used to inform the player of that fact.
+
+WHICH_PRONOUN_START : "I don't know if you by '$1' +
+WHICH_PRONOUN_FIRST : "mean $+1"
+
+These messages are presented when the play used a pronoun which was ambiguous. The alternatives are listed using the `WHICH_PRONOUN_FIRST` followed by the message(s) `WHICH_ONE_COMMA` (if there were more than two alternatives), and finally by `WHICH_ONE_OR`.
+
+IMPOSSIBLE_WITH : "That's impossible with $+1."
+
+If a player action is impossible with a particular parameter combination, but might be possible otherwise, this message is shown to indicate that it is the action _with the parameter_ that is impossible.
+
+CONTAINMENT_LOOP : "Putting $+1 in itself is impossible."
+
+The interpreter detected an attempt to locate an instance inside (contained) itself. This message reliefs the author from the responsiblility to check for every possible circumstance where this might happen.
+
+CONTAINMENT_LOOP2 : "Putting $+1 in $+2 is impossible since $+2 already is inside $+1."
+
+Same as above but in this case the containment was transitive, i.e. it would create a containment loop with more that one instance involved.
+
+A.  System Errors
+
+System errors are errors caused by internal malfunctions. Mainly these are implementation errors (aka. bugs!), but may (in some manner) also result from user errors. The system error messages also have a purple prose style to fit in with your game, e.g.:
+
+As you enter the twilight zone of Adventures, you stumble and fall to your knees. In front of you, you can vaguely see the outlines of an Adventure that never was. +
+ +
+SYSTEM ERROR: Can't open adventure code file.
+
+
+
+
+== Player Errors
+
+These errors are usually caused by incorrect arguments or file names entered by the player.
+
+Can't open adventure code file.
+
+The player attempted to run an adventure for which there were no code file available, probably a misspelling.
+
+Could not read all A3C code. +
+Checksum error in Acode (.A3C) file (%1 instead of %2).
+
+These two messages indicate problems in the adventure file. Possibly caused by transfer problems of the *.a3c* file.
+
+
+
+
+== Author Errors
+
+The following system errors are in some sense caused by the Adventure author (you).
+
+Out of memory.
+
+The adventure was so large that the interpreter could not allocate enough dynamic memory for it. Try to finish other running applications (does not work or is not possible on all systems), get more real memory, or complain to the Alan implementors. This might also be caused by reading incomplete or corrupted game files.
+
+Incompatible version of ACODE program.
+
+The version of the interpreter you are using is different than the Alan compiler used to compile the adventure. Use a different Arun or recompile the adventure with the matching compiler.
+
+
+
+[NOTE]
+================================================================================
+the Arun switch `-d` will, beside entering debug mode, also print the version of both the Arun interpreter and the version of the Alan compiler used to compile the adventure.
+================================================================================
+
+
+
+Index not in container in 'containerMember()'
+
+This is most likely caused by doing Random In on an empty container.
+
+Recursive LOOK.
+
+This message is shown when a `LOOK` statement is executed as a result of a `LOOK`! The `LOOK` statement should only be used in verb bodies. It should _not_ be used in descriptions of instances because there is a definite risk that it will be executed as the effect of a `LOOK`, either explicit or implicit (by the hero entering a location which would trigger a `LOOK` in itself thus starting the recursion!).
+
+Locating a location that would create a recursive loop of locations containing each other.
+
+This means that an attempt to locate a location inside itself has been made. Probably in an attempt to dynamically manipulate the location structure (the map).
+
+Non-existing parameter referenced.
+
+A parameter that wasn't available was referenced. This is probably due to using a parameter shorthand such as $2 inside a string in a context where the syntax was restricted to only one parameter. This may avoided by using the `Say` statement instead of the embedded string parameter references, which would allow compile time checking, thus avoiding the risk of having this happen to the player.
+
+
+
+[NOTE]
+================================================================================
+Parameter references embedded in strings are currently _not_ checked during compile time.
+================================================================================
+
+
+
+Interpreter recursion.
+
+The interpreter keeps track of its execution so that it can never enter an endless loop. There are a few situations where this can occur. One example is if the description of an instance in some way, directly or indirectly, executes `Describe This`. As the interpreter is already executing a description of the current instance the invocation of the second will create a loop that never terminates.
+
+
+
+
+== Implementor Errors
+
+Any other text in a system error message is really a SYSTEM ERROR. Scribble down the text and contact the implementors. If possible, supply the source for your adventure, a trace of the few last player commands (if possible with single step and trace turned on, see _Debugging_ on page _187_).

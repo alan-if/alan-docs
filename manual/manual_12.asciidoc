@@ -1,0 +1,41 @@
+[appendix]
+= Predefined player words
+
+Alan defines a set of words for the player to use, which are required for the syntax variations described in _Player Input_ on page _160_. These words are available even without any declarations at all in the game source. Some of these might conflict with, or complement, words defined in the source. The lists below contain those player words for the currently defined languages.
+
+
+
+== English
+
+................................................................................
+*ALL:* all everything** +
+AND:** and then** +
+BUT:** but except** +
+THEM:** them** +
+NOISE:** go the** +
+**
+................................................................................
+
+
+
+== Swedish
+
+................................................................................
+*ALL:* alla allt** +
+AND:** och** +
+BUT:** förutom utom** +
+THEM:** dem dom** +
+NOISE:** gå
+................................................................................
+
+
+
+== German
+
+................................................................................
+*ALL:* alles** +
+AND:** und** +
+BUT:** ausser** +
+THEM:** sie** +
+NOISE:** das der die gehen
+................................................................................

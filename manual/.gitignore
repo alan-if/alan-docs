@@ -1,0 +1,11 @@
+################################################################################
+# Alan IF Documentation Project                                                #
+# https://github.com/tajmone/alan-docs                                         #
+################################################################################
+
+# //manual/.gitignore
+
+# For now, let's exclude from the project PDF conversions of the Alan Manual, as
+# these are still to drafty to share. Later on, when the PDF version is mature,
+# we'll remove this ignore directive:
+manual.pdf

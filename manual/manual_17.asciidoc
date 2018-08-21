@@ -1,0 +1,331 @@
+// [index]
+= Index
+
+// @NOTE: The whole Index has to be rebuilt. Below is the original Index from the
+//        ODT document, as a reference for terms that need to be indexed.
+
+[discrete]
+== A
+
+* abstract attribute 72
+* Abug 188
+* actor 26
+** behaviour 26
+** predefined class 36, 59
+* ACTOR
+** in what specifications 140
+* actor description 59
+* actors
+** execution context 163
+** hints about 174
+** moving 164
+* adjective 66
+* AFTER qualifier 106
+* ALL 81, 94, 103, 161, 211, 212
+* AND 94, 160, 161
+* article 78
+* Arun 187, 205, 210
+* attribute pre-defined 82, 143
+* attributes 32, 167
+* boolean 70
+* declaration 69
+* event type 71
+* numeric 70
+* of reference type 71
+* pre-defined location 143
+* opaque 82
+* visits 137
+* string 70
+
+[discrete]
+== B
+
+* basic type 51
+* BEFORE qualifier 106
+* BETWEEN 147
+* BNF 221
+* BUT 161, 212
+
+[discrete]
+== C
+* CANCEL statement 126
+* character combinations, in strings 118
+* character sets 50
+* CHECK 102
+* in exits 88, 164
+* in verbs 41
+* check, unconditional 102
+* checks execution order 109
+* class syntax for 55
+* class expressions 145
+* classes 55
+* comparisons equality 146
+* compatible types 53
+* computer language 20
+* concatenation of strings 146
+* CONTAINER 82
+* container property of objects 81
+* Opaque 82
+* containment operator 147
+* CONTAINS 147
+* COUNT 150
+* in limits 84
+* Current Actor 147
+* Current Location 147
+
+[discrete]
+== D
+
+* debugging 187
+* DECREASE statement 128
+* default attributes 171
+* syntax 42
+* DEPENDING ON statement 131
+* DESCRIBE statement 120
+* description of locations 61
+* Description of locations 30
+* DESCRIPTION of actor scripts 89, 175
+* Description clause 75
+* descriptions execution context 163
+* DIRECTLY 149
+* DOES in descriptions 77
+* in exits 164
+* in locations 164
+* in verbs 104
+* doors, hints about 172
+* double quotes 156
+
+[discrete]
+== E
+
+* EMPTY statement 124
+* Entered clause 76
+* entity predefined class 36, 58
+* EVENT 109
+* event type 52
+* events execution context 163
+* hints about 172
+* EVERYTHING 161
+* EXCEPT 161, 212
+* execution contexts 162
+* of an adventure 24, 159
+* execution context Initialize clause 75
+* Exit 30
+* EXIT 88, 164
+* expressions 141
+* EXTRACT 85
+
+[discrete]
+== H
+
+* HERE 138
+* hero 164
+* hero, the 60
+
+[discrete]
+== I
+
+* identifier quoted 66
+* identifiers lexical definition 153
+* If statement 32, 54
+* IF statement 130
+* import statement 54
+* INCREASE statement 128
+* indicator multiple 94
+* omnipotent 94
+* INDIRECTLY 149
+* Infocom 18, 19
+* inheritance 34, 56
+* inheriting attributes 73
+* inheriting properties, rules for 63
+* Initialize clause 75
+* initialize empty set 72
+* instance displaying 67
+* instance type 52
+* instances 56
+* integer predefined class 36
+* interpreter 187, 205
+* IT 161, 211
+
+[discrete]
+== L
+
+* languages 210
+* LIMITS 83
+* LIST statement 121
+* literal predefined class 36
+* literals 62, 141
+* Locate statement 33
+* LOCATE statement 123
+* locating inside containers 83, 124
+* location 25, 29
+* of 143, 181
+* pre-defined attribute 143
+* predefined class 36
+* LOCATION in what specification 140
+* locations 61
+* logical expressions 144
+* LOOK statement 134, 135
+
+[discrete]
+== M
+
+* Make statement 32
+* MAKE statement 127
+* map 25
+* MAX aggregate 150
+* MENTIONED 80
+* Meta Verbs 101
+* MIN aggregate 150
+* Multi-media Statements 122
+* multinational characters 50
+* multiple indicator 161
+* multiple parameters 161
+
+[discrete]
+== N
+
+* Name of locations 66, 154
+* Name clause 65
+* names inheriting 67
+* multiple 66
+* NEARBY 139
+* nested locations 61, 124
+* noun 66
+* numbers lexical definition 155
+
+[discrete]
+== O
+
+* object 31
+* predefined class 36, 59
+* object orientation 34
+* omnipotent indicator 162
+* ONLY qualifier 106
+* opaque pre-defined attribute 82
+* Opaque 82
+* container property 82
+* operators binary 146
+* logical 144
+* relational 146, 147
+* options 48, 49
+* output statements 118
+
+[discrete]
+== P
+
+* parameter 42, 96
+* indicators 94
+* referencing 161
+* Play 122
+* player commands 159
+* polymorphism 35
+* pre-defined attribute 137
+* visits 137
+* predefined classes 35
+* prompt 30
+* Prompt Section 115
+* pronoun predefined 69
+* Pronoun clause 68
+* properties 62
+* property 62
+
+[discrete]
+== Q
+
+* QUIT statement 134
+* quoted identifier 66, 153
+
+[discrete]
+== R
+
+* Random 59, 114, 125, 143, 144
+* expression 143
+* Random In 143
+* reference attribute 51, 52, 53, 71, 72, 74, 121, 128, 129, 133, 142, 233
+* RESTORE statement 135
+* restriction of parameters 43
+* restriction, of parameters 96
+* rule 110
+* rules executing 111
+* execution context 163
+
+[discrete]
+== S
+
+* SAVE statement 135
+* SAY statement 120
+* SCHEDULE statement 125
+* SCORE statement 135
+* SCRIPT 89
+* semantics of locations 61
+* semantics of pre-defined classes 36, 57
+* Set statement 32
+* SET statement 128
+* set type 53
+* set type attributes 72
+* shadow object;object shadow 184
+* Show 122
+* single quotes 155
+* spacing, in strings 156
+* specialisation 37
+* start section 48, 116
+* STEP 91
+* step, executing the last 91
+* string comparisons 146
+* functions 125
+* predefined class 36
+* String 30
+* STRING 118
+* strings lexical definition 156
+* STRIP statement 125
+* sub-classing 37
+* SUM aggregate 150
+* SYNONYMS 112
+* Syntax 42
+* SYNTAX 92
+* syntax, default 98
+
+[discrete]
+== T
+
+* THEM 161, 211
+* THEN 160
+* thing predefined class 36
+ * predefined class 58
+* THIS expression 148
+* transitivity Direct 149
+* Indirect 149
+* types of expressions 141
+* typographical notation 28
+
+[discrete]
+== U
+
+* undo 164
+* Use statement 54
+* USE statement 89, 132
+
+[discrete]
+== V
+
+* verb 27
+* alternative 105
+* execution context 162
+* execution order 43, 108
+* Meta 101
+* qualifiers 104, 106
+* reusing common 171
+* Verb 39
+* VERB 100
+* visits 137
+* pre-defined attribute 137
+* VISITS statements 136
+
+[discrete]
+== W
+
+* what specifications 140
+* WHEN 110
+* where specification 138
+

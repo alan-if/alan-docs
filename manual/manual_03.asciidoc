@@ -1,0 +1,144 @@
+= Lexical Definitions
+
+
+
+== Comments
+
+Comments may be placed anywhere in the Alan source. A comment starts with double hyphens (`--`) and extends to the end of the line.
+
+[source,alan]
+--------------------------------------------------------------------------------
+-- This is a comment
+--------------------------------------------------------------------------------
+
+
+
+== Words, Identifiers and Names
+
+An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance. Identifiers may only be composed of letters, digits and underscores. The first character must be a letter.
+
+[source,ebnf]
+--------------------------------------------------------------------------------
+identifier = letter {letter | digit | underscore}
+--------------------------------------------------------------------------------
+
+There is also a second kind of identifier, namely the quoted identifier.
+
+[source,ebnf]
+--------------------------------------------------------------------------------
+id = identifier
+   | quoted_identifier
+
+quoted_identifier = quote {any_character} quote
+--------------------------------------------------------------------------------
+
+A quoted identifier starts and ends with single quotes and may contain any character except quotes (including spaces). By quoting any sequence of characters can become an identifier. A quoted identifier may also be used to make an identifier out of a reserved word such as `Look`. This is useful in the definition of the verb `look`. It would look like:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb 'look'
+  Does
+    Look.
+End Verb 'look'.
+--------------------------------------------------------------------------------
+
+
+Quoted identifiers retain their exact content. They may contain spaces and other special characters, which make them useful as long names for locations as in
+
+[source,alan]
+--------------------------------------------------------------------------------
+The pluto IsA location Name 'At the Rim of Pluto Crater'
+  Description
+    ...
+--------------------------------------------------------------------------------
+
+
+One single-quoted identifier is used as the whole name of the location to preserve editing and avoiding clashes with the reserved words `At` and `Of`. (This could also have been avoided by quoting just those words.)
+
+Identifiers and words retain their capitalization. An example is
+
+[source,alan]
+--------------------------------------------------------------------------------
+The eiffel_tower Name Eiffel tower ...
+--------------------------------------------------------------------------------
+
+The first word in the name will always be printed with a capital '`E`'. However, when comparing the word to player input and other occurrences of the same word in the source, case will be ignored. This means that you cannot have two words or identifiers that differ only in case, they will be the same and stored in the game data as one of the occurrences, which one is implementation dependent.
+
+
+[NOTE]
+================================================================================
+Do _NOT_ use a single quoted identifier with spaces or special characters in them as the name for anything other than locations, as the words in names are analysed separately and are assumed to be adjectives and nouns (where it is assumed that the last is the noun). Except for this you should only quote single words to avoid clashes with reserved words.
+================================================================================
+
+
+
+[NOTE]
+================================================================================
+Any one of the occurrences of a word might define its capitalization, which one is unspecified. This might affect the output if you use capitalization for names of locations, such as "`Name Shore of Great Sea`". Such names can inadvertently make the game use "`Great`" for all "`great`" things in your game. You can avoid this by using a quoted identifier for the complete name of the location.
+================================================================================
+
+
+
+Be careful when using quoted identifiers, especially if the player is supposed to use the word. A player cannot input words containing spaces or other special characters or separators. The only exception being underscores and dashes. A player input word must start with a letter.
+
+
+[NOTE]
+================================================================================
+To get a single quote within a quoted identifier repeat it (`'Tom''s Diner'`).
+================================================================================
+
+
+
+Some of the identifiers in the source for an Alan game are by default used as player words. This is for example the case with verb names (unless a `Syntax` statement has been declared for the `Verb`) and object names (unless a `Name` clause has been used). If these contain special characters, the player cannot enter them.
+
+
+
+== Numbers
+
+Numbers in Alan are only integers and thus may consist only of digits.
+
+[source,ebnf]
+--------------------------------------------------------------------------------
+number = digit {digit}
+--------------------------------------------------------------------------------
+
+
+
+== Strings
+
+The string is the main lexical component in an Alan source. This is how you describe the surroundings and events to the player. Strings, therefore, are easy to enter and consist simply of a pair of double quotes surrounding any number of characters. The text may include newline characters and thus may cover multiple lines in the source.
+
+[source,ebnf]
+--------------------------------------------------------------------------------
+string = double_quote {any_character} double_quote
+--------------------------------------------------------------------------------
+
+When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in _Output Statements_ on page _117_). You may therefore write your strings any way you like; they will always be neatly formatted on the player's screen. You can use special codes (see _String Statement_ on page _118_ for a list) to indicate (but not precisely control) the formatting.
+
+
+[NOTE]
+================================================================================
+As strings may contain any character, a missing double quote may lead to many seemingly strange error messages. If the compiler points to the first word after a double quote and indicates that it has deleted a lot if IDs (identifiers), this is probably due to a missing end quote in the previous string.
+================================================================================
+
+
+
+[NOTE]
+================================================================================
+To get a double quote within strings repeat it ("The sailor said ""Hello!"".").
+================================================================================
+
+
+
+
+== Filenames
+
+It is possible to write one adventure using many source files, having different parts in different files, and thus giving an opportunity for some rudimentary kind of modularisation. The method for this is the `import` statement.
+
+[source,ebnf]
+--------------------------------------------------------------------------------
+import = 'import' quoted_identifier '.'
+--------------------------------------------------------------------------------
+
+The import statement requires a filename, which must be given as a quoted identifier (see section _4.2_).
+
