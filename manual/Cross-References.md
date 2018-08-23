@@ -3,23 +3,30 @@
 This is a quick look-up table for cross-references in the Manual.
 It provides the text to be pasted for AsciiDoc substitutions in double angled brackets.
 
-|  Ch / Sec  |                xref                |              file              |
-|------------|------------------------------------|--------------------------------|
-| 1          | `<<Introduction>>`                 | [`manual_01.asciidoc`][man 01] |
-| 2          | `<<Concepts>>`                     | [`manual_02.asciidoc`][man 02] |
-| 2.4        | `<<Introduction to the Language>>` |                                |
-| 3          | `<<Language Reference>>`           | [`manual_03.asciidoc`][man 03] |
-| 3.6        | `<<Instances>>`                    |                                |
-| 3.8        | `<<Additions>>`                    |                                |
-| 3.20       | `<<Expressions>>`                  |                                |
-| 5.1        | `<<A Turn of Events>>`             |                                |
-| Appendix A | `<<How To Use The System>>`        | [`manual_08.asciidoc`][man 08] |
-| Appendix B | `<<A Sample Interaction>>`         | [`manual_09.asciidoc`][man 09] |
-| Appendix D | `<<Language Grammar>>`             | [`manual_11.asciidoc`][man 11] |
+|   Ch / Sec  |                xref                |              file              |
+|-------------|------------------------------------|--------------------------------|
+| 1           | `<<Introduction>>`                 | [`manual_01.asciidoc`][man 01] |
+| 2           | `<<Concepts>>`                     | [`manual_02.asciidoc`][man 02] |
+| 2.4         | `<<Introduction to the Language>>` |                                |
+| 3           | `<<Language Reference>>`           | [`manual_03.asciidoc`][man 03] |
+| 3.2 Options | `<<Options>>`                      |                                |
+| 3.6         | `<<Instances>>`                    |                                |
+| 3.7         | `<<Properties>>`                   |                                |
+| 3.8         | `<<Additions>>`                    |                                |
+| 3.18        | `<<WHERE Specifications>>`         |                                |
+| 3.20        | `<<Expressions>>`                  |                                |
+| 4.2         | `<<Words, Identifiers and Names>>` |                                |
+| 5.1         | `<<A Turn of Events>>`             |                                |
+| Appendix A  | `<<How To Use The System>>`        | [`manual_08.asciidoc`][man 08] |
+| Appendix B  | `<<A Sample Interaction>>`         | [`manual_09.asciidoc`][man 09] |
+| Appendix C  | `<<Run-time Messages>>`            | [`manual_10.asciidoc`][man 10] |
+| C.1         | `<<Input Response Messages>>`      |                                |
+| Appendix D  | `<<Language Grammar>>`             | [`manual_11.asciidoc`][man 11] |
+| D.2         | `<<Keywords>>`                     |                                |
 
 
 <!-- 
-| xx     | `<<xxxxxx>>` |    |
+| xx          | `<<xxxxxx>>`                       |                                |
  -->
 
 

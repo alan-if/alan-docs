@@ -5,7 +5,7 @@ This appendix describes the errors that may occur during the running of the adve
 
 Input response errors are not fatal but abort the execution of the current player command and discard the rest of the user input, which is a normal part of the interaction between the player and the Alan run-time system. System errors _are_ fatal and abort the execution of the adventure.
 
-A.  Input Response Messages
+== Input Response Messages
 
 Various messages are printed for the benefit of the player. Most messages probably come from the adventure itself, i.e. they where provided by the adventure author. However, some messages can be given directly by the Arun interpreter. They are presented below using the Alan STRING-format, i.e. containing the special character combinations described in _Output Statements_ on page _117_. These standard messages exist for all languages and the default value of the texts are selected depending upon the setting of the language option.
 
@@ -226,7 +226,7 @@ CONTAINMENT_LOOP2 : "Putting $+1 in $+2 is impossible since $+2 already is insid
 
 Same as above but in this case the containment was transitive, i.e. it would create a containment loop with more that one instance involved.
 
-A.  System Errors
+== System Errors
 
 System errors are errors caused by internal malfunctions. Mainly these are implementation errors (aka. bugs!), but may (in some manner) also result from user errors. The system error messages also have a purple prose style to fit in with your game, e.g.:
 

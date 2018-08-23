@@ -11,7 +11,7 @@ If you actually want to write Interactive Fiction using Alan you also need the c
 
 Whatever option you choose, there should be more detailed instructions on how to install included with that package. Below follows some information pertaining to the original versions from the Alan website.
 
-A.  Compiling
+== Compiling
 
 Although there are other options, like a prototype AlanIDE, WinAlan et al., basic use of the Alan Adventure Development System is through a traditional command line batch compiler. This means that the actual development system is a compiler that reads text files created using any standard text editor. To compile an adventure use the following command in a command shell:
 
@@ -25,7 +25,7 @@ The primary output from the compiler is an adventure code file *_adventure_.a3c*
 
 An identifying file, *_adventure_.ifid*, is also produced. This file contains a unique identification of your game for bibliographical purposes. The content of it will be compiled into the adventure code file, which makes your game identifiable by electronic means. As long as this file exist the same identification (IFID) will be used. If it does not exist, a new one will automatically be generated.
 
-A.  Compiler Switches
+== Compiler Switches
 
 If you run the compiler from a command line you can get information about which switches it supports using the `-help` switch.
 
@@ -49,7 +49,7 @@ Here are some examples of other switches:
 
 Giving an extra hyphen before the option reverses its meaning (where appropriate), e.g. `--warnings` means don't show warnings. Switches may be abbreviated as long as they are unambiguous.
 
-A.  Running the Adventure
+== Running the Adventure
 
 To play the generated adventure the Alan interpreter, *arun*, is executed with the adventure name as a parameter. For example
 
@@ -63,7 +63,7 @@ If the interpreter program is copied to a different name, it will automatically 
 
 $ adventure
 
-A.  Interpreter Switches
+== Interpreter Switches
 
 The interpreter supports the following switches:
 

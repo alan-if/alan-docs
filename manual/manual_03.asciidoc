@@ -1,6 +1,6 @@
 = Language Reference
 
-This chapter describes the Alan language in detail. Within each section, grammar rules are used to precisely define allowed formats. A description of how these rules should be interpreted can be found in Appendix _L_ on page _221_.
+This chapter describes the Alan language in detail. Within each section, grammar rules are used to precisely define allowed formats. A description of how these rules should be interpreted can be found in <<Language Grammar>>.
 
 :sectnums!:
 
@@ -32,7 +32,7 @@ Note that the first is terminated, but the second example is continued with a ch
 
 == An Adventure
 
-An adventure starts with an (optional) set of options (see _Options_ on page _49_) followed by a set of declarations.
+An adventure starts with an (optional) set of options (see <<Options>>) followed by a set of declarations.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -115,7 +115,7 @@ The available options are
 |*Debug* |Boolean (on or off) |Off (No Debug)
 |========================================================================================================================================
 
-The Language option specifies the language in which the adventure is assumed played, and selects different default message texts. Alan is primarily designed for adventures in the English language, but it is also possible to write adventures in other languages. To make this possible, the default messages output by the interpreter may be generated in different languages. It is completely possible to write in other languages, but then you must customize all the message texts. See page _210_, Appendix section _Input Response Messages_, for a complete list of such messages.
+The Language option specifies the language in which the adventure is assumed played, and selects different default message texts. Alan is primarily designed for adventures in the English language, but it is also possible to write adventures in other languages. To make this possible, the default messages output by the interpreter may be generated in different languages. It is completely possible to write in other languages, but then you must customize all the message texts. See <<Run-time Messages>>, <<Input Response Messages>>, for a complete list of such messages.
 
 The Alan compiler and interpreter will always allow multinational 8-bit characters as input and the default messages is generated for 8-bit character sets, internally representing national characters according to the ISO multinational character set (ISO8859-1) requiring 8 bits. On output, this is converted to the native character set of the machine (whenever possible). This means that portability between platforms should be good even for text containing multi-national (non-ASCII) characters.
 
@@ -123,7 +123,7 @@ Width specifies how long the lines the interpreter outputs should be (formatting
 
 The Pack option will cause the compiler to compress the texts to occupy less space. As a bonus, this also makes it impossible for the player to cheat by dumping the adventure code file. As a minor drawback, it does make the execution of the adventure a bit slower (noticeable only on some very old, smaller, computers).
 
-In order to allow debugging of the generated adventure (see _Debugging_ on page _187_), the debug option must be turned on. This may also be performed using the debug compiler switch (see _Compiler Switches,_ on page _203_).
+In order to allow debugging of the generated adventure (see <<Debugging>>), the debug option must be turned on. This may also be performed using the debug compiler switch (see <<Compiler Switches>>).
 
 
 
@@ -216,11 +216,11 @@ The source text for a large adventure might become entangled and complex. A way 
 import = 'import' quoted_identifier '.'
 --------------------------------------------------------------------------------
 
-The quoted identifier is the name of the file to import, see _File_ on page _157_. The `import` may be placed anywhere in a file where a declaration can occur, and the effect will be the same as if the contents of the named file had been inserted at that position in the file. Imports may be nested, so an imported file may in turn import more files, without limits.
+The quoted identifier is the name of the file to import, see <<Filenames>>. The `import` may be placed anywhere in a file where a declaration can occur, and the effect will be the same as if the contents of the named file had been inserted at that position in the file. Imports may be nested, so an imported file may in turn import more files, without limits.
 
-An imported file is searched for first in the current directory and then in any of the directories indicated using the `import` switch as described in _Compiler Switches_ on page _203_, this search is performed in the same order as the `import` switches occurred on the command line.
+An imported file is searched for first in the current directory and then in any of the directories indicated using the `import` switch as described in <<Compiler Switches,_Compiler Switches_>>, this search is performed in the same order as the `import` switches occurred on the command line.
 
-The import statement is the way to use the standard library (or a library of your own design). Place the library files in a directory where the compiler will find them, either in the same directory as your other source files or somewhere else (see Appendix section _A.2_ _Compiler Switches_ on page _203_ on how to make the compiler look in more folders than the one the main source file is in). In your source you would refer to the main file of such a library by
+The import statement is the way to use the standard library (or a library of your own design). Place the library files in a directory where the compiler will find them, either in the same directory as your other source files or somewhere else (see <<Compiler Switches>> on how to make the compiler look in more folders than the one the main source file is in). In your source you would refer to the main file of such a library by
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -252,17 +252,17 @@ class = 'EVERY' id
 --------------------------------------------------------------------------------
 
 
-Classes are definitions of templates of instances. That means that a class declaration only describes instances, and does not add anything to your game in itself. Instead, you have to create an instance of the class to make it available in the game (see _Instances_ below).
+Classes are definitions of templates of instances. That means that a class declaration only describes instances, and does not add anything to your game in itself. Instead, you have to create an instance of the class to make it available in the game (see <<Instances,_Instances_>> below).
 
 The *id* is the identifier used by the author to refer to this class throughout the source code, e.g. when referring to it in the inheritance clause of other classes and instances.
 
-The *properties* are described in _Properties_ on page _62_.
+The *properties* are described in <<Properties>>.
 
 
 
 === Inheritance
 
-Every instance must inherit from a class (see _Inheritance and Object Orientation_ on page _33_). Furthermore, user-defined classes must also inherit from other classes. A class or an instance inheriting from a class will get all properties of that class. All properties explicitly declared in a class or instance inheriting from another class will extend, override or complement those properties as specified in the original, parent, class. This way, you can easily create new classes by extending existing ones.
+Every instance must inherit from a class (see <<Inheritance and Object Orientation>>). Furthermore, user-defined classes must also inherit from other classes. A class or an instance inheriting from a class will get all properties of that class. All properties explicitly declared in a class or instance inheriting from another class will extend, override or complement those properties as specified in the original, parent, class. This way, you can easily create new classes by extending existing ones.
 
 You specify which class another class or an instance inherits from using a clause following the grammar:
 
@@ -301,7 +301,7 @@ instance = 'THE' id
 --------------------------------------------------------------------------------
 
 
-Every instance must inherit from a class (see _Inherit_ above) keeping all properties of that class. Each inherited property can be amended or overridden by specifying it in the declaration of the instance, and new attributes, exits and scripts can be added in the same way as in class declaration.
+Every instance must inherit from a class (see <<Inheritance,_Inheritance_>> above) keeping all properties of that class. Each inherited property can be amended or overridden by specifying it in the declaration of the instance, and new attributes, exits and scripts can be added in the same way as in class declaration.
 
 Exactly the same rules for declaring properties apply to instances. The only difference is that an instance will actually show up in the game when it is run. Remember also that properties declared in an instance are not common to any other instances (unless the declaration overrode the value of a class property).
 
@@ -340,9 +340,9 @@ End The mr_brown.
 --------------------------------------------------------------------------------
 
 
-In these examples the source lines between `The` and `End The` all declare various properties that we will learn more about in section _3.7_ _Properties_ on page _62_. The rest of the lines are fairly easy to match up to the rules of the Alan language as described by the earlier box.
+In these examples the source lines between `The` and `End The` all declare various properties that we will learn more about in <<Properties>>. The rest of the lines are fairly easy to match up to the rules of the Alan language as described by the earlier box.
 
-All capitalized words in the examples above are keywords in the Alan language (see Appendix section _D.2_ _Keywords_ on page _222_ for a complete list), the rest are author defined words or identifiers (with the exception of the bold words object and actor, which are identifiers predefined to be special classes).
+All capitalized words in the examples above are keywords in the Alan language (see <<Keywords>> for a complete list), the rest are author defined words or identifiers (with the exception of the bold words object and actor, which are identifiers predefined to be special classes).
 
 
 
@@ -366,7 +366,12 @@ Creating an instance of `thing` is a good choice if you want an invisible instan
 
 [NOTE]
 ================================================================================
-Note that a `thing` can be put in a container, but that container will not show any visible traces of that thing. It will be rendered as empty if listed. The `thing` is however subject to other effects of being part of a container, such as the removal rules and selection by a random selection of items in the container. See _Random Values_ on page _143_ for a description of random selections of container items.
+Note that a `thing` can be put in a container, but that container will not show
+any visible traces of that thing. It will be rendered as empty if listed. The
+`thing` is however subject to other effects of being part of a container, such
+as the removal rules and selection by a random selection of items in the
+container. See <<Random Values,_Random Values_>> for a description of random
+selections of container items.
 ================================================================================
 
 
@@ -384,7 +389,7 @@ The predefined class `actor` is intended for providing so called NPC:s, non-play
 
 An instance inheriting from the `actor` class will be described when encountered. Actors can be located, as can any `thing`, but not be inside a container. In addition, they can have scripts.
 
-Actors also exhibit special behaviour when they are described, e.g. when they are encountered. If an actor is executing a script with a description, (see _Script_ on page _89_) this description will be used instead of the one declared in the description clause.
+Actors also exhibit special behaviour when they are described, e.g. when they are encountered. If an actor is executing a script with a description, (see <<Scripts,_Scripts_>>) this description will be used instead of the one declared in the description clause.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -469,7 +474,7 @@ The classes *literal*, *string* and *integer* cannot be instantiated explicitly.
 
 
 
-The second parameter (see _Syntax Definitions_ on page _92_) in this player command is the integer 12. This parameter is automatically considered an instance of the pre-defined class *integer*.
+The second parameter (see <<Syntax Definitions>>) in this player command is the integer 12. This parameter is automatically considered an instance of the pre-defined class *integer*.
 
 It is possible to add verbs to *literal* and its sub-classes. This way it is possible to create verbs that take strings and integers as parameters.
 
@@ -507,6 +512,8 @@ A property can be inherited from the parent of the class or instance. It is not 
 
 // FIXME: CLEANUP TABLE
 
+.Properties Inheritance
+[[table-of-properties-inheritance]]
 [cols=",",]
 |==========================================================================================================================================================================================================================
 |*Property* |*Inherited as*
@@ -524,7 +531,7 @@ Accumulated, you can add further attributes in a class or instance.
 |*Articles & Forms* |Overridden.
 |*Mentioned* |Overridden. Also overrides names.
 |*Container* |Overridden, all clauses are overridden.
-|*Verb declarations* |Accumulated. Verb bodies are accumulated for verbs with the same name as the inherited. Use qualifiers (see Verb Qualification 106) if you don't want all of them to execute.
+|*Verb declarations* |Accumulated. Verb bodies are accumulated for verbs with the same name as the inherited. Use qualifiers (see <<Verb Qualification>>) if you don't want all of them to execute.
 |*Scripts* |Overridden, for same script name.
 |*Entered* |Accumulated. Entered-clauses in nested locations are executed from the outside in. Entered-clauses in parent classes are executed first. So the first clause to be executed is the parent of an outer location.
 |*Exits* |Overridden, for same direction.
@@ -545,7 +552,7 @@ Where an instance will be located when the game starts is set using an optional 
 initial_location = where
 --------------------------------------------------------------------------------
 
-Only the `At` `what` and `In` `what` forms of the `Where` construct (see _WHERE Specifications_ on page _138_) are allowed when describing an initial location of an instance.
+Only the `At` `what` and `In` `what` forms of the `Where` construct (see <<WHERE Specifications>>) are allowed when describing an initial location of an instance.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -580,8 +587,15 @@ The south_of_house IsA location
 ...
 --------------------------------------------------------------------------------
 
+// @NOTE: Here I had to use the autogenerated anchor ID:
+//            <<_words_identifiers_and_names>>
+//        instead of the plain title:
+//            <<Words, Identifiers and Names>>
+//        because of the comma in the title (interpreted as custom text separator).
+//        See Issue #1468 on this:
+//        https://github.com/asciidoctor/asciidoctor/issues/1468#issuecomment-132378305
 
-The quoted identifier used in the last example makes the name be one single text string. See _Words, Identifiers and Names_ on page _153_ for an explanation of this. This works for locations, which a player usually does not need to refer to, but for things the player should interact with, a more sophisticated mechanism is available.
+The quoted identifier used in the last example makes the name be one single text string. See <<_words_identifiers_and_names>> for an explanation of this. This works for locations, which a player usually does not need to refer to, but for things the player should interact with, a more sophisticated mechanism is available.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -615,7 +629,7 @@ The rod IsA object At grate
 --------------------------------------------------------------------------------
 
 
-This would allow the player to refer to the object using either '`rusty rod`' or '`dynamite`'. (Or as a side effect '`rusty dynamite`'.) The first name clause is used for building a default description, if necessary (see _Description_ on page _75_).
+This would allow the player to refer to the object using either '`rusty rod`' or '`dynamite`'. (Or as a side effect '`rusty dynamite`'.) The first name clause is used for building a default description, if necessary (see <<Description>>).
 
 The character case used in any word is retained for output, but player input will always be matched without considering case. This way you can e.g. give capitalized names to people giving a correct output.
 
@@ -640,17 +654,17 @@ In this example, both the pear and the apple would be possible to refer to using
 
 ==== Displaying Instances
 
-When an instance is to be shown to the player, it must be displayed in form of text. An instance can be printed in several different ways, it can be described or only mentioned. A description of an instance is a complete and usually more elaborate description of it (see _Description_ on page _75_). However, often an instance must be mentioned as a part of a sentence, or in a list.
+When an instance is to be shown to the player, it must be displayed in form of text. An instance can be printed in several different ways, it can be described or only mentioned. A description of an instance is a complete and usually more elaborate description of it (see <<Description>>). However, often an instance must be mentioned as a part of a sentence, or in a list.
 
 Such a mentioning of an instance will involve the articles, the name and possibly the `Mentioned` clause.
 
-The basis for this mechanism is the short form, which by default is the first of the ``Name``s. It will, however, be overridden by any existing `Mentioned` clause (see _Mentioned_ on page _80_).
+The basis for this mechanism is the short form, which by default is the first of the ``Name``s. It will, however, be overridden by any existing `Mentioned` clause (see <<Mentioned>>).
 
-The short form can be automatically transformed to a description (for instances that have no `Description`) by inserting the article (see _Articles and Forms_ on page _78_) and the short form in a default message. In the following example, output of the article is underlined and the short forms are emphasised, the rest is the default message templates.
+The short form can be automatically transformed to a description (for instances that have no `Description`) by inserting the article (see <<Articles and Forms>>) and the short form in a default message. In the following example, output of the article is underlined and the short forms are emphasised, the rest is the default message templates.
 
 There is a _little black book_, a _green pearl_ and an _owl_ here.
 
-The interpreter also uses this principle when constructing lists of instances in container content lists (as the result of the execution of an implicit or explicit `List` statement, see page _121_).
+The interpreter also uses this principle when constructing lists of instances in container content lists (as the result of the execution of an implicit or explicit `List` statement, see <<List Statement>>).
 
 ===  Pronouns
 
@@ -835,7 +849,7 @@ If you need to set the initial value to refer to an instance of a sub-class of t
 
 ==== Set Type Attributes
 
-A Set is an unordered set of integers or instance references. Initial members must be listed in the declaration of the Set. See _Set Type_ on page _52_ for details on the Set type.
+A Set is an unordered set of integers or instance references. Initial members must be listed in the declaration of the Set. See <<Set Type>> for details on the Set type.
 
 The type and class of allowed members is inferred from the values actually in the initial set. If they are instance references, the common ancestor of all members is used as the class of the allowed members. An empty set is only allowed as an initial value if the attribute is an inherited attribute since in this case, the member class is known from the inheritance and need not be indicated in the declaration.
 
@@ -850,7 +864,7 @@ If you require an initially empty set of another type, e.g. integer, and you can
 
 ==== Inheriting Attributes
 
-Attributes can be inherited like any other property. A declaration of an attribute with the same name as in any of the parents of the instance or class, will inherit the type of the attribute, you cannot change it in subsequent declarations. This means that any declaration of a different initial value than the inherited must follow the rules of type compatibility for assignment. (See _Type Compatibility_ on page _53_.)
+Attributes can be inherited like any other property. A declaration of an attribute with the same name as in any of the parents of the instance or class, will inherit the type of the attribute, you cannot change it in subsequent declarations. This means that any declaration of a different initial value than the inherited must follow the rules of type compatibility for assignment. (See <<Type Compatibility>>.)
 
 This also applies to classes of instances in the reference and set types attributes. Both these types allow references to instances. The initial value given at the point where the attribute is introduced determines the required class of the set members or referenced instances. This is retained throughout the complete inheritance of that attribute even if a subsequent initial value would imply a more specialised class. An example:
 
@@ -931,7 +945,7 @@ If the `Initialize` clause is inherited it will accumulate all clauses with clau
 
 === Description
 
-The statements in the `Description` clause should print a description of the instance. These statements are executed when the hero encounters the instance. Depending on from which base class the instance inherits this can be a location description presented when the hero enters the location or when executing a `Look` statement. Other possibilities are descriptions of objects and actors. See sections _3.6_ _Instances_ on page _56_ for descriptions of what inheriting from the predefined base classes means.
+The statements in the `Description` clause should print a description of the instance. These statements are executed when the hero encounters the instance. Depending on from which base class the instance inherits this can be a location description presented when the hero enters the location or when executing a `Look` statement. Other possibilities are descriptions of objects and actors. See <<Instances>> for descriptions of what inheriting from the predefined base classes means.
 
 
 [NOTE]
@@ -941,7 +955,7 @@ The description should not change any game state since it might not always be ex
 
 
 
-See also _Special Statements_ on page _134_, concerning the `Visits` statement.
+See also <<Special Statements,_Special Statements_>>, concerning the `Visits` statement.
 
 The syntax for simple descriptions is:
 
@@ -982,7 +996,7 @@ Before executing a description, you can check for various conditions to be met. 
 description = 'DESCRIPTION' [checks] [does]
 --------------------------------------------------------------------------------
 
-You can guard the description with a check in the same form as with verb bodies (see _Verb Checks_ on page _102_ for a detailed description of checks). Of course, there are no qualifiers possible here. To be able to separate the checks statement from the actual description statements the keyword `Does` is required. This is an example of the checks for a dark location:
+You can guard the description with a check in the same form as with verb bodies (see <<Verb Checks>> for a detailed description of checks). Of course, there are no qualifiers possible here. To be able to separate the checks statement from the actual description statements the keyword `Does` is required. This is an example of the checks for a dark location:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -995,12 +1009,13 @@ End Every dark_location.
 --------------------------------------------------------------------------------
 
 
+// @NOTE: Here we cross-reference directly the Table of "Inherited Properties"
 
-Note that it does not specify any description statements. This is because the checks and the actual description are inherited separately, as described in the table on page _62_. The actual descriptions are left for the instances.
+Note that it does not specify any description statements. This is because the checks and the actual description are inherited separately, as described in <<table-of-properties-inheritance>>. The actual descriptions are left for the instances.
 
 If multiple description checks are available in the inheritance chain, they are all tested and must be met before any description is attempted. So the inheritance of description checks is "`additive`".
 
-If any check fails, the description will not be executed. This particularly also implies that the default listings and description of present objects and actors in location instances will not occur either. Note, however, that any events and actor actions _will_ be shown. See _Locations_ below for a description of default description mechanism for locations.
+If any check fails, the description will not be executed. This particularly also implies that the default listings and description of present objects and actors in location instances will not occur either. Note, however, that any events and actor actions _will_ be shown. See <<Locations,_Locations_>> below for a description of the default description mechanism for locations.
 
 If neither a check nor any description statements occur after the keyword `Description` this _is_ a description, but it is empty.
 
@@ -1143,7 +1158,7 @@ The `Article` and `Form` are inherited as one property. That means that an insta
 
 ==== Printing
 
-You can use various forms of the `Say` statement (see _Say_ on page _120_) to choose in which form the instance will be presented. In addition, the embedded parameter references allow selection of the form (_String Statement_ on page _118_).
+You can use various forms of the `Say` statement (see <<Say Statement>>) to choose in which form the instance will be presented. In addition, the embedded parameter references allow selection of the form (<<String Statement>>).
 
 
 
@@ -1329,7 +1344,7 @@ or
 
 
 
-It is followed by a list of instances mentioned. Section _Mentioned_ on page _80_ describes this listing.
+It is followed by a list of instances mentioned. <<Mentioned>> describes this listing.
 
 The `Else`-part is used instead of the header if the container is empty.
 
@@ -1358,9 +1373,9 @@ extract = 'EXTRACT' [check] [does]
 --------------------------------------------------------------------------------
 
 
-The extract clause, including optional `Check` and `Does` clauses, allows prohibiting the extraction of the item from the container depending on some condition. If the `Check` is present, it works the same way as for ``Verb``s (see _Verb Checks_ on page _102_). I.e. a `Check` without a guard expression will unconditionally prohibit extractions; a `Check` with an expression will evaluate that expression and, if false, execute its `Else` clause, and then abort the move. The `Does` clause will be executed if the optional `Check` passes, or there was no `Check`.
+The extract clause, including optional `Check` and `Does` clauses, allows prohibiting the extraction of the item from the container depending on some condition. If the `Check` is present, it works the same way as for ``Verb``s (see <<Verb Checks>>). I.e. a `Check` without a guard expression will unconditionally prohibit extractions; a `Check` with an expression will evaluate that expression and, if false, execute its `Else` clause, and then abort the move. The `Does` clause will be executed if the optional `Check` passes, or there was no `Check`.
 
-An `Extract` clause without a `Check`, but with a `Does`-clause, executes the Does-clause and then allows the extraction to take place. So, in a way, Checks, if triggered, prevents the extraction, and the `Does`-clause amends to it, being an extensions of the normal case, much like the `Check` and `Does`-clauses for Verbs (see section _3.10_ _Verbs_ on page _100_). The second form of the clause, with just the statements, is equivalent to an `Extract` with only a `Does`-clause.
+An `Extract` clause without a `Check`, but with a `Does`-clause, executes the Does-clause and then allows the extraction to take place. So, in a way, Checks, if triggered, prevents the extraction, and the `Does`-clause amends to it, being an extensions of the normal case, much like the `Check` and `Does`-clauses for Verbs (see <<Verbs>>). The second form of the clause, with just the statements, is equivalent to an `Extract` with only a `Does`-clause.
 
 An example use of the `Extract` clause is to prohibit, put restrictions on, or modify the behaviour when the hero attempts to take things carried by another actor.
 
@@ -1389,9 +1404,9 @@ End The waiter.
 
 === Verbs
 
-Verbs declared inside an class or instance are inherited in the same way as other properties. See section _3.10_ _Verbs_ on page _100_ for a description on how to declare verbs.
+Verbs declared inside an class or instance are inherited in the same way as other properties. See <<Verbs>> for a description on how to declare verbs.
 
-The verbs in a class or instance will only be a candidate for execution if the instance bound to a parameter is of the corresponding class, or is the instance. See _Verb Execution_ on page _106_ for a detailed explanation.
+The verbs in a class or instance will only be a candidate for execution if the instance bound to a parameter is of the corresponding class, or is the instance. See <<Verb Execution>> for a detailed explanation.
 
 
 
@@ -1406,13 +1421,13 @@ The `Entered` clause is only allowed in instances inheriting from the predefined
 
 However, the `Entered` clause is primarily intended for setting up the location in a correct way, not for describing events, actions and states changes. For this the `Description`-clause is recommended.
 
-The `Entered` clause can also be used to restrict the movements of actors other than the `Hero`. (The hero's travels are controlled by exit checks as described in _Exits_ on page _88_).
+The `Entered` clause can also be used to restrict the movements of actors other than the `Hero`. (The hero's travels are controlled by exit checks as described in <<Exits,_Exits_>>).
 
 If some of the statements should only apply to a particular actor, it is possible to test for the `Current Actor` with a simple `If` statement.
 
 The actor is located at the location before the clause is executed so `Current Location` will be the location having the clause.
 
-Entered clauses are inherited and locations can be nested (see section _Locations_). The order of execution is explained by the following table:
+Entered clauses are inherited and locations can be nested (see <<Locations,_Locations_>>). The order of execution is explained by the following table:
 
 // FIXME: CLEANUP TABLE
 
@@ -1454,7 +1469,7 @@ exit = 'EXIT' id {',' id} 'TO' id [exit_body] '.'
 exit_body = [checks] [does] 'END' 'EXIT' [id]
 --------------------------------------------------------------------------------
 
-An exit has a list of identifiers, all of which are considered directional words. I.e. when any of those words is input by the player, he will be located at the location identified as the target of the exit. It is possible to customize the exit using a `Check`, that must be satisfied to allow passage through the exit, and statements (`Does`) that will be executed when the player passes through. The checks work as described in _Verb Checks_ on page _102_.
+An exit has a list of identifiers, all of which are considered directional words. I.e. when any of those words is input by the player, he will be located at the location identified as the target of the exit. It is possible to customize the exit using a `Check`, that must be satisfied to allow passage through the exit, and statements (`Does`) that will be executed when the player passes through. The checks work as described in <<Verb Checks,_Verb Checks_>>.
 
 If either of the `Check` or `Does` clauses is present, the `End Exit` is required.
 
@@ -1585,7 +1600,7 @@ Using this construct, you can add any property to a class without having access 
 
 == Syntax Definitions
 
-The syntax construct is used to specify the allowed structure of the input from the player. Each definition defines the syntax for one `Verb`. The effects triggered by the player input are declared using the `Verb` construct (see _Verbs_ on page _100_).
+The syntax construct is used to specify the allowed structure of the input from the player. Each definition defines the syntax for one `Verb`. The effects triggered by the player input are declared using the `Verb` construct (see <<Verbs>>).
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -1614,7 +1629,7 @@ Syntax
   unlock_with = 'unlock' (l) 'with' (k).
 --------------------------------------------------------------------------------
 
-When the player types a command, it is compared to the set of declared syntaxes. This provides a very flexible way to extend the allowed command set (see also _Player Input_ on page _160_ for details on general player input).
+When the player types a command, it is compared to the set of declared syntaxes. This provides a very flexible way to extend the allowed command set (see also <<Player Input>> for details on general player input).
 
 After the player input has been matched to an allowed syntax, the parameters are bound to the instances referred to by the player. The parameter identifiers in the syntax declaration then refer to those entities. Reference to attributes etc. will be done in the instance referred by the parameter.
 
@@ -1642,7 +1657,7 @@ In the example above, the parameter, `obj`, can be used in the declaration of th
 
 This, of course, provided that there is an instance that will match the player input, given the adjectives and nouns in the input and in instance declarations.
 
-It is allowed to define multiple syntaxes for the same identifier (verb). See section _Syntax Synonyms_ on page _97_.
+It is allowed to define multiple syntaxes for the same identifier (verb). See <<Syntax Synonyms,_Syntax Synonyms_>>.
 
 
 
@@ -1657,7 +1672,7 @@ indicator = '*'' | '!''
 
 There are two indicators available:
 
-* '```+```' This parameter can reference multiple instances (for example by the player using *all* or concatenating a number of parameters using a conjunction like *and*, see _Player Input_ on page _160_).
+* '```+```' This parameter can reference multiple instances (for example by the player using *all* or concatenating a number of parameters using a conjunction like *and*, see <<Player Input>>).
 
 * '```!```' The parameter (the instance the player refers to in this position in the syntax) need not be present at the current location. The default case is that the Alan interpreter requires that a referenced instance must be present at the same location as the hero (if the parameter inherits from `thing`. Note that *entities* are always accessible). For cases when the player must be able to refer to objects and actors that are not present (e.g. in a verb like `talk_about`) this omnipotent indicator can be used to force the interpreter to accept references to any object or actor.
 
@@ -1683,7 +1698,7 @@ This shows the syntax definitions for the verbs `take` and `drop`. `take` also a
 
 
 
-Refer to _Player Input_ on page _160_ for details on the input of references to multiple parameters (such as objects). The above declarations would force the interpreter to reject player input like
+Refer to <<Player Input>> for details on the input of references to multiple parameters (such as objects). The above declarations would force the interpreter to reject player input like
 
 
 [EXAMPLE,role="gametranscript"]
@@ -1716,7 +1731,7 @@ Even if the robber or the key is not present, it will allow the player to say
 
 
 
-For more information on player inputs, refer to _Player Input_ on page _160_.
+For more information on player inputs, refer to <<Player Input>>.
 
 Indicators given in one syntax declaration can affect other syntaxes if they have identical beginnings, like
 
@@ -1762,7 +1777,8 @@ restriction_class = id
 
 [NOTE]
 ================================================================================
-Any predefined or user defined class can be used. Particularly note that integer and string are pre-defined classes (see _The Pre-defined Classes_ on page _34_).
+Any predefined or user defined class can be used. Particularly note that integer
+and string are pre-defined classes (see <<The Pre-defined Classes>>).
 ================================================================================
 
 
@@ -1844,7 +1860,7 @@ The place-holders represents 1) the name of the verb, and 2) the class in which 
 
 The first template is used for verbs that are declared globally, i.e. outside of any class or instance. Since these are only applied when no parameters are used, this will effectively work for simple '`verb-only`' ``Verb``s, such as `quit`, `look`, `save` etc.
 
-Verbs declared in an instance or a class, for which there is no syntax, by default receives a syntax of the common verb/object type corresponding to the second template above. This is a reasonable syntax for many cases and restricts the parameters to instances of the class where the verb was declared. It also implies that the default name for the single parameter is the same as the name of that class, e.g. `object`, `actor`, `thing`, etc. (See _WHAT Specifications_ on page _140_ for the implications of this.)
+Verbs declared in an instance or a class, for which there is no syntax, by default receives a syntax of the common verb/object type corresponding to the second template above. This is a reasonable syntax for many cases and restricts the parameters to instances of the class where the verb was declared. It also implies that the default name for the single parameter is the same as the name of that class, e.g. `object`, `actor`, `thing`, etc. (See <<WHAT Specifications>> for the implications of this.)
 
 
 [NOTE]
@@ -1867,10 +1883,18 @@ If the player inputs a command following a syntax which requires parameters, the
 
 There are a number of ways to get an instance into scope:
 
-* Instances of `entity`, and of any user defined subclasses thereof, are always in scope.
-* An instance of `thing` and its subclasses at the current location, including any nested locations, is in scope.
-* An instance of any class inside a container that is in scope is in scope, unless that container is opaque and closed. See _Container Properties_ on page _81_ for details.
-* If the syntax indicated a parameter as omni-potent, any instance is in scope for that parameter position.
+* Instances of `entity`, and of any user defined subclasses thereof, are always
+  in scope.
+
+* An instance of `thing` and its subclasses at the current location, including
+  any nested locations, is in scope.
+
+* An instance of any class inside a container that is in scope is in scope,
+  unless that container is opaque and closed. See <<Container
+  Properties,_Container Properties_>> for details.
+
+* If the syntax indicated a parameter as omni-potent, any instance is in scope
+  for that parameter position.
 
 If the interpreter finds multiple instances matching the input (the set of given adjectives and noun), it will try to disambiguate with preference to instances present, i.e. at the location of the hero. If there still are multiple candidates after this, the interpreter will print a message and abort execution of the current command.
 
@@ -1906,7 +1930,7 @@ A global declaration will only be considered when the verb is not applied to any
 
 A verb declaration inside a class definition or an instance will be considered if that instance (or an instance inheriting from that class) is used as a parameter in the input.
 
-The identifiers in the list (`take` and `get` in the example above) will be player words that by default can be used to invoke the verb. But if a `Syntax` is declared for the `Verb` (see _Syntax Definitions_ on page _92_), the identifiers in the list will not be accessible to the player, instead the sequence of words and parameters specified in the `Syntax` must be used.
+The identifiers in the list (`take` and `get` in the example above) will be player words that by default can be used to invoke the verb. But if a `Syntax` is declared for the `Verb` (see <<Syntax Definitions>>), the identifiers in the list will not be accessible to the player, instead the sequence of words and parameters specified in the `Syntax` must be used.
 
 If there is more than one identifier in the list, as in the example above, this can be viewed as a short hand for declaring identical checks and bodies for all the verbs in the list. This will create synonymous actions for different verbs on the level where the verb declaration is. They may differ in implementation at other places, i.e. if they are declared in the same verb declaration on one level in an inheritance tree, they can still have different bodies on another level.
 
@@ -2004,7 +2028,7 @@ If any check should fail, the execution of the current verb is interrupted and t
 
 
 
-With this in mind, ``Check``s are also used when handling the user input *all* (see _Player Input_ on page _160_ for details on possible player input). The mechanisms for this involve examining all objects at the current location and evaluating all checks for the verb. Any objects that do not pass the checks are not considered for execution. This limits the handling of *all* to only executing the verb bodies for objects that are reasonable, i.e. that will not fail in the ``Check``s.
+With this in mind, ``Check``s are also used when handling the user input *all* (see <<Player Input>> for details on possible player input). The mechanisms for this involve examining all objects at the current location and evaluating all checks for the verb. Any objects that do not pass the checks are not considered for execution. This limits the handling of *all* to only executing the verb bodies for objects that are reasonable, i.e. that will not fail in the ``Check``s.
 
 For example assuming the above definition of the verb take and a location containing the two objects, `ball` and `box`, of which only the `ball` is `takeable` the player input
 
@@ -2017,7 +2041,7 @@ For example assuming the above definition of the verb take and a location contai
 
 
 
-would result in *all* representing only the ball. See _Player Input_ on page _160_ for an explanation of the player view of this.
+would result in *all* representing only the ball. See <<Player Input>> for an explanation of the player view of this.
 
 
 
@@ -2034,7 +2058,7 @@ qualifier = 'BEFORE'
 
 If all checks succeed, the execution of the verb will be carried out. Multiple verb bodies may be involved. The order is by default to first execute the body of any verb declaration for the current location (including verb bodies inherited by it). Each parameter is then examined to find any declarations of that verb for the instance (including inherited verb bodies). These verb bodies are then executed in the order in which the parameters occurred in the syntax declaration, for each parameter starting with the body in the most basic class. By default, all of the involved verb bodies are executed. This is the most natural order and covers most cases.
 
-In some infrequent situations, another order may be necessary. By using the qualifiers, *Before/After/Only,* the author can decide which verb bodies will be executed and in which order (see _Verb Qualification_ below for details).
+In some infrequent situations, another order may be necessary. By using the qualifiers, *Before/After/Only,* the author can decide which verb bodies will be executed and in which order (see <<Verb Qualification,_Verb Qualification_>> below for details).
 
 A simple verb example:
 
@@ -2059,7 +2083,7 @@ verb_alternatives = 'WHEN' id simple_verb_body
 
 When a `Verb` is declared within an instance declaration, verb alternatives are allowed. These alternatives are used in conjunction with the `Syntax` declaration defined for the verb and allows differentiating between the instances occurring in different places in the input.
 
-When a player inputs a command, each parameter in the syntax (see above) is bound to an actual instance or receives the value of a literal, depending on the specified syntax. To determine the checks to test and verb bodies to execute the parameters are examined in turn according to the algorithm described in the section _Verb Qualification_ below. Each instance may have different verb bodies executed depending on at which position it occurred (to which parameter it was bound).
+When a player inputs a command, each parameter in the syntax (see above) is bound to an actual instance or receives the value of a literal, depending on the specified syntax. To determine the checks to test and verb bodies to execute the parameters are examined in turn according to the algorithm described in the section <<Verb Qualification,_Verb Qualification_>> below. Each instance may have different verb bodies executed depending on at which position it occurred (to which parameter it was bound).
 
 For example, assume the following syntax definition
 
@@ -2104,7 +2128,7 @@ In most circumstances, this is the most logical order, but if another order is r
 
 === Verb Execution
 
-First all parameters are evaluated according to the syntax restrictions (see _Parameter Restrictions_ on page _96_). Then, if they passed, the checks of all verb declarations are evaluated (see _Verb Checks_ on page _102_). Finally the verb bodies are executed in the normal order as explained by the table below.
+First all parameters are evaluated according to the syntax restrictions (see <<Parameter Restrictions,_Parameter Restrictions_>>). Then, if they passed, the checks of all verb declarations are evaluated (see <<Verb Checks>>). Finally the verb bodies are executed in the normal order as explained by the table below.
 
 // FIXME: CLEANUP TABLE
 
@@ -2129,7 +2153,7 @@ If you add a verb to the class `entity`, it will be inherited by all instances, 
 
 ==== Controlling Execution with Qualifiers
 
-There are cases where you don't want all the bodies to be executed, or there is a special need to execute them in a different order. The most common case is to prohibit other bodies to be executed, e.g. a verb body in a location might want to stop the player from throwing any object. This verb body must then ensure that it is the only verb bodies to be executed. This can be done using the `Only` qualifier (see _Verb Qualification_ on page _106_).
+There are cases where you don't want all the bodies to be executed, or there is a special need to execute them in a different order. The most common case is to prohibit other bodies to be executed, e.g. a verb body in a location might want to stop the player from throwing any object. This verb body must then ensure that it is the only verb bodies to be executed. This can be done using the `Only` qualifier (see <<Verb Qualification>>).
 
 Qualifiers control the order of execution of verb bodies. How does this work?
 
@@ -2192,9 +2216,9 @@ Event nearby_explosion
 End Event.
 --------------------------------------------------------------------------------
 
-The body of an event can be any sequence of statements. They can however not refer to any parameters, since no verb is executing, or the `Current Actor`. See _Run-time Contexts_ on page _162_.
+The body of an event can be any sequence of statements. They can however not refer to any parameters, since no verb is executing, or the `Current Actor`. See <<Run-time Contexts,_Run-time Contexts_>>.
 
-Events may be scheduled and cancelled with the `Schedule` and `Cancel` statements (see _Event Statements_ on page _125_).
+Events may be scheduled and cancelled with the `Schedule` and `Cancel` statements (see <<Event Statements,_Event Statements_>>).
 
 
 
@@ -2236,7 +2260,7 @@ The statements within the rule are triggered when the condition _becomes_ true. 
 
 The use of parameters, `Current Actor`, `Current Location`, `Here` and `Nearby` is not allowed in rules conditionals or bodies.
 
-Rules are executed at no location. Therefore it is not possible to communicate directly with the player in the rule with output statements (since the hero cannot be where the rule is executing, see _Output Statements_ on page _117_). Triggering an event that handles the output intended for the player, is the recommended solution to this.
+Rules are executed at no location. Therefore it is not possible to communicate directly with the player in the rule with output statements (since the hero cannot be where the rule is executing, see <<Output Statements>>). Triggering an event that handles the output intended for the player, is the recommended solution to this.
 
 The following is a complete game using a rule:
 
@@ -2260,7 +2284,7 @@ Start At kitchen.
 --------------------------------------------------------------------------------
 
 
-In this example the rule conditional (the text marked with grey) is using an aggregation (`count`, see _Aggregates_ on page _150_) over two filters (see section _3.21_ _Filters_ on page _151_) that will count the number of actors at the kitchen, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.
+In this example the rule conditional (the text marked with grey) is using an aggregation (`count`, see <<Aggregates>>) over two filters (see <<Filters>>) that will count the number of actors at the kitchen, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.
 
 Again, remember that rules are checked after each actor has moved. What happens if there are more actors in play and they move in and out of the kitchen, is left as an exercise to the reader.
 
@@ -2297,11 +2321,11 @@ Syntax
 Verb look_at ...
 --------------------------------------------------------------------------------
 
-This will result in an error message indicating that the synonym word `look_at` is not defined. This is because the `Syntax` (see section _3.8_) defined the verb `look_at` to have the specified syntax (including the player words '`look`' and '`at`'), the player word `look_at` is not defined, which is as well as the player would not be able to input a word with an underscore (see _Player Input_ on page _160_).
+This will result in an error message indicating that the synonym word `look_at` is not defined. This is because the `Syntax` (see <<Additions>>) defined the verb `look_at` to have the specified syntax (including the player words '`look`' and '`at`'), the player word `look_at` is not defined, which is as well as the player would not be able to input a word with an underscore (see <<Player Input>>).
 
-You can achieve the desired effect by instead giving multiple verb identifiers in the verb declarations; this will give the same verb bodies (checks and actions) to multiple verbs. See the section on _Verbs_ on page _100_ for details on verb declarations.
+You can achieve the desired effect by instead giving multiple verb identifiers in the verb declarations; this will give the same verb bodies (checks and actions) to multiple verbs. See <<Verbs,the section on _Verbs_>> for details on verb declarations.
 
-It is also possible to define multiple names for an instance to achieve other effects similar to synonyms. See _Names_ on page _65_ for a description of this.
+It is also possible to define multiple names for an instance to achieve other effects similar to synonyms. See <<Names>> for a description of this.
 
 
 
@@ -2319,7 +2343,7 @@ You can't go that way.
 
 
 
-The response "You can't go that way." is a typical example of such system messages (for details see Appendix _C.1_, _Input Response Messages_).
+The response "You can't go that way." is a typical example of such system messages (for details see <<Input Response Messages>>).
 
 To make the user dialogue more adapted to the settings you select, Alan allows you to define your own version of these messages. The grammar for this is
 
@@ -2364,13 +2388,13 @@ Message NOWAY:
 --------------------------------------------------------------------------------
 
 
-The standard message for `Noway` is replaced by the output from the statements in the definition. For a complete list of all the identifiers of messages and their use, see Appendix _R_ on page _209_.
+The standard message for `Noway` is replaced by the output from the statements in the definition. For a complete list of all the identifiers of messages and their use, see <<Run-time Messages>>.
 
 
 
 === Message parameters
 
-Message sections must be declared at the global level, but to make it possible to create high-quality messages the message sections have parameters available. Which parameters are available vary depending on the message, the details for each message is available in Appendix _Input Response Messages_ on page _210_.
+Message sections must be declared at the global level, but to make it possible to create high-quality messages the message sections have parameters available. Which parameters are available vary depending on the message, the details for each message is available in <<Input Response Messages>>.
 
 The parameters can be used in the same way as in verb bodies. The names of the parameters are "`parameter1`", "`parameter2`", etc. The type of the parameters will also vary.
 
@@ -2471,7 +2495,7 @@ Start At outside_house.
   Schedule bird_chirp After 5.
 --------------------------------------------------------------------------------
 
-Only the `At What` form of the `Where` construct (see _WHERE Specifications_ on page _138_) is allowed in the `Start` section. Any statements are allowed in the start section but they cannot refer to any parameters.
+Only the `At What` form of the `Where` construct (see <<WHERE Specifications>>) is allowed in the `Start` section. Any statements are allowed in the start section but they cannot refer to any parameters.
 
 The start section must be the last declaration in an Alan source.
 
@@ -2514,7 +2538,7 @@ Locate charlie_chaplin At outside_house.
 "Charlie Chaplin comes out from the nearest house."
 --------------------------------------------------------------------------------
 
-If the hero is inside the house or out in the street, he will get different views of the situation. This feature ensures that the player only sees what is going on at the current location, and allows for easy adaptation to various viewpoints on the events without the need for any special tests. But see section _6.4_ _Distant Events_ on page _172_ for a solution in the case the hero need to be informed about things happening where he isn't.
+If the hero is inside the house or out in the street, he will get different views of the situation. This feature ensures that the player only sees what is going on at the current location, and allows for easy adaptation to various viewpoints on the events without the need for any special tests. But see <<Distant Events,_Distant Events_>> for a solution in the case the hero need to be informed about things happening where he isn't.
 
 
 
@@ -2525,7 +2549,7 @@ If the hero is inside the house or out in the street, he will get different view
 output_statement = STRING
 --------------------------------------------------------------------------------
 
-The simplest case of output is just a string, i.e. any text, possibly stretching over multiple lines, surrounded by double quotes. See also section _4.4_ _Strings_ on page _156_ for some detailed descriptions on the definition of strings.
+The simplest case of output is just a string, i.e. any text, possibly stretching over multiple lines, surrounded by double quotes. See also <<Strings>> for some detailed descriptions on the definition of strings.
 
 Some character combinations have special meaning for the printout:
 
@@ -2572,7 +2596,7 @@ $o       The current object (first parameter)
 
 [NOTE]
 ================================================================================
-The `$<n>` formats must be used with care as they are not checked at compile time, e.g. you can use "```$+1```" in a context where no parameter is defined which would lead to a run-time error. To avoid the risk of any run-time problems use the `Say` statement with the parameter name wherever possible. See section _Say Statement_ _below_.
+The `$<n>` formats must be used with care as they are not checked at compile time, e.g. you can use "```$+1```" in a context where no parameter is defined which would lead to a run-time error. To avoid the risk of any run-time problems use the `Say` statement with the parameter name wherever possible. See <<Say Statement,_Say Statement_>> below.
 ================================================================================
 
 
@@ -2664,7 +2688,7 @@ End If.
 
 If the *what* part refers to an instance, the optional `form` may be used to control in which form the instance will be output.
 
-If `THE` is used the form used will be the definite form, usually the short form preceded by a definite article. Correspondingly, the use of `AN` indicates an indefinite form. A third form, using `NO`, is available. It indicates that the negative form as defined by the negative article or form should be output. Refer to _Articles and Forms_ on page _78_ for a description of the definite/indefinite articles and forms. Finally, the `IT` form will print the pronoun associated with the instance.
+If `THE` is used the form used will be the definite form, usually the short form preceded by a definite article. Correspondingly, the use of `AN` indicates an indefinite form. A third form, using `NO`, is available. It indicates that the negative form as defined by the negative article or form should be output. Refer to <<Articles and Forms>> for a description of the definite/indefinite articles and forms. Finally, the `IT` form will print the pronoun associated with the instance.
 
 
 
@@ -2708,7 +2732,7 @@ If a resource file is referenced from multiple statements, it will only be copie
 output_statement = 'SHOW' id '.'
 --------------------------------------------------------------------------------
 
-The *id* should be the name of an image file. Since filenames may contain various special characters, a quoted identifier (see _File_ on page _157_) is usually required.
+The *id* should be the name of an image file. Since filenames may contain various special characters, a quoted identifier (see <<Filenames,_Filenames_>>) is usually required.
 
 Alan currently supports the PNG and JPEG formats only.
 
@@ -2719,7 +2743,7 @@ Alan currently supports the PNG and JPEG formats only.
 output_statement = 'PLAY' id '.'
 --------------------------------------------------------------------------------
 
-The *id* should be the name of a sound file. Since filenames may contain various special characters, a quoted identifier (see _File_ on page _157_) is usually required.
+The *id* should be the name of a sound file. Since filenames may contain various special characters, a quoted identifier (see <<Filenames,_Filenames_>>) is usually required.
 
 Alan currently supports the MOD and AIFF formats only.[[X30946]]
 
@@ -2734,7 +2758,7 @@ Alan currently supports the MOD and AIFF formats only.[[X30946]]
 locate_statement = 'LOCATE' what where '.'
 --------------------------------------------------------------------------------
 
-The `Locate` statement is a way of transferring instances to new locations. When executed, the indicated instance will be placed at the location given. For a description on how to specify where, see _WHERE Specifications_ on page _138_. When an actor is located at a new location the `DOES` clause of that location is always executed.
+The `Locate` statement is a way of transferring instances to new locations. When executed, the indicated instance will be placed at the location given. For a description on how to specify where, see <<WHERE Specifications>>. When an actor is located at a new location the `DOES` clause of that location is always executed.
 
 One special case of the `Locate` statement is when the predefined actor `hero` is located somewhere. This is analogous to the player typing a direction, i.e. the hero will be located at the appropriate location. Under particular circumstances, you may want to locate the player at a different location as a side effect of another action. For example:
 
@@ -2997,7 +3021,7 @@ Set friends Of mine To {suspect Of detective}. -- Correct maybe
 include_statement = 'INCLUDE' expression 'IN' set '.'
 --------------------------------------------------------------------------------
 
-The `Include` statement is used to include a new member in a Set. Typically, this is used to an instance or value to a collection of such. See section _Set Type_ on page _52_ for an explanation of the Set type. A member already in the Set will silently be accepted but not generate duplicate entries.
+The `Include` statement is used to include a new member in a Set. Typically, this is used to an instance or value to a collection of such. See <<Set Type>> for an explanation of the Set type. A member already in the Set will silently be accepted but not generate duplicate entries.
 
 The set may be identified using an expression involving reference attributes:
 
@@ -3054,7 +3078,7 @@ elsif_part = 'ELSIF' expression 'THEN' statements
 else_part = 'ELSE' expression 'THEN' statements
 --------------------------------------------------------------------------------
 
-The `If` statement is essential for varying output and otherwise change the activities in the game. The expression is evaluated (see _Expressions_ on page _141_ for details and examples of expression) and if it evaluates to true, the statements following the `Then` are executed. Otherwise, the expressions in any following `ElsIf` clauses are evaluated (in order) and the statements following the first expression that results in a true value is executed. If none of the expressions in the `ElsIf` clauses evaluated to true, or there are no `ElsIf` clauses, the statements following the `Else` are executed. The `Else` clause is optional.
+The `If` statement is essential for varying output and otherwise change the activities in the game. The expression is evaluated (see <<Expressions>> for details and examples of expression) and if it evaluates to true, the statements following the `Then` are executed. Otherwise, the expressions in any following `ElsIf` clauses are evaluated (in order) and the statements following the first expression that results in a true value is executed. If none of the expressions in the `ElsIf` clauses evaluated to true, or there are no `ElsIf` clauses, the statements following the `Else` are executed. The `Else` clause is optional.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3073,7 +3097,7 @@ Else
 End If.
 --------------------------------------------------------------------------------
 
-`If` statements which have an `IsA`-expression (see _Class Expressions_ on page _145_) are particularly important. As an `IsA`-expression test for the class of an instance, an `If` statement like
+`If` statements which have an `IsA`-expression (see <<Class Expressions>>) are particularly important. As an `IsA`-expression test for the class of an instance, an `If` statement like
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3212,7 +3236,7 @@ You can optionally leave out either `For` or `Each` but not both.
 
 The identifier is called the loop variable and will have similar semantics as a syntax parameter. It will dynamically be bound to instances, one for each repetition. In the body of the loop, the statements, this variable can be referenced in the same way as a syntax parameter.
 
-The optional filters can be used to restrict the values in the loop. If the `Between` form is used, the loop becomes an integer loop, resulting in the loop variable having integer type and range from the two expressions inclusive. Otherwise, the loop variable will be of instance type and will consecutively assume the value of each instance fulfilling the filters. See _Filters_ on page _151_ for an explanation of filters.
+The optional filters can be used to restrict the values in the loop. If the `Between` form is used, the loop becomes an integer loop, resulting in the loop variable having integer type and range from the two expressions inclusive. Otherwise, the loop variable will be of instance type and will consecutively assume the value of each instance fulfilling the filters. See <<Filters>> for an explanation of filters.
 
 Any references to the loop variable within the repetition will refer to the instance bound, or integer value, in this repetition.
 
@@ -3251,10 +3275,11 @@ The equivalent of a `Look` is automatically performed when the hero enters a new
 
 [NOTE]
 ================================================================================
-As the player will only see output generated at the same location as the hero, a `Look` executed by another actor at some other location will not be seen by the player. See _Output Statements_ on page _117_ for more details on this important consideration.
+As the player will only see output generated at the same location as the hero, a
+`Look` executed by another actor at some other location will not be seen by the
+player. See <<Output Statements>> for more details on this important
+consideration.
 ================================================================================
-
-
 
 
 
@@ -3404,13 +3429,13 @@ where = 'HERE'
 
 The meaning of the different constructs is as follows
 
-* `Here` is the location where the current activity is performed. Often this means where the hero is, but if the expression is evaluated in another run-time context this context is used. See _Run-time Contexts_ on page _162_ for a detailed discussion, but examples include an event scheduled at a particular location, in which case that location is `Here`. Note that `Here` is equivalent to `At Current Location`.
+* `Here` is the location where the current activity is performed. Often this means where the hero is, but if the expression is evaluated in another run-time context this context is used. See <<Run-time Contexts,_Run-time Contexts_>> for a detailed discussion, but examples include an event scheduled at a particular location, in which case that location is `Here`. Note that `Here` is equivalent to `At Current Location`.
 * `Nearby` means at any adjacent location. An adjacent location means that there exists an exit from the other location to `Here` (note that the direction is from `Nearby` to `Here`). It is allowed to refer to any instance using an identifier or expression. In particular, instances inheriting from `location` are allowed, which can be used to see if someone at that location can use an exit to get here.
 * `Near what` has a similar meaning to `Nearby` except that it refers to some other instance (the what) instead of the current location. The results is a truth value indicating if that other instance is at a location which is nearby (has an exit to) that of the location of the first instance.
-* `At what` means at the location of the instance referenced by the `what` specification (see _WHAT Specifications_ on page _140_). Note that an instance is always `At` itself, i.e. `x At x` is always true. This can come as a surprise, especially if you try to aggregate or loop over instances. (See _Aggregates_ on page _150_ and _Repetition Statements_ on page _133_.)
+* `At what` means at the location of the instance referenced by the `what` specification (see <<WHAT Specifications>>). Note that an instance is always `At` itself, i.e. `x At x` is always true. This can come as a surprise, especially if you try to aggregate or loop over instances. (See <<Aggregates,_Aggregates_>> and <<Repetition Statements,_Repetition Statements_>>.)
 * `In what` must refer to a container and the expression refers to inside of that container.
 
-These forms can be used in `Locate` statements and in some expressions for example. When used in their basic form in expressions they all look inside containers (and container in containers) to evaluate the expression. See _The Whereabouts of an Entity_ on page _148_ for more information about `Where` expressions.
+These forms can be used in `Locate` statements and in some expressions for example. When used in their basic form in expressions they all look inside containers (and container in containers) to evaluate the expression. See <<The Whereabouts of an Entity,_The Whereabouts of an Entity_>> for more information about `Where` expressions.
 
 
 [NOTE]
@@ -3438,10 +3463,10 @@ what = 'CURRENT' 'ACTOR'
 The meaning of the different forms of the `what` specification are:
 
 * `Current Actor` is always set to the actor currently active, e.g. when a non-player actor is running a script this refers to the actor instance that is running.
-* `Current Location` is the current location, i.e. the location where the current activity is performed. Normally this is the location where the hero is, but may also be where an event is executed or the location where a scripted actor currently is executing. See _Run-time Contexts_ on page _162_ for more details.
+* `Current Location` is the current location, i.e. the location where the current activity is performed. Normally this is the location where the hero is, but may also be where an event is executed or the location where a scripted actor currently is executing. See <<Run-time Contexts,_Run-time Contexts_>> for more details.
 * `This` refers to the instance in which code, such as a verb body or a script, is run. This can for example be used to test or set attributes in inherited code, thus testing or setting attributes in the instance while the code is defined in a class that the instance inherits from. It cannot be used in events or global verbs.
 * An identifier, *id*, refers to the class or instance with that name, a syntax parameter, script or loop variable with that name. A syntax parameter may have the same name as an class or instance declared elsewhere in the source in which case the parameter has precedence.
-* A reference to an attribute, as described in section _Attribute References_ on page _142_, might be used depending on its type and the context of the usage of the `what`-expression.
+* A reference to an attribute, as described in <<Attribute References>>, might be used depending on its type and the context of the usage of the `what`-expression.
 
 
 [NOTE]
@@ -3460,7 +3485,7 @@ The grammar for Alan refers to expression. This is a generic name for a number o
 
 === Types of Expressions
 
-Expressions are used e.g. in `If` and `Set` statements. The `If` statement requires a Boolean expression, i.e. an expression yielding a true or false value, while the `Set` statement can handle all other types of values. See section _Types_ on page _51_ for details on types.
+Expressions are used e.g. in `If` and `Set` statements. The `If` statement requires a Boolean expression, i.e. an expression yielding a true or false value, while the `Set` statement can handle all other types of values. See <<Types>> for details on types.
 
 
 
@@ -3502,7 +3527,7 @@ There are two formats available, of which the first resembles plain English.
 Set password Of terminal To password Of manual.
 --------------------------------------------------------------------------------
 
-The second format is more compact, which might be preferable when referring to chains of attributes referring to other attributes. See _Reference Attributes_ on page _70_ for an explanation on how this works.
+The second format is more compact, which might be preferable when referring to chains of attributes referring to other attributes. See <<Reference Attributes,_Reference Attributes_>> for an explanation on how this works.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3579,16 +3604,22 @@ expression = 'RANDOM' ['DIRECTLY'] 'IN' expression
 --------------------------------------------------------------------------------
 
 
-If the expression refers to a container, the expression returns one of the instances currently in that container. The type of the entire expression is instances of the class accepted by the container. See _Container Properties_ on page _81_ for details on how to determine the class of instances allowed inside a container.
+If the expression refers to a container, the expression returns one of the instances currently in that container. The type of the entire expression is instances of the class accepted by the container. See <<Container Properties>> for details on how to determine the class of instances allowed inside a container.
 
-If the expression refers to a set, the result is one of the members in the set. The type and class of the entire expression is determined by the allowed members in the set. See _Set Type Attributes_ on page _72_.
+If the expression refers to a set, the result is one of the members in the set. The type and class of the entire expression is determined by the allowed members in the set. See <<Set Type Attributes>>.
 
-The optional keyword `Directly` is only allowed if the expression refers to a container. The semantics is the same as for the `Where` expression, see _The Whereabouts of an Entity_ on page _148_.
+The optional keyword `Directly` is only allowed if the expression refers to a container. The semantics is the same as for the `Where` expression, see <<The Whereabouts of an Entity>>.
 
 
 [NOTE]
 ================================================================================
-Attempting to apply a random selection from an empty set or container is one of the very few situations that could lead to a runtime error. It is the responsibility of the author to ensure that this is not attempted. You should always surround a random member expression with an `If` statement that ensures that the set or container is not empty to guard against such runtime errors. See _Aggregates_ on page _150_ for descriptions on how to count members in a set or container.
+Attempting to apply a random selection from an empty set or container is one of
+the very few situations that could lead to a runtime error. It is the
+responsibility of the author to ensure that this is not attempted. You should
+always surround a random member expression with an `If` statement that ensures
+that the set or container is not empty to guard against such runtime errors. See
+<<Aggregates,_Aggregates_>> for descriptions on how to count members in a set or
+container.
 ================================================================================
 
 
@@ -3643,7 +3674,7 @@ There is a subtle but very important side effect of checking for an instance cla
 
 This is used by the compiler to allow references to attributes, scripts, container properties etc. that otherwise would not be allowed.
 
-A very common use of this is to restrict parameters in a `Syntax` to a more general class, like thing or entity, and then doing "`manual`" restrictions using `If`-statements to ensure that usage does not conflict with the actual properties of the instance. Also see the section on _If Statement_ on page _130_.
+A very common use of this is to restrict parameters in a `Syntax` to a more general class, like thing or entity, and then doing "`manual`" restrictions using `If`-statements to ensure that usage does not conflict with the actual properties of the instance. Also see <<If Statement,the section on _If Statement_>>.
 
 
 
@@ -3739,7 +3770,7 @@ There are two particularly interesting entities that you might want to know some
 * `Current Actor`
 * `Current Location`
 
-These two expressions can be used wherever a reference to an instance can be used. They will refer to the currently executing actor and the current location respectively. Details about execution contexts can be found in _Run-time Contexts_ on page _162_.
+These two expressions can be used wherever a reference to an instance can be used. They will refer to the currently executing actor and the current location respectively. Details about execution contexts can be found in <<Run-time Contexts,_Run-time Contexts_>>.
 
 
 
@@ -3800,7 +3831,7 @@ or
 If hero Not Nearby Then ...
 --------------------------------------------------------------------------------
 
-The forms available for the `Where` expression are described in detail in _WHERE Specifications_ on page _138_.
+The forms available for the `Where` expression are described in detail in <<WHERE Specifications>>.
 
 The default behaviour of a `Where` expression is to evaluate recursively through containers, e.g. if the bottle was inside a bag which was in the inventory, the first expression above would still be true. This implicitly transitive evaluation can also be made explicit through the use of the keyword `Indirectly`. This would result in exactly the same semantics, but it is explicitly expressed, which can be useful.
 
@@ -3820,8 +3851,10 @@ In addition, another qualifying keyword, `Directly`, can be used to indicate tha
 If key Directly At treasury Then ...
 --------------------------------------------------------------------------------
 
+// @NOTE: Used auto generated ID for x-ref: <<_containment_classes_and_transitivity>>
+//        instead of <<Containment, Classes and Transitivity>>
 
-The qualifying keyword `Directly` works in the same way with all `Where` expressions. Adding a `Directly` qualifier to the first example above would change the expression to only be true if the bottle was in the container but not inside any other container even if that container was in the inventory. See _Containment , Classes and Transitivity_ on page _37_ for some background information.
+The qualifying keyword `Directly` works in the same way with all `Where` expressions. Adding a `Directly` qualifier to the first example above would change the expression to only be true if the bottle was in the container but not inside any other container even if that container was in the inventory. See <<_containment_classes_and_transitivity,_Containment, Classes and Transitivity_>> for some background information.
 
 
 [NOTE]
@@ -3843,7 +3876,7 @@ aggregate = 'COUNT' | 'SUM' | 'MAX' | 'MIN'
 
 Aggregates are functions to calculate values from sets of instances. There are four aggregates available, `Count`, `Sum`, `Min` and `Max`. Aggregates work by inspecting all instances available, applying the filters, which may remove some, or even all, from the set of instances, and then calculate the value from the remaining instances.
 
-You can use filters to filter out instances belonging to a particular class, at a particular location or having a particular Boolean attribute. See _Filters_ on page _151_ for an explanation of filters.
+You can use filters to filter out instances belonging to a particular class, at a particular location or having a particular Boolean attribute. See <<Filters>> for an explanation of filters.
 
 `Count` counts the number of instances in the set, e.g.
 
@@ -3890,7 +3923,7 @@ filter = 'ISA' class
 
 
 
-Filters can be used to filter out only particular instances to loop or aggregate over. If one of the filters is a *IsA <class>*, only instances of that class will be bound to the loop variable or considered in the aggregation. In particular this is required if any of the other filters refer to attributes, which is only allowed if the class is known and that class is guaranteed to have that attribute. Other ways to restrict the filtered instances is to use a `Where` filter which implicitly restricts to instances available at or in that location, container or set. See _The Whereabouts of an Entity_ on page _148_ for details on the various forms of the `Where` expression.
+Filters can be used to filter out only particular instances to loop or aggregate over. If one of the filters is a *IsA <class>*, only instances of that class will be bound to the loop variable or considered in the aggregation. In particular this is required if any of the other filters refer to attributes, which is only allowed if the class is known and that class is guaranteed to have that attribute. Other ways to restrict the filtered instances is to use a `Where` filter which implicitly restricts to instances available at or in that location, container or set. See <<The Whereabouts of an Entity>> for details on the various forms of the `Where` expression.
 
 Multiple filters can be listed separated with a comma. Each filter must enumerate the set of values to a compatible set, e.g. using two `IsA` filters for actors and locations respectively is not allowed since those two sets can never be compatible.
 

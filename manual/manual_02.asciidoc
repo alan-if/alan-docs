@@ -528,7 +528,7 @@ This concludes this short description of object orientation and how the Alan lan
 
 
 
-=== Containment , Classes and Transitivity
+=== Containment, Classes and Transitivity
 
 One basic property of instances is that they may contain other instances. Although conceptually simple there are twists that you should know about.
 
@@ -839,6 +839,8 @@ A more complicated example is this
 --------------------------------------------------------------------------------
 
 On line 14 we will get an error saying that _someAttribute_ is not available since the class _f_ can only be guaranteed to be _thing_.
+
+// @FIXME: Missing reference: "(see xxx)"
 
 Is it? Well, the variable _f_ (in the loop) enumerates all things in the box and since the box takes objects, it is possible that it may contain the cont. And since that takes things, and the _In box_ is transitive (see xxx), _f_ may take on any thing that is contained in the cont too.
 

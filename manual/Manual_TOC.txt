@@ -28,7 +28,7 @@ Table of Contents
         The Pre-defined Classes
         Creating Classes and Instances
         Specialising and Overriding
-    Containment , Classes and Transitivity
+    Containment, Classes and Transitivity
         Containers Containing Containers
         Transitivity
     The Verb Construct
