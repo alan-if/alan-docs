@@ -24,11 +24,21 @@ Alan is an application-oriented language. It features constructs that are natura
 
 There are probably four major types of readers of this document:
 
-1.  Readers completely new to interactive fiction – read the whole document from the beginning.
-2.  Readers familiar with writing Interactive Fiction but new to Alan – read from section 2.4 onwards.
-3.  Alan v2 users wanting to upgrade – you should read the separate document on conversion, then section _2.4_ and onwards, with frequent use of chapter _3_ as a reference while doing your conversion.
-4.  Alan v3 users looking for detailed answers – use the index, look up the relevant sections in chapter _3_ but also glance through chapter _2_ from section _2.4_. Visit http://www.alanif.se/[_http://www.alanif.se_] for a collection of examples.
+1. Readers completely new to interactive fiction -- read the whole document from
+   the beginning.
 
-All readers are encouraged to give feedback on the documentation, particularly if you could not find the answer to what you were looking for by using the index, the table of content or skimming through what you thought might be relevant parts of the documentation. You can find the authors through the web page http://www.alanif.se/[_http://www.alanif.se_], where you also can enrol in the Alan mailing list, a place for new and seasoned Alan users alike!
+2. Readers familiar with writing Interactive Fiction but new to Alan -- read
+   from <<Introduction to the Language>> onwards.
+
+3. Alan v2 users wanting to upgrade -- you should read the separate document on
+   conversion, then <<Introduction to the Language>> and onwards, with frequent
+   use of <<Language Reference>> as a reference while doing your conversion.
+
+4. Alan v3 users looking for detailed answers -- use the index, look up the
+   relevant sections in <<Language Reference>> but also glance through
+   <<Concepts>> from <<Introduction to the Language>>. Visit
+   http://www.alanif.se/[www.alanif.se^] for a collection of examples.
+
+All readers are encouraged to give feedback on the documentation, particularly if you could not find the answer to what you were looking for by using the index, the table of content or skimming through what you thought might be relevant parts of the documentation. You can find the authors through the web page http://www.alanif.se/[www.alanif.se^], where you also can enrol in the Alan mailing list, a place for new and seasoned Alan users alike!
 
 

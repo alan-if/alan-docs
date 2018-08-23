@@ -434,8 +434,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.9,</span>
-<span id="revdate">August 21, 2018</span>
+<span id="revnumber">version 0.1.10,</span>
+<span id="revdate">August 23, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -497,21 +497,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_strict_and_safe">2.5. Strict and Safe</a></li>
 </ul>
 </li>
-<li><a href="#_lexical_definitions">3. Lexical Definitions</a>
-<ul class="sectlevel2">
-<li><a href="#_comments">3.1. Comments</a></li>
-<li><a href="#_words_identifiers_and_names">3.2. Words, Identifiers and Names</a></li>
-<li><a href="#_numbers">3.3. Numbers</a></li>
-<li><a href="#_strings">3.4. Strings</a></li>
-<li><a href="#_filenames">3.5. Filenames</a></li>
-</ul>
-</li>
-<li><a href="#_language_reference">4. Language Reference</a>
+<li><a href="#_language_reference">3. Language Reference</a>
 <ul class="sectlevel2">
 <li><a href="#_general_rules">General Rules</a></li>
-<li><a href="#_an_adventure">4.1. An Adventure</a></li>
-<li><a href="#_options">4.2. Options</a></li>
-<li><a href="#_types">4.3. Types</a>
+<li><a href="#_an_adventure">3.1. An Adventure</a></li>
+<li><a href="#_options">3.2. Options</a></li>
+<li><a href="#_types">3.3. Types</a>
 <ul class="sectlevel3">
 <li><a href="#_basic_simple_and_compound_types">Basic, Simple and Compound Types</a></li>
 <li><a href="#_instance_type">Instance Type</a></li>
@@ -521,13 +512,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_type_requirements">Type Requirements</a></li>
 </ul>
 </li>
-<li><a href="#_import">4.4. Import</a></li>
-<li><a href="#_classes">4.5. Classes</a>
+<li><a href="#_import">3.4. Import</a></li>
+<li><a href="#_classes">3.5. Classes</a>
 <ul class="sectlevel3">
 <li><a href="#_inheritance">Inheritance</a></li>
 </ul>
 </li>
-<li><a href="#_instances">4.6. Instances</a>
+<li><a href="#_instances">3.6. Instances</a>
 <ul class="sectlevel3">
 <li><a href="#_entities">Entities</a></li>
 <li><a href="#_things">Things</a></li>
@@ -541,7 +532,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_literals">Literals</a></li>
 </ul>
 </li>
-<li><a href="#_properties">4.7. Properties</a>
+<li><a href="#_properties">3.7. Properties</a>
 <ul class="sectlevel3">
 <li><a href="#_inheriting_properties">Inheriting Properties</a></li>
 <li><a href="#_initial_location">Initial Location</a></li>
@@ -589,8 +580,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_additions">4.8. Additions</a></li>
-<li><a href="#_syntax_definitions">4.9. Syntax Definitions</a>
+<li><a href="#_additions">3.8. Additions</a></li>
+<li><a href="#_syntax_definitions">3.9. Syntax Definitions</a>
 <ul class="sectlevel3">
 <li><a href="#_indicators">Indicators</a></li>
 <li><a href="#_parameter_restrictions">Parameter Restrictions</a></li>
@@ -599,7 +590,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_scope">Scope</a></li>
 </ul>
 </li>
-<li><a href="#_verbs_2">4.10. Verbs</a>
+<li><a href="#_verbs_2">3.10. Verbs</a>
 <ul class="sectlevel3">
 <li><a href="#_meta_verbs">Meta Verbs</a></li>
 <li><a href="#_verbs_in_locations">Verbs in Locations</a></li>
@@ -614,17 +605,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_events">4.11. Events</a></li>
-<li><a href="#_rules">4.12. Rules</a></li>
-<li><a href="#_synonyms">4.13. Synonyms</a></li>
-<li><a href="#_messages">4.14. Messages</a>
+<li><a href="#_events">3.11. Events</a></li>
+<li><a href="#_rules">3.12. Rules</a></li>
+<li><a href="#_synonyms">3.13. Synonyms</a></li>
+<li><a href="#_messages">3.14. Messages</a>
 <ul class="sectlevel3">
 <li><a href="#_message_parameters">Message parameters</a></li>
 </ul>
 </li>
-<li><a href="#_prompt_section">4.15. Prompt Section</a></li>
-<li><a href="#_start_section">4.16. Start Section</a></li>
-<li><a href="#_statements">4.17. Statements</a>
+<li><a href="#_prompt_section">3.15. Prompt Section</a></li>
+<li><a href="#_start_section">3.16. Start Section</a></li>
+<li><a href="#_statements">3.17. Statements</a>
 <ul class="sectlevel3">
 <li><a href="#_output_statements">Output Statements</a>
 <ul class="sectlevel4">
@@ -688,9 +679,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_where_specifications">4.18. WHERE Specifications</a></li>
-<li><a href="#_what_specifications">4.19. WHAT Specifications</a></li>
-<li><a href="#_expressions">4.20. Expressions</a>
+<li><a href="#_where_specifications">3.18. WHERE Specifications</a></li>
+<li><a href="#_what_specifications">3.19. WHAT Specifications</a></li>
+<li><a href="#_expressions">3.20. Expressions</a>
 <ul class="sectlevel3">
 <li><a href="#_types_of_expressions">Types of Expressions</a></li>
 <li><a href="#_literal_values">Literal Values</a></li>
@@ -711,7 +702,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_aggregates">Aggregates</a></li>
 </ul>
 </li>
-<li><a href="#_filters">4.21. Filters</a></li>
+<li><a href="#_filters">3.21. Filters</a></li>
+</ul>
+</li>
+<li><a href="#_lexical_definitions">4. Lexical Definitions</a>
+<ul class="sectlevel2">
+<li><a href="#_comments">4.1. Comments</a></li>
+<li><a href="#_words_identifiers_and_names">4.2. Words, Identifiers and Names</a></li>
+<li><a href="#_numbers">4.3. Numbers</a></li>
+<li><a href="#_strings">4.4. Strings</a></li>
+<li><a href="#_filenames">4.5. Filenames</a></li>
 </ul>
 </li>
 <li><a href="#_running_an_adventure">5. Running An Adventure</a>
@@ -803,8 +803,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.9
-Last edited: August 21, 2018</pre>
+<pre>Doc version: 0.1.10
+Last edited: August 23, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -867,21 +867,28 @@ downloaded from:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Readers completely new to interactive fiction – read the whole document from the beginning.</p>
+<p>Readers completely new to interactive fiction&#8201;&#8212;&#8201;read the whole document from
+the beginning.</p>
 </li>
 <li>
-<p>Readers familiar with writing Interactive Fiction but new to Alan – read from section 2.4 onwards.</p>
+<p>Readers familiar with writing Interactive Fiction but new to Alan&#8201;&#8212;&#8201;read
+from <a href="#_introduction_to_the_language">Section 2.4</a> onwards.</p>
 </li>
 <li>
-<p>Alan v2 users wanting to upgrade – you should read the separate document on conversion, then section <em>2.4</em> and onwards, with frequent use of chapter <em>3</em> as a reference while doing your conversion.</p>
+<p>Alan v2 users wanting to upgrade&#8201;&#8212;&#8201;you should read the separate document on
+conversion, then <a href="#_introduction_to_the_language">Section 2.4</a> and onwards, with frequent
+use of <a href="#_language_reference">Chapter 3</a> as a reference while doing your conversion.</p>
 </li>
 <li>
-<p>Alan v3 users looking for detailed answers – use the index, look up the relevant sections in chapter <em>3</em> but also glance through chapter <em>2</em> from section <em>2.4</em>. Visit <a href="http://www.alanif.se/"><em>http://www.alanif.se</em></a> for a collection of examples.</p>
+<p>Alan v3 users looking for detailed answers&#8201;&#8212;&#8201;use the index, look up the
+relevant sections in <a href="#_language_reference">Chapter 3</a> but also glance through
+<a href="#_concepts">Chapter 2</a> from <a href="#_introduction_to_the_language">Section 2.4</a>. Visit
+<a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a> for a collection of examples.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>All readers are encouraged to give feedback on the documentation, particularly if you could not find the answer to what you were looking for by using the index, the table of content or skimming through what you thought might be relevant parts of the documentation. You can find the authors through the web page <a href="http://www.alanif.se/"><em>http://www.alanif.se</em></a>, where you also can enrol in the Alan mailing list, a place for new and seasoned Alan users alike!</p>
+<p>All readers are encouraged to give feedback on the documentation, particularly if you could not find the answer to what you were looking for by using the index, the table of content or skimming through what you thought might be relevant parts of the documentation. You can find the authors through the web page <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a>, where you also can enrol in the Alan mailing list, a place for new and seasoned Alan users alike!</p>
 </div>
 </div>
 </div>
@@ -1889,195 +1896,7 @@ Postmen are working behind the counters.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_lexical_definitions">3. Lexical Definitions</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_comments">3.1. Comments</h3>
-<div class="paragraph">
-<p>Comments may be placed anywhere in the Alan source. A comment starts with double hyphens (<code>--</code>) and extends to the end of the line.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">-- This is a comment</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_words_identifiers_and_names">3.2. Words, Identifiers and Names</h3>
-<div class="paragraph">
-<p>An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance. Identifiers may only be composed of letters, digits and underscores. The first character must be a letter.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">identifier = letter {letter | digit | underscore}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>There is also a second kind of identifier, namely the quoted identifier.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">id = identifier
-   | quoted_identifier
-
-quoted_identifier = quote {any_character} quote</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>A quoted identifier starts and ends with single quotes and may contain any character except quotes (including spaces). By quoting any sequence of characters can become an identifier. A quoted identifier may also be used to make an identifier out of a reserved word such as <code>Look</code>. This is useful in the definition of the verb <code>look</code>. It would look like:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">Verb 'look'
-  Does
-    Look.
-End Verb 'look'.</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Quoted identifiers retain their exact content. They may contain spaces and other special characters, which make them useful as long names for locations as in</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">The pluto IsA location Name 'At the Rim of Pluto Crater'
-  Description
-    ...</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>One single-quoted identifier is used as the whole name of the location to preserve editing and avoiding clashes with the reserved words <code>At</code> and <code>Of</code>. (This could also have been avoided by quoting just those words.)</p>
-</div>
-<div class="paragraph">
-<p>Identifiers and words retain their capitalization. An example is</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">The eiffel_tower Name Eiffel tower ...</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The first word in the name will always be printed with a capital &#8216;E&#8217;. However, when comparing the word to player input and other occurrences of the same word in the source, case will be ignored. This means that you cannot have two words or identifiers that differ only in case, they will be the same and stored in the game data as one of the occurrences, which one is implementation dependent.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Do <em>NOT</em> use a single quoted identifier with spaces or special characters in them as the name for anything other than locations, as the words in names are analysed separately and are assumed to be adjectives and nouns (where it is assumed that the last is the noun). Except for this you should only quote single words to avoid clashes with reserved words.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Any one of the occurrences of a word might define its capitalization, which one is unspecified. This might affect the output if you use capitalization for names of locations, such as &#8220;Name Shore of Great Sea&#8221;. Such names can inadvertently make the game use &#8220;Great&#8221; for all &#8220;great&#8221; things in your game. You can avoid this by using a quoted identifier for the complete name of the location.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Be careful when using quoted identifiers, especially if the player is supposed to use the word. A player cannot input words containing spaces or other special characters or separators. The only exception being underscores and dashes. A player input word must start with a letter.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>To get a single quote within a quoted identifier repeat it (<code>'Tom''s Diner'</code>).</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Some of the identifiers in the source for an Alan game are by default used as player words. This is for example the case with verb names (unless a <code>Syntax</code> statement has been declared for the <code>Verb</code>) and object names (unless a <code>Name</code> clause has been used). If these contain special characters, the player cannot enter them.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_numbers">3.3. Numbers</h3>
-<div class="paragraph">
-<p>Numbers in Alan are only integers and thus may consist only of digits.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">number = digit {digit}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_strings">3.4. Strings</h3>
-<div class="paragraph">
-<p>The string is the main lexical component in an Alan source. This is how you describe the surroundings and events to the player. Strings, therefore, are easy to enter and consist simply of a pair of double quotes surrounding any number of characters. The text may include newline characters and thus may cover multiple lines in the source.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">string = double_quote {any_character} double_quote</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in <em>Output Statements</em> on page <em>117</em>). You may therefore write your strings any way you like; they will always be neatly formatted on the player&#8217;s screen. You can use special codes (see <em>String Statement</em> on page <em>118</em> for a list) to indicate (but not precisely control) the formatting.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>As strings may contain any character, a missing double quote may lead to many seemingly strange error messages. If the compiler points to the first word after a double quote and indicates that it has deleted a lot if IDs (identifiers), this is probably due to a missing end quote in the previous string.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>To get a double quote within strings repeat it ("The sailor said ""Hello!"".").</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_filenames">3.5. Filenames</h3>
-<div class="paragraph">
-<p>It is possible to write one adventure using many source files, having different parts in different files, and thus giving an opportunity for some rudimentary kind of modularisation. The method for this is the <code>import</code> statement.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">import = 'import' quoted_identifier '.'</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The import statement requires a filename, which must be given as a quoted identifier (see section <em>4.2</em>).</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_language_reference">4. Language Reference</h2>
+<h2 id="_language_reference">3. Language Reference</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This chapter describes the Alan language in detail. Within each section, grammar rules are used to precisely define allowed formats. A description of how these rules should be interpreted can be found in Appendix <em>L</em> on page <em>221</em>.</p>
@@ -2108,7 +1927,7 @@ End Exit.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_an_adventure">4.1. An Adventure</h3>
+<h3 id="_an_adventure">3.1. An Adventure</h3>
 <div class="paragraph">
 <p>An adventure starts with an (optional) set of options (see <em>Options</em> on page <em>49</em>) followed by a set of declarations.</p>
 </div>
@@ -2162,7 +1981,7 @@ End Exit.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_options">4.2. Options</h3>
+<h3 id="_options">3.2. Options</h3>
 <div class="paragraph">
 <p>Options define things concerning the overall behaviour of the generated Alan adventure. As is implied they are optional and are only required if you need to change the value of an option from its default setting. An option follows the grammar</p>
 </div>
@@ -2246,7 +2065,7 @@ Width 128.</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_types">4.3. Types</h3>
+<h3 id="_types">3.3. Types</h3>
 <div class="paragraph">
 <p>The Alan language handles information in bits, values. Each such bit of information, or data, is of a specific type. Alan is a strictly typed language, which means that assignment, comparisons and other statements will require that rules concerning the compatibility between such values are not broken.</p>
 </div>
@@ -2368,7 +2187,7 @@ Width 128.</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_import">4.4. Import</h3>
+<h3 id="_import">3.4. Import</h3>
 <div class="paragraph">
 <p>The source text for a large adventure might become entangled and complex. A way to break up a large text is to divide it into separate files. Each such file can then be imported into the main source using the <code>import</code> statement.</p>
 </div>
@@ -2405,7 +2224,7 @@ Start At city.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_classes">4.5. Classes</h3>
+<h3 id="_classes">3.5. Classes</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">class = 'EVERY' id
@@ -2455,7 +2274,7 @@ Start At city.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_instances">4.6. Instances</h3>
+<h3 id="_instances">3.6. Instances</h3>
 <div class="paragraph">
 <p>The most important part of an Alan game source is probably the declarations of instances. Instances are the objects, locations, actors and other things that fill your game universe. The player traverses and interacts with these in his quest to negotiating your game.</p>
 </div>
@@ -2676,7 +2495,7 @@ End The hero.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_properties">4.7. Properties</h3>
+<h3 id="_properties">3.7. Properties</h3>
 <div class="paragraph">
 <p>An instance or class can be given number of different properties by declaring them in the declaration of the class or instance.</p>
 </div>
@@ -4033,7 +3852,7 @@ Step After ticksLeft Of train
 </div>
 </div>
 <div class="sect2">
-<h3 id="_additions">4.8. Additions</h3>
+<h3 id="_additions">3.8. Additions</h3>
 <div class="paragraph">
 <p>In certain circumstances, you need to add properties to a class after it is defined. One simple such example is to add attributes to the predefined classes. To allow this the <code>Add</code> construct is available. It follows the grammar</p>
 </div>
@@ -4050,7 +3869,7 @@ Step After ticksLeft Of train
 </div>
 </div>
 <div class="sect2">
-<h3 id="_syntax_definitions">4.9. Syntax Definitions</h3>
+<h3 id="_syntax_definitions">3.9. Syntax Definitions</h3>
 <div class="paragraph">
 <p>The syntax construct is used to specify the allowed structure of the input from the player. Each definition defines the syntax for one <code>Verb</code>. The effects triggered by the player input are declared using the <code>Verb</code> construct (see <em>Verbs</em> on page <em>100</em>).</p>
 </div>
@@ -4422,7 +4241,7 @@ Syntax &lt;1&gt; = &lt;1&gt; (&lt;2&gt;).</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_verbs_2">4.10. Verbs</h3>
+<h3 id="_verbs_2">3.10. Verbs</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">verb = ['META'] 'VERB' id {',' id}
@@ -4833,7 +4652,7 @@ End The bomb.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_events">4.11. Events</h3>
+<h3 id="_events">3.11. Events</h3>
 <div class="paragraph">
 <p>An event is a sequence of statements executed at a specified time (count of turns). It is also executed at some specific location. An event can e.g. be used to create an explosion where the bomb is three moves from now or to let the ceiling of the cave fall down in five moves.</p>
 </div>
@@ -4854,7 +4673,7 @@ End Event.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_rules">4.12. Rules</h3>
+<h3 id="_rules">3.12. Rules</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">rule = 'WHEN' expression ('THEN' | '=&gt;')
@@ -4928,7 +4747,7 @@ Start At kitchen.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_synonyms">4.13. Synonyms</h3>
+<h3 id="_synonyms">3.13. Synonyms</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">synonyms = 'SYNONYMS' {synonym_declaration}
@@ -4972,7 +4791,7 @@ Verb look_at ...</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_messages">4.14. Messages</h3>
+<h3 id="_messages">3.14. Messages</h3>
 <div class="paragraph">
 <p>The Alan system has a number of standard messages built in. These messages are presented to the player in various situations, both normal and otherwise. An example is the following:</p>
 </div>
@@ -5061,7 +4880,7 @@ There is no exit in that direction.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_prompt_section">4.15. Prompt Section</h3>
+<h3 id="_prompt_section">3.15. Prompt Section</h3>
 <div class="paragraph">
 <p>The Prompt section allows you to customize the way players are prompted for their input.</p>
 </div>
@@ -5138,7 +4957,7 @@ Where do you want to go from Pirates Bay Harbor?</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_start_section">4.16. Start Section</h3>
+<h3 id="_start_section">3.16. Start Section</h3>
 <div class="paragraph">
 <p>The start section defines where the player (the hero) will be at the start of the game. This must be a location. Optionally this may be followed by statements to be executed at the beginning of the game, such as hello-messages or short instructions as well as starting any actors and scheduling events.</p>
 </div>
@@ -5164,7 +4983,7 @@ Where do you want to go from Pirates Bay Harbor?</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_statements">4.17. Statements</h3>
+<h3 id="_statements">3.17. Statements</h3>
 <div class="sect3">
 <h4 id="_output_statements">Output Statements</h4>
 <div class="paragraph">
@@ -6196,7 +6015,7 @@ End Verb.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_where_specifications">4.18. WHERE Specifications</h3>
+<h3 id="_where_specifications">3.18. WHERE Specifications</h3>
 <div class="paragraph">
 <p>Many constructs in the Alan language require a specification of where the construct should operate. The general intention of such a <code>Where</code>-specification is to specify a location.</p>
 </div>
@@ -6250,7 +6069,7 @@ End Verb.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_what_specifications">4.19. WHAT Specifications</h3>
+<h3 id="_what_specifications">3.19. WHAT Specifications</h3>
 <div class="paragraph">
 <p>Constructs in the grammar for the Alan language often refer to some class or instance defined in the Alan source. This is generally called a <code>what</code> specification, as it specifies what the construct refers to. An example is the <code>Locate</code> statement that must refer to something that should be relocated.</p>
 </div>
@@ -6301,7 +6120,7 @@ End Verb.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_expressions">4.20. Expressions</h3>
+<h3 id="_expressions">3.20. Expressions</h3>
 <div class="paragraph">
 <p>The grammar for Alan refers to expression. This is a generic name for a number of constructs yielding a value. The following sections describe the different kinds of expressions available in the Alan language.</p>
 </div>
@@ -6777,7 +6596,7 @@ End If.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_filters">4.21. Filters</h3>
+<h3 id="_filters">3.21. Filters</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">filters = filter { ',' filter }
@@ -6792,6 +6611,194 @@ filter = 'ISA' class
 </div>
 <div class="paragraph">
 <p>Multiple filters can be listed separated with a comma. Each filter must enumerate the set of values to a compatible set, e.g. using two <code>IsA</code> filters for actors and locations respectively is not allowed since those two sets can never be compatible.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lexical_definitions">4. Lexical Definitions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_comments">4.1. Comments</h3>
+<div class="paragraph">
+<p>Comments may be placed anywhere in the Alan source. A comment starts with double hyphens (<code>--</code>) and extends to the end of the line.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-alan" data-lang="alan">-- This is a comment</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_words_identifiers_and_names">4.2. Words, Identifiers and Names</h3>
+<div class="paragraph">
+<p>An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance. Identifiers may only be composed of letters, digits and underscores. The first character must be a letter.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">identifier = letter {letter | digit | underscore}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There is also a second kind of identifier, namely the quoted identifier.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">id = identifier
+   | quoted_identifier
+
+quoted_identifier = quote {any_character} quote</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A quoted identifier starts and ends with single quotes and may contain any character except quotes (including spaces). By quoting any sequence of characters can become an identifier. A quoted identifier may also be used to make an identifier out of a reserved word such as <code>Look</code>. This is useful in the definition of the verb <code>look</code>. It would look like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-alan" data-lang="alan">Verb 'look'
+  Does
+    Look.
+End Verb 'look'.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quoted identifiers retain their exact content. They may contain spaces and other special characters, which make them useful as long names for locations as in</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-alan" data-lang="alan">The pluto IsA location Name 'At the Rim of Pluto Crater'
+  Description
+    ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>One single-quoted identifier is used as the whole name of the location to preserve editing and avoiding clashes with the reserved words <code>At</code> and <code>Of</code>. (This could also have been avoided by quoting just those words.)</p>
+</div>
+<div class="paragraph">
+<p>Identifiers and words retain their capitalization. An example is</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-alan" data-lang="alan">The eiffel_tower Name Eiffel tower ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first word in the name will always be printed with a capital &#8216;E&#8217;. However, when comparing the word to player input and other occurrences of the same word in the source, case will be ignored. This means that you cannot have two words or identifiers that differ only in case, they will be the same and stored in the game data as one of the occurrences, which one is implementation dependent.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Do <em>NOT</em> use a single quoted identifier with spaces or special characters in them as the name for anything other than locations, as the words in names are analysed separately and are assumed to be adjectives and nouns (where it is assumed that the last is the noun). Except for this you should only quote single words to avoid clashes with reserved words.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Any one of the occurrences of a word might define its capitalization, which one is unspecified. This might affect the output if you use capitalization for names of locations, such as &#8220;Name Shore of Great Sea&#8221;. Such names can inadvertently make the game use &#8220;Great&#8221; for all &#8220;great&#8221; things in your game. You can avoid this by using a quoted identifier for the complete name of the location.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Be careful when using quoted identifiers, especially if the player is supposed to use the word. A player cannot input words containing spaces or other special characters or separators. The only exception being underscores and dashes. A player input word must start with a letter.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To get a single quote within a quoted identifier repeat it (<code>'Tom''s Diner'</code>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Some of the identifiers in the source for an Alan game are by default used as player words. This is for example the case with verb names (unless a <code>Syntax</code> statement has been declared for the <code>Verb</code>) and object names (unless a <code>Name</code> clause has been used). If these contain special characters, the player cannot enter them.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_numbers">4.3. Numbers</h3>
+<div class="paragraph">
+<p>Numbers in Alan are only integers and thus may consist only of digits.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">number = digit {digit}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_strings">4.4. Strings</h3>
+<div class="paragraph">
+<p>The string is the main lexical component in an Alan source. This is how you describe the surroundings and events to the player. Strings, therefore, are easy to enter and consist simply of a pair of double quotes surrounding any number of characters. The text may include newline characters and thus may cover multiple lines in the source.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">string = double_quote {any_character} double_quote</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in <em>Output Statements</em> on page <em>117</em>). You may therefore write your strings any way you like; they will always be neatly formatted on the player&#8217;s screen. You can use special codes (see <em>String Statement</em> on page <em>118</em> for a list) to indicate (but not precisely control) the formatting.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As strings may contain any character, a missing double quote may lead to many seemingly strange error messages. If the compiler points to the first word after a double quote and indicates that it has deleted a lot if IDs (identifiers), this is probably due to a missing end quote in the previous string.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To get a double quote within strings repeat it ("The sailor said ""Hello!"".").</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_filenames">4.5. Filenames</h3>
+<div class="paragraph">
+<p>It is possible to write one adventure using many source files, having different parts in different files, and thus giving an opportunity for some rudimentary kind of modularisation. The method for this is the <code>import</code> statement.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">import = 'import' quoted_identifier '.'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The import statement requires a filename, which must be given as a quoted identifier (see section <em>4.2</em>).</p>
 </div>
 </div>
 </div>
@@ -7249,7 +7256,7 @@ You are carrying an empty bottle.</p>
 <p>All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure. All that this takes is some thought as to what names to use for the attributes as discussed in <em>Use of Attributes</em> on page <em>167</em>.</p>
 </div>
 <div class="paragraph">
-<p>And of course there is already an extensive library available from the Alan website, <a href="http://www.alanif.se/"><em>http://www.alanif.se</em></a>. It also includes a lot of other features common to most adventure games.</p>
+<p>And of course there is already an extensive library available from the Alan website, <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a>. It also includes a lot of other features common to most adventure games.</p>
 </div>
 </div>
 <div class="sect2">
@@ -8578,13 +8585,13 @@ ee1: RETURN
 <p>How to actually set up and use the complete Alan system depends very much on which platform, OS and in which environment you are going to use it.</p>
 </div>
 <div class="paragraph">
-<p>If you just want to run a game, there is of course the original command line version distributed from <a href="http://www.alanif.se/"><em>http://www.alanif.se</em></a>. To use this, read the relevant sections below to get a feel for how that will work.</p>
+<p>If you just want to run a game, there is of course the original command line version distributed from <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a>. To use this, read the relevant sections below to get a feel for how that will work.</p>
 </div>
 <div class="paragraph">
 <p>But there are also a number of other packages that include an Alan interpreter, Gargoyle and Spatterlight, are two, with Gargoyle at the point of writing, being the one most up to date, and also available on multiple platforms.</p>
 </div>
 <div class="paragraph">
-<p>If you actually want to write Interactive Fiction using Alan you also need the compiler. This is distributed from <a href="http://www.alanif.se/"><em>http://www.alanif.se</em></a> in what&#8217;s called the complete packages, including compiler, interpreter, the documentation, a conversion program for v2 games and some examples.</p>
+<p>If you actually want to write Interactive Fiction using Alan you also need the compiler. This is distributed from <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a> in what&#8217;s called the complete packages, including compiler, interpreter, the documentation, a conversion program for v2 games and some examples.</p>
 </div>
 <div class="paragraph">
 <p>Whatever option you choose, there should be more detailed instructions on how to install included with that package. Below follows some information pertaining to the original versions from the Alan website.</p>
@@ -11131,8 +11138,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.9<br>
-Last updated 2018-08-21 11:54:32 ora legale Europa occidentale
+Version 0.1.10<br>
+Last updated 2018-08-23 15:42:29 ora legale Europa occidentale
 </div>
 </div>
 </body>

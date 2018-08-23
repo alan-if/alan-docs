@@ -14,6 +14,10 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Folder Contents](#folder-contents)
+    - [Manual Source Files](#manual-source-files)
+    - [Conversion Scripts](#conversion-scripts)
+    - [Converted Manual](#converted-manual)
+    - [Helper Files](#helper-files)
 - [Document Status](#document-status)
 - [Work Notes](#work-notes)
     - [Conversion from ODT to AsciiDoc](#conversion-from-odt-to-asciidoc)
@@ -24,7 +28,8 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 
 # Folder Contents
 
-- [`BUILD_HTML.bat`][BUILD_HTML.bat] — batch script to create `manual.html` document (fully standalone).
+## Manual Source Files
+
 - [`manual.asciidoc`][man] — The main Alan Manual file that imports all other chapters:
     + [`manual_01.asciidoc`][man 01] — _1. Introduction_
     + [`manual_02.asciidoc`][man 02] — _2. Concepts_
@@ -43,11 +48,25 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
     + [`manual_15.asciidoc`][man 15] — _Appendix H: Portability of Games_
     + [`manual_16.asciidoc`][man 16] — _Appendix I: Copying Conditions_
     + [`manual_17.asciidoc`][man 17] — _Index_
+
+## Conversion Scripts
+
+- [`BUILD_HTML.bat`][BUILD_HTML.bat] — batch script to create `manual.html` document (fully standalone).
+
+## Converted Manual
+
 - [`manual.html`](./manual.html) — Alan Manual converted to standalone HTML5 ([HTML Live Preview]).
+
+An [HTML Live Preview] of the converted document is available via [GitHub & BitBucket HTML Preview] online service.
+
+## Helper Files
+
+Some files to help editing the manual:
+
+- [`Cross-References.md`][Cross-References.md] — Look-up table for cross-reference links.
 - [`Manual_TOC.txt`](./Manual_TOC.txt) — Manual TOC in plaintext (for reference).
 - [`RegExs.txt`](./RegExs.txt) — frequently needed regular expressions for S&R operations.
 - [`SNIPPTES.adoc`](./SNIPPTES.adoc) — useful snippets to copy and paste.
-
 
 # Document Status
 
@@ -62,7 +81,23 @@ This is an aproximate status report and pending tasks list of the current docume
     + [x] Handle section numbering.
     + [x] Add special Appendix headings.
     + [x] Exclude _Appendix I_ (License) sub-headings from TOC.
-    + [ ] Fix all cross-reference links (_after_ splitting into multiple files!).
+    + [ ] Rebuild original cross-reference links (lost in conversion):
+        * [x] _1. Introduction_
+        * [ ] _2. Concepts_
+        * [ ] _3. Lexical Definitions_
+        * [ ] _4. Language Reference_
+        * [ ] _5. Running An Adventure_
+        * [ ] _6. Hints And Tips_
+        * [ ] _7. Adventure Construction_
+        * [ ] _Appendix A: How To Use The System_
+        * [ ] _Appendix B: A Sample Interaction_
+        * [ ] _Appendix C: Run-time Messages_
+        * [ ] _Appendix D: Language Grammar_
+        * [ ] _Appendix E: Predefined player words_
+        * [ ] _Appendix F: Compiler Messages_
+        * [ ] _Appendix G: Localization_
+        * [ ] _Appendix H: Portability of Games_
+        * [ ] _Appendix I: Copying Conditions_
     + [ ] Rebuild _Index_
 - [ ] Add missing images:
     + [x] Alan logo (cover)
@@ -121,6 +156,7 @@ Although some styles were lost in the process, the final ADoc was a rather good 
 ------------------------------------------------------------------------------>
 
 [HTML Live Preview]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html "Preview 'The Alan Manual' via GitHub & BitBucket HTML Preview"
+[GitHub & BitBucket HTML Preview]: http://htmlpreview.github.io
 
 <!-- AsciiDoctor -->
 
@@ -154,5 +190,7 @@ Although some styles were lost in the process, the final ADoc was a rather good 
 [man 17]: ./manual_17.asciidoc "Source file of Index"
 
 [BUILD_HTML.bat]: ./BUILD_HTML.bat "Batch script to convert Alan Manual to a single-file standalone HTML5 document."
+
+[Cross-References.md]: ./Cross-References.md "Look-up table for cross-reference links reconstruction"
 
 <!-- EOF -->

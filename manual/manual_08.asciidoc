@@ -3,11 +3,11 @@
 
 How to actually set up and use the complete Alan system depends very much on which platform, OS and in which environment you are going to use it.
 
-If you just want to run a game, there is of course the original command line version distributed from http://www.alanif.se/[_http://www.alanif.se_]. To use this, read the relevant sections below to get a feel for how that will work.
+If you just want to run a game, there is of course the original command line version distributed from http://www.alanif.se/[www.alanif.se^]. To use this, read the relevant sections below to get a feel for how that will work.
 
 But there are also a number of other packages that include an Alan interpreter, Gargoyle and Spatterlight, are two, with Gargoyle at the point of writing, being the one most up to date, and also available on multiple platforms.
 
-If you actually want to write Interactive Fiction using Alan you also need the compiler. This is distributed from http://www.alanif.se/[_http://www.alanif.se_] in what's called the complete packages, including compiler, interpreter, the documentation, a conversion program for v2 games and some examples.
+If you actually want to write Interactive Fiction using Alan you also need the compiler. This is distributed from http://www.alanif.se/[www.alanif.se^] in what's called the complete packages, including compiler, interpreter, the documentation, a conversion program for v2 games and some examples.
 
 Whatever option you choose, there should be more detailed instructions on how to install included with that package. Below follows some information pertaining to the original versions from the Alan website.
 

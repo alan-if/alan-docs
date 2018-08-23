@@ -204,7 +204,7 @@ As your library of adventures grow you will find that some verbs are often neede
 
 All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure. All that this takes is some thought as to what names to use for the attributes as discussed in _Use of Attributes_ on page _167_.
 
-And of course there is already an extensive library available from the Alan website, http://www.alanif.se/[_http://www.alanif.se_]. It also includes a lot of other features common to most adventure games.
+And of course there is already an extensive library available from the Alan website, http://www.alanif.se/[www.alanif.se^]. It also includes a lot of other features common to most adventure games.
 
 
 
