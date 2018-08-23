@@ -125,7 +125,7 @@ Rebuild original cross-reference links (lost in conversion):
 
 - [x] _1. Introduction_
 - [x] _2. Concepts_
-- [ ] _3. Lexical Definitions_
+- [x] _3. Lexical Definitions_
 - [ ] _4. Language Reference_
 - [ ] _5. Running An Adventure_
 - [ ] _6. Hints And Tips_

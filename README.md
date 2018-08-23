@@ -4,6 +4,7 @@
 
 This temporary repository was created by [Tristano Ajmone] for the conversion of Alan documentation to AsciiDoc.
 
+- [Alan Manual HTML Live Preview][Man LPrev]
 
 -----
 
@@ -158,7 +159,10 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 
 <!-- Project Files ----------------------------------------------------------->
 
+<!-- HTML Live Previews -->
 
+[Man LPrev]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html "Preview 'The Alan Manual' via GitHub & BitBucket HTML Preview"
 
+[GitHub & BitBucket HTML Preview]: http://htmlpreview.github.io
 
 <!-- EOF -->
