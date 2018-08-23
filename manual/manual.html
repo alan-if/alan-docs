@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.10,</span>
+<span id="revnumber">version 0.1.11,</span>
 <span id="revdate">August 23, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -803,7 +803,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.10
+<pre>Doc version: 0.1.11
 Last edited: August 23, 2018</pre>
 </div>
 </div>
@@ -935,7 +935,7 @@ relevant sections in <a href="#_language_reference">Chapter 3</a> but also glanc
 <p>The Alan Adventure Language has been designed to aid construction primarily of pure text adventures or, in the words of Infocom, interactive fiction. Some sound and graphics functions are also available to spice up your game if you so desire.</p>
 </div>
 <div class="paragraph">
-<p>The main feature of adventures is the interaction between the player and the game through commands input through the keyboard and descriptions printed on the screen. In Appendix <em>B</em> you can find such a sample interaction.</p>
+<p>The main feature of adventures is the interaction between the player and the game through commands input through the keyboard and descriptions printed on the screen. In <a href="#_a_sample_interaction">Appendix B</a> you can find such a sample interaction.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1020,7 +1020,7 @@ relevant sections in <a href="#_language_reference">Chapter 3</a> but also glanc
 <div class="sect3">
 <h4 id="_whats_happening">What&#8217;s Happening?</h4>
 <div class="paragraph">
-<p>The execution of an adventure is primarily driven by the input of player commands. A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source. After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source. Scheduled events are then run, and then the player takes another turn. This is described in more detailed in section <em>5.1</em>, <em>A Turn of Events</em> on page <em>159</em>.</p>
+<p>The execution of an adventure is primarily driven by the input of player commands. A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source. After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source. Scheduled events are then run, and then the player takes another turn. This is described in more detail in <a href="#_a_turn_of_events">Section 5.1</a>.</p>
 </div>
 <div class="paragraph">
 <p>The following sections describe a number of the fundamental concepts that are present in an adventure game and what the Alan view of them is.</p>
@@ -1134,9 +1134,9 @@ You are outside your grandma&#8217;s house.</p>
 <div class="paragraph">
 <p>Later in the manual, you will find semi-formal definitions, grammar rules, for how various constructs may be constructed. These sections are typeset against a coloured background:</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>The rules for the rules are available in Appendix _L_ on page _221_.</pre>
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">The rules for the rules are available in <a href="#_language_grammar">Appendix D</a>.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1191,7 +1191,7 @@ Start At kitchen.</code></pre>
 <p>This is a complete Alan adventure (although very primitive). As you see, every Alan construct ends with a period (<code>.</code>) and there is a &#8220;<code>Start At</code>&#8221; sentence at the end, indicating in which location to put the hero when the game starts.</p>
 </div>
 <div class="paragraph">
-<p>Type the above text into a text file, e.g. using a notepad program. Run this little Alan source through the Alan compiler and try the adventure (see Appendix <em>A</em>, <em>How To Use The System</em>, on page <em>202</em> on how to do this). After starting the adventure, two lines will be shown on your screen.</p>
+<p>Type the above text into a text file, e.g. using a notepad program. Run this little Alan source through the Alan compiler and try the adventure (see <a href="#_how_to_use_the_system">Appendix A</a> on how to do this). After starting the adventure, two lines will be shown on your screen.</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -1283,7 +1283,7 @@ End The door.</code></pre>
 <p>Alternatively, attributes may be numeric (e.g. <code>Has weight 5</code>) or be of string type (e.g. <code>Has inscription "Kilroy was here"</code>).</p>
 </div>
 <div class="paragraph">
-<p>We also introduce another Alan statement, the <code>If</code>-statement. The <code>If</code>-statement allows you to select which statements to execute according to some condition. In the example, the <code>closed</code> attribute of the door selects which description to show. There are further variations of expressions and the <code>If</code>-statement, but we will come back to these later (<em>Expressions</em> on page <em>141</em> and <em>If</em> on page <em>130</em>).</p>
+<p>We also introduce another Alan statement, the <code>If</code>-statement. The <code>If</code>-statement allows you to select which statements to execute according to some condition. In the example, the <code>closed</code> attribute of the door selects which description to show. There are further variations of expressions and the <code>If</code>-statement, but we will come back to these later (<a href="#_expressions">Section 3.20</a> and <a href="#_if_statement">Section 3.17.6.1</a>).</p>
 </div>
 <div class="paragraph">
 <p>Instead, let&#8217;s look at some other statements in relation to objects.</p>
@@ -1448,7 +1448,7 @@ The house_pet IsA cat ...</code></pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>See the subsections of <em>Instances</em> on page <em>56</em> for more detailed descriptions.</p>
+<p>See the subsections of <a href="#_instances">Instances</a> for more detailed descriptions.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1625,7 +1625,7 @@ End Every door.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With this definition it is possible to apply the verb to all doors. Instead need to reference the object the player mentioned in his command (see The Syntax on page 33 for an introduction, and Syntax Definitions on page 78 for a more thorough discussion). In this case, the attribute <code>closed</code> must also be available for all objects by ensuring that the attribute exists in to the class. (See <em>Additions</em> on page <em>91</em> on how to add an attribute to a predefined class such as <code>object</code>).</p>
+<p>With this definition it is possible to apply the verb to all doors. Instead need to reference the object the player mentioned in his command (see <a href="#_the_syntax">Section 2.4.8</a> and <a href="#_syntax_definitions">Section 3.9</a> for a more thorough discussion). In this case, the attribute <code>closed</code> must also be available for all objects by ensuring that the attribute exists in to the class. (See <a href="#_additions">Section 3.8</a> on how to add an attribute to a predefined class such as <code>object</code>).</p>
 </div>
 <div class="paragraph">
 <p>Of course, there are often also conditions that need to be checked before we can execute this code (perhaps to see if it was possible to open the object!). Therefore, <code>Verb</code>s may have <code>Check</code>s, as we will see next.</p>
@@ -1748,7 +1748,7 @@ End Verb take.</code></pre>
 <p>This restricts the parameter <code>obj</code> to being an instance inheriting from the class object (as opposed to an actor for example) and the parameter <code>cont</code> to a container (an instance with the container property).</p>
 </div>
 <div class="paragraph">
-<p>The parameters are used as normal identifiers in the Alan source code. The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also <em>Run-time Contexts</em> on page <em>162</em> for a detailed discussion).</p>
+<p>The parameters are used as normal identifiers in the Alan source code. The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also <a href="#_run_time_contexts">Section 5.3</a> for a detailed discussion).</p>
 </div>
 <div class="paragraph">
 <p>The <code>Syntax</code> construct allows for more than one parameter, in order to make it possible to define more complex player commands. Therefore, the verb execution order described previously from execution of verbs in one instance must be generalised to verb bodies in all the parameters. In the example above, verb bodies in the objects or actors referenced as <code>obj</code> and <code>cont</code> (the green pearl and the black box) are executed (if the verb is present in their definitions).</p>
@@ -11138,8 +11138,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.10<br>
-Last updated 2018-08-23 15:42:29 ora legale Europa occidentale
+Version 0.1.11<br>
+Last updated 2018-08-23 18:53:21 ora legale Europa occidentale
 </div>
 </div>
 </body>

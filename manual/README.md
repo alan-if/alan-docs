@@ -19,8 +19,18 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
     - [Converted Manual](#converted-manual)
     - [Helper Files](#helper-files)
 - [Document Status](#document-status)
+    - [Document header](#document-header)
+    - [Document Structure](#document-structure)
+        - [Cross-References](#cross-references)
+        - [Index](#index)
+    - [Document Assests](#document-assests)
+    - [Global Styles Reconstruction](#global-styles-reconstruction)
+    - [Typography Cleanup](#typography-cleanup)
+    - [Proof-Reading](#proof-reading)
+    - [Syntax highlighting](#syntax-highlighting)
 - [Work Notes](#work-notes)
     - [Conversion from ODT to AsciiDoc](#conversion-from-odt-to-asciidoc)
+    - [Annotated Comments](#annotated-comments)
 
 <!-- /MarkdownTOC -->
 
@@ -68,67 +78,134 @@ Some files to help editing the manual:
 - [`RegExs.txt`](./RegExs.txt) — frequently needed regular expressions for S&R operations.
 - [`SNIPPTES.adoc`](./SNIPPTES.adoc) — useful snippets to copy and paste.
 
+
+-------------------------------------------------------------------------------
+
 # Document Status
 
-This is an aproximate status report and pending tasks list of the current document. As I'll keep working closer on the document, more issues/tasks are likely to come up, so task-trees that are now marked as _done_ might be reset to _undone_ as new needs come to attention.
+- [ ] _1. Introduction_
+- [ ] _2. Concepts_
+- [ ] _3. Lexical Definitions_
+- [ ] _4. Language Reference_
+- [ ] _5. Running An Adventure_
+- [ ] _6. Hints And Tips_
+- [ ] _7. Adventure Construction_
+- [ ] _Appendix A: How To Use The System_
+- [ ] _Appendix B: A Sample Interaction_
+- [ ] _Appendix C: Run-time Messages_
+- [ ] _Appendix D: Language Grammar_
+- [ ] _Appendix E: Predefined player words_
+- [ ] _Appendix F: Compiler Messages_
+- [ ] _Appendix G: Localization_
+- [ ] _Appendix H: Portability of Games_
+- [ ] _Appendix I: Copying Conditions_
+- [ ] _Index_
 
-- [ ] Document header:
-    + [x] Basic info added.
-    + [ ] Missing author.
-    + [x] Missing license (although full license is available in Appendix I).
-- [ ] Structural reconstruction:
-    + [x] Reconstruct all headings/sections levels.
-    + [x] Handle section numbering.
-    + [x] Add special Appendix headings.
-    + [x] Exclude _Appendix I_ (License) sub-headings from TOC.
-    + [ ] Rebuild original cross-reference links (lost in conversion):
-        * [x] _1. Introduction_
-        * [ ] _2. Concepts_
-        * [ ] _3. Lexical Definitions_
-        * [ ] _4. Language Reference_
-        * [ ] _5. Running An Adventure_
-        * [ ] _6. Hints And Tips_
-        * [ ] _7. Adventure Construction_
-        * [ ] _Appendix A: How To Use The System_
-        * [ ] _Appendix B: A Sample Interaction_
-        * [ ] _Appendix C: Run-time Messages_
-        * [ ] _Appendix D: Language Grammar_
-        * [ ] _Appendix E: Predefined player words_
-        * [ ] _Appendix F: Compiler Messages_
-        * [ ] _Appendix G: Localization_
-        * [ ] _Appendix H: Portability of Games_
-        * [ ] _Appendix I: Copying Conditions_
-    + [ ] Rebuild _Index_
+Below is an aproximate status report and pending tasks list of the current document. As I'll keep working closer on the document, more issues/tasks are likely to come up, so task-trees that are now marked as _done_ might be reset to _undone_ as new needs come to attention.
+
+## Document header
+
+Status of document header (in [`manual.asciidoc`][man]):
+
+- [x] Basic info added.
+- [ ] Missing author.
+- [x] Missing license (although full license is available in Appendix I).
+
+## Document Structure
+
+- [x] Reconstruct all headings/sections levels.
+- [x] Handle section numbering.
+- [x] Add special Appendix headings.
+- [x] Exclude _Appendix I_ (License) sub-headings from TOC.
+- [x] Split book into multiple files.
+
+### Cross-References
+
+Rebuild original cross-reference links (lost in conversion):
+
+- [x] _1. Introduction_
+- [x] _2. Concepts_
+- [ ] _3. Lexical Definitions_
+- [ ] _4. Language Reference_
+- [ ] _5. Running An Adventure_
+- [ ] _6. Hints And Tips_
+- [ ] _7. Adventure Construction_
+- [ ] _Appendix A: How To Use The System_
+- [ ] _Appendix B: A Sample Interaction_
+- [ ] _Appendix C: Run-time Messages_
+- [ ] _Appendix D: Language Grammar_
+- [ ] _Appendix E: Predefined player words_
+- [ ] _Appendix F: Compiler Messages_
+- [ ] _Appendix G: Localization_
+- [ ] _Appendix H: Portability of Games_
+- [ ] _Appendix I: Copying Conditions_
+
+### Index
+
++ [ ] Rebuild _Index_
+
+## Document Assests
+
 - [ ] Add missing images:
     + [x] Alan logo (cover)
-- [x] Global styles reconstruction:
-    + [x] Alan code examples:
-        * [x] Paste-over original examples, fix curly quotes, and indent them properly.
-        * [x] Convert them to code blocks (`[source,alan]`).
-    + [x] Alan EBNF blocks:
-        * [x] Paste-over original EBNF, fix curly quotes, and indent them properly.
-        * [x] Convert them to code blocks (`[source,ebnf]`).
-    + [x] Game transcripts:
-        + [x] Add bold style to room descriptions.
-        + [x] Convert them to example blocks (`[EXAMPLE,role="gametranscript"]`).
-    + [x] Fix notes (as Admonition notes).
-    + [ ] Fix tables.
+    + [ ] Figure 1 (Ch.2, p.20 of PDF)
+    + [ ] Figure 2 (Ch.2, p.33 of PDF) — "_Relationships between the pre-defined classes._"
+
+## Global Styles Reconstruction
+
++ [x] Alan code examples:
+    * [x] Paste-over original examples, fix curly quotes, and indent them properly.
+    * [x] Convert them to code blocks (`[source,alan]`).
++ [x] Alan EBNF blocks:
+    * [x] Paste-over original EBNF, fix curly quotes, and indent them properly.
+    * [x] Convert them to code blocks (`[source,ebnf]`).
++ [x] Game transcripts:
+    + [x] Add bold style to room descriptions.
+    + [x] Convert them to example blocks (`[EXAMPLE,role="gametranscript"]`).
++ [x] Fix notes (as Admonition notes).
++ [ ] Fix tables.
 - [ ] Global styles fixing:
     + [x] Style as inline-code keywords and code snippets within paragraphs, admonitons, etc. — eccept headings and tables (tables will be dealt with separately).
-- [ ] Typography cleanup:
-    + [x] Delete all non-breaking hyphens.
-    + [ ] Fix Smart Typography (from UTF8 chars to AsciiDoc smart punctuation):
-        * [x] Substitute curly single quotes and apostrophes.
-        * [x] Substitute curly double quotes.
-        * [x] Substitute ellipses chars with `...`.
-        * [x] Apply em dashes (as `--`) instead of hyphens, where due.
-        * [ ] Check for presence of other non-Ascii chars.
-- [x] Split book into multiple files (once all search-&-replace work is done).
-- [ ] Proof-reading:
-    + [ ] Go through whole document and fix inline styles, typos, etc.
-- [ ] Syntax highlighting
-    + [ ] Test how Highlight can be integrated into AsciiDoctor to handle Alan and EBNF code (See [Issue #2106]).
-    + [ ] Consider creating an Alan syntax definition for [Rouge].
+
+## Typography Cleanup
+
++ [x] Delete all non-breaking hyphens.
++ [ ] Fix Smart Typography (from UTF8 chars to AsciiDoc smart punctuation):
+    * [x] Substitute curly single quotes and apostrophes.
+    * [x] Substitute curly double quotes.
+    * [x] Substitute ellipses chars with `...`.
+    * [x] Apply em dashes (as `--`) instead of hyphens, where due.
+    * [ ] Check for presence of other non-Ascii chars.
+
+## Proof-Reading
+
+This stage will be done once all global substitution have been dealt with in each chapter.
+
+- [ ] Go through whole document and fix inline styles, typos, etc:
+    + [ ] _1. Introduction_
+    + [ ] _2. Concepts_
+    + [ ] _3. Lexical Definitions_
+    + [ ] _4. Language Reference_
+    + [ ] _5. Running An Adventure_
+    + [ ] _6. Hints And Tips_
+    + [ ] _7. Adventure Construction_
+    + [ ] _Appendix A: How To Use The System_
+    + [ ] _Appendix B: A Sample Interaction_
+    + [ ] _Appendix C: Run-time Messages_
+    + [ ] _Appendix D: Language Grammar_
+    + [ ] _Appendix E: Predefined player words_
+    + [ ] _Appendix F: Compiler Messages_
+    + [ ] _Appendix G: Localization_
+    + [ ] _Appendix H: Portability of Games_
+    + [ ] _Appendix I: Copying Conditions_
+
+## Syntax highlighting
+
++ [ ] Test how Highlight can be integrated into AsciiDoctor to handle Alan and EBNF code (See [Issue #2106]).
++ [ ] Consider creating an Alan syntax definition for [Rouge].
+
+
+-------------------------------------------------------------------------------
 
 # Work Notes
 
@@ -149,7 +226,9 @@ pandoc ^
 
 Although some styles were lost in the process, the final ADoc was a rather good starting point.
 
+## Annotated Comments
 
+As a convention, all commented annotations inside document source files will begin with "`// @`" to allow finding them quickly via Search functionality (eg, "`// @TODO:`", "`// @FIXME:`", "`// @NOTE`", etc.).
 
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS                                

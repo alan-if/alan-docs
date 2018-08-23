@@ -28,7 +28,7 @@ Currently, a community of addicted authors and players of text-based adventure g
 
 The Alan Adventure Language has been designed to aid construction primarily of pure text adventures or, in the words of Infocom, interactive fiction. Some sound and graphics functions are also available to spice up your game if you so desire.
 
-The main feature of adventures is the interaction between the player and the game through commands input through the keyboard and descriptions printed on the screen. In Appendix _B_ you can find such a sample interaction.
+The main feature of adventures is the interaction between the player and the game through commands input through the keyboard and descriptions printed on the screen. In <<A Sample Interaction>> you can find such a sample interaction.
 
 
 
@@ -106,7 +106,7 @@ In order to understand the rules of the Alan language, which this manual is all 
 
 === What's Happening?
 
-The execution of an adventure is primarily driven by the input of player commands. A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source. After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source. Scheduled events are then run, and then the player takes another turn. This is described in more detailed in section _5.1_, _A Turn of Events_ on page _159_.
+The execution of an adventure is primarily driven by the input of player commands. A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source. After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source. Scheduled events are then run, and then the player takes another turn. This is described in more detail in <<A Turn of Events>>.
 
 The following sections describe a number of the fundamental concepts that are present in an adventure game and what the Alan view of them is.
 
@@ -199,9 +199,11 @@ You are outside your grandma's house.
 Later in the manual, you will find semi-formal definitions, grammar rules, for how various constructs may be constructed. These sections are typeset against a coloured background:
 
 // NOTE: Special styling required for this block (EBNF like)
-................................................................................
-The rules for the rules are available in Appendix _L_ on page _221_.
-................................................................................
+[source,ebnf,subs="normal"]
+--------------------------------------------------------------------------------
+The rules for the rules are available in <<Language Grammar>>.
+--------------------------------------------------------------------------------
+
 
 In running text, words that are keywords or signify an Alan construct is written in a mono-spaced, bold, font. This helps distinguish the English word '`the`' from the Alan keyword `The`.
 
@@ -240,7 +242,7 @@ Start At kitchen.
 
 This is a complete Alan adventure (although very primitive). As you see, every Alan construct ends with a period (`.`) and there is a "```Start At```" sentence at the end, indicating in which location to put the hero when the game starts.
 
-Type the above text into a text file, e.g. using a notepad program. Run this little Alan source through the Alan compiler and try the adventure (see Appendix _A_, _How To Use The System_, on page _202_ on how to do this). After starting the adventure, two lines will be shown on your screen.
+Type the above text into a text file, e.g. using a notepad program. Run this little Alan source through the Alan compiler and try the adventure (see <<How To Use The System>> on how to do this). After starting the adventure, two lines will be shown on your screen.
 
 [EXAMPLE,role="gametranscript"]
 ================================================================================
@@ -316,7 +318,12 @@ In addition, objects may have attributes indicating the state of certain propert
 
 Alternatively, attributes may be numeric (e.g. `Has weight 5`) or be of string type (e.g. `Has inscription "Kilroy was here"`).
 
-We also introduce another Alan statement, the `If`-statement. The `If`-statement allows you to select which statements to execute according to some condition. In the example, the `closed` attribute of the door selects which description to show. There are further variations of expressions and the `If`-statement, but we will come back to these later (_Expressions_ on page _141_ and _If_ on page _130_).
+We also introduce another Alan statement, the `If`-statement. The `If`-statement allows you to select which statements to execute according to some condition. In the example, the `closed` attribute of the door selects which description to show. There are further variations of expressions and the `If`-statement, but we will come back to these later (<<Expressions>> and <<If Statement>>).
+
+// @NOTE: In the above paragraph, the original refererece was:
+//          "come back to these later (Expressions on page 142 and If on page 131)."
+//        But now is rendered as:
+//          "come back to these later (Section 3.20 and Section 3.17.6.1)."
 
 Instead, let's look at some other statements in relation to objects.
 
@@ -446,7 +453,9 @@ To make it easy to get started there are eight classes pre-defined in the Alan l
 
 // @NOTE: didn't style as inline-code the following classes, as some are not
 //        actual keywords (literal, integer), so in this context it might be ok
-// 		  to keep them just as they are, bold.
+//        to keep them just as they are, bold.
+
+// TODO: Add cross-reference link to Figure 2 in following paragraph?
 
 They are *entity*, *thing*, *location*, *actor*, *object*, *literal*, *string* and *integer* and have the relationship, inheritance tree, shown in _Figure 2_ above.
 
@@ -457,7 +466,7 @@ The semantics of these pre-defined classes are in short:
 * Only things will be described automatically when encountered
 * Literal and its sub-classes cannot be sub-classed. They are used to handle integers and strings in player input
 
-See the subsections of _Instances_ on page _56_ for more detailed descriptions.
+See the subsections of <<Instances,Instances>> for more detailed descriptions.
 
 
 
@@ -621,7 +630,7 @@ End Every door.
 --------------------------------------------------------------------------------
 
 
-With this definition it is possible to apply the verb to all doors. Instead need to reference the object the player mentioned in his command (see The Syntax on page 33 for an introduction, and Syntax Definitions on page 78 for a more thorough discussion). In this case, the attribute `closed` must also be available for all objects by ensuring that the attribute exists in to the class. (See _Additions_ on page _91_ on how to add an attribute to a predefined class such as `object`).
+With this definition it is possible to apply the verb to all doors. Instead need to reference the object the player mentioned in his command (see <<The Syntax>> and <<Syntax Definitions>> for a more thorough discussion). In this case, the attribute `closed` must also be available for all objects by ensuring that the attribute exists in to the class. (See <<Additions>> on how to add an attribute to a predefined class such as `object`).
 
 Of course, there are often also conditions that need to be checked before we can execute this code (perhaps to see if it was possible to open the object!). Therefore, ``Verb``s may have ``Check``s, as we will see next.
 
@@ -732,7 +741,7 @@ Syntax
 
 This restricts the parameter `obj` to being an instance inheriting from the class object (as opposed to an actor for example) and the parameter `cont` to a container (an instance with the container property).
 
-The parameters are used as normal identifiers in the Alan source code. The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also _Run-time Contexts_ on page _162_ for a detailed discussion).
+The parameters are used as normal identifiers in the Alan source code. The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also <<Run-time Contexts>> for a detailed discussion).
 
 The `Syntax` construct allows for more than one parameter, in order to make it possible to define more complex player commands. Therefore, the verb execution order described previously from execution of verbs in one instance must be generalised to verb bodies in all the parameters. In the example above, verb bodies in the objects or actors referenced as `obj` and `cont` (the green pearl and the black box) are executed (if the verb is present in their definitions).
 
