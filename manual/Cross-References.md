@@ -3,6 +3,25 @@
 This is a quick look-up table for cross-references in the Manual.
 It provides the text to be pasted for AsciiDoc substitutions in double angled brackets.
 
+
+-----
+
+**Table of Contents**
+
+<!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
+
+- [With Chapter/Section Number Shown](#with-chaptersection-number-shown)
+- [With Chapter/Section Title Shown](#with-chaptersection-title-shown)
+
+<!-- /MarkdownTOC -->
+
+-----
+
+
+## With Chapter/Section Number Shown
+
+These xrefs will be shown via a link with the Chapter/Section Number.
+
 |   Ch / Sec  |                xref                |              file              |
 |-------------|------------------------------------|--------------------------------|
 | 1           | `<<Introduction>>`                 | [`manual_01.asciidoc`][man 01] |
@@ -24,6 +43,32 @@ It provides the text to be pasted for AsciiDoc substitutions in double angled br
 | Appendix D  | `<<Language Grammar>>`             | [`manual_11.asciidoc`][man 11] |
 | D.2         | `<<Keywords>>`                     |                                |
 | Appendix E  | `<<Predefined Player Words>>`      | [`manual_12.asciidoc`][man 12] |
+
+## With Chapter/Section Title Shown
+
+These xrefs will be shown via a link with the Chapter/Section actual title.
+
+|   Ch / Sec  |                             title xref                            |              file              |
+|-------------|-------------------------------------------------------------------|--------------------------------|
+| 1           | `<<Introduction,_Introduction_>>`                                 | [`manual_01.asciidoc`][man 01] |
+| 2           | `<<Concepts,_Concepts_>>`                                         | [`manual_02.asciidoc`][man 02] |
+| 2.4         | `<<Introduction to the Language,_Introduction to the Language_>>` |                                |
+| 3           | `<<Language Reference,_Language Reference_>>`                     | [`manual_03.asciidoc`][man 03] |
+| 3.2 Options | `<<Options,_Options_>>`                                           |                                |
+| 3.6         | `<<Instances,_Instances_>>`                                       |                                |
+| 3.7         | `<<Properties,_Properties_>>`                                     |                                |
+| 3.8         | `<<Additions,_Additions_>>`                                       |                                |
+| 3.18        | `<<WHERE Specifications,_WHERE Specifications_>>`                 |                                |
+| 3.20        | `<<Expressions,_Expressions_>>`                                   |                                |
+| 4.2         | `<<_words_identifiers_and_names,_Words, Identifiers and Names_>>` |                                |
+| 5.1         | `<<A Turn of Events,_A Turn of Events_>>`                         |                                |
+| Appendix A  | `<<How To Use The System,_How To Use The System_>>`               | [`manual_08.asciidoc`][man 08] |
+| Appendix B  | `<<A Sample Interaction,_A Sample Interaction_>>`                 | [`manual_09.asciidoc`][man 09] |
+| Appendix C  | `<<Run-time Messages,_Run-time Messages_>>`                       | [`manual_10.asciidoc`][man 10] |
+| C.1         | `<<Input Response Messages,_Input Response Messages_>>`           |                                |
+| Appendix D  | `<<Language Grammar,_Language Grammar_>>`                         | [`manual_11.asciidoc`][man 11] |
+| D.2         | `<<Keywords,_Keywords_>>`                                         |                                |
+| Appendix E  | `<<Predefined Player Words,_Predefined Player Words_>>`           | [`manual_12.asciidoc`][man 12] |
 
 
 <!-- 

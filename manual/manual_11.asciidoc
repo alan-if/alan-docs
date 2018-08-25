@@ -1,9 +1,9 @@
 [appendix]
 = Language Grammar
 
-B.  Description
+== Description
 
-The Alan language is in this manual defined using a BNF-form, which you can see in most descriptions. The grammar is a set of rules defining what constructs are legal in the source for an Alan program. Below follows a brief explanation on how to interpret these rules by using some short examples. For details on the actual rules, refer to the content of chapter _3_, _Language Reference_.
+The Alan language is in this manual defined using a BNF-form, which you can see in most descriptions. The grammar is a set of rules defining what constructs are legal in the source for an Alan program. Below follows a brief explanation on how to interpret these rules by using some short examples. For details on the actual rules, refer to the content of <<Language Reference>>.
 
 The BNF form divides the rules for structure of the input source by describing it in smaller parts, which may in turn be defined by other rules. For example, a rule might say that an *ADVENTURE* (in this case an Alan program) consists of options, declarations and a start section. This grammar rule would look like:
 
@@ -59,7 +59,7 @@ The reserved words `random` and `in` can be followed by an expression (which, to
 
 == Keywords
 
-The following is a complete list of all keywords in the Alan language. Note that they can still be used as identifiers in a source file if the rules described in _Words, Identifiers and Names_ on page _153_ are followed. Basically this means that if you surround them by single quotes they can be used as identifiers in your source code anyway. This might be especially important if you want to use any of these words as words the player might want to input, such as part of a name for an item.
+The following is a complete list of all keywords in the Alan language. Note that they can still be used as identifiers in a source file if the rules described in <<_words_identifiers_and_names>> are followed. Basically this means that if you surround them by single quotes they can be used as identifiers in your source code anyway. This might be especially important if you want to use any of these words as words the player might want to input, such as part of a name for an item.
 
 ................................................................................
 'actor' 'add' 'after' 'an' 'and' 'are' 'article' 'at' 'attributes' 'before' 'between' 'by' 'can' 'cancel' 'character' 'characters' 'check' 'container' 'contains' 'count' 'current' 'decrease' 'definite' 'depend' 'depending' 'describe' 'description' 'directly' 'do' 'does' 'each' 'else' 'elsif' 'empty' 'end' 'entered' 'event' 'every' 'exclude' 'exit' 'extract' 'first' 'for' 'form' 'from' 'has' 'header' 'here' 'if' 'import' 'in' 'include' 'increase' 'indefinite' 'initialize' 'into' 'is' 'isa' 'it' 'last' 'limits' 'list' 'locate' 'location' 'look' 'make' 'max' 'mentioned' 'message' 'min' 'name' 'near' 'nearby' 'negative' 'no' 'not' 'of' 'off' 'on' 'only' 'opaque' 'option' 'options' 'or' 'play' 'prompt' 'pronoun' 'quit' 'random' 'restart' 'restore' 'save' 'say' 'schedule' 'score' 'script' 'set' 'show' 'start' 'step' 'stop' 'strip' 'style' 'sum' 'synonyms' 'syntax' 'system' 'taking' 'the' 'then' 'this' 'to' 'transcript' 'until' 'use' 'verb' 'visits' 'wait' 'when' 'where' 'with' 'word' 'words'

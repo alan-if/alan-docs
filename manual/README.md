@@ -130,10 +130,10 @@ Rebuild original cross-reference links (lost in conversion):
 - [X] _5. Running An Adventure_
 - [x] _6. Hints And Tips_
 - [x] _7. Adventure Construction_
-- [ ] _Appendix A: How To Use The System_
-- [ ] _Appendix B: A Sample Interaction_
-- [ ] _Appendix C: Run-time Messages_
-- [ ] _Appendix D: Language Grammar_
+- [x] _Appendix A: How To Use The System_
+- [x] _Appendix B: A Sample Interaction_ (none found)
+- [x] _Appendix C: Run-time Messages_
+- [x] _Appendix D: Language Grammar_
 - [ ] _Appendix E: Predefined player words_
 - [ ] _Appendix F: Compiler Messages_
 - [ ] _Appendix G: Localization_

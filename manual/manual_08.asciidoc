@@ -38,12 +38,12 @@ Here are some examples of other switches:
 * `-verbose` print compiler version and other verbose messages
 * `-warnings`, `-infos` show warning (and/or informational) messages from the compilation process
 
-* `-import` add a directory to the search path for imported files (see _File_ _157_ for details on the `import` statement). This switch can be used multiple times, each adding a new directory
+* `-import` add a directory to the search path for imported files (see <<Filenames>> for details on the `import` statement). This switch can be used multiple times, each adding a new directory
 * `-listing` direct compiler output (error messages etc.) to a file with the same base name as the input (source) file, but with the extension *.lis*
 
 * `-full` will produce a complete listing of the source on the screen, or if combined with the `-listing` option, in the listing file
-* `-debug` include debugging information in the produced adventure files (same as the debug option, see _Options_ on page _49_)
-* `-pack` encode and compress the text data (same as the pack option, see _Options_ on page _49_)
+* `-debug` include debugging information in the produced adventure files (same as the debug option, see <<Options>>)
+* `-pack` encode and compress the text data (same as the pack option, see <<Options>>)
 * `-summary` produce a summary about number of actors, size of adventure files, timing information etc.
 * `-dump` print the internal form (developers use mainly)
 
@@ -73,4 +73,4 @@ The interpreter supports the following switches:
 * `-t[<n>]` various levels of execution trace, higher <n> gives more details
 * `-l` log all player command in a log-file in the current directory
 
-Debugging support is described in _Debugging_ on page _187_.
+Debugging support is described in <<Debugging>>.

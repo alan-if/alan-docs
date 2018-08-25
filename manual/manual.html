@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.16,</span>
+<span id="revnumber">version 0.1.17,</span>
 <span id="revdate">August 25, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -789,7 +789,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_language_grammar">Appendix D: Language Grammar</a>
 <ul class="sectlevel2">
-<li><a href="#_keywords">D.1. Keywords</a></li>
+<li><a href="#_description_2">D.1. Description</a></li>
+<li><a href="#_keywords">D.2. Keywords</a></li>
 </ul>
 </li>
 <li><a href="#_predefined_player_words">Appendix E: Predefined Player Words</a>
@@ -812,7 +813,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.16
+<pre>Doc version: 0.1.17
 Last edited: August 25, 2018</pre>
 </div>
 </div>
@@ -2338,7 +2339,7 @@ End The mr_brown.</code></pre>
 <p>In these examples the source lines between <code>The</code> and <code>End The</code> all declare various properties that we will learn more about in <a href="#_properties">Sect. 3.7</a>. The rest of the lines are fairly easy to match up to the rules of the Alan language as described by the earlier box.</p>
 </div>
 <div class="paragraph">
-<p>All capitalized words in the examples above are keywords in the Alan language (see <a href="#_keywords">Sect. D.1</a> for a complete list), the rest are author defined words or identifiers (with the exception of the bold words object and actor, which are identifiers predefined to be special classes).</p>
+<p>All capitalized words in the examples above are keywords in the Alan language (see <a href="#_keywords">Sect. D.2</a> for a complete list), the rest are author defined words or identifiers (with the exception of the bold words object and actor, which are identifiers predefined to be special classes).</p>
 </div>
 <div class="sect3">
 <h4 id="_entities">Entities</h4>
@@ -8670,7 +8671,7 @@ ee1: RETURN
 <p><code>-warnings</code>, <code>-infos</code> show warning (and/or informational) messages from the compilation process</p>
 </li>
 <li>
-<p><code>-import</code> add a directory to the search path for imported files (see <em>File</em> <em>157</em> for details on the <code>import</code> statement). This switch can be used multiple times, each adding a new directory</p>
+<p><code>-import</code> add a directory to the search path for imported files (see <a href="#_filenames">Sect. 4.5</a> for details on the <code>import</code> statement). This switch can be used multiple times, each adding a new directory</p>
 </li>
 <li>
 <p><code>-listing</code> direct compiler output (error messages etc.) to a file with the same base name as the input (source) file, but with the extension <strong>.lis</strong></p>
@@ -8679,10 +8680,10 @@ ee1: RETURN
 <p><code>-full</code> will produce a complete listing of the source on the screen, or if combined with the <code>-listing</code> option, in the listing file</p>
 </li>
 <li>
-<p><code>-debug</code> include debugging information in the produced adventure files (same as the debug option, see <em>Options</em> on page <em>49</em>)</p>
+<p><code>-debug</code> include debugging information in the produced adventure files (same as the debug option, see <a href="#_options">Sect. 3.2</a>)</p>
 </li>
 <li>
-<p><code>-pack</code> encode and compress the text data (same as the pack option, see <em>Options</em> on page <em>49</em>)</p>
+<p><code>-pack</code> encode and compress the text data (same as the pack option, see <a href="#_options">Sect. 3.2</a>)</p>
 </li>
 <li>
 <p><code>-summary</code> produce a summary about number of actors, size of adventure files, timing information etc.</p>
@@ -8742,7 +8743,7 @@ ee1: RETURN
 </ul>
 </div>
 <div class="paragraph">
-<p>Debugging support is described in <em>Debugging</em> on page <em>187</em>.</p>
+<p>Debugging support is described in <a href="#_debugging">Sect. 6.14</a>.</p>
 </div>
 </div>
 </div>
@@ -8952,10 +8953,10 @@ You are in the living room. There is a door to the east. To the west is a wooden
 <div class="sect2">
 <h3 id="_input_response_messages">C.1. Input Response Messages</h3>
 <div class="paragraph">
-<p>Various messages are printed for the benefit of the player. Most messages probably come from the adventure itself, i.e. they where provided by the adventure author. However, some messages can be given directly by the Arun interpreter. They are presented below using the Alan STRING-format, i.e. containing the special character combinations described in <em>Output Statements</em> on page <em>117</em>. These standard messages exist for all languages and the default value of the texts are selected depending upon the setting of the language option.</p>
+<p>Various messages are printed for the benefit of the player. Most messages probably come from the adventure itself, i.e. they where provided by the adventure author. However, some messages can be given directly by the Arun interpreter. They are presented below using the Alan STRING-format, i.e. containing the special character combinations described in <a href="#_output_statements"><em>Output Statements</em></a>. These standard messages exist for all languages and the default value of the texts are selected depending upon the setting of the language option.</p>
 </div>
 <div class="paragraph">
-<p>The contents of any message may be modified using the <code>Message</code> statement (see section <em>Messages</em> on page <em>113</em>). The identifier on the first line of a message explanation is the identifier that should be used in the <code>Message</code> statement to change the contents of that message. The text after the colon on the first line is the default English message text. Then follows a short explanation, including possible availability of parameters and their types.</p>
+<p>The contents of any message may be modified using the <code>Message</code> statement (see <a href="#_messages">Sect. 3.14</a>). The identifier on the first line of a message explanation is the identifier that should be used in the <code>Message</code> statement to change the contents of that message. The text after the colon on the first line is the default English message text. Then follows a short explanation, including possible availability of parameters and their types.</p>
 </div>
 <div class="paragraph">
 <p>All messages are available in all supported languages but below the English texts are shown.</p>
@@ -8968,7 +8969,7 @@ You are in the living room. There is a door to the east. To the west is a wooden
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Although the default values of the messages are static strings, it is possible to create messages that are more dynamic. The <code>Message</code> statement allows any statements, not only strings, and supplies dynamic values as parameters for many messages. See <em>Messages</em> on page <em>113</em> for details.</p>
+<p>Although the default values of the messages are static strings, it is possible to create messages that are more dynamic. The <code>Message</code> statement allows any statements, not only strings, and supplies dynamic values as parameters for many messages. See <a href="#_messages">Sect. 3.14</a> for details.</p>
 </div>
 </td>
 </tr>
@@ -9383,7 +9384,7 @@ Checksum error in Acode (.A3C) file (%1 instead of %2).</p>
 <div class="sect2">
 <h3 id="_implementor_errors">C.5. Implementor Errors</h3>
 <div class="paragraph">
-<p>Any other text in a system error message is really a SYSTEM ERROR. Scribble down the text and contact the implementors. If possible, supply the source for your adventure, a trace of the few last player commands (if possible with single step and trace turned on, see <em>Debugging</em> on page <em>187</em>).</p>
+<p>Any other text in a system error message is really a SYSTEM ERROR. Scribble down the text and contact the implementors. If possible, supply the source for your adventure, a trace of the few last player commands (if possible with single step and trace turned on, see <a href="#_debugging"><em>Debugging</em></a>).</p>
 </div>
 </div>
 </div>
@@ -9391,15 +9392,10 @@ Checksum error in Acode (.A3C) file (%1 instead of %2).</p>
 <div class="sect1">
 <h2 id="_language_grammar">Appendix D: Language Grammar</h2>
 <div class="sectionbody">
-<div class="olist upperalpha">
-<ol class="upperalpha" type="A">
-<li>
-<p>Description</p>
-</li>
-</ol>
-</div>
+<div class="sect2">
+<h3 id="_description_2">D.1. Description</h3>
 <div class="paragraph">
-<p>The Alan language is in this manual defined using a BNF-form, which you can see in most descriptions. The grammar is a set of rules defining what constructs are legal in the source for an Alan program. Below follows a brief explanation on how to interpret these rules by using some short examples. For details on the actual rules, refer to the content of chapter <em>3</em>, <em>Language Reference</em>.</p>
+<p>The Alan language is in this manual defined using a BNF-form, which you can see in most descriptions. The grammar is a set of rules defining what constructs are legal in the source for an Alan program. Below follows a brief explanation on how to interpret these rules by using some short examples. For details on the actual rules, refer to the content of <a href="#_language_reference">Chapter 3</a>.</p>
 </div>
 <div class="paragraph">
 <p>The BNF form divides the rules for structure of the input source by describing it in smaller parts, which may in turn be defined by other rules. For example, a rule might say that an <strong>ADVENTURE</strong> (in this case an Alan program) consists of options, declarations and a start section. This grammar rule would look like:</p>
@@ -9458,10 +9454,11 @@ Checksum error in Acode (.A3C) file (%1 instead of %2).</p>
 <div class="paragraph">
 <p>The reserved words <code>random</code> and <code>in</code> can be followed by an expression (which, to make sense, must refer to a container instance) to form a 'random_expression' (which in itself is an expression).</p>
 </div>
+</div>
 <div class="sect2">
-<h3 id="_keywords">D.1. Keywords</h3>
+<h3 id="_keywords">D.2. Keywords</h3>
 <div class="paragraph">
-<p>The following is a complete list of all keywords in the Alan language. Note that they can still be used as identifiers in a source file if the rules described in <em>Words, Identifiers and Names</em> on page <em>153</em> are followed. Basically this means that if you surround them by single quotes they can be used as identifiers in your source code anyway. This might be especially important if you want to use any of these words as words the player might want to input, such as part of a name for an item.</p>
+<p>The following is a complete list of all keywords in the Alan language. Note that they can still be used as identifiers in a source file if the rules described in <a href="#_words_identifiers_and_names">Sect. 4.2</a> are followed. Basically this means that if you surround them by single quotes they can be used as identifiers in your source code anyway. This might be especially important if you want to use any of these words as words the player might want to input, such as part of a name for an item.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -11145,8 +11142,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.16<br>
-Last updated 2018-08-25 14:55:07 ora legale Europa occidentale
+Version 0.1.17<br>
+Last updated 2018-08-25 15:04:29 ora legale Europa occidentale
 </div>
 </div>
 </body>
