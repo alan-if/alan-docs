@@ -1,5 +1,5 @@
 [appendix]
-= Predefined player words
+= Predefined Player Words
 
 Alan defines a set of words for the player to use, which are required for the syntax variations described in _Player Input_ on page _160_. These words are available even without any declarations at all in the game source. Some of these might conflict with, or complement, words defined in the source. The lists below contain those player words for the currently defined languages.
 

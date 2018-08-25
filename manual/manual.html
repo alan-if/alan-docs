@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.13,</span>
+<span id="revnumber">version 0.1.14,</span>
 <span id="revdate">August 25, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -792,7 +792,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_keywords">D.1. Keywords</a></li>
 </ul>
 </li>
-<li><a href="#_predefined_player_words">Appendix E: Predefined player words</a>
+<li><a href="#_predefined_player_words">Appendix E: Predefined Player Words</a>
 <ul class="sectlevel2">
 <li><a href="#_english">E.1. English</a></li>
 <li><a href="#_swedish">E.2. Swedish</a></li>
@@ -812,7 +812,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.13
+<pre>Doc version: 0.1.14
 Last edited: August 25, 2018</pre>
 </div>
 </div>
@@ -6866,7 +6866,7 @@ end for</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A player command may be either a verb or a direction. A verb is executed by checking the syntax of the input, performing any preconditions (checks) and then executing the verb bodies (as described in <em>Verbs</em> and <em>Scope</em> on page <em>99</em>). A directional command is executed by finding any exit in that direction, evaluating the checks and the body (if any) of that exit and locating the <em>hero</em> at the new location.</p>
+<p>A player command may be either a verb or a direction. A verb is executed by checking the syntax of the input, performing any preconditions (checks) and then executing the verb bodies (as described in <a href="#_verbs"><em>Verbs</em></a> and <a href="#_scope"><em>Scope</em></a>). A directional command is executed by finding any exit in that direction, evaluating the checks and the body (if any) of that exit and locating the <em>hero</em> at the new location.</p>
 </div>
 <div class="paragraph">
 <p>If the player inputs an empty command, this is equivalent to forfeiting his turn. The empty command will simply be ignored. The events and other actors, including turn counting, then proceeds as if the player had input a proper input, before returning to the player prompt.</p>
@@ -6875,7 +6875,7 @@ end for</pre>
 <div class="sect2">
 <h3 id="_player_input">5.2. Player Input</h3>
 <div class="paragraph">
-<p>The syntax defined in the Alan source is the basis for what the player is allowed to input. Commands with the formats expressed in the syntaxes form the basic statements available to the player. In addition, there are various combinations and variations are possible using special characters and words. The words are of course different for different languages, but in the following generic English words, like &#8220;<strong>AND</strong>-word&#8221;, will be used to denote all words that can be used in the same manner. The exact list of these words for every language with built-in support is available in Appendix <em>E</em>.</p>
+<p>The syntax defined in the Alan source is the basis for what the player is allowed to input. Commands with the formats expressed in the syntaxes form the basic statements available to the player. In addition, there are various combinations and variations are possible using special characters and words. The words are of course different for different languages, but in the following generic English words, like &#8220;<strong>AND</strong>-word&#8221;, will be used to denote all words that can be used in the same manner. The exact list of these words for every language with built-in support is available in <a href="#_predefined_player_words">Appendix E</a>.</p>
 </div>
 <div class="paragraph">
 <p>The following built in syntax variations are available to the player:</p>
@@ -6912,7 +6912,7 @@ end for</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The pronouns have to be defined by the author in his source (see <em>Pronouns</em> on page <em>68</em>) or by a library. The only built-in pronoun is the <strong>IT</strong>-word, which is automatically defined on the class <code>thing</code>.</p>
+<p>The pronouns have to be defined by the author in his source (see <a href="#_pronouns">Sect. 3.7.4</a>) or by a library. The only built-in pronoun is the <strong>IT</strong>-word, which is automatically defined on the class <code>thing</code>.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -6972,13 +6972,13 @@ end for</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The reference to multiple objects (or actors) in a position is only possible if the adventure author has allowed it by using a multiple indicator in the syntax definition (see <em>Syntax Definitions</em> on page <em>91</em>). All the variations above are built in and handled automatically by the run-time system.</p>
+<p>The reference to multiple objects (or actors) in a position is only possible if the adventure author has allowed it by using a multiple indicator in the syntax definition (see <a href="#_syntax_definitions">Sect. 3.9</a>). All the variations above are built in and handled automatically by the run-time system.</p>
 </div>
 <div class="paragraph">
-<p>The interpreter also automatically restricts parameter references to things reachable according to the semantic rules of each built-in base class (see <em>Instances</em> on page <em>56</em> for the complete details). For example objects are only possible to refer to if they are present at the current location, except if the syntax for the command uses the omnipotent <code>!</code> indicator (see <em>Syntax Definitions</em> on page <em>91</em> for details). For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to <em>Distant &amp; Imaginary Objects</em> on page <em>183</em>.</p>
+<p>The interpreter also automatically restricts parameter references to things reachable according to the semantic rules of each built-in base class (see <a href="#_instances">Sect. 3.6</a> for the complete details). For example objects are only possible to refer to if they are present at the current location, except if the syntax for the command uses the omnipotent <code>!</code> indicator (see <a href="#_syntax_definitions">Sect. 3.9</a> for details). For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to <a href="#_distant_imaginary_objects"><em>Distant &amp; Imaginary Objects</em></a>.</p>
 </div>
 <div class="paragraph">
-<p>If the player uses <strong>ALL</strong> instead of a reference to an instance in his command, the verb will be applied to all appropriate instances at the current location, <em>except</em> the ones that do not pass all checks for the verb (see <em>Verbs</em> on page <em>100</em> for further details on this).</p>
+<p>If the player uses <strong>ALL</strong> instead of a reference to an instance in his command, the verb will be applied to all appropriate instances at the current location, <em>except</em> the ones that do not pass all checks for the verb (see <a href="#_verbs">Sect. 3.7.10</a> for further details on this).</p>
 </div>
 <div class="paragraph">
 <p>A restriction placed on the player input by the interpreter is that the words the player is allowed to use can only contain alphanumeric characters, underscores and dash. This must be kept in mind when naming verbs that use the default syntax (an explicit <code>Syntax</code> statement can always specify other player words to trigger the verb).</p>
@@ -7031,7 +7031,7 @@ end for</pre>
 <div class="sect2">
 <h3 id="_moving_actors">5.4. Moving Actors</h3>
 <div class="paragraph">
-<p>The main way to move the hero is through the exits (see <em>Exits</em> on page <em>88</em>). They are executed if the player inputs a directional command, i.e. a word defined as the name for an exit in any location. First, the current location is investigated for an exit in the indicated direction, if there is none an error message is printed. Otherwise, that exit is examined for <code>Check</code>s, which are run according to normal rules (see <em>Verb Checks</em> on page <em>102</em>). If there was no <code>Check</code> or if the check passed the statements in the body (the <code>Does</code>-part) is executed. The hero is then located at the location indicated in the exit header, which will result in the description of the location (by executing the <code>Description</code>-clause of the location) and any objects or actors present (by executing their <code>Description</code>s, explicit or implicit).</p>
+<p>The main way to move the hero is through the exits (see <a href="#_exits">Sect. 3.7.12</a>). They are executed if the player inputs a directional command, i.e. a word defined as the name for an exit in any location. First, the current location is investigated for an exit in the indicated direction, if there is none an error message is printed. Otherwise, that exit is examined for <code>Check</code>s, which are run according to normal rules (see <a href="#_verb_checks">Sect. 3.10.3</a>). If there was no <code>Check</code> or if the check passed the statements in the body (the <code>Does</code>-part) is executed. The hero is then located at the location indicated in the exit header, which will result in the description of the location (by executing the <code>Description</code>-clause of the location) and any objects or actors present (by executing their <code>Description</code>s, explicit or implicit).</p>
 </div>
 <div class="paragraph">
 <p>When any actor (including the hero) is located at a location, the <code>Entered</code> clause of that location is executed as if the actor had moved into that <code>Location</code>. The actor that was moved will be the <code>Current Actor</code> even if the movement was not caused by him (but the result of an event, for example). Therefore, this is also the last step in the sequence of events caused by locating the hero somewhere.</p>
@@ -9472,7 +9472,7 @@ Checksum error in Acode (.A3C) file (%1 instead of %2).</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_predefined_player_words">Appendix E: Predefined player words</h2>
+<h2 id="_predefined_player_words">Appendix E: Predefined Player Words</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Alan defines a set of words for the player to use, which are required for the syntax variations described in <em>Player Input</em> on page <em>160</em>. These words are available even without any declarations at all in the game source. Some of these might conflict with, or complement, words defined in the source. The lists below contain those player words for the currently defined languages.</p>
@@ -11145,8 +11145,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.13<br>
-Last updated 2018-08-25 14:19:18 ora legale Europa occidentale
+Version 0.1.14<br>
+Last updated 2018-08-25 14:34:32 ora legale Europa occidentale
 </div>
 </div>
 </body>

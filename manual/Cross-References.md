@@ -23,6 +23,7 @@ It provides the text to be pasted for AsciiDoc substitutions in double angled br
 | C.1         | `<<Input Response Messages>>`      |                                |
 | Appendix D  | `<<Language Grammar>>`             | [`manual_11.asciidoc`][man 11] |
 | D.2         | `<<Keywords>>`                     |                                |
+| Appendix E  | `<<Predefined Player Words>>`      | [`manual_12.asciidoc`][man 12] |
 
 
 <!-- 
