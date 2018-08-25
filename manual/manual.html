@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.14,</span>
+<span id="revnumber">version 0.1.15,</span>
 <span id="revdate">August 25, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -812,7 +812,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.14
+<pre>Doc version: 0.1.15
 Last edited: August 25, 2018</pre>
 </div>
 </div>
@@ -7070,7 +7070,7 @@ end for</pre>
 <p>This chapter will give you some ideas about how the various features of Alan may be used to implement common features in an adventure game. These are only suggestions and you are, of course, welcome to invent your own, but these are probably some ideas that can get you started.</p>
 </div>
 <div class="paragraph">
-<p>Using the import mechanism of the Alan language (see <em>Import</em> on page <em>54</em>) you can reuse snippets that you invent in multiple games or works. By building such a library you don&#8217;t have to reinvent the same thing every time.</p>
+<p>Using the import mechanism of the Alan language (see <a href="#_import">Sect. 3.4</a>) you can reuse snippets that you invent in multiple games or works. By building such a library you don&#8217;t have to reinvent the same thing every time.</p>
 </div>
 <div class="paragraph">
 <p>A very easy way to get a lot of functionality, and learn about using the language, is to use the Alan standard library. You you can download it from the Alan Home Pages. It implements many of the things described below, and loads of other handy things for you to use directly. For details on how to use that library, refer to its documentation.</p>
@@ -7281,10 +7281,10 @@ You are carrying an empty bottle.</p>
 <div class="sect2">
 <h3 id="_common_verbs">6.3. Common Verbs</h3>
 <div class="paragraph">
-<p>As your library of adventures grow you will find that some verbs are often needed, and always function the same way. Examples are &#8220;take&#8221;, &#8220;drop&#8221;, &#8220;invent&#8221;, &#8220;look&#8221;, &#8220;quit&#8221; and so on. It is advisable to put them in a file which may then be imported into your games. See section <em>3.4</em> <em>Import</em> on page <em>54</em> about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a default attribute declaration in this file.</p>
+<p>As your library of adventures grow you will find that some verbs are often needed, and always function the same way. Examples are &#8220;take&#8221;, &#8220;drop&#8221;, &#8220;invent&#8221;, &#8220;look&#8221;, &#8220;quit&#8221; and so on. It is advisable to put them in a file which may then be imported into your games. See <a href="#_import">Sect. 3.4</a> about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a default attribute declaration in this file.</p>
 </div>
 <div class="paragraph">
-<p>All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure. All that this takes is some thought as to what names to use for the attributes as discussed in <em>Use of Attributes</em> on page <em>167</em>.</p>
+<p>All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure. All that this takes is some thought as to what names to use for the attributes as discussed in <a href="#_use_of_attributes">Sect. 6.1</a>.</p>
 </div>
 <div class="paragraph">
 <p>And of course there is already an extensive library available from the Alan website, <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a>. It also includes a lot of other features common to most adventure games.</p>
@@ -7993,7 +7993,7 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>None of the above switches can be used unless the adventure was compiled with the debug option set (see <em>Options</em> on page <em>49</em>).</p>
+<p>None of the above switches can be used unless the adventure was compiled with the debug option set (see <a href="#_options">Sect. 3.2</a>).</p>
 </div>
 </td>
 </tr>
@@ -8115,10 +8115,10 @@ quit               -- quit game</pre>
 </table>
 </div>
 <div class="paragraph">
-<p>The trace command and its options corresponds to the types of traces described in the section on <em>Command Logs and Game Transcripts</em> <em>above</em>.</p>
+<p>The trace command and its options corresponds to the types of traces described in the section on <a href="#_command_logs_and_game_transcripts"><em>Command Logs and Game Transcripts</em></a> above.</p>
 </div>
 <div class="paragraph">
-<p>Wherever different output styles are available, e.g. in GLK based interpreters like WinArun, the Alan debugger tries to use them to distinguish the debugger output from the output of your game by using the pre-formatted style (see the section on styles in <em>Output Statements</em> on page <em>117</em>).</p>
+<p>Wherever different output styles are available, e.g. in GLK based interpreters like WinArun, the Alan debugger tries to use them to distinguish the debugger output from the output of your game by using the pre-formatted style (see the section on styles in <a href="#_output_statements">Sect. 3.17.1</a>).</p>
 </div>
 <div class="paragraph">
 <p>The following is a short excerpt from a debugging session (user input in italics, game input/output in bold face):</p>
@@ -11145,8 +11145,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.14<br>
-Last updated 2018-08-25 14:34:32 ora legale Europa occidentale
+Version 0.1.15<br>
+Last updated 2018-08-25 14:51:48 ora legale Europa occidentale
 </div>
 </div>
 </body>

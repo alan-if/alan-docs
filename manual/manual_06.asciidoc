@@ -2,7 +2,7 @@
 
 This chapter will give you some ideas about how the various features of Alan may be used to implement common features in an adventure game. These are only suggestions and you are, of course, welcome to invent your own, but these are probably some ideas that can get you started.
 
-Using the import mechanism of the Alan language (see _Import_ on page _54_) you can reuse snippets that you invent in multiple games or works. By building such a library you don't have to reinvent the same thing every time.
+Using the import mechanism of the Alan language (see <<Import>>) you can reuse snippets that you invent in multiple games or works. By building such a library you don't have to reinvent the same thing every time.
 
 A very easy way to get a lot of functionality, and learn about using the language, is to use the Alan standard library. You you can download it from the Alan Home Pages. It implements many of the things described below, and loads of other handy things for you to use directly. For details on how to use that library, refer to its documentation.
 
@@ -200,9 +200,9 @@ You are carrying an empty bottle.
 
 == Common Verbs
 
-As your library of adventures grow you will find that some verbs are often needed, and always function the same way. Examples are "`take`", "`drop`", "`invent`", "`look`", "`quit`" and so on. It is advisable to put them in a file which may then be imported into your games. See section _3.4_ _Import_ on page _54_ about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a default attribute declaration in this file.
+As your library of adventures grow you will find that some verbs are often needed, and always function the same way. Examples are "`take`", "`drop`", "`invent`", "`look`", "`quit`" and so on. It is advisable to put them in a file which may then be imported into your games. See <<Import>> about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a default attribute declaration in this file.
 
-All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure. All that this takes is some thought as to what names to use for the attributes as discussed in _Use of Attributes_ on page _167_.
+All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure. All that this takes is some thought as to what names to use for the attributes as discussed in <<Use of Attributes>>.
 
 And of course there is already an extensive library available from the Alan website, http://www.alanif.se/[www.alanif.se^]. It also includes a lot of other features common to most adventure games.
 
@@ -848,7 +848,7 @@ Occasionally your Alan code is flawed and you really can't understand what is ac
 
 [NOTE]
 ================================================================================
-None of the above switches can be used unless the adventure was compiled with the debug option set (see _Options_ on page _49_).
+None of the above switches can be used unless the adventure was compiled with the debug option set (see <<Options>>).
 ================================================================================
 
 
@@ -946,9 +946,9 @@ The debugger knows on which source lines it is possible to place a breakpoint. I
 
 
 
-The trace command and its options corresponds to the types of traces described in the section on _Command Logs and Game Transcripts_ _above_.
+The trace command and its options corresponds to the types of traces described in the section on <<Command Logs and Game Transcripts,_Command Logs and Game Transcripts_>> above.
 
-Wherever different output styles are available, e.g. in GLK based interpreters like WinArun, the Alan debugger tries to use them to distinguish the debugger output from the output of your game by using the pre-formatted style (see the section on styles in _Output Statements_ on page _117_).
+Wherever different output styles are available, e.g. in GLK based interpreters like WinArun, the Alan debugger tries to use them to distinguish the debugger output from the output of your game by using the pre-formatted style (see the section on styles in <<Output Statements>>).
 
 // FIXME: The transcript styling mentioned in the next paragraph isn't applied
 //        in the actual transcript of the book; will need to work out manually

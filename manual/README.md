@@ -127,8 +127,8 @@ Rebuild original cross-reference links (lost in conversion):
 - [x] _2. Concepts_
 - [x] _3. Lexical Definitions_
 - [x] _4. Language Reference_
-- [ ] _5. Running An Adventure_
-- [ ] _6. Hints And Tips_
+- [X] _5. Running An Adventure_
+- [x] _6. Hints And Tips_
 - [ ] _7. Adventure Construction_
 - [ ] _Appendix A: How To Use The System_
 - [ ] _Appendix B: A Sample Interaction_

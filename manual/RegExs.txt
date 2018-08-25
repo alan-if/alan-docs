@@ -2,7 +2,7 @@
                              Fix Cross-References                             
 ==============================================================================
 
-_(.+?)_ on page _\d+_
+(?:section _(?:[\d\.]+)_ )?_(.+?)_ on page _\d+_
 <<$1>>
 
 (TO PRESERVE SEC TITLE IN LINK:)
