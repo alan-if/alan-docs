@@ -58,7 +58,7 @@ So how do you find these? Your only help are the beta testers. They are the peop
 
 The beta testers will probably give you a long list of issues that you have to address before the next release. Some of the issues are simple; others may affect the basis of your story. You should seriously consider (and if possible discuss) such suggestions.
 
-One aid in finding any problems in the playability of the game is to use the log file facility of the interpreter (see the section _Command Log_ on page _187_) to produce a list of the commands a player have used. This can greatly aid in spotting troublesome areas in your game. One common such is where the player becomes stuck and reverts to "guess-the-verb". The log will give you the output of the exact game played.
+One aid in finding any problems in the playability of the game is to use the log file facility of the interpreter (see the section <<Command Logs and Game Transcripts,_Command Logs and Game Transcripts_>>) to produce a list of the commands a player have used. This can greatly aid in spotting troublesome areas in your game. One common such is where the player becomes stuck and reverts to "guess-the-verb". The log will give you the output of the exact game played.
 
 After having collected all this information, considered which ones to act upon, and implemented these, you should probably do it once again (sigh!).
 

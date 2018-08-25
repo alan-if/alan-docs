@@ -129,7 +129,7 @@ Rebuild original cross-reference links (lost in conversion):
 - [x] _4. Language Reference_
 - [X] _5. Running An Adventure_
 - [x] _6. Hints And Tips_
-- [ ] _7. Adventure Construction_
+- [x] _7. Adventure Construction_
 - [ ] _Appendix A: How To Use The System_
 - [ ] _Appendix B: A Sample Interaction_
 - [ ] _Appendix C: Run-time Messages_
