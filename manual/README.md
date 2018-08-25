@@ -134,11 +134,11 @@ Rebuild original cross-reference links (lost in conversion):
 - [x] _Appendix B: A Sample Interaction_ (none found)
 - [x] _Appendix C: Run-time Messages_
 - [x] _Appendix D: Language Grammar_
-- [ ] _Appendix E: Predefined player words_
-- [ ] _Appendix F: Compiler Messages_
-- [ ] _Appendix G: Localization_
-- [ ] _Appendix H: Portability of Games_
-- [ ] _Appendix I: Copying Conditions_
+- [x] _Appendix E: Predefined player words_
+- [x] _Appendix F: Compiler Messages_
+- [x] _Appendix G: Localization_
+- [x] _Appendix H: Portability of Games_ (none found)
+- [x] _Appendix I: Copying Conditions_ (none found)
 
 ### Index
 
