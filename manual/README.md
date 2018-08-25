@@ -61,7 +61,16 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 
 ## Conversion Scripts
 
-- [`BUILD_HTML.bat`][BUILD_HTML.bat] — batch script to create `manual.html` document (fully standalone).
+- [`BUILD_ALL.bat`][BUILD_ALL.bat] — convenience batch to invoke all conversion scripts at once.
+- [`HTML_BUILD.bat`][HTML_BUILD.bat] — batch script to create `manual.html` document (fully standalone).
+- [`PDF_BUILD.bat`][PDF_BUILD.bat] — batch script to create `manual.pdf` document (currently ignored in repository).
+
+> __PDF NOTE__ — In order to build the PDF manual, you need to install the [Asciidoctor PDF] Ruby Gem:
+> 
+> ```
+> gem install asciidoctor-pdf --pre
+> ```
+
 
 ## Converted Manual
 
@@ -248,6 +257,7 @@ As a convention, all commented annotations inside document source files will beg
 <!-- AsciiDoctor -->
 
 [Asciidoctor]: https://asciidoctor.org/ "Visit AsciiDoctor website (Ruby implementation)"
+[Asciidoctor PDF]: https://github.com/asciidoctor/asciidoctor-pdf "Visit the Asciidoctor PDF repository"
 
 [AsciiDoc Python]: http://asciidoc.org/ "Visit AsciiDoc website (original Python implementation)"
 
@@ -276,7 +286,10 @@ As a convention, all commented annotations inside document source files will beg
 [man 16]: ./manual_16.asciidoc "Source file of Appendix I: Copying Conditions"
 [man 17]: ./manual_17.asciidoc "Source file of Index"
 
-[BUILD_HTML.bat]: ./BUILD_HTML.bat "Batch script to convert Alan Manual to a single-file standalone HTML5 document."
+
+[BUILD_ALL.bat]:  ./BUILD_ALL.bat  "Batch script to invoke all Manual conversion scripts."
+[HTML_BUILD.bat]: ./HTML_BUILD.bat "Batch script to convert Alan Manual to a single-file standalone HTML5 document."
+[PDF_BUILD.bat]: ./PDF_BUILD.bat "Batch script to convert Alan Manual to PDF document."
 
 [Cross-References.md]: ./Cross-References.md "Look-up table for cross-reference links reconstruction"
 
