@@ -74,7 +74,8 @@ An [HTML Live Preview] of the converted document is available via [GitHub & BitB
 Some files to help editing the manual:
 
 - [`Cross-References.md`][Cross-References.md] — Look-up table for cross-reference links.
-- [`Manual_TOC.txt`](./Manual_TOC.txt) — Manual TOC in plaintext (for reference).
+- [`Manual_Index.txt`][Index txt] — Manual Index in plaintext (for reference).
+- [`Manual_TOC.txt`][TOC txt] — Manual TOC in plaintext (for reference).
 - [`RegExs.txt`](./RegExs.txt) — frequently needed regular expressions for S&R operations.
 - [`SNIPPTES.adoc`](./SNIPPTES.adoc) — useful snippets to copy and paste.
 
@@ -119,6 +120,9 @@ Status of document header (in [`manual.asciidoc`][man]):
 - [x] Exclude _Appendix I_ (License) sub-headings from TOC.
 - [x] Split book into multiple files.
 
+As a reference to check TOC integrity, use [`Manual_TOC.txt`][TOC txt] file.
+
+
 ### Cross-References
 
 Rebuild original cross-reference links (lost in conversion):
@@ -143,6 +147,10 @@ Rebuild original cross-reference links (lost in conversion):
 ### Index
 
 + [ ] Rebuild _Index_
+
+As a reference to rebuild the Index, use [`Manual_Index.txt`][Index txt] file.
+
+> __NOTE__ — Asciidoctor does not create an Index in HTML5 documents, therefore the PDF format will have to be used to check the Index reconstruction.
 
 ## Document Assests
 
@@ -271,5 +279,8 @@ As a convention, all commented annotations inside document source files will beg
 [BUILD_HTML.bat]: ./BUILD_HTML.bat "Batch script to convert Alan Manual to a single-file standalone HTML5 document."
 
 [Cross-References.md]: ./Cross-References.md "Look-up table for cross-reference links reconstruction"
+
+[Index txt]: ./Manual_Index.txt
+[TOC txt]:   ./Manual_TOC.txt
 
 <!-- EOF -->
