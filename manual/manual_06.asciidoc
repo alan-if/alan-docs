@@ -635,7 +635,7 @@ When location Of hero IsA indoors_location => ...
 
 === Nested Locations as a Solution
 
-Yet another option would be to make use of the nested locations feature. Put all your outdoor locations in a outdoor location where the outdoor_storage entity is also present (this is just a hint):
+Yet another option would be to make use of the ((nested locations)) feature. Put all your outdoor locations in a outdoor location where the outdoor_storage entity is also present (this is just a hint):
 
 [source,alan]
 --------------------------------------------------------------------------------

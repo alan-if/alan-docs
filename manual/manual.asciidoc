@@ -1,5 +1,5 @@
 :doctitle: The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.19
+:revnumber: 0.1.20
 :revdate: August 25, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
@@ -54,57 +54,84 @@ image:alan-logo.png[Alan Logo,500,458]
 :leveloffset: +1
 
 // 1. Introduction
+// ===============
 include::manual_01.asciidoc[]
 
 // 2. Concepts
+// ===========
 include::manual_02.asciidoc[]
 
 // 3. Lexical Definitions
+// ======================
 include::manual_03.asciidoc[]
 
 // 4. Language Reference
+// =====================
 include::manual_04.asciidoc[]
 
 // 5. Running An Adventure
+// =======================
 include::manual_05.asciidoc[]
 
 // 6. Hints And Tips
+// =================
 include::manual_06.asciidoc[]
 
 // 7. Adventure Construction
+// =========================
 include::manual_07.asciidoc[]
 
 // Appendix A: How To Use The System
+// =================================
 include::manual_08.asciidoc[]
 
 // Appendix B: A Sample Interaction
+// ================================
 include::manual_09.asciidoc[]
 
 // Appendix C: Run-time Messages
+// =============================
 include::manual_10.asciidoc[]
 
 // Appendix D: Language Grammar
+// ===========================
 include::manual_11.asciidoc[]
 
 // Appendix E: Predefined player words
+// ===================================
 include::manual_12.asciidoc[]
 
 // Appendix F: Compiler Messages
+// =============================
 include::manual_13.asciidoc[]
 
 // Appendix G: Localization
+// ========================
 include::manual_14.asciidoc[]
 
 // Appendix H: Portability of Games
+// ================================
 include::manual_15.asciidoc[]
 
 // Appendix I: Copying Conditions
+// ==============================
 include::manual_16.asciidoc[]
 
+// Index
+// =====
+// We'll exclude it from HTML5 documented since it's not supported:
+ifeval::["{backend}" != "html5"]
+
 :sectnums!:
-//Index  [ * * * needs to be rebuilt from scratch! * * * ]
-include::manual_17.asciidoc[]
+
+[index]
+= Index
+
 :sectnums:
+
+endif::[]
+
+// ...
 
 :leveloffset: -1
 

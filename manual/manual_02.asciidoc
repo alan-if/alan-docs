@@ -34,7 +34,7 @@ The main feature of adventures is the interaction between the player and the gam
 
 == Elements Of Adventures
 
-The success of all Infocom games can probably be attributed to three distinctive features. First, they all have a '`believable`' and consistent plot, which is flavoured with humour and wittiness. Second, the descriptions are extensive and give a lot of atmosphere to the game. Third, the command handler recognizes and understands a large vocabulary and complex input. Add to this the worlds best graphics device (the human brain) and you are unbeatable!
+The success of all ((Infocom)) games can probably be attributed to three distinctive features. First, they all have a '`believable`' and consistent plot, which is flavoured with humour and wittiness. Second, the descriptions are extensive and give a lot of atmosphere to the game. Third, the command handler recognizes and understands a large vocabulary and complex input. Add to this the worlds best graphics device (the human brain) and you are unbeatable!
 
 Looking at adventures in more detail, we can see some common features. There is always the world or universe (called the map) where the adventure is taking place. Although you can move around quite freely there are usually some problems getting into certain parts of the world (e.g. locked doors, no air to breathe or even finding the entrance). The size of the map ranges from hundreds of locations to just two or three, or even a single location.
 
@@ -69,7 +69,7 @@ Alan is all about adventure games, or interactive fiction. In this manual, we wi
 
 === What Is A Language?
 
-A computer language is usually described as a set of rules for textual instructions for a computer. The idea is that a computer can follow those rules and perform the necessary and/or intended actions.
+A ((computer language)) is usually described as a set of rules for textual instructions for a computer. The idea is that a computer can follow those rules and perform the necessary and/or intended actions.
 
 The Alan Adventure Language is a high-level computer language designed to make it easy to create text adventures. This means that the language have been designed so that the textual instructions are relatively easy to read and write if you understand the mechanisms that adventures are made from. In addition, it requires only for minimal additional instructions to make those mechanisms work.
 
@@ -106,13 +106,13 @@ In order to understand the rules of the Alan language, which this manual is all 
 
 === What's Happening?
 
-The execution of an adventure is primarily driven by the input of player commands. A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source. After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source. Scheduled events are then run, and then the player takes another turn. This is described in more detail in <<A Turn of Events>>.
+The ((execution of an adventure)) is primarily driven by the input of player commands. A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source. After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source. Scheduled events are then run, and then the player takes another turn. This is described in more detail in <<A Turn of Events>>.
 
 The following sections describe a number of the fundamental concepts that are present in an adventure game and what the Alan view of them is.
 
 === The Map
 
-The scene for the game is a map of a number of connected locations. A location has a description that is presented to the player when that location is entered. A location may also have a number of exits stating in which direction there are exits and to which locations they lead. Alan places no restrictions on the layout of the map, any topology is allowed.
+The scene for the game is a ((map)) of a number of connected locations. A ((location)) has a description that is presented to the player when that location is entered. A location may also have a number of exits stating in which direction there are exits and to which locations they lead. Alan places no restrictions on the layout of the map, any topology is allowed.
 
 
 
@@ -138,9 +138,9 @@ Some player actions (verbs) have special meaning or effects when applied to a ce
 
 === Other People and Monsters
 
-An extra thrill and dimension are additional characters in the game. In Alan, these are called actors and may have a life of their own. For each move the player makes, these programmed characters also get a turn to do their thing. An actor may be a thief running around and stealing your collected treasures or a dragon guarding the entrance to its lair.
+An extra thrill and dimension are additional characters in the game. In Alan, these are called actors and may have a life of their own. For each move the player makes, these programmed characters also get a turn to do their thing. An ((actor)) may be a thief running around and stealing your collected treasures or a dragon guarding the entrance to its lair.
 
-Actors get their behaviour from scripts that step, by step, describes what is going to happen for each player interaction.
+Actors get their behaviour (((actor, behaviour)))from scripts that step, by step, describes what is going to happen for each player interaction.
 
 One of the interesting things about playing adventure games with actors is to figure out how to interact with and influence the other characters.
 
@@ -148,7 +148,7 @@ One of the interesting things about playing adventure games with actors is to fi
 
 === Acting
 
-The player commands action by typing imperative statements. These statements are analysed and results in execution ("`calls`") to verbs. The effects of these commands must be declared in verbs by the game author, either in an object (describing the effects of the verb when applied to an object) or as a general (global) verb that only applies without object.
+The player commands action by typing imperative statements. These statements are analysed and results in execution ("`calls`") to verbs. The effects of these commands must be declared in verbs by the game author, either in an object (describing the effects of the verb when applied to an object) or as a general (global) ((verb)) that only applies without object.
 
 
 
@@ -180,7 +180,7 @@ Additionally, you may also want other characters and creatures in your adventure
 
 === Notation
 
-In this document, there are some typographical clues. Example Alan source code is typeset in separate sections with a mono-spaced font:
+In this document, there are some typographical clues(((typographical notation))). Example Alan source code is typeset in separate sections with a mono-spaced font:
 
 // NOTE: Special styling required for this block (Alan like)
 ................................................................................
@@ -217,7 +217,7 @@ And this is a note!
 
 === The Locations
 
-The scene for your adventure is a series of "`rooms`" or, rather, locations. Locations are connected by exits, leading out of one location into another. This makes it possible for the hero to travel through the world of your design, exploring it and solving the puzzles.
+The scene for your adventure is a series of "`rooms`" or, rather, locations. Locations are connected by exits, leading out of one ((location)) into another. This makes it possible for the hero to travel through the world of your design, exploring it and solving the puzzles.
 
 What is required if we want to describe a location? Every location must have an identifier. This is so that you, the designer, may refer to that location easily, instead of having to remember a magic number for it.
 
@@ -252,13 +252,13 @@ Type the above text into a text file, e.g. using a notepad program. Run this lit
 ================================================================================
 
 
-The first line contains "`Kitchen`", the name of the initial location, and the second a "`>`", which is the default prompt for the player to input a command. Now try typing "`east`" and press the kbd:[RETURN]/kbd:[ENTER] key. The word "`Hallway`" and the prompt will appear. Typing "`west`" will take you back to "`Kitchen`" again. (Use kbd:[Ctrl+C] to exit the game if you are running it in a console window.)
+The first line contains "`Kitchen`", the name of the initial location, and the second a "`>`", which is the default ((prompt)) for the player to input a command. Now try typing "`east`" and press the kbd:[RETURN]/kbd:[ENTER] key. The word "`Hallway`" and the prompt will appear. Typing "`west`" will take you back to "`Kitchen`" again. (Use kbd:[Ctrl+C] to exit the game if you are running it in a console window.)
 
 The identifier for a location is automatically used as a description, a heading, shown when that room is entered. And the words listed in the `Exit`-parts are translated into directional commands the player can use in his input.
 
-You should remember that exits are strictly one-way. An `Exit` from one location to another does not automatically imply the opposite path. Thus, you must explicitly declare the path back, in the definition of the other location.
+You should remember that exits are strictly one-way. An ((`Exit`)) from one location to another does not automatically imply the opposite path. Thus, you must explicitly declare the path back, in the definition of the other location.
 
-However, just the name of the location is not much of a description. So in order to provide the "`purple prose`" descriptions often found in many adventures there is an optional `Description`-clause that you can use. Let us describe the Hallway.
+However, just the name of the location is not much of a description. So in order to provide the "`purple prose`" descriptions often found in many adventures there is an optional `Description`-clause (((Description, of locations))) that you can use. Let us describe the Hallway.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -272,7 +272,7 @@ The hallway IsA location
 End The hallway.
 --------------------------------------------------------------------------------
 
-We introduce another feature in this example, namely the text enclosed in double quotation marks (") which is called a *String* or, when used on its own like this, an output statement. When executed this string will be presented to the player and formatted to suit the format of his screen.
+We introduce another feature in this example, namely the text enclosed in double quotation marks (") which is called a ((*String*)) or, when used on its own like this, an output statement. When executed this string will be presented to the player and formatted to suit the format of his screen.
 
 Invent a description for the Kitchen, enter it in the Alan source and run the changed adventure. You notice, of course, that the text in the output statements is reformatted during output to suit your screen, in order to make room for as much text as possible. Note also that you do not have to worry about this at all -- in your source file, you may format the text any way you like, even spanning multiple lines with extra white-space included.
 
@@ -294,7 +294,7 @@ End Exit west.
 
 === The Objects
 
-Another essential feature in Alan are the objects. Like the location, the object is a means to describe the "`physical`" world where your adventure is taking place. Many objects are probably used to provide puzzles, such as closed doors, keys and so on, but other objects should be promoted to objects too. A large number of objects that can be examined and manipulated make a game so much more enjoyable.
+Another essential feature in Alan are the objects. Like the location, the ((object)) is a means to describe the "`physical`" world where your adventure is taking place. Many objects are probably used to provide puzzles, such as closed doors, keys and so on, but other objects should be promoted to objects too. A large number of objects that can be examined and manipulated make a game so much more enjoyable.
 
 Objects, like locations, have identifiers and descriptions, so you might guess the general structure of an object:
 
@@ -314,11 +314,11 @@ End The door.
 
 An object may initially be located at a particular location. This is indicated by the `At`-clause, in this case telling us that the door is initially located in the Hallway. Objects do not have to start at a particular place in which case they are not present in the game until located, by executing some code, at some place where the player may lay his hands on them.
 
-In addition, objects may have attributes indicating the state of certain properties of the object. In this example with a door, the `Is closed` part indicates that the door should have the attribute closed, which initially is set to *TRUE* (implying that the door is initially closed). The opposite would be indicated with a `Not`, (i.e. `Is Not closed`).
+In addition, objects may have ((attributes)) indicating the state of certain properties of the object. In this example with a door, the `Is closed` part indicates that the door should have the attribute closed, which initially is set to *TRUE* (implying that the door is initially closed). The opposite would be indicated with a `Not`, (i.e. `Is Not closed`).
 
 Alternatively, attributes may be numeric (e.g. `Has weight 5`) or be of string type (e.g. `Has inscription "Kilroy was here"`).
 
-We also introduce another Alan statement, the `If`-statement. The `If`-statement allows you to select which statements to execute according to some condition. In the example, the `closed` attribute of the door selects which description to show. There are further variations of expressions and the `If`-statement, but we will come back to these later (<<Expressions>> and <<If Statement>>).
+We also introduce another Alan statement, the `If`-statement. The ((`If`-statement)) allows you to select which statements to execute according to some condition. In the example, the `closed` attribute of the door selects which description to show. There are further variations of expressions and the `If`-statement, but we will come back to these later (<<Expressions>> and <<If Statement>>).
 
 // @NOTE: In the above paragraph, the original refererece was:
 //          "come back to these later (Expressions on page 142 and If on page 131)."
@@ -327,7 +327,7 @@ We also introduce another Alan statement, the `If`-statement. The `If`-statement
 
 Instead, let's look at some other statements in relation to objects.
 
-It must of course be possible to change the value of attributes of an object. You can do this using the `Make` statement or the `Set` statement. For example if the door should be opened (the player having said "`open door`", perhaps) this could be performed by stating
+It must of course be possible to change the value of attributes of an object. You can do this using the ((`Make` statement)) or the ((`Set` statement)). For example if the door should be opened (the player having said "`open door`", perhaps) this could be performed by stating
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -365,7 +365,7 @@ Alan does not understand, or enforce, any semantic in the identifiers for attrib
 
 Of course, attributes are not only available on objects, but on locations and other types of entities also.
 
-Another manipulation statement is the `Locate` statement. This is the statement to use when moving objects from one location to another. Opening a lid might cause a previously hidden object to fall to the floor, something that could be performed by moving the object from limbo to the current location with:
+Another manipulation statement is the ((`Locate` statement)). This is the statement to use when moving objects from one location to another. Opening a lid might cause a previously hidden object to fall to the floor, something that could be performed by moving the object from limbo to the current location with:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -402,7 +402,7 @@ End The charlie_chaplin.
 
 === Inheritance and Object Orientation
 
-Object orientation is a term that is often used when talking about programming. The concept is modelled after a natural phenomenon first described by the Swedish botanist Carl Linnaeus (or Carl von Linné). He devised a naming system for flowers and plants that was based on features common between various species and families. The idea is that a general concept such as a mammal is defined by listing some features which all mammals share. Specialisations such as sub-species in turn have other, more specialised, features in common.
+Object orientation (((object orientation))) is a term that is often used when talking about programming. The concept is modelled after a natural phenomenon first described by the Swedish botanist Carl Linnaeus (or Carl von Linné). He devised a naming system for flowers and plants that was based on features common between various species and families. The idea is that a general concept such as a mammal is defined by listing some features which all mammals share. Specialisations such as sub-species in turn have other, more specialised, features in common.
 
 In nature, we talk about species and individuals. In object oriented programming we talk about classes and instances, which are similar. Classes are abstract definitions of what the common features are and instances are individuals (data objects) having those features.
 
@@ -410,7 +410,7 @@ In nature, we talk about species and individuals. In object oriented programming
 
 ==== Inheritance and Instances
 
-Inheritance means that a more general class can be restricted or specialised into new sub-classes. We say that the specialised class inherits from the more general. Most object oriented programming languages allows creating instances from any class, which does not happen in nature, there are no individuals that are mammals, they are individuals of some specific species of horse for example.
+Inheritance (((inheritance))) means that a more general class can be restricted or specialised into new sub-classes. We say that the specialised class inherits from the more general. Most object oriented programming languages allows creating instances from any class, which does not happen in nature, there are no individuals that are mammals, they are individuals of some specific species of horse for example.
 
 In programming, we can use this concept to make some things easier for ourselves. By collecting features that are common to many types of data objects into classes and sub-classes we can inherit those features. In this way, we can avoid explicitly, and repeatedly, stating those for every data object. One small drawback is that we have an implicit declaration of features, which can make reading a bit more obscure. We need to look up the parent class (or classes) for complete information about the object.
 
@@ -418,7 +418,7 @@ In programming, we can use this concept to make some things easier for ourselves
 
 ==== Polymorphism
 
-By using inheritance, we can also guarantee the properties of similar, or related, instances. If every mammal is a vertebrae, we know that all properties of vertebrates also applies to mammals. We can use this knowledge to handle commonalities without knowing anything about the more specialized kinds, or classes. One example of this might be lockable things like doors and drawers. If they inherit from a common ancestor 'lockable_things', then we do not need know if it was a door or a drawer, if we are only interested in the 'locked' property. This flexibility, know as polymorphism, is possible in programming only through object orientation and inheritance.
+By using inheritance, we can also guarantee the properties of similar, or related, instances. If every mammal is a vertebrae, we know that all properties of vertebrates also applies to mammals. We can use this knowledge to handle commonalities without knowing anything about the more specialized kinds, or classes. One example of this might be lockable things like doors and drawers. If they inherit from a common ancestor 'lockable_things', then we do not need know if it was a door or a drawer, if we are only interested in the 'locked' property. This flexibility, know as ((polymorphism)), is possible in programming only through object orientation and inheritance.
 
 
 
@@ -442,7 +442,7 @@ The `Every`-construct defines a class and its properties, including inheriting f
 
 ==== The Pre-defined Classes
 
-To make it easy to get started there are eight classes pre-defined in the Alan language.
+To make it easy to get started there are eight classes pre-defined (((predefined classes))) in the Alan language.
 
 
 // ==============================================================================
@@ -457,9 +457,9 @@ To make it easy to get started there are eight classes pre-defined in the Alan l
 
 // TODO: Add cross-reference link to Figure 2 in following paragraph?
 
-They are *entity*, *thing*, *location*, *actor*, *object*, *literal*, *string* and *integer* and have the relationship, inheritance tree, shown in _Figure 2_ above.
+They are *entity*, (((entity, predefined class))) *thing*, (((thing, predefined class))) *location*, (((location, predefined class))) *actor*, (((actor, predefined class))) *object*, (((object, predefined class))) *literal*, (((literal, predefined class))) *string* (((string, predefined class))) and *integer* (((integer, predefined class))) and have the relationship, inheritance tree, shown in _Figure 2_ above.
 
-The semantics of these pre-defined classes are in short:
+The semantics (((semantics, of pre-defined classes))) of these pre-defined classes are in short:
 
 * Only locations (instances inheriting from `location`) can be visited by the hero (the players alter ego)
 * Only actors may have scripts that they perform
@@ -511,7 +511,7 @@ In this example, the `kitchen_door` has the attribute `open` although it does no
 
 ==== Specialising and Overriding
 
-Sub-classing, or specialisation, is usually used to add properties and thus make the instances of the sub-class more restricted, or specialised. In the example above, ``openable_door``s are specialisations of ``door``s since they have an attribute that the more general class does not have.
+Sub-classing, (((sub-classing))) or ((specialisation)), is usually used to add properties and thus make the instances of the sub-class more restricted, or specialised. In the example above, ``openable_door``s are specialisations of ``door``s since they have an attribute that the more general class does not have.
 
 However, a sub-class can also redefine a feature. In the example above a class named `closed_openable_door` could be defined as:
 
@@ -587,7 +587,7 @@ What this means is that if you use transitive containment you get the same insta
 
 === The Verb Construct
 
-The `Verb` is the construct that implements the effects of an action requested by the player. Verbs are associated with a class or an instance. We will look at the implications of various combinations of these in the next few sections.
+The ((`Verb`)) is the construct that implements the effects of an action requested by the player. Verbs are associated with a class or an instance. We will look at the implications of various combinations of these in the next few sections.
 
 To implement a `Verb` you need a name for it (which is also the default word the player should input to request that action). You must also decide which effects this verb should have under various circumstances.
 
@@ -638,7 +638,7 @@ Of course, there are often also conditions that need to be checked before we can
 
 ==== Checking Things
 
-In order to assert that the correct conditions are fulfilled before the body of a `Verb` is actually executed the verb may have an optional `Check` part.
+In order to assert that the correct conditions are fulfilled before the body of a `Verb` is actually executed the verb may have an optional `Check` (((Check, in verbs))) part.
 
 
 [source,alan]
@@ -681,7 +681,7 @@ You can never destroy an instance or remove it from the game. Instead, you can d
 
 === The Syntax
 
-Normally a verb acts on one object or actor, henceforth called a parameter, referenced by the player in a command. This means that the format of player input normally is something like
+Normally a verb acts on one object or actor, henceforth called a ((parameter)), referenced by the player in a command. This means that the format of player input normally is something like
 
 [EXAMPLE,role="gametranscript"]
 ================================================================================
@@ -690,7 +690,7 @@ Normally a verb acts on one object or actor, henceforth called a parameter, refe
 
 
 
-This form, or syntax, is the default form if you don't specify anything else. The default syntax might thus be described as
+This form, or syntax, is the default form if you don't specify anything else. The default syntax (((Syntax, default))) might thus be described as
 
 // @PSEUDOCODE: The following code examples might not highlight well due to the
 //              presence of '...' ot square brackets placeholder!
@@ -705,7 +705,7 @@ Syntax +
 
 The question marks are place-holders and should be interpreted as the name of the verb.
 
-In order to allow different and more complex player input the `Syntax` construct is supplied.
+In order to allow different and more complex player input the ((`Syntax))` construct is supplied.
 
 The `Syntax` construct is a way to describe the words and parameters the player may use in order to execute a particular verb (its global and more specialised parts). Below is the syntax for `put_in`, the verb to put something inside a container.
 
@@ -739,11 +739,11 @@ Syntax
       Else "Nothing fits inside that."
 --------------------------------------------------------------------------------
 
-This restricts the parameter `obj` to being an instance inheriting from the class object (as opposed to an actor for example) and the parameter `cont` to a container (an instance with the container property).
+This restricts (((restriction, of parameters))) the parameter `obj` to being an instance inheriting from the class object (as opposed to an actor for example) and the parameter `cont` to a container (an instance with the container property).
 
 The parameters are used as normal identifiers in the Alan source code. The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also <<Run-time Contexts>> for a detailed discussion).
 
-The `Syntax` construct allows for more than one parameter, in order to make it possible to define more complex player commands. Therefore, the verb execution order described previously from execution of verbs in one instance must be generalised to verb bodies in all the parameters. In the example above, verb bodies in the objects or actors referenced as `obj` and `cont` (the green pearl and the black box) are executed (if the verb is present in their definitions).
+The `Syntax` construct allows for more than one parameter, in order to make it possible to define more complex player commands. Therefore, the verb execution order (((Verb, execution order))) described previously from execution of verbs in one instance must be generalised to verb bodies in all the parameters. In the example above, verb bodies in the objects or actors referenced as `obj` and `cont` (the green pearl and the black box) are executed (if the verb is present in their definitions).
 
 
 

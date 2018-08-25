@@ -1,13 +1,25 @@
 Index
 
+// =============================================================================
+// This file is a reference for reconstructing the Index entries that were lost
+// in the document conversion.
+// Reconstructed entries will be marked by a '*' before the page number (eg *36)
+// and when all references for an entry have been reconstructed the entry will
+// begin with a '+' instead of a '-'.
+// This should help keep track of which entries have been rebuilt and which are
+// still pending, since entries will be reconstructed in order of appearance in
+// the original document, not in alphabetical order.
+// =============================================================================
+
+// ARRIVED UP TO: "3.3 Actors" (of "manual-pretranscript.odt" file!)
 
 == A
 
 - abstract attribute 72
 - Abug 188
-- actor 26
-    behaviour 26
-    predefined class 36, 59
+- actor *26
+    behaviour *26
+    predefined class *36, 59
 - ACTOR
     in what specifications 140
 - actor description 59
@@ -23,7 +35,7 @@ Index
 - Arun 187, 205, 210
 - attribute
     pre-defined 82, 143
-- attributes 32, 167
+- attributes *32, 167
     boolean 70
     declaration 69
     event type 71
@@ -50,7 +62,7 @@ Index
 - character sets 50
 - CHECK 102
     in exits 88, 164
-    in verbs 41
+    in verbs *41
 - check, unconditional 102
 - checks
     execution order 109
@@ -61,7 +73,7 @@ Index
 - comparisons
     equality 146
 - compatible types 53
-- computer language 20
++ computer language *20
 - concatenation
     of strings 146
 - CONTAINER 82
@@ -81,13 +93,13 @@ Index
 - DECREASE statement 128
 - default
     attributes 171
-    syntax 42
+    syntax *42
 - DEPENDING ON statement 131
 - DESCRIBE statement 120
 - description
     of locations 61
-- Description
-    of locations 30
++ Description
+    of locations *30
 - DESCRIPTION
     of actor scripts 89, 175
 - Description clause 75
@@ -107,7 +119,7 @@ Index
 - EMPTY statement 124
 - Entered clause 76
 - entity
-    predefined class 36, 58
+    predefined class *36, 58
 - EVENT 109
 - event type 52
 - events
@@ -117,10 +129,10 @@ Index
 - EXCEPT 161, 212
 - execution
     contexts 162
-    of an adventure 24, 159
+    of an adventure *24, 159
 - execution context
     Initialize clause 75
-- Exit 30
++ Exit *30
 - EXIT 88, 164
 - expressions 141
 - EXTRACT 85
@@ -137,7 +149,7 @@ Index
     quoted 66
 - identifiers
     lexical definition 153
-- If statement 32, 54
+- If statement *32, 54
 - IF statement 130
 - import statement 54
 - INCREASE statement 128
@@ -145,8 +157,8 @@ Index
     multiple 94
     omnipotent 94
 - INDIRECTLY 149
-- Infocom 18, 19
-- inheritance 34, 56
+- Infocom *18, 19
+- inheritance *34, 56
 - inheriting attributes 73
 - inheriting properties, rules for 63
 - Initialize clause 75
@@ -155,8 +167,8 @@ Index
     displaying 67
 - instance type 52
 - instances 56
-- integer
-    predefined class 36
++ integer
+    predefined class *36
 - interpreter 187, 205
 - IT 161, 211
 
@@ -165,16 +177,16 @@ Index
 - languages 210
 - LIMITS 83
 - LIST statement 121
-- literal
-    predefined class 36
++ literal
+    predefined class *36
 - literals 62, 141
-- Locate statement 33
++ Locate statement *33
 - LOCATE statement 123
 - locating inside containers 83, 124
-- location 25, 29
+- location *25, 29
     of 143, 181
     pre-defined attribute 143
-    predefined class 36
+    predefined class *36
 - LOCATION
     in what specification 140
 - locations 61
@@ -183,9 +195,9 @@ Index
 
 == M
 
-- Make statement 32
++ Make statement *32
 - MAKE statement 127
-- map 25
++ map *25
 - MAX aggregate 150
 - MENTIONED 80
 - Meta Verbs 101
@@ -204,16 +216,16 @@ Index
     inheriting 67
     multiple 66
 - NEARBY 139
-- nested locations 61, 124
+- nested locations *61, 124   [p.61 in old doc, not in new!]
 - noun 66
 - numbers
     lexical definition 155
 
 == O
 
-- object 31
-    predefined class 36, 59
-- object orientation 34
+- object *31
+    predefined class *36, 59
++ object orientation *34
 - omnipotent indicator 162
 - ONLY qualifier 106
 - opaque
@@ -229,16 +241,16 @@ Index
 
 == P
 
-- parameter 42, 96
+- parameter *42, 96
     indicators 94
     referencing 161
 - Play 122
 - player commands 159
-- polymorphism 35
++ polymorphism *35
 - pre-defined attribute 137
     visits 137
-- predefined classes 35
-- prompt 30
++ predefined classes *35
+- prompt *30
 - Prompt Section 115
 - pronoun
     predefined 69
@@ -260,7 +272,7 @@ Index
 - RESTORE statement 135
 - restriction
     of parameters 43
-- restriction, of parameters 96
++ restriction, of parameters *96
 - rule 110
 - rules
     executing 111
@@ -275,8 +287,8 @@ Index
 - SCRIPT 89
 - semantics
     of locations 61
-- semantics of pre-defined classes 36, 57
-- Set statement 32
+- semantics of pre-defined classes *36, 57
++ Set statement *32
 - SET statement 128
 - set type 53
 - set type attributes 72
@@ -285,39 +297,39 @@ Index
 - Show 122
 - single quotes 155
 - spacing, in strings 156
-- specialisation 37
++ specialisation *37
 - start section 48, 116
 - STEP 91
 - step, executing the last 91
 - string
     comparisons 146
     functions 125
-    predefined class 36
-- String 30
+    predefined class *36
++ String *30
 - STRING 118
 - strings
     lexical definition 156
 - STRIP statement 125
-- sub-classing 37
++ sub-classing *37
 - SUM aggregate 150
 - SYNONYMS 112
-- Syntax 42
++ Syntax *42
 - SYNTAX 92
-- syntax, default 98
++ syntax, default 98
 
 == T
 
 - THEM 161, 211
 - THEN 160
 - thing
-    predefined class 36
+    predefined class *36
     predefined class 58
 - THIS expression 148
 - transitivity
     Direct 149
     Indirect 149
 - types of expressions 141
-- typographical notation 28
++ typographical notation *28
 
 == U
 
@@ -327,14 +339,14 @@ Index
 
 == V
 
-- verb 27
+- verb *27
     alternative 105
     execution context 162
-    execution order 43, 108
+    execution order *43, 108
     Meta 101
     qualifiers 104, 106
     reusing common 171
-- Verb 39
++ Verb *39
 - VERB 100
 - visits 137
     pre-defined attribute 137

@@ -57,7 +57,6 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
     + [`manual_14.asciidoc`][man 14] — _Appendix G: Localization_
     + [`manual_15.asciidoc`][man 15] — _Appendix H: Portability of Games_
     + [`manual_16.asciidoc`][man 16] — _Appendix I: Copying Conditions_
-    + [`manual_17.asciidoc`][man 17] — _Index_
 
 ## Conversion Scripts
 
@@ -155,7 +154,25 @@ Rebuild original cross-reference links (lost in conversion):
 
 ### Index
 
-+ [ ] Rebuild _Index_
+Rebuild _Index_:
+
+- [x] _1. Introduction_ (none found)
+- [x] _2. Concepts_
+- [ ] _3. Lexical Definitions_
+- [ ] _4. Language Reference_
+- [ ] _5. Running An Adventure_
+- [ ] _6. Hints And Tips_
+- [ ] _7. Adventure Construction_
+- [ ] _Appendix A: How To Use The System_
+- [ ] _Appendix B: A Sample Interaction_
+- [ ] _Appendix C: Run-time Messages_
+- [ ] _Appendix D: Language Grammar_
+- [ ] _Appendix E: Predefined player words_
+- [ ] _Appendix F: Compiler Messages_
+- [ ] _Appendix G: Localization_
+- [ ] _Appendix H: Portability of Games_
+- [ ] _Appendix I: Copying Conditions_
+
 
 As a reference to rebuild the Index, use [`Manual_Index.txt`][Index txt] file.
 
@@ -284,7 +301,6 @@ As a convention, all commented annotations inside document source files will beg
 [man 14]: ./manual_14.asciidoc "Source file of Appendix G: Localization"
 [man 15]: ./manual_15.asciidoc "Source file of Appendix H: Portability of Games"
 [man 16]: ./manual_16.asciidoc "Source file of Appendix I: Copying Conditions"
-[man 17]: ./manual_17.asciidoc "Source file of Index"
 
 
 [BUILD_ALL.bat]:  ./BUILD_ALL.bat  "Batch script to invoke all Manual conversion scripts."
