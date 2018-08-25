@@ -113,7 +113,7 @@ The string is the main lexical component in an Alan source. This is how you desc
 string = double_quote {any_character} double_quote
 --------------------------------------------------------------------------------
 
-When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in _Output Statements_ on page _117_). You may therefore write your strings any way you like; they will always be neatly formatted on the player's screen. You can use special codes (see _String Statement_ on page _118_ for a list) to indicate (but not precisely control) the formatting.
+When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in <<Output Statements>>). You may therefore write your strings any way you like; they will always be neatly formatted on the player's screen. You can use special codes (see <<String Statement>> for a list) to indicate (but not precisely control) the formatting.
 
 
 [NOTE]
@@ -140,5 +140,6 @@ It is possible to write one adventure using many source files, having different 
 import = 'import' quoted_identifier '.'
 --------------------------------------------------------------------------------
 
-The import statement requires a filename, which must be given as a quoted identifier (see section _4.2_).
+The `Import` statement requires a filename, which must be given as a quoted
+identifier (see <<_words_identifiers_and_names>>).
 

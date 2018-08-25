@@ -1,16 +1,21 @@
 :doctitle: The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.12
-:revdate: August 23, 2018
+:revnumber: 0.1.13
+:revdate: August 25, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
 :encoding: utf-8
 :lang: en
+// TOC Settings:
 :toc: left
 :toclevels: 5
+// Sections Numbering:
 :sectnums:
 :sectnumlevels: 2
-:experimental: true
+// Cross References:
 :xrefstyle: short
+:section-refsig: Sect.
+// Misc Settings:
+:experimental: true
 
 // *****************************************************************************
 // *                                                                           *

@@ -434,8 +434,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.12,</span>
-<span id="revdate">August 23, 2018</span>
+<span id="revnumber">version 0.1.13,</span>
+<span id="revdate">August 25, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -812,8 +812,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.12
-Last edited: August 23, 2018</pre>
+<pre>Doc version: 0.1.13
+Last edited: August 25, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -881,17 +881,17 @@ the beginning.</p>
 </li>
 <li>
 <p>Readers familiar with writing Interactive Fiction but new to Alan&#8201;&#8212;&#8201;read
-from <a href="#_introduction_to_the_language">Section 2.4</a> onwards.</p>
+from <a href="#_introduction_to_the_language">Sect. 2.4</a> onwards.</p>
 </li>
 <li>
 <p>Alan v2 users wanting to upgrade&#8201;&#8212;&#8201;you should read the separate document on
-conversion, then <a href="#_introduction_to_the_language">Section 2.4</a> and onwards, with frequent
+conversion, then <a href="#_introduction_to_the_language">Sect. 2.4</a> and onwards, with frequent
 use of <a href="#_language_reference">Chapter 3</a> as a reference while doing your conversion.</p>
 </li>
 <li>
 <p>Alan v3 users looking for detailed answers&#8201;&#8212;&#8201;use the index, look up the
 relevant sections in <a href="#_language_reference">Chapter 3</a> but also glance through
-<a href="#_concepts">Chapter 2</a> from <a href="#_introduction_to_the_language">Section 2.4</a>. Visit
+<a href="#_concepts">Chapter 2</a> from <a href="#_introduction_to_the_language">Sect. 2.4</a>. Visit
 <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a> for a collection of examples.</p>
 </li>
 </ol>
@@ -1029,7 +1029,7 @@ relevant sections in <a href="#_language_reference">Chapter 3</a> but also glanc
 <div class="sect3">
 <h4 id="_whats_happening">What&#8217;s Happening?</h4>
 <div class="paragraph">
-<p>The execution of an adventure is primarily driven by the input of player commands. A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source. After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source. Scheduled events are then run, and then the player takes another turn. This is described in more detail in <a href="#_a_turn_of_events">Section 5.1</a>.</p>
+<p>The execution of an adventure is primarily driven by the input of player commands. A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source. After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source. Scheduled events are then run, and then the player takes another turn. This is described in more detail in <a href="#_a_turn_of_events">Sect. 5.1</a>.</p>
 </div>
 <div class="paragraph">
 <p>The following sections describe a number of the fundamental concepts that are present in an adventure game and what the Alan view of them is.</p>
@@ -1292,7 +1292,7 @@ End The door.</code></pre>
 <p>Alternatively, attributes may be numeric (e.g. <code>Has weight 5</code>) or be of string type (e.g. <code>Has inscription "Kilroy was here"</code>).</p>
 </div>
 <div class="paragraph">
-<p>We also introduce another Alan statement, the <code>If</code>-statement. The <code>If</code>-statement allows you to select which statements to execute according to some condition. In the example, the <code>closed</code> attribute of the door selects which description to show. There are further variations of expressions and the <code>If</code>-statement, but we will come back to these later (<a href="#_expressions">Section 3.20</a> and <a href="#_if_statement">Section 3.17.6.1</a>).</p>
+<p>We also introduce another Alan statement, the <code>If</code>-statement. The <code>If</code>-statement allows you to select which statements to execute according to some condition. In the example, the <code>closed</code> attribute of the door selects which description to show. There are further variations of expressions and the <code>If</code>-statement, but we will come back to these later (<a href="#_expressions">Sect. 3.20</a> and <a href="#_if_statement">Sect. 3.17.6.1</a>).</p>
 </div>
 <div class="paragraph">
 <p>Instead, let&#8217;s look at some other statements in relation to objects.</p>
@@ -1634,7 +1634,7 @@ End Every door.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With this definition it is possible to apply the verb to all doors. Instead need to reference the object the player mentioned in his command (see <a href="#_the_syntax">Section 2.4.8</a> and <a href="#_syntax_definitions">Section 3.9</a> for a more thorough discussion). In this case, the attribute <code>closed</code> must also be available for all objects by ensuring that the attribute exists in to the class. (See <a href="#_additions">Section 3.8</a> on how to add an attribute to a predefined class such as <code>object</code>).</p>
+<p>With this definition it is possible to apply the verb to all doors. Instead need to reference the object the player mentioned in his command (see <a href="#_the_syntax">Sect. 2.4.8</a> and <a href="#_syntax_definitions">Sect. 3.9</a> for a more thorough discussion). In this case, the attribute <code>closed</code> must also be available for all objects by ensuring that the attribute exists in to the class. (See <a href="#_additions">Sect. 3.8</a> on how to add an attribute to a predefined class such as <code>object</code>).</p>
 </div>
 <div class="paragraph">
 <p>Of course, there are often also conditions that need to be checked before we can execute this code (perhaps to see if it was possible to open the object!). Therefore, <code>Verb</code>s may have <code>Check</code>s, as we will see next.</p>
@@ -1757,7 +1757,7 @@ End Verb take.</code></pre>
 <p>This restricts the parameter <code>obj</code> to being an instance inheriting from the class object (as opposed to an actor for example) and the parameter <code>cont</code> to a container (an instance with the container property).</p>
 </div>
 <div class="paragraph">
-<p>The parameters are used as normal identifiers in the Alan source code. The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also <a href="#_run_time_contexts">Section 5.3</a> for a detailed discussion).</p>
+<p>The parameters are used as normal identifiers in the Alan source code. The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also <a href="#_run_time_contexts">Sect. 5.3</a> for a detailed discussion).</p>
 </div>
 <div class="paragraph">
 <p>The <code>Syntax</code> construct allows for more than one parameter, in order to make it possible to define more complex player commands. Therefore, the verb execution order described previously from execution of verbs in one instance must be generalised to verb bodies in all the parameters. In the example above, verb bodies in the objects or actors referenced as <code>obj</code> and <code>cont</code> (the green pearl and the black box) are executed (if the verb is present in their definitions).</p>
@@ -1938,7 +1938,7 @@ End Exit.</code></pre>
 <div class="sect2">
 <h3 id="_an_adventure">3.1. An Adventure</h3>
 <div class="paragraph">
-<p>An adventure starts with an (optional) set of options (see <a href="#_options">Section 3.2</a>) followed by a set of declarations.</p>
+<p>An adventure starts with an (optional) set of options (see <a href="#_options">Sect. 3.2</a>) followed by a set of declarations.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2058,7 +2058,7 @@ Width 128.</pre>
 </tbody>
 </table>
 <div class="paragraph">
-<p>The Language option specifies the language in which the adventure is assumed played, and selects different default message texts. Alan is primarily designed for adventures in the English language, but it is also possible to write adventures in other languages. To make this possible, the default messages output by the interpreter may be generated in different languages. It is completely possible to write in other languages, but then you must customize all the message texts. See <a href="#_run_time_messages">Appendix C</a>, <a href="#_input_response_messages">Section C.1</a>, for a complete list of such messages.</p>
+<p>The Language option specifies the language in which the adventure is assumed played, and selects different default message texts. Alan is primarily designed for adventures in the English language, but it is also possible to write adventures in other languages. To make this possible, the default messages output by the interpreter may be generated in different languages. It is completely possible to write in other languages, but then you must customize all the message texts. See <a href="#_run_time_messages">Appendix C</a>, <a href="#_input_response_messages">Sect. C.1</a>, for a complete list of such messages.</p>
 </div>
 <div class="paragraph">
 <p>The Alan compiler and interpreter will always allow multinational 8-bit characters as input and the default messages is generated for 8-bit character sets, internally representing national characters according to the ISO multinational character set (ISO8859-1) requiring 8 bits. On output, this is converted to the native character set of the machine (whenever possible). This means that portability between platforms should be good even for text containing multi-national (non-ASCII) characters.</p>
@@ -2070,7 +2070,7 @@ Width 128.</pre>
 <p>The Pack option will cause the compiler to compress the texts to occupy less space. As a bonus, this also makes it impossible for the player to cheat by dumping the adventure code file. As a minor drawback, it does make the execution of the adventure a bit slower (noticeable only on some very old, smaller, computers).</p>
 </div>
 <div class="paragraph">
-<p>In order to allow debugging of the generated adventure (see <a href="#_debugging">Section 6.14</a>), the debug option must be turned on. This may also be performed using the debug compiler switch (see <a href="#_compiler_switches">Section A.2</a>).</p>
+<p>In order to allow debugging of the generated adventure (see <a href="#_debugging">Sect. 6.14</a>), the debug option must be turned on. This may also be performed using the debug compiler switch (see <a href="#_compiler_switches">Sect. A.2</a>).</p>
 </div>
 </div>
 <div class="sect2">
@@ -2206,13 +2206,13 @@ Width 128.</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The quoted identifier is the name of the file to import, see <a href="#_filenames">Section 4.5</a>. The <code>import</code> may be placed anywhere in a file where a declaration can occur, and the effect will be the same as if the contents of the named file had been inserted at that position in the file. Imports may be nested, so an imported file may in turn import more files, without limits.</p>
+<p>The quoted identifier is the name of the file to import, see <a href="#_filenames">Sect. 4.5</a>. The <code>import</code> may be placed anywhere in a file where a declaration can occur, and the effect will be the same as if the contents of the named file had been inserted at that position in the file. Imports may be nested, so an imported file may in turn import more files, without limits.</p>
 </div>
 <div class="paragraph">
 <p>An imported file is searched for first in the current directory and then in any of the directories indicated using the <code>import</code> switch as described in <a href="#_compiler_switches"><em>Compiler Switches</em></a>, this search is performed in the same order as the <code>import</code> switches occurred on the command line.</p>
 </div>
 <div class="paragraph">
-<p>The import statement is the way to use the standard library (or a library of your own design). Place the library files in a directory where the compiler will find them, either in the same directory as your other source files or somewhere else (see <a href="#_compiler_switches">Section A.2</a> on how to make the compiler look in more folders than the one the main source file is in). In your source you would refer to the main file of such a library by</p>
+<p>The import statement is the way to use the standard library (or a library of your own design). Place the library files in a directory where the compiler will find them, either in the same directory as your other source files or somewhere else (see <a href="#_compiler_switches">Sect. A.2</a> on how to make the compiler look in more folders than the one the main source file is in). In your source you would refer to the main file of such a library by</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2249,12 +2249,12 @@ Start At city.</code></pre>
 <p>The <strong>id</strong> is the identifier used by the author to refer to this class throughout the source code, e.g. when referring to it in the inheritance clause of other classes and instances.</p>
 </div>
 <div class="paragraph">
-<p>The <strong>properties</strong> are described in <a href="#_properties">Section 3.7</a>.</p>
+<p>The <strong>properties</strong> are described in <a href="#_properties">Sect. 3.7</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_inheritance">Inheritance</h4>
 <div class="paragraph">
-<p>Every instance must inherit from a class (see <a href="#_inheritance_and_object_orientation">Section 2.4.5</a>). Furthermore, user-defined classes must also inherit from other classes. A class or an instance inheriting from a class will get all properties of that class. All properties explicitly declared in a class or instance inheriting from another class will extend, override or complement those properties as specified in the original, parent, class. This way, you can easily create new classes by extending existing ones.</p>
+<p>Every instance must inherit from a class (see <a href="#_inheritance_and_object_orientation">Sect. 2.4.5</a>). Furthermore, user-defined classes must also inherit from other classes. A class or an instance inheriting from a class will get all properties of that class. All properties explicitly declared in a class or instance inheriting from another class will extend, override or complement those properties as specified in the original, parent, class. This way, you can easily create new classes by extending existing ones.</p>
 </div>
 <div class="paragraph">
 <p>You specify which class another class or an instance inherits from using a clause following the grammar:</p>
@@ -2335,10 +2335,10 @@ End The mr_brown.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In these examples the source lines between <code>The</code> and <code>End The</code> all declare various properties that we will learn more about in <a href="#_properties">Section 3.7</a>. The rest of the lines are fairly easy to match up to the rules of the Alan language as described by the earlier box.</p>
+<p>In these examples the source lines between <code>The</code> and <code>End The</code> all declare various properties that we will learn more about in <a href="#_properties">Sect. 3.7</a>. The rest of the lines are fairly easy to match up to the rules of the Alan language as described by the earlier box.</p>
 </div>
 <div class="paragraph">
-<p>All capitalized words in the examples above are keywords in the Alan language (see <a href="#_keywords">Section D.1</a> for a complete list), the rest are author defined words or identifiers (with the exception of the bold words object and actor, which are identifiers predefined to be special classes).</p>
+<p>All capitalized words in the examples above are keywords in the Alan language (see <a href="#_keywords">Sect. D.1</a> for a complete list), the rest are author defined words or identifiers (with the exception of the bold words object and actor, which are identifiers predefined to be special classes).</p>
 </div>
 <div class="sect3">
 <h4 id="_entities">Entities</h4>
@@ -2501,7 +2501,7 @@ End The hero.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The second parameter (see <a href="#_syntax_definitions">Section 3.9</a>) in this player command is the integer 12. This parameter is automatically considered an instance of the pre-defined class <strong>integer</strong>.</p>
+<p>The second parameter (see <a href="#_syntax_definitions">Sect. 3.9</a>) in this player command is the integer 12. This parameter is automatically considered an instance of the pre-defined class <strong>integer</strong>.</p>
 </div>
 <div class="paragraph">
 <p>It is possible to add verbs to <strong>literal</strong> and its sub-classes. This way it is possible to create verbs that take strings and integers as parameters.</p>
@@ -2596,7 +2596,7 @@ End The hero.</code></pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Verb declarations</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated. Verb bodies are accumulated for verbs with the same name as the inherited. Use qualifiers (see <a href="#_verb_qualification">Section 3.10.6</a>) if you don&#8217;t want all of them to execute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated. Verb bodies are accumulated for verbs with the same name as the inherited. Use qualifiers (see <a href="#_verb_qualification">Sect. 3.10.6</a>) if you don&#8217;t want all of them to execute.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Scripts</strong></p></td>
@@ -2633,7 +2633,7 @@ End The hero.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Only the <code>At</code> <code>what</code> and <code>In</code> <code>what</code> forms of the <code>Where</code> construct (see <a href="#_where_specifications">Section 3.18</a>) are allowed when describing an initial location of an instance.</p>
+<p>Only the <code>At</code> <code>what</code> and <code>In</code> <code>what</code> forms of the <code>Where</code> construct (see <a href="#_where_specifications">Sect. 3.18</a>) are allowed when describing an initial location of an instance.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2672,7 +2672,7 @@ The south_of_house IsA location
 </div>
 </div>
 <div class="paragraph">
-<p>The quoted identifier used in the last example makes the name be one single text string. See <a href="#_words_identifiers_and_names">Section 4.2</a> for an explanation of this. This works for locations, which a player usually does not need to refer to, but for things the player should interact with, a more sophisticated mechanism is available.</p>
+<p>The quoted identifier used in the last example makes the name be one single text string. See <a href="#_words_identifiers_and_names">Sect. 4.2</a> for an explanation of this. This works for locations, which a player usually does not need to refer to, but for things the player should interact with, a more sophisticated mechanism is available.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2723,7 +2723,7 @@ The south_of_house IsA location
 </div>
 </div>
 <div class="paragraph">
-<p>This would allow the player to refer to the object using either &#8216;rusty rod&#8217; or &#8216;dynamite&#8217;. (Or as a side effect &#8216;rusty dynamite&#8217;.) The first name clause is used for building a default description, if necessary (see <a href="#_description">Section 3.7.7</a>).</p>
+<p>This would allow the player to refer to the object using either &#8216;rusty rod&#8217; or &#8216;dynamite&#8217;. (Or as a side effect &#8216;rusty dynamite&#8217;.) The first name clause is used for building a default description, if necessary (see <a href="#_description">Sect. 3.7.7</a>).</p>
 </div>
 <div class="paragraph">
 <p>The character case used in any word is retained for output, but player input will always be matched without considering case. This way you can e.g. give capitalized names to people giving a correct output.</p>
@@ -2749,22 +2749,22 @@ The macintosh IsA apple ...</code></pre>
 <div class="sect4">
 <h5 id="_displaying_instances">Displaying Instances</h5>
 <div class="paragraph">
-<p>When an instance is to be shown to the player, it must be displayed in form of text. An instance can be printed in several different ways, it can be described or only mentioned. A description of an instance is a complete and usually more elaborate description of it (see <a href="#_description">Section 3.7.7</a>). However, often an instance must be mentioned as a part of a sentence, or in a list.</p>
+<p>When an instance is to be shown to the player, it must be displayed in form of text. An instance can be printed in several different ways, it can be described or only mentioned. A description of an instance is a complete and usually more elaborate description of it (see <a href="#_description">Sect. 3.7.7</a>). However, often an instance must be mentioned as a part of a sentence, or in a list.</p>
 </div>
 <div class="paragraph">
 <p>Such a mentioning of an instance will involve the articles, the name and possibly the <code>Mentioned</code> clause.</p>
 </div>
 <div class="paragraph">
-<p>The basis for this mechanism is the short form, which by default is the first of the <code>Name</code>s. It will, however, be overridden by any existing <code>Mentioned</code> clause (see <a href="#_mentioned">Section 3.7.8.4</a>).</p>
+<p>The basis for this mechanism is the short form, which by default is the first of the <code>Name</code>s. It will, however, be overridden by any existing <code>Mentioned</code> clause (see <a href="#_mentioned">Sect. 3.7.8.4</a>).</p>
 </div>
 <div class="paragraph">
-<p>The short form can be automatically transformed to a description (for instances that have no <code>Description</code>) by inserting the article (see <a href="#_articles_and_forms">Section 3.7.8</a>) and the short form in a default message. In the following example, output of the article is underlined and the short forms are emphasised, the rest is the default message templates.</p>
+<p>The short form can be automatically transformed to a description (for instances that have no <code>Description</code>) by inserting the article (see <a href="#_articles_and_forms">Sect. 3.7.8</a>) and the short form in a default message. In the following example, output of the article is underlined and the short forms are emphasised, the rest is the default message templates.</p>
 </div>
 <div class="paragraph">
 <p>There is a <em>little black book</em>, a <em>green pearl</em> and an <em>owl</em> here.</p>
 </div>
 <div class="paragraph">
-<p>The interpreter also uses this principle when constructing lists of instances in container content lists (as the result of the execution of an implicit or explicit <code>List</code> statement, see <a href="#_list_statement">Section 3.17.1.5</a>).</p>
+<p>The interpreter also uses this principle when constructing lists of instances in container content lists (as the result of the execution of an implicit or explicit <code>List</code> statement, see <a href="#_list_statement">Sect. 3.17.1.5</a>).</p>
 </div>
 </div>
 </div>
@@ -2983,7 +2983,7 @@ The east_door IsA door.
 <div class="sect4">
 <h5 id="_set_type_attributes">Set Type Attributes</h5>
 <div class="paragraph">
-<p>A Set is an unordered set of integers or instance references. Initial members must be listed in the declaration of the Set. See <a href="#_set_type">Section 3.3.4</a> for details on the Set type.</p>
+<p>A Set is an unordered set of integers or instance references. Initial members must be listed in the declaration of the Set. See <a href="#_set_type">Sect. 3.3.4</a> for details on the Set type.</p>
 </div>
 <div class="paragraph">
 <p>The type and class of allowed members is inferred from the values actually in the initial set. If they are instance references, the common ancestor of all members is used as the class of the allowed members. An empty set is only allowed as an initial value if the attribute is an inherited attribute since in this case, the member class is known from the inheritance and need not be indicated in the declaration.</p>
@@ -3009,7 +3009,7 @@ The east_door IsA door.
 <div class="sect4">
 <h5 id="_inheriting_attributes">Inheriting Attributes</h5>
 <div class="paragraph">
-<p>Attributes can be inherited like any other property. A declaration of an attribute with the same name as in any of the parents of the instance or class, will inherit the type of the attribute, you cannot change it in subsequent declarations. This means that any declaration of a different initial value than the inherited must follow the rules of type compatibility for assignment. (See <a href="#_type_compatibility">Section 3.3.5</a>.)</p>
+<p>Attributes can be inherited like any other property. A declaration of an attribute with the same name as in any of the parents of the instance or class, will inherit the type of the attribute, you cannot change it in subsequent declarations. This means that any declaration of a different initial value than the inherited must follow the rules of type compatibility for assignment. (See <a href="#_type_compatibility">Sect. 3.3.5</a>.)</p>
 </div>
 <div class="paragraph">
 <p>This also applies to classes of instances in the reference and set types attributes. Both these types allow references to instances. The initial value given at the point where the attribute is introduced determines the required class of the set members or referenced instances. This is retained throughout the complete inheritance of that attribute even if a subsequent initial value would imply a more specialised class. An example:</p>
@@ -3097,7 +3097,7 @@ End The someLockableDoor.</code></pre>
 <div class="sect3">
 <h4 id="_description">Description</h4>
 <div class="paragraph">
-<p>The statements in the <code>Description</code> clause should print a description of the instance. These statements are executed when the hero encounters the instance. Depending on from which base class the instance inherits this can be a location description presented when the hero enters the location or when executing a <code>Look</code> statement. Other possibilities are descriptions of objects and actors. See <a href="#_instances">Section 3.6</a> for descriptions of what inheriting from the predefined base classes means.</p>
+<p>The statements in the <code>Description</code> clause should print a description of the instance. These statements are executed when the hero encounters the instance. Depending on from which base class the instance inherits this can be a location description presented when the hero enters the location or when executing a <code>Look</code> statement. Other possibilities are descriptions of objects and actors. See <a href="#_instances">Sect. 3.6</a> for descriptions of what inheriting from the predefined base classes means.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3159,7 +3159,7 @@ The door IsA object
 </div>
 </div>
 <div class="paragraph">
-<p>You can guard the description with a check in the same form as with verb bodies (see <a href="#_verb_checks">Section 3.10.3</a> for a detailed description of checks). Of course, there are no qualifiers possible here. To be able to separate the checks statement from the actual description statements the keyword <code>Does</code> is required. This is an example of the checks for a dark location:</p>
+<p>You can guard the description with a check in the same form as with verb bodies (see <a href="#_verb_checks">Sect. 3.10.3</a> for a detailed description of checks). Of course, there are no qualifiers possible here. To be able to separate the checks statement from the actual description statements the keyword <code>Does</code> is required. This is an example of the checks for a dark location:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3334,7 +3334,7 @@ You are carrying an owl.</p>
 <div class="sect4">
 <h5 id="_printing">Printing</h5>
 <div class="paragraph">
-<p>You can use various forms of the <code>Say</code> statement (see <a href="#_say_statement">Section 3.17.1.4</a>) to choose in which form the instance will be presented. In addition, the embedded parameter references allow selection of the form (<a href="#_string_statement">Section 3.17.1.1</a>).</p>
+<p>You can use various forms of the <code>Say</code> statement (see <a href="#_say_statement">Sect. 3.17.1.4</a>) to choose in which form the instance will be presented. In addition, the embedded parameter references allow selection of the form (<a href="#_string_statement">Sect. 3.17.1.1</a>).</p>
 </div>
 </div>
 <div class="sect4">
@@ -3545,7 +3545,7 @@ empty = 'ELSE' {statement}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>It is followed by a list of instances mentioned. <a href="#_mentioned">Section 3.7.8.4</a> describes this listing.</p>
+<p>It is followed by a list of instances mentioned. <a href="#_mentioned">Sect. 3.7.8.4</a> describes this listing.</p>
 </div>
 <div class="paragraph">
 <p>The <code>Else</code>-part is used instead of the header if the container is empty.</p>
@@ -3577,10 +3577,10 @@ Empty
 </div>
 </div>
 <div class="paragraph">
-<p>The extract clause, including optional <code>Check</code> and <code>Does</code> clauses, allows prohibiting the extraction of the item from the container depending on some condition. If the <code>Check</code> is present, it works the same way as for <code>Verb</code>s (see <a href="#_verb_checks">Section 3.10.3</a>). I.e. a <code>Check</code> without a guard expression will unconditionally prohibit extractions; a <code>Check</code> with an expression will evaluate that expression and, if false, execute its <code>Else</code> clause, and then abort the move. The <code>Does</code> clause will be executed if the optional <code>Check</code> passes, or there was no <code>Check</code>.</p>
+<p>The extract clause, including optional <code>Check</code> and <code>Does</code> clauses, allows prohibiting the extraction of the item from the container depending on some condition. If the <code>Check</code> is present, it works the same way as for <code>Verb</code>s (see <a href="#_verb_checks">Sect. 3.10.3</a>). I.e. a <code>Check</code> without a guard expression will unconditionally prohibit extractions; a <code>Check</code> with an expression will evaluate that expression and, if false, execute its <code>Else</code> clause, and then abort the move. The <code>Does</code> clause will be executed if the optional <code>Check</code> passes, or there was no <code>Check</code>.</p>
 </div>
 <div class="paragraph">
-<p>An <code>Extract</code> clause without a <code>Check</code>, but with a <code>Does</code>-clause, executes the Does-clause and then allows the extraction to take place. So, in a way, Checks, if triggered, prevents the extraction, and the <code>Does</code>-clause amends to it, being an extensions of the normal case, much like the <code>Check</code> and <code>Does</code>-clauses for Verbs (see <a href="#_verbs">Section 3.7.10</a>). The second form of the clause, with just the statements, is equivalent to an <code>Extract</code> with only a <code>Does</code>-clause.</p>
+<p>An <code>Extract</code> clause without a <code>Check</code>, but with a <code>Does</code>-clause, executes the Does-clause and then allows the extraction to take place. So, in a way, Checks, if triggered, prevents the extraction, and the <code>Does</code>-clause amends to it, being an extensions of the normal case, much like the <code>Check</code> and <code>Does</code>-clauses for Verbs (see <a href="#_verbs">Sect. 3.7.10</a>). The second form of the clause, with just the statements, is equivalent to an <code>Extract</code> with only a <code>Does</code>-clause.</p>
 </div>
 <div class="paragraph">
 <p>An example use of the <code>Extract</code> clause is to prohibit, put restrictions on, or modify the behaviour when the hero attempts to take things carried by another actor.</p>
@@ -3609,10 +3609,10 @@ End The waiter.</code></pre>
 <div class="sect3">
 <h4 id="_verbs">Verbs</h4>
 <div class="paragraph">
-<p>Verbs declared inside an class or instance are inherited in the same way as other properties. See <a href="#_verbs">Section 3.7.10</a> for a description on how to declare verbs.</p>
+<p>Verbs declared inside an class or instance are inherited in the same way as other properties. See <a href="#_verbs">Sect. 3.7.10</a> for a description on how to declare verbs.</p>
 </div>
 <div class="paragraph">
-<p>The verbs in a class or instance will only be a candidate for execution if the instance bound to a parameter is of the corresponding class, or is the instance. See <a href="#_verb_execution">Section 3.10.7</a> for a detailed explanation.</p>
+<p>The verbs in a class or instance will only be a candidate for execution if the instance bound to a parameter is of the corresponding class, or is the instance. See <a href="#_verb_execution">Sect. 3.10.7</a> for a detailed explanation.</p>
 </div>
 </div>
 <div class="sect3">
@@ -3886,7 +3886,7 @@ Step After ticksLeft Of train
 <div class="sect2">
 <h3 id="_syntax_definitions">3.9. Syntax Definitions</h3>
 <div class="paragraph">
-<p>The syntax construct is used to specify the allowed structure of the input from the player. Each definition defines the syntax for one <code>Verb</code>. The effects triggered by the player input are declared using the <code>Verb</code> construct (see <a href="#_verbs">Section 3.7.10</a>).</p>
+<p>The syntax construct is used to specify the allowed structure of the input from the player. Each definition defines the syntax for one <code>Verb</code>. The effects triggered by the player input are declared using the <code>Verb</code> construct (see <a href="#_verbs">Sect. 3.7.10</a>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3914,7 +3914,7 @@ syntax_end = parameter_restrictions
 </div>
 </div>
 <div class="paragraph">
-<p>When the player types a command, it is compared to the set of declared syntaxes. This provides a very flexible way to extend the allowed command set (see also <a href="#_player_input">Section 5.2</a> for details on general player input).</p>
+<p>When the player types a command, it is compared to the set of declared syntaxes. This provides a very flexible way to extend the allowed command set (see also <a href="#_player_input">Sect. 5.2</a> for details on general player input).</p>
 </div>
 <div class="paragraph">
 <p>After the player input has been matched to an allowed syntax, the parameters are bound to the instances referred to by the player. The parameter identifiers in the syntax declaration then refer to those entities. Reference to attributes etc. will be done in the instance referred by the parameter.</p>
@@ -3981,7 +3981,7 @@ syntax_end = parameter_restrictions
 <div class="ulist">
 <ul>
 <li>
-<p>&#8216;<code>+</code>&#8217; This parameter can reference multiple instances (for example by the player using <strong>all</strong> or concatenating a number of parameters using a conjunction like <strong>and</strong>, see <a href="#_player_input">Section 5.2</a>).</p>
+<p>&#8216;<code>+</code>&#8217; This parameter can reference multiple instances (for example by the player using <strong>all</strong> or concatenating a number of parameters using a conjunction like <strong>and</strong>, see <a href="#_player_input">Sect. 5.2</a>).</p>
 </li>
 <li>
 <p>&#8216;<code>!</code>&#8217; The parameter (the instance the player refers to in this position in the syntax) need not be present at the current location. The default case is that the Alan interpreter requires that a referenced instance must be present at the same location as the hero (if the parameter inherits from <code>thing</code>. Note that <strong>entities</strong> are always accessible). For cases when the player must be able to refer to objects and actors that are not present (e.g. in a verb like <code>talk_about</code>) this omnipotent indicator can be used to force the interpreter to accept references to any object or actor.</p>
@@ -4012,7 +4012,7 @@ syntax_end = parameter_restrictions
 </div>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="#_player_input">Section 5.2</a> for details on the input of references to multiple parameters (such as objects). The above declarations would force the interpreter to reject player input like</p>
+<p>Refer to <a href="#_player_input">Sect. 5.2</a> for details on the input of references to multiple parameters (such as objects). The above declarations would force the interpreter to reject player input like</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -4045,7 +4045,7 @@ syntax_end = parameter_restrictions
 </div>
 </div>
 <div class="paragraph">
-<p>For more information on player inputs, refer to <a href="#_player_input">Section 5.2</a>.</p>
+<p>For more information on player inputs, refer to <a href="#_player_input">Sect. 5.2</a>.</p>
 </div>
 <div class="paragraph">
 <p>Indicators given in one syntax declaration can affect other syntaxes if they have identical beginnings, like</p>
@@ -4097,7 +4097,7 @@ restriction_class = id
 <td class="content">
 <div class="paragraph">
 <p>Any predefined or user defined class can be used. Particularly note that integer
-and string are pre-defined classes (see <a href="#_the_pre_defined_classes">Section 2.4.5.4</a>).</p>
+and string are pre-defined classes (see <a href="#_the_pre_defined_classes">Sect. 2.4.5.4</a>).</p>
 </div>
 </td>
 </tr>
@@ -4193,7 +4193,7 @@ Syntax &lt;1&gt; = &lt;1&gt; (&lt;2&gt;).</code></pre>
 <p>The first template is used for verbs that are declared globally, i.e. outside of any class or instance. Since these are only applied when no parameters are used, this will effectively work for simple &#8216;verb-only&#8217; <code>Verb</code>s, such as <code>quit</code>, <code>look</code>, <code>save</code> etc.</p>
 </div>
 <div class="paragraph">
-<p>Verbs declared in an instance or a class, for which there is no syntax, by default receives a syntax of the common verb/object type corresponding to the second template above. This is a reasonable syntax for many cases and restricts the parameters to instances of the class where the verb was declared. It also implies that the default name for the single parameter is the same as the name of that class, e.g. <code>object</code>, <code>actor</code>, <code>thing</code>, etc. (See <a href="#_what_specifications">Section 3.19</a> for the implications of this.)</p>
+<p>Verbs declared in an instance or a class, for which there is no syntax, by default receives a syntax of the common verb/object type corresponding to the second template above. This is a reasonable syntax for many cases and restricts the parameters to instances of the class where the verb was declared. It also implies that the default name for the single parameter is the same as the name of that class, e.g. <code>object</code>, <code>actor</code>, <code>thing</code>, etc. (See <a href="#_what_specifications">Sect. 3.19</a> for the implications of this.)</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4295,7 +4295,7 @@ End Verb take.</code></pre>
 <p>A verb declaration inside a class definition or an instance will be considered if that instance (or an instance inheriting from that class) is used as a parameter in the input.</p>
 </div>
 <div class="paragraph">
-<p>The identifiers in the list (<code>take</code> and <code>get</code> in the example above) will be player words that by default can be used to invoke the verb. But if a <code>Syntax</code> is declared for the <code>Verb</code> (see <a href="#_syntax_definitions">Section 3.9</a>), the identifiers in the list will not be accessible to the player, instead the sequence of words and parameters specified in the <code>Syntax</code> must be used.</p>
+<p>The identifiers in the list (<code>take</code> and <code>get</code> in the example above) will be player words that by default can be used to invoke the verb. But if a <code>Syntax</code> is declared for the <code>Verb</code> (see <a href="#_syntax_definitions">Sect. 3.9</a>), the identifiers in the list will not be accessible to the player, instead the sequence of words and parameters specified in the <code>Syntax</code> must be used.</p>
 </div>
 <div class="paragraph">
 <p>If there is more than one identifier in the list, as in the example above, this can be viewed as a short hand for declaring identical checks and bodies for all the verbs in the list. This will create synonymous actions for different verbs on the level where the verb declaration is. They may differ in implementation at other places, i.e. if they are declared in the same verb declaration on one level in an inheritance tree, they can still have different bodies on another level.</p>
@@ -4411,7 +4411,7 @@ End The jumpless.</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>With this in mind, <code>Check</code>s are also used when handling the user input <strong>all</strong> (see <a href="#_player_input">Section 5.2</a> for details on possible player input). The mechanisms for this involve examining all objects at the current location and evaluating all checks for the verb. Any objects that do not pass the checks are not considered for execution. This limits the handling of <strong>all</strong> to only executing the verb bodies for objects that are reasonable, i.e. that will not fail in the <code>Check</code>s.</p>
+<p>With this in mind, <code>Check</code>s are also used when handling the user input <strong>all</strong> (see <a href="#_player_input">Sect. 5.2</a> for details on possible player input). The mechanisms for this involve examining all objects at the current location and evaluating all checks for the verb. Any objects that do not pass the checks are not considered for execution. This limits the handling of <strong>all</strong> to only executing the verb bodies for objects that are reasonable, i.e. that will not fail in the <code>Check</code>s.</p>
 </div>
 <div class="paragraph">
 <p>For example assuming the above definition of the verb take and a location containing the two objects, <code>ball</code> and <code>box</code>, of which only the <code>ball</code> is <code>takeable</code> the player input</p>
@@ -4424,7 +4424,7 @@ End The jumpless.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>would result in <strong>all</strong> representing only the ball. See <a href="#_player_input">Section 5.2</a> for an explanation of the player view of this.</p>
+<p>would result in <strong>all</strong> representing only the ball. See <a href="#_player_input">Sect. 5.2</a> for an explanation of the player view of this.</p>
 </div>
 </div>
 <div class="sect3">
@@ -4518,7 +4518,7 @@ End The feather.</code></pre>
 <div class="sect3">
 <h4 id="_verb_execution">Verb Execution</h4>
 <div class="paragraph">
-<p>First all parameters are evaluated according to the syntax restrictions (see <a href="#_parameter_restrictions"><em>Parameter Restrictions</em></a>). Then, if they passed, the checks of all verb declarations are evaluated (see <a href="#_verb_checks">Section 3.10.3</a>). Finally the verb bodies are executed in the normal order as explained by the table below.</p>
+<p>First all parameters are evaluated according to the syntax restrictions (see <a href="#_parameter_restrictions"><em>Parameter Restrictions</em></a>). Then, if they passed, the checks of all verb declarations are evaluated (see <a href="#_verb_checks">Sect. 3.10.3</a>). Finally the verb bodies are executed in the normal order as explained by the table below.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -4598,7 +4598,7 @@ End The feather.</code></pre>
 <div class="sect4">
 <h5 id="_controlling_execution_with_qualifiers">Controlling Execution with Qualifiers</h5>
 <div class="paragraph">
-<p>There are cases where you don&#8217;t want all the bodies to be executed, or there is a special need to execute them in a different order. The most common case is to prohibit other bodies to be executed, e.g. a verb body in a location might want to stop the player from throwing any object. This verb body must then ensure that it is the only verb bodies to be executed. This can be done using the <code>Only</code> qualifier (see <a href="#_verb_qualification">Section 3.10.6</a>).</p>
+<p>There are cases where you don&#8217;t want all the bodies to be executed, or there is a special need to execute them in a different order. The most common case is to prohibit other bodies to be executed, e.g. a verb body in a location might want to stop the player from throwing any object. This verb body must then ensure that it is the only verb bodies to be executed. This can be done using the <code>Only</code> qualifier (see <a href="#_verb_qualification">Sect. 3.10.6</a>).</p>
 </div>
 <div class="paragraph">
 <p>Qualifiers control the order of execution of verb bodies. How does this work?</p>
@@ -4738,7 +4738,7 @@ End When.</pre>
 <p>The use of parameters, <code>Current Actor</code>, <code>Current Location</code>, <code>Here</code> and <code>Nearby</code> is not allowed in rules conditionals or bodies.</p>
 </div>
 <div class="paragraph">
-<p>Rules are executed at no location. Therefore it is not possible to communicate directly with the player in the rule with output statements (since the hero cannot be where the rule is executing, see <a href="#_output_statements">Section 3.17.1</a>). Triggering an event that handles the output intended for the player, is the recommended solution to this.</p>
+<p>Rules are executed at no location. Therefore it is not possible to communicate directly with the player in the rule with output statements (since the hero cannot be where the rule is executing, see <a href="#_output_statements">Sect. 3.17.1</a>). Triggering an event that handles the output intended for the player, is the recommended solution to this.</p>
 </div>
 <div class="paragraph">
 <p>The following is a complete game using a rule:</p>
@@ -4761,7 +4761,7 @@ Start At kitchen.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example the rule conditional (the text marked with grey) is using an aggregation (<code>count</code>, see <a href="#_aggregates">Section 3.20.13</a>) over two filters (see <a href="#_filters">Section 3.21</a>) that will count the number of actors at the kitchen, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.</p>
+<p>In this example the rule conditional (the text marked with grey) is using an aggregation (<code>count</code>, see <a href="#_aggregates">Sect. 3.20.13</a>) over two filters (see <a href="#_filters">Sect. 3.21</a>) that will count the number of actors at the kitchen, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.</p>
 </div>
 <div class="paragraph">
 <p>Again, remember that rules are checked after each actor has moved. What happens if there are more actors in play and they move in and out of the kitchen, is left as an exercise to the reader.</p>
@@ -4802,13 +4802,13 @@ Verb look_at ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This will result in an error message indicating that the synonym word <code>look_at</code> is not defined. This is because the <code>Syntax</code> (see <a href="#_additions">Section 3.8</a>) defined the verb <code>look_at</code> to have the specified syntax (including the player words &#8216;look&#8217; and &#8216;at&#8217;), the player word <code>look_at</code> is not defined, which is as well as the player would not be able to input a word with an underscore (see <a href="#_player_input">Section 5.2</a>).</p>
+<p>This will result in an error message indicating that the synonym word <code>look_at</code> is not defined. This is because the <code>Syntax</code> (see <a href="#_additions">Sect. 3.8</a>) defined the verb <code>look_at</code> to have the specified syntax (including the player words &#8216;look&#8217; and &#8216;at&#8217;), the player word <code>look_at</code> is not defined, which is as well as the player would not be able to input a word with an underscore (see <a href="#_player_input">Sect. 5.2</a>).</p>
 </div>
 <div class="paragraph">
 <p>You can achieve the desired effect by instead giving multiple verb identifiers in the verb declarations; this will give the same verb bodies (checks and actions) to multiple verbs. See <a href="#_verbs">the section on <em>Verbs</em></a> for details on verb declarations.</p>
 </div>
 <div class="paragraph">
-<p>It is also possible to define multiple names for an instance to achieve other effects similar to synonyms. See <a href="#_names">Section 3.7.3</a> for a description of this.</p>
+<p>It is also possible to define multiple names for an instance to achieve other effects similar to synonyms. See <a href="#_names">Sect. 3.7.3</a> for a description of this.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4825,7 +4825,7 @@ You can&#8217;t go that way.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The response "You can&#8217;t go that way." is a typical example of such system messages (for details see <a href="#_input_response_messages">Section C.1</a>).</p>
+<p>The response "You can&#8217;t go that way." is a typical example of such system messages (for details see <a href="#_input_response_messages">Sect. C.1</a>).</p>
 </div>
 <div class="paragraph">
 <p>To make the user dialogue more adapted to the settings you select, Alan allows you to define your own version of these messages. The grammar for this is</p>
@@ -4876,7 +4876,7 @@ There is no exit in that direction.</p>
 <div class="sect3">
 <h4 id="_message_parameters">Message parameters</h4>
 <div class="paragraph">
-<p>Message sections must be declared at the global level, but to make it possible to create high-quality messages the message sections have parameters available. Which parameters are available vary depending on the message, the details for each message is available in <a href="#_input_response_messages">Section C.1</a>.</p>
+<p>Message sections must be declared at the global level, but to make it possible to create high-quality messages the message sections have parameters available. Which parameters are available vary depending on the message, the details for each message is available in <a href="#_input_response_messages">Sect. C.1</a>.</p>
 </div>
 <div class="paragraph">
 <p>The parameters can be used in the same way as in verb bodies. The names of the parameters are &#8220;parameter1&#8221;, &#8220;parameter2&#8221;, etc. The type of the parameters will also vary.</p>
@@ -4997,7 +4997,7 @@ Where do you want to go from Pirates Bay Harbor?</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Only the <code>At What</code> form of the <code>Where</code> construct (see <a href="#_where_specifications">Section 3.18</a>) is allowed in the <code>Start</code> section. Any statements are allowed in the start section but they cannot refer to any parameters.</p>
+<p>Only the <code>At What</code> form of the <code>Where</code> construct (see <a href="#_where_specifications">Sect. 3.18</a>) is allowed in the <code>Start</code> section. Any statements are allowed in the start section but they cannot refer to any parameters.</p>
 </div>
 <div class="paragraph">
 <p>The start section must be the last declaration in an Alan source.</p>
@@ -5054,7 +5054,7 @@ Locate charlie_chaplin At outside_house.
 </div>
 </div>
 <div class="paragraph">
-<p>The simplest case of output is just a string, i.e. any text, possibly stretching over multiple lines, surrounded by double quotes. See also <a href="#_strings">Section 4.4</a> for some detailed descriptions on the definition of strings.</p>
+<p>The simplest case of output is just a string, i.e. any text, possibly stretching over multiple lines, surrounded by double quotes. See also <a href="#_strings">Sect. 4.4</a> for some detailed descriptions on the definition of strings.</p>
 </div>
 <div class="paragraph">
 <p>Some character combinations have special meaning for the printout:</p>
@@ -5217,7 +5217,7 @@ End If.</code></pre>
 <p>If the <strong>what</strong> part refers to an instance, the optional <code>form</code> may be used to control in which form the instance will be output.</p>
 </div>
 <div class="paragraph">
-<p>If <code>THE</code> is used the form used will be the definite form, usually the short form preceded by a definite article. Correspondingly, the use of <code>AN</code> indicates an indefinite form. A third form, using <code>NO</code>, is available. It indicates that the negative form as defined by the negative article or form should be output. Refer to <a href="#_articles_and_forms">Section 3.7.8</a> for a description of the definite/indefinite articles and forms. Finally, the <code>IT</code> form will print the pronoun associated with the instance.</p>
+<p>If <code>THE</code> is used the form used will be the definite form, usually the short form preceded by a definite article. Correspondingly, the use of <code>AN</code> indicates an indefinite form. A third form, using <code>NO</code>, is available. It indicates that the negative form as defined by the negative article or form should be output. Refer to <a href="#_articles_and_forms">Sect. 3.7.8</a> for a description of the definite/indefinite articles and forms. Finally, the <code>IT</code> form will print the pronoun associated with the instance.</p>
 </div>
 </div>
 <div class="sect4">
@@ -5302,7 +5302,7 @@ End If.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>Locate</code> statement is a way of transferring instances to new locations. When executed, the indicated instance will be placed at the location given. For a description on how to specify where, see <a href="#_where_specifications">Section 3.18</a>. When an actor is located at a new location the <code>DOES</code> clause of that location is always executed.</p>
+<p>The <code>Locate</code> statement is a way of transferring instances to new locations. When executed, the indicated instance will be placed at the location given. For a description on how to specify where, see <a href="#_where_specifications">Sect. 3.18</a>. When an actor is located at a new location the <code>DOES</code> clause of that location is always executed.</p>
 </div>
 <div class="paragraph">
 <p>One special case of the <code>Locate</code> statement is when the predefined actor <code>hero</code> is located somewhere. This is analogous to the player typing a direction, i.e. the hero will be located at the appropriate location. Under particular circumstances, you may want to locate the player at a different location as a side effect of another action. For example:</p>
@@ -5588,7 +5588,7 @@ Set friends Of mine To {suspect Of detective}. -- Correct maybe</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>Include</code> statement is used to include a new member in a Set. Typically, this is used to an instance or value to a collection of such. See <a href="#_set_type">Section 3.3.4</a> for an explanation of the Set type. A member already in the Set will silently be accepted but not generate duplicate entries.</p>
+<p>The <code>Include</code> statement is used to include a new member in a Set. Typically, this is used to an instance or value to a collection of such. See <a href="#_set_type">Sect. 3.3.4</a> for an explanation of the Set type. A member already in the Set will silently be accepted but not generate duplicate entries.</p>
 </div>
 <div class="paragraph">
 <p>The set may be identified using an expression involving reference attributes:</p>
@@ -5653,7 +5653,7 @@ else_part = 'ELSE' expression 'THEN' statements</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>If</code> statement is essential for varying output and otherwise change the activities in the game. The expression is evaluated (see <a href="#_expressions">Section 3.20</a> for details and examples of expression) and if it evaluates to true, the statements following the <code>Then</code> are executed. Otherwise, the expressions in any following <code>ElsIf</code> clauses are evaluated (in order) and the statements following the first expression that results in a true value is executed. If none of the expressions in the <code>ElsIf</code> clauses evaluated to true, or there are no <code>ElsIf</code> clauses, the statements following the <code>Else</code> are executed. The <code>Else</code> clause is optional.</p>
+<p>The <code>If</code> statement is essential for varying output and otherwise change the activities in the game. The expression is evaluated (see <a href="#_expressions">Sect. 3.20</a> for details and examples of expression) and if it evaluates to true, the statements following the <code>Then</code> are executed. Otherwise, the expressions in any following <code>ElsIf</code> clauses are evaluated (in order) and the statements following the first expression that results in a true value is executed. If none of the expressions in the <code>ElsIf</code> clauses evaluated to true, or there are no <code>ElsIf</code> clauses, the statements following the <code>Else</code> are executed. The <code>Else</code> clause is optional.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5673,7 +5673,7 @@ End If.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>If</code> statements which have an <code>IsA</code>-expression (see <a href="#_class_expressions">Section 3.20.6</a>) are particularly important. As an <code>IsA</code>-expression test for the class of an instance, an <code>If</code> statement like</p>
+<p><code>If</code> statements which have an <code>IsA</code>-expression (see <a href="#_class_expressions">Sect. 3.20.6</a>) are particularly important. As an <code>IsA</code>-expression test for the class of an instance, an <code>If</code> statement like</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5819,7 +5819,7 @@ filters = filter { ',' filter }
 <p>The identifier is called the loop variable and will have similar semantics as a syntax parameter. It will dynamically be bound to instances, one for each repetition. In the body of the loop, the statements, this variable can be referenced in the same way as a syntax parameter.</p>
 </div>
 <div class="paragraph">
-<p>The optional filters can be used to restrict the values in the loop. If the <code>Between</code> form is used, the loop becomes an integer loop, resulting in the loop variable having integer type and range from the two expressions inclusive. Otherwise, the loop variable will be of instance type and will consecutively assume the value of each instance fulfilling the filters. See <a href="#_filters">Section 3.21</a> for an explanation of filters.</p>
+<p>The optional filters can be used to restrict the values in the loop. If the <code>Between</code> form is used, the loop becomes an integer loop, resulting in the loop variable having integer type and range from the two expressions inclusive. Otherwise, the loop variable will be of instance type and will consecutively assume the value of each instance fulfilling the filters. See <a href="#_filters">Sect. 3.21</a> for an explanation of filters.</p>
 </div>
 <div class="paragraph">
 <p>Any references to the loop variable within the repetition will refer to the instance bound, or integer value, in this repetition.</p>
@@ -5867,7 +5867,7 @@ End For.</code></pre>
 <div class="paragraph">
 <p>As the player will only see output generated at the same location as the hero, a
 <code>Look</code> executed by another actor at some other location will not be seen by the
-player. See <a href="#_output_statements">Section 3.17.1</a> for more details on this important
+player. See <a href="#_output_statements">Sect. 3.17.1</a> for more details on this important
 consideration.</p>
 </div>
 </td>
@@ -6067,7 +6067,7 @@ End Verb.</code></pre>
 <p><code>Near what</code> has a similar meaning to <code>Nearby</code> except that it refers to some other instance (the what) instead of the current location. The results is a truth value indicating if that other instance is at a location which is nearby (has an exit to) that of the location of the first instance.</p>
 </li>
 <li>
-<p><code>At what</code> means at the location of the instance referenced by the <code>what</code> specification (see <a href="#_what_specifications">Section 3.19</a>). Note that an instance is always <code>At</code> itself, i.e. <code>x At x</code> is always true. This can come as a surprise, especially if you try to aggregate or loop over instances. (See <a href="#_aggregates"><em>Aggregates</em></a> and <a href="#_repetition_statements"><em>Repetition Statements</em></a>.)</p>
+<p><code>At what</code> means at the location of the instance referenced by the <code>what</code> specification (see <a href="#_what_specifications">Sect. 3.19</a>). Note that an instance is always <code>At</code> itself, i.e. <code>x At x</code> is always true. This can come as a surprise, especially if you try to aggregate or loop over instances. (See <a href="#_aggregates"><em>Aggregates</em></a> and <a href="#_repetition_statements"><em>Repetition Statements</em></a>.)</p>
 </li>
 <li>
 <p><code>In what</code> must refer to a container and the expression refers to inside of that container.</p>
@@ -6124,7 +6124,7 @@ End Verb.</code></pre>
 <p>An identifier, <strong>id</strong>, refers to the class or instance with that name, a syntax parameter, script or loop variable with that name. A syntax parameter may have the same name as an class or instance declared elsewhere in the source in which case the parameter has precedence.</p>
 </li>
 <li>
-<p>A reference to an attribute, as described in <a href="#_attribute_references">Section 3.20.3</a>, might be used depending on its type and the context of the usage of the <code>what</code>-expression.</p>
+<p>A reference to an attribute, as described in <a href="#_attribute_references">Sect. 3.20.3</a>, might be used depending on its type and the context of the usage of the <code>what</code>-expression.</p>
 </li>
 </ul>
 </div>
@@ -6151,7 +6151,7 @@ End Verb.</code></pre>
 <div class="sect3">
 <h4 id="_types_of_expressions">Types of Expressions</h4>
 <div class="paragraph">
-<p>Expressions are used e.g. in <code>If</code> and <code>Set</code> statements. The <code>If</code> statement requires a Boolean expression, i.e. an expression yielding a true or false value, while the <code>Set</code> statement can handle all other types of values. See <a href="#_types">Section 3.3</a> for details on types.</p>
+<p>Expressions are used e.g. in <code>If</code> and <code>Set</code> statements. The <code>If</code> statement requires a Boolean expression, i.e. an expression yielding a true or false value, while the <code>Set</code> statement can handle all other types of values. See <a href="#_types">Sect. 3.3</a> for details on types.</p>
 </div>
 </div>
 <div class="sect3">
@@ -6278,13 +6278,13 @@ Decrease temp Of room By Random 0 To temp Of Room.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the expression refers to a container, the expression returns one of the instances currently in that container. The type of the entire expression is instances of the class accepted by the container. See <a href="#_container_properties">Section 3.7.9</a> for details on how to determine the class of instances allowed inside a container.</p>
+<p>If the expression refers to a container, the expression returns one of the instances currently in that container. The type of the entire expression is instances of the class accepted by the container. See <a href="#_container_properties">Sect. 3.7.9</a> for details on how to determine the class of instances allowed inside a container.</p>
 </div>
 <div class="paragraph">
-<p>If the expression refers to a set, the result is one of the members in the set. The type and class of the entire expression is determined by the allowed members in the set. See <a href="#_set_type_attributes">Section 3.7.5.5</a>.</p>
+<p>If the expression refers to a set, the result is one of the members in the set. The type and class of the entire expression is determined by the allowed members in the set. See <a href="#_set_type_attributes">Sect. 3.7.5.5</a>.</p>
 </div>
 <div class="paragraph">
-<p>The optional keyword <code>Directly</code> is only allowed if the expression refers to a container. The semantics is the same as for the <code>Where</code> expression, see <a href="#_the_whereabouts_of_an_entity">Section 3.20.12</a>.</p>
+<p>The optional keyword <code>Directly</code> is only allowed if the expression refers to a container. The semantics is the same as for the <code>Where</code> expression, see <a href="#_the_whereabouts_of_an_entity">Sect. 3.20.12</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -6535,7 +6535,7 @@ End The door.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The forms available for the <code>Where</code> expression are described in detail in <a href="#_where_specifications">Section 3.18</a>.</p>
+<p>The forms available for the <code>Where</code> expression are described in detail in <a href="#_where_specifications">Sect. 3.18</a>.</p>
 </div>
 <div class="paragraph">
 <p>The default behaviour of a <code>Where</code> expression is to evaluate recursively through containers, e.g. if the bottle was inside a bag which was in the inventory, the first expression above would still be true. This implicitly transitive evaluation can also be made explicit through the use of the keyword <code>Indirectly</code>. This would result in exactly the same semantics, but it is explicitly expressed, which can be useful.</p>
@@ -6587,7 +6587,7 @@ aggregate = 'COUNT' | 'SUM' | 'MAX' | 'MIN'</code></pre>
 <p>Aggregates are functions to calculate values from sets of instances. There are four aggregates available, <code>Count</code>, <code>Sum</code>, <code>Min</code> and <code>Max</code>. Aggregates work by inspecting all instances available, applying the filters, which may remove some, or even all, from the set of instances, and then calculate the value from the remaining instances.</p>
 </div>
 <div class="paragraph">
-<p>You can use filters to filter out instances belonging to a particular class, at a particular location or having a particular Boolean attribute. See <a href="#_filters">Section 3.21</a> for an explanation of filters.</p>
+<p>You can use filters to filter out instances belonging to a particular class, at a particular location or having a particular Boolean attribute. See <a href="#_filters">Sect. 3.21</a> for an explanation of filters.</p>
 </div>
 <div class="paragraph">
 <p><code>Count</code> counts the number of instances in the set, e.g.</p>
@@ -6637,7 +6637,7 @@ filter = 'ISA' class
 </div>
 </div>
 <div class="paragraph">
-<p>Filters can be used to filter out only particular instances to loop or aggregate over. If one of the filters is a <strong>IsA &lt;class&gt;</strong>, only instances of that class will be bound to the loop variable or considered in the aggregation. In particular this is required if any of the other filters refer to attributes, which is only allowed if the class is known and that class is guaranteed to have that attribute. Other ways to restrict the filtered instances is to use a <code>Where</code> filter which implicitly restricts to instances available at or in that location, container or set. See <a href="#_the_whereabouts_of_an_entity">Section 3.20.12</a> for details on the various forms of the <code>Where</code> expression.</p>
+<p>Filters can be used to filter out only particular instances to loop or aggregate over. If one of the filters is a <strong>IsA &lt;class&gt;</strong>, only instances of that class will be bound to the loop variable or considered in the aggregation. In particular this is required if any of the other filters refer to attributes, which is only allowed if the class is known and that class is guaranteed to have that attribute. Other ways to restrict the filtered instances is to use a <code>Where</code> filter which implicitly restricts to instances available at or in that location, container or set. See <a href="#_the_whereabouts_of_an_entity">Sect. 3.20.12</a> for details on the various forms of the <code>Where</code> expression.</p>
 </div>
 <div class="paragraph">
 <p>Multiple filters can be listed separated with a comma. Each filter must enumerate the set of values to a compatible set, e.g. using two <code>IsA</code> filters for actors and locations respectively is not allowed since those two sets can never be compatible.</p>
@@ -6786,7 +6786,7 @@ End Verb 'look'.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in <em>Output Statements</em> on page <em>117</em>). You may therefore write your strings any way you like; they will always be neatly formatted on the player&#8217;s screen. You can use special codes (see <em>String Statement</em> on page <em>118</em> for a list) to indicate (but not precisely control) the formatting.</p>
+<p>When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in <a href="#_output_statements">Sect. 3.17.1</a>). You may therefore write your strings any way you like; they will always be neatly formatted on the player&#8217;s screen. You can use special codes (see <a href="#_string_statement">Sect. 3.17.1.1</a> for a list) to indicate (but not precisely control) the formatting.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -6828,7 +6828,8 @@ End Verb 'look'.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The import statement requires a filename, which must be given as a quoted identifier (see section <em>4.2</em>).</p>
+<p>The <code>Import</code> statement requires a filename, which must be given as a quoted
+identifier (see <a href="#_words_identifiers_and_names">Sect. 4.2</a>).</p>
 </div>
 </div>
 </div>
@@ -11144,8 +11145,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.12<br>
-Last updated 2018-08-23 23:15:45 ora legale Europa occidentale
+Version 0.1.13<br>
+Last updated 2018-08-25 14:19:18 ora legale Europa occidentale
 </div>
 </div>
 </body>

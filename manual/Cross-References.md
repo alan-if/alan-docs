@@ -15,7 +15,7 @@ It provides the text to be pasted for AsciiDoc substitutions in double angled br
 | 3.8         | `<<Additions>>`                    |                                |
 | 3.18        | `<<WHERE Specifications>>`         |                                |
 | 3.20        | `<<Expressions>>`                  |                                |
-| 4.2         | `<<Words, Identifiers and Names>>` |                                |
+| 4.2         | `<<_words_identifiers_and_names>>` |                                |
 | 5.1         | `<<A Turn of Events>>`             |                                |
 | Appendix A  | `<<How To Use The System>>`        | [`manual_08.asciidoc`][man 08] |
 | Appendix B  | `<<A Sample Interaction>>`         | [`manual_09.asciidoc`][man 09] |
