@@ -140,7 +140,7 @@ Some player actions (verbs) have special meaning or effects when applied to a ce
 
 An extra thrill and dimension are additional characters in the game. In Alan, these are called actors and may have a life of their own. For each move the player makes, these programmed characters also get a turn to do their thing. An ((actor)) may be a thief running around and stealing your collected treasures or a dragon guarding the entrance to its lair.
 
-Actors get their behaviour (((actor, behaviour)))from scripts that step, by step, describes what is going to happen for each player interaction.
+Actors get their behaviour (((actor, behaviour))) from scripts that step, by step, describes what is going to happen for each player interaction.
 
 One of the interesting things about playing adventure games with actors is to figure out how to interact with and influence the other characters.
 
@@ -272,7 +272,7 @@ The hallway IsA location
 End The hallway.
 --------------------------------------------------------------------------------
 
-We introduce another feature in this example, namely the text enclosed in double quotation marks (") which is called a ((*String*)) or, when used on its own like this, an output statement. When executed this string will be presented to the player and formatted to suit the format of his screen.
+We introduce another feature in this example, namely the text enclosed in double quotation marks (") which is called a ((*string*)) or, when used on its own like this, an output statement. When executed this string will be presented to the player and formatted to suit the format of his screen.
 
 Invent a description for the Kitchen, enter it in the Alan source and run the changed adventure. You notice, of course, that the text in the output statements is reformatted during output to suit your screen, in order to make room for as much text as possible. Note also that you do not have to worry about this at all -- in your source file, you may format the text any way you like, even spanning multiple lines with extra white-space included.
 
