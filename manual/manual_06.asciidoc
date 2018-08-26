@@ -124,7 +124,7 @@ End The bus1.
 Without any syntax definition what so ever, Alan will supply a default syntax for the drive verb which restricts the use of it to only instances of car:
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; look
 
@@ -188,7 +188,7 @@ End The bottle.
 If the bottle had level 0 and was in the hero's container, this would result in
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; inventory +
 You are carrying an empty bottle.
@@ -570,7 +570,7 @@ End Verb invent.
 
 And the following output could result:
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; invent +
 You are empty-handed but in your belt you have a knife.
@@ -751,7 +751,7 @@ End The shadow_mountain.
 This would allow for example at scenic_vista:
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 *Scenic Vista.* +
 Far in the distance you can see the Pebbly Mountain raising +
@@ -878,7 +878,7 @@ Finally, and usually most useful, there is the debug mode. If the interpreter is
 
 // FIXME: The actual prompt is "adbg>" !!!!
 abug>
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 abug&gt;
 ================================================================================
@@ -890,7 +890,7 @@ abug&gt;
 Abug may also be entered during the execution of an adventure. To do this you issue the single player command (type it at the game prompt)
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; debug
 ================================================================================

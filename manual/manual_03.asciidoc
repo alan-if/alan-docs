@@ -471,7 +471,7 @@ An interesting property of locations is that a location can be located at anothe
 
 The classes (((literals))) *literal*, *string* and *integer* cannot be instantiated explicitly. Instead, you might say that they are implicitly instantiated when the player inputs a literal. For example
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; turn dial to 12
 ================================================================================
@@ -681,7 +681,7 @@ pronouns = 'PRONOUN' word { ',' word }
 
 The effect of associating a pronoun with an instance is that the player can refer to that instance explicitly in one command and then in a subsequent command use that pronoun to refer to it again. Assume the player input
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; ask the priest about the bible
 ================================================================================
@@ -690,7 +690,7 @@ The effect of associating a pronoun with an instance is that the player can refe
 
 If the priest has been associated with the pronoun "`him`" and the bible with the pronoun "`it`", the next command could be
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; give it to him
 ================================================================================
@@ -790,7 +790,7 @@ message "Enter password:".
 
 Note that string (((attributes, string))) valued attributes are mainly intended for saving string parameters from the player input, like in
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; scribble "Kilroy was here" on the wall
 ================================================================================
@@ -1056,7 +1056,7 @@ The optional definite, indefinite and negative ((articles)) and forms can be use
 Indefinite forms are used in e.g. inventory listings and when presenting instances that have no `Description` clause. Definitive forms are usually used in messages of the type:
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 The door is locked.
 ================================================================================
@@ -1065,7 +1065,7 @@ The door is locked.
 The negative forms are used in standard messages of the type:
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 I can't see any door here.
 ================================================================================
@@ -1101,7 +1101,7 @@ The owl IsA object
 This results in output like
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 There is an owl here. +
 You are carrying an owl.
@@ -1113,7 +1113,7 @@ You are carrying an owl.
 An article is not used when the instance is displayed when acting on multiple objects, as in:
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; take everything +
 (owl) Taken.
@@ -1134,7 +1134,7 @@ The money Name some money
 Instead of
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 There is a some money here.
 ================================================================================
@@ -1145,7 +1145,7 @@ There is a some money here.
 This will lead to the expected:
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 There is some money here.
 ================================================================================
@@ -1192,7 +1192,7 @@ Mentioned
 
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; take all +
 (little black book) OK! +
@@ -1334,7 +1334,7 @@ empty = 'ELSE' {statement}
 `Header` is used when the contents of the container is listed. It is intended to produce something like
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 "The box contains"
 ================================================================================
@@ -1343,7 +1343,7 @@ empty = 'ELSE' {statement}
 
 or
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 "You are carrying"
 ================================================================================
@@ -1702,7 +1702,7 @@ Syntax
 This shows the syntax definitions for the verbs `take` and `drop`. `take` also allows multiple objects. This would make the following inputs possible
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; take everything except the pillow
 
@@ -1715,7 +1715,7 @@ This shows the syntax definitions for the verbs `take` and `drop`. `take` also a
 Refer to <<Player Input>> for details on the input of references to multiple parameters (such as objects). The above declarations would force the interpreter to reject player input like
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; drop the shovel and the bucket
 ================================================================================
@@ -1735,7 +1735,7 @@ Syntax
 Even if the robber or the key is not present, it will allow the player to say
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; talk to the policeman about the robber
 
@@ -1750,7 +1750,7 @@ For more information on player inputs, refer to <<Player Input>>.
 Indicators given in one syntax declaration can affect other syntaxes if they have identical beginnings, like
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; put everything on
 ================================================================================
@@ -1759,7 +1759,7 @@ Indicators given in one syntax declaration can affect other syntaxes if they hav
 
 and
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; put everything on the table
 ================================================================================
@@ -1904,8 +1904,8 @@ There are a number of ways to get an instance into scope:
   any nested locations, is in scope.
 
 * An instance of any class inside a container that is in scope is in scope,
-  unless that container is opaque and closed. See <<Container
-  Properties,_Container Properties_>> for details.
+  unless that container is opaque and closed. See <<Container Properties,
+  _Container Properties_>> for details.
 
 * If the syntax indicated a parameter as omni-potent, any instance is in scope
   for that parameter position.
@@ -2048,7 +2048,7 @@ With this in mind, ``Check``s are also used when handling the user input ((*ALL*
 For example assuming the above definition of the verb take and a location containing the two objects, `ball` and `box`, of which only the `ball` is `takeable` the player input
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; take all
 ================================================================================
@@ -2350,7 +2350,7 @@ It is also possible to define multiple names for an instance to achieve other ef
 The Alan system has a number of standard messages built in. These messages are presented to the player in various situations, both normal and otherwise. An example is the following:
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; go north +
 You can't go that way.
@@ -2382,7 +2382,7 @@ Message
 If the above where used in the source for the same game as the previous example, it would instead look like:
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; go north +
 There is no exit in that direction.
@@ -2437,7 +2437,7 @@ prompt = 'PROMPT' {statement}
 The default prompt for player input, which will be used if no `Prompt` section is declared, looks like
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt;
 ================================================================================
@@ -2454,7 +2454,7 @@ Prompt "What now?""
 Then the player will of course see
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 What now?
 ================================================================================
@@ -2475,7 +2475,7 @@ Prompt
 This will give the following output:
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 *Pirates Bay Harbor* +
 You can see the town of Pirates Bay to the north, and your ship is at the docks, to the south. +
@@ -3819,7 +3819,7 @@ End The door.
 
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; *open the door*
 ================================================================================

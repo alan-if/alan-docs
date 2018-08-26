@@ -10,7 +10,7 @@ It is also common to provide possibility to refer to multiple objects in a comma
 Your input is in italics.
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 *West of House.* +
 Welcome to Dungeon (ALAN Demo). This version created 29-FEB-92.

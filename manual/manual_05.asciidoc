@@ -44,7 +44,7 @@ The following built in syntax variations are available to the player:
 
 * Concatenating of statements using *AND*-words like
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; open the door then enter +
 &gt; take the book and read it +
@@ -56,7 +56,7 @@ The following built in syntax variations are available to the player:
 * The use of pronouns to refer to the last object mentioned in the previous command, e.g.
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; take the book and read it +
 &gt; give key to guard and ask him to open the door with it
@@ -69,7 +69,7 @@ The pronouns have to be defined by the author in his source (see <<Pronouns>>) o
 * References to multiple objects using *AND*-word. This allows
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; take the blue vase and the pillow +
 &gt; the red key, the glass bowl and the compass
@@ -80,7 +80,7 @@ The pronouns have to be defined by the author in his source (see <<Pronouns>>) o
 * Reference to multiple objects using *ALL*-word
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; drop all
 ================================================================================
@@ -90,7 +90,7 @@ The pronouns have to be defined by the author in his source (see <<Pronouns>>) o
 * Excluding objects using a *BUT*-word, like:
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; wear everything except the bowler hat
 ================================================================================
@@ -100,7 +100,7 @@ The pronouns have to be defined by the author in his source (see <<Pronouns>>) o
 * The use of a *THEM*–word to refer to the multiple objects referenced in the previous command, e.g.
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; remove the hat and the scarf then drop them
 ================================================================================

@@ -46,14 +46,14 @@ The player must be able to express his wishes. Complete understanding of natural
 
 
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; take all except the blue vase
 ================================================================================
 
 or
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; put the ring and the bag in the box
 ================================================================================
@@ -156,7 +156,7 @@ The player commands action by typing imperative statements. These statements are
 
 To make it possible for the player to input more complex commands a means to specify the syntax for a verb is also available. A particular syntax is connected to a verb and describes how the player must phrase his input in order to command the triggering of a particular verb. Using this mechanism, verbs can also be made to operate on literals (strings and integers) giving the player the possibility to input things like
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; write "Merry Christmas, Mr. Lawrence" on the xmas card
 ================================================================================
@@ -189,7 +189,7 @@ This is an example of some source code.
 
 You will also encounter sample game-play which will be formatted using a surrounding border (like paper...) thus:
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 *Grandma's House* +
 You are outside your grandma's house.
@@ -244,7 +244,7 @@ This is a complete Alan adventure (although very primitive). As you see, every A
 
 Type the above text into a text file, e.g. using a notepad program. Run this little Alan source through the Alan compiler and try the adventure (see <<How To Use The System>> on how to do this). After starting the adventure, two lines will be shown on your screen.
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 *Kitchen*
 
@@ -683,7 +683,7 @@ You can never destroy an instance or remove it from the game. Instead, you can d
 
 Normally a verb acts on one object or actor, henceforth called a ((parameter)), referenced by the player in a command. This means that the format of player input normally is something like
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; take vase
 ================================================================================
@@ -719,7 +719,7 @@ Syntax
 
 This syntax defines the `put_in` verb to be executed when the player has input the word '`put`' followed by a reference to an object or actor (a parameter named `obj`), followed by the word `in` followed by a reference to a second parameter (the container, referred to as `cont`), as in
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 &gt; put the green pearl in the black box
 ================================================================================
@@ -769,7 +769,7 @@ The postoffice IsA location
 
 Given the above snippet from a game source, the transcript would read:
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 *Postoffice* +
 Postmen are working behind the counters.
