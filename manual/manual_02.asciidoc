@@ -148,7 +148,7 @@ One of the interesting things about playing adventure games with actors is to fi
 
 === Acting
 
-The player commands action by typing imperative statements. These statements are analysed and results in execution ("`calls`") to verbs. The effects of these commands must be declared in verbs by the game author, either in an object (describing the effects of the verb when applied to an object) or as a general (global) ((verb)) that only applies without object.
+The player commands action by typing imperative statements. These statements are analysed and results in execution ("`calls`") to ((verbs)). The effects of these commands must be declared in verbs by the game author, either in an object (describing the effects of the verb when applied to an object) or as a general (global) that only applies without object.
 
 
 
@@ -318,7 +318,7 @@ In addition, objects may have ((attributes)) indicating the state of certain pro
 
 Alternatively, attributes may be numeric (e.g. `Has weight 5`) or be of string type (e.g. `Has inscription "Kilroy was here"`).
 
-We also introduce another Alan statement, the `If`-statement. The ((`If`-statement)) allows you to select which statements to execute according to some condition. In the example, the `closed` attribute of the door selects which description to show. There are further variations of expressions and the `If`-statement, but we will come back to these later (<<Expressions>> and <<If Statement>>).
+We also introduce another Alan statement, the `If` statement. The ((`If` statement)) allows you to select which statements to execute according to some condition. In the example, the `closed` attribute of the door selects which description to show. There are further variations of expressions and the `If` statement, but we will come back to these later (<<Expressions>> and <<If Statement>>).
 
 // @NOTE: In the above paragraph, the original refererece was:
 //          "come back to these later (Expressions on page 142 and If on page 131)."
@@ -440,15 +440,15 @@ The `Every`-construct defines a class and its properties, including inheriting f
 
 
 
-==== The Pre-defined Classes
+==== The Predefined Classes
 
-To make it easy to get started there are eight classes pre-defined (((predefined classes))) in the Alan language.
+To make it easy to get started there are eight classes predefined (((predefined classes))) in the Alan language.
 
 
 // ==============================================================================
 //                             @FIXME: MISSING IMAGE!
 // ==============================================================================
-// Figure 2: Relationships between the pre-defined classes.
+// Figure 2: Relationships between the predefined classes.
 
 
 // @NOTE: didn't style as inline-code the following classes, as some are not
@@ -457,9 +457,9 @@ To make it easy to get started there are eight classes pre-defined (((predefined
 
 // TODO: Add cross-reference link to Figure 2 in following paragraph?
 
-They are *entity*, (((entity, predefined class))) *thing*, (((thing, predefined class))) *location*, (((location, predefined class))) *actor*, (((actor, predefined class))) *object*, (((object, predefined class))) *literal*, (((literal, predefined class))) *string* (((string, predefined class))) and *integer* (((integer, predefined class))) and have the relationship, inheritance tree, shown in _Figure 2_ above.
+They are *entity*, (((Entity, predefined class))) *thing*, (((Thing, predefined class))) *location*, (((Location, predefined class))) *actor*, (((Actor, predefined class))) *object*, (((Object, predefined class))) *literal*, (((Literal, predefined class))) *string* (((String, predefined class))) and *integer* (((Integer, predefined class))) and have the relationship, inheritance tree, shown in _Figure 2_ above.
 
-The semantics (((semantics, of pre-defined classes))) of these pre-defined classes are in short:
+The semantics (((semantics, of predefined classes))) of these predefined classes are in short:
 
 * Only locations (instances inheriting from `location`) can be visited by the hero (the players alter ego)
 * Only actors may have scripts that they perform
@@ -472,7 +472,7 @@ See the subsections of <<Instances,Instances>> for more detailed descriptions.
 
 ==== Creating Classes and Instances
 
-In the sections above about locations, objects and actors the examples show how to create an instance of a class. Those examples show how to do it from the pre-defined classes. However, it is the identical if you have defined the class yourself. In general the format is
+In the sections above about locations, objects and actors the examples show how to create an instance of a class. Those examples show how to do it from the predefined classes. However, it is the identical if you have defined the class yourself. In general the format is
 
 // @PSEUDOCODE: The following code examples might not highlight well due to the
 //              presence of '...' ot square brackets placeholder!

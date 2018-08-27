@@ -203,10 +203,6 @@ These rules ensure that attribute references and other properties are always ret
 
 Some statements require their arguments to be of a specific type. This is enforced by the compiler. The compatibility rules apply here also, given that the required type is given by the statement itself.
 
-// FIXME: In other places "`If`-statement" is used instead of "`If` statement",
-//        which creates different Index entries. I should enforce one of the two!
-
-
 Examples include the conditional ((`If` statement)) that requires a Boolean value (or expression) to test and the ((`Use` statement)), which requires references to instances that are subclasses of the predefined class `actor`.
 
 
@@ -312,7 +308,7 @@ Exactly the same rules for declaring properties apply to instances. The only dif
 // @NOTE: I didn't style as inline code the classes in the following paragraph,
 // 		  as some of these are not actually referenceable in real code (eg, literal)
 
-Instances inheriting, directly or indirectly, from the predefined classes *thing*, *entity*, *object*, *location*, *actor* and *literal,* are subject to special semantics (((semantics of pre-defined classes))) and restrictions.
+Instances inheriting, directly or indirectly, from the predefined classes *thing*, *entity*, *object*, *location*, *actor* and *literal,* are subject to special semantics (((semantics of predefined classes))) and restrictions.
 
 Here are two examples of instance declarations following the rules above:
 
@@ -352,7 +348,7 @@ All capitalized words in the examples above are keywords in the Alan language (s
 
 === Entities
 
-The base class `entity` (((entity, predefined class))) represents the lowest denominator of all instances. All other pre-defined classes inherit from `entity`. So adding a property to `entity` will add it to every instance.
+The base class `entity` (((entity, predefined class))) represents the lowest denominator of all instances. All other predefined classes inherit from `entity`. So adding a property to `entity` will add it to every instance.
 
 Entities cannot have an initial location, nor can they be located anywhere. On the other hand, they can be considered to be available everywhere. They are not described when encountered. They can only be shown by explicitly executing a `Describe` statement.
 
@@ -362,7 +358,7 @@ So, if you want an instance to always be available but invisible, create an inst
 
 === Things
 
-`Thing` (((thing, predefined class))) is a pre-defined subclass of `entity` that adds the property of having a location. This means that they can have an initial location and be located to locations and into containers. They will, however not show up in descriptions or listings, but the player can refer to and interact with them. They can be described by explicitly executing a `Describe` statement.
+`Thing` (((Thing, predefined class))) is a predefined subclass of `entity` that adds the property of having a location. This means that they can have an initial location and be located to locations and into containers. They will, however not show up in descriptions or listings, but the player can refer to and interact with them. They can be described by explicitly executing a `Describe` statement.
 
 Creating an instance of `thing` is a good choice if you want an invisible instance that should only be available at particular locations, or under specific _*circumstances*_.
 
@@ -478,7 +474,7 @@ The classes (((literals))) *literal*, *string* and *integer* cannot be instantia
 
 
 
-The second parameter (see <<Syntax Definitions>>) in this player command is the integer 12. This parameter is automatically considered an instance of the pre-defined class *integer*.
+The second parameter (see <<Syntax Definitions>>) in this player command is the integer 12. This parameter is automatically considered an instance of the predefined class *integer*.
 
 It is possible to add verbs to *literal* and its sub-classes. This way it is possible to create verbs that take strings and integers as parameters.
 
@@ -702,7 +698,7 @@ Pronouns are inherited as any other property, but are overridden as soon as a pr
 
 [NOTE]
 ================================================================================
-The pre-defined class `entity` defines the (((Pronoun, predefined))) pronoun
+The predefined class `entity` defines the (((Pronoun, predefined))) pronoun
 "`it`" (or equivalent for other supported languages).
 ================================================================================
 
@@ -854,7 +850,7 @@ If you need to set the initial value to refer to an instance of a sub-class of t
 
 ==== Set Type Attributes
 
-(((Set type attributes)))(((attributes, of Set type)))
+(((Set type, attributes)))(((attributes, of Set type)))
 A Set is an unordered set of integers or instance references. Initial members must be listed in the declaration of the Set. See <<Set Type>> for details on the Set type.
 
 The type and class of allowed members is inferred from the values actually in the initial set. If they are instance references, the common ancestor of all members is used as the class of the allowed members. An empty set is only allowed as an initial value if the attribute is an inherited attribute since in this case, the member class is known from the inheritance and need not be indicated in the declaration.
@@ -1171,7 +1167,7 @@ You can use various forms of the `Say` statement (see <<Say Statement>>) to choo
 
 ==== Mentioned
 
-The optional ((`Mentioned` clause)) overrides the name for displaying an instance in a short form that will be used when the instance is mentioned e.g. in listings of containers or when the ((*ALL*)) form of player input is used. A typical use of the `Mentioned` clause is to let some internal state of the instance be reflected in the short form, e.g. if you want the short form of a box to show if it is open or closed you cannot rely on the Names since they are static. Instead, the `Mentioned` clause can print a different short name depending on an attribute.
+The optional ((`Mentioned` clause)) overrides the name for displaying an instance in a short form that will be used when the instance is mentioned e.g. in listings of containers or when the *ALL* (((ALL (player input)))) form of player input is used. A typical use of the `Mentioned` clause is to let some internal state of the instance be reflected in the short form, e.g. if you want the short form of a box to show if it is open or closed you cannot rely on the Names since they are static. Instead, the `Mentioned` clause can print a different short name depending on an attribute.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -1242,7 +1238,7 @@ End The chest.
 
 A ((`Container`)) is something that can contain instances. By default, the instances it can contain must be inheriting from the base class `object`, but by using the `Taking` clause, you can allow any instances.
 
-Instances with the container property, "`inherits`" a special, pre-defined, Boolean attribute, `opaque`. This attribute can be manipulated in the same way as any other attribute. Its current value indicates if the instances inside the container are visible and accessible or not.
+Instances with the container property, "`inherits`" a special, predefined, Boolean attribute, `opaque`. This attribute can be manipulated in the same way as any other attribute. Its current value indicates if the instances inside the container are visible and accessible or not.
 
 By default, containers expose their content, but by placing the keyword `Opaque` in the container declaration, you indicate that this container declaration will initially prohibit access to the contained instances. A typical use of this is to prohibit access to contents of closed cases, drawers and boxes. Once open such containers usually reveal the content, which then can be accessed. You can implement such behaviour by modifying the built in `opaque` attribute. For example:
 
@@ -1509,7 +1505,7 @@ If an exit is declared from one location to another, and you want there to be an
 
 
 
-Exits are only allowed in classes or instances inheriting from the pre-defined class `location`.
+Exits are only allowed in classes or instances inheriting from the predefined class `location`.
 
 
 
@@ -1683,8 +1679,8 @@ There are two indicators available:
 
 * '```+```' -- (((indicator, multiple)))(((multiple indicator)))
   This parameter can reference multiple instances (for example by the player
-  using ((*ALL*)) or concatenating a number of parameters using a conjunction
-  like ((*AND*)), see <<Player Input>>).
+  using *ALL* (((ALL (player input)))) or concatenating a number of parameters using a conjunction
+  like *AND*(((AND (player input)))), see <<Player Input>>).
 
 
 * '```!```' -- (((indicator, omnipotent)))(((omnipotent indicator)))
@@ -1792,7 +1788,7 @@ restriction_class = id
 [NOTE]
 ================================================================================
 Any predefined or user defined class can be used. Particularly note that integer
-and string are pre-defined classes (see <<The Pre-defined Classes>>).
+and string are predefined classes (see <<The Predefined Classes>>).
 ================================================================================
 
 
@@ -2043,7 +2039,7 @@ If any check should fail, the execution of the current verb is interrupted and t
 
 
 
-With this in mind, ``Check``s are also used when handling the user input ((*ALL*)) (see <<Player Input>> for details on possible player input). The mechanisms for this involve examining all objects at the current location and evaluating all checks for the verb. Any objects that do not pass the checks are not considered for execution. This limits the handling of *all* to only executing the verb bodies for objects that are reasonable, i.e. that will not fail in the ``Check``s.
+With this in mind, ``Check``s are also used when handling the user input *ALL* (((ALL (player input)))) (see <<Player Input>> for details on possible player input). The mechanisms for this involve examining all objects at the current location and evaluating all checks for the verb. Any objects that do not pass the checks are not considered for execution. This limits the handling of *all* to only executing the verb bodies for objects that are reasonable, i.e. that will not fail in the ``Check``s.
 
 For example assuming the above definition of the verb take and a location containing the two objects, `ball` and `box`, of which only the `ball` is `takeable` the player input
 
@@ -2414,7 +2410,7 @@ Message sections must be declared at the global level, but to make it possible t
 
 The parameters can be used in the same way as in verb bodies. The names of the parameters are "`parameter1`", "`parameter2`", etc. The type of the parameters will also vary.
 
-For some messages, a parameter is an instance. In these cases, the instance is always of the pre-defined `entity` class. Any attribute available for this class will be available in message sections with instance parameters.
+For some messages, a parameter is an instance. In these cases, the instance is always of the predefined `entity` class. Any attribute available for this class will be available in message sections with instance parameters.
 
 
 [NOTE]
@@ -3120,7 +3116,7 @@ End If.
 If i IsA actor Then ...
 --------------------------------------------------------------------------------
 
-will quarantee that for any statement inside the `Then`-part of that statement, the `i` will be of the class `actor`. This means that references to attributes, container properties and actor scripts etc. as if `i` belongs to the class `actor`, even if that was not known outside of the If-statement.
+will quarantee that for any statement inside the `Then`-part of that statement, the `i` will be of the class `actor`. This means that references to attributes, container properties and actor scripts etc. as if `i` belongs to the class `actor`, even if that was not known outside of the `If` statement.
 
 A typical example where this is helpful is inside verbs where parameters can be restricted to more general classes by the syntax and the actual action can still perform specific actions only allowed on more specialized classes. Another would be in a loop over some unknown set of instances.
 
@@ -3381,7 +3377,7 @@ The handling of descriptions is rather conservative in that it also takes modifi
 
 
 
-Associated with this is a pre-defined attribute, `visits`, that exists for all instances inheriting from `location`. It will count how many times the player have visited the location. For example
+Associated with this is a predefined attribute, `visits`, that exists for all instances inheriting from `location`. It will count how many times the player have visited the location. For example
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3433,7 +3429,7 @@ End Verb.
 
 == WHERE Specifications
 
-Many constructs in the Alan language require a specification of where the construct should operate. The general intention of such a ((`Where`-specification)) is to specify a location.
+Many constructs in the Alan language require a specification of where the construct should operate. The general intention of such a ((`Where` specification)) is to specify a location.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -3465,7 +3461,7 @@ Not all kinds of `Where` specifications are meaningful in all constructs. Exampl
 
 == WHAT Specifications
 
-Constructs in the grammar for the Alan language often refer to some class or instance defined in the Alan source. This is generally called a ((`what` specification)), as it specifies what the construct refers to. An example is the `Locate` statement that must refer to something that should be relocated.
+Constructs in the grammar for the Alan language often refer to some class or instance defined in the Alan source. This is generally called a ((`What` specification)), as it specifies what the construct refers to. An example is the `Locate` statement that must refer to something that should be relocated.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -3479,8 +3475,8 @@ what = 'CURRENT' 'ACTOR'
 
 The meaning of the different forms of the `what` specification are:
 
-* `Current Actor` (((Actor, in what specifications))) is always set to the actor currently active, e.g. when a non-player actor is running a script this refers to the actor instance that is running.
-* `Current Location` (((Location, in what specifications))) is the current location, i.e. the location where the current activity is performed. Normally this is the location where the hero is, but may also be where an event is executed or the location where a scripted actor currently is executing. See <<Run-time Contexts,_Run-time Contexts_>> for more details.
+* `Current Actor` (((Actor, in What specifications))) is always set to the actor currently active, e.g. when a non-player actor is running a script this refers to the actor instance that is running.
+* `Current Location` (((Location, in What specifications))) is the current location, i.e. the location where the current activity is performed. Normally this is the location where the hero is, but may also be where an event is executed or the location where a scripted actor currently is executing. See <<Run-time Contexts,_Run-time Contexts_>> for more details.
 * `This` refers to the instance in which code, such as a verb body or a script, is run. This can for example be used to test or set attributes in inherited code, thus testing or setting attributes in the instance while the code is defined in a class that the instance inherits from. It cannot be used in events or global verbs.
 * An identifier, *id*, refers to the class or instance with that name, a syntax parameter, script or loop variable with that name. A syntax parameter may have the same name as an class or instance declared elsewhere in the source in which case the parameter has precedence.
 * A reference to an attribute, as described in <<Attribute References>>, might be used depending on its type and the context of the usage of the `what`-expression.
@@ -3585,7 +3581,7 @@ If hero Is Not hungry Then ...
 
 ==== Location Of
 
-There is a particularly useful pre-defined pseudo-attribute, `location`, that can be used to query an instance of which location it is currently at.
+There is a particularly useful predefined pseudo-attribute, `location`, that can be used to query an instance of which location it is currently at.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3593,7 +3589,7 @@ Make location Of magic_lantern lit.
 --------------------------------------------------------------------------------
 
 
-This attribute is pre-defined on all instances and is guaranteed to return an instance of the class location, and it will be the innermost location of the instance (bearing in mind that locations may be nested).
+This attribute is predefined on all instances and is guaranteed to return an instance of the class location, and it will be the innermost location of the instance (bearing in mind that locations may be nested).
 
 
 
@@ -3691,11 +3687,11 @@ If opponent IsA enemy Then ...
 --------------------------------------------------------------------------------
 
 
-There is a subtle but very important side effect of checking for an instance class in an `If`-statement like the above. Doing that will ensure that the instance or parameter that is checked has all the properties. This holds true for all statements in the `Then`-part of the `If`-statement.
+There is a subtle but very important side effect of checking for an instance class in an `If` statement like the above. Doing that will ensure that the instance or parameter that is checked has all the properties. This holds true for all statements in the `Then`-part of the `If` statement.
 
 This is used by the compiler to allow references to attributes, scripts, container properties etc. that otherwise would not be allowed.
 
-A very common use of this is to restrict parameters in a `Syntax` to a more general class, like thing or entity, and then doing "`manual`" restrictions using `If`-statements to ensure that usage does not conflict with the actual properties of the instance. Also see <<If Statement,the section on _If Statement_>>.
+A very common use of this is to restrict parameters in a `Syntax` to a more general class, like thing or entity, and then doing "`manual`" restrictions using `If` statements to ensure that usage does not conflict with the actual properties of the instance. Also see <<If Statement,the section on _If Statement_>>.
 
 
 
