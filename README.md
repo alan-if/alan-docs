@@ -56,8 +56,9 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
     + [`/alan-logo/`](./assets-src/alan-logo/) — Alan logo reconstructed as vector image.
 - [`/manual/`](./manual/) — _The Alan Manual_ ported to AsciiDoc (WIP).
 - [`/originals/`](./originals/) — copy of the original docs being ported.
-- [`LICENSE`](./LICENSE) — the [Artistic License 2.0].
 - [`CONTRIBUTING.md`][CONTRIBUTING] — Guidelines for contributing to this project.
+- [`CONVENTIONS.md`][CONVENTIONS] — Editors' formatting and styles guidelines.
+- [`LICENSE`](./LICENSE) — the [Artistic License 2.0].
 
 ## Project Dependencies
 
@@ -214,6 +215,7 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 
 <!-- Project Files ----------------------------------------------------------->
 
+[CONVENTIONS]: ./CONVENTIONS.md "Read the 'Formatting and Styling Conventions' guidelines adopted in Alan-Docs"
 [CONTRIBUTING]: ./CONTRIBUTING.md "Read the guidelines for contributing to Alan-Docs"
 
 <!-- HTML Live Previews -->
