@@ -256,9 +256,9 @@ The first line contains "`Kitchen`", the name of the initial location, and the s
 
 The identifier for a location is automatically used as a description, a heading, shown when that room is entered. And the words listed in the `Exit`-parts are translated into directional commands the player can use in his input.
 
-You should remember that exits are strictly one-way. An ((`Exit`)) from one location to another does not automatically imply the opposite path. Thus, you must explicitly declare the path back, in the definition of the other location.
+You should remember that exits are strictly one-way. An `Exit` (((EXIT))) from one location to another does not automatically imply the opposite path. Thus, you must explicitly declare the path back, in the definition of the other location.
 
-However, just the name of the location is not much of a description. So in order to provide the "`purple prose`" descriptions often found in many adventures there is an optional `Description`-clause (((Description, of locations))) that you can use. Let us describe the Hallway.
+However, just the name of the location is not much of a description. So in order to provide the "`purple prose`" descriptions often found in many adventures there is an optional `Description`-clause (((DESCRIPTION, of locations))) that you can use. Let us describe the Hallway.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -318,7 +318,7 @@ In addition, objects may have ((attributes)) indicating the state of certain pro
 
 Alternatively, attributes may be numeric (e.g. `Has weight 5`) or be of string type (e.g. `Has inscription "Kilroy was here"`).
 
-We also introduce another Alan statement, the `If` statement. The ((`If` statement)) allows you to select which statements to execute according to some condition. In the example, the `closed` attribute of the door selects which description to show. There are further variations of expressions and the `If` statement, but we will come back to these later (<<Expressions>> and <<If Statement>>).
+We also introduce another Alan statement, the `If` statement. The `If` statement (((IF, statement))) allows you to select which statements to execute according to some condition. In the example, the `closed` attribute of the door selects which description to show. There are further variations of expressions and the `If` statement, but we will come back to these later (<<Expressions>> and <<If Statement>>).
 
 // @NOTE: In the above paragraph, the original refererece was:
 //          "come back to these later (Expressions on page 142 and If on page 131)."
@@ -327,7 +327,7 @@ We also introduce another Alan statement, the `If` statement. The ((`If` stateme
 
 Instead, let's look at some other statements in relation to objects.
 
-It must of course be possible to change the value of attributes of an object. You can do this using the ((`Make` statement)) or the ((`Set` statement)). For example if the door should be opened (the player having said "`open door`", perhaps) this could be performed by stating
+It must of course be possible to change the value of attributes of an object. You can do this using the (((MAKE, statement))) `Make` statement or the (((SET, statement))) `Set` statement. For example if the door should be opened (the player having said "`open door`", perhaps) this could be performed by stating
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -365,7 +365,7 @@ Alan does not understand, or enforce, any semantic in the identifiers for attrib
 
 Of course, attributes are not only available on objects, but on locations and other types of entities also.
 
-Another manipulation statement is the ((`Locate` statement)). This is the statement to use when moving objects from one location to another. Opening a lid might cause a previously hidden object to fall to the floor, something that could be performed by moving the object from limbo to the current location with:
+Another manipulation statement is the (((LOCATE, statement))) `Locate` statement. This is the statement to use when moving objects from one location to another. Opening a lid might cause a previously hidden object to fall to the floor, something that could be performed by moving the object from limbo to the current location with:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -457,7 +457,7 @@ To make it easy to get started there are eight classes predefined (((predefined 
 
 // TODO: Add cross-reference link to Figure 2 in following paragraph?
 
-They are *entity*, (((Entity, predefined class))) *thing*, (((Thing, predefined class))) *location*, (((Location, predefined class))) *actor*, (((Actor, predefined class))) *object*, (((Object, predefined class))) *literal*, (((Literal, predefined class))) *string* (((String, predefined class))) and *integer* (((Integer, predefined class))) and have the relationship, inheritance tree, shown in _Figure 2_ above.
+They are *entity*, (((ENTITY, predefined class))) *thing*, (((THING, predefined class))) *location*, (((LOCATION, predefined class))) *actor*, (((ACTOR, predefined class))) *object*, (((OBJECT, predefined class))) *literal*, (((literal, predefined class))) *string* (((STRING, predefined class))) and *integer* (((integer, predefined class))) and have the relationship, inheritance tree, shown in _Figure 2_ above.
 
 The semantics (((semantics, of predefined classes))) of these predefined classes are in short:
 
@@ -587,7 +587,7 @@ What this means is that if you use transitive containment you get the same insta
 
 === The Verb Construct
 
-The ((`Verb`)) is the construct that implements the effects of an action requested by the player. Verbs are associated with a class or an instance. We will look at the implications of various combinations of these in the next few sections.
+The (((VERB, construct))) `Verb` is the construct that implements the effects of an action requested by the player. Verbs are associated with a class or an instance. We will look at the implications of various combinations of these in the next few sections.
 
 To implement a `Verb` you need a name for it (which is also the default word the player should input to request that action). You must also decide which effects this verb should have under various circumstances.
 
@@ -638,7 +638,7 @@ Of course, there are often also conditions that need to be checked before we can
 
 ==== Checking Things
 
-In order to assert that the correct conditions are fulfilled before the body of a `Verb` is actually executed the verb may have an optional `Check` (((Check, in verbs))) part.
+In order to assert that the correct conditions are fulfilled before the body of a `Verb` is actually executed the verb may have an optional `Check` (((CHECK, in verbs))) part.
 
 
 [source,alan]
@@ -690,7 +690,7 @@ Normally a verb acts on one object or actor, henceforth called a ((parameter)), 
 
 
 
-This form, or syntax, is the default form if you don't specify anything else. The default syntax (((Syntax, default))) might thus be described as
+This form, or syntax, is the default form if you don't specify anything else. The default syntax (((SYNTAX, default))) might thus be described as
 
 // @PSEUDOCODE: The following code examples might not highlight well due to the
 //              presence of '...' ot square brackets placeholder!
@@ -705,7 +705,7 @@ Syntax +
 
 The question marks are place-holders and should be interpreted as the name of the verb.
 
-In order to allow different and more complex player input the ((`Syntax))` construct is supplied.
+In order to allow different and more complex player input the (((SYNTAX, construct))) `Syntax` construct is supplied.
 
 The `Syntax` construct is a way to describe the words and parameters the player may use in order to execute a particular verb (its global and more specialised parts). Below is the syntax for `put_in`, the verb to put something inside a container.
 
@@ -743,7 +743,7 @@ This restricts (((restriction, of parameters))) the parameter `obj` to being an 
 
 The parameters are used as normal identifiers in the Alan source code. The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also <<Run-time Contexts>> for a detailed discussion).
 
-The `Syntax` construct allows for more than one parameter, in order to make it possible to define more complex player commands. Therefore, the verb execution order (((Verb, execution order))) described previously from execution of verbs in one instance must be generalised to verb bodies in all the parameters. In the example above, verb bodies in the objects or actors referenced as `obj` and `cont` (the green pearl and the black box) are executed (if the verb is present in their definitions).
+The `Syntax` construct allows for more than one parameter, in order to make it possible to define more complex player commands. Therefore, the verb execution order (((VERB, execution order))) described previously from execution of verbs in one instance must be generalised to verb bodies in all the parameters. In the example above, verb bodies in the objects or actors referenced as `obj` and `cont` (the green pearl and the black box) are executed (if the verb is present in their definitions).
 
 
 

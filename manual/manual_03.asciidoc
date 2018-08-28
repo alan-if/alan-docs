@@ -32,7 +32,7 @@ Note that the first is terminated, but the second example is continued with a ch
 
 == An Adventure
 
-An adventure starts with an (optional) set of ((options)) (see <<Options>>) followed by a set of declarations.
+An adventure starts with an (optional) set of (((OPTION))) ``Option``s (see <<Options>>) followed by a set of declarations.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ declaration = import
             | prompt
 --------------------------------------------------------------------------------
 
-The adventure source text must end with a ((start section)).
+The adventure source text must end with a (((START section))) `Start` section.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -81,7 +81,7 @@ You can look up the meaning of the rules "`where`" and "`statement`" elsewhere i
 
 == Options
 
-Options (((options))) define things concerning the overall behaviour of the generated Alan adventure. As is implied they are optional and are only required if you need to change the value of an option from its default setting. An option follows the grammar
+Options (((OPTION))) define things concerning the overall behaviour of the generated Alan adventure. As is implied they are optional and are only required if you need to change the value of an option from its default setting. An option follows the grammar
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -161,7 +161,7 @@ Some types of expressions return a value referring to an a class or instance in 
 
 === Event Type
 
-Event is a set of statements that can be scheduled to execute with a specified delay. Each reference to an identifier of an `Event` is of course of the ((`Event` type)). Events can be referenced by attributes and any reference to such an attribute is of `Event` type.
+Event is a set of statements that can be scheduled to execute with a specified delay. Each reference to an identifier of an `Event` is of course of the (((EVENT, type))) `Event` type. Events can be referenced by attributes and any reference to such an attribute is of `Event` type.
 
 Expressions of `Event` type can be used in `Schedule` and `Cancel` statements.
 
@@ -173,7 +173,7 @@ A `Set` is a collection of values that may be referenced as a single value, but 
 
 The order of elements in the set is not specified. Each member can only occur once in the same set, but a member can occur in multiple sets. You could for example include one set of numbers (integers) in one set and another set of numbers in another set. It is then possible to investigate the sets and remove all members that are members in both.
 
-The ((`Set` type)) is a compound type since it is not complete without a member type. You can only include members in a set if the type compatibility rules allow it. A `Set` may include members that are instances or integers.
+The (((SET, type))) `Set` type is a compound type since it is not complete without a member type. You can only include members in a set if the type compatibility rules allow it. A `Set` may include members that are instances or integers.
 
 If the `Set` includes instances, the subclass compatibility rule applies. All members in the set must inherit from the same class. See the section on type compatibility below.
 
@@ -189,7 +189,7 @@ The fact that an instance is in a Set does not affect the instance. In fact, the
 
 === Type Compatibility
 
-Assignment and comparisons between values requires the values to be compatible(((compatible types))). The three basic types (integer, string and Boolean) are only compatible with themselves.
+Assignment and comparisons between values requires the values to be (((compatible types))) compatible. The three basic types (integer, string and Boolean) are only compatible with themselves.
 
 Values of the Instance type can be compared without restriction, except that there is no notion of lesser or equal, so only equality can be tested. Assignment can be made if the new value is of the same class, or of a subclass, as the attribute or variable that receives the value. This class is normally inferred from the initial value of the declaration.
 
@@ -203,13 +203,13 @@ These rules ensure that attribute references and other properties are always ret
 
 Some statements require their arguments to be of a specific type. This is enforced by the compiler. The compatibility rules apply here also, given that the required type is given by the statement itself.
 
-Examples include the conditional ((`If` statement)) that requires a Boolean value (or expression) to test and the ((`Use` statement)), which requires references to instances that are subclasses of the predefined class `actor`.
+Examples include the conditional (((IF, statement))) `If` statement that requires a Boolean value (or expression) to test and the (((USE, statement))) `Use` statement, which requires references to instances that are subclasses of the predefined class `actor`.
 
 
 
 == Import
 
-The source text for a large adventure might become entangled and complex. A way to break up a large text is to divide it into separate files. Each such file can then be imported into the main source using the ((`Import` statement)).
+The source text for a large adventure might become entangled and complex. A way to break up a large text is to divide it into separate files. Each such file can then be imported into the main source using the (((IMPORT, statement))) `Import` statement.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -348,7 +348,7 @@ All capitalized words in the examples above are keywords in the Alan language (s
 
 === Entities
 
-The base class `entity` (((entity, predefined class))) represents the lowest denominator of all instances. All other predefined classes inherit from `entity`. So adding a property to `entity` will add it to every instance.
+The base class `entity` (((ENTITY, predefined class))) represents the lowest denominator of all instances. All other predefined classes inherit from `entity`. So adding a property to `entity` will add it to every instance.
 
 Entities cannot have an initial location, nor can they be located anywhere. On the other hand, they can be considered to be available everywhere. They are not described when encountered. They can only be shown by explicitly executing a `Describe` statement.
 
@@ -358,7 +358,7 @@ So, if you want an instance to always be available but invisible, create an inst
 
 === Things
 
-`Thing` (((Thing, predefined class))) is a predefined subclass of `entity` that adds the property of having a location. This means that they can have an initial location and be located to locations and into containers. They will, however not show up in descriptions or listings, but the player can refer to and interact with them. They can be described by explicitly executing a `Describe` statement.
+`Thing` (((THING, predefined class))) is a predefined subclass of `entity` that adds the property of having a location. This means that they can have an initial location and be located to locations and into containers. They will, however not show up in descriptions or listings, but the player can refer to and interact with them. They can be described by explicitly executing a `Describe` statement.
 
 Creating an instance of `thing` is a good choice if you want an invisible instance that should only be available at particular locations, or under specific _*circumstances*_.
 
@@ -379,17 +379,17 @@ selections of container items.
 
 === Objects
 
-Objects (((object, predefined class))) are instances inheriting directly or indirectly from the predefined class `object`. Objects are all the things that can be manipulated by the player. They can be picked up, examined and thrown away (if the author has allowed it). In addition to the properties inherited from `thing`, any present object will by default, be described when the player enters a location or otherwise encounters it.
+Objects (((OBJECT, predefined class))) are instances inheriting directly or indirectly from the predefined class `object`. Objects are all the things that can be manipulated by the player. They can be picked up, examined and thrown away (if the author has allowed it). In addition to the properties inherited from `thing`, any present object will by default, be described when the player enters a location or otherwise encounters it.
 
 
 
 === Actors
 
-The predefined class `actor` (((actor, predefined class))) is intended for providing so called NPC:s, non-player characters, in your game. Like the player, they can move around but to do this they have to be scripted, i.e. programmed with some behaviour using scripts.
+The predefined class `actor` (((ACTOR, predefined class))) is intended for providing so called NPC:s, non-player characters, in your game. Like the player, they can move around but to do this they have to be scripted, i.e. programmed with some behaviour using scripts.
 
 An instance inheriting from the `actor` class will be described when encountered. Actors can be located, as can any `thing`, but not be inside a container. In addition, they can have scripts.
 
-Actors also exhibit special behaviour when they are described, e.g. when they are encountered. If an actor (((actor description))) is executing a script with a description, (see <<Scripts,_Scripts_>>) this description will be used instead of the one declared in the description clause.
+Actors also exhibit special behaviour when they are described, e.g. when they are encountered. If an actor (((ACTOR, description))) is executing a script with a description, (see <<Scripts,_Scripts_>>) this description will be used instead of the one declared in the description clause.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -422,7 +422,7 @@ The george IsA actor
 
 ==== The Hero
 
-There is one very special actor, the `hero`, ((("hero, the"))) which represents the player. This actor is always pre-declared with some basic properties, so you don't have to declare it. But if necessary, it may be re-declared in the same way as any other actor.
+There is one very special actor, the `hero`, ((("HERO, the"))) which represents the player. This actor is always pre-declared with some basic properties, so you don't have to declare it. But if necessary, it may be re-declared in the same way as any other actor.
 
 One situation when this is required is if you need attributes on the hero, such as "`sleepy`" or "`hungry`". A declaration like the following can then be used:
 
@@ -457,7 +457,7 @@ A location (((locations))) is a declaration of a place (a "`room`") in the game 
 * locations can't have container properties
 * verbs in locations are executed only when the hero is at that location
 
-When a location is described (((description, of locations))) (for example when entering it) it is presented with a heading (the location name), the description (in the description clause) followed by descriptions of any present objects and actors not already, explicitly, described (using a `describe` statement) in the description.
+When a location is described (((DESCRIPTION, of locations))) (for example when entering it) it is presented with a heading (the location name), the description (in the description clause) followed by descriptions of any present objects and actors not already, explicitly, described (using a `describe` statement) in the description.
 
 An interesting property of locations is that a location can be located at another, both initially and during run-time. The result of having such ((nested locations)) is that all things present at the "`outer`" location are also present in the inner. This can be used in multiple levels to allow access to sky, ground and other scenery items available at many locations at once. It can also be used for grouping locations into sets of similar locations and for implementing vehicles.
 
@@ -566,7 +566,7 @@ An instance inheriting from `location` cannot have an initial location that is `
 
 === Names
 
-By default, the identifier ("`author name`") for an instance is also the name shown to the player, and by which he will be able to refer to it. Normally you would want to override this with more elaborate and alternative names. You can do that using the ((`Name` clause)).
+By default, the identifier ("`author name`") for an instance is also the name shown to the player, and by which he will be able to refer to it. Normally you would want to override this with more elaborate and alternative names. You can do that using the (((NAME, clause))) `Name` clause.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -595,7 +595,7 @@ The south_of_house IsA location
 //        See Issue #1468 on this:
 //        https://github.com/asciidoctor/asciidoctor/issues/1468#issuecomment-132378305
 
-The ((quoted identifier)) used in the last example makes the name (((Name, of locations))) be one single text string. See <<_words_identifiers_and_names>> for an explanation of this. This works for locations, which a player usually does not need to refer to, but for things the player should interact with, a more sophisticated mechanism is available.
+The ((quoted identifier)) used in the last example makes the name (((NAME, of locations))) be one single text string. See <<_words_identifiers_and_names>> for an explanation of this. This works for locations, which a player usually does not need to refer to, but for things the player should interact with, a more sophisticated mechanism is available.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -618,7 +618,7 @@ An explicit `Mentioned` clause will override the names for presenting the instan
 ================================================================================
 
 
-It is possible to give an instance multiple names (((names, multiple))) by listing a number of name clauses. Each one will define adjectives and a noun as described above. The result is that the player can use any of the names to refer to the object. For example:
+It is possible to give an instance multiple names (((NAME, multiple names))) by listing a number of name clauses. Each one will define adjectives and a noun as described above. The result is that the player can use any of the names to refer to the object. For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -637,7 +637,7 @@ The character case used in any word is retained for output, but player input wil
 
 ==== Inheriting Names
 
-Names can of course be (((names, inheriting))) inherited. This is done in an additive way so that any names inherited are appended to the `Name` clauses in the declaration. This ensures that the class or instance itself can control the primary name (the first `Name` clause). In addition, this has the effect that an instance inheriting from a class defining a `Name` will be possible to refer to also using the inherited name(s). Here is an example with fruits:
+Names can of course be (((NAME, inheriting names))) inherited. This is done in an additive way so that any names inherited are appended to the `Name` clauses in the declaration. This ensures that the class or instance itself can control the primary name (the first `Name` clause). In addition, this has the effect that an instance inheriting from a class defining a `Name` will be possible to refer to also using the inherited name(s). Here is an example with fruits:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -668,7 +668,7 @@ The interpreter also uses this principle when constructing lists of instances in
 
 ===  Pronouns
 
-In player input, it is often handy and natural to refer to items using (((Pronoun clause))) pronouns, such as "`it`", "`them`" or "`her`". Alan provides a means to define with which pronouns each instance can be associated.
+In player input, it is often handy and natural to refer to items using (((PRONOUN, clause))) pronouns, such as "`it`", "`them`" or "`her`". Alan provides a means to define with which pronouns each instance can be associated.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -698,7 +698,7 @@ Pronouns are inherited as any other property, but are overridden as soon as a pr
 
 [NOTE]
 ================================================================================
-The predefined class `entity` defines the (((Pronoun, predefined))) pronoun
+The predefined class `entity` defines the (((PRONOUN, predefined))) pronoun
 "`it`" (or equivalent for other supported languages).
 ================================================================================
 
@@ -850,12 +850,12 @@ If you need to set the initial value to refer to an instance of a sub-class of t
 
 ==== Set Type Attributes
 
-(((Set type, attributes)))(((attributes, of Set type)))
+(((SET, type, attributes)))(((attributes, of SET type)))
 A Set is an unordered set of integers or instance references. Initial members must be listed in the declaration of the Set. See <<Set Type>> for details on the Set type.
 
 The type and class of allowed members is inferred from the values actually in the initial set. If they are instance references, the common ancestor of all members is used as the class of the allowed members. An empty set is only allowed as an initial value if the attribute is an inherited attribute since in this case, the member class is known from the inheritance and need not be indicated in the declaration.
 
-You can also initialize (((initialize empty set))) a set type attribute with a set consisting only of a single class identifier. This will create an empty set with instance type members restricted to that particular class.
+You can also initialize (((initialize empty SET))) a set type attribute with a set consisting only of a single class identifier. This will create an empty set with instance type members restricted to that particular class.
 
 
 [NOTE]
@@ -920,7 +920,7 @@ Using (((abstract attribute))) abstract reference attribute declarations in clas
 
 === Initialize
 
-The attributes of an instance can be initialized using values in the attribute declaration. This is usually sufficient for many situations. For more flexibility, the ((`Initialize` clause)) can be used.
+The attributes of an instance can be initialized using values in the attribute declaration. This is usually sufficient for many situations. For more flexibility, the (((INITIALIZE, clause))) `Initialize` clause can be used.
 
 
 [source,ebnf]
@@ -940,7 +940,7 @@ Initialize
 --------------------------------------------------------------------------------
 
 
-The current location is set to the start location, and the current actor is the hero during the execution (((execution context, Initialize clause))) of all `Initialize` clauses.
+The current location is set to the start location, and the current actor is the hero during the execution (((execution context, INITIALIZE clause))) (((INITIALIZE, clause, execution context))) of all `Initialize` clauses.
 
 If the `Initialize` clause is inherited it will accumulate all clauses with clauses from base classes executing before the clause from the subclass. This lets the base classes do their initialization before the initialization of the more specialized, class or instance is performed.
 
@@ -948,12 +948,12 @@ If the `Initialize` clause is inherited it will accumulate all clauses with clau
 
 === Description
 
-The statements in the ((`Description` clause)) should print a description of the instance. These statements are executed when the hero encounters the instance. Depending on from which base class the instance inherits this can be a location description presented when the hero enters the location or when executing a `Look` statement. Other possibilities are descriptions of objects and actors. See <<Instances>> for descriptions of what inheriting from the predefined base classes means.
+The statements in the (((DESCRIPTION, clause))) `Description` clause should print a description of the instance. These statements are executed when the hero encounters the instance. Depending on from which base class the instance inherits this can be a location description presented when the hero enters the location or when executing a `Look` statement. Other possibilities are descriptions of objects and actors. See <<Instances>> for descriptions of what inheriting from the predefined base classes means.
 
 
 [NOTE]
 ================================================================================
-The description should not change any game state since it might not always be executed depending on the settings of the `Visits`. In particular, the description of a location should not move the hero; this might lead to a recursive loop of descriptions. This might instead be managed by the ((`Entered` clause)).
+The description should not change any game state since it might not always be executed depending on the settings of the `Visits`. In particular, the description of a location should not move the hero; this might lead to a recursive loop of descriptions. This might instead be managed by the (((ENTERED, clause))) `Entered` clause.
 ================================================================================
 
 
@@ -999,7 +999,7 @@ Before executing a description, you can check for various conditions to be met. 
 description = 'DESCRIPTION' [checks] [does]
 --------------------------------------------------------------------------------
 
-You can guard the description with a check in the same form as with verb bodies (see <<Verb Checks>> for a detailed description of checks). Of course, there are no qualifiers possible here. To be able to separate the checks statement from the actual description statements the keyword `Does` (((Does, in descriptions))) is required. This is an example of the checks for a dark location:
+You can guard the description with a check in the same form as with verb bodies (see <<Verb Checks>> for a detailed description of checks). Of course, there are no qualifiers possible here. To be able to separate the checks statement from the actual description statements the keyword `Does` (((DOES, in descriptions))) is required. This is an example of the checks for a dark location:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1167,7 +1167,7 @@ You can use various forms of the `Say` statement (see <<Say Statement>>) to choo
 
 ==== Mentioned
 
-The optional ((`Mentioned` clause)) overrides the name for displaying an instance in a short form that will be used when the instance is mentioned e.g. in listings of containers or when the *ALL* (((ALL (player input)))) form of player input is used. A typical use of the `Mentioned` clause is to let some internal state of the instance be reflected in the short form, e.g. if you want the short form of a box to show if it is open or closed you cannot rely on the Names since they are static. Instead, the `Mentioned` clause can print a different short name depending on an attribute.
+The optional (((MENTIONED, clause))) `Mentioned` clause overrides the name for displaying an instance in a short form that will be used when the instance is mentioned e.g. in listings of containers or when the *ALL* (((ALL (player input)))) form of player input is used. A typical use of the `Mentioned` clause is to let some internal state of the instance be reflected in the short form, e.g. if you want the short form of a box to show if it is open or closed you cannot rely on the Names since they are static. Instead, the `Mentioned` clause can print a different short name depending on an attribute.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -1209,7 +1209,7 @@ A mention clause declared on a class will override the names of any instance tha
 
 === Container Properties
 
-An instance can also be a container. This is declared by using the (((Container property, of objects))) `Container` property clause. The grammar is
+An instance can also be a container. This is declared by using the (((CONTAINER, property, of objects))) `Container` property clause. The grammar is
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -1236,7 +1236,7 @@ End The chest.
 --------------------------------------------------------------------------------
 
 
-A ((`Container`)) is something that can contain instances. By default, the instances it can contain must be inheriting from the base class `object`, but by using the `Taking` clause, you can allow any instances.
+A (((CONTAINER))) `Container` is something that can contain instances. By default, the instances it can contain must be inheriting from the base class `object`, but by using the `Taking` clause, you can allow any instances.
 
 Instances with the container property, "`inherits`" a special, predefined, Boolean attribute, `opaque`. This attribute can be manipulated in the same way as any other attribute. Its current value indicates if the instances inside the container are visible and accessible or not.
 
@@ -1278,7 +1278,7 @@ When an instance with the container property is encountered during game play, it
 
 ==== Limits
 
-The ((`Limits` clause)) of the container property declaration put limitations on what and how much can be put in the container.
+The (((LIMITS, clause))) `Limits` clause of the container property declaration put limitations on what and how much can be put in the container.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -1294,7 +1294,7 @@ limiting_attribute = attribute_definition
 
 If any of these limits are exceeded when trying to locate anything inside the container, the statements in the corresponding `Else`-part will be executed and the players turn aborted. In fact, these checks are performed because of the execution of a (((locating inside containers))) `Locate` statement (usually as a result of the player issuing a command with the intent of placing something in a container). This means that the execution of a sequence of statements can actually be interrupted in the middle by these limitations.
 
-The specification of an attribute, which must be a numeric attribute on the class the container takes (by default object), implies that the sum of this attribute of all objects in the container cannot exceed the value specified. The special attribute `Count` (((Count, in limits))) can be also be used and indicates a limitation on the number of instances allowed.
+The specification of an attribute, which must be a numeric attribute on the class the container takes (by default object), implies that the sum of this attribute of all objects in the container cannot exceed the value specified. The special attribute `Count` (((COUNT, in LIMITS))) can be also be used and indicates a limitation on the number of instances allowed.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1367,7 +1367,7 @@ Empty
 
 ==== Extract
 
-The ((`Extract` clause)) defines what happens when anything is extracted from a container. Any `Locate` statement that moves an instance out of a container is considered an extraction. The extraction will be subject to the restrictions enforced by the `Extract` clause.
+The (((EXTRACT, clause))) `Extract` clause defines what happens when anything is extracted from a container. Any `Locate` statement that moves an instance out of a container is considered an extraction. The extraction will be subject to the restrictions enforced by the `Extract` clause.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -1472,7 +1472,7 @@ exit = 'EXIT' id {',' id} 'TO' id [exit_body] '.'
 exit_body = [checks] [does] 'END' 'EXIT' [id]
 --------------------------------------------------------------------------------
 
-An ((`Exit`)) has a list of identifiers, all of which are considered directional words. I.e. when any of those words is input by the player, he will be located at the location identified as the target of the exit. It is possible to customize the exit using a `Check`, (((Check, in exits))) that must be satisfied to allow passage through the exit, and statements (`Does`) that will be executed when the player passes through. The checks work as described in <<Verb Checks,_Verb Checks_>>.
+An (((EXIT))) `Exit` has a list of identifiers, all of which are considered directional words. I.e. when any of those words is input by the player, he will be located at the location identified as the target of the exit. It is possible to customize the exit using a (((CHECK, in exits))) `Check`, that must be satisfied to allow passage through the exit, and statements (`Does`) that will be executed when the player passes through. The checks work as described in <<Verb Checks,_Verb Checks_>>.
 
 If either of the `Check` or `Does` clauses is present, the `End Exit` is required.
 
@@ -1511,16 +1511,16 @@ Exits are only allowed in classes or instances inheriting from the predefined cl
 
 === Scripts
 
-The ((`Script`)) is the actor's way of performing things. In a way, it corresponds to what the hero is ordered to do by the player's typed-in commands.
+The (((SCRIPT))) `Script` is the actor's way of performing things. In a way, it corresponds to what the hero is ordered to do by the player's typed-in commands.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
 script = 'SCRIPT' id ['.'] [description] {step}
 --------------------------------------------------------------------------------
 
-Every script has an identifier (the *id*) to identify it. A script is selected by the ((`Use` statement)). When an actor is started following a script, it will continue with one step after the other, with all the other actors, including the hero, taking turns.
+Every script has an identifier (the *id*) to identify it. A script is selected by the (((USE, statement))) `Use` statement. When an actor is started following a script, it will continue with one step after the other, with all the other actors, including the hero, taking turns.
 
-The optional description (((Description, of actor scripts))) allowed in the beginning of a script is used instead of the general description (from the instance declaration) whenever the actor is executing that particular script. If it is not present, the general description is used.
+The optional description (((DESCRIPTION, of ACTOR scripts))) allowed in the beginning of a script is used instead of the general description (from the instance declaration) whenever the actor is executing that particular script. If it is not present, the general description is used.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1557,7 +1557,7 @@ There are a few things that might fail when an actor executes. One example is an
 
 ==== Steps
 
-A script is divided into steps. Each ((`Step`)) contains statements representing what the actor will do in what corresponds to one player move. A step can be defined to be executed immediately next move, to wait a number of moves before it is executed or even to wait for a special situation (condition) to arise.
+A script is divided into steps. Each (((STEP))) `Step` contains statements representing what the actor will do in what corresponds to one player move. A step can be defined to be executed immediately next move, to wait a number of moves before it is executed or even to wait for a special situation (condition) to arise.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -1581,7 +1581,7 @@ Step After ticksLeft Of train
 --------------------------------------------------------------------------------
 
 
-When an actor has executed the last step (((Step, executing the last))) of the current script, it will do nothing more until the next `Use` statement is executed for this actor (the actor will not act, but still present at the location where it was). If this is not what you wanted, you can end each script with a new `Use` statement.
+When an actor has executed the last step (((STEP, executing the last))) of the current script, it will do nothing more until the next `Use` statement is executed for this actor (the actor will not act, but still present at the location where it was). If this is not what you wanted, you can end each script with a new `Use` statement.
 
 
 
@@ -1603,7 +1603,7 @@ Using this construct, you can add any property to a class without having access 
 
 == Syntax Definitions
 
-The ((`Syntax`)) construct is used to specify the allowed structure of the input from the player. Each definition defines the syntax for one `Verb`. The effects triggered by the player input are declared using the `Verb` construct (see <<Verbs>>).
+The (((SYNTAX, construct))) `Syntax` construct is used to specify the allowed structure of the input from the player. Each definition defines the syntax for one `Verb`. The effects triggered by the player input are declared using the `Verb` construct (see <<Verbs>>).
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -1858,7 +1858,7 @@ Restrictions are only allowed in the first of such syntax declarations. These re
 
 === Default Syntax
 
-If no `Syntax` is defined for a `Verb` at all, this is handled with one of two default syntaxes (((Syntax, default))) according to the two templates below:
+If no `Syntax` is defined for a `Verb` at all, this is handled with one of two default syntaxes (((SYNTAX, default))) according to the two templates below:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1926,7 +1926,7 @@ verb_body = simple_verb_body
 simple_verb_body = [check] [does]
 --------------------------------------------------------------------------------
 
-A ((`Verb`)) declaration specifies what to check and the effects of something the player does (i.e. commands using a syntactically legal input).
+A (((VERB, declaration))) `Verb` declaration specifies what to check and the effects of something the player does (i.e. commands using a syntactically legal input).
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2004,7 +2004,7 @@ check_list = 'CHECK' expression 'ELSE' {statement}
 --------------------------------------------------------------------------------
 
 
-To determine if the action is possible to carry out, the ((``Check``))s are executed. Which checks to run, is determined by the class of the instances bound by the parameters to the verb. All checks in the inheritance tree are tried by starting at the base class. In this way, the most general checks are tried first, then more specific.
+To determine if the action is possible to carry out, the ((CHECK)) ``Check``s are executed. Which checks to run, is determined by the class of the instances bound by the parameters to the verb. All checks in the inheritance tree are tried by starting at the base class. In this way, the most general checks are tried first, then more specific.
 
 A typical use of a check is to verify if the parameter has a particular property:
 
@@ -2018,7 +2018,7 @@ Verb take
 End Verb take.
 --------------------------------------------------------------------------------
 
-If no expression is specified for a check, that check will always fail, in effect becoming an (((Check, unconditional)))((unconditional `Check`)). This is useful for preventing certain actions, such as at specific locations, since the checks are always executed first.
+If no expression is specified for a check, that check will always fail, in effect becoming an (((CHECK, unconditional))) unconditional `Check`. This is useful for preventing certain actions, such as at specific locations, since the checks are always executed first.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2067,9 +2067,9 @@ qualifier = 'BEFORE'
           | 'ONLY'
 --------------------------------------------------------------------------------
 
-If all checks succeed, the execution (((Does, in verbs))) of the verb will be carried out. Multiple verb bodies may be involved. The order is by default to first execute the body of any verb declaration for the current location (including verb bodies inherited by it). Each parameter is then examined to find any declarations of that verb for the instance (including inherited verb bodies). These verb bodies are then executed in the order in which the parameters occurred in the syntax declaration, for each parameter starting with the body in the most basic class. By default, all of the involved verb bodies are executed. This is the most natural order and covers most cases.
+If all checks succeed, the execution (((DOES, in verbs))) of the verb will be carried out. Multiple verb bodies may be involved. The order is by default to first execute the body of any verb declaration for the current location (including verb bodies inherited by it). Each parameter is then examined to find any declarations of that verb for the instance (including inherited verb bodies). These verb bodies are then executed in the order in which the parameters occurred in the syntax declaration, for each parameter starting with the body in the most basic class. By default, all of the involved verb bodies are executed. This is the most natural order and covers most cases.
 
-In some infrequent situations, another order may be necessary. By using the (((Verb, qualifiers))) qualifiers, `Before`/`After`/`Only`, the author can decide which verb bodies will be executed and in which order (see <<Verb Qualification,_Verb Qualification_>> below for details).
+In some infrequent situations, another order may be necessary. By using the (((VERB, qualifiers))) qualifiers, `Before`/`After`/`Only`, the author can decide which verb bodies will be executed and in which order (see <<Verb Qualification,_Verb Qualification_>> below for details).
 
 A simple verb example:
 
@@ -2092,7 +2092,7 @@ End Verb take.
 verb_alternatives = 'WHEN' id simple_verb_body
 --------------------------------------------------------------------------------
 
-When a `Verb` (((Verb, alternative))) is declared within an instance declaration, verb alternatives are allowed. These alternatives are used in conjunction with the `Syntax` declaration defined for the verb and allows differentiating between the instances occurring in different places in the input.
+When a `Verb` (((VERB, alternative))) is declared within an instance declaration, verb alternatives are allowed. These alternatives are used in conjunction with the `Syntax` declaration defined for the verb and allows differentiating between the instances occurring in different places in the input.
 
 When a player inputs a command, each parameter in the syntax (see above) is bound to an actual instance or receives the value of a literal, depending on the specified syntax. To determine the checks to test and verb bodies to execute the parameters are examined in turn according to the algorithm described in the section <<Verb Qualification,_Verb Qualification_>> below. Each instance may have different verb bodies executed depending on at which position it occurred (to which parameter it was bound).
 
@@ -2133,13 +2133,13 @@ qualifier = 'BEFORE'
 
 The order in which the different verb bodies are executed is normally from the most general to the most specific. But, to allow for local differences, i.e. special handling of the verb at this location, a any possible definition of this verb in the current location (included inherited verb bodies) are considered first. Then, the verb bodies in the parameters (in the order they appeared in the syntax definition) on which the verb was applied are examined to find and execute their verb definitions. For each parameter, its most general definition is executed first, verb bodies down the inheritance tree next, ending with any verb body declared in the specific instance bound to that parameter.
 
-In most circumstances, this is the most logical order, but if another order is required, the `Verb` qualifiers (((Verb, qualifiers))) (((After qualifier))) `After`, (((Before qualifier))) `Before` and (((Only qualifier))) `Only` may be used to alter this behaviour. The qualifiers alter the order of execution and a strict definition of this is described below.
+In most circumstances, this is the most logical order, but if another order is required, the `Verb` qualifiers (((VERB, qualifiers))) (((AFTER, qualifier))) `After`, (((BEFORE, qualifier))) `Before` and (((ONLY, qualifier))) `Only` may be used to alter this behaviour. The qualifiers alter the order of execution and a strict definition of this is described below.
 
 
 
 === Verb Execution
 
-(((Verb, execution order)))
+(((VERB, execution order)))
 First all parameters are evaluated according to the syntax restrictions (see <<Parameter Restrictions,_Parameter Restrictions_>>). Then, if they passed, the checks of all verb declarations are evaluated (see <<Verb Checks>>). Finally the verb bodies are executed in the normal order as explained by the table below.
 
 // FIXME: CLEANUP TABLE
@@ -2190,7 +2190,7 @@ The qualifiers are a powerful but confusing concept. The normal order of executi
 
 [NOTE]
 ================================================================================
-All ``Check``s (((Check(s), execution order))) for a `Verb` will always be run in the normal order regardless of any `Before`/`After`/`Only` qualifiers.
+All ``Check``s (((CHECK, execution order))) for a `Verb` will always be run in the normal order regardless of any `Before`/`After`/`Only` qualifiers.
 ================================================================================
 
 
@@ -2217,7 +2217,7 @@ This also illustrates the fact that the most commonly used qualifier is the `Onl
 
 == Events
 
-An ((`Event`)) is a sequence of statements executed at a specified time (count of turns). It is also executed at some specific location. An event can e.g. be used to create an explosion where the bomb is three moves from now or to let the ceiling of the cave fall down in five moves.
+An (((EVENT))) `Event` is a sequence of statements executed at a specified time (count of turns). It is also executed at some specific location. An event can e.g. be used to create an explosion where the bomb is three moves from now or to let the ceiling of the cave fall down in five moves.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2238,13 +2238,13 @@ Events may be scheduled and cancelled with the `Schedule` and `Cancel` statement
 
 [source,ebnf,subs="macros"]
 --------------------------------------------------------------------------------
-rule = 'WHEN' expression ('THEN' | '=>')(((Rule, , syntax for)))
+rule = 'WHEN' expression ('THEN' | '=>')(((RULE, syntax for)))
            {statement}
        ['END' 'WHEN' '.' ]
 --------------------------------------------------------------------------------
 
 
-A ((`Rule`)) is an arbitrary expression, which, when true, results in the execution of some given statements. Rules can only be declared on the global level (not inside classes or instances). The main intended use of rules is to detect particular situations and then trigger some action. Typically they can be used to make things happen when certain situations arise, such as starting an actor when the hero enters the cave.
+A (((RULE))) `Rule` is an arbitrary expression, which, when true, results in the execution of some given statements. Rules can only be declared on the global level (not inside classes or instances). The main intended use of rules is to detect particular situations and then trigger some action. Typically they can be used to make things happen when certain situations arise, such as starting an actor when the hero enters the cave.
 
 Here is an example that investigates if the hero is in the cave and if so, activates the monster:
 
@@ -2266,7 +2266,7 @@ When hero At cave
 End When.
 --------------------------------------------------------------------------------
 
-Each actor action and event execution is considered atomic (it can't be divided into smaller parts). All rule conditionals are evaluated (((Rule(s), executing))) after each actor (including the player) has acted (script step and player command respectively) and after each event has executed. In effect this will mean that a change in state will be detected almost immediately, if there is a rule for detecting that change.
+Each actor action and event execution is considered atomic (it can't be divided into smaller parts). All rule conditionals are evaluated (((RULE, execution))) after each actor (including the player) has acted (script step and player command respectively) and after each event has executed. In effect this will mean that a change in state will be detected almost immediately, if there is a rule for detecting that change.
 
 The statements within the rule are triggered when the condition _becomes_ true. In the first example, this means that if the monster is not active, the statements will be executed when the hero enters the cave ('hero At cave' becomes true). A rule body can never be executed twice in succession unless the conditional has been evaluated to false in between. In the example above, the triggering of the hunting script for the monster will not happen again unless either the hero has left the cave and entered it again, or the monster has been active and then become not active again.
 
@@ -2311,7 +2311,7 @@ synonyms = 'SYNONYMS' {synonym_declaration}
 synonym_declaration = word {',' word} '=' word '.'
 --------------------------------------------------------------------------------
 
-A ((`Synonyms`)) declaration declare words that, when used in player input, are always interchangeable. For example
+A (((SYNONYMS, declaration))) `Synonyms` declaration declare words that, when used in player input, are always interchangeable. For example
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2423,7 +2423,7 @@ If the message must be modified according to the case of the noun, which is the 
 
 == Prompt Section
 
-The ((`Prompt` section)) allows you to customize the way players are prompted for their input.
+The (((PROMPT, section))) `Prompt` section allows you to customize the way players are prompted for their input.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -2492,7 +2492,7 @@ The prompt section is global and applies to the whole game. There is currently n
 
 == Start Section
 
-The ((`Start` section)) defines where the player (the hero) will be at the start of the game. This must be a location. Optionally this may be followed by statements to be executed at the beginning of the game, such as hello-messages or short instructions as well as starting any actors and scheduling events.
+The (((START, section))) `Start` section defines where the player (the hero) will be at the start of the game. This must be a location. Optionally this may be followed by statements to be executed at the beginning of the game, such as hello-messages or short instructions as well as starting any actors and scheduling events.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -2651,7 +2651,7 @@ The exact visual appearance of the styles is implementation dependent. In fact, 
 output_statement = 'DESCRIBE' what '.'
 --------------------------------------------------------------------------------
 
-The ((`Describe` statement)) executes the description part for an instance, such as an actor, an object or a location. If no such description exists a default description, such as
+The (((DESCRIBE, statement))) `Describe` statement executes the description part for an instance, such as an actor, an object or a location. If no such description exists a default description, such as
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2684,7 +2684,7 @@ form = 'THE' | 'AN' | 'IT' | 'NO'
 --------------------------------------------------------------------------------
 
 
-The ((`Say` statement)) will output a short description of what is referred to by the expression. If it refers to an instance, it will print the name of it or execute its `Mentioned` clause if one is available. If it refers to an attribute, it will print its value, such as an integer or a string. Parameter names are also allowed in the `Say` statement, which, of course will result in a short description of the instance to which it is bound, or a printing of the literal (if the parameter was a *String* or *Integer* parameter).
+The (((SAY, statement))) `Say` statement will output a short description of what is referred to by the expression. If it refers to an instance, it will print the name of it or execute its `Mentioned` clause if one is available. If it refers to an attribute, it will print its value, such as an integer or a string. Parameter names are also allowed in the `Say` statement, which, of course will result in a short description of the instance to which it is bound, or a printing of the literal (if the parameter was a *String* or *Integer* parameter).
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2711,7 +2711,7 @@ If `THE` is used the form used will be the definite form, usually the short form
 output_statement = 'LIST' expression '.'
 --------------------------------------------------------------------------------
 
-The ((`List` statement)) lists all objects in a container together with the header as specified for the container. If the container is empty, the statements in the empty clause of the container are executed instead.
+The (((LIST, statement))) `List` statement lists all objects in a container together with the header as specified for the container. If the container is empty, the statements in the empty clause of the container are executed instead.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2770,7 +2770,7 @@ Alan currently supports the MOD and AIFF formats only.[[X30946]]
 locate_statement = 'LOCATE' what where '.'
 --------------------------------------------------------------------------------
 
-The ((`Locate` statement)) is a way of transferring instances to new locations. When executed, the indicated instance will be placed at the location given. For a description on how to specify where, see <<WHERE Specifications>>. When an actor is located at a new location the `DOES` clause of that location is always executed.
+The (((LOCATE, statement))) `Locate` statement is a way of transferring instances to new locations. When executed, the indicated instance will be placed at the location given. For a description on how to specify where, see <<WHERE Specifications>>. When an actor is located at a new location the `DOES` clause of that location is always executed.
 
 One special case of the `Locate` statement is when the predefined actor `hero` is located somewhere. This is analogous to the player typing a direction, i.e. the hero will be located at the appropriate location. Under particular circumstances, you may want to locate the player at a different location as a side effect of another action. For example:
 
@@ -2800,7 +2800,7 @@ A very special third case is locating a location at another location. Locations 
 empty_statement = 'EMPTY' what [where] '.'
 --------------------------------------------------------------------------------
 
-The ((`Empty` statement)) locates all instances currently located inside the given container (instance with the `Container` property) at a certain location. The meaning of the `where` part, is the same as in the `Locate` statement. If it is not specified the instances will be placed at the current location.
+The (((EMPTY, statement))) `Empty` statement locates all instances currently located inside the given container (instance with the `Container` property) at a certain location. The meaning of the `where` part, is the same as in the `Locate` statement. If it is not specified the instances will be placed at the current location.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2835,7 +2835,7 @@ into_clause = 'INTO' expression
 // 		  ...into:
 // 				the optional `into` clause.
 
-The ((`Strip` statement)) is used to manipulate the contents of (((string, functions))) strings. You can use it to remove words or characters from a string, starting from the beginning or the end. The words or characters that are removed may be placed in an attribute as specified by the optional *into clause*. If the statement is used to manipulate words, blanks and separators are used to separate the words. In this case, any resulting string is also free of leading and trailing blanks.
+The (((STRIP, statement))) `Strip` statement is used to manipulate the contents of (((string, functions))) strings. You can use it to remove words or characters from a string, starting from the beginning or the end. The words or characters that are removed may be placed in an attribute as specified by the optional *into clause*. If the statement is used to manipulate words, blanks and separators are used to separate the words. In this case, any resulting string is also free of leading and trailing blanks.
 
 A short example
 
@@ -2859,7 +2859,7 @@ End The eliza.
 
 ==== Schedule Statement
 
-`Schedule` (((`Schedule` statement))) will queue an event to occur at a specified location after the number of player turns specified by the expression.
+`Schedule` (((SCHEDULE, statement))) will queue an event to occur at a specified location after the number of player turns specified by the expression.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -2898,7 +2898,7 @@ The event can be specified by giving an event identifier or referring to an attr
 cancel_statement = 'CANCEL' what '.'
 --------------------------------------------------------------------------------
 
-`Cancel` (((`Cancel` statement))) will remove the event referenced from the queue of scheduled events. It is not an error to remove an Event, which is not currently scheduled.
+`Cancel` (((CANCEL, statement))) will remove the event referenced from the queue of scheduled events. It is not an error to remove an Event, which is not currently scheduled.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2945,7 +2945,7 @@ something = ['NOT'] id
 --------------------------------------------------------------------------------
 
 
-The ((`Make` statement)) is used to set or reset Boolean attributes.
+The (((MAKE, statement))) `Make` statement is used to set or reset Boolean attributes.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2968,7 +2968,7 @@ by = 'BY' expression
 --------------------------------------------------------------------------------
 
 
-The `Increase` (((`Increase` statement))) and `Decrease` (((`Decrease` statement))) statements modifies the values of numeric attributes by increasing or decreasing them by the value of the expression given in the optional `By` clause. If no `By` clause is specified the attributes are changed by one.
+The `Increase` (((INCREASE, statement))) and `Decrease` (((DECREASE, statement))) statements modifies the values of numeric attributes by increasing or decreasing them by the value of the expression given in the optional `By` clause. If no `By` clause is specified the attributes are changed by one.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2988,7 +2988,7 @@ set_statement = 'SET' what 'TO' expression '.'
 --------------------------------------------------------------------------------
 
 
-The ((`Set` statement)) is used when assigning values to numeric, string, reference of set valued attributes.
+The (((SET, statement))) `Set` statement is used when assigning values to numeric, string, reference of set valued attributes.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3033,7 +3033,7 @@ Set friends Of mine To {suspect Of detective}. -- Correct maybe
 include_statement = 'INCLUDE' expression 'IN' set '.'
 --------------------------------------------------------------------------------
 
-The ((`Include` statement)) is used to include a new member in a Set. Typically, this is used to an instance or value to a collection of such. See <<Set Type>> for an explanation of the `Set` type. A member already in the `Set` will silently be accepted but not generate duplicate entries.
+The (((INCLUDE, statement))) `Include` statement is used to include a new member in a Set. Typically, this is used to an instance or value to a collection of such. See <<Set Type>> for an explanation of the `Set` type. A member already in the `Set` will silently be accepted but not generate duplicate entries.
 
 The set may be identified using an expression involving (((reference attribute))) reference attributes:
 
@@ -3090,7 +3090,7 @@ elsif_part = 'ELSIF' expression 'THEN' statements
 else_part = 'ELSE' expression 'THEN' statements
 --------------------------------------------------------------------------------
 
-The ((`If` statement)) is essential for varying output and otherwise change the activities in the game. The expression is evaluated (see <<Expressions>> for details and examples of expression) and if it evaluates to true, the statements following the `Then` are executed. Otherwise, the expressions in any following `ElsIf` clauses are evaluated (in order) and the statements following the first expression that results in a true value is executed. If none of the expressions in the `ElsIf` clauses evaluated to true, or there are no `ElsIf` clauses, the statements following the `Else` are executed. The `Else` clause is optional.
+The (((IF, statement))) `If` statement is essential for varying output and otherwise change the activities in the game. The expression is evaluated (see <<Expressions>> for details and examples of expression) and if it evaluates to true, the statements following the `Then` are executed. Otherwise, the expressions in any following `ElsIf` clauses are evaluated (in order) and the statements following the first expression that results in a true value is executed. If none of the expressions in the `ElsIf` clauses evaluated to true, or there are no `ElsIf` clauses, the statements following the `Else` are executed. The `Else` clause is optional.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3145,7 +3145,7 @@ case = right_hand_side 'THEN' statements
      | 'ELSE' statements
 --------------------------------------------------------------------------------
 
-The ((`Depending On` statement)) is a provided to select one of a number of possible conditional cases depending on an expression. The expression can be any expression. The right-hand side is the right hand side of any valid expression. When combined with expression (as the left hand side of the expression) they will be a complete expression, that is evaluated.
+The (((DEPENDING ON, statement))) `Depending On` statement is a provided to select one of a number of possible conditional cases depending on an expression. The expression can be any expression. The right-hand side is the right hand side of any valid expression. When combined with expression (as the left hand side of the expression) they will be a complete expression, that is evaluated.
 
 A simple example of the `Depending On` statement is:
 
@@ -3198,7 +3198,7 @@ use_statement = 'USE' script ['FOR' actor] '.'
 // @FIXME: Not sure how this should be formatted:
 // 				The *For* *actor* clause
 
-The ((`Use` statement)) starts execution of a given script for a given actor. The `For actor` clause is optional when writing code within a certain actor; in this case that the statement applies to the actor that the code is in.
+The (((USE, statement))) `Use` statement starts execution of a given script for a given actor. The `For actor` clause is optional when writing code within a certain actor; in this case that the statement applies to the actor that the code is in.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3225,7 +3225,7 @@ actor = expression
 --------------------------------------------------------------------------------
 
 
-The ((`Stop` statement)) stops an actor from proceeding with any script it may be executing. In effect, it will abort it and put the actor in an idle state. The most common case is the direct reference to an actor using its identifier. More complex expressions resulting in an actor type value, such as a parameter reference or a ((reference attribute)), can be used as the actor clause.
+The (((STOP, statement))) `Stop` statement stops an actor from proceeding with any script it may be executing. In effect, it will abort it and put the actor in an idle state. The most common case is the direct reference to an actor using its identifier. More complex expressions resulting in an actor type value, such as a parameter reference or a ((reference attribute)), can be used as the actor clause.
 
 
 
@@ -3273,13 +3273,13 @@ End For.
 
 ==== Quit Statement
 
-`Quit` (((`Quit` statement))) prints a question giving the player the choice of restarting the game, reloading a previously saved game or to quit. Any scoring or other printouts have to be made explicitly before executing the `Quit` statement.
+`Quit` (((QUIT, statement))) prints a question giving the player the choice of restarting the game, reloading a previously saved game or to quit. Any scoring or other printouts have to be made explicitly before executing the `Quit` statement.
 
 
 
 ==== Look Statement
 
-`Look` (((`Look` statement))) describes the current location (the current location is dependent on in which context it is executed) and what it contains to the player. First the location name is output, then the `Description` part for the location is executed. If you do not want the name of the location to be included you can use a `Describe` statement instead.
+`Look` (((LOOK, statement))) describes the current location (the current location is dependent on in which context it is executed) and what it contains to the player. First the location name is output, then the `Description` part for the location is executed. If you do not want the name of the location to be included you can use a `Describe` statement instead.
 
 Then all object and actors at the location will automatically be executed by means of an implicit `Describe` for each of them. Any objects or actors that were explicitly described using a `Describe` statements, will be excluded from this automatic `Describe`.
 
@@ -3298,7 +3298,7 @@ consideration.
 
 ==== Save and Restore Statements
 
-`Save` (((`Save` statement))) saves the game on a file for later use with (((`Restore` statement))) `Restore`. Both `save` and `restore` asks the player for a file name to use for storing and restoring. This allows the player to use unlimited number of save files.
+`Save` (((SAVE, statement))) saves the game on a file for later use with (((RESTORE, statement))) `Restore`. Both `save` and `restore` asks the player for a file name to use for storing and restoring. This allows the player to use unlimited number of save files.
 
 If the player should be shown the current surroundings after a `Restore`, you will have to implement a player verb like
 
@@ -3315,7 +3315,7 @@ End Verb restore.
 
 ==== Score Statement
 
-`Score` (((`Score` statement))) is a way of rewarding the player by giving points for certain actions. This is done using the statement
+`Score` (((SCORE, statement))) is a way of rewarding the player by giving points for certain actions. This is done using the statement
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -3345,7 +3345,7 @@ The `Score` statements assume a simple model of scoring; a number of actions are
 
 ==== Visits Statement
 
-The ((`Visits` statement)) changes the number of times a location can be visited before the long description is presented again:
+The (((VISITS, statement))) `Visits` statement changes the number of times a location can be visited before the long description is presented again:
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -3400,7 +3400,7 @@ End The secret_cave.
 transcript_statement = 'TRANSCRIPT' ('ON' | 'OFF') '.'
 --------------------------------------------------------------------------------
 
-Using the ((`Transcript` statement)) you can turn transcripting on or off. When transcripting is turned on all player input and game output is recorded in a file (or similar) which can be studied afterwards. Example uses are
+Using the (((TRANSCRIPT, statement))) `Transcript` statement you can turn transcripting on or off. When transcripting is turned on all player input and game output is recorded in a file (or similar) which can be studied afterwards. Example uses are
 
 * reading the game output as a novel (player)
 * comparing the output to output from previous versions of the game (author)
@@ -3429,7 +3429,7 @@ End Verb.
 
 == WHERE Specifications
 
-Many constructs in the Alan language require a specification of where the construct should operate. The general intention of such a ((`Where` specification)) is to specify a location.
+Many constructs in the Alan language require a specification of where the construct should operate. The general intention of such a (((WHERE, specification))) `Where` specification is to specify a location.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -3442,8 +3442,8 @@ where = 'HERE'
 
 The meaning of the different constructs is as follows
 
-* ((`Here`)) is the location where the current activity is performed. Often this means where the hero is, but if the expression is evaluated in another run-time context this context is used. See <<Run-time Contexts,_Run-time Contexts_>> for a detailed discussion, but examples include an event scheduled at a particular location, in which case that location is `Here`. Note that `Here` is equivalent to `At Current Location`.
-* ((`Nearby`)) means at any adjacent location. An adjacent location means that there exists an exit from the other location to `Here` (note that the direction is from `Nearby` to `Here`). It is allowed to refer to any instance using an identifier or expression. In particular, instances inheriting from `location` are allowed, which can be used to see if someone at that location can use an exit to get here.
+* (((HERE))) `Here` is the location where the current activity is performed. Often this means where the hero is, but if the expression is evaluated in another run-time context this context is used. See <<Run-time Contexts,_Run-time Contexts_>> for a detailed discussion, but examples include an event scheduled at a particular location, in which case that location is `Here`. Note that `Here` is equivalent to `At Current Location`.
+* (((NEARBY))) `Nearby` means at any adjacent location. An adjacent location means that there exists an exit from the other location to `Here` (note that the direction is from `Nearby` to `Here`). It is allowed to refer to any instance using an identifier or expression. In particular, instances inheriting from `location` are allowed, which can be used to see if someone at that location can use an exit to get here.
 * `Near what` has a similar meaning to `Nearby` except that it refers to some other instance (the what) instead of the current location. The results is a truth value indicating if that other instance is at a location which is nearby (has an exit to) that of the location of the first instance.
 * `At what` means at the location of the instance referenced by the `what` specification (see <<WHAT Specifications>>). Note that an instance is always `At` itself, i.e. `x At x` is always true. This can come as a surprise, especially if you try to aggregate or loop over instances. (See <<Aggregates,_Aggregates_>> and <<Repetition Statements,_Repetition Statements_>>.)
 * `In what` must refer to a container and the expression refers to inside of that container.
@@ -3461,7 +3461,7 @@ Not all kinds of `Where` specifications are meaningful in all constructs. Exampl
 
 == WHAT Specifications
 
-Constructs in the grammar for the Alan language often refer to some class or instance defined in the Alan source. This is generally called a ((`What` specification)), as it specifies what the construct refers to. An example is the `Locate` statement that must refer to something that should be relocated.
+Constructs in the grammar for the Alan language often refer to some class or instance defined in the Alan source. This is generally called a (((WHAT, specification))) `What` specification, as it specifies what the construct refers to. An example is the `Locate` statement that must refer to something that should be relocated.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -3475,8 +3475,8 @@ what = 'CURRENT' 'ACTOR'
 
 The meaning of the different forms of the `what` specification are:
 
-* `Current Actor` (((Actor, in What specifications))) is always set to the actor currently active, e.g. when a non-player actor is running a script this refers to the actor instance that is running.
-* `Current Location` (((Location, in What specifications))) is the current location, i.e. the location where the current activity is performed. Normally this is the location where the hero is, but may also be where an event is executed or the location where a scripted actor currently is executing. See <<Run-time Contexts,_Run-time Contexts_>> for more details.
+* `Current Actor` (((ACTOR, in WHAT specifications))) is always set to the actor currently active, e.g. when a non-player actor is running a script this refers to the actor instance that is running.
+* `Current Location` (((LOCATION, in WHAT specifications))) is the current location, i.e. the location where the current activity is performed. Normally this is the location where the hero is, but may also be where an event is executed or the location where a scripted actor currently is executing. See <<Run-time Contexts,_Run-time Contexts_>> for more details.
 * `This` refers to the instance in which code, such as a verb body or a script, is run. This can for example be used to test or set attributes in inherited code, thus testing or setting attributes in the instance while the code is defined in a class that the instance inherits from. It cannot be used in events or global verbs.
 * An identifier, *id*, refers to the class or instance with that name, a syntax parameter, script or loop variable with that name. A syntax parameter may have the same name as an class or instance declared elsewhere in the source in which case the parameter has precedence.
 * A reference to an attribute, as described in <<Attribute References>>, might be used depending on its type and the context of the usage of the `what`-expression.
@@ -3751,7 +3751,7 @@ Verb put_in
 
 Relational operations (((operators, relational))) are not allowed on entities or strings, nor is it possible to compare values of different types.
 
-A special relational operator is the ((`Between`)) operator which makes it possible to test if a numeric expression is within a range of values. The range is inclusive, i.e. the values are included in the accepted range. For example
+A special relational operator is the (((BETWEEN))) `Between` operator which makes it possible to test if a numeric expression is within a range of values. The range is inclusive, i.e. the values are included in the accepted range. For example
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3762,7 +3762,7 @@ If level Of water Between 2 And capacity Of bottle Then ...
 
 === String Containment
 
-There is a string (((string, containment operator))) ((containment operator)), ((`Contains`)), which can be used to test if a string contains another string. The test ignores any differences in character case. An example of an expression that is true is
+There is a string (((string, containment operator))) ((containment operator)), (((CONTAINS))) `Contains`, which can be used to test if a string contains another string. The test ignores any differences in character case. An example of an expression that is true is
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3784,8 +3784,8 @@ The expression yields a Boolean value.
 
 There are two particularly interesting entities that you might want to know something about or which they are. They are
 
-* ((`Current Actor`))
-* ((`Current Location`))
+* (((CURRENT ACTOR))) `Current Actor`
+* (((CURRENT LOCATION))) `Current Location`
 
 These two expressions can be used wherever a reference to an instance can be used. They will refer to the currently executing actor and the current location respectively. Details about execution contexts can be found in <<Run-time Contexts,_Run-time Contexts_>>.
 
@@ -3793,7 +3793,7 @@ These two expressions can be used wherever a reference to an instance can be use
 
 === This Instance
 
-You can also refer to the instance that is actually executing the code containing the expression. This is particularly useful when using inheritance since the class defining the code have no way of knowing which instance will actually execute it. ((This expression)) is `This`.
+You can also refer to the instance that is actually executing the code containing the expression. This is particularly useful when using inheritance since the class defining the code have no way of knowing which instance will actually execute it. (((THIS, expression))) This expression is `This`.
 
 An example is the code for objects that can be opened:
 
@@ -3895,7 +3895,7 @@ Aggregates are functions to calculate values from sets of instances. There are f
 
 You can use filters to filter out instances belonging to a particular class, at a particular location or having a particular Boolean attribute. See <<Filters>> for an explanation of filters.
 
-((`Count`)) counts the number of instances in the set, e.g.
+(((COUNT))) `Count` counts the number of instances in the set, e.g.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3907,7 +3907,7 @@ Say Count IsA object, In inventory, Is big.
 
 In this example there are three filters applied, `IsA object`, `In inventory` and `Is big`. All of these filters must pass before an instance is counted. The result of that count is an integer, which is then printed using the `Say` statement.
 
-The (((Sum aggregate))) `Sum`, (((Min aggregate))) `Min` and (((Max aggregate))) `Max` aggregates return the sum, minimum and maximum value respectively, of an attribute of all instances in the filtered set.
+The (((SUM, aggregate))) `Sum`, (((MIN, aggregate))) `Min` and (((MAX, aggregate))) `Max` aggregates return the sum, minimum and maximum value respectively, of an attribute of all instances in the filtered set.
 
 Any attribute referred to either in the aggregation itself or in the filters, must be an attribute of some class in order to ensure that the attribute is available for all instances. You must ensure this by filtering out only instances of the relevant class, e.g. objects, using a class filter.
 
