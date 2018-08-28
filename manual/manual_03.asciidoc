@@ -58,7 +58,7 @@ declaration = import
             | prompt
 --------------------------------------------------------------------------------
 
-The adventure source text must end with a (((START section))) `Start` section.
+The adventure source text must end with a (((START, section))) `Start` section.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -308,7 +308,7 @@ Exactly the same rules for declaring properties apply to instances. The only dif
 // @NOTE: I didn't style as inline code the classes in the following paragraph,
 // 		  as some of these are not actually referenceable in real code (eg, literal)
 
-Instances inheriting, directly or indirectly, from the predefined classes *thing*, *entity*, *object*, *location*, *actor* and *literal,* are subject to special semantics (((semantics of predefined classes))) and restrictions.
+Instances inheriting, directly or indirectly, from the predefined classes *thing*, *entity*, *object*, *location*, *actor* and *literal,* are subject to special semantics (((semantics, of predefined classes))) and restrictions.
 
 Here are two examples of instance declarations following the rules above:
 
@@ -1666,7 +1666,7 @@ It is allowed to define multiple syntaxes for the same identifier (verb). See <<
 
 === Indicators
 
-Following a ((parameter, indicators)) are allowed in syntax declarations.
+Following a parameter, (((parameter, indicators))) indicators are allowed in syntax declarations.
 
 [source,ebnf]
 --------------------------------------------------------------------------------

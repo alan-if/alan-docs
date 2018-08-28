@@ -4,11 +4,11 @@
 
 == A Turn of Events
 
-The player controls the execution of an Alan adventure. Each of his inputs are taken care of and acted upon by the run-time system in the interpreter. The execution of an Alan adventure starts by executing the start section. The player is then placed in the location indicated in the start section, the location is described, and the player is prompted for a command.
+The player controls the (((execution, of an adventure))) execution of an Alan adventure. Each of his inputs are taken care of and acted upon by the run-time system in the interpreter. The execution of an Alan adventure starts by executing the start section. The player is then placed in the location indicated in the start section, the location is described, and the player is prompted for a command.
 
 The player input is analysed according to the explicit and implicit syntax rules and converted to an execution of verb checks and bodies. Global verb checks and bodies are used for verbs taking no parameters, otherwise the verb bodies are found in the parameter instances or their classes. In case the player typed a directional command the corresponding exit check and code is executed.
 
-After the players command has been taken care of, all rules are evaluated and possibly executed. Then each of the other actors executes one step in their scripts (if active) and for each actor the rules are evaluated again. Finally, each event that is scheduled for this round is fired, and the rules evaluated yet again. Finally the player is prompted for another command.
+After the (((player commands))) players command has been taken care of, all rules are evaluated and possibly executed. Then each of the other actors executes one step in their scripts (if active) and for each actor the rules are evaluated again. Finally, each event that is scheduled for this round is fired, and the rules evaluated yet again. Finally the player is prompted for another command.
 
 So, to summarise:
 
@@ -42,7 +42,7 @@ The following built in syntax variations are available to the player:
 
 // FIXME: Game Transcripts that are inside list elements should be indented
 
-* Concatenating of statements using *AND*-words like
+* Concatenating of statements using (((AND (player input)))) (((THEN (player input)))) *AND*-words like
 
 [example,role="gametranscript"]
 ================================================================================
@@ -53,7 +53,7 @@ The following built in syntax variations are available to the player:
 
 
 
-* The use of pronouns to refer to the last object mentioned in the previous command, e.g.
+* The use of pronouns (((IT (player input)))) to refer to the last object mentioned in the previous command, e.g.
 
 
 [example,role="gametranscript"]
@@ -66,7 +66,7 @@ The following built in syntax variations are available to the player:
 
 The pronouns have to be defined by the author in his source (see <<Pronouns>>) or by a library. The only built-in pronoun is the *IT*-word, which is automatically defined on the class `thing`.
 
-* References to multiple objects using *AND*-word. This allows
+* References to (((multiple parameters))) multiple objects using (((AND (player input)))) *AND*-word. This allows
 
 
 [example,role="gametranscript"]
@@ -77,7 +77,7 @@ The pronouns have to be defined by the author in his source (see <<Pronouns>>) o
 
 
 
-* Reference to multiple objects using *ALL*-word
+* Reference to multiple objects using (((ALL (player input)))) (((EVERYTHING (player input)))) *ALL*-word
 
 
 [example,role="gametranscript"]
@@ -87,7 +87,7 @@ The pronouns have to be defined by the author in his source (see <<Pronouns>>) o
 
 
 
-* Excluding objects using a *BUT*-word, like:
+* Excluding objects using a (((BUT (player input)))) (((EXCEPT (player input)))) *BUT*-word, like:
 
 
 [example,role="gametranscript"]
@@ -97,7 +97,7 @@ The pronouns have to be defined by the author in his source (see <<Pronouns>>) o
 
 
 
-* The use of a *THEM*–word to refer to the multiple objects referenced in the previous command, e.g.
+* The use of a (((THEM (player input)))) *THEM*–word to refer to the (((multiple parameters))) multiple objects referenced in the previous command, e.g.
 
 
 [example,role="gametranscript"]
@@ -107,9 +107,9 @@ The pronouns have to be defined by the author in his source (see <<Pronouns>>) o
 
 
 
-The reference to multiple objects (or actors) in a position is only possible if the adventure author has allowed it by using a multiple indicator in the syntax definition (see <<Syntax Definitions>>). All the variations above are built in and handled automatically by the run-time system.
+The reference to multiple objects (or actors) in a position is only possible if the adventure author has allowed it by using a ((multiple indicator)) (((parameter, indicators, multiple))) in the syntax definition (see <<Syntax Definitions>>). All the variations above are built in and handled automatically by the run-time system.
 
-The interpreter also automatically restricts parameter references to things reachable according to the semantic rules of each built-in base class (see <<Instances>> for the complete details). For example objects are only possible to refer to if they are present at the current location, except if the syntax for the command uses the omnipotent `!` indicator (see <<Syntax Definitions>> for details). For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to <<Distant & Imaginary Objects,_Distant & Imaginary Objects_>>.
+The interpreter also automatically restricts (((parameter, referencing))) parameter references to things reachable according to the semantic rules of each built-in base class (see <<Instances>> for the complete details). For example objects are only possible to refer to if they are present at the current location, except if the syntax for the command uses the (((omnipotent indicator))) (((parameter, indicators, omnipotent))) omnipotent `!` indicator (see <<Syntax Definitions>> for details). For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to <<Distant & Imaginary Objects,_Distant & Imaginary Objects_>>.
 
 If the player uses *ALL* instead of a reference to an instance in his command, the verb will be applied to all appropriate instances at the current location, _except_ the ones that do not pass all checks for the verb (see <<Verbs>> for further details on this).
 
@@ -119,13 +119,17 @@ A restriction placed on the player input by the interpreter is that the words th
 
 == Run-time Contexts
 
-When the player enters a command, the Alan run-time system evaluates the various constructs from the adventure description (source) as described above. Depending on the player's command evaluation of different parts of the adventure may be triggered. These parts all have different conditions under which they are evaluated and have different contexts. Four different execution contexts can be identified:
+When the player enters a command, the Alan run-time system evaluates the various constructs from the adventure description (source) as described above. Depending on the player's command evaluation of different parts of the adventure may be triggered. These parts all have different conditions under which they are evaluated and have different contexts. Four different (((execution, contexts))) execution contexts can be identified:
 
-* Execution of a verb. During the execution of a verb (the syntax and verb checks and the verb bodies), which is the result of the player entering a command that was not a directional command, parameters are defined and may be referenced in the statements and expressions. In addition, the `Current Actor` is set to the hero and `Current Location` to the location where the hero is (`Here` refers to the location of the hero).
-* Execution of descriptions. These are started as the response to a directional command, a `Look` or `Describe` statement, or a `Locate` statement operating on the hero. During this, no parameters are defined, `Current Actor` is set to the hero, and `Current Location` of course to the location being described. The description clauses for objects and locations, as well as the `Entered` clause of locations, are evaluated in this context. `Entered` clauses are executed for all actors entering a location with `Current Actor` set to the moving actor.
-* Execution of actors. When an actor performs his script step there are no parameters defined but `Current Actor` is set to the actor currently executing. `Current Location` is set to that of the executing actor (`Here` refers to where the executing actor is).
-* Execution of events, no parameters and no actor is defined. The location is set to where the event was scheduled to execute.
-* Execution of rules. Rules are executed without location, so neither parameters, `Current Location` or `Current Actor` is defined. Any output statement will in this context be completely useless since the hero can never be at the same location as the execution of the rule.
+* Execution of a verb. (((VERB, execution context)))
+  During the execution of a verb (the syntax and verb checks and the verb bodies), which is the result of the player entering a command that was not a directional command, parameters are defined and may be referenced in the statements and expressions. In addition, the `Current Actor` is set to the hero and `Current Location` to the location where the hero is (`Here` refers to the location of the hero).
+* Execution of descriptions. (((DESCRIPTION, execution context)))
+  These are started as the response to a directional command, a `Look` or `Describe` statement, or a `Locate` statement operating on the hero. During this, no parameters are defined, `Current Actor` is set to the hero, and `Current Location` of course to the location being described. The description clauses for objects and locations, as well as the `Entered` clause of locations, are evaluated in this context. `Entered` clauses are executed for all actors entering a location with `Current Actor` set to the moving actor.
+* Execution of actors. (((ACTOR, execution context)))
+  When an actor performs his script step there are no parameters defined but `Current Actor` is set to the actor currently executing. `Current Location` is set to that of the executing actor (`Here` refers to where the executing actor is).
+* Execution of events, (((EVENT, execution context))) no parameters and no actor is defined. The location is set to where the event was scheduled to execute.
+* Execution of rules. (((RULE, execution context)))
+  Rules are executed without location, so neither parameters, `Current Location` or `Current Actor` is defined. Any output statement will in this context be completely useless since the hero can never be at the same location as the execution of the rule.
 
 So, the execution of various parts of the adventure source can also be said to have a number of different focuses, meaning where the action is considered to take place:
 
@@ -139,15 +143,16 @@ So, the execution of various parts of the adventure source can also be said to h
 
 == Moving Actors
 
-The main way to move the hero is through the exits (see <<Exits>>). They are executed if the player inputs a directional command, i.e. a word defined as the name for an exit in any location. First, the current location is investigated for an exit in the indicated direction, if there is none an error message is printed. Otherwise, that exit is examined for ``Check``s, which are run according to normal rules (see <<Verb Checks>>). If there was no `Check` or if the check passed the statements in the body (the `Does`-part) is executed. The hero is then located at the location indicated in the exit header, which will result in the description of the location (by executing the `Description`-clause of the location) and any objects or actors present (by executing their ``Description``s, explicit or implicit).
+(((ACTOR, movement of actors)))
+The main way to (((HERO, movement of))) move the hero is through the (((EXIT))) ``Exit``s (see <<Exits>>). They are executed if the player inputs a directional command, i.e. a word defined as the name for an exit in any location. First, the current location is investigated for an exit in the indicated direction, if there is none an error message is printed. Otherwise, that exit is examined for ``Check``s, which are run according to normal rules (see <<Verb Checks>>). If there was no (((CHECK, in exits))) `Check` or if the check passed the statements in the body (the (((DOES, in exits))) `Does`-part) is executed. The (((HERO, traversing EXITs))) hero is then located at the location indicated in the exit header, which will result in the description of the location (by executing the `Description`-clause of the location) and any objects or actors present (by executing their ``Description``s, explicit or implicit).
 
-When any actor (including the hero) is located at a location, the `Entered` clause of that location is executed as if the actor had moved into that `Location`. The actor that was moved will be the `Current Actor` even if the movement was not caused by him (but the result of an event, for example). Therefore, this is also the last step in the sequence of events caused by locating the hero somewhere.
+When any actor (including the hero) is located at a location, the (((ENTERED, in locations))) `Entered` clause of that location is executed as if the actor had moved into that `Location`. The actor that was moved will be the `Current Actor` even if the movement was not caused by him (but the result of an event, for example). Therefore, this is also the last step in the sequence of events caused by locating the hero somewhere.
 
 
 
 == Undoing
 
-A player might occasionally regret a command that he gave, perhaps realising that it was not the correct one. The Alan interpreter supports such undoing of commands. This means that the player can backup commands that (s)he later regretted. The interpreter stores each game state as soon as it has changed and an `undo` command resets the game state to the last saved one. This works completely automatically and as many states as memory permits is saved, giving almost unlimited `undo` capability.
+A player might occasionally regret a command that he gave, perhaps realising that it was not the correct one. The Alan interpreter supports such undoing of commands. This means that the player can backup commands that (s)he later regretted. The interpreter stores each game state as soon as it has changed and an (((UNDO command))) `undo` command resets the game state to the last saved one. This works completely automatically and as many states as memory permits is saved, giving almost unlimited `undo` capability.
 
 The player command to restore a previous game state is handled directly by the interpreter. It must consist of the single word `undo`.
 

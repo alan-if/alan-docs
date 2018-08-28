@@ -159,19 +159,19 @@ Rebuild _Index_:
 - [x] _1. Introduction_ (none found)
 - [x] _2. Concepts_
 - [x] _3. Lexical Definitions_
-- [ ] _4. Language Reference_
-- [ ] _5. Running An Adventure_
-- [ ] _6. Hints And Tips_
-- [ ] _7. Adventure Construction_
-- [ ] _Appendix A: How To Use The System_
-- [ ] _Appendix B: A Sample Interaction_
-- [ ] _Appendix C: Run-time Messages_
-- [ ] _Appendix D: Language Grammar_
-- [ ] _Appendix E: Predefined player words_
-- [ ] _Appendix F: Compiler Messages_
-- [ ] _Appendix G: Localization_
-- [ ] _Appendix H: Portability of Games_
-- [ ] _Appendix I: Copying Conditions_
+- [x] _4. Language Reference_
+- [x] _5. Running An Adventure_
+- [x] _6. Hints And Tips_
+- [x] _7. Adventure Construction_ (none found)
+- [x] _Appendix A: How To Use The System_
+- [x] _Appendix B: A Sample Interaction_ (none found)
+- [x] _Appendix C: Run-time Messages_
+- [x] _Appendix D: Language Grammar_
+- [x] _Appendix E: Predefined player words_ (none found)
+- [x] _Appendix F: Compiler Messages_
+- [x] _Appendix G: Localization_ (none found)
+- [x] _Appendix H: Portability of Games_ (none found)
+- [x] _Appendix I: Copying Conditions_ (none found)
 
 
 As a reference to rebuild the Index, use [`Manual_Index.txt`][Index txt] file.

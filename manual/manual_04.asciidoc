@@ -15,7 +15,7 @@ Comments may be placed anywhere in the Alan source. A comment starts with double
 
 == Words, Identifiers and Names
 
-An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance. Identifiers may only be composed of letters, digits and underscores. The first character must be a letter.
+An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance. Identifiers (((identifier, lexical definition))) may only be composed of letters, digits and underscores. The first character must be a letter.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ id = identifier
 quoted_identifier = quote {any_character} quote
 --------------------------------------------------------------------------------
 
-A quoted identifier starts and ends with single quotes and may contain any character except quotes (including spaces). By quoting any sequence of characters can become an identifier. A quoted identifier may also be used to make an identifier out of a reserved word such as `Look`. This is useful in the definition of the verb `look`. It would look like:
+A ((quoted identifier)) starts and ends with single quotes and may contain any character except quotes (including spaces). By quoting any sequence of characters can become an identifier. A quoted identifier may also be used to make an identifier out of a reserved word such as `Look`. This is useful in the definition of the verb `look`. It would look like:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ The pluto IsA location Name 'At the Rim of Pluto Crater'
 --------------------------------------------------------------------------------
 
 
-One single-quoted identifier is used as the whole name of the location to preserve editing and avoiding clashes with the reserved words `At` and `Of`. (This could also have been avoided by quoting just those words.)
+One single-quoted identifier is used as the whole (((NAME, of locations))) name of the location to preserve editing and avoiding clashes with the reserved words `At` and `Of`. (This could also have been avoided by quoting just those words.)
 
 Identifiers and words retain their capitalization. An example is
 
@@ -84,7 +84,7 @@ Be careful when using quoted identifiers, especially if the player is supposed t
 
 [NOTE]
 ================================================================================
-To get a single quote within a quoted identifier repeat it (`'Tom''s Diner'`).
+To get a (((single quotes))) single quote within a quoted identifier repeat it (`'Tom''s Diner'`).
 ================================================================================
 
 
@@ -95,6 +95,7 @@ Some of the identifiers in the source for an Alan game are by default used as pl
 
 == Numbers
 
+(((numbers, lexical definition)))
 Numbers in Alan are only integers and thus may consist only of digits.
 
 [source,ebnf]
@@ -106,6 +107,7 @@ number = digit {digit}
 
 == Strings
 
+(((string, lexical definition)))
 The string is the main lexical component in an Alan source. This is how you describe the surroundings and events to the player. Strings, therefore, are easy to enter and consist simply of a pair of double quotes surrounding any number of characters. The text may include newline characters and thus may cover multiple lines in the source.
 
 [source,ebnf]
@@ -113,7 +115,7 @@ The string is the main lexical component in an Alan source. This is how you desc
 string = double_quote {any_character} double_quote
 --------------------------------------------------------------------------------
 
-When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in <<Output Statements>>). You may therefore write your strings any way you like; they will always be neatly formatted on the player's screen. You can use special codes (see <<String Statement>> for a list) to indicate (but not precisely control) the formatting.
+When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one ((("spacing, in strings"))) single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in <<Output Statements>>). You may therefore write your strings any way you like; they will always be neatly formatted on the player's screen. You can use special codes (see <<String Statement>> for a list) to indicate (but not precisely control) the formatting.
 
 
 [NOTE]
@@ -125,7 +127,7 @@ As strings may contain any character, a missing double quote may lead to many se
 
 [NOTE]
 ================================================================================
-To get a double quote within strings repeat it ("The sailor said ""Hello!"".").
+To get a (((double quotes))) double quote within strings repeat it ("The sailor said ""Hello!"".").
 ================================================================================
 
 

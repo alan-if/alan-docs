@@ -27,6 +27,7 @@ An identifying file, *_adventure_.ifid*, is also produced. This file contains a 
 
 == Compiler Switches
 
+(((compiler switches)))
 If you run the compiler from a command line you can get information about which switches it supports using the `-help` switch.
 
 alan -help
@@ -38,7 +39,7 @@ Here are some examples of other switches:
 * `-verbose` print compiler version and other verbose messages
 * `-warnings`, `-infos` show warning (and/or informational) messages from the compilation process
 
-* `-import` add a directory to the search path for imported files (see <<Filenames>> for details on the `import` statement). This switch can be used multiple times, each adding a new directory
+* `-import` (((including files, compiler switches))) add a directory to the search path for imported files (see <<Filenames>> for details on the `Import` statement). This switch can be used multiple times, each adding a new directory
 * `-listing` direct compiler output (error messages etc.) to a file with the same base name as the input (source) file, but with the extension *.lis*
 
 * `-full` will produce a complete listing of the source on the screen, or if combined with the `-listing` option, in the listing file
@@ -51,7 +52,7 @@ Giving an extra hyphen before the option reverses its meaning (where appropriate
 
 == Running the Adventure
 
-To play the generated adventure the Alan interpreter, *arun*, is executed with the adventure name as a parameter. For example
+To play the generated adventure the (((Arun))) Alan interpreter, *arun*, is executed with the adventure name as a parameter. For example
 
 $ arun adventure
 
@@ -65,7 +66,8 @@ $ adventure
 
 == Interpreter Switches
 
-The interpreter supports the following switches:
+((interpreter, switches))
+The ((interpreter)) supports the following switches:
 
 * `-v` print the version of the interpreter
 * `-d` print the version of interpreter and enter debug mode

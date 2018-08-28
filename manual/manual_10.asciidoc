@@ -7,7 +7,7 @@ Input response errors are not fatal but abort the execution of the current playe
 
 == Input Response Messages
 
-Various messages are printed for the benefit of the player. Most messages probably come from the adventure itself, i.e. they where provided by the adventure author. However, some messages can be given directly by the Arun interpreter. They are presented below using the Alan STRING-format, i.e. containing the special character combinations described in <<Output Statements,_Output Statements_>>. These standard messages exist for all languages and the default value of the texts are selected depending upon the setting of the language option.
+Various messages are printed for the benefit of the player. Most messages probably come from the adventure itself, i.e. they where provided by the adventure author. However, some messages can be given directly by the ((Arun)) interpreter. They are presented below using the Alan STRING-format, i.e. containing the special character combinations described in <<Output Statements,_Output Statements_>>. These standard messages exist for all ((languages)) and the default value of the texts are selected depending upon the setting of the language option.
 
 The contents of any message may be modified using the `Message` statement (see <<Messages>>). The identifier on the first line of a message explanation is the identifier that should be used in the `Message` statement to change the contents of that message. The text after the colon on the first line is the default English message text. Then follows a short explanation, including possible availability of parameters and their types.
 
@@ -34,13 +34,13 @@ The input did not follow any syntax the Arun parser knows about. I.e. the input 
 
 WHAT_WORD : "I don't know what you mean by '$1'."
 
-The player input a multiple word, such as "`all`", "`them`" or a pronoun, but the Arun parser could not find any objects or actors that it could refer to.
+The player input a multiple word, such as (((ALL (player input)))) "`all`", (((THEM (player input)))) "`them`" or a pronoun, but the Arun parser could not find any objects or actors that it could refer to.
 
 *parameter1* is a string which is the word used by the player.
 
 MULTIPLE : "You can't refer to multiple objects with '$v'."
 
-The syntax matched for the indicated verb did not allow multiple parameters.
+The syntax matched for the indicated verb did not allow ((multiple parameters)).
 
 NOUN : "You must supply a noun."
 
@@ -48,13 +48,13 @@ The player started to specify an object or actor but only supplied the adjective
 
 AFTER_BUT : "You must give at least one object after '$1'."
 
-In a command containing *ALL BUT*, the player must also give the object or objects excluded.
+In a command containing (((ALL (player input)))) (((BUT (player input)))) *ALL BUT*, the player must also give the object or objects excluded.
 
 *parameter1* is a string containing the *BUT*-word the player used.
 
 BUT_ALL : "You can only use '$1' after '$2'."
 
-The *BUT*-words may only be used after an *ALL*-word.
+The (((BUT (player input)))) (((EXCEPT (player input)))) *BUT*-words may only be used after an (((ALL (player input)))) *ALL*-word.
 
 *parameter1* is a string containing the *BUT*-word used by the player.
 
@@ -62,7 +62,7 @@ The *BUT*-words may only be used after an *ALL*-word.
 
 NOT_MUCH : "That doesn't leave much to $v!"
 
-The player used an *ALL BUT* construct, which explicitly excluded everything matched by the *ALL*.
+The player used an (((ALL (player input)))) (((BUT (player input)))) *ALL BUT* construct, which explicitly excluded everything matched by the *ALL*.
 
 WHICH_START : "I don't know if you mean $+1" +
 WHICH_COMMA : ", $+1" +

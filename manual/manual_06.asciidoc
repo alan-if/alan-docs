@@ -15,11 +15,9 @@ The following examples, hints and tips does _not_ use any library, only plain va
 
 
 
-
-
-
 == Use of Attributes
 
+(((attributes)))
 Attributes are primarily used for holding status information about the instance to which it belongs. This allows, for example, a water bottle to contain three levels of water.
 
 [source,alan]
@@ -145,7 +143,7 @@ So the class mechanism not only allows for another way to classify your instance
 
 == Descriptions
 
-Attributes come in handy when presenting information about instances to the player. The attributes can be tested in `If`-statements to modify the ``Description``s and possibly even the short description in the `Mentioned` sections.
+Attributes come in handy when presenting information about instances to the player. The attributes can be tested in (((IF, statement))) `If`-statements to modify the ``Description``s and possibly even the short description in the `Mentioned` sections.
 
 For example:
 
@@ -200,7 +198,7 @@ You are carrying an empty bottle.
 
 == Common Verbs
 
-As your library of adventures grow you will find that some verbs are often needed, and always function the same way. Examples are "`take`", "`drop`", "`invent`", "`look`", "`quit`" and so on. It is advisable to put them in a file which may then be imported into your games. See <<Import>> about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a default attribute declaration in this file.
+As your library of adventures grow you will find that (((VERB, reusing common verbs))) some verbs are often needed, and always function the same way. Examples are "`take`", "`drop`", "`invent`", "`look`", "`quit`" and so on. It is advisable to put them in a file which may then be (((IMPORT, importing files in adventure))) (((including files))) (((file, importing files in adventure))) imported into your games. See <<Import>> about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a (((default, attributes))) default attribute declaration in this file.
 
 All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure. All that this takes is some thought as to what names to use for the attributes as discussed in <<Use of Attributes>>.
 
@@ -209,6 +207,9 @@ And of course there is already an extensive library available from the Alan webs
 
 
 == Distant Events
+
+(((events, hints about)))
+(((EVENT, distant events)))
 
 An effect of the feature that output is not visible unless the hero is present, is that the description of an event might not always be presented to the player.
 
@@ -242,6 +243,7 @@ If Hero Nearby Then
 
 == Doors
 
+(((doors, hints about)))
 A common feature in adventure games is the closed door. Here's one way implement it:
 
 [source,alan]
@@ -328,6 +330,7 @@ End Event unquit.
 
 == Actors
 
+(((actors, hints about)))
 Actors are vital components to make a story dynamic. They move around and act according to their scripts. To make the player aware of the other actor's actions they need to be described. This must be done so that the player always get the correct perspective on the actions of the actors.
 
 A way to ensure this is to rely on the fact that output statements are not shown unless the hero is at the location where the output is taking place. This means that for every actor action, especially movement, you need to first describe the actions, then let the actor perform them and, finally, possibly describe the effects.
@@ -364,7 +367,7 @@ The george IsA actor
 ...
 --------------------------------------------------------------------------------
 
-Although quite feasible, this is a bit tedious. As, at least a part of, the state is indicated by the script the actor is executing, this could be used to avoid the potentially large `If`-chain. The optional descriptions tied to each script will be executed instead of the main description when the actor is following that script. So this would allow us to simplify to:
+Although quite feasible, this is a bit tedious. As, at least a part of, the state is indicated by the script the actor is executing, this could be used to avoid the potentially large `If`-chain. The optional (((DESCRIPTION, of actor scripts))) descriptions tied to each script will be executed instead of the main description when the actor is following that script. So this would allow us to simplify to:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -723,7 +726,7 @@ Sometimes you need to make it possible for the player to refer to things either 
 
 === A Mountain
 
-For objects that need to be visible from a distance, the easiest method is to introduce a '`shadow object`'. This is a second object acting on behalf of, or representing, the distant object at the locations where it should be possible to refer to it. For example:
+For objects that need to be visible from a distance, the easiest method is to introduce a (((object, shadow objects))) (((shadow objects))) '`shadow object`'. This is a second object acting on behalf of, or representing, the distant object at the locations where it should be possible to refer to it. For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -834,7 +837,7 @@ This strategy will both give you a better structure of your adventure as well as
 
 == Debugging
 
-Occasionally your Alan code is flawed and you really can't understand what is actually happening. To aid in discovering which part of your code is run when, the interpreter Arun incorporates some features for debugging. There are a few debugging switches available when starting the interpreter from the command line:
+Occasionally your Alan code is flawed and you really can't understand what is actually happening. To aid in discovering which part of your code is run when, the interpreter ((Arun)) incorporates some features for ((debugging)). There are a few (((debugging, switches))) debugging switches available when starting the interpreter from the command line:
 
 
 // FIXME: Find a way to style option on the left in bold.
@@ -865,6 +868,7 @@ You can only activate one of the logs in a single session.
 
 === Interpreter and Instruction Trace
 
+(((interpreter)))
 Trace mode can also act as an aid in debugging. Level 1 will print information about every invocation of the instruction interpreter, making it easier to see which parts of the code are being executed.
 
 Trace level 2, single instruction trace, will also trace every single Acode instruction. The Acode is based on a stack machine but single instruction trace will not show all stack operations. Level 3 shows the execution of these also. Level 4 dumps the content of the stack for every instruction.
@@ -887,7 +891,7 @@ abug&gt;
 
 === Using the Debugger
 
-Abug may also be entered during the execution of an adventure. To do this you issue the single player command (type it at the game prompt)
+((Abug)) may also be entered during the execution of an adventure. To do this you issue the single player command (type it at the game prompt)
 
 
 [example,role="gametranscript"]

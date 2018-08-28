@@ -20,32 +20,35 @@ Index
 // requires some adaptative work!
 // =============================================================================
 
-// ARRIVED UP TO: "5.2 Words, Identifiers and Names" (p.162 : "Identifiers")
-// of "manual-pretranscript.odt" file!
+// Every Index entry in "manual-pretranscript.odt" has been reconstructed!
+// (with a few exceptions where the text of the "pretranscript" file has changed)
+
+// There are still a few entries from the current PDF which were not rebuilt.
+// I'll try to work out where they should occure in the current doc.
 
 == A
 
 + abstract attribute *72
-- Abug 188
++ Abug *188
 + actor *26
     behaviour *26
     predefined class *36, *59
 + ACTOR
     in what specifications *140
 + actor description *59
-- actors
-    execution context 163
-    hints about 174
-    moving 164
++ actors
+    execution context *163
+    hints about *174
+    moving *164
 + adjective *66
 + AFTER qualifier *106
-- ALL *81, *94, *103, 161, 211, 212
-- AND *94, 160, 161
++ ALL *81, *94, *103, *161, *211, *212
++ AND *94, *160, *161
 + article *78
-- Arun 187, 205, 210
++ Arun *187, *205, *210
 - attribute
     pre-defined 82, 143
-- attributes *32, 167
+- attributes *32, *167
     boolean *70
     declaration *69
     event type *71
@@ -62,16 +65,16 @@ Index
 + basic type *51
 + BEFORE qualifier *106
 + BETWEEN *147
-- BNF 221
-- BUT 161, 212
++ BNF 221*
++ BUT *161, *212
 
 == C
 
 + CANCEL statement *126
 + character combinations, in strings *118
 + character sets *50
-- CHECK *102
-    in exits *88, 164
++ CHECK *102
+    in exits *88, *164
     in verbs *41
 + check, unconditional *102
 + checks
@@ -92,17 +95,17 @@ Index
     Opaque 82
 + containment operator *147
 + CONTAINS *147
-- COUNT *150
++ COUNT *150
     in limits *84
 + Current Actor *147
 + Current Location *147
 
 == D
 
-- debugging 187
++ debugging *187
 + DECREASE statement *128
-- default
-    attributes 171
++ default
+    attributes *171
     syntax *42
 + DEPENDING ON statement *131
 + DESCRIBE statement *120
@@ -110,19 +113,19 @@ Index
     of locations *61
 + Description
     of locations *30
-- DESCRIPTION
-    of actor scripts *89, 175
++ DESCRIPTION
+    of actor scripts *89, *175
 + Description clause *75
-- descriptions
-    execution context 163
++ descriptions
+    execution context *163
 - DIRECTLY 149
-- DOES
++ DOES
     in descriptions *77
-    in exits 164
-    in locations 164
+    in exits *164
+    in locations *164 [[ the actual entry is ENTERED, maybe it was a typo! ]]
     in verbs *104
-- doors, hints about 172
-- double quotes 156
++ doors, hints about *172
++ double quotes *156
 
 == E
 
@@ -132,33 +135,33 @@ Index
     predefined class *36, *58
 + EVENT *109
 + event type *52
-- events
-    execution context 163
-    hints about 172
++ events
+    execution context *163
+    hints about *172
 - EVERYTHING 161
-- EXCEPT 161, 212
-- execution
-    contexts 162
-    of an adventure *24, 159
++ EXCEPT *161, *212
++ execution
+    contexts *162
+    of an adventure *24, *159
 + execution context
     Initialize clause *75
 + Exit *30
-- EXIT *88, 164
++ EXIT *88, *164
 + expressions *141
 + EXTRACT *85 [=Extract clause]
 
 == H
 
 + HERE *138
-- hero 164
++ hero *164
 + hero, the *60
 
 == I
 
 - identifier
     quoted 66
-- identifiers
-    lexical definition 153
++ identifiers
+    lexical definition *153
 + If statement *32, *54
 + IF statement *130
 + import statement *54
@@ -179,12 +182,12 @@ Index
 + instances *56
 + integer
     predefined class *36
-- interpreter 187, 205
-- IT 161, 211
++ interpreter *187, *205
+- IT *161, 211
 
 == L
 
-- languages 210
++ languages *210
 + LIMITS *83 [=Limits clause]
 + LIST statement *121
 + literal
@@ -214,13 +217,13 @@ Index
 + MIN aggregate *150
 - Multi-media Statements 122
 + multinational characters *50
-- multiple indicator 161      [="parameter indicators"+"multiple indicator"]
-- multiple parameters 161
++ multiple indicator *161      [="parameter indicators"+"multiple indicator"]
++ multiple parameters *161
 
 == N
 
-- Name
-    of locations *66, 154
++ Name
+    of locations *66, *154
 + Name clause *65
 + names
     inheriting *67
@@ -228,15 +231,15 @@ Index
 + NEARBY *139
 + nested locations *61, *124   [p.61 in old doc, not in new!]
 + noun *66
-- numbers
-    lexical definition 155
++ numbers
+    lexical definition *155
 
 == O
 
 + object *31
     predefined class *36, *59
 + object orientation *34
-- omnipotent indicator 162
++ omnipotent indicator *162
 + ONLY qualifier *106
 - opaque
     pre-defined attribute 82
@@ -251,11 +254,11 @@ Index
 
 == P
 
-- parameter *42, *96
++ parameter *42, *96
     indicators *94
-    referencing 161
+    referencing *161
 - Play 122
-- player commands 159
++ player commands *159
 + polymorphism *35
 - pre-defined attribute 137
     visits 137
@@ -271,7 +274,7 @@ Index
 == Q
 
 + QUIT statement *134
-- quoted identifier *66, 153
++ quoted identifier *66, *153
 
 == R
 
@@ -286,9 +289,9 @@ Index
     of parameters *43
 + restriction, of parameters *96
 + rule *110 [[, syntax for]]
-- rules
++ rules
     executing *111
-    execution context 163
+    execution context *163
 
 == S
 
@@ -304,11 +307,11 @@ Index
 + SET statement *128
 + set type *53
 + set type attributes *72
-- shadow object;object
-    shadow 184
++ shadow object;object
+    shadow *184
 - Show 122
-- single quotes 155
-- spacing, in strings 156
++ single quotes *155
++ spacing, in strings *156
 + specialisation *37
 + start section *48, *116
 + STEP *91
@@ -319,8 +322,8 @@ Index
     predefined class *36
 + String *30
 + STRING *118
-- strings
-    lexical definition 156
++ strings
+    lexical definition *156
 + STRIP statement *125
 + sub-classing *37
 + SUM aggregate *150
@@ -331,8 +334,8 @@ Index
 
 == T
 
-- THEM 161, 211
-- THEN 160
+- THEM *161, 211
++ THEN *160
 + thing
     predefined class *36
     predefined class *58
@@ -345,7 +348,7 @@ Index
 
 == U
 
-- undo 164
++ undo *164
 + Use statement *54
 + USE statement *89, *132
 
@@ -353,11 +356,11 @@ Index
 
 - verb *27
     alternative *105
-    execution context 162
+    execution context *162
     execution order *43, *108
     Meta 101
     qualifiers *104, *106
-    reusing common 171
+    reusing common *171
 + Verb *39
 + VERB *100
 - visits 137

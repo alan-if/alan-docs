@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.24,</span>
+<span id="revnumber">version 0.1.25,</span>
 <span id="revdate">August 28, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -825,7 +825,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.24
+<pre>Doc version: 0.1.25
 Last edited: August 28, 2018</pre>
 </div>
 </div>
@@ -3983,7 +3983,7 @@ syntax_end = parameter_restrictions
 <div class="sect3">
 <h4 id="_indicators">Indicators</h4>
 <div class="paragraph">
-<p>Following a parameter, indicators are allowed in syntax declarations.</p>
+<p>Following a parameter,  indicators are allowed in syntax declarations.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6683,7 +6683,7 @@ filter = 'ISA' class
 <div class="sect2">
 <h3 id="_words_identifiers_and_names">4.2. Words, Identifiers and Names</h3>
 <div class="paragraph">
-<p>An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance. Identifiers may only be composed of letters, digits and underscores. The first character must be a letter.</p>
+<p>An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance. Identifiers  may only be composed of letters, digits and underscores. The first character must be a letter.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6723,7 +6723,7 @@ End Verb 'look'.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>One single-quoted identifier is used as the whole name of the location to preserve editing and avoiding clashes with the reserved words <code>At</code> and <code>Of</code>. (This could also have been avoided by quoting just those words.)</p>
+<p>One single-quoted identifier is used as the whole  name of the location to preserve editing and avoiding clashes with the reserved words <code>At</code> and <code>Of</code>. (This could also have been avoided by quoting just those words.)</p>
 </div>
 <div class="paragraph">
 <p>Identifiers and words retain their capitalization. An example is</p>
@@ -6775,7 +6775,7 @@ End Verb 'look'.</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>To get a single quote within a quoted identifier repeat it (<code>'Tom''s Diner'</code>).</p>
+<p>To get a  single quote within a quoted identifier repeat it (<code>'Tom''s Diner'</code>).</p>
 </div>
 </td>
 </tr>
@@ -6788,7 +6788,8 @@ End Verb 'look'.</code></pre>
 <div class="sect2">
 <h3 id="_numbers">4.3. Numbers</h3>
 <div class="paragraph">
-<p>Numbers in Alan are only integers and thus may consist only of digits.</p>
+<p>
+Numbers in Alan are only integers and thus may consist only of digits.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6799,7 +6800,8 @@ End Verb 'look'.</code></pre>
 <div class="sect2">
 <h3 id="_strings">4.4. Strings</h3>
 <div class="paragraph">
-<p>The string is the main lexical component in an Alan source. This is how you describe the surroundings and events to the player. Strings, therefore, are easy to enter and consist simply of a pair of double quotes surrounding any number of characters. The text may include newline characters and thus may cover multiple lines in the source.</p>
+<p>
+The string is the main lexical component in an Alan source. This is how you describe the surroundings and events to the player. Strings, therefore, are easy to enter and consist simply of a pair of double quotes surrounding any number of characters. The text may include newline characters and thus may cover multiple lines in the source.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6807,7 +6809,7 @@ End Verb 'look'.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in <a href="#_output_statements">Sect. 3.17.1</a>). You may therefore write your strings any way you like; they will always be neatly formatted on the player&#8217;s screen. You can use special codes (see <a href="#_string_statement">Sect. 3.17.1.1</a> for a list) to indicate (but not precisely control) the formatting.</p>
+<p>When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one  single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in <a href="#_output_statements">Sect. 3.17.1</a>). You may therefore write your strings any way you like; they will always be neatly formatted on the player&#8217;s screen. You can use special codes (see <a href="#_string_statement">Sect. 3.17.1.1</a> for a list) to indicate (but not precisely control) the formatting.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -6831,7 +6833,7 @@ End Verb 'look'.</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>To get a double quote within strings repeat it ("The sailor said ""Hello!"".").</p>
+<p>To get a  double quote within strings repeat it ("The sailor said ""Hello!"".").</p>
 </div>
 </td>
 </tr>
@@ -6861,13 +6863,13 @@ identifier (see <a href="#_words_identifiers_and_names">Sect. 4.2</a>).</p>
 <div class="sect2">
 <h3 id="_a_turn_of_events">5.1. A Turn of Events</h3>
 <div class="paragraph">
-<p>The player controls the execution of an Alan adventure. Each of his inputs are taken care of and acted upon by the run-time system in the interpreter. The execution of an Alan adventure starts by executing the start section. The player is then placed in the location indicated in the start section, the location is described, and the player is prompted for a command.</p>
+<p>The player controls the  execution of an Alan adventure. Each of his inputs are taken care of and acted upon by the run-time system in the interpreter. The execution of an Alan adventure starts by executing the start section. The player is then placed in the location indicated in the start section, the location is described, and the player is prompted for a command.</p>
 </div>
 <div class="paragraph">
 <p>The player input is analysed according to the explicit and implicit syntax rules and converted to an execution of verb checks and bodies. Global verb checks and bodies are used for verbs taking no parameters, otherwise the verb bodies are found in the parameter instances or their classes. In case the player typed a directional command the corresponding exit check and code is executed.</p>
 </div>
 <div class="paragraph">
-<p>After the players command has been taken care of, all rules are evaluated and possibly executed. Then each of the other actors executes one step in their scripts (if active) and for each actor the rules are evaluated again. Finally, each event that is scheduled for this round is fired, and the rules evaluated yet again. Finally the player is prompted for another command.</p>
+<p>After the  players command has been taken care of, all rules are evaluated and possibly executed. Then each of the other actors executes one step in their scripts (if active) and for each actor the rules are evaluated again. Finally, each event that is scheduled for this round is fired, and the rules evaluated yet again. Finally the player is prompted for another command.</p>
 </div>
 <div class="paragraph">
 <p>So, to summarise:</p>
@@ -6904,7 +6906,7 @@ end for</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Concatenating of statements using <strong>AND</strong>-words like</p>
+<p>Concatenating of statements using   <strong>AND</strong>-words like</p>
 </li>
 </ul>
 </div>
@@ -6920,7 +6922,7 @@ end for</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>The use of pronouns to refer to the last object mentioned in the previous command, e.g.</p>
+<p>The use of pronouns  to refer to the last object mentioned in the previous command, e.g.</p>
 </li>
 </ul>
 </div>
@@ -6938,7 +6940,7 @@ end for</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>References to multiple objects using <strong>AND</strong>-word. This allows</p>
+<p>References to  multiple objects using  <strong>AND</strong>-word. This allows</p>
 </li>
 </ul>
 </div>
@@ -6953,7 +6955,7 @@ end for</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Reference to multiple objects using <strong>ALL</strong>-word</p>
+<p>Reference to multiple objects using   <strong>ALL</strong>-word</p>
 </li>
 </ul>
 </div>
@@ -6967,7 +6969,7 @@ end for</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Excluding objects using a <strong>BUT</strong>-word, like:</p>
+<p>Excluding objects using a   <strong>BUT</strong>-word, like:</p>
 </li>
 </ul>
 </div>
@@ -6981,7 +6983,7 @@ end for</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>The use of a <strong>THEM</strong>–word to refer to the multiple objects referenced in the previous command, e.g.</p>
+<p>The use of a  <strong>THEM</strong>–word to refer to the  multiple objects referenced in the previous command, e.g.</p>
 </li>
 </ul>
 </div>
@@ -6993,10 +6995,10 @@ end for</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The reference to multiple objects (or actors) in a position is only possible if the adventure author has allowed it by using a multiple indicator in the syntax definition (see <a href="#_syntax_definitions">Sect. 3.9</a>). All the variations above are built in and handled automatically by the run-time system.</p>
+<p>The reference to multiple objects (or actors) in a position is only possible if the adventure author has allowed it by using a multiple indicator  in the syntax definition (see <a href="#_syntax_definitions">Sect. 3.9</a>). All the variations above are built in and handled automatically by the run-time system.</p>
 </div>
 <div class="paragraph">
-<p>The interpreter also automatically restricts parameter references to things reachable according to the semantic rules of each built-in base class (see <a href="#_instances">Sect. 3.6</a> for the complete details). For example objects are only possible to refer to if they are present at the current location, except if the syntax for the command uses the omnipotent <code>!</code> indicator (see <a href="#_syntax_definitions">Sect. 3.9</a> for details). For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to <a href="#_distant_imaginary_objects"><em>Distant &amp; Imaginary Objects</em></a>.</p>
+<p>The interpreter also automatically restricts  parameter references to things reachable according to the semantic rules of each built-in base class (see <a href="#_instances">Sect. 3.6</a> for the complete details). For example objects are only possible to refer to if they are present at the current location, except if the syntax for the command uses the   omnipotent <code>!</code> indicator (see <a href="#_syntax_definitions">Sect. 3.9</a> for details). For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to <a href="#_distant_imaginary_objects"><em>Distant &amp; Imaginary Objects</em></a>.</p>
 </div>
 <div class="paragraph">
 <p>If the player uses <strong>ALL</strong> instead of a reference to an instance in his command, the verb will be applied to all appropriate instances at the current location, <em>except</em> the ones that do not pass all checks for the verb (see <a href="#_verbs">Sect. 3.7.10</a> for further details on this).</p>
@@ -7008,24 +7010,28 @@ end for</pre>
 <div class="sect2">
 <h3 id="_run_time_contexts">5.3. Run-time Contexts</h3>
 <div class="paragraph">
-<p>When the player enters a command, the Alan run-time system evaluates the various constructs from the adventure description (source) as described above. Depending on the player&#8217;s command evaluation of different parts of the adventure may be triggered. These parts all have different conditions under which they are evaluated and have different contexts. Four different execution contexts can be identified:</p>
+<p>When the player enters a command, the Alan run-time system evaluates the various constructs from the adventure description (source) as described above. Depending on the player&#8217;s command evaluation of different parts of the adventure may be triggered. These parts all have different conditions under which they are evaluated and have different contexts. Four different  execution contexts can be identified:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Execution of a verb. During the execution of a verb (the syntax and verb checks and the verb bodies), which is the result of the player entering a command that was not a directional command, parameters are defined and may be referenced in the statements and expressions. In addition, the <code>Current Actor</code> is set to the hero and <code>Current Location</code> to the location where the hero is (<code>Here</code> refers to the location of the hero).</p>
+<p>Execution of a verb. 
+During the execution of a verb (the syntax and verb checks and the verb bodies), which is the result of the player entering a command that was not a directional command, parameters are defined and may be referenced in the statements and expressions. In addition, the <code>Current Actor</code> is set to the hero and <code>Current Location</code> to the location where the hero is (<code>Here</code> refers to the location of the hero).</p>
 </li>
 <li>
-<p>Execution of descriptions. These are started as the response to a directional command, a <code>Look</code> or <code>Describe</code> statement, or a <code>Locate</code> statement operating on the hero. During this, no parameters are defined, <code>Current Actor</code> is set to the hero, and <code>Current Location</code> of course to the location being described. The description clauses for objects and locations, as well as the <code>Entered</code> clause of locations, are evaluated in this context. <code>Entered</code> clauses are executed for all actors entering a location with <code>Current Actor</code> set to the moving actor.</p>
+<p>Execution of descriptions. 
+These are started as the response to a directional command, a <code>Look</code> or <code>Describe</code> statement, or a <code>Locate</code> statement operating on the hero. During this, no parameters are defined, <code>Current Actor</code> is set to the hero, and <code>Current Location</code> of course to the location being described. The description clauses for objects and locations, as well as the <code>Entered</code> clause of locations, are evaluated in this context. <code>Entered</code> clauses are executed for all actors entering a location with <code>Current Actor</code> set to the moving actor.</p>
 </li>
 <li>
-<p>Execution of actors. When an actor performs his script step there are no parameters defined but <code>Current Actor</code> is set to the actor currently executing. <code>Current Location</code> is set to that of the executing actor (<code>Here</code> refers to where the executing actor is).</p>
+<p>Execution of actors. 
+When an actor performs his script step there are no parameters defined but <code>Current Actor</code> is set to the actor currently executing. <code>Current Location</code> is set to that of the executing actor (<code>Here</code> refers to where the executing actor is).</p>
 </li>
 <li>
-<p>Execution of events, no parameters and no actor is defined. The location is set to where the event was scheduled to execute.</p>
+<p>Execution of events,  no parameters and no actor is defined. The location is set to where the event was scheduled to execute.</p>
 </li>
 <li>
-<p>Execution of rules. Rules are executed without location, so neither parameters, <code>Current Location</code> or <code>Current Actor</code> is defined. Any output statement will in this context be completely useless since the hero can never be at the same location as the execution of the rule.</p>
+<p>Execution of rules. 
+Rules are executed without location, so neither parameters, <code>Current Location</code> or <code>Current Actor</code> is defined. Any output statement will in this context be completely useless since the hero can never be at the same location as the execution of the rule.</p>
 </li>
 </ul>
 </div>
@@ -7052,16 +7058,17 @@ end for</pre>
 <div class="sect2">
 <h3 id="_moving_actors">5.4. Moving Actors</h3>
 <div class="paragraph">
-<p>The main way to move the hero is through the exits (see <a href="#_exits">Sect. 3.7.12</a>). They are executed if the player inputs a directional command, i.e. a word defined as the name for an exit in any location. First, the current location is investigated for an exit in the indicated direction, if there is none an error message is printed. Otherwise, that exit is examined for <code>Check</code>s, which are run according to normal rules (see <a href="#_verb_checks">Sect. 3.10.3</a>). If there was no <code>Check</code> or if the check passed the statements in the body (the <code>Does</code>-part) is executed. The hero is then located at the location indicated in the exit header, which will result in the description of the location (by executing the <code>Description</code>-clause of the location) and any objects or actors present (by executing their <code>Description</code>s, explicit or implicit).</p>
+<p>
+The main way to  move the hero is through the  <code>Exit</code>s (see <a href="#_exits">Sect. 3.7.12</a>). They are executed if the player inputs a directional command, i.e. a word defined as the name for an exit in any location. First, the current location is investigated for an exit in the indicated direction, if there is none an error message is printed. Otherwise, that exit is examined for <code>Check</code>s, which are run according to normal rules (see <a href="#_verb_checks">Sect. 3.10.3</a>). If there was no  <code>Check</code> or if the check passed the statements in the body (the  <code>Does</code>-part) is executed. The  hero is then located at the location indicated in the exit header, which will result in the description of the location (by executing the <code>Description</code>-clause of the location) and any objects or actors present (by executing their <code>Description</code>s, explicit or implicit).</p>
 </div>
 <div class="paragraph">
-<p>When any actor (including the hero) is located at a location, the <code>Entered</code> clause of that location is executed as if the actor had moved into that <code>Location</code>. The actor that was moved will be the <code>Current Actor</code> even if the movement was not caused by him (but the result of an event, for example). Therefore, this is also the last step in the sequence of events caused by locating the hero somewhere.</p>
+<p>When any actor (including the hero) is located at a location, the  <code>Entered</code> clause of that location is executed as if the actor had moved into that <code>Location</code>. The actor that was moved will be the <code>Current Actor</code> even if the movement was not caused by him (but the result of an event, for example). Therefore, this is also the last step in the sequence of events caused by locating the hero somewhere.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_undoing">5.5. Undoing</h3>
 <div class="paragraph">
-<p>A player might occasionally regret a command that he gave, perhaps realising that it was not the correct one. The Alan interpreter supports such undoing of commands. This means that the player can backup commands that (s)he later regretted. The interpreter stores each game state as soon as it has changed and an <code>undo</code> command resets the game state to the last saved one. This works completely automatically and as many states as memory permits is saved, giving almost unlimited <code>undo</code> capability.</p>
+<p>A player might occasionally regret a command that he gave, perhaps realising that it was not the correct one. The Alan interpreter supports such undoing of commands. This means that the player can backup commands that (s)he later regretted. The interpreter stores each game state as soon as it has changed and an  <code>undo</code> command resets the game state to the last saved one. This works completely automatically and as many states as memory permits is saved, giving almost unlimited <code>undo</code> capability.</p>
 </div>
 <div class="paragraph">
 <p>The player command to restore a previous game state is handled directly by the interpreter. It must consist of the single word <code>undo</code>.</p>
@@ -7113,7 +7120,8 @@ end for</pre>
 <div class="sect2">
 <h3 id="_use_of_attributes">6.1. Use of Attributes</h3>
 <div class="paragraph">
-<p>Attributes are primarily used for holding status information about the instance to which it belongs. This allows, for example, a water bottle to contain three levels of water.</p>
+<p>
+Attributes are primarily used for holding status information about the instance to which it belongs. This allows, for example, a water bottle to contain three levels of water.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7248,7 +7256,7 @@ Yoooohooooo!</p>
 <div class="sect2">
 <h3 id="_descriptions">6.2. Descriptions</h3>
 <div class="paragraph">
-<p>Attributes come in handy when presenting information about instances to the player. The attributes can be tested in <code>If</code>-statements to modify the <code>Description</code>s and possibly even the short description in the <code>Mentioned</code> sections.</p>
+<p>Attributes come in handy when presenting information about instances to the player. The attributes can be tested in  <code>If</code>-statements to modify the <code>Description</code>s and possibly even the short description in the <code>Mentioned</code> sections.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -7302,7 +7310,7 @@ You are carrying an empty bottle.</p>
 <div class="sect2">
 <h3 id="_common_verbs">6.3. Common Verbs</h3>
 <div class="paragraph">
-<p>As your library of adventures grow you will find that some verbs are often needed, and always function the same way. Examples are &#8220;take&#8221;, &#8220;drop&#8221;, &#8220;invent&#8221;, &#8220;look&#8221;, &#8220;quit&#8221; and so on. It is advisable to put them in a file which may then be imported into your games. See <a href="#_import">Sect. 3.4</a> about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a default attribute declaration in this file.</p>
+<p>As your library of adventures grow you will find that  some verbs are often needed, and always function the same way. Examples are &#8220;take&#8221;, &#8220;drop&#8221;, &#8220;invent&#8221;, &#8220;look&#8221;, &#8220;quit&#8221; and so on. It is advisable to put them in a file which may then be    imported into your games. See <a href="#_import">Sect. 3.4</a> about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a  default attribute declaration in this file.</p>
 </div>
 <div class="paragraph">
 <p>All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure. All that this takes is some thought as to what names to use for the attributes as discussed in <a href="#_use_of_attributes">Sect. 6.1</a>.</p>
@@ -7313,6 +7321,10 @@ You are carrying an empty bottle.</p>
 </div>
 <div class="sect2">
 <h3 id="_distant_events">6.4. Distant Events</h3>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="paragraph">
 <p>An effect of the feature that output is not visible unless the hero is present, is that the description of an event might not always be presented to the player.</p>
 </div>
@@ -7347,7 +7359,8 @@ If Hero Nearby Then
 <div class="sect2">
 <h3 id="_doors">6.5. Doors</h3>
 <div class="paragraph">
-<p>A common feature in adventure games is the closed door. Here&#8217;s one way implement it:</p>
+<p>
+A common feature in adventure games is the closed door. Here&#8217;s one way implement it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7432,7 +7445,8 @@ End Event unquit.</code></pre>
 <div class="sect2">
 <h3 id="_actors_2">6.7. Actors</h3>
 <div class="paragraph">
-<p>Actors are vital components to make a story dynamic. They move around and act according to their scripts. To make the player aware of the other actor&#8217;s actions they need to be described. This must be done so that the player always get the correct perspective on the actions of the actors.</p>
+<p>
+Actors are vital components to make a story dynamic. They move around and act according to their scripts. To make the player aware of the other actor&#8217;s actions they need to be described. This must be done so that the player always get the correct perspective on the actions of the actors.</p>
 </div>
 <div class="paragraph">
 <p>A way to ensure this is to rely on the fact that output statements are not shown unless the hero is at the location where the output is taking place. This means that for every actor action, especially movement, you need to first describe the actions, then let the actor perform them and, finally, possibly describe the effects.</p>
@@ -7472,7 +7486,7 @@ Locate charlie_chaplin At outside_house.
 </div>
 </div>
 <div class="paragraph">
-<p>Although quite feasible, this is a bit tedious. As, at least a part of, the state is indicated by the script the actor is executing, this could be used to avoid the potentially large <code>If</code>-chain. The optional descriptions tied to each script will be executed instead of the main description when the actor is following that script. So this would allow us to simplify to:</p>
+<p>Although quite feasible, this is a bit tedious. As, at least a part of, the state is indicated by the script the actor is executing, this could be used to avoid the potentially large <code>If</code>-chain. The optional  descriptions tied to each script will be executed instead of the main description when the actor is following that script. So this would allow us to simplify to:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7867,7 +7881,7 @@ End Add To.</code></pre>
 <div class="sect3">
 <h4 id="_a_mountain">A Mountain</h4>
 <div class="paragraph">
-<p>For objects that need to be visible from a distance, the easiest method is to introduce a &#8216;shadow object&#8217;. This is a second object acting on behalf of, or representing, the distant object at the locations where it should be possible to refer to it. For example:</p>
+<p>For objects that need to be visible from a distance, the easiest method is to introduce a   &#8216;shadow object&#8217;. This is a second object acting on behalf of, or representing, the distant object at the locations where it should be possible to refer to it. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7996,7 +8010,7 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 <div class="sect2">
 <h3 id="_debugging">6.14. Debugging</h3>
 <div class="paragraph">
-<p>Occasionally your Alan code is flawed and you really can&#8217;t understand what is actually happening. To aid in discovering which part of your code is run when, the interpreter Arun incorporates some features for debugging. There are a few debugging switches available when starting the interpreter from the command line:</p>
+<p>Occasionally your Alan code is flawed and you really can&#8217;t understand what is actually happening. To aid in discovering which part of your code is run when, the interpreter Arun incorporates some features for debugging. There are a few  debugging switches available when starting the interpreter from the command line:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -8035,7 +8049,8 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 <div class="sect3">
 <h4 id="_interpreter_and_instruction_trace">Interpreter and Instruction Trace</h4>
 <div class="paragraph">
-<p>Trace mode can also act as an aid in debugging. Level 1 will print information about every invocation of the instruction interpreter, making it easier to see which parts of the code are being executed.</p>
+<p>
+Trace mode can also act as an aid in debugging. Level 1 will print information about every invocation of the instruction interpreter, making it easier to see which parts of the code are being executed.</p>
 </div>
 <div class="paragraph">
 <p>Trace level 2, single instruction trace, will also trace every single Acode instruction. The Acode is based on a stack machine but single instruction trace will not show all stack operations. Level 3 shows the execution of these also. Level 4 dumps the content of the stack for every instruction.</p>
@@ -8671,7 +8686,8 @@ ee1: RETURN
 <div class="sect2">
 <h3 id="_compiler_switches">A.2. Compiler Switches</h3>
 <div class="paragraph">
-<p>If you run the compiler from a command line you can get information about which switches it supports using the <code>-help</code> switch.</p>
+<p>
+If you run the compiler from a command line you can get information about which switches it supports using the <code>-help</code> switch.</p>
 </div>
 <div class="paragraph">
 <p>alan -help</p>
@@ -8691,7 +8707,7 @@ ee1: RETURN
 <p><code>-warnings</code>, <code>-infos</code> show warning (and/or informational) messages from the compilation process</p>
 </li>
 <li>
-<p><code>-import</code> add a directory to the search path for imported files (see <a href="#_filenames">Sect. 4.5</a> for details on the <code>import</code> statement). This switch can be used multiple times, each adding a new directory</p>
+<p><code>-import</code>  add a directory to the search path for imported files (see <a href="#_filenames">Sect. 4.5</a> for details on the <code>Import</code> statement). This switch can be used multiple times, each adding a new directory</p>
 </li>
 <li>
 <p><code>-listing</code> direct compiler output (error messages etc.) to a file with the same base name as the input (source) file, but with the extension <strong>.lis</strong></p>
@@ -8720,7 +8736,7 @@ ee1: RETURN
 <div class="sect2">
 <h3 id="_running_the_adventure">A.3. Running the Adventure</h3>
 <div class="paragraph">
-<p>To play the generated adventure the Alan interpreter, <strong>arun</strong>, is executed with the adventure name as a parameter. For example</p>
+<p>To play the generated adventure the  Alan interpreter, <strong>arun</strong>, is executed with the adventure name as a parameter. For example</p>
 </div>
 <div class="paragraph">
 <p>$ arun adventure</p>
@@ -8741,7 +8757,8 @@ ee1: RETURN
 <div class="sect2">
 <h3 id="_interpreter_switches">A.4. Interpreter Switches</h3>
 <div class="paragraph">
-<p>The interpreter supports the following switches:</p>
+<p>interpreter, switches
+The interpreter supports the following switches:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -9014,7 +9031,7 @@ You are in the living room. There is a door to the east. To the west is a wooden
 <p>WHAT_WORD : "I don&#8217;t know what you mean by '$1'."</p>
 </div>
 <div class="paragraph">
-<p>The player input a multiple word, such as &#8220;all&#8221;, &#8220;them&#8221; or a pronoun, but the Arun parser could not find any objects or actors that it could refer to.</p>
+<p>The player input a multiple word, such as  &#8220;all&#8221;,  &#8220;them&#8221; or a pronoun, but the Arun parser could not find any objects or actors that it could refer to.</p>
 </div>
 <div class="paragraph">
 <p><strong>parameter1</strong> is a string which is the word used by the player.</p>
@@ -9035,7 +9052,7 @@ You are in the living room. There is a door to the east. To the west is a wooden
 <p>AFTER_BUT : "You must give at least one object after '$1'."</p>
 </div>
 <div class="paragraph">
-<p>In a command containing <strong>ALL BUT</strong>, the player must also give the object or objects excluded.</p>
+<p>In a command containing   <strong>ALL BUT</strong>, the player must also give the object or objects excluded.</p>
 </div>
 <div class="paragraph">
 <p><strong>parameter1</strong> is a string containing the <strong>BUT</strong>-word the player used.</p>
@@ -9044,7 +9061,7 @@ You are in the living room. There is a door to the east. To the west is a wooden
 <p>BUT_ALL : "You can only use '$1' after '$2'."</p>
 </div>
 <div class="paragraph">
-<p>The <strong>BUT</strong>-words may only be used after an <strong>ALL</strong>-word.</p>
+<p>The   <strong>BUT</strong>-words may only be used after an  <strong>ALL</strong>-word.</p>
 </div>
 <div class="paragraph">
 <p><strong>parameter1</strong> is a string containing the <strong>BUT</strong>-word used by the player.</p>
@@ -9056,7 +9073,7 @@ You are in the living room. There is a door to the east. To the west is a wooden
 <p>NOT_MUCH : "That doesn&#8217;t leave much to $v!"</p>
 </div>
 <div class="paragraph">
-<p>The player used an <strong>ALL BUT</strong> construct, which explicitly excluded everything matched by the <strong>ALL</strong>.</p>
+<p>The player used an   <strong>ALL BUT</strong> construct, which explicitly excluded everything matched by the <strong>ALL</strong>.</p>
 </div>
 <div class="paragraph">
 <p>WHICH_START : "I don&#8217;t know if you mean $+1"<br>
@@ -10272,8 +10289,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.24<br>
-Last updated 2018-08-28 10:09:41 ora legale Europa occidentale
+Version 0.1.25<br>
+Last updated 2018-08-28 13:45:12 ora legale Europa occidentale
 </div>
 </div>
 </body>
