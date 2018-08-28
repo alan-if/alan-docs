@@ -1267,6 +1267,10 @@ If you want to hide the content of a container, you have to take care so that a 
 
 [NOTE]
 ================================================================================
+(((predefined attributes, OPAQUE (CONTAINER))))
+(((attributes, predefined, OPAQUE (CONTAINER))))
+(((CONTAINER, OPAQUE attribute)))
+(((CONTAINER, property, opaqueness)))
 The predefined `opaque` attribute is only available in instances and classes having the container property.
 ================================================================================
 
@@ -1947,9 +1951,10 @@ If there is more than one identifier in the list, as in the example above, this 
 
 === Meta Verbs
 
+(((VERB, META VERB)))
 Any action from the player usually takes one 'tick' in the default simulated game time. Sometimes you want a player command to _not_ take a 'tick', for example administrative commands like 'help', 'score' etc.
 
-You can do this by attaching `Meta` in front of the verb definition:
+You can do this by attaching (((META))) `Meta` in front of the verb definition:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3376,7 +3381,9 @@ The handling of descriptions is rather conservative in that it also takes modifi
 ================================================================================
 
 
-
+(((predefined attributes, VISITS (LOCATION))))
+(((attributes, predefined, VISITS (LOCATION))))
+(((LOCATION, VISITS attribute)))
 Associated with this is a predefined attribute, `visits`, that exists for all instances inheriting from `location`. It will count how many times the player have visited the location. For example
 
 [source,alan]
@@ -3581,7 +3588,10 @@ If hero Is Not hungry Then ...
 
 ==== Location Of
 
-There is a particularly useful predefined pseudo-attribute, `location`, that can be used to query an instance of which location it is currently at.
+(((predefined attributes, LOCATION attribute)))
+(((attributes, predefined, LOCATION attribute)))
+(((attributes, pseudo-attribute)))
+There is a particularly useful predefined ((pseudo-attribute)), `location`, that can be used to query an instance of which location it is currently at.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3850,7 +3860,7 @@ If hero Not Nearby Then ...
 
 The forms available for the `Where` expression are described in detail in <<WHERE Specifications>>.
 
-The default behaviour of a `Where` expression is to evaluate recursively through containers, e.g. if the bottle was inside a bag which was in the inventory, the first expression above would still be true. This implicitly transitive evaluation can also be made explicit through the use of the keyword `Indirectly`. This would result in exactly the same semantics, but it is explicitly expressed, which can be useful.
+The default behaviour of a `Where` expression is to evaluate recursively through containers, e.g. if the bottle was inside a bag which was in the inventory, the first expression above would still be true. This implicitly transitive evaluation can also be made explicit through the use of the keyword (((INDIRECTLY))) `Indirectly`. This would result in exactly the same semantics, but it is explicitly expressed, which can be useful.
 
 [source,ebnf]
 --------------------------------------------------------------------------------
@@ -3861,7 +3871,7 @@ transitivity =
 --------------------------------------------------------------------------------
 
 
-In addition, another qualifying keyword, `Directly`, can be used to indicate that the expression should _not_ evaluate recursively into containers. To test if an instance is at a particular location but not in a container at that location you can use:
+In addition, another qualifying keyword, (((DIRECTLY)))  `Directly`, can be used to indicate that the expression should _not_ evaluate recursively into containers. To test if an instance is at a particular location but not in a container at that location you can use:
 
 [source,alan]
 --------------------------------------------------------------------------------

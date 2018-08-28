@@ -18,7 +18,7 @@ These games are played interacting with the computer. The program describes a sc
 
 Crowther & Woods started this form of games in the late sixties when they designed the famous _Colossal Cave Adventure,_ which became available on many mainframe computer systems. Inspired by this, Lebling et.al (then at MIT) took a giant step forward in adventuring by creating the Great Underground Empire and making it available for venturing Adventurers in the game Dungeon. This game contained a much more developed story and could handle much more complex commands.
 
-Later, Dave Lebling & Co started Infocom, a company where they continued to develop their technique, first with _Zork I_, _II_ and _III_ (the first a re-implementation of Dungeon, the others equally successful sequels). Since then, a host of games has been released (_Starcross_, _Witness_, _Enchanter_ are some of the names that come to mind). Although the original authors are long scattered, the Infocom games are still highly appreciated even today.
+Later, Dave Lebling & Co started ((Infocom)), a company where they continued to develop their technique, first with _Zork I_, _II_ and _III_ (the first a re-implementation of Dungeon, the others equally successful sequels). Since then, a host of games has been released (_Starcross_, _Witness_, _Enchanter_ are some of the names that come to mind). Although the original authors are long scattered, the Infocom games are still highly appreciated even today.
 
 Other companies have followed Infocom's example and a handful of them seem to make a living out of creating adventure games. However, today most of the works are created by devoted people that do it for the fun of it, releasing their games as shareware or completely free.
 
@@ -312,7 +312,7 @@ The door IsA object At hallway
 End The door.
 --------------------------------------------------------------------------------
 
-An object may initially be located at a particular location. This is indicated by the `At`-clause, in this case telling us that the door is initially located in the Hallway. Objects do not have to start at a particular place in which case they are not present in the game until located, by executing some code, at some place where the player may lay his hands on them.
+An object may initially be located at a particular ((location)). This is indicated by the `At`-clause, in this case telling us that the door is initially located in the Hallway. Objects do not have to start at a particular place in which case they are not present in the game until located, by executing some code, at some place where the player may lay his hands on them.
 
 In addition, objects may have ((attributes)) indicating the state of certain properties of the object. In this example with a door, the `Is closed` part indicates that the door should have the attribute closed, which initially is set to *TRUE* (implying that the door is initially closed). The opposite would be indicated with a `Not`, (i.e. `Is Not closed`).
 

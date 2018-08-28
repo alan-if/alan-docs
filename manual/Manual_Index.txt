@@ -46,18 +46,18 @@ Index
 + AND *94, *160, *161
 + article *78
 + Arun *187, *205, *210
-- attribute
-    pre-defined 82, 143
-- attributes *32, *167
++ attribute
+    pre-defined *82, *143
++ attributes *32, *167
     boolean *70
     declaration *69
     event type *71
     numeric *70
     of reference type *71
     pre-defined
-        location 143
-        opaque 82
-        visits 137
+        location *143
+        opaque *82
+        visits *137
     string *70
 
 == B
@@ -90,9 +90,9 @@ Index
 + concatenation
     of strings *146
 + CONTAINER *82
-- container property
++ container property
     of objects *81
-    Opaque 82
+    Opaque *82
 + containment operator *147
 + CONTAINS *147
 + COUNT *150
@@ -118,7 +118,7 @@ Index
 + Description clause *75
 + descriptions
     execution context *163
-- DIRECTLY 149
++ DIRECTLY *149
 + DOES
     in descriptions *77
     in exits *164
@@ -158,8 +158,8 @@ Index
 
 == I
 
-- identifier
-    quoted 66
++ identifier
+    quoted *66
 + identifiers
     lexical definition *153
 + If statement *32, *54
@@ -169,8 +169,8 @@ Index
 + indicator
     multiple    *94
     omnipotent  *94
-- INDIRECTLY 149
-- Infocom *18, 19
++ INDIRECTLY 149
++ Infocom *18, *19
 + inheritance *34, *56
 + inheriting attributes *73
 + inheriting properties, rules for *63
@@ -183,7 +183,7 @@ Index
 + integer
     predefined class *36
 + interpreter *187, *205
-- IT *161, 211
++ IT *161, ~211~ (couldn't pin-down this one)
 
 == L
 
@@ -192,19 +192,19 @@ Index
 + LIST statement *121
 + literal
     predefined class *36
-- literals 62, *141
++ literals *62, *141
 + Locate statement *33
 + LOCATE statement *123
 + locating inside containers *83, *124
-- location *25, 29
++ location *25, *29
     of 143, 181
-    pre-defined attribute 143
+    pre-defined attribute *143
     predefined class *36
 + LOCATION
     in what specification *140
 + locations *61
 + logical expressions *144
-- LOOK statement *134, ~135 (the second one is redundant)
++ LOOK statement *134, ~135 (the second one is redundant)
 
 == M
 
@@ -213,7 +213,7 @@ Index
 + map *25
 + MAX aggregate *150
 + MENTIONED *80  [=Mentioned clause]
-- Meta Verbs 101
++ Meta Verbs *101
 + MIN aggregate *150
 - Multi-media Statements 122
 + multinational characters *50
@@ -354,17 +354,17 @@ Index
 
 == V
 
-- verb *27
++ verb *27
     alternative *105
     execution context *162
     execution order *43, *108
-    Meta 101
+    Meta *101
     qualifiers *104, *106
     reusing common *171
 + Verb *39
 + VERB *100
-- visits 137
-    pre-defined attribute 137
++ visits 137
+    pre-defined attribute *137
 + VISITS statements *136
 
 == W

@@ -173,6 +173,9 @@ Rebuild _Index_:
 - [x] _Appendix H: Portability of Games_ (none found)
 - [x] _Appendix I: Copying Conditions_ (none found)
 
+Also:
+
+- [x] manually rebuilt Index entries that where in the PDF but not the ODT file.
 
 As a reference to rebuild the Index, use [`Manual_Index.txt`][Index txt] file.
 

@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.25,</span>
+<span id="revnumber">version 0.1.26,</span>
 <span id="revdate">August 28, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -825,7 +825,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.25
+<pre>Doc version: 0.1.26
 Last edited: August 28, 2018</pre>
 </div>
 </div>
@@ -3474,7 +3474,11 @@ End The drawer.</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The predefined <code>opaque</code> attribute is only available in instances and classes having the container property.</p>
+<p>
+
+
+
+The predefined <code>opaque</code> attribute is only available in instances and classes having the container property.</p>
 </div>
 </td>
 </tr>
@@ -4321,10 +4325,11 @@ End Verb take.</code></pre>
 <div class="sect3">
 <h4 id="_meta_verbs">Meta Verbs</h4>
 <div class="paragraph">
-<p>Any action from the player usually takes one 'tick' in the default simulated game time. Sometimes you want a player command to <em>not</em> take a 'tick', for example administrative commands like 'help', 'score' etc.</p>
+<p>
+Any action from the player usually takes one 'tick' in the default simulated game time. Sometimes you want a player command to <em>not</em> take a 'tick', for example administrative commands like 'help', 'score' etc.</p>
 </div>
 <div class="paragraph">
-<p>You can do this by attaching <code>Meta</code> in front of the verb definition:</p>
+<p>You can do this by attaching  <code>Meta</code> in front of the verb definition:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5996,7 +6001,10 @@ End Verb restore.</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>Associated with this is a predefined attribute, <code>visits</code>, that exists for all instances inheriting from <code>location</code>. It will count how many times the player have visited the location. For example</p>
+<p>
+
+
+Associated with this is a predefined attribute, <code>visits</code>, that exists for all instances inheriting from <code>location</code>. It will count how many times the player have visited the location. For example</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6257,7 +6265,10 @@ A single integer (e.g. 42) is a numeric expression. A string is an expression an
 <div class="sect4">
 <h5 id="_location_of">Location Of</h5>
 <div class="paragraph">
-<p>There is a particularly useful predefined pseudo-attribute, <code>location</code>, that can be used to query an instance of which location it is currently at.</p>
+<p>
+
+
+There is a particularly useful predefined pseudo-attribute, <code>location</code>, that can be used to query an instance of which location it is currently at.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6559,7 +6570,7 @@ End The door.</code></pre>
 <p>The forms available for the <code>Where</code> expression are described in detail in <a href="#_where_specifications">Sect. 3.18</a>.</p>
 </div>
 <div class="paragraph">
-<p>The default behaviour of a <code>Where</code> expression is to evaluate recursively through containers, e.g. if the bottle was inside a bag which was in the inventory, the first expression above would still be true. This implicitly transitive evaluation can also be made explicit through the use of the keyword <code>Indirectly</code>. This would result in exactly the same semantics, but it is explicitly expressed, which can be useful.</p>
+<p>The default behaviour of a <code>Where</code> expression is to evaluate recursively through containers, e.g. if the bottle was inside a bag which was in the inventory, the first expression above would still be true. This implicitly transitive evaluation can also be made explicit through the use of the keyword  <code>Indirectly</code>. This would result in exactly the same semantics, but it is explicitly expressed, which can be useful.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6570,7 +6581,7 @@ End The door.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In addition, another qualifying keyword, <code>Directly</code>, can be used to indicate that the expression should <em>not</em> evaluate recursively into containers. To test if an instance is at a particular location but not in a container at that location you can use:</p>
+<p>In addition, another qualifying keyword,   <code>Directly</code>, can be used to indicate that the expression should <em>not</em> evaluate recursively into containers. To test if an instance is at a particular location but not in a container at that location you can use:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10289,8 +10300,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.25<br>
-Last updated 2018-08-28 13:45:12 ora legale Europa occidentale
+Version 0.1.26<br>
+Last updated 2018-08-28 16:43:39 ora legale Europa occidentale
 </div>
 </div>
 </body>
