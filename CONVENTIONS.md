@@ -16,6 +16,7 @@ These guidelines are not yet complete, and they are open for discussion and chan
     - [Alan Code Examples](#alan-code-examples)
     - [Letter Casing](#letter-casing)
     - [Truncated Code](#truncated-code)
+- [The Index](#the-index)
 - [Related Issues](#related-issues)
 - [Reference Links](#reference-links)
     - [Wikipedia](#wikipedia)
@@ -72,6 +73,13 @@ The east_door IsA door.
 
 > __NOTE__ — We'll need to check how these `...` will be handled by the syntax highlighter. Probably, they'll be highlighted as __Alan keywords__ (the current Highlight syntax treats the terminating dot as a keyword), but we'll probably need to tweak the syntax to treat three consecutive full-stops as a separate group, in order to allow different coloring for them.
 
+# The Index
+
+Here are some conventions regarding the style and structure of Index entries.
+
+- __Alan keywords__ should always be in all-caps (eg, `IF`, `THEN`, `EVERY`).
+
+
 -------------------------------------------------------------------------------
 
 # Related Issues
@@ -80,10 +88,12 @@ Follow and contribute to the discussion on [formatting and sytling issues][Issue
 
 - [#1 — Styling Keywords as Inline-Code][i1]
 - [#2 — Code Styling Conventions][i2]
+- [#5 — Index Reconstruction][i5]
 
 
 [i1]: https://github.com/alan-if/alan-docs/issues/1 "Issue #1 — Styling Keywords as Inline-Code"
 [i2]: https://github.com/alan-if/alan-docs/issues/2 "Issue #2 — Code Styling Conventions"
+[i5]: https://github.com/alan-if/alan-docs/issues/5 "Issue #5 — Index Reconstruction"
 
 <!-- 
 - [#XX — YYY][iXX]
