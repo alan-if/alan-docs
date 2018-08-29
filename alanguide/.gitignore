@@ -1,0 +1,11 @@
+################################################################################
+# Alan IF Documentation Project                                                #
+# https://github.com/tajmone/alan-docs                                         #
+################################################################################
+
+# //alanguide/.gitignore
+
+# For now, let's exclude from the project the PDF version of the Beginner's Guide,
+# as it's still to drafty to share. Later on, when the PDF version is mature,
+# we'll remove this ignore directive:
+alanguide.pdf

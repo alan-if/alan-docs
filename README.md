@@ -52,6 +52,7 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 
 ## Project Contents
 
+- [`/alanguide/`](./alanguide) — _Alan 3 Beginner's Guide_ ported to AsciiDoc (WIP).
 - [`/assets-src/`](./assets-src/):
     + [`/alan-logo/`](./assets-src/alan-logo/) — Alan logo reconstructed as vector image.
 - [`/manual/`](./manual/) — _The Alan Manual_ ported to AsciiDoc (WIP).
@@ -71,7 +72,7 @@ This is the environemnt setup used for the project by its maintainer:
     Ruby 2.5.1p57 (2018-03-29 revision 63029) [x64-mingw32]
     Asciidoctor 1.5.7.1
     Asciidoctor PDF 1.5.0.alpha.16
-    Asciidoc FX v1.6.7
+    Asciidoc FX v1.6.8
 
 
 ## Syntax Highlighting
