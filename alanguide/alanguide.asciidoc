@@ -1,6 +1,6 @@
 :doctitle: ALAN 3 Beginner's Guide
 :author: Michael Arnaud
-:revnumber: 0.1.0
+:revnumber: 0.1.1
 :revdate: August 29, 2018
 :revremark: AsciiDoc reconstruction work
 :doctype: book
@@ -60,6 +60,7 @@ Among the goals of this document reconstruction is updating its contents to the 
 - *The Alan Adventure Language*, created by Thomas Nilefalk.
 ********************************************************************************
 
+:sectnums!:
 
 [[introduction]]
 == Introduction
@@ -71,7 +72,7 @@ From the ALAN website (http://www.alanif.se):
 [quote,http://www.alanif.se]
 ____
 Alan is one of the most easy to use tools specialized for creating
-works of Interactive Fiction, a.k.a text adventures. It’s focus has
+works of Interactive Fiction, a.k.a text adventures. It's focus has
 always been on the authoring aspects.
 ____
 
@@ -79,25 +80,25 @@ According to the
 http://groups-beta.google.com/group/rec.arts.int-fiction/browse_thread/thread/7ab9ece381198e00/8fa96802f44c4c73?q=faq+%22tier+i%22+alan&rnum=6#8fa96802f44c4c73[rec-arts.int.fiction]
 FAQ, ALAN version 2 is included in the "Tier I" of Interactive Fiction programming languages, along with Inform, TADS, and Hugo. That is very good company.
 
-Recently, TADS has been updated with TADS 3 — not just a revision, but an essentially new language, which may well be the most powerful "Adventure Development System" out there. There are rumors at the time of this writing of a similar update — more than mere revision — of Inform as well, with promises of greater power and versatility in this already excellent and popular language.
+Recently, TADS has been updated with TADS 3 -- not just a revision, but an essentially new language, which may well be the most powerful "Adventure Development System" out there. There are rumors at the time of this writing of a similar update -- more than mere revision -- of Inform as well, with promises of greater power and versatility in this already excellent and popular language.
 
-Interestingly, ALAN has undergone the revision process as well (I don’t know if Thomas Nilsson saw the other languages revising and decided, "Me too!", though I tend to think not. On the ALAN website he describes this revision process as beginning "_a couple of years ago…_").
+Interestingly, ALAN has undergone the revision process as well (I don't know if Thomas Nilsson saw the other languages revising and decided, "Me too!", though I tend to think not. On the ALAN website he describes this revision process as beginning "_a couple of years ago…_").
 
 Like TADS 3 (and if the rumors are true "Inform 7"), ALAN 3 is not just a revision or update of ALAN version 2. ALAN 3 incorporates "object oriented programming" (OOP) and is much more powerful, more versatile and capable than ALAN 2. It will surprise those who are unfamiliar with ALAN how very powerful it is; and those who are familiar only with ALAN 2 ought to be very pleased with the new ALAN 3 language.
 
 Every programming language has its distinct advantages. TADS 3, for example, has a completely programmable parser. Inform is ported for just about any machine out there, including handhelds. Hugo can implement nearly every kind of multimedia an author might wish to put into his or her game.
 
-ALAN 3’s most notable distinction from the other adventure languages is _its ease of use and lower learning-curve_. Even though it is a powerful Tier I language, ALAN 3 is considerably easier for an inexperienced or "non-programming" author to use than the other languages. It is a "higher" language; that is, it is much more like English than "computerese". ALAN 3 does not use confusing brackets and braces, semicolons, or other C, C++, Pascal and other such programming conventions as used in TADS, Inform, and Hugo.
+ALAN 3's most notable distinction from the other adventure languages is _its ease of use and lower learning-curve_. Even though it is a powerful Tier I language, ALAN 3 is considerably easier for an inexperienced or "non-programming" author to use than the other languages. It is a "higher" language; that is, it is much more like English than "computerese". ALAN 3 does not use confusing brackets and braces, semicolons, or other C, C++, Pascal and other such programming conventions as used in TADS, Inform, and Hugo.
 
-=== Introduction to This Beginner’s Guide
+=== Introduction to This Beginner's Guide
 
-This material is _not_ a manual. This is only a primer, a beginner’s guide. The focus of this guide is on writing a game with the ALAN 3 adventure language. Technical questions and those concerning software issues such as compiler switches or debugging are best addressed by the manual. This guide does not cover everything that ALAN 3 is capable of, nor is its claim to _exhaustively_ cover _anything_ ALAN 3 is capable of. Therefore I highly recommend familiarity with the ALAN 3 manual as your main source of information.
+This material is _not_ a manual. This is only a primer, a beginner's guide. The focus of this guide is on writing a game with the ALAN 3 adventure language. Technical questions and those concerning software issues such as compiler switches or debugging are best addressed by the manual. This guide does not cover everything that ALAN 3 is capable of, nor is its claim to _exhaustively_ cover _anything_ ALAN 3 is capable of. Therefore I highly recommend familiarity with the ALAN 3 manual as your main source of information.
 
-TIP: Paragraph symbols ( ¶ ) throughout this guide refer to paragraph numbers in the Alan Manual.  Another thing I recommend is browsing the archived messages at the http://groups.yahoo.com/group/alan-if/?yguid=20632878[ALAN Yahoo! Group]. You can learn about the development of ALAN 3 as it has progressed, hitting snags and bugs that were fixed along the way. You can find programming help for more advanced and tricky techniques in ALAN 3 that we will not go into in this beginner’s guide.
+TIP: Paragraph symbols ( ¶ ) throughout this guide refer to paragraph numbers in the Alan Manual.  Another thing I recommend is browsing the archived messages at the http://groups.yahoo.com/group/alan-if/?yguid=20632878[ALAN Yahoo! Group]. You can learn about the development of ALAN 3 as it has progressed, hitting snags and bugs that were fixed along the way. You can find programming help for more advanced and tricky techniques in ALAN 3 that we will not go into in this beginner's guide.
 
 If you are new to writing Interactive Fiction games or new to programming, I recommend that you read this guide through from beginning to end to get a full overview of what it covers. Then go through it again more slowly, working through the steps one at a time to master them.
 
-As has been done in primers for other IF languages such as Inform and TADS, we will build a complete though simple game one step at a time and then develop it into one somewhat more complex. Before we get to that, however, there are a few things you will need besides this beginner’s guide.
+As has been done in primers for other IF languages such as Inform and TADS, we will build a complete though simple game one step at a time and then develop it into one somewhat more complex. Before we get to that, however, there are a few things you will need besides this beginner's guide.
 
 [[tools]]
 === Tools You Will Need
@@ -124,9 +125,9 @@ ALAN 3 supports jpeg images (and some audio formats). Our tutorial game will inc
 [float]
 ==== The First Few Lines
 
-Okay, let’s get started. Start a new file in the text editor and save it as "tvtime.alan". (Actually, you can name it "mygame.alan" or whatever you want, but the compiler will be looking for that .alan extension.)
+Okay, let's get started. Start a new file in the text editor and save it as "tvtime.alan". (Actually, you can name it "mygame.alan" or whatever you want, but the compiler will be looking for that .alan extension.)
 
-The first couple of lines of your source file should probably be something to identify what it is. In this beginner’s guide we will do it this way (note than whenever new code is displayed in this guide it will be in [red]#RED#):
+The first couple of lines of your source file should probably be something to identify what it is. In this beginner's guide we will do it this way (note than whenever new code is displayed in this guide it will be in [red]#RED#):
 
 [subs="quotes"]
 ----
@@ -137,15 +138,17 @@ The first couple of lines of your source file should probably be something to id
  -----------------------------------------------#
 ----
 
-These lines won’t do anything to, for, or in the game. They are just there for anyone who happens to read the source file. These are called "comment" statements (in some computer languages they are called "REMARK" statements), and are written in ALAN 3 with a double-hyphen (--) at the beginning of _every comment_.
+These lines won't do anything to, for, or in the game. They are just there for anyone who happens to read the source file. These are called "comment" statements (in some computer languages they are called "REMARK" statements), and are written in ALAN 3 with a double-hyphen (--) at the beginning of _every comment_.
 
 Whenever the compiler sees a double-hyphen, it ignores everything that follows on that line. We can make notes, reminders, and explain things throughout our program this way.
 
-Now we are ready to program our beginning `LOCATION` — what other IF languages usually refer to as a "Room".
+Now we are ready to program our beginning `LOCATION` -- what other IF languages usually refer to as a "Room".
 
-== PART ONE: LOCATIONS and EXITS
+:sectnums:
 
-=== LOCATIONS and the START AT Statement.
+= PART ONE: LOCATIONS and EXITS
+
+== LOCATIONS and the START AT Statement.
 
 `LOCATION` are just "where" the player is located in the game map. Even though we usually think of `LOCATIONs` in terms of (as other IF languages might call them) "Rooms", they can be outdoors or indoors, under water, in outer space, or anywhere at all.
 
@@ -178,7 +181,7 @@ The beginning `LOCATION` for our tutorial game is the TV Room. A completed `LOCA
 The word "tv_room" is our programming word (using an underscore in the place of a space makes it a single word) for the first `LOCATION`. We could have called it "in_a_house", "spaceship", "gertrude", or anything at all.
 
 [float]
-==== START AT the End.
+=== START AT the End.
 
 Every game must tell the compiler where to start, using the `START AT` statement. The `START AT` statement always comes at the very end of your program.
 
@@ -193,7 +196,7 @@ This is a complete game that will compile and run, though very limited in descri
 ----
 
 [float]
-==== Adding a NAME and DESCRIPTION
+=== Adding a NAME and DESCRIPTION
 
 If we were to play the game at this point, we would not see anything about the TV Room, except "Tv_room" (note that the interpreter capitalized the first letter! ¶ 2.4.8). Following the template at the top of the page, we can add a `NAME` and `DESCRIPTION`. Type in the `NAME` statement followed by what you want the game to display as the NAME of the LOCATION. Be sure to enclose it in single (not double) quotes.
 
@@ -226,9 +229,9 @@ Now fill out a brief `DESCRIPTION` of the `LOCATION`, basically telling the play
 Compile and run the game to see how this is displayed to the player.
 
 [float]
-==== Another LOCATION.
+=== Another LOCATION.
 
-Using the same basic template, let’s make a second simple `LOCATION`:
+Using the same basic template, let's make a second simple `LOCATION`:
 
 [subs="quotes"]
 ----
@@ -241,10 +244,10 @@ Using the same basic template, let’s make a second simple `LOCATION`:
  ...
 ----
 
-=== EXITS
+== EXITS
 
 [float]
-==== We need an EXIT strategy.
+=== We need an EXIT strategy.
 
 In game play, the player starts in the TV Room and is locked in. He/She cannot see or go into the Kitchen. They need some way to move from the TV Room to the Kitchen. This is most often accomplished with an `EXIT`.
 
@@ -276,7 +279,7 @@ Note that `EXITs` are always one-way.  If we want the `EXIT` to work in both di
 Compile and run the game. You can go back and forth from the TV Room to the Kitchen.
 
 [[nowhere]]
-=== DIRECTIONS TO Nowhere
+== DIRECTIONS TO Nowhere
 
 In our game so far, we have programmed EXITS "south" from the TV Room and "north" from the Kitchen. But suppose the player would like to go east or west or up or down? The interpreter does not know what any of those words mean, and will tell the player so.
 
@@ -286,13 +289,13 @@ the player types.
 [subs="quotes"]
 ----
 > _west_
-I don’t know the word 'west'.
+I don't know the word 'west'.
 ----
 
 The remedy is to include in our program every different direction we might use in our game. We need not use any of the standard directional words at all. We can use "thisaway", "thataway", "moonward", or anything we want. However, most players of Interactive Fiction are used to playing with at least the four cardinal directions, plus "up"and "down". They will need some instruction within the game if we want them to try such directions as "moonward".
 
 [float]
-==== This Is Going NOWHERE
+=== This Is Going NOWHERE
 
 One of the most convenient devices we can use in the Alan adventure language is what the manual calls a "limbo" LOCATION (¶ 2.4.6). That is, a LOCATION that the player never sees or knows anything about, he cannot travel there or back again. We can use such a limbo LOCATION to establish any directional or EXIT words we want. We could call our limbo LOCATION "limbo", "bimbo", or anything else, but for our game we will call it "Nowhere". Put these lines before the code for the tv_room:.
 
@@ -313,18 +316,18 @@ One of the most convenient devices we can use in the Alan adventure language is 
  ...
 ----
 
-Now compile and play the game. Try to go "west" in the TV Room, and instead of getting the message "I don’t know the word west" you get the somewhat more reasonable response:
+Now compile and play the game. Try to go "west" in the TV Room, and instead of getting the message "I don't know the word west" you get the somewhat more reasonable response:
 
 [subs="quotes"]
 ----
 > _west_
-You can’t go that way.
+You can't go that way.
 ----
 
 [float]
-==== N, S, W, E
+=== N, S, W, E
 
-It is an IF convention that the player need only type "n" for north, "s" for south, and so on. But at this point if we type n, s, w, or e, we are back to "I don’t know the word n". We could program these single-letter words as we did the full words above:
+It is an IF convention that the player need only type "n" for north, "s" for south, and so on. But at this point if we type n, s, w, or e, we are back to "I don't know the word n". We could program these single-letter words as we did the full words above:
 
 [subs="quotes"]
 ----
@@ -359,10 +362,10 @@ The problem with this is, both "north" and "n" are two separate directions. We w
 
 If we had four or more directions to program from the Kitchen, we would also have to double that number just to have the abbreviations for each one. There is, however, a much easier way: use the SYNONYMS statement.
 
-=== SYNONYMS
+== SYNONYMS
 
 [float]
-==== SYNONYMS Mean the Same Thing
+=== SYNONYMS Mean the Same Thing
 
 It is a very simple matter to create synonyms, words (or letters) that the player can type and that will be understood by the interpreter to mean the same thing as the main original word.
 
@@ -397,7 +400,7 @@ To create a synonym, simply use the SYNONYMS statement, then first the synonym w
 Now the player can indicate which direction he/she would like to go with a single letter, rather than typing the full word. Try it.
 
 [[import]]
-=== Nowhere in the Library
+== Nowhere in the Library
 
 Now we are going to look at a big time-and-trouble saver, the standard library (see the xref:tools[Introduction]). If you have downloaded the library you will find a folder called (as of this writing) "alanlib_6_1dev". The exact name of the folder may vary as later developments of ALAN and/or the library are released, but it will probably always begin at least with "alanlib".
 
@@ -405,7 +408,7 @@ I highly recommend keeping the alanlib folder in a separate place on your comput
 
 Inside the folder is the standard library: a collection of files, most of which carry the extension, ".i". The letter "i" here stands for "import".
 
-These are files that you are going to import into your main game file (which will be explained in a moment). For now, let’s look at one of these ".i" files in particular, which you should be able to open with your text xref:tools[editor].
+These are files that you are going to import into your main game file (which will be explained in a moment). For now, let's look at one of these ".i" files in particular, which you should be able to open with your text xref:tools[editor].
 
 The file to open is called "nowhere.i". It should look very familiar to you:
 
@@ -444,10 +447,10 @@ The file to open is called "nowhere.i". It should look very familiar to you:
 
 This is the same section of code we needed to establish various directions in our game, already written for us. The library has quite a few files of this sort, which you can explore with your text editor. Many of the library files may seem strange to you, but the system is really very simple and you will soon understand and use it all, quickly and easily.
 
-=== IMPORTING the Library
+== IMPORTING the Library
 
 [float]
-==== Importing Is Important
+=== Importing Is Important
 
 How do we get all those library files into our game? Well, one way would be to open each one with the text editor and copy-and-paste it into our main game file. However, that would be tedious, it would add a lot of code for us to wade through in our source file, and it would be entirely unnecessary.
 
@@ -468,7 +471,7 @@ All we need to do is put the following line in our source code (I recommend putt
 
 Be sure to type it just this way, with the single-quotes around the name of the file and a full-stop at the end.
 
-How does that get "nowhere.i" into our game? Let’s take a look. Open another file in the library, this one called "std.i" — the one we are importing into our source file.
+How does that get "nowhere.i" into our game? Let's take a look. Open another file in the library, this one called "std.i" -- the one we are importing into our source file.
 
 [subs="quotes"]
 ----
@@ -518,7 +521,7 @@ How does that get "nowhere.i" into our game? Let’s take a look. Open another f
 ----
 
 [float]
-==== Here's How
+=== Here's How
 
 In the std.i file there is a lengthy string of "import" statements. So here is how "nowhere.i" and a large collection of other pre-programmed files from the library are included in our program. When we typed that single line
 
@@ -538,18 +541,18 @@ Compile and play the game with the imported library. In the play of the game, ty
 You will see some helpful information displayed. This demonstrates the power of importing the library files.
 
 [[exits]]
-=== CHECKING EXITS
+== CHECKING EXITS
 
-Let’s return to our source file and the TV Room and Kitchen. We have imported the library files, so now while playing the game and in the TV Room we type ">w" or ">west", the interpreter will not tell us "I don’t know the word west", but will tell us
+Let's return to our source file and the TV Room and Kitchen. We have imported the library files, so now while playing the game and in the TV Room we type ">w" or ">west", the interpreter will not tell us "I don't know the word west", but will tell us
 
 
 [subs="quotes"]
 ----
 > _west_
-You can’t go that way!
+You can't go that way!
 ----
 
-It is generally desirable to tell the player why he/she "can’t go that way", perhaps because there is a wall in that direction. Here’s how we would do that:
+It is generally desirable to tell the player why he/she "can't go that way", perhaps because there is a wall in that direction. Here's how we would do that:
 
 [subs="quotes"]
 ----
@@ -571,7 +574,7 @@ It is generally desirable to tell the player why he/she "can’t go that way", p
 ----
 
 [float]
-==== CHECK Means STOP
+=== CHECK Means STOP
 
 Here a new and important statement is introduced: the CHECK statement.
 
@@ -602,7 +605,7 @@ so that we do not have to make separate EXITS for north, east, and west. If they
 Every EXIT must have a destination ("TO" a LOCATION) even if it is CHECKED.
 
 [float]
-==== What About a Really Big Room?
+=== What About a Really Big Room?
 
 If our game were in a larger room, say, a banquet hall, we might want to give a different illusion of realism with our CHECK statement. We might want the player to feel, not stopped by a wall or obstacle, but that they are moving around, when they are in fact not going anywhere. Like this:
 
@@ -631,10 +634,10 @@ You move about in the great hall, examining various things.
 
 Our little tutorial game only has little rooms, so we will simply put "a wall in that direction".
 
-=== Transitions with DOES
+== Transitions with DOES
 
 [float]
-==== A Few Words of Transition
+=== A Few Words of Transition
 
 In our game so far if the player in the TV Room types "south", this is the response:
 
@@ -692,27 +695,27 @@ We might prefer to have a bit more descriptive move from one room to another. We
 ----
 
 [float]
-==== DOES Means GO! …er,  DO!
+=== DOES Means GO! …er,  DO!
 
 A very important statement, DOES, tells the interpreter, well, to do something, and what to do. We do not want the interpreter only to carry out the EXIT statement, but to do something more before the EXIT statement is completed. We want the interpreter to display a transition message as the player is EXITED from one LOCATION to another.
 
 Note the change in format whenever we put a CHECK or DOES in the EXIT statement. It is no longer only
 
 ----
- EXIT south TO kitchen. — NOTE THE full-stop here!
+ EXIT south TO kitchen. -- NOTE THE full-stop here!
 ----
 
 but now we write it like this:
 
 ----
- EXIT south TO kitchen — The full-stop is moved to after the END.
-    DOES — (or CHECK)
+ EXIT south TO kitchen -- The full-stop is moved to after the END.
+    DOES -- (or CHECK)
         "You go south, into the kitchen."
- END EXIT. — We added the END statement with a full-stop.
+ END EXIT. -- We added the END statement with a full-stop.
 ----
 
 [float]
-==== Tell the Player Which Way to Go
+=== Tell the Player Which Way to Go
 
 Better than having to guess, it is often good to tell the player which directions are open to him/her. This is often done within the LOCATION DESCRIPTION.
 
@@ -770,9 +773,9 @@ set up in this room, ideally located across from your comfy chair and
 table. The kitchen is south.
 ----
 
-== PART TWO: OBJECTS and Attributes
+= PART TWO: OBJECTS and Attributes
 
-=== OBJECTS
+== OBJECTS
 
 There is much more to an IF game than moving around from one LOCATION to another. Within the LOCATIONS there are usually various OBJECTS to be found, things the player can look at and in many cases manipulate in some way. In our game so far we have told the player that in the TV Room there is a TV, a chair, and a table.
 
@@ -840,12 +843,12 @@ It is a good idea to code OBJECTS following their LOCATIONS.
  ...
 ----
 
-=== NAME that OBJECT
+== NAME that OBJECT
 
 [float]
-==== NAME the TV
+=== NAME the TV
 
-As it is, the interpreter will identify the TV as, well, the tv; and the player will be able to interact with it (to a limited degree) as the tv. Note, however, that we have told the player in the TV Room DESCRIPTION that it is not just a "TV", but it is "a giant screen plasma TV". He/She may want to refer to it as "plasma tv", "screen", "television", etc. The interpreter will then give the message "I don’t know the word television." To preclude that, we can give the TV a
+As it is, the interpreter will identify the TV as, well, the tv; and the player will be able to interact with it (to a limited degree) as the tv. Note, however, that we have told the player in the TV Room DESCRIPTION that it is not just a "TV", but it is "a giant screen plasma TV". He/She may want to refer to it as "plasma tv", "screen", "television", etc. The interpreter will then give the message "I don't know the word television." To preclude that, we can give the TV a
 NAME.
 
 [subs="quotes"]
@@ -876,7 +879,7 @@ There are several ways we can make it cleaner and more co-operative. The first i
 
 The interpreter will now refer to the TV by the first NAME statement, "TV". But it will understand input by the player in any combination of "giant screen plasma tv/television". The interpreter will understand any and all of the adjectives whether applied to "television", "screen", "tv", etc. So we only need to include the adjectives in one NAME statement, my preference is to place them in the last one.
 
-Be careful with multiple NAME statements. They can make game play easier and more "interactive," but can also lead to problems of disambiguation  — the Alan program may become confused where the same words are used as NAMES for different OBJECTS, especially those in the same LOCATION. If necessary, keep a separate list of all your NAME statements to avoid duplication and disambiguation.
+Be careful with multiple NAME statements. They can make game play easier and more "interactive," but can also lead to problems of disambiguation  -- the Alan program may become confused where the same words are used as NAMES for different OBJECTS, especially those in the same LOCATION. If necessary, keep a separate list of all your NAME statements to avoid duplication and disambiguation.
 
 Another tool to use here is SYNONYMS, like we did in the
 xref:nowhere[Nowhere LOCATION]. It is important to note that SYNONYMS must be declared before, not after, the main word is defined.
@@ -898,10 +901,10 @@ xref:nowhere[Nowhere LOCATION]. It is important to note that SYNONYMS must be de
 
 The advantage of using SYNONYMS is that once you declare them, _they apply everywhere_ in the program or game. So later if we create a TV remote control or a TV power cord or a TV antennae (who would use an antennae on a plasma TV!?), the player will always be able to refer to it as the "television remote", "television cord", "television antennae".
 
-=== DESCRIPTIONS
+== DESCRIPTIONS
 
 [float]
-==== Using DESCRIPTIONS for OBJECTS
+=== Using DESCRIPTIONS for OBJECTS
 
 Compile and run the game. This is what the interpreter will display:
 
@@ -913,7 +916,7 @@ set up in this room, ideally located across from your comfy chair and
 table. The kitchen is south. There is a TV here.
 ----
 
-Hmm. That’s not quite what we want. We have already told the player
+Hmm. That's not quite what we want. We have already told the player
 about the TV in the DESCRIPTION for the LOCATION. It is uncomfortably
 redundant to be told a second time, "There is a TV here."
 
@@ -921,7 +924,7 @@ The fix comes when we understand what happens when the player enters a
 LOCATION. If there are OBJECTS in the LOCATION, they will be described
 to the player. In the case of the TV, and any other OBJECTS that we
 might not wish to have described immediately, or at all, we can assign
-a DESCRIPTION for the OBJECT — a blank DESCRIPTION, that overrides the
+a DESCRIPTION for the OBJECT -- a blank DESCRIPTION, that overrides the
 describing tendency of the LOCATION.
 
 [subs="quotes"]
@@ -959,7 +962,7 @@ In fact we do not even need to include the quote marks.
  ...
 ----
 
-Now the TV will only be mentioned in the LOCATION DESCRIPTION and not described a second time in an OBJECT DESCRIPTION. As the chair and table are similarly mentioned in the TV Room, let’s go ahead and create those too.
+Now the TV will only be mentioned in the LOCATION DESCRIPTION and not described a second time in an OBJECT DESCRIPTION. As the chair and table are similarly mentioned in the TV Room, let's go ahead and create those too.
 
 [subs="quotes"]
 ----
@@ -977,12 +980,12 @@ Now the TV will only be mentioned in the LOCATION DESCRIPTION and not described 
  ...
 ----
 
-Notice that multiple NAME statements can be on the same line. The compiler doesn’t care, and it makes for more compact code. Also notice that we did not use a NAME at all for the table. Since that is all it is described to be in the LOCATION DESCRIPTION, and not for example a "wooden table", it is enough to keep it simply "table" (¶ 4.7.3).
+Notice that multiple NAME statements can be on the same line. The compiler doesn't care, and it makes for more compact code. Also notice that we did not use a NAME at all for the table. Since that is all it is described to be in the LOCATION DESCRIPTION, and not for example a "wooden table", it is enough to keep it simply "table" (¶ 4.7.3).
 
-=== Attributes
+== Attributes
 
 [float]
-==== We’ve Got to Do Something.
+=== We've Got to Do Something.
 
 Compile the game and play it. "Look at" the TV, the chair, and the table.  TV Room This is your favorite room in the house, because you love to watch television. You recently purchased a giant screen plasma TV that is set up in this room, ideally located across from your comfy chair and table. The kitchen is south.
 
@@ -1000,18 +1003,18 @@ There is nothing special about the table.
 
 The interpreter recognizes the three OBJECTS we have created in the TV Room and tells us there is "nothing special" about them. We will see how to make the response a bit more interesting later, but for now we are satisfied that the OBJECTS are where we want them to be and that we can interact with them, at least to "look at" them.
 
-Since we have a television in the TV Room, let’s turn it on and see what happens.
+Since we have a television in the TV Room, let's turn it on and see what happens.
 
 [subs="quotes"]
 ----
 > _turn on the tv_
-You can’t turn that on.
+You can't turn that on.
 ----
 
 [float]
-==== ADDING ATTRIBUTES
+=== ADDING ATTRIBUTES
 
-We can’t turn on the TV because we haven’t made it _able_ to be turned on (or off). But we can do that with the help of the library and Attributes.  Before we see how it works, let’s see how easy it is to make the TV able to turn on or off. Add this line to your code:
+We can't turn on the TV because we haven't made it _able_ to be turned on (or off). But we can do that with the help of the library and Attributes.  Before we see how it works, let's see how easy it is to make the TV able to turn on or off. Add this line to your code:
 
 [subs="quotes"]
 ----
@@ -1024,13 +1027,13 @@ We can’t turn on the TV because we haven’t made it _able_ to be turned on (o
      NAME screen
      NAME giant
      NAME giant screen plasma tv
-     [red]#IS SWITCHABLE. — Note the full-stop.#
+     [red]#IS SWITCHABLE. -- Note the full-stop.#
      DESCRIPTION
  END THE tv.
  ...
 ----
 
-That’s all we have to do to get this result:
+That's all we have to do to get this result:
 
 [subs="quotes"]
 ----
@@ -1041,7 +1044,7 @@ You turn on the TV.
 You turn off the TV.
 ----
 
-Again, the result could be more descriptive, but the point is that now the player can turn the tv on and off. It’s important now to see how this works, and in the course of doing so to learn a bit about Attributes and VERBS.
+Again, the result could be more descriptive, but the point is that now the player can turn the tv on and off. It's important now to see how this works, and in the course of doing so to learn a bit about Attributes and VERBS.
 
 It begins with a file in the library called "turn.i", short for "turn on and turn off.i". The things to notice at this point are highlighted in [yellow-background]#yellow#.
 
@@ -1058,7 +1061,7 @@ It begins with a file in the library called "turn.i", short for "turn on and tur
  Syntax
      turn_on1 = turn on (obj)
          Where obj Isa object
-             Else "You can’t turn that on."
+             Else "You can't turn that on."
      turn_on2 = turn (obj) 'on'
          Where obj Isa object
              Else "You can't turn that on."
@@ -1124,7 +1127,7 @@ The word "Is" declares an Attribute, a property that the OBJECT is or is not, li
 
 As you can see in the example from the library, we are Adding To Every OBJECT in the game the Boolean Attributes of being "not on" (we will cover the reason for the single-quote marks later) and "not switchable".
 
-=== VERBS and CHECKS
+== VERBS and CHECKS
 
 The second and third sections in yellow highlight also Add something
 To Every OBJECT, this time several VERBS.
@@ -1164,7 +1167,7 @@ and
 These two sections tell the interpreter what to do if the player should try to turn on or turn off any OBJECT in the game.
 
 [float]
-==== VERBS and CHECKS for Attributes
+=== VERBS and CHECKS for Attributes
 
 Without going into detail right now about how VERBS work, the main
 thing I want you to see right now is their basic format:
@@ -1173,7 +1176,7 @@ thing I want you to see right now is their basic format:
 ----
  VERB _do_this, do_that_
      CHECK _conditions are met_
-         ELSE "You can’t do that!"
+         ELSE "You can't do that!"
      DOES
          "You do this and that."
  END VERB.
@@ -1193,7 +1196,7 @@ When we want to use a CHECK conditionally, we use the format:
 
 If the condition is met, the CHECK will not stop the action.
 
-Very often the condition to be met will be whether an OBJECT’S certain Attribute is true or not. If the OBJECT’S Attribute is true (for example), the CHECK passes and the action takes place. If the Attribute is not true, the CHECK stops the action that would otherwise take place.
+Very often the condition to be met will be whether an OBJECT'S certain Attribute is true or not. If the OBJECT'S Attribute is true (for example), the CHECK passes and the action takes place. If the Attribute is not true, the CHECK stops the action that would otherwise take place.
 
 [subs="quotes"]
 ----
@@ -1202,7 +1205,7 @@ Very often the condition to be met will be whether an OBJECT’S certain Attribu
           Else "You can't turn that on."
 ----
 
-That is why at first we could not turn on the TV. We typed "turn on the tv", the interpreter came to the CHECK, saw that the TV was not switchable — from the first section, remember --
+That is why at first we could not turn on the TV. We typed "turn on the tv", the interpreter came to the CHECK, saw that the TV was not switchable -- from the first section, remember --
 
 [subs="quotes"]
 ----
@@ -1216,10 +1219,10 @@ That is why at first we could not turn on the TV. We typed "turn on the tv", the
 
 When we added the line "IS switchable." to the tv, we gave the tv the required Attribute and it passed the CHECK. So we got the desired response (the "DOES" part of the VERB): "You turn on the TV."
 
-=== NOT takeable
+== NOT takeable
 
 [float]
-==== GET IT?
+=== GET IT?
 
 There are other things besides turning it on and off that the player might want to try with the TV. For example, the player might want to pick it up and take it with him. And the standard library is set up to let him do just that!
 
@@ -1242,9 +1245,9 @@ Taken.
 >
 ----
 
-The tv will be carried with the player everywhere he goes, until he decides to drop it somewhere. (Don’t be confused if you play the game and see the TV still listed in the LOCATION DESCRIPTION. It isn’t really there any more, you are carrying it. Type "i" for "inventory"to see what you are carrying.)
+The tv will be carried with the player everywhere he goes, until he decides to drop it somewhere. (Don't be confused if you play the game and see the TV still listed in the LOCATION DESCRIPTION. It isn't really there any more, you are carrying it. Type "i" for "inventory"to see what you are carrying.)
 
-Well, what if we don’t want the player to be able to pick up the tv? We have several options. The first and perhaps easiest option is to look at the "take" VERB in the library.
+Well, what if we don't want the player to be able to pick up the tv? We have several options. The first and perhaps easiest option is to look at the "take" VERB in the library.
 
 [subs="quotes"]
 ----
@@ -1286,17 +1289,17 @@ There is a CHECK looking for the Attribute "takeable". Also notice that every OB
  ...
 ----
 
-Now the tv cannot be taken because it IS NOT takeable. The VERB "take"applies "To Every object". The interpreter will see that the tv is an OBJECT. The next thing the interpreter will do is "Check obj Is takeable" — ah ha! The tv is no longer takeable! So the VERB is CHECKED (stopped) and the message is displayed. Here’s what we will see in the game:
+Now the tv cannot be taken because it IS NOT takeable. The VERB "take"applies "To Every object". The interpreter will see that the tv is an OBJECT. The next thing the interpreter will do is "Check obj Is takeable" -- ah ha! The tv is no longer takeable! So the VERB is CHECKED (stopped) and the message is displayed. Here's what we will see in the game:
 
 [subs="quotes"]
 ----
 > take the tv
-You can’t take that!
+You can't take that!
 ----
 
-=== Non-Boolean Attributes
+== Non-Boolean Attributes
 
-There is another option, similar to the first, and gives more explanation than that the player "can’t take that." The TV is supposed to be big and heavy. It might be too heavy to lift.
+There is another option, similar to the first, and gives more explanation than that the player "can't take that." The TV is supposed to be big and heavy. It might be too heavy to lift.
 
 ALAN 3 has another sort of Attribute, that is not a Boolean Attribute (on/off, yes/no) but is an Attribute that is measurable, such as weight, color, height, or any measurable thing we can imagine.
 
@@ -1356,16 +1359,16 @@ We have made the tv takeable again (allowing the default), so the first CHECK wi
 That is too heavy to lift.
 ----
 
-== PART THREE: Customizing Default VERBS
+= PART THREE: Customizing Default VERBS
 
-=== Changing the Default Response
+== Changing the Default Response
 
 [float]
-==== Better Responses
+=== Better Responses
 
 We have created several OBJECTS and placed them in the TV Room: the TV, the chair, and the table. We have seen how the library provides responses to commands like "look at", "turn on", and "take" the OBJECTS.
 
-Now it is time to learn how to modify the responses for each OBJECT. We will start with the "look at" command, found in the library’s "examine.i" file ( not the "look.i" file, which "looks" at the LOCATION; we want to "look at", or "examine" the OBJECTS). Again, the relevant sections are highlighted in #yellow#.
+Now it is time to learn how to modify the responses for each OBJECT. We will start with the "look at" command, found in the library's "examine.i" file ( not the "look.i" file, which "looks" at the LOCATION; we want to "look at", or "examine" the OBJECTS). Again, the relevant sections are highlighted in #yellow#.
 
 [subs="quotes"]
 ----
@@ -1394,7 +1397,7 @@ Now it is time to learn how to modify the responses for each OBJECT. We will sta
      #Verb examine#
          #Check obj Is examinable#
          #Else#
-             #"You can’t examine" Say The obj. "."#
+             #"You can't examine" Say The obj. "."#
          #Does#
              #"There is nothing special about" Say The obj. "."#
      #End Verb.#
@@ -1403,7 +1406,7 @@ Now it is time to learn how to modify the responses for each OBJECT. We will sta
 ----
 
 [float]
-==== An OBJECT Is a THING
+=== An OBJECT Is a THING
 
 Every OBJECT (and every ACTOR) in the game is in the sub-class, if you will, of the larger class, THING (which itself is a sub-class of ENTITY). It may help to understand this from the chart in the Alan manual (page 32), reproduced here:
 
@@ -1472,9 +1475,9 @@ There is nothing special about the table.
 ----
 
 [float]
-==== Changing the Default Response
+=== Changing the Default Response
 
-We can change the "nothing special" response with one of our own for each of our OBJECTS. The simplest way to do that right now is to begin with the "copy-and-paste" method. Let’s copy and paste the VERB from "examine.i" into our OBJECTS. This is the section we want from "examine.i":
+We can change the "nothing special" response with one of our own for each of our OBJECTS. The simplest way to do that right now is to begin with the "copy-and-paste" method. Let's copy and paste the VERB from "examine.i" into our OBJECTS. This is the section we want from "examine.i":
 
 [subs="quotes"]
 ----
@@ -1550,7 +1553,7 @@ Now let's paste this into the section for each of our OBJECTS:
  ...
 ----
 
-Now let’s put in our custom responses:
+Now let's put in our custom responses:
 
 [subs="quotes"]
 ----
@@ -1604,7 +1607,7 @@ set up in this room, ideally located across from your comfy chair and
 table. The kitchen is south.
 
 > _look at the tv_
-There is nothing special about the TV. It’s your 52-inch plasma pride and joy.
+There is nothing special about the TV. It's your 52-inch plasma pride and joy.
 ----
 
 We still got the default response and our custom response. What happened?
@@ -1626,19 +1629,19 @@ If we want the interpreter to do only what the custom response calls for, we add
 Include the word "ONLY" in each of the custom VERB responses for the tv, chair, and table. Compile and play the game, examining each. The game will display only the custom responses!
 
 [[reserved]]
-=== Reserved words
+== Reserved words
 
 Notice the single-quotes around the word "check", as well as the words "look" and "at", in "examine.i". This is very _important_! We know that CHECK and AT are reserved Alan programming words, or keywords . When the Alan program sees a CHECK or any Alan keyword, it tries to understand it as a statement, which will most likely result in a compiler error. But that does not preclude us from using Alan keywords for our own purposes. The single-quotes around the keyword will protect it from being interpreted as a statement, and will allow its use as though it were not a keyword.
 
 [[take]]
-=== Another Take on "take"
+== Another Take on "take"
 
 Previously we worked with various default responses for the "take"command, using the tv as our test OBJECT. First we made the tv "NOT takeable", resulting in the default response:
 
 [subs="quotes"]
 ----
 > _take the tv_
-You can’t take that!
+You can't take that!
 ----
 
 Then we gave the tv the Attribute of weight, and gave it a weight of 100.
@@ -1649,7 +1652,7 @@ Then we gave the tv the Attribute of weight, and gave it a weight of 100.
 That is too heavy to lift.
 ----
 
-There is still another way to override the default responses for "take", and that is to supply a custom response of our own, as we did in the last section with the "examine" VERB. Let’s copy and paste the relevant section from the "take" VERB in "take.i":
+There is still another way to override the default responses for "take", and that is to supply a custom response of our own, as we did in the last section with the "examine" VERB. Let's copy and paste the relevant section from the "take" VERB in "take.i":
 
 [subs="quotes"]
 ----
@@ -1687,10 +1690,10 @@ Let's remove the CHECKS and paste the remaining code in the tv OBJECT.
      DESCRIPTION
      Verb examine
          Does ONLY
-             "It’s your 52-inch plasma pride and joy."
+             "It's your 52-inch plasma pride and joy."
      End Verb.
      [red]#Verb take, pick_up1, pick_up2
-         Does ONLY — We don’t want the default DOES to apply!
+         Does ONLY -- We don't want the default DOES to apply!
              Locate obj In hero.
              "Taken."
      End Verb.#
@@ -1702,7 +1705,7 @@ Look at the line that says "Locate obj In hero." The LOCATE statement is new. It
 
 In this case the "take" action will LOCATE the tv (obj) "In hero".
 
-_The Hero is the default player character,_ and is also _the default player’s inventory CONTAINER_. That is, anything carried by the Hero (the player character) is said to be IN the Hero. So to LOCATE the tv IN the Hero means that the tv will no longer be in the TV Room, but be carried by the player character.
+_The Hero is the default player character,_ and is also _the default player's inventory CONTAINER_. That is, anything carried by the Hero (the player character) is said to be IN the Hero. So to LOCATE the tv IN the Hero means that the tv will no longer be in the TV Room, but be carried by the player character.
 
 To prevent the tv from being moved into the player inventory, we simply omit the LOCATE statement from the "take" VERB.
 
@@ -1735,12 +1738,12 @@ Of course the "Taken" message makes no sense now. We can put a custom message in
      DESCRIPTION
      Verb examine
          Does ONLY
-             "It’s your 52-inch plasma pride and joy."
+             "It's your 52-inch plasma pride and joy."
      End Verb.
      Verb take, pick_up1, pick_up2
          Does ONLY
              [red]#"You try to wrap your arms around the giant screen
-              but it is too wide. You can’t get a good grip on the
+              but it is too wide. You can't get a good grip on the
               heavy TV to lift it."#
      End Verb.
  END THE tv.
@@ -1749,9 +1752,9 @@ Of course the "Taken" message makes no sense now. We can put a custom message in
 
 In effect, we have stopped the action by overriding the default response. This same effect could be achieved with a CHECK in the place of the DOES ONLY, but I prefer this method as it allows greater flexibility as the program becomes more complex.
 
-=== Turn It On
+== Turn It On
 
-Let’s do one more custom response to a default VERB in the library, turning the tv on and off. We’ll start by looking once again at "turn.i" and copying what we need for the tv and removing the CHECKS.
+Let's do one more custom response to a default VERB in the library, turning the tv on and off. We'll start by looking once again at "turn.i" and copying what we need for the tv and removing the CHECKS.
 
 [subs="quotes"]
 ----
@@ -1820,12 +1823,12 @@ Do you want to UNDO, RESTART, RESTORE or QUIT?
 
 Next part will show how we do it.
 
-== PART FOUR: Images and Text Formatting
+= PART FOUR: Images and Text Formatting
 
-=== The SHOW and QUIT Statements
+== The SHOW and QUIT Statements
 
 [float]
-==== SHOW and QUIT
+=== SHOW and QUIT
 
 It is very easy to put images in your game with the SHOW statement. Here is how it is done for the tv:
 
@@ -1844,12 +1847,12 @@ It is very easy to put images in your game with the SHOW statement. Here is how 
      DESCRIPTION
      Verb examine
          Does ONLY
-             "It’s your 52-inch plasma pride and joy."
+             "It's your 52-inch plasma pride and joy."
      End Verb.
      Verb take, pick_up1, pick_up2
          Does ONLY
              "You try to wrap your arms around the giant screen but it
-              is too wide. You can’t get a good grip on the heavy TV to
+              is too wide. You can't get a good grip on the heavy TV to
               lift it."
      End Verb.
      Verb turn_on1, turn_on2, switch_on1, switch_on2
@@ -1868,7 +1871,7 @@ It is very easy to put images in your game with the SHOW statement. Here is how 
 
 The format for the SHOW statement is the same as that for the IMPORT statement we did xref:import[earlier]. The name of the .jpg file must be enclosed in single-quotes and the statement must end with a full-stop. It is also important to note that the image file must be in the same folder as the game source file when you compile it.
 
-The "plasma.jpg" is included in the download of this tutorial. Save it in your game folder to use as you follow this beginner’s guide.
+The "plasma.jpg" is included in the download of this tutorial. Save it in your game folder to use as you follow this beginner's guide.
 
 You will not need to include the image file with the a3c game file (produced by the compiler) when you distribute your game, but you will need to include the a3r file (also produced by the compiler), which holds the media for your game.
 
@@ -1877,7 +1880,7 @@ QUIT (with a full-stop) is all that we need for the "undo, restart, restore, or 
 The "$p" characters are formatting characters and will be explained in the next section.
 
 
-=== A START AT Formatting
+== A START AT Formatting
 
 When starting a game of Interactive Fiction, some sort of introductory information and title is usually displayed before the player is introduced to the first LOCATION. We might wish, for example, to start our game with this display:
 
@@ -1903,7 +1906,7 @@ table. The kitchen is south.
 ----
 
 [float]
-==== Re-Introducing START AT
+=== Re-Introducing START AT
 
 We place our introductory information and title conveniently after the
 START AT statement.
@@ -1921,16 +1924,16 @@ START AT statement.
 ----
 
 [float]
-==== We Love Those Dollar $igns!
+=== We Love Those Dollar $igns!
 
 There are some odd-looking figures here... $p, $n, $t. They have nothing to do with dollars (too bad). They are simple text-formatting symbols, that do the following:
 
 ----
-$p — "paragraph"  Prints a blank line to the screen and then begins a new
+$p -- "paragraph"  Prints a blank line to the screen and then begins a new
                   line of text.
-$n — "new"        Begins a new line of text without first printing a blank
+$n -- "new"        Begins a new line of text without first printing a blank
                   line.
-$t — "tab"        Inserts a tab.
+$t -- "tab"        Inserts a tab.
 ----
 
 (There is more of this in the manual, ¶ 4.16.1). Formatting like this is important throughout our game. It helps in creating lists, conversation, and general appearance and readability of the text. Note that these formatting symbols are within the double-quotes, immediately and without spaces, with the text we want to display. These symbols can be placed at the beginning, end, middle, or anywhere we want the formatting to occur.
@@ -1957,9 +1960,9 @@ Either of these layouts will print the same information to the screen. Just reme
 NOTE: Anytime you compile a game and get a lot of errors seemingly out of nowhere, the first thing to look for is a problem with double-quotes. (The next thing is a misplaced or missing full-stop.)
 
 [float]
-==== Using Double-Quotes and Double Double-Quotes
+=== Using Double-Quotes and Double Double-Quotes
 
-Now notice the DOUBLE double-quotes around the word: ""help"". ALAN 3 already uses double-quotes to tell the compiler to "say" things to the player, that is, to print it to the screen. So if we were to just use double-quotes within the double-quotes like this "help" we would confuse the compiler (which is never a very nice thing to do). We will get a result we don’t like, and very likely a compiler error.
+Now notice the DOUBLE double-quotes around the word: ""help"". ALAN 3 already uses double-quotes to tell the compiler to "say" things to the player, that is, to print it to the screen. So if we were to just use double-quotes within the double-quotes like this "help" we would confuse the compiler (which is never a very nice thing to do). We will get a result we don't like, and very likely a compiler error.
 
 We can still display double-quotes for conversation and such, by DOUBLE double-quotes. These are read by the compiler to print a single set of double-quotes to the screen, just the way we want
 
@@ -1981,9 +1984,9 @@ If you want to display text not only above and below, but to the right of the im
 The $n or double $n will print the text to the right of the image, where using a $p would force the text to the line after the image, i.e., below it.
 
 [float]
-==== Change the Starting LOCATION DESCRIPTION
+=== Change the Starting LOCATION DESCRIPTION
 
-Now that we have given introductory information at the start that the player has "just purchased a brand new big screen plasma TV that was delivered earlier today," it is redundant to repeat that same information in the TV Room. It’s time to change the TV Room DESCRIPTION.
+Now that we have given introductory information at the start that the player has "just purchased a brand new big screen plasma TV that was delivered earlier today," it is redundant to repeat that same information in the TV Room. It's time to change the TV Room DESCRIPTION.
 
 [subs="quotes"]
 ----
@@ -2016,19 +2019,19 @@ While we're at it, since we have added a few adjectives to the tv in our start-u
 ----
 
 
-== PART FIVE: A First Puzzle
+= PART FIVE: A First Puzzle
 
-=== A Puzzling Problem
+== A Puzzling Problem
 
 [float]
-==== A Too-Easy Win
+=== A Too-Easy Win
 
-There is not much challenge to our game. Turn on the tv and win the game. Challenges and obstacles often add fun to games; and overcoming obstacles — "puzzles," in IF vernacular — may even be the whole point of the game. Even so, it is well to make puzzle-solving part of a larger story, and not simply a matter of solving one puzzle after another.  Suppose we introduce a few puzzles for turning on the tv. Our first puzzle might be a simple matter of having to find the remote control by searching the chair, in order to turn on the tv.
+There is not much challenge to our game. Turn on the tv and win the game. Challenges and obstacles often add fun to games; and overcoming obstacles -- "puzzles," in IF vernacular -- may even be the whole point of the game. Even so, it is well to make puzzle-solving part of a larger story, and not simply a matter of solving one puzzle after another.  Suppose we introduce a few puzzles for turning on the tv. Our first puzzle might be a simple matter of having to find the remote control by searching the chair, in order to turn on the tv.
 
 When we construct puzzles it is a good idea to work them in the reverse order of solving them. That is, whatever the player must do last, we should program first, and so on. The order of construction, then, should be first to disable turning on the tv without the remote; second, to create and enable the remote to turn on the tv; and third, searching the chair and finding the remote control.
 
 [float]
-==== Disable the TV
+=== Disable the TV
 
 [subs="quotes"]
 ----
@@ -2045,7 +2048,7 @@ When we construct puzzles it is a good idea to work them in the reverse order of
 This overrides the default response from the library with a message explaining why the TV cannot be turned on. There is also an implied hint that there must be some other way to turn it on, and it is likely to come to the mind of the player to look for a remote control. If we are concerned that the puzzle may be too difficult, we could add a line something like "Perhaps there is a remote control somewhere." But in this case I think the player will not need that much of a hint.
 
 [float]
-==== Create the Remote
+=== Create the Remote
 
 [subs="quotes"]
 ----
@@ -2056,7 +2059,7 @@ This overrides the default response from the library with a message explaining w
      NAME tv control remote
      VERB examine
          DOES ONLY
-             "It’s a very simple push-button remote control."
+             "It's a very simple push-button remote control."
      END VERB.
  END THE remote.#
  ...
@@ -2134,7 +2137,7 @@ Now notice this: "obj" is a stand-in for the remote. We don't really want to tur
 ----
 
 [float]
-==== Searching Is Not Examining
+=== Searching Is Not Examining
 
 This is still an occasional matter of debate on the Interactive Fiction newsgroups. Some say that if you are examining something, you are ipso facto searching it as well. Others maintain that "examine", or "x", has become a convention in IF meaning only to "look at", not to search in detail. This opinion appears to be that of the majority, and is mine as well. It is also the way the Alan standard library is set up.
 
@@ -2178,7 +2181,7 @@ Remove the CHECKS and add DOES ONLY:
  ...
 ----
 
-Now let’s change the default message.
+Now let's change the default message.
 
 [subs="quotes"]
 ----
@@ -2228,7 +2231,7 @@ An even better solution than "LOCATE remote Here" whenever the Hero finds a smal
 ----
 
 [float]
-==== Hint, Hint
+=== Hint, Hint
 
 It is probably a good idea to give the player a subtle hint to search the chair. A good place to do that is in the "examine" VERB for the chair.
 
@@ -2260,13 +2263,13 @@ By suggesting that there may be some loose change under the cushions, it is like
 
 Compile and play what we have so far. If you have typed everything correctly, you should have a basic working game that includes searching the chair and turning on the remote to win the game.
 
-=== Fine Tune and Finish
+== Fine Tune and Finish
 
 [[fine_tune]]
 [float]
-==== Fine Tune
+=== Fine Tune
 
-The game "works," that is, the mechanics work properly. Now it is time to fine tune it, so that the game plays easily and makes sense for the game world. Let’s start by tuning up the remote control.
+The game "works," that is, the mechanics work properly. Now it is time to fine tune it, so that the game plays easily and makes sense for the game world. Let's start by tuning up the remote control.
 
 We have told the player via the VERB "examine" that the remote is a "push-button" remote. It would be reasonable for the player then to refer to the buttons, and to push or press the buttons to operate the remote.
 
@@ -2286,7 +2289,7 @@ For our purposes, we will not program the buttons as a separate OBJECT, but simp
  ...
 ----
 
-The next thing to do is accommodate the player’s likely attempt to "push the button". A look at "push.i" in the library tells us the remote needs to have the Attribute "IS PUSHABLE." Then we are ready to copy and paste the VERB, removing the CHECKS and adding DOES ONLY:
+The next thing to do is accommodate the player's likely attempt to "push the button". A look at "push.i" in the library tells us the remote needs to have the Attribute "IS PUSHABLE." Then we are ready to copy and paste the VERB, removing the CHECKS and adding DOES ONLY:
 
 [subs="quotes"]
 ----
@@ -2389,14 +2392,14 @@ Now "press the button" or "click the remote" will work the same as "push the but
 ----
 
 [float]
-==== Search and Search Again
+=== Search and Search Again
 
-Now let’s turn our fine-tuning attentions to the chair. Once the player searches the chair and discovers the remote, he/she might continue to search the cushions for the lost change we suggested they might find. What we don’t want them to find is this:
+Now let's turn our fine-tuning attentions to the chair. Once the player searches the chair and discovers the remote, he/she might continue to search the cushions for the lost change we suggested they might find. What we don't want them to find is this:
 
 [subs="quotes"]
 ----
 > _x chair_
-It’s your favorite chair to sit in when you’re watching the big
+It's your favorite chair to sit in when you're watching the big
 game. It has big soft comfy cushions -- just the kind people lose
 change in all the time.
 
@@ -2429,7 +2432,7 @@ Here is one way we might prevent that from happening:
 If the player has not found the remote, it will still be "AT Nowhere". The CHECK will pass, and the DOES ONLY will LOCATE the remote IN the Hero. But once the remote has been found, it will no longer be "AT Nowhere" and the CHECK message will explain "there is nothing else to find".
 
 [float]
-==== Televisions Need Fine-Tuning
+=== Televisions Need Fine-Tuning
 
 Our tv needs fine-tuning, in that even after the player has found the
 remote control, he/she cannot "turn on the tv"! We can easily fix that
@@ -2463,7 +2466,7 @@ NOTE: We do _not_ write it, "CHECK remote _IS_ Here" or "CHECK remote _IS_ IN He
 
 This completes our first "simple" game.
 
-=== Compile and Play It!
+== Compile and Play It!
 
 [subs="quotes"]
 ----
@@ -2608,16 +2611,16 @@ This completes our first "simple" game.
       plasma TV that was delivered earlier today!"
 ----
 
-== PART SIX: CONTAINERS and Classes
+= PART SIX: CONTAINERS and Classes
 
-=== CONTAINERS
+== CONTAINERS
 
 [float]
-==== Is That an Open Container, Son?
+=== Is That an Open Container, Son?
 
 There are all sorts of OBJECTS in Interactive Fiction that are CONTAINERS: boxes and baskets, bowls and cups and bottles; of course these are CONTAINERS, as well as cabinets, drawers, trash cans, and so on. Many CONTAINERS can be opened and/or closed, locked or unlocked, transparent (such as a wine glass) or not (such as a lead-lined box), empty or with contents inside.
 
-Our game "TV Time!" will have several CONTAINERS, one of which we have already created but not yet given the CONTAINER property. No, it’s not the chair. Even though we will later program the chair for sitting in, the chair is not a CONTAINER. In fact, neither the Hero nor any Actor (NPC, or "non-player character") can be inside a CONTAINER. The proto-CONTAINER in our game is the table.
+Our game "TV Time!" will have several CONTAINERS, one of which we have already created but not yet given the CONTAINER property. No, it's not the chair. Even though we will later program the chair for sitting in, the chair is not a CONTAINER. In fact, neither the Hero nor any Actor (NPC, or "non-player character") can be inside a CONTAINER. The proto-CONTAINER in our game is the table.
 
 
 [subs="quotes"]
@@ -2667,16 +2670,16 @@ Each of these VERBS requiring a CONTAINER is covered in the library. But our tab
 ----
 
 [float]
-==== Sin Tax?
+=== Sin Tax?
 
 As you can see, the construction of a VERB becomes more complex when it involves not just one, but two or more OBJECTS. In this case we have two OBJECTS, represented by obj1 and obj2. It is important to figure out which is the CONTAINER and which is being "put in" the CONTAINER.
 
 _The SYNTAX statement_ defines which is which: obj1 ISA OBJECT and obj2 ISA CONTAINER. We can think of the SYNTAX statement as _that which defines the parameters of the VERB_. It tells us the exact wording of the VERB. The single word "put_in" that is used by the VERB equals the two player-input words "put" and "'in'" (another Alan reserved word) in regards to the OBJECT and the CONTAINER.
 
-The SYNTAX statement also often acts as a CHECK. It will not allow the VERB if the parameters defined by the SYNTAX statement are not met. If the obj1 is not an OBJECT or if the obj2 is not a CONTAINER, the SYNTAX will inform the player that "You can’t put...", etc.
+The SYNTAX statement also often acts as a CHECK. It will not allow the VERB if the parameters defined by the SYNTAX statement are not met. If the obj1 is not an OBJECT or if the obj2 is not a CONTAINER, the SYNTAX will inform the player that "You can't put...", etc.
 
 [float]
-==== The put_in VERB
+=== The put_in VERB
 
 [subs="quotes"]
 ----
@@ -2703,7 +2706,7 @@ Notice that the VERB is in reference to obj1, the OBJECT to be put in the CONTAI
 
 "_When_" can be translated to mean, "When you want to do _"this to"_, in this case, "when you want to put this obj1 in something." If the line were to read instead, "When obj2", it would mean, "when you want to put something in this obj2." We are going to use "When obj2" in just a moment, but for now let's look at the VERB as it is in the library.
 
-The next lines CHECK whether the Hero has the obj1 in his/her Inventory. Again, I prefer to accommodate the player if the obj1 is present in the same LOCATION. So let’s change the library VERB to allow that.
+The next lines CHECK whether the Hero has the obj1 in his/her Inventory. Again, I prefer to accommodate the player if the obj1 is present in the same LOCATION. So let's change the library VERB to allow that.
 
 [subs="quotes"]
 ----
@@ -2727,7 +2730,7 @@ The next lines CHECK whether the Hero has the obj1 in his/her Inventory. Again, 
 The two "And" statements act as two more CHECKS to the VERB, preventing the player from putting something into itself or into their self. Finally there is the "Does", which LOCATES the obj1 IN the obj2.
 
 [float]
-==== The put_on VERB
+=== The put_on VERB
 
 The library ("put.i") has the "put on" VERB:
 
@@ -2736,9 +2739,9 @@ The library ("put.i") has the "put on" VERB:
  ...
  Syntax put_on = put (obj1) on (obj2)
      Where obj1 Isa object
-         Else "You can’t put that anywhere."
+         Else "You can't put that anywhere."
      And obj2 Isa thing
-         Else "You can’t put anything on that."
+         Else "You can't put anything on that."
  ...
 ----
 
@@ -2767,7 +2770,7 @@ The reason obj2 is a THING and not a CONTAINER is to allow the player to put <so
 ----
 
 [float]
-==== Making the VERB Not Work for the Table
+=== Making the VERB Not Work for the Table
 
 There is a VERB that we do not want to apply to the table, and that is the "put in" VERB. Our table has no drawers to put anything into. So:
 
@@ -2801,20 +2804,20 @@ _WHEN obj2_ equals "WHEN you want to put something in this table" (see note abov
 If on the other hand there were another CONTAINER in the game (perhaps a big box), it would be possible to "put the table in the box". The WHEN obj2 only CHECKS and stops the VERB when the table is being used as the CONTAINER. The player could not "put the box in the table". But he/she could "put the box on the table".
 
 [float]
-==== What Does a Surface "Contain"?
+=== What Does a Surface "Contain"?
 
 When "examined" or otherwise described, CONTAINERS will describe their contents as well (unless programmed not to do so) with the default message, "The <CONTAINER> contains <its contents>." So if the player were for example to "put the remote on the table", this would be the result:
 
 [subs="quotes"]
 ----
 > _x the table_
-It’s an ordinary table, set conveniently by your chair.
+It's an ordinary table, set conveniently by your chair.
 
 > _put the remote on the table_
 Done.
 
 > _x the table_
-It’s an ordinary table, set conveniently by your chair. The table contains a remote control.
+It's an ordinary table, set conveniently by your chair. The table contains a remote control.
 ----
 
 We can change the "contains" message to better fit the table, which after all is a surface. To do this, we add a HEADER statement.
@@ -2851,18 +2854,18 @@ Which gives the desired result:
 [subs="quotes"]
 ----
 > _x the table_
-It’s an ordinary table, set conveniently by your chair. Resting on the
+It's an ordinary table, set conveniently by your chair. Resting on the
 table is a remote control.
 ----
 
-=== Classes
+== Classes
 
 [[surfaces]]
 [float]
-==== SURFACES
+=== SURFACES
 
 [float]
-==== A Classy Surface
+=== A Classy Surface
 
 In the previous section we made the table into a CONTAINER, and further refined it to be a special kind of CONTAINER, a surface. Our game has several of these surface-type CONTAINERS. Instead of having to program the same Attributes and VERBS for each one, we can create a Sub-Class with the shared Attributes, etc. (¶ 2.4.5), and call it SURFACE (or "Topside" or "Pimpernel" or whatever we want).
 
@@ -2875,20 +2878,20 @@ In the previous section we made the table into a CONTAINER, and further refined 
          "Resting on top is"
      VERB examine
          DOES ONLY
-             — Override default "nothing special" message
+             -- Override default "nothing special" message
              LIST THIS.
      END VERB.#
  ...
 ----
 
-Two things to notice here. One, we don’t want the default "nothing special" message from the library VERB, so we use DOES ONLY. Second, we can use "THIS" to good effect in creating Classes. It represents the particular subject of the VERB — in this case the particular SURFACE in question.
+Two things to notice here. One, we don't want the default "nothing special" message from the library VERB, so we use DOES ONLY. Second, we can use "THIS" to good effect in creating Classes. It represents the particular subject of the VERB -- in this case the particular SURFACE in question.
 
 [subs="quotes"]
 ----
  ...
      [red]#VERB put_in  WHEN obj2
          CHECK
-             "That isn’t something you can put anything ""in""."
+             "That isn't something you can put anything ""in""."
      END VERB.
  END EVERY.#
 ----
@@ -2918,10 +2921,10 @@ This is the power of "object oriented programming" : the ability to create Class
 
 [[closeables]]
 [float]
-==== CLOSEABLES
+=== CLOSEABLES
 
 [float]
-==== An Open and Shut Case
+=== An Open and Shut Case
 
 There is another sort of specialized CONTAINER we might find useful (though there will be only one of these in our short game), one that can be opened and closed. This would be used for cabinets, treasure chests, drawers, knapsacks, secret compartments, etc. I like to call them CLOSEABLES, and here is how we create a Class for them:
 
@@ -2980,7 +2983,7 @@ An OPAQUE CONTAINER is one that the player cannot see into, that is, what it con
  ...
 ----
 
-This is just like the DOES BEFORE statement. We don’t want to override the default DOES in the library, but we do want to add something after the default "open" DOES its action. The library VERB will MAKE the CLOSEABLE Attribute "Is open" and display the message that it is open.
+This is just like the DOES BEFORE statement. We don't want to override the default DOES in the library, but we do want to add something after the default "open" DOES its action. The library VERB will MAKE the CLOSEABLE Attribute "Is open" and display the message that it is open.
 
 All we want to do is cause the CLOSEABLE to describe its contents after it has been opened. DOES AFTER accomplishes this for us.
 
@@ -3026,7 +3029,7 @@ Now it is a simple matter to do the same for the "close" VERB.
  ...
 ----
 
-Just in case you’re wondering where to put this code, it might be a good idea to put your custom Classes right after the " import std.i. ":
+Just in case you're wondering where to put this code, it might be a good idea to put your custom Classes right after the " import std.i. ":
 
 [subs="quotes"]
 ----
@@ -3111,7 +3114,7 @@ Try it and see how you can put OBJECTS like the remote control on the counter, y
 
 [[doors]]
 [float]
-==== DOORS
+=== DOORS
 
 Though not as popular in Interactive Fiction as in times past, the Door is still a useful fixture between LOCATIONS. It is not much used in games anymore as a simple inconvenience between LOCATIONS (as it is in our tutorial game), but if there are Doors they are usually either integral to the story, and/or they are a puzzle (locked by key or password, etc.), often used to progress the game after certain conditions are met.
 
@@ -3127,7 +3130,7 @@ Most doors have two sides, in which case it is necessary to program two Doors, o
 
 Notice that the NAME statement can be inherited. Every particular Instance of a Door will be called a Door, inherited from the Class, as well as any other NAME(S) we might add in the Instance.
 
-The following table from the manual (without the manual’s nice colors, see ¶ 4.7.1) shows how the NAME as well as other properties are inherited by the Instances. Some are completely overridden, that is, the property if included in the Instance will replace that of the Class. Others are accumulated (as the NAME statement for example), generally appending to the end of the same property in the Class.
+The following table from the manual (without the manual's nice colors, see ¶ 4.7.1) shows how the NAME as well as other properties are inherited by the Instances. Some are completely overridden, that is, the property if included in the Instance will replace that of the Class. Others are accumulated (as the NAME statement for example), generally appending to the end of the same property in the Class.
 
 [options="header"]
 |==================================
@@ -3175,7 +3178,7 @@ The point of this line is to indicate the other side of the Door, i.e, first tha
  EVERY Door Isa OBJECT
      NAME door
      HAS otherside Door
-     [red]#IS OPENABLE. — So we can open and close it.
+     [red]#IS OPENABLE. -- So we can open and close it.
      VERB open
          DOES AFTER
              MAKE otherside OF THIS open.
@@ -3183,7 +3186,7 @@ The point of this line is to indicate the other side of the Door, i.e, first tha
  ...
 ----
 
-The execution of the "open" VERB, after the action of the default DOES to open the Door, will change the Attribute of the Door’s other side (which is also a Door) to OPEN. The result is similar for the "close"VERB:
+The execution of the "open" VERB, after the action of the default DOES to open the Door, will change the Attribute of the Door's other side (which is also a Door) to OPEN. The result is similar for the "close"VERB:
 
 [subs="quotes"]
 ----
@@ -3248,7 +3251,7 @@ And here is how we implement "a door" between the TV Room and the Kitchen. Note 
  -----------------------
 ----
 
-=== IF-THEN
+== IF-THEN
 
 (¶ 4.16.7) We have previously used the CHECK statement as a conditional statement. If certain conditions are met, then the CHECK passes and the action continues. If the conditions are not met, the CHECK stops the action that would otherwise take place and displays an explanatory message.
 
@@ -3256,7 +3259,7 @@ And here is how we implement "a door" between the TV Room and the Kitchen. Note 
 ----
  VERB do_this, do_that
      CHECK conditions are met
-         ELSE "You can’t do that!"
+         ELSE "You can't do that!"
      DOES
          "You do this and that."
  END VERB.
@@ -3334,19 +3337,19 @@ For example:
 ----
 
 
-== PART SEVEN: A Second Puzzle
+= PART SEVEN: A Second Puzzle
 
 
-=== A PLUG for the GAME
+== A PLUG for the GAME
 
 [[plug]]
 [float]
-==== A Plug for Our Game
+=== A Plug for Our Game
 
-Let’s continue building on our game by making it necessary to plug the tv cord into an electrical outlet in the wall. Coding the game in reverse order of solving the puzzle, we need to disable the remote (and tv). Then we will create the cord, then the wall and outlet.
+Let's continue building on our game by making it necessary to plug the tv cord into an electrical outlet in the wall. Coding the game in reverse order of solving the puzzle, we need to disable the remote (and tv). Then we will create the cord, then the wall and outlet.
 
 [float]
-==== Disable the Remote
+=== Disable the Remote
 
 We need to keep in mind (or better yet write down somewhere) what we will call the power cord and how we will signal to the remote that it is plugged in. In this case we will call the cord, the "cord", and we will have the remote CHECK if the cord "IS PLUGGED_IN".
 
@@ -3425,7 +3428,7 @@ Disable the tv in the same way:
 ----
 
 [float]
-==== The Power Cord
+=== The Power Cord
 
 In the game the cord will be made to appear as part of the tv. The easiest way to do that is in the "examine" and other VERBS, rather than trying to code the tv as a CONTAINER just to hold the cord, and then to prevent all other properties of the CONTAINER, and to prevent removing the cord, etc.
 
@@ -3441,7 +3444,7 @@ In the game the cord will be made to appear as part of the tv. The easiest way t
  ...
 ----
 
-We are just making up these Attributes, trying to think of terms that will suit the "plug in" VERB we will create in a moment. Before we get to that, let’s customize the library VERBS "examine" and "take".
+We are just making up these Attributes, trying to think of terms that will suit the "plug in" VERB we will create in a moment. Before we get to that, let's customize the library VERBS "examine" and "take".
 
 [subs="quotes"]
 ----
@@ -3469,21 +3472,21 @@ Here you can see how the IF-THEN statement can be used to modify the response to
  ...
      [red]#VERB take, pick_up1, pick_up2
          CHECK
-             "You can’t take it. The power cord is permanently attached
+             "You can't take it. The power cord is permanently attached
               to the television set."
      END VERB.
  END THE cord.#
 ----
 
-=== Creating Custom VERBS
+== Creating Custom VERBS
 
 [float]
-==== Create the "plug in" VERB
+=== Create the "plug in" VERB
 
 This is the first VERB we have needed that is not already done for us
 in the library. We previously solved this for "press" and "click" (in xref:fine_tune[this section]) by making them SYNONYMS for the library "push" VERB. It would be very easy and perhaps plausible to do the same thing here, to make "plug" a SYNONYM for "put". When the player would type "> _plug cord in outlet_" it would be the same to the computer as though they had typed "> _put cord in outlet_".
 
-But it would probably be best to create the "plug in" VERB on its own so that we can check for "pluggability" we don’t necessarily want other "puttable" OBJECTS to be "pluggable" as well. Besides, you are doubtless going to need to create a VERB sometime, you may as well learn how to do it now.
+But it would probably be best to create the "plug in" VERB on its own so that we can check for "pluggability" we don't necessarily want other "puttable" OBJECTS to be "pluggable" as well. Besides, you are doubtless going to need to create a VERB sometime, you may as well learn how to do it now.
 
 The Alan manual is the best place to learn all the technical ins and outs of SYNTAX and VERBS. It would be good to read and understand that material to better understand what we are doing here. But I will keep the technical ins and outs to a minimum here. Our method of creating VERBS will be to "steal" them from the library. Heh heh.
 
@@ -3491,7 +3494,7 @@ We have already been doing that in order to create custom responses; now we are 
 
 Somewhere in the library you will be able to find a VERB that is very similar to the one you have in mind. Find it, copy it, and adapt it.
 
-"One step at a time" is one of Thomas Nilsson’s favorite maxims, and we would do well to follow it here. The first step is to make a new file called "plug.i". Save the file in the library folder. The next step is to open "std.i" and to include this line in the list of ".i"files there (if you miss this step then "plug.i" will not be imported into your game):
+"One step at a time" is one of Thomas Nilsson's favorite maxims, and we would do well to follow it here. The first step is to make a new file called "plug.i". Save the file in the library folder. The next step is to open "std.i" and to include this line in the list of ".i"files there (if you miss this step then "plug.i" will not be imported into your game):
 
 [subs="quotes"]
 ----
@@ -3636,30 +3639,30 @@ The player may wish to "unplug" the cord as well. Let's include that in "plug.i"
 ----
 
 [float]
-==== The Cord Is Finished
+=== The Cord Is Finished
 
 We have made the cord PLUGGABLE and NOT PLUGGED_IN. The new default "plug in" and "unplug" VERBS will take care of those statements should the player want to try them.
 
 [[practice]]
-=== Practice
+== Practice
 
-Now would be a good time to practice creating your own VERBS, copying them from the library and adapting them to do what you want.  Some VERBS do not require OBJECTS to act upon. The player could laugh, for example, without having to laugh at anything. See what you can do to create the "laugh" VERB. You can search the library for the SYNTAX and VERBS that you need. Here’s a hint: jump.
+Now would be a good time to practice creating your own VERBS, copying them from the library and adapting them to do what you want.  Some VERBS do not require OBJECTS to act upon. The player could laugh, for example, without having to laugh at anything. See what you can do to create the "laugh" VERB. You can search the library for the SYNTAX and VERBS that you need. Here's a hint: jump.
 
 Once you have done that, create the "laugh at" VERB (also from "jump.i"). The "obj" should probably be a THING, not only an OBJECT, just in case the player might want to laugh at an ACTOR (which is also a THING). Remember that "AT" is an Alan reserved word.
 
 [float]
-==== Sit
+=== Sit
 
-There is a nice comfy chair in the TV Room. Create a "sit in" VERB in the library and implement it for the chair. Don’t forget to make an Attribute to CHECK for "sittability" (I use IS SITABLE) and add it to the chair (as done in xref:compile_and_play[Compile and Play It!]) .
+There is a nice comfy chair in the TV Room. Create a "sit in" VERB in the library and implement it for the chair. Don't forget to make an Attribute to CHECK for "sittability" (I use IS SITABLE) and add it to the chair (as done in xref:compile_and_play[Compile and Play It!]) .
 
 [float]
-==== Pull
+=== Pull
 
 Here is a VERB that is not in the standard library but might be useful in many games. Use "push.i" as your model. Create "pull.i" in the library, using the careful procedure described in xref:plug[this section]. Include SYNONYMS, SYNTAX, VERBS, CHECKED Attributes, etc.
 
-=== Solutions
+== Solutions
 
-Don’t read this section further until you have completed the practice above.
+Don't read this section further until you have completed the practice above.
 
 WARNING: S O L U T I O N S!
 
@@ -3720,14 +3723,14 @@ WARNING: S O L U T I O N S!
 ----
 
 [float]
-==== Advanced Attribute Changes
+=== Advanced Attribute Changes
 
 It seems to me that it isn't necessary to have separate Attributes for "push" and "pull", IS PUSHABLE and IS PULLABLE respectively. It makes two Attributes instead of one for every thing in the game that we might want to make moveable or not moveable by pushing and/or pulling. I prefer to _change the required library Attribute_ to IS MOVEABLE for both "push" and "pull". As always, be mindful of the changes you make to the library.
 
-=== Cardinal Rules
+== Cardinal Rules
 
 [float]
-==== Another New Global VERB
+=== Another New Global VERB
 
 Many Interactive Fiction games generally allow the player to move northeast, northwest, southeast, southwest as well as in the four cardinal directions. We have limited travel in our game, however, to the four cardinal directions.  We can create a global "nodirection"VERB that will take care of the off-cardinal directions without having to code for them in every LOCATION.
 
@@ -3781,18 +3784,18 @@ The player is exceedingly unlikely to type "nodirection", but this word stands i
 Notice that we did not just delete the unwanted directions, but "commented" them out. That is because in other games we may want to include some or all of those other directions. We will only need to "un-comment" the ones we want and rewrite the SYNONYMS statement for "nodirection" to reflect that change.
 
 [[scenery]]
-=== The WALL Isa Scenery
+== The WALL Isa Scenery
 
 [float]
-===== Hitting the Wall
+=== Hitting the Wall
 
-We have already mentioned the walls in the TV Room and Kitchen. Should the player try to go in directions that don’t go from one LOCATION to the other, they will get the message:
+We have already mentioned the walls in the TV Room and Kitchen. Should the player try to go in directions that don't go from one LOCATION to the other, they will get the message:
 
 ----
 There is only a wall in that direction.
 ----
 
-Let’s create the wall, after which we will create the electrical outlet in the wall. We will differentiate between the wall(s) in the TV Room and in the Kitchen.
+Let's create the wall, after which we will create the electrical outlet in the wall. We will differentiate between the wall(s) in the TV Room and in the Kitchen.
 
 [subs="quotes"]
 ----
@@ -3801,7 +3804,7 @@ Let’s create the wall, after which we will create the electrical outlet in the
 ----
 
 [float]
-==== What "Isa Scenery"?
+=== What "Isa Scenery"?
 
 "Scenery" is the only default Class in the standard library. Let's take a look at it in "scenery.i":
 
@@ -3825,7 +3828,7 @@ Let’s create the wall, after which we will create the electrical outlet in the
 
 Pretty basic stuff here. The Scenery Class prevents searching, taking, pushing or even touching certain OBJECTS in the game. This Class is often used for peripheral OBJECTS that promote the atmosphere and realism of the game, but are not meant for any further interaction. The only VERB implemented for Scenery is "examine" (the "take" is precluded by the IS NOT TAKEABLE Attribute!).
 
-I for one prefer to explain to the player why something cannot be searched, etc. Let’s change the Scenery Class to do that.
+I for one prefer to explain to the player why something cannot be searched, etc. Let's change the Scenery Class to do that.
 
 [subs="quotes"]
 ----
@@ -3843,12 +3846,12 @@ I for one prefer to explain to the player why something cannot be searched, etc.
      End Verb.
      -- \*\** ADDED VERBS: \***
      VERB search
-         CHECK — Prevent any default DOES responses!
+         CHECK -- Prevent any default DOES responses!
              "There is nothing to find by searching that."
      END VERB.
      VERB take, pick_up1, pick_up2
          CHECK
-             "There is no need to take that. You won’t need it."
+             "There is no need to take that. You won't need it."
      END VERB.
      VERB push
          CHECK
@@ -3856,13 +3859,13 @@ I for one prefer to explain to the player why something cannot be searched, etc.
      END VERB.
      VERB touch
          CHECK
-             "There’s no need to touch or to feel that."
+             "There's no need to touch or to feel that."
      END VERB.#
  End Every scenery.
 ----
 
 [float]
-==== Other Classes of Scenery
+=== Other Classes of Scenery
 
 You might consider making other Classes of Scenery to include in "scenery.i". For example, a Far_Scene Class could be created for OBJECTS that are too far away to touch, get, etc.
 
@@ -3878,10 +3881,10 @@ You might consider making other Classes of Scenery to include in "scenery.i". Fo
 
 I will leave that to you and your imagination.
 
-=== The Outlet in the Wall
+== The Outlet in the Wall
 
 [float]
-==== Finish Building the Wall
+=== Finish Building the Wall
 
 [subs="quotes"]
 ----
@@ -3896,7 +3899,7 @@ I will leave that to you and your imagination.
 ----
 
 [float]
-==== The Electrical Outlet
+=== The Electrical Outlet
 
 The outlet is part of the wall. As explained for the power cord and the tv (xref:plug[here]), there is no need to make the wall into a CONTAINER for the sake of holding the outlet.
 
@@ -3913,16 +3916,16 @@ Everything here has been covered in this guide to this point:
          HEADER ""
      VERB examine
          DOES ONLY
-             "It’s a three-prong electrical outlet."
+             "It's a three-prong electrical outlet."
              IF cord IS PLUGGED_IN THEN
                  "The TV cord is plugged into it."
              END IF
      END VERB.
-     VERB plug_in, put_in — The player might try "put plug in outlet"
-         WHEN obj2 — (see this section)
+     VERB plug_in, put_in -- The player might try "put plug in outlet"
+         WHEN obj2 -- (see this section)
              CHECK obj1 IS PLUGGABLE
                  ELSE
-                     "Hey, be careful! That doesn’t go into an
+                     "Hey, be careful! That doesn't go into an
                      electrical outlet!"
              AND cord IS NOT PLUGGED_IN
                  ELSE
@@ -3975,7 +3978,7 @@ This makes it easier as well to program for:
 We have allowed for the player to type "plug in the cord", but what if the player types "plug in the tv"? It is a simple matter to _make the tv_ PLUGGABLE (implemented in xref:compile_and_play[Compile and Play It!]). And that is all we have to do. Note again the "plug_in" VERB for the outlet. If obj2 (like the tv) IS PLUGGABLE, then it makes the cord PLUGGED IN.
 
 [float]
-==== Back to the Wall
+=== Back to the Wall
 
 Remember this important question to ask ourselves: "What else might the player try? " We want to avoid making the player "guess the verb."Put yourself in their place and you guess as the author what other reasonable things they might try to do. It seems to me that the player might reasonably be expected to try:
 
@@ -3984,7 +3987,7 @@ Remember this important question to ask ourselves: "What else might the player t
 > _plug the cord in the wall_
 ----
 
-Not to worry. Let’s look at what we have for the wall so far.
+Not to worry. Let's look at what we have for the wall so far.
 
 [subs="quotes"]
 ----
@@ -4035,28 +4038,28 @@ Since we want the same VERB to apply for the wall in the very same way as for th
 
 This completes the puzzle. The remote control will not work, the tv cannot be turned on, unless the cord is plugged in. The player can plug the cord into the outlet, even if they type it as "plug the cord in the wall."
 
-== PART EIGHT: A Third Puzzle
+= PART EIGHT: A Third Puzzle
 
+== Setting a New Stage
+
+
+[float]
 === Setting a New Stage
 
+Since we have said in the game that the tv was "just delivered today", let's change the start of the game with the tv still inside its packing carton. The player will have to cut the carton open with a knife from the kitchen (in the cupboard we created in a xref:surfaces[previous section]), plug in the cord and turn on the tv with the remote control.
+
+It no longer makes sense to have the remote control lost in the chair cushions. Let's start with the remote in the carton with the tv. But we will put a battery for the remote control in the chair.
 
 [float]
-==== Setting a New Stage
-
-Since we have said in the game that the tv was "just delivered today", let’s change the start of the game with the tv still inside its packing carton. The player will have to cut the carton open with a knife from the kitchen (in the cupboard we created in a xref:surfaces[previous section]), plug in the cord and turn on the tv with the remote control.
-
-It no longer makes sense to have the remote control lost in the chair cushions. Let’s start with the remote in the carton with the tv. But we will put a battery for the remote control in the chair.
-
-[float]
-==== The Battery In the Cushion
+=== The Battery In the Cushion
 
 [subs="quotes"]
 ----
  [red]#-----------------------
- THE battery Isa OBJECT AT Nowhere — until found in the chair
+ THE battery Isa OBJECT AT Nowhere -- until found in the chair
      VERB examine
          DOES ONLY
-             "It’s a regular household AAA battery."
+             "It's a regular household AAA battery."
      END VERB.
  END THE battery.#
  -----------------------
@@ -4085,7 +4088,7 @@ It no longer makes sense to have the remote control lost in the chair cushions. 
 ----
 
 [float]
-==== CHECK the Remote for the Battery
+=== CHECK the Remote for the Battery
 
 [subs="quotes"]
 ----
@@ -4108,7 +4111,7 @@ It no longer makes sense to have the remote control lost in the chair cushions. 
          WHEN obj2
              CHECK obj1 = battery
                  ELSE
-                     "Don’t be silly. Only a battery goes in there!"
+                     "Don't be silly. Only a battery goes in there!"
              DOES AFTER
                  "You snap the battery into place in the remote."
      END VERB.#
@@ -4161,7 +4164,7 @@ We want to allow only the battery to be put it in the remote control. It is a si
 ----
 
 [float]
-==== The TV In the Box
+=== The TV In the Box
 
 [subs="quotes"]
 ----
@@ -4218,7 +4221,7 @@ We want to allow only the battery to be put it in the remote control. It is a si
 ----
 
 [float]
-==== The Box Before Opening
+=== The Box Before Opening
 
 [subs="quotes"]
 ----
@@ -4231,11 +4234,11 @@ We want to allow only the battery to be put it in the remote control. It is a si
      NAME label
      NAME large black letters
      NAME upward pointing arrow
-     HAS weight 500. — too heavy to lift
+     HAS weight 500. -- too heavy to lift
      DESCRIPTION
      VERB examine
          DOES ONLY
-             "It’s quite large, about five feet square. Besides the
+             "It's quite large, about five feet square. Besides the
               label (""Ultimo Plasma TV""), there are large black
               letters that say, ""PUSH WITH CARE"".  $nAn upward
               pointing arrow indicates ""THIS SIDE UP""."
@@ -4246,7 +4249,7 @@ We want to allow only the battery to be put it in the remote control. It is a si
 ----
 
 [float]
-==== The Knife In the Cupboard
+=== The Knife In the Cupboard
 
 [subs="quotes"]
 ----
@@ -4262,14 +4265,14 @@ Notice the starting place for the knife is not "AT" but "IN" the cupboard CONTAI
  THE knife Isa OBJECT IN cupboard
      [red]#VERB examine
          DOES ONLY
-             "It’s a sturdy, sharp knife."
+             "It's a sturdy, sharp knife."
      END VERB.
  END THE knife.#
  -----------------------
 ----
 
 [float]
-==== The TV Room DESCRIPTION Revisited
+=== The TV Room DESCRIPTION Revisited
 
 [subs="quotes"]
 ----
@@ -4300,10 +4303,10 @@ Notice the starting place for the knife is not "AT" but "IN" the cupboard CONTAI
  -----------------------
 ----
 
-=== The Cutting Edge
+== The Cutting Edge
 
 [float]
-==== The Cutting Edge
+=== The Cutting Edge
 
 All the parts are in place. The tv and remote control are in the box. The battery is hidden in the chair cushions. The knife is in the kitchen cupboard. Now we have to make the parts work together to solve the puzzle.
 
@@ -4364,7 +4367,7 @@ The box will have to be openable. We will add a CHECK to the VERB for the knife 
  ...
 ----
 
-What we are doing here is a little tricky. Once the box has been cut open it may as well be xref:scenery[Scenery]. However, the Attribute must be assigned to it here as HAS NOT SCENERY (We don’t want to make the box BE SCENERY, only to _have the same Attributes_ as SCENERY, a clear distinction for the Alan program but one perhaps without a difference to us). "IS NOT SCENERY" will compile, but does not give the desired result in game play.
+What we are doing here is a little tricky. Once the box has been cut open it may as well be xref:scenery[Scenery]. However, the Attribute must be assigned to it here as HAS NOT SCENERY (We don't want to make the box BE SCENERY, only to _have the same Attributes_ as SCENERY, a clear distinction for the Alan program but one perhaps without a difference to us). "IS NOT SCENERY" will compile, but does not give the desired result in game play.
 
 An alternate plan would be to create an "opened_box" OBJECT At Nowhere, with appropriate DESCRIPTION and VERBS for the box once cut open. When the player successfully cuts the box open, switch the opened_box for the box using LOCATE statements.
 
@@ -4448,9 +4451,9 @@ No matter. Our DOES ONLY will override the default anyway. Adapted for our box (
 ----
 
 [float]
-==== Practice Time
+=== Practice Time
 
-It’s time for more practice customizing some VERBS. You will first need to create the library VERB (used by the knife as "obj1"), after which you should copy-and-paste it for implementation by the box (as "obj2").
+It's time for more practice customizing some VERBS. You will first need to create the library VERB (used by the knife as "obj1"), after which you should copy-and-paste it for implementation by the box (as "obj2").
 
 Create a new file "cut.i" in your library folder. Be sure to import it in "std.i". Using the VERBS from "open.i", create some new custom VERBS (complete with SYNONYMS and SYNTAX statements!) to "cut", "cut (obj) open", "cut (obj2) with (obj1)", and "cut (obj2) open with (obj1)".
 
@@ -4462,7 +4465,7 @@ Remember that the player may word the statement differently. Perhaps they will t
 
 See if you can complete these VERBS yourself before moving on. It will be good and necessary practice. You will need to create all the default library VERBS and then adapt them for use in the game, cutting the box open with the knife.
 
-=== "cut.i"
+== "cut.i"
 
 [subs="quotes"]
 ----
@@ -4514,7 +4517,7 @@ See if you can complete these VERBS yourself before moving on. It will be good a
 ----
 
 [[box]]
-=== The Box
+== The Box
 
 [subs="quotes"]
 ----
@@ -4534,7 +4537,7 @@ See if you can complete these VERBS yourself before moving on. It will be good a
      VERB examine
          DOES ONLY
              [red]#IF box IS NOT SCENERY THEN
-                 "It’s quite large, about five feet square. Besides
+                 "It's quite large, about five feet square. Besides
                   the label (""Ultimo Plasma TV""), there are large
                   black letters that say, ""PUSH WITH CARE"".
                   $nAn upward pointing arrow indicates ""THIS SIDE UP""."
@@ -4628,10 +4631,10 @@ See if you can complete these VERBS yourself before moving on. It will be good a
  -----------------------
 ----
 
-=== Reducing Repetition
+== Reducing Repetition
 
 [float]
-==== Cut the Repetition.
+=== Cut the Repetition.
 
 Notice the repetition in our code for the box. Four different VERBS do the same actions and give the same display of information. There are a couple of ways to cut down on the repetition.
 
@@ -4654,7 +4657,7 @@ There is another method, useful not only for reducing repetition, but for many o
 
 [subs="quotes"]
 ----
- [red]#THE open_box Isa OBJECT AT Nowhere — Hence, invisible and unreachable
+ [red]#THE open_box Isa OBJECT AT Nowhere -- Hence, invisible and unreachable
      DESCRIPTION
          LOCATE tv Here.
          LOCATE cord Here.
@@ -4766,7 +4769,7 @@ The same can be done with the DOES ONLY "win" sequence with the remote and tv. (
 ----
 
 [[compile_and_play]]
-=== Compile and Play It!
+== Compile and Play It!
 
 [subs="quotes"]
 ----
@@ -5205,16 +5208,16 @@ The same can be done with the DOES ONLY "win" sequence with the remote and tv. (
            screen plasma TV that was delivered earlier today!"
 ----
 
-== PART NINE: Completing the Main Game Elements
+= PART NINE: Completing the Main Game Elements
 
-=== That’s Pushing It!
+== That's Pushing It!
 
 [float]
-==== A Pushing Problem
+=== A Pushing Problem
 
-Some games of Interactive Fiction have much trickier puzzles than what we have constructed so far. Let’s make a real game out of it.
+Some games of Interactive Fiction have much trickier puzzles than what we have constructed so far. Let's make a real game out of it.
 
-In the "examine" VERB for the box we have already hinted that it should be pushed ("PUSH WITH CARE"). Let’s keep a mental "map" of the TV Room, where the player might push the box.
+In the "examine" VERB for the box we have already hinted that it should be pushed ("PUSH WITH CARE"). Let's keep a mental "map" of the TV Room, where the player might push the box.
 
 ----
                   North
@@ -5227,7 +5230,7 @@ wall ------------- box ------------ wall
 ----
 
 [float]
-==== A Bookcase and Books
+=== A Bookcase and Books
 
 We need something to the East, so we will put a bookcase there. If we put another wall to the east, we will have an ambiguation problem (the program would not know which "wall" was referenced by the player). So another reasonable OBJECT to put there is a bookcase.
 
@@ -5245,10 +5248,10 @@ We need something to the East, so we will put a bookcase there. If we put anothe
          DOES ONLY
              "It is a large bookcase. There are only a few books on
               its shelves:
-              $p$t""Help"" — Note that these also commands! ;0)
+              $p$t""Help"" -- Note that these also commands! ;0)
               $n$t""Hint""
               $n$t""Credits""
-              $n$t""Laugh"" " — You created this VERB for practice, remember?
+              $n$t""Laugh"" " -- You created this VERB for practice, remember?
      END VERB.
  END THE bkcase.
  -----------------------
@@ -5260,7 +5263,7 @@ We need something to the East, so we will put a bookcase there. If we put anothe
  ...
 ----
 
-We don’t want the game to display a singular message for plural OBJECTS such as
+We don't want the game to display a singular message for plural OBJECTS such as
 
 ----
 There is a books here.
@@ -5273,7 +5276,7 @@ There is some books here.
 ----
 
 [float]
-==== It’s De Fault of De Messenger
+=== It's De Fault of De Messenger
 
 It is possible to change the Alan default responses. For example we can change the default "There is..." to "You see...". This is done with the MESSAGE statement.
 
@@ -5357,12 +5360,12 @@ Update the tv_room DESCRIPTION with the map Since we will ask the player to push
  ----------------------
 ----
 
-=== So Push It Already!
+== So Push It Already!
 
 [float]
-==== Push the Box
+=== Push the Box
 
-Okay, time to program pushing the box. Let’s begin by making the box moveable.
+Okay, time to program pushing the box. Let's begin by making the box moveable.
 
 [subs="quotes"]
 ----
@@ -5383,14 +5386,14 @@ Okay, time to program pushing the box. Let’s begin by making the box moveable.
  ...
 ----
 
-The MOVEABLE Attribute is the one we have assigned for both the "push"and the "pull" VERBS (see xref:practice[here]). We don’t want the player to pull the box. Implement the VERB from "pull.i" to prevent it.
+The MOVEABLE Attribute is the one we have assigned for both the "push"and the "pull" VERBS (see xref:practice[here]). We don't want the player to pull the box. Implement the VERB from "pull.i" to prevent it.
 
 [subs="quotes"]
 ----
  ...
      [red]#VERB pull
          CHECK
-             "You can’t get a good grip on the carton to pull it. You
+             "You can't get a good grip on the carton to pull it. You
               might have better luck trying to push it."
      End Verb.#
 ----
@@ -5415,28 +5418,28 @@ Now let's add these "push" VERBS for each of the four cardinal directions to "pu
  [red]#SYNTAX
      push_north = push (obj) north
          WHERE obj Isa thing
-             Else "You can’t push that."
+             Else "You can't push that."
      push_south = push (obj) south
          WHERE obj Isa thing
-             Else "You can’t push that."
+             Else "You can't push that."
      push_east = push (obj) east
          WHERE obj Isa thing
-             Else "You can’t push that."
+             Else "You can't push that."
      push_west = push (obj) west
          WHERE obj Isa thing
-             Else "You can’t push that."
+             Else "You can't push that."
  ADD TO EVERY THING
      VERB push_north, push_south, push_east, push_west
          CHECK obj IS MOVEABLE
              ELSE
-                 "You can’t push that."
+                 "You can't push that."
          DOES
              "You push it in that direction."
      END VERB.
  END ADD TO.#
 ----
 
-And finally let’s implement the directional "push" VERBS for the box. We will create a "SPOT" Attribute for the box to indicate where it is in the room, depending on which direction the player pushes it. A value of Zero (0) will equal the center of the room, 1 will be equal to north; 2 to south, 3 to east and 4 to west.
+And finally let's implement the directional "push" VERBS for the box. We will create a "SPOT" Attribute for the box to indicate where it is in the room, depending on which direction the player pushes it. A value of Zero (0) will equal the center of the room, 1 will be equal to north; 2 to south, 3 to east and 4 to west.
 
 [subs="quotes"]
 ----
@@ -5458,7 +5461,7 @@ And finally let’s implement the directional "push" VERBS for the box. We will 
  ...
          [red]#VERB push_north
              DOES ONLY
-                 SET SPOT OF box TO 1. — north
+                 SET SPOT OF box TO 1. -- north
                  "You push the box north, next to the chair and table."
          END VERB.#
 ----
@@ -5538,10 +5541,10 @@ This is a good place to introduce the _DEPENDING ON_ statement. It is rather lik
  ...
 ----
 
-=== or Not!
+== or Not!
 
 [float]
-==== Opening the Box and Placing the TV
+=== Opening the Box and Placing the TV
 
 When the player opens the box to remove the tv, the tv will of course be placed in the same "spot" where the box was. If the box is opened as it sits by the door, then the tv will be placed by the door. The first thing we need to do then is to give the SPOT Attribute to the tv, just like we did for the box.
 
@@ -5622,7 +5625,7 @@ Update the tv_room DESCRIPTION for the TV
 ----
 
 [float]
-==== The Point of All That Pushing Things Around
+=== The Point of All That Pushing Things Around
 
 The point is that the power cord can only be plugged into the outlet if the tv is placed by the wall.  Add a CHECK to the "plug" VERBS for both the outlet and tv_wall:
 
@@ -5651,7 +5654,7 @@ The point is that the power cord can only be plugged into the outlet if the tv i
 ----
 
 [float]
-==== No Pushing the TV!
+=== No Pushing the TV!
 
 What if the tv is not next to the wall? Unlike the box, it cannot be pushed. If the player does try more than one time to push it, the tv will tip over and break, losing the game.
 
@@ -5674,9 +5677,9 @@ What if the tv is not next to the wall? Unlike the box, it cannot be pushed. If 
      [red]#HAS TIPPY 1. -- To check for tipping over (see push VERB below).#
      DESCRIPTION
  ...
-     [red]#VERB pull — COPIED FROM THE box
+     [red]#VERB pull -- COPIED FROM THE box
          CHECK
-             "You can’t get a good grip on the wide screen to pull it.
+             "You can't get a good grip on the wide screen to pull it.
               You might have better luck trying to push it."
      End Verb.#
  ...
@@ -5701,9 +5704,9 @@ The "INCREASE" statement will increase the numeric value by 1, unless you specif
 
 (It is up to you to add SYNTAX for "push_hard" and "push_harder" to the "push" VERB in "push.i"!)
 
-=== Another Way to Win
+== Another Way to Win
 
-Book 'em! It is generally not a good idea to let the game become unwinnable. Let’s give the player an alternate way to push the tv, by placing the books from the bookcase under the tv.
+Book 'em! It is generally not a good idea to let the game become unwinnable. Let's give the player an alternate way to push the tv, by placing the books from the bookcase under the tv.
 
 [subs="quotes"]
 ----
@@ -5755,7 +5758,7 @@ Book 'em! It is generally not a good idea to let the game become unwinnable. Le
 Now might be a good time to create a custom response to the "hint"VERB to give the player a hint about how to move the tv. That is of course left for to you to do!
 
 [float]
-==== Push the TV
+=== Push the TV
 
 Make the tv pushable if the books are under it. We will give it an Attribute for the books under it (BOOKED), and code the "push" VERB to CHECK for it.
 
@@ -5809,7 +5812,7 @@ Now to implement pushing the tv north, south, east or west, first copy-and-paste
 ----
 
 [float]
-==== Consolidate
+=== Consolidate
 
 All these "push" VERBS will need to CHECK whether the tv IS BOOKED or not. If the tv IS NOT BOOKED then each "push" VERB will see if the TIPPY Attribute is greater than 1, and if so, QUIT the game with a "you lose" message.
 
@@ -5884,7 +5887,7 @@ CHECK that the tv IS BOOKED, add the tip_tv DESCRIPTION and the tv's "push" VERB
 
 Congratulations! This completes the main elements of our tutorial game.
 
-=== Compile and Play It!
+== Compile and Play It!
 
 [subs="quotes"]
 ----
@@ -6491,20 +6494,20 @@ Congratulations! This completes the main elements of our tutorial game.
       plasma TV that was delivered earlier today!"
 ----
 
-== PART TEN: Using EVENTS
+= PART TEN: Using EVENTS
 
 [[bomb]]
-=== Setting a Bomb
+== Setting a Bomb
 
 [float]
-==== Timed EVENTS
+=== Timed EVENTS
 
 EVENTS are used to perform an action according to time rather than space; or to put it simply, they act after a certain number of turns have passed. They can be set to happen immediately (after zero turns) or timed to happen after many turns; to happen at or to an OBJECT, or the player, or another ACTOR, or in a separate LOCATION.
 
 EVENTS are often used for color and atmosphere and for "time bomb"effects. We will program an example of each for our game. A "time bomb" effect requires the player to complete a particular goal (i.e. reach a LOCATION or perform an action) before a certain number of turns have passed. Failure to complete the goal may result in death or an otherwise lost game.
 
 [float]
-==== A Simple EVENT Example
+=== A Simple EVENT Example
 
 An EVENT requires three basic parts: 1 - an OBJECT, ACTOR or LOCATION to act upon; 2 - an EVENT statement performing the actions and descriptions; and 3 - a SCHEDULE statement to tell the EVENT when to act, and optionally where .
 
@@ -6539,7 +6542,7 @@ The SCHEDULE statement is rather like a fuse. If not "lit", it will not start co
  END THE bomb.
 ----
 
-That’s really all there is to it. After 50 turns the bomb will explode and give the "lose" message.
+That's really all there is to it. After 50 turns the bomb will explode and give the "lose" message.
 
 We can add to the atmosphere and increase the tension with a repeating EVENT. This is done simply by embedding a (re-)SCHEDULE statement within the EVENT you want to repeat.
 
@@ -6554,7 +6557,7 @@ We can add to the atmosphere and increase the tension with a repeating EVENT. Th
 
 Every three turns the "tick" message will display until the bomb explodes and the game ends.
 
-But suppose the player is able to defuse the bomb in time. We don’t want the bomb to explode after being defused, so we CANCEL the EVENT.
+But suppose the player is able to defuse the bomb in time. We don't want the bomb to explode after being defused, so we CANCEL the EVENT.
 
 [subs="quotes"]
 ----
@@ -6575,7 +6578,7 @@ But suppose the player is able to defuse the bomb in time. We don’t want the b
 EVENTS are very easy to program, and add a great deal of color to the game.
 
 [float]
-==== A Sporting Goal
+=== A Sporting Goal
 
 The "time bomb" in our game will not explode. Rather, the player will only have to successfully turn on the tv in time to watch his (her) favorite sports team play for the championship; failure loses the game. Here is how we will tell the player what the goal is:
 
@@ -6608,7 +6611,7 @@ and...
      VERB examine
          DOES ONLY
              "It is a listing of tv programming for the week.
-              It is opened to today’s schedule."
+              It is opened to today's schedule."
      END VERB.
      VERB read
          DOES ONLY
@@ -6616,7 +6619,7 @@ and...
                  LOCATE guide IN Hero.
                  "(First picking it up)$p"
              END IF.
-             "The championship game will be played at 4 o’clock this
+             "The championship game will be played at 4 o'clock this
               afternoon!"
      END VERB.
  END THE guide.#
@@ -6625,10 +6628,10 @@ and...
 
 The next thing to do is to tell the player what time it is. That is for the next section.
 
-=== Finding a Clock
+== Finding a Clock
 
 [float]
-==== Searching Outside Resources
+=== Searching Outside Resources
 
 Obviously if we want to tell the player what time it is, we need a clock. We could invent one to include in our game. But there are often another resources to turn to, especially for complex or difficult tasks such as programming an Interactive Fiction clock. Such resources
 are the
@@ -6646,7 +6649,7 @@ Searching these resources, your humble author found a clock at the Alan website.
 
 Given below is that same clock, only removed from the train platform and schedule, stripped down and rewired. I have made it into a rather generic clock to include in this game as well as in others we might wish to write. If you like it, I suggest keeping it in a separate folder of library add-ons.
 
-Don’t be put off or overwhelmed by what may appear to be complex or advanced programming. It is that, but that is why we copied it from elsewhere. That is one of the two points I am trying to convey to you the reader: one: outside resources can help in a big way; and two: the clock is still just a simple OBJECT, EVENT, and SCHEDULE statement.
+Don't be put off or overwhelmed by what may appear to be complex or advanced programming. It is that, but that is why we copied it from elsewhere. That is one of the two points I am trying to convey to you the reader: one: outside resources can help in a big way; and two: the clock is still just a simple OBJECT, EVENT, and SCHEDULE statement.
 
 [subs="quotes"]
 ----
@@ -6719,10 +6722,10 @@ Don’t be put off or overwhelmed by what may appear to be complex or advanced p
      #Schedule ticktock After 0.       -- start the clock "ticking"#
 ----
 
-=== Set the Clock
+== Set the Clock
 
 [float]
-==== Set the Clock in the Game
+=== Set the Clock in the Game
 
 The clock as stripped down in the previous section is no longer an ".alan" (game source) file; neither is it an ".i" file to be imported. What it is, is a resource to copy, paste, and set to our particular use. Here is how we will use it in our game.
 
@@ -6800,7 +6803,7 @@ SCHEDULE the Clock to "Tick" in START AT
 ----
 
 [float]
-==== The "ticktock" EVENT
+=== The "ticktock" EVENT
 
 Nothing new to add to this, just copy and paste.
 
@@ -6863,7 +6866,7 @@ Update the Kitchen DESCRIPTION for the Clock
 ----
 
 [float]
-==== Check the Time
+=== Check the Time
 
 When the player successfully turns on the tv, the last thing to check before winning the game is whether he/she turned the tv on in time for the big game. Since we created an OBJECT at Nowhere to act as a sub-routine for us when the player turns on the TV, we will check the time there.
 
@@ -6892,7 +6895,7 @@ When the player successfully turns on the tv, the last thing to check before win
 
 The clock "time bomb" EVENT is completed. Try it!
 
-=== A Colorful EVENT
+== A Colorful EVENT
 
 It often helps to add color and direction to the game to have a repeating EVENT, much like the "time bomb" example xref:bomb[here]. We will trigger a repeating EVENT reminding the player of time going by, once they read the tv schedule.
 
@@ -6939,9 +6942,9 @@ We can vary the message as well, using the RANDOM statement along with DEPENDING
 The program will generate a "random" number from 1 to 3, and DEPENDING ON what number it is, will print that message to the screen. Then it will generate another "random" number from 4 to 6, and SCHEDULE the EVENT to happen again at that interval.
 
 [float]
-==== Trigger the SCHEDULE with a VERB
+=== Trigger the SCHEDULE with a VERB
 
-We will SCHEDULE the time_pass EVENT to begin after the player reads the tv guide. But we don’t want the EVENT to happen immediately upon their reading it, but a few turns after that.
+We will SCHEDULE the time_pass EVENT to begin after the player reads the tv guide. But we don't want the EVENT to happen immediately upon their reading it, but a few turns after that.
 
 [subs="quotes"]
 ----
@@ -6970,7 +6973,7 @@ We will SCHEDULE the time_pass EVENT to begin after the player reads the tv guid
 
 That completes our game and the tutorial. I hope this proves to be a help to you in using the Alan 3 Adventure language.
 
-=== Compile and Play It!
+== Compile and Play It!
 
 Here follows the complete source to the tutorial game.
 
