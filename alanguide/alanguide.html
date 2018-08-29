@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>ALAN 3 Beginner&#8217;s Guide</h1>
 <div class="details">
 <span id="author" class="author">Michael Arnaud</span><br>
-<span id="revnumber">version 0.1.1,</span>
+<span id="revnumber">version 0.1.2,</span>
 <span id="revdate">August 29, 2018</span>
 <br><span id="revremark">AsciiDoc reconstruction work</span>
 </div>
@@ -548,7 +548,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.1
+<pre>Doc version: 0.1.2
 Last edited: August 29, 2018</pre>
 </div>
 </div>
@@ -877,10 +877,12 @@ the player types.
 </tr>
 </table>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>west</em>
-I don't know the word 'west'.</pre>
+<div class="paragraph">
+<p>&gt; <em>west</em><br>
+I don&#8217;t know the word 'west'.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -910,10 +912,12 @@ I don't know the word 'west'.</pre>
 <div class="paragraph">
 <p>Now compile and play the game. Try to go "west" in the TV Room, and instead of getting the message "I don&#8217;t know the word west" you get the somewhat more reasonable response:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>west</em>
-You can't go that way.</pre>
+<div class="paragraph">
+<p>&gt; <em>west</em><br>
+You can&#8217;t go that way.</p>
+</div>
 </div>
 </div>
 <h3 id="_n_s_w_e" class="float">N, S, W, E</h3>
@@ -1144,9 +1148,11 @@ You can't go that way.</pre>
 <div class="paragraph">
 <p>Compile and play the game with the imported library. In the play of the game, type "help".</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>help</em></pre>
+<div class="paragraph">
+<p>&gt; <em>help</em></p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -1160,10 +1166,12 @@ You can't go that way.</pre>
 <div class="paragraph">
 <p>Let&#8217;s return to our source file and the TV Room and Kitchen. We have imported the library files, so now while playing the game and in the TV Room we type "&gt;w" or "&gt;west", the interpreter will not tell us "I don&#8217;t know the word west", but will tell us</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>west</em>
-You can't go that way!</pre>
+<div class="paragraph">
+<p>&gt; <em>west</em><br>
+You can&#8217;t go that way!</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -1196,18 +1204,22 @@ You can't go that way!</pre>
 <p>Basically, <em>a CHECK stops the action that would otherwise take place.</em>
 In our example, when the player types</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>west</em></pre>
+<div class="paragraph">
+<p>&gt; <em>west</em></p>
+</div>
 </div>
 </div>
 <div class="paragraph">
 <p>the interpreter sees the CHECK and does not carry out whatever typing "west" would otherwise do. It stops the action and displays an explanation to the player, adding to the illusion of realism.</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>west</em>
-There is only a wall in that direction.</pre>
+<div class="paragraph">
+<p>&gt; <em>west</em><br>
+There is only a wall in that direction.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -1246,10 +1258,12 @@ There is only a wall in that direction.</pre>
 <div class="paragraph">
 <p>So we have still stopped the player from going in that direction, but instead of giving the sense of being stopped, we give the illusion of moving about.</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>west</em>
-You move about in the great hall, examining various things.</pre>
+<div class="paragraph">
+<p>&gt; <em>west</em><br>
+You move about in the great hall, examining various things.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -1264,18 +1278,22 @@ You move about in the great hall, examining various things.</pre>
 <div class="paragraph">
 <p>In our game so far if the player in the TV Room types "south", this is the response:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>TV Room
+<div class="paragraph">
+<p><strong>TV Room</strong><br>
 This is your favorite room in the house, because you love to watch
 television. You recently purchased a giant screen plasma TV that is
 set up in this room, ideally located across from your comfy chair and
-table.
-
-> <em>south</em>
-
-Kitchen
-This is the kitchen.</pre>
+table.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>south</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Kitchen</strong><br>
+This is the kitchen.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -1367,37 +1385,46 @@ This is the kitchen.</pre>
 <div class="paragraph">
 <p>Here is the result:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>TV Room
+<div class="paragraph">
+<p><strong>TV Room</strong><br>
 This is your favorite room in the house, because you love to watch
 television. You recently purchased a giant screen plasma TV that is
 set up in this room, ideally located across from your comfy chair and
-table. The kitchen is south.
-
-> <em>west</em>
-There is only a wall in that direction.
-
-> <em>south</em>
-You go south, into the kitchen.
-
-Kitchen
-This is the kitchen. North returns to the TV Room.
-
-> <em>west</em>
-There is only a wall in that direction.
-
-> <em>south</em>
-There is only a wall in that direction.
-
-> <em>north</em>
-You return to the TV Room, north.
-
-TV Room
+table. The kitchen is south.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>west</em><br>
+There is only a wall in that direction.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>south</em><br>
+You go south, into the kitchen.</p>
+</div>
+<div class="paragraph">
+<p><strong>Kitchen</strong><br>
+This is the kitchen. North returns to the TV Room.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>west</em><br>
+There is only a wall in that direction.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>south</em><br>
+There is only a wall in that direction.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>north</em><br>
+You return to the TV Room, north.</p>
+</div>
+<div class="paragraph">
+<p><strong>TV Room</strong><br>
 This is your favorite room in the house, because you love to watch
 television. You recently purchased a giant screen plasma TV that is
 set up in this room, ideally located across from your comfy chair and
-table. The kitchen is south.</pre>
+table. The kitchen is south.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1644,16 +1671,20 @@ describing tendency of the LOCATION.</p>
 <div class="paragraph">
 <p>Compile the game and play it. "Look at" the TV, the chair, and the table.  TV Room This is your favorite room in the house, because you love to watch television. You recently purchased a giant screen plasma TV that is set up in this room, ideally located across from your comfy chair and table. The kitchen is south.</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>look at the tv</em>
-There is nothing special about the TV.
-
-> <em>look at the chair</em>
-There is nothing special about the comfy chair.
-
-> <em>look at the table</em>
-There is nothing special about the table.</pre>
+<div class="paragraph">
+<p>&gt; <em>look at the tv</em><br>
+There is nothing special about the TV.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>look at the chair</em><br>
+There is nothing special about the comfy chair.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>look at the table</em><br>
+There is nothing special about the table.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -1662,10 +1693,12 @@ There is nothing special about the table.</pre>
 <div class="paragraph">
 <p>Since we have a television in the TV Room, let&#8217;s turn it on and see what happens.</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>turn on the tv</em>
-You can't turn that on.</pre>
+<div class="paragraph">
+<p>&gt; <em>turn on the tv</em><br>
+You can&#8217;t turn that on.</p>
+</div>
 </div>
 </div>
 <h3 id="_adding_attributes" class="float">ADDING ATTRIBUTES</h3>
@@ -1692,13 +1725,16 @@ You can't turn that on.</pre>
 <div class="paragraph">
 <p>That&#8217;s all we have to do to get this result:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>turn on the tv</em>
-You turn on the TV.
-
-> <em>turn it off</em>
-You turn off the TV.</pre>
+<div class="paragraph">
+<p>&gt; <em>turn on the tv</em><br>
+You turn on the TV.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>turn it off</em><br>
+You turn off the TV.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -1919,11 +1955,14 @@ thing I want you to see right now is their basic format:</p>
 <div class="paragraph">
 <p>These are the SYNONYMS in "take.i" for the word "take". So if the player types "get the tv" or "grab" or "steal" or "carry the tv", it is all the same to the interpreter as if they had typed "take the tv". The interpreter will respond with</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>Taken.
-
-></pre>
+<div class="paragraph">
+<p>Taken.</p>
+</div>
+<div class="paragraph">
+<p>&gt;</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -1976,10 +2015,12 @@ thing I want you to see right now is their basic format:</p>
 <div class="paragraph">
 <p>Now the tv cannot be taken because it IS NOT takeable. The VERB "take"applies "To Every object". The interpreter will see that the tv is an OBJECT. The next thing the interpreter will do is "Check obj Is takeable" -- ah ha! The tv is no longer takeable! So the VERB is CHECKED (stopped) and the message is displayed. Here&#8217;s what we will see in the game:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> take the tv
-You can't take that!</pre>
+<div class="paragraph">
+<p>&gt; take the tv<br>
+You can&#8217;t take that!</p>
+</div>
 </div>
 </div>
 </div>
@@ -2049,10 +2090,12 @@ greater than 50.</p>
 <div class="paragraph">
 <p>We have made the tv takeable again (allowing the default), so the first CHECK will not stop the VERB action. Then the interpreter sees the weight of the tv is greater than 50. The second part of the CHECK (not to get bogged in details, but the "And" in the line "And weight Of obj &lt;=50" is like another CHECK) sees a weight of 100 is too heavy.</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>take the tv</em>
-That is too heavy to lift.</pre>
+<div class="paragraph">
+<p>&gt; <em>take the tv</em><br>
+That is too heavy to lift.</p>
+</div>
 </div>
 </div>
 </div>
@@ -2161,22 +2204,27 @@ That is too heavy to lift.</pre>
 <div class="paragraph">
 <p>Finally we come to the command itself. Every OBJECT, as a THING, will respond to the command, or VERB, "examine", according to this section of code in "examine.i". First the interpreter will CHECK if the OBJECT (obj) has the Attribute ("Is") "examinable". Then, passing that CHECK, the interpreter DOES the action of the VERB, which in this case is to respond, "There is nothing special about" and then Say The OBJECT. And so:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>TV Room
+<div class="paragraph">
+<p><strong>TV Room</strong><br>
 This is your favorite room in the house, because you love to watch
 television. You recently purchased a giant screen plasma TV that is
 set up in this room, ideally located across from your comfy chair and
-table. The kitchen is south.
-
-> <em>look at the tv</em>
-There is nothing special about the TV.
-
-> <em>look at the chair</em>
-There is nothing special about the comfy chair.
-
-> <em>look at the table</em>
-There is nothing special about the table.</pre>
+table. The kitchen is south.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>look at the tv</em><br>
+There is nothing special about the TV.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>look at the chair</em><br>
+There is nothing special about the comfy chair.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>look at the table</em><br>
+There is nothing special about the table.</p>
+</div>
 </div>
 </div>
 <h3 id="_changing_the_default_response_2" class="float">Changing the Default Response</h3>
@@ -2318,16 +2366,19 @@ This doesn&#8217;t mean the CHECKS will not apply to our OBJECTS. The CHECKS wil
 <div class="paragraph">
 <p>Save, compile and run the game. "Look at" the TV.</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>TV Room
+<div class="paragraph">
+<p><strong>TV Room</strong><br>
 This is your favorite room in the house, because you love to watch
 television. You recently purchased a giant screen plasma TV that is
 set up in this room, ideally located across from your comfy chair and
-table. The kitchen is south.
-
-> <em>look at the tv</em>
-There is nothing special about the TV. It's your 52-inch plasma pride and joy.</pre>
+table. The kitchen is south.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>look at the tv</em>
+There is nothing special about the TV. It&#8217;s your 52-inch plasma pride and joy.<br></p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -2368,19 +2419,23 @@ There is nothing special about the TV. It's your 52-inch plasma pride and joy.</
 <div class="paragraph">
 <p>Previously we worked with various default responses for the "take"command, using the tv as our test OBJECT. First we made the tv "NOT takeable", resulting in the default response:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>take the tv</em>
-You can't take that!</pre>
+<div class="paragraph">
+<p>&gt; <em>take the tv</em><br>
+You can&#8217;t take that!</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
 <p>Then we gave the tv the Attribute of weight, and gave it a weight of 100.</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>take the tv</em>
-That is too heavy to lift.</pre>
+<div class="paragraph">
+<p>&gt; <em>take the tv</em><br>
+That is too heavy to lift.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -2560,10 +2615,12 @@ That is too heavy to lift.</pre>
 <div class="paragraph">
 <p>But we want to do more than say "You turn on the tv." We want this display:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>turn on the tv</em>
-Wow! What a great picture!</pre>
+<div class="paragraph">
+<p>&gt; <em>turn on the tv</em><br>
+Wow! What a great picture!</p>
+</div>
 </div>
 </div>
 <div class="imageblock">
@@ -2652,24 +2709,32 @@ Do you want to UNDO, RESTART, RESTORE or QUIT?</pre>
 <div class="paragraph">
 <p>When starting a game of Interactive Fiction, some sort of introductory information and title is usually displayed before the player is introduced to the first LOCATION. We might wish, for example, to start our game with this display:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
+<div class="content">
+<div class="literalblock">
 <div class="content">
 <pre>                *** TV TIME! ***
     An ALAN 3 Interactive Fiction Tutorial Game
-           By Michael Arnaud © 2006
-
-(Type "help" if you have not played this kind of game before.)
-
-Joy of joys, you have just purchased a brand new big screen plasma TV
-that was delivered earlier today!
-
-TV Room
+           By Michael Arnaud © 2006</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(Type "help" if you have not played this kind of game before.)</p>
+</div>
+<div class="paragraph">
+<p>Joy of joys, you have just purchased a brand new big screen plasma TV
+that was delivered earlier today!</p>
+</div>
+<div class="paragraph">
+<p><strong>TV Room</strong><br>
 This is your favorite room in the house, because you love to watch
 television. You recently purchased a giant screen plasma TV that is
 set up in this room, ideally located across from your comfy chair and
-table. The kitchen is south.
-
-></pre>
+table. The kitchen is south.</p>
+</div>
+<div class="paragraph">
+<p>&gt;</p>
+</div>
 </div>
 </div>
 <h3 id="_re_introducing_start_at" class="float">Re-Introducing START AT</h3>
@@ -3194,21 +3259,26 @@ Anytime you compile a game and get a lot of errors seemingly out of nowhere, the
 <div class="paragraph">
 <p>Now let&#8217;s turn our fine-tuning attentions to the chair. Once the player searches the chair and discovers the remote, he/she might continue to search the cushions for the lost change we suggested they might find. What we don&#8217;t want them to find is this:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>x chair</em>
-It's your favorite chair to sit in when you're watching the big
-game. It has big soft comfy cushions -- just the kind people lose
-change in all the time.
-
-> <em>search chair</em>
-You find the lost remote control, which you take.
-
-> <em>i</em>
-You are carrying a remote control.
-
-> <em>search chair</em>
-You find the lost remote control, which you take.</pre>
+<div class="paragraph">
+<p>&gt; <em>x chair</em><br>
+It&#8217;s your favorite chair to sit in when you&#8217;re watching the big
+game. It has big soft comfy cushions&#8201;&#8212;&#8201;just the kind people lose
+change in all the time.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>search chair</em><br>
+You find the lost remote control, which you take.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>i</em><br>
+You are carrying a remote control.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>search chair</em><br>
+You find the lost remote control, which you take.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -3632,16 +3702,20 @@ be transformed with a single word.</p>
 <div class="paragraph">
 <p>When "examined" or otherwise described, CONTAINERS will describe their contents as well (unless programmed not to do so) with the default message, "The &lt;CONTAINER&gt; contains &lt;its contents&gt;." So if the player were for example to "put the remote on the table", this would be the result:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>x the table</em>
-It's an ordinary table, set conveniently by your chair.
-
-> <em>put the remote on the table</em>
-Done.
-
-> <em>x the table</em>
-It's an ordinary table, set conveniently by your chair. The table contains a remote control.</pre>
+<div class="paragraph">
+<p>&gt; <em>x the table</em><br>
+It&#8217;s an ordinary table, set conveniently by your chair.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>put the remote on the table</em><br>
+Done.</p>
+</div>
+<div class="paragraph">
+<p>&gt; <em>x the table</em><br>
+It&#8217;s an ordinary table, set conveniently by your chair. The table contains a remote control.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -3677,11 +3751,13 @@ It's an ordinary table, set conveniently by your chair. The table contains a rem
 <div class="paragraph">
 <p>Which gives the desired result:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>x the table</em>
-It's an ordinary table, set conveniently by your chair. Resting on the
-table is a remote control.</pre>
+<div class="paragraph">
+<p>&gt; <em>x the table</em><br>
+It&#8217;s an ordinary table, set conveniently by your chair. Resting on the
+table is a remote control.</p>
+</div>
 </div>
 </div>
 </div>
@@ -4919,9 +4995,11 @@ S O L U T I O N S!
 <div class="paragraph">
 <p>This makes it easier as well to program for:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>plug in the tv</em></pre>
+<div class="paragraph">
+<p>&gt; <em>plug in the tv</em></p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -4931,9 +5009,11 @@ S O L U T I O N S!
 <div class="paragraph">
 <p>Remember this important question to ask ourselves: "What else might the player try? " We want to avoid making the player "guess the verb."Put yourself in their place and you guess as the author what other reasonable things they might try to do. It seems to me that the player might reasonably be expected to try:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre>> <em>plug the cord in the wall</em></pre>
+<div class="paragraph">
+<p>&gt; <em>plug the cord in the wall</em></p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -8766,8 +8846,8 @@ mentioned in the Introduction to this guide.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.1<br>
-Last updated 2018-08-29 23:29:08 ora legale Europa occidentale
+Version 0.1.2<br>
+Last updated 2018-08-30 00:36:54 ora legale Europa occidentale
 </div>
 </div>
 </body>

@@ -1,6 +1,6 @@
 :doctitle: ALAN 3 Beginner's Guide
 :author: Michael Arnaud
-:revnumber: 0.1.1
+:revnumber: 0.1.2
 :revdate: August 29, 2018
 :revremark: AsciiDoc reconstruction work
 :doctype: book
@@ -286,11 +286,11 @@ In our game so far, we have programmed EXITS "south" from the TV Room and "north
 TIP: In game transcripts we'll use _this type face_ to indicate what
 the player types.
 
-[subs="quotes"]
-----
-> _west_
+[example,role="gametranscript"]
+================================================================================
+&gt; _west_ +
 I don't know the word 'west'.
-----
+================================================================================
 
 The remedy is to include in our program every different direction we might use in our game. We need not use any of the standard directional words at all. We can use "thisaway", "thataway", "moonward", or anything we want. However, most players of Interactive Fiction are used to playing with at least the four cardinal directions, plus "up"and "down". They will need some instruction within the game if we want them to try such directions as "moonward".
 
@@ -318,11 +318,11 @@ One of the most convenient devices we can use in the Alan adventure language is 
 
 Now compile and play the game. Try to go "west" in the TV Room, and instead of getting the message "I don't know the word west" you get the somewhat more reasonable response:
 
-[subs="quotes"]
-----
-> _west_
+[example,role="gametranscript"]
+================================================================================
+&gt; _west_ +
 You can't go that way.
-----
+================================================================================
 
 [float]
 === N, S, W, E
@@ -533,10 +533,10 @@ we also imported all those other _.i_-files in the library that are _imported by
 
 Compile and play the game with the imported library. In the play of the game, type "help".
 
-[subs="quotes"]
-----
-> _help_
-----
+[example,role="gametranscript"]
+================================================================================
+&gt; _help_
+================================================================================
 
 You will see some helpful information displayed. This demonstrates the power of importing the library files.
 
@@ -546,11 +546,11 @@ You will see some helpful information displayed. This demonstrates the power of 
 Let's return to our source file and the TV Room and Kitchen. We have imported the library files, so now while playing the game and in the TV Room we type ">w" or ">west", the interpreter will not tell us "I don't know the word west", but will tell us
 
 
-[subs="quotes"]
-----
-> _west_
+[example,role="gametranscript"]
+================================================================================
+&gt; _west_ +
 You can't go that way!
-----
+================================================================================
 
 It is generally desirable to tell the player why he/she "can't go that way", perhaps because there is a wall in that direction. Here's how we would do that:
 
@@ -581,18 +581,18 @@ Here a new and important statement is introduced: the CHECK statement.
 Basically, _a CHECK stops the action that would otherwise take place._
 In our example, when the player types
 
-[subs="quotes"]
-----
-> _west_
-----
+[example,role="gametranscript"]
+================================================================================
+&gt; _west_
+================================================================================
 
 the interpreter sees the CHECK and does not carry out whatever typing "west" would otherwise do. It stops the action and displays an explanation to the player, adding to the illusion of realism.
 
-[subs="quotes"]
-----
-> _west_
+[example,role="gametranscript"]
+================================================================================
+&gt; _west_ +
 There is only a wall in that direction.
-----
+================================================================================
 
 Also notice that several directions are included on the same line:
 
@@ -626,11 +626,11 @@ If our game were in a larger room, say, a banquet hall, we might want to give a 
 
 So we have still stopped the player from going in that direction, but instead of giving the sense of being stopped, we give the illusion of moving about.
 
-[subs="quotes"]
-----
-> _west_
+[example,role="gametranscript"]
+================================================================================
+&gt; _west_ +
 You move about in the great hall, examining various things.
-----
+================================================================================
 
 Our little tutorial game only has little rooms, so we will simply put "a wall in that direction".
 
@@ -641,19 +641,19 @@ Our little tutorial game only has little rooms, so we will simply put "a wall in
 
 In our game so far if the player in the TV Room types "south", this is the response:
 
-[subs="quotes"]
-----
-TV Room
+[example,role="gametranscript"]
+================================================================================
+*TV Room* +
 This is your favorite room in the house, because you love to watch
 television. You recently purchased a giant screen plasma TV that is
 set up in this room, ideally located across from your comfy chair and
 table.
 
-> _south_
+&gt; _south_
 
-Kitchen
+*Kitchen* +
 This is the kitchen.
-----
+================================================================================
 
 We might prefer to have a bit more descriptive move from one room to another. We can do that within the EXIT statements.
 
@@ -740,38 +740,38 @@ Better than having to guess, it is often good to tell the player which direction
 
 Here is the result:
 
-[subs="quotes"]
-----
-TV Room
+[example,role="gametranscript"]
+================================================================================
+*TV Room* +
 This is your favorite room in the house, because you love to watch
 television. You recently purchased a giant screen plasma TV that is
 set up in this room, ideally located across from your comfy chair and
 table. The kitchen is south.
 
-> _west_
+&gt; _west_ +
 There is only a wall in that direction.
 
-> _south_
+&gt; _south_ +
 You go south, into the kitchen.
 
-Kitchen
+*Kitchen* +
 This is the kitchen. North returns to the TV Room.
 
-> _west_
+&gt; _west_ +
 There is only a wall in that direction.
 
-> _south_
+&gt; _south_ +
 There is only a wall in that direction.
 
-> _north_
+&gt; _north_ +
 You return to the TV Room, north.
 
-TV Room
+*TV Room* +
 This is your favorite room in the house, because you love to watch
 television. You recently purchased a giant screen plasma TV that is
 set up in this room, ideally located across from your comfy chair and
 table. The kitchen is south.
-----
+================================================================================
 
 = PART TWO: OBJECTS and Attributes
 
@@ -989,27 +989,27 @@ Notice that multiple NAME statements can be on the same line. The compiler doesn
 
 Compile the game and play it. "Look at" the TV, the chair, and the table.  TV Room This is your favorite room in the house, because you love to watch television. You recently purchased a giant screen plasma TV that is set up in this room, ideally located across from your comfy chair and table. The kitchen is south.
 
-[subs="quotes"]
-----
-> _look at the tv_
+[example,role="gametranscript"]
+================================================================================
+&gt; _look at the tv_ +
 There is nothing special about the TV.
 
-> _look at the chair_
+&gt; _look at the chair_ +
 There is nothing special about the comfy chair.
 
-> _look at the table_
+&gt; _look at the table_ +
 There is nothing special about the table.
-----
+================================================================================
 
 The interpreter recognizes the three OBJECTS we have created in the TV Room and tells us there is "nothing special" about them. We will see how to make the response a bit more interesting later, but for now we are satisfied that the OBJECTS are where we want them to be and that we can interact with them, at least to "look at" them.
 
 Since we have a television in the TV Room, let's turn it on and see what happens.
 
-[subs="quotes"]
-----
-> _turn on the tv_
+[example,role="gametranscript"]
+================================================================================
+&gt; _turn on the tv_ +
 You can't turn that on.
-----
+================================================================================
 
 [float]
 === ADDING ATTRIBUTES
@@ -1035,14 +1035,14 @@ We can't turn on the TV because we haven't made it _able_ to be turned on (or of
 
 That's all we have to do to get this result:
 
-[subs="quotes"]
-----
-> _turn on the tv_
+[example,role="gametranscript"]
+================================================================================
+&gt; _turn on the tv_ +
 You turn on the TV.
 
-> _turn it off_
+&gt; _turn it off_ +
 You turn off the TV.
-----
+================================================================================
 
 Again, the result could be more descriptive, but the point is that now the player can turn the tv on and off. It's important now to see how this works, and in the course of doing so to learn a bit about Attributes and VERBS.
 
@@ -1238,12 +1238,12 @@ Look in the library folder and find the file "take.i".
 
 These are the SYNONYMS in "take.i" for the word "take". So if the player types "get the tv" or "grab" or "steal" or "carry the tv", it is all the same to the interpreter as if they had typed "take the tv". The interpreter will respond with
 
-[subs="quotes"]
-----
+[example,role="gametranscript"]
+================================================================================
 Taken.
 
->
-----
+&gt;
+================================================================================
 
 The tv will be carried with the player everywhere he goes, until he decides to drop it somewhere. (Don't be confused if you play the game and see the TV still listed in the LOCATION DESCRIPTION. It isn't really there any more, you are carrying it. Type "i" for "inventory"to see what you are carrying.)
 
@@ -1291,11 +1291,11 @@ There is a CHECK looking for the Attribute "takeable". Also notice that every OB
 
 Now the tv cannot be taken because it IS NOT takeable. The VERB "take"applies "To Every object". The interpreter will see that the tv is an OBJECT. The next thing the interpreter will do is "Check obj Is takeable" -- ah ha! The tv is no longer takeable! So the VERB is CHECKED (stopped) and the message is displayed. Here's what we will see in the game:
 
-[subs="quotes"]
-----
-> take the tv
+[example,role="gametranscript"]
+================================================================================
+&gt; take the tv +
 You can't take that!
-----
+================================================================================
 
 == Non-Boolean Attributes
 
@@ -1353,11 +1353,11 @@ greater than 50.
 
 We have made the tv takeable again (allowing the default), so the first CHECK will not stop the VERB action. Then the interpreter sees the weight of the tv is greater than 50. The second part of the CHECK (not to get bogged in details, but the "And" in the line "And weight Of obj &lt;=50" is like another CHECK) sees a weight of 100 is too heavy.
 
-[subs="quotes"]
-----
-> _take the tv_
+[example,role="gametranscript"]
+================================================================================
+&gt; _take the tv_ +
 That is too heavy to lift.
-----
+================================================================================
 
 = PART THREE: Customizing Default VERBS
 
@@ -1456,23 +1456,23 @@ We will look at the SYNTAX construction in detail later. What is important to se
 
 Finally we come to the command itself. Every OBJECT, as a THING, will respond to the command, or VERB, "examine", according to this section of code in "examine.i". First the interpreter will CHECK if the OBJECT (obj) has the Attribute ("Is") "examinable". Then, passing that CHECK, the interpreter DOES the action of the VERB, which in this case is to respond, "There is nothing special about" and then Say The OBJECT. And so:
 
-[subs="quotes"]
-----
-TV Room
+[example,role="gametranscript"]
+================================================================================
+*TV Room* +
 This is your favorite room in the house, because you love to watch
 television. You recently purchased a giant screen plasma TV that is
 set up in this room, ideally located across from your comfy chair and
 table. The kitchen is south.
 
-> _look at the tv_
+&gt; _look at the tv_ +
 There is nothing special about the TV.
 
-> _look at the chair_
+&gt; _look at the chair_ +
 There is nothing special about the comfy chair.
 
-> _look at the table_
+&gt; _look at the table_ +
 There is nothing special about the table.
-----
+================================================================================
 
 [float]
 === Changing the Default Response
@@ -1598,17 +1598,17 @@ Now let's put in our custom responses:
 
 Save, compile and run the game. "Look at" the TV.
 
-[subs="quotes"]
-----
-TV Room
+[example,role="gametranscript"]
+================================================================================
+*TV Room* +
 This is your favorite room in the house, because you love to watch
 television. You recently purchased a giant screen plasma TV that is
 set up in this room, ideally located across from your comfy chair and
 table. The kitchen is south.
 
-> _look at the tv_
-There is nothing special about the TV. It's your 52-inch plasma pride and joy.
-----
+&gt; _look at the tv_
+There is nothing special about the TV. It's your 52-inch plasma pride and joy. +
+================================================================================
 
 We still got the default response and our custom response. What happened?
 
@@ -1638,19 +1638,19 @@ Notice the single-quotes around the word "check", as well as the words "look" an
 
 Previously we worked with various default responses for the "take"command, using the tv as our test OBJECT. First we made the tv "NOT takeable", resulting in the default response:
 
-[subs="quotes"]
-----
-> _take the tv_
+[example,role="gametranscript"]
+================================================================================
+&gt; _take the tv_ +
 You can't take that!
-----
+================================================================================
 
 Then we gave the tv the Attribute of weight, and gave it a weight of 100.
 
-[subs="quotes"]
-----
-> _take the tv_
+[example,role="gametranscript"]
+================================================================================
+&gt; _take the tv_ +
 That is too heavy to lift.
-----
+================================================================================
 
 There is still another way to override the default responses for "take", and that is to supply a custom response of our own, as we did in the last section with the "examine" VERB. Let's copy and paste the relevant section from the "take" VERB in "take.i":
 
@@ -1808,11 +1808,11 @@ Finally we will write our custom message response. We could say "You turn on the
 
 But we want to do more than say "You turn on the tv." We want this display:
 
-[subs="quotes"]
-----
-> _turn on the tv_
+[example,role="gametranscript"]
+================================================================================
+&gt; _turn on the tv_ +
 Wow! What a great picture!
-----
+================================================================================
 image::images/73D17E1AB203F19550E0ED6670928EAA467080A2.jpg[]
 ----
 You watch the game and your favorite team wins!
@@ -1884,26 +1884,35 @@ The "$p" characters are formatting characters and will be explained in the next 
 
 When starting a game of Interactive Fiction, some sort of introductory information and title is usually displayed before the player is introduced to the first LOCATION. We might wish, for example, to start our game with this display:
 
-[subs="quotes"]
-----
+// @FIXME: The nested Literal block solution below is not ideal at all!
+//         But it will have to do until I come up with a reasonable solution
+//         for enforcing text centering or indentation (using nbsp entities only
+//         works in HTML!)
 
-                \*\** TV TIME! \***
+
+[example,role="gametranscript"]
+================================================================================
+....
+                *** TV TIME! ***
     An ALAN 3 Interactive Fiction Tutorial Game
            By Michael Arnaud © 2006
+....
 
 (Type "help" if you have not played this kind of game before.)
 
 Joy of joys, you have just purchased a brand new big screen plasma TV
 that was delivered earlier today!
 
-TV Room
+*TV Room* +
 This is your favorite room in the house, because you love to watch
 television. You recently purchased a giant screen plasma TV that is
 set up in this room, ideally located across from your comfy chair and
 table. The kitchen is south.
 
->
-----
+&gt;
+================================================================================
+
+// **
 
 [float]
 === Re-Introducing START AT
@@ -2396,22 +2405,22 @@ Now "press the button" or "click the remote" will work the same as "push the but
 
 Now let's turn our fine-tuning attentions to the chair. Once the player searches the chair and discovers the remote, he/she might continue to search the cushions for the lost change we suggested they might find. What we don't want them to find is this:
 
-[subs="quotes"]
-----
-> _x chair_
+[example,role="gametranscript"]
+================================================================================
+&gt; _x chair_ +
 It's your favorite chair to sit in when you're watching the big
 game. It has big soft comfy cushions -- just the kind people lose
 change in all the time.
 
-> _search chair_
+&gt; _search chair_ +
 You find the lost remote control, which you take.
 
-> _i_
+&gt; _i_ +
 You are carrying a remote control.
 
-> _search chair_
+&gt; _search chair_ +
 You find the lost remote control, which you take.
-----
+================================================================================
 
 Here is one way we might prevent that from happening:
 
@@ -2808,17 +2817,17 @@ If on the other hand there were another CONTAINER in the game (perhaps a big box
 
 When "examined" or otherwise described, CONTAINERS will describe their contents as well (unless programmed not to do so) with the default message, "The <CONTAINER> contains <its contents>." So if the player were for example to "put the remote on the table", this would be the result:
 
-[subs="quotes"]
-----
-> _x the table_
+[example,role="gametranscript"]
+================================================================================
+&gt; _x the table_ +
 It's an ordinary table, set conveniently by your chair.
 
-> _put the remote on the table_
+&gt; _put the remote on the table_ +
 Done.
 
-> _x the table_
+&gt; _x the table_ +
 It's an ordinary table, set conveniently by your chair. The table contains a remote control.
-----
+================================================================================
 
 We can change the "contains" message to better fit the table, which after all is a surface. To do this, we add a HEADER statement.
 
@@ -2851,12 +2860,12 @@ We can change the "contains" message to better fit the table, which after all is
 
 Which gives the desired result:
 
-[subs="quotes"]
-----
-> _x the table_
+[example,role="gametranscript"]
+================================================================================
+&gt; _x the table_ +
 It's an ordinary table, set conveniently by your chair. Resting on the
 table is a remote control.
-----
+================================================================================
 
 == Classes
 
@@ -3970,10 +3979,10 @@ Note that we did not code our DOES ONLY to "Locate obj1 In obj2." That is not ne
 
 This makes it easier as well to program for:
 
-[subs="quotes"]
-----
-> _plug in the tv_
-----
+[example,role="gametranscript"]
+================================================================================
+&gt; _plug in the tv_
+================================================================================
 
 We have allowed for the player to type "plug in the cord", but what if the player types "plug in the tv"? It is a simple matter to _make the tv_ PLUGGABLE (implemented in xref:compile_and_play[Compile and Play It!]). And that is all we have to do. Note again the "plug_in" VERB for the outlet. If obj2 (like the tv) IS PLUGGABLE, then it makes the cord PLUGGED IN.
 
@@ -3982,10 +3991,10 @@ We have allowed for the player to type "plug in the cord", but what if the playe
 
 Remember this important question to ask ourselves: "What else might the player try? " We want to avoid making the player "guess the verb."Put yourself in their place and you guess as the author what other reasonable things they might try to do. It seems to me that the player might reasonably be expected to try:
 
-[subs="quotes"]
-----
-> _plug the cord in the wall_
-----
+[example,role="gametranscript"]
+================================================================================
+&gt; _plug the cord in the wall_
+================================================================================
 
 Not to worry. Let's look at what we have for the wall so far.
 
