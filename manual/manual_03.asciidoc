@@ -2761,7 +2761,7 @@ The Alan compiler will always support the multi-media statements, but a particul
 
 Image and sound files are analyzed by the compiler and copied into an Alan v3 resource file (file extension *.a3r*) that must be distributed with your game file, otherwise they will not be available during game play. The original file will be left untouched.
 
-The format of the resource file follows the standard Interactive Fiction resource file format "`blorb`" and supports images of JPEG and PNG types, and sounds of MOD and AIFF formats.
+The format of the resource file follows the standard interactive fiction resource file format "`blorb`" and supports images of JPEG and PNG types, and sounds of MOD and AIFF formats.
 
 If a resource file is referenced from multiple statements, it will only be copied once. The Alan compiler uses the file extension to determine the media type of the file. The following extensions are recognized: *.jpg*, *.jpeg*, *.png*, *.mod*, *.aif* and *.aiff*.
 

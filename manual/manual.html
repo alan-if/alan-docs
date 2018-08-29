@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.27,</span>
+<span id="revnumber">version 0.1.28,</span>
 <span id="revdate">August 29, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -825,7 +825,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.27
+<pre>Doc version: 0.1.28
 Last edited: August 29, 2018</pre>
 </div>
 </div>
@@ -861,24 +861,36 @@ downloaded from:</p>
 <h2 id="_introduction">1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Text adventures or, using a more appropriate term, interactive fiction, is a form of computer game which has many things in common with fiction in book form, role-playing games and puzzle-solving. To create a high quality interactive fiction game, you need to be more of an author than a programmer.</p>
+<p>Text adventures or, using a more appropriate term, interactive fiction, is a form of computer game which has many things in common with fiction in book form, role-playing games and puzzle-solving.
+To create a high quality interactive fiction game, you need to be more of an author than a programmer.</p>
 </div>
 <div class="paragraph">
 <p>Alan is a special purpose computer language specifically designed to make it very easy to create such adventure games requiring only limited programming skills.</p>
 </div>
 <div class="paragraph">
-<p>The main principle of the design of the language is simplicity. That is, it should be very easy to do common things, but it should also be possible to do more complicated things by constructs that are more complex. This means that wherever a construct is optional, the system supplies some sensible default.</p>
+<p>The main principle of the design of the language is simplicity.
+That is, it should be very easy to do common things, but it should also be possible to do more complicated things by constructs that are more complex.
+This means that wherever a construct is optional, the system supplies some sensible default.</p>
 </div>
 <div class="paragraph">
-<p>The author and a very good friend designed the first crude version of the Alan language in 1985. During many years of incremental improvement and use, it has now reached its third major version. This means that the language has a sound foundation, based on practical use. Therefore, features have been added as experience have grown, from actual use and understanding of the most prioritised needs.</p>
+<p>The author and a very good friend designed the first crude version of the Alan language in 1985.
+During many years of incremental improvement and use, it has now reached its third major version.
+This means that the language has a sound foundation, based on practical use.
+Therefore, features have been added as experience has grown, from actual use and understanding of the most prioritised needs.</p>
 </div>
 <div class="paragraph">
-<p>In this version modern and novel object orientation features has been incorporated into the language that allows definition of classes, instantiation and inheritance of attributes and other features. Do not worry if you find these terms incomprehensible at this point, Alan is still an easy language to use and by reading this manual, you will understand how these new features may aid you in your quest for adventures.</p>
+<p>In this version, modern and novel object orientation features have been incorporated into the language that allow definition of classes, instantiation and inheritance of attributes and other features.
+Do not worry if you find these terms incomprehensible at this point, Alan is still an easy language to use and by reading this manual, you will understand how these new features may aid you in your quest for adventures.</p>
 </div>
 <div class="sect2">
 <h3 id="_programmers_pitch">1.1. Programmer&#8217;s Pitch</h3>
 <div class="paragraph">
-<p>Alan is an application-oriented language. It features constructs that are natural to an author of Interactive Fiction. Alan is a strictly typed, compiled, object-oriented language with single inheritance. Classes inherit properties from their super-classes. The class system allows polymorphism so that instances of subclasses are valid wherever a super-class is specified. There are no explicit type declarations, except for instances of classes; instead, types are automatically inferred from expressions such as integers, strings or instances of a particular class.</p>
+<p>Alan is an application-oriented language.
+It features constructs that are natural to an author of interactive fiction.
+Alan is a strictly typed, compiled, object-oriented language with single inheritance.
+Classes inherit properties from their super-classes.
+The class system allows polymorphism so that instances of subclasses are valid wherever a super-class is specified.
+There are no explicit type declarations, except for instances of classes; instead, types are automatically inferred from expressions such as integers, strings or instances of a particular class.</p>
 </div>
 </div>
 <div class="sect2">
@@ -889,23 +901,16 @@ downloaded from:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Readers completely new to interactive fiction&#8201;&#8212;&#8201;read the whole document from
-the beginning.</p>
+<p>Readers completely new to interactive fiction&#8201;&#8212;&#8201;read the whole document from the beginning.</p>
 </li>
 <li>
-<p>Readers familiar with writing Interactive Fiction but new to Alan&#8201;&#8212;&#8201;read
-from <a href="#_introduction_to_the_language">Sect. 2.4</a> onwards.</p>
+<p>Readers familiar with writing interactive fiction but new to Alan&#8201;&#8212;&#8201;read from <a href="#_introduction_to_the_language">Sect. 2.4</a> onwards.</p>
 </li>
 <li>
-<p>Alan v2 users wanting to upgrade&#8201;&#8212;&#8201;you should read the separate document on
-conversion, then <a href="#_introduction_to_the_language">Sect. 2.4</a> and onwards, with frequent
-use of <a href="#_language_reference">Chapter 3</a> as a reference while doing your conversion.</p>
+<p>Alan v2 users wanting to upgrade&#8201;&#8212;&#8201;you should read the separate document on conversion, then <a href="#_introduction_to_the_language">Sect. 2.4</a> and onwards, with frequent use of <a href="#_language_reference">Chapter 3</a> as a reference while doing your conversion.</p>
 </li>
 <li>
-<p>Alan v3 users looking for detailed answers&#8201;&#8212;&#8201;use the index, look up the
-relevant sections in <a href="#_language_reference">Chapter 3</a> but also glance through
-<a href="#_concepts">Chapter 2</a> from <a href="#_introduction_to_the_language">Sect. 2.4</a>. Visit
-<a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a> for a collection of examples.</p>
+<p>Alan v3 users looking for detailed answers&#8201;&#8212;&#8201;use the <em>Index</em>, look up the relevant sections in <a href="#_language_reference">Chapter 3</a> but also glance through <a href="#_concepts">Chapter 2</a> from <a href="#_introduction_to_the_language">Sect. 2.4</a>. Visit <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a> for a collection of examples.</p>
 </li>
 </ol>
 </div>
@@ -5281,7 +5286,7 @@ End If.</code></pre>
 <p>Image and sound files are analyzed by the compiler and copied into an Alan v3 resource file (file extension <strong>.a3r</strong>) that must be distributed with your game file, otherwise they will not be available during game play. The original file will be left untouched.</p>
 </div>
 <div class="paragraph">
-<p>The format of the resource file follows the standard Interactive Fiction resource file format &#8220;blorb&#8221; and supports images of JPEG and PNG types, and sounds of MOD and AIFF formats.</p>
+<p>The format of the resource file follows the standard interactive fiction resource file format &#8220;blorb&#8221; and supports images of JPEG and PNG types, and sounds of MOD and AIFF formats.</p>
 </div>
 <div class="paragraph">
 <p>If a resource file is referenced from multiple statements, it will only be copied once. The Alan compiler uses the file extension to determine the media type of the file. The following extensions are recognized: <strong>.jpg</strong>, <strong>.jpeg</strong>, <strong>.png</strong>, <strong>.mod</strong>, <strong>.aif</strong> and <strong>.aiff</strong>.</p>
@@ -8671,7 +8676,7 @@ ee1: RETURN
 <p>But there are also a number of other packages that include an Alan interpreter, Gargoyle and Spatterlight, are two, with Gargoyle at the point of writing, being the one most up to date, and also available on multiple platforms.</p>
 </div>
 <div class="paragraph">
-<p>If you actually want to write Interactive Fiction using Alan you also need the compiler. This is distributed from <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a> in what&#8217;s called the complete packages, including compiler, interpreter, the documentation, a conversion program for v2 games and some examples.</p>
+<p>If you actually want to write interactive fiction using Alan you also need the compiler. This is distributed from <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a> in what&#8217;s called the complete packages, including compiler, interpreter, the documentation, a conversion program for v2 games and some examples.</p>
 </div>
 <div class="paragraph">
 <p>Whatever option you choose, there should be more detailed instructions on how to install included with that package. Below follows some information pertaining to the original versions from the Alan website.</p>
@@ -10302,8 +10307,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.27<br>
-Last updated 2018-08-29 12:46:53 ora legale Europa occidentale
+Version 0.1.28<br>
+Last updated 2018-08-29 16:14:41 ora legale Europa occidentale
 </div>
 </div>
 </body>

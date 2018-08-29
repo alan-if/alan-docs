@@ -94,7 +94,7 @@ Some files to help editing the manual:
 
 # Document Status
 
-- [ ] _1. Introduction_
+- [x] _1. Introduction_
 - [ ] _2. Concepts_
 - [ ] _3. Lexical Definitions_
 - [ ] _4. Language Reference_
@@ -241,10 +241,14 @@ Clean-up, fix styling, add caption and anchor ID to all tables:
 
 ## Proof-Reading
 
+Proof-reading and side-by-side comparison with the original PDF document, to spot any lost styles, formatting, etc.
+
+During this step, also split contents "[One Sentence Per Line](https://asciidoctor.org/docs/asciidoc-recommended-practices/#one-sentence-per-line)".
+
 This stage will be done once all global substitution have been dealt with in each chapter.
 
 - [ ] Go through whole document and fix inline styles, typos, etc:
-    + [ ] _1. Introduction_
+    + [x] _1. Introduction_
     + [ ] _2. Concepts_
     + [ ] _3. Lexical Definitions_
     + [ ] _4. Language Reference_
