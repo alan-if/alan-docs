@@ -12,13 +12,17 @@ These guidelines are not yet complete, and they are open for discussion and chan
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Introduction](#introduction)
+- [AsciiDoc Formatting Guidelines](#asciidoc-formatting-guidelines)
+    - [Splitting Contents "One Sentence Per Line"](#splitting-contents-one-sentence-per-line)
 - [Source Code](#source-code)
     - [Alan Code Examples](#alan-code-examples)
     - [Letter Casing](#letter-casing)
     - [Truncated Code](#truncated-code)
 - [The Index](#the-index)
 - [Related Issues](#related-issues)
-- [Reference Links](#reference-links)
+- [External References](#external-references)
+    - [AsciiDoctor Guides](#asciidoctor-guides)
+        - [Extensions](#extensions)
     - [Wikipedia](#wikipedia)
 
 <!-- /MarkdownTOC -->
@@ -27,13 +31,28 @@ These guidelines are not yet complete, and they are open for discussion and chan
 
 # Introduction
 
-Formatting and styling conventions are intended to provide a better and more pleasant reading experience to the final users of the documentation. By asopting consistent styling in a document (and, possibly, across multiple Alan realted documents), the reader intuitively learns to associate those styles with specific context, providing a smoother reading experience.
+The following guidelines are _not_ absolute rules engraved in stone, and contributors might encounter cases where a different approach might be more appropriate in the given context. Understanding the purpose of these conventions and guidelines will enable contributors to decide when exceptions are due.
+
+Formatting and styling conventions are intended to provide a better and more pleasant reading experience to the final users of the documentation. By adopting consistent styling in a document (and, possibly, across multiple Alan realted documents), the reader intuitively learns to associate those styles with specific context, providing a smoother reading experience.
 
 The nature of the Alan documentation poses some special challanges when it comes to styling conventions, for in the natural flow of the documentation it's not always easy to decide how to represent a term that is both an Alan keyword and an English noun — the whole philosophy of Alan is centered around the idea that the Alan syntax should resemble natural English, rather than the classic programming languages paradigm.
 
 Therefore, in the course of a sentence it might be difficult to choose how to represent certain words. For example, while discussing actors, we're dealing with both a natural English concept and an Alan keyword.
 
 Sometimes the distinction is not so important, as the context has already clarified the topic at hand, and the Alan keywords and their English counterparts are one and the same in the discuourse. But sometimes it's important to let the reader distinguish when a word is referring to a specific keyword, and not a generic concept.
+
+# AsciiDoc Formatting Guidelines
+
+We strongly reccomend reading the _[AsciiDoc Recommended Practices]_ guidelines.
+
+## Splitting Contents "One Sentence Per Line"
+
+From _[AsciiDoc Recommended Practices](https://asciidoctor.org/docs/asciidoc-recommended-practices/#one-sentence-per-line)_:
+
+> Don't wrap text at a fixed column width. Instead, put each sentence on its own line, a technique called _sentence per line_. This technique is similar to how you write and organize source code. 
+
+Among the (many) benefits of this approach in terms of collaborative editing and text maintainance, it also prevents lots of headaches when it comes to diffing source documents (and in all Git related diffing operations and logs).
+
 
 # Source Code
 
@@ -100,7 +119,21 @@ Follow and contribute to the discussion on [formatting and sytling issues][Issue
 [iXX]: https://github.com/alan-if/alan-docs/issues/XX "Issue #XX — YYY"
 -->
 
-# Reference Links
+# External References
+
+Some useful links...
+
+## AsciiDoctor Guides
+
+- [Asciidoctor User Manual]
+- [AsciiDoc Recommended Practices]
+- [AsciiDoc Syntax Quick Reference]
+- [AsciiDoc Writer's Guide]
+
+### Extensions
+
+- [Asciidoctor Diagram]
+- [Asciidoctor PDF]
 
 ## Wikipedia
 
@@ -112,6 +145,16 @@ Follow and contribute to the discussion on [formatting and sytling issues][Issue
 
 [Issues]: https://github.com/alan-if/alan-docs/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22styling+conventions%22+ "View all Issues on 'syling conventions'"
 
+<!-- AsciiDoctor Docs -->
+
+[AsciiDoc Recommended Practices]: https://asciidoctor.org/docs/asciidoc-recommended-practices/ "Read the 'AsciiDoc Recommended Practices' guidelines"
+[AsciiDoc Syntax Quick Reference]: https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+[AsciiDoc Writer's Guide]: https://asciidoctor.org/docs/asciidoc-writers-guide/
+[Asciidoctor Diagram]: https://asciidoctor.org/docs/asciidoctor-diagram/
+[Asciidoctor PDF]: https://asciidoctor.org/docs/asciidoctor-pdf/
+
+[Asciidoctor User Manual]: https://asciidoctor.org/docs/user-manual/
+
 <!-- Wikipedia -->
 
 [WP Capitalization]: https://en.wikipedia.org/wiki/Capitalization "See Wikipedia page 'Capitalization'"
@@ -119,6 +162,5 @@ Follow and contribute to the discussion on [formatting and sytling issues][Issue
 <!-- 
 [WP XXX]: https://en.wikipedia.org/wiki/XXX "See Wikipedia: 'XXX'"
 -->
-
 
 <!-- EOF -->
