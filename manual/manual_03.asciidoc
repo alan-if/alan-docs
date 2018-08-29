@@ -93,7 +93,7 @@ option = id '.'
 
 The example below illustrate how options may be written, following the above rules.
 
-@[source,alan]
+[source,alan]
 --------------------------------------------------------------------------------
 Debug.
 Language Swedish.
@@ -101,19 +101,37 @@ No Pack.
 Width 128.
 --------------------------------------------------------------------------------
 
-The available options are
+The available options are:
 
-// FIXME: CLEANUP TABLE
+// @FIXME: CLEANUP TABLE
+// @FIXME: Find a better caption for the Table!
 
-[cols=",,",]
-|========================================================================================================================================
-|*Option name* |*Possible values* |*Default value*
-|*Language* |English, Swedish, Germanfootnote:[Other non-English languages may be supported in the future depending on demand.] |English
-|*Width* |24-255 |80footnote:[Width and Length is overridden by the actual terminal or window size, if available.]
-|*Length* |5-255 |24
-|*Pack* |Boolean (on or off) |Off (No Pack)
-|*Debug* |Boolean (on or off) |Off (No Debug)
-|========================================================================================================================================
+[[table-of-options]]
+.Adventure Settings via OPTION
+[cols="<20m,<40d,<40d",options="header"]
+|===============================================================================
+| Option name | Possible values | Default value
+
+| Language
+| `English`, `Swedish`, ``German``footnote:[Other non-English languages may be supported in the future depending on demand.]
+| `English`
+
+| Width
+| 24-255
+| 80footnote:[Width and Length is overridden by the actual terminal or window size, if available.]
+
+| Length
+| 5-255
+| 24
+
+| Pack
+| Boolean (on or off)
+| Off (`No Pack`)
+
+| Debug
+| Boolean (on or off)
+| Off (`No Debug`)
+|===============================================================================
 
 The Language option specifies the language in which the adventure is assumed played, and selects different default message texts. Alan is primarily designed for adventures in the English language, but it is also possible to write adventures in other languages. To make this possible, the default messages output by the interpreter may be generated in different languages. It is completely possible to write in other languages, but then you must customize all the message texts. See <<Run-time Messages>>, <<Input Response Messages>>, for a complete list of such messages.
 
@@ -510,7 +528,7 @@ Attributes, exits, verbs and scripts can be repeated any number of times in the 
 
 A property can be inherited (((inheriting properties, rules for))) from the parent of the class or instance. It is not necessary to repeat the declaration in the inheriting class or instance if it should retain its inherited value. Each inherited property may be amended or overridden by specifying it also in the declaration of the inheriting class or instance according to the following table.
 
-// FIXME: CLEANUP TABLE
+// @FIXME: CLEANUP TABLE
 
 .Properties Inheritance
 [[table-of-properties-inheritance]]
@@ -1436,8 +1454,10 @@ The actor is located at the location before the clause is executed so `Current L
 
 Entered clauses are inherited and locations can be nested (see <<Locations,_Locations_>>). The order of execution is explained by the following table:
 
-// FIXME: CLEANUP TABLE
+// @FIXME: CLEANUP TABLE
 
+[[table-of-entered-execution]]
+.Order of Execution of ENTERED in Nested Locations
 [cols=",,,",]
 |=========================================
 | |*Outer Region* |*...* |*Current Location*
@@ -1651,9 +1671,12 @@ Syntax open = open (obj).
 
 In the example above, the parameter, `obj`, can be used in the declaration of the `open` verb and will, at execution time, refer to such a bound instance. The following table explains which instances in the game a parameter identifier (l & k, from the `unlock_with` syntax above) will actually refer to.
 
-// FIXME: CLEANUP TABLE
-//        1st col should be styled as IF game sessions!
+// @FIXME: CLEANUP TABLE
+//        1st column should be styled as IF game sessions!
+// @CAPTION: This table doesn't seem to need a caption for it's more of an example
+//           than a standalone reference table.
 
+[[table-syntax-parameters]]
 [cols=",,",]
 |===========================================================================
 |Player input |l |k
@@ -2147,8 +2170,10 @@ In most circumstances, this is the most logical order, but if another order is r
 (((VERB, execution order)))
 First all parameters are evaluated according to the syntax restrictions (see <<Parameter Restrictions,_Parameter Restrictions_>>). Then, if they passed, the checks of all verb declarations are evaluated (see <<Verb Checks>>). Finally the verb bodies are executed in the normal order as explained by the table below.
 
-// FIXME: CLEANUP TABLE
+// @FIXME: CLEANUP TABLE
 
+[[table-of-verbs-execution]]
+.Order of Execution of Verbs
 [cols=",,,,,,",]
 |===================================================================================
 | |*Outer Region* |*...* |*Current Location* |*First parameter* |*...* |*Last parameter*

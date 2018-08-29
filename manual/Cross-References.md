@@ -10,13 +10,16 @@ It provides the text to be pasted for AsciiDoc substitutions in double angled br
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [With Chapter/Section Number Shown](#with-chaptersection-number-shown)
-- [With Chapter/Section Title Shown](#with-chaptersection-title-shown)
+- [Chapters and Sections](#chapters-and-sections)
+    - [With Chapter/Section Number Shown](#with-chaptersection-number-shown)
+    - [With Chapter/Section Title Shown](#with-chaptersection-title-shown)
+- [Tables](#tables)
 
 <!-- /MarkdownTOC -->
 
 -----
 
+# Chapters and Sections
 
 ## With Chapter/Section Number Shown
 
@@ -71,8 +74,21 @@ These xrefs will be shown via a link with the Chapter/Section actual title.
 | Appendix E  | `<<Predefined Player Words,_Predefined Player Words_>>`           | [`manual_12.asciidoc`][man 12] |
 
 
+# Tables
+
+For convenience, Tables have also been given a custom ID, which might be handier to use than the full caption reference in some circumstances.
+
+| Ch / Sec |              Table Caption              |             Custom ID             |
+|----------|-----------------------------------------|-----------------------------------|
+|      3.2 | Adventure Settings via OPTION           | `table-of-options`                |
+|      3.7 | Properties Inheritance                  | `table-of-properties-inheritance` |
+|      3.7 | Order of Execution of ENTERED in Nested | `table-of-entered-execution`      |
+|      3.9 | (_none_)                                | `table-syntax-parameters`         |
+|     3.10 | Order of Execution of Verbs             | `table-of-verbs-execution`        |
+
 <!-- 
 | xx          | `<<xxxxxx>>`                       |                                |
+|   | xxx | `yyy` |
  -->
 
 

@@ -4,7 +4,7 @@ AsciiDoc port of _The ALAN Adventure Language Reference Manual_ (WIP).
 
 __[Click here for an HTML Live Preview][HTML Live Preview]__
 
-> __NOTE__ — This document was created using [Asciidoctor], the Ruby implementation of AsciiDoc; some used features might not be available in [AsciiDoc Python]!
+> __NOTE__ — The AsciiDoc files in this project are intended for [Asciidoctor], the Ruby implementation of AsciiDoc; some required features might not be available in [AsciiDoc Python]!
 
 
 -----
@@ -23,8 +23,10 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
     - [Document Structure](#document-structure)
         - [Cross-References](#cross-references)
         - [Index](#index)
+        - [Footnotes](#footnotes)
     - [Document Assests](#document-assests)
     - [Global Styles Reconstruction](#global-styles-reconstruction)
+    - [Tables](#tables)
     - [Typography Cleanup](#typography-cleanup)
     - [Proof-Reading](#proof-reading)
     - [Syntax highlighting](#syntax-highlighting)
@@ -181,6 +183,12 @@ As a reference to rebuild the Index, use [`Manual_Index.txt`][Index txt] file.
 
 > __NOTE__ — Asciidoctor does not create an Index in HTML5 documents, therefore the PDF format will have to be used to check the Index reconstruction.
 
+### Footnotes
+
+There are only 2 footnotes in the Manual, both in "_3.2. Options_" Table.
+
+- [x] Notes 1-2 (in Sec. 3.2).
+
 ## Document Assests
 
 - [ ] Add missing images:
@@ -200,9 +208,26 @@ As a reference to rebuild the Index, use [`Manual_Index.txt`][Index txt] file.
     + [x] Add bold style to room descriptions.
     + [x] Convert them to example blocks (`[EXAMPLE,role="gametranscript"]`).
 + [x] Fix notes (as Admonition notes).
-+ [ ] Fix tables.
 - [ ] Global styles fixing:
     + [x] Style as inline-code keywords and code snippets within paragraphs, admonitons, etc. — eccept headings and tables (tables will be dealt with separately).
+
+## Tables
+
+Clean-up, fix styling, add caption and anchor ID to all tables:
+
+* [x] _3.2. Options_ — [Table 1. Adventure Settings via OPTION]
+* _3.7. Properties_
+    - [ ] _Inheriting Properties_ — [Table 2. Properties Inheritance]
+    - [ ]  _Entered_ — [Table 3. Order of Execution of ENTERED in Nested Locations]
+* [ ] _3.9. Syntax Definitions_ — ([_captionless table_])
+* _3.10. Verbs_
+    - [ ] _Verb Execution_ — [Table 4. Order of Execution of Verbs]
+
+[Table 1. Adventure Settings via OPTION]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-options
+[Table 2. Properties Inheritance]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-properties-inheritance
+[Table 3. Order of Execution of ENTERED in Nested Locations]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-entered-execution
+[_captionless table_]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-syntax-parameters
+[Table 4. Order of Execution of Verbs]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-verbs-execution
 
 ## Typography Cleanup
 

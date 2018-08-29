@@ -434,8 +434,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.26,</span>
-<span id="revdate">August 28, 2018</span>
+<span id="revnumber">version 0.1.27,</span>
+<span id="revdate">August 29, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -825,8 +825,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.26
-Last edited: August 28, 2018</pre>
+<pre>Doc version: 0.1.27
+Last edited: August 29, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -2017,56 +2017,56 @@ End Exit.</code></pre>
 <div class="paragraph">
 <p>The example below illustrate how options may be written, following the above rules.</p>
 </div>
-<div class="paragraph">
-<p>@[source,alan]</p>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre>Debug.
+<pre class="highlight"><code class="language-alan" data-lang="alan">Debug.
 Language Swedish.
 No Pack.
-Width 128.</pre>
+Width 128.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The available options are</p>
+<p>The available options are:</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="table-of-options" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Adventure Settings via OPTION</caption>
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option name</th>
+<th class="tableblock halign-left valign-top">Possible values</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Option name</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Possible values</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Default value</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Language</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>English</code>, <code>Swedish</code>, <code>German</code><sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>English</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Language</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">English, Swedish, German<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">English</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Width</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Width</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">24-255</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">80<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Length</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Length</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5-255</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pack</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pack</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean (on or off)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Off (No Pack)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Off (<code>No Pack</code>)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Debug</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Debug</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean (on or off)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Off (No Debug)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Off (<code>No Debug</code>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -2552,7 +2552,7 @@ End The hero.</code></pre>
 <p>A property can be inherited  from the parent of the class or instance. It is not necessary to repeat the declaration in the inheriting class or instance if it should retain its inherited value. Each inherited property may be amended or overridden by specifying it also in the declaration of the inheriting class or instance according to the following table.</p>
 </div>
 <table id="table-of-properties-inheritance" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Properties Inheritance</caption>
+<caption class="title">Table 2. Properties Inheritance</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -3187,7 +3187,7 @@ End Every dark_location.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that it does not specify any description statements. This is because the checks and the actual description are inherited separately, as described in <a href="#table-of-properties-inheritance">Table 1</a>. The actual descriptions are left for the instances.</p>
+<p>Note that it does not specify any description statements. This is because the checks and the actual description are inherited separately, as described in <a href="#table-of-properties-inheritance">Table 2</a>. The actual descriptions are left for the instances.</p>
 </div>
 <div class="paragraph">
 <p>If multiple description checks are available in the inheritance chain, they are all tested and must be met before any description is attempted. So the inheritance of description checks is &#8220;additive&#8221;.</p>
@@ -3659,7 +3659,8 @@ End The waiter.</code></pre>
 <div class="paragraph">
 <p>Entered clauses are inherited and locations can be nested (see <a href="#_locations"><em>Locations</em></a>). The order of execution is explained by the following table:</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="table-of-entered-execution" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Order of Execution of ENTERED in Nested Locations</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -3949,7 +3950,7 @@ syntax_end = parameter_restrictions
 <div class="paragraph">
 <p>In the example above, the parameter, <code>obj</code>, can be used in the declaration of the <code>open</code> verb and will, at execution time, refer to such a bound instance. The following table explains which instances in the game a parameter identifier (l &amp; k, from the <code>unlock_with</code> syntax above) will actually refer to.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="table-syntax-parameters" class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -4544,7 +4545,8 @@ End The feather.</code></pre>
 <p>
 First all parameters are evaluated according to the syntax restrictions (see <a href="#_parameter_restrictions"><em>Parameter Restrictions</em></a>). Then, if they passed, the checks of all verb declarations are evaluated (see <a href="#_verb_checks">Sect. 3.10.3</a>). Finally the verb bodies are executed in the normal order as explained by the table below.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table id="table-of-verbs-execution" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Order of Execution of Verbs</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 14.2857%;">
@@ -9917,7 +9919,7 @@ No detected warnings.<br>
 <p>404 Attribute to %1 must be a default attribute.</p>
 </div>
 <div class="paragraph">
-<p>To reference attributes for <code>OBJECT</code>, <code>LOCATION</code> and <code>ACTOR</code> the attribute used must be a default attribute, as all objects, locations or actors must have it.</p>
+<p>To  reference attributes for <code>OBJECT</code>, <code>LOCATION</code> and <code>ACTOR</code> the attribute used must be a default attribute, as all objects, locations or actors must have it.</p>
 </div>
 <div class="paragraph">
 <p>405 The class of a parameter used in %1 must be uniquely defined.</p>
@@ -10300,8 +10302,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.26<br>
-Last updated 2018-08-28 16:43:39 ora legale Europa occidentale
+Version 0.1.27<br>
+Last updated 2018-08-29 12:46:53 ora legale Europa occidentale
 </div>
 </div>
 </body>

@@ -240,7 +240,7 @@ The indicated number was used for more than one script for the same actor.
 
 404 Attribute to %1 must be a default attribute.
 
-To reference attributes for `OBJECT`, `LOCATION` and `ACTOR` the attribute used must be a default attribute, as all objects, locations or actors must have it.
+To (((reference attribute))) reference attributes for `OBJECT`, `LOCATION` and `ACTOR` the attribute used must be a default attribute, as all objects, locations or actors must have it.
 
 405 The class of a parameter used in %1 must be uniquely defined.
 
