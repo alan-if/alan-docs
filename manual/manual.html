@@ -434,8 +434,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.28,</span>
-<span id="revdate">August 29, 2018</span>
+<span id="revnumber">version 0.1.29,</span>
+<span id="revdate">August 30, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -825,8 +825,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.28
-Last edited: August 29, 2018</pre>
+<pre>Doc version: 0.1.29
+Last edited: August 30, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -1958,6 +1958,9 @@ End Exit.</code></pre>
 <div class="paragraph">
 <p>An adventure starts with an (optional) set of  <code>Option</code>s (see <a href="#_options">Sect. 3.2</a>) followed by a set of declarations.</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">adventure = {option} {declaration} start_section</code></pre>
@@ -1968,6 +1971,9 @@ End Exit.</code></pre>
 </div>
 <div class="paragraph">
 <p>The declarations constitute the major part of the adventure. The declarations can be declared in any order and repeated freely, and are of many different possible types.</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1986,6 +1992,9 @@ End Exit.</code></pre>
 </div>
 <div class="paragraph">
 <p>The adventure source text must end with a  <code>Start</code> section.</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2011,6 +2020,9 @@ End Exit.</code></pre>
 <h3 id="_options">3.2. Options</h3>
 <div class="paragraph">
 <p>Options  define things concerning the overall behaviour of the generated Alan adventure. As is implied they are optional and are only required if you need to change the value of an option from its default setting. An option follows the grammar</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2218,6 +2230,9 @@ Width 128.</code></pre>
 <div class="paragraph">
 <p>The source text for a large adventure might become entangled and complex. A way to break up a large text is to divide it into separate files. Each such file can then be imported into the main source using the  <code>Import</code> statement.</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">import = 'import' quoted_identifier '.'</code></pre>
@@ -2234,7 +2249,7 @@ Width 128.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">import 'library.i'.</code></pre>
+<pre class="highlight"><code class="language-alan" data-lang="alan">import 'library.i'.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2242,7 +2257,7 @@ Width 128.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">import 'harbor.i'.
+<pre class="highlight"><code class="language-alan" data-lang="alan">import 'harbor.i'.
 import 'city.i'.
 import 'desert.i'.
 import 'actors.i'.
@@ -2252,6 +2267,10 @@ Start At city.</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_classes">3.5. Classes</h3>
+<div class="paragraph">
+<p> 
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">class = 'EVERY' id
@@ -2276,6 +2295,9 @@ Start At city.</code></pre>
 </div>
 <div class="paragraph">
 <p>You specify which class another class or an instance inherits from using a clause following the grammar:</p>
+</div>
+<div class="paragraph">
+<p> </p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2304,6 +2326,9 @@ Start At city.</code></pre>
 <h3 id="_instances">3.6. Instances</h3>
 <div class="paragraph">
 <p>The most important part of an Alan game source is probably the declarations of instances. Instances are the objects, locations, actors and other things that fill your game universe. The player traverses and interacts with these in his quest to negotiating your game.</p>
+</div>
+<div class="paragraph">
+<p> </p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2531,6 +2556,10 @@ End The hero.</code></pre>
 <div class="paragraph">
 <p>An instance or class can be given number of different properties by declaring them in the declaration of the class or instance.</p>
 </div>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">property = initial_location
@@ -2645,6 +2674,9 @@ End The hero.</code></pre>
 <div class="paragraph">
 <p>Where an instance will be located when the game starts is set using an optional <code>Where</code> clause. If no such clause is used the instance will have no location. An instance without location is not present (in the view of the player) in the game until it is moved somewhere by a <code>Locate</code> statement.</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">initial_location = where</code></pre>
@@ -2667,6 +2699,9 @@ End The hero.</code></pre>
 <h4 id="_names">Names</h4>
 <div class="paragraph">
 <p>By default, the identifier (&#8220;author name&#8221;) for an instance is also the name shown to the player, and by which he will be able to refer to it. Normally you would want to override this with more elaborate and alternative names. You can do that using the  <code>Name</code> clause.</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2791,6 +2826,9 @@ The macintosh IsA apple ...</code></pre>
 <div class="paragraph">
 <p>In player input, it is often handy and natural to refer to items using  pronouns, such as &#8220;it&#8221;, &#8220;them&#8221; or &#8220;her&#8221;. Alan provides a means to define with which pronouns each instance can be associated.</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">pronouns = 'PRONOUN' word { ',' word }</code></pre>
@@ -2840,16 +2878,23 @@ The macintosh IsA apple ...</code></pre>
 <div class="paragraph">
 <p>An attribute is a labelled value that instances have. The declarations  of attributes are placed inside a class definition (in which case it will apply to all instances of that class or instances of any sub-class of it) or inside an instance declaration (in which case only this instance will have it, unless it overrode an already inherited attribute with new values). An attribute declaration, or a set of declarations, is introduced using one of the keywords:</p>
 </div>
+<div class="paragraph">
+<p> 
+ </p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">is = 'is'
-   | 'are'
-   | 'has'
-   | 'can'</code></pre>
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">is = 'IS'
+   | 'ARE'
+   | 'HAS'
+   | 'CAN'</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>And the actual of an attribute follows the structure:</p>
+<p>And the actual declaration of an attribute follows the structure:</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3091,6 +3136,9 @@ End The someLockableDoor.</code></pre>
 <div class="paragraph">
 <p>The attributes of an instance can be initialized using values in the attribute declaration. This is usually sufficient for many situations. For more flexibility, the  <code>Initialize</code> clause can be used.</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">initialize = 'INITIALIZE' statements</code></pre>
@@ -3139,6 +3187,9 @@ End The someLockableDoor.</code></pre>
 <div class="paragraph">
 <p>The syntax for simple descriptions is:</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">description = 'DESCRIPTION' {statement}</code></pre>
@@ -3172,6 +3223,9 @@ The door IsA object
 </div>
 <div class="paragraph">
 <p>Before executing a description, you can check for various conditions to be met. A common example is the dark room. If there is no light source present, the description should not be printed. The syntax for such a description is</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3220,6 +3274,11 @@ End Every dark_location.</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_articles_and_forms">Articles and Forms</h4>
+<div class="paragraph">
+<p> 
+ 
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">forms = indefinite | definite | negative
@@ -3362,6 +3421,9 @@ You are carrying an owl.</p>
 <div class="paragraph">
 <p>The optional  <code>Mentioned</code> clause overrides the name for displaying an instance in a short form that will be used when the instance is mentioned e.g. in listings of containers or when the <strong>ALL</strong>  form of player input is used. A typical use of the <code>Mentioned</code> clause is to let some internal state of the instance be reflected in the short form, e.g. if you want the short form of a box to show if it is open or closed you cannot rely on the Names since they are static. Instead, the <code>Mentioned</code> clause can print a different short name depending on an attribute.</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">mentioned = 'MENTIONED' {statement}</code></pre>
@@ -3410,6 +3472,10 @@ You are carrying an owl.</p>
 <h4 id="_container_properties">Container Properties</h4>
 <div class="paragraph">
 <p>An instance can also be a container. This is declared by using the  <code>Container</code> property clause. The grammar is</p>
+</div>
+<div class="paragraph">
+<p>
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3497,6 +3563,9 @@ The predefined <code>opaque</code> attribute is only available in instances and 
 <div class="paragraph">
 <p>The  <code>Limits</code> clause of the container property declaration put limitations on what and how much can be put in the container.</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">limits = 'LIMITS' {limit}
@@ -3541,6 +3610,9 @@ limiting_attribute = attribute_definition
 </div>
 <div class="sect4">
 <h5 id="_header_and_else">Header and Else</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">header = 'HEADER' {statement}
@@ -3594,6 +3666,9 @@ Empty
 <div class="paragraph">
 <p>The  <code>Extract</code> clause defines what happens when anything is extracted from a container. Any <code>Locate</code> statement that moves an instance out of a container is considered an extraction. The extraction will be subject to the restrictions enforced by the <code>Extract</code> clause.</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">extract = 'EXTRACT' [check] [does]
@@ -3641,6 +3716,9 @@ End The waiter.</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_entered">Entered</h4>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">entered = 'ENTERED' {statement}</code></pre>
@@ -3742,6 +3820,9 @@ End The waiter.</code></pre>
 <div class="paragraph">
 <p>To build a traversable world of locations, they must be connected. This is done using exits. The syntax for an exit declaration is</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">exit = 'EXIT' id {',' id} 'TO' id [exit_body] '.'
@@ -3798,6 +3879,9 @@ End The west_end.</code></pre>
 <h4 id="_scripts">Scripts</h4>
 <div class="paragraph">
 <p>The  <code>Script</code> is the actor&#8217;s way of performing things. In a way, it corresponds to what the hero is ordered to do by the player&#8217;s typed-in commands.</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3864,6 +3948,9 @@ End The west_end.</code></pre>
 <div class="paragraph">
 <p>A script is divided into steps. Each  <code>Step</code> contains statements representing what the actor will do in what corresponds to one player move. A step can be defined to be executed immediately next move, to wait a number of moves before it is executed or even to wait for a special situation (condition) to arise.</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">step = 'STEP' {statement}
@@ -3896,6 +3983,9 @@ Step After ticksLeft Of train
 <div class="paragraph">
 <p>In certain circumstances, you need to add properties to a class after it is defined. One simple such example is to add attributes to the predefined classes. To allow this the <code>Add</code> construct is available. It follows the grammar</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">addition = 'ADD' 'TO' 'EVERY' id
@@ -3912,6 +4002,9 @@ Step After ticksLeft Of train
 <h3 id="_syntax_definitions">3.9. Syntax Definitions</h3>
 <div class="paragraph">
 <p>The  <code>Syntax</code> construct is used to specify the allowed structure of the input from the player. Each definition defines the syntax for one <code>Verb</code>. The effects triggered by the player input are declared using the <code>Verb</code> construct (see <a href="#_verbs">Sect. 3.7.10</a>).</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3994,6 +4087,9 @@ syntax_end = parameter_restrictions
 <h4 id="_indicators">Indicators</h4>
 <div class="paragraph">
 <p>Following a parameter,  indicators are allowed in syntax declarations.</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4104,6 +4200,10 @@ The parameter (the instance the player refers to in this position in the syntax)
 <h4 id="_parameter_restrictions">Parameter Restrictions</h4>
 <div class="paragraph">
 <p>To restrict  the types of entities the player may refer to in the place of a parameter, its class can be defined by using explicit test in the syntax declaration.</p>
+</div>
+<div class="paragraph">
+<p>
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4291,6 +4391,10 @@ for that parameter position.</p>
 </div>
 <div class="sect2">
 <h3 id="_verbs_2">3.10. Verbs</h3>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">verb = ['META'] 'VERB' id {',' id}
@@ -4384,6 +4488,9 @@ End The.</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_verb_checks">Verb Checks</h4>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">check = unconditional_check
@@ -4458,6 +4565,10 @@ End The jumpless.</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_does_clause">Does-clause</h4>
+<div class="paragraph">
+<p>  
+ </p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">does = [qualifier] {statement}
@@ -4489,6 +4600,10 @@ End Verb take.</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_verb_alternatives">Verb Alternatives</h4>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">verb_alternatives = 'WHEN' id simple_verb_body</code></pre>
@@ -4530,6 +4645,11 @@ End The feather.</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_verb_qualification">Verb Qualification</h4>
+<div class="paragraph">
+<p>
+
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">qualifier = 'BEFORE'
@@ -4726,9 +4846,13 @@ End Event.</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_rules">3.12. Rules</h3>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">rule = 'WHEN' expression ('THEN' | '=>')
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">rule = 'WHEN' expression ('THEN' | '=&gt;')
            {statement}
        ['END' 'WHEN' '.' ]</code></pre>
 </div>
@@ -4800,6 +4924,9 @@ Start At kitchen.</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_synonyms">3.13. Synonyms</h3>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">synonyms = 'SYNONYMS' {synonym_declaration}
@@ -4860,6 +4987,9 @@ You can&#8217;t go that way.</p>
 </div>
 <div class="paragraph">
 <p>To make the user dialogue more adapted to the settings you select, Alan allows you to define your own version of these messages. The grammar for this is</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4935,6 +5065,9 @@ There is no exit in that direction.</p>
 <h3 id="_prompt_section">3.15. Prompt Section</h3>
 <div class="paragraph">
 <p>The  <code>Prompt</code> section allows you to customize the way players are prompted for their input.</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5013,6 +5146,9 @@ Where do you want to go from Pirates Bay Harbor?</p>
 <div class="paragraph">
 <p>The  <code>Start</code> section defines where the player (the hero) will be at the start of the game. This must be a location. Optionally this may be followed by statements to be executed at the beginning of the game, such as hello-messages or short instructions as well as starting any actors and scheduling events.</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">start_section = 'START' where '.' {statement}</code></pre>
@@ -5079,9 +5215,12 @@ Locate charlie_chaplin At outside_house.
 </div>
 <div class="sect4">
 <h5 id="_string_statement">String Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">output_statement = STRING</code></pre>
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">output_statement = string</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5161,6 +5300,9 @@ $o       The current object (first parameter)</pre>
 </div>
 <div class="sect4">
 <h5 id="_style_statement">Style Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">style_statement = 'STYLE' style '.'
@@ -5192,6 +5334,10 @@ style = 'NORMAL'
 </div>
 <div class="sect4">
 <h5 id="_describe_statement">Describe Statement</h5>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">output_statement = 'DESCRIBE' what '.'</code></pre>
@@ -5223,6 +5369,10 @@ DESCRIBE desk.
 </div>
 <div class="sect4">
 <h5 id="_say_statement">Say Statement</h5>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">output_statement = 'SAY' [form] expression '.'
@@ -5253,6 +5403,10 @@ End If.</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_list_statement">List Statement</h5>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">output_statement = 'LIST' expression '.'</code></pre>
@@ -5293,6 +5447,10 @@ End If.</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_show_statement">Show Statement</h5>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">output_statement = 'SHOW' id '.'</code></pre>
@@ -5307,6 +5465,10 @@ End If.</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_play_statement">Play Statement</h5>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">output_statement = 'PLAY' id '.'</code></pre>
@@ -5324,6 +5486,9 @@ End If.</code></pre>
 <h4 id="_manipulation_statements">Manipulation Statements</h4>
 <div class="sect4">
 <h5 id="_locate_statement">Locate Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">locate_statement = 'LOCATE' what where '.'</code></pre>
@@ -5358,6 +5523,9 @@ End Event explosion.</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_empty_statement">Empty Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">empty_statement = 'EMPTY' what [where] '.'</code></pre>
@@ -5377,6 +5545,9 @@ Locate hero At restart_point.</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_strip_statement">Strip Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">strip_statement = 'STRIP' [direction] [count] [size]
@@ -5422,6 +5593,9 @@ End The eliza.</code></pre>
 <div class="paragraph">
 <p><code>Schedule</code>  will queue an event to occur at a specified location after the number of player turns specified by the expression.</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">event_statement = 'SCHEDULE' what [where]
@@ -5465,6 +5639,9 @@ End The eliza.</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_cancel_statement">Cancel Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">cancel_statement = 'CANCEL' what '.'</code></pre>
@@ -5509,6 +5686,9 @@ Start At office.
 </div>
 <div class="sect4">
 <h5 id="_make_statement">Make Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">make_statement = 'MAKE' what something '.'
@@ -5528,6 +5708,10 @@ Make door Not open.</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_increase_and_decrease_statements">Increase and Decrease Statements</h5>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">increase_statement = 'INCREASE' what [by] '.'
@@ -5549,6 +5733,9 @@ Decrease lives Of hero.</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_set_statement">Set Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">set_statement = 'SET' what 'TO' expression '.'</code></pre>
@@ -5610,6 +5797,9 @@ Set friends Of mine To {suspect Of detective}. -- Correct maybe</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_include_statement">Include Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">include_statement = 'INCLUDE' expression 'IN' set '.'</code></pre>
@@ -5637,6 +5827,9 @@ Set friends Of mine To {suspect Of detective}. -- Correct maybe</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_exclude_statement">Exclude Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">exclude_statement = 'EXCLUDE' expression 'FROM' set '.'</code></pre>
@@ -5668,6 +5861,11 @@ Set friends Of mine To {suspect Of detective}. -- Correct maybe</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_if_statement">If Statement</h5>
+<div class="paragraph">
+<p>
+
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">if statement = 'IF' expression 'THEN' statements
@@ -5726,6 +5924,9 @@ End For.</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_depending_on_statement">Depending On Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">depend_statement = 'DEPENDING' 'ON' expression
@@ -5784,6 +5985,9 @@ End If.</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_use_statement">Use Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">use_statement = 'USE' script ['FOR' actor] '.'</code></pre>
@@ -5815,6 +6019,9 @@ a reference attribute as the actor clause.</p>
 </div>
 <div class="sect4">
 <h5 id="_stop_statement">Stop Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">stop_statement = 'STOP' actor '.'
@@ -5830,6 +6037,9 @@ actor = expression</code></pre>
 <h5 id="_repetition_statements">Repetition Statements</h5>
 <div class="paragraph">
 <p>The Alan language provides one compound statement for repetition, the <code>For Each</code> statement.</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5927,6 +6137,9 @@ End Verb restore.</code></pre>
 <div class="paragraph">
 <p><code>Score</code>  is a way of rewarding the player by giving points for certain actions. This is done using the statement</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">score_statement = 'SCORE' integer '.'</code></pre>
@@ -5962,6 +6175,9 @@ End Verb restore.</code></pre>
 <h5 id="_visits_statement">Visits Statement</h5>
 <div class="paragraph">
 <p>The  <code>Visits</code> statement changes the number of times a location can be visited before the long description is presented again:</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6026,6 +6242,9 @@ End The secret_cave.</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_transcript_statement">Transcript Statement</h5>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">transcript_statement = 'TRANSCRIPT' ('ON' | 'OFF') '.'</code></pre>
@@ -6074,6 +6293,14 @@ End Verb.</code></pre>
 <h3 id="_where_specifications">3.18. WHERE Specifications</h3>
 <div class="paragraph">
 <p>Many constructs in the Alan language require a specification of where the construct should operate. The general intention of such a  <code>Where</code> specification is to specify a location.</p>
+</div>
+<div class="paragraph">
+<p>
+
+
+
+
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6128,6 +6355,12 @@ End Verb.</code></pre>
 <h3 id="_what_specifications">3.19. WHAT Specifications</h3>
 <div class="paragraph">
 <p>Constructs in the grammar for the Alan language often refer to some class or instance defined in the Alan source. This is generally called a  <code>What</code> specification, as it specifies what the construct refers to. An example is the <code>Locate</code> statement that must refer to something that should be relocated.</p>
+</div>
+<div class="paragraph">
+<p>
+
+
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6212,6 +6445,10 @@ A single integer (e.g. 42) is a numeric expression. A string is an expression an
 </div>
 <div class="sect3">
 <h4 id="_attribute_references">Attribute References</h4>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">attribute_reference = id 'OF' expression
@@ -6247,6 +6484,10 @@ A single integer (e.g. 42) is a numeric expression. A string is an expression an
 </div>
 <div class="paragraph">
 <p>You can test Boolean attributes of an instance by following the pattern</p>
+</div>
+<div class="paragraph">
+<p>
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6292,6 +6533,10 @@ There is a particularly useful predefined pseudo-attribute, <code>location</code
 <div class="paragraph">
 <p>There are three types of random expressions. The first is the traditional random integer expression.</p>
 </div>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">expression = 'RANDOM' expression 'TO' expression</code></pre>
@@ -6308,6 +6553,10 @@ Decrease temp Of room By Random 0 To temp Of Room.</code></pre>
 </div>
 <div class="paragraph">
 <p>The second and third types return a random member in a set or in a container respectively.</p>
+</div>
+<div class="paragraph">
+<p>
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6360,6 +6609,11 @@ container.</p>
 </div>
 <div class="sect3">
 <h4 id="_logical_expressions">Logical Expressions</h4>
+<div class="paragraph">
+<p>
+
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">expression = expression ('AND' | 'OR'] expression</code></pre>
@@ -6382,6 +6636,10 @@ If o IsA treasure And (size Of o &gt; capacity Of c
 </div>
 <div class="sect3">
 <h4 id="_class_expressions">Class Expressions</h4>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">expression = something 'ISA' class_id</code></pre>
@@ -6552,6 +6810,10 @@ End The door.</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_the_whereabouts_of_an_entity">The Whereabouts of an Entity</h4>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">expression = what ['NOT'] [transitivity] where</code></pre>
@@ -6578,6 +6840,13 @@ End The door.</code></pre>
 </div>
 <div class="paragraph">
 <p>The default behaviour of a <code>Where</code> expression is to evaluate recursively through containers, e.g. if the bottle was inside a bag which was in the inventory, the first expression above would still be true. This implicitly transitive evaluation can also be made explicit through the use of the keyword  <code>Indirectly</code>. This would result in exactly the same semantics, but it is explicitly expressed, which can be useful.</p>
+</div>
+<div class="paragraph">
+<p>
+
+
+
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6615,6 +6884,11 @@ End The door.</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_aggregates">Aggregates</h4>
+<div class="paragraph">
+<p> 
+   
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">aggregate_expression = aggregate filters
@@ -6666,6 +6940,9 @@ End If.</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_filters">3.21. Filters</h3>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">filters = filter { ',' filter }
@@ -6703,6 +6980,9 @@ filter = 'ISA' class
 <div class="paragraph">
 <p>An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance. Identifiers  may only be composed of letters, digits and underscores. The first character must be a letter.</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">identifier = letter {letter | digit | underscore}</code></pre>
@@ -6710,6 +6990,10 @@ filter = 'ISA' class
 </div>
 <div class="paragraph">
 <p>There is also a second kind of identifier, namely the quoted identifier.</p>
+</div>
+<div class="paragraph">
+<p>
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6809,6 +7093,9 @@ End Verb 'look'.</code></pre>
 <p>
 Numbers in Alan are only integers and thus may consist only of digits.</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">number = digit {digit}</code></pre>
@@ -6820,6 +7107,9 @@ Numbers in Alan are only integers and thus may consist only of digits.</p>
 <div class="paragraph">
 <p>
 The string is the main lexical component in an Alan source. This is how you describe the surroundings and events to the player. Strings, therefore, are easy to enter and consist simply of a pair of double quotes surrounding any number of characters. The text may include newline characters and thus may cover multiple lines in the source.</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6863,9 +7153,13 @@ The string is the main lexical component in an Alan source. This is how you desc
 <div class="paragraph">
 <p>It is possible to write one adventure using many source files, having different parts in different files, and thus giving an opportunity for some rudimentary kind of modularisation. The method for this is the <code>import</code> statement.</p>
 </div>
+<div class="paragraph">
+<p>
+</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">import = 'import' quoted_identifier '.'</code></pre>
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">import = 'IMPORT' quoted_identifier '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9455,6 +9749,9 @@ Checksum error in Acode (.A3C) file (%1 instead of %2).</p>
 <div class="paragraph">
 <p>The BNF form divides the rules for structure of the input source by describing it in smaller parts, which may in turn be defined by other rules. For example, a rule might say that an <strong>ADVENTURE</strong> (in this case an Alan program) consists of options, declarations and a start section. This grammar rule would look like:</p>
 </div>
+<div class="paragraph">
+<p></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">adventure = [options] {declaration} start_section</code></pre>
@@ -10307,8 +10604,8 @@ No detected warnings.<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.28<br>
-Last updated 2018-08-29 16:14:41 ora legale Europa occidentale
+Version 0.1.29<br>
+Last updated 2018-08-30 09:48:12 ora legale Europa occidentale
 </div>
 </div>
 </body>

@@ -34,6 +34,7 @@ Note that the first is terminated, but the second example is continued with a ch
 
 An adventure starts with an (optional) set of (((OPTION))) ``Option``s (see <<Options>>) followed by a set of declarations.
 
+(((BNF, rules of, adventure)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 adventure = {option} {declaration} start_section
@@ -43,6 +44,7 @@ According to the rules it is actually possible to have no declarations at all (a
 
 The declarations constitute the major part of the adventure. The declarations can be declared in any order and repeated freely, and are of many different possible types.
 
+(((BNF, rules of, declaration)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 declaration = import
@@ -60,6 +62,7 @@ declaration = import
 
 The adventure source text must end with a (((START, section))) `Start` section.
 
+(((BNF, rules of, START section)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 start_section = 'START' where '.' statements
@@ -83,6 +86,7 @@ You can look up the meaning of the rules "`where`" and "`statement`" elsewhere i
 
 Options (((OPTION))) define things concerning the overall behaviour of the generated Alan adventure. As is implied they are optional and are only required if you need to change the value of an option from its default setting. An option follows the grammar
 
+(((BNF, rules of, OPTION)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 option = id '.'
@@ -229,6 +233,7 @@ Examples include the conditional (((IF, statement))) `If` statement that require
 
 The source text for a large adventure might become entangled and complex. A way to break up a large text is to divide it into separate files. Each such file can then be imported into the main source using the (((IMPORT, statement))) `Import` statement.
 
+(((BNF, rules of, IMPORT)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 import = 'import' quoted_identifier '.'
@@ -240,14 +245,14 @@ An imported file is searched for first in the current directory and then in any 
 
 The import statement is the way to use the standard library (or a library of your own design). Place the library files in a directory where the compiler will find them, either in the same directory as your other source files or somewhere else (see <<Compiler Switches>> on how to make the compiler look in more folders than the one the main source file is in). In your source you would refer to the main file of such a library by
 
-[source,ebnf]
+[source,alan]
 --------------------------------------------------------------------------------
 import 'library.i'.
 --------------------------------------------------------------------------------
 
 Another use is for dividing your own source into multiple files to make them easier to handle:
 
-[source,ebnf]
+[source,alan]
 --------------------------------------------------------------------------------
 import 'harbor.i'.
 import 'city.i'.
@@ -261,9 +266,11 @@ Start At city.
 
 == Classes
 
+(((BNF, rules of, EVERY))) (((BNF, rules of, class declaration)))
+(((class, syntax for)))
 [source,ebnf,subs="macros"]
 --------------------------------------------------------------------------------
-class = 'EVERY' id(((class, syntax for)))
+class = 'EVERY' id
             [inheritance]
             {property}
         'END' 'EVERY' [id] ['.']
@@ -284,6 +291,7 @@ Every instance must inherit (((inheritance))) from a class (see <<Inheritance an
 
 You specify which class another class or an instance inherits from using a clause following the grammar:
 
+(((BNF, rules of, ISA))) (((BNF, rules of, inheritance)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 inheritance = 'ISA' id ['.']
@@ -310,6 +318,7 @@ Every coin IsA treasure ...
 
 The most important part of an Alan game source is probably the declarations of ((instances)). Instances are the objects, locations, actors and other things that fill your game universe. The player traverses and interacts with these in his quest to negotiating your game.
 
+(((BNF, rules of, THE))) (((BNF, rules of, instance declaration)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 instance = 'THE' id
@@ -502,9 +511,11 @@ It is possible to add verbs to *literal* and its sub-classes. This way it is pos
 
 An instance or class can be given number of different ((properties)) by declaring them in the declaration of the class or instance.
 
-[source,ebnf,subs="macros"]
+(((BNF, rules of, properties)))
+(((property, syntax for)))
+[source,ebnf]
 --------------------------------------------------------------------------------
-property = initial_location(((property, syntax for)))
+property = initial_location
          | name
          | pronouns
          | attributes
@@ -565,6 +576,7 @@ The properties available for use in classes, and thus also for instances, are de
 
 Where an instance will be located when the game starts is set using an optional `Where` clause. If no such clause is used the instance will have no location. An instance without location is not present (in the view of the player) in the game until it is moved somewhere by a `Locate` statement.
 
+(((BNF, rules of, initial location)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 initial_location = where
@@ -586,6 +598,7 @@ An instance inheriting from `location` cannot have an initial location that is `
 
 By default, the identifier ("`author name`") for an instance is also the name shown to the player, and by which he will be able to refer to it. Normally you would want to override this with more elaborate and alternative names. You can do that using the (((NAME, clause))) `Name` clause.
 
+(((BNF, rules of, NAME)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 name = 'NAME' id {id} ['.']
@@ -684,10 +697,11 @@ There is a _little black book_, a _green pearl_ and an _owl_ here.
 
 The interpreter also uses this principle when constructing lists of instances in container content lists (as the result of the execution of an implicit or explicit `List` statement, see <<List Statement>>).
 
-===  Pronouns
+=== Pronouns
 
 In player input, it is often handy and natural to refer to items using (((PRONOUN, clause))) pronouns, such as "`it`", "`them`" or "`her`". Alan provides a means to define with which pronouns each instance can be associated.
 
+(((BNF, rules of, PRONOUN)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 pronouns = 'PRONOUN' word { ',' word }
@@ -724,16 +738,23 @@ The predefined class `entity` defines the (((PRONOUN, predefined))) pronoun
 
 An attribute is a labelled value that instances have. The declarations (((attributes, declaration))) of attributes are placed inside a class definition (in which case it will apply to all instances of that class or instances of any sub-class of it) or inside an instance declaration (in which case only this instance will have it, unless it overrode an already inherited attribute with new values). An attribute declaration, or a set of declarations, is introduced using one of the keywords:
 
+(((BNF, rules of, IS))) (((BNF, rules of, ARE)))
+(((BNF, rules of, HAS))) (((BNF, rules of, CAN)))
 [source,ebnf]
 --------------------------------------------------------------------------------
-is = 'is'
-   | 'are'
-   | 'has'
-   | 'can'
+is = 'IS'
+   | 'ARE'
+   | 'HAS'
+   | 'CAN'
 --------------------------------------------------------------------------------
 
-And the actual of an attribute follows the structure:
 
+// @NOTE: I've added "declaration" here because there was a word missing:
+//        "And the actual of an attribute..."
+
+And the actual declaration of an attribute follows the structure:
+
+(((BNF, rules of, attribute declaration)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 attribute_declaration = id
@@ -941,6 +962,7 @@ Using (((abstract attribute))) abstract reference attribute declarations in clas
 The attributes of an instance can be initialized using values in the attribute declaration. This is usually sufficient for many situations. For more flexibility, the (((INITIALIZE, clause))) `Initialize` clause can be used.
 
 
+(((BNF, rules of, INITIALIZE)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 initialize = 'INITIALIZE' statements
@@ -980,6 +1002,7 @@ See also <<Special Statements,_Special Statements_>>, concerning the `Visits` st
 
 The syntax for simple descriptions is:
 
+(((BNF, rules of, DESCRIPTION)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 description = 'DESCRIPTION' {statement}
@@ -1012,6 +1035,7 @@ The door IsA object
 Before executing a description, you can check for various conditions to be met. A common example is the dark room. If there is no light source present, the description should not be printed. The syntax for such a description is
 
 
+(((BNF, rules of, DESCRIPTION)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 description = 'DESCRIPTION' [checks] [does]
@@ -1051,6 +1075,9 @@ You should _not_ put statements that changes game state in the `Description` cla
 
 === Articles and Forms
 
+(((BNF, rules of, DEFINITE))) (((BNF, rules of, INDEFINITE)))
+(((BNF, rules of, NEGATIVE))) (((BNF, rules of, ARTICLE)))
+(((BNF, rules of, FORM)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 forms = indefinite | definite | negative
@@ -1187,6 +1214,7 @@ You can use various forms of the `Say` statement (see <<Say Statement>>) to choo
 
 The optional (((MENTIONED, clause))) `Mentioned` clause overrides the name for displaying an instance in a short form that will be used when the instance is mentioned e.g. in listings of containers or when the *ALL* (((ALL (player input)))) form of player input is used. A typical use of the `Mentioned` clause is to let some internal state of the instance be reflected in the short form, e.g. if you want the short form of a box to show if it is open or closed you cannot rely on the Names since they are static. Instead, the `Mentioned` clause can print a different short name depending on an attribute.
 
+(((BNF, rules of, MENTIONED)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 mentioned = 'MENTIONED' {statement}
@@ -1229,6 +1257,8 @@ A mention clause declared on a class will override the names of any instance tha
 
 An instance can also be a container. This is declared by using the (((CONTAINER, property, of objects))) `Container` property clause. The grammar is
 
+(((BNF, rules of, CONTAINER properties)))
+(((BNF, rules of, OPAQUE)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 container_properties = ['WITH'] ['OPAQUE'] 'CONTAINER'
@@ -1302,6 +1332,7 @@ When an instance with the container property is encountered during game play, it
 
 The (((LIMITS, clause))) `Limits` clause of the container property declaration put limitations on what and how much can be put in the container.
 
+(((BNF, rules of, LIMITS)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 limits = 'LIMITS' {limit}
@@ -1341,6 +1372,7 @@ Container properties are inherited in its entirety. Locations can't have contain
 
 ==== Header and Else
 
+(((BNF, rules of, HEADER)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 header = 'HEADER' {statement}
@@ -1391,6 +1423,7 @@ Empty
 
 The (((EXTRACT, clause))) `Extract` clause defines what happens when anything is extracted from a container. Any `Locate` statement that moves an instance out of a container is considered an extraction. The extraction will be subject to the restrictions enforced by the `Extract` clause.
 
+(((BNF, rules of, EXTRACT)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 extract = 'EXTRACT' [check] [does]
@@ -1437,6 +1470,7 @@ The verbs in a class or instance will only be a candidate for execution if the i
 
 === Entered
 
+(((BNF, rules of, ENTERED)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 entered = 'ENTERED' {statement}
@@ -1489,6 +1523,7 @@ If it is the Hero that is moving, the `Description`, including the normal header
 
 To build a traversable world of locations, they must be connected. This is done using exits. The syntax for an exit declaration is
 
+(((BNF, rules of, EXIT)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 exit = 'EXIT' id {',' id} 'TO' id [exit_body] '.'
@@ -1537,6 +1572,7 @@ Exits are only allowed in classes or instances inheriting from the predefined cl
 
 The (((SCRIPT))) `Script` is the actor's way of performing things. In a way, it corresponds to what the hero is ordered to do by the player's typed-in commands.
 
+(((BNF, rules of, SCRIPT)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 script = 'SCRIPT' id ['.'] [description] {step}
@@ -1583,6 +1619,7 @@ There are a few things that might fail when an actor executes. One example is an
 
 A script is divided into steps. Each (((STEP))) `Step` contains statements representing what the actor will do in what corresponds to one player move. A step can be defined to be executed immediately next move, to wait a number of moves before it is executed or even to wait for a special situation (condition) to arise.
 
+(((BNF, rules of, STEP)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 step = 'STEP' {statement}
@@ -1613,6 +1650,7 @@ When an actor has executed the last step (((STEP, executing the last))) of the c
 
 In certain circumstances, you need to add properties to a class after it is defined. One simple such example is to add attributes to the predefined classes. To allow this the `Add` construct is available. It follows the grammar
 
+(((BNF, rules of, ADD TO EVERY)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 addition = 'ADD' 'TO' 'EVERY' id
@@ -1629,6 +1667,7 @@ Using this construct, you can add any property to a class without having access 
 
 The (((SYNTAX, construct))) `Syntax` construct is used to specify the allowed structure of the input from the player. Each definition defines the syntax for one `Verb`. The effects triggered by the player input are declared using the `Verb` construct (see <<Verbs>>).
 
+(((BNF, rules of, SYNTAX)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 syntaxes = 'SYNTAX' {syntax}
@@ -1695,6 +1734,7 @@ It is allowed to define multiple syntaxes for the same identifier (verb). See <<
 
 Following a parameter, (((parameter, indicators))) indicators are allowed in syntax declarations.
 
+(((BNF, rules of, parameter indicators)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 indicator = '*'' | '!''
@@ -1799,6 +1839,8 @@ Even if only one of the syntax declarations indicate that the first parameter sh
 To restrict (((restriction, of parameters))) the types of entities the player may refer to in the place of a ((parameter)), its class can be defined by using explicit test in the syntax declaration.
 
 
+(((BNF, rules of, WHERE)))
+(((BNF, rules of, parameter restrictions)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 parameter_restrictions = 'WHERE' restriction
@@ -1941,6 +1983,8 @@ When all parameter positions in the syntax have been resolved in this way, the r
 
 == Verbs
 
+(((BNF, rules of, VERB)))
+(((BNF, rules of, META VERB)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 verb = ['META'] 'VERB' id {',' id}
@@ -2020,6 +2064,7 @@ End The.
 
 === Verb Checks
 
+(((BNF, rules of, CHECK)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 check = unconditional_check
@@ -2066,7 +2111,6 @@ If any check should fail, the execution of the current verb is interrupted and t
 ================================================================================
 
 
-
 With this in mind, ``Check``s are also used when handling the user input *ALL* (((ALL (player input)))) (see <<Player Input>> for details on possible player input). The mechanisms for this involve examining all objects at the current location and evaluating all checks for the verb. Any objects that do not pass the checks are not considered for execution. This limits the handling of *all* to only executing the verb bodies for objects that are reasonable, i.e. that will not fail in the ``Check``s.
 
 For example assuming the above definition of the verb take and a location containing the two objects, `ball` and `box`, of which only the `ball` is `takeable` the player input
@@ -2078,14 +2122,14 @@ For example assuming the above definition of the verb take and a location contai
 ================================================================================
 
 
-
-
 would result in *all* representing only the ball. See <<Player Input>> for an explanation of the player view of this.
 
 
 
 === Does-clause
 
+(((BNF, rules of, DOES)))  (((BNF, rules of, BEFORE)))
+(((BNF, rules of, AFTER))) (((BNF, rules of, ONLY)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 does = [qualifier] {statement}
@@ -2115,6 +2159,8 @@ End Verb take.
 
 === Verb Alternatives
 
+(((BNF, rules of, verb alternatives)))
+(((BNF, rules of, WHEN)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 verb_alternatives = 'WHEN' id simple_verb_body
@@ -2152,6 +2198,9 @@ If no alternative is explicitly specified the verb body will be considered for a
 
 === Verb Qualification
 
+(((BNF, rules of, BEFORE)))
+(((BNF, rules of, AFTER)))
+(((BNF, rules of, ONLY)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 qualifier = 'BEFORE'
@@ -2266,9 +2315,11 @@ Events may be scheduled and cancelled with the `Schedule` and `Cancel` statement
 
 == Rules
 
-[source,ebnf,subs="macros"]
+(((RULE, syntax for)))
+(((BNF, rules of, WHEN (in rule))))
+[source,ebnf]
 --------------------------------------------------------------------------------
-rule = 'WHEN' expression ('THEN' | '=>')(((RULE, syntax for)))
+rule = 'WHEN' expression ('THEN' | '=>')
            {statement}
        ['END' 'WHEN' '.' ]
 --------------------------------------------------------------------------------
@@ -2334,6 +2385,7 @@ Again, remember that rules are checked after each actor has moved. What happens 
 
 == Synonyms
 
+(((BNF, rules of, SYNONYMS)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 synonyms = 'SYNONYMS' {synonym_declaration}
@@ -2383,12 +2435,11 @@ You can't go that way.
 ================================================================================
 
 
-
-
 The response "You can't go that way." is a typical example of such system messages (for details see <<Input Response Messages>>).
 
 To make the user dialogue more adapted to the settings you select, Alan allows you to define your own version of these messages. The grammar for this is
 
+(((BNF, rules of, MESSAGE)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 messages = 'MESSAGE' {message}
@@ -2413,7 +2464,6 @@ If the above where used in the source for the same game as the previous example,
 &gt; go north +
 There is no exit in that direction.
 ================================================================================
-
 
 
 
@@ -2450,11 +2500,11 @@ If the message must be modified according to the case of the noun, which is the 
 
 
 
-
 == Prompt Section
 
 The (((PROMPT, section))) `Prompt` section allows you to customize the way players are prompted for their input.
 
+(((BNF, rules of, PROMPT)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 prompt = 'PROMPT' {statement}
@@ -2524,6 +2574,7 @@ The prompt section is global and applies to the whole game. There is currently n
 
 The (((START, section))) `Start` section defines where the player (the hero) will be at the start of the game. This must be a location. Optionally this may be followed by statements to be executed at the beginning of the game, such as hello-messages or short instructions as well as starting any actors and scheduling events.
 
+(((BNF, rules of, START)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 start_section = 'START' where '.' {statement}
@@ -2586,9 +2637,10 @@ If the hero is inside the house or out in the street, he will get different view
 
 ==== String Statement
 
+(((BNF, rules of, output statements, string)))
 [source,ebnf]
 --------------------------------------------------------------------------------
-output_statement = STRING
+output_statement = string
 --------------------------------------------------------------------------------
 
 The simplest case of output is just a ((string)), i.e. any text, possibly stretching over multiple lines, surrounded by double quotes. See also <<Strings>> for some detailed descriptions on the definition of strings.
@@ -2651,6 +2703,7 @@ The use of `$o` is deprecated. The `<n>` variants are better, but the recommende
 
 ==== Style Statement
 
+(((BNF, rules of, STYLE)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 style_statement = 'STYLE' style '.'
@@ -2676,6 +2729,8 @@ The exact visual appearance of the styles is implementation dependent. In fact, 
 
 ==== Describe Statement
 
+(((BNF, rules of, DESCRIBE)))
+(((BNF, rules of, output statements, DESCRIBE)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 output_statement = 'DESCRIBE' what '.'
@@ -2706,6 +2761,8 @@ DESCRIBE desk.
 
 ==== Say Statement
 
+(((BNF, rules of, SAY)))
+(((BNF, rules of, output statements, SAY)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 output_statement = 'SAY' [form] expression '.'
@@ -2736,6 +2793,8 @@ If `THE` is used the form used will be the definite form, usually the short form
 
 ==== List Statement
 
+(((BNF, rules of, LIST)))
+(((BNF, rules of, output statements, LIST)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 output_statement = 'LIST' expression '.'
@@ -2769,6 +2828,8 @@ If a resource file is referenced from multiple statements, it will only be copie
 
 ==== Show Statement
 
+(((BNF, rules of, SHOW)))
+(((BNF, rules of, output statements, SHOW)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 output_statement = 'SHOW' id '.'
@@ -2780,6 +2841,8 @@ Alan currently supports the PNG and JPEG formats only.
 
 ==== Play Statement
 
+(((BNF, rules of, PLAY)))
+(((BNF, rules of, output statements, PLAY)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 output_statement = 'PLAY' id '.'
@@ -2795,6 +2858,7 @@ Alan currently supports the MOD and AIFF formats only.[[X30946]]
 
 ==== Locate Statement
 
+(((BNF, rules of, LOCATE)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 locate_statement = 'LOCATE' what where '.'
@@ -2825,6 +2889,7 @@ A very special third case is locating a location at another location. Locations 
 
 ==== Empty Statement
 
+(((BNF, rules of, EMPTY)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 empty_statement = 'EMPTY' what [where] '.'
@@ -2844,6 +2909,7 @@ Locate hero At restart_point.
 
 ==== Strip Statement
 
+(((BNF, rules of, STRIP)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 strip_statement = 'STRIP' [direction] [count] [size]
@@ -2891,6 +2957,7 @@ End The eliza.
 
 `Schedule` (((SCHEDULE, statement))) will queue an event to occur at a specified location after the number of player turns specified by the expression.
 
+(((BNF, rules of, SCHEDULE)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 event_statement = 'SCHEDULE' what [where]
@@ -2923,6 +2990,7 @@ The event can be specified by giving an event identifier or referring to an attr
 
 ==== Cancel Statement
 
+(((BNF, rules of, CANCEL)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 cancel_statement = 'CANCEL' what '.'
@@ -2967,6 +3035,7 @@ There are a number of statements for changing values of attributes.
 
 ==== Make Statement
 
+(((BNF, rules of, MAKE)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 make_statement = 'MAKE' what something '.'
@@ -2988,6 +3057,8 @@ Make door Not open.
 
 ==== Increase and Decrease Statements
 
+(((BNF, rules of, INCREASE)))
+(((BNF, rules of, DECREASE)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 increase_statement = 'INCREASE' what [by] '.'
@@ -3012,6 +3083,7 @@ Decrease lives Of hero.
 
 ==== Set Statement
 
+(((BNF, rules of, SET)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 set_statement = 'SET' what 'TO' expression '.'
@@ -3058,6 +3130,7 @@ Set friends Of mine To {suspect Of detective}. -- Correct maybe
 
 ==== Include Statement
 
+(((BNF, rules of, INCLUDE)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 include_statement = 'INCLUDE' expression 'IN' set '.'
@@ -3085,6 +3158,7 @@ Include driver Of car In friends Of hitchhiker.
 
 ==== Exclude Statement
 
+(((BNF, rules of, EXCLUDE)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 exclude_statement = 'EXCLUDE' expression 'FROM' set '.'
@@ -3108,6 +3182,9 @@ In Alan there are two conditional statements, the common `If` statement and the 
 
 ==== If Statement
 
+(((BNF, rules of, IF)))
+(((BNF, rules of, ELSE)))
+(((BNF, rules of, ELSIF)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 if statement = 'IF' expression 'THEN' statements
@@ -3165,6 +3242,7 @@ End For.
 
 ==== Depending On Statement
 
+(((BNF, rules of, DEPENDING ON)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 depend_statement = 'DEPENDING' 'ON' expression
@@ -3220,6 +3298,7 @@ Actor statements are statements that are used to control actors.
 
 ==== Use Statement
 
+(((BNF, rules of, USE)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 use_statement = 'USE' script ['FOR' actor] '.'
@@ -3247,6 +3326,7 @@ a ((reference attribute)) as the actor clause.
 
 ==== Stop Statement
 
+(((BNF, rules of, STOP)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 stop_statement = 'STOP' actor '.'
@@ -3263,6 +3343,7 @@ The (((STOP, statement))) `Stop` statement stops an actor from proceeding with a
 
 The Alan language provides one compound statement for repetition, the `For Each` statement.
 
+(((BNF, rules of, FOR EACH)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 repetition_statement = 'FOR' 'EACH' id [filters] 'DO'
@@ -3347,6 +3428,7 @@ End Verb restore.
 
 `Score` (((SCORE, statement))) is a way of rewarding the player by giving points for certain actions. This is done using the statement
 
+(((BNF, rules of, SCORE)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 score_statement = 'SCORE' integer '.'
@@ -3377,6 +3459,7 @@ The `Score` statements assume a simple model of scoring; a number of actions are
 
 The (((VISITS, statement))) `Visits` statement changes the number of times a location can be visited before the long description is presented again:
 
+(((BNF, rules of, VISITS)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 visits_statement = 'VISITS' count '.'
@@ -3427,6 +3510,7 @@ End The secret_cave.
 ==== Transcript Statement
 
 
+(((BNF, rules of, TRANSCRIPT)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 transcript_statement = 'TRANSCRIPT' ('ON' | 'OFF') '.'
@@ -3463,6 +3547,12 @@ End Verb.
 
 Many constructs in the Alan language require a specification of where the construct should operate. The general intention of such a (((WHERE, specification))) `Where` specification is to specify a location.
 
+(((BNF, rules of, where specification)))
+(((BNF, rules of, AT)))
+(((BNF, rules of, IN)))
+(((BNF, rules of, HERE)))
+(((BNF, rules of, NEAR)))
+(((BNF, rules of, NEARBY)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 where = 'HERE'
@@ -3495,6 +3585,10 @@ Not all kinds of `Where` specifications are meaningful in all constructs. Exampl
 
 Constructs in the grammar for the Alan language often refer to some class or instance defined in the Alan source. This is generally called a (((WHAT, specification))) `What` specification, as it specifies what the construct refers to. An example is the `Locate` statement that must refer to something that should be relocated.
 
+(((BNF, rules of, what specification)))
+(((BNF, rules of, CURRENT LOCATION)))
+(((BNF, rules of, CURRENT ACTOR)))
+(((BNF, rules of, THIS)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 what = 'CURRENT' 'ACTOR'
@@ -3558,6 +3652,8 @@ Each member in the set expression can be an expression of integer or reference t
 
 === Attribute References
 
+(((BNF, rules of, attribute references)))
+(((BNF, rules of, OF)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 attribute_reference = id 'OF' expression
@@ -3590,6 +3686,8 @@ Say weapon Of suspect Of detective.
 
 You can test Boolean attributes of an instance by following the pattern
 
+(((BNF, rules of, expressions)))
+(((BNF, rules of, IS)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 expression = expression 'IS' something
@@ -3632,6 +3730,8 @@ This attribute is predefined on all instances and is guaranteed to return an ins
 
 There are three types of random expressions. The first is the traditional random integer expression.
 
+(((BNF, rules of, RANDOM)))
+(((BNF, rules of, expressions, RANDOM)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 expression = 'RANDOM' expression 'TO' expression
@@ -3648,6 +3748,8 @@ Decrease temp Of room By Random 0 To temp Of Room.
 
 The second and third types return a random member in a set or in a container respectively.
 
+(((BNF, rules of, DIRECTLY IN)))
+(((BNF, rules of, expressions, RANDOM DIRECTLY IN)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 expression = 'RANDOM' ['DIRECTLY'] 'IN' expression
@@ -3684,6 +3786,9 @@ A `thing` or `entity` inside a container, which normally do not exhibit themselv
 
 === Logical Expressions
 
+(((BNF, rules of, expressions, logical expressions)))
+(((BNF, rules of, expressions, AND)))
+(((BNF, rules of, expressions, OR)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 expression = expression ('AND' | 'OR'] expression
@@ -3707,6 +3812,8 @@ If o IsA treasure And (size Of o > capacity Of c
 
 === Class Expressions
 
+(((BNF, rules of, ISA)))
+(((BNF, rules of, expressions, class expressions)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 expression = something 'ISA' class_id
@@ -3864,6 +3971,8 @@ Given these two declarations and some syntax declarations the door will inherit 
 
 === The Whereabouts of an Entity
 
+(((BNF, rules of, whereabouts of an entity)))
+(((BNF, rules of, expressions, whereabouts of an entity)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 expression = what ['NOT'] [transitivity] where
@@ -3887,6 +3996,11 @@ The forms available for the `Where` expression are described in detail in <<WHER
 
 The default behaviour of a `Where` expression is to evaluate recursively through containers, e.g. if the bottle was inside a bag which was in the inventory, the first expression above would still be true. This implicitly transitive evaluation can also be made explicit through the use of the keyword (((INDIRECTLY))) `Indirectly`. This would result in exactly the same semantics, but it is explicitly expressed, which can be useful.
 
+(((BNF, rules of, DIRECTLY)))
+(((BNF, rules of, INDIRECTLY)))
+(((BNF, rules of, TRANSITIVELY)))
+(((BNF, rules of, transitivity)))
+(((BNF, rules of, expressions, transitivity)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 transitivity =
@@ -3919,6 +4033,9 @@ If the transitivity is not Directly, the compiler analyses the container to see 
 
 === Aggregates
 
+(((BNF, rules of, COUNT))) (((BNF, rules of, SUM)))
+(((BNF, rules of, MAX)))   (((BNF, rules of, MIN)))
+(((BNF, rules of, expressions, aggregate)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 aggregate_expression = aggregate filters
@@ -3964,6 +4081,7 @@ These examples could be used to create various restrictions in the possible trav
 
 == Filters
 
+(((BNF, rules of, filters)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 filters = filter { ',' filter }

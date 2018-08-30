@@ -17,6 +17,7 @@ Comments may be placed anywhere in the Alan source. A comment starts with double
 
 An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance. Identifiers (((identifier, lexical definition))) may only be composed of letters, digits and underscores. The first character must be a letter.
 
+(((BNF, rules of, identifier)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 identifier = letter {letter | digit | underscore}
@@ -24,6 +25,8 @@ identifier = letter {letter | digit | underscore}
 
 There is also a second kind of identifier, namely the quoted identifier.
 
+(((BNF, rules of, quoted identifier)))
+(((BNF, rules of, identifier, quoted)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 id = identifier
@@ -98,6 +101,7 @@ Some of the identifiers in the source for an Alan game are by default used as pl
 (((numbers, lexical definition)))
 Numbers in Alan are only integers and thus may consist only of digits.
 
+(((BNF, rules of, numbers)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 number = digit {digit}
@@ -110,6 +114,7 @@ number = digit {digit}
 (((string, lexical definition)))
 The string is the main lexical component in an Alan source. This is how you describe the surroundings and events to the player. Strings, therefore, are easy to enter and consist simply of a pair of double quotes surrounding any number of characters. The text may include newline characters and thus may cover multiple lines in the source.
 
+(((BNF, rules of, strings)))
 [source,ebnf]
 --------------------------------------------------------------------------------
 string = double_quote {any_character} double_quote
@@ -137,9 +142,11 @@ To get a (((double quotes))) double quote within strings repeat it ("The sailor 
 
 It is possible to write one adventure using many source files, having different parts in different files, and thus giving an opportunity for some rudimentary kind of modularisation. The method for this is the `import` statement.
 
+(((BNF, rules of, IMPORT)))
+(((BNF, rules of, filenames)))
 [source,ebnf]
 --------------------------------------------------------------------------------
-import = 'import' quoted_identifier '.'
+import = 'IMPORT' quoted_identifier '.'
 --------------------------------------------------------------------------------
 
 The `Import` statement requires a filename, which must be given as a quoted
