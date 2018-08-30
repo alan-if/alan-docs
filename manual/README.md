@@ -30,6 +30,8 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
     - [Typography Cleanup](#typography-cleanup)
     - [Proof-Reading](#proof-reading)
     - [Syntax highlighting](#syntax-highlighting)
+- [Notes on PDF Conversion](#notes-on-pdf-conversion)
+    - [Footnotes in Tables Rendered as Inline Notes](#footnotes-in-tables-rendered-as-inline-notes)
 - [Work Notes](#work-notes)
     - [Conversion from ODT to AsciiDoc](#conversion-from-odt-to-asciidoc)
     - [Annotated Comments](#annotated-comments)
@@ -273,6 +275,37 @@ This stage will be done once all global substitution have been dealt with in eac
 
 -------------------------------------------------------------------------------
 
+# Notes on PDF Conversion
+
+Currently, the [`PDF_BUILD.bat`][PDF_BUILD.bat] script uses [Asciidoctor PDF] to create the PDF version of the Manual, but there are several problems with this tool.
+
+## Footnotes in Tables Rendered as Inline Notes
+
+The [footnotes in Table 1] are not rendered correctly using Asciidoctor PDF:
+
+![Table 1 Footnotes in PDF Manual][PDF footnotes]
+
+[footnotes in Table 1]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/8af2b68/manual/manual.html#table-of-options "HTML Live preview of Table 1"
+
+Attempts to tweak the formatting of the footnotes and style settings of the colums have shown that, even when rendered, the footnotes would be displayed inside the cell.
+
+This is known current limitation of Asciidoctor PDF, and it's being discussed in Issues [#73], [#85], [#927].
+
+[#73]: https://github.com/asciidoctor/asciidoctor-pdf/issues/73
+[#85]: https://github.com/asciidoctor/asciidoctor-pdf/issues/85
+[#927]: https://github.com/asciidoctor/asciidoctor-pdf/issues/927
+
+Apparently, displaying inline notes was an initial temporary solution to handle footnotes. @mojavelinux [mentioned (back in 2015)]:
+
+> We inlined the footnotes as a temporary, short term solution. The long term
+solution is to put them at the bottom of page or chapter.
+
+... but as of today (3 years later) the problem of footnotes being shown inline is still there (at least inside Table cells). So, we'll have to look for another way to convert the Manual to PDF.
+
+[mentioned (back in 2015)]: https://github.com/asciidoctor/asciidoctor-pdf/issues/85#issuecomment-99585890
+
+-------------------------------------------------------------------------------
+
 # Work Notes
 
 ## Conversion from ODT to AsciiDoc
@@ -343,5 +376,9 @@ As a convention, all commented annotations inside document source files will beg
 
 [Index txt]: ./Manual_Index.txt
 [TOC txt]:   ./Manual_TOC.txt
+
+<!-- SCREENSHOTS -->
+
+[PDF footnotes]: ./_pdf-footnotes.problem.png "Screenshots of how footnotes inside a Table are not rendered correctly with Asciidoctor PDF backend"
 
 <!-- EOF -->
