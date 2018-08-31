@@ -1,9 +1,25 @@
+// ******************************************************************************
+// *                                                                            *
+// *                      Appendix B: A Sample Interaction                      *
+// *                                                                            *
+// ******************************************************************************
+// This section is ready except for some problems with rendering the indentation
+// found in the original (since we're not using monospaced fonts here).
+
+// @FIXME: The indentation of the following output is not being preserved:
+//         -- "    ThoNi & GorFo Adventure Factories"
+//         -- "    US NEWS & DUNGEON REPORT"
+//         -- "    --- LATE NEWS FLASH!! ---"
+
+
 [appendix]
 = A Sample Interaction
 
-In order to give you an idea of what playing an adventure might be like, if you do not have done that, this appendix lists a typical, and authentic, interaction between a player and a game. Player input is preceded by a prompt ('`>`') and is emphasised for clarity.
+In order to give you an idea of what playing an adventure might be like, if you do not have done that, this appendix lists a typical, and authentic, interaction between a player and a game.
+Player input is preceded by a prompt ('&gt;') and is emphasised for clarity.
 
-In reading this through, you will find that it is possible to use more or less full imperative statements to communicate with the game. However, you may leave out non-important words and the game usually provides a set of common abbreviations, such as '`w`' for '`west`', which really means '`go west`'.
+In reading this through, you will find that it is possible to use more or less full imperative statements to communicate with the game.
+However, you may leave out non-important words and the game usually provides a set of common abbreviations, such as '`w`' for '`west`', which really means '`go west`'.
 
 It is also common to provide possibility to refer to multiple objects in a command, either by use of '`all`' or specifically listing the objects.
 
@@ -17,117 +33,86 @@ Welcome to Dungeon (ALAN Demo). This version created 29-FEB-92.
 
 You are in an open field west of a big white house with a boarded front door. There is a small mailbox here.
 
-&gt; _examine the mailbox_
-
+&gt; _examine the mailbox_ +
 I see nothing special about the mailbox.
 
-&gt; _open it_
-
+&gt; _open it_ +
 The small mailbox is now open. The small mailbox contains a leaflet.
 
-&gt; _take the leaflet and read it_
-
-Taken!
-
-'I hope you have noticed that this isn't your usual Dungeon but rather an ALAN implementation brought to you by
-
-ThoNi & GorFo Adventure Factories
-
+&gt; _take the leaflet and read it_ +
+Taken! +
+'I hope you have noticed that this isn't your usual Dungeon but rather an ALAN implementation brought to you by +
+    ThoNi & GorFo Adventure Factories +
 Happy Adventuring!'
 
-&gt; _inventory_
-
+&gt; _inventory_ +
 You are carrying a leaflet.
 
-&gt; _go south_
-
+&gt; _go south_ +
 *South of House.* +
 You are facing the south side of a white house. There is no door here, and all the windows are barred.
 
-&gt; _east_
-
+&gt; _east_ +
 *Behind House.* +
 You are behind the white house. In one corner of the house there is a window which is slightly ajar.
 
-&gt; _open the window_
-
+&gt; _open the window_ +
 With great effort, you open the window far enough to allow passage.
 
-&gt; _go in_
-
+&gt; _go in_ +
 *Kitchen.* +
 You are in the kitchen of the white house. A table seems to have been used recently for the preparation of food. On the table you can see an elongated brown sack, smelling of hot peppers and a clear glass bottle. A passage leads to the west, and a dark staircase can be seen leading upward. To the east is a small window which is open.
 
-&gt; _examine all_
-
+&gt; _examine all_ +
 You can't refer to multiple objects with 'examine'.
 
-&gt; _take all_
-
-(elongated brown sack, smelling of hot peppers) Taken!
-
+&gt; _take all_ +
+(elongated brown sack, smelling of hot peppers) Taken! +
 (clear glass bottle) Taken!
 
-&gt; _up_
-
+&gt; _up_ +
 *Upstairs.* +
 You are in the attic. The only exit is stairs that lead down. A large coil of rope is lying in the corner. There is a square brick here which feels like clay. A nasty-looking knife is lying here.
 
-&gt; _take all_
-
-(rope) Taken!
-
-(square clay brick) Taken!
-
+&gt; _take all_ +
+(rope) Taken! +
+(square clay brick) Taken! +
 (nasty knife) Taken!
 
-&gt; _examine knife_
-
+&gt; _examine knife_ +
 I see nothing special about the knife.
 
-&gt; _down_
-
+&gt; _down_ +
 *Kitchen (again)* +
 A table seems to have been used recently for the preparation of food. The table is empty. To the east is a small window which is open.
 
-&gt; _w_
-
+&gt; _w_ +
 *Living room.* +
 You are in the living room. There is a door to the east. To the west is a wooden door with strange gothic lettering, which appears to be nailed shut. There is a trophy case here. In the center of the room is a large oriental rug.
 
 On hooks above the mantlepiece hangs an elvish sword of great antiquity. A battery-powered brass lantern is on the trophy case. There is an issue of US NEWS & DUNGEON REPORT dated 29-FEB-92 here.
 
-&gt; _move rug_
-
+&gt; _move rug_ +
 With a great effort, the rug is moved to one side of the room. With the rug moved, the dusty cover of a closed trap door appears.
 
-&gt; _open door_
-
+&gt; _open door_ +
 I don't know which door you mean.
 
-&gt; _open trap door_
-
+&gt; _open trap door_ +
 The door reluctantly opens to reveal a rickety staircase descending into darkness.
 
-&gt; _take the sword, the lantern and the issue_
-
-(rug) The rug is extremely heavy and cannot be carried.
-
-(elvish sword) Taken!
-
-(battery brass lantern) Taken!
-
+&gt; _take the sword, the lantern and the issue_ +
+(rug) The rug is extremely heavy and cannot be carried. +
+(elvish sword) Taken! +
+(battery brass lantern) Taken! +
 (issue) Taken!
 
-&gt; _read issue_
-
-US NEWS & DUNGEON REPORT
-
-29-FEB-92................................Late Dungeon Edition
-
---- LATE NEWS FLASH!! ---
-
+&gt; _read issue_ +
+    US NEWS & DUNGEON REPORT +
+29-FEB-92................................Late Dungeon Edition +
+    --- LATE NEWS FLASH!! --- +
 The Dungeon prelude is now available as an ALAN implementation. The Dungeon game was selected as an example that everybody interested in adventure gaming should recognize.
 ================================================================================
 
 
+// EOF //

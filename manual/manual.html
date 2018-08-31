@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.30,</span>
+<span id="revnumber">version 0.1.31,</span>
 <span id="revdate">August 31, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -830,7 +830,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.30
+<pre>Doc version: 0.1.31
 Last edited: August 31, 2018</pre>
 </div>
 </div>
@@ -9106,10 +9106,12 @@ The interpreter supports the following switches:</p>
 <h2 id="_a_sample_interaction">Appendix B: A Sample Interaction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In order to give you an idea of what playing an adventure might be like, if you do not have done that, this appendix lists a typical, and authentic, interaction between a player and a game. Player input is preceded by a prompt (&#8216;&gt;&#8217;) and is emphasised for clarity.</p>
+<p>In order to give you an idea of what playing an adventure might be like, if you do not have done that, this appendix lists a typical, and authentic, interaction between a player and a game.
+Player input is preceded by a prompt ('&gt;') and is emphasised for clarity.</p>
 </div>
 <div class="paragraph">
-<p>In reading this through, you will find that it is possible to use more or less full imperative statements to communicate with the game. However, you may leave out non-important words and the game usually provides a set of common abbreviations, such as &#8216;w&#8217; for &#8216;west&#8217;, which really means &#8216;go west&#8217;.</p>
+<p>In reading this through, you will find that it is possible to use more or less full imperative statements to communicate with the game.
+However, you may leave out non-important words and the game usually provides a set of common abbreviations, such as &#8216;w&#8217; for &#8216;west&#8217;, which really means &#8216;go west&#8217;.</p>
 </div>
 <div class="paragraph">
 <p>It is also common to provide possibility to refer to multiple objects in a command, either by use of &#8216;all&#8217; or specifically listing the objects.</p>
@@ -9127,169 +9129,105 @@ Welcome to Dungeon (ALAN Demo). This version created 29-FEB-92.</p>
 <p>You are in an open field west of a big white house with a boarded front door. There is a small mailbox here.</p>
 </div>
 <div class="paragraph">
-<p>&gt; <em>examine the mailbox</em></p>
+<p>&gt; <em>examine the mailbox</em><br>
+I see nothing special about the mailbox.</p>
 </div>
 <div class="paragraph">
-<p>I see nothing special about the mailbox.</p>
+<p>&gt; <em>open it</em><br>
+The small mailbox is now open. The small mailbox contains a leaflet.</p>
 </div>
 <div class="paragraph">
-<p>&gt; <em>open it</em></p>
+<p>&gt; <em>take the leaflet and read it</em><br>
+Taken!<br>
+'I hope you have noticed that this isn&#8217;t your usual Dungeon but rather an ALAN implementation brought to you by<br>
+    ThoNi &amp; GorFo Adventure Factories<br>
+Happy Adventuring!'</p>
 </div>
 <div class="paragraph">
-<p>The small mailbox is now open. The small mailbox contains a leaflet.</p>
+<p>&gt; <em>inventory</em><br>
+You are carrying a leaflet.</p>
 </div>
 <div class="paragraph">
-<p>&gt; <em>take the leaflet and read it</em></p>
-</div>
-<div class="paragraph">
-<p>Taken!</p>
-</div>
-<div class="paragraph">
-<p>'I hope you have noticed that this isn&#8217;t your usual Dungeon but rather an ALAN implementation brought to you by</p>
-</div>
-<div class="paragraph">
-<p>ThoNi &amp; GorFo Adventure Factories</p>
-</div>
-<div class="paragraph">
-<p>Happy Adventuring!'</p>
-</div>
-<div class="paragraph">
-<p>&gt; <em>inventory</em></p>
-</div>
-<div class="paragraph">
-<p>You are carrying a leaflet.</p>
-</div>
-<div class="paragraph">
-<p>&gt; <em>go south</em></p>
-</div>
-<div class="paragraph">
-<p><strong>South of House.</strong><br>
+<p>&gt; <em>go south</em><br>
+<strong>South of House.</strong><br>
 You are facing the south side of a white house. There is no door here, and all the windows are barred.</p>
 </div>
 <div class="paragraph">
-<p>&gt; <em>east</em></p>
-</div>
-<div class="paragraph">
-<p><strong>Behind House.</strong><br>
+<p>&gt; <em>east</em><br>
+<strong>Behind House.</strong><br>
 You are behind the white house. In one corner of the house there is a window which is slightly ajar.</p>
 </div>
 <div class="paragraph">
-<p>&gt; <em>open the window</em></p>
+<p>&gt; <em>open the window</em><br>
+With great effort, you open the window far enough to allow passage.</p>
 </div>
 <div class="paragraph">
-<p>With great effort, you open the window far enough to allow passage.</p>
-</div>
-<div class="paragraph">
-<p>&gt; <em>go in</em></p>
-</div>
-<div class="paragraph">
-<p><strong>Kitchen.</strong><br>
+<p>&gt; <em>go in</em><br>
+<strong>Kitchen.</strong><br>
 You are in the kitchen of the white house. A table seems to have been used recently for the preparation of food. On the table you can see an elongated brown sack, smelling of hot peppers and a clear glass bottle. A passage leads to the west, and a dark staircase can be seen leading upward. To the east is a small window which is open.</p>
 </div>
 <div class="paragraph">
-<p>&gt; <em>examine all</em></p>
+<p>&gt; <em>examine all</em><br>
+You can&#8217;t refer to multiple objects with 'examine'.</p>
 </div>
 <div class="paragraph">
-<p>You can&#8217;t refer to multiple objects with 'examine'.</p>
+<p>&gt; <em>take all</em><br>
+(elongated brown sack, smelling of hot peppers) Taken!<br>
+(clear glass bottle) Taken!</p>
 </div>
 <div class="paragraph">
-<p>&gt; <em>take all</em></p>
-</div>
-<div class="paragraph">
-<p>(elongated brown sack, smelling of hot peppers) Taken!</p>
-</div>
-<div class="paragraph">
-<p>(clear glass bottle) Taken!</p>
-</div>
-<div class="paragraph">
-<p>&gt; <em>up</em></p>
-</div>
-<div class="paragraph">
-<p><strong>Upstairs.</strong><br>
+<p>&gt; <em>up</em><br>
+<strong>Upstairs.</strong><br>
 You are in the attic. The only exit is stairs that lead down. A large coil of rope is lying in the corner. There is a square brick here which feels like clay. A nasty-looking knife is lying here.</p>
 </div>
 <div class="paragraph">
-<p>&gt; <em>take all</em></p>
+<p>&gt; <em>take all</em><br>
+(rope) Taken!<br>
+(square clay brick) Taken!<br>
+(nasty knife) Taken!</p>
 </div>
 <div class="paragraph">
-<p>(rope) Taken!</p>
+<p>&gt; <em>examine knife</em><br>
+I see nothing special about the knife.</p>
 </div>
 <div class="paragraph">
-<p>(square clay brick) Taken!</p>
-</div>
-<div class="paragraph">
-<p>(nasty knife) Taken!</p>
-</div>
-<div class="paragraph">
-<p>&gt; <em>examine knife</em></p>
-</div>
-<div class="paragraph">
-<p>I see nothing special about the knife.</p>
-</div>
-<div class="paragraph">
-<p>&gt; <em>down</em></p>
-</div>
-<div class="paragraph">
-<p><strong>Kitchen (again)</strong><br>
+<p>&gt; <em>down</em><br>
+<strong>Kitchen (again)</strong><br>
 A table seems to have been used recently for the preparation of food. The table is empty. To the east is a small window which is open.</p>
 </div>
 <div class="paragraph">
-<p>&gt; <em>w</em></p>
-</div>
-<div class="paragraph">
-<p><strong>Living room.</strong><br>
+<p>&gt; <em>w</em><br>
+<strong>Living room.</strong><br>
 You are in the living room. There is a door to the east. To the west is a wooden door with strange gothic lettering, which appears to be nailed shut. There is a trophy case here. In the center of the room is a large oriental rug.</p>
 </div>
 <div class="paragraph">
 <p>On hooks above the mantlepiece hangs an elvish sword of great antiquity. A battery-powered brass lantern is on the trophy case. There is an issue of US NEWS &amp; DUNGEON REPORT dated 29-FEB-92 here.</p>
 </div>
 <div class="paragraph">
-<p>&gt; <em>move rug</em></p>
+<p>&gt; <em>move rug</em><br>
+With a great effort, the rug is moved to one side of the room. With the rug moved, the dusty cover of a closed trap door appears.</p>
 </div>
 <div class="paragraph">
-<p>With a great effort, the rug is moved to one side of the room. With the rug moved, the dusty cover of a closed trap door appears.</p>
+<p>&gt; <em>open door</em><br>
+I don&#8217;t know which door you mean.</p>
 </div>
 <div class="paragraph">
-<p>&gt; <em>open door</em></p>
+<p>&gt; <em>open trap door</em><br>
+The door reluctantly opens to reveal a rickety staircase descending into darkness.</p>
 </div>
 <div class="paragraph">
-<p>I don&#8217;t know which door you mean.</p>
+<p>&gt; <em>take the sword, the lantern and the issue</em><br>
+(rug) The rug is extremely heavy and cannot be carried.<br>
+(elvish sword) Taken!<br>
+(battery brass lantern) Taken!<br>
+(issue) Taken!</p>
 </div>
 <div class="paragraph">
-<p>&gt; <em>open trap door</em></p>
-</div>
-<div class="paragraph">
-<p>The door reluctantly opens to reveal a rickety staircase descending into darkness.</p>
-</div>
-<div class="paragraph">
-<p>&gt; <em>take the sword, the lantern and the issue</em></p>
-</div>
-<div class="paragraph">
-<p>(rug) The rug is extremely heavy and cannot be carried.</p>
-</div>
-<div class="paragraph">
-<p>(elvish sword) Taken!</p>
-</div>
-<div class="paragraph">
-<p>(battery brass lantern) Taken!</p>
-</div>
-<div class="paragraph">
-<p>(issue) Taken!</p>
-</div>
-<div class="paragraph">
-<p>&gt; <em>read issue</em></p>
-</div>
-<div class="paragraph">
-<p>US NEWS &amp; DUNGEON REPORT</p>
-</div>
-<div class="paragraph">
-<p>29-FEB-92&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;..Late Dungeon Edition</p>
-</div>
-<div class="paragraph">
-<p>--- LATE NEWS FLASH!! ---</p>
-</div>
-<div class="paragraph">
-<p>The Dungeon prelude is now available as an ALAN implementation. The Dungeon game was selected as an example that everybody interested in adventure gaming should recognize.</p>
+<p>&gt; <em>read issue</em><br>
+    US NEWS &amp; DUNGEON REPORT<br>
+29-FEB-92&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;&#8230;&#8203;..Late Dungeon Edition<br>
+    --- LATE NEWS FLASH!! ---<br>
+The Dungeon prelude is now available as an ALAN implementation. The Dungeon game was selected as an example that everybody interested in adventure gaming should recognize.</p>
 </div>
 </div>
 </div>
@@ -10662,8 +10600,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.30<br>
-Last updated 2018-08-31 11:59:59 ora legale Europa occidentale
+Version 0.1.31<br>
+Last updated 2018-08-31 15:08:59 ora legale Europa occidentale
 </div>
 </div>
 </body>

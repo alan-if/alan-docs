@@ -112,7 +112,7 @@ Some files to help editing the manual:
 - [ ] _6. Hints And Tips_
 - [ ] _7. Adventure Construction_
 - [ ] _Appendix A: How To Use The System_
-- [ ] _Appendix B: A Sample Interaction_
+- [x] _Appendix B: A Sample Interaction_
 - [ ] _Appendix C: Run-time Messages_
 - [ ] _Appendix D: Language Grammar_
 - [ ] _Appendix E: Predefined player words_
@@ -288,7 +288,7 @@ This stage will be done once all global substitution have been dealt with in eac
     + [ ] _6. Hints And Tips_
     + [ ] _7. Adventure Construction_
     + [ ] _Appendix A: How To Use The System_
-    + [ ] _Appendix B: A Sample Interaction_
+    + [x] _Appendix B: A Sample Interaction_
     + [ ] _Appendix C: Run-time Messages_
     + [ ] _Appendix D: Language Grammar_
     + [ ] _Appendix E: Predefined player words_
