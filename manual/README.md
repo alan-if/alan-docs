@@ -44,6 +44,12 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 
 # Folder Contents
 
+The original files of the _Alan Manual_ used for AsciiDoc conversion are available in:
+
+- [`../_assets-src/original-docs/`](../_assets-src/original-docs/)
+    + [`manual.odt`](../_assets-src/original-docs/manual.odt)
+    + [`manual.pdf`](../_assets-src/original-docs/manual.pdf)
+
 ## Manual Source Files
 
 - [`manual.asciidoc`][man] — The main Alan Manual file that imports all other chapters:

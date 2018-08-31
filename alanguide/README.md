@@ -26,6 +26,12 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 
 # Folder Contents
 
+The original file of the _Alan Beginner's Guide_ used as base document is available in:
+
+- [`../_assets-src/original-docs/`](../_assets-src/original-docs/)
+    + [`alanguide.adoc`](../_assets-src/original-docs/alanguide.adoc)
+
+
 ## Guide Source Files
 
 - [`alanguide.asciidoc`][guide]

@@ -52,11 +52,11 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 
 ## Project Contents
 
+- [`/_assets-src/`](./_assets-src/) (assets' source files):
+    + [`/alan-logo/`](./_assets-src/alan-logo/) — Alan logo reconstructed as vector image.
+    + [`/original-docs/`](./_assets-src/original-docs/) — copy of the original docs being ported.
 - [`/alanguide/`](./alanguide) — _Alan 3 Beginner's Guide_ ported to AsciiDoc (WIP).
-- [`/assets-src/`](./assets-src/):
-    + [`/alan-logo/`](./assets-src/alan-logo/) — Alan logo reconstructed as vector image.
 - [`/manual/`](./manual/) — _The Alan Manual_ ported to AsciiDoc (WIP).
-- [`/originals/`](./originals/) — copy of the original docs being ported.
 - [`CONTRIBUTING.md`][CONTRIBUTING] — Guidelines for contributing to this project.
 - [`CONVENTIONS.md`][CONVENTIONS] — Editors' formatting and styles guidelines.
 - [`LICENSE`](./LICENSE) — the [Artistic License 2.0].
