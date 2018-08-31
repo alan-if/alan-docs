@@ -9,6 +9,17 @@
 ................................................................................
 ................................................................................
 
+// Source code or keyboard input
+[listing]
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+// Output text --- different roles for styling differently Linux shell and Win
+// CMD examples (when needed):
+[literal, role="shell"]
+[literal, role="cmd"]
+................................................................................
+................................................................................
 
 // @PSEUDOCODE: The following code examples might not highlight well due to the
 //              presence of '...' ot square brackets placeholder!

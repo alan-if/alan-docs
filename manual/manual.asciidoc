@@ -1,5 +1,5 @@
 :doctitle: The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.32
+:revnumber: 0.1.33
 :revdate: August 31, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
@@ -127,7 +127,7 @@ include::manual_16.asciidoc[]
 
 // Index
 // =====
-// We'll exclude it from HTML5 documented since it's not supported:
+// We'll exclude it from HTML5 documents since that backend doesn't support it:
 ifeval::["{backend}" != "html5"]
 
 :sectnums!:

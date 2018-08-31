@@ -1,68 +1,102 @@
+// ******************************************************************************
+// *                                                                            *
+// *                     Appendix A: How To Use The System                      *
+// *                                                                            *
+// ******************************************************************************
+
 [appendix]
 = How To Use The System
 
 How to actually set up and use the complete Alan system depends very much on which platform, OS and in which environment you are going to use it.
 
-If you just want to run a game, there is of course the original command line version distributed from {alan-www}. To use this, read the relevant sections below to get a feel for how that will work.
+If you just want to run a game, there is of course the original command line version distributed from {alan-www}.
+To use this, read the relevant sections below to get a feel for how that will work.
 
-But there are also a number of other packages that include an Alan interpreter, Gargoyle and Spatterlight, are two, with Gargoyle at the point of writing, being the one most up to date, and also available on multiple platforms.
+But there are also a number of other packages that include an Alan interpreter, http://ccxvii.net/gargoyle/[Gargoyle^] and http://ccxvii.net/spatterlight/[Spatterlight^], are two, with Gargoyle at the point of writing, being the one most up to date, and also available on multiple platforms.
 
-If you actually want to write interactive fiction using Alan you also need the compiler. This is distributed from {alan-www} in what's called the complete packages, including compiler, interpreter, the documentation, a conversion program for v2 games and some examples.
+// TODO: Instead of "the complete packages" maybe "Development Kit" or "SDK"?
 
-Whatever option you choose, there should be more detailed instructions on how to install included with that package. Below follows some information pertaining to the original versions from the Alan website.
+If you actually want to write interactive fiction using Alan you also need the compiler.
+This is distributed from {alan-www} in what's called the complete packages, including compiler, interpreter, the documentation, a conversion program for v2 games and some examples.
+
+Whatever option you choose, there should be more detailed instructions on how to install included with that package.
+Below follows some information pertaining to the original versions from the Alan website.
 
 == Compiling
 
-Although there are other options, like a prototype AlanIDE, WinAlan et al., basic use of the Alan Adventure Development System is through a traditional command line batch compiler. This means that the actual development system is a compiler that reads text files created using any standard text editor. To compile an adventure use the following command in a command shell:
+Although there are other options, like a prototype AlanIDE, WinAlan et al., basic use of the Alan Adventure Development System is through a traditional command line batch compiler.
+This means that the actual development system is a compiler that reads text files created using any standard text editor.
+To compile an adventure use the following command in a command shell:
 
+[literal, role="shell"]
 ................................................................................
 alan <adventure>
 ................................................................................
 
-where `<adventure>` is the name of the main file containing your adventure source text. The compiler will assume an extension of *"`.alan`"* if none is supplied. The option `-help` will give a brief help on other options to the compiler.
+where `<adventure>` is the name of the main file containing your adventure source text.
+The compiler will assume an extension of *"`.alan`"* if none is supplied.
+The option `-help` will give a brief help on other options to the compiler.
 
 The primary output from the compiler is an adventure code file *_adventure_.a3c*.
 
-An identifying file, *_adventure_.ifid*, is also produced. This file contains a unique identification of your game for bibliographical purposes. The content of it will be compiled into the adventure code file, which makes your game identifiable by electronic means. As long as this file exist the same identification (IFID) will be used. If it does not exist, a new one will automatically be generated.
+An identifying file, *_adventure_.ifid*, is also produced.
+This file contains a unique identification of your game for bibliographical purposes.
+The content of it will be compiled into the adventure code file, which makes your game identifiable by electronic means.
+As long as this file exist the same identification (IFID) will be used.
+If it does not exist, a new one will automatically be generated.
 
 == Compiler Switches
 
 (((compiler switches)))
-If you run the compiler from a command line you can get information about which switches it supports using the `-help` switch.
+If you run the compiler from a command line you can get information about which switches it supports using the `-help` switch:
 
+[literal, role="shell"]
+................................................................................
 alan -help
+................................................................................
 
 Here are some examples of other switches:
 
-* `-charset` select the character set of the input files. This can be handy when you get a source file written on another platform, or for Windows where you edit in a Windows editor (ISO characters) and use the compiler in a DOS window (DOS characters). The option should be followed with one of the keywords `iso`, `mac` or `dos`
-
+* `-charset` select the character set of the input files.
+This can be handy when you get a source file written on another platform, or for Windows where you edit in a Windows editor (ISO characters) and use the compiler in a DOS window (DOS characters).
+The option should be followed with one of the keywords `iso`, `mac` or `dos`
 * `-verbose` print compiler version and other verbose messages
 * `-warnings`, `-infos` show warning (and/or informational) messages from the compilation process
-
-* `-import` (((including files, compiler switches))) add a directory to the search path for imported files (see <<Filenames>> for details on the `Import` statement). This switch can be used multiple times, each adding a new directory
+* `-import` (((including files, compiler switches))) add a directory to the search path for imported files (see <<Filenames>> for details on the `Import` statement).
+This switch can be used multiple times, each adding a new directory
 * `-listing` direct compiler output (error messages etc.) to a file with the same base name as the input (source) file, but with the extension *.lis*
-
 * `-full` will produce a complete listing of the source on the screen, or if combined with the `-listing` option, in the listing file
 * `-debug` include debugging information in the produced adventure files (same as the debug option, see <<Options>>)
 * `-pack` encode and compress the text data (same as the pack option, see <<Options>>)
 * `-summary` produce a summary about number of actors, size of adventure files, timing information etc.
 * `-dump` print the internal form (developers use mainly)
 
-Giving an extra hyphen before the option reverses its meaning (where appropriate), e.g. `--warnings` means don't show warnings. Switches may be abbreviated as long as they are unambiguous.
+Giving an extra hyphen before the option reverses its meaning (where appropriate), e.g. `--warnings` means don't show warnings.
+Switches may be abbreviated as long as they are unambiguous.
 
 == Running the Adventure
 
-To play the generated adventure the (((Arun))) Alan interpreter, *arun*, is executed with the adventure name as a parameter. For example
+To play the generated adventure the (((Arun))) Alan interpreter, *arun*, is executed with the adventure name as a parameter.
+For example:
 
+[literal, role="shell"]
+................................................................................
 $ arun adventure
+................................................................................
 
 No extension on the adventure name is allowed, the *.a3c* and, if applicable, *.a3r* files are found automatically from that name.
 
 On platforms with graphical user interfaces to which *arun* has been natively ported will allow double clicking a game file to start a game, or double clicking the interpreter application icon, in which case a dialogue requesting a game will appear.
 
-If the interpreter program is copied to a different name, it will automatically look for a game file with the same name. Any parameters or switches will be ignored. For example, by copying the *arun* program to *adventure* the interpreter will, when started under the new name, directly look for the file *adventure.a3c*. The files *adventure* and *adventure.a3c* thus makes a complete game package, which is easy to start using the single command:
+If the interpreter program is copied to a different name, it will automatically look for a game file with the same name.
+Any parameters or switches will be ignored.
+For example, by copying the *arun* program to *adventure* the interpreter will, when started under the new name, directly look for the file *adventure.a3c*.
+The files *adventure* and *adventure.a3c* thus make a complete game package, which is easy to start using the single command:
 
+[literal, role="shell"]
+................................................................................
 $ adventure
+................................................................................
 
 == Interpreter Switches
 
@@ -76,3 +110,5 @@ The ((interpreter)) supports the following switches:
 * `-l` log all player command in a log-file in the current directory
 
 Debugging support is described in <<Debugging>>.
+
+// EOF //

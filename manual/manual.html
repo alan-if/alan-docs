@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.32,</span>
+<span id="revnumber">version 0.1.33,</span>
 <span id="revdate">August 31, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -830,7 +830,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.32
+<pre>Doc version: 0.1.33
 Last edited: August 31, 2018</pre>
 </div>
 </div>
@@ -8969,45 +8969,58 @@ ee1: RETURN
 <p>How to actually set up and use the complete Alan system depends very much on which platform, OS and in which environment you are going to use it.</p>
 </div>
 <div class="paragraph">
-<p>If you just want to run a game, there is of course the original command line version distributed from <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a>. To use this, read the relevant sections below to get a feel for how that will work.</p>
+<p>If you just want to run a game, there is of course the original command line version distributed from <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a>.
+To use this, read the relevant sections below to get a feel for how that will work.</p>
 </div>
 <div class="paragraph">
-<p>But there are also a number of other packages that include an Alan interpreter, Gargoyle and Spatterlight, are two, with Gargoyle at the point of writing, being the one most up to date, and also available on multiple platforms.</p>
+<p>But there are also a number of other packages that include an Alan interpreter, <a href="http://ccxvii.net/gargoyle/" target="_blank" rel="noopener">Gargoyle</a> and <a href="http://ccxvii.net/spatterlight/" target="_blank" rel="noopener">Spatterlight</a>, are two, with Gargoyle at the point of writing, being the one most up to date, and also available on multiple platforms.</p>
 </div>
 <div class="paragraph">
-<p>If you actually want to write interactive fiction using Alan you also need the compiler. This is distributed from <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a> in what&#8217;s called the complete packages, including compiler, interpreter, the documentation, a conversion program for v2 games and some examples.</p>
+<p>If you actually want to write interactive fiction using Alan you also need the compiler.
+This is distributed from <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a> in what&#8217;s called the complete packages, including compiler, interpreter, the documentation, a conversion program for v2 games and some examples.</p>
 </div>
 <div class="paragraph">
-<p>Whatever option you choose, there should be more detailed instructions on how to install included with that package. Below follows some information pertaining to the original versions from the Alan website.</p>
+<p>Whatever option you choose, there should be more detailed instructions on how to install included with that package.
+Below follows some information pertaining to the original versions from the Alan website.</p>
 </div>
 <div class="sect2">
 <h3 id="_compiling">A.1. Compiling</h3>
 <div class="paragraph">
-<p>Although there are other options, like a prototype AlanIDE, WinAlan et al., basic use of the Alan Adventure Development System is through a traditional command line batch compiler. This means that the actual development system is a compiler that reads text files created using any standard text editor. To compile an adventure use the following command in a command shell:</p>
+<p>Although there are other options, like a prototype AlanIDE, WinAlan et al., basic use of the Alan Adventure Development System is through a traditional command line batch compiler.
+This means that the actual development system is a compiler that reads text files created using any standard text editor.
+To compile an adventure use the following command in a command shell:</p>
 </div>
-<div class="literalblock">
+<div class="literalblock shell">
 <div class="content">
 <pre>alan &lt;adventure&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>where <code>&lt;adventure&gt;</code> is the name of the main file containing your adventure source text. The compiler will assume an extension of <strong>&#8220;.alan&#8221;</strong> if none is supplied. The option <code>-help</code> will give a brief help on other options to the compiler.</p>
+<p>where <code>&lt;adventure&gt;</code> is the name of the main file containing your adventure source text.
+The compiler will assume an extension of <strong>&#8220;.alan&#8221;</strong> if none is supplied.
+The option <code>-help</code> will give a brief help on other options to the compiler.</p>
 </div>
 <div class="paragraph">
 <p>The primary output from the compiler is an adventure code file <strong><em>adventure</em>.a3c</strong>.</p>
 </div>
 <div class="paragraph">
-<p>An identifying file, <strong><em>adventure</em>.ifid</strong>, is also produced. This file contains a unique identification of your game for bibliographical purposes. The content of it will be compiled into the adventure code file, which makes your game identifiable by electronic means. As long as this file exist the same identification (IFID) will be used. If it does not exist, a new one will automatically be generated.</p>
+<p>An identifying file, <strong><em>adventure</em>.ifid</strong>, is also produced.
+This file contains a unique identification of your game for bibliographical purposes.
+The content of it will be compiled into the adventure code file, which makes your game identifiable by electronic means.
+As long as this file exist the same identification (IFID) will be used.
+If it does not exist, a new one will automatically be generated.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_compiler_switches">A.2. Compiler Switches</h3>
 <div class="paragraph">
 <p>
-If you run the compiler from a command line you can get information about which switches it supports using the <code>-help</code> switch.</p>
+If you run the compiler from a command line you can get information about which switches it supports using the <code>-help</code> switch:</p>
 </div>
-<div class="paragraph">
-<p>alan -help</p>
+<div class="literalblock shell">
+<div class="content">
+<pre>alan -help</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Here are some examples of other switches:</p>
@@ -9015,7 +9028,9 @@ If you run the compiler from a command line you can get information about which 
 <div class="ulist">
 <ul>
 <li>
-<p><code>-charset</code> select the character set of the input files. This can be handy when you get a source file written on another platform, or for Windows where you edit in a Windows editor (ISO characters) and use the compiler in a DOS window (DOS characters). The option should be followed with one of the keywords <code>iso</code>, <code>mac</code> or <code>dos</code></p>
+<p><code>-charset</code> select the character set of the input files.
+This can be handy when you get a source file written on another platform, or for Windows where you edit in a Windows editor (ISO characters) and use the compiler in a DOS window (DOS characters).
+The option should be followed with one of the keywords <code>iso</code>, <code>mac</code> or <code>dos</code></p>
 </li>
 <li>
 <p><code>-verbose</code> print compiler version and other verbose messages</p>
@@ -9024,7 +9039,8 @@ If you run the compiler from a command line you can get information about which 
 <p><code>-warnings</code>, <code>-infos</code> show warning (and/or informational) messages from the compilation process</p>
 </li>
 <li>
-<p><code>-import</code>  add a directory to the search path for imported files (see <a href="#_filenames">Sect. 4.5</a> for details on the <code>Import</code> statement). This switch can be used multiple times, each adding a new directory</p>
+<p><code>-import</code>  add a directory to the search path for imported files (see <a href="#_filenames">Sect. 4.5</a> for details on the <code>Import</code> statement).
+This switch can be used multiple times, each adding a new directory</p>
 </li>
 <li>
 <p><code>-listing</code> direct compiler output (error messages etc.) to a file with the same base name as the input (source) file, but with the extension <strong>.lis</strong></p>
@@ -9047,16 +9063,20 @@ If you run the compiler from a command line you can get information about which 
 </ul>
 </div>
 <div class="paragraph">
-<p>Giving an extra hyphen before the option reverses its meaning (where appropriate), e.g. <code>--warnings</code> means don&#8217;t show warnings. Switches may be abbreviated as long as they are unambiguous.</p>
+<p>Giving an extra hyphen before the option reverses its meaning (where appropriate), e.g. <code>--warnings</code> means don&#8217;t show warnings.
+Switches may be abbreviated as long as they are unambiguous.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_running_the_adventure">A.3. Running the Adventure</h3>
 <div class="paragraph">
-<p>To play the generated adventure the  Alan interpreter, <strong>arun</strong>, is executed with the adventure name as a parameter. For example</p>
+<p>To play the generated adventure the  Alan interpreter, <strong>arun</strong>, is executed with the adventure name as a parameter.
+For example:</p>
 </div>
-<div class="paragraph">
-<p>$ arun adventure</p>
+<div class="literalblock shell">
+<div class="content">
+<pre>$ arun adventure</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>No extension on the adventure name is allowed, the <strong>.a3c</strong> and, if applicable, <strong>.a3r</strong> files are found automatically from that name.</p>
@@ -9065,10 +9085,15 @@ If you run the compiler from a command line you can get information about which 
 <p>On platforms with graphical user interfaces to which <strong>arun</strong> has been natively ported will allow double clicking a game file to start a game, or double clicking the interpreter application icon, in which case a dialogue requesting a game will appear.</p>
 </div>
 <div class="paragraph">
-<p>If the interpreter program is copied to a different name, it will automatically look for a game file with the same name. Any parameters or switches will be ignored. For example, by copying the <strong>arun</strong> program to <strong>adventure</strong> the interpreter will, when started under the new name, directly look for the file <strong>adventure.a3c</strong>. The files <strong>adventure</strong> and <strong>adventure.a3c</strong> thus makes a complete game package, which is easy to start using the single command:</p>
+<p>If the interpreter program is copied to a different name, it will automatically look for a game file with the same name.
+Any parameters or switches will be ignored.
+For example, by copying the <strong>arun</strong> program to <strong>adventure</strong> the interpreter will, when started under the new name, directly look for the file <strong>adventure.a3c</strong>.
+The files <strong>adventure</strong> and <strong>adventure.a3c</strong> thus make a complete game package, which is easy to start using the single command:</p>
 </div>
-<div class="paragraph">
-<p>$ adventure</p>
+<div class="literalblock shell">
+<div class="content">
+<pre>$ adventure</pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -10600,8 +10625,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.32<br>
-Last updated 2018-08-31 15:43:55 ora legale Europa occidentale
+Version 0.1.33<br>
+Last updated 2018-08-31 16:53:16 ora legale Europa occidentale
 </div>
 </div>
 </body>
