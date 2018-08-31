@@ -62,7 +62,7 @@ The original files of the _Alan Manual_ used for AsciiDoc conversion are availab
     + [`manual_07.asciidoc`][man 07] — _7. Adventure Construction_
     + [`manual_08.asciidoc`][man 08] — _Appendix A: How To Use The System_
     + [`manual_09.asciidoc`][man 09] — _Appendix B: A Sample Interaction_
-    + [`manual_10.asciidoc`][man 10] — _Appendix C: Run-time Messages_
+    + [`manual_10.asciidoc`][man 10] — _Appendix C: Run-Time Messages_
     + [`manual_11.asciidoc`][man 11] — _Appendix D: Language Grammar_
     + [`manual_12.asciidoc`][man 12] — _Appendix E: Predefined player words_
     + [`manual_13.asciidoc`][man 13] — _Appendix F: Compiler Messages_
@@ -113,7 +113,7 @@ Some files to help editing the manual:
 - [ ] _7. Adventure Construction_
 - [x] _Appendix A: How To Use The System_
 - [x] _Appendix B: A Sample Interaction_
-- [ ] _Appendix C: Run-time Messages_
+- [x] _Appendix C: Run-Time Messages_
 - [ ] _Appendix D: Language Grammar_
 - [ ] _Appendix E: Predefined player words_
 - [ ] _Appendix F: Compiler Messages_
@@ -156,7 +156,7 @@ Rebuild original cross-reference links (lost in conversion):
 - [x] _7. Adventure Construction_
 - [x] _Appendix A: How To Use The System_
 - [x] _Appendix B: A Sample Interaction_ (none found)
-- [x] _Appendix C: Run-time Messages_
+- [x] _Appendix C: Run-Time Messages_
 - [x] _Appendix D: Language Grammar_
 - [x] _Appendix E: Predefined player words_
 - [x] _Appendix F: Compiler Messages_
@@ -177,7 +177,7 @@ Rebuild _Index_:
 - [x] _7. Adventure Construction_ (none found)
 - [x] _Appendix A: How To Use The System_
 - [x] _Appendix B: A Sample Interaction_ (none found)
-- [x] _Appendix C: Run-time Messages_
+- [x] _Appendix C: Run-Time Messages_
 - [x] _Appendix D: Language Grammar_
 - [x] _Appendix E: Predefined player words_ (none found)
 - [x] _Appendix F: Compiler Messages_
@@ -289,7 +289,7 @@ This stage will be done once all global substitution have been dealt with in eac
     + [ ] _7. Adventure Construction_
     + [x] _Appendix A: How To Use The System_
     + [x] _Appendix B: A Sample Interaction_
-    + [ ] _Appendix C: Run-time Messages_
+    + [x] _Appendix C: Run-Time Messages_
     + [ ] _Appendix D: Language Grammar_
     + [ ] _Appendix E: Predefined player words_
     + [ ] _Appendix F: Compiler Messages_
@@ -389,7 +389,7 @@ As a convention, all commented annotations inside document source files will beg
 [man 07]: ./manual_07.asciidoc "Source file of Chapter 7. Adventure Construction"
 [man 08]: ./manual_08.asciidoc "Source file of Appendix A: How To Use The System"
 [man 09]: ./manual_09.asciidoc "Source file of Appendix B: A Sample Interaction"
-[man 10]: ./manual_10.asciidoc "Source file of Appendix C: Run-time Messages"
+[man 10]: ./manual_10.asciidoc "Source file of Appendix C: Run-Time Messages"
 [man 11]: ./manual_11.asciidoc "Source file of Appendix D: Language Grammar"
 [man 12]: ./manual_12.asciidoc "Source file of Appendix E: Predefined player words"
 [man 13]: ./manual_13.asciidoc "Source file of Appendix F: Compiler Messages"

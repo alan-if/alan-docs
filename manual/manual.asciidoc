@@ -1,5 +1,5 @@
 :doctitle: The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.33
+:revnumber: 0.1.34
 :revdate: August 31, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
@@ -16,6 +16,7 @@
 :section-refsig: Sect.
 // Misc Settings:
 :experimental: true
+:icons: font
 :linkattrs: true
 
 // =============================================================================
@@ -97,7 +98,7 @@ include::manual_08.asciidoc[]
 // ================================
 include::manual_09.asciidoc[]
 
-// Appendix C: Run-time Messages
+// Appendix C: Run-Time Messages
 // =============================
 include::manual_10.asciidoc[]
 

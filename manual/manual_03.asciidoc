@@ -137,7 +137,7 @@ The available options are:
 | Off (`No Debug`)
 |===============================================================================
 
-The Language option specifies the language in which the adventure is assumed played, and selects different default message texts. Alan is primarily designed for adventures in the English language, but it is also possible to write adventures in other languages. To make this possible, the default messages output by the interpreter may be generated in different languages. It is completely possible to write in other languages, but then you must customize all the message texts. See <<Run-time Messages>>, <<Input Response Messages>>, for a complete list of such messages.
+The Language option specifies the language in which the adventure is assumed played, and selects different default message texts. Alan is primarily designed for adventures in the English language, but it is also possible to write adventures in other languages. To make this possible, the default messages output by the interpreter may be generated in different languages. It is completely possible to write in other languages, but then you must customize all the message texts. See <<Run-Time Messages>>, <<Input Response Messages>>, for a complete list of such messages.
 
 The Alan compiler and interpreter will always allow multinational (((multinational characters))) 8-bit characters as input and the default messages is generated for 8-bit ((character sets)), internally representing national characters according to the ISO multinational character set (ISO8859-1) requiring 8 bits. On output, this is converted to the native character set of the machine (whenever possible). This means that portability between platforms should be good even for text containing multi-national (non-ASCII) characters.
 
@@ -2480,7 +2480,7 @@ Message NOWAY:
 --------------------------------------------------------------------------------
 
 
-The standard message for `Noway` is replaced by the output from the statements in the definition. For a complete list of all the identifiers of messages and their use, see <<Run-time Messages>>.
+The standard message for `Noway` is replaced by the output from the statements in the definition. For a complete list of all the identifiers of messages and their use, see <<Run-Time Messages>>.
 
 
 

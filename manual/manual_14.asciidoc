@@ -17,7 +17,7 @@ There are two main types of messages that are output by interpreter to the playe
 
 The only way to translate messages in the library is to translate the library. This is probably what you want to do anyway, since most of the verbs would be in English.
 
-Messages built into the compiler are generated automatically into the game file, e.g. as error messages like "`You can't do that.`" These can either be changed by the Language option (if the language of your choice is already supported), or translated using the Message statement. <<Run-time Messages>> lists all such messages and their content.
+Messages built into the compiler are generated automatically into the game file, e.g. as error messages like "`You can't do that.`" These can either be changed by the Language option (if the language of your choice is already supported), or translated using the Message statement. <<Run-Time Messages>> lists all such messages and their content.
 
 There are a few special words that are currently not author translatable, as described in <<Predefined Player Words>>.
 

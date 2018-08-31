@@ -1,5 +1,4 @@
 
-
 // @ARRIVED HERE! //////////////////////////////////////////////////////////////
 
 [EXAMPLE,role="gametranscript"]
@@ -16,8 +15,8 @@
 
 // Output text --- different roles for styling differently Linux shell and Win
 // CMD examples (when needed):
-[literal, role="shell"]
 [literal, role="cmd"]
+[literal, role="shell"]
 ................................................................................
 ................................................................................
 
@@ -46,6 +45,12 @@
 [NOTE]
 ================================================================================
 ================================================================================
+
+// Openblock "commentary" is used for styling added left marging on contents.
+[role="commentary"]
+--
+--
+
 
 // ==============================================================================
 //                             @FIXME: MISSING IMAGE!
