@@ -40,13 +40,13 @@ There are probably four major types of readers of this document:
 
 3. Alan v2 users wanting to upgrade -- you should read the separate document on conversion, then <<Introduction to the Language>> and onwards, with frequent use of <<Language Reference>> as a reference while doing your conversion.
 
-4. Alan v3 users looking for detailed answers -- use the _Index_, look up the relevant sections in <<Language Reference>> but also glance through <<Concepts>> from <<Introduction to the Language>>. Visit http://www.alanif.se/[www.alanif.se^] for a collection of examples.
+4. Alan v3 users looking for detailed answers -- use the _Index_, look up the relevant sections in <<Language Reference>> but also glance through <<Concepts>> from <<Introduction to the Language>>. Visit {alan-www} for a collection of examples.
 
 // @FIXME: In the paragraphs above and below, the "Index" should be a cross-reference link,
 //         bu the problem is that in the HTML doc there is no Index. I should find a way
 //         to output slightly different text for HTML docs, and use a cross-reference when
 //         the doc is in a format that supports the Index!
 
-All readers are encouraged to give feedback on the documentation, particularly if you could not find the answer to what you were looking for by using the index, the table of content or skimming through what you thought might be relevant parts of the documentation. You can find the authors through the web page http://www.alanif.se/[www.alanif.se^], where you also can enrol in the Alan mailing list, a place for new and seasoned Alan users alike!
+All readers are encouraged to give feedback on the documentation, particularly if you could not find the answer to what you were looking for by using the index, the table of content or skimming through what you thought might be relevant parts of the documentation. You can find the authors through the web page {alan-www}, where you also can enrol in the Alan mailing list, a place for new and seasoned Alan users alike!
 
 

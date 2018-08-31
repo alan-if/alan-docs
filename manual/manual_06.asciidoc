@@ -202,7 +202,7 @@ As your library of adventures grow you will find that (((VERB, reusing common ve
 
 All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure. All that this takes is some thought as to what names to use for the attributes as discussed in <<Use of Attributes>>.
 
-And of course there is already an extensive library available from the Alan website, http://www.alanif.se/[www.alanif.se^]. It also includes a lot of other features common to most adventure games.
+And of course there is already an extensive library available from the Alan website, {alan-www}. It also includes a lot of other features common to most adventure games.
 
 
 

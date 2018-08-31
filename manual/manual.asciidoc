@@ -1,5 +1,5 @@
 :doctitle: The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.31
+:revnumber: 0.1.32
 :revdate: August 31, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
@@ -16,6 +16,14 @@
 :section-refsig: Sect.
 // Misc Settings:
 :experimental: true
+:linkattrs: true
+
+// =============================================================================
+//                         Custom Attributes Definition
+// =============================================================================
+// Some attributes for custom substitution of multiple occurences of same text.
+
+:alan-www: http://www.alanif.se/[www.alanif.se^]
 
 // *****************************************************************************
 // *                                                                           *

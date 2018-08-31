@@ -1,10 +1,10 @@
 :sectnums!:
 
-// ******************************************************************************
-// *                                                                            *
-// *                       Appendix I: Copying Conditions                       *
-// *                                                                            *
-// ******************************************************************************
+// *****************************************************************************
+// *                                                                           *
+// *                      Appendix I: Copying Conditions                       *
+// *                                                                           *
+// *****************************************************************************
 // This document section requires some special styling:
 //   -- We'll enforce ordered lists (to ensure they'll be show as expected).
 //   -- Headings numbering is suppressed for this sections.

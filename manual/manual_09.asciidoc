@@ -1,8 +1,8 @@
-// ******************************************************************************
-// *                                                                            *
-// *                      Appendix B: A Sample Interaction                      *
-// *                                                                            *
-// ******************************************************************************
+// *****************************************************************************
+// *                                                                           *
+// *                     Appendix B: A Sample Interaction                      *
+// *                                                                           *
+// *****************************************************************************
 // This section is ready except for some problems with rendering the indentation
 // found in the original (since we're not using monospaced fonts here).
 
