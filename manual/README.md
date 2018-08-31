@@ -28,6 +28,8 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
     - [Global Styles Reconstruction](#global-styles-reconstruction)
     - [Tables](#tables)
     - [Typography Cleanup](#typography-cleanup)
+    - [Special Chapters](#special-chapters)
+        - [_Appendix I: Copying Conditions_](#_appendix-i-copying-conditions_)
     - [Proof-Reading](#proof-reading)
     - [Syntax highlighting](#syntax-highlighting)
 - [Notes on PDF Conversion](#notes-on-pdf-conversion)
@@ -111,8 +113,8 @@ Some files to help editing the manual:
 - [ ] _Appendix F: Compiler Messages_
 - [ ] _Appendix G: Localization_
 - [ ] _Appendix H: Portability of Games_
-- [ ] _Appendix I: Copying Conditions_
-- [ ] _Index_
+- [x] _Appendix I: Copying Conditions_
+- [x] _Index_
 
 Below is an aproximate status report and pending tasks list of the current document. As I'll keep working closer on the document, more issues/tasks are likely to come up, so task-trees that are now marked as _done_ might be reset to _undone_ as new needs come to attention.
 
@@ -241,6 +243,28 @@ Clean-up, fix styling, add caption and anchor ID to all tables:
     * [x] Apply em dashes (as `--`) instead of hyphens, where due.
     * [ ] Check for presence of other non-Ascii chars.
 
+## Special Chapters
+
+Some chapters have particular styling needs...
+
+### _Appendix I: Copying Conditions_
+
++ [`manual_16.asciidoc`][man 16] — _Appendix I: Copying Conditions_
+
+This chapter consists of the text of the Artistic License 2.0:
+
+- https://www.perlfoundation.org/artistic-license-20.html
+- [`../LICENSE`](../LICENSE)
+
+<!-- separator -->
+
+- [x] Suppress headings numbering.
+- [x] Fix headings.
+- [x] Implement proper ordered lists.
+- [x] Enforce ordered lists sytles and numbering.
+- [x] Split paragaphs "Once Sentence Per Line".
+- [x] Add link to Artistic License 2.0 at Perl Foundation.
+
 ## Proof-Reading
 
 Proof-reading and side-by-side comparison with the original PDF document, to spot any lost styles, formatting, etc.
@@ -265,7 +289,7 @@ This stage will be done once all global substitution have been dealt with in eac
     + [ ] _Appendix F: Compiler Messages_
     + [ ] _Appendix G: Localization_
     + [ ] _Appendix H: Portability of Games_
-    + [ ] _Appendix I: Copying Conditions_
+    + [x] _Appendix I: Copying Conditions_
 
 ## Syntax highlighting
 
