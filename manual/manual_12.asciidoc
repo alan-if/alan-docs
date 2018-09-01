@@ -1,41 +1,60 @@
+// ******************************************************************************
+// *                                                                            *
+// *                    Appendix E: Predefined Player Words                     *
+// *                                                                            *
+// ******************************************************************************
+
+
 [appendix]
 = Predefined Player Words
 
-Alan defines a set of words for the player to use, which are required for the syntax variations described in <<Player Input,_Player Input_>>. These words are available even without any declarations at all in the game source. Some of these might conflict with, or complement, words defined in the source. The lists below contain those player words for the currently defined languages.
+Alan defines a set of words for the player to use, which are required for the syntax variations described in <<Player Input,_Player Input_>>.
+These words are available even without any declarations at all in the game source.
+Some of these might conflict with, or complement, words defined in the source.
+The lists below contain those player words for the currently defined languages.
 
-
+// Disable section numbering ...
+:sectnums!:
 
 == English
 
+[literal, role="plaintext", subs="normal"]
 ................................................................................
-*ALL:* all everything** +
-AND:** and then** +
-BUT:** but except** +
-THEM:** them** +
-NOISE:** go the** +
-**
+*ALL*:   all everything
+*AND*:   and then
+*BUT*:   but except
+*THEM*:  them
+*NOISE*: go the
 ................................................................................
 
 
 
 == Swedish
 
+[literal, role="plaintext", subs="normal"]
 ................................................................................
-*ALL:* alla allt** +
-AND:** och** +
-BUT:** förutom utom** +
-THEM:** dem dom** +
-NOISE:** gå
+*ALL*:   alla allt
+*AND*:   och
+*BUT*:   förutom utom
+*THEM*:  dem dom
+*NOISE*: gå
 ................................................................................
 
 
 
 == German
 
+[literal, role="plaintext", subs="normal"]
 ................................................................................
-*ALL:* alles** +
-AND:** und** +
-BUT:** ausser** +
-THEM:** sie** +
-NOISE:** das der die gehen
+*ALL*:   alles
+*AND*:   und
+*BUT*:   ausser
+*THEM*:  sie
+*NOISE*: das der die gehen
 ................................................................................
+
+// ... Re-enable section numbering
+:sectnums:
+
+
+// EOF //

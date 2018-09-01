@@ -8,13 +8,15 @@
 ................................................................................
 ................................................................................
 
-// Source code or keyboard input
+// Source code or keyboard input.
 [listing]
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
 // Output text --- different roles for styling differently Linux shell and Win
-// CMD examples (when needed):
+// CMD examples (when needed).
+// Use role "plaintext" for styling generic verbatim text.
+[literal, role="plaintext"]
 [literal, role="cmd"]
 [literal, role="shell"]
 ................................................................................
