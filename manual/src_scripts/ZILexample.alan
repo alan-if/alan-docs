@@ -1,0 +1,45 @@
+-- "ZILexample.alan" v1.0.0 (2018/09/01) | Alan 3.0beta6
+
+-- This source pseudo adventure is used to build the compiler log shown in the
+-- Alan Manual in Appendix F.1 ("Compiler Messages":"Format of messages").
+
+-- I haven't a clue how the original log was obtained, but this source adventure
+-- produces a log identical to that found in the original PDF manual (except for
+-- some complier messages text which has slightly changed since).
+
+-- To build the log run the "ZILexample.bat" script, which will create/update the
+-- compiler log file "ZILexample.log".
+
+-- The advantage of using this scripted system is that it allows to keep the log
+-- up to date with the latest compiler messages (if they changed).
+
+
+
+
+
+
+THE SOMEPLACE ISA LOCATION.
+DESCRIPTION
+If barfoo Is foobared Then
+  "SOMETHING"
+END IF.
+
+    Exit north To Rumble.
+    Exit west To Tumble.
+END THE SOMEPLACE.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

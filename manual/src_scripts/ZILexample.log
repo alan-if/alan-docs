@@ -1,0 +1,30 @@
+
+
+ZILexample.alan
+
+   23.  If barfoo Is foobared Then
+=====>     1
+
+  *1*   310 E : Identifier 'barfoo' not defined.
+
+   27.      Exit north To Rumble.
+=====>                    1
+
+  *1*   310 E : Identifier 'Rumble' not defined.
+
+   28.      Exit west To Tumble.
+=====>                   1
+
+  *1*   310 E : Identifier 'Tumble' not defined.
+
+   46.  
+=====>  1
+
+  *1*   101 E : Syntax error. Inserting "start here ." before this token.
+  *1*   211 E : Adventure must start at an instance inheriting from 'location'.
+
+
+        5 error(s).
+        No detected warnings.
+        1 informational message(s).
+

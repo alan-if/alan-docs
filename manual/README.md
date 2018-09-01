@@ -15,6 +15,7 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 
 - [Folder Contents](#folder-contents)
     - [Manual Source Files](#manual-source-files)
+        - [Scripts Sources](#scripts-sources)
     - [Conversion Scripts](#conversion-scripts)
     - [Converted Manual](#converted-manual)
     - [Helper Files](#helper-files)
@@ -69,6 +70,17 @@ The original files of the _Alan Manual_ used for AsciiDoc conversion are availab
     + [`manual_14.asciidoc`][man 14] — _Appendix G: Localization_
     + [`manual_15.asciidoc`][man 15] — _Appendix H: Portability of Games_
     + [`manual_16.asciidoc`][man 16] — _Appendix I: Copying Conditions_
+
+### Scripts Sources
+
+In order to auto-generate the compiler output or game transcripts shown in some places of the Manual, source files are provided:
+
+- [`/src_scripts/`](./src_scripts/):
+    + [`ZILexample.alan`](./src_scripts/ZILexample.alan) — source adventure to recreate original compiler log of _F.1_.
+    + [`ZILexample.bat`](./src_scripts/ZILexample.bat) — batch to update compiler log.
+    + [`ZILexample.log`](./src_scripts/ZILexample.log) — Compiler log shown in "_[F.1. Format of messages]_".
+
+[F.1. Format of messages]: https://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#_format_of_messages "Click for a live HTML preview of 'F.1. Format of messages'"
 
 ## Conversion Scripts
 
