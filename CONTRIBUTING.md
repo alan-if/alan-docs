@@ -29,7 +29,7 @@ For this reason, we ask editors and contributors to read the _Formatting and Sty
 
 # Submitting New Contents via Branches
 
-If you would like to submit new contents to a document, and you're not its author, we aks you to submit them via a dedicated branch, instead of using `master` branch — ie, even if you have priviledges to publish directly in `master`, you should submit major content changes on a dedicated branch.
+If you would like to submit new contents to a document, and you're not its author, we ask you to submit them via a dedicated branch, instead of using `master` branch — ie, even if you have priviledges to publish directly in `master`, you should submit major content changes on a dedicated branch.
 
 This approach allows the original author of the document ro review and discuss the proposed contents before merging them in `master`. Unlike minor editing changes (fixing typos, text formatting and sytles), content changes should be approved by the original author of a document before being merged into the main branch.
 
@@ -49,7 +49,7 @@ Also, follow the [Index guidelines] provided in _[Formatting and Styling Convent
 When it comes to modifications to the Index, editors can freely push them to `master` branch, without requiring supervision of the document's author.
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 <!-- Project Files ----------------------------------------------------------->
