@@ -6,45 +6,77 @@ This chapter will give a few clues on how to be a successful adventure author, b
 
 == Getting an Idea
 
-As with a book, the success or failure depends on how intriguing the story is, how hooked you can get the reader (in our case the player). Therefore, the first step _must_ be to get a good idea. This may be hard or easy but with time, you, like any good author, learn to pick up ideas when you get them in ordinary every-day life, and store them for later use.
+As with a book, the success or failure depends on how intriguing the story is, how hooked you can get the reader (in our case the player).
+Therefore, the first step _must_ be to get a good idea.
+This may be hard or easy but with time, you, like any good author, learn to pick up ideas when you get them in ordinary every-day life, and store them for later use.
 
 A seemingly simple idea might also be developed into a good adventure if it is placed in the correct setting and supplied with additional features, tricks and problems.
 
-When you have a good idea, try to refrain from typing it in directly in a text editor and compile it with Alan. Instead, write the story down as if it were the story line for a book or a movie. Where appropriate, insert hints on various diversions and alternate paths that come to mind, but try to stay mainly with the main story from beginning to the preferred end. Then, let a close friend read it.
+When you have a good idea, try to refrain from typing it in directly in a text editor and compile it with Alan.
+Instead, write the story down as if it were the story line for a book or a movie.
+Where appropriate, insert hints on various diversions and alternate paths that come to mind, but try to stay mainly with the main story from beginning to the preferred end.
+Then, let a close friend read it.
 
 
 
 == Elaborating the Story
 
-After having rewritten the story line once or twice, start creating the scenery. If your setting is small, you could draw a map of the locations needed, but a better way is probably to make a list of major locations first (those essential to the story). For each location note what important properties the location must have and which objects are necessary (just as notes, _don't_ create the Alan declarations yet!). For each object, make a small note on why the object is needed (by the player!).
+After having rewritten the story line once or twice, start creating the scenery.
+If your setting is small, you could draw a map of the locations needed, but a better way is probably to make a list of major locations first (those essential to the story).
+For each location note what important properties the location must have and which objects are necessary (just as notes, _don't_ create the Alan declarations yet!).
+For each object, make a small note on why the object is needed (by the player!).
 
-This may also be done using a scene-by-scene approach. By this, we mean that the story is segmented into scenes (and maybe also acts) like in a play. For each act and scene, you do the above. This makes it easier to get an overview over a larger adventure.
+This may also be done using a scene-by-scene approach.
+By this, we mean that the story is segmented into scenes (and maybe also acts) like in a play.
+For each act and scene, you do the above.
+This makes it easier to get an overview over a larger adventure.
 
-I also suggest that you also create a story on a level above the actual game, at least in your own mind. This story should explain why the game-world exists and thus give a consistency to the text that you will present to the player. Nobody likes an adventure without a cause. This story or world of ideas need not be revealed to the player.
+I also suggest that you also create a story on a level above the actual game, at least in your own mind.
+This story should explain why the game-world exists and thus give a consistency to the text that you will present to the player.
+Nobody likes an adventure without a cause.
+This story or world of ideas need not be revealed to the player.
 
-This also applies to the narrator, i.e. the imaginary person or creature that carries out the conversation with the player. Create an image of him or it and stick to it. Receiving comments about your (limited) progress in the game might be funny as long as they are not out of character.
+This also applies to the narrator, i.e. the imaginary person or creature that carries out the conversation with the player.
+Create an image of him or it and stick to it.
+Receiving comments about your (limited) progress in the game might be funny as long as they are not out of character.
 
 
 
 == Implementing it
 
-At last, it is time to sit down at the terminal. Divide the adventure text into files containing global verbs, the map (possibly divided further according to the scenes), the actors (perhaps one file for each actor) and a main file including the other files. This makes it easy to handle the adventure and you might ask your friend to participate in the development by giving him a few files to work with.
+At last, it is time to sit down at the terminal.
+Divide the adventure text into files containing global verbs, the map (possibly divided further according to the scenes), the actors (perhaps one file for each actor) and a main file including the other files.
+This makes it easy to handle the adventure and you might ask your friend to participate in the development by giving him a few files to work with.
 
-First, just declare the locations and connect them with exits. Do not work on the "`purple prose`" descriptions yet. The Alan system supplies good defaults for descriptions and so on so use these while developing the structure of the adventure. Do not bother even with the details of making it impossible to pick up the elephant, etc.
+First, just declare the locations and connect them with exits.
+Do not work on the "`purple prose`" descriptions yet.
+The Alan system supplies good defaults for descriptions and so on, so use these while developing the structure of the adventure.
+Do not bother even with the details of making it impossible to pick up the elephant, etc.
 
-Play the adventure continuously during the development, but do not try the things you plan to make impossible later. Just go through it according to the line you planned the story to follow. A hint here is to use a separate file for the start section. In this file you can easily set up the situation you wish to test while not having to tire yourself by playing the adventure from the start every time.
+Play the adventure continuously during the development, but do not try the things you plan to make impossible later.
+Just go through it according to the line you planned the story to follow.
+A hint here is to use a separate file for the start section.
+In this file you can easily set up the situation you wish to test while not having to tire yourself by playing the adventure from the start every time.
 
 
 
 == Polishing the Adventure
 
-There, now you have a working adventure, it's still a bit bare bones, but still the story plays the way you planned. Now it is time to insert all the nice descriptions, the limitations and perhaps the extra things to divert and hinder the hero. Just be careful not to fall into the locked-door-syndrome. Too many adventures have been tedious to play because you need to find-key/get-key/unlock-door- with-key/open-door (anyway, why do people go around locking doors and throwing away the keys). Think big.
+There, now you have a working adventure, it's still a bit bare bones, but still the story plays the way you planned.
+Now it is time to insert all the nice descriptions, the limitations and perhaps the extra things to divert and hinder the hero.
+Just be careful not to fall into the locked-door-syndrome.
+Too many adventures have been tedious to play because you need to find-key/get-key/unlock-door- with-key/open-door (anyway, why do people go around locking doors and throwing away the keys).
+Think big.
 
-Start by fixing the verbs so that they prohibit the impossible. Introduce as many synonyms as you can think of, this makes the adventure so much more playable.
+Start by fixing the verbs so that they prohibit the impossible.
+Introduce as many synonyms as you can think of, this makes the adventure so much more playable.
 
-Create the location descriptions. Remember to use the same style in all your descriptions; breaking out of style does not look good in the eyes of the adventurous. The descriptions must give the player the correct image, the brain is still the best graphic interface available, but they should also plant ideas in the player on how to solve the problems you place before him.
+Create the location descriptions.
+Remember to use the same style in all your descriptions; breaking out of style does not look good in the eyes of the adventurous.
+The descriptions must give the player the correct image, the brain is still the best graphic interface available, but they should also plant ideas in the player on how to solve the problems you place before him.
 
-Another thing to aim for is the feeling that a player gets when he somehow finds information explaining things he has encountered earlier in the game. Here, as always, it is good advice to ask a friend to read the texts and convey his or her impressions (remember you know it all because you wrote it!).
+Another thing to aim for is the feeling that a player gets when he somehow finds information explaining things he has encountered earlier in the game.
+Here, as always, it is good advice to ask a friend to read the texts and convey his or her impressions (remember you know it all because you wrote it!).
 
 Lastly, fill in the adjectives for the objects, their descriptions and short descriptions (if needed).
 
@@ -52,14 +84,34 @@ Lastly, fill in the adjectives for the objects, their descriptions and short des
 
 == Beta Testing
 
-Now you might think that you can start distributing your game. But, wait! As any complex computer program, the game may have various kinds of bugs. Bugs in a work of interactive fiction range from misspellings and grammar errors in your descriptions, logic errors in your implementation of puzzles or events or omissions in the descriptions of surroundings that make the player miss or misunderstand how to act, to inconsistencies in the settings or story, plots that don't work.
+Now you might think that you can start distributing your game.
+But, wait!
+As any complex computer program, the game may have various kinds of bugs.
+Bugs in a work of interactive fiction range from misspellings and grammar errors in your descriptions, logic errors in your implementation of puzzles or events or omissions in the descriptions of surroundings that make the player miss or misunderstand how to act, to inconsistencies in the settings or story, plots that don't work.
 
-So how do you find these? Your only help are the beta testers. They are the people that you now should consider first a first trial beta release of your game. They should be people who you trust do give their honest opinion and really play it through to find any problems.
 
-The beta testers will probably give you a long list of issues that you have to address before the next release. Some of the issues are simple; others may affect the basis of your story. You should seriously consider (and if possible discuss) such suggestions.
+// @FIXME: Something is wrong with (part of the sentence must have been lost):
+// 			  "that you now should consider first a first trial beta release of your game"
 
-One aid in finding any problems in the playability of the game is to use the log file facility of the interpreter (see the section <<Command Logs and Game Transcripts,_Command Logs and Game Transcripts_>>) to produce a list of the commands a player have used. This can greatly aid in spotting troublesome areas in your game. One common such is where the player becomes stuck and reverts to "guess-the-verb". The log will give you the output of the exact game played.
+So how do you find these?
+Your only help are the beta testers.
+They are the people that you now should consider first a first trial beta release of your game.
+They should be people who you trust do give their honest opinion and really play it through to find any problems.
 
-After having collected all this information, considered which ones to act upon, and implemented these, you should probably do it once again (sigh!).
+The beta testers will probably give you a long list of issues that you have to address before the next release.
+Some of the issues are simple; others may affect the basis of your story.
+You should seriously consider (and if possible discuss) such suggestions.
+
+// @FIXME: Change "the log file FACILITY of the interpreter" with something like
+//         "the interpreter's transcript file [feature/functionality]"
+
+One aid in finding any problems in the playability of the game is to use the log file facility of the interpreter (see the section <<Command Logs and Game Transcripts,_Command Logs and Game Transcripts_>>) to produce a list of the commands a player have used.
+This can greatly aid in spotting troublesome areas in your game.
+A common example is when the player gets stuck and reverts to "guess-the-verb".
+The log will give you the output of the exact game played.
+
+After having collected all this information, considered which ones to act upon, and implemented these, you should probably do it once again (_sigh_!).
 
 Now, at long last, your adventure game is ready to meet its audience.
+
+// EOF //

@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.41,</span>
+<span id="revnumber">version 0.1.42,</span>
 <span id="revdate">September 2, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.41
+<pre>Doc version: 0.1.42
 Last edited: September 2, 2018</pre>
 </div>
 </div>
@@ -8886,55 +8886,87 @@ ee1: RETURN
 <div class="sect2">
 <h3 id="_getting_an_idea">7.1. Getting an Idea</h3>
 <div class="paragraph">
-<p>As with a book, the success or failure depends on how intriguing the story is, how hooked you can get the reader (in our case the player). Therefore, the first step <em>must</em> be to get a good idea. This may be hard or easy but with time, you, like any good author, learn to pick up ideas when you get them in ordinary every-day life, and store them for later use.</p>
+<p>As with a book, the success or failure depends on how intriguing the story is, how hooked you can get the reader (in our case the player).
+Therefore, the first step <em>must</em> be to get a good idea.
+This may be hard or easy but with time, you, like any good author, learn to pick up ideas when you get them in ordinary every-day life, and store them for later use.</p>
 </div>
 <div class="paragraph">
 <p>A seemingly simple idea might also be developed into a good adventure if it is placed in the correct setting and supplied with additional features, tricks and problems.</p>
 </div>
 <div class="paragraph">
-<p>When you have a good idea, try to refrain from typing it in directly in a text editor and compile it with Alan. Instead, write the story down as if it were the story line for a book or a movie. Where appropriate, insert hints on various diversions and alternate paths that come to mind, but try to stay mainly with the main story from beginning to the preferred end. Then, let a close friend read it.</p>
+<p>When you have a good idea, try to refrain from typing it in directly in a text editor and compile it with Alan.
+Instead, write the story down as if it were the story line for a book or a movie.
+Where appropriate, insert hints on various diversions and alternate paths that come to mind, but try to stay mainly with the main story from beginning to the preferred end.
+Then, let a close friend read it.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_elaborating_the_story">7.2. Elaborating the Story</h3>
 <div class="paragraph">
-<p>After having rewritten the story line once or twice, start creating the scenery. If your setting is small, you could draw a map of the locations needed, but a better way is probably to make a list of major locations first (those essential to the story). For each location note what important properties the location must have and which objects are necessary (just as notes, <em>don&#8217;t</em> create the Alan declarations yet!). For each object, make a small note on why the object is needed (by the player!).</p>
+<p>After having rewritten the story line once or twice, start creating the scenery.
+If your setting is small, you could draw a map of the locations needed, but a better way is probably to make a list of major locations first (those essential to the story).
+For each location note what important properties the location must have and which objects are necessary (just as notes, <em>don&#8217;t</em> create the Alan declarations yet!).
+For each object, make a small note on why the object is needed (by the player!).</p>
 </div>
 <div class="paragraph">
-<p>This may also be done using a scene-by-scene approach. By this, we mean that the story is segmented into scenes (and maybe also acts) like in a play. For each act and scene, you do the above. This makes it easier to get an overview over a larger adventure.</p>
+<p>This may also be done using a scene-by-scene approach.
+By this, we mean that the story is segmented into scenes (and maybe also acts) like in a play.
+For each act and scene, you do the above.
+This makes it easier to get an overview over a larger adventure.</p>
 </div>
 <div class="paragraph">
-<p>I also suggest that you also create a story on a level above the actual game, at least in your own mind. This story should explain why the game-world exists and thus give a consistency to the text that you will present to the player. Nobody likes an adventure without a cause. This story or world of ideas need not be revealed to the player.</p>
+<p>I also suggest that you also create a story on a level above the actual game, at least in your own mind.
+This story should explain why the game-world exists and thus give a consistency to the text that you will present to the player.
+Nobody likes an adventure without a cause.
+This story or world of ideas need not be revealed to the player.</p>
 </div>
 <div class="paragraph">
-<p>This also applies to the narrator, i.e. the imaginary person or creature that carries out the conversation with the player. Create an image of him or it and stick to it. Receiving comments about your (limited) progress in the game might be funny as long as they are not out of character.</p>
+<p>This also applies to the narrator, i.e. the imaginary person or creature that carries out the conversation with the player.
+Create an image of him or it and stick to it.
+Receiving comments about your (limited) progress in the game might be funny as long as they are not out of character.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_implementing_it">7.3. Implementing it</h3>
 <div class="paragraph">
-<p>At last, it is time to sit down at the terminal. Divide the adventure text into files containing global verbs, the map (possibly divided further according to the scenes), the actors (perhaps one file for each actor) and a main file including the other files. This makes it easy to handle the adventure and you might ask your friend to participate in the development by giving him a few files to work with.</p>
+<p>At last, it is time to sit down at the terminal.
+Divide the adventure text into files containing global verbs, the map (possibly divided further according to the scenes), the actors (perhaps one file for each actor) and a main file including the other files.
+This makes it easy to handle the adventure and you might ask your friend to participate in the development by giving him a few files to work with.</p>
 </div>
 <div class="paragraph">
-<p>First, just declare the locations and connect them with exits. Do not work on the &#8220;purple prose&#8221; descriptions yet. The Alan system supplies good defaults for descriptions and so on so use these while developing the structure of the adventure. Do not bother even with the details of making it impossible to pick up the elephant, etc.</p>
+<p>First, just declare the locations and connect them with exits.
+Do not work on the &#8220;purple prose&#8221; descriptions yet.
+The Alan system supplies good defaults for descriptions and so on, so use these while developing the structure of the adventure.
+Do not bother even with the details of making it impossible to pick up the elephant, etc.</p>
 </div>
 <div class="paragraph">
-<p>Play the adventure continuously during the development, but do not try the things you plan to make impossible later. Just go through it according to the line you planned the story to follow. A hint here is to use a separate file for the start section. In this file you can easily set up the situation you wish to test while not having to tire yourself by playing the adventure from the start every time.</p>
+<p>Play the adventure continuously during the development, but do not try the things you plan to make impossible later.
+Just go through it according to the line you planned the story to follow.
+A hint here is to use a separate file for the start section.
+In this file you can easily set up the situation you wish to test while not having to tire yourself by playing the adventure from the start every time.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_polishing_the_adventure">7.4. Polishing the Adventure</h3>
 <div class="paragraph">
-<p>There, now you have a working adventure, it&#8217;s still a bit bare bones, but still the story plays the way you planned. Now it is time to insert all the nice descriptions, the limitations and perhaps the extra things to divert and hinder the hero. Just be careful not to fall into the locked-door-syndrome. Too many adventures have been tedious to play because you need to find-key/get-key/unlock-door- with-key/open-door (anyway, why do people go around locking doors and throwing away the keys). Think big.</p>
+<p>There, now you have a working adventure, it&#8217;s still a bit bare bones, but still the story plays the way you planned.
+Now it is time to insert all the nice descriptions, the limitations and perhaps the extra things to divert and hinder the hero.
+Just be careful not to fall into the locked-door-syndrome.
+Too many adventures have been tedious to play because you need to find-key/get-key/unlock-door- with-key/open-door (anyway, why do people go around locking doors and throwing away the keys).
+Think big.</p>
 </div>
 <div class="paragraph">
-<p>Start by fixing the verbs so that they prohibit the impossible. Introduce as many synonyms as you can think of, this makes the adventure so much more playable.</p>
+<p>Start by fixing the verbs so that they prohibit the impossible.
+Introduce as many synonyms as you can think of, this makes the adventure so much more playable.</p>
 </div>
 <div class="paragraph">
-<p>Create the location descriptions. Remember to use the same style in all your descriptions; breaking out of style does not look good in the eyes of the adventurous. The descriptions must give the player the correct image, the brain is still the best graphic interface available, but they should also plant ideas in the player on how to solve the problems you place before him.</p>
+<p>Create the location descriptions.
+Remember to use the same style in all your descriptions; breaking out of style does not look good in the eyes of the adventurous.
+The descriptions must give the player the correct image, the brain is still the best graphic interface available, but they should also plant ideas in the player on how to solve the problems you place before him.</p>
 </div>
 <div class="paragraph">
-<p>Another thing to aim for is the feeling that a player gets when he somehow finds information explaining things he has encountered earlier in the game. Here, as always, it is good advice to ask a friend to read the texts and convey his or her impressions (remember you know it all because you wrote it!).</p>
+<p>Another thing to aim for is the feeling that a player gets when he somehow finds information explaining things he has encountered earlier in the game.
+Here, as always, it is good advice to ask a friend to read the texts and convey his or her impressions (remember you know it all because you wrote it!).</p>
 </div>
 <div class="paragraph">
 <p>Lastly, fill in the adjectives for the objects, their descriptions and short descriptions (if needed).</p>
@@ -8943,19 +8975,30 @@ ee1: RETURN
 <div class="sect2">
 <h3 id="_beta_testing">7.5. Beta Testing</h3>
 <div class="paragraph">
-<p>Now you might think that you can start distributing your game. But, wait! As any complex computer program, the game may have various kinds of bugs. Bugs in a work of interactive fiction range from misspellings and grammar errors in your descriptions, logic errors in your implementation of puzzles or events or omissions in the descriptions of surroundings that make the player miss or misunderstand how to act, to inconsistencies in the settings or story, plots that don&#8217;t work.</p>
+<p>Now you might think that you can start distributing your game.
+But, wait!
+As any complex computer program, the game may have various kinds of bugs.
+Bugs in a work of interactive fiction range from misspellings and grammar errors in your descriptions, logic errors in your implementation of puzzles or events or omissions in the descriptions of surroundings that make the player miss or misunderstand how to act, to inconsistencies in the settings or story, plots that don&#8217;t work.</p>
 </div>
 <div class="paragraph">
-<p>So how do you find these? Your only help are the beta testers. They are the people that you now should consider first a first trial beta release of your game. They should be people who you trust do give their honest opinion and really play it through to find any problems.</p>
+<p>So how do you find these?
+Your only help are the beta testers.
+They are the people that you now should consider first a first trial beta release of your game.
+They should be people who you trust do give their honest opinion and really play it through to find any problems.</p>
 </div>
 <div class="paragraph">
-<p>The beta testers will probably give you a long list of issues that you have to address before the next release. Some of the issues are simple; others may affect the basis of your story. You should seriously consider (and if possible discuss) such suggestions.</p>
+<p>The beta testers will probably give you a long list of issues that you have to address before the next release.
+Some of the issues are simple; others may affect the basis of your story.
+You should seriously consider (and if possible discuss) such suggestions.</p>
 </div>
 <div class="paragraph">
-<p>One aid in finding any problems in the playability of the game is to use the log file facility of the interpreter (see the section <a href="#_command_logs_and_game_transcripts"><em>Command Logs and Game Transcripts</em></a>) to produce a list of the commands a player have used. This can greatly aid in spotting troublesome areas in your game. One common such is where the player becomes stuck and reverts to "guess-the-verb". The log will give you the output of the exact game played.</p>
+<p>One aid in finding any problems in the playability of the game is to use the log file facility of the interpreter (see the section <a href="#_command_logs_and_game_transcripts"><em>Command Logs and Game Transcripts</em></a>) to produce a list of the commands a player have used.
+This can greatly aid in spotting troublesome areas in your game.
+A common example is when the player gets stuck and reverts to "guess-the-verb".
+The log will give you the output of the exact game played.</p>
 </div>
 <div class="paragraph">
-<p>After having collected all this information, considered which ones to act upon, and implemented these, you should probably do it once again (sigh!).</p>
+<p>After having collected all this information, considered which ones to act upon, and implemented these, you should probably do it once again (<em>sigh</em>!).</p>
 </div>
 <div class="paragraph">
 <p>Now, at long last, your adventure game is ready to meet its audience.</p>
@@ -11666,8 +11709,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.41<br>
-Last updated 2018-09-02 01:20:37 ora legale Europa occidentale
+Version 0.1.42<br>
+Last updated 2018-09-02 01:51:02 ora legale Europa occidentale
 </div>
 </div>
 </body>

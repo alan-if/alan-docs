@@ -122,7 +122,7 @@ Some files to help editing the manual:
 - [ ] _4. Language Reference_
 - [ ] _5. Running An Adventure_
 - [ ] _6. Hints And Tips_
-- [ ] _7. Adventure Construction_
+- [x] _7. Adventure Construction_
 - [x] _Appendix A: How To Use The System_
 - [x] _Appendix B: A Sample Interaction_
 - [x] _Appendix C: Run-Time Messages_
@@ -298,7 +298,7 @@ This stage will be done once all global substitution have been dealt with in eac
     + [ ] _4. Language Reference_
     + [ ] _5. Running An Adventure_
     + [ ] _6. Hints And Tips_
-    + [ ] _7. Adventure Construction_
+    + [x] _7. Adventure Construction_
     + [x] _Appendix A: How To Use The System_
     + [x] _Appendix B: A Sample Interaction_
     + [x] _Appendix C: Run-Time Messages_
