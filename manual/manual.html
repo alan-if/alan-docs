@@ -435,8 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.34,</span>
-<span id="revdate">August 31, 2018</span>
+<span id="revnumber">version 0.1.35,</span>
+<span id="revdate">September 1, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -831,8 +831,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.34
-Last edited: August 31, 2018</pre>
+<pre>Doc version: 0.1.35
+Last edited: September 1, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -10041,10 +10041,15 @@ If possible, supply the source for your adventure, a trace of the few last playe
 <div class="sect2">
 <h3 id="_description_2">D.1. Description</h3>
 <div class="paragraph">
-<p>The Alan language is in this manual defined using a BNF-form, which you can see in most descriptions. The grammar is a set of rules defining what constructs are legal in the source for an Alan program. Below follows a brief explanation on how to interpret these rules by using some short examples. For details on the actual rules, refer to the content of <a href="#_language_reference">Chapter 3</a>.</p>
+<p>In this manual, the Alan language is defined using a BNF-form, which you can see in most descriptions.
+The grammar is a set of rules defining what constructs are legal in the source for an Alan program.
+Below follows a brief explanation on how to interpret these rules by using some short examples.
+For details on the actual rules, refer to the content of <a href="#_language_reference">Chapter 3</a>.</p>
 </div>
 <div class="paragraph">
-<p>The BNF form divides the rules for structure of the input source by describing it in smaller parts, which may in turn be defined by other rules. For example, a rule might say that an <strong>ADVENTURE</strong> (in this case an Alan program) consists of options, declarations and a start section. This grammar rule would look like:</p>
+<p>The BNF form divides the rules for structure of the input source by describing it in smaller parts, which may in turn be defined by other rules.
+For example, a rule might say that an <strong>ADVENTURE</strong> (in this case an Alan program) consists of options, declarations and a start section.
+This grammar rule would look like:</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -10055,10 +10060,12 @@ If possible, supply the source for your adventure, a trace of the few last playe
 </div>
 </div>
 <div class="paragraph">
-<p>Each item that is an identifier (<code>options</code>, <code>declaration</code> etc.), is a construct that in turn is defined by other rules, possibly elsewhere in the manual.</p>
+<p>Each item that is an identifier (<code>options</code>, <code>declaration</code>, etc.), is a construct that in turn is defined by other rules, possibly elsewhere in the manual.</p>
 </div>
 <div class="paragraph">
-<p>The equal sign (<code>=</code>) may be read as &#8220;consists of&#8221; or &#8220;is defined as&#8221;. Optional parts are surrounded by square brackets (<code>[</code> and <code>]</code>). Parts that may be repeated are enclosed in curly braces (<code>{</code> and <code>}</code>).</p>
+<p>The equal sign (<code>=</code>) may be read as &#8220;consists of&#8221; or &#8220;is defined as&#8221;.
+Optional parts are surrounded by square brackets (<code>[</code> and <code>]</code>).
+Parts that may be repeated are enclosed in curly braces (<code>{</code> and <code>}</code>).</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -10070,14 +10077,15 @@ If possible, supply the source for your adventure, a trace of the few last playe
 </div>
 </div>
 <div class="paragraph">
-<p>So the rule might be read as &#8220;an adventure consists of <code>options</code> which are optional, zero or more <strong>declarations</strong> and a <code>`start_section</code>&#8221;.</p>
+<p>So the rule might be read as &#8220;an adventure consists of <strong>options</strong> which are optional, zero or more <strong>declarations</strong> and a <strong>start_section</strong>&#8221;.</p>
 </div>
 <div class="paragraph">
-<p>If the item to the left of the equal sign may be defined in multiple ways, the alternatives are divided by a vertical bar (<code>|</code>). For example</p>
+<p>If the item to the left of the equal sign may be defined in multiple ways, the alternatives are divided by a vertical bar (<code>|</code>).
+For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">declaration = messages
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">declaration = messages
             | class
             | instance
             | verb
@@ -10093,7 +10101,10 @@ If possible, supply the source for your adventure, a trace of the few last playe
 <p>This definition says that a <strong>declaration</strong> might be messages, a class definition, an instance declaration, etc.</p>
 </div>
 <div class="paragraph">
-<p>The basic component of the language is reserved words and symbols. These are in the rules represented by quoted strings of characters. These are not defined elsewhere, but should instead be written as indicated. Character case is not significant.</p>
+<p>The basic components of the language are reserved words and symbols.
+These are represented in the rules by quoted strings of characters.
+These are not defined elsewhere, but should instead be written as indicated.
+Character case is not significant.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10101,18 +10112,210 @@ If possible, supply the source for your adventure, a trace of the few last playe
 </div>
 </div>
 <div class="paragraph">
-<p>The reserved words <code>random</code> and <code>in</code> can be followed by an expression (which, to make sense, must refer to a container instance) to form a 'random_expression' (which in itself is an expression).</p>
+<p>The reserved words <code>Random</code> and <code>In</code> can be followed by an expression (which, to make sense, must refer to a <code>container</code> instance) to form a <strong>random_expression</strong> (which in itself is an expression).</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_keywords">D.2. Keywords</h3>
 <div class="paragraph">
-<p>The following is a complete list of all keywords in the Alan language. Note that they can still be used as identifiers in a source file if the rules described in <a href="#_words_identifiers_and_names">Sect. 4.2</a> are followed. Basically this means that if you surround them by single quotes they can be used as identifiers in your source code anyway. This might be especially important if you want to use any of these words as words the player might want to input, such as part of a name for an item.</p>
+<p>The following is a complete list of all keywords in the Alan language.
+Note that they can still be used as identifiers in a source file if the rules described in <a href="#_words_identifiers_and_names">Sect. 4.2</a> are followed.
+Basically this means that if you surround them by single quotes they can be used as identifiers in your source code anyway.
+This might be especially important if you want to use any of these words as words the player might want to input, such as part of a name for an item.</p>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>'actor' 'add' 'after' 'an' 'and' 'are' 'article' 'at' 'attributes' 'before' 'between' 'by' 'can' 'cancel' 'character' 'characters' 'check' 'container' 'contains' 'count' 'current' 'decrease' 'definite' 'depend' 'depending' 'describe' 'description' 'directly' 'do' 'does' 'each' 'else' 'elsif' 'empty' 'end' 'entered' 'event' 'every' 'exclude' 'exit' 'extract' 'first' 'for' 'form' 'from' 'has' 'header' 'here' 'if' 'import' 'in' 'include' 'increase' 'indefinite' 'initialize' 'into' 'is' 'isa' 'it' 'last' 'limits' 'list' 'locate' 'location' 'look' 'make' 'max' 'mentioned' 'message' 'min' 'name' 'near' 'nearby' 'negative' 'no' 'not' 'of' 'off' 'on' 'only' 'opaque' 'option' 'options' 'or' 'play' 'prompt' 'pronoun' 'quit' 'random' 'restart' 'restore' 'save' 'say' 'schedule' 'score' 'script' 'set' 'show' 'start' 'step' 'stop' 'strip' 'style' 'sum' 'synonyms' 'syntax' 'system' 'taking' 'the' 'then' 'this' 'to' 'transcript' 'until' 'use' 'verb' 'visits' 'wait' 'when' 'where' 'with' 'word' 'words'</pre>
+<table id="table-of-keywords" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. List of Alan Language&#8217;s Keywords</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>actor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Add</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>After</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>An</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>And</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Are</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Article</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>At</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Attributes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Before</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Between</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>By</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Can</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Cancel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Character</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Characters</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Check</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Container</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Contains</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Count</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Current</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Decrease</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Definite</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Depend</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Depending</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Describe</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Description</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Directly</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Do</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Does</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Each</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Else</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ElsIf</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Empty</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>End</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Entered</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Event</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Every</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Exclude</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Exit</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Extract</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>First</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>For</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Form</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>From</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Has</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Header</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Here</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>If</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Import</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>In</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Include</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Increase</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Indefinite</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Initialize</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Into</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Is</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsA</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>It</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Last</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Limits</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Locate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>location</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Look</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Make</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Max</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mentioned</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Message</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Min</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Near</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Nearby</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Negative</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>No</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Not</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Of</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Off</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>On</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Only</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Opaque</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Option</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Options</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Or</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Play</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Prompt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pronoun</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Quit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Random</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Restart</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Restore</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Save</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Say</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Schedule</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Score</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Script</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Set</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Show</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Start</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Step</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Stop</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Strip</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Style</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Sum</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Synonyms</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Syntax</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>System</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Taking</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>The</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Then</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>This</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>To</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Transcript</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Until</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Use</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Verb</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Visits</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Wait</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>When</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Where</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Although the Alan language is case-insensitive, the keywords in the above list are cased according to the styling conventions adopted in this document, for the sake of consistency and to provide an intuitive association between keywords and their role in the language.</p>
 </div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -10954,8 +11157,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.34<br>
-Last updated 2018-08-31 22:19:35 ora legale Europa occidentale
+Version 0.1.35<br>
+Last updated 2018-09-01 13:42:15 ora legale Europa occidentale
 </div>
 </div>
 </body>

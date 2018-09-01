@@ -114,7 +114,7 @@ Some files to help editing the manual:
 - [x] _Appendix A: How To Use The System_
 - [x] _Appendix B: A Sample Interaction_
 - [x] _Appendix C: Run-Time Messages_
-- [ ] _Appendix D: Language Grammar_
+- [x] _Appendix D: Language Grammar_
 - [ ] _Appendix E: Predefined player words_
 - [ ] _Appendix F: Compiler Messages_
 - [ ] _Appendix G: Localization_
@@ -290,7 +290,7 @@ This stage will be done once all global substitution have been dealt with in eac
     + [x] _Appendix A: How To Use The System_
     + [x] _Appendix B: A Sample Interaction_
     + [x] _Appendix C: Run-Time Messages_
-    + [ ] _Appendix D: Language Grammar_
+    + [x] _Appendix D: Language Grammar_
     + [ ] _Appendix E: Predefined player words_
     + [ ] _Appendix F: Compiler Messages_
     + [ ] _Appendix G: Localization_

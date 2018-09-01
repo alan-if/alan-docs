@@ -1,11 +1,30 @@
+// *****************************************************************************
+// *                                                                           *
+// *                       Appendix D: Language Grammar                        *
+// *                                                                           *
+// *****************************************************************************
+// This appendix has been proofread and is ready to go. But some issues should
+// looked into later on:
+// - [ ] Styling convention for inline BNF identifiers (currently in strong,
+//       while actual keywords and symbols use inline-code)
+// - [ ] Keywords casing (styling conventions are not definitive yet)
+// - [ ] Check that the keywords list is complete (some built-in classes aren't
+//       in the list)
+
+
 [appendix]
 = Language Grammar
 
 == Description
 
-The Alan language is in this manual defined using a BNF-form, which you can see in most descriptions. The grammar is a set of rules defining what constructs are legal in the source for an Alan program. Below follows a brief explanation on how to interpret these rules by using some short examples. For details on the actual rules, refer to the content of <<Language Reference>>.
+In this manual, the Alan language is defined using a BNF-form, which you can see in most descriptions.
+The grammar is a set of rules defining what constructs are legal in the source for an Alan program.
+Below follows a brief explanation on how to interpret these rules by using some short examples.
+For details on the actual rules, refer to the content of <<Language Reference>>.
 
-The ((BNF)) form divides the rules for structure of the input source by describing it in smaller parts, which may in turn be defined by other rules. For example, a rule might say that an *ADVENTURE* (in this case an Alan program) consists of options, declarations and a start section. This grammar rule would look like:
+The ((BNF)) form divides the rules for structure of the input source by describing it in smaller parts, which may in turn be defined by other rules.
+For example, a rule might say that an *ADVENTURE* (in this case an Alan program) consists of options, declarations and a start section.
+This grammar rule would look like:
 
 (((BNF, rules of, adventure)))
 [source,ebnf]
@@ -13,13 +32,14 @@ The ((BNF)) form divides the rules for structure of the input source by describi
 adventure = [options] {declaration} start_section
 --------------------------------------------------------------------------------
 
+Each item that is an identifier (`options`, `declaration`, etc.), is a construct that in turn is defined by other rules, possibly elsewhere in the manual.
+
+The equal sign (`=`) may be read as "`consists of`" or "`is defined as`".
+Optional parts are surrounded by square brackets (`[` and `]`).
+Parts that may be repeated are enclosed in curly braces (`{` and `}`).
 
 
-Each item that is an identifier (`options`, `declaration` etc.), is a construct that in turn is defined by other rules, possibly elsewhere in the manual.
-
-The equal sign (`=`) may be read as "`consists of`" or "`is defined as`". Optional parts are surrounded by square brackets (`[` and `]`). Parts that may be repeated are enclosed in curly braces (`{` and `}`).
-
-
+// FIMXE: Apply some custom styling to this block:
 
 ......................
 = : 'is defined as'
@@ -29,11 +49,12 @@ The equal sign (`=`) may be read as "`consists of`" or "`is defined as`". Option
 {} : 'zero or more times'
 ......................
 
-So the rule might be read as "`an adventure consists of `options` which are optional, zero or more *declarations* and a ```start_section```".
+So the rule might be read as "`an adventure consists of *options* which are optional, zero or more *declarations* and a *start_section*`".
 
-If the item to the left of the equal sign may be defined in multiple ways, the alternatives are divided by a vertical bar (`|`). For example
+If the item to the left of the equal sign may be defined in multiple ways, the alternatives are divided by a vertical bar (`|`).
+For example:
 
-[source,alan]
+[source,ebnf]
 --------------------------------------------------------------------------------
 declaration = messages
             | class
@@ -49,19 +70,177 @@ declaration = messages
 
 This definition says that a *declaration* might be messages, a class definition, an instance declaration, etc.
 
-The basic component of the language is reserved words and symbols. These are in the rules represented by quoted strings of characters. These are not defined elsewhere, but should instead be written as indicated. Character case is not significant.
+The basic components of the language are reserved words and symbols.
+These are represented in the rules by quoted strings of characters.
+These are not defined elsewhere, but should instead be written as indicated.
+Character case is not significant.
 
 [source,alan]
 --------------------------------------------------------------------------------
 random_expression = 'RANDOM' 'IN' expression
 --------------------------------------------------------------------------------
 
-The reserved words `random` and `in` can be followed by an expression (which, to make sense, must refer to a container instance) to form a 'random_expression' (which in itself is an expression).
+// @NOTE: Should replace "CAN be followed by" with "MUST be followed by"?
+
+The reserved words `Random` and `In` can be followed by an expression (which, to make sense, must refer to a `container` instance) to form a *random_expression* (which in itself is an expression).
 
 == Keywords
 
-The following is a complete list of all keywords in the Alan language. Note that they can still be used as identifiers in a source file if the rules described in <<_words_identifiers_and_names>> are followed. Basically this means that if you surround them by single quotes they can be used as identifiers in your source code anyway. This might be especially important if you want to use any of these words as words the player might want to input, such as part of a name for an item.
+The following is a complete list of all keywords in the Alan language.
+Note that they can still be used as identifiers in a source file if the rules described in <<_words_identifiers_and_names>> are followed.
+Basically this means that if you surround them by single quotes they can be used as identifiers in your source code anyway.
+This might be especially important if you want to use any of these words as words the player might want to input, such as part of a name for an item.
 
-................................................................................
-'actor' 'add' 'after' 'an' 'and' 'are' 'article' 'at' 'attributes' 'before' 'between' 'by' 'can' 'cancel' 'character' 'characters' 'check' 'container' 'contains' 'count' 'current' 'decrease' 'definite' 'depend' 'depending' 'describe' 'description' 'directly' 'do' 'does' 'each' 'else' 'elsif' 'empty' 'end' 'entered' 'event' 'every' 'exclude' 'exit' 'extract' 'first' 'for' 'form' 'from' 'has' 'header' 'here' 'if' 'import' 'in' 'include' 'increase' 'indefinite' 'initialize' 'into' 'is' 'isa' 'it' 'last' 'limits' 'list' 'locate' 'location' 'look' 'make' 'max' 'mentioned' 'message' 'min' 'name' 'near' 'nearby' 'negative' 'no' 'not' 'of' 'off' 'on' 'only' 'opaque' 'option' 'options' 'or' 'play' 'prompt' 'pronoun' 'quit' 'random' 'restart' 'restore' 'save' 'say' 'schedule' 'score' 'script' 'set' 'show' 'start' 'step' 'stop' 'strip' 'style' 'sum' 'synonyms' 'syntax' 'system' 'taking' 'the' 'then' 'this' 'to' 'transcript' 'until' 'use' 'verb' 'visits' 'wait' 'when' 'where' 'with' 'word' 'words'
-................................................................................
+// -----------------------------------------------------------------------------
+//                  Table 5. List of Alan Language’s Keywords
+// -----------------------------------------------------------------------------
+// For maintaiance conveniance, we'll use a CVS Table here: it can be easily
+// updated (if the need arises) and it could allow to control the number of columns
+// on a per-format basis, via custom attributes.
+// Keywords are cased following the styling conventions adopted in the document.
+
+// @TODO:
+//   - [ ] Check why 'actor' and 'location' are present but some of the other
+//         built-in clases aren't: 'thing', 'object',
+//   - [ ] The casing convention for some keywords hasn't yet been discussed:
+//         - [ ] Should pseudo attributes like 'container', 'on', 'off', 'opaque'
+//               etc be all lowercase (like built-in classes)?
+//
+
+
+[[table-of-keywords]]
+.List of Alan Language's Keywords
+[format=csv,cols="5*m"]
+|======================
+actor
+Add
+After
+An
+And
+Are
+Article
+At
+Attributes
+Before
+Between
+By
+Can
+Cancel
+Character
+Characters
+Check
+Container
+Contains
+Count
+Current
+Decrease
+Definite
+Depend
+Depending
+Describe
+Description
+Directly
+Do
+Does
+Each
+Else
+ElsIf
+Empty
+End
+Entered
+Event
+Every
+Exclude
+Exit
+Extract
+First
+For
+Form
+From
+Has
+Header
+Here
+If
+Import
+In
+Include
+Increase
+Indefinite
+Initialize
+Into
+Is
+IsA
+It
+Last
+Limits
+List
+Locate
+location
+Look
+Make
+Max
+Mentioned
+Message
+Min
+Name
+Near
+Nearby
+Negative
+No
+Not
+Of
+Off
+On
+Only
+Opaque
+Option
+Options
+Or
+Play
+Prompt
+Pronoun
+Quit
+Random
+Restart
+Restore
+Save
+Say
+Schedule
+Score
+Script
+Set
+Show
+Start
+Step
+Stop
+Strip
+Style
+Sum
+Synonyms
+Syntax
+System
+Taking
+The
+Then
+This
+To
+Transcript
+Until
+Use
+Verb
+Visits
+Wait
+When
+Where
+With
+Word
+Words
+|======================
+
+
+[NOTE]
+================================================================================
+Although the Alan language is case-insensitive, the keywords in the above list are cased according to the styling conventions adopted in this document, for the sake of consistency and to provide an intuitive association between keywords and their role in the language.
+================================================================================
+
+// EOF //

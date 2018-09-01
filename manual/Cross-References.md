@@ -80,11 +80,12 @@ For convenience, Tables have also been given a custom ID, which might be handier
 
 | Ch / Sec |              Table Caption              |             Custom ID             |
 |----------|-----------------------------------------|-----------------------------------|
-|      3.2 | Adventure Settings via OPTION           | `table-of-options`                |
-|      3.7 | Properties Inheritance                  | `table-of-properties-inheritance` |
-|      3.7 | Order of Execution of ENTERED in Nested | `table-of-entered-execution`      |
-|      3.9 | (_none_)                                | `table-syntax-parameters`         |
-|     3.10 | Order of Execution of Verbs             | `table-of-verbs-execution`        |
+| 3.2      | Adventure Settings via OPTION           | `table-of-options`                |
+| 3.7      | Properties Inheritance                  | `table-of-properties-inheritance` |
+| 3.7      | Order of Execution of ENTERED in Nested | `table-of-entered-execution`      |
+| 3.9      | (_none_)                                | `table-syntax-parameters`         |
+| 3.10     | Order of Execution of Verbs             | `table-of-verbs-execution`        |
+| D.2      | List of Alan Language's Keywords        | `table-of-keywords`               |
 
 <!-- 
 | xx          | `<<xxxxxx>>`                       |                                |
