@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.40,</span>
+<span id="revnumber">version 0.1.41,</span>
 <span id="revdate">September 2, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.40
+<pre>Doc version: 0.1.41
 Last edited: September 2, 2018</pre>
 </div>
 </div>
@@ -11416,16 +11416,24 @@ With the noun first is it possible to implement &#8220;das buch nehmen&#8221; wi
 <h2 id="_portability_of_games">Appendix H: Portability of Games</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The adventure files produced by the Alan compiler is compatible across all supported platforms. This means that by copying the binary <em>*.a3c*</em> file (and any <em>*.a3r*</em> file if available) to another machine it should be possible to run the game on that new machine without any changes. Note however that the files must be transferred in <em>binary</em> mode (where applicable). All characters are automatically converted to the native set allowing multi-national characters to be presented correctly even on machines that do not support the ISO-8859-1 standard. This is of course restricted to characters having a representation in the current native character set.</p>
+<p>The adventure files produced by the Alan compiler is compatible across all supported platforms.
+This means that by copying the binary &#8220;<strong>.a3c</strong>&#8221; file (and any &#8220;<strong>.a3r</strong>&#8221; file, if available) to another machine it should be possible to run the game on that new machine without any changes.
+Note however that the files must be transferred in <em>binary</em> mode (where applicable).
+All characters are automatically converted to the native set allowing multi-national characters to be presented correctly even on machines that do not support the ISO-8859-1 standard.
+This is of course restricted to characters having a representation in the current native character set.</p>
 </div>
 <div class="paragraph">
-<p>It is a strong goal to achieve complete portability of the games to be able to provide games for all supported platforms without re-compilation. Game authors are encouraged to seriously consider this when designing games and not use any system specific characters, character combinations or special commands that may be available on some systems.</p>
+<p>It is a strong goal to achieve complete portability of the games to be able to provide games for all supported platforms without re-compilation.
+Game authors are encouraged to seriously consider this when designing games and not use any system specific characters, character combinations or special commands that may be available only on some systems.</p>
 </div>
 <div class="paragraph">
-<p>Portability between different versions of the system is not guaranteed. Again, it is a strong goal to be backwards compatible, at least between different builds within the same major version. This means that the most recent v3 interpreter should run games from all previous v3 compilers.</p>
+<p>Portability between different versions of the system is not guaranteed.
+Again, backward compatibility of compiled adventure files is a main goal, at least between different builds within the same major version.
+This means that the most recent v3 interpreter should run games from all previous v3 compilers.</p>
 </div>
 <div class="paragraph">
-<p>Changes in the game file format may occur between versions, which may or may not be compatible. Conversion tools may be available, older interpreter versions can be requested.</p>
+<p>Changes in the game file format may occur between versions, which may or may not be compatible.
+Conversion tools may be available, older interpreter versions can be requested.</p>
 </div>
 </div>
 </div>
@@ -11658,8 +11666,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.40<br>
-Last updated 2018-09-02 01:16:39 ora legale Europa occidentale
+Version 0.1.41<br>
+Last updated 2018-09-02 01:20:37 ora legale Europa occidentale
 </div>
 </div>
 </body>
