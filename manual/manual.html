@@ -435,8 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.38,</span>
-<span id="revdate">September 1, 2018</span>
+<span id="revnumber">version 0.1.39,</span>
+<span id="revdate">September 2, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -831,8 +831,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.38
-Last edited: September 1, 2018</pre>
+<pre>Doc version: 0.1.39
+Last edited: September 2, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -5235,17 +5235,17 @@ Locate charlie_chaplin At outside_house.
 <div class="paragraph">
 <p>Some character combinations  have special meaning for the printout:</p>
 </div>
-<div class="literalblock">
+<div class="literalblock plaintext">
 <div class="content">
-<pre>$p    New paragraph (usually one empty line)
-$n    New line
-$i    Indent on a new line
-$t    Insert a tabulation
-$$    Escape from automatic space insertion and capitalization
-$a    The name of the actor that is executing
-$l    The name of the current location
-$v    The verb the player used (the first word)
-$_    Print this as a '$' if in conflict with other symbols</pre>
+<pre><strong>$p</strong>    New paragraph (usually one empty line)
+<strong>$n</strong>    New line
+<strong>$i</strong>    Indent on a new line
+<strong>$t</strong>    Insert a tabulation
+<strong>$$</strong>    Escape from automatic space insertion and capitalization
+<strong>$a</strong>    The name of the actor that is executing
+<strong>$l</strong>    The name of the current location
+<strong>$v</strong>    The verb the player used (the first word)
+<strong>$_</strong>    Print this as a '$' if in conflict with other symbols</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -5265,14 +5265,14 @@ $_    Print this as a '$' if in conflict with other symbols</pre>
 <div class="paragraph">
 <p>The following can be used to refer to parameters while executing a verb, but the <code>Say</code> statement (see below) is safer and preferred whenever possible:</p>
 </div>
-<div class="literalblock">
+<div class="literalblock plaintext">
 <div class="content">
-<pre>$&lt;n&gt;     The parameter &lt;n&gt; (&lt;n&gt; is a digit &gt; 0, e.g. "$1")
-$+&lt;n&gt;    Definite form of parameter &lt;n&gt;
-$0&lt;n&gt;    Indefinite form of parameter &lt;n&gt;
-$-&lt;n&gt;    Negative form of parameter &lt;n&gt;
-$!&lt;n&gt;    Pronoun for the parameter &lt;n&gt;
-$o       The current object (first parameter)</pre>
+<pre><strong>$&lt;n&gt;</strong>     The parameter &lt;n&gt; (&lt;n&gt; is a digit &gt; 0, e.g. "$1")
+<strong>$+&lt;n&gt;</strong>    Definite form of parameter &lt;n&gt;
+<strong>$0&lt;n&gt;</strong>    Indefinite form of parameter &lt;n&gt;
+<strong>$-&lt;n&gt;</strong>    Negative form of parameter &lt;n&gt;
+<strong>$!&lt;n&gt;</strong>    Pronoun for the parameter &lt;n&gt;
+<strong>$o</strong>       The current object (first parameter)</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -6676,7 +6676,7 @@ If opponent IsA enemy Then ...</code></pre>
 <div class="paragraph">
 <p>All binary operators  (plus, minus, multiplication, division) may be used on integer expressions. The result is another integer expression. The exact set of available operators is</p>
 </div>
-<div class="literalblock">
+<div class="literalblock plaintext">
 <div class="content">
 <pre>+, -, *, /</pre>
 </div>
@@ -7192,17 +7192,17 @@ identifier (see <a href="#_words_identifiers_and_names">Sect. 4.2</a>).</p>
 <div class="paragraph">
 <p>So, to summarise:</p>
 </div>
-<div class="literalblock">
+<div class="literalblock plaintext">
 <div class="content">
 <pre>get and execute a player command
 evaluate all rules
 for each actor
-  execute one step (if active)
-  evaluate all rules as above
+   execute one step (if active)
+   evaluate all rules as above
 end for
 for each pending event
-  execute it
-  evaluate all rules
+   execute it
+   evaluate all rules
 end for</pre>
 </div>
 </div>
@@ -8307,7 +8307,7 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_using_events_as_functions">6.12. Using Events as Functions</h3>
-<div class="literalblock">
+<div class="literalblock plaintext">
 <div class="content">
 <pre>&lt;to be supplied&gt;</pre>
 </div>
@@ -8330,12 +8330,12 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 <div class="paragraph">
 <p>Occasionally your Alan code is flawed and you really can&#8217;t understand what is actually happening. To aid in discovering which part of your code is run when, the interpreter Arun incorporates some features for debugging. There are a few  debugging switches available when starting the interpreter from the command line:</p>
 </div>
-<div class="literalblock">
+<div class="literalblock plaintext">
 <div class="content">
-<pre>-c       Log the commands input by the player
--l       Log a complete transcript of the game
--t&lt;n&gt;    Enable trace mode (&lt;n&gt; = level 1,2,3 or 4)
--d       Start the* debugger</pre>
+<pre><strong>-c</strong>       Log the commands input by the player
+<strong>-l</strong>       Log a complete transcript of the game
+<strong>-t&lt;n&gt;</strong>    Enable trace mode (&lt;n&gt; = level 1,2,3 or 4)
+<strong>-d</strong>       Start the debugger</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -11644,8 +11644,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.38<br>
-Last updated 2018-09-01 20:55:19 ora legale Europa occidentale
+Version 0.1.39<br>
+Last updated 2018-09-02 00:50:42 ora legale Europa occidentale
 </div>
 </div>
 </body>

@@ -12,17 +12,19 @@ After the (((player commands))) players command has been taken care of, all rule
 
 So, to summarise:
 
-// FIXME: This verbatim block will require some custom styling!
+// @TODO: Could improve styling and layout of the following block:
+
+[literal, role="plaintext", subs="normal"]
 ................................................................................
 get and execute a player command
 evaluate all rules
 for each actor
-  execute one step (if active)
-  evaluate all rules as above
+   execute one step (if active)
+   evaluate all rules as above
 end for
 for each pending event
-  execute it
-  evaluate all rules
+   execute it
+   evaluate all rules
 end for
 ................................................................................
 

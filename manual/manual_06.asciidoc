@@ -819,6 +819,7 @@ In both cases you would most likely need to restrict the parameters for the synt
 
 == Using Events as Functions
 
+[literal, role="plaintext", subs="normal"]
 ................................................................................
 <to be supplied>
 ................................................................................
@@ -840,12 +841,12 @@ This strategy will both give you a better structure of your adventure as well as
 Occasionally your Alan code is flawed and you really can't understand what is actually happening. To aid in discovering which part of your code is run when, the interpreter ((Arun)) incorporates some features for ((debugging)). There are a few (((debugging, switches))) debugging switches available when starting the interpreter from the command line:
 
 
-// FIXME: Find a way to style option on the left in bold.
+[literal, role="plaintext", subs="normal"]
 ................................................................................
--c       Log the commands input by the player
--l       Log a complete transcript of the game
--t<n>    Enable trace mode (<n> = level 1,2,3 or 4)
--d       Start the* debugger
+*-c*       Log the commands input by the player
+*-l*       Log a complete transcript of the game
+*-t<n>*    Enable trace mode (<n> = level 1,2,3 or 4)
+*-d*       Start the debugger
 ................................................................................
 
 

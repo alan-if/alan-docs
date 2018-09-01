@@ -16,6 +16,7 @@
 // Output text --- different roles for styling differently Linux shell and Win
 // CMD examples (when needed).
 // Use role "plaintext" for styling generic verbatim text.
+[literal, role="plaintext", subs="normal"]
 [literal, role="plaintext"]
 [literal, role="cmd"]
 [literal, role="shell"]

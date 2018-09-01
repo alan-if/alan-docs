@@ -51,7 +51,6 @@ ZILexample.alan <1>
         5 error(s). <5>
         No detected warnings.
         1 informational message(s).
-
 ................................................................................
 
 The following information is available in the compiler listing, framed for visibility:

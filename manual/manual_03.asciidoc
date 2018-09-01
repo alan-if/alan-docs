@@ -2647,17 +2647,23 @@ The simplest case of output is just a ((string)), i.e. any text, possibly stretc
 
 Some character combinations (((character combinations, in strings))) have special meaning for the printout:
 
-// FIXME: Find a way to make chars on the left bold styled!
+// @TODO: Should add a Title and anchor to this list of special symbols, as they
+//        are rather important and the user might wish to find it often for
+//        consultation.
+// @TODO: Possibly, these special chars should be given a name or definition of
+//        some type, so they can be mentioned in the text too!
+
+[literal, role="plaintext", subs="normal"]
 ................................................................................
-$p    New paragraph (usually one empty line)
-$n    New line
-$i    Indent on a new line
-$t    Insert a tabulation
-$$    Escape from automatic space insertion and capitalization
-$a    The name of the actor that is executing
-$l    The name of the current location
-$v    The verb the player used (the first word)
-$_    Print this as a '$' if in conflict with other symbols
+*$p*    New paragraph (usually one empty line)
+*$n*    New line
+*$i*    Indent on a new line
+*$t*    Insert a tabulation
+*$$*    Escape from automatic space insertion and capitalization
+*$a*    The name of the actor that is executing
+*$l*    The name of the current location
+*$v*    The verb the player used (the first word)
+*$_*    Print this as a '$' if in conflict with other symbols
 ................................................................................
 
 
@@ -2677,14 +2683,16 @@ You might want to output "`$400`" but "`$4`" will be interpreted as the indefini
 
 The following can be used to refer to parameters while executing a verb, but the `Say` statement (see below) is safer and preferred whenever possible:
 
-// FIXME: Find a way to make chars on the left bold styled!
+// @TODO: These special chars should be given a caption and a proper name too!
+
+[literal, role="plaintext", subs="normal"]
 ................................................................................
-$<n>     The parameter <n> (<n> is a digit > 0, e.g. "$1")
-$+<n>    Definite form of parameter <n>
-$0<n>    Indefinite form of parameter <n>
-$-<n>    Negative form of parameter <n>
-$!<n>    Pronoun for the parameter <n>
-$o       The current object (first parameter)
+*$<n>*     The parameter <n> (<n> is a digit > 0, e.g. "$1")
+*$+<n>*    Definite form of parameter <n>
+*$0<n>*    Indefinite form of parameter <n>
+*$-<n>*    Negative form of parameter <n>
+*$!<n>*    Pronoun for the parameter <n>
+*$o*       The current object (first parameter)
 ................................................................................
 
 
@@ -3842,6 +3850,7 @@ A very common use of this is to restrict parameters in a `Syntax` to a more gene
 All binary operators (((operators, binary))) (plus, minus, multiplication, division) may be used on integer expressions. The result is another integer expression. The exact set of available operators is
 
 
+[literal, role="plaintext", subs="normal"]
 ................................................................................
 +, -, *, /
 ................................................................................
