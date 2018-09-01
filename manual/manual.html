@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.39,</span>
+<span id="revnumber">version 0.1.40,</span>
 <span id="revdate">September 2, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.39
+<pre>Doc version: 0.1.40
 Last edited: September 2, 2018</pre>
 </div>
 </div>
@@ -11349,30 +11349,40 @@ Please report.</p>
 <h2 id="_localization">Appendix G: Localization</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To create adventures in languages other than English, there are a few separate issues to consider. The sections below describes the support that Alan provides for each of them.</p>
+<p>To create adventures in languages other than English, there are a few separate issues to consider.
+The sections below describes the support that Alan provides for each of them.</p>
 </div>
 <div class="sect2">
 <h3 id="_characterglyph_availability">G.1. Character/Glyph availability</h3>
 <div class="paragraph">
-<p>Most languages have characters, or glyphs, other than the common ones used in English, like ö, Ñ or æ. Alan uses a character encoding called ISO-8859-1 which allows for many characters (but not all) used in European and other countries.</p>
+<p>Most languages have characters, or glyphs, other than the common ones used in English, like ö, Ñ or æ.
+Alan uses a character encoding called ISO-8859-1 which allows for many characters (but not all) used in European and other countries.</p>
 </div>
 <div class="paragraph">
-<p>To make use of these characters you just need to make sure that the adventure text files use this character encoding. Usually you can do this in the editor you are using, often when you save a file the first time, or there should be a setting in your operating system to define the default encoding.</p>
+<p>To make use of these characters you just need to make sure that the adventure text files use this character encoding.
+Usually you can do this in the editor you are using, often when you save a file the first time, or there should be a setting in your operating system to define the default encoding.</p>
 </div>
 <div class="paragraph">
-<p>If the Alan source files are encoded using ISO-8859-1 they will be presented correctly when the game is run using e.g. WinArun. If you run the games in console mode you have to ensure that both your console program and your operating system are set (and able) to show characters using the ISO-8859-1 encoding.</p>
+<p>If the Alan source files are encoded using ISO-8859-1 they will be presented correctly when the game is run using e.g. WinArun.
+If you run the games in console mode you have to ensure that both your console program and your operating system are set (and able) to show characters using the ISO-8859-1 encoding.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_standard_messages">G.2. Standard messages</h3>
 <div class="paragraph">
-<p>There are two main types of messages that are output by interpreter to the player. They are initiated by various parts of the Alan system. The built in messages are built in to the compiler (see <a href="#_input_response_messages">Sect. C.1</a>) but can be changed to messages in the available languages. If you are using any of the available standard libraries, that library also issues messages, often overriding the messages built-in.</p>
+<p>There are two main types of messages that are output by the interpreter to the player.
+They are initiated by various parts of the Alan system.
+The built-in messages are hardcoded into the compiler (see <a href="#_input_response_messages">Sect. C.1</a>) but can be changed to messages in the available languages.
+If you are using any of the available standard libraries, that library also issues messages, often overriding the built-in messages.</p>
 </div>
 <div class="paragraph">
-<p>The only way to translate messages in the library is to translate the library. This is probably what you want to do anyway, since most of the verbs would be in English.</p>
+<p>The only way to translate messages in the library is to translate the library.
+This is probably what you want to do anyway, since most of the verbs would be in English.</p>
 </div>
 <div class="paragraph">
-<p>Messages built into the compiler are generated automatically into the game file, e.g. as error messages like &#8220;You can&#8217;t do that.&#8221; These can either be changed by the Language option (if the language of your choice is already supported), or translated using the Message statement. <a href="#_run_time_messages">Appendix C</a> lists all such messages and their content.</p>
+<p>Messages built into the compiler are generated automatically into the game file, e.g. error messages like &#8220;You can&#8217;t do that.&#8221;
+These can either be changed by the <code>Language</code> option (if the language of your choice is already supported), or translated using the <code>Message</code> statement.
+<a href="#_run_time_messages">Appendix C</a> lists all such messages and their content.</p>
 </div>
 <div class="paragraph">
 <p>There are a few special words that are currently not author translatable, as described in <a href="#_predefined_player_words">Appendix E</a>.</p>
@@ -11387,13 +11397,17 @@ Please report.</p>
 <div class="sect2">
 <h3 id="_word_variations">G.4. Word variations</h3>
 <div class="paragraph">
-<p>TBD. &lt;Text about using multiple names for the same objects &amp; synonyms, and how the interpreter chooses which word to use when&gt;</p>
+<p>TBD.
+&lt;Text about using multiple names for the same objects &amp; synonyms, and how the interpreter chooses which word to use when&gt;</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_word_order">G.5. Word order</h3>
 <div class="paragraph">
-<p>TBD. &lt;Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes. Or does it? With the noun first is it possible to implement &#8220;das buch nehmen&#8221; with the syntax take = (o) nehmen?&gt;</p>
+<p>TBD.
+&lt;Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes.
+Or does it?
+With the noun first is it possible to implement &#8220;das buch nehmen&#8221; with the syntax <code>take = (o) nehmen</code>?&gt;</p>
 </div>
 </div>
 </div>
@@ -11644,8 +11658,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.39<br>
-Last updated 2018-09-02 00:50:42 ora legale Europa occidentale
+Version 0.1.40<br>
+Last updated 2018-09-02 01:16:39 ora legale Europa occidentale
 </div>
 </div>
 </body>

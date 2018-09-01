@@ -1,23 +1,39 @@
+// ******************************************************************************
+// *                                                                            *
+// *                          Appendix G: Localization                          *
+// *                                                                            *
+// ******************************************************************************
+
 [appendix]
 = Localization
 
-To create adventures in languages other than English, there are a few separate issues to consider. The sections below describes the support that Alan provides for each of them.
+To create adventures in languages other than English, there are a few separate issues to consider.
+The sections below describes the support that Alan provides for each of them.
 
 == Character/Glyph availability
 
-Most languages have characters, or glyphs, other than the common ones used in English, like ö, Ñ or æ. Alan uses a character encoding called ISO-8859-1 which allows for many characters (but not all) used in European and other countries.
+Most languages have characters, or glyphs, other than the common ones used in English, like ö, Ñ or æ.
+Alan uses a character encoding called ISO-8859-1 which allows for many characters (but not all) used in European and other countries.
 
-To make use of these characters you just need to make sure that the adventure text files use this character encoding. Usually you can do this in the editor you are using, often when you save a file the first time, or there should be a setting in your operating system to define the default encoding.
+To make use of these characters you just need to make sure that the adventure text files use this character encoding.
+Usually you can do this in the editor you are using, often when you save a file the first time, or there should be a setting in your operating system to define the default encoding.
 
-If the Alan source files are encoded using ISO-8859-1 they will be presented correctly when the game is run using e.g. WinArun. If you run the games in console mode you have to ensure that both your console program and your operating system are set (and able) to show characters using the ISO-8859-1 encoding.
+If the Alan source files are encoded using ISO-8859-1 they will be presented correctly when the game is run using e.g. WinArun.
+If you run the games in console mode you have to ensure that both your console program and your operating system are set (and able) to show characters using the ISO-8859-1 encoding.
 
 == Standard messages
 
-There are two main types of messages that are output by interpreter to the player. They are initiated by various parts of the Alan system. The built in messages are built in to the compiler (see <<Input Response Messages>>) but can be changed to messages in the available languages. If you are using any of the available standard libraries, that library also issues messages, often overriding the messages built-in.
+There are two main types of messages that are output by the interpreter to the player.
+They are initiated by various parts of the Alan system.
+The built-in messages are hardcoded into the compiler (see <<Input Response Messages>>) but can be changed to messages in the available languages.
+If you are using any of the available standard libraries, that library also issues messages, often overriding the built-in messages.
 
-The only way to translate messages in the library is to translate the library. This is probably what you want to do anyway, since most of the verbs would be in English.
+The only way to translate messages in the library is to translate the library.
+This is probably what you want to do anyway, since most of the verbs would be in English.
 
-Messages built into the compiler are generated automatically into the game file, e.g. as error messages like "`You can't do that.`" These can either be changed by the Language option (if the language of your choice is already supported), or translated using the Message statement. <<Run-Time Messages>> lists all such messages and their content.
+Messages built into the compiler are generated automatically into the game file, e.g. error messages like "`You can't do that.`"
+These can either be changed by the `Language` option (if the language of your choice is already supported), or translated using the `Message` statement.
+<<Run-Time Messages>> lists all such messages and their content.
 
 There are a few special words that are currently not author translatable, as described in <<Predefined Player Words>>.
 
@@ -27,8 +43,21 @@ TBD.
 
 == Word variations
 
-TBD. <Text about using multiple names for the same objects & synonyms, and how the interpreter chooses which word to use when>
+TBD.
+<Text about using multiple names for the same objects & synonyms, and how the interpreter chooses which word to use when>
 
 == Word order
 
-TBD. <Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes. Or does it? With the noun first is it possible to implement "`das buch nehmen`" with the syntax take = (o) nehmen?>
+TBD.
+<Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes.
+Or does it?
+With the noun first is it possible to implement "`das buch nehmen`" with the syntax `take = (o) nehmen`?>
+
+// @NOTE: Elsewhere in the Manual (App F.2. Message explanations) it states that
+// 			«The definition of a Syntax construct may not start with a parameter.
+// 			 The first word must be a player word so as to distinguish it from
+//           other forms of input.»
+// 		  Might need some testing to check if this was changed in the meantime!!!
+
+// EOF //
+

@@ -1,5 +1,5 @@
 :doctitle:  The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.39
+:revnumber: 0.1.40
 :revdate:   September 2, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
