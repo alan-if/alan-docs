@@ -435,8 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.45,</span>
-<span id="revdate">September 2, 2018</span>
+<span id="revnumber">version 0.1.46,</span>
+<span id="revdate">September 3, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -831,8 +831,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.45
-Last edited: September 2, 2018</pre>
+<pre>Doc version: 0.1.46
+Last edited: September 3, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -930,7 +930,8 @@ There are no explicit type declarations, except for instances of classes; instea
 <h2 id="_concepts">2. Concepts</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This chapter introduces the concepts used in the Alan language. You might already have a good idea about these things, especially if you are a seasoned adventure player, and perhaps even author.</p>
+<p>This chapter introduces the concepts used in the Alan language.
+You might already have a good idea about these things, especially if you are a seasoned adventure player, and perhaps even author.</p>
 </div>
 <div class="paragraph">
 <p>But I would suggest that you read through it anyway since it introduces some important concepts that are specific to how Alan treats them.</p>
@@ -938,60 +939,90 @@ There are no explicit type declarations, except for instances of classes; instea
 <div class="sect2">
 <h3 id="_what_is_an_adventure">2.1. What Is An Adventure?</h3>
 <div class="paragraph">
-<p>As long as man has been around there have been stories, fairy tales and fantasies. In the early days, storytellers told their stories to silent and astonished audiences. After Gutenberg, the stories were printed and the readers partook in the fantasies of the author. In our days, passive viewers are fed from the silver screen or through the tube.</p>
+<p>As long as man has been around there have been stories, fairy tales and fantasies.
+In the early days, storytellers told their stories to silent and astonished audiences.
+After Gutenberg, the stories were printed and the readers partook in the fantasies of the author.
+In our days, passive viewers are fed from the silver screen or through the tube.</p>
 </div>
 <div class="paragraph">
-<p>In our time, at last, there has evolved a way for the &#8220;audience&#8221; to take part in the story themselves. It started in the forties and fifties and continued to develop into the games today known as Dungeon and Dragons, Tunnels and Trolls, etc. Games where a game leader designs the story, but the players decide (and perform) the actions of the characters in the story.</p>
+<p>In our time, at last, there has evolved a way for the &#8220;audience&#8221; to take part in the story themselves.
+It started in the forties and fifties and continued to develop into the games today known as <em>Dungeon and Dragons</em>, <em>Tunnels and Trolls</em>, etc.
+Games where a game leader designs the story, but the players decide (and perform) the actions of the characters in the story.</p>
 </div>
 <div class="paragraph">
 <p>These games, of course, have a computerized counterpart.</p>
 </div>
 <div class="paragraph">
-<p>These games are played interacting with the computer. The program describes a scene or situation (usually in text, but pictures may also be used), the player decides on some action and gives orders to the computer to carry out his wishes. Usually there are objects to manipulate, traps to negotiate and puzzles to solve, the object being to find the hidden treasures or save the world.</p>
+<p>These games are played interacting with the computer.
+The program describes a scene or situation (usually in text, but pictures may also be used), the player decides on some action and gives orders to the computer to carry out his wishes.
+Usually there are objects to manipulate, traps to negotiate and puzzles to solve, the object being to find the hidden treasures or save the world.</p>
 </div>
 <div class="paragraph">
-<p>Crowther &amp; Woods started this form of games in the late sixties when they designed the famous <em>Colossal Cave Adventure,</em> which became available on many mainframe computer systems. Inspired by this, Lebling et.al (then at MIT) took a giant step forward in adventuring by creating the Great Underground Empire and making it available for venturing Adventurers in the game Dungeon. This game contained a much more developed story and could handle much more complex commands.</p>
+<p>Crowther &amp; Woods started this form of games in the late sixties when they designed the famous <em>Colossal Cave Adventure,</em> which became available on many mainframe computer systems.
+Inspired by this, Lebling et al. (then at MIT) took a giant step forward in adventuring by creating the <em>Great Underground Empire</em> and making it available for venturing Adventurers in the game <em>Dungeon</em>.
+This game contained a much more developed story and could handle much more complex commands.</p>
 </div>
 <div class="paragraph">
-<p>Later, Dave Lebling &amp; Co started Infocom, a company where they continued to develop their technique, first with <em>Zork I</em>, <em>II</em> and <em>III</em> (the first a re-implementation of Dungeon, the others equally successful sequels). Since then, a host of games has been released (<em>Starcross</em>, <em>Witness</em>, <em>Enchanter</em> are some of the names that come to mind). Although the original authors are long scattered, the Infocom games are still highly appreciated even today.</p>
+<p>Later, Dave Lebling &amp; Co started Infocom, a company where they continued to develop their technique, first with <em>Zork I</em>, <em>II</em> and <em>III</em> (the first a re-implementation of <em>Dungeon</em>, the others equally successful sequels).
+Since then, a host of games has been released (<em>Starcross</em>, <em>Witness</em>, <em>Enchanter</em> are some of the names that come to mind).
+Although the original authors are long scattered, the Infocom games are still highly appreciated even today.</p>
 </div>
 <div class="paragraph">
-<p>Other companies have followed Infocom&#8217;s example and a handful of them seem to make a living out of creating adventure games. However, today most of the works are created by devoted people that do it for the fun of it, releasing their games as shareware or completely free.</p>
+<p>Other companies have followed Infocom&#8217;s example and a handful of them seem to make a living out of creating adventure games.
+However, today most of the works are created by devoted people that do it for the fun of it, releasing their games as shareware or completely free.</p>
 </div>
 <div class="paragraph">
-<p>There have been many attempts to use computer graphics to display the surroundings and objects in adventure games. Some of the more successful early examples are the Sierra games (notably the <em>Leisure Suit Larry</em> and the <em>Kings Quest</em> series) which had mouse oriented moves but also allowed single line text commands, games from ICOM Simulations (<em>DejaVu</em> and <em>The Uninvited</em>) which were purely graphics games with mouse and icon interfaces. Other manufacturers have tried to use (sometimes optional) pictures to accompany the text, for example Magnetic Scrolls games (e.g. <em>the Pawn</em>), which shift the picture automatically as you move around using the normal directional commands.</p>
+<p>There have been many attempts to use computer graphics to display the surroundings and objects in adventure games.
+Some of the more successful early examples are the Sierra games (notably the <em>Leisure Suit Larry</em> and the <em>Kings Quest</em> series) which had mouse oriented moves but also allowed single line text commands, games from ICOM Simulations (<em>DejaVu</em> and <em>The Uninvited</em>) which were purely graphics games with mouse and icon interfaces.
+Other manufacturers have tried to use (sometimes optional) pictures to accompany the text, for example Magnetic Scrolls games (e.g., <em>the Pawn</em>), which shift the picture automatically as you move around using the normal directional commands.</p>
 </div>
 <div class="paragraph">
-<p>Currently, a community of addicted authors and players of text-based adventure games are still out there. Visit the vaults of interactive fiction on the Internet, and you will be surprised by the abundance of modern, high quality interactive fiction available.</p>
+<p>Currently, a community of addicted authors and players of text-based adventure games are still out there.
+Visit the vaults of interactive fiction on the Internet, and you will be surprised by the abundance of modern, high quality interactive fiction available.</p>
 </div>
 <div class="paragraph">
-<p>The Alan Adventure Language has been designed to aid construction primarily of pure text adventures or, in the words of Infocom, interactive fiction. Some sound and graphics functions are also available to spice up your game if you so desire.</p>
+<p>The Alan Adventure Language has been designed to aid construction primarily of pure text adventures or, in the words of Infocom, interactive fiction.
+Some sound and graphics functions are also available to spice up your game if you so desire.</p>
 </div>
 <div class="paragraph">
-<p>The main feature of adventures is the interaction between the player and the game through commands input through the keyboard and descriptions printed on the screen. In <a href="#_a_sample_interaction">Appendix B</a> you can find such a sample interaction.</p>
+<p>The main feature of adventures is the interaction between the player and the game through commands input via the keyboard and descriptions printed on the screen.
+In <a href="#_a_sample_interaction">Appendix B</a> you can find a sample of this type of interaction.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_elements_of_adventures">2.2. Elements Of Adventures</h3>
 <div class="paragraph">
-<p>The success of all Infocom games can probably be attributed to three distinctive features. First, they all have a &#8216;believable&#8217; and consistent plot, which is flavoured with humour and wittiness. Second, the descriptions are extensive and give a lot of atmosphere to the game. Third, the command handler recognizes and understands a large vocabulary and complex input. Add to this the worlds best graphics device (the human brain) and you are unbeatable!</p>
+<p>The success of all Infocom games can probably be attributed to three distinctive features.
+First, they all have a &#8216;believable&#8217; and consistent plot, which is flavoured with humour and wittiness.
+Second, the descriptions are extensive and give a lot of atmosphere to the game.
+Third, the command handler recognizes and understands a large vocabulary and complex input.
+Add to this the worlds best graphics device (the human brain) and you are unbeatable!</p>
 </div>
 <div class="paragraph">
-<p>Looking at adventures in more detail, we can see some common features. There is always the world or universe (called the map) where the adventure is taking place. Although you can move around quite freely there are usually some problems getting into certain parts of the world (e.g. locked doors, no air to breathe or even finding the entrance). The size of the map ranges from hundreds of locations to just two or three, or even a single location.</p>
+<p>Looking at adventures in more detail, we can see some common features.
+There is always the world or universe (called the map) where the adventure is taking place.
+Although you can move around quite freely there are usually some problems getting into certain parts of the world (e.g., locked doors, no air to breathe or even finding the entrance).
+The size of the map ranges from hundreds of locations to just two or three, or even a single location.</p>
 </div>
 <div class="paragraph">
-<p>Then, there are the objects in the game. These range from your tools, like lamps and shovels, to immaterial things like a hole in the ground, in short, anything you can manipulate. Ideally, everything that is mentioned in a description should be an object, but this is normally impossible because of storage limits (and perhaps the stamina of the games designer!).</p>
+<p>Then, there are the objects in the game.
+These range from your tools, like lamps and shovels, to immaterial things like a hole in the ground; in short, anything you can manipulate.
+Ideally, everything that is mentioned in a description should be an object, but this is normally impossible because of storage limits (and perhaps the stamina of the games designer!).</p>
 </div>
 <div class="paragraph">
-<p>Most objects have uses. You can easily guess how to use a key, but what about the velvet pillow? Red herring objects are also common in adventuring.</p>
+<p>Most objects have uses.
+You can easily guess how to use a key, but what about the velvet pillow?
+Red herring objects are also common in adventuring.</p>
 </div>
 <div class="paragraph">
-<p>The player must be able to express his wishes. Complete understanding of natural language commands from the player is probably overkill, but single verb-object input is not sufficient for a good game either. The player must be able to say things like</p>
+<p>The player must be able to express his wishes.
+Complete understanding of natural language commands from the player is probably overkill, but single verb-object input is not sufficient for a good game either.
+The player must be able to say things like</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; take all except the blue vase</p>
+<p>&gt; <em>take all except the blue vase</em></p>
 </div>
 </div>
 </div>
@@ -1001,7 +1032,7 @@ There are no explicit type declarations, except for instances of classes; instea
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; put the ring and the bag in the box</p>
+<p>&gt; <em>put the ring and the bag in the box</em></p>
 </div>
 </div>
 </div>
@@ -1009,51 +1040,86 @@ There are no explicit type declarations, except for instances of classes; instea
 <div class="sect2">
 <h3 id="_alan_fundamentals">2.3. Alan Fundamentals</h3>
 <div class="paragraph">
-<p>Alan is all about adventure games, or interactive fiction. In this manual, we will use both terms interchangeably since they convey two slightly different views on the purpose. But the technical platform, the Alan language and its support system, is the same, works the same and looks the same, regardless if you are designing a treasure hunt featuring an elaborate combat and hit point system or if you are competing with Sir William Shakespeare himself.</p>
+<p>Alan is all about adventure games, or interactive fiction.
+In this manual, we will use both terms interchangeably since they convey two slightly different views on the purpose.
+But the technical platform, the Alan language and its support system, is the same, works the same and looks the same, regardless if you are designing a treasure hunt featuring an elaborate combat and hit point system or if you are competing with Sir William Shakespeare himself.</p>
 </div>
 <div class="sect3">
 <h4 id="_what_is_a_language">What Is A Language?</h4>
 <div class="paragraph">
-<p>A computer language is usually described as a set of rules for textual instructions for a computer. The idea is that a computer can follow those rules and perform the necessary and/or intended actions.</p>
+<p>A computer language is usually described as a set of rules for textual instructions for a computer.
+The idea is that a computer can follow those rules and perform the necessary and/or intended actions.</p>
 </div>
 <div class="paragraph">
-<p>The Alan Adventure Language is a high-level computer language designed to make it easy to create text adventures. This means that the language have been designed so that the textual instructions are relatively easy to read and write if you understand the mechanisms that adventures are made from. In addition, it requires only for minimal additional instructions to make those mechanisms work.</p>
+<p>The Alan Adventure Language is a high-level computer language designed to make it easy to create text adventures.
+This means that the language have been designed so that the textual instructions are relatively easy to read and write if you understand the mechanisms that adventures are made from.
+In addition, it requires only for minimal additional instructions to make those mechanisms work.</p>
 </div>
 <div class="paragraph">
-<p>Compared to programming in a typical programming language, the Alan system handles most of the tiresome tasks and supplies reasonable defaults so that you can concentrate on the plot, the puzzles, the objects and the map. This makes Alan a true high-level computer language.</p>
+<p>Compared to programming in a typical programming language, the Alan system handles most of the tiresome tasks and supplies reasonable defaults so that you can concentrate on the plot, the puzzles, the objects and the map.
+This makes Alan a true high-level computer language.</p>
 </div>
 <div class="paragraph">
-<p>The Alan <em>system</em> consists of two computer programs, one of which analyses an input following (or at least intended to follow) the Alan <em>language</em>. This program is called the <em>compiler</em> and the analysis ensures that the input (the game description, in fact) makes sense. The compiler also, at the same time, converts the input into something more compact, the game file. This game file can be transferred and used without the compiler. Instead, to run an adventure the <em>interpreter</em> is needed. The interpreter is another program that reads the information in the game file, communicates with the player of the game (or reader of the work, if you like) and interprets all the complex mechanisms in your game logic so that it gives the player the illusion of the activities and events that you have designed.</p>
+<p>The Alan <em>system</em> consists of two computer programs, one of which analyses an input following (or at least intended to follow) the Alan <em>language</em>.
+This program is called the <em>compiler</em> and the analysis ensures that the input (the game description, in fact) makes sense.
+The compiler also, at the same time, converts the input into something more compact, the game file.
+This game file can be transferred and used without the compiler.
+Instead, to run an adventure the <em>interpreter</em> is needed.
+The interpreter is another program that reads the information in the game file, communicates with the player of the game (or reader of the work, if you like) and interprets all the complex mechanisms in your game logic so that it gives the player the illusion of the activities and events that you have designed.</p>
+</div>
+<div class="imageblock thumb" style="text-align: center">
+<div class="content">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA68AAAGNCAIAAABxAdCqAACR6ElEQVR4AezbJ37jQBjAUV/KRzD2EbbS7Ts/I0FdYEtwhILmAB8fLmyUhk1NlUkPSm+K3yO2ClL9q00GAADYVGoYAAA1DAAAahgAANQwAACoYQAAUMMAAKCGAQBADQMAgBoGAAA1DLe1Xq8jIo8WEVFX4gAAahjuISImI0fOeQAANQz3kHOuOTWdTtMIUVecGn4oANQwajilNIwQKSU1fGsAqGFQw2oYANQwh4eHfd+XUoZNoIbVMACoYflbSum67rQeqvl8/vnEW/seXw2rYQBQwyyXy4j4+/dv7d3T2mvbNufc932ddHW2On6o1DBqeLwAUMNu/dau7bru/fv3s9kspVT/R0QduVqtbszBR3hlQg2jhgFADR8e7LXN153treHJ1Lo9ve+bc04pNU3z48eP+mexWNT/pZT6PyLumhQ3RrMaRg0DgBo+Yu883No42i2ev+H23vtNT8jXi3u30tz9ucq9F7nhDnI3TcH0IjcIZk1xwaLEBGTTER2LFrCMK0qP7sVt7hlee6PsEgK6KYS853kfnvVodk1Z7f726MzMV+S+e9uec1E5HquWafUyJWqTEmGy284rJxNkY2KUaeUS0yrUUiq/l16wRkf0M60L8AXgKoqCPIOpRwg/UOChubkZr06ZMqWmpkazCyZhxfEHZC33CweZhllMwywWi8ViMQ0DNO0X08zbTdaIEGdZvvjkhvi0k8qWdvqX//W3S37zV+FHAkvzzjnL81Huthrx0fUn1dXubqm2pZ0yzp6O4+jTDoqigHdxj8coNwo8oEUNPGCDyNjQI4AyohFIBmvMY3ppoFAIR5lpePCKxTTMYrFYLKZhEB5wUPxwctbXWgJ2Gme8bc9MFh314oMa4WoUt5oJiMG4z3xVxulvWQ/ucWUpouL9J+UoFE0V4laT3Zb2hylvJCUlEfhC3mFf8n2xTeyrrrlFwj/xq/jiCwFRizdSYy9wNvbC16GTl2AaZjENs1gsFotpODHsEMHfxlXLrQkJSAt8P/TmvndPOR5vGDPCOGOKPfU4cFZC7dVsYb8kAddZLjrqxN028fENz+0W25njlv27TcsXacn4zcnm5UbFvMNhjfCU5InrDcU5GTPfmpya8i7QtlfqJfpXRdCsPg88fCi6uwVa0FNtVAWDGWwtoKGRl2AaZjENs1gsFotpuIc4Xc7KQgQSzDs3+738gpw3d9zowF3bbVlZgDnxrcrz+eeIBZtWLDaMH21954i7+opoLJX4e8UmOfj9C/gqqyRX1FyR1VAq2qqFq0G6xXdbRdcH7maHszhPSYhQ4sNNy4wovxeek2Q8YYynOBedXbXFAGJ/0wbFS6D8XhkXcIx24SXYw2iE4DHjqwZt1SP0X+RGMw0PRrGYhlksFovFNPwYlmpdsXBWiOv1kjjvtSGS6yi0KSdjTGuWPbWNlyopyY6KMp8XlXC1NdvOJsPfBW1bDgU4cjJFi0NU20XZZcm+BRdFXrrIShEXklUg1lZRDhAZ/SU611zFNywR+WaT6HQCke1Zit8LzxonjJYGs7Pc01FnjQhCAMP7GwbF4meBvyu+KjjHKvWSPQwgJiaA9GiLSLEPeAGSZhoedGIxDbNYLBaLafghGBQkmn8ehaCCxM3KAnGtTLRWic5rcI5dNUX2S2etkSEEx4bxowK2rD8T805KtCUl7lhqYrRXRXlVpJIYAQcXA+PMOzbLeSGOR9nPp3gaykSVXXItQfDlTJGtAIJlXXxXfg/EvoVZtE2FbU/WGXH5nDcfy++2PF80lsmc8YcdsLcl7K5dBiCG34xv3lF4ybRsoaujXTwVghM0NYQG3TT28Kef0iQSUtjQDKfzARSw12BEQ6ZhFtMwi8VisZiGP7Ue8yRa/vdk5P2UuEfpJ1ASTG2pIv+cZFZHgXRh22vFjWvSOb7dIuH4ooJZHbRVmu8see9JFeV54DQj2HC7WWADIeC6IsnZFAsG1OamiUtnCIKpwMQgYNTjnLSulHi1naojPuyVf/qH0gO7Hp87LXLOarEYbjG+w4+uYxSd5PVfvmaPDBK1V5GacLdUGcaMFE+FvAQ6aOZ5AByjES9p7GFKVkDiq0J0GJQMwB2UeQmmYRbTMIvF0s6jT0uosr4VgQFojL46DwFrKNDwF/Fh+vJYw4HI3cmxj8CjcHARqKgvgWEMxJTVWo2ogwRluLC1RShyfKlAvfB9yW/GvvCeUaBYQDbRrb7AxxSWaDx2GKdaidkfdE6Fb8NmWolGaPvkMY7927uTY+ilBxknA2ZPlf8LULujDgFoV2MZxYgtyxaIinzRUgVPWjmRKJ7K0CP98DgNun3yiSgstOM4vdIzvRN8gIxv923DNMxiGmaxWLgrec+j//2DLwtcgd88DVIaSsFIpmEtGT84k4AkA4iW0BbwCrRV6RaOMjqQrzzQepRxEqX+Mz9gK06s4u3r7oWZUU0H/DePHY6WtQsXBO7do84OMf63v/GfP+fAvFnYLg8KlL4ygPiDGhWI/f7tnz2ZpzEOz9NUaZw11d3VpYIaOcH6/AOhqmoPIy+h2sOakxu700EG+qSOi5TP2WumYRbTMIvFoiHduAGR6Uv3qT6EPgRq0shkfRuiRQz6furwnuBVsAY/DXcriaBYqodnraojS9WdFANrlqpXln2gJGrQGQfpG38fZ57C/0XH/58Tx4Jmvb1u3IhbsaGPzyfh1XfXyXTy83/9l/gKEQerJxPdp3EKKk81f8aMteNGfpFxSgJxaR7MYOFuJyC2rFosx+Q1lDgiwkyzZ3qDLy4NegLAya2xhxsbnehMZKDvTxHkgeYl8PZgGh6oWEzDLBYbwLh90NuzV9HNER1U8B085gs/mZB5jJ6CNUhH0aWTL+t7gWLBtfCPiYYRrui7P1xksHWmaSUgeN5vf0EnCrZxhDvW8IkvP/+kZfGijRvWU+aJhO1169YRy3rPApEQET7v979qjw2VpnVRthwCqALx8oWiOEfkZlqXL7ds36aOpcNBgMWatZc1jbCHAcR06el1OB0adWj77eclmIZZTMMsFiMXkZYesLyXVmUNBlFcu/dHF760DmEaVgMPaqwC9jCFH/ouT9rx8qMBIfNmvvKPf49TBCYxvr7y3LPeD084n4ir+j6frtXXvfJv/5K8Zsk9eNhXbPCDhbtDAvHzz5qmGJSAbUm7tsybNIEelCnnoAdZXFk09vBHH/VuD9Ppju/Kh4WXaZHn/jyyMw2zmIZZLBbcHzUl+OP98J3NY/WPqK5r++MT0zDoFgmHvvtoosZqe3+wOGv35sl+LxFCKT1y9mjVqlU4b9RTCi3Ex6po+WX1YvHKP/5de4IFkxPLxe0+cmGmC9nnd79OSzrd2dnpDb7or7/ioDPOUb09rIcDQC19JXYfaF4CPxTTcN9iMQ2zWCz1lod7Fn/O/mPPuqhRY2wMrsF2TMOfHY9Qk8E0iYR3Vlg7nC7RQn0e9KSNNXys6U/28IDKdTLSGRdmP7xH8V9vWb3UNHv6zDEjjZMnWHdtVQ7spUoK2L5zzozozWuUA7uVQ3utAdsnDfvtykVG9VOkl//x7z7PPA0glhnij13WdWv9/uPfe8U14K9+JQ68pJl7+PZtN8EBKFbzPEcUDib2ATj6uK4xDbOYhlkshie8GYcYPLEsFssgf7zhOSV8L0JnsLJ3I/LB30zAmKciW0HeV11rw5kUB8ZVjpqVIwHKYdRex6kY5+kYZ3KcExtJcVRuxCGU0+LgQbFhg9i72xF8wDDst7TUXFhI8ITXXik4tAcTvQGIPbnnDT//uaejXePs0vVFj3GasXGPHqGzdHNx1lqtVnpJn6/4tvISTMMspmEWi0X3iCH5wTqLPogmYVsMBjENf2KN6Jt0P448gsJkZ3dCAjoP71TrxsHt7YGbNYV2d/gBdV/YzH3nK1QItkeHmhbMloQ6420lxuK8kuMsL8Dq0FSYM9i0eqlafi89r4kRW5YsTtqxiU4sMO7mzZuxvf7NSY6oYKdy4n3zntoM7a0d1xf91Gm44tBBNPZwd/eT+dH0iEDD7/D1W8xLMA2zmIZZLHYQ+Z04hMPEaox4UDzqMA2vmDwe05kt+c3PQqYbTi+aVbXbBPAl3vXG3MtrF6EurpgfOfONr6ujb00Y9Z//iqMFvT0Rx/ksJvgbmdhzLglOsN/z/21aZrSnJ3maHXJRjyq7XL7ueoPodKJoDbyvK3d9KeiZTqm//JM/Phi4Fxu7du1yPlVJSQlakk6fiouLUwcfqGPp9LYuWjTLc5A9TIQHfgUW6+nBN/LTjMNjGmYxDbNYLPJloCE8IyeLPqOGBgUGMA3nHgwA5qYYZ56YOxWlci34GAW6fcZXTX/1hfQV8ztDAvRMjEjxvRMRFtMqyaOBO9z1JaK9To57w3LKhVnuS6nOi2ecuRmy/WaTpF5XozMn3RZnUUIPoMxrl5mMc0yL52F3spPNm9aCiZWo0KCdW2a+MQmNhnGjlVNWIlc8genv7tSufyzDLr3aw11dHuoPVtA/5NEuPlzyQN4qXjMNs5iGWSwW8IjubkN73jQWfUZNBhzrh/eGe2XZedOmrl+2ND4yklYa7P883kBDvJPnz57ljcWbxwyLmTP1wtrFpbs2Xt27ZeOcGYYxI8CvHmeFNIMbS0Vdkah435123LJqkd+z/2k9EujITscYOPFpJ5WrvsQafsQwdqRxxhTzlvVKXLjDluYqfk+uP4cjwEtuKJHlKMRxRHOlq6bIGhlimDDGtHqZ/9ZN6t1dP1ZX305Lumvs4bt3+4I8OMq+5YDxu1UPyDTMYhpmsViUGB6qUTqWZl1biKfM++FpOC7csmHNGnChlnq/jU8BgMVAaiwmt3r2zFVT33rrt7/8l7/720kjh9nPnhKtVQSvckXlq9mwhG3m7VhO2e8//s1TkQ+cFW3Vor1WesNdH3xZd1pE5zW5L+FvzZUnVVkgyvNxEFo4Wi5BV18sIxYfdjjstqD9u157+cXtprXBQUG05hx+UvoO6bGs7yiwxh5Gfz0oeDzyJbT79nSIXxTTMItpmMVi0Q0I4gkH+MmH9a3S8CCIQKXERxtGDUMowllwCVau5NeSXBo/B4T1ZJ0xvT35yfs/8mgPzp6XZc8SZe+JartcXg7mMaFzUQ720lb+eVdyHOZcs2xcZZo9FWX13+B8NwHELJH6drPoancU2javX7FqyUJHZaXmxq+/6NA0xhp7+PZtkZoKzpPq9bMt32Zbo7wEPPWfOA2zmIZZLJaiKPzp+U/tzw0J1hCmYaBh6J7thtHDEYqQIWCkGpAMJg6Gj3s5U2QrBfu2v/ov/yjh6a1Jzujgb56ULStF2FKpPJmn7UGBlvUrjFNetwbvl9Hh2HeUxAiz/0bj7Gl0hpkW/MEWGex6L1OazbeaPDcaMSuFPS9XnehEz21quwZtYQ/fuePp48RFvgLGs28fl2DfnyANs5iGWSwWXz/5owDBGpI03FjjCNiwGuFgOVNEa7XoqIdNCw4mHxcQjIF0+Xu2THxZzpVmWTbfZT3Wn+U5Pk+Jqw/dd8F/feySeQtGD5OXjMXzZe4CBnCLQyYoANzudjVt7KwstKWdMu/YZBg3yu/F58wbVtqVk562GsvatepYXRi6evCldqCt3h4OC7OgP63E8W3NtgbRcvN8NWcxDbNYP2Lx9ZPFNMw0DEAsyDo/eeQw07KF4GA5P9qNazIEjIQDcbAtFevY5W3fMPGl51Bxyxa4k2P7sy40FsDDXlh4+cs5hretd10+j/gEIFuNT8jtKrtwNSBhrKaNkR4WH1333GlFhtgaftRomGBds8IwcgQIuI+xdGjp1R5ub3drpoHUkIRvGEHJ4x86L8FXcxbTMIvF18/uG8qKv5QTl27N++SR6FWPGuNGyy7o9PvDJZ8JnW4qc/Ai9diU94n4f+jRzfL06E2/f3aOcl34ogc3lSXPSC1Rbj5gGmYa/m5DEfFBhzFzsAwHF9rAwdIPbqmStHrFhmFt4GA4u8lrFoNod785sWj3pi8XfLaGA5H1EOxJO951KopWuYtdOk9eIKa+rgT4OxLCPXkZ2ugwpS+yFRmlyE2TI/PK8yUZN5bKudsQk3D9H3tnHh1Vma77+vfOM2vVmc/BHuyDjUx9LvSUexrjAIK3F3RLGkuMOGKEBBMMiAMGQaIFEmgkWE1AhpiwJQ1CQ6QuaMeh6Dgg0rEaG5FE6CmN6dBwsS1znqonvBTf/vZOpcohCe+z9sqq1N7727sgfPnx7Od735bkmrzfHemKv/HGo4sXhqYunDsHDIo75+9+vDbwlOUeDXv4xAnaw/bYu+Bs/8tLKA2rlIYplUrnz45oWZJ1hxQ6RxM2Pu2IlgeTIJw3xgbNpOEpgW5VNp/sykV/aa4cjGEGKw33XSkNx1taHi65e9TXh4CD2996BVkF0CdKOoCDk0j64s6u559NcfBt074zetOMm1urFgsHn3n6xx/VRT55brPBwTCMEZ9I9pMbn4+9wGJGKTAUwde9AbjhPYODET7GhuOTbZ9xPNs+v9KY9KeR1njvYNfBV7uWhrvWr3fmznW21PPXv5GLoPCO0aiZ9vCRI/ZiFLkLhE3+1tlcpTSsUikNf3E6E49MDkD5kXjCDcNHncIhgcC4ylhTyiEO5kdazKOOrwp0626OoDSsNDwAabjl7YP7tmwunHTdxPxU5WCEg+G/YpEc6qOBTf/fT4Gh8IPRZQMZ3+rpUw8sug/4C5cXmQc4wQg/EHytlvDNqUww8sFenZzPrcPbjqu8s2bZzvn3LLup4Ka8bwZcumfKpNKp16+7t9i5bzaW3MVByfCqm/e1R7dP/Ob/xrzjs5ZObGO3PVxX57AyGs61Qi3Tw9nlJfzP1dk80eYUepkWMusNrmzGpKdSGlapdP7MaaadHImfMfZ0NofzukG52yQO5IWbOxMXUkJegMpr7uqMRx1EHXAgNSRUubGh+XjifBDCqa8Mye7uAEZZtdNQu2QKQNiQN9SaF8ovi0TjnWcvpOGOeLTBiZTlpQ+ZVxZxdjQfP6s0rDTcQxACz/GdutqK8tIJVyRRFb2UAcEIRSAZjFwEmsmhCBoMWgQV0HMOvHtizbJt98zYNvvOPzz5uGccwo7CeRj/hYXz3Hth97KaBAxjLMJLx9+KueVSMnn+/Pl4B6kDvLMFHrDjlFIlxdeNu+a6K/Pn3nXHxGuunjRp0rZt22j9TkwJH9PNtW4P+M9/Ru3h7v4dGNU6nfGs7PISfo08dDanJ0EFZzhtZ5WGlYZVKqXhz0C/j5aNsKV++f6IsujvUwAaqwR9yrcSpYgEulX2RDkOMEVH40hHSw0pOHN50PDZ49EHCbim8sojlQU8se4Xe8OhIfZRienhpiSkKw0rDYMI4ynB+EzSXtGMACUEzFgwk8EIRYCD8RrGMJrARRsSDU+DfWXrFQc3VT60/NYbwdC/XbfS6zCg9r4H52AFXiBNuFXxU328XkaBuQvH4NseJyAMa+u6jOIScIjbeQoRFrEKhobF4sVd5ZyX0NncvrYjWPhEdQmmY7xw2hJKw0rDKpXS8KevRDyS74oF802awfZMBYk57wKXV5zgpDXbGO4m4EFj8sYkXwVD4cZ4h5FcbomkvGlw9q7t/kkJsatTQ1U6vBYRuXl7pAz3KxLPeDudYPMwLgq8aGlYaRgkBwK7+aZpgZQKRv71zHEjxn9r+MI5xULAsmFFGjgYMVysUcO3pGEEhUHDyAEbNIxoBN7kdnbzGqyKk6ywAO6Li+a/+Mj839as+PjZdfjWh4MRPi6++ntYVIdCxT9fNH/LnJnYKkI/LC2YXBq6vnR6qPSWG4tC1xcV3nBraEpp0W3O+tXO2h87P1l5+vAbG8OLwuGwTygCslYR9rKHQcAYCvB64MABALExozFznHVeggPqbG57cjcOazL4WmYubxrmU7iNlaEhrtmwPjVBH3NCg1NnxE7G9xqP6zCx8iAPcXB5MCdP3PYeii4anPqmsrnT9zkgBk+/50RnfG/akUNSE/tZ13zN01fVRNbWuW/Y2RvvTCgNq1Q6f35Kz+LSfd+TzZXjjKAal9xxZk4jZsr0LASgDZeX8+Q51ctcl4Tg2lp/GhYbm4zu8SlEvE9T/GhyVxcRDSsNkwKb9u5Z/sBc/GUM+4dBK6//8t6ykbvLvvHwpK8UXvnPax8pXD73htimqgtQ+NgvAcFoEQf8RfU08YkRGkaGAbybvkgO7MuNNPyxU/PJ9k1dz23GV2zE3Ew2IDUSF20rl/ylfq2Jy1xdh0jxy6mlcujS/ParuEPcW7ICMTDdqe/auhVb06JFuzdt4ETz6KOPVqUEB5cBCUAtbWZrJw6yqWEPt7a2A1utZ5Fos7Z4cTkTpnU254xG/JWZS6Y2Ow3TXfARRtsYAQ3L4mibOJt7PJjz1+iyarog3spb7EQKU/f8oLPLNSADIceOxjhMJqLTEgPDKw2rVDp/5iLGgun7iiUhbrFXpkJgVxDWe1lb/FCUEV63MqdhLrPjxO/zKSge5D0MXYyLi4aVhktvSZrB06dMXvt4xfBL/mZm/j/cOPbSx8t+MPv20OIFFSuWr5pbNnf30wt2VdxG6kWfC4AmIsJYx4ZoBL7l++yvARoGAROFwb5E1dw3s+hEowP2xRI6y8G76lFWArtwAIzq5Ib73BDpenxJ+5PLp+d9O37oIH/ZFxcXuwE0kBLh2L9RM+1hADF4muggFjszGEbF4iyEkQHoOpunZyTMtRrMq8mbJg3Tn6DDusu0SzsPRugWB0fnjR503ljFigt59BbfRUeZk6P3gzme5fdgzvc54OC8vFEBSh7ycajYilAwzXIWlzoRXxIQDXI6+C7veS9Xh5j+h9KwSqU0nIVYV5hr6Yi5rCDhnangKZnQsIjr6hxR6gEX2VRp+POQ0nDrz3e1w0xF7KFlf3ssOmvc0Phz982bV/nrX5/+4APQHqqJtd55x92rFtyyu+KWpM8K5MUGC5Y0DAgWGn7rJdAwIJhVI4inn8n24k728sCKPb7zzpOP/7Jq8cHHFxx87KH0rXrW3Y/NLL572i1FNyfTz1XLlsove3FtJSdN6mUzOUAtvlI4ANYv37faw5y5sHSP6/aIwmIPZzep8XTcDxhdZ3MjI2FDUhrG3rlh4ykcsw2GOI/bpnjOwpk/mKNvLRjt/xxQZC5DEYvFRFvelffMLulqWtpKwyqV0nCO9jAJmIkILl/2zFT8VkoRj86MhjmgpwOSe1KCE7ImJZSG/XSgiYDLLfTdy4+u/9FD99xLGubW0tJ66813bgnf+vFre3AMjWFsKFWG1whOSG44e8DdVQ+STt9IulJEQja8g10f7G7cuXHbikdXTv3BDQGXphbcdNedswsKpuP14MFfjsUO3Hbb7Qz4gmuZ6C0qKiooKGBSQjCX0xAOA4kCQ1mkQrgWB7vtYfZqBrbm5+d3uSQYnfW/E+YlLvbZnPOsvzjBmTQMrzRK7vSWb7cktlPiLGzxEOiR+HoM0WY+B8xqobQV7vlmzyLfKw2rVErDOYlP4YJl9fWAYVoPXtCMo9bXs+JE5IlQpt5wfllNerQLFdCc9DUS+auqFw2WWdrXMeFjtAse8UV1FZ2qZxr+5NUk4Mq2/8nwmH/4T4fXTa1dv40ozG39U1ta9yx4b/NjNIbZ9Q1pXZRUQ1wYQMyaEpnjL85FTWL4uzR6M9lwZHPkydLpt3/5kq8GbKqoqOLdoh4wlrgdOtTKOWXLli1IL6QnFhhvAGh6raUzW8p5xx5Aw++/332Wga08GDeQS58OFnG7uGdzOgT+EoPhz2n4SOf4/OKy80rOlZ3Nldzp7bHmTsM9Pwf0voPcaZh4rTSsUikN596Jg2Jkwr9XM3PGbU5mNBzMwKpYtTokk6WXAcxomVZYy05Kw4jYvvI8WseRhn+3Y9PUkcFLBv2HX6+avGllzdySB9YsWFi7tPKpWWNvGPM3v8fyNba9gJUrXItsLhogv/UydvkTML1e5HozJGCwMqC5fUvN7oXzHrw1+S/n3//7/xBIac6cB2tqnL1734jF4kuWrOSbP/3p7rNnk90xRJxTEGCwLozD+zt37hQ8wQ8lcBbGsOHmMjVBULbaw+zVzLOwOA9XBMJywNyrrTEvwdMvytnc3mvDM8JbWBurE3xksQgGBnz9Zn8azikp0dNzwGxo2J2U0AprKpXS8GffqFncWX9o5nQtk6f/Krq2Y80NjK4Z3sGO5rYj0fL81FVLn4010ruVUJl39w1WENLuG6re0jC4k0DMFMSehuh9M0Oj//qZGZfPzf87/CUV5f3N0uu/Ujbxq7XFP/TKOZCP/TckHEDSGXHw3m2nf7oB5YdvviL543r1leOXLVuHF1ItGPMFiJaQSuqF9u3bR65l+AHavHkzdx0+fDiepnfffZfe8LBhwwjB7gLDW7duBdRyKB5gbdQs9jDxmovzci8Q4c5L8JNedLM5mdVOtFb6DA46z4gCrGU1XH7malaUAw0bq+j8H8x5PwfMhob5xxIQRU5yaBm8lr8MNDesUikNq3qWdmZWGk7s2nIBocb24Ftg69Hq8MbbJoenXnb4qcnOgnHOE7c1bX101LCvokdGLgvg4PX6QTAuHW04tn7VE9Onjhz8j/j5mFU0e9u2JuYf8K1PzQeW/jUSDvgWx2MvwhLSqU7CEtYfQY5mnYw4GsZx2cO4PdrD9imM6/BIw7nnJS6m2ZzuqXirvmKNCEqSEr5djnKjYamwloOyo2Gqc3+ohxprNS09Vh1WGlaplIZVSsNKwx83bICtmx5dIA2DXFEX4qGCf61CbbUPX+068bOuwzXOo5PeWLGIXJvrgrlGhxXQmB4+vfvZd9au2DF/9k1jk3TxX//zfy6ZVXL4cHt6drm4uNSdVaDoFlvXq9EDhqxoS0OXoCy0CnIV7I6nCafgQl728JEj7cYUhtPhMWNw9rUmqV8MeQmZzT/7jITteGoQ8TFVyMF4IsYMcUNzW1sj+oXmQMM9dd/I7DlgljSczD1/LUDZu4pkJqVhlUppWKU0rDTMOC9cWynaIOT64fofT/jukNMvzO3ac9cnW3/06rx/qZ15vVdJYPRkZosN64YmczgAG17g2/dWPbbvoXtrZ95Wct24kV/5ciCliROuBeyuXbsWr8PhKoSAuXV0JGl45sxS8q7X729rC2XALndlDqPSwPmFF15AjDg9lSE5Ci97GHeCY5CXADTjXN6t4CxPzE4Yip9CZ/P+IHG1WdWhj0tpWKXS+VOlNKw07LEBXpdM+j+7Zg1bd+OlU4b/z2SG+HsjCLWCv/9/4+rT61aiUdyBRfdtm31n9fSp4R9N2jTjZtnw5p65s/AifOOUkh98/9ox/xJIE0MOUvNBCjukL3376KMka65Z4+D9UGj6b37T7kXD7nYVYvT2qi0ccxQY1prKgPjasIdhZrMu2+jRo9va2tx3kmP8Fx+Bfyw6m/eRRdZmvwzJJbNbsqw46b80rFKpdP5UKQ0rDb80f2YgpaF/9R/m/Otf3z32G2w1x61l8f31Mwqnjh4ZsOmeu2ZgKy2eVZqSQ6UvgPOQ+4cDdRskMtHc3FpdXZ1eC+Ktt94SDxgurNXo7dU6NslRvPlm/OTJrt/9DteFRS31KCz2MDxsHPP223EvmCBJk9dzyUv0EUzR2TxxnEGL3JO7SsMqlUppWGlY1SdpmNHhXz2+YM73/qq5+LKGwq+Ahmde8U1A8KFH5i2f8v38r3UnHIb/89eeeKxSore5q7TUDEWgfrDQcFFREqytRdMgd7hWFswtXbo0nhLjvCKS+osvNqHx3p/+BHM6afROmZLE60OHLsguA4sTiSTUup1m3iTsYV4LA5KqcT8suCZBC3wdEHkJnc2ZGmZXOWtytw9IaVilUhpWSX+NkHPc6xBZZ6K96CCl4e78w4Yn6f62VS2+6tL/FTinYX/3VwLB468YuzbylA/b5RIJMLgWkEoe3bRpN9fSeYV9L7vsMljF8TTFYjEjmzF7dukzzzioT/z66/EPPjgNihXvWbaGhiReixv98stxVDh+553WM2d4OXK/xR5eurSKMHHXXXfhgxjkmmMzDv7hYAS5AT/pbK5SGlaplIZV0m7Jh4ala9LFScNKwwYBGxtSv4ELde3VVwvkfUYCBxN5DdBEv+ihQ0fJEjfhXR7DxhkUeDcSWbdvX9LuxRK3c6nipTB9MY7Xxkv8/Ofx119vBSJj3d6pU13f//4kLI+DnZwOoPR6rfZwS0s7mduazcBZOaIGxqQ5rbO5SmlYpVIaVikN5yql4VMkYI8Na+OqQj8QxATeET0/h58PYyFdIpFEVXAq7+TSSy999dVXW1ribW1JZ5eMy2V2EIjWYFy+39j4hhcET5166x13FD/wwMIdO3a//36rESC2lhC2LokjtaMgBq/IPy5WWAPi4yvNXQHl7NTLxIXO5iqlYZVKaTjRES0PBqBxlc0nvRvOBfMqY509N2xjs0/ypX9tSvYqsnd1Zu8k64JjFs1k57lkhoFN5sxY2sbHeRuD8ZmMRnSsp9ngLCkImOKNGTdsiB+NPZX2OqykaU/E9X8aVhr+07ofGwR8KvJE+8rF2+4qnHdTyKj88HnGVd0/H8jsAnMllQs+5uI22e64oxS7Kiqq+K1BwzCV+ZpUjQ1ZCAB0VdU6BJH/7u/+HmPaXWobd9KKpnvttoePHj09cmTSwwb+ot0dsF6sZenVzHNzmTGZl7iIadiYjr8A5eIomAE130GUhlUqpeHPuLun1MmZURfbEyZT2jUkFG46nsiUhtNb2ZN6bchLUDYpOXWrq3etxiE9KTgmb4z3UVnTcOJ4LBwK+q2WXhE7flZpeODQMCH4+ZLbK374f4d/7dIJ117rOA7wV4o/fM4C6hkYyqrDUh0C69UQ5yXXcpN1b0w7CO/SM/7ud8dec83E7rDHtcnoMBe34RL79+/n7GNFXt7Gzp07cTC+Bdem/xB72cMbNjgcE+Uv/CA7BwGyidR9TUrD2Z2iNKxSqT7r+TMRj+Rb7GGh0mB+5apFeXhF+3M7nGBzIVqA/vHGSKY07E29RN68glBekIDuup9xiyIV+UTwyl3xzoSrBWnwQid4L49hscvGSu6GcRx9JYukBG+Pn7esWpxgs69TXriZF+2/NKw0fPLp1X+oWvSLuXc/NP6Kywf/I9O6fKD/xYoYCmo0OlzAAGZmF5PFe++1Yr0cVrZhjZ1sBw7E09PDEDtoYCj2k7NmHliQGJCNY3anxCPxLXd9+9vfFg4WWeud0R5+771uexhX98L9HFmWKY4c/rKUhvsVQCsNq1RKw7lLCC8/Ek+43syrbHy21C9NIUdSmdKweM9iDwvyottoSwt2yRXlKsxsmL0/RUZ0YTACFS72b4nkp44JRZxe07ARHTElCRB+zP5Nw0rDtfNK84d8FX8TE8aNAwICB/vUjEBelOgwbNf9+5N13PC+FQTbU8IBWfjQGC0cDrsXCHI9nNXKZUMNXs7HHrZeFJfjgOTarP+UeAMDfDZnbCs9wYb4WjTemU7DPKa+0nQKnDSrIJWEk0PSjpEknFggO2yBucY9kcLuy4nrAAULV1WXyBzKXwM4obK5M9mJw7ht3E+8zvpI7pibj3G6Y1RwS1oUDj0Kfvyk7RE7af3sPExpWKVSGvbI47ra4B+MkRrZDd4LGbOgYagTYweRxHDazgrysmEnuZP2sNwPj0zN/1FOg74qwTh2xyRbGua3nMz9TuCfVr+mYaXhkjtuX75saV9bj0VYNBbSpXXiaMcu8is40kmJcAlJoV+j2YcXMhJqaeKCLHGidS9DERxZQsBMAHvZwwhsTJgw0eennEEUflgOmF1eAnc+kGfzRFu03DUPkgvLV1QWcLIqWeIzVwZD4djxhOc43UQbaek49+htSMBfBQ9WFqYv1Cjf1bjITcOLnHq/9hz+NAwij60g3Xp/qJfrUhN9MC9vjP0gIx2oNKxSKQ1L63ixhxnq5bedzZ8VDct1abUSeYP5kZaEkHG3Pcz74S76r+eti/NKGiK4WxxJVfCGlYZVHjTcPwX0dP+IMC+BdXKcLCT8wHAz8ZR8uXjxYhJwr65F5PXau2rVKl5UhmVrDwCxV+3hXbuacCLvkGkNkHQ0GmVLDt6qzIC55yUG4mzOKZKhMQcObtoDM3lMZg2NGY7yuIrKmYOZhHNaOi9wnXdVEn/xm+AvXGLCy9VG4x1pbrEj1itd3hoxXjklmjTsjpp1pIxiDjJ5VWS+d274LH8B8EIRDuHzwfnR8bvB/FDmPK40rFIpDYtNS3uYSWK+Zt2J3iUliNRW2iYNu5fxJf3g9uQ44hMTjlP28LFjeCFhXOKs9T/2HC2YOw1rUkJpuE8rvUgZ9dFHScQkDQMrgaFWCgRr8oBeOawsnQH2dVIC5nIEhpjlZmysbL8W++c9/PBCDsVedHjN6hwke9SGQ/aDvfRyzEtg/IE3m/tPRpw9Kc6q3i6IkXlIiZRpri/xmfv+cty5LSC/Nig7DdO6buT4ll9ClCcNn6BVI4sz/Afho0b7Whn3NK00rFIpDQv15s+vLBkhuCnTSwar6Bqj5EtZ32YuL7POPyTIYP6iRSVBzrQGZ+eFQnmpzMbRhBSjMA0IpsgMX2B+JjTM2dKfhjnD6yo6peE+tJrHAM2PPz7fjg78x9/ZXhht7U9BnLUCNE/ZuHHjmjVrCNlG22fjZkjnPu3laA+DieElY3wumyOz4kTpNR2LxaFc7GHSPG5j4M3mvg+qOFFifwaifbq6VCK8ZhI3GS8+S9iVy3nTMBHWm4Z9BmEReH8aPvaK+fTNdxBrqU7ehtKwSqU07FttjRInmKjXlEGFNfoRHsGzg42YxOzzDxHTVn6YA55Hc9JzS409M2bqNl8arv0FZ2/b57XXWaMtohXWlIa/cIFN3VDLasHewQa7qSzyKuMAYOUExK/uiAXh+1e/StavYL8PVDsmDZOVfezhDz88TRubawFPnjTLIS9bVsV/FRgkl7wEmFtp2FPkzqSj4HDBmalgQWlJfn+kYR6mNKxSKQ33QrRpPf9H3VP3DbFI0zxasZMxnXnTMKnXfVEjPUy5/ea0DHFDc1vbjisC3Wr0o2HnuKxptn9kM88mRrJ231Aa/oIFtnNPCmBQ6S3HBALmDhyD1+Bmhnrx2m3WUjgSx/vUdKMwCEj3zBmUbEMWAuwLYE2iufAriBZcK8KY1pwDBqE9zJvEO9bW0M8910RWxp3j0jnmJS6WpIQRGGBSorfijG9Mc7xcrjTsd8+sFD8o96SE0rBKpTSc46oM2+Sp0s7MSsN9+qcEsAd8ZKMNIubplIzZBGQspilAk+9AXMpm5BmwgXobG5t4uXvvXUhIZXcP9HM+caLrrbdaZ84sRdL3lVf246JIJkgtNn/RCf7jH0+zrzX4GKMZNIzqE9OmTedHzjEvAQ2s2VxSv8FUUbUO83/wpm8hq+jksFqzUacj/503hwqWrFhtW0VHc8KpnCxNynukYWMQcwFccEZt/YMSUMtpFZ3SsEqlNJyFEeCUY5KRhK5KaVhpuK8vpEuHTmArF9L5RIfr6pxnnnGIudxOnUqeyK2jA2YtNguS8nJ1ddFQ6NZhw0Y99ljV22/HEVamaN/ecMMNBw8etDrZ1ogFs86whMnuNIzdDvFPftKN6YBs+Lu55CVwoQE1mzO2lX2FNTJwTcuJN1k6ze8YkHRni+M7VMbe8Jiyao+4WV65E+9wB9ROZlVhTWlYpVIa7nXHIkoW+6qUhpWG+6xodhqRXLizspCOOnQobritaMWMlnV83eNGVAUcg5LD4SRkr1y5sqyszDtebAcFIKxHcpf2MC7RbQ8zPYzIh8Hi48dPxPgYB5mNHGdSYPHAms2ls4Z39w22zOAx9miXNQlHB3ejg9F67r5RHynN71VuOMHCbGbjDJu9zaLFWXbfUBr2l0qlNGwuOZAHZSqlYaXhvi5wobGQDkYvMwzSe5kobNDwlVdOtIIvGJTgC5N4wYKFOB2SBAVIlPYq3vQBBaFVFk0j4BrFJfztYSsQRyLOli0O08Mcs//lJYzZ/OKUuYquj0hpWKVSGlYpDSsND5R5gewYSOnAgVbQ7dq1W0HAMIwR88WGF7fcUgzWPHy4PT//mhEjRoF6ly+vYss6ICyDDVYPlRYvadJ4n3TO+3n44YfxwsBWvKaT7WUP//a3Yg8TiDHsBfbw8OGj2FmaH7l/5iWUhpWGVSqVzp8qpWGl4c/yB4WhW2QhYACDd6Gvf/3rMGXF5WWDOpqs5Fo32oJKvQq0YShekZ04QMBSMgKcysq+Q4cObWtrs/qyPvYwbGy4vzjdDcpiD4Pa8Sa96hzLcQh262yuNKw0rFIpDauUhpWG+3d/ZsKolC1DXuLIkVYsccNXIC9romX8Q8bpxtzF2AMLtBGU8QJesrWQmVdEGMYwMTQDe9jcJfYwbwNUja+5ME2OI+hsrjSsUql0/vSs4NvV9yV1eIZgBYXrfWNVBqsYs6Cy0rDScB8T0ROU6Y/LVmxl5sH688fpBi+Ki4vh/sJUZvNkGRMojEu7z8WFpLuHlG+DhDvpUvvYw/X1pj0sqwOxNTQ03XNPqVEnLgvR/+YIF+NsrlIaVqmUhpWGzT4gJOHGcq5gtiu/zGnpVBpWGu6Dv5u9qI5BXvcBnFOI0R988EE8Jbi5+FbqNtA9HT9+vLVlnSCvlb95xWHDhuFIMLF5XU97mEAs9rAdiK+5ZiL34vYI6LnnJXQ2VykNq1RKw0rD7F5kVHM36tOzErzSsNJwn+vPbEwNXIJ2//1EYYgesPlDBpqEdztnzhyGicHBRq00CMf4RCkOHDjAdnegXi7CE1YG0eKFtQqb1y7aw9gQDnZ/IsQ/4BzTHp4wYSJzFzzsc8tLKA2rlIZVKqVh1rVkoUnvupaZNnA2O3qyMORJVJDcaHZHqj9/Igdn2UxXQcyOlkhh0O7j+hdrL1wdKQn6dOAjK7NypdKw0nAfEYnQ/bPCjm6oI8FdlMF8+DYajYIF/VfLYerxmY9uvfVW1B6mo2ycSyD2Jnj7RWkPv/tuu7i2/DiojMECcKdOYZlgO0ZmOIRAn2NeItMCxkrDKqVhlUppONEWLc8P+Pc8Cjltx5vCXi2NSK7hpuMJKw2zOb2VWMmpZzrjDsux2w8JrYgd7zwefTCPF4oc7BQUTr5JSt4RIbj79k4yxBCFesNKw313xaUEEmgMgx1RTI27OHd4k7QJpvwWp3AXesuxJTLTwzwAryGv1XLcBaXfJ7CVN8k0hb89vGxZFUgXH6SjI4nIiEm8/34rCxJL+gIDskhFdhzMDzVt2rTM+nEoDauUhlUqpWG0xRx3zoh16NRa2sLnTQnhNbkzsh2HpXUv2s7Vaeyy2WmhYXGC03rpd8Ybz9nAgwpCBXjFQ9ga6bxb7HQPnhdu7jxzIRAThdmqkxxuJiX8JN2ShOOVhpWG+2B/ZnKqu+owPVrAX0NDg3NOBFP+nLEqML7CIsVXWS2HAwCa+Dp27FjsMgxgvI9hvWYljCCcjUEwrHG6V6ULsYdRG44fCrcKtuYgeM1Lcw2ffDq+7yOehdEwFBbhjRzJc5NCHbovfelSvK803INUSsMqldJwR7QsaAVZusYOAgppGofEgy9S04s1adhuviZaIvnnRw8WOm1WJE0cdQqHgFkLnaOJ87mIIQWh64JJSn4wSjTPlIZJ8OvLzoWJayRLrDSsNNwH+zMbPMdowZQpyV20dadMmeIOBwMlyZqbN2+2WryYdLywFe8TpsmaXIcn/Tt4IgtTZN4Cg/YwYh60h3GMgDjLGzODwdrJci1rOpnWL26vsHC6TB+XXz4KlZiXLVvHXiQo2YYLVVRUMYisNKxSGlaplIY9RXr0qxH5+2jZiABlT9f6jyNJifJoR8K+RC9jBcuiHYw4t9SEur3kmhaazZnTMCPINKIbxYdWGlYa7qv9md1NK8h5LK/mTkRQYrJiEJ/VcoBXI/OAXaDwgoKCoqIiDAIOxvvWH+J58+bJKT/72e5t23Yj/0CqwKWtnI1wMFpDYxcFGq5KCS+8Ig1SzQ3W77XXJomZAvviDyGdfY2Ny/L4GZWGVUrDKtUXLqVhnpgbDXMln+AslV8ebUv0hoYT8Ui+4VUrDfdJKQ3bm2WAJoXzyLsEPq8fNVq81r2wY2nNEnmprp4lxSW+MW3a9PXrnZdfjpM+0S0POWAyeo8t5bzcX1rRTD5gHGrGjCT7Yvkg2PfQoXZerscNR9JcVxpWKQ2rVFlLkxIsuZBLUiJzGmZSIpMFfzw6EnvFKcuXRXUZ0jD38z6VhpWG+8dCunRwPHMmyXnNza3GQjpGGiBWRquurp6YEkukiYCqOAaliBmlwF4O7o+tHBZfT506jRt47bXkjc2Zs9DKoEePnh4xYlQma+A4OK1feNhi/U6dOh2Dg30bG9/AJ+Ww2W1ID3tPr0rDKqVhlUppmDrb5sxg7iBVVK0jbQVbJMdVdJnT8KAgb6Da4So6UWc8yqJryA3XvdgoKNzSIXAsy+CEdiVWoZ2ZlYb7sdwN51iVjJyHpCz3cvEZkwlkYrfcyIs3Me/QxCXvCkkzjoyv2MWKxSdOtMOTRh00oUycCFqVvsovvRSvr99dWVlVXFw6e3YpTse51rAEr0LrF9CMcdB0A9Zv7uxr3RCoUBru41IaVqlU0kX1i+1mHAuHgp9phTV/Gg7Vxf0qrLHexdNkbqKwa40dSNpJFazgmBQrUSTMK35x3jCoRmlYabi3/ZnN39DCedhFf5dVGrKrWXHJJZfgKkABushEZ2I3Yr5ctMdN2BdxhauumlhUVIo+IEuXVqGnhrT58Fn0dtNN03G5ceOSJ0YiDsIeGMfNr0rDKqVhlepiEwwUeRb6xXffoAubU/eNLGiYg7OmG2/BHDz2iz0EcbOCBNV5MBIawkprjfE/wk0mN0sti75Dw5xvM62jqlIa5k+MAViI54LzYKZylzSlc2x65hkHNRzg1+IFth07dh84EH/99fj777ffeOP0VLB4DXxfUG/6duKEib81Nc78+QsfeGDhggULBZq96p3hANY7Gz58FNi3qmqd13I3pWGV0rBKpWIpJFnrohrAYu2pXrh4KqVhWL/u3m/0a5ErCKQJVR1Ap70iRWRzcaLboGXyAfj75JPrnnpqXV1ddxlj6/zFRW+YvwDcGG3mzNLFi6tqa3Nn31w3pquRJ9FVdCqlYZWqv/y+k9KfqgEqWYjP2lMqpWFv+XeVg5VLZhUURgiBhnHmG93loUNHcSjUhdi5s2nr1t379iHAkFww57/oraIiuegN7LtkSdXatWaph76w4UOhKvP48cm6GUrDKqVhlapfLJUZ8P8M9SGA/i0rDWf/QAEMml61l8B39dUTuTeLAC6yELFYHO4vakT8/veC2p6L3mD9op4agsLwjJ9/Xpa79d1NSjJr9w2V0rBK1Y+q7Osz9AGckUCqs3cBcZXSMOX+X9TZs93AV16enDiAfV5ECErGhvVqsIGR3IWJi+JoKAmMFXI+xdRo/SIfPGtWKcoJ793b99nXbLqBwmqSP1MaVikN9xeplJaYHtYA8cATzCn5y+1dglGlNMz+zAZjJRLd2AfADXgLRAhcRqk0rJn78EOmBTwXvWGl3UMPLdywwUFegt00+tdG9Af0k4PD4SoGnZWGVUrDKlX/ykuIfYgXAylaqhX01PhXGv4U8uZGkTWvDWvsECxG/uHjj+2L3tjpLRJZV129DkHhWEyWu/WPDQFlgC/ZF9sjj1QVFSU5BvUrSkpK8dEwmfbf6vEqpWGVSqOl/MXH3320Nvqv9G+TARj921Qazp2xzJAN0g5A3pMnWRAt+cKdf6D1y0Vv9fVOba0D9t2/P370aF9nXwQzALsomkHenTt3IXiXyCsa+W/s3YWPI8kVB2D/EysIMzMLwpxjZu4wQ4c56dChKMxwDOI9h1m4qjAzM6PIeZknlWZ9q6G1Pd3T37fMOzPt8s/V79V7wAPbtu26+ePedkYa5vTTT5eGoYcnEOeN9eztHhDy5rOdfml4wQMMt9IQllu/pZQ4GuLyy/9fJfz97/fiqIcNCprj87OeFWG3PeusZrLO0Ucf066pg/G+u2axDydp2G3ZuMBiBs1kTdd1M6A3T3+10rQmqnjARsbSg9VDdd5W27b1A6cKXBpe+nEk2fRWSvn8578Y8feLXyxf//rPf/e7Xpxulnk3Kpsj7F522Ycy78YQ5kPm3evWxBuQedec/UWxNOccxLi0bnp7rpSS9++qffv2/TIu3z4Br1e7rstoNSd+sm6XlFJ25SahlyvZetR1Xd0DnhM/n3t5SMOLmc/cNE1eebk5GqUR3/72z3Nu3K4X78a5FlnMEMW7k3XOP7+p9Qx1wVpx2ZA07DD/+tzZdd10Oo2PVEwEnRzsxS9+sbt40OdYnMd9ZuraQDy627aNl8F1k2UX/8/f3UNKKbm/cNOt37mVthYxzpCGF9vfk1dYKeWvf/3Xn/+cCXilxbs1704OFhOY67qTV39PXqBLw2TkfcQjHjHZTETkGTCoXcmazPKRvoHI0LvzanwcmqbJe7wqWKThVcSsa6+97je/WWLx7ktf2kXYPfPMZq5ZLfNuLd4dVt6Vho3Cv/zyyw8cOHDDDTdceOGFZ599dv7kHe94x7qO63GGvbF5XPcv4wmrbdu6ixw/s+IardzD2nty3z3zwKrv9CIN53zmuPIOp3g3Pj/jGW3k3ZxgV8WA5cy714X5ZjWGnYaVSdztbnc7cLDIxOt3jPbqdQ7U26r5MF/9AJGu66wwSMOLFCF1rW74jxsU70azWubd+973oIKe885rIu92XTffrMaeTsPKJLIauObgT3/603VvOOuOZnsUUEpZ/cZwbl0t698FaThfccZWVpzDcMQR8zVSL3xhW/PuXLMa0rAyiRDfiX3i/Mm2bW3YwBheD8fXq5wY4sU20vCKq6MU70rDbDLBMfrnIgd/+ctfft3rXje2DRuwGmeF4eqnSXtqRhrefUjDZN1ehOD9+/cfe+yxtf/DDRMYQztdrgCrWY1LKfnP5YyJHt13AmkYaVi9YA7XGNWzFFAf+BGLV7PspyganoE0TH9Iw8okbnvb29YaPs9SMJ5ziFdQE5WFwhm7c5Fx3wlpGGoazpGBu4m73/3ukzSyGj6gaZosi4q0utQ+3fgnDt2VC9Iw0jD9MaqGOWA6na6gaCH+8looXKfcgTQM9aRJeuHWt771eE7UBrJ0YQXNcxF/lWAhDbMZo0HpgdnIADWnLqOEN9N20zQmuiMNAwD9HbgTmXhJzXnmLSMNAwA91bZtVi9kTl1GOXKK789AGgYA+tazkVF1qfOWVWEhDQMAvWuey8POmqZZePWFectIwwDAMI62zI3bJc1bnoE0DAD08Bif2tlm3jKMNA0DgOa5iMWLqrvIvzMH2vX0GDWQhgGAKI2oUyfNW4ZxpWEAIJNrfL3wYaLDmLcM0jAAaJ4rpcwO2/pj1PIv7C+QhgHAqWoRW7Oe4fD78IY0bxmkYQCgbuVGll3UvOX4OwdTKAzSMABonpuv7jVvGaRhWPg80nablr25AtA0TRb47ni1iT/YdZ15y0jDwOa7Jlu3gi0WgHryQ3xnIfOWN4nUIA2Dfu12y+YP/lw9QPOcecsgDcNi0/Bsy5aahgGiUHiyJmsbdvzHIxCbt4w0DAwmDQPkUWh1T9e8ZRhXGgZpGKBt2501z0X2rdURXdcpFEYaBgaWhgFKKTvr082uO6sT0jAw4DQMaJ6L8oYsctjWnzJvGaRh2DtpGLAcZfPcDuYt58g6kIaB4aVhQPNcVv12XWfeMowrDYM0DFCHxkUs3vraZRgQSMMw7DQMkLu8dWHZ7rxlx6iBNAzDTsMAtXlu02qHyL75m3NSneoIkIZh2GkYYDqdTtaUUjY9Rq0WCsfAuRkgDYM0DAz9VLUMuG3bmrcM40rDIA0D1KOCowRig8S8/hi1vVEoDL///R+/9KUD403DIA0DRK6tZQ/mLTMGf/vb37/5ze9dc82Nb3jDO1760kvj83jTMEjDAG3bZuVDZtwNSoqHu+bAf/7z3x/84Kef+tSXL7nkg5mA8/Oo0zBIwwBR+ztZE9/ZdN5yTqeDARXEx4V9wgknxQX88Icf8aIXvW0uBNfPP//5r8ebhkEaBjTPNU1zyOqIgc5bhlLKK17xyrh0b37zWz/2sSecd96LavCVhueBNAxYeeY2fTNMmLfMEIvg3/ve993jHve8zW1uv1EIloZBGgaIvd4adjeYtzyIY9Rwl2M6nZ522ul3vONdjjzylM1DsDQM0jBAbZ6rJRCZKvLncyidY9QYRBQ+4ogj7n73+zzsYU+slcHSMEjDAJtUVdY1xLxlhnsZx52N+973vs9//vMvuuiiuG7vfe+HPPOZr5GGNwHSMECm3vjavGWGWBwcl2jTNBGF47rNl21Z/PO0pz3jdre7w5lnPme7aTgHcIw0DYM0DGieW3+MWillxlidd975cRm88IUvev/7P7B//419O1NvOp1eEi668IZrr5kdSj0e+ylPebk0fGggDQOa53IPuG1b85bX43/snQdUlNf2xWeVf2/pza5YsAuoUaygtEGK9N57r6EqMKAj0gQRxVCkV4mEpkbRqJQ4CFixpMHTYJT0HhP+W+7LfSOjPDCYSDh7nTXrm2/uDJOoMz/2t8+5BQVF+voGzc2XS0sbMjMLPDz8tLQ24S+GtrZOTIyorKxCIjn3Jw7aA5qvWvH60vlzPPQ0dJSXKS1cwP+6ymbi4RDLRCaIhkkkomESiUSSsoGBNcAL2m+ZidTd3SMnN6uj49rFi3dQly/fvXHjc9yijh6VVFUdyc4u8vLyFwrv87GfX0BWVk5tbf2VK11/AASfa2woT4sXudnE2BrfPpR7r7X2a0m9yM1aab48Hn3or3wKCgry8ovQVEc0TCIRDZNIJNIDYME/OqT3W8ZxP2l8S0dHLy+vuKurj9Hwxx/fraqq3bIlJj+/pLGxRSLp+vjjL8HHWIDbkyfPlZZW79nzpo9PgIKCEszjqKiY0tLys2fbPv30bv/jiv2G1lBZlpOaEOhoLfJ0FLlal0X6nd2743ZD4S+XT/56s73/zkVedclRPPAjm5dgTXVEwyQS0TCJRCL9QywUwWIStN8yiSs7O9fY2LSn5yuGwh988PmRIycsLa0FDwonP/74E3bs7u4rEiVkZOQ1NkokkqtNTZ2VlW/v3ZsFPoZ/7OsbkJmZdeLEu5cuXbl379e7d+9jbpek5erlS1cvn796qfN+dbQ2lORU7E0W+bqI3G0D7c1TA93K4yOv1OTdaX771w9bUf29naDeIaouKUpp3mx+WUN2hiD24CAaJpGeurGIuBwZJCN0dj8eDeOJQQ+KYn8kEmmI7iJpAY4pHQFRRmL69Bnvv3+TZyRwnJHxpkBKMIBRt29/ER+fnJ9f29DwXlZWUUJCSkFBKfxj4C/j49jYBASOz5zpaGm5cPbseTxqKdQwXbcyO9CtPlVUkRZXmZsSG+CSm7C1PDm6IkN8qmJ/16m3vutpA9c+Xv3aLUlxt/Ux3fxQp1lRUQlvbDgjJvLy3iIa/qNFIg9YVsyk6R+2WNpPVqBt2cUkEol+FecfGtJb0JHoL4amprC+/ijyD4yGb978Ojs7H4DLORiWMApoC2PYxcWbLQMW4yGcROFRPT0DGxt7GMP8iZCJtjBQT+uepOGXG00wemULOPv766ejpSJLw6JdOx/1G+DatUKiYRLp6ermhhkjjb8Ymlj5m0Y02AiL2bPYxSC66EkikYYQPmqkPyjYfsskUkJCooWF9e3b3zLGvXbtM6AtAg+CAYF04Qd/9dWPwFxmDNfWtmDZuXMf4FHAMR7CeSSMbWzsUIyMz527iMrfna63TOFu5Zvfvp13On4L6qgo5FCk/w+nqu5dOD5aKIwCbX9RmeWwYe2nPd2yrI+9OfBW0U5HNPzUiUTXK5lJ8zu/lvDvnH3DUUs4iUQaercCAZPUfsskEiZCLFq0pLf3fm/cb8ZwX2npQZi+SEEw2EV1dX0wyBgWi5PgAQORQcBISoCAcZdBMI4FA5r16ivnkkQ1Ef7r586xXatcIwq9UZ1371YH+HV06/6IibdyMxys431cHjVEBWGJp46GSSQSsJXPOYIeI+8LDxjfajQwn0QiDT+jRfstk6S/hhQVlzY1SXjzHKZGgHqbm9sAtYBgXrCKpY1hieS+Mcw8YJzHAZgYZMwKiw2EwuUzZxwOC8h1c8DK6qign99vAbY+ofr53ao7JfsOBXnjZ8mOQwbKs166p5eGSSSadiQdnAAf4+OJLGESiTSKYsEqcDCNoCFJa9u27eHhWz/77HuGwrCHJZILx46d4q4w8g+RkbGnT78H6h1kDIN6YQkzb5jdchc5IihIW3HxkfDAEF3h/EkTLmclodHtCXEwBq4BhX9qKPpgXyKjYXatFVMsvvjih+7uL69cuYs3bGxs9+qrk4em4b17S4iGSaQ/U/jXKx2cQI6CLGESiUQiPTl1dHQqK68Gv/LmOUSHwcFohkNMArEHHNfXN/r5RaWkZGDZIGMYiMydYyxmqQn4ymU5uZuXK+13tkE6ItJIt6+h6J+iMO+oY7OEh194CvrnkBjuShN37IgWGevjjUVGRgOC8T6lC0MwhtirGZFi5ChgHuMKLdEwifTnScbuhWEM6iVL+EmIRCKR6Btn8eIlHR2XQcB8wDBYNiZmW1BQCLN4YQxrauqBhmtqjsAYdnX1YStFoh181gQIGLYxuJl12h2uqdNYsnCN/Kwwfe1LmYk/XTrxUIrFfAn0vd0/uHr658aKLw/lnkiKAteOyELGThw/1BZ89GYKOLjUx01/mQJ7V/b2nniTsjVjxmx9fTtpCAYca2ubY3sOwW96WmiYRKJOFz4gggcnyBImkUgk0ihq69bopKRUZAmQjuADhrOyDsybt4AxLrK/WVmFYvF+fX1jYO7Oncl1da1YCSOZjVRj3XKJiakY6Iv1WFNUVD57wquB2hoX0sU/nT/+EITt7QTCAn8RbEC8gR20JMe4aKj0lmfi7s9N1ffaj2LcxHCwGM+FJYxcMkxoAZMMDbe19VRUNKak5OIkm7Pm4xMHGxgHCE4IZPT0JiVIJApOIOpHljCJRCKRRisjsW6dCvgVzXN8wDD8XTU1DSAybGBgbnx80syZ8q6uQfX1x6SNYWyrwWISLFgMJo6L27Fv75tmmmorZ89sToj+/my99O5xQFswLgNfWLnodSsP9qwO88NdFO56qquW+7vjIXYGK2EYDycjgYAEi0Z4WJpXVx0yMDA3MrJ2cfEvKTmCXERYmNjAwFLwoKZOnSV9l2h4DIhEl7Gk9+kgS3hURCKRSPTlsnz5611dH6J5jg8YBt1GRcVOmjQZLi8CEohJtLe/7+8fvXatqrQxDCOZ2cbon0PbHL6VsrMLcOu0cd3RqOCv3ymTDv7C34UBjMFnlYFevYUZF3ZtwwQ05uM2xUUwMj65NQR30f12QhQaa22ctS20vbFiCAjmoPzjmWoYw3g1T1tr/p/W23unpOQQWv22b0/Kzy85f/4yvjFZn/rQwhpYTiydSDRMIj2NW3UgODEqljCJRCKRSH5+ATCAWfMcHzDs5xcoeFC6uma6uiYYvjbIGEa3HFiZ9895OdpZrFnRV5mFCIR0IgKWMIxeQDDGSsDBxe28iRPYK7/6zDOJVqaS7VuQ98V5nDFeuWy7h33ftTP/dIsNvCaiFDhAXBhZYWetDfhafLwtYJE8RBYRV2KlX4FomER6qsPEvzPaTyKRSCTS8eONLCOB5jk+YBheb13dO7CE09IyDA1NEB0GLL722iQHBzdmDBcW1jFjmM9TY0MnvBztdZYqgGsRWsD+FyBgFFAVvi84+FLyNga7DxVs3VRb8wnPPbti7uwrpw8BdoeDwihsa3d9z05MMk5ys7v344/D/xr18vKysrKCr4SpTbJfqUTDJBKJRCKRSH9xffvtd7Nnz0FGgjfP4fby5ffF4gQ2HI2lgVEeHj6urp7wgHGspibkxjAgmM2OQO3eIcb4iNbYiAsJIrAvOJXVpT079jnbIA2sv0zRYLmS2NwIHjCrAk/n5XLTGQ3LT5m4Zsn8ivRt3/W0sVgFTF+kgYeYKHwrbzcKPw6ucGqQT/8oaNzQMIlEIpFIJBLJ1NQsPT1TunkODjE4GOyLFjp0zuEWji9QFZ1zOJY1hhnIwh62MDR0U1cBCiOxwBvgcCC2MsYCbMKMKDDwF7fAYtzNdLK1V1mjsUyhYHv41abqqy21gGBGujB9MVsNT0eznSwKw2zGowgfI1iM8RHIGWN2W3ywf//wRTRMIpFIJBKJRKqrq8fICAAumuf4gGGkI5KTd8PxlY4Cz54918XFk5nEGhrafOgEzGMOxGqL5gN20QbHLWGEJfI8naa99GK2qz0e4gWEnTtpgt0mtasMdmWyxayAvDgj/SgbRQzC7slJRS4CsWOANXa2S4qN6R++iIZJJBKJRCKRSHfv9rGMBGue4wOGw8Ii2R5ybCsNTIpIS9uvpWW4fXsCVsIeLiqqY4sPHqzBMDWcPFx4wHXj+kEoDGAF9eJFrDS1cIvZEXCFd5gbrZaf5SHceOVwsTTjsngxm7nGi8eO2UQ2nIEfjB+B8DFQeNarr+BlNyoukjQ39Y9IRMMkEolEIpFIJH39zSwjgWgE93rBvqmpGbjFeRRCw5gxjFEShoYWg4zh69dvg5VxJjV6i5fGBo7Cp+O3fLAvEZPOgL+g1W1bk3Jz68w1hDie8uLztiqr3tsVC/zlTjBLREjXB28mYzQbKsfLCUOI0R7HivnKyEVg+gSsZbxgVjrbi2okIhomkUgkEolEIh08eJBlJHjzHAYMw+jFnDUWAsZMCYSGEZY4c+aSmZmTrDF8+HAj/OO2ZsnkF57HBAmGwn1l+4GqsIQRC5afMjnIP6qo6BhoONDUMNJQ91hkcPseMbrf2JQJWQ6G9dsi3sK3U4bwOtKFXAQ7r6Sk/Jj7YhANk0gkEolEIlFGYsYMOZaR4M1zPT19gGA0z+FWOg1sYuKgrLxukDGMZyFNkRMdbqq8PFhXCxTLWPZ0TBjbSkNfaDAQrtiXmHjAcMMGDHxAoxt7QZ0Vih8W7MZ6vhEdvGRYv8g/IErBJxCvXrxEf71KrE9gYnBESkI2XocXCNvPL2rxYgWi4RGLRCKRSCQSiaSqugEZCdY8xwcMg4AzMvYDQ1kUmFVEhNjExN7T02eQMVyUl//i//3vNlNDsG9P3n207c7eBeSd+uILggeVnJynv2JZpJHutZwULAMHK8hNS7YxQ+aBhx9QyAHzOcRqKprq6no4YOArW4yGPT29iYZHJhKJRCKRSCRSYWERy0hIN89hwLCHhzebpIbQMN+HGSGH+fMXgY+ZMczRedLLLzquX4Nk8OXd4hsZCe/FRYbpCfHcUK8QZt+Kxfufe+6F6dNng1znTZmE/ANsYOYf17zhi8wDI2BkKrApHZCa+9CZmVUgXW1tE9zFT6+qajp5squ19SNWOGY0jJVEwyMTiUQikUgkEunOnbuTJk1GRoI3z/EBw2ieEzyoGTPmxMbu9vLykzaGUY1Hjv/vf/4HQBbBBqSEWcz3tRee3yw05GGG3btLkJSwsnLHsaaKhs7SJR1JIoQikDDGesR/AcHspyyfM8fG1C4gIIY/Fyjs5BSAh9rbb+HHDSpGw1hDNEwi/XOhzxQbLVaOG5EyYSlUVfU/eZHoA4FEKi4uTktLu3nzZv+YkpLSUpaR4M1zsIfRLYeeOYyPKC09mJ1dgOiwvPxchqrr1m0cZAx/9NEXQOc3vAJ3urkluTjFu3t4O3gtWrRs5sw5Bw6UJCbu8fQMUFfXVVRURpmZWdnZuejrmy2Wn2eivNxLXVVj8YIYo7+bwYYqqv/6r/8meJhsbb1wK4vCsIc5DQcFBRENDyUSqa+vz9HRUTD+RJLdaJ5Ewt8KXV1dwWiLRDI3N+8fOxKJ4oRCHaAwb55DRuLWrc8QkGhubgMT87gw8NfW1k1J6XVnZzdmDJeWNjAePXv2PN+K+ebNz2/d+ryw8Aj+V3h4+PKn19W1btiwCSfxOgOvdt/QjXD3XTxr1rrFizSXL7fepO/m9gaLQ7i6eiOYgUpL21tcXAH4rqlpFInStbQMhqbhuLg4ouFHikS6evXq0qVLBQMCEweR/tLy8vJauHCh4DfhT7//QZEIhfkHQhCJ9LtlZGQkYLpPcq79Y0TXrl3HHAmGp7x5DkwM0n377cMAXD5YDTx640YvEgs2Ns6MjDU1/2EMI1VsbGwKexgr0XhXVXUYl+Xk5OQdHJxxEhUWtgXBXxsbTzm52QMLavGCCE6g8CPwmqz09S1wF9q1KwMLUPCV5eXng7Mx0y0kZAe692RpmOeG16/XgkNPNEwiPVy4GCr4TadPn+4fH6LffIiGSUP8DaEPhNES5W2QjhAMaNKkSbgdQxfr589fkJV1gDfP8QHDjIBhD6NtDge4i/8uS0uXqKhdMTFiZgzn5lYyGMVOdQMfsx/iifCSAbuAWvi4K1asAfXiLio5eS+a59asUVNX12J8jJEUgFcArr6+MfePDx06w+IQLS2d7Aya9mAYr16tIhbvBU9bWDjL0vDx45cYDeOJRMOkh4s+p3DdRDAgfP+Nqyvm9JtPeno60fAgkYC//AOhvb29f5REogCenp5edHT0GKLh8PAInpHgzXN37nwHCG5ouE+WoFjOqeXldV5e4atWrYcrDOpdskSxra2HGcMgY5RUoOIOGBd7c+TkFPCTR4+2wVfmMQnUhQsfYfCwqqq2qaklI2asxxlALbLF/ImwhBnmAoVRYGJZGm5oaCcaJpGGuhjKP6dwwLZqHA8ih2bu3LlonmtrayMalhGh8Oj/bkyiiwzBwcFNTU07d+4cKzTc2XkecyTAprx5jg8YBtryXTYQgYDde+tWX2pqAVxbBrh4ND09j5HojRt/wzImnEfFxCTBGJ46dTo/D3RGojckRMzPIINhaGiJmARjbu4fYxnsZx0dUw97eztzM22h0MTEhtMwHn0oDVdXt+KlGG2jc5pomET6h+D68M8pQFL/eBI5NMePH2+DiIalRIJpRCj8hESXodoGNFZoGN4B4sI8I8Gb5z788BaM4WPHToFWYQCDUFlGAoqJ2b1mjQryu9LGMMIVyFGAmBGowHlUc/M55B+srNx8fIKYi4xqaHgXk4BVVISGhmbcBkb+Yc0adQya4DbwiROd8aGxeqtWaSxbkhHqnZkUlSYO3x4ZkBwX6WhrEx78hrmxielmHcFvsjM39nd3QjnZ2tpZWdtb26ipqjhamy5VWKS7Sev0qRNEwxCJvvYoKDx+HZo2iGhYSiT8SswvE+F3p/5RFYkuQ40tGvb3D+AZCdY8xwcMY54agFg6I9HdfVtVVejg4JuXV8yNYb5vM+NmnOcxX5i4Gzfq1NW9g/OgZ4a5MG5feWVCff0xHpOA42tkZCv4TTOnTZOf+JqLhuqFzISf363qv3Nx+PXrzfZfP2zt7+3kZ3o6j6WJwxwsTa5euUQ0PB5FoqAwOTRcRMNchMKUmHpyostQY4uGW1paeEaCN8/hFqOF4QSDg/GfACBGXgJn2DAH+LgLFiySNYaxePp0OZ6RwF1szBEcvH3RIgWcZMJLRUQkYMQEP4OfgpgEssXIB2/YoGFtYrJEbprV6hXYtuNS8rZbebu/qMzi9XNjxc9N1fdaa+9dOP7L5ZOgXlY4vidpwEPYyu7vdbQUa6SZuFvSEGhnEuhsAyYmGiZRUHjciRwaomES/0sCNOGT1OgzYdRFl6HGFg1/++13L7/8Cs9IwA/mA4bh8p44cQa3bBNm3AoGhCCvULiZucUDM9TypY1hpIpZIgILIiNjEZNA/9z27QlYzM7n5pZgmkRgYCz27OAxCfjH7MXlp09dv3jeNmfrkqigfb4u6W62aY6W2Mqu1McNcIw6uTUEiPzBvkROyThAffRmCjaxAyVzRGb1y42mQc5x1/FykbvtfSa+2Ek0PL5EQeEDBw70jyeRQyP7tQQRDRMK4y8JNQ+MuugyVHZ2dhvTWKNhU1MznpHgzXPIDSP+CzOYETC3jVFicfq8eQpqapqyxjA4GL4vW8YHR8DulZObBarmMQk2J1hBYcX+/XlsWWV5DRrydHWMDxbmf9fTJpt8+Pb9lstHSs4U7skXvRHnbG2+ca3J2pVO6uvTnK0BysDlxsTo3qZqZgMPs+601u3ydQp0sAQTEw2PC1F/DAWFx5tD08ZENPzkRShMostQ9fX1bdAYpOG6unoYwxx2AcFswDB64ODyYuc5FmzgC9h2cdOnzwL4cmOYh4zV1NRnz56Dk8BoOL6nTklyc+uUlVVXrFglkFJgoIjNjjh0qG5/xh6lJQtjwoI/bD8pC6xwdhF1QP7hl6unEQUe9OjVllpejKFHWqDnr1tqyrYGiLyde65fIRr+y4qCwthnlYLC5NAQDZP4VnNPYv4oiS5DjUUavnu3b/Lkyfn5Jbx5jg8YRpAX0QjcSod9Bxi3HjGJ119fifXSxjAcZfDx4sUKOMn214CpvGmTASagzZ27qKqqBudRAzHieH/P0BifoBUL5++ODW1vrGCRXyQcEPNF2BfBXxAw7uKY1bdv57EDJIY5GbOI8EPrXvvREZnEeANfNRRlBbunRoeCH4iG/yKi7zzsh8mDwufPn79K+ktLAA3p0BANk65fv75gwQLBgIqLi6+SfrfoA0f6MtQYpeFNm3T19AzAtbx5jg0YZhyMW4GMkO5F2FfWGP7kk2+k5k4wtv6uvPyknZ33smUr2BnEJKr3Z/rqaKkuWXAiJQbIyzreZOvrt3J7CzOaxFv2OdtEGOraq66xXauc4+V0ac8OpIT5sh9qC/rK9iMxjLgwjqVfAWCNuPCITGIw9KWsRHsd9YriQjAx0TBpbGvlypWC8SfSEA4N0TBpypQpglEVicQuQ41dGs7Ly5fOSCDnwAcMsxFpmDHs4uIOXBZISVHxdS0tbVljGHdnzZqTnZ0PIMYxSiLpQqZCXV0fHXKH6w6/YWe1fOYMmzXK1VGBsvgLlgXmAm3RCVcZ6GW3fnWwqX59uviTzncYrX7QUlu2c0uUlbGnuira6a7v2dmVJu7YEY12up6c1C/fzgPLAq9hHku/LGgbLvJITeKySD/7TWo5CXF3/9ZNNEwaqxKMS5HaHi2iYZJgtEUitUFjloa7u3swUo1nJHjzHJgYCQc2SS0mJg7pYZZ8wEQIV1dPa2tHQ0MTULKsMYy73t7+uIWpLG0kT5w4OdLbS0dxcYiuEO1uOHllXwJDVRi6HGoPhwWAcbEgysIwf3t437UzjwJWPJS/I8JNRyPCQCfT1e7+KOIHm+eQo5AdsjYikxjr8Sz4xCnutiJnq+4L54iGSWNPlAscVyIaHo5I9Ic+WiL9NWh4/XpVnpHgzXNISoB9efNcUVE5X8AGQejrWyDt8FBjeNDciYsXPwIKY/85Kys7e5U14F0UhqMh8AArF9mGCwkidjLXzWH93DlGysvTgtwlDUXDx1YEjjNjgrVeV8SP1lFe2lCw+wGXt1sCt5hjMTbvgO870uAEnvjlodysQLfU8ACWnSAaJhENk4iGSUTDpDEvouGMjH08I8Ga5/iAYZb95f4uDjBnDT7xp59+hdgDWuLKyqqYMZyZWcCNYWYncxTmW82pqmp7m5sAguH7ioz1Qb3wgBkEo8p93RWmTfE11OFxCB5XGFG8ARtq1O+LR7ahIi3uUfkH1pYHwB3phnbo1QMTwyfWWbW8Ij8HTEw0TCIaJhENk4iGSWNYRMNdXVdfeOGFysrqQc1zsIfBwaBh5CJgDyMjAQgGCjMyNja2xqw0zIhgxjDONDdf5zlj3F20aDEQGYWnICgMFBaJ0tE/pzxPfo38LFjCSEEAixkH57jay094FSjcmpcmy6BgVgQVMGWCYzEO+PEfX7CZ4THDJI6xNdFRWd0uOUs0TCIaJhENk4iGSWNSRMOwNpWUllpYWHMURlCYDxjG+2xqkgCFBxm9V6/2mJg4YHeMmpojzBgWiRLwLMbQWIwzQGfANA7wdLwOXGRs3bxr1x4LTWGGgzX3gwHE6+bO+e9//7cwPSEGR8B5BWvycAKmQEgPVpMtlgD+Uwo4DkY/kRSlNEcuNti3p/sjomES0TCJaJhENEwaYyIaTkhIQkaCZX958xwbMAyQZYEHvFtwrXQIuK6u1cdn69q1qo8yhnFSmp5jY3eDhmfPntvZeU0s3j97yhR34QbUxiWLnv2v/5o34TVPjQ1ITbApwrzXTXq+BBrskC3mhU2Y0W+Hg8dIAKMA2XCaWafd7ymwOEsSg4l1VirZb9Y+dbSeZydkh1ITDZOIhklEwySi4adIJKLhpqbmZ555BjskD2qew4BhzA+Gp9vYeEYgJbbdRlFRFRLDNjYeJ0+2yBrDyEUYGZmyqWoMoLu6/ob1WlqGmzcbp6Xtx7ZzaKfDPswo501CHaXFrbERcIsRI5adHIwGO4yY4C4y1ugvU8BINaw/uTWEzVMDKLNtOBCoABaPKO0A4xkTJx4bi/FERu1sjhsbOqE0Z2aqKOLqpfPt7e3Y9ZbDMf7Esd0PNizEeaJhEtEwiWiYRDRM+pNFNAxKmzp1Wnj4Vo7CvHmut/dzoDBrnsMByBiMyzMPUGZmlY2Ns6wxzJ64cuUqgZQMDS2x67KmpgHSw3hNvJSbmzd8ZTw08YXngMLgWhjDJ0ShSEoAbTkB4zxrtkPIGIsXTJsSYmWdsCU+2M3PYP06nFGcMc1JZU2gtga25GjeGQV6ZqYy4hZwf4fDuKBnBrIMix8jiAyPGU/Hz+LTKnrLM2vjQmzU1s2eKYc3yQlYICV5+bn+/sE4STRMIhomEQ2TiIZJRMN/jnx8fDETjWckePMccsMwgFnzHN4n4r98Aaql5ZKiorKm5uazZ8/LGsOs6w7nGSjjudh1GS+C/jkWq+B1+nQHzkOYIwGvl0+WYBCMUcTzJk5gC4RrVdxdgtCEB4MZtwnb94V7BphoqC2eNSPcfHOyj2NauI+HiR5bjE06oi0MC9/wgk0LKkWIYjiGMTiYp5MB0+DaEeUowNO8249727u8HQ8cOIB0xOHDh/mu3dra5iEhyShn5zAUaBiPMvOYaJhENEwiGiYRDZOIhv84nTp1ChmJjo7L0s1zfMAwb55DgWg5Mf8/e+cBHMWVreGp9HIO7I6zLWeTcSIPQSKZJWcYLFlG1moJJoi8yGQYkGQJVggztsgi9BMOMsLsAC6TxA6Ob43GUSSZDZSX1WZK9d6P/vWt5ra23Wq2RzCcU7dUow6373Sp73z65z/ncmnlwYPHDRo0XBOG0SgMQ0jWahLfc88Do0Y9C2FYbaTzGEl4OB3SLywQaDRLUAbu3KYdCHjZsuL16/csm7dy0jPf79m+PbaP79sTtX6jG/M/3rGOPgczs579IIKSw9teXDxx9GAc3PaBJNh5FZ4CVXmwvVSslq/DT/zq0IVsfg2ehpMYAzAbhQcMGIAtqanTScNs4pSQEBq+YaPGCPoYSUHjjNp8ORpK8jECoWit0LDEzU7D+pNy7VFXGztohDdFai4nwP1vwjsgNAxKS0pKWrJkBcFUJc/B6gCzBMRdlTzHUGWG33jjbQi03bv3/fzzcxSGlyxZTRSurv4VOLhly9aQhwHQdAyDnnE8Skncffe93MLGWsWwW6DnJx64T10l0LrVhGBmTs6LK5YUzcucOLRr5x4tH9k4LbP2+BsurL2x4+W7i1eeOfZ6Y/0PuBZEZecMbXUk71w6e8nCHHXDz549yzcIAhYalhAaFhoWGpYQGnZHgUZ2wF/fW4aR2DTs/R0QGp4wIQPWXlCpljxHqwOT50jAMEuAjLFFrasMr8L8+YuVMHz8+GekYWI0S0+wk3opNAM1iWfOXBYMpmEjK6/hMOxCgTZQMl5AIQb+gozBx2gLf5jXPOmeib17wixRnJmKXDoKtHFuCogbJRKrNqBvstkTDMvEFe5/orsZhdetKxUaTpAQGpYQGpYQGvY+LtcYGRit9yyY+HdAaHjv3gqUVKuq+lJLnkOBYYCsSp7TqqSh9vC8eUuBsMnJ/XFYg8IwTlGeCrxAP/fd9xDcDgMGjKL5WO1as2Yz7BM4fs6cF3CVd96J7tjx2vLl63AwNmJlZhgnUDsiWrgUMGr2IYBK8SuXkUPDr8regJ9AWC+AGETeKJH4cPnmAf374lZrNokRI54z0/CmTXuEhuMaEkLDQsNCwxJCw0LDQsP8yj43twBUqiXPscCwSp7Tlts4ffoXEG6xrvLy5fkNCsMAaJ5i6vYCdN/U1EmdO3dXG5VNAjJz/QN4Wm2HI3nkkDHPJXdDIh0KTYCGTxWvojoLizAaX9s36LigZMKxuTlxDCvUJm3jiqThC1uL0JyLxDMmPoPcOKtNIitrgdCwhNCw0LDQsERThtCw0LDQ8OjRY/r06Uf6VMlzLDAM+VYlz6nSwlB8qQTv338SCNu1awrVX00YJhzv3RtR3fIU2CruvPNelJXAAWw4/aOPqknD/foNVtsPH34PG5Etlz9+FKqqoeAafgKLscqGWnGDVFq9IR/rbmAXV99giWL8tDbFxygZYZ8Dh4psarEPa0PdN1wO11VOYhsjMjL5cCvMZSJQXg1b7ruvOSFYaDjRQ2i4NhYxjF2hoN9njubB0FbDOBirrdN9cDXRPZbjEf5gaJexJxK7pLOm+ZOA2STGehjp9GtFYgpFeZjlGinZ4V2l2QGfCV5tjmSH1+ob5s2xf7NaP0mh6OUrozKdxVPWVNb8UWhY4sb0DVuf5T/WRMv5LFsfjYrwVB7ccASNmsY8Ys6fMheTg8Mn1/1Q43sHONoEo+FXXim55ZZbT5++YE2eYzkIa/IcIyWlD1AV7t7i4pIGhWHA8cKFS2kXhkiMflBBglbgf/u3f7d2iPLD9QtwLABt41xTFd6WTwc6rR43kgXXXDcwNJe1c25vYPYbCqtBFbaSMfkb3dI1wQXwcDBO0TopXD6nsCDffNtRbxhvLTl5SGLTsITQMLi2siQ7xfctkZJdUllTR0KNhO2PZwSyS6I4Q/8E3RU9bH85zuN1NYdzg819Di4TilQaNh3y8+StWK07Gq6NvaU+ZuyukPtW7NLVn1JTw6WzAw3cyHCsLgG0YQmh4dEhI0wIdhlgwcY/YjZPmfvJweGTe8n9UON8BzjPJBINV1XFcFFAqjV5DvIw6kVgL5PnGgwsp9ynz0CrMMyKbNiiPMEAXObJIUkOAD1x4jTlPMaRBw4cxhLNWIVu4MAxGzZsxEbsgvxcj8WzeS3WXFNl1wDHaIuGD0ZZYtRfY0tP7tajVQs1vOGdnswZNhByMiwWBOKPVi2Cpgtm1XRcd2RMeRgNy4KQs1XjGnjE4t+dPYnBwBqhbrtadGPs2EmJS8MSQsNA21MlQb9ZLzFMIgRUn9cBvlepFOEZgat+L4+aFQiQslKJKPfmHgYRWz4S/IHs9UqYodJsmD4P/KODo/1/Vov3EKkRdiDOwSgNm9r11hB5miMJf1TrnIb1m8P+lUJjuQTvnnHqa9WPOsvgG+D9rGAPQsMSNz4Nm58M/pEzLsUipXwuGP600sqduk/A9SNGcrV5ys6E3EwO3/bklv/PrpCLoepOiXjcATXPJA4N44v7vn37ZWRkmVEYmi5xFkiK8UDZVbUgrAEHsGGUK2H40KGPcC7dxjRUXN3z77D8MvLknnpqOFdvVg02CSAysvEyMqZwi2onTsRYgXjy2LSH77xjbEqv+Wnp+VOmbVuysuNjHbF91fxQ/qqX4b5QrVevgRwe6hn/27/9B18P7dR+6ZhhIGks2kwpl7Zj1QCv8E44yaKDgfgPFdvhxwBbk4YVE2PBPCCyhsW7i5bPmDoJN1yzSSCmT1+p0fCRIycThIYlhIbrzhlpaiIO5ETItXpcOhXmURrOGmb7hK425wb9lk8aHUz1+EUku51Z3JgdOVfXQOfVRlpzh4PRRpJmVNc5pGF1c+z752e/obSZfotDk9kPfw1Fv05c37CE0LB6lu2f034zZgzXWdDtI4ZnCmOwecq4t7GTw+jgwGYN93lNQ9Vp2LM7kNi+4YKCwlat2sAjoSXPwSPBBDioudR9qdTCQwwyNnsYunTpyb3YmJX1vBKGcbAqJWEqQHGOtYTbtHlcbVSLboBisYvZeOb26qtHWFMC/gqtqWFgGTxIztgCnobdAjIzt/MYuC+wEZ3gGCzjDJ0Y3gYYiMnEWoNsbJMSBw6GKoxlohUH4wX8Emg0LqNhCxp+xYrQvMRjrR6BGGy1SbRq9STwV2hYIlFpmPTpYD6tOxVOuZqHA7lRbeK2+Sz0Z5Xuykn69q/w6i5FZqvL+LMjl2zyUZwPhiNRR8Z2OqFh3hwH/TNA+/189l9WCg1LJAoNO3iWtcc5KRB4TGNB148YDj4WWWYzBo6w0ZOD3ZPrfqg8mLOW93cgMWn43Xffs6a4MXkOTglt+WVrO3783by8Nfv2HVLC8P79USUMwy6cmprO9Dgz8gJPH3mktTl/DvqxMhOjk3HjngZYq5aZOQm7IBujAAV+xYnwKO/a9SboFsd369b3mWemmKtSjB8/we+/LT19KrqCCI2qxqRhBdAwYwzv3B7F2siy0ImZdQfABR+bmZiCMfD3z+2DyOUDu5mZh6Q9/KQGbG0gYCjESjB+Y/60fj278Z5rNolBg1KFhiUSl4YvRbL9zuZT/bOtXXbkF98uPMfCKd+QbYdAh2bfvE4Jn6qzL+ygPoCd0TAH43Tk4Rcd0bC6ORxwI94sQ50oNCyRqDRs/xfOIy2hWND9IxZYHMq2GYPpuu2cTw52T67roXIyUbOW93cg8WgYHol27R6dO3cBIFJLnlMFhpXrF0yMptDW2nDkD36gC8OG8RqEZHqFccCMGXOBsMDTO++8JyPj+z5T0ExM2VgLsiyot6xsn/mKRFvsWr58rTYSnPK3f/t3+AmFmHozYPoqUXlj+eopU2EphhFZS8uzyr1WUGaDSxjSL6iXRxKp0ZTkjBdAbfSG5UJW/HDJhQu/+dOf6jSbxIQJc4SGJRKRhrW5lXnJjagQNCwc+32jipYx7DHXiqTOaLgdBuP4c92fMmPqKAc0rH51H+xfaFgiYWmY213SMPe6iqRhwWE2YzD1PMz55GDz5LofquqKs5b3dyDxaHjRosV0QWjJc1R2UfwBIzGvmYwjQcOgW+xauTIXP9UuqzBMnzE7J0yzQy4v9/zzM9W5uAROHz8+k1aHcHir2sj2wAMPcz2O8+e/1oock4Z3796nNOZ6+P6euu2QjbdseQ0viopKo9Hqior3zEwMLl/4/CwYJ1DAGDl5Viy2oWTaJKyOYXDzFcH4xzsvH3kVhgqKxF0femD37oO8OV9+eeWe0Cbh998B9hUalkhYGuZc7JiGa6OhgK5tXBc0/BQG4/gDD5cPDvt2Gv6alxAalvAmhIb5FHtNw7zWNdKw/VDd0rCDboWGKyr2cUk5a/KcKjBcXBxmdWGrEjxmTBp2seyDJgxDWgYEc+E6LX8O5Aqu7dGjn5Y/B3sDwBS72rcP4FztLMjJuBZWrSPssq1deyVnji5h31+Ol17atG2bUZ/bd5zDe++9mgMHfrpjxyEzFhfkluQ8l9XhkQe7Nn8QOq4qQOG8EZQBvqqsBFCYS+V9cujKAHh1NpAxh9e1a78Gafjkyf8VGkZIiDbs3InhOQ17pA07t4W4YAWhYQnRhl08Yjw3jjTsfqj6rOX9HUgkGr548SI8EiidpjEuHA4sMAwCRsvKmozBaEUh0I4de5dvCsZiqzD81Ve/Aa1qujLae+99Xu+RSGrb9gltFxfdgNN37Nh0y5AusJ7xyJFP86LmtDnsUtlyDQawnoNBVxyeaocPf1pWdlQBMQ0VwWDqKwWr2j54P14P7/g4fBQuyBj5eXBQqPU4wi8u6tmjj/nSkyfP1Wqrae3s2a+EhiVuOt/w5egynymmuvQNe0DDzn3D7NYIO/ENc/AubHnxp+G1a9cKDd9wITSsP2Ie0LBb37Dep/1QXdOw3u0NQsMHDhwYOHBgHGh42rTpVo8Ek+fwk/iItDaOHGUlwM3ASoWwGRmTaV0AB1uFYWxp2bL18OEj6TM214UAdPbuPahz567smb5ktFWrXsKu4cPTFixYiqubW0mJQVqFaZhWDTa4I6AKg5LhJ7ahYRzJeskwb3CEWqusrH799UpFw1OmTFVZboWrVqp+hrZ/rLFkrGpKzBs/PDNzmrriyZNnVbeTJy8RGpaQmhJaOrOLmhKIYUXh+Ume0bA/zThX52wkgP5zjiqsaTUxjHN/vA5p+OjRo9nZ2TwYBi+upSlxQ4TQsPUR84CGnU4O9jRsP1TXNGzt9vqn4bKysocffjgOy6Pu3r2bmGhNnlMFhrOyJjVYXRgbCwvXMdcNLxoUhqElW8969tks5s/dd99DmzeXglABwcyuY+UH8GizZv7XX9+HAWCv2vXEE52xC1fcs6dCW9sZvgvIw/RyoDdzGzhwSCDQnZIwL6Ro2No++OCMomH8n6DdLmDxxo0bnwmOUW8nrXsXkDF8xqhb7ASOn3z4/pycXHW5zZvL2Y9akFloWELqDf+xJpITcF1vGEeGKkHT3tGwbdHTc5HZKWbid7r6hlYVPzDbYDV7+6vE0TesFBpEeno6vlWUJ+UGCqFh948YKzba03DjJwdWCrf2eY1DJeNy1vL+DnhLw/wairFv377/8yywFhouoXkkmDzHAsMsyLB6dYHvLwTql6Fqb9euPdTicxMnXiUME2RholA2XxyDxeq4/pzKnzOVhihjdt13v3uL2UGB1zNnzscuXA4LdqhdSmnGKRySZlDWGvmY2YHWhnf95Zc/VzQ8ffoMmxIchw8fLiwsGNC3l88Uj9x2KxbAU3zMhteo4IYXWyZOwDGh0HqrTeKpp0bfnDQsIWvRvW5aW05b/h4EXGw4X4uOp8x+i2vReUnD1gWx9JGotTyc0jD/Dahco968vjCeWijKdBUMYvmyYDOPaVhTaFAE5/pWhSWEhpu1D7T3W/C0rvbip41/xHKxbrtjbdj55GDTp+vZAEOt0ywZnt8BL2hY/xrKu7868tzw4SOaN2+BJeJAq6pcGnTT8vLjixatoh788subQbQ2NIxCDUyDozB88KAuDMNcoSXJocQvLA1oPNHcWPMB0a1bT23XwoUhbIcjIj19ooWhI3Rr2FdERsObsqFhbGd5CkXDDo3X+KfF2Fm6eMHcKWnje3dsr92lVkl392zTSv06enS61SaRmjo98WlYQmhYKbkl9kv5E5RLMLUTkSvUSqF2Ecgu+WZa95SGs8NhfFQ4XN/fIQ07uzmaWL4J/xjEwSmhKzQS13kIDePI8NaQ/pAye7fRj1hjnBIdHE4Ozt6Xi6GaorbS+zvgCQ3H+WuoV14pwYUqKiJUbWkh6Nu3f1raxLy8Ddu37y4sLIJsTESmSRfQDHQG3ZppeNasHCW7Tpw41SwM80gt8e7IkZ/S0vDQQ825RSs0wZ6LijZoe4cOHYvtt912F7DYvB2l1rg0nTWsi4lQPP7ii68bFIZhEcExOg27/Wcj9k2oLeFwuD7h78n163dGIh/QJsGwQrBqv/51bcLQsITQsKZAGEoJNmsVhlmsMMnGODycnWKZr9cbhnmpfc9puP7IS7HInqsGT0HINBI3NGx/c9T9MSiQe+4b9kah8T4khIZxJBRZ/RFidZrGPWKNoeGA88nB+ftyPFQ9PL8DHtBwnL+Gwt9zg6YCLLQBYRjJanl565AM16ZNOzCuJh6zwdELzMXtwkZNGKbIyi3/+I//hPprSMLj6eDdUCjM2mq5uWu0q7///mfYfvfd97ds2cYKytiF1r//yL17D5p3Qc1VNgn4iZlXp2pQJCf3xyBVjWS+a1iiGxSGcYx7GnamIvtM8Z3v+PGTCzJbU+hUw4lCwxJNTMMSVnhNmFBTUhwUGgmhYZkcJNSc07RfQwG1+/f/Hg0M1nbx4u9gckCZYSAjv81HVtzmzWX5+cXgYxQdAx8DKGFIYIFhqzBMkZWe48mTFwBVlY2hR49eK1ZsAG4ifw7eX4sXIhf2ialTX8jPL2oQlJF7h5+AWq1YGzbyKtyi1XFDn+PGpZOSqVVjhA0Kw8qF7BENI+A2xseKzxJk4hEjniMWx5+GJSSEhoWG46/QSAgNy+QgNNw0X0MtXrxYLZZh36xwjHbs2Kfg4+LiLYsXrwIfT5o0lQvLvfnmO5owDDwFjHKZNyXfwjQMY0P//oMwAE39xS4cPGjQGCsol5UdAArjRGTgabtKS19HTh4arBTarhMnYkroJQ3zhY0wzAoVPAUFN7zT5ocOHeazhKovgaS6rKwF8aZhCQmhYaFhTaHBf/CeXVlCaFgmB6Fh/Wuo+PzvjRphzGyj+UHDRxdwrPjYLLLCXFFPdQ8h6Q2Mi5pooFIWA8YWtMcff8JkPr6iN6O+BKunQce1XnfXrrexF0i9evWPtF3Ll69l55CWtV3gWkXDUJTxlvHixIkPbYRhRcNewwC+BEAlaZ9tAIuTk4eg9Ec8aFhCQmhYaFhTaDj7SEgIDQsNezPn6F9DxW0MBQWFlroQqRB3YX6gtffa4Rjm448//urtt98tKdk+Z86CkSPH4iodOgTGjn0OOXA28AcGhaW4T59+WsHgzMxJKMfGwhFYVFkbw5tvVkJ7xukQiblFW+MDOM5iw1xJ5OzZixoN4y1oirKi4Ti4VvD/Cf4A8Lnjs4aafLymYQkJoWGh4XgqNBJCwzI5CA032ddQ1IZtgzXINGewazim8opfDx06+dprP87L+1GvXv3uuKNhJlYOYy2oKLNwhEJk1LtgAWM4KAiv0egpDBhMrxp9GiBs1L7A8LgQ3fnztWpsLH9hdRvHi4b18s9Y2iM1NVV778hd8ZyGJSSEhuWTKZ4KjYTQsITMOU31NRTFSF8jg+hJZ8W1wzHF46qqCxSPQ6E85tvZB/PkLJu5bsUIKMdoWA9P2wUOBg2DpFNTM5jqB9bXig1jhE1Pw5bSE/gfafLkqfVv/N54+4YlJBQSxSRugvAxbBUaCQmV6R+TkPjrzTlN+DUUaxq4ChtnhXs4pnh84kTV/v1HN27crlZpdh429YahHAOXi4tL1EJ0KDZsIwyzZJtGw00YVVVV8aZhCQmfxE0W8VdoJGRakJBo2q+hAHluB+7cWeEejtGwpbr6V++8897Ona9hGQ5qujZj4HIeDQay66Ar79xZhitS50bnNsIwaRgMfYN8UewBDUtIMMFT4maLOCo0EjItSEg0MbRQpfYu6KxAWV+Ixy7gGD4KDY6h4AJhP/ro9NGjH0A8hjJNlde5isyR4AUGBinaRhjm2tHwV9zUNCwhEZO4mYIfSxISN9W0ICFzDisYxCfgrEDBtcY6K37xi98h3Q0KsRWOKR6Dm3EADlMLR6v++ZrtJz/5EGUosB01jLkQnb0wzJbgNCwhISEhISEhIQE0R7IEihjE+dsPqLnKWQFCvXY4psrLmm4vv7xt3rwXwN/0b7DxWiw2vPv/2btPaLmxM4Dj4uacmCPL/GzB13gLEz9pYqbiQMuCRNJvGlqhbUpBq+OQ9DrpxSwTqNwzctG+Mh69tprR77ftnXllXUd/ffNZ+s4Pzw6G1TAAAOk6Bn3fxxirqgohZGcsbLNifxxPr+n23ntfnV6z4qc//dn4Mf/4x3/3fP10DeO11zAAgOFx27aT4fFyNyv2x/F4TbdPP/3d++93T578YVy02P8F0+3oLrjQkBoGADA8TnEcQljeZsWMOE4fsP8rfPjhk0uvMq6GAQDYbrfj8Liu69THS96smMbx/sHw9AYcahgAgHk3Fp4Oj+94s2K8Vd4hmxVPn/5PDd8FAADD4xhjXddFUdzlZsV4q7zJZsXsv3/xiz+r4RsGAGB43HXdODy+swsej5daGzcrDr9VXrod3QnWMAAAhsdnNivU8OIAALghSJ7nn+NmxdOnWzUMqztBr+u6nCl9SvrEAeASbdvGGK+cFLim2zg8rqqqKIo726x46613X3/9TTUMqztiZVeSPnEALmLIN72qgJPnY+Ru0pvNRg3DWsQYs514mOnHD8BnmedVVZWdk+e5Z4wj4m7SDx7kQ6KG1wY1PBxMDZ8Hdq5ijC/WPUMIfd+nB5umyUa7By1OHAV3k66qSg3DodQwQN/30+FcjDF18HSGN62TqqrSIwMLZng8fxVQDYMaBlZlfumOxWxxYvncTXr+0rAaBjUMa2U14swWxNxP6ft+YEncTfrRo0fzj25qGNQwsDJd1+0Z9M4aJ6e3LU4sh+Hx/KmwGgY1DCtjnHYjS8ApO/asGgNqGNTwsgBnLhBRFMX1LxBx/jIUA6CGQQ0vELDnZrmpjGddgGLPl/LEAmoY1DCwxAWJbK80J571nLMvrAE1DGp4aYDUu/EiV6vhEEI8z/YwqGFQw8BxuVoNl2U5AGoY1DCghgE1DGoYUMPrAmoY1DCghgE1DGoYUMOAGgY1DKhhQA2DGgbUMKCGQQ0DahhQw6CGATUMqGFQw4AaBtQwqGFADQNqGNQwoIYBNQxqGFDDoIYBNQyoYVDDgBoG1DCoYUANA2oY1DCghgE1DGoY+M9//lNVVXlOCOFqNRxCKC/S9/2wKIAaBjUMtG2bXS6EMBxsDOjLFEUxLA2ghkENg9lwWZbZRNM08bnDj2RJ+uA4ked59lx6e/xSiwOoYVDDQNd1L+I1vdG27XANfd9P58Qxxu12OywWoIZBDQMpWJummS42pMPYNSfN6e30yAAcBTUMahjYbDbTnK2qaszZuTEdQjjK1QhADYMaBqarDnmexxhf+Ufx0oed/XjgeKlhUMNgcSLG+MpZb3qwKIrsubqurQgDahjUMJzmFSfGxYnphYqnK8KbzWYAUMOghuGEFyeSMxdQCyF0XTecMEANgxoGpgW8/+ppANl8ahjUMBzHbZxfebkJgPHkea66roeFAzUMbHaGvQAnz7+cz2tNoIYBAEANAwCAGgYAADUMAABqGAAA1DAAAKhhAABQwwAAoIYBAEANAwCghuGmuclq27ZxJ70xPpLeNQBcbrvd/nKn67r4XN/36RG3eV8S1DA4Vk1it9wpiiI7WPrgcmdtuQz8cqfv+7hTVVW5kx0shFDuNE0Td36ZyGVQw3BLU94YY9M0ZVmGELKZyp1spjzP02fVdT3OhBzh4HjPnMcR7/SEee5pc57n13kCSd+GAVDDcIi5x609I950FDzkBdBZM6EQwjgKatt2aVNkYLPZjOPelKFlWV5/xDtzqDwjkc/+LwA1jAFwXdd5nh8+aLmlEh1z+fBpdFVVfd8PwOc6AG7bNoSw/7S5qqoYY9d1Y4ne9hLXIU8gIYSu68ZT95UCNQxd15Vluf+4tYRDRfpm7Jk5hRBijA5pcPe/Meu6Xv5rOCm+95xj53mevherGxWDGsYwuGmaPM/PHA/S40c9jkrfBQuCdwDD4K7riqJY/gs1s2YB6Xu0ilExqGF08IkdAFL+VlV1ZjSlieGWxBjPnEjHGNMTyymNBtq2HUANw0nq+z7P85N8cTAd0mKM01Gx4xnc+L7BdB5clmXXdae6NlZVlSExahhO7ZXN6XrfuGV78sXveAY3pW3b6e+scRh82sUfQrBMjBqG00nhhw8fruf5PX1/XxzP0ndcEMM1ffGLX1zVFkHTNNnO/fv3P/zwwwHUMBy773znO9lOOqStJw0fP36c7aTv/gBcQ7bz4MGD9cxKUwTfu3dvnCAMoIbh2H3961/PnlvJwSx9N1+8qpu++wNwDdMlq2EdXry+lN4YQA3DsYsxTv+4dFr4W8+mxPWP30A20XXdejYlkrIsB1DDcEo1PI46TntfYvzzgmoYbraGX3/99fGM+rRfYur7Ptt566231DBqGE6thruuy3amN9o4MW3bvvg+qmG4wRr+6KOP/s/eebg4jr53XH/FguiwdEz9XaeJZkp6T64oMOm53gSmXm+GSe8RzC0sDGteuDawN0RcL0OcXsybXoxTJ4tRmlmEo1i3mu/Ma4/kHdmz3v18aFck69Ew8nz8+Cm5Ct/eQmytze+uKBcuasywYcCGYS7/YMKL3jL4YbdnjElsOl0PWWo/MvGlZHR9ejau97s3bjXo9tNmz1q/DRd5Ux2oaa29zbbraf67QRsGwIaLBem35eY2d7dlrvvGmKZsGAAbxoaVdrRzMMpW6sEmCvzZtX7KYMOODasQlzPX8j8Dzp+0DV6vmv9rkbhq1oYBsOHiiXOXum9uqjiPPI9f7yh/Syxqo6ttGAAbxobr2l5qE/ObhaHO8IPO/sqE+PrI/JRX4NgwNqyJEN3cVpYW5Imf6YZQZG5O/avcvA0DYMOnfArdoFTx4eFhHm3Rbqu3IO+BjdgwADaMDSvpn8RhqxTidjzIzs+GsWHtF8nrJTyH52eYGXbGOVqvtTbPXhtj8lDzqMSAK76xXYkNA2DDboWS80jmj2r+v4wx+ZuMtXb9lqxvIPn7gzEm/7ScR1VmAfSDdB6qtlJgw4ANQ6M2LGQ2bns38DvJODtnG8aG5U+apIpP4/l1odbrovnsOaa+ShsGwIbdolvNs7qoJd8ibyCaz54Kq7VhAGwYG1ZJVFXNRv13jOl1Q39O7907iR3PeYGL3f71LLUfFWdVE5rRUdlGjlRuON1+7/RH2UKvnYz6eyaOAve0xKZ1bFjCqL7lpm24kUTs+qmfrsaGAdZvw/q5ujIRu37qp6uxYQBseP02PEltEkdtr5Ig2pkZqtjwM/FuJ/BqE5rh6GCn4lpC0DF2fMJrXzd722GrYnbGvk1Pt+HU7tcweD/c3rfjddtwfUtePfWtFxs+fwAbXsaS1/kGUmG92PB6AWwYG87S/vaRv7ZfN1c6gXpkb68/mizuvWuF25//w4HodHGWKRO5k1H/amIP51ZKZKP9TuAvuFZ5+l5PPTXY7qdZ6bWq5rH5yKbZ9Cizfbkbto7ijP/k2nwbztLBTujrLWsa2H2pdmQGafM2vPlgwxsFYMMbCjYM2HCTYMPqowUXguD+csREZEq5dE872C4FsvUDgaZmv63bv1avbji302/zCvxHzXAyXchkaB715dbEhnUaRkWcD4bffcH5+WRDs+W7t+wytqYT6D1iw9gwADaMDcPGgg1jw2ObvHO80LYVdn8hCnxNwZ7q0X9ntlqeSzu2WfNddKX+ujbsb5lhtlyc8vP5tyT6Vt1bVn3Xg7FhbBgAG8aGAbDhzdy+oRXAw/9IOr5X8K0o+bflhlG4M9pu1oalh6+gp0XMasP1Qs3G5X25NjxOIl8jr3nL6tPYMDYMgA1jw7CRYMPYcDuKe+ZoVIIK6w/E9n/qJ2yFi6H5h2UmrEmius4cCrXh+m49MuF8G9Y7qI/eKTaMDQNgw9gwADa8yXXDQtrvBiqsa7Hhsd3fVgl2J6SZ2Wy1SXGphm1Yo8KGseFbBH1evj0Mv6WzCGswGfXfj6O2nFL1yOdHFu8exYzE6U0jX+zEUXD0bOqFmgOw4aYBwIax4eVyw1JmcNM2PB7EW369mb7XV2LDU7fiYp0YbLh5sGFVz/XbsD6t2DA2jA0DYMMbZsPZuIG64bo2LKfLUIgKOWi+blhj0LphbBgbPn8bVqEUmrNhYbU2DKsBG24IAGwYGxbSg+5ZZ0rUt2GV1MXRamCiv8dmSkTJ+LQ4B3Hbn1t8rHehU97WhsGG4eQA73YUJzadzMsNFwcXo691FMzlYk+jPmXCxfCtl8NvnrtDKUxqhfEXydzc8P8XOpQhyQRux9Hr9i2EsRFBd2ba6MjwYuL47EJFNNfklp3B5IANNwMANowNC5NR8kKw9Lxh/1tnzw13DxaGmw5M1D4h3GrDxWaN+adnw6RTnvttr3SfdLZvyOoN2XUnOK/WgDpjw9iwPG4uQSfuPnjChocyGtzFD3cG6eRUG37w9e6WnP+tKPmbvmvD0S//mqqnPmXbH/3ulQZsOBt9Xi6PrLiQ/0DwgHvLjT2A2DA2DIANY8MVOyYqdtFJkYPsoptvw5IJFnnN/u5KW1Ncu1o0PD975NqwRprYdHHKrZMMT7TiHUnJwS+H/rFkW5FrOz7u7Vi2bPtADsCGsWFhyR2QsrpRe+AKChsWoZQPbNqHKqU+TqWE1M23ox39xXXqhssc7dEDkMmedv+C51XbcP58nlI3fPQ9TzuK35f3lvLG3QdbdkzKBvVGijqwYWwYABvGhueSpfZqN2zVm1I8yooyQbXhqmoH4YHwyba3EBHlwVdlwYMfJYfita+bvUWpptJd9+3YbcU7kezeiSojKVLml872LS02jA3L2he3JEkKeMSGL/1O/AM3fgN/08wolVVZbMNaU7TYht14dO/MWW34yiDp+LrNseJC2hXg1D7Rk4cNA2DDsCIbFif+yNl8Uf4x1uEPlTYs+dqTQ4V/ILb/NbuQ5nF1vlqZFpLlzP6ju70X1GtniaW9eWWIbpx61vyVHxqjJoyNaaBaERvGhuV3cX6CU75LkbphLRlyB4cnNq2wYX0268+UkHgbsOFZhlsuU3Ehv5OMs8UXwoaxYQBsGGDDMdhwfbDh8jOq84FNSoez28qG3cOwYQUbBsCGATYdbJhKiarKBLXhRSMpjImjoPTds9lwVeXGwnnk2dBs+V6jlRLYcDXYMAA2DIANY8MbiuhjMBuqNnW71sSGf+SZ59u+tNwJsxOCssq2UE8pM1jKhrUh1Wluaz0YfvcFrcUv0IlsasNFPMt30WHD9cGGAbBhAGwYG95YdJhJ9YS1K7YcBeggo1rcqcPf1jW/tkSlxOuXdyUNLLQjM0glSexc/fOkfLXCv4/mJ+4ny09Yw4arwYY3HQBsGMBgwyALNWpt33AaW2U7hpstLmw0uL+mDTvbN3TMomSCJYZZW+1suoW+2jiPQF5hK3rm/uW3b5zJhg8PD5+f8Uu/9EvGmM8//9xa+4//+I93kA1jwwDYMAA2jA0DD5fL3XffXYiymfEHf/AH1tr//u//xoaxYQBsGAAbxobhtnq4CvH98R//ca8e3/Vd31Wmkz/88EM7Y5NsGBsGwIYBsGFs+PDw0NzxQK5KrjDZGWbGq6++mv/fXJe9ejw/4+233y7TyflvGjaMDQNgwwDY8C1nw7nleDkAtYUp91prbe64xpjcdwvx9SqRuov8t87MWG86GRsGwIYBsGFs2KHwmOIr7zscyJvnpmfDzsirJowxeQVF/pr5r5ZXj7xCo0gnr66NDxsGwIYBqnGXNgsXpMve2du8sTaMDa+6KBkg77or08lFYYZbd1Gzjc/m3GwbHzYMgA0DVJENk07bW8hFbBgbBmiWPAFsrc2TwUU6uaKNTxR5+cwxNgyADQNUkdm4dGE//OWD0WTqgA1jwwCNt3IWQlwUItcU4jzTjA1jwwDYMDSJCK4uicWGsWGAxoolcuoXSygnZh7fXEkxNgyADQMo1YKLDdNFd0cBuWU2VfmgjXT1BxjnR+oA44Yb6bBhAGy4AvrGet3Q94R2FPdMYlPxvnL1qSyJzSmXsjr7X42ZrWB19fGnzCh/mSy1Hzmnt8Lu5eK6BcVhC8OTSOQQjUGX0M6lWOuqNFQ3XBXV5tkwE9aACWvOkLUcHbLWfFdcc2DDANgwzPXgS/NcVgiina/M68dtOBsd7ERtryZBx9jxCRvu9T9f+ApStpuNPt8OW6cdFmy9Ev2I71Xgh9v7drw+G07tfjesH1VNsOEV9TAZcGH7hjMxrVjAcZaJaee9gAMbBsCGwVXh5IVArDfWRG426r9zuSsmWtrwZLTfCXzJc+71RxM32dxTHQy2+2km+ljgB9Fvaho4v6aRs/wHwwf9b7LFElqW2iQWk5ZINOHq3kI7MoP0JoofRiZcwoazdLAT+s1FJRhsGGCVwpSbrm7TqL+cORfljVjOjA0DYMOgZGl/OyittLM/yuYeNTrYDv1jNnz1q+633TjvUTOcnGLbQ/OoL7543IZbYfwn8yzw35LoW1oR0UmGc0LL/u6KJzx4xaZ6lDK2phN4Bd/W7V9bqQ1nQ7Pll65vGokKG8aGYT3CVL+JTRK9mwQ2DIANg5AN4rZ/Qzhj6zqbeKfZamlu+PryTWlqw1UXzcZJ5yi1GiXj6Vz+KfaEeUcJ1/rdb9Ms9SpsWFReLtRAVCu3YWwYwFr7XTMqmtg2GmwYABsGZ7CujBKrPLjChqUKwBT0pJjBtWG/HQ+yKiUV+3QYX9Vdca/30+pbkEhWZcPjJPKdG6wd1UptGBsGAGwYABuGuX1jPxDb/5meikie2vDYJu+4ExMU14ZVc5dRUveYV7zl0Us3bsPyXxqOChvGhgEaABsGwIZBSPvdwNNhZ6fiTFgb232tJp4zWM3MZqtNivOas2Gx+R+99WxYP2Ngw9gwADaMDQNgw7dnbnj/T+Itv3p0rvji6nPDelh9mrZhd5Vdwxhs+HwBwIaxYQBsmLrhC0HwQOUkCnXu1dhwZn/NE16/BWxYflBSN7zZNowNA2DD2DAANsxMCR19IFQ3fqUH3cD3xLmbseGC7K/e8oTe4bnbsMzfkPFzG2fD2DAANowNA2DDzBsWxoOyLsLNDXcPFupwOjBR+0RdbEM2XDCxz3jClrHjxfc6TDptldTV2LCzeiPoNBIVNowNAzQCNgyADdeHXXTFyIjdObvoXr+8ezR+uBV2d5NC+HTQRBwVL7tKG74+Mg96grOyrpz49puRbM7bPhhlq91FNxkd/HLoNxkVNowNAzQCNgyADcM8Ie5fKrTMQRKcyW+GOm9Y874uKsqDr8p6DD9KDpuz4eUHOPhBdEk2SK/EhnWF307Ubiaq1dswNgyADWPDANgwTrznTA5uR3HPJDadr4NZaj8ymuA8Nl/tI5tmJ5cz+4/u9l5YjQ0Hr5vkHSN3cDxhbMyeGOfqbVhywI1EhQ1jwwCNgA0DYMPgDE0rCM1oqixelazj2GDtGGwYALBhbBgAG25+poT3bd3+teki0j+Jw5ZOn9hEsGFsGACwYQBsGNyZEloXYaQf7kYthH7NH7yQjCbTjQQbxoYBABsGwIbBFWJ7tZwaUdUSd7UoBd5MsGFsGACwYQBsGBykH64XuzMQ/o+dOzd4G4bBMOylPAeX8AocQRNgAgzAAdizxxCq0apVmAuFotyJJVHv858lfQL4KHpzJO406IaXZaEb/jMA3bCZrXeiqoN0wwDdMNBae3zyer3cfb2BZVn6jf18q/vNXwH8hefz2V9K/beZ3aoV7kRkBQZANwyIyKO7Rz2b5zml9A8rGcBE/bkh7lR1+Fl6mqZIEOZ5XgcD0A2DhLgrpYx61YSZRdnmGgngfwyZOWd3H/Vm9g44buaA75MA3TCoZ9EpdiIyTOzh7qWUqNb9ZnKBBPDPQ9Oc8+Or/n9rbaS8IPpgtpVANwzcZRMwtgJba9eNQMxsc4tSSv+pywdQSomhuuv/q+p1o2J3V9XNLaq1rmMD6IaB3QJwrah4WZZaa4TBEee84UOgAIbqSFLDNE1mdq0wOOf8bTSwAnTDwJ3s1IOUkoiY2TnT4t7sllKiDMeaa63vXzDAxVdxQjfm6mmaaq3ufs4F97VtdpN2sgCAbhggKo6kpJRyeJFw988FbLvCiKMAnGmjJsZUVT18tHb31pqIxBvI/nViAOiGgc7MVHVT1SLvaa25+9vqq5mJyO5iRCQWA5wHUXEpZbPdFEfu3jZaxxuIqm72kT77nF4TBgN0w8DP05TdODallP+/3WpKAbsKkBb/YLR+8xtIxMCqyrkCgG4Y+Gd5zxtsd1qBATBav8F/PQUB0A0D5D3lLbgQAhhMnILlDeRDu3UsAAAAADDI33oSO4sisGEAANjYMAAA2DAAANgwAADYMAAA2DAAANgwAADYMAAA2DAAANgwAAAEXgKZhamZGmkAAAAASUVORK5CYII=" alt="Figure 1">
+</div>
+<div class="title">Figure 1. The principles for and relations between a game description, a compiler, a game file and the interpreter, or, in other words, authoring and playing.</div>
 </div>
 <div class="paragraph">
-<p>To create works of interactive fiction using Alan, you also need a program with which to construct your Alan source code, a standard text editor, like Notepad or similar programs. However, you cannot use a word processor, like Microsoft Word, since the files created with those usually contains formatting information that the Alan compiler don&#8217;t understand.</p>
+<p>To create works of interactive fiction using Alan, you also need a program with which to construct your Alan source code, a standard text editor, like Notepad or similar programs.
+However, you cannot use a word processor, like Microsoft Word, since the files created with those usually contains formatting information that the Alan compiler doesn&#8217;t understand.</p>
 </div>
 <div class="paragraph">
 <p>There are also special editors, or additions to standard editors, available, which supports Alan coding and helps with formatting and even compiling and running your game.</p>
 </div>
 <div class="paragraph">
-<p>You might wonder why the game is not a single executable program. The answer is simple, compare the game with a Word-document. In order for the document to be visible, you need the Word-program that reads the Word-file and displays the content on the screen. As you probably know, the same program does not run on all computers. For example, you cannot install Word for Windows on a Macintosh.</p>
+<p>You might wonder why the game is not a single executable program.
+The answer is simple, compare the game with a Word-document.
+In order for the document to be visible, you need the Word-program that reads the Word-file and displays the content on the screen.
+As you probably know, the same program does not run on all computers.
+For example, you cannot install Word for Windows on a Macintosh.</p>
 </div>
 <div class="paragraph">
-<p>In view of this, it might be considered a nice thing that there are programs for Macintosh that read, display and print Word-documents. This makes the document files portable. Once you have a reading program on your computer, you can use all similar files on it. This is also one reason behind the compiler-interpreter design of Alan.</p>
+<p>In view of this, it might be considered a nice thing that there are programs for Macintosh that read, display and print Word-documents.
+This makes the document files portable.
+Once you have a reading program on your computer, you can use all similar files on it.
+This is also one reason behind the compiler-interpreter design of Alan.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_the_alan_idea">The Alan Idea</h4>
 <div class="paragraph">
-<p>The Alan language does not focus on variables, subroutines or other traditional programming constructs, because Alan is not primarily a <em>programming</em> language. Instead, Alan takes a descriptive view of the concepts of adventure authoring. The Alan language contains constructs that make it possible for you, the author, to describe the various features of these concepts. By describing for example, how the locations in the adventure are connected you have described the geography in which the story will take place. Much of what should be described is in terms of ordinary text shown to make the player experience the story that you have designed by reading them.</p>
+<p>The Alan language does not focus on variables, subroutines or other traditional programming constructs, because Alan is not primarily a <em>programming</em> language.
+Instead, Alan takes a descriptive view of the concepts of adventure authoring.
+The Alan language contains constructs that make it possible for you, the author, to describe the various features of these concepts.
+By describing for example, how the locations in the adventure are connected you have described the geography in which the story will take place.
+Much of what should be described is in terms of ordinary text shown to make the player experience the story that you have designed by reading them.</p>
 </div>
 <div class="paragraph">
-<p>You will still need to understand how to vary your output depending on various conditions or information, how the player input controls which events will happen, how to connect one location to another and how to store information for later use. In a way this is programming, but in an unusual sense.</p>
+<p>You will still need to understand how to vary your output depending on various conditions or information, how the player input controls which events will happen, how to connect one location to another and how to store information for later use.
+In a way this is programming, but in an unusual sense.</p>
 </div>
 <div class="paragraph">
-<p>In order to understand the rules of the Alan language, which this manual is all about, it is necessary to first establish some common ground. As an author you will have to have the same view as the Alan language has on some fundamentals of what a work of interactive fiction is all about.</p>
+<p>In order to understand the rules of the Alan language, which this manual is all about, it is necessary to first establish some common ground.
+As an author you&#8217;ll need to have the same view that the Alan language has on some fundamentals of what a work of interactive fiction is all about.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_whats_happening">What&#8217;s Happening?</h4>
 <div class="paragraph">
-<p>The execution of an adventure is primarily driven by the input of player commands. A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source. After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source. Scheduled events are then run, and then the player takes another turn. This is described in more detail in <a href="#_a_turn_of_events">Sect. 5.1</a>.</p>
+<p>The execution of an adventure is primarily driven by the input of player commands.
+A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source.
+After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source.
+Scheduled events are then run, and then the player takes another turn.
+This is described in more detail in <a href="#_a_turn_of_events">Sect. 5.1</a>.</p>
 </div>
 <div class="paragraph">
 <p>The following sections describe a number of the fundamental concepts that are present in an adventure game and what the Alan view of them is.</p>
@@ -1062,7 +1128,10 @@ There are no explicit type declarations, except for instances of classes; instea
 <div class="sect3">
 <h4 id="_the_map">The Map</h4>
 <div class="paragraph">
-<p>The scene for the game is a map of a number of connected locations. A location has a description that is presented to the player when that location is entered. A location may also have a number of exits stating in which direction there are exits and to which locations they lead. Alan places no restrictions on the layout of the map, any topology is allowed.</p>
+<p>The scene for the game is a map of a number of connected locations.
+A location has a description that is presented to the player when that location is entered.
+A location may also have a number of exits stating in which direction there are exits and to which locations they lead.
+Alan places no restrictions on the layout of the map, any topology is allowed.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1072,7 +1141,8 @@ There are no explicit type declarations, except for instances of classes; instea
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In Alan, exits are always one-way, and an explicit declaration of a backward path (if such is desired) must be made. Although, normally you would probably want them to be two-way, if they where automatically two-way, it would be very hard to handle the rare, but important, cases when you want them to not be.</p>
+<p>In Alan, exits are always one-way, and an explicit declaration of a backward path (if such is desired) must be made.
+Although, normally you would probably want them to be two-way, if they where automatically two-way, it would be very hard to handle the rare, but important, cases when you don&#8217;t want them to be so.</p>
 </div>
 </td>
 </tr>
@@ -1082,25 +1152,32 @@ There are no explicit type declarations, except for instances of classes; instea
 <div class="sect3">
 <h4 id="_the_things">The Things</h4>
 <div class="paragraph">
-<p>Most objects in an adventure are things that in real life would be objects too, like a knife or a key. In addition, other things that should be possible to manipulate by the player, e.g. parts of the scenery, must be declared as an object. For example if you require the player to &#8216;whistle the melody&#8217;, then the melody must be an Alan object.</p>
+<p>Most objects in an adventure are things that in real life would be objects too, like a knife or a key.
+In addition, other things that should be possible to manipulate by the player, e.g. parts of the scenery, must be declared as an object.
+For example if you require the player to &#8216;whistle the melody,&#8217; then the melody must be an Alan object.</p>
 </div>
 <div class="paragraph">
 <p>Objects, like locations, have a description that is presented when they are encountered during the game.</p>
 </div>
 <div class="paragraph">
-<p>Every object may also have a set of properties, like edible and movable, which may be changed during the execution of an Alan program. Most objects would e.g. probably not be edible so there is also a mechanism for declaring how these properties should be set by default, as well as mechanisms to override them, both for a particular object and for groups of objects.</p>
+<p>Every object may also have a set of properties, like edible and movable, which may be changed during the execution of an Alan program.
+Most objects would e.g. probably not be edible so there is also a mechanism for declaring how these properties should be set by default, as well as mechanisms to override them, both for a particular object and for groups of objects.</p>
 </div>
 <div class="paragraph">
-<p>Some player actions (verbs) have special meaning or effects when applied to a certain object. These verbs and their special effects are also declared within the object declaration.</p>
+<p>Some player actions (verbs) have special meaning or effects when applied to a certain object.
+These verbs and their special effects are also declared within the object declaration.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_other_people_and_monsters">Other People and Monsters</h4>
 <div class="paragraph">
-<p>An extra thrill and dimension are additional characters in the game. In Alan, these are called actors and may have a life of their own. For each move the player makes, these programmed characters also get a turn to do their thing. An actor may be a thief running around and stealing your collected treasures or a dragon guarding the entrance to its lair.</p>
+<p>An extra thrill and dimension are additional characters in the game.
+In Alan, these are called actors and may have a life of their own.
+For each move the player makes, these programmed characters also get a turn to do their thing.
+An actor may be a thief running around and stealing your collected treasures or a dragon guarding the entrance to its lair.</p>
 </div>
 <div class="paragraph">
-<p>Actors get their behaviour  from scripts that step, by step, describes what is going to happen for each player interaction.</p>
+<p>Actors get their behaviour  from scripts that, step by step, describe what is going to happen for each player interaction.</p>
 </div>
 <div class="paragraph">
 <p>One of the interesting things about playing adventure games with actors is to figure out how to interact with and influence the other characters.</p>
@@ -1109,18 +1186,22 @@ There are no explicit type declarations, except for instances of classes; instea
 <div class="sect3">
 <h4 id="_acting">Acting</h4>
 <div class="paragraph">
-<p>The player commands action by typing imperative statements. These statements are analysed and results in execution (&#8220;calls&#8221;) to verbs. The effects of these commands must be declared in verbs by the game author, either in an object (describing the effects of the verb when applied to an object) or as a general (global) that only applies without object.</p>
+<p>The player commands action by typing imperative statements.
+These statements are analysed and results in execution (&#8220;calls&#8221;) to verbs.
+The effects of these commands must be declared in verbs by the game author, either in an object (describing the effects of the verb when applied to an object) or as a general (global) that only applies without object.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_the_input">The Input</h4>
 <div class="paragraph">
-<p>To make it possible for the player to input more complex commands a means to specify the syntax for a verb is also available. A particular syntax is connected to a verb and describes how the player must phrase his input in order to command the triggering of a particular verb. Using this mechanism, verbs can also be made to operate on literals (strings and integers) giving the player the possibility to input things like</p>
+<p>To make it possible for the player to input more complex commands, a means to specify the syntax for a verb is also available.
+A particular syntax is connected to a verb and describes how the player must phrase his input in order to command the triggering of a particular verb.
+Using this mechanism, verbs can also be made to operate on literals (strings and integers) giving the player the possibility to input things like</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; write "Merry Christmas, Mr. Lawrence" on the xmas card</p>
+<p>&gt; <em>write "Merry Christmas, Mr. Lawrence" on the xmas card</em></p>
 </div>
 </div>
 </div>
@@ -1129,26 +1210,33 @@ There are no explicit type declarations, except for instances of classes; instea
 <div class="sect2">
 <h3 id="_introduction_to_the_language">2.4. Introduction to the Language</h3>
 <div class="paragraph">
-<p>Alan is an adventure language, i.e. a language designed to make it easy to write adventures. This means that constructs in the Alan language reflects the various concepts encountered when creating an adventure plot.</p>
+<p>Alan is an adventure language, i.e. a language designed to make it easy to write adventures.
+This means that constructs in the Alan language reflect the various concepts encountered when creating an adventure plot.</p>
 </div>
 <div class="paragraph">
-<p>A common step after having come up with a plot for your adventure is to draw a map of the world where the adventure is taking place. For this purpose, we use <code>Location</code>s.</p>
+<p>A common step after having come up with a plot for your adventure is to draw a map of the world where the adventure is taking place.
+For this purpose, we use <code>Location</code>s.</p>
 </div>
 <div class="paragraph">
-<p>The next step is to introduce tools, weapons and other objects possible to manipulate. These are the <code>Object</code>s.</p>
+<p>The next step is to introduce tools, weapons and other objects possible to manipulate.
+These are the <code>Object</code>s.</p>
 </div>
 <div class="paragraph">
-<p>Then the player will need words to command action. The Alan language construct to supply these with is the <code>Verb</code>. Using the <code>Syntax</code> construct, you can also define more complex player input.</p>
+<p>Then the player will need words to command action.
+The Alan language construct to supply these is the <code>Verb</code>.
+Using the <code>Syntax</code> construct, you can also define more complex player input.</p>
 </div>
 <div class="paragraph">
-<p>Additionally, you may also want other characters and creatures in your adventure. For this the <code>Actor</code> class is provided.</p>
+<p>Additionally, you may also want other characters and creatures in your adventure.
+For this the <code>Actor</code> class is provided.</p>
 </div>
 <div class="sect3">
 <h4 id="_notation">Notation</h4>
 <div class="paragraph">
-<p>In this document, there are some typographical clues. Example Alan source code is typeset in separate sections with a mono-spaced font:</p>
+<p>In this document, there are some typographical clues.
+Example Alan source code is typeset in separate sections with a mono-spaced font:</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
 <pre>This is an example of some source code.</pre>
 </div>
@@ -1165,7 +1253,8 @@ You are outside your grandma&#8217;s house.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Later in the manual, you will find semi-formal definitions, grammar rules, for how various constructs may be constructed. These sections are typeset against a coloured background:</p>
+<p>Later in the manual, you will find semi-formal definitions, grammar rules, for how various constructs may be constructed.
+These sections are typeset against a coloured background:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1173,10 +1262,14 @@ You are outside your grandma&#8217;s house.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In running text, words that are keywords or signify an Alan construct is written in a mono-spaced, bold, font. This helps distinguish the English word &#8216;the&#8217; from the Alan keyword <code>The</code>.</p>
+<p>In running text, words that are keywords or signify an Alan construct are written in a mono-spaced font.
+This helps distinguish the English word &#8216;the&#8217; from the Alan keyword <code>The</code>.</p>
 </div>
 <div class="paragraph">
-<p>As shown in the last example, Alan keywords are written with the first letter capitalized. This is simply a convention and has no effect other than the visual. A keyword can be written <code>Keyword</code>, <code>KEYWORD</code>, <code>keyword</code>, or even <code>KeYwOrD</code> (if you are keen to show how good you are with a keyboard&#8230;&#8203;). This manual tries to be consistent with using the first version (except in grammar rules).</p>
+<p>As shown in the last example, Alan keywords are written with the first letter capitalized.
+This is simply a convention and has no effect other than the visual.
+A keyword can be written <code>Keyword</code>, <code>KEYWORD</code>, <code>keyword</code>, or even <code>KeYwOrD</code> (if you are keen to show how good you are with a keyboard&#8230;&#8203;).
+This manual tries to be consistent with using the first version (except in grammar rules).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1196,10 +1289,14 @@ You are outside your grandma&#8217;s house.</p>
 <div class="sect3">
 <h4 id="_the_locations">The Locations</h4>
 <div class="paragraph">
-<p>The scene for your adventure is a series of &#8220;rooms&#8221; or, rather, locations. Locations are connected by exits, leading out of one location into another. This makes it possible for the hero to travel through the world of your design, exploring it and solving the puzzles.</p>
+<p>The scene for your adventure is a series of &#8220;rooms&#8221; or, rather, locations.
+Locations are connected by exits, leading out of one location into another.
+This makes it possible for the hero to travel through the world of your design, exploring it and solving the puzzles.</p>
 </div>
 <div class="paragraph">
-<p>What is required if we want to describe a location? Every location must have an identifier. This is so that you, the designer, may refer to that location easily, instead of having to remember a magic number for it.</p>
+<p>What is required if we want to describe a location?
+Every location must have an identifier.
+This is so that you, the designer, may refer to that location easily, instead of having to remember a magic number for it.</p>
 </div>
 <div class="paragraph">
 <p>Unless you plan to provide other means for transportation from a location, you should also describe in which directions there are <code>Exit</code>s and to which locations they lead.</p>
@@ -1221,10 +1318,13 @@ Start At kitchen.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This is a complete Alan adventure (although very primitive). As you see, every Alan construct ends with a period (<code>.</code>) and there is a &#8220;<code>Start At</code>&#8221; sentence at the end, indicating in which location to put the hero when the game starts.</p>
+<p>This is a complete Alan adventure (although very primitive).
+As you see, every Alan construct ends with a period (<code>.</code>) and there is a &#8220;<code>Start At</code>&#8221; sentence at the end, indicating in which location to put the hero when the game starts.</p>
 </div>
 <div class="paragraph">
-<p>Type the above text into a text file, e.g. using a notepad program. Run this little Alan source through the Alan compiler and try the adventure (see <a href="#_how_to_use_the_system">Appendix A</a> on how to do this). After starting the adventure, two lines will be shown on your screen.</p>
+<p>Type the above text into a text file, e.g. using a notepad program.
+Run this little Alan source through the Alan compiler and try the adventure (see <a href="#_how_to_use_the_system">Appendix A</a> on how to do this).
+After starting the adventure, two lines will be shown on your screen.</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -1237,16 +1337,25 @@ Start At kitchen.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The first line contains &#8220;Kitchen&#8221;, the name of the initial location, and the second a &#8220;&gt;&#8221;, which is the default prompt for the player to input a command. Now try typing &#8220;east&#8221; and press the <kbd>RETURN</kbd>/<kbd>ENTER</kbd> key. The word &#8220;Hallway&#8221; and the prompt will appear. Typing &#8220;west&#8221; will take you back to &#8220;Kitchen&#8221; again. (Use <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>C</kbd></span> to exit the game if you are running it in a console window.)</p>
+<p>The first line contains &#8220;Kitchen&#8221;, the name of the initial location, and the second a &#8220;&gt;&#8221;, which is the default prompt for the player to input a command.
+Now try typing &#8220;east&#8221; and press the <kbd>RETURN</kbd>/<kbd>ENTER</kbd> key.
+The word &#8220;Hallway&#8221; and the prompt will appear.
+Typing &#8220;west&#8221; will take you back to &#8220;Kitchen&#8221; again.
+(Use <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>C</kbd></span> to exit the game if you are running it in a console window.)</p>
 </div>
 <div class="paragraph">
-<p>The identifier for a location is automatically used as a description, a heading, shown when that room is entered. And the words listed in the <code>Exit</code>-parts are translated into directional commands the player can use in his input.</p>
+<p>The identifier for a location is automatically used as a description, a heading, shown when that room is entered.
+And the words listed in the <code>Exit</code>-parts are translated into directional commands the player can use in his input.</p>
 </div>
 <div class="paragraph">
-<p>You should remember that exits are strictly one-way. An <code>Exit</code>  from one location to another does not automatically imply the opposite path. Thus, you must explicitly declare the path back, in the definition of the other location.</p>
+<p>You should remember that exits are strictly one-way.
+An <code>Exit</code>  from one location to another does not automatically imply the opposite path.
+Thus, you must explicitly declare the path back, in the definition of the other location.</p>
 </div>
 <div class="paragraph">
-<p>However, just the name of the location is not much of a description. So in order to provide the &#8220;purple prose&#8221; descriptions often found in many adventures there is an optional <code>Description</code>-clause  that you can use. Let us describe the Hallway.</p>
+<p>However, just the name of the location is not much of a description.
+So in order to provide the &#8220;purple prose&#8221; descriptions often found in many adventures there is an optional <code>Description</code>-clause  that you can use.
+Let us describe the Hallway.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1261,10 +1370,13 @@ End The hallway.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>We introduce another feature in this example, namely the text enclosed in double quotation marks (") which is called a <strong>string</strong> or, when used on its own like this, an output statement. When executed this string will be presented to the player and formatted to suit the format of his screen.</p>
+<p>We introduce another feature in this example, namely the text enclosed in double quotation marks (") which is called a <strong>string</strong> or, when used on its own like this, an output statement.
+When executed this string will be presented to the player and formatted to suit the format of his screen.</p>
 </div>
 <div class="paragraph">
-<p>Invent a description for the Kitchen, enter it in the Alan source and run the changed adventure. You notice, of course, that the text in the output statements is reformatted during output to suit your screen, in order to make room for as much text as possible. Note also that you do not have to worry about this at all&#8201;&#8212;&#8201;in your source file, you may format the text any way you like, even spanning multiple lines with extra white-space included.</p>
+<p>Invent a description for the Kitchen, enter it in the Alan source and run the changed adventure.
+You notice, of course, that the text in the output statements is reformatted during output to suit your screen, in order to make room for as much text as possible.
+Note also that you do not have to worry about this at all&#8201;&#8212;&#8201;in your source file, you may format the text any way you like, even spanning multiple lines with extra white-space included.</p>
 </div>
 <div class="paragraph">
 <p>This type of output statement is just one of the statements in the Alan Language, and we will see more of them later.</p>
@@ -1287,7 +1399,10 @@ End Exit west.</code></pre>
 <div class="sect3">
 <h4 id="_the_objects">The Objects</h4>
 <div class="paragraph">
-<p>Another essential feature in Alan are the objects. Like the location, the object is a means to describe the &#8220;physical&#8221; world where your adventure is taking place. Many objects are probably used to provide puzzles, such as closed doors, keys and so on, but other objects should be promoted to objects too. A large number of objects that can be examined and manipulated make a game so much more enjoyable.</p>
+<p>Another essential feature in Alan are the objects.
+Like the location, the object is a means to describe the &#8220;physical&#8221; world where your adventure is taking place.
+Many objects are probably used to provide puzzles, such as closed doors, keys and so on, but other objects should be promoted to objects too.
+A large number of objects that can be examined and manipulated make a game so much more enjoyable.</p>
 </div>
 <div class="paragraph">
 <p>Objects, like locations, have identifiers and descriptions, so you might guess the general structure of an object:</p>
@@ -1307,22 +1422,31 @@ End The door.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>An object may initially be located at a particular location. This is indicated by the <code>At</code>-clause, in this case telling us that the door is initially located in the Hallway. Objects do not have to start at a particular place in which case they are not present in the game until located, by executing some code, at some place where the player may lay his hands on them.</p>
+<p>An object may initially be located at a particular location.
+This is indicated by the <code>At</code>-clause, in this case telling us that the door is initially located in the Hallway.
+Objects do not have to start at a particular place in which case they are not present in the game until located, by executing some code, at some place where the player may lay his hands on them.</p>
 </div>
 <div class="paragraph">
-<p>In addition, objects may have attributes indicating the state of certain properties of the object. In this example with a door, the <code>Is closed</code> part indicates that the door should have the attribute closed, which initially is set to <strong>TRUE</strong> (implying that the door is initially closed). The opposite would be indicated with a <code>Not</code>, (i.e. <code>Is Not closed</code>).</p>
+<p>In addition, objects may have attributes indicating the state of certain properties of the object.
+In this example with a door, the <code>Is closed</code> part indicates that the door should have the attribute closed, which initially is set to <strong>TRUE</strong> (implying that the door is initially closed).
+The opposite would be indicated with a <code>Not</code>, (i.e. <code>Is Not closed</code>).</p>
 </div>
 <div class="paragraph">
 <p>Alternatively, attributes may be numeric (e.g. <code>Has weight 5</code>) or be of string type (e.g. <code>Has inscription "Kilroy was here"</code>).</p>
 </div>
 <div class="paragraph">
-<p>We also introduce another Alan statement, the <code>If</code> statement. The <code>If</code> statement  allows you to select which statements to execute according to some condition. In the example, the <code>closed</code> attribute of the door selects which description to show. There are further variations of expressions and the <code>If</code> statement, but we will come back to these later (<a href="#_expressions">Sect. 3.20</a> and <a href="#_if_statement">Sect. 3.17.6.1</a>).</p>
+<p>We also introduce another Alan statement, the <code>If</code> statement.
+The <code>If</code> statement  allows you to select which statements to execute according to some condition.
+In the example, the <code>closed</code> attribute of the door selects which description to show.
+There are further variations of expressions and the <code>If</code> statement, but we will come back to these later (<a href="#_expressions">Sect. 3.20</a> and <a href="#_if_statement">Sect. 3.17.6.1</a>).</p>
 </div>
 <div class="paragraph">
 <p>Instead, let&#8217;s look at some other statements in relation to objects.</p>
 </div>
 <div class="paragraph">
-<p>It must of course be possible to change the value of attributes of an object. You can do this using the  <code>Make</code> statement or the  <code>Set</code> statement. For example if the door should be opened (the player having said &#8220;open door&#8221;, perhaps) this could be performed by stating</p>
+<p>It must of course be possible to change the value of attributes of an object.
+You can do this using the  <code>Make</code> statement or the  <code>Set</code> statement.
+For example if the door should be opened (the player having said &#8220;open door&#8221;, perhaps) this could be performed by stating</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1338,7 +1462,8 @@ End The door.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>Make</code> statement changes Boolean (or True/False) attributes. The <code>Set</code> statement changes numeric or string attributes, for example</p>
+<p>The <code>Make</code> statement changes Boolean (or True/False) attributes.
+The <code>Set</code> statement changes numeric or string attributes, for example</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1353,7 +1478,9 @@ End The door.</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>These statements only change attributes. The implications of such a change must be implemented by writing Alan code that test these attributes and provides differing text output to the player. This is what gives the player <em>the illusion</em> of a door being open or closed for example.</p>
+<p>These statements only change attributes.
+The implications of such a change must be implemented by writing Alan code that test these attributes and provides differing text output to the player.
+This is what gives the player <em>the illusion</em> of a door being open or closed for example.</p>
 </div>
 </td>
 </tr>
@@ -1367,7 +1494,10 @@ End The door.</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Alan does not understand, or enforce, any semantic in the identifiers for attributes, they are only identifiers. The illusion of the effects of differences in the value must be implemented by varying the output. In addition, Alan does not understand that an attribute &#8216;closed&#8217;, for a human would be the opposite of an attribute &#8216;open&#8217;. You should choose one and stick to it.</p>
+<p>Alan does not understand, or enforce, any semantic in the identifiers for attributes, they are only identifiers.
+The illusion of the effects of differences in the value must be implemented by varying the output.
+In addition, Alan does not understand that an attribute &#8216;closed&#8217;, for a human would be the opposite of an attribute &#8216;open&#8217;.
+You should choose one and stick to it.</p>
 </div>
 </td>
 </tr>
@@ -1377,7 +1507,9 @@ End The door.</code></pre>
 <p>Of course, attributes are not only available on objects, but on locations and other types of entities also.</p>
 </div>
 <div class="paragraph">
-<p>Another manipulation statement is the  <code>Locate</code> statement. This is the statement to use when moving objects from one location to another. Opening a lid might cause a previously hidden object to fall to the floor, something that could be performed by moving the object from limbo to the current location with:</p>
+<p>Another manipulation statement is the  <code>Locate</code> statement.
+This is the statement to use when moving objects from one location to another.
+Opening a lid might cause a previously hidden object to fall to the floor, something that could be performed by moving the object from limbo to the current location with:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1396,10 +1528,13 @@ End The door.</code></pre>
 <div class="sect3">
 <h4 id="_the_actors">The Actors</h4>
 <div class="paragraph">
-<p>Actors can be used to populate the adventure with creatures, beings and other people. They might be pirates or monsters, but the thing they have in common is that they move around or at least perform various actions more or less in the same way as the player does.</p>
+<p>Actors can be used to populate the adventure with creatures, beings and other people.
+They might be pirates or monsters, but the thing they have in common is that they move around or at least perform various actions more or less in the same way as the player does.</p>
 </div>
 <div class="paragraph">
-<p>An actor may have a <code>Description</code> and attributes like objects and locations. An actor performs his movements by following scripts, each having a number of steps. Each step corresponds to one player move.</p>
+<p>An actor may have a <code>Description</code> and attributes like objects and locations.
+An actor performs his movements by following scripts, each having a number of steps.
+Each step corresponds to one player move.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1417,24 +1552,41 @@ End The charlie_chaplin.</code></pre>
 <div class="sect3">
 <h4 id="_inheritance_and_object_orientation">Inheritance and Object Orientation</h4>
 <div class="paragraph">
-<p>Object orientation  is a term that is often used when talking about programming. The concept is modelled after a natural phenomenon first described by the Swedish botanist Carl Linnaeus (or Carl von Linné). He devised a naming system for flowers and plants that was based on features common between various species and families. The idea is that a general concept such as a mammal is defined by listing some features which all mammals share. Specialisations such as sub-species in turn have other, more specialised, features in common.</p>
+<p>Object orientation  is a term that is often used when talking about programming.
+The concept is modelled after a natural phenomenon first described by the Swedish botanist Carl Linnaeus (or Carl von Linné).
+He devised a naming system for flowers and plants that was based on features common between various species and families.
+The idea is that a general concept such as a mammal is defined by listing some features which all mammals share.
+Specialisations such as sub-species in turn have other, more specialised, features in common.</p>
 </div>
 <div class="paragraph">
-<p>In nature, we talk about species and individuals. In object oriented programming we talk about classes and instances, which are similar. Classes are abstract definitions of what the common features are and instances are individuals (data objects) having those features.</p>
+<p>In nature, we talk about species and individuals.
+In object oriented programming we talk about classes and instances, which are similar.
+Classes are abstract definitions of what the common features are and instances are individuals (data objects) having those features.</p>
 </div>
 <div class="sect4">
 <h5 id="_inheritance_and_instances">Inheritance and Instances</h5>
 <div class="paragraph">
-<p>Inheritance  means that a more general class can be restricted or specialised into new sub-classes. We say that the specialised class inherits from the more general. Most object oriented programming languages allows creating instances from any class, which does not happen in nature, there are no individuals that are mammals, they are individuals of some specific species of horse for example.</p>
+<p>Inheritance  means that a more general class can be restricted or specialised into new sub-classes.
+We say that the specialised class inherits from the more general.
+Most object oriented programming languages allows creating instances from any class, which does not happen in nature, there are no individuals that are mammals, they are individuals of some specific species of horse for example.</p>
 </div>
 <div class="paragraph">
-<p>In programming, we can use this concept to make some things easier for ourselves. By collecting features that are common to many types of data objects into classes and sub-classes we can inherit those features. In this way, we can avoid explicitly, and repeatedly, stating those for every data object. One small drawback is that we have an implicit declaration of features, which can make reading a bit more obscure. We need to look up the parent class (or classes) for complete information about the object.</p>
+<p>In programming, we can use this concept to make some things easier for ourselves.
+By collecting features that are common to many types of data objects into classes and sub-classes we can inherit those features.
+In this way, we can avoid explicitly, and repeatedly, stating those for every data object.
+One small drawback is that we have an implicit declaration of features, which can make reading a bit more obscure.
+We need to look up the parent class (or classes) for complete information about the object.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_polymorphism">Polymorphism</h5>
 <div class="paragraph">
-<p>By using inheritance, we can also guarantee the properties of similar, or related, instances. If every mammal is a vertebrae, we know that all properties of vertebrates also applies to mammals. We can use this knowledge to handle commonalities without knowing anything about the more specialized kinds, or classes. One example of this might be lockable things like doors and drawers. If they inherit from a common ancestor 'lockable_things', then we do not need know if it was a door or a drawer, if we are only interested in the 'locked' property. This flexibility, know as polymorphism, is possible in programming only through object orientation and inheritance.</p>
+<p>By using inheritance, we can also guarantee the properties of similar, or related, instances.
+If every mammal is a vertebrae, we know that all properties of vertebrates also applies to mammals.
+We can use this knowledge to handle commonalities without knowing anything about the more specialized kinds, or classes.
+One example of this might be lockable things like doors and drawers.
+If they inherit from a common ancestor 'lockable_things', then we do not need know if it was a door or a drawer, if we are only interested in the 'locked' property.
+This flexibility, know as polymorphism, is possible in programming only through object orientation and inheritance.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1450,7 +1602,9 @@ The house_pet IsA cat ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>Every</code>-construct defines a class and its properties, including inheriting from another, even more general class. The <code>The</code>-construct declares an instance, which in this example inherits from the class &#8216;cat&#8217;. The <code>IsA</code>-construct defines from which class properties are inherited.</p>
+<p>The <code>Every</code>-construct defines a class and its properties, including inheriting from another, even more general class.
+The <code>The</code>-construct declares an instance, which in this example inherits from the class &#8216;cat&#8217;.
+The <code>IsA</code>-construct defines from which class properties are inherited.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1476,7 +1630,8 @@ The house_pet IsA cat ...</code></pre>
 <p>Only things will be described automatically when encountered</p>
 </li>
 <li>
-<p>Literal and its sub-classes cannot be sub-classed. They are used to handle integers and strings in player input</p>
+<p>Literal and its sub-classes cannot be sub-classed.
+They are used to handle integers and strings in player input</p>
 </li>
 </ul>
 </div>
@@ -1487,7 +1642,10 @@ The house_pet IsA cat ...</code></pre>
 <div class="sect4">
 <h5 id="_creating_classes_and_instances">Creating Classes and Instances</h5>
 <div class="paragraph">
-<p>In the sections above about locations, objects and actors the examples show how to create an instance of a class. Those examples show how to do it from the predefined classes. However, it is the identical if you have defined the class yourself. In general the format is</p>
+<p>In the sections above about locations, objects and actors the examples show how to create an instance of a class.
+Those examples show how to do it from the predefined classes.
+However, it is the identical if you have defined the class yourself.
+In general the format is</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1503,7 +1661,8 @@ The house_pet IsA cat ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>After this, declarations of all the properties for that class follow. This could include inheriting from another class, e.g.</p>
+<p>After this, declarations of all the properties for that class follow.
+This could include inheriting from another class, e.g.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1519,16 +1678,19 @@ End The kitchen_door.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example, the <code>kitchen_door</code> has the attribute <code>open</code> although it does not specifically show in the declaration. It is initially set to true as specified in the declaration of the class <code>openable_door</code>.</p>
+<p>In this example, the <code>kitchen_door</code> has the attribute <code>open</code> although it does not specifically show in the declaration.
+It is initially set to true as specified in the declaration of the class <code>openable_door</code>.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_specialising_and_overriding">Specialising and Overriding</h5>
 <div class="paragraph">
-<p>Sub-classing,  or specialisation, is usually used to add properties and thus make the instances of the sub-class more restricted, or specialised. In the example above, <code>openable_door</code>s are specialisations of <code>door</code>s since they have an attribute that the more general class does not have.</p>
+<p>Sub-classing,  or specialisation, is usually used to add properties and thus make the instances of the sub-class more restricted, or specialised.
+In the example above, <code>openable_door</code>s are specialisations of <code>door</code>s since they have an attribute that the more general class does not have.</p>
 </div>
 <div class="paragraph">
-<p>However, a sub-class can also redefine a feature. In the example above a class named <code>closed_openable_door</code> could be defined as:</p>
+<p>However, a sub-class can also redefine a feature.
+In the example above a class named <code>closed_openable_door</code> could be defined as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1538,25 +1700,31 @@ End Every.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This makes all instances of the new class have the same attribute but it is set to false instead. The important thing is that the feature of having the attribute is common to all <code>openable_door</code>s. This is called overriding a property.</p>
+<p>This makes all instances of the new class have the same attribute but it is set to false instead.
+The important thing is that the feature of having the attribute is common to all <code>openable_door</code>s.
+This is called overriding a property.</p>
 </div>
 <div class="paragraph">
-<p>This concludes this short description of object orientation and how the Alan language supports it. In the following descriptions, you just need to remember that most features can be inherited along the inheritance tree and be overridden, both during that inheritance and explicitly in the instance declaration itself.</p>
+<p>This concludes this short description of object orientation and how the Alan language supports it.
+In the following descriptions, you just need to remember that most features can be inherited along the inheritance tree and be overridden, both during that inheritance and explicitly in the instance declaration itself.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_containment_classes_and_transitivity">Containment, Classes and Transitivity</h4>
 <div class="paragraph">
-<p>One basic property of instances is that they may contain other instances. Although conceptually simple there are twists that you should know about.</p>
+<p>One basic property of instances is that they may contain other instances.
+Although conceptually simple there are twists that you should know about.</p>
 </div>
 <div class="sect4">
 <h5 id="_containers_containing_containers">Containers Containing Containers</h5>
 <div class="paragraph">
-<p>Containers might contain other instances that are in turn containers and so on, of course. If you want to consider everything inside a container recursively, you might actually get types of instances you did not expect.</p>
+<p>Containers might contain other instances that are in turn containers and so on, of course.
+If you want to consider everything inside a container recursively, you might actually get types of instances you did not expect.</p>
 </div>
 <div class="paragraph">
-<p>Consider e.g. a container, <em>cont</em>, that takes a subclass of <em>object</em><strong>,</strong> <em>subobject</em>. Assume there is also an instance of that class, <em>inst</em>, that also is a container, but takes <em>object</em>.</p>
+<p>Consider e.g. a container, <em>cont</em>, that takes a subclass of <em>object</em><strong>,</strong> <em>subobject</em>.
+Assume there is also an instance of that class, <em>inst</em>, that also is a container, but takes <em>object</em>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1576,22 +1744,30 @@ End The inst.</code></pre>
 <p>When you search, recursively, for instances in the container <em>cont</em>, you might then get instances that are both of class <em>subobject</em> and <em>object</em>, e.g. if the <em>inst</em> is inside the <em>cont</em> and in turn contains something, which would then be of class <em>object</em>.</p>
 </div>
 <div class="paragraph">
-<p>This might lead to, completely correct, but surprising, error messages from the compiler indicating that an attribute or other property that you though existed is not available. Especially surprising is perhaps the case where the classes are not even decendants of each other. In this case the contained instances can only be guaranteed to be their common parent, which might be a quite general class like <em>thing</em> or even <em>entity</em>.</p>
+<p>This might lead to, completely correct, but surprising, error messages from the compiler indicating that an attribute or other property that you though existed is not available.
+Especially surprising is perhaps the case where the classes are not even decendants of each other.
+In this case the contained instances can only be guaranteed to be their common parent, which might be a quite general class like <em>thing</em> or even <em>entity</em>.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_transitivity">Transitivity</h5>
 <div class="paragraph">
-<p>For many scenarios the above works well, and as expected. But for other cases the notion of transitivity is introduced. Transitivity describes how e.g. containment should be interpreted.</p>
+<p>For many scenarios the above works well, and as expected.
+But for other cases the notion of transitivity is introduced.
+Transitivity describes how e.g. containment should be interpreted.</p>
 </div>
 <div class="paragraph">
 <p>The scenario above may be described as &#8220;transitive containment&#8221; meaning that something is in a container if it is in that container or in any container it contains, recursively.</p>
 </div>
 <div class="paragraph">
-<p>There are two other types, namely DIRECT and INDIRECT transitivity. Direct transitivity actually means no transitivity. If you investigate a container with direct transitivity you will only get the direct content of it, not the content of the containers within it.</p>
+<p>There are two other types, namely DIRECT and INDIRECT transitivity.
+Direct transitivity actually means no transitivity.
+If you investigate a container with direct transitivity you will only get the direct content of it, not the content of the containers within it.</p>
 </div>
 <div class="paragraph">
-<p>Finally, indirect transitivity means instances indirectly contained by a container. In a way it is the opposite of direct transitivity, all instances recursively contained <em>except</em> the directly contained. Here&#8217;s a rule to remember:</p>
+<p>Finally, indirect transitivity means instances indirectly contained by a container.
+In a way it is the opposite of direct transitivity, all instances recursively contained <em>except</em> the directly contained.
+Here&#8217;s a rule to remember:</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1608,17 +1784,21 @@ End The inst.</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>What this means is that if you use transitive containment you get the same instances that direct <em>and</em> indirect will give you. And it is usually the indirect ones that you should look out for.</p>
+<p>What this means is that if you use transitive containment you get the same instances that direct <em>and</em> indirect will give you.
+And it is usually the indirect ones that you should look out for.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_the_verb_construct">The Verb Construct</h4>
 <div class="paragraph">
-<p>The  <code>Verb</code> is the construct that implements the effects of an action requested by the player. Verbs are associated with a class or an instance. We will look at the implications of various combinations of these in the next few sections.</p>
+<p>The  <code>Verb</code> is the construct that implements the effects of an action requested by the player.
+Verbs are associated with a class or an instance.
+We will look at the implications of various combinations of these in the next few sections.</p>
 </div>
 <div class="paragraph">
-<p>To implement a <code>Verb</code> you need a name for it (which is also the default word the player should input to request that action). You must also decide which effects this verb should have under various circumstances.</p>
+<p>To implement a <code>Verb</code> you need a name for it (which is also the default word the player should input to request that action).
+You must also decide which effects this verb should have under various circumstances.</p>
 </div>
 <div class="paragraph">
 <p>If we want to implement the <code>Verb</code> open for the door we could use the following code</p>
@@ -1632,7 +1812,11 @@ End Verb open.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A <code>Verb</code> is either a simple command taking no parameters, like &#8216;look&#8217;, &#8216;save&#8217; or &#8216;help&#8217;, or it involves one or more parameters that the player can reference. Simple verbs should be declared at the top level, globally, i.e. outside of any other declaration. Verbs taking parameters, on the other hand, must be declared within the class or instance, with which it is associated. For example, if a verb will handle objects it should be declared in the object class. The example above should probably best be placed in the door object itself.</p>
+<p>A <code>Verb</code> is either a simple command taking no parameters, like &#8216;look&#8217;, &#8216;save&#8217; or &#8216;help&#8217;, or it involves one or more parameters that the player can reference.
+Simple verbs should be declared at the top level, globally, i.e. outside of any other declaration.
+Verbs taking parameters, on the other hand, must be declared within the class or instance, with which it is associated.
+For example, if a verb will handle objects it should be declared in the object class.
+The example above should probably best be placed in the door object itself.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1645,7 +1829,8 @@ End The kitchen_door.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This defines the effects of applying the <code>open</code> verb to that precise door. The implementation makes direct references to the <code>kitchen_door</code>, so to make the verb more general it should be possible to apply to all doors.</p>
+<p>This defines the effects of applying the <code>open</code> verb to that precise door.
+The implementation makes direct references to the <code>kitchen_door</code>, so to make the verb more general it should be possible to apply to all doors.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1658,10 +1843,14 @@ End Every door.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With this definition it is possible to apply the verb to all doors. Instead need to reference the object the player mentioned in his command (see <a href="#_the_syntax">Sect. 2.4.8</a> and <a href="#_syntax_definitions">Sect. 3.9</a> for a more thorough discussion). In this case, the attribute <code>closed</code> must also be available for all objects by ensuring that the attribute exists in to the class. (See <a href="#_additions">Sect. 3.8</a> on how to add an attribute to a predefined class such as <code>object</code>).</p>
+<p>With this definition it is possible to apply the verb to all doors.
+Instead need to reference the object the player mentioned in his command (see <a href="#_the_syntax">Sect. 2.4.8</a> and <a href="#_syntax_definitions">Sect. 3.9</a> for a more thorough discussion).
+In this case, the attribute <code>closed</code> must also be available for all objects by ensuring that the attribute exists in to the class.
+(See <a href="#_additions">Sect. 3.8</a> on how to add an attribute to a predefined class such as <code>object</code>).</p>
 </div>
 <div class="paragraph">
-<p>Of course, there are often also conditions that need to be checked before we can execute this code (perhaps to see if it was possible to open the object!). Therefore, <code>Verb</code>s may have <code>Check</code>s, as we will see next.</p>
+<p>Of course, there are often also conditions that need to be checked before we can execute this code (perhaps to see if it was possible to open the object!).
+Therefore, <code>Verb</code>s may have <code>Check</code>s, as we will see next.</p>
 </div>
 <div class="sect4">
 <h5 id="_checking_things">Checking Things</h5>
@@ -1679,7 +1868,10 @@ End Verb open.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This is a more realistic definition of the open <code>Verb</code> than the previous one. It specifies that before the statements after <code>Does</code> are executed, the condition after <code>Check</code> must be checked (which, in this case, checks that the object indicated by the player is really possible to open). If that condition is TRUE then the requirements are fulfilled and the body of the <code>Verb</code> (following the <code>Does</code>) can be executed. If this is not the case the <code>Else</code>-part is executed instead (normally showing some message).</p>
+<p>This is a more realistic definition of the open <code>Verb</code> than the previous one.
+It specifies that before the statements after <code>Does</code> are executed, the condition after <code>Check</code> must be checked (which, in this case, checks that the object indicated by the player is really possible to open).
+If that condition is TRUE then the requirements are fulfilled and the body of the <code>Verb</code> (following the <code>Does</code>) can be executed.
+If this is not the case the <code>Else</code>-part is executed instead (normally showing some message).</p>
 </div>
 <div class="paragraph">
 <p>A <code>Check</code> may have multiple conditions as the following code shows:</p>
@@ -1707,7 +1899,8 @@ End Verb take.</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You can never destroy an instance or remove it from the game. Instead, you can define a limbo location, i.e. a location that is not accessible to the player and may thus be used as a storage for &#8220;destroyed&#8221; objects and other things the player is not supposed to see.</p>
+<p>You can never destroy an instance or remove it from the game.
+Instead, you can define a limbo location, i.e. a location that is not accessible to the player and may thus be used as a storage for &#8220;destroyed&#8221; objects and other things the player is not supposed to see.</p>
 </div>
 </td>
 </tr>
@@ -1718,17 +1911,19 @@ End Verb take.</code></pre>
 <div class="sect3">
 <h4 id="_the_syntax">The Syntax</h4>
 <div class="paragraph">
-<p>Normally a verb acts on one object or actor, henceforth called a parameter, referenced by the player in a command. This means that the format of player input normally is something like</p>
+<p>Normally a verb acts on one object or actor, henceforth called a parameter, referenced by the player in a command.
+This means that the format of player input normally is something like</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; take vase</p>
+<p>&gt; <em>take vase</em></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>This form, or syntax, is the default form if you don&#8217;t specify anything else. The default syntax  might thus be described as</p>
+<p>This form, or syntax, is the default form if you don&#8217;t specify anything else.
+The default syntax  might thus be described as</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1743,7 +1938,8 @@ End Verb take.</code></pre>
 <p>In order to allow different and more complex player input the  <code>Syntax</code> construct is supplied.</p>
 </div>
 <div class="paragraph">
-<p>The <code>Syntax</code> construct is a way to describe the words and parameters the player may use in order to execute a particular verb (its global and more specialised parts). Below is the syntax for <code>put_in</code>, the verb to put something inside a container.</p>
+<p>The <code>Syntax</code> construct is a way to describe the words and parameters the player may use in order to execute a particular verb (its global and more specialised parts).
+Below is the syntax for <code>put_in</code>, the verb to put something inside a container.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1757,7 +1953,7 @@ End Verb take.</code></pre>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; put the green pearl in the black box</p>
+<p>&gt; <em>put the green pearl in the black box</em></p>
 </div>
 </div>
 </div>
@@ -1781,19 +1977,25 @@ End Verb take.</code></pre>
 <p>This restricts  the parameter <code>obj</code> to being an instance inheriting from the class object (as opposed to an actor for example) and the parameter <code>cont</code> to a container (an instance with the container property).</p>
 </div>
 <div class="paragraph">
-<p>The parameters are used as normal identifiers in the Alan source code. The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also <a href="#_run_time_contexts">Sect. 5.3</a> for a detailed discussion).</p>
+<p>The parameters are used as normal identifiers in the Alan source code.
+The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also <a href="#_run_time_contexts">Sect. 5.3</a> for a detailed discussion).</p>
 </div>
 <div class="paragraph">
-<p>The <code>Syntax</code> construct allows for more than one parameter, in order to make it possible to define more complex player commands. Therefore, the verb execution order  described previously from execution of verbs in one instance must be generalised to verb bodies in all the parameters. In the example above, verb bodies in the objects or actors referenced as <code>obj</code> and <code>cont</code> (the green pearl and the black box) are executed (if the verb is present in their definitions).</p>
+<p>The <code>Syntax</code> construct allows for more than one parameter, in order to make it possible to define more complex player commands.
+Therefore, the verb execution order  described previously from execution of verbs in one instance must be generalised to verb bodies in all the parameters.
+In the example above, verb bodies in the objects or actors referenced as <code>obj</code> and <code>cont</code> (the green pearl and the black box) are executed (if the verb is present in their definitions).</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_text_output_formatting">Text Output Formatting</h4>
 <div class="paragraph">
-<p>Text output on the screen is caused by what you have written in the Alan source code. However, since text is coming from various places it is not easy or even possible, to anticipate the full context of a particular text.</p>
+<p>Text output on the screen is caused by what you have written in the Alan source code.
+However, since text is coming from various places it is not easy or even possible, to anticipate the full context of a particular text.</p>
 </div>
 <div class="paragraph">
-<p>Therefore, the Alan system takes care of some specific formatting issues. First, text will always flow neatly inside the window or screen. Lines will be broken automatically without braking in the middle of words.</p>
+<p>Therefore, the Alan system takes care of some specific formatting issues.
+First, text will always flow neatly inside the window or screen.
+Lines will be broken automatically without braking in the middle of words.</p>
 </div>
 <div class="paragraph">
 <p>Secondly, a few special cases are also handled automatically:</p>
@@ -1801,7 +2003,10 @@ End Verb take.</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>After a full stop (period, the character &#8216;.&#8217;), an exclamation (&#8216;!&#8217;) or a question mark (&#8216;?&#8217;) and in the beginning of paragraphs, including location headings, the first character will be guaranteed to be upper case, automatically converted if necessary. This means for example that you don&#8217;t have to consider the case when the name of an object might be printed as the first thing in a sentence. The name will automatically be capitalized. For example:</p>
+<p>After a full stop (period, the character &#8216;.&#8217;), an exclamation (&#8216;!&#8217;) or a question mark (&#8216;?&#8217;) and in the beginning of paragraphs, including location headings, the first character will be guaranteed to be upper case, automatically converted if necessary.
+This means for example that you don&#8217;t have to consider the case when the name of an object might be printed as the first thing in a sentence.
+The name will automatically be capitalized.
+For example:</p>
 </li>
 </ul>
 </div>
@@ -1832,9 +2037,11 @@ Postmen are working behind the counters.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Two outputs following each other will automatically be separated by a space (a blank character). Except for the following case:</p>
+<p>Two outputs following each other will automatically be separated by a space (a blank character).
+Except for the following case:</p>
 <div class="paragraph">
-<p>If an output is immediately followed by another output starting with a full stop (period, the character &#8216;.&#8217;), an exclamation, a question mark or a comma, and it is the only character in that output or it is followed by a space (blank character), no space will be inserted before that output. This rule will make sure that the full stop in the following source is automatically adjacent to the previous text, without the need to suppress spacing.</p>
+<p>If an output is immediately followed by another output starting with a full stop (period, the character &#8216;.&#8217;), an exclamation, a question mark or a comma, and it is the only character in that output or it is followed by a space (blank character), no space will be inserted before that output.
+This rule will make sure that the full stop in the following source is automatically adjacent to the previous text, without the need to suppress spacing.</p>
 </div>
 </li>
 </ul>
@@ -1849,7 +2056,8 @@ Postmen are working behind the counters.</p>
 <div class="sect2">
 <h3 id="_strict_and_safe">2.5. Strict and Safe</h3>
 <div class="paragraph">
-<p>The Alan language is strict and type safe. This means that the compiler will attempt to prevent any constructs that might generate a problem for the player, such as assigning values of one type to attributes of another type, accessing properties that are not guaranteed to exist on the instance, and so on.</p>
+<p>The Alan language is strict and type safe.
+This means that the compiler will attempt to prevent any constructs that might generate a problem for the player, such as assigning values of one type to attributes of another type, accessing properties that are not guaranteed to exist on the instance, and so on.</p>
 </div>
 <div class="paragraph">
 <p>A simple example is</p>
@@ -1870,10 +2078,12 @@ Postmen are working behind the counters.</p>
 <p>At line 8 we will get an error saying that the <em>house_cat</em> does not have the attribute <em>fur</em>.</p>
 </div>
 <div class="paragraph">
-<p>Now, if that is true, it&#8217;s a good thing that the compiler caught the error, otherwise the game might try to access that attribute. And blow up in the face of the player.</p>
+<p>Now, if that is true, it&#8217;s a good thing that the compiler caught the error, otherwise the game might try to access that attribute.
+And blow up in the face of the player.</p>
 </div>
 <div class="paragraph">
-<p>Can you spot the problem? The <em>house_cat</em> is declared as an <em>object</em>, and not as an <em>animal</em>.</p>
+<p>Can you spot the problem?
+The <em>house_cat</em> is declared as an <em>object</em>, and not as an <em>animal</em>.</p>
 </div>
 <div class="paragraph">
 <p>Other examples include trying to use a script for an actor (or actor subclass) that does not have one, locating something inside something that is not a container and so on.</p>
@@ -1904,7 +2114,9 @@ Postmen are working behind the counters.</p>
 <p>On line 14 we will get an error saying that <em>someAttribute</em> is not available since the class <em>f</em> can only be guaranteed to be <em>thing</em>.</p>
 </div>
 <div class="paragraph">
-<p>Is it? Well, the variable <em>f</em> (in the loop) enumerates all things in the box and since the box takes objects, it is possible that it may contain the cont. And since that takes things, and the <em>In box</em> is transitive (see xxx), <em>f</em> may take on any thing that is contained in the cont too.</p>
+<p>Is it?
+Well, the variable <em>f</em> (in the loop) enumerates all things in the box and since the box takes objects, it is possible that it may contain the cont.
+And since that takes things, and the <em>In box</em> is transitive (see xxx), <em>f</em> may take on any thing that is contained in the cont too.</p>
 </div>
 <div class="paragraph">
 <p>There are a number of ways to fix this of course:</p>
@@ -11797,8 +12009,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.45<br>
-Last updated 2018-09-02 21:27:42 ora legale Europa occidentale
+Version 0.1.46<br>
+Last updated 2018-09-03 09:34:47 ora legale Europa occidentale
 </div>
 </div>
 </body>
