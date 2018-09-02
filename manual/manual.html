@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.44,</span>
+<span id="revnumber">version 0.1.45,</span>
 <span id="revdate">September 2, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.44
+<pre>Doc version: 0.1.45
 Last edited: September 2, 2018</pre>
 </div>
 </div>
@@ -2597,35 +2597,33 @@ End The hero.</code></pre>
 <col style="width: 50%;">
 <col style="width: 50%;">
 </colgroup>
-<tbody>
+<thead>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Property</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Inherited as</strong></p></td>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Inherited as</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Initial location</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Overridden</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Name</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated, the inherited names are appended at the end of the list of Name clauses</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated, the inherited names are appended at the end of the list of <code>Name</code> clauses</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pronoun</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Overridden, each pronoun clause inhibits inheriting pronouns from the parent class.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Overridden, each <code>Pronoun</code> clause inhibits inheriting pronouns from the parent class.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Attribute values</strong></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Overridden, attribute declarations using the same name as an inherited can give the attribute a different value but must match the type of the inherited.</p>
-</div>
-<div class="paragraph">
-<p>Accumulated, you can add further attributes in a class or instance.</p>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Overridden, attribute declarations using the same name as an inherited can give the attribute a different value but must match the type of the inherited.</p>
+<p class="tableblock">  Accumulated, you can add further attributes in a class or instance.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Initialize</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated. Inherited initialize clauses are executed first so that the base classes may do their initialization first.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated. Inherited <code>Initialize</code> clauses are executed first so that the base classes may do their initialization first.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description check</strong></p></td>
@@ -2649,15 +2647,18 @@ End The hero.</code></pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Verb declarations</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated. Verb bodies are accumulated for verbs with the same name as the inherited. Use qualifiers (see <a href="#_verb_qualification">Sect. 3.10.6</a>) if you don&#8217;t want all of them to execute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated. <code>Verb</code> bodies are accumulated for verbs with the same name as the inherited.
+  Use qualifiers (see <a href="#_verb_qualification">Sect. 3.10.6</a>) if you don&#8217;t want all of them to execute.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Scripts</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Overridden, for same script name.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Overridden, for same <code>Script</code> name.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entered</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated. Entered-clauses in nested locations are executed from the outside in. Entered-clauses in parent classes are executed first. So the first clause to be executed is the parent of an outer location.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated. <code>Entered</code>-clauses in nested locations are executed from the outside in.
+  <code>Entered</code>-clauses in parent classes are executed first.
+  So the first clause to be executed is the parent of an outer location.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Exits</strong></p></td>
@@ -3746,7 +3747,7 @@ End The waiter.</code></pre>
 <p>The actor is located at the location before the clause is executed so <code>Current Location</code> will be the location having the clause.</p>
 </div>
 <div class="paragraph">
-<p>Entered clauses are inherited and locations can be nested (see <a href="#_locations"><em>Locations</em></a>). The order of execution is explained by the following table:</p>
+<p><code>Entered</code> clauses are inherited and locations can be nested (see <a href="#_locations"><em>Locations</em></a>). The order of execution is explained by the following table:</p>
 </div>
 <table id="table-of-entered-execution" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 3. Order of Execution of ENTERED in Nested Locations</caption>
@@ -3756,36 +3757,38 @@ End The waiter.</code></pre>
 <col style="width: 25%;">
 <col style="width: 25%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top">Outer Region</th>
+<th class="tableblock halign-center valign-top">&#8230;&#8203;</th>
+<th class="tableblock halign-center valign-top">Current Location</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Outer Region</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>&#8230;&#8203;</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Current Location</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Base class</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Outermost</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Base class</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Outermost</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>⋮</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>:</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Leaf class</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Leaf class</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Instance</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Instance</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
 </tr>
 </tbody>
 </table>
@@ -4056,28 +4059,48 @@ syntax_end = parameter_restrictions
 </div>
 <table id="table-syntax-parameters" class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 60%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Player input</th>
+<th class="tableblock halign-left valign-top"><code>l</code></th>
+<th class="tableblock halign-left valign-top"><code>k</code></th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Player input</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">l</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">k</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&gt; unlock the door with the key</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="exampleblock gametranscript">
+<div class="content">
+<div class="paragraph">
+<p>&gt; <em>unlock the door with the key</em></p>
+</div>
+</div>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">door</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">key</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&gt; unlock the bottom drawer with the rusty knife</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="exampleblock gametranscript">
+<div class="content">
+<div class="paragraph">
+<p>&gt; <em>unlock the bottom drawer with the rusty knife</em></p>
+</div>
+</div>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bottom drawer</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rusty knife</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&gt; unlock the skeleton with the tiny blue chair</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="exampleblock gametranscript">
+<div class="content">
+<div class="paragraph">
+<p>&gt; <em>unlock the skeleton with the tiny blue chair</em></p>
+</div>
+</div>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">skeleton</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tiny blue chair</p></td>
 </tr>
@@ -4687,51 +4710,53 @@ First all parameters are evaluated according to the syntax restrictions (see <a 
 <col style="width: 14.2857%;">
 <col style="width: 14.2858%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top">Outer Region</th>
+<th class="tableblock halign-center valign-top">&#8230;&#8203;</th>
+<th class="tableblock halign-center valign-top">Current Location</th>
+<th class="tableblock halign-center valign-top">First parameter</th>
+<th class="tableblock halign-center valign-top">&#8230;&#8203;</th>
+<th class="tableblock halign-center valign-top">Last parameter</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Outer Region</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>&#8230;&#8203;</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Current Location</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>First parameter</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>&#8230;&#8203;</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Last parameter</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Base class (entity)</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Outermost</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Base class (entity)</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Outermost</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>⋮</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>:</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Leaf class</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Leaf class</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Instance</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Innermost</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Instance</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">🡳</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Innermost</p></td>
 </tr>
 </tbody>
 </table>
@@ -11772,8 +11797,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.44<br>
-Last updated 2018-09-02 15:36:20 ora legale Europa occidentale
+Version 0.1.45<br>
+Last updated 2018-09-02 21:27:42 ora legale Europa occidentale
 </div>
 </div>
 </body>

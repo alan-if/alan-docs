@@ -243,13 +243,13 @@ Clean-up, fix styling, add caption and anchor ID to all tables:
 
 - [x] _3.2. Options_ — [Table 1. Adventure Settings via OPTION]
 - _3.7. Properties_
-    + [ ] _Inheriting Properties_ — [Table 2. Properties Inheritance]
-    + [ ]  _Entered_ — [Table 3. Order of Execution of ENTERED in Nested Locations]
-- [ ] _3.9. Syntax Definitions_ — ([_captionless table_])
+    + [x] _Inheriting Properties_ — [Table 2. Properties Inheritance]
+    + [c]  _Entered_ — [Table 3. Order of Execution of ENTERED in Nested Locations]
+- [x] _3.9. Syntax Definitions_ — ([_captionless table_])
 - _3.10. Verbs_
-    - [ ] _Verb Execution_ — [Table 4. Order of Execution of Verbs]
+    - [x] _Verb Execution_ — [Table 4. Order of Execution of Verbs]
 - _Appendix D: Language Grammar_
-- [x] _D.2. Keywords_ — [Table 5. List of Alan Language's Keywords]
+    + [x] _D.2. Keywords_ — [Table 5. List of Alan Language's Keywords]
 
 [Table 1. Adventure Settings via OPTION]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-options
 [Table 2. Properties Inheritance]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-properties-inheritance

@@ -539,32 +539,60 @@ Attributes, exits, verbs and scripts can be repeated any number of times in the 
 
 A property can be inherited (((inheriting properties, rules for))) from the parent of the class or instance. It is not necessary to repeat the declaration in the inheriting class or instance if it should retain its inherited value. Each inherited property may be amended or overridden by specifying it also in the declaration of the inheriting class or instance according to the following table.
 
-// @FIXME: CLEANUP TABLE
 
 .Properties Inheritance
 [[table-of-properties-inheritance]]
-[cols=",",]
-|==========================================================================================================================================================================================================================
-|*Property* |*Inherited as*
-|*Initial location* |Overridden
-|*Name* |Accumulated, the inherited names are appended at the end of the list of Name clauses
-|*Pronoun* |Overridden, each pronoun clause inhibits inheriting pronouns from the parent class.
-|*Attribute values* a|
-Overridden, attribute declarations using the same name as an inherited can give the attribute a different value but must match the type of the inherited.
+[cols="s,<n",options="header"]
+|===============================================================================
+| Property | Inherited as
 
-Accumulated, you can add further attributes in a class or instance.
+| Initial location
+| Overridden
 
-|*Initialize* |Accumulated. Inherited initialize clauses are executed first so that the base classes may do their initialization first.
-|*Description check* |Accumulated.
-|*Description* |Overridden.
-|*Articles & Forms* |Overridden.
-|*Mentioned* |Overridden. Also overrides names.
-|*Container* |Overridden, all clauses are overridden.
-|*Verb declarations* |Accumulated. Verb bodies are accumulated for verbs with the same name as the inherited. Use qualifiers (see <<Verb Qualification>>) if you don't want all of them to execute.
-|*Scripts* |Overridden, for same script name.
-|*Entered* |Accumulated. Entered-clauses in nested locations are executed from the outside in. Entered-clauses in parent classes are executed first. So the first clause to be executed is the parent of an outer location.
-|*Exits* |Overridden, for same direction.
-|==========================================================================================================================================================================================================================
+| Name
+| Accumulated, the inherited names are appended at the end of the list of `Name` clauses
+
+| Pronoun
+| Overridden, each `Pronoun` clause inhibits inheriting pronouns from the parent class.
+
+| Attribute values
+| Overridden, attribute declarations using the same name as an inherited can give the attribute a different value but must match the type of the inherited.
+
+  Accumulated, you can add further attributes in a class or instance.
+
+| Initialize
+| Accumulated. Inherited `Initialize` clauses are executed first so that the base classes may do their initialization first.
+
+| Description check
+| Accumulated.
+
+| Description
+| Overridden.
+
+| Articles & Forms
+| Overridden.
+
+| Mentioned
+| Overridden. Also overrides names.
+
+| Container
+| Overridden, all clauses are overridden.
+
+| Verb declarations
+| Accumulated. `Verb` bodies are accumulated for verbs with the same name as the inherited.
+  Use qualifiers (see <<Verb Qualification>>) if you don't want all of them to execute.
+
+| Scripts
+| Overridden, for same `Script` name.
+
+| Entered
+| Accumulated. `Entered`-clauses in nested locations are executed from the outside in.
+  `Entered`-clauses in parent classes are executed first.
+  So the first clause to be executed is the parent of an outer location.
+
+| Exits
+| Overridden, for same direction.
+|===============================================================================
 
 The table also show which properties are inherited separately from the parent. E.g., you can override the description but keep the description check, or even add another (since they are accumulated). You cannot override the container limits and keep the header section since the container property is overridden in its entirety.
 
@@ -1486,20 +1514,19 @@ If some of the statements should only apply to a particular actor, it is possibl
 
 The actor is located at the location before the clause is executed so `Current Location` will be the location having the clause.
 
-Entered clauses are inherited and locations can be nested (see <<Locations,_Locations_>>). The order of execution is explained by the following table:
+`Entered` clauses are inherited and locations can be nested (see <<Locations,_Locations_>>). The order of execution is explained by the following table:
 
-// @FIXME: CLEANUP TABLE
 
 [[table-of-entered-execution]]
 .Order of Execution of ENTERED in Nested Locations
-[cols=",,,",]
-|=========================================
-| |*Outer Region* |*...* |*Current Location*
-|*Base class* |Outermost | |
-|*:* | | |
-|*Leaf class* | | |
-|*Instance* | | |
-|=========================================
+[cols="^s,3*^n",options="header"]
+|===============================================================================
+|            | Outer Region |     ...     | Current Location
+| Base class |  Outermost   |      🡳      |      🡳
+| ⋮          |      🡳      |      🡳      |      🡳
+| Leaf class |      🡳      |      🡳      |      🡳
+| Instance   |      🡳      |      🡳      |      🡳
+|===============================================================================
 
 This means that the first `Entered` clause to be executed is the clause in the base class of the outermost location, if any, then moving down the inheritance of the outermost. After that any parent classes for any intermediate locations are considered in the same way. Finally running any `Entered` clauses in the parents of the new location, ending with the clause in the location itself.
 
@@ -1710,19 +1737,33 @@ Syntax open = open (obj).
 
 In the example above, the parameter, `obj`, can be used in the declaration of the `open` verb and will, at execution time, refer to such a bound instance. The following table explains which instances in the game a parameter identifier (l & k, from the `unlock_with` syntax above) will actually refer to.
 
-// @FIXME: CLEANUP TABLE
-//        1st column should be styled as IF game sessions!
 // @CAPTION: This table doesn't seem to need a caption for it's more of an example
 //           than a standalone reference table.
 
 [[table-syntax-parameters]]
-[cols=",,",]
-|===========================================================================
-|Player input |l |k
-|> unlock the door with the key |door |key
-|> unlock the bottom drawer with the rusty knife |bottom drawer |rusty knife
-|> unlock the skeleton with the tiny blue chair |skeleton |tiny blue chair
-|===========================================================================
+[cols="<60a,2*<20n",options="header"]
+|===============================================================================
+| Player input | `l` | `k`
+
+|[example,role="gametranscript"]
+================================================================================
+&gt; _unlock the door with the key_
+================================================================================
+| door | key
+
+|[example,role="gametranscript"]
+================================================================================
+&gt; _unlock the bottom drawer with the rusty knife_
+================================================================================
+| bottom drawer | rusty knife
+
+|[example,role="gametranscript"]
+================================================================================
+&gt; _unlock the skeleton with the tiny blue chair_
+================================================================================
+|skeleton |tiny blue chair
+
+|===============================================================================
 
 This, of course, provided that there is an instance that will match the player input, given the adjectives and nouns in the input and in instance declarations.
 
@@ -2219,18 +2260,25 @@ In most circumstances, this is the most logical order, but if another order is r
 (((VERB, execution order)))
 First all parameters are evaluated according to the syntax restrictions (see <<Parameter Restrictions,_Parameter Restrictions_>>). Then, if they passed, the checks of all verb declarations are evaluated (see <<Verb Checks>>). Finally the verb bodies are executed in the normal order as explained by the table below.
 
-// @FIXME: CLEANUP TABLE
 
 [[table-of-verbs-execution]]
 .Order of Execution of Verbs
-[cols=",,,,,,",]
-|===================================================================================
-| |*Outer Region* |*...* |*Current Location* |*First parameter* |*...* |*Last parameter*
-|*Base class (entity)* |Outermost | | | | |
-|*:* | | | | | |
-|*Leaf class* | | | | | |
-|*Instance* | | | | | |Innermost
-|===================================================================================
+[cols="^s,6*^n",options="header"]
+|===============================================================================
+|  | Outer Region | ... | Current Location | First parameter | ... | Last parameter
+
+| Base class (entity)
+| Outermost | 🡳 | 🡳 | 🡳 | 🡳 | 🡳
+
+| ⋮
+| 🡳 | 🡳 | 🡳 | 🡳 | 🡳 | 🡳
+
+| Leaf class
+| 🡳 | 🡳 | 🡳 | 🡳 | 🡳 | 🡳
+
+| Instance
+| 🡳 | 🡳 | 🡳 | 🡳 | 🡳 | Innermost
+|===============================================================================
 
 The table above illustrates the normal order of execution of verb bodies and checks. Starting with any base classes to the outermost region (containing location), continuing to the actual instance of that location, as illustrated by the first column. It then continues with any inner regions (second column) and the current location itself (third column). The execution then proceeds to the parameters of the syntax in order (columns four through six), traversing the inheritance tree from the base class to the instance.
 

@@ -1,7 +1,7 @@
 
 // @ARRIVED HERE! //////////////////////////////////////////////////////////////
 
-[EXAMPLE,role="gametranscript"]
+[example,role="gametranscript"]
 ================================================================================
 ================================================================================
 
@@ -48,6 +48,11 @@
 [NOTE]
 ================================================================================
 ================================================================================
+
+// @NOTE: The following admonition should be a WARNING or IMPORTANT:
+// @NOTE: Admonition changed from NOTE to WARNING!
+
+// NOTE  TIP  WARNING  CAUTION IMPORTANT
 
 // Openblock "commentary" is used for styling added left marging on contents.
 [role="commentary"]
