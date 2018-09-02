@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.42,</span>
+<span id="revnumber">version 0.1.43,</span>
 <span id="revdate">September 2, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -719,7 +719,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_a_turn_of_events">5.1. A Turn of Events</a></li>
 <li><a href="#_player_input">5.2. Player Input</a></li>
-<li><a href="#_run_time_contexts">5.3. Run-time Contexts</a></li>
+<li><a href="#_run_time_contexts">5.3. Run-Time Contexts</a></li>
 <li><a href="#_moving_actors">5.4. Moving Actors</a></li>
 <li><a href="#_undoing">5.5. Undoing</a></li>
 <li><a href="#_scripting_and_commenting">5.6. Scripting and Commenting</a></li>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.42
+<pre>Doc version: 0.1.43
 Last edited: September 2, 2018</pre>
 </div>
 </div>
@@ -4844,7 +4844,7 @@ End Event.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The body of an event can be any sequence of statements. They can however not refer to any parameters, since no verb is executing, or the <code>Current Actor</code>. See <a href="#_run_time_contexts"><em>Run-time Contexts</em></a>.</p>
+<p>The body of an event can be any sequence of statements. They can however not refer to any parameters, since no verb is executing, or the <code>Current Actor</code>. See <a href="#_run_time_contexts"><em>Run-Time Contexts</em></a>.</p>
 </div>
 <div class="paragraph">
 <p>Events may be scheduled and cancelled with the <code>Schedule</code> and <code>Cancel</code> statements (see <a href="#_event_statements"><em>Event Statements</em></a>).</p>
@@ -6323,7 +6323,7 @@ End Verb.</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p> <code>Here</code> is the location where the current activity is performed. Often this means where the hero is, but if the expression is evaluated in another run-time context this context is used. See <a href="#_run_time_contexts"><em>Run-time Contexts</em></a> for a detailed discussion, but examples include an event scheduled at a particular location, in which case that location is <code>Here</code>. Note that <code>Here</code> is equivalent to <code>At Current Location</code>.</p>
+<p> <code>Here</code> is the location where the current activity is performed. Often this means where the hero is, but if the expression is evaluated in another run-time context this context is used. See <a href="#_run_time_contexts"><em>Run-Time Contexts</em></a> for a detailed discussion, but examples include an event scheduled at a particular location, in which case that location is <code>Here</code>. Note that <code>Here</code> is equivalent to <code>At Current Location</code>.</p>
 </li>
 <li>
 <p> <code>Nearby</code> means at any adjacent location. An adjacent location means that there exists an exit from the other location to <code>Here</code> (note that the direction is from <code>Nearby</code> to <code>Here</code>). It is allowed to refer to any instance using an identifier or expression. In particular, instances inheriting from <code>location</code> are allowed, which can be used to see if someone at that location can use an exit to get here.</p>
@@ -6386,7 +6386,7 @@ End Verb.</code></pre>
 <p><code>Current Actor</code>  is always set to the actor currently active, e.g. when a non-player actor is running a script this refers to the actor instance that is running.</p>
 </li>
 <li>
-<p><code>Current Location</code>  is the current location, i.e. the location where the current activity is performed. Normally this is the location where the hero is, but may also be where an event is executed or the location where a scripted actor currently is executing. See <a href="#_run_time_contexts"><em>Run-time Contexts</em></a> for more details.</p>
+<p><code>Current Location</code>  is the current location, i.e. the location where the current activity is performed. Normally this is the location where the hero is, but may also be where an event is executed or the location where a scripted actor currently is executing. See <a href="#_run_time_contexts"><em>Run-Time Contexts</em></a> for more details.</p>
 </li>
 <li>
 <p><code>This</code> refers to the instance in which code, such as a verb body or a script, is run. This can for example be used to test or set attributes in inherited code, thus testing or setting attributes in the instance while the code is defined in a class that the instance inherits from. It cannot be used in events or global verbs.</p>
@@ -6777,7 +6777,7 @@ Verb put_in
 </ul>
 </div>
 <div class="paragraph">
-<p>These two expressions can be used wherever a reference to an instance can be used. They will refer to the currently executing actor and the current location respectively. Details about execution contexts can be found in <a href="#_run_time_contexts"><em>Run-time Contexts</em></a>.</p>
+<p>These two expressions can be used wherever a reference to an instance can be used. They will refer to the currently executing actor and the current location respectively. Details about execution contexts can be found in <a href="#_run_time_contexts"><em>Run-Time Contexts</em></a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -7181,13 +7181,21 @@ identifier (see <a href="#_words_identifiers_and_names">Sect. 4.2</a>).</p>
 <div class="sect2">
 <h3 id="_a_turn_of_events">5.1. A Turn of Events</h3>
 <div class="paragraph">
-<p>The player controls the  execution of an Alan adventure. Each of his inputs are taken care of and acted upon by the run-time system in the interpreter. The execution of an Alan adventure starts by executing the start section. The player is then placed in the location indicated in the start section, the location is described, and the player is prompted for a command.</p>
+<p>The player controls the  execution of an Alan adventure.
+Each of his inputs are taken care of and acted upon by the run-time system in the interpreter.
+The execution of an Alan adventure starts by executing the <code>Start</code> section.
+The player is then placed in the <code>location</code> indicated in the <code>Start</code> section, the location is described, and the player is prompted for a command.</p>
 </div>
 <div class="paragraph">
-<p>The player input is analysed according to the explicit and implicit syntax rules and converted to an execution of verb checks and bodies. Global verb checks and bodies are used for verbs taking no parameters, otherwise the verb bodies are found in the parameter instances or their classes. In case the player typed a directional command the corresponding exit check and code is executed.</p>
+<p>The player input is analysed according to the explicit and implicit <code>Syntax</code> rules and converted to an execution of verb checks and bodies.
+Global <code>Verb</code> <code>Check</code>s and bodies are used for verbs taking no parameters, otherwise the verb bodies are found in the parameter instances or their classes.
+In case the player typed a directional command the corresponding <code>Exit</code> check and code is executed.</p>
 </div>
 <div class="paragraph">
-<p>After the  players command has been taken care of, all rules are evaluated and possibly executed. Then each of the other actors executes one step in their scripts (if active) and for each actor the rules are evaluated again. Finally, each event that is scheduled for this round is fired, and the rules evaluated yet again. Finally the player is prompted for another command.</p>
+<p>After the  player&#8217;s command has been taken care of, all <code>Rule</code>s are evaluated and possibly executed.
+Then each of the other <code>actor</code>s executes one step in their <code>Script</code>s (if active) and for each actor the rules are evaluated again.
+Finally, each <code>Event</code> that is scheduled for this round is fired, and the rules evaluated yet again.
+Finally the player is prompted for another command.</p>
 </div>
 <div class="paragraph">
 <p>So, to summarise:</p>
@@ -7207,149 +7215,162 @@ end for</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A player command may be either a verb or a direction. A verb is executed by checking the syntax of the input, performing any preconditions (checks) and then executing the verb bodies (as described in <a href="#_verbs"><em>Verbs</em></a> and <a href="#_scope"><em>Scope</em></a>). A directional command is executed by finding any exit in that direction, evaluating the checks and the body (if any) of that exit and locating the <em>hero</em> at the new location.</p>
+<p>A player command may be either a verb or a direction.
+A verb is executed by checking the syntax of the input, performing any preconditions (<code>Check</code>s) and then executing the verb bodies (as described in <a href="#_verbs"><em>Verbs</em></a> and <a href="#_scope"><em>Scope</em></a>).
+A directional command is executed by finding any <code>Exit</code> in that direction, evaluating the <code>Check</code>s and the body (if any) of that exit and locating the <em>hero</em> at the new location.</p>
 </div>
 <div class="paragraph">
-<p>If the player inputs an empty command, this is equivalent to forfeiting his turn. The empty command will simply be ignored. The events and other actors, including turn counting, then proceeds as if the player had input a proper input, before returning to the player prompt.</p>
+<p>If the player inputs an empty command, this is equivalent to forfeiting his turn.
+The empty command will simply be ignored.
+The events and other actors, including turn counting, then proceeds as if the player had input a proper input, before returning to the player prompt.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_player_input">5.2. Player Input</h3>
 <div class="paragraph">
-<p>The syntax defined in the Alan source is the basis for what the player is allowed to input. Commands with the formats expressed in the syntaxes form the basic statements available to the player. In addition, there are various combinations and variations are possible using special characters and words. The words are of course different for different languages, but in the following generic English words, like &#8220;<strong>AND</strong>-word&#8221;, will be used to denote all words that can be used in the same manner. The exact list of these words for every language with built-in support is available in <a href="#_predefined_player_words">Appendix E</a>.</p>
+<p>The <code>Syntax</code> defined in the Alan source is the basis for what the player is allowed to input.
+Commands with the formats expressed in the syntaxes form the basic statements available to the player.
+In addition, other combinations and variations are possible using special characters and words.
+Obviously these words are different in each language, but here we&#8217;ll use generic English words, like &#8220;<strong>AND</strong>-word&#8221;, to denote all the words that can be used in the same manner.
+The exact list of these words, for every language natively supported in Alan, is available in <a href="#_predefined_player_words">Appendix E</a>.</p>
 </div>
 <div class="paragraph">
-<p>The following built in syntax variations are available to the player:</p>
+<p>The following built-in syntax variations are available to the player:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Concatenating of statements using   <strong>AND</strong>-words like</p>
-</li>
-</ul>
-</div>
+<p>Concatenation of statements via   <strong>AND</strong>-words, like:</p>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; open the door then enter<br>
-&gt; take the book and read it<br>
-&gt; west. north. east</p>
+<p>&gt; <em>open the door THEN enter</em><br>
+&gt; <em>take the book AND read it</em><br>
+&gt; <em>west. north. east</em></p>
 </div>
 </div>
+</div>
+</li>
+<li>
+<p>The use of pronouns  to refer to the last object mentioned in the previous command, e.g.:</p>
+<div class="exampleblock gametranscript">
+<div class="content">
+<div class="paragraph">
+<p>&gt; <em>take the book and read IT</em><br>
+&gt; <em>give key to guard and ask HIM to open the door with IT</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The pronouns have to be defined by the author in his source (see <a href="#_pronouns">Sect. 3.7.4</a>) or by a library.
+The only built-in pronoun is the <strong>IT</strong>-word, which is automatically defined on the class <code>thing</code>.</p>
+</div>
+</li>
+</ul>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The use of pronouns  to refer to the last object mentioned in the previous command, e.g.</p>
-</li>
-</ul>
-</div>
+<p>References to  multiple objects using  <strong>AND</strong>-word.
+This allows:</p>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; take the book and read it<br>
-&gt; give key to guard and ask him to open the door with it</p>
+<p>&gt; <em>take the blue vase AND the pillow</em><br>
+&gt; <em>the red key, the glass bowl AND the compass</em></p>
 </div>
 </div>
 </div>
-<div class="paragraph">
-<p>The pronouns have to be defined by the author in his source (see <a href="#_pronouns">Sect. 3.7.4</a>) or by a library. The only built-in pronoun is the <strong>IT</strong>-word, which is automatically defined on the class <code>thing</code>.</p>
-</div>
-<div class="ulist">
-<ul>
+</li>
 <li>
-<p>References to  multiple objects using  <strong>AND</strong>-word. This allows</p>
-</li>
-</ul>
-</div>
+<p>Reference to multiple objects using   <strong>ALL</strong>-word:</p>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; take the blue vase and the pillow<br>
-&gt; the red key, the glass bowl and the compass</p>
+<p>&gt; <em>drop ALL</em></p>
 </div>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Reference to multiple objects using   <strong>ALL</strong>-word</p>
 </li>
 </ul>
-</div>
-<div class="exampleblock gametranscript">
-<div class="content">
-<div class="paragraph">
-<p>&gt; drop all</p>
-</div>
-</div>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p>Excluding objects using a   <strong>BUT</strong>-word, like:</p>
-</li>
-</ul>
-</div>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; wear everything except the bowler hat</p>
+<p>&gt; <em>wear everything EXCEPT the bowler hat</em></p>
 </div>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
-<p>The use of a  <strong>THEM</strong>–word to refer to the  multiple objects referenced in the previous command, e.g.</p>
-</li>
-</ul>
-</div>
+<p>The use of a  <strong>THEM</strong>–word to refer to the  multiple objects referenced in the previous command, e.g.:</p>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; remove the hat and the scarf then drop them</p>
+<p>&gt; <em>remove the hat and the scarf then drop THEM</em></p>
 </div>
 </div>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The reference to multiple objects (or actors) in a position is only possible if the adventure author has allowed it by using a multiple indicator  in the syntax definition (see <a href="#_syntax_definitions">Sect. 3.9</a>). All the variations above are built in and handled automatically by the run-time system.</p>
+<p>The reference to multiple objects (or actors) in a position is only possible if the adventure author has allowed it by using a multiple indicator  in the <code>Syntax</code> definition (see <a href="#_syntax_definitions">Sect. 3.9</a>).
+All the variations above are built-in and handled automatically by the run-time system.</p>
 </div>
 <div class="paragraph">
-<p>The interpreter also automatically restricts  parameter references to things reachable according to the semantic rules of each built-in base class (see <a href="#_instances">Sect. 3.6</a> for the complete details). For example objects are only possible to refer to if they are present at the current location, except if the syntax for the command uses the   omnipotent <code>!</code> indicator (see <a href="#_syntax_definitions">Sect. 3.9</a> for details). For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to <a href="#_distant_imaginary_objects"><em>Distant &amp; Imaginary Objects</em></a>.</p>
+<p>The interpreter also automatically restricts  parameter references to things which are reachable according to the semantic rules of each built-in base class (see <a href="#_instances">Sect. 3.6</a> for the complete details).
+For example, objects can only be referred to if they are present at the current location, except if the <code>Syntax</code> for the command uses the   omnipotent <code>!</code> indicator (see <a href="#_syntax_definitions">Sect. 3.9</a> for details).
+For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to <a href="#_distant_imaginary_objects"><em>Distant &amp; Imaginary Objects</em></a>.</p>
 </div>
 <div class="paragraph">
 <p>If the player uses <strong>ALL</strong> instead of a reference to an instance in his command, the verb will be applied to all appropriate instances at the current location, <em>except</em> the ones that do not pass all checks for the verb (see <a href="#_verbs">Sect. 3.7.10</a> for further details on this).</p>
 </div>
 <div class="paragraph">
-<p>A restriction placed on the player input by the interpreter is that the words the player is allowed to use can only contain alphanumeric characters, underscores and dash. This must be kept in mind when naming verbs that use the default syntax (an explicit <code>Syntax</code> statement can always specify other player words to trigger the verb).</p>
+<p>A restriction placed on the player input by the interpreter is that the words the player is allowed to use can only contain alphanumeric characters, underscores and dash.
+This must be kept in mind when naming verbs that use the default syntax (an explicit <code>Syntax</code> statement can always specify other player words to trigger the verb).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_run_time_contexts">5.3. Run-time Contexts</h3>
+<h3 id="_run_time_contexts">5.3. Run-Time Contexts</h3>
 <div class="paragraph">
-<p>When the player enters a command, the Alan run-time system evaluates the various constructs from the adventure description (source) as described above. Depending on the player&#8217;s command evaluation of different parts of the adventure may be triggered. These parts all have different conditions under which they are evaluated and have different contexts. Four different  execution contexts can be identified:</p>
+<p>When the player enters a command, the Alan run-time system evaluates the various constructs from the adventure description (source) as described above.
+Depending on the player&#8217;s command evaluation, different parts of the adventure may be triggered.
+These parts all have different conditions under which they are evaluated and have different contexts.
+Five different  execution contexts can be identified:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Execution of a verb. 
-During the execution of a verb (the syntax and verb checks and the verb bodies), which is the result of the player entering a command that was not a directional command, parameters are defined and may be referenced in the statements and expressions. In addition, the <code>Current Actor</code> is set to the hero and <code>Current Location</code> to the location where the hero is (<code>Here</code> refers to the location of the hero).</p>
+<p><strong>Execution of verbs</strong>&#8201;&#8212;&#8201;
+During the execution of a verb (the syntax and verb checks and the verb bodies), which is the result of the player entering a command that was not a directional command, parameters are defined and may be referenced in statements and expressions.
+In addition, the <code>Current Actor</code> is set to the hero and <code>Current Location</code> to the location where the hero is (<code>Here</code> refers to the location of the hero).</p>
 </li>
 <li>
-<p>Execution of descriptions. 
-These are started as the response to a directional command, a <code>Look</code> or <code>Describe</code> statement, or a <code>Locate</code> statement operating on the hero. During this, no parameters are defined, <code>Current Actor</code> is set to the hero, and <code>Current Location</code> of course to the location being described. The description clauses for objects and locations, as well as the <code>Entered</code> clause of locations, are evaluated in this context. <code>Entered</code> clauses are executed for all actors entering a location with <code>Current Actor</code> set to the moving actor.</p>
+<p><strong>Execution of descriptions</strong>&#8201;&#8212;&#8201;
+These are triggered as responses to a directional command, a <code>Look</code> or <code>Describe</code> statement, or a <code>Locate</code> statement operating on the hero.
+During this execution context, no parameters are defined, <code>Current Actor</code> is set to the hero, and <code>Current Location</code> of course to the location being described.
+The description clauses for objects and locations, as well as the <code>Entered</code> clause of locations, are evaluated in this context.
+<code>Entered</code> clauses are executed for all actors entering a location with <code>Current Actor</code> set to the moving actor.</p>
 </li>
 <li>
-<p>Execution of actors. 
-When an actor performs his script step there are no parameters defined but <code>Current Actor</code> is set to the actor currently executing. <code>Current Location</code> is set to that of the executing actor (<code>Here</code> refers to where the executing actor is).</p>
+<p><strong>Execution of actors</strong>&#8201;&#8212;&#8201;
+When an actor performs his script step there are no parameters defined but <code>Current Actor</code> is set to the actor currently executing.
+<code>Current Location</code> is set to that of the executing actor (<code>Here</code> refers to where the executing actor is).</p>
 </li>
 <li>
-<p>Execution of events,  no parameters and no actor is defined. The location is set to where the event was scheduled to execute.</p>
+<p><strong>Execution of events</strong>&#8201;&#8212;&#8201;
+No parameters and no actor are defined.
+The location is set to where the event was scheduled to execute.</p>
 </li>
 <li>
-<p>Execution of rules. 
-Rules are executed without location, so neither parameters, <code>Current Location</code> or <code>Current Actor</code> is defined. Any output statement will in this context be completely useless since the hero can never be at the same location as the execution of the rule.</p>
+<p><strong>Execution of rules</strong>&#8201;&#8212;&#8201;
+Rules are executed without location, so neither parameters, <code>Current Location</code> nor <code>Current Actor</code> are defined.
+Any output statement in this context will be completely useless since the hero can never be at the same location of an executing rule.</p>
 </li>
 </ul>
 </div>
@@ -7359,16 +7380,16 @@ Rules are executed without location, so neither parameters, <code>Current Locati
 <div class="ulist">
 <ul>
 <li>
-<p>The hero&#8201;&#8212;&#8201;the actions of the player are always focused on the hero and the actions performed are always related to where the hero is</p>
+<p><strong>The hero</strong>&#8201;&#8212;&#8201;the actions of the player are always focused on the hero, and their execution is always relative to the hero&#8217;s location.</p>
 </li>
 <li>
-<p>An actor&#8201;&#8212;&#8201;steps executed by an actor are always focused where the actor is</p>
+<p><strong>An actor</strong>&#8201;&#8212;&#8201;steps executed by an actor are always focused where the actor is.</p>
 </li>
 <li>
-<p>An event&#8201;&#8212;&#8201;code executed in events are focused where the event was specified to take place</p>
+<p><strong>An event</strong>&#8201;&#8212;&#8201;code executed in events is focused where the event was specified to take place.</p>
 </li>
 <li>
-<p>A rule&#8201;&#8212;&#8201;rules are executed after each actor (including the hero) and after each event with the focus set to the complete game world</p>
+<p><strong>A rule</strong>&#8201;&#8212;&#8201;rules are executed after each actor (including the hero) and after each event, with the focus set to the complete game world.</p>
 </li>
 </ul>
 </div>
@@ -7377,34 +7398,48 @@ Rules are executed without location, so neither parameters, <code>Current Locati
 <h3 id="_moving_actors">5.4. Moving Actors</h3>
 <div class="paragraph">
 <p>
-The main way to  move the hero is through the  <code>Exit</code>s (see <a href="#_exits">Sect. 3.7.12</a>). They are executed if the player inputs a directional command, i.e. a word defined as the name for an exit in any location. First, the current location is investigated for an exit in the indicated direction, if there is none an error message is printed. Otherwise, that exit is examined for <code>Check</code>s, which are run according to normal rules (see <a href="#_verb_checks">Sect. 3.10.3</a>). If there was no  <code>Check</code> or if the check passed the statements in the body (the  <code>Does</code>-part) is executed. The  hero is then located at the location indicated in the exit header, which will result in the description of the location (by executing the <code>Description</code>-clause of the location) and any objects or actors present (by executing their <code>Description</code>s, explicit or implicit).</p>
+The main way to  move the hero around the adventure&#8217;s world is through  <code>Exit</code>s (see <a href="#_exits">Sect. 3.7.12</a>).
+They are executed if the player inputs a directional command, i.e. a word defined as the name for an <code>Exit</code> in any location.
+First, the current location is investigated for an <code>Exit</code> in the indicated direction, if there is none an error message is printed.
+Otherwise, that exit is examined for <code>Check</code>s, which are run according to normal rules (see <a href="#_verb_checks">Sect. 3.10.3</a>).
+If there was no  <code>Check</code>, or if the checks passed, the statements in the body (the  <code>Does</code>-part) is executed.
+The  hero is then located at the <code>location</code> indicated in the <code>Exit</code> header, which will result in the description of the location (by executing the <code>Description</code>-clause of the location) and any objects or actors present (by executing their <code>Description</code>s, explicit or implicit).</p>
 </div>
 <div class="paragraph">
-<p>When any actor (including the hero) is located at a location, the  <code>Entered</code> clause of that location is executed as if the actor had moved into that <code>Location</code>. The actor that was moved will be the <code>Current Actor</code> even if the movement was not caused by him (but the result of an event, for example). Therefore, this is also the last step in the sequence of events caused by locating the hero somewhere.</p>
+<p>When any actor (including the hero) gets located at a <code>location</code>, the  <code>Entered</code> clause of that location is executed as if the actor had actually entered it by movement.
+The actor being located will be the <code>Current Actor</code> even if the movement was not caused by him (but was the result of an event, for example).
+Therefore, this is also the last step in the sequence of events caused by locating the hero somewhere.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_undoing">5.5. Undoing</h3>
 <div class="paragraph">
-<p>A player might occasionally regret a command that he gave, perhaps realising that it was not the correct one. The Alan interpreter supports such undoing of commands. This means that the player can backup commands that (s)he later regretted. The interpreter stores each game state as soon as it has changed and an  <code>undo</code> command resets the game state to the last saved one. This works completely automatically and as many states as memory permits is saved, giving almost unlimited <code>undo</code> capability.</p>
+<p>A player might occasionally regret an imparted command, perhaps realising that it was not the correct one.
+The Alan interpreter supports such undoing of commands.
+This means that the player can backup commands that (s)he later regretted.
+The interpreter stores each game state as soon as it has changed, and an  <code>undo</code> command resets the game state to the last saved one.
+This works completely automatically, and as many states as memory permits are saved, providing almost unlimited <code>undo</code> capability.</p>
 </div>
 <div class="paragraph">
-<p>The player command to restore a previous game state is handled directly by the interpreter. It must consist of the single word <code>undo</code>.</p>
+<p>The player command to restore a previous game state is handled directly by the interpreter.
+It must consist of the single word <code>undo</code>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_scripting_and_commenting">5.6. Scripting and Commenting</h3>
 <div class="paragraph">
-<p>Most versions of the Alan interpreter, Arun, supports both taking a transcript of a game in progress and playing it back as input to the interpreter.</p>
+<p>Most versions of the Alan interpreter, Arun, supports both the creation of a transcript for the game in progress, as well as playing back a saved transcript as input passed to the interpreter.</p>
 </div>
 <div class="paragraph">
-<p>This is very convenient during development of a game where you can play through the game up to a point and start from there, or even automatically test your game.</p>
+<p>These feature are very useful during the development of a game, allowing to play through the game up to a desired point and start from there, or even to automatically test your game.</p>
 </div>
 <div class="paragraph">
-<p>To make Arun read input from a script file you can use the special command character &#8216;<code>@</code>&#8217;, which should be followed by the name of the text file in which your commands are listed.</p>
+<p>To make Arun read input from a script file, you can use the special command character &#8216;<code>@</code>&#8217;, which should be followed by the name of the text file in which your commands are listed.</p>
 </div>
 <div class="paragraph">
-<p>You can add comments to each line in a script file. The interpreter will not read beyond a semicolon, &#8216;<code>;</code>&#8217;, so anything after it can be seen as a comment. Note that this also works for direct player input.</p>
+<p>You can add comments to each line in a script file.
+The interpreter will not read beyond a semicolon (&#8216;<code>;</code>&#8217;), so anything after it can be seen as a comment.
+Note that this also works for direct player input.</p>
 </div>
 </div>
 </div>
@@ -11168,7 +11203,7 @@ If the parameter also requires the container property, use <code>Container actor
 <div class="paragraph">
 <p>No parameter is defined in the context where a reference to <code>object</code> was made.
 Parameters are only defined within <code>Check</code>s and bodies of <code>Verb</code>s, so the use of <code>object</code> (an obsolete construct, use the parameter identifier instead) is also restricted to those contexts.
-See <a href="#_run_time_contexts"><em>Run-time Contexts</em></a>.</p>
+See <a href="#_run_time_contexts"><em>Run-Time Contexts</em></a>.</p>
 </div>
 </div>
 </div>
@@ -11208,7 +11243,7 @@ However any definitions of scripts or initial location are ignored (the script i
 <div class="paragraph">
 <p>In <code>Event</code>s no actor is active.
 This means that no reference to the active <code>actor</code> can be made.
-See <a href="#_run_time_contexts"><em>Run-time Contexts</em></a>.</p>
+See <a href="#_run_time_contexts"><em>Run-Time Contexts</em></a>.</p>
 </div>
 </div>
 </div>
@@ -11709,8 +11744,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.42<br>
-Last updated 2018-09-02 01:51:02 ora legale Europa occidentale
+Version 0.1.43<br>
+Last updated 2018-09-02 10:00:29 ora legale Europa occidentale
 </div>
 </div>
 </body>

@@ -741,7 +741,7 @@ Syntax
 
 This restricts (((restriction, of parameters))) the parameter `obj` to being an instance inheriting from the class object (as opposed to an actor for example) and the parameter `cont` to a container (an instance with the container property).
 
-The parameters are used as normal identifiers in the Alan source code. The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also <<Run-time Contexts>> for a detailed discussion).
+The parameters are used as normal identifiers in the Alan source code. The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also <<Run-Time Contexts>> for a detailed discussion).
 
 The `Syntax` construct allows for more than one parameter, in order to make it possible to define more complex player commands. Therefore, the verb execution order (((VERB, execution order))) described previously from execution of verbs in one instance must be generalised to verb bodies in all the parameters. In the example above, verb bodies in the objects or actors referenced as `obj` and `cont` (the green pearl and the black box) are executed (if the verb is present in their definitions).
 

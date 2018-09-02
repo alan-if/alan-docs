@@ -120,7 +120,7 @@ Some files to help editing the manual:
 - [ ] _2. Concepts_
 - [ ] _3. Lexical Definitions_
 - [ ] _4. Language Reference_
-- [ ] _5. Running An Adventure_
+- [x] _5. Running An Adventure_
 - [ ] _6. Hints And Tips_
 - [x] _7. Adventure Construction_
 - [x] _Appendix A: How To Use The System_
@@ -138,11 +138,15 @@ Below is an aproximate status report and pending tasks list of the current docum
 
 ## Document header
 
+- See [Issue #8 — Manual Info & Metadata][i8]
+
 Status of document header (in [`manual.asciidoc`][man]):
 
 - [x] Basic info added.
 - [ ] Missing author.
 - [x] Missing license (although full license is available in Appendix I).
+
+
 
 ## Document Structure
 
@@ -237,19 +241,22 @@ There are only 2 footnotes in the Manual, both in "_3.2. Options_" Table.
 
 Clean-up, fix styling, add caption and anchor ID to all tables:
 
-* [x] _3.2. Options_ — [Table 1. Adventure Settings via OPTION]
-* _3.7. Properties_
-    - [ ] _Inheriting Properties_ — [Table 2. Properties Inheritance]
-    - [ ]  _Entered_ — [Table 3. Order of Execution of ENTERED in Nested Locations]
-* [ ] _3.9. Syntax Definitions_ — ([_captionless table_])
-* _3.10. Verbs_
+- [x] _3.2. Options_ — [Table 1. Adventure Settings via OPTION]
+- _3.7. Properties_
+    + [ ] _Inheriting Properties_ — [Table 2. Properties Inheritance]
+    + [ ]  _Entered_ — [Table 3. Order of Execution of ENTERED in Nested Locations]
+- [ ] _3.9. Syntax Definitions_ — ([_captionless table_])
+- _3.10. Verbs_
     - [ ] _Verb Execution_ — [Table 4. Order of Execution of Verbs]
+- _Appendix D: Language Grammar_
+- [x] _D.2. Keywords_ — [Table 5. List of Alan Language's Keywords]
 
 [Table 1. Adventure Settings via OPTION]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-options
 [Table 2. Properties Inheritance]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-properties-inheritance
 [Table 3. Order of Execution of ENTERED in Nested Locations]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-entered-execution
 [_captionless table_]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-syntax-parameters
 [Table 4. Order of Execution of Verbs]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-verbs-execution
+[Table 5. List of Alan Language's Keywords]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-keywords
 
 ## Typography Cleanup
 
@@ -296,7 +303,7 @@ This stage will be done once all global substitution have been dealt with in eac
     + [ ] _2. Concepts_
     + [ ] _3. Lexical Definitions_
     + [ ] _4. Language Reference_
-    + [ ] _5. Running An Adventure_
+    + [x] _5. Running An Adventure_
     + [ ] _6. Hints And Tips_
     + [x] _7. Adventure Construction_
     + [x] _Appendix A: How To Use The System_
@@ -375,10 +382,17 @@ As a convention, all commented annotations inside document source files will beg
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
 
-[HTML Live Preview]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html "Preview 'The Alan Manual' via GitHub & BitBucket HTML Preview"
 [GitHub & BitBucket HTML Preview]: http://htmlpreview.github.io
 
-<!-- AsciiDoctor -->
+<!-- Alan-Docs Links --------------------------------------------------------->
+
+[HTML Live Preview]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html "Preview 'The Alan Manual' via GitHub & BitBucket HTML Preview"
+
+<!-- Issues -->
+
+[i8]: https://github.com/alan-if/alan-docs/issues/8 "Issue #8 — Manual Info & Metadata"
+
+<!-- AsciiDoctor ------------------------------------------------------------->
 
 [Asciidoctor]: https://asciidoctor.org/ "Visit AsciiDoctor website (Ruby implementation)"
 [Asciidoctor PDF]: https://github.com/asciidoctor/asciidoctor-pdf "Visit the Asciidoctor PDF repository"
@@ -389,7 +403,7 @@ As a convention, all commented annotations inside document source files will beg
 
 [Rouge]: http://rouge.jneen.net/ "Visti Rouge website (code highlighter in Ruby)"
 
-<!-- Project Files -->
+<!-- Project Files ----------------------------------------------------------->
 
 [man]: ./manual.asciidoc
 [man 01]: ./manual_01.asciidoc "Source file of Chapter 1. Introduction"

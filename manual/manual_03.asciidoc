@@ -2307,7 +2307,7 @@ Event nearby_explosion
 End Event.
 --------------------------------------------------------------------------------
 
-The body of an event can be any sequence of statements. They can however not refer to any parameters, since no verb is executing, or the `Current Actor`. See <<Run-time Contexts,_Run-time Contexts_>>.
+The body of an event can be any sequence of statements. They can however not refer to any parameters, since no verb is executing, or the `Current Actor`. See <<Run-Time Contexts,_Run-Time Contexts_>>.
 
 Events may be scheduled and cancelled with the `Schedule` and `Cancel` statements (see <<Event Statements,_Event Statements_>>).
 
@@ -3572,7 +3572,7 @@ where = 'HERE'
 
 The meaning of the different constructs is as follows
 
-* (((HERE))) `Here` is the location where the current activity is performed. Often this means where the hero is, but if the expression is evaluated in another run-time context this context is used. See <<Run-time Contexts,_Run-time Contexts_>> for a detailed discussion, but examples include an event scheduled at a particular location, in which case that location is `Here`. Note that `Here` is equivalent to `At Current Location`.
+* (((HERE))) `Here` is the location where the current activity is performed. Often this means where the hero is, but if the expression is evaluated in another run-time context this context is used. See <<Run-Time Contexts,_Run-Time Contexts_>> for a detailed discussion, but examples include an event scheduled at a particular location, in which case that location is `Here`. Note that `Here` is equivalent to `At Current Location`.
 * (((NEARBY))) `Nearby` means at any adjacent location. An adjacent location means that there exists an exit from the other location to `Here` (note that the direction is from `Nearby` to `Here`). It is allowed to refer to any instance using an identifier or expression. In particular, instances inheriting from `location` are allowed, which can be used to see if someone at that location can use an exit to get here.
 * `Near what` has a similar meaning to `Nearby` except that it refers to some other instance (the what) instead of the current location. The results is a truth value indicating if that other instance is at a location which is nearby (has an exit to) that of the location of the first instance.
 * `At what` means at the location of the instance referenced by the `what` specification (see <<WHAT Specifications>>). Note that an instance is always `At` itself, i.e. `x At x` is always true. This can come as a surprise, especially if you try to aggregate or loop over instances. (See <<Aggregates,_Aggregates_>> and <<Repetition Statements,_Repetition Statements_>>.)
@@ -3610,7 +3610,7 @@ what = 'CURRENT' 'ACTOR'
 The meaning of the different forms of the `what` specification are:
 
 * `Current Actor` (((ACTOR, in WHAT specifications))) is always set to the actor currently active, e.g. when a non-player actor is running a script this refers to the actor instance that is running.
-* `Current Location` (((LOCATION, in WHAT specifications))) is the current location, i.e. the location where the current activity is performed. Normally this is the location where the hero is, but may also be where an event is executed or the location where a scripted actor currently is executing. See <<Run-time Contexts,_Run-time Contexts_>> for more details.
+* `Current Location` (((LOCATION, in WHAT specifications))) is the current location, i.e. the location where the current activity is performed. Normally this is the location where the hero is, but may also be where an event is executed or the location where a scripted actor currently is executing. See <<Run-Time Contexts,_Run-Time Contexts_>> for more details.
 * `This` refers to the instance in which code, such as a verb body or a script, is run. This can for example be used to test or set attributes in inherited code, thus testing or setting attributes in the instance while the code is defined in a class that the instance inherits from. It cannot be used in events or global verbs.
 * An identifier, *id*, refers to the class or instance with that name, a syntax parameter, script or loop variable with that name. A syntax parameter may have the same name as an class or instance declared elsewhere in the source in which case the parameter has precedence.
 * A reference to an attribute, as described in <<Attribute References>>, might be used depending on its type and the context of the usage of the `what`-expression.
@@ -3938,7 +3938,7 @@ There are two particularly interesting entities that you might want to know some
 * (((CURRENT ACTOR))) `Current Actor`
 * (((CURRENT LOCATION))) `Current Location`
 
-These two expressions can be used wherever a reference to an instance can be used. They will refer to the currently executing actor and the current location respectively. Details about execution contexts can be found in <<Run-time Contexts,_Run-time Contexts_>>.
+These two expressions can be used wherever a reference to an instance can be used. They will refer to the currently executing actor and the current location respectively. Details about execution contexts can be found in <<Run-Time Contexts,_Run-Time Contexts_>>.
 
 
 

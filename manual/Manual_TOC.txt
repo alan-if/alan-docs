@@ -219,7 +219,7 @@ Appendix A: How To Use The System
 
 Appendix B: A Sample Interaction
 
-Appendix C: Run-time Messages
+Appendix C: Run-Time Messages
     Player Errors
     Author Errors
     Implementor Errors

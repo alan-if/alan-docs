@@ -78,14 +78,14 @@ These xrefs will be shown via a link with the Chapter/Section actual title.
 
 For convenience, Tables have also been given a custom ID, which might be handier to use than the full caption reference in some circumstances.
 
-| Ch / Sec |              Table Caption              |             Custom ID             |
-|----------|-----------------------------------------|-----------------------------------|
-| 3.2      | Adventure Settings via OPTION           | `table-of-options`                |
-| 3.7      | Properties Inheritance                  | `table-of-properties-inheritance` |
-| 3.7      | Order of Execution of ENTERED in Nested | `table-of-entered-execution`      |
-| 3.9      | (_none_)                                | `table-syntax-parameters`         |
-| 3.10     | Order of Execution of Verbs             | `table-of-verbs-execution`        |
-| D.2      | List of Alan Language's Keywords        | `table-of-keywords`               |
+| Ch / Sec |                   Table Caption                    |             Custom ID             |
+|----------|----------------------------------------------------|-----------------------------------|
+| 3.2      | [Adventure Settings via OPTION][Table 1]           | `table-of-options`                |
+| 3.7      | [Properties Inheritance][Table 2]                  | `table-of-properties-inheritance` |
+| 3.7      | [Order of Execution of ENTERED in Nested][Table 3] | `table-of-entered-execution`      |
+| 3.9      | [(_none_)][Table X]                                | `table-syntax-parameters`         |
+| 3.10     | [Order of Execution of Verbs][Table 4]             | `table-of-verbs-execution`        |
+| D.2      | [List of Alan Language's Keywords][Table 5]        | `table-of-keywords`               |
 
 <!-- 
 | xx          | `<<xxxxxx>>`                       |                                |
@@ -118,5 +118,15 @@ For convenience, Tables have also been given a custom ID, which might be handier
 [man 16]: ./manual_16.asciidoc "Source file of Appendix I: Copying Conditions"
 [man 17]: ./manual_17.asciidoc "Source file of Index"
 
+<!-- HTML Live Preview Links -->
+
+<!-- Tables -->
+
+[Table 1]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-options
+[Table 2]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-properties-inheritance
+[Table 3]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-entered-execution
+[Table X]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-syntax-parameters
+[Table 4]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-verbs-execution
+[Table 5]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-keywords
 
 <!-- eof -->

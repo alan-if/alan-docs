@@ -706,7 +706,7 @@ The attribute referenced in the indicated context must be a Boolean attribute.
 --
 No parameter is defined in the context where a reference to `object` was made.
 Parameters are only defined within ``Check``s and bodies of ``Verb``s, so the use of `object` (an obsolete construct, use the parameter identifier instead) is also restricted to those contexts.
-See <<Run-time Contexts,_Run-time Contexts_>>.
+See <<Run-Time Contexts,_Run-Time Contexts_>>.
 --
 
 
@@ -743,7 +743,7 @@ However any definitions of scripts or initial location are ignored (the script i
 --
 In ``Event``s no actor is active.
 This means that no reference to the active `actor` can be made.
-See <<Run-time Contexts,_Run-time Contexts_>>.
+See <<Run-Time Contexts,_Run-Time Contexts_>>.
 --
 
 
