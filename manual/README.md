@@ -119,7 +119,7 @@ Some files to help editing the manual:
 - [x] _1. Introduction_
 - [ ] _2. Concepts_
 - [ ] _3. Lexical Definitions_
-- [ ] _4. Language Reference_
+- [x] _4. Language Reference_
 - [x] _5. Running An Adventure_
 - [ ] _6. Hints And Tips_
 - [x] _7. Adventure Construction_
@@ -302,7 +302,7 @@ This stage will be done once all global substitution have been dealt with in eac
     + [x] _1. Introduction_
     + [ ] _2. Concepts_
     + [ ] _3. Lexical Definitions_
-    + [ ] _4. Language Reference_
+    + [x] _4. Language Reference_
     + [x] _5. Running An Adventure_
     + [ ] _6. Hints And Tips_
     + [x] _7. Adventure Construction_

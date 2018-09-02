@@ -148,6 +148,8 @@ For some hints on ways to allow the player to refer to objects and actors that a
 
 If the player uses *ALL* instead of a reference to an instance in his command, the verb will be applied to all appropriate instances at the current location, _except_ the ones that do not pass all checks for the verb (see <<Verbs>> for further details on this).
 
+// @TODO:  Could add xref to "4.2. Words, Identifiers and Names"!
+
 // @CHECK: Here it mentions "underscores and DASH", but it doesn't sound right.
 //         Maybe "hyphen"? "Dash" is ambiguos here, as it usually refers to em-
 //         or en-dashes, which are long dashes.

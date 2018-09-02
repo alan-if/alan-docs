@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.43,</span>
+<span id="revnumber">version 0.1.44,</span>
 <span id="revdate">September 2, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.43
+<pre>Doc version: 0.1.44
 Last edited: September 2, 2018</pre>
 </div>
 </div>
@@ -6973,7 +6973,8 @@ filter = 'ISA' class
 <div class="sect2">
 <h3 id="_comments">4.1. Comments</h3>
 <div class="paragraph">
-<p>Comments may be placed anywhere in the Alan source. A comment starts with double hyphens (<code>--</code>) and extends to the end of the line.</p>
+<p>Comments may be placed anywhere in the Alan source.
+A comment starts with double hyphens (<code>--</code>) and extends to the end of the line.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6984,7 +6985,9 @@ filter = 'ISA' class
 <div class="sect2">
 <h3 id="_words_identifiers_and_names">4.2. Words, Identifiers and Names</h3>
 <div class="paragraph">
-<p>An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance. Identifiers  may only be composed of letters, digits and underscores. The first character must be a letter.</p>
+<p>An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance.
+Identifiers  may only be composed of letters, digits and underscores.
+The first character must be a letter.</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -7010,7 +7013,11 @@ quoted_identifier = quote {any_character} quote</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A quoted identifier starts and ends with single quotes and may contain any character except quotes (including spaces). By quoting any sequence of characters can become an identifier. A quoted identifier may also be used to make an identifier out of a reserved word such as <code>Look</code>. This is useful in the definition of the verb <code>look</code>. It would look like:</p>
+<p>A quoted identifier starts and ends with single quotes and may contain any character except quotes (including spaces).
+By quoting any sequence of characters can become an identifier.
+A quoted identifier may also be used to make an identifier out of a reserved word such as <code>Look</code>.
+This is useful in the definition of the verb <code>look</code>.
+It would look like:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7021,7 +7028,8 @@ End Verb 'look'.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Quoted identifiers retain their exact content. They may contain spaces and other special characters, which make them useful as long names for locations as in</p>
+<p>Quoted identifiers retain their exact content.
+They may contain spaces and other special characters, which make them useful as long names for locations as in:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7031,10 +7039,12 @@ End Verb 'look'.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>One single-quoted identifier is used as the whole  name of the location to preserve editing and avoiding clashes with the reserved words <code>At</code> and <code>Of</code>. (This could also have been avoided by quoting just those words.)</p>
+<p>One single-quoted identifier is used as the whole  name of the location to preserve editing and avoiding clashes with the reserved words <code>At</code> and <code>Of</code>.
+(This could also have been avoided by quoting just those words.)</p>
 </div>
 <div class="paragraph">
-<p>Identifiers and words retain their capitalization. An example is</p>
+<p>Identifiers and words retain their capitalization.
+An example is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7042,44 +7052,53 @@ End Verb 'look'.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The first word in the name will always be printed with a capital &#8216;E&#8217;. However, when comparing the word to player input and other occurrences of the same word in the source, case will be ignored. This means that you cannot have two words or identifiers that differ only in case, they will be the same and stored in the game data as one of the occurrences, which one is implementation dependent.</p>
+<p>The first word in the name will always be printed with a capital &#8216;E&#8217;.
+However, when comparing the word to player input and other occurrences of the same word in the source, case will be ignored.
+This means that you cannot have two words or identifiers that differ only in case, they will be the same and stored in the game data as one of the occurrences, which one is implementation dependent.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Do <em>NOT</em> use a single quoted identifier with spaces or special characters in them as the name for anything other than locations, as the words in names are analysed separately and are assumed to be adjectives and nouns (where it is assumed that the last is the noun). Except for this you should only quote single words to avoid clashes with reserved words.</p>
+<p>Do <em>NOT</em> use a single quoted identifier with spaces or special characters in them as the name for anything other than locations, as the words in names are analysed separately and are assumed to be adjectives and nouns (where it is assumed that the last is the noun).
+Except for this you should only quote single words to avoid clashes with reserved words.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock caution">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-caution" title="Caution"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Any one of the occurrences of a word might define its capitalization, which one is unspecified. This might affect the output if you use capitalization for names of locations, such as &#8220;Name Shore of Great Sea&#8221;. Such names can inadvertently make the game use &#8220;Great&#8221; for all &#8220;great&#8221; things in your game. You can avoid this by using a quoted identifier for the complete name of the location.</p>
+<p>Any one of the occurrences of a word might define its capitalization, which one is unspecified.
+This might affect the output if you use capitalization for names of locations, such as &#8220;<code>Name Shore of Great Sea</code>&#8221;.
+Such names can inadvertently make the game use &#8220;Great&#8221; for all &#8220;great&#8221; things in your game.
+You can avoid this by using a quoted identifier for the complete name of the location.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Be careful when using quoted identifiers, especially if the player is supposed to use the word. A player cannot input words containing spaces or other special characters or separators. The only exception being underscores and dashes. A player input word must start with a letter.</p>
+<p>Be careful when using quoted identifiers, especially if the player is supposed to use the word.
+A player cannot input words containing spaces or other special characters or separators.
+The only exception being underscores and dashes.
+A player input word must start with a letter.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -7090,7 +7109,9 @@ End Verb 'look'.</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>Some of the identifiers in the source for an Alan game are by default used as player words. This is for example the case with verb names (unless a <code>Syntax</code> statement has been declared for the <code>Verb</code>) and object names (unless a <code>Name</code> clause has been used). If these contain special characters, the player cannot enter them.</p>
+<p>Some of the identifiers in the source for an Alan game are by default used as player words.
+This is for example the case with verb names (unless a <code>Syntax</code> statement has been declared for the <code>Verb</code>) and object names (unless a <code>Name</code> clause has been used).
+If these contain special characters, the player cannot enter them.</p>
 </div>
 </div>
 <div class="sect2">
@@ -7112,7 +7133,10 @@ Numbers in Alan are only integers and thus may consist only of digits.</p>
 <h3 id="_strings">4.4. Strings</h3>
 <div class="paragraph">
 <p>
-The string is the main lexical component in an Alan source. This is how you describe the surroundings and events to the player. Strings, therefore, are easy to enter and consist simply of a pair of double quotes surrounding any number of characters. The text may include newline characters and thus may cover multiple lines in the source.</p>
+The string is the main lexical component in an Alan source.
+This is how you describe the surroundings and events to the player.
+Strings, therefore, are easy to enter and consist simply of a pair of double quotes surrounding any number of characters.
+The text may include newline characters and thus may cover multiple lines in the source.</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -7123,31 +7147,34 @@ The string is the main lexical component in an Alan source. This is how you desc
 </div>
 </div>
 <div class="paragraph">
-<p>When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one  single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in <a href="#_output_statements">Sect. 3.17.1</a>). You may therefore write your strings any way you like; they will always be neatly formatted on the player&#8217;s screen. You can use special codes (see <a href="#_string_statement">Sect. 3.17.1.1</a> for a list) to indicate (but not precisely control) the formatting.</p>
+<p>When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one  single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in <a href="#_output_statements">Sect. 3.17.1</a>).
+You may therefore write your strings any way you like; they will always be neatly formatted on the player&#8217;s screen.
+You can use special codes (see <a href="#_string_statement">Sect. 3.17.1.1</a> for a list) to indicate (but not precisely control) the formatting.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>As strings may contain any character, a missing double quote may lead to many seemingly strange error messages. If the compiler points to the first word after a double quote and indicates that it has deleted a lot if IDs (identifiers), this is probably due to a missing end quote in the previous string.</p>
+<p>As strings may contain any character, a missing double quote may lead to many seemingly strange error messages.
+If the compiler points to the first word after a double quote and indicates that it has deleted a lot if IDs (identifiers), this is probably due to a missing end quote in the previous string.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>To get a  double quote within strings repeat it ("The sailor said ""Hello!"".").</p>
+<p>To get a  double quote within strings repeat it (<code>"The sailor said ""Hello!""."</code>).</p>
 </div>
 </td>
 </tr>
@@ -7157,7 +7184,8 @@ The string is the main lexical component in an Alan source. This is how you desc
 <div class="sect2">
 <h3 id="_filenames">4.5. Filenames</h3>
 <div class="paragraph">
-<p>It is possible to write one adventure using many source files, having different parts in different files, and thus giving an opportunity for some rudimentary kind of modularisation. The method for this is the <code>import</code> statement.</p>
+<p>It is possible to write one adventure using many source files, having different parts in different files, and thus giving an opportunity for some rudimentary kind of modularisation.
+The method for this is the <code>import</code> statement.</p>
 </div>
 <div class="paragraph">
 <p>
@@ -11744,8 +11772,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.43<br>
-Last updated 2018-09-02 10:00:29 ora legale Europa occidentale
+Version 0.1.44<br>
+Last updated 2018-09-02 15:36:20 ora legale Europa occidentale
 </div>
 </div>
 </body>
