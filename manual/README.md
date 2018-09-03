@@ -219,8 +219,10 @@ There are only 2 footnotes in the Manual, both in "_3.2. Options_" Table.
 
 - [ ] Add missing images:
     + [x] Alan logo (cover)
-    + [x] Figure 1 (Ch.2, p.20 of PDF) — "The principles for and relations between a game description, a compiler, ..." (captured from PDF, but should be rebuilt from scratch)
-    + [ ] Figure 2 (Ch.2, p.33 of PDF) — "_Relationships between the pre-defined classes._"
+    + [x] Figure 1 (Ch.2, p.20 of PDF) — "The principles for and relations between a game description, a compiler, ..." (captured from PDF, temp solution)
+        * [ ] Rebuild image, possibly in vector format.
+    + [x] Figure 2 (Ch.2, p.33 of PDF) — "_Relationships between the pre-defined classes._" (captured from PDF, temp solution)
+        * [ ] Rebuild image in vector format (Inkscape).
 
 ## Global Styles Reconstruction
 

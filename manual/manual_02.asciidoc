@@ -131,6 +131,7 @@ The interpreter is another program that reads the information in the game file, 
 .The principles for and relations between a game description, a compiler, a game file and the interpreter, or, in other words, authoring and playing.
 image::Figure_1.png[Figure 1, role="thumb", align="center"]
 
+
 To create works of interactive fiction using Alan, you also need a program with which to construct your Alan source code, a standard text editor, like Notepad or similar programs.
 However, you cannot use a word processor, like Microsoft Word, since the files created with those usually contains formatting information that the Alan compiler doesn't understand.
 
@@ -617,11 +618,12 @@ The `IsA`-construct defines from which class properties are inherited.
 
 To make it easy to get started there are eight classes predefined (((predefined classes))) in the Alan language.
 
+// @TODO: This image was grabbed by capturing the PDF page. It could be reconstructed
+//        from scratch, in vector format, to ensure good quality in all formats!
 
-// ==============================================================================
-//                             @FIXME: MISSING IMAGE!
-// ==============================================================================
-// Figure 2: Relationships between the predefined classes.
+.Relationships between the predefined classes.
+image::predefined-classes.png[Figure 1, align="center"]
+// image::predefined-classes.png[Figure 1, role="thumb", align="center"]
 
 
 // @NOTE: didn't style as inline-code the following classes, as some are not
