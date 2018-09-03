@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.50,</span>
+<span id="revnumber">version 0.1.51,</span>
 <span id="revdate">September 3, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.50
+<pre>Doc version: 0.1.51
 Last edited: September 3, 2018</pre>
 </div>
 </div>
@@ -2154,7 +2154,7 @@ A description of how these rules should be interpreted can be found in <a href="
 <div class="paragraph">
 <p>The Alan language is divided into syntactic components of different kinds.
 Each component may be composed of text and/or other components.
-A component is terminated by a period or full stop (&#8216;.&#8217;).
+A component is terminated by a period or full stop (<code>.</code>).
 This indicates that that component is complete.
 Some components start with a keyword or initial phrase, such as <code>Description</code> or <code>Exit east To kitchen</code>.
 If it is to be followed by further components, such as statements or output strings, that keyword or phrase should normally <em>not</em> be followed by a period, but by its continuing components.
@@ -2177,7 +2177,7 @@ End Exit.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that the first is terminated, but the second example is continued with a check, and not terminated until the <code>End Exit</code>.</p>
+<p>Note that the first is terminated, but the second example is continued with a <code>Check</code>, and not terminated until the <code>End Exit</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2232,7 +2232,7 @@ The declarations can be declared in any order and repeated freely, and are of ma
 </div>
 <div class="paragraph">
 <p>It indicates where the hero is when the game starts but can also be used to set things up, welcome the player and so on.
-The start section is mandatory.</p>
+The <code>Start</code> section is mandatory.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2249,7 +2249,7 @@ The start section is mandatory.</p>
 <div class="sect2">
 <h3 id="_options">3.2. Options</h3>
 <div class="paragraph">
-<p>Options  define things concerning the overall behaviour of the generated Alan adventure.
+<p><code>Option</code>s  define things concerning the overall behaviour of the generated Alan adventure.
 As is implied they are optional and are only required if you need to change the value of an option from its default setting.
 An option follows the grammar:</p>
 </div>
@@ -2320,29 +2320,29 @@ Width 128.</code></pre>
 </tbody>
 </table>
 <div class="paragraph">
-<p>The Language option specifies the language in which the adventure is assumed played, and selects different default message texts.
+<p>The <code>Language</code> option specifies the language in which the adventure is assumed played, and selects different default message texts.
 Alan is primarily designed for adventures in the English language, but it is also possible to write adventures in other languages.
 To make this possible, the default messages output by the interpreter may be generated in different languages.
 It is completely possible to write in other languages, but then you must customize all the message texts.
 See <a href="#_run_time_messages">Appendix C</a>, <a href="#_input_response_messages">Sect. C.1</a>, for a complete list of such messages.</p>
 </div>
 <div class="paragraph">
-<p>The Alan compiler and interpreter will always allow multinational  8-bit characters as input and the default messages is generated for 8-bit character sets, internally representing national characters according to the ISO multinational character set (ISO8859-1) requiring 8 bits.
+<p>The Alan compiler and interpreter will always allow multinational  8-bit characters as input and the default messages are generated for 8-bit character sets, internally representing national characters according to the ISO multinational character set (ISO8859-1) requiring 8 bits.
 On output, this is converted to the native character set of the machine (whenever possible).
-This means that portability between platforms should be good even for text containing multi-national (non-ASCII) characters.</p>
+This means that portability between platforms should be good even for text containing multinational (non-ASCII) characters.</p>
 </div>
 <div class="paragraph">
-<p>Width specifies how long the lines the interpreter outputs should be (formatting is automatic!).
-The Length option will instruct the interpreter to how many lines to show on the screen without any player interaction (<strong>&lt;More&gt;</strong>).
+<p><code>Width</code> specifies how long the lines the interpreter outputs should be (formatting is automatic!).
+The <code>Length</code> option will instruct the interpreter on how many lines to show on the screen without any player interaction (<strong>&lt;More&gt;</strong>).
 These values are only used if the interpreter itself cannot get the actual values.</p>
 </div>
 <div class="paragraph">
-<p>The Pack option will cause the compiler to compress the texts to occupy less space.
+<p>The <code>Pack</code> option will cause the compiler to compress the texts to occupy less space.
 As a bonus, this also makes it impossible for the player to cheat by dumping the adventure code file.
 As a minor drawback, it does make the execution of the adventure a bit slower (noticeable only on some very old, smaller, computers).</p>
 </div>
 <div class="paragraph">
-<p>In order to allow debugging of the generated adventure (see <a href="#_debugging">Sect. 6.14</a>), the debug option must be turned on.
+<p>In order to allow debugging of the generated adventure (see <a href="#_debugging">Sect. 6.14</a>), the <code>Debug</code> option must be turned on.
 This may also be performed using the debug compiler switch (see <a href="#_compiler_switches">Sect. A.2</a>).</p>
 </div>
 </div>
@@ -2355,7 +2355,7 @@ Alan is a strictly typed language, which means that assignment, comparisons and 
 </div>
 <div class="paragraph">
 <p>In the Alan language, you cannot explicitly state the type of a value.
-Instead, this is inferred from how values are used, e.g. the initial value of an attribute or the restrictions put on a syntax parameter.</p>
+Instead, this is inferred from how values are used, e.g. the initial value of an attribute or the restrictions put on a <code>Syntax</code> parameter.</p>
 </div>
 <div class="sect3">
 <h4 id="_basic_simple_and_compound_types">Basic, Simple and Compound Types</h4>
@@ -2365,13 +2365,13 @@ Instead, this is inferred from how values are used, e.g. the initial value of an
 <div class="ulist">
 <ul>
 <li>
-<p>Integer&#8201;&#8212;&#8201;e.g. a simple integer constant, a reference to an integer typed attribute or a numeric expression using any of the mathematical operators.</p>
+<p><strong>Integer</strong>&#8201;&#8212;&#8201;e.g. a simple integer constant, a reference to an integer typed attribute or a numeric expression using any of the mathematical operators.</p>
 </li>
 <li>
-<p>String&#8201;&#8212;&#8201;e.g. a string constant or a reference to an attribute typed as a string.</p>
+<p><strong>String</strong>&#8201;&#8212;&#8201;e.g. a string constant or a reference to an attribute typed as a string.</p>
 </li>
 <li>
-<p>Boolean (true or false)&#8201;&#8212;&#8201;comparisons yield Boolean values, Boolean attributes.</p>
+<p><strong>Boolean</strong> (<em>true</em> or <em>false</em>)&#8201;&#8212;&#8201;comparisons yield Boolean values, Boolean attributes.</p>
 </li>
 </ul>
 </div>
@@ -2381,10 +2381,10 @@ Instead, this is inferred from how values are used, e.g. the initial value of an
 <div class="ulist">
 <ul>
 <li>
-<p>Instance&#8201;&#8212;&#8201;a reference to an instance or an attribute typed as a reference attribute that refers to an instance.</p>
+<p><strong>Instance</strong>&#8201;&#8212;&#8201;a reference to an instance or an attribute typed as a reference attribute that refers to an instance.</p>
 </li>
 <li>
-<p>Event&#8201;&#8212;&#8201;a reference to an event or an attribute typed as a reference attribute that refers to an event.</p>
+<p><strong>Event</strong>&#8201;&#8212;&#8201;a reference to an <code>Event</code> or an attribute typed as a reference attribute that refers to an event.</p>
 </li>
 </ul>
 </div>
@@ -2394,7 +2394,7 @@ Instead, this is inferred from how values are used, e.g. the initial value of an
 <div class="ulist">
 <ul>
 <li>
-<p>Set&#8201;&#8212;&#8201;an unordered list of values.</p>
+<p><strong>Set</strong>&#8201;&#8212;&#8201;an unordered list of values.</p>
 </li>
 </ul>
 </div>
@@ -2402,7 +2402,7 @@ Instead, this is inferred from how values are used, e.g. the initial value of an
 <div class="sect3">
 <h4 id="_instance_type">Instance Type</h4>
 <div class="paragraph">
-<p>Every time a reference to an instance is made, it can be considered an expression of instance type.
+<p>Every time a reference to an instance is made, it can be considered an expression of <strong>instance</strong> type.
 In these cases, the class of the instance also often matters.
 E.g. assigning a reference attribute can only be made if the new value refers to an instance that belongs to the same class or a subclass of the initial value of that attribute.</p>
 </div>
@@ -2414,12 +2414,12 @@ Examples include an identifier bound to a parameter allowing instances and a ref
 <div class="sect3">
 <h4 id="_event_type">Event Type</h4>
 <div class="paragraph">
-<p>Event is a set of statements that can be scheduled to execute with a specified delay.
-Each reference to an identifier of an <code>Event</code> is of course of the  <code>Event</code> type.
-Events can be referenced by attributes and any reference to such an attribute is of <code>Event</code> type.</p>
+<p><code>Event</code> is a set of statements that can be scheduled to execute with a specified delay.
+Each reference to an identifier of an <code>Event</code> is of course of the  <strong>Event</strong> type.
+<code>Event</code>s can be referenced by attributes and any reference to such an attribute is of <strong>Event</strong> type.</p>
 </div>
 <div class="paragraph">
-<p>Expressions of <code>Event</code> type can be used in <code>Schedule</code> and <code>Cancel</code> statements.</p>
+<p>Expressions of <strong>Event</strong> type can be used in <code>Schedule</code> and <code>Cancel</code> statements.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2435,7 +2435,7 @@ You could for example include one set of numbers (integers) in one set and anoth
 It is then possible to investigate the sets and remove all members that are members in both.</p>
 </div>
 <div class="paragraph">
-<p>The  <code>Set</code> type is a compound type since it is not complete without a member type.
+<p>The  <strong>Set</strong> type is a compound type since it is not complete without a member type.
 You can only include members in a set if the type compatibility rules allow it.
 A <code>Set</code> may include members that are instances or integers.</p>
 </div>
@@ -2489,7 +2489,7 @@ This is enforced by the compiler.
 The compatibility rules apply here also, given that the required type is given by the statement itself.</p>
 </div>
 <div class="paragraph">
-<p>Examples include the conditional  <code>If</code> statement that requires a Boolean value (or expression) to test and the  <code>Use</code> statement, which requires references to instances that are subclasses of the predefined class <code>actor</code>.</p>
+<p>Examples include the conditional  <code>If</code> statement, that requires a Boolean value (or expression) to test, and the  <code>Use</code> statement, which requires references to instances that are subclasses of the predefined class <code>actor</code>.</p>
 </div>
 </div>
 </div>
@@ -2509,21 +2509,21 @@ Each such file can then be imported into the main source using the  <code>Import
 </div>
 </div>
 <div class="paragraph">
-<p>The quoted identifier is the name of the file to import, see <a href="#_filenames">Sect. 4.5</a>.
-The <code>import</code> may be placed anywhere in a file where a declaration can occur, and the effect will be the same as if the contents of the named file had been inserted at that position in the file.
-Imports may be nested, so an imported file may in turn import more files, without limits.</p>
+<p>The quoted identifier is the name of the file to import (see <a href="#_filenames">Sect. 4.5</a>).
+The <code>Import</code> may be placed anywhere in a file where a declaration can occur, and the effect will be the same as if the contents of the named file had been inserted at that position in the file.
+<code>Import</code>s may be nested, so an imported file may in turn import more files, without limits.</p>
 </div>
 <div class="paragraph">
-<p>An imported file is searched for first in the current directory and then in any of the directories indicated using the <code>import</code> switch as described in <a href="#_compiler_switches"><em>Compiler Switches</em></a>, this search is performed in the same order as the <code>import</code> switches occurred on the command line.</p>
+<p>An imported file is searched for first in the current directory and then in any of the directories indicated using the <code>Import</code> switch as described in <a href="#_compiler_switches"><em>Compiler Switches</em></a>, this search is performed in the same order as the <code>Import</code> switches occurred on the command line.</p>
 </div>
 <div class="paragraph">
-<p>The import statement is the way to use the standard library (or a library of your own design).
-Place the library files in a directory where the compiler will find them, either in the same directory as your other source files or somewhere else (see <a href="#_compiler_switches">Sect. A.2</a> on how to make the compiler look in more folders than the one the main source file is in).
-In your source you would refer to the main file of such a library by</p>
+<p>The <code>Import</code> statement is the way to use the Standard Library (or a library of your own design).
+Place the library files in a directory where the compiler will find them, either in the same directory as your other source files or somewhere else (see <a href="#_compiler_switches">Sect. A.2</a> on how to make the compiler look in more folders than just the one where the main source file resides).
+In your source you would refer to the main file of such a library by:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">import 'library.i'.</code></pre>
+<pre class="highlight"><code class="language-alan" data-lang="alan">Import 'library.i'.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2531,10 +2531,10 @@ In your source you would refer to the main file of such a library by</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">import 'harbor.i'.
-import 'city.i'.
-import 'desert.i'.
-import 'actors.i'.
+<pre class="highlight"><code class="language-alan" data-lang="alan">Import 'harbor.i'.
+Import 'city.i'.
+Import 'desert.i'.
+Import 'actors.i'.
 Start At city.</code></pre>
 </div>
 </div>
@@ -6719,8 +6719,7 @@ The <code>For actor</code> clause is optional when writing code within a certain
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You can use an expression such as a simple identifier, a parameter reference or
-a reference attribute as the actor clause.</p>
+<p>You can use an expression such as a simple identifier, a parameter reference or a reference attribute as the actor clause.</p>
 </div>
 </td>
 </tr>
@@ -12583,8 +12582,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.50<br>
-Last updated 2018-09-03 19:09:17 ora legale Europa occidentale
+Version 0.1.51<br>
+Last updated 2018-09-03 22:02:11 ora legale Europa occidentale
 </div>
 </div>
 </body>

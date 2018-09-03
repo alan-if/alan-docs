@@ -18,7 +18,7 @@ A description of how these rules should be interpreted can be found in <<Languag
 
 The Alan language is divided into syntactic components of different kinds.
 Each component may be composed of text and/or other components.
-A component is terminated by a period or full stop ('`.`').
+A component is terminated by a period or full stop (`.`).
 This indicates that that component is complete.
 Some components start with a keyword or initial phrase, such as `Description` or `Exit east To kitchen`.
 If it is to be followed by further components, such as statements or output strings, that keyword or phrase should normally _not_ be followed by a period, but by its continuing components.
@@ -40,7 +40,7 @@ End Exit.
 --------------------------------------------------------------------------------
 
 
-Note that the first is terminated, but the second example is continued with a check, and not terminated until the `End Exit`.
+Note that the first is terminated, but the second example is continued with a `Check`, and not terminated until the `End Exit`.
 
 :sectnums:
 
@@ -86,7 +86,7 @@ start_section = 'START' where '.' statements
 --------------------------------------------------------------------------------
 
 It indicates where the hero is when the game starts but can also be used to set things up, welcome the player and so on.
-The start section is mandatory.
+The `Start` section is mandatory.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -102,7 +102,7 @@ You can look up the meaning of the rules "`where`" and "`statement`" elsewhere i
 
 == Options
 
-Options (((OPTION))) define things concerning the overall behaviour of the generated Alan adventure.
+``Option``s (((OPTION))) define things concerning the overall behaviour of the generated Alan adventure.
 As is implied they are optional and are only required if you need to change the value of an option from its default setting.
 An option follows the grammar:
 
@@ -157,25 +157,25 @@ The available options are:
 | Off (`No Debug`)
 |===============================================================================
 
-The Language option specifies the language in which the adventure is assumed played, and selects different default message texts.
+The `Language` option specifies the language in which the adventure is assumed played, and selects different default message texts.
 Alan is primarily designed for adventures in the English language, but it is also possible to write adventures in other languages.
 To make this possible, the default messages output by the interpreter may be generated in different languages.
 It is completely possible to write in other languages, but then you must customize all the message texts.
 See <<Run-Time Messages>>, <<Input Response Messages>>, for a complete list of such messages.
 
-The Alan compiler and interpreter will always allow multinational (((multinational characters))) 8-bit characters as input and the default messages is generated for 8-bit ((character sets)), internally representing national characters according to the ISO multinational character set (ISO8859-1) requiring 8 bits.
+The Alan compiler and interpreter will always allow multinational (((multinational characters))) 8-bit characters as input and the default messages are generated for 8-bit ((character sets)), internally representing national characters according to the ISO multinational character set (ISO8859-1) requiring 8 bits.
 On output, this is converted to the native character set of the machine (whenever possible).
-This means that portability between platforms should be good even for text containing multi-national (non-ASCII) characters.
+This means that portability between platforms should be good even for text containing multinational (non-ASCII) characters.
 
-Width specifies how long the lines the interpreter outputs should be (formatting is automatic!).
-The Length option will instruct the interpreter to how many lines to show on the screen without any player interaction (*<More>*).
+`Width` specifies how long the lines the interpreter outputs should be (formatting is automatic!).
+The `Length` option will instruct the interpreter on how many lines to show on the screen without any player interaction (*<More>*).
 These values are only used if the interpreter itself cannot get the actual values.
 
-The Pack option will cause the compiler to compress the texts to occupy less space.
+The `Pack` option will cause the compiler to compress the texts to occupy less space.
 As a bonus, this also makes it impossible for the player to cheat by dumping the adventure code file.
 As a minor drawback, it does make the execution of the adventure a bit slower (noticeable only on some very old, smaller, computers).
 
-In order to allow debugging of the generated adventure (see <<Debugging>>), the debug option must be turned on.
+In order to allow debugging of the generated adventure (see <<Debugging>>), the `Debug` option must be turned on.
 This may also be performed using the debug compiler switch (see <<Compiler Switches>>).
 
 
@@ -187,7 +187,7 @@ Each such bit of information, or data, is of a specific type.
 Alan is a strictly typed language, which means that assignment, comparisons and other statements will require that rules concerning the compatibility between such values are not broken.
 
 In the Alan language, you cannot explicitly state the type of a value.
-Instead, this is inferred from how values are used, e.g. the initial value of an attribute or the restrictions put on a syntax parameter.
+Instead, this is inferred from how values are used, e.g. the initial value of an attribute or the restrictions put on a `Syntax` parameter.
 
 
 
@@ -195,23 +195,23 @@ Instead, this is inferred from how values are used, e.g. the initial value of an
 
 The ((basic types)) of values available in the Alan language are:
 
-* Integer -- e.g. a simple integer constant, a reference to an integer typed attribute or a numeric expression using any of the mathematical operators.
-* String -- e.g. a string constant or a reference to an attribute typed as a string.
-* Boolean (true or false) -- comparisons yield Boolean values, Boolean attributes.
+* *Integer* -- e.g. a simple integer constant, a reference to an integer typed attribute or a numeric expression using any of the mathematical operators.
+* *String* -- e.g. a string constant or a reference to an attribute typed as a string.
+* *Boolean* (_true_ or _false_) -- comparisons yield Boolean values, Boolean attributes.
 
 Two other simple types are available:
 
-* Instance -- a reference to an instance or an attribute typed as a ((reference attribute)) that refers to an instance.
-* Event -- a reference to an event or an attribute typed as a ((reference attribute)) that refers to an event.
+* *Instance* -- a reference to an instance or an attribute typed as a ((reference attribute)) that refers to an instance.
+* *Event* -- a reference to an `Event` or an attribute typed as a ((reference attribute)) that refers to an event.
 
 There is one compound type in the Alan language:
 
-* Set -- an unordered list of values.
+* *Set* -- an unordered list of values.
 
 
 === Instance Type
 
-Every time a reference to an instance is made, it can be considered an expression of ((instance type)).
+Every time a reference to an instance is made, it can be considered an expression of ((*instance* type)).
 In these cases, the class of the instance also often matters.
 E.g. assigning a ((reference attribute)) can only be made if the new value refers to an instance that belongs to the same class or a subclass of the initial value of that attribute.
 
@@ -220,15 +220,22 @@ Examples include an identifier bound to a parameter allowing instances and a ((r
 
 === Event Type
 
-Event is a set of statements that can be scheduled to execute with a specified delay.
-Each reference to an identifier of an `Event` is of course of the (((EVENT, type))) `Event` type.
-Events can be referenced by attributes and any reference to such an attribute is of `Event` type.
+`Event` is a set of statements that can be scheduled to execute with a specified delay.
+Each reference to an identifier of an `Event` is of course of the (((EVENT, type))) *Event* type.
+``Event``s can be referenced by attributes and any reference to such an attribute is of *Event* type.
 
-Expressions of `Event` type can be used in `Schedule` and `Cancel` statements.
+Expressions of *Event* type can be used in `Schedule` and `Cancel` statements.
 
 
 
 === Set Type
+
+
+// @NOTE: It's not easy to decide when the SET nouns should be formated as inline code
+//        or bold, or even normal text, in this section. Unlike other Alan terms, it's
+//        not always clear if the noun is being discussed as a keyword, as the Set type,
+//        or if it's being used in its general English meaning. My guess is that it
+//        actually never refers to the Set keyword in the paragraphs below!
 
 A `Set` is a collection of values that may be referenced as a single value, but also investigate, added to and removed from.
 An example might be a set of cards in a dealt hand, the set of spells that the hero have learned, or the set of numbers guessed so far.
@@ -238,7 +245,7 @@ Each member can only occur once in the same set, but a member can occur in multi
 You could for example include one set of numbers (integers) in one set and another set of numbers in another set.
 It is then possible to investigate the sets and remove all members that are members in both.
 
-The (((SET, type))) `Set` type is a compound type since it is not complete without a member type.
+The (((SET, type))) *Set* type is a compound type since it is not complete without a member type.
 You can only include members in a set if the type compatibility rules allow it.
 A `Set` may include members that are instances or integers.
 
@@ -281,7 +288,8 @@ Some statements require their arguments to be of a specific type.
 This is enforced by the compiler.
 The compatibility rules apply here also, given that the required type is given by the statement itself.
 
-Examples include the conditional (((IF, statement))) `If` statement that requires a Boolean value (or expression) to test and the (((USE, statement))) `Use` statement, which requires references to instances that are subclasses of the predefined class `actor`.
+Examples include the conditional (((IF, statement))) `If` statement, that requires a Boolean value (or expression) to test, and the (((USE, statement))) `Use` statement, which requires references to instances that are subclasses of the predefined class `actor`.
+
 
 
 
@@ -297,29 +305,30 @@ Each such file can then be imported into the main source using the (((IMPORT, st
 import = 'import' quoted_identifier '.'
 --------------------------------------------------------------------------------
 
-The quoted identifier is the name of the file to import, see <<Filenames>>.
-The `import` may be placed anywhere in a file where a declaration can occur, and the effect will be the same as if the contents of the named file had been inserted at that position in the file.
-Imports may be nested, so an imported file may in turn import more files, without limits.
+The quoted identifier is the name of the file to import (see <<Filenames>>).
+The `Import` may be placed anywhere in a file where a declaration can occur, and the effect will be the same as if the contents of the named file had been inserted at that position in the file.
+``Import``s may be nested, so an imported file may in turn import more files, without limits.
 
-An imported file is searched for first in the current directory and then in any of the directories indicated using the `import` switch as described in <<Compiler Switches,_Compiler Switches_>>, this search is performed in the same order as the `import` switches occurred on the command line.
+An imported file is searched for first in the current directory and then in any of the directories indicated using the `Import` switch as described in <<Compiler Switches,_Compiler Switches_>>, this search is performed in the same order as the `Import` switches occurred on the command line.
 
-The import statement is the way to use the standard library (or a library of your own design).
-Place the library files in a directory where the compiler will find them, either in the same directory as your other source files or somewhere else (see <<Compiler Switches>> on how to make the compiler look in more folders than the one the main source file is in).
-In your source you would refer to the main file of such a library by
+The `Import` statement is the way to use the Standard Library (or a library of your own design).
+Place the library files in a directory where the compiler will find them, either in the same directory as your other source files or somewhere else (see <<Compiler Switches>> on how to make the compiler look in more folders than just the one where the main source file resides).
+In your source you would refer to the main file of such a library by:
+
 
 [source,alan]
 --------------------------------------------------------------------------------
-import 'library.i'.
+Import 'library.i'.
 --------------------------------------------------------------------------------
 
 Another use is for dividing your own source into multiple files to make them easier to handle:
 
 [source,alan]
 --------------------------------------------------------------------------------
-import 'harbor.i'.
-import 'city.i'.
-import 'desert.i'.
-import 'actors.i'.
+Import 'harbor.i'.
+Import 'city.i'.
+Import 'desert.i'.
+Import 'actors.i'.
 Start At city.
 --------------------------------------------------------------------------------
 
@@ -380,6 +389,7 @@ and
 Every coin IsA treasure ...
 --------------------------------------------------------------------------------
 
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 == Instances
@@ -3846,8 +3856,7 @@ Use Script playing For george.
 
 [NOTE]
 ================================================================================
-You can use an expression such as a simple identifier, a parameter reference or
-a ((reference attribute)) as the actor clause.
+You can use an expression such as a simple identifier, a parameter reference or a ((reference attribute)) as the actor clause.
 ================================================================================
 
 
