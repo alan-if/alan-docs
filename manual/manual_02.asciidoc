@@ -622,8 +622,7 @@ To make it easy to get started there are eight classes predefined (((predefined 
 //        from scratch, in vector format, to ensure good quality in all formats!
 
 .Relationships between the predefined classes.
-image::predefined-classes.png[Figure 1, align="center"]
-// image::predefined-classes.png[Figure 1, role="thumb", align="center"]
+image::predefined-classes.png[predefined classes, align="center"]
 
 
 // @NOTE: didn't style as inline-code the following classes, as some are not

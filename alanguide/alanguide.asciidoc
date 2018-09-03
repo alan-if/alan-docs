@@ -1,6 +1,6 @@
 :doctitle:  ALAN 3 Beginner's Guide
 :author:    Michael Arnaud
-:revnumber: 0.1.3
+:revnumber: 0.1.4
 :revdate:   September 3, 2018
 :revremark: AsciiDoc reconstruction work
 :doctype: book
@@ -1414,7 +1414,7 @@ Every OBJECT (and every ACTOR) in the game is in the sub-class, if you will, of 
 //        from scratch, in vector format, to ensure good quality in all formats!
 
 .Relationships between the predefined classes.
-image::predefined-classes.png[Figure 1, align="center"]
+image::predefined-classes.png[predefined classes, align="center"]
 
 The "examine.i" file says:
 
