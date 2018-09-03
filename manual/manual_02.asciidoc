@@ -128,6 +128,7 @@ The interpreter is another program that reads the information in the game file, 
 // @TODO: This image was grabbed by capturing the PDF page. It could be reconstructed
 //        from scratch, in vector format, to ensure good quality in all formats!
 
+[fig-game-compiler-terp]
 .The principles for and relations between a game description, a compiler, a game file and the interpreter, or, in other words, authoring and playing.
 image::Figure_1.png[Figure 1, role="thumb", align="center"]
 
@@ -325,22 +326,19 @@ And this is a note!
 ================================================================================
 
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
-
-
 === The Locations
 
 The scene for your adventure is a series of "`rooms`" or, rather, locations.
-Locations are connected by exits, leading out of one ((location)) into another.
+``Location``s are connected by ``Exit``s, leading out of one ((location)) into another.
 This makes it possible for the hero to travel through the world of your design, exploring it and solving the puzzles.
 
 What is required if we want to describe a location?
-Every location must have an identifier.
+Every `location` must have an identifier.
 This is so that you, the designer, may refer to that location easily, instead of having to remember a magic number for it.
 
-Unless you plan to provide other means for transportation from a location, you should also describe in which directions there are ``Exit``s and to which locations they lead.
+Unless you plan to provide other means for transportation from a location, you should also describe in which directions there are ``Exit``s and to which ``location``s they lead.
 
-In fact, this is all that is necessary in a location, so lets look at an example.
+In fact, this is all that is necessary in a `location`, so lets look at an example.
 
 
 [source,alan]
@@ -358,7 +356,7 @@ Start At kitchen.
 
 
 This is a complete Alan adventure (although very primitive).
-As you see, every Alan construct ends with a period (`.`) and there is a "```Start At```" sentence at the end, indicating in which location to put the hero when the game starts.
+As you can see, every Alan construct ends with a period (`.`) and there is a "```Start At```" sentence at the end, indicating in which location to put the hero when the game starts.
 
 Type the above text into a text file, e.g. using a notepad program.
 Run this little Alan source through the Alan compiler and try the adventure (see <<How To Use The System>> on how to do this).
@@ -378,7 +376,7 @@ The word "`Hallway`" and the prompt will appear.
 Typing "`west`" will take you back to "`Kitchen`" again.
 (Use kbd:[Ctrl+C] to exit the game if you are running it in a console window.)
 
-The identifier for a location is automatically used as a description, a heading, shown when that room is entered.
+The identifier for a `location` is automatically used as a description, a heading, shown when that room is entered.
 And the words listed in the `Exit`-parts are translated into directional commands the player can use in his input.
 
 You should remember that exits are strictly one-way.
@@ -401,8 +399,8 @@ The hallway IsA location
 End The hallway.
 --------------------------------------------------------------------------------
 
-We introduce another feature in this example, namely the text enclosed in double quotation marks (") which is called a ((*string*)) or, when used on its own like this, an output statement.
-When executed this string will be presented to the player and formatted to suit the format of his screen.
+We introduce another feature in this example, namely the text enclosed in double quotation marks (`"`) which is called a ((*string*)) or, when used on its own like this, an output statement.
+When executed, this string will be presented to the player and formatted to suit the format of his screen.
 
 Invent a description for the Kitchen, enter it in the Alan source and run the changed adventure.
 You notice, of course, that the text in the output statements is reformatted during output to suit your screen, in order to make room for as much text as possible.
@@ -410,7 +408,7 @@ Note also that you do not have to worry about this at all -- in your source file
 
 This type of output statement is just one of the statements in the Alan Language, and we will see more of them later.
 
-It is also possible to have conditions and statements in the `Exit`-clauses of a `Location` to restrict the access to the next location or to describe what happens during this movement.
+It is also possible to have conditions and statements in the `Exit`-clauses of a `location` to restrict the access to the next location or to describe what happens during this movement.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -427,58 +425,53 @@ End Exit west.
 === The Objects
 
 Another essential feature in Alan are the objects.
-Like the location, the ((object)) is a means to describe the "`physical`" world where your adventure is taking place.
-Many objects are probably used to provide puzzles, such as closed doors, keys and so on, but other objects should be promoted to objects too.
+Like the `location`, the ((`object`)) is a means to describe the "`physical`" world where your adventure is taking place.
+Many objects are probably used to provide puzzles, such as closed doors, keys, and so on, but other objects should be promoted to ``object``s too.
 A large number of objects that can be examined and manipulated make a game so much more enjoyable.
 
-Objects, like locations, have identifiers and descriptions, so you might guess the general structure of an object:
+``Object``s, like ``location``s, have an identifier and a `Description`, so you might guess the general structure of an object:
 
 [source,alan]
 --------------------------------------------------------------------------------
 The door IsA object At hallway
   Is closed.
-    Description
+  Description
     "The door to the kitchen is a sliding door."
     If door Is closed Then
-     "It is closed."
+      "It is closed."
     Else
-     "It is open."
+      "It is open."
     End If.
 End The door.
 --------------------------------------------------------------------------------
 
-An object may initially be located at a particular ((location)).
+An `object` may initially be located at a particular ((`location`)).
 This is indicated by the `At`-clause, in this case telling us that the door is initially located in the Hallway.
-Objects do not have to start at a particular place in which case they are not present in the game until located, by executing some code, at some place where the player may lay his hands on them.
+Objects do not necessarily have to start at a particular place, in which case they are not present in the game until located, by executing some code, at some place where the player may lay his hands on them.
 
 In addition, objects may have ((attributes)) indicating the state of certain properties of the object.
-In this example with a door, the `Is closed` part indicates that the door should have the attribute closed, which initially is set to *TRUE* (implying that the door is initially closed).
+In this example with a door, the `Is closed` part indicates that the door should have the attribute `closed`, which initially is set to *TRUE* (implying that the door is initially closed).
 The opposite would be indicated with a `Not`, (i.e. `Is Not closed`).
 
 Alternatively, attributes may be numeric (e.g. `Has weight 5`) or be of string type (e.g. `Has inscription "Kilroy was here"`).
 
-We also introduce another Alan statement, the `If` statement.
+The example also introduced another Alan statement, the `If` statement.
 The `If` statement (((IF, statement))) allows you to select which statements to execute according to some condition.
 In the example, the `closed` attribute of the door selects which description to show.
 There are further variations of expressions and the `If` statement, but we will come back to these later (<<Expressions>> and <<If Statement>>).
 
-// @NOTE: In the above paragraph, the original refererece was:
-//          "come back to these later (Expressions on page 142 and If on page 131)."
-//        But now is rendered as:
-//          "come back to these later (Section 3.20 and Section 3.17.6.1)."
-
 Instead, let's look at some other statements in relation to objects.
 
-It must of course be possible to change the value of attributes of an object.
-You can do this using the (((MAKE, statement))) `Make` statement or the (((SET, statement))) `Set` statement.
-For example if the door should be opened (the player having said "`open door`", perhaps) this could be performed by stating
+It must of course be possible to change the value of an object's attributes.
+You can do this using the (((MAKE, statement))) `Make` or the (((SET, statement))) `Set` statements.
+For example, if the door should be opened (the player having said "`open door`", perhaps) this could be performed by stating:
 
 [source,alan]
 --------------------------------------------------------------------------------
 Make door Not closed.
 --------------------------------------------------------------------------------
 
-To close it (i.e. setting the closed attribute to TRUE again) you write
+To close it (i.e. setting the `closed` attribute to TRUE again) you write:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -486,7 +479,7 @@ Make door closed.
 --------------------------------------------------------------------------------
 
 The `Make` statement changes Boolean (or True/False) attributes.
-The `Set` statement changes numeric or string attributes, for example
+The `Set` statement changes numeric or string attributes, for example:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -498,19 +491,18 @@ Set level Of bottle To 4.
 [NOTE]
 ================================================================================
 These statements only change attributes.
-The implications of such a change must be implemented by writing Alan code that test these attributes and provides differing text output to the player.
-This is what gives the player _the illusion_ of a door being open or closed for example.
+The implications of such a change must be implemented by writing Alan code that tests these attributes and provides differing text output to the player.
+This is what gives the player _the illusion_ of a door being open or closed, for example.
 ================================================================================
 
 
 [NOTE]
 ================================================================================
-Alan does not understand, or enforce, any semantic in the identifiers for attributes, they are only identifiers.
+Alan does not understand, nor enforce, any semantic in the identifiers for attributes, they are only identifiers.
 The illusion of the effects of differences in the value must be implemented by varying the output.
 In addition, Alan does not understand that an attribute '`closed`', for a human would be the opposite of an attribute '`open`'.
 You should choose one and stick to it.
 ================================================================================
-
 
 
 Of course, attributes are not only available on objects, but on locations and other types of entities also.
@@ -532,14 +524,13 @@ Locate vase At hallway.
 --------------------------------------------------------------------------------
 
 
-
 === The Actors
 
 Actors can be used to populate the adventure with creatures, beings and other people.
 They might be pirates or monsters, but the thing they have in common is that they move around or at least perform various actions more or less in the same way as the player does.
 
-An actor may have a `Description` and attributes like objects and locations.
-An actor performs his movements by following scripts, each having a number of steps.
+An `actor` may have a `Description` and attributes, like ``object``s and ``location``s do.
+An actor performs his movements by following ``Script``s, each having a number of ``Step``s.
 Each step corresponds to one player move.
 
 [source,alan]
@@ -547,24 +538,24 @@ Each step corresponds to one player move.
 The charlie_chaplin IsA actor Name charlie chaplin
   Script going_out
     Step
-     Locate Actor At outside_house.
+      Locate Actor At outside_house.
     Step
       Locate Actor At hallway.
-     Use Script going_out.
+      Use Script going_out.
 End The charlie_chaplin.
 --------------------------------------------------------------------------------
 
 
-=== Inheritance and Object Orientation
+=== Inheritance and Object-Orientation
 
-Object orientation (((object orientation))) is a term that is often used when talking about programming.
+Object-orientation (((object-orientation))) is a term that is often used when talking about programming.
 The concept is modelled after a natural phenomenon first described by the Swedish botanist Carl Linnaeus (or Carl von Linné).
 He devised a naming system for flowers and plants that was based on features common between various species and families.
 The idea is that a general concept such as a mammal is defined by listing some features which all mammals share.
 Specialisations such as sub-species in turn have other, more specialised, features in common.
 
 In nature, we talk about species and individuals.
-In object oriented programming we talk about classes and instances, which are similar.
+In object-oriented programming we talk about classes and instances, which are similar.
 Classes are abstract definitions of what the common features are and instances are individuals (data objects) having those features.
 
 
@@ -573,7 +564,7 @@ Classes are abstract definitions of what the common features are and instances a
 
 Inheritance (((inheritance))) means that a more general class can be restricted or specialised into new sub-classes.
 We say that the specialised class inherits from the more general.
-Most object oriented programming languages allows creating instances from any class, which does not happen in nature, there are no individuals that are mammals, they are individuals of some specific species of horse for example.
+Most object-oriented programming languages allows creating instances from any class, which does not happen in nature, there are no individuals that are mammals, they are individuals of some specific species of horse for example.
 
 In programming, we can use this concept to make some things easier for ourselves.
 By collecting features that are common to many types of data objects into classes and sub-classes we can inherit those features.
@@ -589,14 +580,14 @@ By using inheritance, we can also guarantee the properties of similar, or relate
 If every mammal is a vertebrae, we know that all properties of vertebrates also applies to mammals.
 We can use this knowledge to handle commonalities without knowing anything about the more specialized kinds, or classes.
 One example of this might be lockable things like doors and drawers.
-If they inherit from a common ancestor 'lockable_things', then we do not need know if it was a door or a drawer, if we are only interested in the 'locked' property.
-This flexibility, know as ((polymorphism)), is possible in programming only through object orientation and inheritance.
+If they inherit from a common ancestor `lockable_things`, then we do not need to know if it was a `door` or a `drawer`, if we are only interested in the `locked` property.
+This flexibility, know as ((polymorphism)), is possible in programming only through object-orientation and inheritance.
 
 
 
-==== Every and The
+==== EVERY and THE
 
-The Alan language supports object orientation and inheritance with two constructs:
+The Alan language supports object-orientation and inheritance via two constructs:
 
 // @PSEUDOCODE: The following code examples might not highlight well due to the
 //              presence of '...' ot square brackets placeholder!
@@ -609,7 +600,7 @@ The house_pet IsA cat ...
 --------------------------------------------------------------------------------
 
 The `Every`-construct defines a class and its properties, including inheriting from another, even more general class.
-The `The`-construct declares an instance, which in this example inherits from the class '`cat`'.
+The `The`-construct declares an instance, which in this example inherits from the class `cat`.
 The `IsA`-construct defines from which class properties are inherited.
 
 
@@ -621,6 +612,12 @@ To make it easy to get started there are eight classes predefined (((predefined 
 // @TODO: This image was grabbed by capturing the PDF page. It could be reconstructed
 //        from scratch, in vector format, to ensure good quality in all formats!
 
+// @TODO: In the image we could use different background colors for those classes
+//        that can't be sub-classed or instanciated (ie: LITERAL, STRING, INTEGER)
+//        and italicize the classes that are not an Alan keyword (ie: LITERAL, INTEGER).
+//        IMO, it would make this a better image of reference for students.
+
+[[fig-predefined-classes]]
 .Relationships between the predefined classes.
 image::predefined-classes.png[predefined classes, align="center"]
 
@@ -629,17 +626,21 @@ image::predefined-classes.png[predefined classes, align="center"]
 //        actual keywords (literal, integer), so in this context it might be ok
 //        to keep them just as they are, bold.
 
-// TODO: Add cross-reference link to Figure 2 in following paragraph?
+// @TODO: Here it should be specified that LITERAL and INTEGER don't have a corresponding
+//        keyword in the language (unlike STRING, which can be used with ADD TO even
+//        though not create instances or classes).
 
-They are *entity*, (((ENTITY, predefined class))) *thing*, (((THING, predefined class))) *location*, (((LOCATION, predefined class))) *actor*, (((ACTOR, predefined class))) *object*, (((OBJECT, predefined class))) *literal*, (((literal, predefined class))) *string* (((STRING, predefined class))) and *integer* (((integer, predefined class))) and have the relationship, inheritance tree, shown in _Figure 2_ above.
+
+
+They are *entity*, (((ENTITY, predefined class))) *thing*, (((THING, predefined class))) *location*, (((LOCATION, predefined class))) *actor*, (((ACTOR, predefined class))) *object*, (((OBJECT, predefined class))) *literal*, (((literal, predefined class))) *string* (((STRING, predefined class))) and *integer* (((integer, predefined class))) and have the relationship, inheritance tree, shown in the figure above.
 
 The semantics (((semantics, of predefined classes))) of these predefined classes are in short:
 
-* Only locations (instances inheriting from `location`) can be visited by the hero (the players alter ego)
-* Only actors may have scripts that they perform
-* Only things will be described automatically when encountered
+* Only locations (instances inheriting from `location`) can be visited by the hero (the player's alter ego).
+* Only actors may have scripts that they perform.
+* Only things will be described automatically when encountered.
 * Literal and its sub-classes cannot be sub-classed.
-They are used to handle integers and strings in player input
+  They are used to handle integers and strings in player input.
 
 See the subsections of <<Instances,Instances>> for more detailed descriptions.
 
@@ -650,25 +651,25 @@ See the subsections of <<Instances,Instances>> for more detailed descriptions.
 In the sections above about locations, objects and actors the examples show how to create an instance of a class.
 Those examples show how to do it from the predefined classes.
 However, it is the identical if you have defined the class yourself.
-In general the format is
+In general the format is:
 
 // @PSEUDOCODE: The following code examples might not highlight well due to the
 //              presence of '...' ot square brackets placeholder!
 
-[source,alan]
+[source,alan, subs="+quotes"]
 --------------------------------------------------------------------------------
-The _<instance_ _identifier>_ IsA _<class identifier>_ ...
+The _<instance identifier>_ IsA _<class identifier>_ ...
 --------------------------------------------------------------------------------
 
-To define a class you do much what you would expect:
+Defining a class is pretty much as you would expect it to be:
 
-[source,alan]
+[source,alan, subs="+quotes"]
 --------------------------------------------------------------------------------
 Every _<class identifier>_ ...
 --------------------------------------------------------------------------------
 
 After this, declarations of all the properties for that class follow.
-This could include inheriting from another class, e.g.
+This could include inheriting from another class, e.g.:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -684,12 +685,18 @@ End The kitchen_door.
 --------------------------------------------------------------------------------
 
 
+// @TODO: How should TRUE be styled? all caps? bold? italic?
+
 In this example, the `kitchen_door` has the attribute `open` although it does not specifically show in the declaration.
-It is initially set to true as specified in the declaration of the class `openable_door`.
+It is initially set to _true_ as specified in the declaration of the class `openable_door`.
 
 
 
 ==== Specialising and Overriding
+
+
+// @FIXME: "is USUALLY USED to..."
+
 
 Sub-classing, (((sub-classing))) or ((specialisation)), is usually used to add properties and thus make the instances of the sub-class more restricted, or specialised.
 In the example above, ``openable_door``s are specialisations of ``door``s since they have an attribute that the more general class does not have.
@@ -704,12 +711,18 @@ Every closed_openable_door IsA openable_door
 End Every.
 --------------------------------------------------------------------------------
 
-This makes all instances of the new class have the same attribute but it is set to false instead.
+This makes all instances of the new class have the same attribute but it is set to _false_ instead.
 The important thing is that the feature of having the attribute is common to all ``openable_door``s.
 This is called overriding a property.
 
-This concludes this short description of object orientation and how the Alan language supports it.
+
+// @FIXME: "In the following DESCRIPTIONS..." --- the text refers to these "descriptions"
+//         in various places, but it's not clear what its meant by them!
+
+This concludes our brief presentation of object-orientation and how the Alan language supports it.
 In the following descriptions, you just need to remember that most features can be inherited along the inheritance tree and be overridden, both during that inheritance and explicitly in the instance declaration itself.
+
+// @TODO: Add a cross-ref to the table of properties inheritance?
 
 
 
@@ -725,8 +738,8 @@ Although conceptually simple there are twists that you should know about.
 Containers might contain other instances that are in turn containers and so on, of course.
 If you want to consider everything inside a container recursively, you might actually get types of instances you did not expect.
 
-Consider e.g. a container, _cont_, that takes a subclass of __object__**,** _subobject_.
-Assume there is also an instance of that class, _inst_, that also is a container, but takes _object_.
+As an example, let's consider a container named `cont`, that takes a subclass of `object`, named `subobject`.
+Assume there is also an instance of that class, named `inst`, which is also a container, but takes `object` instead.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -743,16 +756,28 @@ End The inst.
 --------------------------------------------------------------------------------
 
 
+When you search, recursively, for instances in the container `cont`, you might then get instances that are both of class `subobject` and `object`, e.g. if the `inst` is inside the `cont` and in turn contains something, which would then be of class `object`.
 
-When you search, recursively, for instances in the container _cont_, you might then get instances that are both of class _subobject_ and _object_, e.g. if the _inst_ is inside the _cont_ and in turn contains something, which would then be of class _object_.
+// @NOTE: "to be their common PARENT" --- maybe ACENSTOR would be more appropriate here,
+//        as it might apply to inderect descendants too?
+//        Maybe the section on inheritance should introduce some basic OOP terminology too,
+//        and a Glossary could be also added ad the end of the book!
 
 This might lead to, completely correct, but surprising, error messages from the compiler indicating that an attribute or other property that you though existed is not available.
 Especially surprising is perhaps the case where the classes are not even decendants of each other.
-In this case the contained instances can only be guaranteed to be their common parent, which might be a quite general class like _thing_ or even _entity_.
+In this case the contained instances can only be guaranteed to be their common parent, which might be a quite general class like `thing` or even `entity`.
 
 
 
 ==== Transitivity
+
+
+// @FIXME: "describes how E.G. containment" Why "e.g."? One would expect a clear-cut
+//         definition of transitivty here, not an example definition. The sentence
+//         is not very cleary. Depending of what it's trying to say, it could be
+//         "Transitivity describes, among the other things, how containment..."
+//         or just "Transitivity describes how containment.."
+
 
 For many scenarios the above works well, and as expected.
 But for other cases the notion of transitivity is introduced.
@@ -781,8 +806,10 @@ What this means is that if you use transitive containment you get the same insta
 And it is usually the indirect ones that you should look out for.
 
 
-
 === The Verb Construct
+
+// @NOTE: Maybe change to "Verbs are USUALLY associated with", because there are
+//        also the global verbs.
 
 The (((VERB, construct))) `Verb` is the construct that implements the effects of an action requested by the player.
 Verbs are associated with a class or an instance.
@@ -791,7 +818,7 @@ We will look at the implications of various combinations of these in the next fe
 To implement a `Verb` you need a name for it (which is also the default word the player should input to request that action).
 You must also decide which effects this verb should have under various circumstances.
 
-If we want to implement the `Verb` open for the door we could use the following code
+If we want to implement the `Verb` '`open`' for the `door` we could use the following code:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -805,7 +832,7 @@ End Verb open.
 
 A `Verb` is either a simple command taking no parameters, like '`look`', '`save`' or '`help`', or it involves one or more parameters that the player can reference.
 Simple verbs should be declared at the top level, globally, i.e. outside of any other declaration.
-Verbs taking parameters, on the other hand, must be declared within the class or instance, with which it is associated.
+Verbs taking parameters, on the other hand, must be declared within the class or instance with which they are associated.
 For example, if a verb will handle objects it should be declared in the object class.
 The example above should probably best be placed in the door object itself.
 
@@ -821,8 +848,8 @@ End The kitchen_door.
 --------------------------------------------------------------------------------
 
 
-This defines the effects of applying the `open` verb to that precise door.
-The implementation makes direct references to the `kitchen_door`, so to make the verb more general it should be possible to apply to all doors.
+This defines the effects of applying the `open` verb to that specific door.
+The implementation makes direct references to the `kitchen_door`, so to make the verb more general it should be possible to apply to all ``door``s.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -834,10 +861,13 @@ Every door IsA object
 End Every door.
 --------------------------------------------------------------------------------
 
+// @FIXME: In this sentence some words must have been lost, because it doesn't
+//         seem to make sense: "Instead need to reference the object the player..."
+
 
 With this definition it is possible to apply the verb to all doors.
 Instead need to reference the object the player mentioned in his command (see <<The Syntax>> and <<Syntax Definitions>> for a more thorough discussion).
-In this case, the attribute `closed` must also be available for all objects by ensuring that the attribute exists in to the class.
+In this case, the attribute `closed` must also be available for all objects by ensuring that the attribute exists in the class.
 (See <<Additions>> on how to add an attribute to a predefined class such as `object`).
 
 Of course, there are often also conditions that need to be checked before we can execute this code (perhaps to see if it was possible to open the object!).
@@ -847,7 +877,7 @@ Therefore, ``Verb``s may have ``Check``s, as we will see next.
 
 ==== Checking Things
 
-In order to assert that the correct conditions are fulfilled before the body of a `Verb` is actually executed the verb may have an optional `Check` (((CHECK, in verbs))) part.
+In order to ascertain that the correct conditions are fulfilled before the body of a `Verb` is actually executed, the verb may have an optional `Check` (((CHECK, in verbs))) part.
 
 
 [source,alan]
@@ -861,12 +891,12 @@ End Verb open.
 --------------------------------------------------------------------------------
 
 
-This is a more realistic definition of the open `Verb` than the previous one.
-It specifies that before the statements after `Does` are executed, the condition after `Check` must be checked (which, in this case, checks that the object indicated by the player is really possible to open).
+This definition of the `open` verb is more realistic than the previous one.
+It specifies that before the statements after `Does` are executed, the condition after `Check` must be checked (which, in this case, checks that it's really possible to open the object indicated by the player).
 If that condition is TRUE then the requirements are fulfilled and the body of the `Verb` (following the `Does`) can be executed.
 If this is not the case the `Else`-part is executed instead (normally showing some message).
 
-A `Check` may have multiple conditions as the following code shows:
+A `Check` may have multiple conditions, as the following code shows:
 
 
 [source,alan]
@@ -881,9 +911,23 @@ Verb take
 End Verb take.
 --------------------------------------------------------------------------------
 
-
+// @NOTE: The following considerations might be a bit premature in the text, and
+//        confuse the reader, as he hasn't yet been told that actors are also
+//        containers, and that the hero's inventory is just the objects contained
+//        inside the hero. The sentence below takes a big leap when it says
+//        "inside a container (the inventory)", as there is no immediate connection
+//        between the 'hero' of the example and the "container" adn "inventory"
+//        of the sentence --- it assumes the reader already posseses the knowledge
+//        to connect all these dots, but he probably doesn't, at this stage!
 
 Here we also encounter a variation on the `Locate` statement -- the capability to place an object inside a container (the inventory).
+
+
+// @NOTE: The following (rather precious) note seems a bit out of context here.
+//        The section is about Verb Checks, and 'Locate' only came up as a side
+//        node, and this one is like a note on the side-note! Maybe it could be
+//        moved elsewhere? in a place where it could be better contextualized
+//        and be more beneficial to the reader?
 
 [NOTE]
 ================================================================================
@@ -894,8 +938,8 @@ Instead, you can define a limbo location, i.e. a location that is not accessible
 
 === The Syntax
 
-Normally a verb acts on one object or actor, henceforth called a ((parameter)), referenced by the player in a command.
-This means that the format of player input normally is something like
+Normally a verb acts on an object or actor, henceforth called a ((parameter)), referenced by the player in a command.
+This means that the format of player input is usually something like:
 
 [example,role="gametranscript"]
 ================================================================================
@@ -905,7 +949,7 @@ This means that the format of player input normally is something like
 
 
 This form, or syntax, is the default form if you don't specify anything else.
-The default syntax (((SYNTAX, default))) might thus be described as
+The default syntax (((SYNTAX, default))) might thus be described as:
 
 // @PSEUDOCODE: The following code examples might not highlight well due to the
 //              presence of '...' ot square brackets placeholder!
@@ -913,12 +957,12 @@ The default syntax (((SYNTAX, default))) might thus be described as
 
 [source,alan]
 --------------------------------------------------------------------------------
-Syntax +
+Syntax
   ? = ? (parameter)
 --------------------------------------------------------------------------------
 
 
-The question marks are place-holders and should be interpreted as the name of the verb.
+The question marks are placeholders and should be interpreted as the name of the verb.
 
 In order to allow different and more complex player input the (((SYNTAX, construct))) `Syntax` construct is supplied.
 
@@ -933,7 +977,7 @@ Syntax
 
 
 
-This syntax defines the `put_in` verb to be executed when the player has input the word '`put`' followed by a reference to an object or actor (a parameter named `obj`), followed by the word `in` followed by a reference to a second parameter (the container, referred to as `cont`), as in
+This syntax defines the `put_in` verb to be executed when the player has input the word '`put`' followed by a reference to an object or actor (a parameter named `obj`), followed by the word `in` followed by a reference to a second parameter (the container, referred to as `cont`), as in:
 
 [example,role="gametranscript"]
 ================================================================================
@@ -955,33 +999,39 @@ Syntax
       Else "Nothing fits inside that."
 --------------------------------------------------------------------------------
 
-This restricts (((restriction, of parameters))) the parameter `obj` to being an instance inheriting from the class object (as opposed to an actor for example) and the parameter `cont` to a container (an instance with the container property).
+This restricts (((restriction, of parameters))) the parameter `obj` to being an instance inheriting from the `object` class (as opposed to an `actor` for example) and the parameter `cont` to a `Container` (an instance with the `Container` property).
 
 The parameters are used as normal identifiers in the Alan source code.
-The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also <<Run-Time Contexts>> for a detailed discussion).
+The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the `Verb` for which the `Syntax` applies (see also <<Run-Time Contexts>> for a detailed discussion).
+
+
+// @FIXME: The sentence "Therefore, the verb execution ..." doesn't make sense.
+
 
 The `Syntax` construct allows for more than one parameter, in order to make it possible to define more complex player commands.
 Therefore, the verb execution order (((VERB, execution order))) described previously from execution of verbs in one instance must be generalised to verb bodies in all the parameters.
 In the example above, verb bodies in the objects or actors referenced as `obj` and `cont` (the green pearl and the black box) are executed (if the verb is present in their definitions).
 
 
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
+
 
 === Text Output Formatting
 
 Text output on the screen is caused by what you have written in the Alan source code.
-However, since text is coming from various places it is not easy or even possible, to anticipate the full context of a particular text.
+However, since text is coming from various places it is not easy, or even possible, to anticipate the full context of a particular text.
 
 Therefore, the Alan system takes care of some specific formatting issues.
 First, text will always flow neatly inside the window or screen.
-Lines will be broken automatically without braking in the middle of words.
+Long lines will be automatically split without breaking in the middle of words.
 
 Secondly, a few special cases are also handled automatically:
 
-* After a full stop (period, the character '`.`'), an exclamation ('`!`') or a question mark ('`?`') and in the beginning of paragraphs, including location headings, the first character will be guaranteed to be upper case, automatically converted if necessary.
-This means for example that you don't have to consider the case when the name of an object might be printed as the first thing in a sentence.
-The name will automatically be capitalized.
-For example:
-
+* After a full stop (period, the character '`.`'), an exclamation ('`!`') or question mark ('`?`'), and in the beginning of paragraphs, including location headings, the first character will be guaranteed to be upper case, automatically converted if necessary.
+  This means for example that you don't have to consider the case when the name of an object might be printed as the first thing in a sentence.
+  The name will automatically be capitalized.
+  For example:
++
 [source,alan]
 --------------------------------------------------------------------------------
 The postmen IsA actor At postoffice ...
@@ -991,24 +1041,23 @@ The postoffice IsA location
     Describe postmen.
 ...
 --------------------------------------------------------------------------------
-
++
 Given the above snippet from a game source, the transcript would read:
-
++
 [example,role="gametranscript"]
 ================================================================================
 *Postoffice* +
 Postmen are working behind the counters.
 ================================================================================
-
-
++
 This would be the case even if the description of the postmen started with a lower case character.
 
 * Two outputs following each other will automatically be separated by a space (a blank character).
-Except for the following case:
+  Except for the following case:
 +
 If an output is immediately followed by another output starting with a full stop (period, the character '`.`'), an exclamation, a question mark or a comma, and it is the only character in that output or it is followed by a space (blank character), no space will be inserted before that output.
-This rule will make sure that the full stop in the following source is automatically adjacent to the previous text, without the need to suppress spacing.
-
+  This rule will ensures that the full stop in the following source is automatically adjacent to the   previous text, without the need to suppress spacing.
++
 [source,alan]
 --------------------------------------------------------------------------------
   "You can't take" Say p. "."
@@ -1036,17 +1085,16 @@ A simple example is
 8.   If house_cat Has fur Then ...
 --------------------------------------------------------------------------------
 
-At line 8 we will get an error saying that the _house_cat_ does not have the attribute _fur_.
+At line 8 we will get an error saying that the `house_cat` does not have the attribute `fur`.
 
-Now, if that is true, it's a good thing that the compiler caught the error, otherwise the game might try to access that attribute.
-And blow up in the face of the player.
+Now, if that is true, it's a good thing that the compiler caught the error, otherwise the game might try to access that attribute -- and blow up in the face of the player!
 
 Can you spot the problem?
-The _house_cat_ is declared as an _object_, and not as an _animal_.
+The `house_cat` is declared as an `object`, and not as an `animal`.
 
 Other examples include trying to use a script for an actor (or actor subclass) that does not have one, locating something inside something that is not a container and so on.
 
-A more complicated example is this
+Here is a more complicated example:
 
 // FIXME: Code With Line-Numbers
 [source,alan]
@@ -1065,18 +1113,18 @@ A more complicated example is this
 12. ...
 13.   For Each f In box Do
 14.     If f Has someAttribute Then
-15. ...
+15.     ...
 --------------------------------------------------------------------------------
 
-On line 14 we will get an error saying that _someAttribute_ is not available since the class _f_ can only be guaranteed to be _thing_.
+On line 14 we will get an error saying that `someAttribute` is not available since the class `f` can only be guaranteed to be `thing`.
 
 // @FIXME: Missing reference: "(see xxx)"
 
 Is it?
-Well, the variable _f_ (in the loop) enumerates all things in the box and since the box takes objects, it is possible that it may contain the cont.
-And since that takes things, and the _In box_ is transitive (see xxx), _f_ may take on any thing that is contained in the cont too.
+Well, the variable `f` (in the loop) enumerates all things in the `box` and since the `box` takes ``object``s, it is possible that it may contain the `cont`.
+And since that takes ``thing``s, and `In box` is transitive (see <<Transitivity>>), `f` may take on any `thing` that is contained in the `cont` too.
 
-There are a number of ways to fix this of course:
+Of course, there are various ways to fix this:
 
 * change the transitivity of the filter in the loop (`Directly In`)
 * add a class-restricting filter in the loop (`IsA object`)

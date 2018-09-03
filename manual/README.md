@@ -117,7 +117,7 @@ Some files to help editing the manual:
 # Document Status
 
 - [x] _1. Introduction_
-- [ ] _2. Concepts_
+- [x] _2. Concepts_
 - [ ] _3. Lexical Definitions_
 - [x] _4. Language Reference_
 - [x] _5. Running An Adventure_
@@ -219,9 +219,9 @@ There are only 2 footnotes in the Manual, both in "_3.2. Options_" Table.
 
 - [ ] Add missing images:
     + [x] Alan logo (cover)
-    + [x] Figure 1 (Ch.2, p.20 of PDF) — "The principles for and relations between a game description, a compiler, ..." (captured from PDF, temp solution)
+    + [x] Figure 1 (Sec. 2.3, p.20 of PDF) — "The principles for and relations between a game description, a compiler, ..." (captured from PDF, temp solution)
         * [ ] Rebuild image, possibly in vector format.
-    + [x] Figure 2 (Ch.2, p.33 of PDF) — "_Relationships between the pre-defined classes._" (captured from PDF, temp solution)
+    + [x] Figure 2 (Sec. 2.4, p.33 of PDF) — "_Relationships between the pre-defined classes._" (captured from PDF, temp solution)
         * [ ] Rebuild image in vector format (Inkscape).
 
 ## Global Styles Reconstruction
@@ -302,7 +302,7 @@ This stage will be done once all global substitution have been dealt with in eac
 
 - [ ] Go through whole document and fix inline styles, typos, etc:
     + [x] _1. Introduction_
-    + [ ] _2. Concepts_
+    + [x] _2. Concepts_
     + [ ] _3. Lexical Definitions_
     + [x] _4. Language Reference_
     + [x] _5. Running An Adventure_

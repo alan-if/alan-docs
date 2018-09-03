@@ -14,6 +14,7 @@ It provides the text to be pasted for AsciiDoc substitutions in double angled br
     - [With Chapter/Section Number Shown](#with-chaptersection-number-shown)
     - [With Chapter/Section Title Shown](#with-chaptersection-title-shown)
 - [Tables](#tables)
+- [Figures](#figures)
 
 <!-- /MarkdownTOC -->
 
@@ -87,6 +88,13 @@ For convenience, Tables have also been given a custom ID, which might be handier
 | 3.10     | [Order of Execution of Verbs][Table 4]             | `table-of-verbs-execution`        |
 | D.2      | [List of Alan Language's Keywords][Table 5]        | `table-of-keywords`               |
 
+# Figures
+
+| Ch / Sec |                              Figure Caption                              |        Custom ID         |
+|----------|--------------------------------------------------------------------------|--------------------------|
+|      2.3 | [The principles for and relations between a game description ...][Fig 1] | `fig-game-compiler-terp` |
+|      2.4 | [Relationships between the predefined classes.][Fig 2]                   | `fig-predefined-classes` |
+
 <!-- 
 | xx          | `<<xxxxxx>>`                       |                                |
 |   | xxx | `yyy` |
@@ -128,5 +136,10 @@ For convenience, Tables have also been given a custom ID, which might be handier
 [Table X]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-syntax-parameters
 [Table 4]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-verbs-execution
 [Table 5]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#table-of-keywords
+
+<!-- Figures -->
+
+[Fig 1]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#fig-game-compiler-terp
+[Fig 2]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#fig-predefined-classes
 
 <!-- eof -->

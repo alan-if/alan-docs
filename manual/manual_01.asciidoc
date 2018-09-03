@@ -14,7 +14,7 @@ During many years of incremental improvement and use, it has now reached its thi
 This means that the language has a sound foundation, based on practical use.
 Therefore, features have been added as experience has grown, from actual use and understanding of the most prioritised needs.
 
-In this version, modern and novel object orientation features have been incorporated into the language that allow definition of classes, instantiation and inheritance of attributes and other features.
+In this version, modern and novel object-orientation features have been incorporated into the language that allow definition of classes, instantiation and inheritance of attributes and other features.
 Do not worry if you find these terms incomprehensible at this point, Alan is still an easy language to use and by reading this manual, you will understand how these new features may aid you in your quest for adventures.
 
 

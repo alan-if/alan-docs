@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.48,</span>
+<span id="revnumber">version 0.1.49,</span>
 <span id="revdate">September 3, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -470,11 +470,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_the_locations">The Locations</a></li>
 <li><a href="#_the_objects">The Objects</a></li>
 <li><a href="#_the_actors">The Actors</a></li>
-<li><a href="#_inheritance_and_object_orientation">Inheritance and Object Orientation</a>
+<li><a href="#_inheritance_and_object_orientation">Inheritance and Object-Orientation</a>
 <ul class="sectlevel4">
 <li><a href="#_inheritance_and_instances">Inheritance and Instances</a></li>
 <li><a href="#_polymorphism">Polymorphism</a></li>
-<li><a href="#_every_and_the">Every and The</a></li>
+<li><a href="#_every_and_the">EVERY and THE</a></li>
 <li><a href="#_the_predefined_classes">The Predefined Classes</a></li>
 <li><a href="#_creating_classes_and_instances">Creating Classes and Instances</a></li>
 <li><a href="#_specialising_and_overriding">Specialising and Overriding</a></li>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.48
+<pre>Doc version: 0.1.49
 Last edited: September 3, 2018</pre>
 </div>
 </div>
@@ -885,7 +885,7 @@ This means that the language has a sound foundation, based on practical use.
 Therefore, features have been added as experience has grown, from actual use and understanding of the most prioritised needs.</p>
 </div>
 <div class="paragraph">
-<p>In this version, modern and novel object orientation features have been incorporated into the language that allow definition of classes, instantiation and inheritance of attributes and other features.
+<p>In this version, modern and novel object-orientation features have been incorporated into the language that allow definition of classes, instantiation and inheritance of attributes and other features.
 Do not worry if you find these terms incomprehensible at this point, Alan is still an easy language to use and by reading this manual, you will understand how these new features may aid you in your quest for adventures.</p>
 </div>
 <div class="sect2">
@@ -1290,19 +1290,19 @@ This manual tries to be consistent with using the first version (except in gramm
 <h4 id="_the_locations">The Locations</h4>
 <div class="paragraph">
 <p>The scene for your adventure is a series of &#8220;rooms&#8221; or, rather, locations.
-Locations are connected by exits, leading out of one location into another.
+<code>Location</code>s are connected by <code>Exit</code>s, leading out of one location into another.
 This makes it possible for the hero to travel through the world of your design, exploring it and solving the puzzles.</p>
 </div>
 <div class="paragraph">
 <p>What is required if we want to describe a location?
-Every location must have an identifier.
+Every <code>location</code> must have an identifier.
 This is so that you, the designer, may refer to that location easily, instead of having to remember a magic number for it.</p>
 </div>
 <div class="paragraph">
-<p>Unless you plan to provide other means for transportation from a location, you should also describe in which directions there are <code>Exit</code>s and to which locations they lead.</p>
+<p>Unless you plan to provide other means for transportation from a location, you should also describe in which directions there are <code>Exit</code>s and to which <code>location</code>s they lead.</p>
 </div>
 <div class="paragraph">
-<p>In fact, this is all that is necessary in a location, so lets look at an example.</p>
+<p>In fact, this is all that is necessary in a <code>location</code>, so lets look at an example.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1319,7 +1319,7 @@ Start At kitchen.</code></pre>
 </div>
 <div class="paragraph">
 <p>This is a complete Alan adventure (although very primitive).
-As you see, every Alan construct ends with a period (<code>.</code>) and there is a &#8220;<code>Start At</code>&#8221; sentence at the end, indicating in which location to put the hero when the game starts.</p>
+As you can see, every Alan construct ends with a period (<code>.</code>) and there is a &#8220;<code>Start At</code>&#8221; sentence at the end, indicating in which location to put the hero when the game starts.</p>
 </div>
 <div class="paragraph">
 <p>Type the above text into a text file, e.g. using a notepad program.
@@ -1344,7 +1344,7 @@ Typing &#8220;west&#8221; will take you back to &#8220;Kitchen&#8221; again.
 (Use <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>C</kbd></span> to exit the game if you are running it in a console window.)</p>
 </div>
 <div class="paragraph">
-<p>The identifier for a location is automatically used as a description, a heading, shown when that room is entered.
+<p>The identifier for a <code>location</code> is automatically used as a description, a heading, shown when that room is entered.
 And the words listed in the <code>Exit</code>-parts are translated into directional commands the player can use in his input.</p>
 </div>
 <div class="paragraph">
@@ -1370,8 +1370,8 @@ End The hallway.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>We introduce another feature in this example, namely the text enclosed in double quotation marks (") which is called a <strong>string</strong> or, when used on its own like this, an output statement.
-When executed this string will be presented to the player and formatted to suit the format of his screen.</p>
+<p>We introduce another feature in this example, namely the text enclosed in double quotation marks (<code>"</code>) which is called a <strong>string</strong> or, when used on its own like this, an output statement.
+When executed, this string will be presented to the player and formatted to suit the format of his screen.</p>
 </div>
 <div class="paragraph">
 <p>Invent a description for the Kitchen, enter it in the Alan source and run the changed adventure.
@@ -1382,7 +1382,7 @@ Note also that you do not have to worry about this at all&#8201;&#8212;&#8201;in
 <p>This type of output statement is just one of the statements in the Alan Language, and we will see more of them later.</p>
 </div>
 <div class="paragraph">
-<p>It is also possible to have conditions and statements in the <code>Exit</code>-clauses of a <code>Location</code> to restrict the access to the next location or to describe what happens during this movement.</p>
+<p>It is also possible to have conditions and statements in the <code>Exit</code>-clauses of a <code>location</code> to restrict the access to the next location or to describe what happens during this movement.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1400,42 +1400,42 @@ End Exit west.</code></pre>
 <h4 id="_the_objects">The Objects</h4>
 <div class="paragraph">
 <p>Another essential feature in Alan are the objects.
-Like the location, the object is a means to describe the &#8220;physical&#8221; world where your adventure is taking place.
-Many objects are probably used to provide puzzles, such as closed doors, keys and so on, but other objects should be promoted to objects too.
+Like the <code>location</code>, the <code>object</code> is a means to describe the &#8220;physical&#8221; world where your adventure is taking place.
+Many objects are probably used to provide puzzles, such as closed doors, keys, and so on, but other objects should be promoted to <code>object</code>s too.
 A large number of objects that can be examined and manipulated make a game so much more enjoyable.</p>
 </div>
 <div class="paragraph">
-<p>Objects, like locations, have identifiers and descriptions, so you might guess the general structure of an object:</p>
+<p><code>Object</code>s, like <code>location</code>s, have an identifier and a <code>Description</code>, so you might guess the general structure of an object:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-alan" data-lang="alan">The door IsA object At hallway
   Is closed.
-    Description
+  Description
     "The door to the kitchen is a sliding door."
     If door Is closed Then
-     "It is closed."
+      "It is closed."
     Else
-     "It is open."
+      "It is open."
     End If.
 End The door.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>An object may initially be located at a particular location.
+<p>An <code>object</code> may initially be located at a particular <code>location</code>.
 This is indicated by the <code>At</code>-clause, in this case telling us that the door is initially located in the Hallway.
-Objects do not have to start at a particular place in which case they are not present in the game until located, by executing some code, at some place where the player may lay his hands on them.</p>
+Objects do not necessarily have to start at a particular place, in which case they are not present in the game until located, by executing some code, at some place where the player may lay his hands on them.</p>
 </div>
 <div class="paragraph">
 <p>In addition, objects may have attributes indicating the state of certain properties of the object.
-In this example with a door, the <code>Is closed</code> part indicates that the door should have the attribute closed, which initially is set to <strong>TRUE</strong> (implying that the door is initially closed).
+In this example with a door, the <code>Is closed</code> part indicates that the door should have the attribute <code>closed</code>, which initially is set to <strong>TRUE</strong> (implying that the door is initially closed).
 The opposite would be indicated with a <code>Not</code>, (i.e. <code>Is Not closed</code>).</p>
 </div>
 <div class="paragraph">
 <p>Alternatively, attributes may be numeric (e.g. <code>Has weight 5</code>) or be of string type (e.g. <code>Has inscription "Kilroy was here"</code>).</p>
 </div>
 <div class="paragraph">
-<p>We also introduce another Alan statement, the <code>If</code> statement.
+<p>The example also introduced another Alan statement, the <code>If</code> statement.
 The <code>If</code> statement  allows you to select which statements to execute according to some condition.
 In the example, the <code>closed</code> attribute of the door selects which description to show.
 There are further variations of expressions and the <code>If</code> statement, but we will come back to these later (<a href="#_expressions">Sect. 3.20</a> and <a href="#_if_statement">Sect. 3.17.6.1</a>).</p>
@@ -1444,9 +1444,9 @@ There are further variations of expressions and the <code>If</code> statement, b
 <p>Instead, let&#8217;s look at some other statements in relation to objects.</p>
 </div>
 <div class="paragraph">
-<p>It must of course be possible to change the value of attributes of an object.
-You can do this using the  <code>Make</code> statement or the  <code>Set</code> statement.
-For example if the door should be opened (the player having said &#8220;open door&#8221;, perhaps) this could be performed by stating</p>
+<p>It must of course be possible to change the value of an object&#8217;s attributes.
+You can do this using the  <code>Make</code> or the  <code>Set</code> statements.
+For example, if the door should be opened (the player having said &#8220;open door&#8221;, perhaps) this could be performed by stating:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1454,7 +1454,7 @@ For example if the door should be opened (the player having said &#8220;open doo
 </div>
 </div>
 <div class="paragraph">
-<p>To close it (i.e. setting the closed attribute to TRUE again) you write</p>
+<p>To close it (i.e. setting the <code>closed</code> attribute to TRUE again) you write:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1463,7 +1463,7 @@ For example if the door should be opened (the player having said &#8220;open doo
 </div>
 <div class="paragraph">
 <p>The <code>Make</code> statement changes Boolean (or True/False) attributes.
-The <code>Set</code> statement changes numeric or string attributes, for example</p>
+The <code>Set</code> statement changes numeric or string attributes, for example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1479,8 +1479,8 @@ The <code>Set</code> statement changes numeric or string attributes, for example
 <td class="content">
 <div class="paragraph">
 <p>These statements only change attributes.
-The implications of such a change must be implemented by writing Alan code that test these attributes and provides differing text output to the player.
-This is what gives the player <em>the illusion</em> of a door being open or closed for example.</p>
+The implications of such a change must be implemented by writing Alan code that tests these attributes and provides differing text output to the player.
+This is what gives the player <em>the illusion</em> of a door being open or closed, for example.</p>
 </div>
 </td>
 </tr>
@@ -1494,7 +1494,7 @@ This is what gives the player <em>the illusion</em> of a door being open or clos
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Alan does not understand, or enforce, any semantic in the identifiers for attributes, they are only identifiers.
+<p>Alan does not understand, nor enforce, any semantic in the identifiers for attributes, they are only identifiers.
 The illusion of the effects of differences in the value must be implemented by varying the output.
 In addition, Alan does not understand that an attribute &#8216;closed&#8217;, for a human would be the opposite of an attribute &#8216;open&#8217;.
 You should choose one and stick to it.</p>
@@ -1532,8 +1532,8 @@ Opening a lid might cause a previously hidden object to fall to the floor, somet
 They might be pirates or monsters, but the thing they have in common is that they move around or at least perform various actions more or less in the same way as the player does.</p>
 </div>
 <div class="paragraph">
-<p>An actor may have a <code>Description</code> and attributes like objects and locations.
-An actor performs his movements by following scripts, each having a number of steps.
+<p>An <code>actor</code> may have a <code>Description</code> and attributes, like <code>object</code>s and <code>location</code>s do.
+An actor performs his movements by following <code>Script</code>s, each having a number of <code>Step</code>s.
 Each step corresponds to one player move.</p>
 </div>
 <div class="listingblock">
@@ -1541,18 +1541,18 @@ Each step corresponds to one player move.</p>
 <pre class="highlight"><code class="language-alan" data-lang="alan">The charlie_chaplin IsA actor Name charlie chaplin
   Script going_out
     Step
-     Locate Actor At outside_house.
+      Locate Actor At outside_house.
     Step
       Locate Actor At hallway.
-     Use Script going_out.
+      Use Script going_out.
 End The charlie_chaplin.</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_inheritance_and_object_orientation">Inheritance and Object Orientation</h4>
+<h4 id="_inheritance_and_object_orientation">Inheritance and Object-Orientation</h4>
 <div class="paragraph">
-<p>Object orientation  is a term that is often used when talking about programming.
+<p>Object-orientation  is a term that is often used when talking about programming.
 The concept is modelled after a natural phenomenon first described by the Swedish botanist Carl Linnaeus (or Carl von Linné).
 He devised a naming system for flowers and plants that was based on features common between various species and families.
 The idea is that a general concept such as a mammal is defined by listing some features which all mammals share.
@@ -1560,7 +1560,7 @@ Specialisations such as sub-species in turn have other, more specialised, featur
 </div>
 <div class="paragraph">
 <p>In nature, we talk about species and individuals.
-In object oriented programming we talk about classes and instances, which are similar.
+In object-oriented programming we talk about classes and instances, which are similar.
 Classes are abstract definitions of what the common features are and instances are individuals (data objects) having those features.</p>
 </div>
 <div class="sect4">
@@ -1568,7 +1568,7 @@ Classes are abstract definitions of what the common features are and instances a
 <div class="paragraph">
 <p>Inheritance  means that a more general class can be restricted or specialised into new sub-classes.
 We say that the specialised class inherits from the more general.
-Most object oriented programming languages allows creating instances from any class, which does not happen in nature, there are no individuals that are mammals, they are individuals of some specific species of horse for example.</p>
+Most object-oriented programming languages allows creating instances from any class, which does not happen in nature, there are no individuals that are mammals, they are individuals of some specific species of horse for example.</p>
 </div>
 <div class="paragraph">
 <p>In programming, we can use this concept to make some things easier for ourselves.
@@ -1585,14 +1585,14 @@ We need to look up the parent class (or classes) for complete information about 
 If every mammal is a vertebrae, we know that all properties of vertebrates also applies to mammals.
 We can use this knowledge to handle commonalities without knowing anything about the more specialized kinds, or classes.
 One example of this might be lockable things like doors and drawers.
-If they inherit from a common ancestor 'lockable_things', then we do not need know if it was a door or a drawer, if we are only interested in the 'locked' property.
-This flexibility, know as polymorphism, is possible in programming only through object orientation and inheritance.</p>
+If they inherit from a common ancestor <code>lockable_things</code>, then we do not need to know if it was a <code>door</code> or a <code>drawer</code>, if we are only interested in the <code>locked</code> property.
+This flexibility, know as polymorphism, is possible in programming only through object-orientation and inheritance.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_every_and_the">Every and The</h5>
+<h5 id="_every_and_the">EVERY and THE</h5>
 <div class="paragraph">
-<p>The Alan language supports object orientation and inheritance with two constructs:</p>
+<p>The Alan language supports object-orientation and inheritance via two constructs:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1603,7 +1603,7 @@ The house_pet IsA cat ...</code></pre>
 </div>
 <div class="paragraph">
 <p>The <code>Every</code>-construct defines a class and its properties, including inheriting from another, even more general class.
-The <code>The</code>-construct declares an instance, which in this example inherits from the class &#8216;cat&#8217;.
+The <code>The</code>-construct declares an instance, which in this example inherits from the class <code>cat</code>.
 The <code>IsA</code>-construct defines from which class properties are inherited.</p>
 </div>
 </div>
@@ -1612,14 +1612,14 @@ The <code>IsA</code>-construct defines from which class properties are inherited
 <div class="paragraph">
 <p>To make it easy to get started there are eight classes predefined  in the Alan language.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div id="fig-predefined-classes" class="imageblock" style="text-align: center">
 <div class="content">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArUAAAEICAMAAAB2wvxFAAAC9FBMVEX///////8AAAAAABkAACMAACwAADMAADoAAEAAAEYAAEsAAFUAAFoAAGcAGV4AGWIAGWsAGXkAI4AAI4sAQHYAQHkAQIAAQI4ARp0AWoAAWocAXq0ZAAAZXosZXo4ZXpQZXqAZYq0Zdr0fHx8jAAAjh6sji8w1NTVAAABAdppAdp1AdqJAdq1AeZRAebpAi8lGAABGnddPT09aAABaWlpah4ReAABeGQBei6Vei6hei7hejsRendNereBereJiGQBireBkZGR1dXV2GQB2QBl2mo52nZF2na12nbN2nb12oMl2rdd2vet5QBl5nYd5veSFhYWHi2KHq52HrauLIwCLQBmLWiOLXiyLYiyLi7WLq62Lq7WLq7+LrcyLsOKLutmLzO+LzPOOXiyOjo6OyeaTk5OdRhmdXiyddkadeUadrbWdrb+dsMydvdmd1cKd1/Gd2eud2fegdkagzOahoaGnp6eri16rsMytXiOtYiytdkati16tnXatra2tsMytuICtvdmtyautzOat2fGt5Pmt5u2t5vuwnXawq4uwzOaw5vu4eUa5ubm6i166i5G62fG9djO9eUa9nXa9q4u9rZq9raW92fG95vm98fG98f2/zObExMTJjl7J5vnMi0DMi0vMoHbMrYvMsJrMsKXMsK3M5vnM8/3M+/PM+/3M+//Pz8/XnWLX8/3ZnVXZrXnZuo7ZupTZvajZva3Zv87Z2dnZ8/3Z/evZ/f/iyYvj4+PkrWvk/f/mrWfmvYDmyZTmzKLmzK3mzLPmzLXm89nm/fvm/f/m//Hm///t7e3xvXnx///zzI7z16Dz2a3z2bjz2b/z2cfz5q3z8/vz/fPz/f/z/+Lz///18/X29vb7zIv7//H7///92Z395K395q395rr95sT95sn95sz9/+v9//39////5q3/8b3/88n/89P/89f/89n/9fP/+8z//df//eD//eT//eb//+L//+v//+////H///P///f///n///v///3///+Ur2bEAAAAAnRSTlM/f+73i6kAABM1SURBVHgB7dxlfBtXlwbw9CrOxukG7RTdlFuVA1uHyS4zM7cuM5PLzMzMjMqWaXddZvCWWU5at04DblzNS+fR8VxrlNeVlZ91Z6Z+zgdXI43i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" alt="predefined classes">
 </div>
 <div class="title">Figure 2. Relationships between the predefined classes.</div>
 </div>
 <div class="paragraph">
-<p>They are <strong>entity</strong>,  <strong>thing</strong>,  <strong>location</strong>,  <strong>actor</strong>,  <strong>object</strong>,  <strong>literal</strong>,  <strong>string</strong>  and <strong>integer</strong>  and have the relationship, inheritance tree, shown in <em>Figure 2</em> above.</p>
+<p>They are <strong>entity</strong>,  <strong>thing</strong>,  <strong>location</strong>,  <strong>actor</strong>,  <strong>object</strong>,  <strong>literal</strong>,  <strong>string</strong>  and <strong>integer</strong>  and have the relationship, inheritance tree, shown in the figure above.</p>
 </div>
 <div class="paragraph">
 <p>The semantics  of these predefined classes are in short:</p>
@@ -1627,17 +1627,17 @@ The <code>IsA</code>-construct defines from which class properties are inherited
 <div class="ulist">
 <ul>
 <li>
-<p>Only locations (instances inheriting from <code>location</code>) can be visited by the hero (the players alter ego)</p>
+<p>Only locations (instances inheriting from <code>location</code>) can be visited by the hero (the player&#8217;s alter ego).</p>
 </li>
 <li>
-<p>Only actors may have scripts that they perform</p>
+<p>Only actors may have scripts that they perform.</p>
 </li>
 <li>
-<p>Only things will be described automatically when encountered</p>
+<p>Only things will be described automatically when encountered.</p>
 </li>
 <li>
 <p>Literal and its sub-classes cannot be sub-classed.
-They are used to handle integers and strings in player input</p>
+They are used to handle integers and strings in player input.</p>
 </li>
 </ul>
 </div>
@@ -1651,24 +1651,24 @@ They are used to handle integers and strings in player input</p>
 <p>In the sections above about locations, objects and actors the examples show how to create an instance of a class.
 Those examples show how to do it from the predefined classes.
 However, it is the identical if you have defined the class yourself.
-In general the format is</p>
+In general the format is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">The _&lt;instance_ _identifier&gt;_ IsA _&lt;class identifier&gt;_ ...</code></pre>
+<pre class="highlight"><code class="language-alan" data-lang="alan">The <em>&lt;instance identifier&gt;</em> IsA <em>&lt;class identifier&gt;</em> ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To define a class you do much what you would expect:</p>
+<p>Defining a class is pretty much as you would expect it to be:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">Every _&lt;class identifier&gt;_ ...</code></pre>
+<pre class="highlight"><code class="language-alan" data-lang="alan">Every <em>&lt;class identifier&gt;</em> ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>After this, declarations of all the properties for that class follow.
-This could include inheriting from another class, e.g.</p>
+This could include inheriting from another class, e.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1685,7 +1685,7 @@ End The kitchen_door.</code></pre>
 </div>
 <div class="paragraph">
 <p>In this example, the <code>kitchen_door</code> has the attribute <code>open</code> although it does not specifically show in the declaration.
-It is initially set to true as specified in the declaration of the class <code>openable_door</code>.</p>
+It is initially set to <em>true</em> as specified in the declaration of the class <code>openable_door</code>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1706,12 +1706,12 @@ End Every.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This makes all instances of the new class have the same attribute but it is set to false instead.
+<p>This makes all instances of the new class have the same attribute but it is set to <em>false</em> instead.
 The important thing is that the feature of having the attribute is common to all <code>openable_door</code>s.
 This is called overriding a property.</p>
 </div>
 <div class="paragraph">
-<p>This concludes this short description of object orientation and how the Alan language supports it.
+<p>This concludes our brief presentation of object-orientation and how the Alan language supports it.
 In the following descriptions, you just need to remember that most features can be inherited along the inheritance tree and be overridden, both during that inheritance and explicitly in the instance declaration itself.</p>
 </div>
 </div>
@@ -1729,8 +1729,8 @@ Although conceptually simple there are twists that you should know about.</p>
 If you want to consider everything inside a container recursively, you might actually get types of instances you did not expect.</p>
 </div>
 <div class="paragraph">
-<p>Consider e.g. a container, <em>cont</em>, that takes a subclass of <em>object</em><strong>,</strong> <em>subobject</em>.
-Assume there is also an instance of that class, <em>inst</em>, that also is a container, but takes <em>object</em>.</p>
+<p>As an example, let&#8217;s consider a container named <code>cont</code>, that takes a subclass of <code>object</code>, named <code>subobject</code>.
+Assume there is also an instance of that class, named <code>inst</code>, which is also a container, but takes <code>object</code> instead.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1747,12 +1747,12 @@ End The inst.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When you search, recursively, for instances in the container <em>cont</em>, you might then get instances that are both of class <em>subobject</em> and <em>object</em>, e.g. if the <em>inst</em> is inside the <em>cont</em> and in turn contains something, which would then be of class <em>object</em>.</p>
+<p>When you search, recursively, for instances in the container <code>cont</code>, you might then get instances that are both of class <code>subobject</code> and <code>object</code>, e.g. if the <code>inst</code> is inside the <code>cont</code> and in turn contains something, which would then be of class <code>object</code>.</p>
 </div>
 <div class="paragraph">
 <p>This might lead to, completely correct, but surprising, error messages from the compiler indicating that an attribute or other property that you though existed is not available.
 Especially surprising is perhaps the case where the classes are not even decendants of each other.
-In this case the contained instances can only be guaranteed to be their common parent, which might be a quite general class like <em>thing</em> or even <em>entity</em>.</p>
+In this case the contained instances can only be guaranteed to be their common parent, which might be a quite general class like <code>thing</code> or even <code>entity</code>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1807,7 +1807,7 @@ We will look at the implications of various combinations of these in the next fe
 You must also decide which effects this verb should have under various circumstances.</p>
 </div>
 <div class="paragraph">
-<p>If we want to implement the <code>Verb</code> open for the door we could use the following code</p>
+<p>If we want to implement the <code>Verb</code> &#8216;open&#8217; for the <code>door</code> we could use the following code:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1820,7 +1820,7 @@ End Verb open.</code></pre>
 <div class="paragraph">
 <p>A <code>Verb</code> is either a simple command taking no parameters, like &#8216;look&#8217;, &#8216;save&#8217; or &#8216;help&#8217;, or it involves one or more parameters that the player can reference.
 Simple verbs should be declared at the top level, globally, i.e. outside of any other declaration.
-Verbs taking parameters, on the other hand, must be declared within the class or instance, with which it is associated.
+Verbs taking parameters, on the other hand, must be declared within the class or instance with which they are associated.
 For example, if a verb will handle objects it should be declared in the object class.
 The example above should probably best be placed in the door object itself.</p>
 </div>
@@ -1835,8 +1835,8 @@ End The kitchen_door.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This defines the effects of applying the <code>open</code> verb to that precise door.
-The implementation makes direct references to the <code>kitchen_door</code>, so to make the verb more general it should be possible to apply to all doors.</p>
+<p>This defines the effects of applying the <code>open</code> verb to that specific door.
+The implementation makes direct references to the <code>kitchen_door</code>, so to make the verb more general it should be possible to apply to all <code>door</code>s.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1851,7 +1851,7 @@ End Every door.</code></pre>
 <div class="paragraph">
 <p>With this definition it is possible to apply the verb to all doors.
 Instead need to reference the object the player mentioned in his command (see <a href="#_the_syntax">Sect. 2.4.8</a> and <a href="#_syntax_definitions">Sect. 3.9</a> for a more thorough discussion).
-In this case, the attribute <code>closed</code> must also be available for all objects by ensuring that the attribute exists in to the class.
+In this case, the attribute <code>closed</code> must also be available for all objects by ensuring that the attribute exists in the class.
 (See <a href="#_additions">Sect. 3.8</a> on how to add an attribute to a predefined class such as <code>object</code>).</p>
 </div>
 <div class="paragraph">
@@ -1861,7 +1861,7 @@ Therefore, <code>Verb</code>s may have <code>Check</code>s, as we will see next.
 <div class="sect4">
 <h5 id="_checking_things">Checking Things</h5>
 <div class="paragraph">
-<p>In order to assert that the correct conditions are fulfilled before the body of a <code>Verb</code> is actually executed the verb may have an optional <code>Check</code>  part.</p>
+<p>In order to ascertain that the correct conditions are fulfilled before the body of a <code>Verb</code> is actually executed, the verb may have an optional <code>Check</code>  part.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1874,13 +1874,13 @@ End Verb open.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This is a more realistic definition of the open <code>Verb</code> than the previous one.
-It specifies that before the statements after <code>Does</code> are executed, the condition after <code>Check</code> must be checked (which, in this case, checks that the object indicated by the player is really possible to open).
+<p>This definition of the <code>open</code> verb is more realistic than the previous one.
+It specifies that before the statements after <code>Does</code> are executed, the condition after <code>Check</code> must be checked (which, in this case, checks that it&#8217;s really possible to open the object indicated by the player).
 If that condition is TRUE then the requirements are fulfilled and the body of the <code>Verb</code> (following the <code>Does</code>) can be executed.
 If this is not the case the <code>Else</code>-part is executed instead (normally showing some message).</p>
 </div>
 <div class="paragraph">
-<p>A <code>Check</code> may have multiple conditions as the following code shows:</p>
+<p>A <code>Check</code> may have multiple conditions, as the following code shows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1917,8 +1917,8 @@ Instead, you can define a limbo location, i.e. a location that is not accessible
 <div class="sect3">
 <h4 id="_the_syntax">The Syntax</h4>
 <div class="paragraph">
-<p>Normally a verb acts on one object or actor, henceforth called a parameter, referenced by the player in a command.
-This means that the format of player input normally is something like</p>
+<p>Normally a verb acts on an object or actor, henceforth called a parameter, referenced by the player in a command.
+This means that the format of player input is usually something like:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -1929,16 +1929,16 @@ This means that the format of player input normally is something like</p>
 </div>
 <div class="paragraph">
 <p>This form, or syntax, is the default form if you don&#8217;t specify anything else.
-The default syntax  might thus be described as</p>
+The default syntax  might thus be described as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">Syntax +
+<pre class="highlight"><code class="language-alan" data-lang="alan">Syntax
   ? = ? (parameter)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The question marks are place-holders and should be interpreted as the name of the verb.</p>
+<p>The question marks are placeholders and should be interpreted as the name of the verb.</p>
 </div>
 <div class="paragraph">
 <p>In order to allow different and more complex player input the  <code>Syntax</code> construct is supplied.</p>
@@ -1954,7 +1954,7 @@ Below is the syntax for <code>put_in</code>, the verb to put something inside a 
 </div>
 </div>
 <div class="paragraph">
-<p>This syntax defines the <code>put_in</code> verb to be executed when the player has input the word &#8216;put&#8217; followed by a reference to an object or actor (a parameter named <code>obj</code>), followed by the word <code>in</code> followed by a reference to a second parameter (the container, referred to as <code>cont</code>), as in</p>
+<p>This syntax defines the <code>put_in</code> verb to be executed when the player has input the word &#8216;put&#8217; followed by a reference to an object or actor (a parameter named <code>obj</code>), followed by the word <code>in</code> followed by a reference to a second parameter (the container, referred to as <code>cont</code>), as in:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -1980,11 +1980,11 @@ Below is the syntax for <code>put_in</code>, the verb to put something inside a 
 </div>
 </div>
 <div class="paragraph">
-<p>This restricts  the parameter <code>obj</code> to being an instance inheriting from the class object (as opposed to an actor for example) and the parameter <code>cont</code> to a container (an instance with the container property).</p>
+<p>This restricts  the parameter <code>obj</code> to being an instance inheriting from the <code>object</code> class (as opposed to an <code>actor</code> for example) and the parameter <code>cont</code> to a <code>Container</code> (an instance with the <code>Container</code> property).</p>
 </div>
 <div class="paragraph">
 <p>The parameters are used as normal identifiers in the Alan source code.
-The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the verb for which the syntax applies (see also <a href="#_run_time_contexts">Sect. 5.3</a> for a detailed discussion).</p>
+The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the <code>Verb</code> for which the <code>Syntax</code> applies (see also <a href="#_run_time_contexts">Sect. 5.3</a> for a detailed discussion).</p>
 </div>
 <div class="paragraph">
 <p>The <code>Syntax</code> construct allows for more than one parameter, in order to make it possible to define more complex player commands.
@@ -1996,12 +1996,12 @@ In the example above, verb bodies in the objects or actors referenced as <code>o
 <h4 id="_text_output_formatting">Text Output Formatting</h4>
 <div class="paragraph">
 <p>Text output on the screen is caused by what you have written in the Alan source code.
-However, since text is coming from various places it is not easy or even possible, to anticipate the full context of a particular text.</p>
+However, since text is coming from various places it is not easy, or even possible, to anticipate the full context of a particular text.</p>
 </div>
 <div class="paragraph">
 <p>Therefore, the Alan system takes care of some specific formatting issues.
 First, text will always flow neatly inside the window or screen.
-Lines will be broken automatically without braking in the middle of words.</p>
+Long lines will be automatically split without breaking in the middle of words.</p>
 </div>
 <div class="paragraph">
 <p>Secondly, a few special cases are also handled automatically:</p>
@@ -2009,13 +2009,10 @@ Lines will be broken automatically without braking in the middle of words.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>After a full stop (period, the character &#8216;.&#8217;), an exclamation (&#8216;!&#8217;) or a question mark (&#8216;?&#8217;) and in the beginning of paragraphs, including location headings, the first character will be guaranteed to be upper case, automatically converted if necessary.
+<p>After a full stop (period, the character &#8216;.&#8217;), an exclamation (&#8216;!&#8217;) or question mark (&#8216;?&#8217;), and in the beginning of paragraphs, including location headings, the first character will be guaranteed to be upper case, automatically converted if necessary.
 This means for example that you don&#8217;t have to consider the case when the name of an object might be printed as the first thing in a sentence.
 The name will automatically be capitalized.
 For example:</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-alan" data-lang="alan">The postmen IsA actor At postoffice ...
@@ -2040,22 +2037,21 @@ Postmen are working behind the counters.</p>
 <div class="paragraph">
 <p>This would be the case even if the description of the postmen started with a lower case character.</p>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p>Two outputs following each other will automatically be separated by a space (a blank character).
 Except for the following case:</p>
 <div class="paragraph">
 <p>If an output is immediately followed by another output starting with a full stop (period, the character &#8216;.&#8217;), an exclamation, a question mark or a comma, and it is the only character in that output or it is followed by a space (blank character), no space will be inserted before that output.
-This rule will make sure that the full stop in the following source is automatically adjacent to the previous text, without the need to suppress spacing.</p>
-</div>
-</li>
-</ul>
+  This rule will ensures that the full stop in the following source is automatically adjacent to the   previous text, without the need to suppress spacing.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-alan" data-lang="alan">  "You can't take" Say p. "."</code></pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2081,21 +2077,20 @@ This means that the compiler will attempt to prevent any constructs that might g
 </div>
 </div>
 <div class="paragraph">
-<p>At line 8 we will get an error saying that the <em>house_cat</em> does not have the attribute <em>fur</em>.</p>
+<p>At line 8 we will get an error saying that the <code>house_cat</code> does not have the attribute <code>fur</code>.</p>
 </div>
 <div class="paragraph">
-<p>Now, if that is true, it&#8217;s a good thing that the compiler caught the error, otherwise the game might try to access that attribute.
-And blow up in the face of the player.</p>
+<p>Now, if that is true, it&#8217;s a good thing that the compiler caught the error, otherwise the game might try to access that attribute&#8201;&#8212;&#8201;and blow up in the face of the player!</p>
 </div>
 <div class="paragraph">
 <p>Can you spot the problem?
-The <em>house_cat</em> is declared as an <em>object</em>, and not as an <em>animal</em>.</p>
+The <code>house_cat</code> is declared as an <code>object</code>, and not as an <code>animal</code>.</p>
 </div>
 <div class="paragraph">
 <p>Other examples include trying to use a script for an actor (or actor subclass) that does not have one, locating something inside something that is not a container and so on.</p>
 </div>
 <div class="paragraph">
-<p>A more complicated example is this</p>
+<p>Here is a more complicated example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2113,19 +2108,19 @@ The <em>house_cat</em> is declared as an <em>object</em>, and not as an <em>anim
 12. ...
 13.   For Each f In box Do
 14.     If f Has someAttribute Then
-15. ...</code></pre>
+15.     ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>On line 14 we will get an error saying that <em>someAttribute</em> is not available since the class <em>f</em> can only be guaranteed to be <em>thing</em>.</p>
+<p>On line 14 we will get an error saying that <code>someAttribute</code> is not available since the class <code>f</code> can only be guaranteed to be <code>thing</code>.</p>
 </div>
 <div class="paragraph">
 <p>Is it?
-Well, the variable <em>f</em> (in the loop) enumerates all things in the box and since the box takes objects, it is possible that it may contain the cont.
-And since that takes things, and the <em>In box</em> is transitive (see xxx), <em>f</em> may take on any thing that is contained in the cont too.</p>
+Well, the variable <code>f</code> (in the loop) enumerates all things in the <code>box</code> and since the <code>box</code> takes <code>object</code>s, it is possible that it may contain the <code>cont</code>.
+And since that takes <code>thing</code>s, and <code>In box</code> is transitive (see <a href="#_transitivity">Sect. 2.4.6.2</a>), <code>f</code> may take on any <code>thing</code> that is contained in the <code>cont</code> too.</p>
 </div>
 <div class="paragraph">
-<p>There are a number of ways to fix this of course:</p>
+<p>Of course, there are various ways to fix this:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4563,7 +4558,7 @@ Syntax &lt;1&gt; = &lt;1&gt; (&lt;2&gt;).</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The place-holders represents 1) the name of the verb, and 2) the class in which the verb is first encountered.</p>
+<p>The placeholders represents 1) the name of the verb, and 2) the class in which the verb is first encountered.</p>
 </div>
 <div class="paragraph">
 <p>The first template is used for verbs that are declared globally, i.e. outside of any class or instance. Since these are only applied when no parameters are used, this will effectively work for simple &#8216;verb-only&#8217; <code>Verb</code>s, such as <code>quit</code>, <code>look</code>, <code>save</code> etc.</p>
@@ -12015,8 +12010,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.48<br>
-Last updated 2018-09-03 10:54:33 ora legale Europa occidentale
+Version 0.1.49<br>
+Last updated 2018-09-03 12:45:05 ora legale Europa occidentale
 </div>
 </div>
 </body>

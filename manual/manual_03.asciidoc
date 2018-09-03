@@ -287,7 +287,7 @@ The *properties* are described in <<Properties>>.
 
 === Inheritance
 
-Every instance must inherit (((inheritance))) from a class (see <<Inheritance and Object Orientation>>). Furthermore, user-defined classes must also inherit from other classes. A class or an instance inheriting from a class will get all properties of that class. All properties explicitly declared in a class or instance inheriting from another class will extend, override or complement those properties as specified in the original, parent, class. This way, you can easily create new classes by extending existing ones.
+Every instance must inherit (((inheritance))) from a class (see <<Inheritance and Object-Orientation>>). Furthermore, user-defined classes must also inherit from other classes. A class or an instance inheriting from a class will get all properties of that class. All properties explicitly declared in a class or instance inheriting from another class will extend, override or complement those properties as specified in the original, parent, class. This way, you can easily create new classes by extending existing ones.
 
 You specify which class another class or an instance inherits from using a clause following the grammar:
 
@@ -1976,7 +1976,7 @@ Syntax <1> = <1>.
 Syntax <1> = <1> (<2>).
 --------------------------------------------------------------------------------
 
-The place-holders represents 1) the name of the verb, and 2) the class in which the verb is first encountered.
+The placeholders represents 1) the name of the verb, and 2) the class in which the verb is first encountered.
 
 The first template is used for verbs that are declared globally, i.e. outside of any class or instance. Since these are only applied when no parameters are used, this will effectively work for simple '`verb-only`' ``Verb``s, such as `quit`, `look`, `save` etc.
 
