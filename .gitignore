@@ -17,6 +17,10 @@
 ## =============
 .project
 
+## =================
+## Asciidoctor fopub
+## =================
+.gradle/
 
 ## Misc Work Files
 ## ===============
