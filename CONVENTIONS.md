@@ -12,6 +12,7 @@ These guidelines are not yet complete, and they are open for discussion and chan
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Introduction](#introduction)
+- [Use UK English](#use-uk-english)
 - [AsciiDoc Formatting Guidelines](#asciidoc-formatting-guidelines)
     - [Splitting Contents "One Sentence Per Line"](#splitting-contents-one-sentence-per-line)
 - [Source Code](#source-code)
@@ -40,6 +41,14 @@ The nature of the Alan documentation poses some special challanges when it comes
 Therefore, in the course of a sentence it might be difficult to choose how to represent certain words. For example, while discussing actors, we're dealing with both a natural English concept and an Alan keyword.
 
 Sometimes the distinction is not so important, as the context has already clarified the topic at hand, and the Alan keywords and their English counterparts are one and the same in the discuourse. But sometimes it's important to let the reader distinguish when a word is referring to a specific keyword, and not a generic concept.
+
+These guidelines were designed for the official Alan documentation, and if you're contributing your own documents to the project (tutorials, articles, etc.) you are under no obligations to follow them — we surely aren't going to tell anyone how they should style their own writings.
+
+# Use UK English
+
+The Alan documentation should follow UK English rules. If you use spell checking tool, set them accordingly. This affects also conventions for abbreviations, etc.
+
+<!-- more details required here! -->
 
 # AsciiDoc Formatting Guidelines
 

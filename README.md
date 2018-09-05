@@ -15,6 +15,7 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
 - [About This Project](#about-this-project)
     - [License Terms](#license-terms)
     - [Project Contents](#project-contents)
+        - [File Extensions Conventions](#file-extensions-conventions)
     - [Project Dependencies](#project-dependencies)
         - [AsciiDoctor](#asciidoctor)
     - [Syntax Highlighting](#syntax-highlighting)
@@ -60,6 +61,15 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 - [`CONTRIBUTING.md`][CONTRIBUTING] — Guidelines for contributing to this project.
 - [`CONVENTIONS.md`][CONVENTIONS] — Editors' formatting and styles guidelines.
 - [`LICENSE`](./LICENSE) — the [Artistic License 2.0].
+
+### File Extensions Conventions
+
+In order to distinguish between AsciiDoc documents according to their role in the project, the following file-extensions conventions are being adopted:
+
+- "`.asciidoc`" is used for Alan documentation source files.
+- "`.adoc`" is used for project docs (e.g. READMEs) and any AsciiDoc files not intendend for distribution in the Alan documentation.
+
+Using different extensions is also required for automation scripts, which select sourcefiles by their extension during batch operations.
 
 ## Project Dependencies
 
