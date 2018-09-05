@@ -389,13 +389,12 @@ and
 Every coin IsA treasure ...
 --------------------------------------------------------------------------------
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 == Instances
 
 The most important part of an Alan game source is probably the declarations of ((instances)).
-Instances are the objects, locations, actors and other things that fill your game universe.
+Instances are the ``object``s, ``location``s, ``actor``s and other ``thing``s that fill your game universe.
 The player traverses and interacts with these in his quest to negotiating your game.
 
 (((BNF, rules of, THE))) (((BNF, rules of, instance declaration)))
@@ -409,7 +408,7 @@ instance = 'THE' id
 
 
 Every instance must inherit from a class (see <<Inheritance,_Inheritance_>> above) keeping all properties of that class.
-Each inherited property can be amended or overridden by specifying it in the declaration of the instance, and new attributes, exits and scripts can be added in the same way as in class declaration.
+Each inherited property can be amended or overridden by specifying it in the declaration of the instance, and new attributes, ``Exit``s and ``Script``s can be added in the same way as in class declaration.
 
 Exactly the same rules for declaring properties apply to instances.
 The only difference is that an instance will actually show up in the game when it is run.
@@ -418,7 +417,7 @@ Remember also that properties declared in an instance are not common to any othe
 // @NOTE: I didn't style as inline code the classes in the following paragraph,
 // 		  as some of these are not actually referenceable in real code (eg, literal)
 
-Instances inheriting, directly or indirectly, from the predefined classes *thing*, *entity*, *object*, *location*, *actor* and *literal,* are subject to special semantics (((semantics, of predefined classes))) and restrictions.
+Instances inheriting, directly or indirectly, from the predefined classes `thing`, `entity`, `object`, `location`, `actor` and *literal,* are subject to special semantics (((semantics, of predefined classes))) and restrictions.
 
 Here are two examples of instance declarations following the rules above:
 
@@ -450,10 +449,18 @@ End The mr_brown.
 --------------------------------------------------------------------------------
 
 
+// @FIXME: "... as described by the EARLIER BOX." Which box does it refer to?
+
+
 In these examples the source lines between `The` and `End The` all declare various properties that we will learn more about in <<Properties>>.
 The rest of the lines are fairly easy to match up to the rules of the Alan language as described by the earlier box.
 
-All capitalized words in the examples above are keywords in the Alan language (see <<Keywords>> for a complete list), the rest are author defined words or identifiers (with the exception of the bold words object and actor, which are identifiers predefined to be special classes).
+
+// @FIXME: "with the exception of the BOLD words object and actor, which are identifiers"
+//         This might have to be changed according to final syntax highlighting styles
+//         (different styling, or color, etc.). In the original PDF they were in bold.
+
+All capitalized words in the examples above are keywords in the Alan language (see <<table-of-keywords>> for a complete list), the rest are author defined words or identifiers (with the exception of the bold words object and actor, which are identifiers predefined to be special classes).
 
 
 
@@ -477,11 +484,11 @@ Instances of such classes will follow the same rules.
 === Things
 
 `Thing` (((THING, predefined class))) is a predefined subclass of `entity` that adds the property of having a location.
-This means that they can have an initial location and be located to locations and into containers.
+This means that they can have an initial location and be located at locations and into containers.
 They will, however not show up in descriptions or listings, but the player can refer to and interact with them.
 They can be described by explicitly executing a `Describe` statement.
 
-Creating an instance of `thing` is a good choice if you want an invisible instance that should only be available at particular locations, or under specific _*circumstances*_.
+Creating an instance of `thing` is a good choice if you want an invisible instance that should only be available at particular locations, or under specific circumstances.
 
 
 
@@ -507,7 +514,7 @@ In addition to the properties inherited from `thing`, any present object will by
 
 === Actors
 
-The predefined class `actor` (((ACTOR, predefined class))) is intended for providing so called NPC:s, non-player characters, in your game.
+The predefined class `actor` (((ACTOR, predefined class))) is intended for providing so called NPCs, non-player characters, in your game.
 Like the player, they can move around but to do this they have to be scripted, i.e. programmed with some behaviour using scripts.
 
 An instance inheriting from the `actor` class will be described when encountered.
@@ -515,7 +522,7 @@ Actors can be located, as can any `thing`, but not be inside a container.
 In addition, they can have scripts.
 
 Actors also exhibit special behaviour when they are described, e.g. when they are encountered.
-If an actor (((ACTOR, description))) is executing a script with a description, (see <<Scripts,_Scripts_>>) this description will be used instead of the one declared in the description clause.
+If an actor (((ACTOR, description))) is executing a `Script` with a `Description`, (see <<Scripts,_Scripts_>>) this description will be used instead of the one declared in the description clause.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -570,29 +577,29 @@ The hero IsA actor
 End The hero.
 --------------------------------------------------------------------------------
 
-The hero is predefined with a simple container property taking objects with no limits.
+The hero is predefined with a simple `Container` property taking ``object``s with no `Limits`.
 It seems natural to use that as the "`inventory`" of the player, the storage for everything the player is picking up and carrying around.
 You will probably need to handle carried items in some manner, and the pre-declared container is one suggestion.
-You can also redeclare the container property of the hero so that it suits your needs.
+You can also redeclare the `Container` property of the hero so that it suits your needs.
 
 
 
 === Locations
 
-A location (((locations))) is a declaration of a place (a "`room`") in the game that (normally) can be visited by the player, and have objects lying around, etc.
+A `location` (((locations))) is a declaration of a place (a "`room`") in the game that (normally) can be visited by the player, and have objects lying around, etc.
 In fact, the map of your game is a set of interconnected locations.
 A location is any instance inheriting directly or indirectly from the predefined class `location`.
 Inheriting from `location` implies the following semantic (((semantics, of locations))) properties:
 
 * only locations can be visited by the player
 * only locations may have the `Entered`-clause
-* things and locations may be located to locations
-* exits can only lead to locations and only locations can have exits
-* the start location must be a location
-* locations can't have container properties
-* verbs in locations are executed only when the hero is at that location
+* things and locations may be located at locations
+* ``Exit``s can only lead to locations and only locations can have ``Exit``s
+* the `Start` location must be a `location`
+* locations can't have `Container` properties
+* ``Verb``s in locations are executed only when the hero is at that location
 
-When a location is described (((DESCRIPTION, of locations))) (for example when entering it) it is presented with a heading (the location name), the description (in the description clause) followed by descriptions of any present objects and actors not already, explicitly, described (using a `describe` statement) in the description.
+When a location is described (((DESCRIPTION, of locations))) (for example when entering it) it is presented with a heading (the location name), the description (in the `Description` clause) followed by descriptions of any present objects and actors not already, explicitly, described (using a `Describe` statement) in the description.
 
 An interesting property of locations is that a location can be located at another, both initially and during run-time.
 The result of having such ((nested locations)) is that all things present at the "`outer`" location are also present in the inner.
@@ -613,13 +620,19 @@ For example:
 ================================================================================
 
 
-
 The second parameter (see <<Syntax Definitions>>) in this player command is the integer 12.
 This parameter is automatically considered an instance of the predefined class *integer*.
 
-It is possible to add verbs to *literal* and its sub-classes.
+
+// @FIXME: The following paragraph doesn't clarify enough the topic.
+
+
+It is possible to add ``Verb``s to *literal* and its sub-classes.
 This way it is possible to create verbs that take strings and integers as parameters.
 
+// @TODO: Add example of adding verbs to literals!
+
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 == Properties
