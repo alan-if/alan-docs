@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  "common.xsl" v0.1.1 (2018/09/06)
+  ==============================================================================
+  This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
+  Dan Allen (MIT License):
+      https://github.com/asciidoctor/asciidoctor-fopub
+  It was modified by Tristano Ajmone to adapt it to the styling needs of the
+  Alan-Docs project:
+      https://github.com/alan-if/alan-docs
+  ==============================================================================
+-->
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 

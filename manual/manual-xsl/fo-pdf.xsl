@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
+  "fo-pdf.xsl" v0.1.1 (2018/09/06)
+  ==============================================================================
+  This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
+  Dan Allen (MIT License):
+      https://github.com/asciidoctor/asciidoctor-fopub
+  It was modified by Tristano Ajmone to adapt it to the styling needs of the
+  Alan-Docs project:
+      https://github.com/alan-if/alan-docs
+  ==============================================================================
   Generates a FO document from a DocBook XML document using the DocBook XSL stylesheets.
   See http://docbook.sourceforge.net/release/xsl/1.78.1/doc/fo for all parameters.
 -->
@@ -126,6 +135,21 @@
   <xsl:attribute-set name="root.properties">
     <xsl:attribute name="color"><xsl:value-of select="$text.color"/></xsl:attribute>
   </xsl:attribute-set>
+
+<!--============================================================================
+PARAGRAPHS WITH COMMENTARY ROLE (indented left)
+        This applies to paragraphs that comment on Alan compiler output
+        (see "App C - Run-Time Messages).
+=============================================================================-->
+<xsl:attribute-set name="para.properties" use-attribute-sets="normal.para.spacing">
+  <xsl:attribute name="margin-left">
+    <xsl:choose>
+      <xsl:when test="@role = 'commentary'">
+        <xsl:text>4em</xsl:text>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:attribute>
+</xsl:attribute-set>
 
   <!-- normal.para.spacing is the only attribute set applied to all paragraphs -->
   <xsl:attribute-set name="normal.para.spacing">
