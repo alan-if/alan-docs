@@ -258,7 +258,7 @@ CONTAINS_END : "$01."
 The messages above are used to construct the contents listing of a `container` in much the same way as for the object listing above.
 The messages are used according to the pattern "_<header for container> *contains* <indefinite form contents1>**,** <indefinite form contents2> *and* <indefinite form contents3>**.**_"
 
-You can modify these messages to change the formatting of listings -- e.g., to one element per line.
+You can modify these messages to change the formatting of listings -- e.g. to one element per line.
 --
 
 

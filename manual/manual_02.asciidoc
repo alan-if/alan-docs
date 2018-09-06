@@ -43,7 +43,7 @@ However, today most of the works are created by devoted people that do it for th
 
 There have been many attempts to use computer graphics to display the surroundings and objects in adventure games.
 Some of the more successful early examples are the Sierra games (notably the _Leisure Suit Larry_ and the _Kings Quest_ series) which had mouse oriented moves but also allowed single line text commands, games from ICOM Simulations (_DejaVu_ and _The Uninvited_) which were purely graphics games with mouse and icon interfaces.
-Other manufacturers have tried to use (sometimes optional) pictures to accompany the text, for example Magnetic Scrolls games (e.g., _the Pawn_), which shift the picture automatically as you move around using the normal directional commands.
+Other manufacturers have tried to use (sometimes optional) pictures to accompany the text, for example Magnetic Scrolls games (e.g. _The Pawn_), which shift the picture automatically as you move around using the normal directional commands.
 
 Currently, a community of addicted authors and players of text-based adventure games are still out there.
 Visit the vaults of interactive fiction on the Internet, and you will be surprised by the abundance of modern, high quality interactive fiction available.
@@ -66,7 +66,7 @@ Add to this the worlds best graphics device (the human brain) and you are unbeat
 
 Looking at adventures in more detail, we can see some common features.
 There is always the world or universe (called the map) where the adventure is taking place.
-Although you can move around quite freely there are usually some problems getting into certain parts of the world (e.g., locked doors, no air to breathe or even finding the entrance).
+Although you can move around quite freely there are usually some problems getting into certain parts of the world (e.g.  locked doors, no air to breathe or even finding the entrance).
 The size of the map ranges from hundreds of locations to just two or three, or even a single location.
 
 Then, there are the objects in the game.

@@ -435,8 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.52,</span>
-<span id="revdate">September 5, 2018</span>
+<span id="revnumber">version 0.1.53,</span>
+<span id="revdate">September 6, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -831,8 +831,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.52
-Last edited: September 5, 2018</pre>
+<pre>Doc version: 0.1.53
+Last edited: September 6, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -974,7 +974,7 @@ However, today most of the works are created by devoted people that do it for th
 <div class="paragraph">
 <p>There have been many attempts to use computer graphics to display the surroundings and objects in adventure games.
 Some of the more successful early examples are the Sierra games (notably the <em>Leisure Suit Larry</em> and the <em>Kings Quest</em> series) which had mouse oriented moves but also allowed single line text commands, games from ICOM Simulations (<em>DejaVu</em> and <em>The Uninvited</em>) which were purely graphics games with mouse and icon interfaces.
-Other manufacturers have tried to use (sometimes optional) pictures to accompany the text, for example Magnetic Scrolls games (e.g., <em>the Pawn</em>), which shift the picture automatically as you move around using the normal directional commands.</p>
+Other manufacturers have tried to use (sometimes optional) pictures to accompany the text, for example Magnetic Scrolls games (e.g. <em>The Pawn</em>), which shift the picture automatically as you move around using the normal directional commands.</p>
 </div>
 <div class="paragraph">
 <p>Currently, a community of addicted authors and players of text-based adventure games are still out there.
@@ -1001,7 +1001,7 @@ Add to this the worlds best graphics device (the human brain) and you are unbeat
 <div class="paragraph">
 <p>Looking at adventures in more detail, we can see some common features.
 There is always the world or universe (called the map) where the adventure is taking place.
-Although you can move around quite freely there are usually some problems getting into certain parts of the world (e.g., locked doors, no air to breathe or even finding the entrance).
+Although you can move around quite freely there are usually some problems getting into certain parts of the world (e.g.  locked doors, no air to breathe or even finding the entrance).
 The size of the map ranges from hundreds of locations to just two or three, or even a single location.</p>
 </div>
 <div class="paragraph">
@@ -2982,22 +2982,22 @@ Each inherited property may be amended or overridden by specifying it also in th
 </table>
 <div class="paragraph">
 <p>The table also show which properties are inherited separately from the parent.
-E.g., you can override the description but keep the description check, or even add another (since they are accumulated).
-You cannot override the container limits and keep the header section since the container property is overridden in its entirety.</p>
+E.g. you can override the <code>Description</code> but keep the description check, or even add another (since they are accumulated).
+You cannot override a container&#8217;s <code>Limits</code> and keep the <code>Header</code> section since the <code>Container</code> property is overridden in its entirety.</p>
 </div>
 <div class="paragraph">
 <p>In an inheriting class, you can also add new properties.
-More attributes, verbs, exits and scripts can be added to those already present through the inheritance.</p>
+More attributes, <code>Verb</code>s, <code>Exit</code>s and <code>Script</code>s can be added to those already present through the inheritance.</p>
 </div>
 <div class="paragraph">
 <p>The properties available for use in classes, and thus also for instances, are described in detail in the following sections.
-In general, all of these can be mixed freely, however, some semantic restrictions apply as to when a particular property is or is not legal.</p>
+In general, all of these can be mixed freely, however, some semantic restrictions apply as to when a particular property is legal or not.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_initial_location">Initial Location</h4>
 <div class="paragraph">
-<p>Where an instance will be located when the game starts is set using an optional <code>Where</code> clause.
+<p>Where an instance will be located when the game starts is set using an optional <strong>WHERE</strong>-clause.
 If no such clause is used the instance will have no location.
 An instance without location is not present (in the view of the player) in the game until it is moved somewhere by a <code>Locate</code> statement.</p>
 </div>
@@ -3010,7 +3010,7 @@ An instance without location is not present (in the view of the player) in the g
 </div>
 </div>
 <div class="paragraph">
-<p>Only the <code>At</code> <code>what</code> and <code>In</code> <code>what</code> forms of the <code>Where</code> construct (see <a href="#_where_specifications">Sect. 3.18</a>) are allowed when describing an initial location of an instance.</p>
+<p>Only the <code>At what</code> and <code>In what</code> forms of the <strong>WHERE</strong> construct (see <a href="#_where_specifications">Sect. 3.18</a>) are allowed when describing the initial location of an instance.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3025,7 +3025,7 @@ An instance without location is not present (in the view of the player) in the g
 <div class="sect3">
 <h4 id="_names">Names</h4>
 <div class="paragraph">
-<p>By default, the identifier (&#8220;author name&#8221;) for an instance is also the name shown to the player, and by which he will be able to refer to it.
+<p>By default, the identifier (&#8220;author name&#8221;) of an instance is also the name shown to the player, and by which he will be able to refer to it.
 Normally you would want to override this with more elaborate and alternative names.
 You can do that using the  <code>Name</code> clause.</p>
 </div>
@@ -3041,7 +3041,7 @@ You can do that using the  <code>Name</code> clause.</p>
 <p>The <code>Name</code> clause consists of a list of identifiers optionally followed by a full stop.</p>
 </div>
 <div class="paragraph">
-<p>The identifiers given in the <code>Name</code> clause is used when the instance is presented to the player and which the player can use to refer to it.
+<p>The identifiers given in the <code>Name</code> clause are used when the instance is presented to the player, and the player can use them in his commands to refer to the instance.
 For example:</p>
 </div>
 <div class="listingblock">
@@ -3055,9 +3055,9 @@ The south_of_house IsA location
 </div>
 </div>
 <div class="paragraph">
-<p>The quoted identifier used in the last example makes the name  be one single text string.
-See <a href="#_words_identifiers_and_names">Sect. 4.2</a> for an explanation of this.
-This works for locations, which a player usually does not need to refer to, but for things the player should interact with, a more sophisticated mechanism is available.</p>
+<p>The use of a quoted identifier in the last example causes the name  to be a single string of text.
+(See <a href="#_words_identifiers_and_names">Sect. 4.2</a> for more details.)
+This works fine for locations, since the player usually does not need to refer to them in his commands; but a more sophisticated mechanism is available for things which the player needs to interact with (i.e. things, objects and actors).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3068,7 +3068,7 @@ This works for locations, which a player usually does not need to refer to, but 
 <div class="paragraph">
 <p>In this example, the name is a sequence of words.
 The semantics of this declaration is that the word &#8220;chair&#8221; is a noun and &#8220;little&#8221; and &#8220;wooden&#8221; become  adjectives.
-When the player, in a command, want to refer to the object with the author name (identifier) <code>chair3</code>, he may use just &#8220;chair&#8221; if it is the only accessible object with &#8220;chair&#8221; as its noun, or he may distinguish between multiple chairs by also giving one or more adjectives to be more precise about which chair he meant.</p>
+When the player, in a command, wants to refer to the object with the author name (identifier) <code>chair3</code>, he may use just &#8220;chair&#8221; if it is the only accessible object with &#8220;chair&#8221; as its noun, or he may distinguish between multiple chairs by also giving one or more adjectives to be more precise about which chair he meant.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3099,9 +3099,9 @@ When the player, in a command, want to refer to the object with the author name 
 </table>
 </div>
 <div class="paragraph">
-<p>It is possible to give an instance multiple names  by listing a number of name clauses.
-Each one will define adjectives and a noun as described above.
-The result is that the player can use any of the names to refer to the object.
+<p>It is possible to give an instance multiple names  by listing a number of <code>Name</code> clauses.
+Each clause will define adjectives and a noun, as described above.
+As a result, the player can use any of those names to refer to the object.
 For example:</p>
 </div>
 <div class="listingblock">
@@ -3113,11 +3113,12 @@ For example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This would allow the player to refer to the object using either &#8216;rusty rod&#8217; or &#8216;dynamite&#8217;. (Or as a side effect &#8216;rusty dynamite&#8217;.) The first name clause is used for building a default description, if necessary (see <a href="#_description">Sect. 3.7.7</a>).</p>
+<p>This would allow the player to refer to the object using either &#8216;rusty rod&#8217; or &#8216;dynamite&#8217;. (Or, as a side effect, even &#8216;rusty dynamite&#8217;.)
+The first <code>Name</code> clause is used for building a default description, if necessary (see <a href="#_description">Sect. 3.7.7</a>).</p>
 </div>
 <div class="paragraph">
-<p>The character case used in any word is retained for output, but player input will always be matched without considering case.
-This way you can e.g. give capitalized names to people giving a correct output.</p>
+<p>The letter case used in the original words is preserved in the adventure&#8217;s output, but player input will always be matched without taking into account letter case (i.e. case-insensitively).
+This allows you, for example, to give capitalized names to people actors, which would then be shown correctly in the output.</p>
 </div>
 <div class="sect4">
 <h5 id="_inheriting_names">Inheriting Names</h5>
@@ -3125,7 +3126,7 @@ This way you can e.g. give capitalized names to people giving a correct output.<
 <p>Names can of course be  inherited.
 This is done in an additive way so that any names inherited are appended to the <code>Name</code> clauses in the declaration.
 This ensures that the class or instance itself can control the primary name (the first <code>Name</code> clause).
-In addition, this has the effect that an instance inheriting from a class defining a <code>Name</code> will be possible to refer to also using the inherited name(s).
+Furthermore, this has the effect that an instance inheriting from a class defining a <code>Name</code> can also be referred to using the inherited name(s).
 Here is an example with fruits:</p>
 </div>
 <div class="listingblock">
@@ -3133,13 +3134,13 @@ Here is an example with fruits:</p>
 <pre class="highlight"><code class="language-alan" data-lang="alan">Every fruit IsA object Name fruit ...
 Every apple IsA fruit Name apple ...
 Every pear IsA fruit Name pear ...
-The gravensteiner IsA apple ...
-The macintosh IsA apple ...</code></pre>
+The Gravensteiner IsA apple ...
+The McIntosh IsA apple ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example, both the pear and the apple would be possible to refer to using the word &#8220;fruit&#8221;.
-Both the gravensteiner and the macintosh would be apples, not only by name, but also by all other properties of apples.</p>
+<p>In this example, both pear and apple can be referred to using the word &#8220;fruit&#8221;.
+Both the Gravensteiner and the McIntosh would be apples, not only by name, but also by all other properties of apples.</p>
 </div>
 </div>
 <div class="sect4">
@@ -3159,10 +3160,14 @@ It will, however, be overridden by any existing <code>Mentioned</code> clause (s
 </div>
 <div class="paragraph">
 <p>The short form can be automatically transformed to a description (for instances that have no <code>Description</code>) by inserting the article (see <a href="#_articles_and_forms">Sect. 3.7.8</a>) and the short form in a default message.
-In the following example, output of the article is underlined and the short forms are emphasised, the rest is the default message templates.</p>
+In the following transcript example, output of the article is shown in bold, and the short forms in italic, the rest is the default message templates.</p>
 </div>
+<div class="exampleblock gametranscript">
+<div class="content">
 <div class="paragraph">
-<p>There is a <em>little black book</em>, a <em>green pearl</em> and an <em>owl</em> here.</p>
+<p>There is <strong>a</strong> <em>little black book</em>, <strong>a</strong> <em>green pearl</em> and <strong>an</strong> <em>owl</em> here.</p>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>The interpreter also uses this principle when constructing lists of instances in container content lists (as the result of the execution of an implicit or explicit <code>List</code> statement, see <a href="#_list_statement">Sect. 3.17.1.5</a>).</p>
@@ -7032,7 +7037,7 @@ End Verb.</code></pre>
 <h3 id="_where_specifications">3.18. WHERE Specifications</h3>
 <div class="paragraph">
 <p>Many constructs in the Alan language require a specification of where the construct should operate.
-The general intention of such a  <code>Where</code> specification is to specify a location.</p>
+The general intention of such a  <strong>WHERE</strong>-specification is to specify a location.</p>
 </div>
 <div class="paragraph">
 <p>
@@ -7575,7 +7580,8 @@ Details about execution contexts can be found in <a href="#_run_time_contexts"><
 <h4 id="_this_instance">This Instance</h4>
 <div class="paragraph">
 <p>You can also refer to the instance that is actually executing the code containing the expression.
-This is particularly useful when using inheritance since the class defining the code have no way of knowing which instance will actually execute it.  This expression is <code>This</code>.</p>
+This is particularly useful when using inheritance since the class defining the code have no way of knowing which instance will actually execute it.
+ This expression is <code>This</code>.</p>
 </div>
 <div class="paragraph">
 <p>An example is the code for objects that can be opened:</p>
@@ -10466,7 +10472,7 @@ CONTAINS_END : "$01."</pre>
 The messages are used according to the pattern "<em>&lt;header for container&gt; <strong>contains</strong> &lt;indefinite form contents1&gt;<strong>,</strong> &lt;indefinite form contents2&gt; <strong>and</strong> &lt;indefinite form contents3&gt;<strong>.</strong></em>"</p>
 </div>
 <div class="paragraph">
-<p>You can modify these messages to change the formatting of listings&#8201;&#8212;&#8201;e.g., to one element per line.</p>
+<p>You can modify these messages to change the formatting of listings&#8201;&#8212;&#8201;e.g. to one element per line.</p>
 </div>
 </div>
 </div>
@@ -12582,8 +12588,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.52<br>
-Last updated 2018-09-05 23:02:15 ora legale Europa occidentale
+Version 0.1.53<br>
+Last updated 2018-09-06 13:55:28 ora legale Europa occidentale
 </div>
 </div>
 </body>

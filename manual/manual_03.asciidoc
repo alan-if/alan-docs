@@ -632,7 +632,6 @@ This way it is possible to create verbs that take strings and integers as parame
 
 // @TODO: Add example of adding verbs to literals!
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 == Properties
@@ -726,18 +725,20 @@ Each inherited property may be amended or overridden by specifying it also in th
 |===============================================================================
 
 The table also show which properties are inherited separately from the parent.
-E.g., you can override the description but keep the description check, or even add another (since they are accumulated).
-You cannot override the container limits and keep the header section since the container property is overridden in its entirety.
+E.g. you can override the `Description` but keep the description check, or even add another (since they are accumulated).
+You cannot override a container's `Limits` and keep the `Header` section since the `Container` property is overridden in its entirety.
 
 In an inheriting class, you can also add new properties.
-More attributes, verbs, exits and scripts can be added to those already present through the inheritance.
+More attributes, ``Verb``s, ``Exit``s and ``Script``s can be added to those already present through the inheritance.
 
 The properties available for use in classes, and thus also for instances, are described in detail in the following sections.
-In general, all of these can be mixed freely, however, some semantic restrictions apply as to when a particular property is or is not legal.
+In general, all of these can be mixed freely, however, some semantic restrictions apply as to when a particular property is legal or not.
+
+
 
 === Initial Location
 
-Where an instance will be located when the game starts is set using an optional `Where` clause.
+Where an instance will be located when the game starts is set using an optional *WHERE*-clause.
 If no such clause is used the instance will have no location.
 An instance without location is not present (in the view of the player) in the game until it is moved somewhere by a `Locate` statement.
 
@@ -747,7 +748,7 @@ An instance without location is not present (in the view of the player) in the g
 initial_location = where
 --------------------------------------------------------------------------------
 
-Only the `At` `what` and `In` `what` forms of the `Where` construct (see <<WHERE Specifications>>) are allowed when describing an initial location of an instance.
+Only the `At what` and `In what` forms of the *WHERE* construct (see <<WHERE Specifications>>) are allowed when describing the initial location of an instance.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -761,7 +762,17 @@ An instance inheriting from `location` cannot have an initial location that is `
 
 === Names
 
-By default, the identifier ("`author name`") for an instance is also the name shown to the player, and by which he will be able to refer to it.
+
+// @FIXME: That "AUTHOR NAME", and it use in this section, create more confusion
+//         clarity (especially later on in the text).
+//         The original intention of distinguishing between the Id and the Name
+//         gets lost in confused and confusing sentences.
+//         Using someething like "interal use/name/Id" instead of "author name"
+//         might be better.
+
+
+
+By default, the identifier ("`author name`") of an instance is also the name shown to the player, and by which he will be able to refer to it.
 Normally you would want to override this with more elaborate and alternative names.
 You can do that using the (((NAME, clause))) `Name` clause.
 
@@ -773,7 +784,7 @@ name = 'NAME' id {id} ['.']
 
 The `Name` clause consists of a list of identifiers optionally followed by a full stop.
 
-The identifiers given in the `Name` clause is used when the instance is presented to the player and which the player can use to refer to it.
+The identifiers given in the `Name` clause are used when the instance is presented to the player, and the player can use them in his commands to refer to the instance.
 For example:
 
 [source,alan]
@@ -794,9 +805,9 @@ The south_of_house IsA location
 //        See Issue #1468 on this:
 //        https://github.com/asciidoctor/asciidoctor/issues/1468#issuecomment-132378305
 
-The ((quoted identifier)) used in the last example makes the name (((NAME, of locations))) be one single text string.
-See <<_words_identifiers_and_names>> for an explanation of this.
-This works for locations, which a player usually does not need to refer to, but for things the player should interact with, a more sophisticated mechanism is available.
+The use of a ((quoted identifier)) in the last example causes the name (((NAME, of locations))) to be a single string of text.
+(See <<_words_identifiers_and_names>> for more details.)
+This works fine for locations, since the player usually does not need to refer to them in his commands; but a more sophisticated mechanism is available for things which the player needs to interact with (i.e. things, objects and actors).
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -805,10 +816,22 @@ The chair3 IsA object
 --------------------------------------------------------------------------------
 
 
+
+
+// @FIXME: Rephrase the paragraph below (too entangled)!!!
+//         Fix "to the object with the author name (identifier) `chair3`"
+//         into something like "to the object whose internal name (identifier) is `chair3`"
+//         But to dispell this entangling alltogether, it might be necessary to
+//         clarify earlier on the distinction between internal-use-only IDs and IDs which
+//         are exposed to the player!
+
 In this example, the name is a sequence of words.
 The semantics of this declaration is that the word "`chair`" is a ((noun)) and "`little`" and "`wooden`" become (((adjective))) adjectives.
-When the player, in a command, want to refer to the object with the author name (identifier) `chair3`, he may use just "`chair`" if it is the only accessible object with "`chair`" as its noun, or he may distinguish between multiple chairs by also giving one or more adjectives to be more precise about which chair he meant.
+When the player, in a command, wants to refer to the object with the author name (identifier) `chair3`, he may use just "`chair`" if it is the only accessible object with "`chair`" as its noun, or he may distinguish between multiple chairs by also giving one or more adjectives to be more precise about which chair he meant.
 
+
+
+// @FIXME: Don't used "author name" (See notes above)!!! use something else.
 
 [NOTE]
 ================================================================================
@@ -821,9 +844,9 @@ An explicit `Mentioned` clause will override the names for presenting the instan
 ================================================================================
 
 
-It is possible to give an instance multiple names (((NAME, multiple names))) by listing a number of name clauses.
-Each one will define adjectives and a noun as described above.
-The result is that the player can use any of the names to refer to the object.
+It is possible to give an instance multiple names (((NAME, multiple names))) by listing a number of `Name` clauses.
+Each clause will define adjectives and a noun, as described above.
+As a result, the player can use any of those names to refer to the object.
 For example:
 
 [source,alan]
@@ -835,10 +858,12 @@ The rod IsA object At grate
 --------------------------------------------------------------------------------
 
 
-This would allow the player to refer to the object using either '`rusty rod`' or '`dynamite`'. (Or as a side effect '`rusty dynamite`'.) The first name clause is used for building a default description, if necessary (see <<Description>>).
+This would allow the player to refer to the object using either '`rusty rod`' or '`dynamite`'. (Or, as a side effect, even '`rusty dynamite`'.)
+The first `Name` clause is used for building a default description, if necessary (see <<Description>>).
 
-The character case used in any word is retained for output, but player input will always be matched without considering case.
-This way you can e.g. give capitalized names to people giving a correct output.
+The letter case used in the original words is preserved in the adventure's output, but player input will always be matched without taking into account letter case (i.e. case-insensitively).
+This allows you, for example, to give capitalized names to people actors, which would then be shown correctly in the output.
+
 
 
 
@@ -847,24 +872,36 @@ This way you can e.g. give capitalized names to people giving a correct output.
 Names can of course be (((NAME, inheriting names))) inherited.
 This is done in an additive way so that any names inherited are appended to the `Name` clauses in the declaration.
 This ensures that the class or instance itself can control the primary name (the first `Name` clause).
-In addition, this has the effect that an instance inheriting from a class defining a `Name` will be possible to refer to also using the inherited name(s).
+Furthermore, this has the effect that an instance inheriting from a class defining a `Name` can also be referred to using the inherited name(s).
 Here is an example with fruits:
+
+// @NOTE: Changed "mcintosh" to "McIntosh", and "gravensteiner" to "Gravensteiner",
+//        because it's a proper name of the fruit! Also, the reader has just
+//        learned about letter casing preservation in NAMEs, so it's a good time
+//        to put it into practice in the examples!
 
 [source,alan]
 --------------------------------------------------------------------------------
 Every fruit IsA object Name fruit ...
 Every apple IsA fruit Name apple ...
 Every pear IsA fruit Name pear ...
-The gravensteiner IsA apple ...
-The macintosh IsA apple ...
+The Gravensteiner IsA apple ...
+The McIntosh IsA apple ...
 --------------------------------------------------------------------------------
 
-In this example, both the pear and the apple would be possible to refer to using the word "`fruit`".
-Both the gravensteiner and the macintosh would be apples, not only by name, but also by all other properties of apples.
+In this example, both pear and apple can be referred to using the word "`fruit`".
+Both the Gravensteiner and the McIntosh would be apples, not only by name, but also by all other properties of apples.
+
 
 
 
 ==== Displaying Instances
+
+
+// @TODO: It might be good to insert here a flowchart resuming how Alan decides how
+//        to print out an instances in the output. It could make it easier to memorize
+//        the rules, and how defaults, fallbacks and customization interact.
+
 
 When an instance is to be shown to the player, (((instance, displaying))) it must be displayed in form of text.
 An instance can be printed in several different ways, it can be described or only mentioned.
@@ -876,12 +913,22 @@ Such a mentioning of an instance will involve the articles, the name and possibl
 The basis for this mechanism is the short form, which by default is the first of the ``Name``s.
 It will, however, be overridden by any existing `Mentioned` clause (see <<Mentioned>>).
 
-The short form can be automatically transformed to a description (for instances that have no `Description`) by inserting the article (see <<Articles and Forms>>) and the short form in a default message.
-In the following example, output of the article is underlined and the short forms are emphasised, the rest is the default message templates.
+// @NOTE: Had to change "article is UNDERLINED" to "BOLD" due to AsciiDoc lacking
+//        underlined text. Also, I've changed EMPHASISED to ITALIC, because here we're
+//        referring to the actual typographical style (not the semantic tag).
 
-There is a _little black book_, a _green pearl_ and an _owl_ here.
+The short form can be automatically transformed to a description (for instances that have no `Description`) by inserting the article (see <<Articles and Forms>>) and the short form in a default message.
+In the following transcript example, output of the article is shown in bold, and the short forms in italic, the rest is the default message templates.
+
+[example,role="gametranscript"]
+================================================================================
+There is *a* _little black book_, *a* _green pearl_ and *an* _owl_ here.
+================================================================================
 
 The interpreter also uses this principle when constructing lists of instances in container content lists (as the result of the execution of an implicit or explicit `List` statement, see <<List Statement>>).
+
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
+
 
 === Pronouns
 
@@ -4126,7 +4173,7 @@ End Verb.
 == WHERE Specifications
 
 Many constructs in the Alan language require a specification of where the construct should operate.
-The general intention of such a (((WHERE, specification))) `Where` specification is to specify a location.
+The general intention of such a (((WHERE, specification))) *WHERE*-specification is to specify a location.
 
 (((BNF, rules of, where specification)))
 (((BNF, rules of, AT)))
@@ -4575,7 +4622,8 @@ Details about execution contexts can be found in <<Run-Time Contexts,_Run-Time C
 === This Instance
 
 You can also refer to the instance that is actually executing the code containing the expression.
-This is particularly useful when using inheritance since the class defining the code have no way of knowing which instance will actually execute it. (((THIS, expression))) This expression is `This`.
+This is particularly useful when using inheritance since the class defining the code have no way of knowing which instance will actually execute it.
+(((THIS, expression))) This expression is `This`.
 
 An example is the code for objects that can be opened:
 

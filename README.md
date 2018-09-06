@@ -4,7 +4,7 @@
 
 This repository is dedicated to the conversion of the Alan documentation to AsciiDoc. Help and contributions are welcome (see [`CONTRIBUTING.md`][CONTRIBUTING]).
 
-- [Alan Manual HTML Live Preview][Man LPrev]
+- [Alan Manual HTML Live Preview][Man LPrev] (short URL: https://goo.gl/DNnGx8)
 
 -----
 
