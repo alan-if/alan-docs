@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- "alan-hl.xml" v0.1.0 (2018/09/07) | Alan 3.0beta6
+********************************************************************************
+*                                                                              *
+*                      Alan Interactive Fiction Language                       *
+*                                                                              *
+********************************************************************************
+Syntax highlighting definition for ALan 3 language:
+
+  https://www.alanif.se/
+
+This syntax definition was created by Tristano Ajmone, (C) 2018, MIT License.
+-->
+<highlighters>
+  <!--=======================================================================-->
+  <!--                               COMMENTS                                -->
+  <!--=======================================================================-->
+  <highlighter type="oneline-comment">
+    <start>--</start>
+    <style>comment</style>
+  </highlighter>
+  <!--=======================================================================-->
+  <!--                               NUMBERS                                 -->
+  <!--=======================================================================-->
+  <!-- Only integers, so no special settings here... -->
+  <highlighter type="number">
+    <style>number</style>
+  </highlighter>
+  <!--=======================================================================-->
+  <!--                               STRINGS                                 -->
+  <!--=======================================================================-->
+  <highlighter type="string">
+    <string>"</string>
+    <doubleEscapes />
+    <spanNewLines />
+  </highlighter>
+  <!--=======================================================================-->
+  <!--                               OPERATORS                               -->
+  <!--=======================================================================-->
+  <!-- Arythmetic: '+', '-', '*', '/'
+     Comparison: '=', '<', '>', '<=', '>=', '<>', '=='
+     Other:
+       (1) parameter indicators: '!', '*'
+     ........................................................................-->
+  <highlighter type="regex">
+    <pattern>\+|\-|\*|\/|&lt;|(?&lt;!\=)>|&lt;>|&lt;\=|>\=|\=(?!>)|\=\=|\(|\)|\{|\}|!</pattern>
+    <style>operator</style>
+  </highlighter>
+  <!--=======================================================================-->
+  <!--                          QUOTED IDENTIFIERS                           -->
+  <!--==========================================================================
+     Even though quoted IDs are shown with the same color of normal text, they
+     must still be defined and captured by the highlighter to prevent false
+     positive keywords matches inside quoted IDs!
+     (eg, 'The Count''s Villa (south exit)').
+     ........................................................................-->
+  <highlighter type="regex">
+    <pattern>'.*?'(?!'')</pattern>
+    <style>quotedId</style>
+  </highlighter>
+  <!--=======================================================================-->
+  <!--                               KEYWORDS                                -->
+  <!--=======================================================================-->
+  <!-- All the keywords, but not the predfined classes:                      -->
+  <highlighter type="keywords">
+    <ignoreCase />
+    <keyword>actor</keyword><!-- pseudo-attribute, not the class! (as in 'Current actor') -->
+    <keyword>Add</keyword>
+    <keyword>After</keyword>
+    <keyword>An</keyword>
+    <keyword>And</keyword>
+    <keyword>Are</keyword>
+    <keyword>Article</keyword>
+    <keyword>At</keyword>
+    <keyword>Attributes</keyword>
+    <keyword>Before</keyword>
+    <keyword>Between</keyword>
+    <keyword>By</keyword>
+    <keyword>Can</keyword>
+    <keyword>Cancel</keyword>
+    <keyword>Character</keyword>
+    <keyword>Characters</keyword>
+    <keyword>Check</keyword>
+    <keyword>Container</keyword><!-- the property, not the class! -->
+    <keyword>Contains</keyword>
+    <keyword>Count</keyword>
+    <keyword>Current</keyword>
+    <keyword>Decrease</keyword>
+    <keyword>Definite</keyword>
+    <keyword>Depend</keyword>
+    <keyword>Depending</keyword>
+    <keyword>Describe</keyword>
+    <keyword>Description</keyword>
+    <keyword>Directly</keyword>
+    <keyword>Do</keyword>
+    <keyword>Does</keyword>
+    <keyword>Each</keyword>
+    <keyword>Else</keyword>
+    <keyword>ElsIf</keyword>
+    <keyword>Empty</keyword>
+    <keyword>End</keyword>
+    <keyword>Entered</keyword>
+    <keyword>Event</keyword>
+    <keyword>Every</keyword>
+    <keyword>Exclude</keyword>
+    <keyword>Exit</keyword>
+    <keyword>Extract</keyword>
+    <keyword>First</keyword>
+    <keyword>For</keyword>
+    <keyword>Form</keyword>
+    <keyword>From</keyword>
+    <keyword>Has</keyword>
+    <keyword>Header</keyword>
+    <keyword>Here</keyword>
+    <keyword>If</keyword>
+    <keyword>Import</keyword>
+    <keyword>In</keyword>
+    <keyword>Include</keyword>
+    <keyword>Increase</keyword>
+    <keyword>Indefinite</keyword>
+    <keyword>Initialize</keyword>
+    <keyword>Into</keyword>
+    <keyword>Is</keyword>
+    <keyword>IsA</keyword>
+    <keyword>It</keyword>
+    <keyword>Last</keyword>
+    <keyword>Limits</keyword>
+    <keyword>List</keyword>
+    <keyword>Locate</keyword>
+    <keyword>location</keyword><!-- pseudo-attribute, not the class! (as in 'Current location') -->
+    <keyword>Look</keyword>
+    <keyword>Make</keyword>
+    <keyword>Max</keyword>
+    <keyword>Mentioned</keyword>
+    <keyword>Message</keyword>
+    <keyword>Min</keyword>
+    <keyword>Name</keyword>
+    <keyword>Near</keyword>
+    <keyword>Nearby</keyword>
+    <keyword>Negative</keyword>
+    <keyword>No</keyword>
+    <keyword>Not</keyword>
+    <keyword>Of</keyword>
+    <keyword>Off</keyword>
+    <keyword>On</keyword>
+    <keyword>Only</keyword>
+    <keyword>Opaque</keyword>
+    <keyword>Option</keyword>
+    <keyword>Options</keyword>
+    <keyword>Or</keyword>
+    <keyword>Play</keyword>
+    <keyword>Prompt</keyword>
+    <keyword>Pronoun</keyword>
+    <keyword>Quit</keyword>
+    <keyword>Random</keyword>
+    <keyword>Restart</keyword>
+    <keyword>Restore</keyword>
+    <keyword>Save</keyword>
+    <keyword>Say</keyword>
+    <keyword>Schedule</keyword>
+    <keyword>Score</keyword>
+    <keyword>Script</keyword>
+    <keyword>Set</keyword>
+    <keyword>Show</keyword>
+    <keyword>Start</keyword>
+    <keyword>Step</keyword>
+    <keyword>Stop</keyword>
+    <keyword>Strip</keyword>
+    <keyword>Style</keyword>
+    <keyword>Sum</keyword>
+    <keyword>Synonyms</keyword>
+    <keyword>Syntax</keyword>
+    <keyword>System</keyword>
+    <keyword>Taking</keyword>
+    <keyword>The</keyword>
+    <keyword>Then</keyword>
+    <keyword>This</keyword>
+    <keyword>To</keyword>
+    <keyword>Transcript</keyword>
+    <keyword>Until</keyword>
+    <keyword>Use</keyword>
+    <keyword>Verb</keyword>
+    <keyword>Visits</keyword>
+    <keyword>Wait</keyword>
+    <keyword>When</keyword>
+    <keyword>Where</keyword>
+    <keyword>With</keyword>
+    <keyword>Word</keyword>
+    <keyword>Words</keyword>
+  </highlighter>
+  <!-- KEYWORDS via RegEx -->
+  <highlighter type="regex">
+    <!--........................................................................
+    We'll also treat as keywords the following symbols:
+      '=>' (shorthand for 'THEN')
+      '.' ',' ':'  (these are never used as operators)
+    .........................................................................-->
+    <pattern>\=>|\.|,|:</pattern>
+    <style>keyword</style>
+  </highlighter>
+</highlighters>
+<!--============================================================================
+MIT License
+
+Copyright (c) 2018 Tristano Ajmone ( https://github.com/tajmone )
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+=============================================================================-->

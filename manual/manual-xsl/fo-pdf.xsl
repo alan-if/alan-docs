@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "fo-pdf.xsl" v0.1.1 (2018/09/06)
+  "fo-pdf.xsl" v0.1.2 (2018/09/07)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -188,14 +188,25 @@ PARAGRAPHS WITH COMMENTARY ROLE (indented left)
 =============================================================================-->
 <xsl:param name="fox:border-radius.extension">1</xsl:param>
 
-
   <xsl:attribute-set name="verbatim.properties">
     <xsl:attribute name="color"><xsl:value-of select="$text.color"/></xsl:attribute>
     <xsl:attribute name="font-weight">normal</xsl:attribute>
 <xsl:attribute name="border-style">solid</xsl:attribute>
 <xsl:attribute name="fox:border-radius">3pt</xsl:attribute>
 <xsl:attribute name="border-width">.25pt</xsl:attribute>
-    <xsl:attribute name="border-color">#BFBFBF</xsl:attribute>
+<!-- begin >>> customization
+<xsl:attribute name="border-color">#BFBFBF</xsl:attribute> -->
+<xsl:attribute name="border-color">
+  <xsl:choose>
+    <xsl:when test="@language = 'alan'">
+      <xsl:value-of select="$AlanHL.border.color"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:text>#BFBFBF</xsl:text><!-- Mid Grey -->
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:attribute>
+<!-- end <<< customization -->
     <xsl:attribute name="space-before.minimum">0</xsl:attribute>
     <xsl:attribute name="space-before.optimum">.2em</xsl:attribute>
     <xsl:attribute name="space-before.maximum">.4em</xsl:attribute>
@@ -215,13 +226,17 @@ PARAGRAPHS WITH COMMENTARY ROLE (indented left)
     <!--
     <xsl:attribute name="keep-together.within-column">always</xsl:attribute>
     -->
-    <xsl:attribute name="font-size">10pt</xsl:attribute>
+<xsl:attribute name="font-size">9pt</xsl:attribute><!-- ( was: 10pt ) -->
     <xsl:attribute name="text-align">start</xsl:attribute>
     <xsl:attribute name="wrap-option">wrap</xsl:attribute>
     <!--
     <xsl:attribute name="hyphenation-character">&#x25BA;</xsl:attribute>
     -->
   </xsl:attribute-set>
+
+<!--============================================================================
+                                SHADE VERBATIM                                
+=============================================================================-->
 
   <!-- shade.verbatim.style is added to listings when shade.verbatim is enabled -->
   <xsl:param name="shade.verbatim">1</xsl:param>
@@ -246,11 +261,11 @@ PARAGRAPHS WITH COMMENTARY ROLE (indented left)
         <xsl:when test="ancestor::db:tip">
           <xsl:text>#D5E1D5</xsl:text>
         </xsl:when>
-  <!-- Alan: Yellow BG -->
+  <!-- Alan -->
   <xsl:when test="@language = 'alan'">
-    <xsl:text>#FFFFCC</xsl:text>
+    <xsl:value-of select="$AlanHL.background"/>
   </xsl:when>
-  <!-- BNF: Orange BG -->
+  <!-- BNF: Orange BG ( almost black ) -->
   <xsl:when test="@language = 'ebnf'">
     <xsl:text>#FFCC99</xsl:text>
   </xsl:when>
@@ -262,8 +277,7 @@ PARAGRAPHS WITH COMMENTARY ROLE (indented left)
       </xsl:choose>
     </xsl:attribute>
     
-    <xsl:attribute name="color"><xsl:value-of select="$text.color"/></xsl:attribute>
-    <!--
+    <!-- <xsl:attribute name="color"><xsl:value-of select="$text.color"/></xsl:attribute> -->  
     <xsl:attribute name="color">
       <xsl:choose>
         <xsl:when test="ancestor::db:note">
@@ -281,12 +295,16 @@ PARAGRAPHS WITH COMMENTARY ROLE (indented left)
         <xsl:when test="ancestor::db:tip">
           <xsl:text>#334558</xsl:text>
         </xsl:when>
+<!-- Alan highlighting: Normal text color  -->
+<xsl:when test="@language = 'alan'">
+  <xsl:value-of select="$AlanHL.normal"/>
+</xsl:when>
         <xsl:otherwise>
           <xsl:text>#222</xsl:text>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:attribute>
-    -->
+    
     <xsl:attribute name="padding">1em .5em .75em .5em</xsl:attribute>
     <!-- make sure block it aligns with block title -->
     <xsl:attribute name="margin-left"><xsl:value-of select="$title.margin.left"/></xsl:attribute>

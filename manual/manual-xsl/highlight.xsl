@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "highlight.xsl" v0.1.0 (2018/09/06)
+  "highlight.xsl" v0.1.1 (2018/09/07)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -22,17 +22,49 @@
 
   <xsl:param name="highlight.source" select="1"/>
 
+  <!-- Framed syntax elements are used for Alan code highlightling ... -->
+
+  <!--=====================================================================-->
+  <!--                         QUOTED IDENTIFIERS                          -->
+  <!--=====================================================================-->
+  <!-- Even if quoted IDs are shown with same color as normal text, they have
+       to be captured by the highlighter to prevent false positive keywords
+       matches inside quoted IDs (eg, 'The Count''s Villa (south exit)'). -->
+  <xsl:template match="xslthl:quotedId" mode="xslthl">
+    <fo:inline font-weight="normal" color="{$AlanHL.quotedId}"><xsl:apply-templates mode="xslthl"/></fo:inline>
+  </xsl:template>
+  <!--=====================================================================-->
+  <!--                              KEYWORDS                               -->
+  <!--=====================================================================-->
   <xsl:template match="xslthl:keyword" mode="xslthl">
-    <fo:inline font-weight="bold" color="black"><xsl:apply-templates mode="xslthl"/></fo:inline>
+    <fo:inline font-weight="bold" color="{$AlanHL.keyword}"><xsl:apply-templates mode="xslthl"/></fo:inline>
   </xsl:template>
-
+  <!--=====================================================================-->
+  <!--                              STRINGS                                -->
+  <!--=====================================================================-->
   <xsl:template match="xslthl:string" mode="xslthl">
-    <fo:inline color="#DD1144"><xsl:apply-templates mode="xslthl"/></fo:inline>
+    <fo:inline font-weight="normal" color="{$AlanHL.string}"><xsl:apply-templates mode="xslthl"/></fo:inline>
+  </xsl:template>
+  <!--=====================================================================-->
+  <!--                              COMMENTS                               -->
+  <!--=====================================================================-->
+  <xsl:template match="xslthl:comment" mode="xslthl">
+    <fo:inline font-weight="normal" color="{$AlanHL.comment}"><xsl:apply-templates mode="xslthl"/></fo:inline>
+  </xsl:template>
+  <!--=====================================================================-->
+  <!--                              NUMBERS                                -->
+  <!--=====================================================================-->
+  <xsl:template match="xslthl:number" mode="xslthl">
+    <fo:inline font-weight="normal" color="{$AlanHL.number}"><xsl:apply-templates mode="xslthl"/></fo:inline>
+  </xsl:template>
+  <!--=====================================================================-->
+  <!--                              OPERATORS                              -->
+  <!--=====================================================================-->
+  <xsl:template match="xslthl:operator" mode="xslthl">
+    <fo:inline font-weight="normal" color="{$AlanHL.operator}"><xsl:apply-templates mode="xslthl"/></fo:inline>
   </xsl:template>
 
-  <xsl:template match="xslthl:comment" mode="xslthl">
-    <fo:inline font-weight="bold" color="#999999"><xsl:apply-templates mode="xslthl"/></fo:inline>
-  </xsl:template>
+  <!-- (end of Alan syntax elements) -->
 
   <xsl:template match="xslthl:tag" mode="xslthl">
     <fo:inline color="navy"><xsl:apply-templates mode="xslthl"/></fo:inline>
@@ -51,9 +83,6 @@
     <fo:inline color="#DD1144"><xsl:apply-templates mode="xslthl"/></fo:inline>
   </xsl:template>
 
-  <xsl:template match="xslthl:number" mode="xslthl">
-    <fo:inline color="#009999"><xsl:apply-templates mode="xslthl"/></fo:inline>
-  </xsl:template>
   
   <xsl:template match="xslthl:annotation" mode="xslthl">
     <fo:inline color="#000077"><xsl:apply-templates mode="xslthl"/></fo:inline>
