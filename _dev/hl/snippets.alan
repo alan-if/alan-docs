@@ -1,0 +1,51 @@
+-- "snippets.alan" v1.0.0 (2018/09/09) | Alan 3.0beta6
+--+============================================================================+
+--|\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////////////////////////////////////|
+--++--------------------------------------------------------------------------++
+--||                                                                          ||
+--||               Alan Snippets for Syntax Highlighting Tests                ||
+--||                                                                          ||
+--++--------------------------------------------------------------------------++
+--|//////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|
+--+============================================================================+
+-- Some Alan snippets to include slectively in the "Syntax Highlighting" doc.
+-- 
+-- WIP: Pretty much still in draft form; need to find better examples with more
+--      syntax elements coverage in a small space!
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § 1 - Samples
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+-- Full code examples (working) to be included as snippets...
+
+-- tag::sample[]
+--==============================================================================
+-- "Barracks Example" by Tristano Ajmone
+--==============================================================================
+The canteen IsA LOCATION
+  Name 'The Barrack''s Mess Hall'.
+END The canteen.
+
+The trolley IsA object At canteen
+  Container Taking object.
+    Limits
+      Count 5 Else "The trolley is full!"
+    Has Not been_examined.
+  VERB examine
+    DOES
+      If This Has Not been_examined
+        Then "This old trolley has surely seen better days. $nIt seems barely
+              capable of carrying its own weight without collapsing, let alone 
+              endure its daily use!"
+          Make This been_examined.
+        Else "It's just an old trolley."
+      End If.     
+  END VERB examine.
+End The trolley.
+--------------------------------------------------------------------------------
+Start at canteen.
+-- end::sample[]

@@ -1,0 +1,37 @@
+--==============================================================================
+-- "Alan Café Demo" by Tristano Ajmone, 2018.
+--==============================================================================
+IMPORT 'library.i'. -- ALAN Standard Library v2.1
+
+THE my_game IsA DEFINITION_BLOCK
+
+  HAS title    "Alan Café Demo".
+  HAS subtitle "A small demo adventure".
+  HAS author   "Tristano Ajmone".
+  HAS year     2018.
+  HAS version  "1".
+
+END THE.
+
+--------------------------------------------------------------------------------
+
+THE IFPlaza IsA LOCATION
+  Exit north to AlanCafé.
+END THE IFPlaza.
+
+THE AlanCafé IsA location.
+  Name 'Alan''s Café'.
+  Description
+    "Today Alan's Café seems busier then ever."
+  Entered """Welcome back Sir!"" the owener greets you."
+END THE AlanCafé.
+
+THE bob IsA male AT AlanCafé.
+  NAME bob.
+  NAME 'Jim''s' brother.
+  IS named.
+  HAS ex "Bob is Jim's brother.".
+END THE bob.
+
+Start at IFPlaza.
+DESCRIBE banner.
