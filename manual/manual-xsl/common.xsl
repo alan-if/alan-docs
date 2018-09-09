@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "common.xsl" v0.2.2 (2018/09/09)
+  "common.xsl" v0.2.3 (2018/09/09)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -74,6 +74,7 @@
 -->
 
   <!-- WHITE BG VERSION: -->
+  <!--
   <xsl:param name="AlanHL.background">transparent</xsl:param>
 
   <xsl:param name="AlanHL.normal"  >#000000</xsl:param>
@@ -88,6 +89,52 @@
   <xsl:param name="AlanHL.border.color">transparent</xsl:param>
   <xsl:param name="AlanHL.border.width">0</xsl:param>
   <xsl:param name="AlanHL.border.style">none</xsl:param>
+  -->
+
+  
+  <!-- FOUNDATION SCHEME: -->
+  <!--  Based on "Foundation 4 docs" style for highlight.js:
+        https://github.com/highlightjs/highlight.js/blob/master/src/styles/foundation.css
+        Author: Dan Allen <dan.j.allen@gmail.com>
+        Website: http://foundation.zurb.com/docs/
+   -->
+  <!-- 
+  <xsl:param name="AlanHL.background">#EEEEEE</xsl:param>
+
+  <xsl:param name="AlanHL.normal"  >#000000</xsl:param>
+  <xsl:param name="AlanHL.quotedId" select="$AlanHL.normal"></xsl:param>
+  <xsl:param name="AlanHL.keyword" >#009999</xsl:param>
+  <xsl:param name="AlanHL.class"   >#3344BB</xsl:param>
+  <xsl:param name="AlanHL.comment" >#999988</xsl:param>
+  <xsl:param name="AlanHL.string"  >#DD1144</xsl:param>
+  <xsl:param name="AlanHL.number"  >#990000</xsl:param>
+  <xsl:param name="AlanHL.operator" select="$AlanHL.normal"></xsl:param>
+
+  <xsl:param name="AlanHL.border.color">transparent</xsl:param>
+  <xsl:param name="AlanHL.border.width">0</xsl:param>
+  <xsl:param name="AlanHL.border.style">none</xsl:param>
+
+ -->
+  <!-- GITHUB SCHEME: -->
+  <!--  Based on "github.com style" for highlight.js:
+        https://github.com/highlightjs/highlight.js/blob/master/src/styles/github.css
+        Author:  (c) Vasily Polovnyov <vast@whiteants.net>
+   -->
+  <xsl:param name="AlanHL.background">#F8F8F8</xsl:param>
+
+  <xsl:param name="AlanHL.normal"  >#333333</xsl:param>
+  <xsl:param name="AlanHL.quotedId" select="$AlanHL.normal"></xsl:param>
+  <xsl:param name="AlanHL.keyword" >#990000</xsl:param>
+  <xsl:param name="AlanHL.class"   >#000080</xsl:param>
+  <xsl:param name="AlanHL.comment" >#999988</xsl:param>
+  <xsl:param name="AlanHL.string"  >#008080</xsl:param>
+  <xsl:param name="AlanHL.number"  >#DD1144</xsl:param>
+  <xsl:param name="AlanHL.operator" select="$AlanHL.normal"></xsl:param>
+
+  <xsl:param name="AlanHL.border.color">transparent</xsl:param>
+  <xsl:param name="AlanHL.border.width">0</xsl:param>
+  <xsl:param name="AlanHL.border.style">none</xsl:param>
+
 
 
 <!-- 

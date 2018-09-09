@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "highlight.xsl" v0.2.0 (2018/09/09)
+  "highlight.xsl" v0.2.1 (2018/09/09)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -37,7 +37,7 @@
   <!--                              KEYWORDS                               -->
   <!--=====================================================================-->
   <xsl:template match="xslthl:keyword" mode="xslthl">
-    <fo:inline font-weight="bold" color="{$AlanHL.keyword}"><xsl:apply-templates mode="xslthl"/></fo:inline>
+    <fo:inline font-weight="normal" color="{$AlanHL.keyword}"><xsl:apply-templates mode="xslthl"/></fo:inline>
   </xsl:template>
   <!--=====================================================================-->
   <!--                         PREDEFINED CLASSES                          -->
