@@ -50,7 +50,8 @@ The changes include the creation of an Alan language definition for the FOP synt
     + [`highlight.source`][highlight.source]
 - [XSLTHL Wiki]:
     + [Syntax Highlighters] (syntax definitions specs)
-
+- [Schema Central » XSL-FO 1.1]
+    + [`fo:border-style`][fo:border-style]
 
 # License
 
@@ -141,6 +142,11 @@ Dependencies:
 
 [DocBook XSL Stylesheets: Reference Documentation]: http://docbook.sourceforge.net/release/xsl/current/doc/
 [highlight.source]: http://docbook.sourceforge.net/release/xsl/current/doc/fo/highlight.source.html
+
+<!-- Misc Info Resources -->
+
+[Schema Central » XSL-FO 1.1]: http://www.datypic.com/sc/fo11/s-fo.xsd.html
+[fo:border-style]: http://www.datypic.com/sc/fo11/t-fo_border-style.html
 
 <!-- XSLTHL -->
 

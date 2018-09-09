@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "common.xsl" v0.2.0 (2018/09/09)
+  "common.xsl" v0.2.1 (2018/09/09)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -54,6 +54,8 @@
 <!-- ================================== -->
 <!-- Syntax Highlighting Theme for Alan -->
 <!-- ================================== -->
+
+  <!-- MONOKAI VERSION: -->
   <xsl:param name="AlanHL.background" select="$Monokai.base00"></xsl:param>
 
   <xsl:param name="AlanHL.normal"     select="$Monokai.base05"></xsl:param>
@@ -66,7 +68,15 @@
   <xsl:param name="AlanHL.operator"   select="$Monokai.base0C"></xsl:param>
 
   <xsl:param name="AlanHL.border.color" select="$Monokai.base04"></xsl:param>
-  
+  <xsl:param name="AlanHL.border.width">.25pt</xsl:param>
+  <xsl:param name="AlanHL.border.style">solid</xsl:param>
+
+  <!-- WHITE BG VERSION: -->
+<!--
+  <xsl:param name="AlanHL.background">transparent</xsl:param>
+  <xsl:param name="AlanHL.border.width">0</xsl:param>
+-->
+
 <!-- 
   <xsl:param name="AlanHL.xxx" select="$Monokai.xxx"></xsl:param>
 -->

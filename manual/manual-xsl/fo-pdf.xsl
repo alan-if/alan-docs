@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "fo-pdf.xsl" v0.1.2 (2018/09/07)
+  "fo-pdf.xsl" v0.1.3 (2018/09/09)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -192,11 +192,36 @@ PARAGRAPHS WITH COMMENTARY ROLE (indented left)
   <xsl:attribute-set name="verbatim.properties">
     <xsl:attribute name="color"><xsl:value-of select="$text.color"/></xsl:attribute>
     <xsl:attribute name="font-weight">normal</xsl:attribute>
-<xsl:attribute name="border-style">solid</xsl:attribute>
 <xsl:attribute name="fox:border-radius">3pt</xsl:attribute>
-<xsl:attribute name="border-width">.25pt</xsl:attribute>
-<!-- begin >>> customization
-<xsl:attribute name="border-color">#BFBFBF</xsl:attribute> -->
+<!-- begin >>> customization -->
+<!--============
+    BORDER STYLE
+    ============-->
+<!-- <xsl:attribute name="border-style">solid</xsl:attribute> -->
+<xsl:attribute name="border-style">
+  <xsl:choose>
+    <xsl:when test="@language = 'alan'">
+      <xsl:value-of select="$AlanHL.border.style"/>
+    </xsl:when>
+    <xsl:otherwise>solid</xsl:otherwise>
+  </xsl:choose>
+</xsl:attribute>
+<!--============
+    BORDER WIDTH
+    ============-->
+<!-- <xsl:attribute name="border-width">.25pt</xsl:attribute> -->
+<xsl:attribute name="border-width">
+  <xsl:choose>
+    <xsl:when test="@language = 'alan'">
+      <xsl:value-of select="$AlanHL.border.width"/>
+    </xsl:when>
+    <xsl:otherwise>.25pt</xsl:otherwise>
+  </xsl:choose>
+</xsl:attribute>
+<!--============
+    BORDER COLOR
+    ============-->
+<!-- <xsl:attribute name="border-color">#BFBFBF</xsl:attribute> -->
 <xsl:attribute name="border-color">
   <xsl:choose>
     <xsl:when test="@language = 'alan'">
