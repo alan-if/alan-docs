@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "common.xsl" v0.2.1 (2018/09/09)
+  "common.xsl" v0.2.2 (2018/09/09)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -56,10 +56,11 @@
 <!-- ================================== -->
 
   <!-- MONOKAI VERSION: -->
+<!--
   <xsl:param name="AlanHL.background" select="$Monokai.base00"></xsl:param>
 
   <xsl:param name="AlanHL.normal"     select="$Monokai.base05"></xsl:param>
-  <xsl:param name="AlanHL.quotedId"   select="$AlanHL.normal"></xsl:param><!-- TEST WITH base12 -->
+  <xsl:param name="AlanHL.quotedId"   select="$AlanHL.normal"></xsl:param>
   <xsl:param name="AlanHL.keyword"    select="$Monokai.base08"></xsl:param>
   <xsl:param name="AlanHL.class"      select="$Monokai.base13"></xsl:param>
   <xsl:param name="AlanHL.comment"    select="$Monokai.base04"></xsl:param>
@@ -70,12 +71,24 @@
   <xsl:param name="AlanHL.border.color" select="$Monokai.base04"></xsl:param>
   <xsl:param name="AlanHL.border.width">.25pt</xsl:param>
   <xsl:param name="AlanHL.border.style">solid</xsl:param>
+-->
 
   <!-- WHITE BG VERSION: -->
-<!--
   <xsl:param name="AlanHL.background">transparent</xsl:param>
+
+  <xsl:param name="AlanHL.normal"  >#000000</xsl:param>
+  <xsl:param name="AlanHL.quotedId" select="$AlanHL.normal"></xsl:param>
+  <xsl:param name="AlanHL.keyword" >#CC0000</xsl:param>
+  <xsl:param name="AlanHL.class"   >#6600FF</xsl:param>
+  <xsl:param name="AlanHL.comment" >#BFBFBF</xsl:param>
+  <xsl:param name="AlanHL.string"  >#46c864</xsl:param>
+  <xsl:param name="AlanHL.number"  >#FFAA00</xsl:param>
+  <xsl:param name="AlanHL.operator" select="$AlanHL.normal"></xsl:param>
+
+  <xsl:param name="AlanHL.border.color">transparent</xsl:param>
   <xsl:param name="AlanHL.border.width">0</xsl:param>
--->
+  <xsl:param name="AlanHL.border.style">none</xsl:param>
+
 
 <!-- 
   <xsl:param name="AlanHL.xxx" select="$Monokai.xxx"></xsl:param>
