@@ -147,6 +147,7 @@ PARAGRAPHS WITH COMMENTARY ROLE (indented left)
       <xsl:when test="@role = 'commentary'">
         <xsl:text>4em</xsl:text>
       </xsl:when>
+      <xsl:otherwise>0</xsl:otherwise>
     </xsl:choose>
   </xsl:attribute>
 </xsl:attribute-set>

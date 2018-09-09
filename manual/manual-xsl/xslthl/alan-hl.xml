@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- "alan-hl.xml" v0.1.0 (2018/09/07) | Alan 3.0beta6
+<!-- "alan-hl.xml" v0.2.0 (2018/09/09) | Alan 3.0beta6
 ********************************************************************************
 *                                                                              *
 *                      Alan Interactive Fiction Language                       *
@@ -16,8 +16,8 @@ This syntax definition was created by Tristano Ajmone, (C) 2018, MIT License.
   <!--                               COMMENTS                                -->
   <!--=======================================================================-->
   <highlighter type="oneline-comment">
-    <start>--</start>
     <style>comment</style>
+    <start>--</start>
   </highlighter>
   <!--=======================================================================-->
   <!--                               NUMBERS                                 -->
@@ -43,8 +43,8 @@ This syntax definition was created by Tristano Ajmone, (C) 2018, MIT License.
        (1) parameter indicators: '!', '*'
      ........................................................................-->
   <highlighter type="regex">
-    <pattern>\+|\-|\*|\/|&lt;|(?&lt;!\=)>|&lt;>|&lt;\=|>\=|\=(?!>)|\=\=|\(|\)|\{|\}|!</pattern>
     <style>operator</style>
+    <pattern>\+|\-|\*|\/|&lt;|(?&lt;!\=)>|&lt;>|&lt;\=|>\=|\=(?!>)|\=\=|\(|\)|\{|\}|!</pattern>
   </highlighter>
   <!--=======================================================================-->
   <!--                          QUOTED IDENTIFIERS                           -->
@@ -55,8 +55,8 @@ This syntax definition was created by Tristano Ajmone, (C) 2018, MIT License.
      (eg, 'The Count''s Villa (south exit)').
      ........................................................................-->
   <highlighter type="regex">
-    <pattern>'.*?'(?!'')</pattern>
     <style>quotedId</style>
+    <pattern>'.*?'(?!'')</pattern>
   </highlighter>
   <!--=======================================================================-->
   <!--                               KEYWORDS                                -->
@@ -64,7 +64,6 @@ This syntax definition was created by Tristano Ajmone, (C) 2018, MIT License.
   <!-- All the keywords, but not the predfined classes:                      -->
   <highlighter type="keywords">
     <ignoreCase />
-    <keyword>actor</keyword><!-- pseudo-attribute, not the class! (as in 'Current actor') -->
     <keyword>Add</keyword>
     <keyword>After</keyword>
     <keyword>An</keyword>
@@ -81,7 +80,7 @@ This syntax definition was created by Tristano Ajmone, (C) 2018, MIT License.
     <keyword>Character</keyword>
     <keyword>Characters</keyword>
     <keyword>Check</keyword>
-    <keyword>Container</keyword><!-- the property, not the class! -->
+    <keyword>Container</keyword>
     <keyword>Contains</keyword>
     <keyword>Count</keyword>
     <keyword>Current</keyword>
@@ -127,7 +126,6 @@ This syntax definition was created by Tristano Ajmone, (C) 2018, MIT License.
     <keyword>Limits</keyword>
     <keyword>List</keyword>
     <keyword>Locate</keyword>
-    <keyword>location</keyword><!-- pseudo-attribute, not the class! (as in 'Current location') -->
     <keyword>Look</keyword>
     <keyword>Make</keyword>
     <keyword>Max</keyword>
@@ -197,6 +195,19 @@ This syntax definition was created by Tristano Ajmone, (C) 2018, MIT License.
     .........................................................................-->
     <pattern>\=>|\.|,|:</pattern>
     <style>keyword</style>
+  </highlighter>
+  <!--=======================================================================-->
+  <!--                          PREDEFINED CLASSES                           -->
+  <!--=======================================================================-->
+  <highlighter type="keywords">
+    <style>class</style>
+    <ignoreCase />
+    <keyword>actor</keyword>
+    <keyword>entity</keyword>
+    <keyword>location</keyword>
+    <keyword>object</keyword>
+    <keyword>string</keyword>
+    <keyword>thing</keyword>
   </highlighter>
 </highlighters>
 <!--============================================================================

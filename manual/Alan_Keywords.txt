@@ -17,6 +17,30 @@ This is the list of Alan keywords, as found in the Alan Manual (Appendix D, sec.
 'actor' 'add' 'after' 'an' 'and' 'are' 'article' 'at' 'attributes' 'before' 'between' 'by' 'can' 'cancel' 'character' 'characters' 'check' 'container' 'contains' 'count' 'current' 'decrease' 'definite' 'depend' 'depending' 'describe' 'description' 'directly' 'do' 'does' 'each' 'else' 'elsif' 'empty' 'end' 'entered' 'event' 'every' 'exclude' 'exit' 'extract' 'first' 'for' 'form' 'from' 'has' 'header' 'here' 'if' 'import' 'in' 'include' 'increase' 'indefinite' 'initialize' 'into' 'is' 'isa' 'it' 'last' 'limits' 'list' 'locate' 'location' 'look' 'make' 'max' 'mentioned' 'message' 'min' 'name' 'near' 'nearby' 'negative' 'no' 'not' 'of' 'off' 'on' 'only' 'opaque' 'option' 'options' 'or' 'play' 'prompt' 'pronoun' 'quit' 'random' 'restart' 'restore' 'save' 'say' 'schedule' 'score' 'script' 'set' 'show' 'start' 'step' 'stop' 'strip' 'style' 'sum' 'synonyms' 'syntax' 'system' 'taking' 'the' 'then' 'this' 'to' 'transcript' 'until' 'use' 'verb' 'visits' 'wait' 'when' 'where' 'with' 'word' 'words'
 ................................................................................
 
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+                          Predefined Classes Issues                           
+//////////////////////////////////////////////////////////////////////////////
+
+The keywords list contains some predefined classes but not all, so the following
+tokens should be removed from KEYWORDS group (in syntax highlighters) and moved
+into the NATIVE CLASSES group (if supported):
+
+- actor
+- location
+
+And the following should be added to the NATIVE CLASSES group:
+- entity
+- object
+- string
+- thing
+
+
+
+For more details, see Issue #17:
+
+https://github.com/alan-if/alan-docs/issues/17#issuecomment-419701922
+https://github.com/alan-if/alan-docs/issues/17#issuecomment-419704203
+
 ==============================================================================
                           Letter-Cased Keywords List                          
 ==============================================================================

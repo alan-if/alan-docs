@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "common.xsl" v0.1.2 (2018/09/07)
+  "common.xsl" v0.2.0 (2018/09/09)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -55,9 +55,11 @@
 <!-- Syntax Highlighting Theme for Alan -->
 <!-- ================================== -->
   <xsl:param name="AlanHL.background" select="$Monokai.base00"></xsl:param>
+
   <xsl:param name="AlanHL.normal"     select="$Monokai.base05"></xsl:param>
   <xsl:param name="AlanHL.quotedId"   select="$AlanHL.normal"></xsl:param><!-- TEST WITH base12 -->
   <xsl:param name="AlanHL.keyword"    select="$Monokai.base08"></xsl:param>
+  <xsl:param name="AlanHL.class"      select="$Monokai.base13"></xsl:param>
   <xsl:param name="AlanHL.comment"    select="$Monokai.base04"></xsl:param>
   <xsl:param name="AlanHL.string"     select="$Monokai.base0B"></xsl:param>
   <xsl:param name="AlanHL.number"     select="$Monokai.base10"></xsl:param>
