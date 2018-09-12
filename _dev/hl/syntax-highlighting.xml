@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>Syntax Highlighting in Alan Documentation</title>
-<date>September 9, 2018</date>
+<date>September 12, 2018</date>
 <author>
 <personname>
 <firstname>Tristano</firstname>
@@ -15,8 +15,8 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>1.0</revnumber>
-<date>September 9, 2018</date>
+<revnumber>1.1</revnumber>
+<date>September 12, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: Asciidoctor&#8217;s native HTML5</revremark>
 </revision>
@@ -75,6 +75,56 @@ For PDF conversion, the usable highlighting tool(s) will be dictated by the thir
 <section xml:id="_syntax_tests">
 <title>Syntax Tests</title>
 <simpara>Here follow some code snippets for testing both common- and edge-cases in the language and ensure they are rendered as expected.</simpara>
+<section xml:id="_predefined_classes_and_instances">
+<title>Predefined Classes and Instances</title>
+<simpara>Although it&#8217;s usually unnecessary to highlight with separate styling the predefined Alan classes and instances (i.e. the <literal>hero</literal>), it might be desirable to be able to do so in tutorials and documentation, for educational purposes.
+For this reason, I&#8217;ve added a special highlighting group for the predefined classes, and another one for the <literal>hero</literal>.
+Both can be optionally enabled by assigning styles to them, or just be ignored (or set to the same style as normal text) to hide them in the highlighted source.</simpara>
+<programlisting language="alan" linenumbering="unnumbered">Synonyms me = hero.
+
+The basement IsA location.
+  Description "What a dark ang gloomy place!"
+End The.
+
+The vampire IsA actor At basement.
+End The.
+
+The coffin IsA object At basement.
+  Container taking thing.
+End The.
+
+ADD TO EVERY thing
+  VERB examine
+    Does
+      "You examine $+1, but find nothing unusual."
+  END VERB.
+END ADD TO.
+
+ADD TO EVERY string
+  VERB 'say'
+    Does
+      "You say ""$$" Say This. "$$""!"
+  END VERB.
+END ADD TO.
+
+ADD TO EVERY integer
+  VERB shout
+    Does
+      "You shout ""$$" Say This. "$$"" out loud!"
+  END VERB.
+END ADD TO.
+
+ADD TO EVERY literal
+  VERB whisper
+    Does
+      "You whisper ""$$" Say This. "$$""!"
+  END VERB.
+END ADD TO.
+
+--------------------------------------------------------------------------------
+
+Start at basement.</programlisting>
+</section>
 <section xml:id="_quoted_identifiers">
 <title>Quoted Identifiers</title>
 <simpara>Although quoted identifiers shouldn&#8217;t receive any special coloring in the highlighted code, the syntax definition must be made aware of them to prevent false-positive keywords matches for tokens inside quoted identifiers:</simpara>

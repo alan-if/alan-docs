@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "highlight.xsl" v0.2.1 (2018/09/09)
+  "highlight.xsl" v0.3.0 (2018/09/12)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -44,6 +44,12 @@
   <!--=====================================================================-->
   <xsl:template match="xslthl:class" mode="xslthl">
     <fo:inline font-weight="normal" color="{$AlanHL.class}"><xsl:apply-templates mode="xslthl"/></fo:inline>
+  </xsl:template>
+  <!--=======================================================================-->
+  <!--                               THE HERO                                -->
+  <!--=====================================================================-->
+  <xsl:template match="xslthl:hero" mode="xslthl">
+    <fo:inline font-weight="normal" color="{$AlanHL.hero}"><xsl:apply-templates mode="xslthl"/></fo:inline>
   </xsl:template>
   <!--=====================================================================-->
   <!--                              STRINGS                                -->

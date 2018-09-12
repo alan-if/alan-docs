@@ -1,4 +1,4 @@
--- "snippets.alan" v1.0.0 (2018/09/09) | Alan 3.0beta6
+-- "snippets.alan" v1.0.1 (2018/09/12) | Alan 3.0beta6
 --+============================================================================+
 --|\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////////////////////////////////////|
 --++--------------------------------------------------------------------------++
@@ -21,6 +21,14 @@
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
 -- Full code examples (working) to be included as snippets...
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 1.1 - Generic Example
+--------------------------------------------------------------------------------
+--==============================================================================
+-- A small generic code example trying to show as many features of the syntax
+-- in one place as possible.
 
 -- tag::sample[]
 --==============================================================================
@@ -49,3 +57,58 @@ End The trolley.
 --------------------------------------------------------------------------------
 Start at canteen.
 -- end::sample[]
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 1.2 - Predefined Classes and Instances
+--------------------------------------------------------------------------------
+--==============================================================================
+-- A code example showing all the predefined classes and the 'hero'.
+
+-- tag::predefined_classes[]
+Synonyms me = hero.
+
+The basement IsA location.
+  Description "What a dark ang gloomy place!"
+End The.
+
+The vampire IsA actor At basement.
+End The.
+
+The coffin IsA object At basement.
+  Container taking thing.
+End The.
+
+ADD TO EVERY thing
+  VERB examine
+    Does
+      "You examine $+1, but find nothing unusual."
+  END VERB.
+END ADD TO.
+
+ADD TO EVERY string
+  VERB 'say'
+    Does
+      "You say ""$$" Say This. "$$""!"
+  END VERB.
+END ADD TO.
+
+ADD TO EVERY integer
+  VERB shout
+    Does
+      "You shout ""$$" Say This. "$$"" out loud!"
+  END VERB.
+END ADD TO.
+
+ADD TO EVERY literal
+  VERB whisper
+    Does
+      "You whisper ""$$" Say This. "$$""!"
+  END VERB.
+END ADD TO.
+
+--------------------------------------------------------------------------------
+
+Start at basement.
+
+-- end::predefined_classes[]

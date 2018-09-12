@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "common.xsl" v0.2.3 (2018/09/09)
+  "common.xsl" v0.3.0 (2018/09/12)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -122,14 +122,15 @@
    -->
   <xsl:param name="AlanHL.background">#F8F8F8</xsl:param>
 
-  <xsl:param name="AlanHL.normal"  >#333333</xsl:param>
-  <xsl:param name="AlanHL.quotedId" select="$AlanHL.normal"></xsl:param>
-  <xsl:param name="AlanHL.keyword" >#990000</xsl:param>
   <xsl:param name="AlanHL.class"   >#000080</xsl:param>
   <xsl:param name="AlanHL.comment" >#999988</xsl:param>
-  <xsl:param name="AlanHL.string"  >#008080</xsl:param>
+  <xsl:param name="AlanHL.hero"     select="$AlanHL.normal"></xsl:param>
+  <xsl:param name="AlanHL.keyword" >#990000</xsl:param>
+  <xsl:param name="AlanHL.normal"  >#333333</xsl:param>
   <xsl:param name="AlanHL.number"  >#DD1144</xsl:param>
   <xsl:param name="AlanHL.operator" select="$AlanHL.normal"></xsl:param>
+  <xsl:param name="AlanHL.quotedId" select="$AlanHL.normal"></xsl:param>
+  <xsl:param name="AlanHL.string"  >#008080</xsl:param>
 
   <xsl:param name="AlanHL.border.color">transparent</xsl:param>
   <xsl:param name="AlanHL.border.width">0</xsl:param>

@@ -1,6 +1,6 @@
 = Syntax Highlighting in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v1.0, September 9, 2018: Code styling previews
+v1.1, September 12, 2018: Code styling previews
 :version-label: v
 :authorinitials: T.J.A.
 // =====================
@@ -111,6 +111,18 @@ The following example shows all the various Alan syntax elements groups that are
 === Syntax Tests
 
 Here follow some code snippets for testing both common- and edge-cases in the language and ensure they are rendered as expected.
+
+==== Predefined Classes and Instances
+
+Although it's usually unnecessary to highlight with separate styling the predefined Alan classes and instances (i.e. the `hero`), it might be desirable to be able to do so in tutorials and documentation, for educational purposes.
+For this reason, I've added a special highlighting group for the predefined classes, and another one for the `hero`.
+Both can be optionally enabled by assigning styles to them, or just be ignored (or set to the same style as normal text) to hide them in the highlighted source.
+
+[source,alan]
+--------------------
+include::snippets.alan[tag=predefined_classes]
+--------------------
+
 
 ==== Quoted Identifiers
 
