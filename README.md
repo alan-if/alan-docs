@@ -16,8 +16,11 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
     - [License Terms](#license-terms)
     - [Project Contents](#project-contents)
         - [File Extensions Conventions](#file-extensions-conventions)
+    - [Development Enviroment Info](#development-enviroment-info)
     - [Project Dependencies](#project-dependencies)
         - [AsciiDoctor](#asciidoctor)
+        - [Asciidoctor-fopub](#asciidoctor-fopub)
+        - [Dia Diagram Editor](#dia-diagram-editor)
     - [Syntax Highlighting](#syntax-highlighting)
     - [Work Tools](#work-tools)
         - [Asciidoc FX](#asciidoc-fx)
@@ -56,7 +59,7 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 - [`/_assets/`](./_assets/) (shared assets):
     + [`/images/`](./_assets/images/)
 - [`/_assets-src/`](./_assets-src/) (assets' source files):
-    + [`/images/`](./_assets/images/):
+    + [`/images/`](./_assets-src/images/):
         * [`/alan-logo/`](./_assets-src/images/alan-logo/) — Alan logo reconstructed as vector image.
         * [`/predefined-classes/`](./_assets-src/images/predefined-classes/) — The predefined-classes diagram reconstructed using [Dia Diagram Editor].
     + [`/original-docs/`](./_assets-src/original-docs/) — copy of the original docs being ported.
@@ -76,18 +79,67 @@ In order to distinguish between AsciiDoc documents according to their role in th
 
 Using different extensions is also required for automation scripts, which select sourcefiles by their extension during batch operations.
 
+## Development Enviroment Info
+
+This is the environemnt setup used for the project by its maintainer:
+
+    Ruby 2.5.1p57 (2018-03-29 revision 63029) [x64-mingw32]
+    Asciidoctor 1.5.7.1
+    asciidoctor-fopub
+    Asciidoc FX v1.6.8
+    Dia Diagram Editor v0.97.2
+
+
 ## Project Dependencies
 
 ### AsciiDoctor
 
 - https://asciidoctor.org/
 
-This is the environemnt setup used for the project by its maintainer:
+In order to convert the AsciiDoc sources to any format you'll need to install Ruby and the Asciidoctor gem.
 
-    Ruby 2.5.1p57 (2018-03-29 revision 63029) [x64-mingw32]
-    Asciidoctor 1.5.7.1
-    Asciidoctor PDF 1.5.0.alpha.16
-    Asciidoc FX v1.6.8
+### Asciidoctor-fopub
+
+- https://github.com/asciidoctor/asciidoctor-fopub
+
+The AsciiDoc to PDF toolchain also requires setting up asciidoctor-fopub on your machine; this tool is required to convert from DocBook to PDF.
+
+Here are some instructions on how to setup asciidoctor-fopub:
+
+1. __JDK8__ — Download and install Java JDK8.
+
+    If you have other versions of Java SE/JDK uninstall them. In order to use asciidoctor-fopub you'll need Java JDK 8 (versions 6 and 7 are also known to work, but are not recomended for security reasons); you won't be able to use JDK version 10 due to [incompatibility problems with gradle].
+
+2. __Clone asciidoctor-fopub__ — There is no installation for this tool, just clone it somewhere on your hard disk using Git:
+
+    ```
+    git clone https://github.com/asciidoctor/asciidoctor-fopub
+    ```
+
+    On Windows, I also had to carry out the following one-time operation to stop some gradle errors that were preventing using asciidoctor-fopub:
+
+    - Open the CMD in the cloned asciidoctor-fopub folder, and type:
+
+        ```
+        gradlew installapp
+        ```
+
+        This (undocumented) step seems necessary to complete the gradle setup of asciidoctor-fopub.
+
+3. __Add to PATH__ —  After cloning asciidoctor-fopub locally, you should add its path to your system PATH in order to make it available to the scripts in this project.
+
+See also the [setup instructions found at the asciidoctor-fopub] repository.
+
+[setup instructions found at the asciidoctor-fopub]: https://github.com/asciidoctor/asciidoctor-fopub#prerequisites
+[Java JDK8]: https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+[incompatibility problems with gradle]: https://github.com/asciidoctor/asciidoctor-fopub/issues/87
+
+### Dia Diagram Editor
+
+- http://dia-installer.de/
+
+Optionally, if you want to edit and build the diagram images, you'll need to install Dia on your machine too. This tool is required to build via automated scripts some images found in [`/_assets-src/images/`](./_assets-src/images/).
+
 
 
 ## Syntax Highlighting

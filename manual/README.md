@@ -45,7 +45,9 @@ Before the new version of the _Alan Manual_ is ready, the following three tasks 
 - [ ] __[AsciiDoc Conversion]__ — porting from ODT to ADoc, reconstructing styles and lost formatting and structure.
 - [ ] __[PDF Toolchain Setup]__ — organize all the tools, scripts and templates to produce a PDF version with custom styling. 
 - [ ] __[HTML Toolchain Setup]__ — organize all the tools, scripts and templates to produce an HTML version with custom styling.
-- [ ] __[Syntax Highlighting]__ — find solution(s) to enable syntax highlighting of Alan examples in all output formats.
+- [ ] __[Syntax Highlighting]__ — find solution(s) to enable syntax highlighting of Alan examples in all output formats:
+    + [x] __PDF format__ — implemented using XSLHL with custom Alan syntax.
+    + [ ] __PDF format__ — still need to look into it.
 
 ## AsciiDoc Conversion
 
@@ -77,7 +79,7 @@ An here follows a task list of the remaining porting tasks:
 - [ ] Add missing header metadata (See [Issue #8][i8])
 - [ ] Rebuild current images, in vector format (optional):
     + [ ] Figure 1 (Sec. 2.3, p.20 of PDF) — "The principles for and relations between a game description, a compiler, ...".
-    + [ ] Figure 2 (Sec. 2.4, p.33 of PDF) — "_Relationships between the pre-defined classes._".
+    + [x] Figure 2 (Sec. 2.4, p.33 of PDF) — "_Relationships between the pre-defined classes._".
 - [ ] Fix some non-Ascii chars (especially Unicode dingbats) that may cause problems in some output formats.
 - [ ] Fix Headings:
     + [ ] Check that all headings are properly title cased.
@@ -91,13 +93,13 @@ An here follows a task list of the remaining porting tasks:
 
 The PDF toolchain will employ [asciidoc-fopub] to convert from DocBook to PDF. I've just started working on this, and there is still a lot to do before the required custom styles will be usable to create a distributable PDF.
 
-- [ ] Customize XSL styles:
+- [ ] Customize XSL styles (See [Issue #14][i14]):
     + [ ] Footnotes: use numbers instead of letters.
     + [ ] Improve admonitions styles:
         * [ ] Nicer icons
         * [ ] Icons colors according to type of admonition (red, yellow, green, blue, etc.)
     + [ ] Customize Verbatim blocks (colors and styles):
-        * [ ] Alan code examples
+        * [x] Alan code examples
         * [ ] BNF rules
         * [ ] Game transcripts
         * [ ] Shell output
@@ -119,7 +121,7 @@ Currently, I've created an Alan syntax definition for André Simon's Hihglihgt t
 
 + [ ] Test how Highlight can be integrated into AsciiDoctor to handle Alan and EBNF code (See [Issue #2106]).
 + [ ] Consider creating an Alan syntax definition for [Rouge].
-+ [ ] Create a custom Alan syntax definition for XSLHL (used by asciidoc-fopub in PDF conversion).
++ [x] Create a custom Alan syntax definition for XSLHL (used by asciidoc-fopub in PDF conversion).
 
 -------------------------------------------------------------------------------
 
@@ -178,8 +180,9 @@ These stylesheets were adapted from the [asciidoctor-fopub] project, Copyright (
 
 > __PDF CONVERSION NOTE__ — The [`PDF_BUILD.bat`][PDF_BUILD.bat] script now uses [asciidoctor-fopub] to create the PDF version of the Manual. You'll need to setup it up on your machine and add it to your system Path in order to run the conversion script.
 > 
-> Instructions on how to setup [asciidoctor-fopub] will be added soon.
+> See: [Instructions on setting up asciidoctor-fopub].
 
+[Instructions on setting up asciidoctor-fopub]: ../README.md#asciidoctor-fopub
 
 ## Converted Manual
 
@@ -244,6 +247,7 @@ As a convention, all commented annotations inside document source files will beg
 <!-- Issues -->
 
 [i8]: https://github.com/alan-if/alan-docs/issues/8 "Issue #8 — Manual Info & Metadata"
+[i14]: https://github.com/alan-if/alan-docs/issues/14 "Issue #14 — Customization of PDF Template"
 
 <!-- AsciiDoctor ------------------------------------------------------------->
 

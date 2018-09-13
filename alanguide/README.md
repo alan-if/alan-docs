@@ -44,7 +44,7 @@ The original file of the _Alan Beginner's Guide_ used as base document is availa
 
 > __PDF CONVERSION NOTE__ — The [`PDF_BUILD.bat`][PDF_BUILD.bat] script now uses [asciidoctor-fopub] to create the PDF version of the Manual. You'll need to setup it up on your machine and add it to your system Path in order to run the conversion script.
 > 
-> Instructions on how to setup [asciidoctor-fopub] will be added soon.
+> See: [Instructions on setting up asciidoctor-fopub].
 
 
 ## Converted Guide
