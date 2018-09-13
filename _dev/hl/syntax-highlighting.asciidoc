@@ -1,6 +1,6 @@
 = Syntax Highlighting in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v1.1, September 12, 2018: Code styling previews
+v1.2, September 13, 2018: Code styling previews
 :version-label: v
 :authorinitials: T.J.A.
 // =====================
