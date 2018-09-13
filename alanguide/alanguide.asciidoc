@@ -1,7 +1,7 @@
 :doctitle:  ALAN 3 Beginner's Guide
 :author:    Michael Arnaud
-:revnumber: 0.1.4
-:revdate:   September 3, 2018
+:revnumber: 0.1.5
+:revdate:   September 13, 2018
 :revremark: AsciiDoc reconstruction work
 :doctype: book
 :encoding: utf-8
@@ -18,6 +18,14 @@
 // Misc Settings:
 :experimental: true
 
+
+// =============================================================================
+//                         Custom Attributes Definition
+// =============================================================================
+// Some attributes for custom substitution of multiple occurences of same text.
+
+// Path to shared images:
+:assets-img: ../_assets/images/
 
 // *****************************************************************************
 // *                                                                           *
@@ -1410,11 +1418,10 @@ Now it is time to learn how to modify the responses for each OBJECT. We will sta
 
 Every OBJECT (and every ACTOR) in the game is in the sub-class, if you will, of the larger class, THING (which itself is a sub-class of ENTITY). It may help to understand this from the chart in the Alan manual (page 32), reproduced here:
 
-// @TODO: This image was grabbed by capturing the PDF page. It could be reconstructed
-//        from scratch, in vector format, to ensure good quality in all formats!
 
 .Relationships between the predefined classes.
-image::predefined-classes.png[predefined classes, align="center"]
+image::{assets-img}predefined-classes.svg[predefined classes, align="center"]
+
 
 The "examine.i" file says:
 

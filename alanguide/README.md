@@ -42,11 +42,9 @@ The original file of the _Alan Beginner's Guide_ used as base document is availa
 - [`HTML_BUILD.bat`][HTML_BUILD.bat] — batch script to create `alanguide.html` document (fully standalone).
 - [`PDF_BUILD.bat`][PDF_BUILD.bat] — batch script to create `alanguide.pdf` document (currently ignored in repository).
 
-> __PDF NOTE__ — In order to build the PDF version of the _Alan Beginnger's Guide_, you need to install the [Asciidoctor PDF] Ruby Gem:
+> __PDF CONVERSION NOTE__ — The [`PDF_BUILD.bat`][PDF_BUILD.bat] script now uses [asciidoctor-fopub] to create the PDF version of the Manual. You'll need to setup it up on your machine and add it to your system Path in order to run the conversion script.
 > 
-> ```
-> gem install asciidoctor-pdf --pre
-> ```
+> Instructions on how to setup [asciidoctor-fopub] will be added soon.
 
 
 ## Converted Guide
@@ -97,6 +95,7 @@ The original AsciiDoc document was taken from [Alan repository], commit [`fb8164
 
 [Asciidoctor]: https://asciidoctor.org/ "Visit AsciiDoctor website (Ruby implementation)"
 [Asciidoctor PDF]: https://github.com/asciidoctor/asciidoctor-pdf "Visit the Asciidoctor PDF repository"
+[asciidoctor-fopub]: https://github.com/asciidoctor/asciidoctor-fopub "Visit the asciidoctor-fopub repository"
 
 [AsciiDoc Python]: http://asciidoc.org/ "Visit AsciiDoc website (original Python implementation)"
 

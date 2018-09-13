@@ -1,4 +1,4 @@
-:: "HTML_BUILD.bat" v1.0.0 (2018/08/29) by Tristano Ajmone
+:: "HTML_BUILD.bat" v1.0.1 (2018/09/13) by Tristano Ajmone
 @ECHO.
 @ECHO ==============================================================================
 @ECHO Converting the "ALAN Beginner's Guide" to a standalone HTML5 document...
@@ -7,7 +7,7 @@
 ::    https://github.com/asciidoctor/asciidoctor
 asciidoctor^
   -a data-uri^
-  --safe-mode safe^
+  --safe-mode unsafe^
   --verbose^
   alanguide.asciidoc
 @EXIT /B

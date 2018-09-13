@@ -609,18 +609,9 @@ The `IsA`-construct defines from which class properties are inherited.
 
 To make it easy to get started there are eight classes predefined (((predefined classes))) in the Alan language.
 
-// @TODO: This image was grabbed by capturing the PDF page. It could be reconstructed
-//        from scratch, in vector format, to ensure good quality in all formats!
-
-// @TODO: In the image we could use different background colors for those classes
-//        that can't be sub-classed or instanciated (ie: LITERAL, STRING, INTEGER)
-//        and italicize the classes that are not an Alan keyword (ie: LITERAL, INTEGER).
-//        IMO, it would make this a better image of reference for students.
-
 [[fig-predefined-classes]]
 .Relationships between the predefined classes (only classes shown with yellow background are inheritable and can be explicitly instantiated).
 image::{assets-img}predefined-classes.svg[predefined classes, align="center"]
-// image::predefined-classes.png[predefined classes, align="center"]
 
 They are `entity`, (((ENTITY, predefined class))) `thing`, (((THING, predefined class))) `location`, (((LOCATION, predefined class))) `actor`, (((ACTOR, predefined class))) `object`, (((OBJECT, predefined class))) `literal`, (((literal, predefined class))) `string` (((STRING, predefined class))) and `integer` (((integer, predefined class))) and have the relationship, inheritance tree, shown in the figure above.
 

@@ -9,3 +9,8 @@
 # as it's still to drafty to share. Later on, when the PDF version is mature,
 # we'll remove this ignore directive:
 alanguide.pdf
+
+# Exclude the DocBook intermediate file used in the PDF conversion:
+alanguide.xml
+
+# EOF #
