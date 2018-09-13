@@ -618,21 +618,11 @@ To make it easy to get started there are eight classes predefined (((predefined 
 //        IMO, it would make this a better image of reference for students.
 
 [[fig-predefined-classes]]
-.Relationships between the predefined classes.
-image::predefined-classes.png[predefined classes, align="center"]
+.Relationships between the predefined classes (only classes shown with yellow background are inheritable and can be explicitly instantiated).
+image::{assets-img}predefined-classes.svg[predefined classes, align="center"]
+// image::predefined-classes.png[predefined classes, align="center"]
 
-
-// @NOTE: didn't style as inline-code the following classes, as some are not
-//        actual keywords (literal, integer), so in this context it might be ok
-//        to keep them just as they are, bold.
-
-// @TODO: Here it should be specified that LITERAL and INTEGER don't have a corresponding
-//        keyword in the language (unlike STRING, which can be used with ADD TO even
-//        though not create instances or classes).
-
-
-
-They are *entity*, (((ENTITY, predefined class))) *thing*, (((THING, predefined class))) *location*, (((LOCATION, predefined class))) *actor*, (((ACTOR, predefined class))) *object*, (((OBJECT, predefined class))) *literal*, (((literal, predefined class))) *string* (((STRING, predefined class))) and *integer* (((integer, predefined class))) and have the relationship, inheritance tree, shown in the figure above.
+They are `entity`, (((ENTITY, predefined class))) `thing`, (((THING, predefined class))) `location`, (((LOCATION, predefined class))) `actor`, (((ACTOR, predefined class))) `object`, (((OBJECT, predefined class))) `literal`, (((literal, predefined class))) `string` (((STRING, predefined class))) and `integer` (((integer, predefined class))) and have the relationship, inheritance tree, shown in the figure above.
 
 The semantics (((semantics, of predefined classes))) of these predefined classes are in short:
 

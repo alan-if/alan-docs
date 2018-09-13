@@ -610,7 +610,7 @@ It can also be used for grouping locations into sets of similar locations and fo
 
 === Literals
 
-The classes (((literals))) *literal*, *string* and *integer* cannot be instantiated explicitly.
+The classes (((literals))) `literal`, `string` and `integer` cannot be instantiated explicitly.
 Instead, you might say that they are implicitly instantiated when the player inputs a literal.
 For example:
 
@@ -621,13 +621,13 @@ For example:
 
 
 The second parameter (see <<Syntax Definitions>>) in this player command is the integer 12.
-This parameter is automatically considered an instance of the predefined class *integer*.
+This parameter is automatically considered an instance of the predefined class `integer`.
 
 
 // @FIXME: The following paragraph doesn't clarify enough the topic.
 
 
-It is possible to add ``Verb``s to *literal* and its sub-classes.
+It is possible to add ``Verb``s to `literal` and its sub-classes.
 This way it is possible to create verbs that take strings and integers as parameters.
 
 // @TODO: Add example of adding verbs to literals!
@@ -3306,7 +3306,7 @@ form = 'THE' | 'AN' | 'IT' | 'NO'
 The (((SAY, statement))) `Say` statement will output a short description of what is referred to by the expression.
 If it refers to an instance, it will print the name of it or execute its `Mentioned` clause if one is available.
 If it refers to an attribute, it will print its value, such as an integer or a string.
-Parameter names are also allowed in the `Say` statement, which, of course will result in a short description of the instance to which it is bound, or a printing of the literal (if the parameter was a *String* or *Integer* parameter).
+Parameter names are also allowed in the `Say` statement, which, of course will result in a short description of the instance to which it is bound, or a printing of the literal (if the parameter was a `string` or `integer` parameter).
 
 [source,alan]
 --------------------------------------------------------------------------------

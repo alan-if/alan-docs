@@ -1,6 +1,6 @@
 :doctitle:  The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.54
-:revdate:   September 12, 2018
+:revnumber: 0.1.55
+:revdate:   September 13, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
 :encoding: utf-8
@@ -25,6 +25,9 @@
 // Some attributes for custom substitution of multiple occurences of same text.
 
 :alan-www: http://www.alanif.se/[www.alanif.se^]
+
+// Path to shared images:
+:assets-img: ../_assets/images/
 
 // *****************************************************************************
 // *                                                                           *

@@ -1,4 +1,4 @@
-:: "PDF_BUILD.bat" v2.0.0 (2018/09/04) by Tristano Ajmone
+:: "PDF_BUILD.bat" v2.0.1 (2018/09/13) by Tristano Ajmone
 @ECHO.
 @ECHO ==============================================================================
 @ECHO Converting "The ALAN Language Manual" to PDF document...
@@ -10,7 +10,7 @@ CALL asciidoctor^
   -b docbook^
   -d book^
   -a data-uri!^
-  --safe-mode safe^
+  --safe-mode unsafe^
   --verbose^
   manual.asciidoc
 
