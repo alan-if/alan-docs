@@ -58,6 +58,7 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 - [`/_assets-src/`](./_assets-src/) (assets' source files):
     + [`/images/`](./_assets/images/):
         * [`/alan-logo/`](./_assets-src/images/alan-logo/) — Alan logo reconstructed as vector image.
+        * [`/predefined-classes/`](./_assets-src/images/predefined-classes/) — The predefined-classes diagram reconstructed using [Dia Diagram Editor].
     + [`/original-docs/`](./_assets-src/original-docs/) — copy of the original docs being ported.
 - [`/_dev/`](./_dev) — Project developers' stuff (testing, etc.).
 - [`/alanguide/`](./alanguide) — _Alan 3 Beginner's Guide_ ported to AsciiDoc (WIP).
@@ -227,6 +228,9 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 [Highlight website]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
 [Highlight repository]: https://gitlab.com/saalen/highlight "Visit Highlight Git repository at GitLab"
 [Highlight's Alan syntax definition]: https://gitlab.com/saalen/highlight/blob/master/langDefs/alan.lang "View the sourcefile of the Alan syntax definition for Highlight"
+
+[Dia]: http://dia-installer.de/ "Visit Dia's website"
+[Dia Diagram Editor]: http://dia-installer.de/ "Visit Dia's website"
 
 <!-- Project Files ----------------------------------------------------------->
 
