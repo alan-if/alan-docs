@@ -1,6 +1,6 @@
 = Syntax Highlighting in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v1.2, September 13, 2018: Code styling previews
+v1.3, September 15, 2018: Code styling previews
 :version-label: v
 :authorinitials: T.J.A.
 // =====================
@@ -63,6 +63,26 @@ class = 'EVERY' id
             {property}
         'END' 'EVERY' [id] ['.']
 --------------------------------------------------------------------------------
+
+
+=== Game Transcripts
+
+Although a game transcript is neither source code nor a verbatim block, I'm including it in this document to allow comparing its styles and colors to other block-type elements in the documentation.
+
+[example,role="gametranscript"]
+================================================================================
+*West of House.* +
+Welcome to Dungeon (ALAN Demo). This version created 29-FEB-92.
+
+You are in an open field west of a big white house with a boarded front door. There is a small mailbox here.
+
+&gt; _examine the mailbox_ +
+I see nothing special about the mailbox.
+
+&gt; _open it_ +
+The small mailbox is now open. The small mailbox contains a leaflet.
+================================================================================
+
 
 
 

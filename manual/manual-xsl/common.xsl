@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "common.xsl" v0.3.1 (2018/09/13)
+  "common.xsl" v0.3.2 (2018/09/15)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -27,6 +27,14 @@
   <xsl:param name="code.background-color">#EEEEEE</xsl:param>
 
 <!-- =============================================== -->
+<!-- Boxed-Blocks Default Settings                   -->
+<!-- =============================================== -->
+<!-- Some default values to use for Code, Verbatim and Example blocks -->
+  <xsl:param name="Default_Box.border.color" >#E6E6E6</xsl:param>
+  <xsl:param name="Default_Box.border.radius">3pt</xsl:param>
+  <xsl:param name="Default_Box.border.width" >.25pt</xsl:param>
+
+<!-- =============================================== -->
 <!-- Monokai Base16 Color Scheme, by Wimer Hazenberg -->
 <!-- =============================================== -->
   <xsl:param name="Monokai.base00">#272822</xsl:param><!-- Rangoon Green ( almost black ) -->
@@ -51,72 +59,10 @@
   <xsl:param name="Monokai.base12">#1776BC</xsl:param><!-- Lochmara ( blue ) -->
   <xsl:param name="Monokai.base13">#6298CD</xsl:param><!-- Danube ( dull blue ) -->
 
-<!-- ================================== -->
-<!-- Syntax Highlighting Theme for Alan -->
-<!-- ================================== -->
-
-  <!-- MONOKAI VERSION: -->
-<!--
-  <xsl:param name="AlanHL.background" select="$Monokai.base00"></xsl:param>
-
-  <xsl:param name="AlanHL.normal"     select="$Monokai.base05"></xsl:param>
-  <xsl:param name="AlanHL.quotedId"   select="$AlanHL.normal"></xsl:param>
-  <xsl:param name="AlanHL.keyword"    select="$Monokai.base08"></xsl:param>
-  <xsl:param name="AlanHL.class"      select="$Monokai.base13"></xsl:param>
-  <xsl:param name="AlanHL.comment"    select="$Monokai.base04"></xsl:param>
-  <xsl:param name="AlanHL.string"     select="$Monokai.base0B"></xsl:param>
-  <xsl:param name="AlanHL.number"     select="$Monokai.base10"></xsl:param>
-  <xsl:param name="AlanHL.operator"   select="$Monokai.base0C"></xsl:param>
-
-  <xsl:param name="AlanHL.border.color" select="$Monokai.base04"></xsl:param>
-  <xsl:param name="AlanHL.border.width">.25pt</xsl:param>
-  <xsl:param name="AlanHL.border.style">solid</xsl:param>
--->
-
-  <!-- WHITE BG VERSION: -->
-  <!--
-  <xsl:param name="AlanHL.background">transparent</xsl:param>
-
-  <xsl:param name="AlanHL.normal"  >#000000</xsl:param>
-  <xsl:param name="AlanHL.quotedId" select="$AlanHL.normal"></xsl:param>
-  <xsl:param name="AlanHL.keyword" >#CC0000</xsl:param>
-  <xsl:param name="AlanHL.class"   >#6600FF</xsl:param>
-  <xsl:param name="AlanHL.comment" >#BFBFBF</xsl:param>
-  <xsl:param name="AlanHL.string"  >#46c864</xsl:param>
-  <xsl:param name="AlanHL.number"  >#FFAA00</xsl:param>
-  <xsl:param name="AlanHL.operator" select="$AlanHL.normal"></xsl:param>
-
-  <xsl:param name="AlanHL.border.color">transparent</xsl:param>
-  <xsl:param name="AlanHL.border.width">0</xsl:param>
-  <xsl:param name="AlanHL.border.style">none</xsl:param>
-  -->
-
-  
-  <!-- FOUNDATION SCHEME: -->
-  <!--  Based on "Foundation 4 docs" style for highlight.js:
-        https://github.com/highlightjs/highlight.js/blob/master/src/styles/foundation.css
-        Author: Dan Allen <dan.j.allen@gmail.com>
-        Website: http://foundation.zurb.com/docs/
-   -->
-  <!-- 
-  <xsl:param name="AlanHL.background">#EEEEEE</xsl:param>
-
-  <xsl:param name="AlanHL.normal"  >#000000</xsl:param>
-  <xsl:param name="AlanHL.quotedId" select="$AlanHL.normal"></xsl:param>
-  <xsl:param name="AlanHL.keyword" >#009999</xsl:param>
-  <xsl:param name="AlanHL.class"   >#3344BB</xsl:param>
-  <xsl:param name="AlanHL.comment" >#999988</xsl:param>
-  <xsl:param name="AlanHL.string"  >#DD1144</xsl:param>
-  <xsl:param name="AlanHL.number"  >#990000</xsl:param>
-  <xsl:param name="AlanHL.operator" select="$AlanHL.normal"></xsl:param>
-
-  <xsl:param name="AlanHL.border.color">transparent</xsl:param>
-  <xsl:param name="AlanHL.border.width">0</xsl:param>
-  <xsl:param name="AlanHL.border.style">none</xsl:param>
-
- -->
-  <!-- GITHUB SCHEME: -->
-  <!--  Based on "github.com style" for highlight.js:
+  <!-- ================================== -->
+  <!-- Syntax Highlighting Theme for Alan -->
+  <!-- ================================== -->
+  <!-- GITHUB SCHEME - Based on "github.com style" for highlight.js:
         https://github.com/highlightjs/highlight.js/blob/master/src/styles/github.css
         Author:  (c) Vasily Polovnyov <vast@whiteants.net>
    -->
@@ -136,6 +82,20 @@
   <xsl:param name="AlanHL.border.width">0</xsl:param>
   <xsl:param name="AlanHL.border.style">none</xsl:param>
 
+  <!-- ============================== -->
+  <!-- Game Transcripts Color Scheme  -->
+  <!-- ============================== -->
+<!--   <xsl:param name="IFPlay.background"  >#E2EEF9</xsl:param>
+  <xsl:param name="IFPlay.color"       >#224466</xsl:param>
+  <xsl:param name="IFPlay.border.color">BAC6D3</xsl:param>
+ -->
+  <xsl:param name="IFPlay.background"  >#F7FDFF</xsl:param>
+  <xsl:param name="IFPlay.color"       >#0089B6</xsl:param>
+  <xsl:param name="IFPlay.border.color">#CCF2FF</xsl:param>
+  <!--
+  <xsl:param name="IFPlay.border.width">0</xsl:param>
+  <xsl:param name="IFPlay.border.style">none</xsl:param>
+  -->
 
 
 <!-- 
