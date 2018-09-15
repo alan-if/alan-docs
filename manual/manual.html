@@ -435,8 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.56,</span>
-<span id="revdate">September 13, 2018</span>
+<span id="revnumber">version 0.1.57,</span>
+<span id="revdate">September 15, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -831,8 +831,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.56
-Last edited: September 13, 2018</pre>
+<pre>Doc version: 0.1.57
+Last edited: September 15, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -2937,7 +2937,7 @@ Each inherited property may be amended or overridden by specifying it also in th
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Initialize</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated. Inherited <code>Initialize</code> clauses are executed first so that the base classes may do their initialization first.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated. Inherited <code>Initialize</code> clauses are executed first so that the base classes may do their initialisation first.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description check</strong></p></td>
@@ -3178,7 +3178,7 @@ In the following transcript example, output of the article is shown in bold, and
 <h4 id="_pronouns">Pronouns</h4>
 <div class="paragraph">
 <p>In player input, it is often handy and natural to refer to items using  pronouns, such as &#8220;it&#8221;, &#8220;them&#8221; or &#8220;her&#8221;.
-Alan provides a means to define with which pronouns each instance can be associated.</p>
+Alan provides a means to define which pronouns each instance can be associated with.</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -3190,7 +3190,7 @@ Alan provides a means to define with which pronouns each instance can be associa
 </div>
 <div class="paragraph">
 <p>The effect of associating a pronoun with an instance is that the player can refer to that instance explicitly in one command and then in a subsequent command use that pronoun to refer to it again.
-Assume the player input</p>
+Assume the player input:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -3200,7 +3200,7 @@ Assume the player input</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If the priest has been associated with the pronoun &#8220;him&#8221; and the bible with the pronoun &#8220;it&#8221;, the next command could be</p>
+<p>If the priest has been associated with the pronoun &#8220;him&#8221; and the bible with the pronoun &#8220;it&#8221;, the next command could be:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -3210,7 +3210,7 @@ Assume the player input</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Pronouns are inherited as any other property, but are overridden as soon as a pronoun clause is present.</p>
+<p>Pronouns are inherited as any other property, but are overridden as soon as a <code>Pronoun</code> clause is present.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3232,7 +3232,7 @@ Assume the player input</p>
 <h4 id="_attributes">Attributes</h4>
 <div class="paragraph">
 <p>An attribute is a labelled value that instances have.
-The declarations  of attributes are placed inside a class definition (in which case it will apply to all instances of that class or instances of any sub-class of it) or inside an instance declaration (in which case only this instance will have it, unless it overrode an already inherited attribute with new values).
+Attributes declarations  are placed either inside a class definition (in which case they will apply to all instances of that class or any of its sub-classes) or inside an instance declaration (in which case only that instance will have those attributes, unless it&#8217;s overriding inherited attributes with new values).
 An attribute declaration, or a set of declarations, is introduced using one of the keywords:</p>
 </div>
 <div class="paragraph">
@@ -3280,7 +3280,7 @@ The combination_lock Has numbers {1,2,4,8}</code></pre>
 </div>
 <div class="paragraph">
 <p>Attributes that you want every instance of a class to have must be declared in that class.
-E.g. to declare a Boolean attribute that all instances of the class animal will have in common, the following code can be used:</p>
+E.g. to declare a Boolean attribute that all instances of the class <code>animal</code> will have in common, the following code can be used:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3292,7 +3292,7 @@ E.g. to declare a Boolean attribute that all instances of the class animal will 
 </div>
 <div class="paragraph">
 <p>The attribute <code>human</code> will now be available in all instances of the class, without further declarations, and it will be false.
-If you want the attribute to have another value in a particular instance, you must declare it specifically in that instance and give it its desired value, which will be effective only for that instance.
+If you want the attribute to have a different value in a particular instance, you must declare it specifically in that instance and assign it the desired value, which will be effective only for that instance.
 You can override the value in a subclass, e.g.:</p>
 </div>
 <div class="listingblock">
@@ -3306,7 +3306,7 @@ You can override the value in a subclass, e.g.:</p>
 <div class="sect4">
 <h5 id="_boolean_attributes">Boolean Attributes</h5>
 <div class="paragraph">
-<p>A Boolean attribute  is declared by simply giving the attribute name, or the name proceeded with the keyword <code>Not</code> (indicating a <strong>FALSE</strong> initial value):</p>
+<p>A Boolean attribute  is declared by simply giving the attribute name, or its name preceeded by the keyword <code>Not</code> (indicating a <strong>FALSE</strong> initial value):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3327,7 +3327,7 @@ message "Enter password:".</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that string  valued attributes are mainly intended for saving string parameters from the player input, like in:</p>
+<p>Note that string  type attributes are mainly intended for saving string parameters from the player input, like in:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -3337,7 +3337,7 @@ message "Enter password:".</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>It is not intended for keeping long strings of descriptions, especially not as attributes to classes, as they (in the current implementation) require memory and takes time to initialise when starting the game.</p>
+<p>They are not intended for storing long strings of descriptions, especially not as attributes to classes, as they (in the current implementation) require memory and take time to initialise when starting the game.</p>
 </div>
 </div>
 <div class="sect4">
@@ -3367,7 +3367,7 @@ End The l.</code></pre>
 <div class="paragraph">
 <p>Reference attributes  store references to instances.
 Such an attribute is of instance type; the class is determined by the class of the initial instance that the attribute is referring.
-You may for example store a reference to the other side of a door.</p>
+You may for example store a reference to the other side of a door:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3377,15 +3377,15 @@ You may for example store a reference to the other side of a door.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You must initialize a reference attribute with a reference to an instance belonging to a class having the required properties.
-Any subsequent assignment to the attribute will require that the new value is a member of the same class or a subclass of it.
+<p>You must initialise a reference attribute with a reference to an instance belonging to a class having the required properties.
+Any subsequent assignment to the attribute will require that the new value is either a member of the same class or a subclass of it.
 This ensures that operations on instances referenced by that attribute will always be possible.</p>
 </div>
 <div class="paragraph">
-<p>Inside a class declaration, reference attributes may be initialized with a class identifier instead of a reference to an instance.
-This makes the attribute an <em>abstract</em> attribute, since it is defined but not initialized.
-Any instances inheriting from this class must then initialize the attribute, either explicitly or indirectly (by initializing it in an intermediate class).
-E.g.</p>
+<p>Inside a class declaration, reference attributes may be initialised with a class identifier instead of a reference to an instance.
+This makes the attribute an <em>abstract</em> attribute, since it is defined but not initialised.
+Any instances inheriting from this class must then initialise the attribute, either explicitly or indirectly (by initialising it in an intermediate class).
+E.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3398,11 +3398,11 @@ The east_door IsA door.
   ...</code></pre>
 </div>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -3417,28 +3417,28 @@ The east_door IsA door.
 <h5 id="_set_type_attributes">Set Type Attributes</h5>
 <div class="paragraph">
 <p>
-A Set is an unordered set of integers or instance references.
-Initial members must be listed in the declaration of the Set.
-See <a href="#_set_type">Sect. 3.3.4</a> for details on the Set type.</p>
+A set is an unordered set of either integers or instance references.
+Initial members must be listed in the declaration of the set.
+See <a href="#_set_type">Sect. 3.3.4</a> for details on the set type.</p>
 </div>
 <div class="paragraph">
-<p>The type and class of allowed members is inferred from the values actually in the initial set.
+<p>The type and class of allowed members is inferred from the actual values in the initial set.
 If they are instance references, the common ancestor of all members is used as the class of the allowed members.
-An empty set is only allowed as an initial value if the attribute is an inherited attribute since in this case, the member class is known from the inheritance and need not be indicated in the declaration.</p>
+An empty set is only allowed as an initial value if the attribute is an inherited attribute, since in this case the member class is known from the inheritance and need not be indicated in the declaration.</p>
 </div>
 <div class="paragraph">
-<p>You can also initialize  a set type attribute with a set consisting only of a single class identifier.
+<p>You can also initialise  a set type attribute with a set consisting only of a single class identifier.
 This will create an empty set with instance type members restricted to that particular class.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If you require an initially empty set of another type, e.g. integer, and you cannot give the member class by inheriting it, you can initialize the set with a single value of the correct type and remove that value in the <code>Start</code> or <code>Initialize</code> sections.</p>
+<p>If you require an initially empty set of another type, e.g. integer, and you cannot give the member class by inheriting it, you can initialise the set with a single value of the correct type and remove that value in the <code>Start</code> or <code>Initialize</code> sections.</p>
 </div>
 </td>
 </tr>
@@ -3486,7 +3486,7 @@ In the subclass <code>lockable_door</code> the attribute is used with another in
 Despite this, the attribute in the two door instances will allow reference to doors, as indicated by the first declaration (in the class <code>door</code>).</p>
 </div>
 <div class="paragraph">
-<p>As a contrast, the same example can be used with abstract reference attributes  (reference attributes that are defined, but not initialized, in the class declaration).</p>
+<p>As a contrast, the same example can be used with abstract reference attributes  (reference attributes that are defined, but not initialised, in the class declaration).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3519,7 +3519,7 @@ This changes the semantics so that the subclass indicated by <code>lockable_door
 <div class="sect3">
 <h4 id="_initialize">Initialize</h4>
 <div class="paragraph">
-<p>The attributes of an instance can be initialized using values in the attribute declaration.
+<p>The attributes of an instance can be initialised using values in the attribute declaration.
 This is usually sufficient for many situations.
 For more flexibility, the  <code>Initialize</code> clause can be used.</p>
 </div>
@@ -3546,11 +3546,11 @@ Of course general statements are also allowed so any prerequisites can be catere
 </div>
 </div>
 <div class="paragraph">
-<p>The current location is set to the start location, and the current actor is the hero during the execution   of all <code>Initialize</code> clauses.</p>
+<p>The current location is set to the <code>Start</code> location, and the current actor is the <code>hero</code> during the execution   of all <code>Initialize</code> clauses.</p>
 </div>
 <div class="paragraph">
 <p>If the <code>Initialize</code> clause is inherited it will accumulate all clauses with clauses from base classes executing before the clause from the subclass.
-This lets the base classes do their initialization before the initialization of the more specialized, class or instance is performed.</p>
+This lets the base classes do their initialisation before the initialisation of the more specialized, class or instance is performed.</p>
 </div>
 </div>
 <div class="sect3">
@@ -12588,8 +12588,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.56<br>
-Last updated 2018-09-13 22:07:36 ora legale Europa occidentale
+Version 0.1.57<br>
+Last updated 2018-09-15 20:24:33 ora legale Europa occidentale
 </div>
 </div>
 </body>

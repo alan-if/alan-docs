@@ -691,7 +691,7 @@ Each inherited property may be amended or overridden by specifying it also in th
   Accumulated, you can add further attributes in a class or instance.
 
 | Initialize
-| Accumulated. Inherited `Initialize` clauses are executed first so that the base classes may do their initialization first.
+| Accumulated. Inherited `Initialize` clauses are executed first so that the base classes may do their initialisation first.
 
 | Description check
 | Accumulated.
@@ -927,13 +927,12 @@ There is *a* _little black book_, *a* _green pearl_ and *an* _owl_ here.
 
 The interpreter also uses this principle when constructing lists of instances in container content lists (as the result of the execution of an implicit or explicit `List` statement, see <<List Statement>>).
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 === Pronouns
 
 In player input, it is often handy and natural to refer to items using (((PRONOUN, clause))) pronouns, such as "`it`", "`them`" or "`her`".
-Alan provides a means to define with which pronouns each instance can be associated.
+Alan provides a means to define which pronouns each instance can be associated with.
 
 (((BNF, rules of, PRONOUN)))
 [source,ebnf]
@@ -942,7 +941,7 @@ pronouns = 'PRONOUN' word { ',' word }
 --------------------------------------------------------------------------------
 
 The effect of associating a pronoun with an instance is that the player can refer to that instance explicitly in one command and then in a subsequent command use that pronoun to refer to it again.
-Assume the player input
+Assume the player input:
 
 [example,role="gametranscript"]
 ================================================================================
@@ -951,7 +950,7 @@ Assume the player input
 
 
 
-If the priest has been associated with the pronoun "`him`" and the bible with the pronoun "`it`", the next command could be
+If the priest has been associated with the pronoun "`him`" and the bible with the pronoun "`it`", the next command could be:
 
 [example,role="gametranscript"]
 ================================================================================
@@ -960,7 +959,7 @@ If the priest has been associated with the pronoun "`him`" and the bible with th
 
 
 
-Pronouns are inherited as any other property, but are overridden as soon as a pronoun clause is present.
+Pronouns are inherited as any other property, but are overridden as soon as a `Pronoun` clause is present.
 
 
 [NOTE]
@@ -971,8 +970,9 @@ The predefined class `entity` defines the (((PRONOUN, predefined))) pronoun
 
 === Attributes
 
+
 An attribute is a labelled value that instances have.
-The declarations (((attributes, declaration))) of attributes are placed inside a class definition (in which case it will apply to all instances of that class or instances of any sub-class of it) or inside an instance declaration (in which case only this instance will have it, unless it overrode an already inherited attribute with new values).
+Attributes declarations (((attributes, declaration))) are placed either inside a class definition (in which case they will apply to all instances of that class or any of its sub-classes) or inside an instance declaration (in which case only that instance will have those attributes, unless it's overriding inherited attributes with new values).
 An attribute declaration, or a set of declarations, is introduced using one of the keywords:
 
 (((BNF, rules of, IS))) (((BNF, rules of, ARE)))
@@ -990,6 +990,17 @@ is = 'IS'
 //        "And the actual of an attribute..."
 
 And the actual declaration of an attribute follows the structure:
+
+// @NOTE: In the BNF rule below it might help to add side comments indicating
+//        which type of attributes it's referring to. Ex:
+//
+//        attribute_declaration = id                    // boolean
+//                              | 'NOT' id              // boolean
+//                              | id integer            // integer type
+//                              | id string             // string
+//                              | id id                 // reference type
+//                              | id '{' values '}'     // set type
+
 
 (((BNF, rules of, attribute declaration)))
 [source,ebnf]
@@ -1015,8 +1026,12 @@ The chest Is heavy
 The combination_lock Has numbers {1,2,4,8}
 --------------------------------------------------------------------------------
 
+
+// @FIXME: The paragraph below must be completely rephrased:
+
+
 Attributes that you want every instance of a class to have must be declared in that class.
-E.g. to declare a Boolean attribute that all instances of the class animal will have in common, the following code can be used:
+E.g. to declare a Boolean attribute that all instances of the class `animal` will have in common, the following code can be used:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1027,7 +1042,7 @@ Every animal ...
 --------------------------------------------------------------------------------
 
 The attribute `human` will now be available in all instances of the class, without further declarations, and it will be false.
-If you want the attribute to have another value in a particular instance, you must declare it specifically in that instance and give it its desired value, which will be effective only for that instance.
+If you want the attribute to have a different value in a particular instance, you must declare it specifically in that instance and assign it the desired value, which will be effective only for that instance.
 You can override the value in a subclass, e.g.:
 
 [source,alan]
@@ -1043,7 +1058,7 @@ Every person IsA animal ...
 
 ==== Boolean Attributes
 
-A Boolean attribute (((attributes, boolean))) is declared by simply giving the attribute name, or the name proceeded with the keyword `Not` (indicating a *FALSE* initial value):
+A Boolean attribute (((attributes, boolean))) is declared by simply giving the attribute name, or its name preceeded by the keyword `Not` (indicating a *FALSE* initial value):
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1064,7 +1079,7 @@ weight 42.
 message "Enter password:".
 --------------------------------------------------------------------------------
 
-Note that string (((attributes, string))) valued attributes are mainly intended for saving string parameters from the player input, like in:
+Note that string (((attributes, string))) type attributes are mainly intended for saving string parameters from the player input, like in:
 
 [example,role="gametranscript"]
 ================================================================================
@@ -1072,7 +1087,7 @@ Note that string (((attributes, string))) valued attributes are mainly intended 
 ================================================================================
 
 
-It is not intended for keeping long strings of descriptions, especially not as attributes to classes, as they (in the current implementation) require memory and takes time to initialise when starting the game.
+They are not intended for storing long strings of descriptions, especially not as attributes to classes, as they (in the current implementation) require memory and take time to initialise when starting the game.
 
 
 ==== Event Attributes
@@ -1098,7 +1113,7 @@ An attribute of the event type can for example be used to dynamically remember w
 
 Reference attributes (((attributes, of reference type))) store references to instances.
 Such an attribute is of instance type; the class is determined by the class of the initial instance that the attribute is referring.
-You may for example store a reference to the other side of a door.
+You may for example store a reference to the other side of a door:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1108,14 +1123,14 @@ The east_door IsA door.
 --------------------------------------------------------------------------------
 
 
-You must initialize a ((reference attribute)) with a reference to an instance belonging to a class having the required properties.
-Any subsequent assignment to the attribute will require that the new value is a member of the same class or a subclass of it.
+You must initialise a ((reference attribute)) with a reference to an instance belonging to a class having the required properties.
+Any subsequent assignment to the attribute will require that the new value is either a member of the same class or a subclass of it.
 This ensures that operations on instances referenced by that attribute will always be possible.
 
-Inside a class declaration, reference attributes may be initialized with a class identifier instead of a reference to an instance.
-This makes the attribute an ((_abstract_ attribute)), since it is defined but not initialized.
-Any instances inheriting from this class must then initialize the attribute, either explicitly or indirectly (by initializing it in an intermediate class).
-E.g.
+Inside a class declaration, reference attributes may be initialised with a class identifier instead of a reference to an instance.
+This makes the attribute an ((_abstract_ attribute)), since it is defined but not initialised.
+Any instances inheriting from this class must then initialise the attribute, either explicitly or indirectly (by initialising it in an intermediate class).
+E.g.:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1129,36 +1144,38 @@ The east_door IsA door.
 --------------------------------------------------------------------------------
 
 
-[NOTE]
+[TIP]
 ================================================================================
 If you need to set the initial value to refer to an instance of a sub-class of the actual class you want to allow, you can use an instance of the required class in the declaration and set its correct initial value in the `Start` or `Initialize` sections.
 ================================================================================
 
 
-
 ==== Set Type Attributes
 
 (((SET, type, attributes)))(((attributes, of SET type)))
-A Set is an unordered set of integers or instance references.
-Initial members must be listed in the declaration of the Set.
-See <<Set Type>> for details on the Set type.
+A set is an unordered set of either integers or instance references.
+Initial members must be listed in the declaration of the set.
+See <<Set Type>> for details on the set type.
 
-The type and class of allowed members is inferred from the values actually in the initial set.
+The type and class of allowed members is inferred from the actual values in the initial set.
 If they are instance references, the common ancestor of all members is used as the class of the allowed members.
-An empty set is only allowed as an initial value if the attribute is an inherited attribute since in this case, the member class is known from the inheritance and need not be indicated in the declaration.
+An empty set is only allowed as an initial value if the attribute is an inherited attribute, since in this case the member class is known from the inheritance and need not be indicated in the declaration.
 
-You can also initialize (((initialize empty SET))) a set type attribute with a set consisting only of a single class identifier.
+You can also initialise (((initialize empty SET))) a set type attribute with a set consisting only of a single class identifier.
 This will create an empty set with instance type members restricted to that particular class.
 
 
-[NOTE]
+[TIP]
 ================================================================================
-If you require an initially empty set of another type, e.g. integer, and you cannot give the member class by inheriting it, you can initialize the set with a single value of the correct type and remove that value in the `Start` or `Initialize` sections.
+If you require an initially empty set of another type, e.g. integer, and you cannot give the member class by inheriting it, you can initialise the set with a single value of the correct type and remove that value in the `Start` or `Initialize` sections.
 ================================================================================
+
 
 
 ==== Inheriting Attributes
 
+
+// @FIXME: The paragraph below needs polishing!
 
 Attributes can be inherited (((inheriting attributes))) like any other property.
 A declaration of an attribute with the same name as in any of the parents of the instance or class, will inherit the type of the attribute, you cannot change it in subsequent declarations.
@@ -1196,7 +1213,7 @@ This makes the attribute refer to doors.
 In the subclass `lockable_door` the attribute is used with another initial value, here it refers to a subclass of `door`.
 Despite this, the attribute in the two door instances will allow reference to doors, as indicated by the first declaration (in the class `door`).
 
-As a contrast, the same example can be used with abstract reference attributes (((abstract attribute))) (reference attributes that are defined, but not initialized, in the class declaration).
+As a contrast, the same example can be used with abstract reference attributes (((abstract attribute))) (reference attributes that are defined, but not initialised, in the class declaration).
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1224,7 +1241,7 @@ Using (((abstract attribute))) abstract reference attribute declarations in clas
 
 === Initialize
 
-The attributes of an instance can be initialized using values in the attribute declaration.
+The attributes of an instance can be initialised using values in the attribute declaration.
 This is usually sufficient for many situations.
 For more flexibility, the (((INITIALIZE, clause))) `Initialize` clause can be used.
 
@@ -1250,11 +1267,13 @@ Initialize
 --------------------------------------------------------------------------------
 
 
-The current location is set to the start location, and the current actor is the hero during the execution (((execution context, INITIALIZE clause))) (((INITIALIZE, clause, execution context))) of all `Initialize` clauses.
+The current location is set to the `Start` location, and the current actor is the `hero` during the execution (((execution context, INITIALIZE clause))) (((INITIALIZE, clause, execution context))) of all `Initialize` clauses.
 
 If the `Initialize` clause is inherited it will accumulate all clauses with clauses from base classes executing before the clause from the subclass.
-This lets the base classes do their initialization before the initialization of the more specialized, class or instance is performed.
+This lets the base classes do their initialisation before the initialisation of the more specialized, class or instance is performed.
 
+
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 === Description
