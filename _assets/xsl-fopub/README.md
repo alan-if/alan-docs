@@ -11,13 +11,8 @@ Customized XSL stylesheets for the PDF conversion of the Alan Manual via [asciid
 - [About The XSL Stylesheets](#about-the-xsl-stylesheets)
     - [Customizations](#customizations)
         - [Syntax Highlighting](#syntax-highlighting)
-    - [Useful Links](#useful-links)
+    - [Tech Specs](#tech-specs)
 - [License](#license)
-- [Reference Links](#reference-links)
-    - [Asciidoctor Toolchain for PDF](#asciidoctor-toolchain-for-pdf)
-    - [DocBook](#docbook)
-    - [DocBook XSL Stylesheets](#docbook-xsl-stylesheets)
-    - [XSLTHL — Syntax Highlighting](#xslthl-%E2%80%94-syntax-highlighting)
 
 <!-- /MarkdownTOC -->
 
@@ -35,23 +30,31 @@ They were subsequently edited by Tristano Ajmone to adapt them to the styling ne
 
 The original stylesheets are being customized to resemble the original layout and styles of the _Alan Manaul_. The idea is that of creating a dedicated PDF template shared by all the Alan documentation.
 
+For more details and references on customizing the template, see:
+
+- [`DEV_NOTES.md`](./DEV_NOTES.md)
+
+
 ### Syntax Highlighting
 
 The changes include the creation of an Alan language definition for the FOP syntax highlighter that ships with [asciidoctor-fopub], and setting a dedicate color scheme for Alan code examples blocks.
 
 > _**WIP**_ — More details will be added to this document once ultimated the customization of the Alan syntax and scheme.
 
-## Useful Links
+## Tech Specs
 
-- [DocBook XSL: The Complete Guide]:
-    + [Adding a font]
-    + [Syntax highlighting]
-- [DocBook XSL Stylesheets: Reference Documentation]:
-    + [`highlight.source`][highlight.source]
-- [XSLTHL Wiki]:
-    + [Syntax Highlighters] (syntax definitions specs)
-- [Schema Central » XSL-FO 1.1]
-    + [`fo:border-style`][fo:border-style]
+Asciidoctor-fopub uses the following components versions:
+
+| Software Project            | Version |
+| :-------------------------- | :------ |
+| Apache FOP                  | 2.1     |
+| DocBook XSL                 | 1.78.1  |
+| Apache Commons XML Resolver | 1.2     |
+| Xalan                       | 2.6.0   |
+| JEuclid                     | 3.1.9   |
+| XSLTHL                      | 2.1.0   |
+| Gradle                      | 2.0     |
+
 
 # License
 
@@ -84,87 +87,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ```
 
-
--------------------------------------------------------------------------------
-
-# Reference Links
-
-- [Wikipedia » XSLT][WP XSLT] (Extensible Stylesheet Language Transformations)
-
-## Asciidoctor Toolchain for PDF
-
-- [asciidoctor-fopub] — at GiHub.
-
-Dependencies:
-
-- [Apache™ FOP][FOP] (Formatting Objects Processor)
-- [XSLTHL]  (XSLT syntax highlighting) — at Sourceforge.
-- DocBook XSL
-- Apache Commons XML Resolver
-- Xalan
-- JEuclid
-- Gradle
-
-[FOP]: https://xmlgraphics.apache.org/fop/ "Visit the Apache™ FOP Project"
-
-## DocBook
-
-- [DocBook 5: The Definitive Guide] — (DocBook 5.0) by Norman Walsh, online book.
-- [DocBook Wiki] — (rebooted) on GitHub.
-- [Wikipedia » DocBook][WP DocBook]
-
-
-## DocBook XSL Stylesheets
-
-- [DocBook XSL: The Complete Guide] — (4th Edition) by Bob Stayton, online book.
-- [DocBook XSL Stylesheets: Reference Documentation] — by Norman Walsh, online book.
-- [Wikipedia » DocBook XSL][WP DocBook XSL]
-- https://github.com/docbook/xslt20-stylesheets
-- https://github.com/docbook/xslt10-stylesheets
-
-## XSLTHL — Syntax Highlighting
-
-- [XSLTHL]  (XSLT syntax highlighting) — at Sourceforge.
-- [XSLTHL Wiki] — at Sourceforge.
-
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
 
 [asciidoctor-fopub]: https://github.com/asciidoctor/asciidoctor-fopub
-
-<!-- DocBook -->
-
-[DocBook 5: The Definitive Guide]: https://tdg.docbook.org/tdg/5.0/docbook.html
-[DocBook Wiki]: https://github.com/docbook/wiki/wiki
-
-<!-- DocBook XSL Stylesheets: Reference Documentation -->
-
-[DocBook XSL Stylesheets: Reference Documentation]: http://docbook.sourceforge.net/release/xsl/current/doc/
-[highlight.source]: http://docbook.sourceforge.net/release/xsl/current/doc/fo/highlight.source.html
-
-<!-- Misc Info Resources -->
-
-[Schema Central » XSL-FO 1.1]: http://www.datypic.com/sc/fo11/s-fo.xsd.html
-[fo:border-style]: http://www.datypic.com/sc/fo11/t-fo_border-style.html
-
-<!-- XSLTHL -->
-
-[XSLTHL]: https://sourceforge.net/projects/xslthl/
-[XSLTHL Wiki]: https://sourceforge.net/p/xslthl/wiki/Home/
-[Syntax Highlighters]: https://sourceforge.net/p/xslthl/wiki/Syntax%20Highlighters/
-
-<!-- DocBook XSL: The Complete Guide -->
-
-[DocBook XSL: The Complete Guide]: http://www.sagehill.net/docbookxsl/index.html
-[Adding a font]: http://www.sagehill.net/docbookxsl/AddFont.html
-[Syntax highlighting]: http://www.sagehill.net/docbookxsl/SyntaxHighlighting.html
-
-<!-- Wikipedia -->
-
-[WP DocBook]: https://en.wikipedia.org/wiki/DocBook
-[WP DocBook XSL]: https://en.wikipedia.org/wiki/DocBook_XSL
-[WP XSLT]: https://en.wikipedia.org/wiki/XSLT
 
 
 <!-- EOF -->
