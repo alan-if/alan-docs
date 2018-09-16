@@ -435,8 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.57,</span>
-<span id="revdate">September 15, 2018</span>
+<span id="revnumber">version 0.1.58,</span>
+<span id="revdate">September 16, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -831,8 +831,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.57
-Last edited: September 15, 2018</pre>
+<pre>Doc version: 0.1.58
+Last edited: September 16, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -3558,20 +3558,20 @@ This lets the base classes do their initialisation before the initialisation of 
 <div class="paragraph">
 <p>The statements in the  <code>Description</code> clause should print a description of the instance.
 These statements are executed when the hero encounters the instance.
-Depending on from which base class the instance inherits this can be a location description presented when the hero enters the location or when executing a <code>Look</code> statement.
+Depending on which base class the instance inherits from, this can be a location description presented when the hero enters the location or when executing a <code>Look</code> statement.
 Other possibilities are descriptions of objects and actors.
 See <a href="#_instances">Sect. 3.6</a> for descriptions of what inheriting from the predefined base classes means.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The description should not change any game state since it might not always be executed depending on the settings of the <code>Visits</code>.
-In particular, the description of a location should not move the hero; this might lead to a recursive loop of descriptions.
+<p>The <code>Description</code> should not change any game state since it might not always be executed depending on the settings of <code>Visits</code>.
+In particular, the <code>Description</code> clause of a location should not move the hero; this might lead to a recursive loop of descriptions.
 This might instead be managed by the  <code>Entered</code> clause.</p>
 </div>
 </td>
@@ -3593,12 +3593,12 @@ This might instead be managed by the  <code>Entered</code> clause.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If the <code>Description</code> clause is missing for an instance (and no description is inherited), the Alan system will supply a default description such as &#8220;There is a round ball here.&#8221;.
+<p>If the <code>Description</code> clause is missing for an instance (and no <code>Description</code> is inherited), the Alan system will supply a default description such as &#8220;There is a round ball here.&#8221;.
 If there is a <code>Description</code> clause but it contains no statements, the object will be &#8216;invisible&#8217;, i.e. no description of it will be printed, not even a default one.
-This can be useful for objects already described by the location description, or of objects with particular properties.</p>
+This can be useful for objects already described by the location description, or for objects with particular properties.</p>
 </div>
 <div class="paragraph">
-<p>Here are some examples of simple description declarations</p>
+<p>Here are some examples of simple description declarations:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3621,10 +3621,10 @@ The door IsA object
 </div>
 </div>
 <div class="paragraph">
-<p>Before executing a description, you can check for various conditions to be met.
+<p>Before executing a <code>Description</code>, you can check for various conditions to be met.
 A common example is the dark room.
 If there is no light source present, the description should not be printed.
-The syntax for such a description is</p>
+The syntax for such a description is:</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -3635,7 +3635,7 @@ The syntax for such a description is</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can guard the description with a check in the same form as with verb bodies (see <a href="#_verb_checks">Sect. 3.10.3</a> for a detailed description of checks).
+<p>You can guard the description with a <code>Check</code> in the same form as with <code>Verb</code> bodies (see <a href="#_verb_checks">Sect. 3.10.3</a> for a detailed description of checks).
 Of course, there are no qualifiers possible here.
 To be able to separate the checks statement from the actual description statements the keyword <code>Does</code>  is required.
 This is an example of the checks for a dark location:</p>
@@ -3656,7 +3656,7 @@ This is because the checks and the actual description are inherited separately, 
 The actual descriptions are left for the instances.</p>
 </div>
 <div class="paragraph">
-<p>If multiple description checks are available in the inheritance chain, they are all tested and must be met before any description is attempted.
+<p>If multiple <code>Description Check</code>s are available in the inheritance chain, they are all tested and must be met before any description is attempted.
 So the inheritance of description checks is &#8220;additive&#8221;.</p>
 </div>
 <div class="paragraph">
@@ -3668,11 +3668,11 @@ See <a href="#_locations"><em>Locations</em></a> below for a description of the 
 <div class="paragraph">
 <p>If neither a check nor any description statements occur after the keyword <code>Description</code> this <em>is</em> a description, but it is empty.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -3707,7 +3707,7 @@ article_or_form = 'ARTICLE' {statement}
 </div>
 </div>
 <div class="paragraph">
-<p>The optional definite, indefinite and negative articles and forms can be used to define how an instance is printed in its indefinite, definite and negative forms.
+<p>The optional <code>Definite</code>, <code>Indefinite</code> and <code>Negative</code> <code>Article</code>s and <code>Form</code>s can be used to define how an instance is printed in its indefinite, definite and negative forms.
 There are two cases for each form, either as an article prepended to the short display form of the instance (its names or <code>Mentioned</code> clause), or a complete form replacing the normal name printing.</p>
 </div>
 <div class="paragraph">
@@ -3752,20 +3752,20 @@ You may override this by using an <code>Add</code> statement.</p>
 <div class="sect4">
 <h5 id="_articles">Articles</h5>
 <div class="paragraph">
-<p>Printing the indefinite (or definite or negative) form of an instance having an indefinite (or definite or negative) article is simply performed by executing the article statements and then the normal printing of the instance, usually the first set of names.</p>
+<p>Printing the indefinite (or definite or negative) form of an instance having an indefinite (or definite or negative) article is simply performed by executing the <code>Article</code> statements and then the normal printing of the instance, usually the first set of names.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">The owl IsA object
+<pre class="highlight"><code class="language-alan" data-lang="alan">The owl `IsA` object
   Indefinite Article "an"
-:</code></pre>
+  ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This results in output like</p>
+<p>This results in output like:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -3787,17 +3787,17 @@ You are carrying an owl.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For instances that should not have any article at all, like &#8216;some money&#8217;, or &#8216;mr Andersson&#8217;, an <code>Indefinite Article</code> clause containing no statements must be used:</p>
+<p>For instances that should not have any article at all, like &#8216;some money&#8217; or &#8216;Mr Andersson&#8217;, an <code>Indefinite Article</code> clause containing no statements must be used:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-alan" data-lang="alan">The money Name some money
   Article
-:</code></pre>
+  ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Instead of</p>
+<p>Instead of:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -3807,7 +3807,7 @@ You are carrying an owl.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This will lead to the expected:</p>
+<p>This will produce the expected:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -3869,22 +3869,22 @@ Instead, the <code>Mentioned</code> clause can print a different short name depe
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; take all<br>
+<p>&gt; <em>take all</em><br>
 (little black book) OK!<br>
 (green pearl) OK!<br>
 (broken mirror) OK!</p>
 </div>
 </div>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>A mention clause declared on a class will override the names of any instance that inherits from it.</p>
+<p>A <code>Mentioned</code> clause declared on a class will override the names of any instance that inherits from it.</p>
 </div>
 </td>
 </tr>
@@ -3964,7 +3964,7 @@ End The drawer.</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If you want to hide the content of a container, you have to take care so that a <code>List</code> statement is not executed while the container is opaque since this will reveal the content.
+<p>If you want to hide the content of a container, you have to take care so that a <code>List</code> statement is not executed while the container is opaque since this will reveal its contents.
 You can check the state of the <code>opaque</code> attribute like any other Boolean attribute.</p>
 </div>
 </td>
@@ -3990,13 +3990,13 @@ The predefined <code>opaque</code> attribute is only available in instances and 
 </table>
 </div>
 <div class="paragraph">
-<p>When an instance with the container property is encountered during game play, it will be described as usual.
-If the instance has a default description the content of the container will be listed if it is not empty and not opaque.</p>
+<p>When an instance with the <code>Container</code> property is encountered during game play, it will be described as usual.
+If the instance has a default description the contents of the container will be listed if it is not empty and not opaque.</p>
 </div>
 <div class="sect4">
 <h5 id="_limits">Limits</h5>
 <div class="paragraph">
-<p>The  <code>Limits</code> clause of the container property declaration put limitations on what and how much can be put in the container.</p>
+<p>The  <code>Limits</code> clause of the <code>Container</code> property declaration put limitations on what and how much can be put in the container.</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -4012,12 +4012,12 @@ limiting_attribute = attribute_definition
 </div>
 </div>
 <div class="paragraph">
-<p>If any of these limits are exceeded when trying to locate anything inside the container, the statements in the corresponding <code>Else</code>-part will be executed and the players turn aborted.
+<p>If any of these limits are exceeded when trying to locate anything inside the container, the statements in the corresponding <code>Else</code> part will be executed and the players turn aborted.
 In fact, these checks are performed because of the execution of a  <code>Locate</code> statement (usually as a result of the player issuing a command with the intent of placing something in a container).
 This means that the execution of a sequence of statements can actually be interrupted in the middle by these limitations.</p>
 </div>
 <div class="paragraph">
-<p>The specification of an attribute, which must be a numeric attribute on the class the container takes (by default object), implies that the sum of this attribute of all objects in the container cannot exceed the value specified.
+<p>The specification of an attribute, which must be a numeric attribute on the class the container takes (by default <code>object</code>), implies that the sum of this attribute of all objects in the container cannot exceed the value specified.
 The special attribute <code>Count</code>  can be also be used and indicates a limitation on the number of instances allowed.</p>
 </div>
 <div class="listingblock">
@@ -4044,7 +4044,7 @@ This might differ from the number of instances listed e.g. if the container take
 </table>
 </div>
 <div class="paragraph">
-<p>Container properties are inherited in its entirety.
+<p><code>Container</code> properties are inherited in its entirety.
 Locations can&#8217;t have container properties.</p>
 </div>
 </div>
@@ -4062,7 +4062,7 @@ empty = 'ELSE' {statement}</code></pre>
 </div>
 <div class="paragraph">
 <p><code>Header</code> is used when the contents of the container is listed.
-It is intended to produce something like</p>
+It is intended to produce something like:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -4072,7 +4072,7 @@ It is intended to produce something like</p>
 </div>
 </div>
 <div class="paragraph">
-<p>or</p>
+<p>or:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -4085,10 +4085,10 @@ It is intended to produce something like</p>
 <p>It is followed by a list of instances mentioned. <a href="#_mentioned">Sect. 3.7.8.4</a> describes this listing.</p>
 </div>
 <div class="paragraph">
-<p>The <code>Else</code>-part is used instead of the header if the container is empty.</p>
+<p>The <code>Else</code> part is used instead of the <code>Header</code> if the container is empty.</p>
 </div>
 <div class="paragraph">
-<p>If <code>Limits</code> or <code>Header</code> is missing, the Alan system supplies the default of no limits, and the messages output will be equivalent with</p>
+<p>If <code>Limits</code> or <code>Header</code> is missing, the Alan system supplies the default of no limits, and the messages output will be equivalent with:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4119,15 +4119,15 @@ The extraction will be subject to the restrictions enforced by the <code>Extract
 </div>
 </div>
 <div class="paragraph">
-<p>The extract clause, including optional <code>Check</code> and <code>Does</code> clauses, allows prohibiting the extraction of the item from the container depending on some condition.
+<p>The <code>Extract</code> clause, including optional <code>Check</code> and <code>Does</code> clauses, allows prohibiting the extraction of the item from the container depending on some condition.
 If the <code>Check</code> is present, it works the same way as for <code>Verb</code>s (see <a href="#_verb_checks">Sect. 3.10.3</a>).
 I.e. a <code>Check</code> without a guard expression will unconditionally prohibit extractions; a <code>Check</code> with an expression will evaluate that expression and, if false, execute its <code>Else</code> clause, and then abort the move.
 The <code>Does</code> clause will be executed if the optional <code>Check</code> passes, or there was no <code>Check</code>.</p>
 </div>
 <div class="paragraph">
-<p>An <code>Extract</code> clause without a <code>Check</code>, but with a <code>Does</code>-clause, executes the Does-clause and then allows the extraction to take place.
-So, in a way, Checks, if triggered, prevents the extraction, and the <code>Does</code>-clause amends to it, being an extensions of the normal case, much like the <code>Check</code> and <code>Does</code>-clauses for Verbs (see <a href="#_verbs">Sect. 3.7.10</a>).
-The second form of the clause, with just the statements, is equivalent to an <code>Extract</code> with only a <code>Does</code>-clause.</p>
+<p>An <code>Extract</code> clause without a <code>Check</code>, but with a <code>Does</code> clause, executes the <code>Does</code> clause and then allows the extraction to take place.
+So, in a way, <code>Check</code>s, if triggered, prevents the extraction, and the <code>Does</code> clause amends to it, being an extensions of the normal case, much like the <code>Check</code> and <code>Does</code> clauses for <code>Verb</code>s (see <a href="#_verbs">Sect. 3.7.10</a>).
+The second form of the clause, with just the statements, is equivalent to an <code>Extract</code> with only a <code>Does</code> clause.</p>
 </div>
 <div class="paragraph">
 <p>An example use of the <code>Extract</code> clause is to prohibit, put restrictions on, or modify the behaviour when the hero attempts to take things carried by another actor.</p>
@@ -4156,7 +4156,7 @@ End The waiter.</code></pre>
 <div class="sect3">
 <h4 id="_verbs">Verbs</h4>
 <div class="paragraph">
-<p>Verbs declared inside an class or instance are inherited in the same way as other properties.
+<p><code>Verb</code>s declared inside an class or instance are inherited in the same way as other properties.
 See <a href="#_verbs">Sect. 3.7.10</a> for a description on how to declare verbs.</p>
 </div>
 <div class="paragraph">
@@ -4181,10 +4181,10 @@ Game state changes can be made without restriction.</p>
 </div>
 <div class="paragraph">
 <p>However, the <code>Entered</code> clause is primarily intended for setting up the location in a correct way, not for describing events, actions and states changes.
-For this the <code>Description</code>-clause is recommended.</p>
+For this the <code>Description</code> clause is recommended.</p>
 </div>
 <div class="paragraph">
-<p>The <code>Entered</code> clause can also be used to restrict the movements of actors other than the <code>Hero</code>. (The hero&#8217;s travels are controlled by exit checks as described in <a href="#_exits"><em>Exits</em></a>).</p>
+<p>The <code>Entered</code> clause can also be used to restrict the movements of actors other than the <code>Hero</code>. (The hero&#8217;s travels are controlled by <code>Exit</code> checks as described in <a href="#_exits"><em>Exits</em></a>).</p>
 </div>
 <div class="paragraph">
 <p>If some of the statements should only apply to a particular actor, it is possible to test for the <code>Current Actor</code> with a simple <code>If</code> statement.</p>
@@ -4241,8 +4241,8 @@ The order of execution is explained by the following table:</p>
 </table>
 <div class="paragraph">
 <p>This means that the first <code>Entered</code> clause to be executed is the clause in the base class of the outermost location, if any, then moving down the inheritance of the outermost.
-After that any parent classes for any intermediate locations are considered in the same way.
-Finally running any <code>Entered</code> clauses in the parents of the new location, ending with the clause in the location itself.</p>
+After that, any parent classes for any intermediate locations are considered in the same way.
+Finally, running any <code>Entered</code> clauses in the parents of the new location, ending with the clause in the location itself.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4268,7 +4268,7 @@ The actor will be at the location when the clause starts to execute.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If it is the Hero that is moving, the <code>Description</code>, including the normal header containing the location name, of the new location will be executed <em>directly after</em> the <code>Entered</code> clause.</p>
+<p>If it is the hero that is moving, the <code>Description</code>, including the normal header containing the location name, of the new location will be executed <em>directly after</em> the <code>Entered</code> clause.</p>
 </div>
 </td>
 </tr>
@@ -4279,8 +4279,8 @@ The actor will be at the location when the clause starts to execute.</p>
 <h4 id="_exits">Exits</h4>
 <div class="paragraph">
 <p>To build a traversable world of locations, they must be connected.
-This is done using exits.
-The syntax for an exit declaration is</p>
+This is done using <code>Exit</code>s.
+The syntax for an <code>Exit</code> declaration is:</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -4302,7 +4302,7 @@ The checks work as described in <a href="#_verb_checks"><em>Verb Checks</em></a>
 <p>If either of the <code>Check</code> or <code>Does</code> clauses is present, the <code>End Exit</code> is required.</p>
 </div>
 <div class="paragraph">
-<p>Two interconnected locations might be declared like:</p>
+<p>Two interconnected locations might be declared like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4358,10 +4358,10 @@ In a way, it corresponds to what the hero is ordered to do by the player&#8217;s
 <div class="paragraph">
 <p>Every script has an identifier (the <strong>id</strong>) to identify it.
 A script is selected by the  <code>Use</code> statement.
-When an actor is started following a script, it will continue with one step after the other, with all the other actors, including the hero, taking turns.</p>
+When an actor starts following a script, it will continue with one step after the other, with all the other actors, including the hero, taking turns.</p>
 </div>
 <div class="paragraph">
-<p>The optional description  allowed in the beginning of a script is used instead of the general description (from the instance declaration) whenever the actor is executing that particular script.
+<p>The optional <code>Description</code>  allowed in the beginning of a script is used instead of the general description (from the instance declaration) whenever the actor is executing that particular script.
 If it is not present, the general description is used.</p>
 </div>
 <div class="listingblock">
@@ -4377,11 +4377,11 @@ If it is not present, the general description is used.</p>
     Description
       "George Formby is tuning his ukelele."
     Step ...
-:</code></pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>An actor continues executing its script until</p>
+<p>An actor continues executing its script until:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4408,8 +4408,8 @@ If it is not present, the general description is used.</p>
 <td class="content">
 <div class="paragraph">
 <p>There are a few things that might fail when an actor executes.
-One example is an extract, which means that something is removed from a container.
-As container may define extract checks that action might be prevented.
+One example is an <code>Extract</code>, which means that something is removed from a container.
+As containers may define <code>Extract Check</code>s that action might be prevented.
 This means of course that that step is aborted, but also that the actor is automatically stopped, so no further steps from the script will be run.
 The author is responsible for handling this, e.g. by using rules to ensure that the condition is detected and handled correctly.</p>
 </div>
@@ -12588,8 +12588,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.57<br>
-Last updated 2018-09-15 20:24:33 ora legale Europa occidentale
+Version 0.1.58<br>
+Last updated 2018-09-16 10:07:08 ora legale Europa occidentale
 </div>
 </div>
 </body>

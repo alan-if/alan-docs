@@ -1273,22 +1273,21 @@ If the `Initialize` clause is inherited it will accumulate all clauses with clau
 This lets the base classes do their initialisation before the initialisation of the more specialized, class or instance is performed.
 
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 === Description
 
 The statements in the (((DESCRIPTION, clause))) `Description` clause should print a description of the instance.
 These statements are executed when the hero encounters the instance.
-Depending on from which base class the instance inherits this can be a location description presented when the hero enters the location or when executing a `Look` statement.
+Depending on which base class the instance inherits from, this can be a location description presented when the hero enters the location or when executing a `Look` statement.
 Other possibilities are descriptions of objects and actors.
 See <<Instances>> for descriptions of what inheriting from the predefined base classes means.
 
 
-[NOTE]
+[WARNING]
 ================================================================================
-The description should not change any game state since it might not always be executed depending on the settings of the `Visits`.
-In particular, the description of a location should not move the hero; this might lead to a recursive loop of descriptions.
+The `Description` should not change any game state since it might not always be executed depending on the settings of `Visits`.
+In particular, the `Description` clause of a location should not move the hero; this might lead to a recursive loop of descriptions.
 This might instead be managed by the (((ENTERED, clause))) `Entered` clause.
 ================================================================================
 
@@ -1304,11 +1303,11 @@ The syntax for simple descriptions is:
 description = 'DESCRIPTION' {statement}
 --------------------------------------------------------------------------------
 
-If the `Description` clause is missing for an instance (and no description is inherited), the Alan system will supply a default description such as "`There is a round ball here.`".
+If the `Description` clause is missing for an instance (and no `Description` is inherited), the Alan system will supply a default description such as "`There is a round ball here.`".
 If there is a `Description` clause but it contains no statements, the object will be '`invisible`', i.e. no description of it will be printed, not even a default one.
-This can be useful for objects already described by the location description, or of objects with particular properties.
+This can be useful for objects already described by the location description, or for objects with particular properties.
 
-Here are some examples of simple description declarations
+Here are some examples of simple description declarations:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1330,10 +1329,10 @@ The door IsA object
   ...
 --------------------------------------------------------------------------------
 
-Before executing a description, you can check for various conditions to be met.
+Before executing a `Description`, you can check for various conditions to be met.
 A common example is the dark room.
 If there is no light source present, the description should not be printed.
-The syntax for such a description is
+The syntax for such a description is:
 
 
 (((BNF, rules of, DESCRIPTION)))
@@ -1342,10 +1341,14 @@ The syntax for such a description is
 description = 'DESCRIPTION' [checks] [does]
 --------------------------------------------------------------------------------
 
-You can guard the description with a check in the same form as with verb bodies (see <<Verb Checks>> for a detailed description of checks).
+You can guard the description with a `Check` in the same form as with `Verb` bodies (see <<Verb Checks>> for a detailed description of checks).
 Of course, there are no qualifiers possible here.
 To be able to separate the checks statement from the actual description statements the keyword `Does` (((DOES, in descriptions))) is required.
 This is an example of the checks for a dark location:
+
+// @NOTE: The above paragraph mentions using DOES, but the followin example doesn't
+//        include a DOES!!! Although it explains why, in the next paragraph, it
+//        would stille be better to provide a full example!
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1364,7 +1367,7 @@ Note that it does not specify any description statements.
 This is because the checks and the actual description are inherited separately, as described in <<table-of-properties-inheritance>>.
 The actual descriptions are left for the instances.
 
-If multiple description checks are available in the inheritance chain, they are all tested and must be met before any description is attempted.
+If multiple ``Description Check``s are available in the inheritance chain, they are all tested and must be met before any description is attempted.
 So the inheritance of description checks is "`additive`".
 
 If any check fails, the description will not be executed.
@@ -1375,7 +1378,7 @@ See <<Locations,_Locations_>> below for a description of the default description
 If neither a check nor any description statements occur after the keyword `Description` this _is_ a description, but it is empty.
 
 
-[NOTE]
+[WARNING]
 ================================================================================
 You should _not_ put statements that changes game state in the `Description` clause.
 Descriptions can be executed in various circumstances that the game author has no control over.
@@ -1404,7 +1407,7 @@ article_or_form = 'ARTICLE' {statement}
                 | 'FORM' {statement}
 --------------------------------------------------------------------------------
 
-The optional definite, indefinite and negative ((articles)) and forms can be used to define how an instance is printed in its indefinite, definite and negative forms.
+The optional `Definite`, `Indefinite` and `Negative` ((``Article``s)) and ``Form``s can be used to define how an instance is printed in its indefinite, definite and negative forms.
 There are two cases for each form, either as an article prepended to the short display form of the instance (its names or `Mentioned` clause), or a complete form replacing the normal name printing.
 
 Indefinite forms are used in e.g. inventory listings and when presenting instances that have no `Description` clause.
@@ -1442,19 +1445,19 @@ You may override this by using an `Add` statement.
 
 ==== Articles
 
-Printing the indefinite (or definite or negative) form of an instance having an indefinite (or definite or negative) article is simply performed by executing the article statements and then the normal printing of the instance, usually the first set of names.
+Printing the indefinite (or definite or negative) form of an instance having an indefinite (or definite or negative) article is simply performed by executing the `Article` statements and then the normal printing of the instance, usually the first set of names.
 
 For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-The owl IsA object
+The owl `IsA` object
   Indefinite Article "an"
-:
+  ...
 --------------------------------------------------------------------------------
 
 
-This results in output like
+This results in output like:
 
 
 [example,role="gametranscript"]
@@ -1478,16 +1481,16 @@ An article is not used when the instance is displayed when acting on multiple ob
 
 
 
-For instances that should not have any article at all, like '`some money`', or '`mr Andersson`', an `Indefinite Article` clause containing no statements must be used:
+For instances that should not have any article at all, like '`some money`' or '`Mr Andersson`', an `Indefinite Article` clause containing no statements must be used:
 
 [source,alan]
 --------------------------------------------------------------------------------
 The money Name some money
   Article
-:
+  ...
 --------------------------------------------------------------------------------
 
-Instead of
+Instead of:
 
 
 [example,role="gametranscript"]
@@ -1498,7 +1501,7 @@ There is a some money here.
 
 
 
-This will lead to the expected:
+This will produce the expected:
 
 
 [example,role="gametranscript"]
@@ -1525,6 +1528,7 @@ That means that an instance may override its inherited form using either of the 
 
 
 ==== Printing
+
 
 You can use various forms of the `Say` statement (see <<Say Statement>>) to choose in which form the instance will be presented.
 In addition, the embedded parameter references allow selection of the form (<<String Statement>>).
@@ -1559,7 +1563,7 @@ Mentioned
 
 [example,role="gametranscript"]
 ================================================================================
-&gt; take all +
+&gt; _take all_ +
 (little black book) OK! +
 (green pearl) OK! +
 (broken mirror) OK!
@@ -1569,9 +1573,9 @@ Mentioned
 
 
 
-[NOTE]
+[IMPORTANT]
 ================================================================================
-A mention clause declared on a class will override the names of any instance that inherits from it.
+A `Mentioned` clause declared on a class will override the names of any instance that inherits from it.
 ================================================================================
 
 
@@ -1641,7 +1645,7 @@ End The drawer.
 
 [NOTE]
 ================================================================================
-If you want to hide the content of a container, you have to take care so that a `List` statement is not executed while the container is opaque since this will reveal the content.
+If you want to hide the content of a container, you have to take care so that a `List` statement is not executed while the container is opaque since this will reveal its contents.
 You can check the state of the `opaque` attribute like any other Boolean attribute.
 ================================================================================
 
@@ -1657,14 +1661,14 @@ The predefined `opaque` attribute is only available in instances and classes hav
 
 
 
-When an instance with the container property is encountered during game play, it will be described as usual.
-If the instance has a default description the content of the container will be listed if it is not empty and not opaque.
+When an instance with the `Container` property is encountered during game play, it will be described as usual.
+If the instance has a default description the contents of the container will be listed if it is not empty and not opaque.
 
 
 
 ==== Limits
 
-The (((LIMITS, clause))) `Limits` clause of the container property declaration put limitations on what and how much can be put in the container.
+The (((LIMITS, clause))) `Limits` clause of the `Container` property declaration put limitations on what and how much can be put in the container.
 
 (((BNF, rules of, LIMITS)))
 [source,ebnf]
@@ -1679,11 +1683,11 @@ limiting_attribute = attribute_definition
 
 
 
-If any of these limits are exceeded when trying to locate anything inside the container, the statements in the corresponding `Else`-part will be executed and the players turn aborted.
+If any of these limits are exceeded when trying to locate anything inside the container, the statements in the corresponding `Else` part will be executed and the players turn aborted.
 In fact, these checks are performed because of the execution of a (((locating inside containers))) `Locate` statement (usually as a result of the player issuing a command with the intent of placing something in a container).
 This means that the execution of a sequence of statements can actually be interrupted in the middle by these limitations.
 
-The specification of an attribute, which must be a numeric attribute on the class the container takes (by default object), implies that the sum of this attribute of all objects in the container cannot exceed the value specified.
+The specification of an attribute, which must be a numeric attribute on the class the container takes (by default `object`), implies that the sum of this attribute of all objects in the container cannot exceed the value specified.
 The special attribute `Count` (((COUNT, in LIMITS))) can be also be used and indicates a limitation on the number of instances allowed.
 
 [source,alan]
@@ -1704,7 +1708,7 @@ This might differ from the number of instances listed e.g. if the container take
 
 
 
-Container properties are inherited in its entirety.
+`Container` properties are inherited in its entirety.
 Locations can't have container properties.
 
 
@@ -1721,7 +1725,7 @@ empty = 'ELSE' {statement}
 
 
 `Header` is used when the contents of the container is listed.
-It is intended to produce something like
+It is intended to produce something like:
 
 
 [example,role="gametranscript"]
@@ -1730,8 +1734,7 @@ It is intended to produce something like
 ================================================================================
 
 
-
-or
+or:
 
 [example,role="gametranscript"]
 ================================================================================
@@ -1739,13 +1742,11 @@ or
 ================================================================================
 
 
-
-
 It is followed by a list of instances mentioned. <<Mentioned>> describes this listing.
 
-The `Else`-part is used instead of the header if the container is empty.
+The `Else` part is used instead of the `Header` if the container is empty.
 
-If `Limits` or `Header` is missing, the Alan system supplies the default of no limits, and the messages output will be equivalent with
+If `Limits` or `Header` is missing, the Alan system supplies the default of no limits, and the messages output will be equivalent with:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1773,14 +1774,14 @@ extract = 'EXTRACT' [check] [does]
 --------------------------------------------------------------------------------
 
 
-The extract clause, including optional `Check` and `Does` clauses, allows prohibiting the extraction of the item from the container depending on some condition.
+The `Extract` clause, including optional `Check` and `Does` clauses, allows prohibiting the extraction of the item from the container depending on some condition.
 If the `Check` is present, it works the same way as for ``Verb``s (see <<Verb Checks>>).
 I.e. a `Check` without a guard expression will unconditionally prohibit extractions; a `Check` with an expression will evaluate that expression and, if false, execute its `Else` clause, and then abort the move.
 The `Does` clause will be executed if the optional `Check` passes, or there was no `Check`.
 
-An `Extract` clause without a `Check`, but with a `Does`-clause, executes the Does-clause and then allows the extraction to take place.
-So, in a way, Checks, if triggered, prevents the extraction, and the `Does`-clause amends to it, being an extensions of the normal case, much like the `Check` and `Does`-clauses for Verbs (see <<Verbs>>).
-The second form of the clause, with just the statements, is equivalent to an `Extract` with only a `Does`-clause.
+An `Extract` clause without a `Check`, but with a `Does` clause, executes the `Does` clause and then allows the extraction to take place.
+So, in a way, ``Check``s, if triggered, prevents the extraction, and the `Does` clause amends to it, being an extensions of the normal case, much like the `Check` and `Does` clauses for ``Verb``s (see <<Verbs>>).
+The second form of the clause, with just the statements, is equivalent to an `Extract` with only a `Does` clause.
 
 An example use of the `Extract` clause is to prohibit, put restrictions on, or modify the behaviour when the hero attempts to take things carried by another actor.
 
@@ -1809,7 +1810,7 @@ End The waiter.
 
 === Verbs
 
-Verbs declared inside an class or instance are inherited in the same way as other properties.
+``Verb``s declared inside an class or instance are inherited in the same way as other properties.
 See <<Verbs>> for a description on how to declare verbs.
 
 The verbs in a class or instance will only be a candidate for execution if the instance bound to a parameter is of the corresponding class, or is the instance.
@@ -1830,9 +1831,9 @@ This clause will be executed whenever any actor enters the location.
 Game state changes can be made without restriction.
 
 However, the `Entered` clause is primarily intended for setting up the location in a correct way, not for describing events, actions and states changes.
-For this the `Description`-clause is recommended.
+For this the `Description` clause is recommended.
 
-The `Entered` clause can also be used to restrict the movements of actors other than the `Hero`. (The hero's travels are controlled by exit checks as described in <<Exits,_Exits_>>).
+The `Entered` clause can also be used to restrict the movements of actors other than the `Hero`. (The hero's travels are controlled by `Exit` checks as described in <<Exits,_Exits_>>).
 
 If some of the statements should only apply to a particular actor, it is possible to test for the `Current Actor` with a simple `If` statement.
 
@@ -1854,8 +1855,8 @@ The order of execution is explained by the following table:
 |===============================================================================
 
 This means that the first `Entered` clause to be executed is the clause in the base class of the outermost location, if any, then moving down the inheritance of the outermost.
-After that any parent classes for any intermediate locations are considered in the same way.
-Finally running any `Entered` clauses in the parents of the new location, ending with the clause in the location itself.
+After that, any parent classes for any intermediate locations are considered in the same way.
+Finally, running any `Entered` clauses in the parents of the new location, ending with the clause in the location itself.
 
 
 [NOTE]
@@ -1869,7 +1870,7 @@ The actor will be at the location when the clause starts to execute.
 
 [NOTE]
 ================================================================================
-If it is the Hero that is moving, the `Description`, including the normal header containing the location name, of the new location will be executed _directly after_ the `Entered` clause.
+If it is the hero that is moving, the `Description`, including the normal header containing the location name, of the new location will be executed _directly after_ the `Entered` clause.
 ================================================================================
 
 
@@ -1878,8 +1879,8 @@ If it is the Hero that is moving, the `Description`, including the normal header
 === Exits
 
 To build a traversable world of locations, they must be connected.
-This is done using exits.
-The syntax for an exit declaration is
+This is done using ``Exit``s.
+The syntax for an `Exit` declaration is:
 
 (((BNF, rules of, EXIT)))
 [source,ebnf]
@@ -1896,7 +1897,7 @@ The checks work as described in <<Verb Checks,_Verb Checks_>>.
 
 If either of the `Check` or `Does` clauses is present, the `End Exit` is required.
 
-Two interconnected locations might be declared like:
+Two interconnected locations might be declared like this:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1943,9 +1944,9 @@ script = 'SCRIPT' id ['.'] [description] {step}
 
 Every script has an identifier (the *id*) to identify it.
 A script is selected by the (((USE, statement))) `Use` statement.
-When an actor is started following a script, it will continue with one step after the other, with all the other actors, including the hero, taking turns.
+When an actor starts following a script, it will continue with one step after the other, with all the other actors, including the hero, taking turns.
 
-The optional description (((DESCRIPTION, of ACTOR scripts))) allowed in the beginning of a script is used instead of the general description (from the instance declaration) whenever the actor is executing that particular script.
+The optional `Description` (((DESCRIPTION, of ACTOR scripts))) allowed in the beginning of a script is used instead of the general description (from the instance declaration) whenever the actor is executing that particular script.
 If it is not present, the general description is used.
 
 [source,alan]
@@ -1961,12 +1962,12 @@ Actor george
     Description
       "George Formby is tuning his ukelele."
     Step ...
-:
+...
 --------------------------------------------------------------------------------
 
 
 
-An actor continues executing its script until
+An actor continues executing its script until:
 
 * it reaches the end
 * another `Use` statement is executed for that actor
@@ -1977,8 +1978,8 @@ An actor continues executing its script until
 [NOTE]
 ================================================================================
 There are a few things that might fail when an actor executes.
-One example is an extract, which means that something is removed from a container.
-As container may define extract checks that action might be prevented.
+One example is an `Extract`, which means that something is removed from a container.
+As containers may define ``Extract Check``s that action might be prevented.
 This means of course that that step is aborted, but also that the actor is automatically stopped, so no further steps from the script will be run.
 The author is responsible for handling this, e.g. by using rules to ensure that the condition is detected and handled correctly.
 ================================================================================
@@ -1986,6 +1987,13 @@ The author is responsible for handling this, e.g. by using rules to ensure that 
 
 
 ==== Steps
+
+
+// @FIXME: Fix "... be executed immediately next move, ", looks like something
+//         went lost. Could be either:
+//            "be executed immediately, after the next move,"
+//            "be executed immediately, at the next move,"
+
 
 A script is divided into steps.
 Each (((STEP))) `Step` contains statements representing what the actor will do in what corresponds to one player move.
@@ -2018,6 +2026,7 @@ When an actor has executed the last step (((STEP, executing the last))) of the c
 If this is not what you wanted, you can end each script with a new `Use` statement.
 
 
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 == Additions
 
