@@ -292,8 +292,8 @@ You are outside your grandma's house.
 Later in the manual, you will find semi-formal definitions, grammar rules, for how various constructs may be constructed.
 These sections are typeset against a coloured background:
 
-// @FIXME: This block needs to be styled like EBNF code, but without syntax highlighting!
-[source,ebnf,subs="normal"]
+// @FIXME: This block needs to be styled like BNF code, but without syntax highlighting!
+[source,bnf,subs="normal"]
 --------------------------------------------------------------------------------
 The rules for the rules are available in <<Language Grammar>>.
 --------------------------------------------------------------------------------

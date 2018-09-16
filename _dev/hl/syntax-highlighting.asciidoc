@@ -1,6 +1,6 @@
 = Syntax Highlighting in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v1.3, September 15, 2018: Code styling previews
+v1.4, September 16, 2018: Code styling previews
 :version-label: v
 :authorinitials: T.J.A.
 // =====================
@@ -56,7 +56,7 @@ include::snippets.alan[tag=sample]
 
 === BNF
 
-[source,ebnf,subs="macros"]
+[source,bnf,subs="macros"]
 --------------------------------------------------------------------------------
 class = 'EVERY' id
             [inheritance]
@@ -196,7 +196,7 @@ End The.
 Currently, BNF blocks are not being syntax highlighted but implementing a syntax definition would be very easy.
 
 
-[source,ebnf]
+[source,bnf]
 --------------------------------------------------------------------------------
 attribute_declaration = id
                       | 'NOT' id
@@ -207,7 +207,7 @@ attribute_declaration = id
 --------------------------------------------------------------------------------
 
 
-[source,ebnf]
+[source,bnf]
 --------------------------------------------------------------------------------
 forms = indefinite | definite | negative
 

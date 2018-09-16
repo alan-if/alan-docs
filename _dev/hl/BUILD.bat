@@ -14,7 +14,7 @@ ECHO ===========================================================================
 SET "ADocOPTS=-b docbook"
 CALL :AdocConv
 CALL fopub^
-  -t ..\..\manual\manual-xsl^
+  -t ..\..\_assets\xsl-fopub^
   syntax-highlighting.xml
 
 EXIT /B

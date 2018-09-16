@@ -30,7 +30,7 @@ Identifiers (((identifier, lexical definition))) may only be composed of letters
 The first character must be a letter.
 
 (((BNF, rules of, identifier)))
-[source,ebnf]
+[source,bnf]
 --------------------------------------------------------------------------------
 identifier = letter {letter | digit | underscore}
 --------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ There is also a second kind of identifier, namely the quoted identifier.
 
 (((BNF, rules of, quoted identifier)))
 (((BNF, rules of, identifier, quoted)))
-[source,ebnf]
+[source,bnf]
 --------------------------------------------------------------------------------
 id = identifier
    | quoted_identifier
@@ -134,7 +134,7 @@ If these contain special characters, the player cannot enter them.
 Numbers in Alan are only integers and thus may consist only of digits.
 
 (((BNF, rules of, numbers)))
-[source,ebnf]
+[source,bnf]
 --------------------------------------------------------------------------------
 number = digit {digit}
 --------------------------------------------------------------------------------
@@ -150,7 +150,7 @@ Strings, therefore, are easy to enter and consist simply of a pair of double quo
 The text may include newline characters and thus may cover multiple lines in the source.
 
 (((BNF, rules of, strings)))
-[source,ebnf]
+[source,bnf]
 --------------------------------------------------------------------------------
 string = double_quote {any_character} double_quote
 --------------------------------------------------------------------------------
@@ -185,7 +185,7 @@ The method for this is the `import` statement.
 
 (((BNF, rules of, IMPORT)))
 (((BNF, rules of, filenames)))
-[source,ebnf]
+[source,bnf]
 --------------------------------------------------------------------------------
 import = 'IMPORT' quoted_identifier '.'
 --------------------------------------------------------------------------------

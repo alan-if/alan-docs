@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "fo-pdf.xsl" v0.1.4 (2018/09/15)
+  "fo-pdf.xsl" v0.1.5 (2018/09/16)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -293,7 +293,7 @@ PARAGRAPHS WITH COMMENTARY ROLE (indented left)
           <xsl:value-of select="$AlanHL.background"/>
         </xsl:when>
         <!-- BNF: Orange BG ( almost black ) -->
-        <xsl:when test="@language = 'ebnf'">
+        <xsl:when test="@language = 'bnf'">
           <xsl:text>#FFCC99</xsl:text>
         </xsl:when>
         <xsl:otherwise>

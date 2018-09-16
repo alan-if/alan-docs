@@ -2,8 +2,8 @@
                                Misc Find RegExs                               
 //////////////////////////////////////////////////////////////////////////////
 
-[source,ebnf]
-[source,ebnf,subs="macros"]
+[source,bnf]
+[source,bnf,subs="macros"]
 
 ==============================================================================
                       "One Sentence Per Line" Splitting                       

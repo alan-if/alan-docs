@@ -27,7 +27,7 @@ For example, a rule might say that an *ADVENTURE* (in this case an Alan program)
 This grammar rule would look like:
 
 (((BNF, rules of, adventure)))
-[source,ebnf]
+[source,bnf]
 --------------------------------------------------------------------------------
 adventure = [options] {declaration} start_section
 --------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ So the rule might be read as "`an adventure consists of *options* which are opti
 If the item to the left of the equal sign may be defined in multiple ways, the alternatives are divided by a vertical bar (`|`).
 For example:
 
-[source,ebnf]
+[source,bnf]
 --------------------------------------------------------------------------------
 declaration = messages
             | class
