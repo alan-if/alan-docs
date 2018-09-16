@@ -58,6 +58,7 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 
 - [`/_assets/`](./_assets/) (shared assets):
     + [`/images/`](./_assets/images/)
+    + [`/xsl-fopub/`](./_assets/xsl-fopub/) — XSL Stylesheets for PDF conversion via asciidoctor-fopub.
 - [`/_assets-src/`](./_assets-src/) (assets' source files):
     + [`/images/`](./_assets-src/images/):
         * [`/alan-logo/`](./_assets-src/images/alan-logo/) — Alan logo reconstructed as vector image.

@@ -25,10 +25,10 @@ Links to the converted _Alan Manual_:
 - [Folder Contents](#folder-contents)
     - [Manual Source Files](#manual-source-files)
         - [Scripts Sources](#scripts-sources)
-    - [DocBook XSL Stylesheets](#docbook-xsl-stylesheets)
     - [Conversion Scripts](#conversion-scripts)
     - [Converted Manual](#converted-manual)
     - [Helper Files](#helper-files)
+- [DocBook XSL Stylesheets](#docbook-xsl-stylesheets)
 - [Misc Work Notes](#misc-work-notes)
     - [Conversion from ODT to AsciiDoc](#conversion-from-odt-to-asciidoc)
     - [Annotated Comments](#annotated-comments)
@@ -164,14 +164,6 @@ In order to auto-generate the compiler output or game transcripts shown in some 
 
 [F.1. Format of messages]: https://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#_format_of_messages "Click for a live HTML preview of 'F.1. Format of messages'"
 
-## DocBook XSL Stylesheets
-
-For the conversion to PDF (from DocBook 5), asciidoc-fopub is set to use the customized XSL stylesheets in this folder:
-
-- [`/manual-xsl/`](./manual-xsl)
-
-These stylesheets were adapted from the [asciidoctor-fopub] project, Copyright (C) 2013 Dan Allen ([MIT License](./manual-xsl/LICENSE)).
-
 ## Conversion Scripts
 
 - [`BUILD_ALL.bat`][BUILD_ALL.bat] — convenience batch to invoke all conversion scripts at once.
@@ -207,6 +199,13 @@ Some files to help editing the manual:
 - [`RegExs.txt`](./RegExs.txt) — frequently needed regular expressions for S&R operations.
 - [`SNIPPTES.adoc`](./SNIPPTES.adoc) — useful snippets to copy and paste.
 
+# DocBook XSL Stylesheets
+
+For the conversion to PDF (from DocBook 5), asciidoc-fopub is set to use the customized XSL stylesheets in this folder:
+
+- [`../_assets/xsl-fopub/`](../_assets/xsl-fopub/)
+
+These stylesheets were adapted from the [asciidoctor-fopub] project, Copyright (C) 2013 Dan Allen ([MIT License](./manual-xsl/LICENSE)).
 
 
 -------------------------------------------------------------------------------

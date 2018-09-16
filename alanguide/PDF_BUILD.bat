@@ -1,4 +1,4 @@
-:: "PDF_BUILD.bat" v2.0.0 (2018/09/13) by Tristano Ajmone
+:: "PDF_BUILD.bat" v2.0.1 (2018/09/16) by Tristano Ajmone
 @ECHO.
 @ECHO ==============================================================================
 @ECHO Converting the "ALAN Beginner's Guide" to PDF document...
@@ -15,7 +15,7 @@ CALL asciidoctor^
   alanguide.asciidoc
 
 CALL fopub^
-  -t ..\manual\manual-xsl ^
+  -t ..\_assets\xsl-fopub ^
   alanguide.xml
 
 @EXIT /B

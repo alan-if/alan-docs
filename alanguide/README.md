@@ -17,6 +17,7 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
     - [Guide Source Files](#guide-source-files)
     - [Conversion Scripts](#conversion-scripts)
     - [Converted Guide](#converted-guide)
+- [DocBook XSL Stylesheets](#docbook-xsl-stylesheets)
 - [Document Status](#document-status)
 - [Document History](#document-history)
 
@@ -52,6 +53,15 @@ The original file of the _Alan Beginner's Guide_ used as base document is availa
 - [`alanguide.html`][guide html] — Beginner's Guide converted to standalone HTML5 ([HTML Live Preview]).
 
 An [HTML Live Preview] of the converted document is available via [GitHub & BitBucket HTML Preview] online service.
+
+# DocBook XSL Stylesheets
+
+For the conversion to PDF (from DocBook 5), asciidoc-fopub is set to use the customized XSL stylesheets in this folder:
+
+- [`../_assets/xsl-fopub/`](../_assets/xsl-fopub/)
+
+These stylesheets were adapted from the [asciidoctor-fopub] project, Copyright (C) 2013 Dan Allen ([MIT License](./manual-xsl/LICENSE)).
+
 
 -------------------------------------------------------------------------------
 
