@@ -1,6 +1,6 @@
 = Syntax Highlighting in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v1.4, September 16, 2018: Code styling previews
+v1.5, September 18, 2018: Code styling previews
 :version-label: v
 :authorinitials: T.J.A.
 // =====================
@@ -44,6 +44,15 @@ This document is for previewing how source code and other verbatim blocks will b
 Some contents are format dependent and will vary according to the document's output format and the backend employed, providing additional information specific to that format and/or backend.
 
 Currently, we're still working on implementing syntax highlighting of Alan source code in the various output formats, as different conversion backends will employ different highlighting tools.
+
+// =====================
+// HTML Backend Warning:
+// =====================
+// Warning about use of native Asciidoctor theme and missing custom styles...
+ifeval::["{backend}" == "html5"]
+include::_inc_html-warning.adoc[]
+endif::[]
+
 
 == Syntaxes Preview
 
@@ -98,7 +107,7 @@ In all cases, a custom Alan syntax definiton would have to be created for the hi
 // ==================
 // HTML Backend Only:
 // ==================
-ifeval::["{toolchain}" == "Asciidoctor's native HTML5"]
+ifeval::["{backend}" == "html5"]
 
 [WARNING]
 ================================================================================
@@ -190,6 +199,26 @@ End The.
 --------------------------------------------------------------------------------
 
 
+==== Ligatures Support
+
+
+The following snippets is meant to test if the current backend and/or font supports ligatures.
+Some code fonts support ligatures replacements for common programming symbols, but they might differ in the way the represent `>=`, `<=`, `=>` and `=<`, depnding on which combinations are asigned as comparison oprators and which as arrows.
+
+We must ensure that, if ligatures are supported in any converted document, Alan's `>=` (greater or equal), `<=` (less or equal) and `=>` (alternative `Then` in Rules) are correctly represented.
+
+Here's the test snippet:
+
+[source,alan]
+--------------------
+include::snippets.alan[tag=ligatures]
+--------------------
+
+And here's a screenshot of the above code displayed in Sublime Text 3 via the
+https://github.com/tajmone/sublime-alan[Sublime Alan^] package:
+
+.Example of correct ligatures support in Sublime Text.
+image::sublime-alan-ligatures-screenshot.png[]
 
 == BNF Syntax
 

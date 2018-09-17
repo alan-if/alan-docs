@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?asciidoc-toc maxdepth="5"?>
+<?asciidoc-numbered?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
+<info>
+<title>Typography in Alan Documentation</title>
+<date>September 17, 2018</date>
+<author>
+<personname>
+<firstname>Tristano</firstname>
+<surname>Ajmone</surname>
+</personname>
+<email>tajmone@gmail.com</email>
+</author>
+<authorinitials>T.J.A.</authorinitials>
+<revhistory>
+<revision>
+<revnumber>1.0</revnumber>
+<date>September 17, 2018</date>
+<authorinitials>T.J.A.</authorinitials>
+<revremark>Backend: Asciidoctor&#8217;s native HTML5</revremark>
+</revision>
+</revhistory>
+</info>
+<preface>
+<title></title>
+<simpara>This document is for previewing how fonts and typography in general will be rendered and styled in the final documentation, and for comparing quality and differences across all the supported output formats.</simpara>
+<simpara>Some contents are format dependent and will vary according to the document&#8217;s output format and the backend employed, providing additional information specific to that format and/or backend.</simpara>
+<simpara>Currently, we are still in the process to choose the fonts that will be used in the final documents.</simpara>
+</preface>
+<chapter xml:id="_ligatures_tests">
+<title>Ligatures Tests</title>
+<simpara>Here we test if ligatures are being supported by the current backend and font.</simpara>
+<section xml:id="_code_ligatures">
+<title>Code Ligatures</title>
+<simpara>Some fonts support source code related ligatures.
+We&#8217;ll test these code related ligatures using a test file taken from Nikita Prokopov&#8217;s
+<link xl:href="https://github.com/tonsky/FiraCode">Fira Code</link> project.</simpara>
+<simpara>First we&#8217;ll test for ligatures inside a source code block.
+Here ligatures support could depend on the monospaced font, the backend or the syntax highligher (which may or may not filter contents of the block).</simpara>
+<simpara>[source</simpara>
+<screen>    .= ..= .- := ::= =:= __
+     == != === !== =/= =!=
+
+&lt;-&lt; &lt;&lt;- &lt;-- &lt;- &lt;-&gt; -&gt; --&gt; -&gt;&gt; &gt;-&gt;
+&lt;=&lt; &lt;&lt;= &lt;==    &lt;=&gt; =&gt; ==&gt; =&gt;&gt; &gt;=&gt;
+    &gt;&gt;= &gt;&gt;- &gt;- &lt;~&gt; -&lt; -&lt;&lt; =&lt;&lt;
+        &lt;~~ &lt;~ ~~ ~&gt; ~~&gt;
+
+     &lt;&lt;&lt; &lt;&lt; &lt;= &lt;&gt;  &gt;= &gt;&gt; &gt;&gt;&gt;
+   {. {| [| &lt;:  ✓  :&gt; |] |} .}
+   &lt;||| &lt;|| &lt;| &lt;|&gt; |&gt; ||&gt; |||&gt;
+
+            &lt;$ &lt;$&gt; $&gt;
+            &lt;+ &lt;+&gt; +&gt;
+            &lt;* &lt;*&gt; *&gt;
+
+       \  \\  /* */  /// //
+      &lt;/ &lt;!--  &lt;/&gt;  --&gt; /&gt;
+      0xF 9:45 m-x *ptr www
+
+       ;; :: ::: !! ?? %% &amp;&amp;
+      || .. ... ..&lt; .? ?. ?:
+       -- --- ++ +++ ** ***
+
+          ~= ~- -~ ~@
+          ^= ?= /= /==
+        -| _|_ |- |= ||=
+        #! #= ## ### ####
+      #{ #[ ]# #( #? #_ #_(
+
+
+a*b a*A B*b A*B *a *A a* A*
+a-b a-A B-b A-B -a -A a- A-
+a+b a+A B+b A+B +a +A a+ A+
+a:b a:A B:b A:B :a :A a: A:</screen>
+<simpara>And now we&#8217;ll carry out the test (part of it) in an example block, for here a different font is being used which may support code related ligatures.
+The example block below has not special substitutions settings.</simpara>
+<example>
+<title>Ligatures Test in Source Block</title>
+<formalpara>
+<title>= ..= .- := ::= =:= __<?asciidoc-br?></title>
+<para>== != === !== =/= =!=</para>
+</formalpara>
+<simpara>&#8592;&lt; &lt;&#8592; &#8592;- &#8592; &lt;&#8594; &#8594; -&#8594; &#8594;&gt; &gt;&#8594;<?asciidoc-br?>
+&#8656;&lt; &lt;&#8656; &#8656;=    &lt;&#8658; &#8658; =&#8658; &#8658;&gt; &gt;&#8658;<?asciidoc-br?>
+&gt;&gt;= &gt;&gt;- &gt;- &lt;~&gt; -&lt; -&lt;&lt; =&lt;&lt;<?asciidoc-br?>
+&lt;~~ &lt;~ ~~ ~&gt; ~~&gt;</simpara>
+<simpara>&lt;&lt;&lt; &lt;&lt; &#8656; &lt;&gt;  &gt;= &gt;&gt; &gt;&gt;&gt;<?asciidoc-br?>
+{. {| [| &lt;:  ✓  :&gt; |] |} .}<?asciidoc-br?>
+&lt;||| &lt;|| &lt;| &lt;|&gt; |&gt; ||&gt; |||&gt;</simpara>
+<simpara>&lt;$ &lt;$&gt; $&gt;<?asciidoc-br?>
+&lt;+ &lt;+&gt; +&gt;<?asciidoc-br?>
+&lt;* &lt;*&gt; *&gt;</simpara>
+</example>
+</section>
+</chapter>
+</book>

@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">v 1.4,</span>
-<span id="revdate">September 16, 2018</span>
+<span id="revnumber">v 1.5,</span>
+<span id="revdate">September 17, 2018</span>
 <br><span id="revremark">Backend: Asciidoctor&#8217;s native HTML5</span>
 </div>
 <div id="toc" class="toc2">
@@ -464,6 +464,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_strings">Strings</a></li>
 <li><a href="#_false_positive_keywords_matches">False Positive Keywords Matches</a></li>
+<li><a href="#_ligatures_support">Ligatures Support</a></li>
 </ul>
 </li>
 </ul>
@@ -483,6 +484,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="paragraph">
 <p>Currently, we&#8217;re still working on implementing syntax highlighting of Alan source code in the various output formats, as different conversion backends will employ different highlighting tools.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Currently no theme customizations have been done for the HTML backend.
+This document uses Asciidoctor&#8217;s native theme, and many elements with custom roles (classes) are not being rendered as intended.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -569,6 +585,22 @@ For PDF conversion, the usable highlighting tool(s) will be dictated by the thir
 </div>
 <div class="paragraph">
 <p>In all cases, a custom Alan syntax definiton would have to be created for the highlighter tool used with each backend, as none of them ships with a native Alan definition (the sole exception being <a href="http://www.andre-simon.de/" target="_blank" rel="noopener">Highlight</a>, which is not natively supported in any of the backends, but could be integrated into some of them).</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Currently no syntax highlighters have been integrated into the HTML conversion toolchain.
+I&#8217;ve created an Alan language definition for André Simon&#8217;s <a href="http://www.andre-simon.de/" target="_blank" rel="noopener">Highlight</a> tool, but haven&#8217;t yet got around to integrate it into the toolchain.
+Although it&#8217;s not among the natively supported highlighters, it should be possible to integrate it into the HTML backend.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_syntax_tests">Syntax Tests</h3>
@@ -681,6 +713,44 @@ End The.</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_ligatures_support">Ligatures Support</h4>
+<div class="paragraph">
+<p>The following snippets is meant to test if the current backend and/or font supports ligatures.
+Some code fonts support ligatures replacements for common programming symbols, but they might differ in the way the represent <code>&gt;=</code>, <code>&#8656;</code>, <code>&#8658;</code> and <code>=&lt;</code>, depnding on which combinations are asigned as comparison oprators and which as arrows.</p>
+</div>
+<div class="paragraph">
+<p>We must ensure that, if ligatures are supported in any converted document, Alan&#8217;s <code>&gt;=</code> (greater or equal), <code>&#8656;</code> (less or equal) and <code>&#8658;</code> (alternative <code>Then</code> in Rules) are correctly represented.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s the test snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-alan" data-lang="alan">--&gt; Test "string identity operator" ligature  ('='+'=' -&gt; '==')
+If text Of notepad Not == "xyzzy" Then
+
+--&gt; Test "greater or equal" ligature          ('&gt;'+'=' -&gt; '&gt;=')
+If temperature Of oven Not &gt;= 100 Then
+
+--&gt; Test "less or equal" ligature             ('&lt;'+'=' -&gt; '&lt;=')
+If weather Of world Not &lt;= protection Of hero Then
+
+--&gt; Test "THEN symbol" ligature               ('='+'&gt;' -&gt; '=&gt;')
+When hero At cave =&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And here&#8217;s a screenshot of the above code displayed in Sublime Text 3 via the
+<a href="https://github.com/tajmone/sublime-alan" target="_blank" rel="noopener">Sublime Alan</a> package:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="sublime-alan-ligatures-screenshot.png" alt="sublime alan ligatures screenshot">
+</div>
+<div class="title">Figure 1. Example of correct ligatures support in Sublime Text</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -719,8 +789,8 @@ article_or_form = 'ARTICLE' {statement}
 </div>
 <div id="footer">
 <div id="footer-text">
-v 1.4<br>
-Last updated 2018-09-16 11:26:23 ora legale Europa occidentale
+v 1.5<br>
+Last updated 2018-09-18 01:39:44 ora legale Europa occidentale
 </div>
 </div>
 </body>

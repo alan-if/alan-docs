@@ -2,6 +2,6 @@
 
 Here goes anything relating to testing, development and other stuff not intended for end users.
 
-- [`/hl/`](./hl) — Syntax highlighting tests.
+- [`/styles-tests/`](./styles-tests) — Test files for typography, syntax higlighting and general styling in the various output formats.
 
 <!-- EOF -->

@@ -9,6 +9,11 @@ Some notes and useful links for working on FOP/XSL customization of the PDF temp
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Customization Topics](#customization-topics)
+    - [Fonts](#fonts)
+        - [Base-14 Fonts Set](#base-14-fonts-set)
+        - [Custom Fonts](#custom-fonts)
+        - [Font Ligatures](#font-ligatures)
 - [Tech Specs](#tech-specs)
 - [Useful Links](#useful-links)
 - [Reference Links](#reference-links)
@@ -20,6 +25,50 @@ Some notes and useful links for working on FOP/XSL customization of the PDF temp
 <!-- /MarkdownTOC -->
 
 -----
+
+# Customization Topics
+
+## Fonts
+
+- [Apache™ FOP v2.1]:
+    + [FOP Fonts]
+- [DocBook XSL: The Complete Guide]:
+    + [Adding a font] — tutorial (FOP v0.93)
+
+### Base-14 Fonts Set
+
+- https://xmlgraphics.apache.org/fop/2.1/fonts.html#Base-14-Fonts
+
+> The Adobe PostScript and PDF Specification specify a set of 14 fonts that must be available to every PostScript interpreter and PDF reader: Helvetica (normal, bold, italic, bold italic), Times (normal, bold, italic, bold italic), Courier (normal, bold, italic, bold italic), Symbol and ZapfDingbats.
+
+> The following font family names are hard-coded into FOP for the Base-14 font set:
+
+| Base-14 font |                font families                |
+|--------------|---------------------------------------------|
+| Helvetica    | Helvetica, sans-serif, SansSerif            |
+| Times        | Times, Times Roman, Times-Roman, serif, any |
+| Courier      | Courier, monospace, Monospaced              |
+| Symbol       | Symbol                                      |
+| ZapfDingbats | ZapfDingbats                                |
+
+> Please note that recent versions of Adobe Acrobat Reader replace "Helvetica" with "Arial" and "Times" with "Times New Roman" internally. GhostScript replaces "Helvetica" with "Nimbus Sans L" and "Times" with "Nimbus Roman No9 L". Other document viewers may do similar font substitutions. If you need to make sure that there are no such substitutions, you need to specify an explicit font and embed it in the target document.
+
+### Custom Fonts
+
+- https://xmlgraphics.apache.org/fop/2.1/fonts.html#custom
+
+> In earlier FOP versions, it was always necessary to create an XML font metrics file if you wanted to add a custom font. This inconvenient step has been removed and in addition to that, FOP supports auto-registration of fonts, i.e. FOP can find fonts installed in your operating system or can scan user-specified directories for fonts. Font registration via XML font metrics has been deprecated and is not recommended although it is still supported by the current code.
+
+### Font Ligatures
+
+- https://xmlgraphics.apache.org/fop/2.1/fonts.html#opentype-advanced-font-features
+
+FOP 2.1 doesn't support font ligatures in PDF:
+
+> OpenType fonts support advanced layout features such as ligatures, small caps, swashes, alternates, old style figures and more. [...] These features are currently missing within FOP due to the implementation opting to favor a greater number of formats. [...] the current method extracts the Compact Font Format (CFF) data containing among other things the character definitions, optionally subsets and embeds the result as a Type1C font.
+
+
+-------------------------------------------------------------------------------
 
 # Tech Specs
 

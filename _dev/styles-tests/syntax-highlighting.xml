@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>Syntax Highlighting in Alan Documentation</title>
-<date>September 16, 2018</date>
+<date>September 17, 2018</date>
 <author>
 <personname>
 <firstname>Tristano</firstname>
@@ -15,8 +15,8 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>1.4</revnumber>
-<date>September 16, 2018</date>
+<revnumber>1.5</revnumber>
+<date>September 17, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: Asciidoctor&#8217;s native HTML5</revremark>
 </revision>
@@ -165,6 +165,35 @@ The 'At the Bus Stop' IsA location --&gt; Watch out for: 'AT', 'THE' and 'STOP'!
   Description
     "An old man waits for the bus here." --&gt; 'AN', 'FOR', 'THE', 'HERE'!
 End The.</programlisting>
+</section>
+<section xml:id="_ligatures_support">
+<title>Ligatures Support</title>
+<simpara>The following snippets is meant to test if the current backend and/or font supports ligatures.
+Some code fonts support ligatures replacements for common programming symbols, but they might differ in the way the represent <literal>&gt;=</literal>, <literal>&#8656;</literal>, <literal>&#8658;</literal> and <literal>=&lt;</literal>, depnding on which combinations are asigned as comparison oprators and which as arrows.</simpara>
+<simpara>We must ensure that, if ligatures are supported in any converted document, Alan&#8217;s <literal>&gt;=</literal> (greater or equal), <literal>&#8656;</literal> (less or equal) and <literal>&#8658;</literal> (alternative <literal>Then</literal> in Rules) are correctly represented.</simpara>
+<simpara>Here&#8217;s the test snippet:</simpara>
+<programlisting language="alan" linenumbering="unnumbered">--&gt; Test "string identity operator" ligature  ('='+'=' -&gt; '==')
+If text Of notepad Not == "xyzzy" Then
+
+--&gt; Test "greater or equal" ligature          ('&gt;'+'=' -&gt; '&gt;=')
+If temperature Of oven Not &gt;= 100 Then
+
+--&gt; Test "less or equal" ligature             ('&lt;'+'=' -&gt; '&lt;=')
+If weather Of world Not &lt;= protection Of hero Then
+
+--&gt; Test "THEN symbol" ligature               ('='+'&gt;' -&gt; '=&gt;')
+When hero At cave =&gt;</programlisting>
+<simpara>And here&#8217;s a screenshot of the above code displayed in Sublime Text 3 via the
+<link xl:href="https://github.com/tajmone/sublime-alan">Sublime Alan</link> package:</simpara>
+<figure>
+<title>Example of correct ligatures support in Sublime Text</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="sublime-alan-ligatures-screenshot.png"/>
+</imageobject>
+<textobject><phrase>sublime alan ligatures screenshot</phrase></textobject>
+</mediaobject>
+</figure>
 </section>
 </section>
 </chapter>
