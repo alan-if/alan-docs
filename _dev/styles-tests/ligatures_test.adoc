@@ -8,7 +8,7 @@ This file is an adaptation of "showcases.txt", taken from Nikita Prokopov's
 
 // tag::code_ligatures_source[]
 
-[source
+[source]
 --------------------------------------------------------------------------------
     .= ..= .- := ::= =:= __
      == != === !== =/= =!=

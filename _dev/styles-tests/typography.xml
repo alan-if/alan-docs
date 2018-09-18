@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>Typography in Alan Documentation</title>
-<date>September 17, 2018</date>
+<date>September 18, 2018</date>
 <author>
 <personname>
 <firstname>Tristano</firstname>
@@ -15,8 +15,8 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>1.0</revnumber>
-<date>September 17, 2018</date>
+<revnumber>1.1</revnumber>
+<date>September 18, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: Asciidoctor&#8217;s native HTML5</revremark>
 </revision>
@@ -38,7 +38,6 @@ We&#8217;ll test these code related ligatures using a test file taken from Nikit
 <link xl:href="https://github.com/tonsky/FiraCode">Fira Code</link> project.</simpara>
 <simpara>First we&#8217;ll test for ligatures inside a source code block.
 Here ligatures support could depend on the monospaced font, the backend or the syntax highligher (which may or may not filter contents of the block).</simpara>
-<simpara>[source</simpara>
 <screen>    .= ..= .- := ::= =:= __
      == != === !== =/= =!=
 

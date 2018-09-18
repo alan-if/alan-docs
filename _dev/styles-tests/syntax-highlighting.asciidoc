@@ -1,6 +1,6 @@
 = Syntax Highlighting in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v1.5, September 18, 2018: Code styling previews
+v1.6, September 18, 2018: Code styling previews
 :version-label: v
 :authorinitials: T.J.A.
 // =====================
@@ -203,9 +203,9 @@ End The.
 
 
 The following snippets is meant to test if the current backend and/or font supports ligatures.
-Some code fonts support ligatures replacements for common programming symbols, but they might differ in the way the represent `>=`, `<=`, `=>` and `=<`, depnding on which combinations are asigned as comparison oprators and which as arrows.
+Some code fonts support ligatures replacements for common programming symbols, but they might differ in the way the represent `+>=+`, `+<=+`, `+=>+` and `+=<+`, depnding on which combinations are asigned as comparison oprators and which as arrows.
 
-We must ensure that, if ligatures are supported in any converted document, Alan's `>=` (greater or equal), `<=` (less or equal) and `=>` (alternative `Then` in Rules) are correctly represented.
+We must ensure that, if ligatures are supported in any converted document, Alan's `+>=+` (greater or equal), `+<=+` (less or equal) and `+=>+` (alternative `Then` in Rules) are correctly represented.
 
 Here's the test snippet:
 
