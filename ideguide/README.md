@@ -32,8 +32,8 @@ Currently there are no conversion scripts for this document, but a prebuilt PDF 
 
 # Folder Contents
 
-- [`Alan IDE Reference Guide.asciidoc`][IDE Guide adoc]
-- [`Alan IDE Reference Guide.pdf`][IDE Guide pdf]
+- [`ideguide.asciidoc`][IDE Guide adoc]
+- [`ideguide.pdf`][IDE Guide pdf]
 
 # External Links
 
@@ -48,8 +48,8 @@ Links to the download pages of the tools required to setup the Alan IDE:
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
 
-[IDE Guide adoc]: ./Alan%20IDE%20Reference%20Guide.asciidoc
-[IDE Guide pdf]: ./Alan%20IDE%20Reference%20Guide.pdf
+[IDE Guide adoc]: ./ideguide.asciidoc
+[IDE Guide pdf]: ./ideguide.pdf
 
 [Alan IDE]: https://www.alanif.se/download-alan-v3/alanide "Alan IDE donwload page"
 [Alan SDK]: https://www.alanif.se/download-alan-v3/development-kits "Alan SDK donwload page"

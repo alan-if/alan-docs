@@ -4,7 +4,11 @@
 
 This repository is dedicated to the conversion of the Alan documentation to AsciiDoc. Help and contributions are welcome (see [`CONTRIBUTING.md`][CONTRIBUTING]).
 
-- [Alan Manual HTML Live Preview][Man LPrev] (short URL: https://goo.gl/DNnGx8)
+- [_Alan Manual_][Man LPrev] —  HTML Live Preview (short URL: https://goo.gl/DNnGx8)
+- [_Alan Manual_][Man PDF] —  PDF download
+- [_Alan IDE Reference Guide_][IDE PDF] —  PDF download
+- [_Alan 3 Beginner's Guide_][Guide LPrev] —  HTML Live Preview
+
 
 -----
 
@@ -291,9 +295,14 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 [CONVENTIONS]: ./CONVENTIONS.md "Read the 'Formatting and Styling Conventions' guidelines adopted in Alan-Docs"
 [CONTRIBUTING]: ./CONTRIBUTING.md "Read the guidelines for contributing to Alan-Docs"
 
-<!-- HTML Live Previews -->
+<!-- PDF & HTML Live Previews -->
 
 [Man LPrev]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html "Preview 'The Alan Manual' via GitHub & BitBucket HTML Preview"
+[Man PDF]: https://github.com/alan-if/alan-docs/raw/master/manual/manual.pdf "Download 'The Alan Manual' in PDF format"
+
+[Guide LPrev]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/alanguide/alanguide.html "Preview the 'Alan 3 Beginner's Guide' via GitHub & BitBucket HTML Preview"
+
+[IDE PDF]: https://github.com/alan-if/alan-docs/raw/master/ideguide/Alan%20IDE%20Reference%20Guide.pdf "Download the 'Alan IDE Reference Guide' in PDF format"
 
 [GitHub & BitBucket HTML Preview]: http://htmlpreview.github.io
 
