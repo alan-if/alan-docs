@@ -435,8 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.59,</span>
-<span id="revdate">September 16, 2018</span>
+<span id="revnumber">version 0.1.60,</span>
+<span id="revdate">September 23, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -831,8 +831,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.59
-Last edited: September 16, 2018</pre>
+<pre>Doc version: 0.1.60
+Last edited: September 23, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -4459,9 +4459,9 @@ If this is not what you wanted, you can end each script with a new <code>Use</co
 <h3 id="_additions">3.8. Additions</h3>
 <div class="paragraph">
 <p>In certain circumstances, you need to add properties to a class after it is defined.
-One simple such example is to add attributes to the predefined classes.
-To allow this the <code>Add</code> construct is available.
-It follows the grammar</p>
+A simple example of this is adding attributes to the predefined classes.
+For this purpose, the <code>Add</code> construct is available.
+It follows the grammar:</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -4483,7 +4483,7 @@ If such a package required particular attributes in classes, they could be added
 <div class="sect2">
 <h3 id="_syntax_definitions">3.9. Syntax Definitions</h3>
 <div class="paragraph">
-<p>The  <code>Syntax</code> construct is used to specify the allowed structure of the input from the player.
+<p>The  <code>Syntax</code> construct is used to specify the allowed structure of the player&#8217;s input.
 Each definition defines the syntax for one <code>Verb</code>.
 The effects triggered by the player input are declared using the <code>Verb</code> construct (see <a href="#_verbs">Sect. 3.7.10</a>).</p>
 </div>
@@ -4505,7 +4505,8 @@ syntax_end = parameter_restrictions
 </div>
 <div class="paragraph">
 <p>The syntax is defined as a number of <em>syntax elements</em> each being either a player word (a single <strong>id</strong>) or the name of a parameter (an identifier enclosed in parenthesis).
-Parameters may be in any position, including the first, a syntax with only parameters might be tricky for the interpreter to match to your intentions, as the complete set of allowed input then easily becomes ambiguous.</p>
+Parameters may be in any position, including the first.
+Bare in mind that a syntax definition containing only parameters might be tricky for the interpreter to match as you intended, for the complete set of allowed input can easily become ambiguous.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4518,24 +4519,23 @@ Parameters may be in any position, including the first, a syntax with only param
 </div>
 <div class="paragraph">
 <p>When the player types a command, it is compared to the set of declared syntaxes.
-This provides a very flexible way to extend the allowed command set (see also <a href="#_player_input">Sect. 5.2</a> for details on general player input).</p>
+This provides a very flexible way to extend the allowed command set (see also <a href="#_player_input">Sect. 5.2</a> for general details on player input).</p>
 </div>
 <div class="paragraph">
-<p>After the player input has been matched to an allowed syntax, the parameters are bound to the instances referred to by the player.
-The parameter identifiers in the syntax declaration then refer to those entities.
-Reference to attributes etc. will be done in the instance referred by the parameter.</p>
+<p>After the player input has been matched to an allowed syntax, the parameters are bound to the instances referred to by the player, and the parameter identifiers in the <code>Syntax</code> declaration will now refer to those entities.
+Any references to attributes, etc., will be done in the instance referred by the parameter.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-alan" data-lang="alan">Syntax open = open (obj).
-:
+  ...
   If obj Is open Then ...
-:</code></pre>
+  ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the example above, the parameter, <code>obj</code>, can be used in the declaration of the <code>open</code> verb and will, at execution time, refer to such a bound instance.
-The following table explains which instances in the game a parameter identifier (l &amp; k, from the <code>unlock_with</code> syntax above) will actually refer to.</p>
+<p>In the above example, the parameter <code>obj</code> can be used in the declaration of the <code>open</code> verb and, at execution time, it will refer to the actual instance it was bound to.
+Consider the <code>unlock_with</code> syntax declaration of the previous example, the following table illustrates which instances the parameter identifiers <code>l</code> and <code>k</code> will be referring to in the actual game:</p>
 </div>
 <table id="table-syntax-parameters" class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -4587,7 +4587,7 @@ The following table explains which instances in the game a parameter identifier 
 </tbody>
 </table>
 <div class="paragraph">
-<p>This, of course, provided that there is an instance that will match the player input, given the adjectives and nouns in the input and in instance declarations.</p>
+<p>This, of course, provided that there is an instance that will match the player input, given the adjectives and nouns in the input and those in the instance declaration.</p>
 </div>
 <div class="paragraph">
 <p>It is allowed to define multiple syntaxes for the same identifier (verb).
@@ -4596,7 +4596,7 @@ See <a href="#_syntax_synonyms"><em>Syntax Synonyms</em></a>.</p>
 <div class="sect3">
 <h4 id="_indicators">Indicators</h4>
 <div class="paragraph">
-<p>Following a parameter,  indicators are allowed in syntax declarations.</p>
+<p>Following a parameter,  indicators are allowed in <code>Syntax</code> declarations.</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -4607,22 +4607,21 @@ See <a href="#_syntax_synonyms"><em>Syntax Synonyms</em></a>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>There are two indicators available:</p>
+<p>There are two indicators available (<em>multiple</em> and <em>omnipotent</em>):</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>&#8216;<code>+</code>&#8217;&#8201;&#8212;&#8201;
+<p><code>*</code>&#8201;&#8212;&#8201;
 This parameter can reference multiple instances (for example by the player
-using <strong>ALL</strong>  or concatenating a number of parameters using a conjunction
-like <strong>AND</strong>, see <a href="#_player_input">Sect. 5.2</a>).</p>
+using <strong>ALL</strong>  or concatenating a number of parameters using a conjunction like <strong>AND</strong> ; see <a href="#_player_input">Sect. 5.2</a>).</p>
 </li>
 <li>
-<p>&#8216;<code>!</code>&#8217;&#8201;&#8212;&#8201;
+<p><code>!</code>&#8201;&#8212;&#8201;
 The parameter (the instance the player refers to in this position in the syntax) need not be present at the current location.
-The default case is that the Alan interpreter requires that a referenced instance must be present at the same location as the hero (if the parameter inherits from <code>thing</code>.
-Note that <strong>entities</strong> are always accessible).
-For cases when the player must be able to refer to objects and actors that are not present (e.g. in a verb like <code>talk_about</code>) this omnipotent indicator can be used to force the interpreter to accept references to any object or actor.</p>
+Alan interpreter&#8217;s default behavior requires that a referenced instance must be present at the same location as the hero, if the parameter inherits from <code>thing</code>.
+(Note that <strong>entities</strong> are always accessible).
+For cases when the player must be able to refer to objects and actors that are not present (e.g. in a verb like <code>talk_about</code>) this <em>omnipotent indicator</em> can be used to force the interpreter to accept references to any object or actor.</p>
 </li>
 </ul>
 </div>
@@ -4637,33 +4636,35 @@ For cases when the player must be able to refer to objects and actors that are n
 </div>
 </div>
 <div class="paragraph">
-<p>This shows the syntax definitions for the verbs <code>take</code> and <code>drop</code>. <code>take</code> also allows multiple objects.
-This would make the following inputs possible</p>
+<p>This shows the syntax definitions for the verbs <code>take</code> and <code>drop</code>; where <code>take</code> also allows multiple objects.
+This would make the following inputs possible:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; take everything except the pillow</p>
+<p>&gt; <em>take everything except the pillow</em></p>
 </div>
 <div class="paragraph">
-<p>&gt; drop the vase</p>
+<p>&gt; <em>drop the vase</em></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="#_player_input">Sect. 5.2</a> for details on the input of references to multiple parameters (such as objects).
-The above declarations would force the interpreter to reject player input like</p>
+<p>Refer to <a href="#_player_input">Sect. 5.2</a> for details on multiple parameters references in player&#8217;s input (such as objects).</p>
+</div>
+<div class="paragraph">
+<p>The above declarations would force the interpreter to reject player input like:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; drop the shovel and the bucket</p>
+<p>&gt; <em>drop the shovel and the bucket</em></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>This is because the syntax for the verb <code>drop</code> does not allow multiple references by not including the multiple-indicator.
-Another example using the <code>!</code> indicator:</p>
+<p>This is because the syntax for the verb <code>drop</code> does not allow multiple references, as it doesn&#8217;t include the <em>multiple indicator</em>.
+Another example, this time using the <code>!</code> indicator:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4673,15 +4674,15 @@ Another example using the <code>!</code> indicator:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Even if the robber or the key is not present, it will allow the player to say</p>
+<p>Even if the robber or the key are not present, it will allow the player to say:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; talk to the policeman about the robber</p>
+<p>&gt; <em>talk to the policeman about the robber</em></p>
 </div>
 <div class="paragraph">
-<p>&gt; find the key</p>
+<p>&gt; <em>find the key</em></p>
 </div>
 </div>
 </div>
@@ -4689,12 +4690,12 @@ Another example using the <code>!</code> indicator:</p>
 <p>For more information on player inputs, refer to <a href="#_player_input">Sect. 5.2</a>.</p>
 </div>
 <div class="paragraph">
-<p>Indicators given in one syntax declaration can affect other syntaxes if they have identical beginnings, like</p>
+<p>Indicators given in one syntax declaration can affect other syntaxes if they have identical beginnings, like:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; put everything on</p>
+<p>&gt; <em>put everything on</em></p>
 </div>
 </div>
 </div>
@@ -4704,7 +4705,7 @@ Another example using the <code>!</code> indicator:</p>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; put everything on the table</p>
+<p>&gt; <em>put everything on the table</em></p>
 </div>
 </div>
 </div>
@@ -4741,8 +4742,21 @@ restriction_class = id
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Any predefined or user defined class can be used.
-Particularly note that integer and string are predefined classes (see <a href="#_the_predefined_classes">Sect. 2.4.5.4</a>).</p>
+<p>Any predefined or user defined class can be used.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Don&#8217;t forget that also <code>literal</code>, <code>integer</code> and <code>string</code> are predefined classes (see <a href="#_the_predefined_classes">Sect. 2.4.5.4</a>).</p>
 </div>
 </td>
 </tr>
@@ -4760,9 +4774,9 @@ Particularly note that integer and string are predefined classes (see <a href="#
 </div>
 </div>
 <div class="paragraph">
-<p>Each parameter may be restricted to refer only to instances of particular classes or instances with the container property, or numeric or string literals.
-The statements following the <code>Else</code> will be executed if that restriction is not met, i.e. if the player refers to an instance not in the specified class or classes.
-The default restriction is <code>Object</code>, i.e. if no class restriction is supplied for that parameter identifier the player may only refer to objects at that position in his input.</p>
+<p>Each parameter may be restricted to refer only to instances of particular classes or instances with the <code>container</code> property, or numeric or string literals.
+The statements following the <code>Else</code> will be executed if that restriction is not met, i.e. if the player refers to an instance not belonging to the specified class or classes.
+The default restriction is <code>object</code>, i.e. if no class restriction is supplied for that parameter identifier the player may only refer to objects at that position in his input.</p>
 </div>
 <div class="paragraph">
 <p>A more elaborate example of prerequisites for conversation might look like:</p>
@@ -4782,11 +4796,8 @@ The default restriction is <code>Object</code>, i.e. if no class restriction is 
 </div>
 </div>
 <div class="paragraph">
-<p>You can combine multiple restrictions, even for the same parameter.
-If they refer to the same parameter, they must be successively more restricted.</p>
-</div>
-<div class="paragraph">
-<p>For example:</p>
+<p>You can provide multiple restrictions, even for the same parameter; but if they refer to the same parameter they must be presented in increasingly restrictive order.
+For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12588,8 +12599,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.59<br>
-Last updated 2018-09-16 11:27:29 ora legale Europa occidentale
+Version 0.1.60<br>
+Last updated 2018-09-23 15:31:24 ora legale Europa occidentale
 </div>
 </div>
 </body>

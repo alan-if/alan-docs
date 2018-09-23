@@ -2026,14 +2026,13 @@ When an actor has executed the last step (((STEP, executing the last))) of the c
 If this is not what you wanted, you can end each script with a new `Use` statement.
 
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 == Additions
 
 In certain circumstances, you need to add properties to a class after it is defined.
-One simple such example is to add attributes to the predefined classes.
-To allow this the `Add` construct is available.
-It follows the grammar
+A simple example of this is adding attributes to the predefined classes.
+For this purpose, the `Add` construct is available.
+It follows the grammar:
 
 (((BNF, rules of, ADD TO EVERY)))
 [source,bnf]
@@ -2052,7 +2051,7 @@ If such a package required particular attributes in classes, they could be added
 
 == Syntax Definitions
 
-The (((SYNTAX, construct))) `Syntax` construct is used to specify the allowed structure of the input from the player.
+The (((SYNTAX, construct))) `Syntax` construct is used to specify the allowed structure of the player's input.
 Each definition defines the syntax for one `Verb`.
 The effects triggered by the player input are declared using the `Verb` construct (see <<Verbs>>).
 
@@ -2072,9 +2071,9 @@ syntax_end = parameter_restrictions
 
 
 
-
 The syntax is defined as a number of _syntax elements_ each being either a player word (a single *id*) or the name of a parameter (an identifier enclosed in parenthesis).
-Parameters may be in any position, including the first, a syntax with only parameters might be tricky for the interpreter to match to your intentions, as the complete set of allowed input then easily becomes ambiguous.
+Parameters may be in any position, including the first.
+Bare in mind that a syntax definition containing only parameters might be tricky for the interpreter to match as you intended, for the complete set of allowed input can easily become ambiguous.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2086,23 +2085,24 @@ Syntax
 --------------------------------------------------------------------------------
 
 When the player types a command, it is compared to the set of declared syntaxes.
-This provides a very flexible way to extend the allowed command set (see also <<Player Input>> for details on general player input).
+This provides a very flexible way to extend the allowed command set (see also <<Player Input>> for general details on player input).
 
-After the player input has been matched to an allowed syntax, the parameters are bound to the instances referred to by the player.
-The parameter identifiers in the syntax declaration then refer to those entities.
-Reference to attributes etc. will be done in the instance referred by the parameter.
+After the player input has been matched to an allowed syntax, the parameters are bound to the instances referred to by the player, and the parameter identifiers in the `Syntax` declaration will now refer to those entities.
+Any references to attributes, etc., will be done in the instance referred by the parameter.
 
 [source,alan]
 --------------------------------------------------------------------------------
 Syntax open = open (obj).
-:
+  ...
   If obj Is open Then ...
-:
+  ...
 --------------------------------------------------------------------------------
 
 
-In the example above, the parameter, `obj`, can be used in the declaration of the `open` verb and will, at execution time, refer to such a bound instance.
-The following table explains which instances in the game a parameter identifier (l & k, from the `unlock_with` syntax above) will actually refer to.
+In the above example, the parameter `obj` can be used in the declaration of the `open` verb and, at execution time, it will refer to the actual instance it was bound to.
+Consider the `unlock_with` syntax declaration of the previous example, the following table illustrates which instances the parameter identifiers `l` and `k` will be referring to in the actual game:
+
+
 
 // @CAPTION: This table doesn't seem to need a caption for it's more of an example
 //           than a standalone reference table.
@@ -2132,16 +2132,17 @@ The following table explains which instances in the game a parameter identifier 
 
 |===============================================================================
 
-This, of course, provided that there is an instance that will match the player input, given the adjectives and nouns in the input and in instance declarations.
+This, of course, provided that there is an instance that will match the player input, given the adjectives and nouns in the input and those in the instance declaration.
 
 It is allowed to define multiple syntaxes for the same identifier (verb).
 See <<Syntax Synonyms,_Syntax Synonyms_>>.
 
 
 
+
 === Indicators
 
-Following a parameter, (((parameter, indicators))) indicators are allowed in syntax declarations.
+Following a parameter, (((parameter, indicators))) indicators are allowed in `Syntax` declarations.
 
 (((BNF, rules of, parameter indicators)))
 [source,bnf]
@@ -2149,21 +2150,20 @@ Following a parameter, (((parameter, indicators))) indicators are allowed in syn
 indicator = '*'' | '!''
 --------------------------------------------------------------------------------
 
-There are two indicators available:
+There are two indicators available (_multiple_ and _omnipotent_):
 
 
 
-* '```+```' -- (((indicator, multiple)))(((multiple indicator)))
+* `+++*+++` -- (((indicator, multiple)))(((multiple indicator)))
   This parameter can reference multiple instances (for example by the player
-  using *ALL* (((ALL (player input)))) or concatenating a number of parameters using a conjunction
-  like *AND*(((AND (player input)))), see <<Player Input>>).
+  using *ALL* (((ALL (player input)))) or concatenating a number of parameters using a conjunction like *AND* (((AND (player input)))); see <<Player Input>>).
 
 
-* '```!```' -- (((indicator, omnipotent)))(((omnipotent indicator)))
+* `!` -- (((indicator, omnipotent)))(((omnipotent indicator)))
   The parameter (the instance the player refers to in this position in the syntax) need not be present at the current location.
-  The default case is that the Alan interpreter requires that a referenced instance must be present at the same location as the hero (if the parameter inherits from `thing`.
-  Note that *entities* are always accessible).
-  For cases when the player must be able to refer to objects and actors that are not present (e.g. in a verb like `talk_about`) this omnipotent indicator can be used to force the interpreter to accept references to any object or actor.
+  Alan interpreter's default behavior requires that a referenced instance must be present at the same location as the hero, if the parameter inherits from `thing`.
+  (Note that *entities* are always accessible).
+  For cases when the player must be able to refer to objects and actors that are not present (e.g. in a verb like `talk_about`) this _omnipotent indicator_ can be used to force the interpreter to accept references to any object or actor.
 
 An example:
 
@@ -2174,34 +2174,33 @@ Syntax
   drop = 'drop' (obj).
 --------------------------------------------------------------------------------
 
-This shows the syntax definitions for the verbs `take` and `drop`. `take` also allows multiple objects.
-This would make the following inputs possible
+This shows the syntax definitions for the verbs `take` and `drop`; where `take` also allows multiple objects.
+This would make the following inputs possible:
 
 
 [example,role="gametranscript"]
 ================================================================================
-&gt; take everything except the pillow
+&gt; _take everything except the pillow_
 
-&gt; drop the vase
+&gt; _drop the vase_
 ================================================================================
 
 
+Refer to <<Player Input>> for details on multiple parameters references in player's input (such as objects).
+
+The above declarations would force the interpreter to reject player input like:
 
 
-Refer to <<Player Input>> for details on the input of references to multiple parameters (such as objects).
-The above declarations would force the interpreter to reject player input like
-
+// @TODO: Add parser response below player input?
 
 [example,role="gametranscript"]
 ================================================================================
-&gt; drop the shovel and the bucket
+&gt; _drop the shovel and the bucket_
 ================================================================================
 
 
-
-
-This is because the syntax for the verb `drop` does not allow multiple references by not including the multiple-indicator.
-Another example using the `!` indicator:
+This is because the syntax for the verb `drop` does not allow multiple references, as it doesn't include the _multiple indicator_.
+Another example, this time using the `!` indicator:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2210,39 +2209,32 @@ Syntax
   find = 'find' (obj)!.
 --------------------------------------------------------------------------------
 
-Even if the robber or the key is not present, it will allow the player to say
+Even if the robber or the key are not present, it will allow the player to say:
 
 
 [example,role="gametranscript"]
 ================================================================================
-&gt; talk to the policeman about the robber
+&gt; _talk to the policeman about the robber_
 
-&gt; find the key
+&gt; _find the key_
 ================================================================================
-
-
-
 
 For more information on player inputs, refer to <<Player Input>>.
 
-Indicators given in one syntax declaration can affect other syntaxes if they have identical beginnings, like
+Indicators given in one syntax declaration can affect other syntaxes if they have identical beginnings, like:
 
 
 [example,role="gametranscript"]
 ================================================================================
-&gt; put everything on
+&gt; _put everything on_
 ================================================================================
-
-
 
 and
 
 [example,role="gametranscript"]
 ================================================================================
-&gt; put everything on the table
+&gt; _put everything on the table_
 ================================================================================
-
-
 
 
 Even if only one of the syntax declarations indicate that the first parameter should allow multiple instances, both syntaxes will actually allow this because they have the same syntax part before the parameter, in this case the verb "`put`".
@@ -2272,9 +2264,12 @@ restriction_class = id
 [NOTE]
 ================================================================================
 Any predefined or user defined class can be used.
-Particularly note that integer and string are predefined classes (see <<The Predefined Classes>>).
 ================================================================================
 
+[TIP]
+================================================================================
+Don't forget that also `literal`, `integer` and `string` are predefined classes (see <<The Predefined Classes>>).
+================================================================================
 
 
 The following example describes the syntax for a verb that only allows ``object``s as its parameters (this is however also the default, see below).
@@ -2287,9 +2282,9 @@ Syntax
       Else "You can't take that."
 --------------------------------------------------------------------------------
 
-Each parameter may be restricted to refer only to instances of particular classes or instances with the container property, or numeric or string literals.
-The statements following the `Else` will be executed if that restriction is not met, i.e. if the player refers to an instance not in the specified class or classes.
-The default restriction is `Object`, i.e. if no class restriction is supplied for that parameter identifier the player may only refer to objects at that position in his input.
+Each parameter may be restricted to refer only to instances of particular classes or instances with the `container` property, or numeric or string literals.
+The statements following the `Else` will be executed if that restriction is not met, i.e. if the player refers to an instance not belonging to the specified class or classes.
+The default restriction is `object`, i.e. if no class restriction is supplied for that parameter identifier the player may only refer to objects at that position in his input.
 
 A more elaborate example of prerequisites for conversation might look like:
 
@@ -2308,9 +2303,7 @@ Syntax
 --------------------------------------------------------------------------------
 
 
-You can combine multiple restrictions, even for the same parameter.
-If they refer to the same parameter, they must be successively more restricted.
-
+You can provide multiple restrictions, even for the same parameter; but if they refer to the same parameter they must be presented in increasingly restrictive order.
 For example:
 
 [source,alan]
@@ -2319,6 +2312,9 @@ Where obj IsA object Else ...
   And obj IsA openable_object Else ...
   And obj IsA door Else ...
 --------------------------------------------------------------------------------
+
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
+
 
 References to attributes in the source are only allowed if it can be guaranteed that they exist during run-time.
 The class restrictions placed on a parameter are used by the compiler to make this guarantee for code executed by player input (verb bodies).
