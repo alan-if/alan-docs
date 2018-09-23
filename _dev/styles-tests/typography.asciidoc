@@ -1,6 +1,6 @@
 = Typography in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v1.2, September 23, 2018: Typography styling previews
+v1.3, September 23, 2018: Typography styling previews
 :version-label: v
 :authorinitials: T.J.A.
 // =====================
@@ -57,35 +57,20 @@ ifeval::["{backend}" == "html5"]
 include::_inc_html-warning.adoc[]
 endif::[]
 
-// *****************************************************************************
-// *                                                                           *
-// *                               Fonts Tests                                 *
-// *                                                                           *
-// *****************************************************************************
 
-== Fonts Combination Preview
-
-This section offers a preview of how the different fonts look like together.
-// >>> http://fillerama.io
-Shh! Knights, I bid you welcome to your new home. Let us ride to Camelot!
-I don't want to talk to you no more, you empty-headed animal food trough water!
-I fart in your general direction!
-Your mother was a hamster and your father smelt of elderberries!
-Now leave before I am forced to taunt you a second time!
-// <<< http://fillerama.io
-
-[source,alan]
---------------------
-include::snippets.alan[tag=short_sample]
---------------------
-
-=== Fonts Specimen
-
+// ******************************************************************************
+// *                                                                            *
+// *                      Fonts Specimens & Styles Checks                       *
+// *                                                                            *
+// ******************************************************************************
 :speciemen1: ABCDEFGHIJKLMNOPQRSTUVWXYZ
 :speciemen2: abcdefghijklmnopqrstuvwxyz
 :speciemen3: 1234567890 + - * /
 :speciemen4: !?|()[]{}<>$@
 
+== Fonts Specimens
+
+Specimens of the three main fonts used for base body text, verbatim text, and headings.
 
 [subs="post_replacements,attributes"]
 --
@@ -114,7 +99,50 @@ include::snippets.alan[tag=short_sample]
 [discrete]
 === {speciemen4}
 
-'''
+
+
+== Font Styles Availability Checks
+
+:styles-test: pass:quotes[*bold*, _italic_ and *_bold+italic_*]
+
+Now we need to check that every font is also available in {styles-test} style.
+
+In heading fonts:
+
+[discrete]
+== Heading: {styles-test}
+
+And in monospace fonts too: `{styles-test}`.
+
+[subs="attributes,quotes,post_replacements"]
+........................
+Verbatim: {styles-test}.
+........................
+
+
+
+
+// ******************************************************************************
+// *                                                                            *
+// *                         Fonts Combination Preview                          *
+// *                                                                            *
+// ******************************************************************************
+
+== Fonts Combination Preview
+
+This section offers a preview of how the different fonts look like together.
+// >>> http://fillerama.io
+Shh! Knights, I bid you welcome to your new home. Let us ride to Camelot!
+I don't want to talk to you no more, you empty-headed animal food trough water!
+I fart in your general direction!
+Your mother was a hamster and your father smelt of elderberries!
+Now leave before I am forced to taunt you a second time!
+// <<< http://fillerama.io
+
+[source,alan]
+--------------------
+include::snippets.alan[tag=short_sample]
+--------------------
 
 [discrete]
 === Text Formatting

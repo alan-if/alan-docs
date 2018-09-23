@@ -15,7 +15,7 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>1.2</revnumber>
+<revnumber>1.3</revnumber>
 <date>September 23, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: Asciidoctor&#8217;s native HTML5</revremark>
@@ -28,6 +28,30 @@
 <simpara>Some contents are format dependent and will vary according to the document&#8217;s output format and the backend employed, providing additional information specific to that format and/or backend.</simpara>
 <simpara>Currently, we are still in the process to choose the fonts that will be used in the final documents.</simpara>
 </preface>
+<chapter xml:id="_fonts_specimens">
+<title>Fonts Specimens</title>
+<simpara>Specimens of the three main fonts used for base body text, verbatim text, and headings.</simpara>
+<simpara>ABCDEFGHIJKLMNOPQRSTUVWXYZ<?asciidoc-br?>
+abcdefghijklmnopqrstuvwxyz<?asciidoc-br?>
+1234567890 + - * /<?asciidoc-br?>
+!?|()[]{}&lt;&gt;$@</simpara>
+<screen>ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+1234567890 + - * /
+!?|()[]{}&lt;&gt;$@</screen>
+<bridgehead xml:id="_abcdefghijklmnopqrstuvwxyz" renderas="sect2">ABCDEFGHIJKLMNOPQRSTUVWXYZ</bridgehead>
+<bridgehead xml:id="_abcdefghijklmnopqrstuvwxyz_2" renderas="sect2">abcdefghijklmnopqrstuvwxyz</bridgehead>
+<bridgehead xml:id="_1234567890" renderas="sect2">1234567890 + - * /</bridgehead>
+<bridgehead xml:id="" renderas="sect2">!?|()[]{}&lt;&gt;$@</bridgehead>
+</chapter>
+<chapter xml:id="_font_styles_availability_checks">
+<title>Font Styles Availability Checks</title>
+<simpara>Now we need to check that every font is also available in <emphasis role="strong">bold</emphasis>, <emphasis>italic</emphasis> and <emphasis role="strong"><emphasis>bold+italic</emphasis></emphasis> style.</simpara>
+<simpara>In heading fonts:</simpara>
+<bridgehead xml:id="_heading_bold_italic_and_bolditalic" renderas="sect1">Heading: <emphasis role="strong">bold</emphasis>, <emphasis>italic</emphasis> and <emphasis role="strong"><emphasis>bold+italic</emphasis></emphasis></bridgehead>
+<simpara>And in monospace fonts too: <literal><emphasis role="strong">bold</emphasis>, <emphasis>italic</emphasis> and <emphasis role="strong"><emphasis>bold+italic</emphasis></emphasis></literal>.</simpara>
+<literallayout class="monospaced">Verbatim: <emphasis role="strong">bold</emphasis>, <emphasis>italic</emphasis> and <emphasis role="strong"><emphasis>bold+italic</emphasis></emphasis>.</literallayout>
+</chapter>
 <chapter xml:id="_fonts_combination_preview">
 <title>Fonts Combination Preview</title>
 <simpara>This section offers a preview of how the different fonts look like together.
@@ -42,21 +66,6 @@ Now leave before I am forced to taunt you a second time!</simpara>
 End The shore.
 
 Start at shore.</programlisting>
-<section xml:id="_fonts_specimen">
-<title>Fonts Specimen</title>
-<simpara>ABCDEFGHIJKLMNOPQRSTUVWXYZ<?asciidoc-br?>
-abcdefghijklmnopqrstuvwxyz<?asciidoc-br?>
-1234567890 + - * /<?asciidoc-br?>
-!?|()[]{}&lt;&gt;$@</simpara>
-<screen>ABCDEFGHIJKLMNOPQRSTUVWXYZ
-abcdefghijklmnopqrstuvwxyz
-1234567890 + - * /
-!?|()[]{}&lt;&gt;$@</screen>
-<bridgehead xml:id="_abcdefghijklmnopqrstuvwxyz" renderas="sect2">ABCDEFGHIJKLMNOPQRSTUVWXYZ</bridgehead>
-<bridgehead xml:id="_abcdefghijklmnopqrstuvwxyz_2" renderas="sect2">abcdefghijklmnopqrstuvwxyz</bridgehead>
-<bridgehead xml:id="_1234567890" renderas="sect2">1234567890 + - * /</bridgehead>
-<bridgehead xml:id="" renderas="sect2">!?|()[]{}&lt;&gt;$@</bridgehead>
-<simpara><?asciidoc-hr?></simpara>
 <bridgehead xml:id="_text_formatting" renderas="sect2">Text Formatting</bridgehead>
 <simpara>Let&#8217;s test inline styling.
 Text Formatting: <emphasis role="strong">bold</emphasis> and <emphasis>italic</emphasis>, <subscript>subscript</subscript> and <superscript>superscript</superscript>,
@@ -91,7 +100,6 @@ And this isn&#8217;t my nose. This is a false one.</simpara>
 <bridgehead xml:id="_miscellanea" renderas="sect2">Miscellanea</bridgehead>
 <simpara>Horizontal rule:</simpara>
 <simpara><?asciidoc-hr?></simpara>
-</section>
 </chapter>
 <chapter xml:id="_ligatures_tests">
 <title>Ligatures Tests</title>

@@ -438,26 +438,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">v 1.2,</span>
+<span id="revnumber">v 1.3,</span>
 <span id="revdate">September 23, 2018</span>
 <br><span id="revremark">Backend: Asciidoctor&#8217;s native HTML5</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_fonts_combination_preview">1. Fonts Combination Preview</a>
+<li><a href="#_fonts_specimens">1. Fonts Specimens</a></li>
+<li><a href="#_font_styles_availability_checks">2. Font Styles Availability Checks</a></li>
+<li><a href="#_fonts_combination_preview">3. Fonts Combination Preview</a></li>
+<li><a href="#_ligatures_tests">4. Ligatures Tests</a>
 <ul class="sectlevel2">
-<li><a href="#_fonts_specimen">1.1. Fonts Specimen</a></li>
+<li><a href="#_code_ligatures">4.1. Code Ligatures</a></li>
 </ul>
 </li>
-<li><a href="#_ligatures_tests">2. Ligatures Tests</a>
+<li><a href="#_special_charachters">5. Special Charachters</a>
 <ul class="sectlevel2">
-<li><a href="#_code_ligatures">2.1. Code Ligatures</a></li>
-</ul>
-</li>
-<li><a href="#_special_charachters">3. Special Charachters</a>
-<ul class="sectlevel2">
-<li><a href="#_text_replacements">3.1. Text Replacements</a></li>
+<li><a href="#_text_replacements">5.1. Text Replacements</a></li>
 </ul>
 </li>
 </ul>
@@ -493,28 +491,11 @@ This document uses Asciidoctor&#8217;s native theme, and many elements with cust
 </div>
 </div>
 <div class="sect1">
-<h2 id="_fonts_combination_preview">1. Fonts Combination Preview</h2>
+<h2 id="_fonts_specimens">1. Fonts Specimens</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section offers a preview of how the different fonts look like together.
-Shh! Knights, I bid you welcome to your new home. Let us ride to Camelot!
-I don&#8217;t want to talk to you no more, you empty-headed animal food trough water!
-I fart in your general direction!
-Your mother was a hamster and your father smelt of elderberries!
-Now leave before I am forced to taunt you a second time!</p>
+<p>Specimens of the three main fonts used for base body text, verbatim text, and headings.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">The shore IsA location
-  Name Shore of Great Sea
-  Description "A beautifyl sea shore, probably Paradise lost."
-End The shore.
-
-Start at shore.</code></pre>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_fonts_specimen">1.1. Fonts Specimen</h3>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -537,7 +518,49 @@ abcdefghijklmnopqrstuvwxyz
 <h3 id="_abcdefghijklmnopqrstuvwxyz_2" class="discrete">abcdefghijklmnopqrstuvwxyz</h3>
 <h3 id="_1234567890" class="discrete">1234567890 + - * /</h3>
 <h3 id="" class="discrete">!?|()[]{}&lt;&gt;$@</h3>
-<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_font_styles_availability_checks">2. Font Styles Availability Checks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now we need to check that every font is also available in <strong>bold</strong>, <em>italic</em> and <strong><em>bold+italic</em></strong> style.</p>
+</div>
+<div class="paragraph">
+<p>In heading fonts:</p>
+</div>
+<h2 id="_heading_bold_italic_and_bolditalic" class="discrete">Heading: <strong>bold</strong>, <em>italic</em> and <strong><em>bold+italic</em></strong></h2>
+<div class="paragraph">
+<p>And in monospace fonts too: <code><strong>bold</strong>, <em>italic</em> and <strong><em>bold+italic</em></strong></code>.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Verbatim: <strong>bold</strong>, <em>italic</em> and <strong><em>bold+italic</em></strong>.</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fonts_combination_preview">3. Fonts Combination Preview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section offers a preview of how the different fonts look like together.
+Shh! Knights, I bid you welcome to your new home. Let us ride to Camelot!
+I don&#8217;t want to talk to you no more, you empty-headed animal food trough water!
+I fart in your general direction!
+Your mother was a hamster and your father smelt of elderberries!
+Now leave before I am forced to taunt you a second time!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-alan" data-lang="alan">The shore IsA location
+  Name Shore of Great Sea
+  Description "A beautifyl sea shore, probably Paradise lost."
+End The shore.
+
+Start at shore.</code></pre>
+</div>
+</div>
 <h3 id="_text_formatting" class="discrete">Text Formatting</h3>
 <div class="paragraph">
 <p>Let&#8217;s test inline styling.
@@ -586,15 +609,14 @@ And this isn&#8217;t my nose. This is a false one.</p>
 <hr>
 </div>
 </div>
-</div>
 <div class="sect1">
-<h2 id="_ligatures_tests">2. Ligatures Tests</h2>
+<h2 id="_ligatures_tests">4. Ligatures Tests</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Here we test if ligatures are being supported by the current backend and font.</p>
 </div>
 <div class="sect2">
-<h3 id="_code_ligatures">2.1. Code Ligatures</h3>
+<h3 id="_code_ligatures">4.1. Code Ligatures</h3>
 <div class="paragraph">
 <p>Some fonts support source code related ligatures.
 We&#8217;ll test these code related ligatures using a test file taken from Nikita Prokopov&#8217;s
@@ -676,10 +698,10 @@ The example block below has not special substitutions settings.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_special_charachters">3. Special Charachters</h2>
+<h2 id="_special_charachters">5. Special Charachters</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_text_replacements">3.1. Text Replacements</h3>
+<h3 id="_text_replacements">5.1. Text Replacements</h3>
 <div class="paragraph">
 <p>The following table is used for checking that default Asciidoctor textual symbols replacement works fine.</p>
 </div>
@@ -786,8 +808,8 @@ Content licensed under <a href="https://creativecommons.org/licenses/by/3.0/" ta
 </div>
 <div id="footer">
 <div id="footer-text">
-v 1.2<br>
-Last updated 2018-09-23 12:43:05 ora legale Europa occidentale
+v 1.3<br>
+Last updated 2018-09-23 14:29:52 ora legale Europa occidentale
 </div>
 </div>
 </body>
