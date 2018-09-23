@@ -1,6 +1,6 @@
 = Typography in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v1.1, September 18, 2018: Typography styling previews
+v1.2, September 23, 2018: Typography styling previews
 :version-label: v
 :authorinitials: T.J.A.
 // =====================
@@ -20,6 +20,10 @@ endif::[]
 :doctype: book
 :encoding: utf-8
 :lang: en
+// Sections Numbering:
+:sectnums:
+:sectnumlevels: 2
+// Cross References:
 // Misc Settings:
 :experimental: true
 :icons: font
@@ -53,6 +57,123 @@ ifeval::["{backend}" == "html5"]
 include::_inc_html-warning.adoc[]
 endif::[]
 
+// *****************************************************************************
+// *                                                                           *
+// *                               Fonts Tests                                 *
+// *                                                                           *
+// *****************************************************************************
+
+== Fonts Combination Preview
+
+This section offers a preview of how the different fonts look like together.
+// >>> http://fillerama.io
+Shh! Knights, I bid you welcome to your new home. Let us ride to Camelot!
+I don't want to talk to you no more, you empty-headed animal food trough water!
+I fart in your general direction!
+Your mother was a hamster and your father smelt of elderberries!
+Now leave before I am forced to taunt you a second time!
+// <<< http://fillerama.io
+
+[source,alan]
+--------------------
+include::snippets.alan[tag=short_sample]
+--------------------
+
+=== Fonts Specimen
+
+:speciemen1: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+:speciemen2: abcdefghijklmnopqrstuvwxyz
+:speciemen3: 1234567890 + - * /
+:speciemen4: !?|()[]{}<>$@
+
+
+[subs="post_replacements,attributes"]
+--
+{speciemen1} +
+{speciemen2} +
+{speciemen3} +
+{speciemen4}
+--
+
+
+[subs="attributes"]
+----
+{speciemen1}
+{speciemen2}
+{speciemen3}
+{speciemen4}
+----
+
+
+[discrete]
+=== {speciemen1}
+[discrete]
+=== {speciemen2}
+[discrete]
+=== {speciemen3}
+[discrete]
+=== {speciemen4}
+
+'''
+
+[discrete]
+=== Text Formatting
+
+Let's test inline styling.
+Text Formatting: *bold* and _italic_, ~subscript~ and ^superscript^,
+`inline code` (`*bold*`, `_italic_`, `*_bold italic_*`),
+"`double`" and '`single quotes`'.
+Styles with attributes: #highlighter#, [small]#small print# and [big]#big text#.
+Experimental features: keystrokes kbd:[Ctrl+Shift+N].
+
+
+[discrete]
+=== Headings
+
+[discrete]
+== Level 1 Heading
+
+[discrete]
+=== Level 2 Heading
+
+[discrete]
+==== Level 3 Heading
+
+[discrete]
+===== Level 4 Heading
+
+[discrete]
+====== Level 5 Heading
+
+
+[discrete]
+=== Monty Python and the Holy Grail
+
+Courtesy of http://fillerama.io/[fillerama^].
+
+1. We want a shrubbery!!
+2. You don't vote for kings.
+3. Well, how'd you become king, then?
+
+____
+Listen. Strange women lying in ponds distributing swords is no basis for a system of government.
+Supreme executive power derives from a mandate from the masses, not from some farcical aquatic ceremony.
+And this isn't my nose. This is a false one.
+____
+
+
+[discrete]
+=== Miscellanea
+
+Horizontal rule:
+
+'''
+
+// *****************************************************************************
+// *                                                                           *
+// *                             Ligatures Tests                               *
+// *                                                                           *
+// *****************************************************************************
 
 == Ligatures Tests
 
@@ -76,6 +197,22 @@ And now we'll carry out the test (part of it) in an example block, for here a di
 The example block below has not special substitutions settings.
 
 include::ligatures_test.adoc[tag=code_ligatures_example]
+
+// ******************************************************************************
+// *                                                                            *
+// *                              Text Replacement                              *
+// *                                                                            *
+// ******************************************************************************
+
+== Special Charachters
+
+=== Text Replacements
+
+The following table is used for checking that default Asciidoctor textual symbols replacement works fine.
+
+
+include::_inc-table-symbols-repl.adoc[]
+
 
 
 // EOF //

@@ -1,4 +1,4 @@
-# Syntax Highlighting
+# Typography and Syntax Highlighting Tests
 
 This folder contains various documents for previeweing and testing template styles across the supported output formats.
 
