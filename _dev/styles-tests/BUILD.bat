@@ -1,15 +1,18 @@
-:: "BUILD.bat" v1.0.0 (2018/09/18) by Tristano Ajmone
+:: "BUILD.bat" v1.1.0 (2018/09/24) by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: This script is released into public domain via the Unlicense:
 ::     http://unlicense.org/
 :: -----------------------------------------------------------------------------
 @ECHO OFF
 CLS
+:: Set some required env vars
+SET "CURRDIR=%CD%"
+SET "ASSETSDIR=..\..\_assets\"
 
 FOR /R %%i IN (*.asciidoc) DO (
-	ECHO ==============================================================================
+  ECHO ==============================================================================
     ECHO Processing: %%~nxi
-	ECHO ==============================================================================
+  ECHO ==============================================================================
     CALL :ADoc2HTML %%i
     CALL :ADoc2PDF %%i
 )
@@ -26,12 +29,14 @@ CALL asciidoctor^
   --safe-mode unsafe^
   --verbose^
   %1
-@ECHO OFF
 EXIT /B
 :: =============================================================================
 :: func:                         Convert to PDF
 :: =============================================================================
 :ADoc2PDF
+
+:: Need to switch working directory to "//_assets/" for FOP:
+CD %ASSETSDIR%
 
 ECHO Converting to PDF:  %~n1.pdf
 CALL asciidoctor^
@@ -41,7 +46,9 @@ CALL asciidoctor^
   --verbose^
   %1
 CALL fopub^
-  -t ..\..\_assets\xsl-fopub^
-  %~n1.xml
-@ECHO OFF
+  -t xsl-fopub^
+  %~dpn1.xml
+:: Restore origignal script working directory:
+CD %CURRDIR%
+
 EXIT /B

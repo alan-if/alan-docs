@@ -34,6 +34,8 @@ Some notes and useful links for working on FOP/XSL customization of the PDF temp
     + [FOP Fonts]
 - [DocBook XSL: The Complete Guide]:
     + [Adding a font] — tutorial (FOP v0.93)
+- [Fonts and FOP] — tutorial by Jean-François Perrot.
+
 
 ### Base-14 Fonts Set
 
@@ -154,6 +156,7 @@ Dependencies:
 
 [Adobe: Font technical notes]: https://www.adobe.com/devnet/font.html
 
+
 <!-- Apache FOP -->
 
 [FOP]: https://xmlgraphics.apache.org/fop/ "Visit the Apache™ FOP Project"
@@ -161,6 +164,7 @@ Dependencies:
 
 [FOP Configuration]: https://xmlgraphics.apache.org/fop/2.1/configuration.html
 [FOP Fonts]: https://xmlgraphics.apache.org/fop/2.1/fonts.html
+[Fonts and FOP]: https://pages.lip6.fr/Jean-Francois.Perrot/XML-Int/Session6/FOPFonts/index.html
 
 <!-- XSL FO -->
 

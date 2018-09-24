@@ -12,6 +12,7 @@ Customized XSL stylesheets for the PDF conversion of the Alan Manual via [asciid
     - [Customizations](#customizations)
         - [Syntax Highlighting](#syntax-highlighting)
     - [Tech Specs](#tech-specs)
+- [Important Usage Note](#important-usage-note)
 - [License](#license)
 
 <!-- /MarkdownTOC -->
@@ -43,7 +44,7 @@ The changes include the creation of an Alan language definition for the FOP synt
 
 ## Tech Specs
 
-Asciidoctor-fopub uses the following components versions:
+asciidoctor-fopub uses the following components versions:
 
 | Software Project            | Version |
 | :-------------------------- | :------ |
@@ -55,6 +56,50 @@ Asciidoctor-fopub uses the following components versions:
 | XSLTHL                      | 2.1.0   |
 | Gradle                      | 2.0     |
 
+# Important Usage Note
+
+In order to use these XSL Stylesheets, your invoking script must set the working path to the "`_assets`" folder of the repository! This is due to the fact that the "`fop-config.xml`" configuration file uses relative paths to find the fonts folder:
+
+```xml
+        <!-- Register all the fonts found in this directory -->
+        <directory recursive="true">fonts</directory>
+```
+
+Therefore, the invoking script must CD to the "`_assets`" folder being invoking asciidoctor-fopub. This also means that you'll have to use an absolute path for the DocBook source file, and that you'll only need to pass `-t xsl-fopub` to inform asciidoctor-fopub about where to find the XSL Stylesheets.
+
+As an example, look at the various batch scripts in this folder. You'll notice that they all store the current directory and then swtich to the "`_assets`" folder before invoking asciidoctor-fopub. Here is a simplified example:
+
+```batch
+:: (we are starting inside "manual\" folder!!!)
+
+:: Preseve current directory:
+SET "CURRDIR=%CD%"
+
+:: Define path to "_assets" folder:
+SET "ASSETSDIR=..\_assets\"
+
+:: Covnert from AsciiDoc to DocBook via Asciidoctor:
+CALL asciidoctor^
+  -b docbook^
+  -d book^
+  -a data-uri!^
+  --safe-mode unsafe^
+  --verbose^
+  manual.asciidoc
+
+:: Need to switch working directory to "_assets" for FOP:
+CD %ASSETSDIR%
+
+CALL fopub^
+  -t xsl-fopub^
+  %CURRDIR%\manual.xml
+
+:: Restore origignal script working directory:
+CD %CURRDIR%
+@EXIT /B
+```
+
+Unfortunately, I couldn't find a better solution to handle a XSL Stylesheets folder commonly shared by different documents inside a repository shared across different machine. But since the automated scripts do all the work for you, you won't have to worry about this unless you are actively developing the project.
 
 # License
 

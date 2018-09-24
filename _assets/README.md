@@ -4,6 +4,7 @@ This folder stores assets that are (or might be) shared by multiple documents â€
 
 # Assets Tree
 
+- [`/fonts/`](./fonts)
 - [`/images/`](./images)
 - [`/xsl-fopub/`](./xsl-fopub) â€” XSL PDF Stylesheets used by asciidoctor-fopub. 
 

@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- =================================== -->
+<!-- "fop-config.xml" v1.0.0 (2018/09/24 -->
+<!-- =================================== -->
+<!--
+IMPORTANT:  All paths should be relative to the repository's "_assets" folder!
+            Make sure that any invoking scripts switches working directory
+            accordingly
+-->
 <fop version="1.0">
   <strict-configuration>true</strict-configuration>
+  
   <renderers>
     <renderer mime="application/pdf">
       <fonts>
-        <auto-detect />
+
+        <!-- Register all the fonts found in this directory -->
+        <directory recursive="true">fonts</directory>
+
+        <!-- NOTE: We disable this, we only want to use the fonts provided
+                   in the repository!!! -->
+        <!-- Automatically detect operating system installed fonts -->
+        <!-- <auto-detect /> -->
+
       </fonts>
     </renderer>
   </renderers>

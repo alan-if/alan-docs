@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "fo-pdf.xsl" v0.1.5 (2018/09/16)
+  "fo-pdf.xsl" v0.1.6 (2018/09/24)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -59,16 +59,24 @@
     Font selectors
   -->
 
-  <xsl:template name="pickfont-sans">
-    <xsl:text>Arial,sans-serif</xsl:text>
+  <!-- Custom addition to control Headgings font -->
+  <xsl:template name="pickfont-headings">
+    <xsl:text>Fira Sans Condensed,sans</xsl:text>
   </xsl:template>
 
+  <xsl:template name="pickfont-sans">
+    <xsl:text>Open Sans,sans-serif</xsl:text>
+    <!-- <xsl:text>Arial,sans-serif</xsl:text> -->
+  </xsl:template>
+
+  <!-- CURRENTLY NOT USED!!! -->
   <xsl:template name="pickfont-serif">
     <xsl:text>Georgia,serif</xsl:text>
   </xsl:template>
 
   <xsl:template name="pickfont-mono">
-    <xsl:text>Liberation Mono,Courier New,Courier,monospace</xsl:text>
+    <xsl:text>Roboto Mono,Courier New,Courier,monospace</xsl:text>
+    <!-- <xsl:text>Liberation Mono,Courier New,Courier,monospace</xsl:text> -->
   </xsl:template>
 
   <xsl:template name="pickfont-dingbat">
@@ -113,8 +121,10 @@
     <xsl:call-template name="pickfont-math"/>
   </xsl:param>
 
+  <!-- Customized to control Headings regardless of Sans/Serif -->
   <xsl:param name="title.font.family">
-    <xsl:call-template name="pickfont-serif"/>
+    <xsl:call-template name="pickfont-headings"/>
+    <!-- <xsl:call-template name="pickfont-serif"/> -->
   </xsl:param>
 
   <!--
