@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>Syntax Highlighting in Alan Documentation</title>
-<date>September 18, 2018</date>
+<date>September 30, 2018</date>
 <author>
 <personname>
 <firstname>Tristano</firstname>
@@ -15,8 +15,8 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>1.6</revnumber>
-<date>September 18, 2018</date>
+<revnumber>1.7</revnumber>
+<date>September 30, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: Asciidoctor&#8217;s native HTML5</revremark>
 </revision>
@@ -26,7 +26,6 @@
 <title></title>
 <simpara>This document is for previewing how source code and other verbatim blocks will be rendered and styled in the final documentation, and for comparing quality and differences across all the supported output formats.</simpara>
 <simpara>Some contents are format dependent and will vary according to the document&#8217;s output format and the backend employed, providing additional information specific to that format and/or backend.</simpara>
-<simpara>Currently, we&#8217;re still working on implementing syntax highlighting of Alan source code in the various output formats, as different conversion backends will employ different highlighting tools.</simpara>
 </preface>
 <chapter xml:id="_syntaxes_preview">
 <title>Syntaxes Preview</title>
@@ -194,6 +193,22 @@ When hero At cave =&gt;</programlisting>
 <textobject><phrase>sublime alan ligatures screenshot</phrase></textobject>
 </mediaobject>
 </figure>
+</section>
+<section xml:id="_callouts_support">
+<title>Callouts Support</title>
+<simpara>Now it&#8217;s time to test how callouts interact with the syntax highligher.</simpara>
+<programlisting language="alan" linenumbering="unnumbered">The shore IsA location <co xml:id="CO1-1"/>
+  Name Shore of Great Sea <co xml:id="CO1-2"/>
+  Description "A beautifyl sea shore, probably Paradise lost."
+End The shore.</programlisting>
+<calloutlist>
+<callout arearefs="CO1-1">
+<para>Instance declaration.</para>
+</callout>
+<callout arearefs="CO1-2">
+<para>Instance name.</para>
+</callout>
+</calloutlist>
 </section>
 </section>
 </chapter>

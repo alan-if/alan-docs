@@ -20,7 +20,7 @@ Some notes and useful links for working on FOP/XSL customization of the PDF temp
     - [Asciidoctor Toolchain for PDF](#asciidoctor-toolchain-for-pdf)
     - [DocBook](#docbook)
     - [DocBook XSL Stylesheets](#docbook-xsl-stylesheets)
-    - [XSLTHL — Syntax Highlighting](#xslthl-%E2%80%94-syntax-highlighting)
+    - [XSLTHL Syntax Highlighting](#xslthl-syntax-highlighting)
 
 <!-- /MarkdownTOC -->
 
@@ -141,7 +141,7 @@ Dependencies:
 - https://github.com/docbook/xslt20-stylesheets
 - https://github.com/docbook/xslt10-stylesheets
 
-## XSLTHL — Syntax Highlighting
+## XSLTHL Syntax Highlighting
 
 - [XSLTHL]  (XSLT syntax highlighting) — at Sourceforge.
 - [XSLTHL Wiki] — at Sourceforge.

@@ -1,0 +1,83 @@
+// ******************************************************************************
+// *                                                                            *
+// *                     Highlight.js Themes for Alan-Docs                      *
+// *                                                                            *
+// ******************************************************************************
+// Syntax highlighting color schemes for the Alan-Docs project.
+// Created by Tristano Ajmone.
+
+// ==============
+// Color Palettes
+// ==============
+
+// Default
+$default-background: #FEFEFE;
+$default-normal:     #000;
+
+// Alan
+$Alan-background: #FEFEFE;
+$Alan-normal:     #333;
+$Alan-comment:    #998;
+$Alan-string:     #008080;
+$Alan-built_in:   #000080;
+$Alan-keyword:    #990000;
+
+// BNF
+$BNF-background: #222;
+$BNF-normal:     #FFCC99;
+
+// Game Transcript
+$Transcript-background: #F7FDFF;
+$Transcript-normal:     #0089B6;
+$Transcript-border:     #CCF2FF;
+
+
+// ------------------------
+/* Highlight.js base styles */
+// ------------------------
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: $default-normal;
+    background: $default-background;
+}
+// -----------------------------------------------------------------------------
+/* HLJS Alan */
+// -----------------------------------------------------------------------------
+// NOTE: We don't style numbers (.hljs-number).
+code.hljs[data-lang=alan] {
+    color: $Alan-normal;
+    background: $Alan-background;
+
+    .hljs-comment {
+      color: $Alan-comment;
+    }
+    .hljs-string {
+      color: $Alan-string;
+    }
+    .hljs-built_in {
+      color: $Alan-built_in;
+    }
+    .hljs-keyword {
+      color: $Alan-keyword;
+    }
+}
+// -----------------------------------------------------------------------------
+/* HLJS BNF */
+// -----------------------------------------------------------------------------
+code.hljs[data-lang=bnf] {
+    color: $BNF-background;
+    background: $BNF-normal;
+}
+// -----------------------------------------------------------------------------
+/* HLJS Game Transcripts */
+// -----------------------------------------------------------------------------
+// This isn't a syntax highlighted block, but we throw it in here to keep it
+// simpler...
+div.gametranscript,
+.exampleblock.gametranscript>.content {
+    background: $Transcript-background;
+    color: $Transcript-normal;
+    border-color: $Transcript-border;
+}

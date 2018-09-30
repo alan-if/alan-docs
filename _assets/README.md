@@ -5,6 +5,7 @@ This folder stores assets that are (or might be) shared by multiple documents �
 # Assets Tree
 
 - [`/fonts/`](./fonts)
+- [`/hjs/`](./hjs/) — custom highlight.js build for Alan.
 - [`/images/`](./images)
 - [`/xsl-fopub/`](./xsl-fopub) — XSL PDF Stylesheets used by asciidoctor-fopub. 
 

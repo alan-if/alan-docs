@@ -1,6 +1,6 @@
 = Syntax Highlighting in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v1.6, September 18, 2018: Code styling previews
+v1.7, September 30, 2018: Code styling previews
 :version-label: v
 :authorinitials: T.J.A.
 // =====================
@@ -43,14 +43,33 @@ This document is for previewing how source code and other verbatim blocks will b
 
 Some contents are format dependent and will vary according to the document's output format and the backend employed, providing additional information specific to that format and/or backend.
 
-Currently, we're still working on implementing syntax highlighting of Alan source code in the various output formats, as different conversion backends will employ different highlighting tools.
-
-// =====================
-// HTML Backend Warning:
-// =====================
-// Warning about use of native Asciidoctor theme and missing custom styles...
+// ==================
+// HTML Backend Only:
+// ==================
 ifeval::["{backend}" == "html5"]
+
+[NOTE]
+================================================================================
+For syntax highlighting in the HTML5 backend we use a custom build of https://highlightjs.org/[highlight.js^] for which we've created an
+https://github.com/tajmone/highlight.js/blob/Alan/src/languages/alan.js[Alan syntax definition^] from scratch.
+================================================================================
+
+// Theme Warning:
+// ==============
+// Warning about use of native Asciidoctor theme and missing custom styles...
 include::_inc_html-warning.adoc[]
+endif::[]
+
+
+// ===================
+// FOPUB Backend Only:
+// ===================
+ifeval::["{toolchain}" == "asciidoctor-fopub"]
+
+[NOTE]
+================================================================================
+For syntax highlighting in the PDF backend we use https://sourceforge.net/projects/xslthl/[XSLTHL^] for which we've created an Alan syntax definition from scratch.
+================================================================================
 endif::[]
 
 
@@ -219,6 +238,24 @@ https://github.com/tajmone/sublime-alan[Sublime Alan^] package:
 
 .Example of correct ligatures support in Sublime Text.
 image::sublime-alan-ligatures-screenshot.png[]
+
+
+==== Callouts Support
+
+Now it's time to test how callouts interact with the syntax highligher.
+
+
+[source,alan]
+--------------------------------------------------------------------------------
+The shore IsA location <1>
+  Name Shore of Great Sea <2>
+  Description "A beautifyl sea shore, probably Paradise lost."
+End The shore.
+--------------------------------------------------------------------------------
+
+<1> Instance declaration.
+<2> Instance name.
+
 
 == BNF Syntax
 

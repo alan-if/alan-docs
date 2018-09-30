@@ -1,0 +1,34 @@
+/* Highlight.js base styles */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #000;
+  background: #FEFEFE; }
+
+/* HLJS Alan */
+code.hljs[data-lang=alan] {
+  color: #333;
+  background: #FEFEFE; }
+  code.hljs[data-lang=alan] .hljs-comment {
+    color: #998; }
+  code.hljs[data-lang=alan] .hljs-string {
+    color: #008080; }
+  code.hljs[data-lang=alan] .hljs-built_in {
+    color: #000080; }
+  code.hljs[data-lang=alan] .hljs-keyword {
+    color: #990000; }
+
+/* HLJS BNF */
+code.hljs[data-lang=bnf] {
+  color: #222;
+  background: #FFCC99; }
+
+/* HLJS Game Transcripts */
+div.gametranscript,
+.exampleblock.gametranscript > .content {
+  background: #F7FDFF;
+  color: #0089B6;
+  border-color: #CCF2FF; }
+
+/*# sourceMappingURL=github.min.css.map */

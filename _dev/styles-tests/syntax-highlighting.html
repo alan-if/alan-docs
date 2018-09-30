@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">v 1.6,</span>
-<span id="revdate">September 18, 2018</span>
+<span id="revnumber">v 1.7,</span>
+<span id="revdate">September 30, 2018</span>
 <br><span id="revremark">Backend: Asciidoctor&#8217;s native HTML5</span>
 </div>
 <div id="toc" class="toc2">
@@ -465,6 +465,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_strings">Strings</a></li>
 <li><a href="#_false_positive_keywords_matches">False Positive Keywords Matches</a></li>
 <li><a href="#_ligatures_support">Ligatures Support</a></li>
+<li><a href="#_callouts_support">Callouts Support</a></li>
 </ul>
 </li>
 </ul>
@@ -482,8 +483,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Some contents are format dependent and will vary according to the document&#8217;s output format and the backend employed, providing additional information specific to that format and/or backend.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Currently, we&#8217;re still working on implementing syntax highlighting of Alan source code in the various output formats, as different conversion backends will employ different highlighting tools.</p>
+<p>For syntax highlighting in the HTML5 backend we use a custom build of <a href="https://highlightjs.org/" target="_blank" rel="noopener">highlight.js</a> for which we&#8217;ve created an
+<a href="https://github.com/tajmone/highlight.js/blob/Alan/src/languages/alan.js" target="_blank" rel="noopener">Alan syntax definition</a> from scratch.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -509,7 +522,7 @@ This document uses Asciidoctor&#8217;s native theme, and many elements with cust
 <h3 id="_alan">Alan</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">--==============================================================================
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">--==============================================================================
 -- "Barracks Example" by Tristano Ajmone
 --==============================================================================
 The canteen IsA LOCATION
@@ -541,7 +554,7 @@ Start at canteen.</code></pre>
 <h3 id="_bnf">BNF</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bnf" data-lang="bnf">class = 'EVERY' id
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">class = 'EVERY' id
             [inheritance]
             {property}
         'END' 'EVERY' [id] ['.']</code></pre>
@@ -616,7 +629,7 @@ Both can be optionally enabled by assigning styles to them, or just be ignored (
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">Synonyms me = hero.
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Synonyms me = hero.
 
 The basement IsA location.
   Description "What a dark ang gloomy place!"
@@ -670,7 +683,7 @@ Start at basement.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">The 'At the Bus Stop' IsA location --&gt; Watch out for: 'AT', 'THE' and 'STOP'!
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The 'At the Bus Stop' IsA location --&gt; Watch out for: 'AT', 'THE' and 'STOP'!
 End The.</code></pre>
 </div>
 </div>
@@ -687,7 +700,7 @@ End The.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">The 'Bob''s House' IsA location --&gt; Escaped apostrophe in location name.
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The 'Bob''s House' IsA location --&gt; Escaped apostrophe in location name.
 End The.</code></pre>
 </div>
 </div>
@@ -704,7 +717,7 @@ End The.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">-- Tokens in strings and quoted IDs shouldn't be highligthed as keywords...
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">-- Tokens in strings and quoted IDs shouldn't be highligthed as keywords...
 
 The 'At the Bus Stop' IsA location --&gt; Watch out for: 'AT', 'THE' and 'STOP'!
   Description
@@ -727,7 +740,7 @@ Some code fonts support ligatures replacements for common programming symbols, b
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-alan" data-lang="alan">--&gt; Test "string identity operator" ligature  ('='+'=' -&gt; '==')
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">--&gt; Test "string identity operator" ligature  ('='+'=' -&gt; '==')
 If text Of notepad Not == "xyzzy" Then
 
 --&gt; Test "greater or equal" ligature          ('&gt;'+'=' -&gt; '&gt;=')
@@ -751,6 +764,32 @@ When hero At cave =&gt;</code></pre>
 <div class="title">Figure 1. Example of correct ligatures support in Sublime Text.</div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_callouts_support">Callouts Support</h4>
+<div class="paragraph">
+<p>Now it&#8217;s time to test how callouts interact with the syntax highligher.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The shore IsA location <i class="conum" data-value="1"></i><b>(1)</b>
+  Name Shore of Great Sea <i class="conum" data-value="2"></i><b>(2)</b>
+  Description "A beautifyl sea shore, probably Paradise lost."
+End The shore.</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Instance declaration.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Instance name.</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -762,7 +801,7 @@ When hero At cave =&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bnf" data-lang="bnf">attribute_declaration = id
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">attribute_declaration = id
                       | 'NOT' id
                       | id integer
                       | id string
@@ -772,7 +811,7 @@ When hero At cave =&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bnf" data-lang="bnf">forms = indefinite | definite | negative
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">forms = indefinite | definite | negative
 
 definite = 'DEFINITE' article_or_form
 
@@ -789,9 +828,12 @@ article_or_form = 'ARTICLE' {statement}
 </div>
 <div id="footer">
 <div id="footer-text">
-v 1.6<br>
-Last updated 2018-09-18 02:14:16 ora legale Europa occidentale
+v 1.7<br>
+Last updated 2018-09-30 21:38:27 ora legale Europa occidentale
 </div>
 </div>
+<link rel="stylesheet" href="../../_assets/hjs/styles/github.min.css">
+<script src="../../_assets/hjs/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>

@@ -62,6 +62,7 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 
 - [`/_assets/`](./_assets/) (shared assets):
     + [`/fonts/`](./_assets/fonts/)
+    + [`/hjs/`](./_assets/hjs/) — custom [highlight.js] build for Alan.
     + [`/images/`](./_assets/images/)
     + [`/xsl-fopub/`](./_assets/xsl-fopub/) — XSL Stylesheets for PDF conversion via asciidoctor-fopub.
 - [`/_assets-src/`](./_assets-src/) (assets' source files):
@@ -69,6 +70,7 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
         * [`/alan-logo/`](./_assets-src/images/alan-logo/) — Alan logo reconstructed as vector image.
         * [`/predefined-classes/`](./_assets-src/images/predefined-classes/) — The predefined-classes diagram reconstructed using [Dia Diagram Editor].
     + [`/original-docs/`](./_assets-src/original-docs/) — copy of the original docs being ported.
+    + [`/sass/`](./_assets-src/sass/) — [Sass] source files to build CSS stylesheets.
 - [`/_dev/`](./_dev) — Project developers' stuff (testing, etc.).
 - [`/alanguide/`](./alanguide) — _Alan 3 Beginner's Guide_ ported to AsciiDoc (WIP).
 - [`/ideguide/`](./ideguide) — _Alan IDE Reference Guide_ v1.0, by Robert DeFord, 2018.
@@ -283,6 +285,10 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 
 
 <!-- External Tools and Dependencies -->
+
+[Sass]: https://sass-lang.com "Visit Sass website"
+
+[highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
 
 [Highlight website]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
 [Highlight repository]: https://gitlab.com/saalen/highlight "Visit Highlight Git repository at GitLab"
