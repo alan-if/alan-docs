@@ -40,14 +40,24 @@ Links to the converted _Alan Manual_:
 
 # Document Status
 
-Before the new version of the _Alan Manual_ is ready, the following three tasks must be acomplished:
+Before the new version of the _Alan Manual_ is ready, some pending tasks must be resolved. For more info, visit the [Alan Manual project board].
 
-- [ ] __[AsciiDoc Conversion]__ — porting from ODT to ADoc, reconstructing styles and lost formatting and structure.
-- [ ] __[PDF Toolchain Setup]__ — organize all the tools, scripts and templates to produce a PDF version with custom styling. 
-- [ ] __[HTML Toolchain Setup]__ — organize all the tools, scripts and templates to produce an HTML version with custom styling.
-- [ ] __[Syntax Highlighting]__ — find solution(s) to enable syntax highlighting of Alan examples in all output formats:
+- [ ] __[AsciiDoc Conversion]__ ([milestones][ADoc miles]) — porting from ODT to ADoc, reconstructing styles and lost formatting and structure.
+- [ ] __[PDF Toolchain Setup]__ ([milestones][PDF Chain miles]):
+    + [x] organize all the tools, scripts to convert from AsciiDoc to DocBook and then to PDF via asciidoctor-fopub. 
+    + [ ] customize FOP template to produce a PDF version with custom styling. 
+- [ ] __[HTML Toolchain Setup]__:
+    + [ ] organize all the tools, scripts to convert to HTML.
+    + [ ] ([milestones][HTML template miles]) customize template to produce an HTML version with custom styling.
+- [x] __[Syntax Highlighting]__ — find solution(s) to enable syntax highlighting of Alan examples in all output formats:
     + [x] __PDF format__ — implemented using XSLHL with custom Alan syntax.
-    + [ ] __PDF format__ — still need to look into it.
+    + [x] __HTML format__ — implemented using highlight.js with custom Alan syntax.
+
+[ADoc miles]: https://github.com/alan-if/alan-docs/milestone/1 "See the milestones for Alan Manual's AsciiDoc porting"
+[PDF Chain miles]: https://github.com/alan-if/alan-docs/milestone/3 "See the milestone for this task"
+[HTML template miles]: https://github.com/alan-if/alan-docs/milestone/7 "See the milestone for this task"
+
+[Alan Manual project board]: https://github.com/alan-if/alan-docs/projects/1 "See the project board on GitHub"
 
 ## AsciiDoc Conversion
 
@@ -80,13 +90,14 @@ An here follows a task list of the remaining porting tasks:
 - [ ] Rebuild current images, in vector format (optional):
     + [ ] Figure 1 (Sec. 2.3, p.20 of PDF) — "The principles for and relations between a game description, a compiler, ...".
     + [x] Figure 2 (Sec. 2.4, p.33 of PDF) — "_Relationships between the pre-defined classes._".
-- [ ] Fix some non-Ascii chars (especially Unicode dingbats) that may cause problems in some output formats.
+- [ ] Fix some non-Ascii chars (especially Unicode dingbats) that may cause problems in some output formats (See [Issue #23][i23]).
 - [ ] Fix Headings:
     + [ ] Check that all headings are properly title cased.
     + [ ] Change to all-caps Alan keywords in headings.
 - [ ] Finish reading through the whole book, checking for missing styles and fixing the ADoc source:
     + [ ] _3. Lexical Definitions_ (WIP)
     + [ ] _6. Hints And Tips_
+
 
 
 ## PDF Toolchain Setup
@@ -100,27 +111,26 @@ The PDF toolchain will employ [asciidoc-fopub] to convert from DocBook to PDF. I
         * [ ] Icons colors according to type of admonition (red, yellow, green, blue, etc.)
     + [ ] Customize Verbatim blocks (colors and styles):
         * [x] Alan code examples
-        * [ ] BNF rules
-        * [ ] Game transcripts
+        * [x] BNF rules
+        * [x] Game transcripts
         * [ ] Shell output
-- [ ] Fix problem with special Unicode chars not showing in PDF (eg, arrows symbols in Tables)
+- [ ] Fix problem with special Unicode chars not showing in PDF (eg, arrows symbols in Tables — See [Issue #23][i23])
 - [ ] Fonts:
     + [ ] Find appropriate fonts and include them in project
-    + [ ] Set fonts in XSL stylesheets
+    + [x] Set fonts in XSL stylesheets
 - [ ]  (_more issues expected soon..._)
 
 ## HTML Toolchain Setup
 
 Currently I'm relying on Asciidoctor's native HTML backend to convert and preview the Manual, but some required styles are not supported by the default theme. Still need to look into it.
 
-- [ ] Find a pure Sass based theme for Asciidoctor (no Compass, no Foundation)
+- [ ]  (_optional_) Find a pure Sass based theme for Asciidoctor (no Compass, no Foundation)
 
 ## Syntax Highlighting
 
 Currently, I've created an Alan syntax definition for André Simon's Hihglihgt tool, which should be usable at least for the HTML conversion.
 
-+ [ ] Test how Highlight can be integrated into AsciiDoctor to handle Alan and EBNF code (See [Issue #2106]).
-+ [ ] Consider creating an Alan syntax definition for [Rouge].
++ [x] Create custom Alan syntax for Highlight.js (used in HTML output).
 + [x] Create a custom Alan syntax definition for XSLHL (used by asciidoc-fopub in PDF conversion).
 
 -------------------------------------------------------------------------------
@@ -247,6 +257,9 @@ As a convention, all commented annotations inside document source files will beg
 
 [i8]: https://github.com/alan-if/alan-docs/issues/8 "Issue #8 — Manual Info & Metadata"
 [i14]: https://github.com/alan-if/alan-docs/issues/14 "Issue #14 — Customization of PDF Template"
+[i23]: https://github.com/alan-if/alan-docs/issues/23 "Issue #23 — Unicode Chars Problems in PD"
+
+
 
 <!-- AsciiDoctor ------------------------------------------------------------->
 
