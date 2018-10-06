@@ -1,4 +1,4 @@
-// v1.0.1 (2018/10/06)
+// v1.0.2 (2018/10/07)
 // ******************************************************************************
 // *                                                                            *
 // *                     Highlight.js Themes for Alan-Docs                      *
@@ -76,6 +76,14 @@ code.hljs[data-lang=alan] {
     }
 }
 // -----------------------------------------------------------------------------
+/* Alan Code Notation Mockup */
+// -----------------------------------------------------------------------------
+// Mockup Alan code style for listing block example in §2.4 Notation.
+.listingblock.alan pre {
+    color: $Alan-normal;
+    background: $Alan-background;
+}
+// -----------------------------------------------------------------------------
 /* HLJS BNF */
 // -----------------------------------------------------------------------------
 code.hljs[data-lang=bnf] {
@@ -88,7 +96,6 @@ code.hljs[data-lang=bnf] {
 // This isn't a syntax highlighted block, it's just a literal block with custom
 // styles to emulate the look and feel of a Windows CMD, but we throw it in here
 // to keep it simpler...
-
 div.literalblock.shell pre {
     background-color: $CMD-Modern-background; // BLACK
     color: $CMD-Modern-White; // DARK_WHITE
@@ -121,6 +128,5 @@ div.gametranscript,
 div.openblock.commentary {
     padding-left: 6em;
 }
-
 
 // EOF //

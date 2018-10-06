@@ -19,6 +19,11 @@ code.hljs[data-lang=alan] {
   code.hljs[data-lang=alan] .hljs-keyword {
     color: #990000; }
 
+/* Alan Code Notation Mockup */
+.listingblock.alan pre {
+  color: #333;
+  background: #FEFEFE; }
+
 /* HLJS BNF */
 code.hljs[data-lang=bnf] {
   color: #222;

@@ -276,6 +276,7 @@ In this document, there are some typographical clues(((typographical notation)))
 Example Alan source code is typeset in separate sections with a mono-spaced font:
 
 // @FIXME: This block needs to be styled like Alan code, but without syntax highlighting!
+[role=alan]
 --------------------------------------------------------------------------------
 This is an example of some source code.
 --------------------------------------------------------------------------------
