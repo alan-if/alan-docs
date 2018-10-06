@@ -1,3 +1,4 @@
+// v1.0.1 (2018/10/06)
 // ******************************************************************************
 // *                                                                            *
 // *                     Highlight.js Themes for Alan-Docs                      *
@@ -30,6 +31,17 @@ $BNF-normal:     #FFCC99;
 $Transcript-background: #F7FDFF;
 $Transcript-normal:     #0089B6;
 $Transcript-border:     #CCF2FF;
+
+// Win CMD / MS DOS
+// ----------------
+// Legacy colors:
+$CMD-Legacy-background: #000000; // LEGACY BLACK
+$CMD-Legacy-DarkWhite:  #C0C0C0; // LEGACY DARK_WHITE
+$CMD-Legacy-White:      #FFFFFF; // LEGACY WHITE
+// Modern colors:
+$CMD-Modern-background: #0C0C0C; // MODERN BLACK
+$CMD-Modern-DarkWhite:  #CCCCCC; // MODERN DARK_WHITE
+$CMD-Modern-White:      #F2F2F2; // MODERN WHITE
 
 
 // ------------------------
@@ -71,7 +83,18 @@ code.hljs[data-lang=bnf] {
     background: $BNF-normal;
 }
 // -----------------------------------------------------------------------------
-/* HLJS Game Transcripts */
+/* Shell/CMD */
+// -----------------------------------------------------------------------------
+// This isn't a syntax highlighted block, it's just a literal block with custom
+// styles to emulate the look and feel of a Windows CMD, but we throw it in here
+// to keep it simpler...
+
+div.literalblock.shell pre {
+    background-color: $CMD-Modern-background; // BLACK
+    color: $CMD-Modern-White; // DARK_WHITE
+}
+// -----------------------------------------------------------------------------
+/* Game Transcripts */
 // -----------------------------------------------------------------------------
 // This isn't a syntax highlighted block, but we throw it in here to keep it
 // simpler...
@@ -81,3 +104,23 @@ div.gametranscript,
     color: $Transcript-normal;
     border-color: $Transcript-border;
 }
+
+// =============================================================================
+//                          Other CSS Template Tweaks                           
+// =============================================================================
+// We might as well exploit Highlight.js' stylesheet to implement other template
+// tweaks instead of loading a separate CSS file.
+
+// -----------------------------------------------------------------------------
+/* Commentary Blocks */
+// -----------------------------------------------------------------------------
+// PARAGRAPHS WITH COMMENTARY ROLE (indented left)
+//         This applies to paragraphs that comment on Alan compiler output
+//         (see "App C - Run-Time Messages).
+
+div.openblock.commentary {
+    padding-left: 6em;
+}
+
+
+// EOF //
