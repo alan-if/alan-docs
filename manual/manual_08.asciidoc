@@ -52,7 +52,7 @@ If you run the compiler from a command line you can get information about which 
 
 [literal, role="shell"]
 ................................................................................
-alan -help
+$ alan -help
 ................................................................................
 
 Here are some examples of other switches:

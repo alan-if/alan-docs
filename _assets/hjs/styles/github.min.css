@@ -33,6 +33,9 @@ code.hljs[data-lang=bnf] {
 div.literalblock.shell pre {
   background-color: #0C0C0C;
   color: #F2F2F2; }
+  div.literalblock.shell pre .conum {
+    background: #FFF945 !important;
+    color: #0C0C0C !important; }
 
 /* Game Transcripts */
 div.gametranscript,

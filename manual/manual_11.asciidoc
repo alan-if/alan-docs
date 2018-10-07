@@ -38,16 +38,35 @@ The equal sign (`=`) may be read as "`consists of`" or "`is defined as`".
 Optional parts are surrounded by square brackets (`[` and `]`).
 Parts that may be repeated are enclosed in curly braces (`{` and `}`).
 
+// @NOTE: This looked much nicer in the HTML output, but not in PDF:
+
+////
+PROBLEM: In PDF output it looks hugly: the example frame is square and horrible,
+         if you add a title it ends up inside the frame, and most of all it adds
+         huge space between left- and right-handside of list elements!
+
+		 If I can fix these problems in the XSL template, I should use this instead
+		 of the listing block.
+
+===========================
+[horizontal]
+=   :: -> {nbsp}is defined as
+
+[ ] :: -> {nbsp}optional
+
+{ } :: -> {nbsp}zero or more times
+===========================
+////
 
 // FIMXE: Apply some custom styling to this block:
 
-......................
-= : 'is defined as'
+.........................
+=  : 'is defined as'
 
 [] : 'optional'
 
 {} : 'zero or more times'
-......................
+.........................
 
 So the rule might be read as "`an adventure consists of *options* which are optional, zero or more *declarations* and a *start_section*`".
 
@@ -75,7 +94,7 @@ These are represented in the rules by quoted strings of characters.
 These are not defined elsewhere, but should instead be written as indicated.
 Character case is not significant.
 
-[source,alan]
+[source,bnf]
 --------------------------------------------------------------------------------
 random_expression = 'RANDOM' 'IN' expression
 --------------------------------------------------------------------------------

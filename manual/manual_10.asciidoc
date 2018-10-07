@@ -39,10 +39,9 @@ See <<Messages>> for details.
 ================================================================================
 
 
-[literal, role="shell"]
-................................................................................
+............................................
 UNKNOWN_WORD : "I don't know the word '$1'."
-................................................................................
+............................................
 
 
 [role="commentary"]
@@ -53,10 +52,9 @@ A word not in the dictionary was used by the player.
 --
 
 
-[literal, role="shell"]
-................................................................................
+............................
 WHAT : "I don't understand."
-................................................................................
+............................
 
 [role="commentary"]
 --
@@ -65,10 +63,9 @@ I.e. the input could not be matched to any of the defined syntaxes.
 --
 
 
-[literal, role="shell"]
-................................................................................
+.................................................
 WHAT_WORD : "I don't know what you mean by '$1'."
-................................................................................
+.................................................
 
 [role="commentary"]
 --
@@ -78,10 +75,9 @@ The player input a multiple word, such as (((ALL (player input)))) "`all`", (((T
 --
 
 
-[literal, role="shell"]
-................................................................................
+...........................................................
 MULTIPLE : "You can't refer to multiple objects with '$v'."
-................................................................................
+...........................................................
 
 [role="commentary"]
 --
@@ -89,10 +85,9 @@ The `Syntax` matched for the indicated `Verb` did not allow ((multiple parameter
 --
 
 
-[literal, role="shell"]
-................................................................................
+................................
 NOUN : "You must supply a noun."
-................................................................................
+................................
 
 [role="commentary"]
 --
@@ -100,10 +95,9 @@ The player started to specify an object or actor but only supplied the adjective
 --
 
 
-[literal, role="shell"]
-................................................................................
+...........................................................
 AFTER_BUT : "You must give at least one object after '$1'."
-................................................................................
+...........................................................
 
 [role="commentary"]
 --
@@ -113,10 +107,9 @@ In a command containing (((ALL (player input)))) (((BUT (player input)))) *ALL B
 --
 
 
-[literal, role="shell"]
-................................................................................
+.............................................
 BUT_ALL : "You can only use '$1' after '$2'."
-................................................................................
+.............................................
 
 [role="commentary"]
 --
@@ -128,10 +121,9 @@ The (((BUT (player input)))) (((EXCEPT (player input)))) *BUT*-words may only be
 --
 
 
-[literal, role="shell"]
-................................................................................
+...........................................
 NOT_MUCH : "That doesn't leave much to $v!"
-................................................................................
+...........................................
 
 [role="commentary"]
 --
@@ -139,12 +131,11 @@ The player used an (((ALL (player input)))) (((BUT (player input)))) *ALL BUT* c
 --
 
 
-[literal, role="shell"]
-................................................................................
+............................................
 WHICH_START : "I don't know if you mean $+1"
 WHICH_COMMA : ", $+1"
 WHICH_OR : "or $+1."
-................................................................................
+............................................
 
 [role="commentary"]
 --
@@ -158,11 +149,10 @@ For each message, *parameter1* is a reference to the alternative instance.
 --
 
 
-[literal, role="shell"]
-................................................................................
+...................................................
 WHICH_PRONOUN_START : "I don't know if you by '$1'"
 WHICH_PRONOUN_FIRST : "mean $+1"
-................................................................................
+...................................................
 
 [role="commentary"]
 --
@@ -171,31 +161,28 @@ Note that the message is different from the multiple match above only for the st
 --
 
 
-[literal, role="shell"]
-................................................................................
+....................................
 NO_SUCH : "I can't see any $1 here."
-................................................................................
+....................................
 
 [role="commentary"]
 --
 The player referred to an object or actor that was not present.
 
 *parameter1* is an instance referring to an instance.
---
-
 
 [NOTE]
 ================================================================================
 If there did not actually even exist an instance in the game with the combination of the adjectives and nouns that the player used, the interpreter uses any instance matching the noun.
 This still allows inflecting in accordance with the noun case, which is common in many languages (English being one of few exceptions).
 ================================================================================
+--
 
 
 
-[literal, role="shell"]
-................................................................................
+.................................
 NO_WAY : "You can't go that way."
-................................................................................
+.................................
 
 [role="commentary"]
 --
@@ -203,10 +190,9 @@ A directional word was used but there is no exit in that direction.
 --
 
 
-[literal, role="shell"]
-................................................................................
+.............................
 CANT0 : "You can't do that.",
-................................................................................
+.............................
 
 [role="commentary"]
 --
@@ -215,13 +201,12 @@ This may be a situation overlooked by the author or the player may be trying to 
 --
 
 
-[literal, role="shell"]
-................................................................................
+..........................
 SEE_START : "There is $01"
 SEE_COMMA : ", $01"
 SEE_AND : "and $01"
 SEE_END : "here. "
-................................................................................
+..........................
 
 // @NOTE: Had to change "The underlined parts" to "The parts in bold" because in
 //        AsciiDoc underlined text had to be restyled to strong!
@@ -233,11 +218,10 @@ The message parts are used as in "_**There is** <indefinite form object1>**,** <
 --
 
 
-[literal, role="shell"]
-................................................................................
+.........................
 CONTAINS : "$+1 contains"
 CARRIES : "$+1 carries"
-................................................................................
+.........................
 
 [role="commentary"]
 --
@@ -246,12 +230,11 @@ The `CARRIES` message is used if the `container` instance is an `actor`.
 --
 
 
-[literal, role="shell"]
-................................................................................
+........................
 CONTAINS_COMMA : "$01,"
 CONTAINS_AND : "$01 and"
 CONTAINS_END : "$01."
-................................................................................
+........................
 
 [role="commentary"]
 --
@@ -262,10 +245,9 @@ You can modify these messages to change the formatting of listings -- e.g. to on
 --
 
 
-[literal, role="shell"]
-................................................................................
+............................................
 CAN_NOT_CONTAIN : "$+1 can not contain $+2."
-................................................................................
+............................................
 
 [role="commentary"]
 --
@@ -273,10 +255,9 @@ If an attempt to put something in a `container` that does not meet the class res
 --
 
 
-[literal, role="shell"]
-................................................................................
+..........................
 IS_EMPTY : "$+1 is empty."
-................................................................................
+..........................
 
 [role="commentary"]
 --
@@ -284,10 +265,9 @@ The default messages for empty ``container``s.
 --
 
 
-[literal, role="shell"]
-................................................................................
+.....................................
 EMPTY_HANDED : "$+1 is empty-handed."
-................................................................................
+.....................................
 
 [role="commentary"]
 --
@@ -295,10 +275,9 @@ The default messages for empty ``container``s that are ``actor``s.
 --
 
 
-[literal, role="shell"]
-................................................................................
+....................................................
 HAVE_SCORED : "You have scored $1 points out of $2."
-................................................................................
+....................................................
 
 [role="commentary"]
 --
@@ -310,10 +289,9 @@ This is the default message for presenting scores, if you use the `Score` statem
 --
 
 
-[literal, role="shell"]
-................................................................................
+...............
 MORE : "<More>"
-................................................................................
+...............
 
 [role="commentary"]
 --
@@ -322,10 +300,9 @@ The player should press kbd:[RETURN] to proceed.
 --
 
 
-[literal, role="shell"]
-................................................................................
+.................
 AGAIN : "(again)"
-................................................................................
+.................
 
 [role="commentary"]
 --
@@ -334,10 +311,9 @@ If you wish to disable this, set this message to an empty string.
 --
 
 
-[literal, role="shell"]
-................................................................................
+.........................................
 SAVE_WHERE : "Enter file name to save in"
-................................................................................
+.........................................
 
 [role="commentary"]
 --
@@ -346,10 +322,9 @@ The name used in the previous `Save` is used as a default.
 --
 
 
-[literal, role="shell"]
-................................................................................
+.............................................................
 SAVE_OVERWRITE : "That file already exists, overwrite (y) ? "
-................................................................................
+.............................................................
 
 [role="commentary"]
 --
@@ -357,10 +332,9 @@ If the save file already exists, the player must confirm overwriting.
 --
 
 
-[literal, role="shell"]
-................................................................................
+...................................
 SAVE_FAILED : "Sorry, save failed."
-................................................................................
+...................................
 
 [role="commentary"]
 --
@@ -368,10 +342,9 @@ When executing a `Save`, the file system indicated some error, usually a write p
 --
 
 
-[literal, role="shell"]
-................................................................................
+................................................
 RESTORE_FROM : "Enter file name to restore from"
-................................................................................
+................................................
 
 [role="commentary"]
 --
@@ -380,10 +353,9 @@ The previously used file name is used as the default.
 --
 
 
-[literal, role="shell"]
-................................................................................
+.....................................................
 SAVE_MISSING : "Sorry, could not open the save file."
-................................................................................
+.....................................................
 
 [role="commentary"]
 --
@@ -391,10 +363,9 @@ When executing a `Restore`, Arun could not find, or open, a save file with the n
 --
 
 
-[literal, role="shell"]
-................................................................................
+.......................................................................
 NOT_A_SAVEFILE :"That file does not seem to be an Alan game save file."
-................................................................................
+.......................................................................
 
 [role="commentary"]
 --
@@ -402,10 +373,9 @@ The save file found by the `Restore` statement was not Alan game save file.
 --
 
 
-[literal, role="shell"]
-................................................................................
+.........................................................................
 SAVE_VERSION : "Sorry, the save file was created by a different version."
-................................................................................
+.........................................................................
 
 [role="commentary"]
 --
@@ -413,10 +383,9 @@ The save file found by the `Restore` statement was created by a different versio
 --
 
 
-[literal, role="shell"]
-................................................................................
+.............................................................................
 SAVE_NAME : "Sorry, the save file did not contain a save for this adventure."
-................................................................................
+.............................................................................
 
 [role="commentary"]
 --
@@ -424,10 +393,9 @@ The indicated save file did not contain a save of this adventure.
 --
 
 
-[literal, role="shell"]
-................................................................................
+............................................
 REALLY : "Are you sure (RETURN confirms) ? "
-................................................................................
+............................................
 
 [role="commentary"]
 --
@@ -435,28 +403,25 @@ This is the confirmation prompt, e.g. before overwriting an already existing sav
 --
 
 
-[literal, role="shell"]
-................................................................................
+..............................................................
 QUIT_ACTION : "Do you want to RESTART, RESTORE, QUIT or UNDO?"
-................................................................................
+..............................................................
 
 [role="commentary"]
 --
 The `Quit` statement requests an action from the player.
---
-
 
 [NOTE]
 ================================================================================
 The possible answers are currently hard-wired into the interpreter, so changing `RESTART`, `RESTORE`, `QUIT` or `UNDO` will probably confuse the player!
 ================================================================================
+--
 
 
 
-[literal, role="shell"]
-................................................................................
+.......................
 UNDONE : "'$1' undone."
-................................................................................
+.......................
 
 [role="commentary"]
 --
@@ -467,10 +432,9 @@ Note that since only commands that change any state in the game world are logged
 --
 
 
-[literal, role="shell"]
-................................................................................
+......................................
 NO_UNDO : "No further undo available."
-................................................................................
+......................................
 
 [role="commentary"]
 --
@@ -478,11 +442,10 @@ If the player tries to undo an action and no further actions where recorded (bec
 --
 
 
-[literal, role="shell"]
-................................................................................
+..................................................
 WHICH_PRONOUN_START : "I don't know if you by '$1'
 WHICH_PRONOUN_FIRST : "mean $+1"
-................................................................................
+..................................................
 
 [role="commentary"]
 --
@@ -491,10 +454,9 @@ The alternatives are listed using the `WHICH_PRONOUN_FIRST` followed by the mess
 --
 
 
-[literal, role="shell"]
-................................................................................
+...............................................
 IMPOSSIBLE_WITH : "That's impossible with $+1."
-................................................................................
+...............................................
 
 [role="commentary"]
 --
@@ -502,10 +464,9 @@ If a player action is impossible with a particular parameter combination, but mi
 --
 
 
-[literal, role="shell"]
-................................................................................
+.........................................................
 CONTAINMENT_LOOP : "Putting $+1 in itself is impossible."
-................................................................................
+.........................................................
 
 [role="commentary"]
 --
@@ -514,7 +475,6 @@ This message reliefs the author from the responsiblility to check for every poss
 --
 
 
-[literal, role="shell"]
 ................................................................................
 CONTAINMENT_LOOP2 : "Putting $+1 in $+2 is impossible since $+2 already is inside $+1."
 ................................................................................
@@ -532,24 +492,22 @@ Mainly these are implementation errors (aka. bugs!), but may (in some manner) al
 The system error messages also have a purple prose style to fit in with your game, e.g.:
 
 
-[literal, role="shell"]
-................................................................................
+.............................................................
 As you enter the twilight zone of Adventures, you stumble and
 fall to your knees. In front of you, you can vaguely see the
 outlines of an Adventure that never was.
 
 SYSTEM ERROR: Can't open adventure code file.
-................................................................................
+.............................................................
 
 
 == Player Errors
 
 These errors are usually caused by incorrect arguments or file names entered by the player.
 
-[literal, role="shell"]
-................................................................................
+...............................
 Can't open adventure code file.
-................................................................................
+...............................
 
 [role="commentary"]
 --
@@ -557,11 +515,10 @@ The player attempted to run an adventure for which there were no code file avail
 --
 
 
-[literal, role="shell"]
-................................................................................
+.......................................................
 Could not read all A3C code.
 Checksum error in Acode (.A3C) file (%1 instead of %2).
-................................................................................
+.......................................................
 
 [role="commentary"]
 --
@@ -575,10 +532,9 @@ Possibly caused by transfer problems of the *.a3c* file.
 The following system errors are in some sense caused by the Adventure author (you).
 
 
-[literal, role="shell"]
-................................................................................
+..............
 Out of memory.
-................................................................................
+..............
 
 [role="commentary"]
 --
@@ -588,29 +544,26 @@ This might also be caused by reading incomplete or corrupted game files.
 --
 
 
-[literal, role="shell"]
-................................................................................
+......................................
 Incompatible version of ACODE program.
-................................................................................
+......................................
 
 [role="commentary"]
 --
 The version of the interpreter you are using is different than the Alan compiler used to compile the adventure.
 Use a different Arun or recompile the adventure with the matching compiler.
+
+[TIP]
+================================================================================
+The Arun switch `-d` will, beside entering debug mode, also print the version of both the Arun interpreter and the version of the Alan compiler used to compile the adventure.
+================================================================================
 --
 
 
-[NOTE]
-================================================================================
-the Arun switch `-d` will, beside entering debug mode, also print the version of both the Arun interpreter and the version of the Alan compiler used to compile the adventure.
-================================================================================
 
-
-
-[literal, role="shell"]
-................................................................................
+.............................................
 Index not in container in 'containerMember()'
-................................................................................
+.............................................
 
 [role="commentary"]
 --
@@ -619,10 +572,9 @@ This is most likely caused by doing `Random In` on an empty `container`.
 
 
 
-[literal, role="shell"]
-................................................................................
+...............
 Recursive LOOK.
-................................................................................
+...............
 
 [role="commentary"]
 --
@@ -632,11 +584,10 @@ It should _not_ be used in descriptions of instances because there is a definite
 --
 
 
-[literal, role="shell"]
-................................................................................
+.........................................................
 Locating a location that would create a recursive loop of
 locations containing each other.
-................................................................................
+.........................................................
 
 [role="commentary"]
 --
@@ -645,10 +596,9 @@ Probably in an attempt to dynamically manipulate the `location` structure (the m
 --
 
 
-[literal, role="shell"]
-................................................................................
+..................................
 Non-existing parameter referenced.
-................................................................................
+..................................
 
 [role="commentary"]
 --
@@ -657,7 +607,7 @@ This is probably due to using a parameter shorthand such as `$2` inside a string
 This may avoided by using the `Say` statement instead of the embedded string parameter references, which would allow compile time checking, thus avoiding the risk of having this happen to the player.
 
 
-[NOTE]
+[IMPORTANT]
 ================================================================================
 Parameter references embedded in strings are currently _not_ checked during compile time.
 ================================================================================
@@ -665,16 +615,17 @@ Parameter references embedded in strings are currently _not_ checked during comp
 
 
 
-[literal, role="shell"]
-................................................................................
+......................
 Interpreter recursion.
-................................................................................
+......................
 
+[role="commentary"]
+--
 The interpreter keeps track of its execution so that it can never enter an endless loop.
 There are a few situations where this can occur.
 One example is if the `Description` of an instance in some way, directly or indirectly, executes `Describe This`.
 As the interpreter is already executing a `Description` of the current instance the invocation of the second will create a loop that never terminates.
-
+--
 
 == Implementor Errors
 
