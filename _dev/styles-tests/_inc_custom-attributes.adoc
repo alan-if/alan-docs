@@ -5,6 +5,7 @@
 
 :fopub: https://github.com/asciidoctor/asciidoctor-fopub[asciidoctor-fopub^]
 :Highlight: http://www.andre-simon.de/[Highlight^]
+:hljs: https://highlightjs.org/[highlight.js^]
 
 // =============================================================================
 //                               Fonts Specimens

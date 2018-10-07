@@ -13,6 +13,7 @@ Various documents for previewing and testing templates styles across the support
 - [The Documents](#the-documents)
     - [Preview Document](#preview-document)
     - [Test Documents](#test-documents)
+- [Build Scripts](#build-scripts)
 - [Folder Contents Notes](#folder-contents-notes)
 - [Tech Notes](#tech-notes)
     - [Backends and Highlighters](#backends-and-highlighters)
@@ -39,6 +40,13 @@ This document offers a comprehensive preview of the templates used for Alan docu
 
 - [`tests-syntax-highlighting.asciidoc`][HL adoc] ([`.html`][HL html]|[`.pdf`][HL pdf]) — test syntax highlighting and styling of other verbatim blocks.
 - [`tests-typography.asciidoc`][Typ adoc] ([`.html`][Typ html]|[`.pdf`][Typ pdf]) — test fonts and tests-typography.
+
+# Build Scripts
+
+- [`BUILD_ALL.bat`][BUILD_ALL] — converts docs to all formats.
+- [`HTML_BUILD.bat`][HTML_BUILD] — converts docs to HTML format only.
+- [`PDF_BUILD.bat`][PDF_BUILD] — converts docs to PDF format only.
+
 
 # Folder Contents Notes
 
@@ -73,9 +81,9 @@ The preview and tests documents are not yet completed, here are some pending tas
 ## Scripts
 
 - [ ] __TWEAK BUILD SCRIPT__. The introduction of cutom attributes via CLI will require per-file invocations instead of FOR loops, since since docs will have different parameters.
-- [ ] __BUILD ALL__. Split the current BUILD script in two separate scripts, one for each format, and then just invoke them from here: 
-    + [ ] __HTML BUILD__. Add separate script for building only html version of the docs, to simplify testing (PDF creation takes too long).
-    + [ ] __PDF BUILD__. Add separate script to build PDFs.
+- [X] __BUILD ALL__. Split the current BUILD script in two separate scripts, one for each format, and then just invoke them from here: 
+    + [X] __HTML BUILD__. Add separate script for building only html version of the docs, to simplify testing (PDF creation takes too long).
+    + [X] __PDF BUILD__. Add separate script to build PDFs.
 
 
 ## Preview Document
@@ -120,5 +128,9 @@ The preview and tests documents are not yet completed, here are some pending tas
 [Prev adoc]: ./styles-preview.asciidoc
 [Prev html]: ./styles-preview.html
 [Prev pdf]:  ./styles-preview.pdf
+
+[BUILD_ALL]:  ./BUILD_ALL.bat
+[HTML_BUILD]: ./HTML_BUILD.bat
+[PDF_BUILD]:  ./PDF_BUILD.bat
 
 <!-- EOF -->
