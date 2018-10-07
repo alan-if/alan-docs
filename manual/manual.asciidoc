@@ -1,5 +1,5 @@
 :doctitle:  The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.62
+:revnumber: 0.1.63
 :revdate:   October 7, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
@@ -9,6 +9,7 @@
 :toc: left
 :toclevels: 5
 // Sections Numbering:
+:sectanchors:
 :sectnums:
 :sectnumlevels: 2
 // Cross References:

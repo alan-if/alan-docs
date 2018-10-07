@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.62,</span>
+<span id="revnumber">version 0.1.63,</span>
 <span id="revdate">October 7, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.62
+<pre>Doc version: 0.1.63
 Last edited: October 7, 2018</pre>
 </div>
 </div>
@@ -864,7 +864,7 @@ downloaded from:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_introduction">1. Introduction</h2>
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Text adventures or, using a more appropriate term, interactive fiction, is a form of computer game which has many things in common with fiction in book form, role-playing games and puzzle-solving.
@@ -889,7 +889,7 @@ Therefore, features have been added as experience has grown, from actual use and
 Do not worry if you find these terms incomprehensible at this point, Alan is still an easy language to use and by reading this manual, you will understand how these new features may aid you in your quest for adventures.</p>
 </div>
 <div class="sect2">
-<h3 id="_programmers_pitch">1.1. Programmer&#8217;s Pitch</h3>
+<h3 id="_programmers_pitch"><a class="anchor" href="#_programmers_pitch"></a>1.1. Programmer&#8217;s Pitch</h3>
 <div class="paragraph">
 <p>Alan is an application-oriented language.
 It features constructs that are natural to an author of interactive fiction.
@@ -900,7 +900,7 @@ There are no explicit type declarations, except for instances of classes; instea
 </div>
 </div>
 <div class="sect2">
-<h3 id="_to_the_reader">1.2. To the Reader</h3>
+<h3 id="_to_the_reader"><a class="anchor" href="#_to_the_reader"></a>1.2. To the Reader</h3>
 <div class="paragraph">
 <p>There are probably four major types of readers of this document:</p>
 </div>
@@ -927,7 +927,7 @@ There are no explicit type declarations, except for instances of classes; instea
 </div>
 </div>
 <div class="sect1">
-<h2 id="_concepts">2. Concepts</h2>
+<h2 id="_concepts"><a class="anchor" href="#_concepts"></a>2. Concepts</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This chapter introduces the concepts used in the Alan language.
@@ -937,7 +937,7 @@ You might already have a good idea about these things, especially if you are a s
 <p>But I would suggest that you read through it anyway since it introduces some important concepts that are specific to how Alan treats them.</p>
 </div>
 <div class="sect2">
-<h3 id="_what_is_an_adventure">2.1. What Is An Adventure?</h3>
+<h3 id="_what_is_an_adventure"><a class="anchor" href="#_what_is_an_adventure"></a>2.1. What Is An Adventure?</h3>
 <div class="paragraph">
 <p>As long as man has been around there have been stories, fairy tales and fantasies.
 In the early days, storytellers told their stories to silent and astonished audiences.
@@ -990,7 +990,7 @@ In <a href="#_a_sample_interaction">Appendix B</a> you can find a sample of this
 </div>
 </div>
 <div class="sect2">
-<h3 id="_elements_of_adventures">2.2. Elements Of Adventures</h3>
+<h3 id="_elements_of_adventures"><a class="anchor" href="#_elements_of_adventures"></a>2.2. Elements Of Adventures</h3>
 <div class="paragraph">
 <p>The success of all Infocom games can probably be attributed to three distinctive features.
 First, they all have a &#8216;believable&#8217; and consistent plot, which is flavoured with humour and wittiness.
@@ -1038,14 +1038,14 @@ The player must be able to say things like</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_alan_fundamentals">2.3. Alan Fundamentals</h3>
+<h3 id="_alan_fundamentals"><a class="anchor" href="#_alan_fundamentals"></a>2.3. Alan Fundamentals</h3>
 <div class="paragraph">
 <p>Alan is all about adventure games, or interactive fiction.
 In this manual, we will use both terms interchangeably since they convey two slightly different views on the purpose.
 But the technical platform, the Alan language and its support system, is the same, works the same and looks the same, regardless if you are designing a treasure hunt featuring an elaborate combat and hit point system or if you are competing with Sir William Shakespeare himself.</p>
 </div>
 <div class="sect3">
-<h4 id="_what_is_a_language">What Is A Language?</h4>
+<h4 id="_what_is_a_language"><a class="anchor" href="#_what_is_a_language"></a>What Is A Language?</h4>
 <div class="paragraph">
 <p>A computer language is usually described as a set of rules for textual instructions for a computer.
 The idea is that a computer can follow those rules and perform the necessary and/or intended actions.</p>
@@ -1095,7 +1095,7 @@ This is also one reason behind the compiler-interpreter design of Alan.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_alan_idea">The Alan Idea</h4>
+<h4 id="_the_alan_idea"><a class="anchor" href="#_the_alan_idea"></a>The Alan Idea</h4>
 <div class="paragraph">
 <p>The Alan language does not focus on variables, subroutines or other traditional programming constructs, because Alan is not primarily a <em>programming</em> language.
 Instead, Alan takes a descriptive view of the concepts of adventure authoring.
@@ -1113,7 +1113,7 @@ As an author you&#8217;ll need to have the same view that the Alan language has 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_whats_happening">What&#8217;s Happening?</h4>
+<h4 id="_whats_happening"><a class="anchor" href="#_whats_happening"></a>What&#8217;s Happening?</h4>
 <div class="paragraph">
 <p>The execution of an adventure is primarily driven by the input of player commands.
 A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source.
@@ -1126,7 +1126,7 @@ This is described in more detail in <a href="#_a_turn_of_events">Sect. 5.1</a>.<
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_map">The Map</h4>
+<h4 id="_the_map"><a class="anchor" href="#_the_map"></a>The Map</h4>
 <div class="paragraph">
 <p>The scene for the game is a map of a number of connected locations.
 A location has a description that is presented to the player when that location is entered.
@@ -1150,7 +1150,7 @@ Although, normally you would probably want them to be two-way, if they where aut
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_things">The Things</h4>
+<h4 id="_the_things"><a class="anchor" href="#_the_things"></a>The Things</h4>
 <div class="paragraph">
 <p>Most objects in an adventure are things that in real life would be objects too, like a knife or a key.
 In addition, other things that should be possible to manipulate by the player, e.g. parts of the scenery, must be declared as an object.
@@ -1169,7 +1169,7 @@ These verbs and their special effects are also declared within the object declar
 </div>
 </div>
 <div class="sect3">
-<h4 id="_other_people_and_monsters">Other People and Monsters</h4>
+<h4 id="_other_people_and_monsters"><a class="anchor" href="#_other_people_and_monsters"></a>Other People and Monsters</h4>
 <div class="paragraph">
 <p>An extra thrill and dimension are additional characters in the game.
 In Alan, these are called actors and may have a life of their own.
@@ -1184,7 +1184,7 @@ An actor may be a thief running around and stealing your collected treasures or 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_acting">Acting</h4>
+<h4 id="_acting"><a class="anchor" href="#_acting"></a>Acting</h4>
 <div class="paragraph">
 <p>The player commands action by typing imperative statements.
 These statements are analysed and results in execution (&#8220;calls&#8221;) to verbs.
@@ -1192,7 +1192,7 @@ The effects of these commands must be declared in verbs by the game author, eith
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_input">The Input</h4>
+<h4 id="_the_input"><a class="anchor" href="#_the_input"></a>The Input</h4>
 <div class="paragraph">
 <p>To make it possible for the player to input more complex commands, a means to specify the syntax for a verb is also available.
 A particular syntax is connected to a verb and describes how the player must phrase his input in order to command the triggering of a particular verb.
@@ -1208,7 +1208,7 @@ Using this mechanism, verbs can also be made to operate on literals (strings and
 </div>
 </div>
 <div class="sect2">
-<h3 id="_introduction_to_the_language">2.4. Introduction to the Language</h3>
+<h3 id="_introduction_to_the_language"><a class="anchor" href="#_introduction_to_the_language"></a>2.4. Introduction to the Language</h3>
 <div class="paragraph">
 <p>Alan is an adventure language, i.e. a language designed to make it easy to write adventures.
 This means that constructs in the Alan language reflect the various concepts encountered when creating an adventure plot.</p>
@@ -1231,7 +1231,7 @@ Using the <code>Syntax</code> construct, you can also define more complex player
 For this the <code>Actor</code> class is provided.</p>
 </div>
 <div class="sect3">
-<h4 id="_notation">Notation</h4>
+<h4 id="_notation"><a class="anchor" href="#_notation"></a>Notation</h4>
 <div class="paragraph">
 <p>In this document, there are some typographical clues.
 Example Alan source code is typeset in separate sections with a mono-spaced font:</p>
@@ -1287,7 +1287,7 @@ This manual tries to be consistent with using the first version (except in gramm
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_locations">The Locations</h4>
+<h4 id="_the_locations"><a class="anchor" href="#_the_locations"></a>The Locations</h4>
 <div class="paragraph">
 <p>The scene for your adventure is a series of &#8220;rooms&#8221; or, rather, locations.
 <code>Location</code>s are connected by <code>Exit</code>s, leading out of one location into another.
@@ -1397,7 +1397,7 @@ End Exit west.</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_objects">The Objects</h4>
+<h4 id="_the_objects"><a class="anchor" href="#_the_objects"></a>The Objects</h4>
 <div class="paragraph">
 <p>Another essential feature in Alan are the objects.
 Like the <code>location</code>, the <code>object</code> is a means to describe the &#8220;physical&#8221; world where your adventure is taking place.
@@ -1526,7 +1526,7 @@ Opening a lid might cause a previously hidden object to fall to the floor, somet
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_actors">The Actors</h4>
+<h4 id="_the_actors"><a class="anchor" href="#_the_actors"></a>The Actors</h4>
 <div class="paragraph">
 <p>Actors can be used to populate the adventure with creatures, beings and other people.
 They might be pirates or monsters, but the thing they have in common is that they move around or at least perform various actions more or less in the same way as the player does.</p>
@@ -1550,7 +1550,7 @@ End The charlie_chaplin.</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_inheritance_and_object_orientation">Inheritance and Object-Orientation</h4>
+<h4 id="_inheritance_and_object_orientation"><a class="anchor" href="#_inheritance_and_object_orientation"></a>Inheritance and Object-Orientation</h4>
 <div class="paragraph">
 <p>Object-orientation  is a term that is often used when talking about programming.
 The concept is modelled after a natural phenomenon first described by the Swedish botanist Carl Linnaeus (or Carl von Linné).
@@ -1564,7 +1564,7 @@ In object-oriented programming we talk about classes and instances, which are si
 Classes are abstract definitions of what the common features are and instances are individuals (data objects) having those features.</p>
 </div>
 <div class="sect4">
-<h5 id="_inheritance_and_instances">Inheritance and Instances</h5>
+<h5 id="_inheritance_and_instances"><a class="anchor" href="#_inheritance_and_instances"></a>Inheritance and Instances</h5>
 <div class="paragraph">
 <p>Inheritance  means that a more general class can be restricted or specialised into new sub-classes.
 We say that the specialised class inherits from the more general.
@@ -1579,7 +1579,7 @@ We need to look up the parent class (or classes) for complete information about 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_polymorphism">Polymorphism</h5>
+<h5 id="_polymorphism"><a class="anchor" href="#_polymorphism"></a>Polymorphism</h5>
 <div class="paragraph">
 <p>By using inheritance, we can also guarantee the properties of similar, or related, instances.
 If every mammal is a vertebrae, we know that all properties of vertebrates also applies to mammals.
@@ -1590,7 +1590,7 @@ This flexibility, know as polymorphism, is possible in programming only through 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_every_and_the">EVERY and THE</h5>
+<h5 id="_every_and_the"><a class="anchor" href="#_every_and_the"></a>EVERY and THE</h5>
 <div class="paragraph">
 <p>The Alan language supports object-orientation and inheritance via two constructs:</p>
 </div>
@@ -1608,7 +1608,7 @@ The <code>IsA</code>-construct defines from which class properties are inherited
 </div>
 </div>
 <div class="sect4">
-<h5 id="_the_predefined_classes">The Predefined Classes</h5>
+<h5 id="_the_predefined_classes"><a class="anchor" href="#_the_predefined_classes"></a>The Predefined Classes</h5>
 <div class="paragraph">
 <p>To make it easy to get started there are eight classes predefined  in the Alan language.</p>
 </div>
@@ -1646,7 +1646,7 @@ They are used to handle integers and strings in player input.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_creating_classes_and_instances">Creating Classes and Instances</h5>
+<h5 id="_creating_classes_and_instances"><a class="anchor" href="#_creating_classes_and_instances"></a>Creating Classes and Instances</h5>
 <div class="paragraph">
 <p>In the sections above about locations, objects and actors the examples show how to create an instance of a class.
 Those examples show how to do it from the predefined classes.
@@ -1689,7 +1689,7 @@ It is initially set to <em>true</em> as specified in the declaration of the clas
 </div>
 </div>
 <div class="sect4">
-<h5 id="_specialising_and_overriding">Specialising and Overriding</h5>
+<h5 id="_specialising_and_overriding"><a class="anchor" href="#_specialising_and_overriding"></a>Specialising and Overriding</h5>
 <div class="paragraph">
 <p>Sub-classing,  or specialisation, is usually used to add properties and thus make the instances of the sub-class more restricted, or specialised.
 In the example above, <code>openable_door</code>s are specialisations of <code>door</code>s since they have an attribute that the more general class does not have.</p>
@@ -1717,13 +1717,13 @@ In the following descriptions, you just need to remember that most features can 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_containment_classes_and_transitivity">Containment, Classes and Transitivity</h4>
+<h4 id="_containment_classes_and_transitivity"><a class="anchor" href="#_containment_classes_and_transitivity"></a>Containment, Classes and Transitivity</h4>
 <div class="paragraph">
 <p>One basic property of instances is that they may contain other instances.
 Although conceptually simple there are twists that you should know about.</p>
 </div>
 <div class="sect4">
-<h5 id="_containers_containing_containers">Containers Containing Containers</h5>
+<h5 id="_containers_containing_containers"><a class="anchor" href="#_containers_containing_containers"></a>Containers Containing Containers</h5>
 <div class="paragraph">
 <p>Containers might contain other instances that are in turn containers and so on, of course.
 If you want to consider everything inside a container recursively, you might actually get types of instances you did not expect.</p>
@@ -1756,7 +1756,7 @@ In this case the contained instances can only be guaranteed to be their common p
 </div>
 </div>
 <div class="sect4">
-<h5 id="_transitivity">Transitivity</h5>
+<h5 id="_transitivity"><a class="anchor" href="#_transitivity"></a>Transitivity</h5>
 <div class="paragraph">
 <p>For many scenarios the above works well, and as expected.
 But for other cases the notion of transitivity is introduced.
@@ -1796,7 +1796,7 @@ And it is usually the indirect ones that you should look out for.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_verb_construct">The Verb Construct</h4>
+<h4 id="_the_verb_construct"><a class="anchor" href="#_the_verb_construct"></a>The Verb Construct</h4>
 <div class="paragraph">
 <p>The  <code>Verb</code> is the construct that implements the effects of an action requested by the player.
 Verbs are associated with a class or an instance.
@@ -1859,7 +1859,7 @@ In this case, the attribute <code>closed</code> must also be available for all o
 Therefore, <code>Verb</code>s may have <code>Check</code>s, as we will see next.</p>
 </div>
 <div class="sect4">
-<h5 id="_checking_things">Checking Things</h5>
+<h5 id="_checking_things"><a class="anchor" href="#_checking_things"></a>Checking Things</h5>
 <div class="paragraph">
 <p>In order to ascertain that the correct conditions are fulfilled before the body of a <code>Verb</code> is actually executed, the verb may have an optional <code>Check</code>  part.</p>
 </div>
@@ -1915,7 +1915,7 @@ Instead, you can define a limbo location, i.e. a location that is not accessible
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_syntax">The Syntax</h4>
+<h4 id="_the_syntax"><a class="anchor" href="#_the_syntax"></a>The Syntax</h4>
 <div class="paragraph">
 <p>Normally a verb acts on an object or actor, henceforth called a parameter, referenced by the player in a command.
 This means that the format of player input is usually something like:</p>
@@ -1993,7 +1993,7 @@ In the example above, verb bodies in the objects or actors referenced as <code>o
 </div>
 </div>
 <div class="sect3">
-<h4 id="_text_output_formatting">Text Output Formatting</h4>
+<h4 id="_text_output_formatting"><a class="anchor" href="#_text_output_formatting"></a>Text Output Formatting</h4>
 <div class="paragraph">
 <p>Text output on the screen is caused by what you have written in the Alan source code.
 However, since text is coming from various places it is not easy, or even possible, to anticipate the full context of a particular text.</p>
@@ -2056,7 +2056,7 @@ Except for the following case:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_strict_and_safe">2.5. Strict and Safe</h3>
+<h3 id="_strict_and_safe"><a class="anchor" href="#_strict_and_safe"></a>2.5. Strict and Safe</h3>
 <div class="paragraph">
 <p>The Alan language is strict and type safe.
 This means that the compiler will attempt to prevent any constructs that might generate a problem for the player, such as assigning values of one type to attributes of another type, accessing properties that are not guaranteed to exist on the instance, and so on.</p>
@@ -2142,7 +2142,7 @@ And since that takes <code>thing</code>s, and <code>In box</code> is transitive 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_language_reference">3. Language Reference</h2>
+<h2 id="_language_reference"><a class="anchor" href="#_language_reference"></a>3. Language Reference</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This chapter describes the Alan language in detail.
@@ -2150,7 +2150,7 @@ Within each section, grammar rules are used to precisely define allowed formats.
 A description of how these rules should be interpreted can be found in <a href="#_language_grammar">Appendix D</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="_general_rules">General Rules</h3>
+<h3 id="_general_rules"><a class="anchor" href="#_general_rules"></a>General Rules</h3>
 <div class="paragraph">
 <p>The Alan language is divided into syntactic components of different kinds.
 Each component may be composed of text and/or other components.
@@ -2181,7 +2181,7 @@ End Exit.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_an_adventure">3.1. An Adventure</h3>
+<h3 id="_an_adventure"><a class="anchor" href="#_an_adventure"></a>3.1. An Adventure</h3>
 <div class="paragraph">
 <p>An adventure starts with an (optional) set of  <code>Option</code>s (see <a href="#_options">Sect. 3.2</a>) followed by a set of declarations.</p>
 </div>
@@ -2247,7 +2247,7 @@ The <code>Start</code> section is mandatory.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_options">3.2. Options</h3>
+<h3 id="_options"><a class="anchor" href="#_options"></a>3.2. Options</h3>
 <div class="paragraph">
 <p><code>Option</code>s  define things concerning the overall behaviour of the generated Alan adventure.
 As is implied they are optional and are only required if you need to change the value of an option from its default setting.
@@ -2347,7 +2347,7 @@ This may also be performed using the debug compiler switch (see <a href="#_compi
 </div>
 </div>
 <div class="sect2">
-<h3 id="_types">3.3. Types</h3>
+<h3 id="_types"><a class="anchor" href="#_types"></a>3.3. Types</h3>
 <div class="paragraph">
 <p>The Alan language handles information in bits, values.
 Each such bit of information, or data, is of a specific type.
@@ -2358,7 +2358,7 @@ Alan is a strictly typed language, which means that assignment, comparisons and 
 Instead, this is inferred from how values are used, e.g. the initial value of an attribute or the restrictions put on a <code>Syntax</code> parameter.</p>
 </div>
 <div class="sect3">
-<h4 id="_basic_simple_and_compound_types">Basic, Simple and Compound Types</h4>
+<h4 id="_basic_simple_and_compound_types"><a class="anchor" href="#_basic_simple_and_compound_types"></a>Basic, Simple and Compound Types</h4>
 <div class="paragraph">
 <p>The basic types of values available in the Alan language are:</p>
 </div>
@@ -2400,7 +2400,7 @@ Instead, this is inferred from how values are used, e.g. the initial value of an
 </div>
 </div>
 <div class="sect3">
-<h4 id="_instance_type">Instance Type</h4>
+<h4 id="_instance_type"><a class="anchor" href="#_instance_type"></a>Instance Type</h4>
 <div class="paragraph">
 <p>Every time a reference to an instance is made, it can be considered an expression of <strong>instance</strong> type.
 In these cases, the class of the instance also often matters.
@@ -2412,7 +2412,7 @@ Examples include an identifier bound to a parameter allowing instances and a ref
 </div>
 </div>
 <div class="sect3">
-<h4 id="_event_type">Event Type</h4>
+<h4 id="_event_type"><a class="anchor" href="#_event_type"></a>Event Type</h4>
 <div class="paragraph">
 <p><code>Event</code> is a set of statements that can be scheduled to execute with a specified delay.
 Each reference to an identifier of an <code>Event</code> is of course of the  <strong>Event</strong> type.
@@ -2423,7 +2423,7 @@ Each reference to an identifier of an <code>Event</code> is of course of the  <s
 </div>
 </div>
 <div class="sect3">
-<h4 id="_set_type">Set Type</h4>
+<h4 id="_set_type"><a class="anchor" href="#_set_type"></a>Set Type</h4>
 <div class="paragraph">
 <p>A <code>Set</code> is a collection of values that may be referenced as a single value, but also investigate, added to and removed from.
 An example might be a set of cards in a dealt hand, the set of spells that the hero have learned, or the set of numbers guessed so far.</p>
@@ -2462,7 +2462,7 @@ In particular, it does not affect the instances location.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_type_compatibility">Type Compatibility</h4>
+<h4 id="_type_compatibility"><a class="anchor" href="#_type_compatibility"></a>Type Compatibility</h4>
 <div class="paragraph">
 <p>Assignment and comparisons between values requires the values to be  compatible.
 The three basic types (integer, string and Boolean) are only compatible with themselves.</p>
@@ -2482,7 +2482,7 @@ Thus, it will never cause a run-time error on the player.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_type_requirements">Type Requirements</h4>
+<h4 id="_type_requirements"><a class="anchor" href="#_type_requirements"></a>Type Requirements</h4>
 <div class="paragraph">
 <p>Some statements require their arguments to be of a specific type.
 This is enforced by the compiler.
@@ -2494,7 +2494,7 @@ The compatibility rules apply here also, given that the required type is given b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_import">3.4. Import</h3>
+<h3 id="_import"><a class="anchor" href="#_import"></a>3.4. Import</h3>
 <div class="paragraph">
 <p>The source text for a large adventure might become entangled and complex.
 A way to break up a large text is to divide it into separate files.
@@ -2540,7 +2540,7 @@ Start At city.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_classes">3.5. Classes</h3>
+<h3 id="_classes"><a class="anchor" href="#_classes"></a>3.5. Classes</h3>
 <div class="paragraph">
 <p> 
 </p>
@@ -2565,7 +2565,7 @@ Instead, you have to create an instance of the class to make it available in the
 <p>The <strong>properties</strong> are described in <a href="#_properties">Sect. 3.7</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="_inheritance">Inheritance</h4>
+<h4 id="_inheritance"><a class="anchor" href="#_inheritance"></a>Inheritance</h4>
 <div class="paragraph">
 <p>Every instance must inherit  from a class (see <a href="#_inheritance_and_object_orientation">Sect. 2.4.5</a>).
 Furthermore, user-defined classes must also inherit from other classes.
@@ -2603,7 +2603,7 @@ This way, you can easily create new classes by extending existing ones.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_instances">3.6. Instances</h3>
+<h3 id="_instances"><a class="anchor" href="#_instances"></a>3.6. Instances</h3>
 <div class="paragraph">
 <p>The most important part of an Alan game source is probably the declarations of instances.
 Instances are the <code>object</code>s, <code>location</code>s, <code>actor</code>s and other <code>thing</code>s that fill your game universe.
@@ -2670,7 +2670,7 @@ The rest of the lines are fairly easy to match up to the rules of the Alan langu
 <p>All capitalized words in the examples above are keywords in the Alan language (see <a href="#table-of-keywords">Table 5</a> for a complete list), the rest are author defined words or identifiers (with the exception of the bold words object and actor, which are identifiers predefined to be special classes).</p>
 </div>
 <div class="sect3">
-<h4 id="_entities">Entities</h4>
+<h4 id="_entities"><a class="anchor" href="#_entities"></a>Entities</h4>
 <div class="paragraph">
 <p>The base class <code>entity</code>  represents the lowest denominator of all instances.
 All other predefined classes inherit from <code>entity</code>.
@@ -2689,7 +2689,7 @@ Instances of such classes will follow the same rules.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_things">Things</h4>
+<h4 id="_things"><a class="anchor" href="#_things"></a>Things</h4>
 <div class="paragraph">
 <p><code>Thing</code>  is a predefined subclass of <code>entity</code> that adds the property of having a location.
 This means that they can have an initial location and be located at locations and into containers.
@@ -2718,7 +2718,7 @@ See <a href="#_random_values"><em>Random Values</em></a> for a description of ra
 </div>
 </div>
 <div class="sect3">
-<h4 id="_objects">Objects</h4>
+<h4 id="_objects"><a class="anchor" href="#_objects"></a>Objects</h4>
 <div class="paragraph">
 <p>Objects  are instances inheriting directly or indirectly from the predefined class <code>object</code>.
 Objects are all the things that can be manipulated by the player.
@@ -2727,7 +2727,7 @@ In addition to the properties inherited from <code>thing</code>, any present obj
 </div>
 </div>
 <div class="sect3">
-<h4 id="_actors">Actors</h4>
+<h4 id="_actors"><a class="anchor" href="#_actors"></a>Actors</h4>
 <div class="paragraph">
 <p>The predefined class <code>actor</code>  is intended for providing so called NPCs, non-player characters, in your game.
 Like the player, they can move around but to do this they have to be scripted, i.e. programmed with some behaviour using scripts.</p>
@@ -2768,7 +2768,7 @@ The george IsA actor
 </div>
 </div>
 <div class="sect4">
-<h5 id="_the_hero">The Hero</h5>
+<h5 id="_the_hero"><a class="anchor" href="#_the_hero"></a>The Hero</h5>
 <div class="paragraph">
 <p>There is one very special actor, the <code>hero</code>,  which represents the player.
 This actor is always pre-declared with some basic properties, so you don&#8217;t have to declare it.
@@ -2802,7 +2802,7 @@ You can also redeclare the <code>Container</code> property of the hero so that i
 </div>
 </div>
 <div class="sect3">
-<h4 id="_locations">Locations</h4>
+<h4 id="_locations"><a class="anchor" href="#_locations"></a>Locations</h4>
 <div class="paragraph">
 <p>A <code>location</code>  is a declaration of a place (a &#8220;room&#8221;) in the game that (normally) can be visited by the player, and have objects lying around, etc.
 In fact, the map of your game is a set of interconnected locations.
@@ -2845,7 +2845,7 @@ It can also be used for grouping locations into sets of similar locations and fo
 </div>
 </div>
 <div class="sect3">
-<h4 id="_literals">Literals</h4>
+<h4 id="_literals"><a class="anchor" href="#_literals"></a>Literals</h4>
 <div class="paragraph">
 <p>The classes  <code>literal</code>, <code>string</code> and <code>integer</code> cannot be instantiated explicitly.
 Instead, you might say that they are implicitly instantiated when the player inputs a literal.
@@ -2869,7 +2869,7 @@ This way it is possible to create verbs that take strings and integers as parame
 </div>
 </div>
 <div class="sect2">
-<h3 id="_properties">3.7. Properties</h3>
+<h3 id="_properties"><a class="anchor" href="#_properties"></a>3.7. Properties</h3>
 <div class="paragraph">
 <p>An instance or class can be given number of different properties by declaring them in the declaration of the class or instance.</p>
 </div>
@@ -2899,7 +2899,7 @@ This way it is possible to create verbs that take strings and integers as parame
 You cannot use the same identifier for more than one such property, e.g. you cannot declare two attributes with the same name.</p>
 </div>
 <div class="sect3">
-<h4 id="_inheriting_properties">Inheriting Properties</h4>
+<h4 id="_inheriting_properties"><a class="anchor" href="#_inheriting_properties"></a>Inheriting Properties</h4>
 <div class="paragraph">
 <p>A property can be inherited  from the parent of the class or instance.
 It is not necessary to repeat the declaration in the inheriting class or instance if it should retain its inherited value.
@@ -2995,7 +2995,7 @@ In general, all of these can be mixed freely, however, some semantic restriction
 </div>
 </div>
 <div class="sect3">
-<h4 id="_initial_location">Initial Location</h4>
+<h4 id="_initial_location"><a class="anchor" href="#_initial_location"></a>Initial Location</h4>
 <div class="paragraph">
 <p>Where an instance will be located when the game starts is set using an optional <strong>WHERE</strong>-clause.
 If no such clause is used the instance will have no location.
@@ -3023,7 +3023,7 @@ An instance without location is not present (in the view of the player) in the g
 </div>
 </div>
 <div class="sect3">
-<h4 id="_names">Names</h4>
+<h4 id="_names"><a class="anchor" href="#_names"></a>Names</h4>
 <div class="paragraph">
 <p>By default, the identifier (&#8220;author name&#8221;) of an instance is also the name shown to the player, and by which he will be able to refer to it.
 Normally you would want to override this with more elaborate and alternative names.
@@ -3121,7 +3121,7 @@ The first <code>Name</code> clause is used for building a default description, i
 This allows you, for example, to give capitalized names to people actors, which would then be shown correctly in the output.</p>
 </div>
 <div class="sect4">
-<h5 id="_inheriting_names">Inheriting Names</h5>
+<h5 id="_inheriting_names"><a class="anchor" href="#_inheriting_names"></a>Inheriting Names</h5>
 <div class="paragraph">
 <p>Names can of course be  inherited.
 This is done in an additive way so that any names inherited are appended to the <code>Name</code> clauses in the declaration.
@@ -3144,7 +3144,7 @@ Both the Gravensteiner and the McIntosh would be apples, not only by name, but a
 </div>
 </div>
 <div class="sect4">
-<h5 id="_displaying_instances">Displaying Instances</h5>
+<h5 id="_displaying_instances"><a class="anchor" href="#_displaying_instances"></a>Displaying Instances</h5>
 <div class="paragraph">
 <p>When an instance is to be shown to the player,  it must be displayed in form of text.
 An instance can be printed in several different ways, it can be described or only mentioned.
@@ -3175,7 +3175,7 @@ In the following transcript example, output of the article is shown in bold, and
 </div>
 </div>
 <div class="sect3">
-<h4 id="_pronouns">Pronouns</h4>
+<h4 id="_pronouns"><a class="anchor" href="#_pronouns"></a>Pronouns</h4>
 <div class="paragraph">
 <p>In player input, it is often handy and natural to refer to items using  pronouns, such as &#8220;it&#8221;, &#8220;them&#8221; or &#8220;her&#8221;.
 Alan provides a means to define which pronouns each instance can be associated with.</p>
@@ -3229,7 +3229,7 @@ Assume the player input:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attributes">Attributes</h4>
+<h4 id="_attributes"><a class="anchor" href="#_attributes"></a>Attributes</h4>
 <div class="paragraph">
 <p>An attribute is a labelled value that instances have.
 Attributes declarations  are placed either inside a class definition (in which case they will apply to all instances of that class or any of its sub-classes) or inside an instance declaration (in which case only that instance will have those attributes, unless it&#8217;s overriding inherited attributes with new values).
@@ -3304,7 +3304,7 @@ You can override the value in a subclass, e.g.:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_boolean_attributes">Boolean Attributes</h5>
+<h5 id="_boolean_attributes"><a class="anchor" href="#_boolean_attributes"></a>Boolean Attributes</h5>
 <div class="paragraph">
 <p>A Boolean attribute  is declared by simply giving the attribute name, or its name preceeded by the keyword <code>Not</code> (indicating a <strong>FALSE</strong> initial value):</p>
 </div>
@@ -3316,7 +3316,7 @@ Not human.</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_numeric_and_string_attributes">Numeric and String Attributes</h5>
+<h5 id="_numeric_and_string_attributes"><a class="anchor" href="#_numeric_and_string_attributes"></a>Numeric and String Attributes</h5>
 <div class="paragraph">
 <p>Numeric  and string attributes are declared by simply typing the value after the attribute name:</p>
 </div>
@@ -3341,7 +3341,7 @@ message "Enter password:".</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_event_attributes">Event Attributes</h5>
+<h5 id="_event_attributes"><a class="anchor" href="#_event_attributes"></a>Event Attributes</h5>
 <div class="paragraph">
 <p>Attributes can refer to  events.
 Such an attribute is declared by giving the identifier of an event as its initial value.</p>
@@ -3363,7 +3363,7 @@ End The l.</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_reference_attributes">Reference Attributes</h5>
+<h5 id="_reference_attributes"><a class="anchor" href="#_reference_attributes"></a>Reference Attributes</h5>
 <div class="paragraph">
 <p>Reference attributes  store references to instances.
 Such an attribute is of instance type; the class is determined by the class of the initial instance that the attribute is referring.
@@ -3414,7 +3414,7 @@ The east_door IsA door.
 </div>
 </div>
 <div class="sect4">
-<h5 id="_set_type_attributes">Set Type Attributes</h5>
+<h5 id="_set_type_attributes"><a class="anchor" href="#_set_type_attributes"></a>Set Type Attributes</h5>
 <div class="paragraph">
 <p>
 A set is an unordered set of either integers or instance references.
@@ -3446,7 +3446,7 @@ This will create an empty set with instance type members restricted to that part
 </div>
 </div>
 <div class="sect4">
-<h5 id="_inheriting_attributes">Inheriting Attributes</h5>
+<h5 id="_inheriting_attributes"><a class="anchor" href="#_inheriting_attributes"></a>Inheriting Attributes</h5>
 <div class="paragraph">
 <p>Attributes can be inherited  like any other property.
 A declaration of an attribute with the same name as in any of the parents of the instance or class, will inherit the type of the attribute, you cannot change it in subsequent declarations.
@@ -3517,7 +3517,7 @@ This changes the semantics so that the subclass indicated by <code>lockable_door
 </div>
 </div>
 <div class="sect3">
-<h4 id="_initialize">Initialize</h4>
+<h4 id="_initialize"><a class="anchor" href="#_initialize"></a>Initialize</h4>
 <div class="paragraph">
 <p>The attributes of an instance can be initialised using values in the attribute declaration.
 This is usually sufficient for many situations.
@@ -3554,7 +3554,7 @@ This lets the base classes do their initialisation before the initialisation of 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_description">Description</h4>
+<h4 id="_description"><a class="anchor" href="#_description"></a>Description</h4>
 <div class="paragraph">
 <p>The statements in the  <code>Description</code> clause should print a description of the instance.
 These statements are executed when the hero encounters the instance.
@@ -3686,7 +3686,7 @@ Consider <code>Exit</code> statements and the <code>Entered</code> clause instea
 </div>
 </div>
 <div class="sect3">
-<h4 id="_articles_and_forms">Articles and Forms</h4>
+<h4 id="_articles_and_forms"><a class="anchor" href="#_articles_and_forms"></a>Articles and Forms</h4>
 <div class="paragraph">
 <p> 
  
@@ -3750,7 +3750,7 @@ You may override this by using an <code>Add</code> statement.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_articles">Articles</h5>
+<h5 id="_articles"><a class="anchor" href="#_articles"></a>Articles</h5>
 <div class="paragraph">
 <p>Printing the indefinite (or definite or negative) form of an instance having an indefinite (or definite or negative) article is simply performed by executing the <code>Article</code> statements and then the normal printing of the instance, usually the first set of names.</p>
 </div>
@@ -3818,7 +3818,7 @@ You are carrying an owl.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_form">Form</h5>
+<h5 id="_form"><a class="anchor" href="#_form"></a>Form</h5>
 <div class="paragraph">
 <p>If an instance has a <code>Definite</code> (<code>Indefinite</code> or <code>Negative</code>) <code>Form</code>, either through declaration or inheritance, the printing of its definite, indefinite or negative form will be by executing the corresponding statements only; no article declaration is involved.
 In this way, the author gets complete control over the spelling and inflection of the instance name in definite, indefinite or negative forms.
@@ -3832,14 +3832,14 @@ That means that an instance may override its inherited form using either of the 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_printing">Printing</h5>
+<h5 id="_printing"><a class="anchor" href="#_printing"></a>Printing</h5>
 <div class="paragraph">
 <p>You can use various forms of the <code>Say</code> statement (see <a href="#_say_statement">Sect. 3.17.1.4</a>) to choose in which form the instance will be presented.
 In addition, the embedded parameter references allow selection of the form (<a href="#_string_statement">Sect. 3.17.1.1</a>).</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_mentioned">Mentioned</h5>
+<h5 id="_mentioned"><a class="anchor" href="#_mentioned"></a>Mentioned</h5>
 <div class="paragraph">
 <p>The optional  <code>Mentioned</code> clause overrides the name for displaying an instance in a short form that will be used when the instance is mentioned e.g. in listings of containers or when the <strong>ALL</strong>  form of player input is used.
 A typical use of the <code>Mentioned</code> clause is to let some internal state of the instance be reflected in the short form, e.g. if you want the short form of a box to show if it is open or closed you cannot rely on the Names since they are static.
@@ -3893,7 +3893,7 @@ Instead, the <code>Mentioned</code> clause can print a different short name depe
 </div>
 </div>
 <div class="sect3">
-<h4 id="_container_properties">Container Properties</h4>
+<h4 id="_container_properties"><a class="anchor" href="#_container_properties"></a>Container Properties</h4>
 <div class="paragraph">
 <p>An instance can also be a container.
 This is declared by using the  <code>Container</code> property clause.
@@ -3994,7 +3994,7 @@ The predefined <code>opaque</code> attribute is only available in instances and 
 If the instance has a default description the contents of the container will be listed if it is not empty and not opaque.</p>
 </div>
 <div class="sect4">
-<h5 id="_limits">Limits</h5>
+<h5 id="_limits"><a class="anchor" href="#_limits"></a>Limits</h5>
 <div class="paragraph">
 <p>The  <code>Limits</code> clause of the <code>Container</code> property declaration put limitations on what and how much can be put in the container.</p>
 </div>
@@ -4049,7 +4049,7 @@ Locations can&#8217;t have container properties.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_header_and_else">Header and Else</h5>
+<h5 id="_header_and_else"><a class="anchor" href="#_header_and_else"></a>Header and Else</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -4103,7 +4103,7 @@ Empty
 </div>
 </div>
 <div class="sect4">
-<h5 id="_extract">Extract</h5>
+<h5 id="_extract"><a class="anchor" href="#_extract"></a>Extract</h5>
 <div class="paragraph">
 <p>The  <code>Extract</code> clause defines what happens when anything is extracted from a container.
 Any <code>Locate</code> statement that moves an instance out of a container is considered an extraction.
@@ -4154,7 +4154,7 @@ End The waiter.</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_verbs">Verbs</h4>
+<h4 id="_verbs"><a class="anchor" href="#_verbs"></a>Verbs</h4>
 <div class="paragraph">
 <p><code>Verb</code>s declared inside an class or instance are inherited in the same way as other properties.
 See <a href="#_verbs">Sect. 3.7.10</a> for a description on how to declare verbs.</p>
@@ -4165,7 +4165,7 @@ See <a href="#_verb_execution">Sect. 3.10.7</a> for a detailed explanation.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_entered">Entered</h4>
+<h4 id="_entered"><a class="anchor" href="#_entered"></a>Entered</h4>
 <div class="paragraph">
 <p></p>
 </div>
@@ -4276,7 +4276,7 @@ The actor will be at the location when the clause starts to execute.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_exits">Exits</h4>
+<h4 id="_exits"><a class="anchor" href="#_exits"></a>Exits</h4>
 <div class="paragraph">
 <p>To build a traversable world of locations, they must be connected.
 This is done using <code>Exit</code>s.
@@ -4342,7 +4342,7 @@ It is not created automatically.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_scripts">Scripts</h4>
+<h4 id="_scripts"><a class="anchor" href="#_scripts"></a>Scripts</h4>
 <div class="paragraph">
 <p>The  <code>Script</code> is the actor&#8217;s way of performing things.
 In a way, it corresponds to what the hero is ordered to do by the player&#8217;s typed-in commands.</p>
@@ -4418,7 +4418,7 @@ The author is responsible for handling this, e.g. by using rules to ensure that 
 </table>
 </div>
 <div class="sect4">
-<h5 id="_steps">Steps</h5>
+<h5 id="_steps"><a class="anchor" href="#_steps"></a>Steps</h5>
 <div class="paragraph">
 <p>A script is divided into steps.
 Each  <code>Step</code> contains statements representing what the actor will do in what corresponds to one player move.
@@ -4456,7 +4456,7 @@ If this is not what you wanted, you can end each script with a new <code>Use</co
 </div>
 </div>
 <div class="sect2">
-<h3 id="_additions">3.8. Additions</h3>
+<h3 id="_additions"><a class="anchor" href="#_additions"></a>3.8. Additions</h3>
 <div class="paragraph">
 <p>In certain circumstances, you need to add properties to a class after it is defined.
 A simple example of this is adding attributes to the predefined classes.
@@ -4481,7 +4481,7 @@ If such a package required particular attributes in classes, they could be added
 </div>
 </div>
 <div class="sect2">
-<h3 id="_syntax_definitions">3.9. Syntax Definitions</h3>
+<h3 id="_syntax_definitions"><a class="anchor" href="#_syntax_definitions"></a>3.9. Syntax Definitions</h3>
 <div class="paragraph">
 <p>The  <code>Syntax</code> construct is used to specify the allowed structure of the player&#8217;s input.
 Each definition defines the syntax for one <code>Verb</code>.
@@ -4594,7 +4594,7 @@ Consider the <code>unlock_with</code> syntax declaration of the previous example
 See <a href="#_syntax_synonyms"><em>Syntax Synonyms</em></a>.</p>
 </div>
 <div class="sect3">
-<h4 id="_indicators">Indicators</h4>
+<h4 id="_indicators"><a class="anchor" href="#_indicators"></a>Indicators</h4>
 <div class="paragraph">
 <p>Following a parameter,  indicators are allowed in <code>Syntax</code> declarations.</p>
 </div>
@@ -4714,7 +4714,7 @@ Another example, this time using the <code>!</code> indicator:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parameter_restrictions">Parameter Restrictions</h4>
+<h4 id="_parameter_restrictions"><a class="anchor" href="#_parameter_restrictions"></a>Parameter Restrictions</h4>
 <div class="paragraph">
 <p>To restrict  the types of entities the player may refer to in the place of a parameter, its class can be defined by using explicit test in the syntax declaration.</p>
 </div>
@@ -4819,7 +4819,7 @@ The same applies for other semantic restrictions, e.g. you can only use a parame
 </div>
 </div>
 <div class="sect3">
-<h4 id="_syntax_synonyms">Syntax Synonyms</h4>
+<h4 id="_syntax_synonyms"><a class="anchor" href="#_syntax_synonyms"></a>Syntax Synonyms</h4>
 <div class="paragraph">
 <p>It is possible to create multiple syntax declarations for the same verb.
 The semantics of this is that any of the input formats will be accepted and trigger the same verb action.
@@ -4842,7 +4842,7 @@ These restrictions will be applied regardless of which syntax was used.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_default_syntax">Default Syntax</h4>
+<h4 id="_default_syntax"><a class="anchor" href="#_default_syntax"></a>Default Syntax</h4>
 <div class="paragraph">
 <p>If no <code>Syntax</code> is defined for a <code>Verb</code> at all, this is handled with one of two default syntaxes  according to the two templates below:</p>
 </div>
@@ -4895,7 +4895,7 @@ This case must be handled explicitly.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_scope">Scope</h4>
+<h4 id="_scope"><a class="anchor" href="#_scope"></a>Scope</h4>
 <div class="paragraph">
 <p>If the player inputs a command following a syntax which requires parameters, the interpreter first determines if the referenced instance is in scope.
 This is performed even before the restrictions are executed.</p>
@@ -4930,7 +4930,7 @@ If there still are multiple candidates after this, the interpreter will print a 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_verbs_2">3.10. Verbs</h3>
+<h3 id="_verbs_2"><a class="anchor" href="#_verbs_2"></a>3.10. Verbs</h3>
 <div class="paragraph">
 <p>
 </p>
@@ -4977,7 +4977,7 @@ This will create synonymous actions for different verbs on the level where the v
 They may differ in implementation at other places, i.e. if they are declared in the same verb declaration on one level in an inheritance tree, they can still have different bodies on another level.</p>
 </div>
 <div class="sect3">
-<h4 id="_meta_verbs">Meta Verbs</h4>
+<h4 id="_meta_verbs"><a class="anchor" href="#_meta_verbs"></a>Meta Verbs</h4>
 <div class="paragraph">
 <p>
 Any action from the player usually takes one 'tick' in the default simulated game time.
@@ -5018,7 +5018,7 @@ It is possible to implement your own timing mechanism, in which case the <code>M
 </div>
 </div>
 <div class="sect3">
-<h4 id="_verbs_in_locations">Verbs in Locations</h4>
+<h4 id="_verbs_in_locations"><a class="anchor" href="#_verbs_in_locations"></a>Verbs in Locations</h4>
 <div class="paragraph">
 <p>A special case is a verb declared in, or inherited by, the location where the player currently is located.
 If this verb is used, any checks or body of that verb will be considered before the verbs in the parameters.
@@ -5037,7 +5037,7 @@ End The.</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_verb_checks">Verb Checks</h4>
+<h4 id="_verb_checks"><a class="anchor" href="#_verb_checks"></a>Verb Checks</h4>
 <div class="paragraph">
 <p></p>
 </div>
@@ -5125,7 +5125,7 @@ See <a href="#_player_input">Sect. 5.2</a> for an explanation of the player view
 </div>
 </div>
 <div class="sect3">
-<h4 id="_does_clause">Does-clause</h4>
+<h4 id="_does_clause"><a class="anchor" href="#_does_clause"></a>Does-clause</h4>
 <div class="paragraph">
 <p>  
  </p>
@@ -5167,7 +5167,7 @@ End Verb take.</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_verb_alternatives">Verb Alternatives</h4>
+<h4 id="_verb_alternatives"><a class="anchor" href="#_verb_alternatives"></a>Verb Alternatives</h4>
 <div class="paragraph">
 <p>
 </p>
@@ -5219,7 +5219,7 @@ The compiler will warn for this if the syntax allowed the class of instance to o
 </div>
 </div>
 <div class="sect3">
-<h4 id="_verb_qualification">Verb Qualification</h4>
+<h4 id="_verb_qualification"><a class="anchor" href="#_verb_qualification"></a>Verb Qualification</h4>
 <div class="paragraph">
 <p>
 
@@ -5244,7 +5244,7 @@ The qualifiers alter the order of execution and a strict definition of this is d
 </div>
 </div>
 <div class="sect3">
-<h4 id="_verb_execution">Verb Execution</h4>
+<h4 id="_verb_execution"><a class="anchor" href="#_verb_execution"></a>Verb Execution</h4>
 <div class="paragraph">
 <p>
 First all parameters are evaluated according to the syntax restrictions (see <a href="#_parameter_restrictions"><em>Parameter Restrictions</em></a>).
@@ -5334,7 +5334,7 @@ This will result in the execution of that verb body multiple times, since it wil
 </table>
 </div>
 <div class="sect4">
-<h5 id="_controlling_execution_with_qualifiers">Controlling Execution with Qualifiers</h5>
+<h5 id="_controlling_execution_with_qualifiers"><a class="anchor" href="#_controlling_execution_with_qualifiers"></a>Controlling Execution with Qualifiers</h5>
 <div class="paragraph">
 <p>There are cases where you don&#8217;t want all the bodies to be executed, or there is a special need to execute them in a different order.
 The most common case is to prohibit other bodies to be executed, e.g. a verb body in a location might want to stop the player from throwing any object.
@@ -5425,7 +5425,7 @@ End The bomb.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_events">3.11. Events</h3>
+<h3 id="_events"><a class="anchor" href="#_events"></a>3.11. Events</h3>
 <div class="paragraph">
 <p>An  <code>Event</code> is a sequence of statements executed at a specified time (count of turns).
 It is also executed at some specific location.
@@ -5450,7 +5450,7 @@ See <a href="#_run_time_contexts"><em>Run-Time Contexts</em></a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_rules">3.12. Rules</h3>
+<h3 id="_rules"><a class="anchor" href="#_rules"></a>3.12. Rules</h3>
 <div class="paragraph">
 <p>
 </p>
@@ -5539,7 +5539,7 @@ What happens if there are more actors in play and they move in and out of the ki
 </div>
 </div>
 <div class="sect2">
-<h3 id="_synonyms">3.13. Synonyms</h3>
+<h3 id="_synonyms"><a class="anchor" href="#_synonyms"></a>3.13. Synonyms</h3>
 <div class="paragraph">
 <p></p>
 </div>
@@ -5593,7 +5593,7 @@ See <a href="#_names">Sect. 3.7.3</a> for a description of this.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_messages">3.14. Messages</h3>
+<h3 id="_messages"><a class="anchor" href="#_messages"></a>3.14. Messages</h3>
 <div class="paragraph">
 <p>The Alan system has a number of standard messages built in.
 These messages are presented to the player in various situations, both normal and otherwise.
@@ -5662,7 +5662,7 @@ There is no exit in that direction.</p>
 For a complete list of all the identifiers of messages and their use, see <a href="#_run_time_messages">Appendix C</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="_message_parameters">Message parameters</h4>
+<h4 id="_message_parameters"><a class="anchor" href="#_message_parameters"></a>Message parameters</h4>
 <div class="paragraph">
 <p>Message sections must be declared at the global level, but to make it possible to create high-quality messages the message sections have parameters available.
 Which parameters are available vary depending on the message, the details for each message is available in <a href="#_input_response_messages">Sect. C.1</a>.</p>
@@ -5694,7 +5694,7 @@ Any attribute available for this class will be available in message sections wit
 </div>
 </div>
 <div class="sect2">
-<h3 id="_prompt_section">3.15. Prompt Section</h3>
+<h3 id="_prompt_section"><a class="anchor" href="#_prompt_section"></a>3.15. Prompt Section</h3>
 <div class="paragraph">
 <p>The  <code>Prompt</code> section allows you to customize the way players are prompted for their input.</p>
 </div>
@@ -5776,7 +5776,7 @@ There is currently no way to dynamically customize the prompt except by using th
 </div>
 </div>
 <div class="sect2">
-<h3 id="_start_section">3.16. Start Section</h3>
+<h3 id="_start_section"><a class="anchor" href="#_start_section"></a>3.16. Start Section</h3>
 <div class="paragraph">
 <p>The  <code>Start</code> section defines where the player (the hero) will be at the start of the game.
 This must be a location.
@@ -5808,9 +5808,9 @@ Any statements are allowed in the start section but they cannot refer to any par
 </div>
 </div>
 <div class="sect2">
-<h3 id="_statements">3.17. Statements</h3>
+<h3 id="_statements"><a class="anchor" href="#_statements"></a>3.17. Statements</h3>
 <div class="sect3">
-<h4 id="_output_statements">Output Statements</h4>
+<h4 id="_output_statements"><a class="anchor" href="#_output_statements"></a>Output Statements</h4>
 <div class="paragraph">
 <p>There are various ways to present output  to the player, string output, descriptions, printing expressions, listing container content and showing pictures.</p>
 </div>
@@ -5862,7 +5862,7 @@ This feature ensures that the player only sees what is going on at the current l
 But see <a href="#_distant_events"><em>Distant Events</em></a> for a solution in the case the hero need to be informed about things happening where he isn&#8217;t.</p>
 </div>
 <div class="sect4">
-<h5 id="_string_statement">String Statement</h5>
+<h5 id="_string_statement"><a class="anchor" href="#_string_statement"></a>String Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -5953,7 +5953,7 @@ This will ensure full reference analysis by the compiler protecting against any 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_style_statement">Style Statement</h5>
+<h5 id="_style_statement"><a class="anchor" href="#_style_statement"></a>Style Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -5990,7 +5990,7 @@ In fact, there is no guarantee that the styles will actually differ.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_describe_statement">Describe Statement</h5>
+<h5 id="_describe_statement"><a class="anchor" href="#_describe_statement"></a>Describe Statement</h5>
 <div class="paragraph">
 <p>
 </p>
@@ -6028,7 +6028,7 @@ DESCRIBE desk.
 </div>
 </div>
 <div class="sect4">
-<h5 id="_say_statement">Say Statement</h5>
+<h5 id="_say_statement"><a class="anchor" href="#_say_statement"></a>Say Statement</h5>
 <div class="paragraph">
 <p>
 </p>
@@ -6070,7 +6070,7 @@ Finally, the <code>IT</code> form will print the pronoun associated with the ins
 </div>
 </div>
 <div class="sect4">
-<h5 id="_list_statement">List Statement</h5>
+<h5 id="_list_statement"><a class="anchor" href="#_list_statement"></a>List Statement</h5>
 <div class="paragraph">
 <p>
 </p>
@@ -6099,7 +6099,7 @@ This instance can be referred to by being bound to a parameter or a reference at
 </div>
 </div>
 <div class="sect3">
-<h4 id="_multi_media_statements">Multi-media Statements</h4>
+<h4 id="_multi_media_statements"><a class="anchor" href="#_multi_media_statements"></a>Multi-media Statements</h4>
 <div class="paragraph">
 <p>Alan has some multimedia provisions, although they may not be available on every platform and implementation.
 The <code>Show</code> statement, presents an image in the output window, and the <code>Play</code> statement plays a sound.</p>
@@ -6124,7 +6124,7 @@ The Alan compiler uses the file extension to determine the media type of the fil
 The following extensions are recognized: <strong>.jpg</strong>, <strong>.jpeg</strong>, <strong>.png</strong>, <strong>.mod</strong>, <strong>.aif</strong> and <strong>.aiff</strong>.</p>
 </div>
 <div class="sect4">
-<h5 id="_show_statement">Show Statement</h5>
+<h5 id="_show_statement"><a class="anchor" href="#_show_statement"></a>Show Statement</h5>
 <div class="paragraph">
 <p>
 </p>
@@ -6143,7 +6143,7 @@ Since filenames may contain various special characters, a quoted identifier (see
 </div>
 </div>
 <div class="sect4">
-<h5 id="_play_statement">Play Statement</h5>
+<h5 id="_play_statement"><a class="anchor" href="#_play_statement"></a>Play Statement</h5>
 <div class="paragraph">
 <p>
 </p>
@@ -6163,9 +6163,9 @@ Since filenames may contain various special characters, a quoted identifier (see
 </div>
 </div>
 <div class="sect3">
-<h4 id="_manipulation_statements">Manipulation Statements</h4>
+<h4 id="_manipulation_statements"><a class="anchor" href="#_manipulation_statements"></a>Manipulation Statements</h4>
 <div class="sect4">
-<h5 id="_locate_statement">Locate Statement</h5>
+<h5 id="_locate_statement"><a class="anchor" href="#_locate_statement"></a>Locate Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -6212,7 +6212,7 @@ The effect of this is that any instances present in the outer location are reach
 </div>
 </div>
 <div class="sect4">
-<h5 id="_empty_statement">Empty Statement</h5>
+<h5 id="_empty_statement"><a class="anchor" href="#_empty_statement"></a>Empty Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -6236,7 +6236,7 @@ Locate hero At restart_point.</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_strip_statement">Strip Statement</h5>
+<h5 id="_strip_statement"><a class="anchor" href="#_strip_statement"></a>Strip Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -6283,9 +6283,9 @@ End The eliza.</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_event_statements">Event Statements</h4>
+<h4 id="_event_statements"><a class="anchor" href="#_event_statements"></a>Event Statements</h4>
 <div class="sect4">
-<h5 id="_schedule_statement">Schedule Statement</h5>
+<h5 id="_schedule_statement"><a class="anchor" href="#_schedule_statement"></a>Schedule Statement</h5>
 <div class="paragraph">
 <p><code>Schedule</code>  will queue an event to occur at a specified location after the number of player turns specified by the expression.</p>
 </div>
@@ -6339,7 +6339,7 @@ An event can only be scheduled for one execution at a time.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_cancel_statement">Cancel Statement</h5>
+<h5 id="_cancel_statement"><a class="anchor" href="#_cancel_statement"></a>Cancel Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -6382,12 +6382,12 @@ Start At office.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_assignment_statements">Assignment Statements</h4>
+<h4 id="_assignment_statements"><a class="anchor" href="#_assignment_statements"></a>Assignment Statements</h4>
 <div class="paragraph">
 <p>There are a number of statements for changing values of attributes.</p>
 </div>
 <div class="sect4">
-<h5 id="_make_statement">Make Statement</h5>
+<h5 id="_make_statement"><a class="anchor" href="#_make_statement"></a>Make Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -6409,7 +6409,7 @@ Make door Not open.</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_increase_and_decrease_statements">Increase and Decrease Statements</h5>
+<h5 id="_increase_and_decrease_statements"><a class="anchor" href="#_increase_and_decrease_statements"></a>Increase and Decrease Statements</h5>
 <div class="paragraph">
 <p>
 </p>
@@ -6435,7 +6435,7 @@ Decrease lives Of hero.</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_set_statement">Set Statement</h5>
+<h5 id="_set_statement"><a class="anchor" href="#_set_statement"></a>Set Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -6501,7 +6501,7 @@ Set friends Of mine To {suspect Of detective}. -- Correct maybe</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_include_statement">Include Statement</h5>
+<h5 id="_include_statement"><a class="anchor" href="#_include_statement"></a>Include Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -6534,7 +6534,7 @@ A member already in the <code>Set</code> will silently be accepted but not gener
 </div>
 </div>
 <div class="sect4">
-<h5 id="_exclude_statement">Exclude Statement</h5>
+<h5 id="_exclude_statement"><a class="anchor" href="#_exclude_statement"></a>Exclude Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -6566,12 +6566,12 @@ A member may be included in multiple Sets.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_conditional_statements">Conditional Statements</h4>
+<h4 id="_conditional_statements"><a class="anchor" href="#_conditional_statements"></a>Conditional Statements</h4>
 <div class="paragraph">
 <p>In Alan there are two conditional statements, the common <code>If</code> statement and the <code>Depending On</code> statement.</p>
 </div>
 <div class="sect4">
-<h5 id="_if_statement">If Statement</h5>
+<h5 id="_if_statement"><a class="anchor" href="#_if_statement"></a>If Statement</h5>
 <div class="paragraph">
 <p>
 
@@ -6641,7 +6641,7 @@ End For.</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_depending_on_statement">Depending On Statement</h5>
+<h5 id="_depending_on_statement"><a class="anchor" href="#_depending_on_statement"></a>Depending On Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -6704,12 +6704,12 @@ End If.</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_actor_statements">Actor Statements</h4>
+<h4 id="_actor_statements"><a class="anchor" href="#_actor_statements"></a>Actor Statements</h4>
 <div class="paragraph">
 <p>Actor statements are statements that are used to control actors.</p>
 </div>
 <div class="sect4">
-<h5 id="_use_statement">Use Statement</h5>
+<h5 id="_use_statement"><a class="anchor" href="#_use_statement"></a>Use Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -6743,7 +6743,7 @@ The <code>For actor</code> clause is optional when writing code within a certain
 </div>
 </div>
 <div class="sect4">
-<h5 id="_stop_statement">Stop Statement</h5>
+<h5 id="_stop_statement"><a class="anchor" href="#_stop_statement"></a>Stop Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -6762,7 +6762,7 @@ More complex expressions resulting in an actor type value, such as a parameter r
 </div>
 </div>
 <div class="sect4">
-<h5 id="_repetition_statements">Repetition Statements</h5>
+<h5 id="_repetition_statements"><a class="anchor" href="#_repetition_statements"></a>Repetition Statements</h5>
 <div class="paragraph">
 <p>The Alan language provides one compound statement for repetition, the <code>For Each</code> statement.</p>
 </div>
@@ -6812,16 +6812,16 @@ End For.</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_special_statements">Special Statements</h4>
+<h4 id="_special_statements"><a class="anchor" href="#_special_statements"></a>Special Statements</h4>
 <div class="sect4">
-<h5 id="_quit_statement">Quit Statement</h5>
+<h5 id="_quit_statement"><a class="anchor" href="#_quit_statement"></a>Quit Statement</h5>
 <div class="paragraph">
 <p><code>Quit</code>  prints a question giving the player the choice of restarting the game, reloading a previously saved game or to quit.
 Any scoring or other printouts have to be made explicitly before executing the <code>Quit</code> statement.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_look_statement">Look Statement</h5>
+<h5 id="_look_statement"><a class="anchor" href="#_look_statement"></a>Look Statement</h5>
 <div class="paragraph">
 <p><code>Look</code>  describes the current location (the current location is dependent on in which context it is executed) and what it contains to the player.
 First the location name is output, then the <code>Description</code> part for the location is executed.
@@ -6854,7 +6854,7 @@ consideration.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_save_and_restore_statements">Save and Restore Statements</h5>
+<h5 id="_save_and_restore_statements"><a class="anchor" href="#_save_and_restore_statements"></a>Save and Restore Statements</h5>
 <div class="paragraph">
 <p><code>Save</code>  saves the game on a file for later use with  <code>Restore</code>.
 Both <code>save</code> and <code>restore</code> asks the player for a file name to use for storing and restoring.
@@ -6874,7 +6874,7 @@ End Verb restore.</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_score_statement">Score Statement</h5>
+<h5 id="_score_statement"><a class="anchor" href="#_score_statement"></a>Score Statement</h5>
 <div class="paragraph">
 <p><code>Score</code>  is a way of rewarding the player by giving points for certain actions.
 This is done using the statement</p>
@@ -6916,7 +6916,7 @@ For adventures having a more complex and varied scoring system (particularly if 
 </div>
 </div>
 <div class="sect4">
-<h5 id="_visits_statement">Visits Statement</h5>
+<h5 id="_visits_statement"><a class="anchor" href="#_visits_statement"></a>Visits Statement</h5>
 <div class="paragraph">
 <p>The  <code>Visits</code> statement changes the number of times a location can be visited before the long description is presented again:</p>
 </div>
@@ -6994,7 +6994,7 @@ End The secret_cave.</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_transcript_statement">Transcript Statement</h5>
+<h5 id="_transcript_statement"><a class="anchor" href="#_transcript_statement"></a>Transcript Statement</h5>
 <div class="paragraph">
 <p></p>
 </div>
@@ -7045,7 +7045,7 @@ End Verb.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_where_specifications">3.18. WHERE Specifications</h3>
+<h3 id="_where_specifications"><a class="anchor" href="#_where_specifications"></a>3.18. WHERE Specifications</h3>
 <div class="paragraph">
 <p>Many constructs in the Alan language require a specification of where the construct should operate.
 The general intention of such a  <strong>WHERE</strong>-specification is to specify a location.</p>
@@ -7121,7 +7121,7 @@ They cannot be used in a <code>Locate</code> statement, as it requires a specifi
 </div>
 </div>
 <div class="sect2">
-<h3 id="_what_specifications">3.19. WHAT Specifications</h3>
+<h3 id="_what_specifications"><a class="anchor" href="#_what_specifications"></a>3.19. WHAT Specifications</h3>
 <div class="paragraph">
 <p>Constructs in the grammar for the Alan language often refer to some class or instance defined in the Alan source.
 This is generally called a  <code>What</code> specification, as it specifies what the construct refers to.
@@ -7186,14 +7186,14 @@ For example it is not possible to use <code>Current Location</code> (nor an iden
 </div>
 </div>
 <div class="sect2">
-<h3 id="_expressions">3.20. Expressions</h3>
+<h3 id="_expressions"><a class="anchor" href="#_expressions"></a>3.20. Expressions</h3>
 <div class="paragraph">
 <p>The grammar for Alan refers to expression.
 This is a generic name for a number of constructs yielding a value.
 The following sections describe the different kinds of expressions available in the Alan language.</p>
 </div>
 <div class="sect3">
-<h4 id="_types_of_expressions">Types of Expressions</h4>
+<h4 id="_types_of_expressions"><a class="anchor" href="#_types_of_expressions"></a>Types of Expressions</h4>
 <div class="paragraph">
 <p>
 Expressions are used e.g. in <code>If</code> and <code>Set</code> statements.
@@ -7202,7 +7202,7 @@ See <a href="#_types">Sect. 3.3</a> for details on types.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_literal_values">Literal Values</h4>
+<h4 id="_literal_values"><a class="anchor" href="#_literal_values"></a>Literal Values</h4>
 <div class="paragraph">
 <p>
 A single integer (e.g. 42) is a numeric expression.
@@ -7228,7 +7228,7 @@ E.g.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_attribute_references">Attribute References</h4>
+<h4 id="_attribute_references"><a class="anchor" href="#_attribute_references"></a>Attribute References</h4>
 <div class="paragraph">
 <p>
 </p>
@@ -7299,7 +7299,7 @@ It would be the same as</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_location_of">Location Of</h5>
+<h5 id="_location_of"><a class="anchor" href="#_location_of"></a>Location Of</h5>
 <div class="paragraph">
 <p>
 
@@ -7317,7 +7317,7 @@ There is a particularly useful predefined pseudo-attribute, <code>location</code
 </div>
 </div>
 <div class="sect3">
-<h4 id="_random_values">Random Values</h4>
+<h4 id="_random_values"><a class="anchor" href="#_random_values"></a>Random Values</h4>
 <div class="paragraph">
 <p>There are three types of random expressions.
 The first is the traditional random integer expression.</p>
@@ -7400,7 +7400,7 @@ See <a href="#_aggregates"><em>Aggregates</em></a> for descriptions on how to co
 </div>
 </div>
 <div class="sect3">
-<h4 id="_logical_expressions">Logical Expressions</h4>
+<h4 id="_logical_expressions"><a class="anchor" href="#_logical_expressions"></a>Logical Expressions</h4>
 <div class="paragraph">
 <p>
 
@@ -7430,7 +7430,7 @@ If o IsA treasure And (size Of o &gt; capacity Of c
 </div>
 </div>
 <div class="sect3">
-<h4 id="_class_expressions">Class Expressions</h4>
+<h4 id="_class_expressions"><a class="anchor" href="#_class_expressions"></a>Class Expressions</h4>
 <div class="paragraph">
 <p>
 </p>
@@ -7465,7 +7465,7 @@ Also see <a href="#_if_statement">the section on <em>If Statement</em></a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_binary_operators">Binary Operators</h4>
+<h4 id="_binary_operators"><a class="anchor" href="#_binary_operators"></a>Binary Operators</h4>
 <div class="paragraph">
 <p>All binary operators  (plus, minus, multiplication, division) may be used on integer expressions.
 The result is another integer expression.
@@ -7496,7 +7496,7 @@ For example:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_relational_and_equality_operators">Relational and Equality Operators</h4>
+<h4 id="_relational_and_equality_operators"><a class="anchor" href="#_relational_and_equality_operators"></a>Relational and Equality Operators</h4>
 <div class="paragraph">
 <p>Equality (<code>=</code>, meaning equals) and relational operators  (<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, meaning: less than, greater than, less than or equal, greater than or equal respectively) are used to compare expressions.
 The result is true or false and may be negated by using an optional <code>Not</code>.</p>
@@ -7542,7 +7542,7 @@ For example:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_string_containment">String Containment</h4>
+<h4 id="_string_containment"><a class="anchor" href="#_string_containment"></a>String Containment</h4>
 <div class="paragraph">
 <p>There is a string  containment operator,  <code>Contains</code>, which can be used to test if a string contains another string.
 The test ignores any differences in character case.
@@ -7566,7 +7566,7 @@ An example of an expression that is true is</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_current_entities">Current Entities</h4>
+<h4 id="_current_entities"><a class="anchor" href="#_current_entities"></a>Current Entities</h4>
 <div class="paragraph">
 <p>There are two particularly interesting entities that you might want to know something about or which they are.
 They are</p>
@@ -7588,7 +7588,7 @@ Details about execution contexts can be found in <a href="#_run_time_contexts"><
 </div>
 </div>
 <div class="sect3">
-<h4 id="_this_instance">This Instance</h4>
+<h4 id="_this_instance"><a class="anchor" href="#_this_instance"></a>This Instance</h4>
 <div class="paragraph">
 <p>You can also refer to the instance that is actually executing the code containing the expression.
 This is particularly useful when using inheritance since the class defining the code have no way of knowing which instance will actually execute it.
@@ -7625,7 +7625,7 @@ When the verb body, also inherited from <code>openable</code>, is executed, it w
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_whereabouts_of_an_entity">The Whereabouts of an Entity</h4>
+<h4 id="_the_whereabouts_of_an_entity"><a class="anchor" href="#_the_whereabouts_of_an_entity"></a>The Whereabouts of an Entity</h4>
 <div class="paragraph">
 <p>
 </p>
@@ -7705,7 +7705,7 @@ This includes all existing instances of the class that the container takes, and 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_aggregates">Aggregates</h4>
+<h4 id="_aggregates"><a class="anchor" href="#_aggregates"></a>Aggregates</h4>
 <div class="paragraph">
 <p> 
    
@@ -7767,7 +7767,7 @@ End If.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_filters">3.21. Filters</h3>
+<h3 id="_filters"><a class="anchor" href="#_filters"></a>3.21. Filters</h3>
 <div class="paragraph">
 <p></p>
 </div>
@@ -7795,10 +7795,10 @@ Each filter must enumerate the set of values to a compatible set, e.g. using two
 </div>
 </div>
 <div class="sect1">
-<h2 id="_lexical_definitions">4. Lexical Definitions</h2>
+<h2 id="_lexical_definitions"><a class="anchor" href="#_lexical_definitions"></a>4. Lexical Definitions</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_comments">4.1. Comments</h3>
+<h3 id="_comments"><a class="anchor" href="#_comments"></a>4.1. Comments</h3>
 <div class="paragraph">
 <p>Comments may be placed anywhere in the Alan source.
 A comment starts with double hyphens (<code>--</code>) and extends to the end of the line.</p>
@@ -7810,7 +7810,7 @@ A comment starts with double hyphens (<code>--</code>) and extends to the end of
 </div>
 </div>
 <div class="sect2">
-<h3 id="_words_identifiers_and_names">4.2. Words, Identifiers and Names</h3>
+<h3 id="_words_identifiers_and_names"><a class="anchor" href="#_words_identifiers_and_names"></a>4.2. Words, Identifiers and Names</h3>
 <div class="paragraph">
 <p>An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance.
 Identifiers  may only be composed of letters, digits and underscores.
@@ -7942,7 +7942,7 @@ If these contain special characters, the player cannot enter them.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_numbers">4.3. Numbers</h3>
+<h3 id="_numbers"><a class="anchor" href="#_numbers"></a>4.3. Numbers</h3>
 <div class="paragraph">
 <p>
 Numbers in Alan are only integers and thus may consist only of digits.</p>
@@ -7957,7 +7957,7 @@ Numbers in Alan are only integers and thus may consist only of digits.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_strings">4.4. Strings</h3>
+<h3 id="_strings"><a class="anchor" href="#_strings"></a>4.4. Strings</h3>
 <div class="paragraph">
 <p>
 The string is the main lexical component in an Alan source.
@@ -8009,7 +8009,7 @@ If the compiler points to the first word after a double quote and indicates that
 </div>
 </div>
 <div class="sect2">
-<h3 id="_filenames">4.5. Filenames</h3>
+<h3 id="_filenames"><a class="anchor" href="#_filenames"></a>4.5. Filenames</h3>
 <div class="paragraph">
 <p>It is possible to write one adventure using many source files, having different parts in different files, and thus giving an opportunity for some rudimentary kind of modularisation.
 The method for this is the <code>import</code> statement.</p>
@@ -8031,10 +8031,10 @@ identifier (see <a href="#_words_identifiers_and_names">Sect. 4.2</a>).</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_running_an_adventure">5. Running An Adventure</h2>
+<h2 id="_running_an_adventure"><a class="anchor" href="#_running_an_adventure"></a>5. Running An Adventure</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_a_turn_of_events">5.1. A Turn of Events</h3>
+<h3 id="_a_turn_of_events"><a class="anchor" href="#_a_turn_of_events"></a>5.1. A Turn of Events</h3>
 <div class="paragraph">
 <p>The player controls the  execution of an Alan adventure.
 Each of his inputs are taken care of and acted upon by the run-time system in the interpreter.
@@ -8081,7 +8081,7 @@ The events and other actors, including turn counting, then proceeds as if the pl
 </div>
 </div>
 <div class="sect2">
-<h3 id="_player_input">5.2. Player Input</h3>
+<h3 id="_player_input"><a class="anchor" href="#_player_input"></a>5.2. Player Input</h3>
 <div class="paragraph">
 <p>The <code>Syntax</code> defined in the Alan source is the basis for what the player is allowed to input.
 Commands with the formats expressed in the syntaxes form the basic statements available to the player.
@@ -8191,7 +8191,7 @@ This must be kept in mind when naming verbs that use the default syntax (an expl
 </div>
 </div>
 <div class="sect2">
-<h3 id="_run_time_contexts">5.3. Run-Time Contexts</h3>
+<h3 id="_run_time_contexts"><a class="anchor" href="#_run_time_contexts"></a>5.3. Run-Time Contexts</h3>
 <div class="paragraph">
 <p>When the player enters a command, the Alan run-time system evaluates the various constructs from the adventure description (source) as described above.
 Depending on the player&#8217;s command evaluation, different parts of the adventure may be triggered.
@@ -8250,7 +8250,7 @@ Any output statement in this context will be completely useless since the hero c
 </div>
 </div>
 <div class="sect2">
-<h3 id="_moving_actors">5.4. Moving Actors</h3>
+<h3 id="_moving_actors"><a class="anchor" href="#_moving_actors"></a>5.4. Moving Actors</h3>
 <div class="paragraph">
 <p>
 The main way to  move the hero around the adventure&#8217;s world is through  <code>Exit</code>s (see <a href="#_exits">Sect. 3.7.12</a>).
@@ -8267,7 +8267,7 @@ Therefore, this is also the last step in the sequence of events caused by locati
 </div>
 </div>
 <div class="sect2">
-<h3 id="_undoing">5.5. Undoing</h3>
+<h3 id="_undoing"><a class="anchor" href="#_undoing"></a>5.5. Undoing</h3>
 <div class="paragraph">
 <p>A player might occasionally regret an imparted command, perhaps realising that it was not the correct one.
 The Alan interpreter supports such undoing of commands.
@@ -8281,7 +8281,7 @@ It must consist of the single word <code>undo</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_scripting_and_commenting">5.6. Scripting and Commenting</h3>
+<h3 id="_scripting_and_commenting"><a class="anchor" href="#_scripting_and_commenting"></a>5.6. Scripting and Commenting</h3>
 <div class="paragraph">
 <p>Most versions of the Alan interpreter, Arun, supports both the creation of a transcript for the game in progress, as well as playing back a saved transcript as input passed to the interpreter.</p>
 </div>
@@ -8300,7 +8300,7 @@ Note that this also works for direct player input.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_hints_and_tips">6. Hints And Tips</h2>
+<h2 id="_hints_and_tips"><a class="anchor" href="#_hints_and_tips"></a>6. Hints And Tips</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This chapter will give you some ideas about how the various features of Alan may be used to implement common features in an adventure game. These are only suggestions and you are, of course, welcome to invent your own, but these are probably some ideas that can get you started.</p>
@@ -8326,7 +8326,7 @@ Note that this also works for direct player input.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_use_of_attributes">6.1. Use of Attributes</h3>
+<h3 id="_use_of_attributes"><a class="anchor" href="#_use_of_attributes"></a>6.1. Use of Attributes</h3>
 <div class="paragraph">
 <p>
 Attributes are primarily used for holding status information about the instance to which it belongs. This allows, for example, a water bottle to contain three levels of water.</p>
@@ -8462,7 +8462,7 @@ Yoooohooooo!</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_descriptions">6.2. Descriptions</h3>
+<h3 id="_descriptions"><a class="anchor" href="#_descriptions"></a>6.2. Descriptions</h3>
 <div class="paragraph">
 <p>Attributes come in handy when presenting information about instances to the player. The attributes can be tested in  <code>If</code>-statements to modify the <code>Description</code>s and possibly even the short description in the <code>Mentioned</code> sections.</p>
 </div>
@@ -8516,7 +8516,7 @@ You are carrying an empty bottle.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_common_verbs">6.3. Common Verbs</h3>
+<h3 id="_common_verbs"><a class="anchor" href="#_common_verbs"></a>6.3. Common Verbs</h3>
 <div class="paragraph">
 <p>As your library of adventures grow you will find that  some verbs are often needed, and always function the same way. Examples are &#8220;take&#8221;, &#8220;drop&#8221;, &#8220;invent&#8221;, &#8220;look&#8221;, &#8220;quit&#8221; and so on. It is advisable to put them in a file which may then be    imported into your games. See <a href="#_import">Sect. 3.4</a> about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a  default attribute declaration in this file.</p>
 </div>
@@ -8528,7 +8528,7 @@ You are carrying an empty bottle.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_distant_events">6.4. Distant Events</h3>
+<h3 id="_distant_events"><a class="anchor" href="#_distant_events"></a>6.4. Distant Events</h3>
 <div class="paragraph">
 <p>
 </p>
@@ -8565,7 +8565,7 @@ If Hero Nearby Then
 </div>
 </div>
 <div class="sect2">
-<h3 id="_doors">6.5. Doors</h3>
+<h3 id="_doors"><a class="anchor" href="#_doors"></a>6.5. Doors</h3>
 <div class="paragraph">
 <p>
 A common feature in adventure games is the closed door. Here&#8217;s one way implement it:</p>
@@ -8612,7 +8612,7 @@ End The treasury.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_questions_and_answers">6.6. Questions and Answers</h3>
+<h3 id="_questions_and_answers"><a class="anchor" href="#_questions_and_answers"></a>6.6. Questions and Answers</h3>
 <div class="paragraph">
 <p>Sometimes it may be necessary to ask the player for an answer to some question. One example is if you want to confirm an action. The following example delineates one simple way to do this, which could be adopted for various circumstances.</p>
 </div>
@@ -8651,7 +8651,7 @@ End Event unquit.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_actors_2">6.7. Actors</h3>
+<h3 id="_actors_2"><a class="anchor" href="#_actors_2"></a>6.7. Actors</h3>
 <div class="paragraph">
 <p>
 Actors are vital components to make a story dynamic. They move around and act according to their scripts. To make the player aware of the other actor&#8217;s actions they need to be described. This must be done so that the player always get the correct perspective on the actions of the actors.</p>
@@ -8729,7 +8729,7 @@ End Event.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_vehicles">6.8. Vehicles</h3>
+<h3 id="_vehicles"><a class="anchor" href="#_vehicles"></a>6.8. Vehicles</h3>
 <div class="paragraph">
 <p>The current version of Alan does not support actors being inside containers or inside other actors, which could be a straight forward way to implement vehicles. However, as the reader/player does not need to know how the output is generated we can use a location and a row of events to substitute for the vehicle.</p>
 </div>
@@ -8851,12 +8851,12 @@ End Event drive_to_garage.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_floating_objects">6.9. Floating Objects</h3>
+<h3 id="_floating_objects"><a class="anchor" href="#_floating_objects"></a>6.9. Floating Objects</h3>
 <div class="paragraph">
 <p>Floating objects is a term used for objects that are available everywhere, or at least at many places. Usually they are available wherever the hero is, and we want to avoid creating duplicate objects, so in a way we make them float along with the hero, or some other actor, instead.</p>
 </div>
 <div class="sect3">
-<h4 id="_body_parts">Body Parts</h4>
+<h4 id="_body_parts"><a class="anchor" href="#_body_parts"></a>Body Parts</h4>
 <div class="paragraph">
 <p>One example of floating objects is the various parts of the hero&#8217;s body.</p>
 </div>
@@ -8938,7 +8938,7 @@ You are empty-handed but in your belt you have a knife.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_outdoors_and_indoors">Outdoors and Indoors</h4>
+<h4 id="_outdoors_and_indoors"><a class="anchor" href="#_outdoors_and_indoors"></a>Outdoors and Indoors</h4>
 <div class="paragraph">
 <p>Another example of floating objects are semi-abstract objects like the air, the ground and walls. Some of these also have the extra complexity that they should be available only under certain conditions.</p>
 </div>
@@ -8995,7 +8995,7 @@ When location Of hero IsA indoors_location =&gt; ...</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_nested_locations_as_a_solution">Nested Locations as a Solution</h4>
+<h4 id="_nested_locations_as_a_solution"><a class="anchor" href="#_nested_locations_as_a_solution"></a>Nested Locations as a Solution</h4>
 <div class="paragraph">
 <p>Yet another option would be to make use of the nested locations feature. Put all your outdoor locations in a outdoor location where the outdoor_storage entity is also present (this is just a hint):</p>
 </div>
@@ -9014,7 +9014,7 @@ End The park.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_darkness_and_light_sources">6.10. Darkness and Light Sources</h3>
+<h3 id="_darkness_and_light_sources"><a class="anchor" href="#_darkness_and_light_sources"></a>6.10. Darkness and Light Sources</h3>
 <div class="paragraph">
 <p>A very common puzzle in old time adventures (so much so that it has possibly been exploited beyond its potential) is the problem of dark locations and finding a source of light.</p>
 </div>
@@ -9082,12 +9082,12 @@ End Add To.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_distant_imaginary_objects">6.11. Distant &amp; Imaginary Objects</h3>
+<h3 id="_distant_imaginary_objects"><a class="anchor" href="#_distant_imaginary_objects"></a>6.11. Distant &amp; Imaginary Objects</h3>
 <div class="paragraph">
 <p>Sometimes you need to make it possible for the player to refer to things either far away, that are not really objects or that may be at many places at once. Examples of these are a distant mountain that may be examined through a set of binoculars, the melody in &#8220;whistle the melody&#8221;, and water or walls. One way of handling this is to use entities, since they are &#8220;everywhere&#8221;. But sometimes you need better control over when they are available and when not.</p>
 </div>
 <div class="sect3">
-<h4 id="_a_mountain">A Mountain</h4>
+<h4 id="_a_mountain"><a class="anchor" href="#_a_mountain"></a>A Mountain</h4>
 <div class="paragraph">
 <p>For objects that need to be visible from a distance, the easiest method is to introduce a   &#8216;shadow object&#8217;. This is a second object acting on behalf of, or representing, the distant object at the locations where it should be possible to refer to it. For example:</p>
 </div>
@@ -9155,7 +9155,7 @@ End The scenic_vista.</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_melody">The Melody</h4>
+<h4 id="_the_melody"><a class="anchor" href="#_the_melody"></a>The Melody</h4>
 <div class="paragraph">
 <p>To allow the player to 'whistle the melody' for example, there are two different tactics that can be applied. One choice is to make the melody an <code>entity</code> (or some subclass thereof that you have defined), because, as we have seen, those can be manipulated from everywhere:</p>
 </div>
@@ -9196,7 +9196,7 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_events_as_functions">6.12. Using Events as Functions</h3>
+<h3 id="_using_events_as_functions"><a class="anchor" href="#_using_events_as_functions"></a>6.12. Using Events as Functions</h3>
 <div class="literalblock plaintext">
 <div class="content">
 <pre>&lt;to be supplied&gt;</pre>
@@ -9204,7 +9204,7 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_structure">6.13. Structure</h3>
+<h3 id="_structure"><a class="anchor" href="#_structure"></a>6.13. Structure</h3>
 <div class="paragraph">
 <p>A good thing to do when designing an interactive fiction story is to separate the geography from the story. In Alan, you can use the import facility to structure your Alan source. One approach could be to place the description of each location in a separate file together with any objects that could be considered part of the scenery or at least is not only a tool in a puzzle. These files can then be included in a &#8216;map&#8217; file, which in turn is included by the top-level file.</p>
 </div>
@@ -9216,7 +9216,7 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_debugging">6.14. Debugging</h3>
+<h3 id="_debugging"><a class="anchor" href="#_debugging"></a>6.14. Debugging</h3>
 <div class="paragraph">
 <p>Occasionally your Alan code is flawed and you really can&#8217;t understand what is actually happening. To aid in discovering which part of your code is run when, the interpreter Arun incorporates some features for debugging. There are a few  debugging switches available when starting the interpreter from the command line:</p>
 </div>
@@ -9243,7 +9243,7 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_command_logs_and_game_transcripts">Command Logs and Game Transcripts</h4>
+<h4 id="_command_logs_and_game_transcripts"><a class="anchor" href="#_command_logs_and_game_transcripts"></a>Command Logs and Game Transcripts</h4>
 <div class="paragraph">
 <p>For various purposes, such as debugging, an actual log of the player commands can be handy. Such a log is created if the option <code>-c</code> is given to the interpreter when starting a game. The log files are created in the directory, which was current when the interpreter was started, the name of the log file will begin with the game name and have the extension <strong>.log</strong>.</p>
 </div>
@@ -9255,7 +9255,7 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_interpreter_and_instruction_trace">Interpreter and Instruction Trace</h4>
+<h4 id="_interpreter_and_instruction_trace"><a class="anchor" href="#_interpreter_and_instruction_trace"></a>Interpreter and Instruction Trace</h4>
 <div class="paragraph">
 <p>
 Trace mode can also act as an aid in debugging. Level 1 will print information about every invocation of the instruction interpreter, making it easier to see which parts of the code are being executed.</p>
@@ -9265,7 +9265,7 @@ Trace mode can also act as an aid in debugging. Level 1 will print information a
 </div>
 </div>
 <div class="sect3">
-<h4 id="_debug_mode">Debug mode</h4>
+<h4 id="_debug_mode"><a class="anchor" href="#_debug_mode"></a>Debug mode</h4>
 <div class="paragraph">
 <p>Finally, and usually most useful, there is the debug mode. If the interpreter is started with this option, it will execute the start up sequence and then prompt for a debug command with</p>
 </div>
@@ -9281,7 +9281,7 @@ Trace mode can also act as an aid in debugging. Level 1 will print information a
 </div>
 </div>
 <div class="sect3">
-<h4 id="_using_the_debugger">Using the Debugger</h4>
+<h4 id="_using_the_debugger"><a class="anchor" href="#_using_the_debugger"></a>Using the Debugger</h4>
 <div class="paragraph">
 <p>Abug may also be entered during the execution of an adventure. To do this you issue the single player command (type it at the game prompt)</p>
 </div>
@@ -9768,13 +9768,13 @@ ee1: RETURN
 </div>
 </div>
 <div class="sect1">
-<h2 id="_adventure_construction">7. Adventure Construction</h2>
+<h2 id="_adventure_construction"><a class="anchor" href="#_adventure_construction"></a>7. Adventure Construction</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This chapter will give a few clues on how to be a successful adventure author, because creating a <em>good</em> adventure is more like writing a book than writing a program (although Alan can be viewed as a kind of programming language).</p>
 </div>
 <div class="sect2">
-<h3 id="_getting_an_idea">7.1. Getting an Idea</h3>
+<h3 id="_getting_an_idea"><a class="anchor" href="#_getting_an_idea"></a>7.1. Getting an Idea</h3>
 <div class="paragraph">
 <p>As with a book, the success or failure depends on how intriguing the story is, how hooked you can get the reader (in our case the player).
 Therefore, the first step <em>must</em> be to get a good idea.
@@ -9791,7 +9791,7 @@ Then, let a close friend read it.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_elaborating_the_story">7.2. Elaborating the Story</h3>
+<h3 id="_elaborating_the_story"><a class="anchor" href="#_elaborating_the_story"></a>7.2. Elaborating the Story</h3>
 <div class="paragraph">
 <p>After having rewritten the story line once or twice, start creating the scenery.
 If your setting is small, you could draw a map of the locations needed, but a better way is probably to make a list of major locations first (those essential to the story).
@@ -9817,7 +9817,7 @@ Receiving comments about your (limited) progress in the game might be funny as l
 </div>
 </div>
 <div class="sect2">
-<h3 id="_implementing_it">7.3. Implementing it</h3>
+<h3 id="_implementing_it"><a class="anchor" href="#_implementing_it"></a>7.3. Implementing it</h3>
 <div class="paragraph">
 <p>At last, it is time to sit down at the terminal.
 Divide the adventure text into files containing global verbs, the map (possibly divided further according to the scenes), the actors (perhaps one file for each actor) and a main file including the other files.
@@ -9837,7 +9837,7 @@ In this file you can easily set up the situation you wish to test while not havi
 </div>
 </div>
 <div class="sect2">
-<h3 id="_polishing_the_adventure">7.4. Polishing the Adventure</h3>
+<h3 id="_polishing_the_adventure"><a class="anchor" href="#_polishing_the_adventure"></a>7.4. Polishing the Adventure</h3>
 <div class="paragraph">
 <p>There, now you have a working adventure, it&#8217;s still a bit bare bones, but still the story plays the way you planned.
 Now it is time to insert all the nice descriptions, the limitations and perhaps the extra things to divert and hinder the hero.
@@ -9863,7 +9863,7 @@ Here, as always, it is good advice to ask a friend to read the texts and convey 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_beta_testing">7.5. Beta Testing</h3>
+<h3 id="_beta_testing"><a class="anchor" href="#_beta_testing"></a>7.5. Beta Testing</h3>
 <div class="paragraph">
 <p>Now you might think that you can start distributing your game.
 But, wait!
@@ -9897,7 +9897,7 @@ The log will give you the output of the exact game played.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_how_to_use_the_system">Appendix A: How To Use The System</h2>
+<h2 id="_how_to_use_the_system"><a class="anchor" href="#_how_to_use_the_system"></a>Appendix A: How To Use The System</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>How to actually set up and use the complete Alan system depends very much on which platform, OS and in which environment you are going to use it.</p>
@@ -9918,7 +9918,7 @@ This is distributed from <a href="http://www.alanif.se/" target="_blank" rel="no
 Below follows some information pertaining to the original versions from the Alan website.</p>
 </div>
 <div class="sect2">
-<h3 id="_compiling">A.1. Compiling</h3>
+<h3 id="_compiling"><a class="anchor" href="#_compiling"></a>A.1. Compiling</h3>
 <div class="paragraph">
 <p>Although there are other options, like a prototype AlanIDE, WinAlan et al., basic use of the Alan Adventure Development System is through a traditional command line batch compiler.
 This means that the actual development system is a compiler that reads text files created using any standard text editor.
@@ -9946,7 +9946,7 @@ If it does not exist, a new one will automatically be generated.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_compiler_switches">A.2. Compiler Switches</h3>
+<h3 id="_compiler_switches"><a class="anchor" href="#_compiler_switches"></a>A.2. Compiler Switches</h3>
 <div class="paragraph">
 <p>
 If you run the compiler from a command line you can get information about which switches it supports using the <code>-help</code> switch:</p>
@@ -10002,7 +10002,7 @@ Switches may be abbreviated as long as they are unambiguous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_running_the_adventure">A.3. Running the Adventure</h3>
+<h3 id="_running_the_adventure"><a class="anchor" href="#_running_the_adventure"></a>A.3. Running the Adventure</h3>
 <div class="paragraph">
 <p>To play the generated adventure the  Alan interpreter, <strong>arun</strong>, is executed with the adventure name as a parameter.
 For example:</p>
@@ -10031,7 +10031,7 @@ The files <strong>adventure</strong> and <strong>adventure.a3c</strong> thus mak
 </div>
 </div>
 <div class="sect2">
-<h3 id="_interpreter_switches">A.4. Interpreter Switches</h3>
+<h3 id="_interpreter_switches"><a class="anchor" href="#_interpreter_switches"></a>A.4. Interpreter Switches</h3>
 <div class="paragraph">
 <p>interpreter, switches
 The interpreter supports the following switches:</p>
@@ -10062,7 +10062,7 @@ The interpreter supports the following switches:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_a_sample_interaction">Appendix B: A Sample Interaction</h2>
+<h2 id="_a_sample_interaction"><a class="anchor" href="#_a_sample_interaction"></a>Appendix B: A Sample Interaction</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In order to give you an idea of what playing an adventure might be like, if you do not have done that, this appendix lists a typical, and authentic, interaction between a player and a game.
@@ -10193,7 +10193,7 @@ The Dungeon prelude is now available as an ALAN implementation. The Dungeon game
 </div>
 </div>
 <div class="sect1">
-<h2 id="_run_time_messages">Appendix C: Run-Time Messages</h2>
+<h2 id="_run_time_messages"><a class="anchor" href="#_run_time_messages"></a>Appendix C: Run-Time Messages</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This appendix describes the errors that may occur during the running of the adventure, i.e. during interpretation of the generated Acode.
@@ -10204,7 +10204,7 @@ There are two classes of errors, player input response messages and system error
 System errors <em>are</em> fatal and abort the execution of the adventure.</p>
 </div>
 <div class="sect2">
-<h3 id="_input_response_messages">C.1. Input Response Messages</h3>
+<h3 id="_input_response_messages"><a class="anchor" href="#_input_response_messages"></a>C.1. Input Response Messages</h3>
 <div class="paragraph">
 <p>Various messages are printed for the benefit of the player.
 Most messages probably come from the adventure itself, i.e. they where provided by the adventure author.
@@ -10784,7 +10784,7 @@ This message reliefs the author from the responsiblility to check for every poss
 </div>
 </div>
 <div class="sect2">
-<h3 id="_system_errors">C.2. System Errors</h3>
+<h3 id="_system_errors"><a class="anchor" href="#_system_errors"></a>C.2. System Errors</h3>
 <div class="paragraph">
 <p>System errors are errors caused by internal malfunctions.
 Mainly these are implementation errors (aka. bugs!), but may (in some manner) also result from user errors.
@@ -10801,7 +10801,7 @@ SYSTEM ERROR: Can't open adventure code file.</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_player_errors">C.3. Player Errors</h3>
+<h3 id="_player_errors"><a class="anchor" href="#_player_errors"></a>C.3. Player Errors</h3>
 <div class="paragraph">
 <p>These errors are usually caused by incorrect arguments or file names entered by the player.</p>
 </div>
@@ -10833,7 +10833,7 @@ Possibly caused by transfer problems of the <strong>.a3c</strong> file.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_author_errors">C.4. Author Errors</h3>
+<h3 id="_author_errors"><a class="anchor" href="#_author_errors"></a>C.4. Author Errors</h3>
 <div class="paragraph">
 <p>The following system errors are in some sense caused by the Adventure author (you).</p>
 </div>
@@ -10963,7 +10963,7 @@ As the interpreter is already executing a <code>Description</code> of the curren
 </div>
 </div>
 <div class="sect2">
-<h3 id="_implementor_errors">C.5. Implementor Errors</h3>
+<h3 id="_implementor_errors"><a class="anchor" href="#_implementor_errors"></a>C.5. Implementor Errors</h3>
 <div class="paragraph">
 <p>Any other text in a system error message is really a SYSTEM ERROR.
 Scribble down the text and contact the implementors.
@@ -10973,10 +10973,10 @@ If possible, supply the source for your adventure, a trace of the few last playe
 </div>
 </div>
 <div class="sect1">
-<h2 id="_language_grammar">Appendix D: Language Grammar</h2>
+<h2 id="_language_grammar"><a class="anchor" href="#_language_grammar"></a>Appendix D: Language Grammar</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_description_2">D.1. Description</h3>
+<h3 id="_description_2"><a class="anchor" href="#_description_2"></a>D.1. Description</h3>
 <div class="paragraph">
 <p>In this manual, the Alan language is defined using a BNF-form, which you can see in most descriptions.
 The grammar is a set of rules defining what constructs are legal in the source for an Alan program.
@@ -11053,7 +11053,7 @@ Character case is not significant.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_keywords">D.2. Keywords</h3>
+<h3 id="_keywords"><a class="anchor" href="#_keywords"></a>D.2. Keywords</h3>
 <div class="paragraph">
 <p>The following is a complete list of all keywords in the Alan language.
 Note that they can still be used as identifiers in a source file if the rules described in <a href="#_words_identifiers_and_names">Sect. 4.2</a> are followed.
@@ -11258,7 +11258,7 @@ This might be especially important if you want to use any of these words as word
 </div>
 </div>
 <div class="sect1">
-<h2 id="_predefined_player_words">Appendix E: Predefined Player Words</h2>
+<h2 id="_predefined_player_words"><a class="anchor" href="#_predefined_player_words"></a>Appendix E: Predefined Player Words</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Alan defines a set of words for the player to use, which are required for the syntax variations described in <a href="#_player_input"><em>Player Input</em></a>.
@@ -11267,7 +11267,7 @@ Some of these might conflict with, or complement, words defined in the source.
 The lists below contain those player words for the currently defined languages.</p>
 </div>
 <div class="sect2">
-<h3 id="_english">English</h3>
+<h3 id="_english"><a class="anchor" href="#_english"></a>English</h3>
 <div class="literalblock plaintext">
 <div class="content">
 <pre><strong>ALL</strong>:   all everything
@@ -11279,7 +11279,7 @@ The lists below contain those player words for the currently defined languages.<
 </div>
 </div>
 <div class="sect2">
-<h3 id="_swedish">Swedish</h3>
+<h3 id="_swedish"><a class="anchor" href="#_swedish"></a>Swedish</h3>
 <div class="literalblock plaintext">
 <div class="content">
 <pre><strong>ALL</strong>:   alla allt
@@ -11291,7 +11291,7 @@ The lists below contain those player words for the currently defined languages.<
 </div>
 </div>
 <div class="sect2">
-<h3 id="_german">German</h3>
+<h3 id="_german"><a class="anchor" href="#_german"></a>German</h3>
 <div class="literalblock plaintext">
 <div class="content">
 <pre><strong>ALL</strong>:   alles
@@ -11305,10 +11305,10 @@ The lists below contain those player words for the currently defined languages.<
 </div>
 </div>
 <div class="sect1">
-<h2 id="_compiler_messages">Appendix F: Compiler Messages</h2>
+<h2 id="_compiler_messages"><a class="anchor" href="#_compiler_messages"></a>Appendix F: Compiler Messages</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_format_of_messages">F.1. Format of messages</h3>
+<h3 id="_format_of_messages"><a class="anchor" href="#_format_of_messages"></a>F.1. Format of messages</h3>
 <div class="paragraph">
 <p>This appendix describes the error messages generated by the Alan compiler.
 The compiler presents the messages in the order of occurrence in the file.
@@ -11378,7 +11378,7 @@ The following example illustrates a typical compiler output.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_message_explanations">F.2. Message explanations</h3>
+<h3 id="_message_explanations"><a class="anchor" href="#_message_explanations"></a>F.2. Message explanations</h3>
 <div class="paragraph">
 <p>For each message, a short description of the error, its possible causes, etc., are given.
 Each reported message also indicates the severity of that error.
@@ -12283,14 +12283,14 @@ Please report.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_localization">Appendix G: Localization</h2>
+<h2 id="_localization"><a class="anchor" href="#_localization"></a>Appendix G: Localization</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To create adventures in languages other than English, there are a few separate issues to consider.
 The sections below describes the support that Alan provides for each of them.</p>
 </div>
 <div class="sect2">
-<h3 id="_characterglyph_availability">G.1. Character/Glyph availability</h3>
+<h3 id="_characterglyph_availability"><a class="anchor" href="#_characterglyph_availability"></a>G.1. Character/Glyph availability</h3>
 <div class="paragraph">
 <p>Most languages have characters, or glyphs, other than the common ones used in English, like ö, Ñ or æ.
 Alan uses a character encoding called ISO-8859-1 which allows for many characters (but not all) used in European and other countries.</p>
@@ -12305,7 +12305,7 @@ If you run the games in console mode you have to ensure that both your console p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_standard_messages">G.2. Standard messages</h3>
+<h3 id="_standard_messages"><a class="anchor" href="#_standard_messages"></a>G.2. Standard messages</h3>
 <div class="paragraph">
 <p>There are two main types of messages that are output by the interpreter to the player.
 They are initiated by various parts of the Alan system.
@@ -12326,20 +12326,20 @@ These can either be changed by the <code>Language</code> option (if the language
 </div>
 </div>
 <div class="sect2">
-<h3 id="_player_words">G.3. Player words</h3>
+<h3 id="_player_words"><a class="anchor" href="#_player_words"></a>G.3. Player words</h3>
 <div class="paragraph">
 <p>TBD.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_word_variations">G.4. Word variations</h3>
+<h3 id="_word_variations"><a class="anchor" href="#_word_variations"></a>G.4. Word variations</h3>
 <div class="paragraph">
 <p>TBD.
 &lt;Text about using multiple names for the same objects &amp; synonyms, and how the interpreter chooses which word to use when&gt;</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_word_order">G.5. Word order</h3>
+<h3 id="_word_order"><a class="anchor" href="#_word_order"></a>G.5. Word order</h3>
 <div class="paragraph">
 <p>TBD.
 &lt;Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes.
@@ -12350,7 +12350,7 @@ With the noun first is it possible to implement &#8220;das buch nehmen&#8221; wi
 </div>
 </div>
 <div class="sect1">
-<h2 id="_portability_of_games">Appendix H: Portability of Games</h2>
+<h2 id="_portability_of_games"><a class="anchor" href="#_portability_of_games"></a>Appendix H: Portability of Games</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The adventure files produced by the Alan compiler is compatible across all supported platforms.
@@ -12375,7 +12375,7 @@ Conversion tools may be available, older interpreter versions can be requested.<
 </div>
 </div>
 <div class="sect1">
-<h2 id="_copying_conditions">Appendix I: Copying Conditions</h2>
+<h2 id="_copying_conditions"><a class="anchor" href="#_copying_conditions"></a>Appendix I: Copying Conditions</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Alan System is distributed under the <a href="https://www.perlfoundation.org/artistic-license-20.html"><strong>Artistic License 2.0</strong></a> for which the full text follows.
@@ -12407,7 +12407,7 @@ The intent of this licensing is that the Copyright Holder retain some control ov
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_artistic_license_2_0">Artistic License 2.0</h3>
+<h3 id="_artistic_license_2_0"><a class="anchor" href="#_artistic_license_2_0"></a>Artistic License 2.0</h3>
 <h4 id="_preamble" class="discrete">Preamble</h4>
 <div class="paragraph">
 <p>This license establishes the terms under which a given free software Package may be copied, modified, distributed, and/or redistributed.
@@ -12569,7 +12569,7 @@ UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR CONTRIBUTORWILL BE LIABLE FOR ANY
 </div>
 </div>
 <div class="sect2">
-<h3 id="_executive_summary">Executive Summary</h3>
+<h3 id="_executive_summary"><a class="anchor" href="#_executive_summary"></a>Executive Summary</h3>
 <div class="paragraph">
 <p>So, in short, the interpreter Arun and any game produced using the Alan System is yours.
 You may sell or copy it as you like, and as you need the interpreter to run the game, it may be copied freely too.
@@ -12603,8 +12603,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.62<br>
-Last updated 2018-10-07 13:23:51 ora legale Europa occidentale
+Version 0.1.63<br>
+Last updated 2018-10-07 14:57:53 ora legale Europa occidentale
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">
