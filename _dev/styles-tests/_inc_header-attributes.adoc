@@ -1,0 +1,22 @@
+// COMMONLY SHARED HEADER SETTINGS ATTRIBUTES
+:version-label: v
+:authorinitials: T.J.A.
+// Misc Settings:
+:encoding: utf-8
+:experimental: true
+:icons: font
+:lang: en
+:linkattrs: true
+:toc: left
+// =====================
+// HTML Default Settings
+// =====================
+:toolchain: pass:r[Asciidoctor's native HTML5]
+// =====================
+// PDF Settings Override
+// =====================
+ifeval::["{backend}" == "docbook"]
+:toolchain: asciidoctor-fopub
+endif::[]
+// ---------------------
+:revremark: Backend: {toolchain}

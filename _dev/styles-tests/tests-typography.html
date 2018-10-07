@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
 <meta name="author" content="Tristano Ajmone">
-<title>Syntax Highlighting in Alan Documentation</title>
+<title>Typography in Alan Documentation</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,45 +432,32 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body class="book toc2 toc-left">
+<body class="article toc2 toc-left">
 <div id="header">
-<h1>Syntax Highlighting in Alan Documentation</h1>
+<h1>Typography in Alan Documentation</h1>
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">v 1.7,</span>
-<span id="revdate">September 30, 2018</span>
+<span id="revnumber">v 2.0,</span>
+<span id="revdate">October 07, 2018</span>
 <br><span id="revremark">Backend: Asciidoctor&#8217;s native HTML5</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_syntaxes_preview">Syntaxes Preview</a>
+<li><a href="#_fonts_specimens">1. Fonts Specimens</a></li>
+<li><a href="#_font_styles_availability_checks">2. Font Styles Availability Checks</a></li>
+<li><a href="#_fonts_combination_preview">3. Fonts Combination Preview</a></li>
+<li><a href="#_ligatures_tests">4. Ligatures Tests</a>
 <ul class="sectlevel2">
-<li><a href="#_alan">Alan</a></li>
-<li><a href="#_bnf">BNF</a></li>
-<li><a href="#_game_transcripts">Game Transcripts</a></li>
+<li><a href="#_code_ligatures">4.1. Code Ligatures</a></li>
 </ul>
 </li>
-<li><a href="#_the_alan_syntax">The Alan Syntax</a>
+<li><a href="#_special_charachters">5. Special Charachters</a>
 <ul class="sectlevel2">
-<li><a href="#_syntax_tests">Syntax Tests</a>
-<ul class="sectlevel3">
-<li><a href="#_predefined_classes_and_instances">Predefined Classes and Instances</a></li>
-<li><a href="#_quoted_identifiers">Quoted Identifiers</a>
-<ul class="sectlevel4">
-<li><a href="#_single_quotes_escaping">Single Quotes Escaping</a></li>
+<li><a href="#_text_replacements">5.1. Text Replacements</a></li>
 </ul>
 </li>
-<li><a href="#_strings">Strings</a></li>
-<li><a href="#_false_positive_keywords_matches">False Positive Keywords Matches</a></li>
-<li><a href="#_ligatures_support">Ligatures Support</a></li>
-<li><a href="#_callouts_support">Callouts Support</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_bnf_syntax">BNF Syntax</a></li>
 </ul>
 </div>
 </div>
@@ -478,11 +465,311 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This document is for previewing how source code and other verbatim blocks will be rendered and styled in the final documentation, and for comparing quality and differences across all the supported output formats.</p>
+<p>This document is for previewing how fonts and typography in general will be rendered and styled in the final documentation, and for comparing quality and differences across all the supported output formats.</p>
 </div>
 <div class="paragraph">
 <p>Some contents are format dependent and will vary according to the document&#8217;s output format and the backend employed, providing additional information specific to that format and/or backend.</p>
 </div>
+<div class="paragraph">
+<p>Currently, we are still in the process to choose the fonts that will be used in the final documents.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fonts_specimens">1. Fonts Specimens</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specimens of the three main fonts used for base body text, verbatim text, and headings.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+abcdefghijklmnopqrstuvwxyz<br>
+1234567890 + - * /<br>
+!?|()[]{}&lt;&gt;$@</p>
+</div>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+1234567890 + - * /
+!?|()[]{}&lt;&gt;$@</pre>
+</div>
+</div>
+<h3 id="_abcdefghijklmnopqrstuvwxyz" class="discrete">ABCDEFGHIJKLMNOPQRSTUVWXYZ</h3>
+<h3 id="_abcdefghijklmnopqrstuvwxyz_2" class="discrete">abcdefghijklmnopqrstuvwxyz</h3>
+<h3 id="_1234567890" class="discrete">1234567890 + - * /</h3>
+<h3 id="" class="discrete">!?|()[]{}&lt;&gt;$@</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_font_styles_availability_checks">2. Font Styles Availability Checks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now we need to check that every font is also available in <strong>bold</strong>, <em>italic</em> and <strong><em>bold+italic</em></strong> style.</p>
+</div>
+<div class="paragraph">
+<p>In heading fonts:</p>
+</div>
+<h2 id="_heading_bold_italic_and_bolditalic" class="discrete">Heading: <strong>bold</strong>, <em>italic</em> and <strong><em>bold+italic</em></strong></h2>
+<div class="paragraph">
+<p>And in monospace fonts too: <code><strong>bold</strong>, <em>italic</em> and <strong><em>bold+italic</em></strong></code>.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Verbatim: <strong>bold</strong>, <em>italic</em> and <strong><em>bold+italic</em></strong>.</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fonts_combination_preview">3. Fonts Combination Preview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section offers a preview of how the different fonts look like together.
+Shh! Knights, I bid you welcome to your new home. Let us ride to Camelot!
+I don&#8217;t want to talk to you no more, you empty-headed animal food trough water!
+I fart in your general direction!
+Your mother was a hamster and your father smelt of elderberries!
+Now leave before I am forced to taunt you a second time!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The shore IsA location
+  Name Shore of Great Sea
+  Description "A beautifyl sea shore, probably Paradise lost."
+End The shore.
+
+Start at shore.</code></pre>
+</div>
+</div>
+<h3 id="_text_formatting" class="discrete">Text Formatting</h3>
+<div class="paragraph">
+<p>Let&#8217;s test inline styling.
+Text Formatting: <strong>bold</strong> and <em>italic</em>, <sub>subscript</sub> and <sup>superscript</sup>,
+<code>inline code</code> (<code><strong>bold</strong></code>, <code><em>italic</em></code>, <code><strong><em>bold italic</em></strong></code>),
+&#8220;double&#8221; and &#8216;single quotes&#8217;.
+Styles with attributes: <mark>highlighter</mark>, <span class="small">small print</span> and <span class="big">big text</span>.
+Experimental features: keystrokes <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd></span>.</p>
+</div>
+<h3 id="_headings" class="discrete">Headings</h3>
+<h2 id="_level_1_heading" class="discrete">Level 1 Heading</h2>
+<h3 id="_level_2_heading" class="discrete">Level 2 Heading</h3>
+<h4 id="_level_3_heading" class="discrete">Level 3 Heading</h4>
+<h5 id="_level_4_heading" class="discrete">Level 4 Heading</h5>
+<h6 id="_level_5_heading" class="discrete">Level 5 Heading</h6>
+<h3 id="_monty_python_and_the_holy_grail" class="discrete">Monty Python and the Holy Grail</h3>
+<div class="paragraph">
+<p>Courtesy of <a href="http://fillerama.io/" target="_blank" rel="noopener">fillerama</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We want a shrubbery!!</p>
+</li>
+<li>
+<p>You don&#8217;t vote for kings.</p>
+</li>
+<li>
+<p>Well, how&#8217;d you become king, then?</p>
+</li>
+</ol>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Listen. Strange women lying in ponds distributing swords is no basis for a system of government.
+Supreme executive power derives from a mandate from the masses, not from some farcical aquatic ceremony.
+And this isn&#8217;t my nose. This is a false one.</p>
+</div>
+</blockquote>
+</div>
+<h3 id="_miscellanea" class="discrete">Miscellanea</h3>
+<div class="paragraph">
+<p>Horizontal rule:</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ligatures_tests">4. Ligatures Tests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here we test if ligatures are being supported by the current backend and font.</p>
+</div>
+<div class="sect2">
+<h3 id="_code_ligatures">4.1. Code Ligatures</h3>
+<div class="paragraph">
+<p>Some fonts support source code related ligatures.
+We&#8217;ll test these code related ligatures using a test file taken from Nikita Prokopov&#8217;s
+<a href="https://github.com/tonsky/FiraCode" target="_blank" rel="noopener">Fira Code</a> project.</p>
+</div>
+<div class="paragraph">
+<p>First we&#8217;ll test for ligatures inside a source code block.
+Here ligatures support could depend on the monospaced font, the backend or the syntax highligher (which may or may not filter contents of the block).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>    .= ..= .- := ::= =:= __
+     == != === !== =/= =!=
+
+&lt;-&lt; &lt;&lt;- &lt;-- &lt;- &lt;-&gt; -&gt; --&gt; -&gt;&gt; &gt;-&gt;
+&lt;=&lt; &lt;&lt;= &lt;==    &lt;=&gt; =&gt; ==&gt; =&gt;&gt; &gt;=&gt;
+    &gt;&gt;= &gt;&gt;- &gt;- &lt;~&gt; -&lt; -&lt;&lt; =&lt;&lt;
+        &lt;~~ &lt;~ ~~ ~&gt; ~~&gt;
+
+     &lt;&lt;&lt; &lt;&lt; &lt;= &lt;&gt;  &gt;= &gt;&gt; &gt;&gt;&gt;
+   {. {| [| &lt;:  ✓  :&gt; |] |} .}
+   &lt;||| &lt;|| &lt;| &lt;|&gt; |&gt; ||&gt; |||&gt;
+
+            &lt;$ &lt;$&gt; $&gt;
+            &lt;+ &lt;+&gt; +&gt;
+            &lt;* &lt;*&gt; *&gt;
+
+       \  \\  /* */  /// //
+      &lt;/ &lt;!--  &lt;/&gt;  --&gt; /&gt;
+      0xF 9:45 m-x *ptr www
+
+       ;; :: ::: !! ?? %% &amp;&amp;
+      || .. ... ..&lt; .? ?. ?:
+       -- --- ++ +++ ** ***
+
+          ~= ~- -~ ~@
+          ^= ?= /= /==
+        -| _|_ |- |= ||=
+        #! #= ## ### ####
+      #{ #[ ]# #( #? #_ #_(
+
+
+a*b a*A B*b A*B *a *A a* A*
+a-b a-A B-b A-B -a -A a- A-
+a+b a+A B+b A+B +a +A a+ A+
+a:b a:A B:b A:B :a :A a: A:</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And now we&#8217;ll carry out the test (part of it) in an example block, for here a different font is being used which may support code related ligatures.
+The example block below has not special substitutions settings.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Ligatures Test in Source Block</div>
+<div class="content">
+<div class="paragraph">
+<div class="title">= ..= .- := ::= =:= __<br></div>
+<p>== != === !== =/= =!=</p>
+</div>
+<div class="paragraph">
+<p>&#8592;&lt; &lt;&#8592; &#8592;- &#8592; &lt;&#8594; &#8594; -&#8594; &#8594;&gt; &gt;&#8594;<br>
+&#8656;&lt; &lt;&#8656; &#8656;=    &lt;&#8658; &#8658; =&#8658; &#8658;&gt; &gt;&#8658;<br>
+&gt;&gt;= &gt;&gt;- &gt;- &lt;~&gt; -&lt; -&lt;&lt; =&lt;&lt;<br>
+&lt;~~ &lt;~ ~~ ~&gt; ~~&gt;</p>
+</div>
+<div class="paragraph">
+<p>&lt;&lt;&lt; &lt;&lt; &#8656; &lt;&gt;  &gt;= &gt;&gt; &gt;&gt;&gt;<br>
+{. {| [| &lt;:  ✓  :&gt; |] |} .}<br>
+&lt;||| &lt;|| &lt;| &lt;|&gt; |&gt; ||&gt; |||&gt;</p>
+</div>
+<div class="paragraph">
+<p>&lt;$ &lt;$&gt; $&gt;<br>
+&lt;+ &lt;+&gt; +&gt;<br>
+&lt;* &lt;*&gt; *&gt;</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_special_charachters">5. Special Charachters</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_text_replacements">5.1. Text Replacements</h3>
+<div class="paragraph">
+<p>The following table is used for checking that default Asciidoctor textual symbols replacement works fine.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Textual symbol replacements</caption>
+<colgroup>
+<col style="width: 30%;">
+<col style="width: 20%;">
+<col style="width: 30%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-center valign-top">Syntax</th>
+<th class="tableblock halign-center valign-top">Unicode Replacement</th>
+<th class="tableblock halign-center valign-top">Rendered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Copyright</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">(C)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#169;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#169;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Registered</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">(R)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#174;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#174;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trademark</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">(TM)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8482;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#8482;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Em dash</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">--</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8212;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ellipses</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">...</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8230;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">right single arrow</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">-&gt;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8594;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#8594;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">right double arrow</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">=&gt;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8658;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#8658;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">left single arrow</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt;-</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8592;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#8592;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">left double arrow</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&lt;=</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8656;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#8656;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">apostrophe</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Sam's</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Sam&#8217;s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Sam&#8217;s</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -491,336 +778,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </td>
 <td class="content">
 <div class="paragraph">
-<p>For syntax highlighting in the HTML5 backend we use a custom build of <a href="https://highlightjs.org/" target="_blank" rel="noopener">highlight.js</a> for which we&#8217;ve created an
-<a href="https://github.com/tajmone/highlight.js/blob/Alan/src/languages/alan.js" target="_blank" rel="noopener">Alan syntax definition</a> from scratch.</p>
+<p>This table was taken and adapated from the
+<a href="https://github.com/asciidoctor/asciidoctor.org/blob/master/docs/_includes/subs-symbol-repl.adoc" target="_blank" rel="noopener">Asciidoctor Project Site</a> repository, and it&#8217;s
+Copyright &#169; Asciidoctor Project, 2018.
+Content licensed under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a>.</p>
 </div>
 </td>
 </tr>
 </table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Currently no theme customizations have been done for the HTML backend.
-This document uses Asciidoctor&#8217;s native theme, and many elements with custom roles (classes) are not being rendered as intended.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_syntaxes_preview">Syntaxes Preview</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_alan">Alan</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">--==============================================================================
--- "Barracks Example" by Tristano Ajmone
---==============================================================================
-The canteen IsA LOCATION
-  Name 'The Barrack''s Mess Hall'.
-END The canteen.
-
-The trolley IsA object At canteen
-  Container Taking object.
-    Limits
-      Count 5 Else "The trolley is full!"
-    Has Not been_examined.
-  VERB examine
-    DOES
-      If This Has Not been_examined
-        Then "This old trolley has surely seen better days. $nIt seems barely
-              capable of carrying its own weight without collapsing, let alone
-              endure its daily use!"
-          Make This been_examined.
-        Else "It's just an old trolley."
-      End If.
-  END VERB examine.
-End The trolley.
---------------------------------------------------------------------------------
-Start at canteen.</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_bnf">BNF</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">class = 'EVERY' id
-            [inheritance]
-            {property}
-        'END' 'EVERY' [id] ['.']</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_game_transcripts">Game Transcripts</h3>
-<div class="paragraph">
-<p>Although a game transcript is neither source code nor a verbatim block, I&#8217;m including it in this document to allow comparing its styles and colors to other block-type elements in the documentation.</p>
-</div>
-<div class="exampleblock gametranscript">
-<div class="content">
-<div class="paragraph">
-<p><strong>West of House.</strong><br>
-Welcome to Dungeon (ALAN Demo). This version created 29-FEB-92.</p>
-</div>
-<div class="paragraph">
-<p>You are in an open field west of a big white house with a boarded front door. There is a small mailbox here.</p>
-</div>
-<div class="paragraph">
-<p>&gt; <em>examine the mailbox</em><br>
-I see nothing special about the mailbox.</p>
-</div>
-<div class="paragraph">
-<p>&gt; <em>open it</em><br>
-The small mailbox is now open. The small mailbox contains a leaflet.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_the_alan_syntax">The Alan Syntax</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Different conversion toolchains use different tools for syntax highlighting.
-For HTML format conversion, various highlighters are natively supported by Asciidoctor.
-For PDF conversion, the usable highlighting tool(s) will be dictated by the third party backend employed.</p>
-</div>
-<div class="paragraph">
-<p>In all cases, a custom Alan syntax definiton would have to be created for the highlighter tool used with each backend, as none of them ships with a native Alan definition (the sole exception being <a href="http://www.andre-simon.de/" target="_blank" rel="noopener">Highlight</a>, which is not natively supported in any of the backends, but could be integrated into some of them).</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Currently no syntax highlighters have been integrated into the HTML conversion toolchain.
-I&#8217;ve created an Alan language definition for André Simon&#8217;s <a href="http://www.andre-simon.de/" target="_blank" rel="noopener">Highlight</a> tool, but haven&#8217;t yet got around to integrate it into the toolchain.
-Although it&#8217;s not among the natively supported highlighters, it should be possible to integrate it into the HTML backend.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_syntax_tests">Syntax Tests</h3>
-<div class="paragraph">
-<p>Here follow some code snippets for testing both common- and edge-cases in the language and ensure they are rendered as expected.</p>
-</div>
-<div class="sect3">
-<h4 id="_predefined_classes_and_instances">Predefined Classes and Instances</h4>
-<div class="paragraph">
-<p>Although it&#8217;s usually unnecessary to highlight with separate styling the predefined Alan classes and instances (i.e. the <code>hero</code>), it might be desirable to be able to do so in tutorials and documentation, for educational purposes.
-For this reason, I&#8217;ve added a special highlighting group for the predefined classes, and another one for the <code>hero</code>.
-Both can be optionally enabled by assigning styles to them, or just be ignored (or set to the same style as normal text) to hide them in the highlighted source.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Synonyms me = hero.
-
-The basement IsA location.
-  Description "What a dark ang gloomy place!"
-End The.
-
-The vampire IsA actor At basement.
-End The.
-
-The coffin IsA object At basement.
-  Container taking thing.
-End The.
-
-ADD TO EVERY thing
-  VERB examine
-    Does
-      "You examine $+1, but find nothing unusual."
-  END VERB.
-END ADD TO.
-
-ADD TO EVERY string
-  VERB 'say'
-    Does
-      "You say ""$$" Say This. "$$""!"
-  END VERB.
-END ADD TO.
-
-ADD TO EVERY integer
-  VERB shout
-    Does
-      "You shout ""$$" Say This. "$$"" out loud!"
-  END VERB.
-END ADD TO.
-
-ADD TO EVERY literal
-  VERB whisper
-    Does
-      "You whisper ""$$" Say This. "$$""!"
-  END VERB.
-END ADD TO.
-
---------------------------------------------------------------------------------
-
-Start at basement.</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_quoted_identifiers">Quoted Identifiers</h4>
-<div class="paragraph">
-<p>Although quoted identifiers shouldn&#8217;t receive any special coloring in the highlighted code, the syntax definition must be made aware of them to prevent false-positive keywords matches for tokens inside quoted identifiers:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The 'At the Bus Stop' IsA location --&gt; Watch out for: 'AT', 'THE' and 'STOP'!
-End The.</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This hidden feature will be implemented differently in each syntax definition, depending on how the specific syntax highlighting engine works.</p>
-</div>
-<div class="paragraph">
-<p>However, in the final highlighted code, quoted identifiers are shown with the same color and style as the base (normal) text, effectively hiding to the end user the difference between quoted identifiers and plain code (normal identifiers are just treated as plain code).</p>
-</div>
-<div class="sect4">
-<h5 id="_single_quotes_escaping">Single Quotes Escaping</h5>
-<div class="paragraph">
-<p>To prevent breaking up syntax highlighting, quoted identifiers need to support correctly escaping single quotes inside them via <code>''</code>. Although this won&#8217;t be visible in the highlighted output of the following example, examining the document&#8217;s source (with formats which support it, like HTML) would allow to check that the quoted identifier was correctly parsed and tagged by the highlighter:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The 'Bob''s House' IsA location --&gt; Escaped apostrophe in location name.
-End The.</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_strings">Strings</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_false_positive_keywords_matches">False Positive Keywords Matches</h4>
-<div class="paragraph">
-<p>The following snippet tests against false positive keywords in strings and quoted identifiers. This should never happen, and if it does then the Alan syntax definition for that highlighter is flawed and needs to be fixed.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">-- Tokens in strings and quoted IDs shouldn't be highligthed as keywords...
-
-The 'At the Bus Stop' IsA location --&gt; Watch out for: 'AT', 'THE' and 'STOP'!
-  Description
-    "An old man waits for the bus here." --&gt; 'AN', 'FOR', 'THE', 'HERE'!
-End The.</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_ligatures_support">Ligatures Support</h4>
-<div class="paragraph">
-<p>The following snippets is meant to test if the current backend and/or font supports ligatures.
-Some code fonts support ligatures replacements for common programming symbols, but they might differ in the way the represent <code>&gt;=</code>, <code>&lt;=</code>, <code>=&gt;</code> and <code>=&lt;</code>, depnding on which combinations are asigned as comparison oprators and which as arrows.</p>
-</div>
-<div class="paragraph">
-<p>We must ensure that, if ligatures are supported in any converted document, Alan&#8217;s <code>&gt;=</code> (greater or equal), <code>&lt;=</code> (less or equal) and <code>=&gt;</code> (alternative <code>Then</code> in Rules) are correctly represented.</p>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s the test snippet:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">--&gt; Test "string identity operator" ligature  ('='+'=' -&gt; '==')
-If text Of notepad Not == "xyzzy" Then
-
---&gt; Test "greater or equal" ligature          ('&gt;'+'=' -&gt; '&gt;=')
-If temperature Of oven Not &gt;= 100 Then
-
---&gt; Test "less or equal" ligature             ('&lt;'+'=' -&gt; '&lt;=')
-If weather Of world Not &lt;= protection Of hero Then
-
---&gt; Test "THEN symbol" ligature               ('='+'&gt;' -&gt; '=&gt;')
-When hero At cave =&gt;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>And here&#8217;s a screenshot of the above code displayed in Sublime Text 3 via the
-<a href="https://github.com/tajmone/sublime-alan" target="_blank" rel="noopener">Sublime Alan</a> package:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="sublime-alan-ligatures-screenshot.png" alt="sublime alan ligatures screenshot">
-</div>
-<div class="title">Figure 1. Example of correct ligatures support in Sublime Text.</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_callouts_support">Callouts Support</h4>
-<div class="paragraph">
-<p>Now it&#8217;s time to test how callouts interact with the syntax highligher.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The shore IsA location <i class="conum" data-value="1"></i><b>(1)</b>
-  Name Shore of Great Sea <i class="conum" data-value="2"></i><b>(2)</b>
-  Description "A beautifyl sea shore, probably Paradise lost."
-End The shore.</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Instance declaration.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Instance name.</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_bnf_syntax">BNF Syntax</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Currently, BNF blocks are not being syntax highlighted but implementing a syntax definition would be very easy.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">attribute_declaration = id
-                      | 'NOT' id
-                      | id integer
-                      | id string
-                      | id id
-                      | id '{' values '}'</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">forms = indefinite | definite | negative
-
-definite = 'DEFINITE' article_or_form
-
-indefinite = [ 'INDEFINITE' ] article_or_form
-
-negative = 'NEGATIVE' article_or_form
-
-article_or_form = 'ARTICLE' {statement}
-                | 'FORM' {statement}</code></pre>
 </div>
 </div>
 </div>
@@ -828,8 +793,8 @@ article_or_form = 'ARTICLE' {statement}
 </div>
 <div id="footer">
 <div id="footer-text">
-v 1.7<br>
-Last updated 2018-09-30 21:38:27 ora legale Europa occidentale
+v 2.0<br>
+Last updated 2018-10-07 11:25:12 ora legale Europa occidentale
 </div>
 </div>
 <link rel="stylesheet" href="../../_assets/hjs/styles/github.min.css">

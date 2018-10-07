@@ -1,41 +1,16 @@
 = Typography in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v1.3, September 23, 2018: Typography styling previews
-:version-label: v
-:authorinitials: T.J.A.
-// =====================
-// HTML Default Settings
-// =====================
-:toolchain: pass:r[Asciidoctor's native HTML5]
-// =====================
-// PDF Settings Override
-// =====================
-ifeval::["{backend}" == "docbook"]
-:toolchain: asciidoctor-fopub
-endif::[]
-// ---------------------
-:revremark: Backend: {toolchain}
-:toc: left
-:toclevels: 5
-:doctype: book
-:encoding: utf-8
-:lang: en
+v2.0, October 07, 2018
+include::_inc_header-attributes.adoc[]
 // Sections Numbering:
 :sectnums:
 :sectnumlevels: 2
-// Cross References:
-// Misc Settings:
-:experimental: true
-:icons: font
-:linkattrs: true
 
 // =============================================================================
 //                         Custom Attributes Definition
 // =============================================================================
-// Some attributes for custom substitution of multiple occurences of same text.
-
-:fopub: https://github.com/asciidoctor/asciidoctor-fopub[asciidoctor-fopub^]
-:Highlight: http://www.andre-simon.de/[Highlight^]
+// Custom attributes shared by all docs:
+include::_inc_custom-attributes.adoc[]
 
 // *****************************************************************************
 // *                                                                           *
@@ -49,24 +24,12 @@ Some contents are format dependent and will vary according to the document's out
 
 Currently, we are still in the process to choose the fonts that will be used in the final documents.
 
-// =====================
-// HTML Backend Warning:
-// =====================
-// Warning about use of native Asciidoctor theme and missing custom styles...
-ifeval::["{backend}" == "html5"]
-include::_inc_html-warning.adoc[]
-endif::[]
 
-
-// ******************************************************************************
-// *                                                                            *
-// *                      Fonts Specimens & Styles Checks                       *
-// *                                                                            *
-// ******************************************************************************
-:speciemen1: ABCDEFGHIJKLMNOPQRSTUVWXYZ
-:speciemen2: abcdefghijklmnopqrstuvwxyz
-:speciemen3: 1234567890 + - * /
-:speciemen4: !?|()[]{}<>$@
+// *****************************************************************************
+// *                                                                           *
+// *                     Fonts Specimens & Styles Checks                       *
+// *                                                                           *
+// *****************************************************************************
 
 == Fonts Specimens
 
@@ -74,30 +37,30 @@ Specimens of the three main fonts used for base body text, verbatim text, and he
 
 [subs="post_replacements,attributes"]
 --
-{speciemen1} +
-{speciemen2} +
-{speciemen3} +
-{speciemen4}
+{font-speciemen1} +
+{font-speciemen2} +
+{font-speciemen3} +
+{font-speciemen4}
 --
 
 
 [subs="attributes"]
 ----
-{speciemen1}
-{speciemen2}
-{speciemen3}
-{speciemen4}
+{font-speciemen1}
+{font-speciemen2}
+{font-speciemen3}
+{font-speciemen4}
 ----
 
 
 [discrete]
-=== {speciemen1}
+=== {font-speciemen1}
 [discrete]
-=== {speciemen2}
+=== {font-speciemen2}
 [discrete]
-=== {speciemen3}
+=== {font-speciemen3}
 [discrete]
-=== {speciemen4}
+=== {font-speciemen4}
 
 
 
@@ -118,8 +81,6 @@ And in monospace fonts too: `{styles-test}`.
 ........................
 Verbatim: {styles-test}.
 ........................
-
-
 
 
 // ******************************************************************************
@@ -239,7 +200,7 @@ include::ligatures_test.adoc[tag=code_ligatures_example]
 The following table is used for checking that default Asciidoctor textual symbols replacement works fine.
 
 
-include::_inc-table-symbols-repl.adoc[]
+include::_table_symbols-repl.adoc[]
 
 
 

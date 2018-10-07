@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?asciidoc-toc maxdepth="5"?>
+<?asciidoc-numbered maxdepth="2"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
+<info>
+<title>Alan Documentation Styles</title>
+<subtitle>templates styles samples</subtitle>
+<date>October 07, 2018</date>
+<author>
+<personname>
+<firstname>Tristano</firstname>
+<surname>Ajmone</surname>
+</personname>
+<email>tajmone@gmail.com</email>
+</author>
+<authorinitials>T.J.A.</authorinitials>
+<revhistory>
+<revision>
+<revnumber>1.0</revnumber>
+<date>October 07, 2018</date>
+<authorinitials>T.J.A.</authorinitials>
+<revremark>Backend: Asciidoctor&#8217;s native HTML5</revremark>
+</revision>
+</revhistory>
+</info>
+<preface>
+<title></title>
+<simpara>This document offers a comprehensive preview of the templates used for Alan documentation, offering samples of how fonts, typography, AsciiDoc elements, custom styles and syntax highlighting will be rendered and styled in the final documentation, allowing to compare quality and differences across all the supported output formats.</simpara>
+<simpara>Some contents are format dependent and will vary according to the document&#8217;s output format and the backend employed, providing additional information specific to that format and/or backend.</simpara>
+<warning>
+<simpara>This document is still under construction.</simpara>
+</warning>
+</preface>
+<chapter xml:id="_fonts_specimens">
+<title>Fonts Specimens</title>
+<simpara>Specimens of the three main fonts used for base body text, verbatim text, and headings.</simpara>
+<simpara>ABCDEFGHIJKLMNOPQRSTUVWXYZ<?asciidoc-br?>
+abcdefghijklmnopqrstuvwxyz<?asciidoc-br?>
+1234567890 + - * /<?asciidoc-br?>
+!?|()[]{}&lt;&gt;$@</simpara>
+<screen>ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+1234567890 + - * /
+!?|()[]{}&lt;&gt;$@</screen>
+<bridgehead xml:id="_abcdefghijklmnopqrstuvwxyz" renderas="sect2">ABCDEFGHIJKLMNOPQRSTUVWXYZ</bridgehead>
+<bridgehead xml:id="_abcdefghijklmnopqrstuvwxyz_2" renderas="sect2">abcdefghijklmnopqrstuvwxyz</bridgehead>
+<bridgehead xml:id="_1234567890" renderas="sect2">1234567890 + - * /</bridgehead>
+<bridgehead xml:id="" renderas="sect2">!?|()[]{}&lt;&gt;$@</bridgehead>
+</chapter>
+</book>

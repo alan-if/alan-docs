@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>Syntax Highlighting in Alan Documentation</title>
-<date>September 30, 2018</date>
+<date>October 07, 2018</date>
 <author>
 <personname>
 <firstname>Tristano</firstname>
@@ -15,8 +15,8 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>1.7</revnumber>
-<date>September 30, 2018</date>
+<revnumber>2.0</revnumber>
+<date>October 07, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: Asciidoctor&#8217;s native HTML5</revremark>
 </revision>

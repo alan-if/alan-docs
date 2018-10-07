@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?asciidoc-toc maxdepth="5"?>
+<?asciidoc-toc?>
 <?asciidoc-numbered maxdepth="2"?>
-<book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>Typography in Alan Documentation</title>
-<date>September 23, 2018</date>
+<date>October 07, 2018</date>
 <author>
 <personname>
 <firstname>Tristano</firstname>
@@ -15,20 +15,17 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>1.3</revnumber>
-<date>September 23, 2018</date>
+<revnumber>2.0</revnumber>
+<date>October 07, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: Asciidoctor&#8217;s native HTML5</revremark>
 </revision>
 </revhistory>
 </info>
-<preface>
-<title></title>
 <simpara>This document is for previewing how fonts and typography in general will be rendered and styled in the final documentation, and for comparing quality and differences across all the supported output formats.</simpara>
 <simpara>Some contents are format dependent and will vary according to the document&#8217;s output format and the backend employed, providing additional information specific to that format and/or backend.</simpara>
 <simpara>Currently, we are still in the process to choose the fonts that will be used in the final documents.</simpara>
-</preface>
-<chapter xml:id="_fonts_specimens">
+<section xml:id="_fonts_specimens">
 <title>Fonts Specimens</title>
 <simpara>Specimens of the three main fonts used for base body text, verbatim text, and headings.</simpara>
 <simpara>ABCDEFGHIJKLMNOPQRSTUVWXYZ<?asciidoc-br?>
@@ -43,16 +40,16 @@ abcdefghijklmnopqrstuvwxyz
 <bridgehead xml:id="_abcdefghijklmnopqrstuvwxyz_2" renderas="sect2">abcdefghijklmnopqrstuvwxyz</bridgehead>
 <bridgehead xml:id="_1234567890" renderas="sect2">1234567890 + - * /</bridgehead>
 <bridgehead xml:id="" renderas="sect2">!?|()[]{}&lt;&gt;$@</bridgehead>
-</chapter>
-<chapter xml:id="_font_styles_availability_checks">
+</section>
+<section xml:id="_font_styles_availability_checks">
 <title>Font Styles Availability Checks</title>
 <simpara>Now we need to check that every font is also available in <emphasis role="strong">bold</emphasis>, <emphasis>italic</emphasis> and <emphasis role="strong"><emphasis>bold+italic</emphasis></emphasis> style.</simpara>
 <simpara>In heading fonts:</simpara>
 <bridgehead xml:id="_heading_bold_italic_and_bolditalic" renderas="sect1">Heading: <emphasis role="strong">bold</emphasis>, <emphasis>italic</emphasis> and <emphasis role="strong"><emphasis>bold+italic</emphasis></emphasis></bridgehead>
 <simpara>And in monospace fonts too: <literal><emphasis role="strong">bold</emphasis>, <emphasis>italic</emphasis> and <emphasis role="strong"><emphasis>bold+italic</emphasis></emphasis></literal>.</simpara>
 <literallayout class="monospaced">Verbatim: <emphasis role="strong">bold</emphasis>, <emphasis>italic</emphasis> and <emphasis role="strong"><emphasis>bold+italic</emphasis></emphasis>.</literallayout>
-</chapter>
-<chapter xml:id="_fonts_combination_preview">
+</section>
+<section xml:id="_fonts_combination_preview">
 <title>Fonts Combination Preview</title>
 <simpara>This section offers a preview of how the different fonts look like together.
 Shh! Knights, I bid you welcome to your new home. Let us ride to Camelot!
@@ -100,8 +97,8 @@ And this isn&#8217;t my nose. This is a false one.</simpara>
 <bridgehead xml:id="_miscellanea" renderas="sect2">Miscellanea</bridgehead>
 <simpara>Horizontal rule:</simpara>
 <simpara><?asciidoc-hr?></simpara>
-</chapter>
-<chapter xml:id="_ligatures_tests">
+</section>
+<section xml:id="_ligatures_tests">
 <title>Ligatures Tests</title>
 <simpara>Here we test if ligatures are being supported by the current backend and font.</simpara>
 <section xml:id="_code_ligatures">
@@ -166,8 +163,8 @@ The example block below has not special substitutions settings.</simpara>
 &lt;* &lt;*&gt; *&gt;</simpara>
 </example>
 </section>
-</chapter>
-<chapter xml:id="_special_charachters">
+</section>
+<section xml:id="_special_charachters">
 <title>Special Charachters</title>
 <section xml:id="_text_replacements">
 <title>Text Replacements</title>
@@ -259,5 +256,5 @@ Copyright &#169; Asciidoctor Project, 2018.
 Content licensed under <link xl:href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</link>.</simpara>
 </note>
 </section>
-</chapter>
-</book>
+</section>
+</article>

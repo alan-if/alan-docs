@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
 <meta name="author" content="Tristano Ajmone">
-<title>Typography in Alan Documentation</title>
+<title>Alan Documentation Styles: templates styles samples</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -434,30 +434,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Typography in Alan Documentation</h1>
+<h1>Alan Documentation Styles: templates styles samples</h1>
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">v 1.3,</span>
-<span id="revdate">September 23, 2018</span>
+<span id="revnumber">v 1.0,</span>
+<span id="revdate">October 07, 2018</span>
 <br><span id="revremark">Backend: Asciidoctor&#8217;s native HTML5</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_fonts_specimens">1. Fonts Specimens</a></li>
-<li><a href="#_font_styles_availability_checks">2. Font Styles Availability Checks</a></li>
-<li><a href="#_fonts_combination_preview">3. Fonts Combination Preview</a></li>
-<li><a href="#_ligatures_tests">4. Ligatures Tests</a>
-<ul class="sectlevel2">
-<li><a href="#_code_ligatures">4.1. Code Ligatures</a></li>
-</ul>
-</li>
-<li><a href="#_special_charachters">5. Special Charachters</a>
-<ul class="sectlevel2">
-<li><a href="#_text_replacements">5.1. Text Replacements</a></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
@@ -465,13 +453,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This document is for previewing how fonts and typography in general will be rendered and styled in the final documentation, and for comparing quality and differences across all the supported output formats.</p>
+<p>This document offers a comprehensive preview of the templates used for Alan documentation, offering samples of how fonts, typography, AsciiDoc elements, custom styles and syntax highlighting will be rendered and styled in the final documentation, allowing to compare quality and differences across all the supported output formats.</p>
 </div>
 <div class="paragraph">
 <p>Some contents are format dependent and will vary according to the document&#8217;s output format and the backend employed, providing additional information specific to that format and/or backend.</p>
-</div>
-<div class="paragraph">
-<p>Currently, we are still in the process to choose the fonts that will be used in the final documents.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -481,8 +466,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Currently no theme customizations have been done for the HTML backend.
-This document uses Asciidoctor&#8217;s native theme, and many elements with custom roles (classes) are not being rendered as intended.</p>
+<p>This document is still under construction.</p>
 </div>
 </td>
 </tr>
@@ -520,296 +504,11 @@ abcdefghijklmnopqrstuvwxyz
 <h3 id="" class="discrete">!?|()[]{}&lt;&gt;$@</h3>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_font_styles_availability_checks">2. Font Styles Availability Checks</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Now we need to check that every font is also available in <strong>bold</strong>, <em>italic</em> and <strong><em>bold+italic</em></strong> style.</p>
-</div>
-<div class="paragraph">
-<p>In heading fonts:</p>
-</div>
-<h2 id="_heading_bold_italic_and_bolditalic" class="discrete">Heading: <strong>bold</strong>, <em>italic</em> and <strong><em>bold+italic</em></strong></h2>
-<div class="paragraph">
-<p>And in monospace fonts too: <code><strong>bold</strong>, <em>italic</em> and <strong><em>bold+italic</em></strong></code>.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Verbatim: <strong>bold</strong>, <em>italic</em> and <strong><em>bold+italic</em></strong>.</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_fonts_combination_preview">3. Fonts Combination Preview</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section offers a preview of how the different fonts look like together.
-Shh! Knights, I bid you welcome to your new home. Let us ride to Camelot!
-I don&#8217;t want to talk to you no more, you empty-headed animal food trough water!
-I fart in your general direction!
-Your mother was a hamster and your father smelt of elderberries!
-Now leave before I am forced to taunt you a second time!</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The shore IsA location
-  Name Shore of Great Sea
-  Description "A beautifyl sea shore, probably Paradise lost."
-End The shore.
-
-Start at shore.</code></pre>
-</div>
-</div>
-<h3 id="_text_formatting" class="discrete">Text Formatting</h3>
-<div class="paragraph">
-<p>Let&#8217;s test inline styling.
-Text Formatting: <strong>bold</strong> and <em>italic</em>, <sub>subscript</sub> and <sup>superscript</sup>,
-<code>inline code</code> (<code><strong>bold</strong></code>, <code><em>italic</em></code>, <code><strong><em>bold italic</em></strong></code>),
-&#8220;double&#8221; and &#8216;single quotes&#8217;.
-Styles with attributes: <mark>highlighter</mark>, <span class="small">small print</span> and <span class="big">big text</span>.
-Experimental features: keystrokes <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd></span>.</p>
-</div>
-<h3 id="_headings" class="discrete">Headings</h3>
-<h2 id="_level_1_heading" class="discrete">Level 1 Heading</h2>
-<h3 id="_level_2_heading" class="discrete">Level 2 Heading</h3>
-<h4 id="_level_3_heading" class="discrete">Level 3 Heading</h4>
-<h5 id="_level_4_heading" class="discrete">Level 4 Heading</h5>
-<h6 id="_level_5_heading" class="discrete">Level 5 Heading</h6>
-<h3 id="_monty_python_and_the_holy_grail" class="discrete">Monty Python and the Holy Grail</h3>
-<div class="paragraph">
-<p>Courtesy of <a href="http://fillerama.io/" target="_blank" rel="noopener">fillerama</a>.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>We want a shrubbery!!</p>
-</li>
-<li>
-<p>You don&#8217;t vote for kings.</p>
-</li>
-<li>
-<p>Well, how&#8217;d you become king, then?</p>
-</li>
-</ol>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Listen. Strange women lying in ponds distributing swords is no basis for a system of government.
-Supreme executive power derives from a mandate from the masses, not from some farcical aquatic ceremony.
-And this isn&#8217;t my nose. This is a false one.</p>
-</div>
-</blockquote>
-</div>
-<h3 id="_miscellanea" class="discrete">Miscellanea</h3>
-<div class="paragraph">
-<p>Horizontal rule:</p>
-</div>
-<hr>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_ligatures_tests">4. Ligatures Tests</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Here we test if ligatures are being supported by the current backend and font.</p>
-</div>
-<div class="sect2">
-<h3 id="_code_ligatures">4.1. Code Ligatures</h3>
-<div class="paragraph">
-<p>Some fonts support source code related ligatures.
-We&#8217;ll test these code related ligatures using a test file taken from Nikita Prokopov&#8217;s
-<a href="https://github.com/tonsky/FiraCode" target="_blank" rel="noopener">Fira Code</a> project.</p>
-</div>
-<div class="paragraph">
-<p>First we&#8217;ll test for ligatures inside a source code block.
-Here ligatures support could depend on the monospaced font, the backend or the syntax highligher (which may or may not filter contents of the block).</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code>    .= ..= .- := ::= =:= __
-     == != === !== =/= =!=
-
-&lt;-&lt; &lt;&lt;- &lt;-- &lt;- &lt;-&gt; -&gt; --&gt; -&gt;&gt; &gt;-&gt;
-&lt;=&lt; &lt;&lt;= &lt;==    &lt;=&gt; =&gt; ==&gt; =&gt;&gt; &gt;=&gt;
-    &gt;&gt;= &gt;&gt;- &gt;- &lt;~&gt; -&lt; -&lt;&lt; =&lt;&lt;
-        &lt;~~ &lt;~ ~~ ~&gt; ~~&gt;
-
-     &lt;&lt;&lt; &lt;&lt; &lt;= &lt;&gt;  &gt;= &gt;&gt; &gt;&gt;&gt;
-   {. {| [| &lt;:  ✓  :&gt; |] |} .}
-   &lt;||| &lt;|| &lt;| &lt;|&gt; |&gt; ||&gt; |||&gt;
-
-            &lt;$ &lt;$&gt; $&gt;
-            &lt;+ &lt;+&gt; +&gt;
-            &lt;* &lt;*&gt; *&gt;
-
-       \  \\  /* */  /// //
-      &lt;/ &lt;!--  &lt;/&gt;  --&gt; /&gt;
-      0xF 9:45 m-x *ptr www
-
-       ;; :: ::: !! ?? %% &amp;&amp;
-      || .. ... ..&lt; .? ?. ?:
-       -- --- ++ +++ ** ***
-
-          ~= ~- -~ ~@
-          ^= ?= /= /==
-        -| _|_ |- |= ||=
-        #! #= ## ### ####
-      #{ #[ ]# #( #? #_ #_(
-
-
-a*b a*A B*b A*B *a *A a* A*
-a-b a-A B-b A-B -a -A a- A-
-a+b a+A B+b A+B +a +A a+ A+
-a:b a:A B:b A:B :a :A a: A:</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>And now we&#8217;ll carry out the test (part of it) in an example block, for here a different font is being used which may support code related ligatures.
-The example block below has not special substitutions settings.</p>
-</div>
-<div class="exampleblock">
-<div class="title">Example 1. Ligatures Test in Source Block</div>
-<div class="content">
-<div class="paragraph">
-<div class="title">= ..= .- := ::= =:= __<br></div>
-<p>== != === !== =/= =!=</p>
-</div>
-<div class="paragraph">
-<p>&#8592;&lt; &lt;&#8592; &#8592;- &#8592; &lt;&#8594; &#8594; -&#8594; &#8594;&gt; &gt;&#8594;<br>
-&#8656;&lt; &lt;&#8656; &#8656;=    &lt;&#8658; &#8658; =&#8658; &#8658;&gt; &gt;&#8658;<br>
-&gt;&gt;= &gt;&gt;- &gt;- &lt;~&gt; -&lt; -&lt;&lt; =&lt;&lt;<br>
-&lt;~~ &lt;~ ~~ ~&gt; ~~&gt;</p>
-</div>
-<div class="paragraph">
-<p>&lt;&lt;&lt; &lt;&lt; &#8656; &lt;&gt;  &gt;= &gt;&gt; &gt;&gt;&gt;<br>
-{. {| [| &lt;:  ✓  :&gt; |] |} .}<br>
-&lt;||| &lt;|| &lt;| &lt;|&gt; |&gt; ||&gt; |||&gt;</p>
-</div>
-<div class="paragraph">
-<p>&lt;$ &lt;$&gt; $&gt;<br>
-&lt;+ &lt;+&gt; +&gt;<br>
-&lt;* &lt;*&gt; *&gt;</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_special_charachters">5. Special Charachters</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_text_replacements">5.1. Text Replacements</h3>
-<div class="paragraph">
-<p>The following table is used for checking that default Asciidoctor textual symbols replacement works fine.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Textual symbol replacements</caption>
-<colgroup>
-<col style="width: 30%;">
-<col style="width: 20%;">
-<col style="width: 30%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-center valign-top">Syntax</th>
-<th class="tableblock halign-center valign-top">Unicode Replacement</th>
-<th class="tableblock halign-center valign-top">Rendered</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Copyright</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">(C)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#169;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#169;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Registered</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">(R)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#174;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#174;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Trademark</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">(TM)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8482;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#8482;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Em dash</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">--</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8212;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ellipses</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">...</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8230;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">right single arrow</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">-&gt;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8594;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#8594;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">right double arrow</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">=&gt;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8658;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#8658;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">left single arrow</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&lt;-</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8592;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#8592;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">left double arrow</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&lt;=</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;#8656;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#8656;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">apostrophe</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Sam's</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Sam&#8217;s</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Sam&#8217;s</p></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>This table was taken and adapated from the
-<a href="https://github.com/asciidoctor/asciidoctor.org/blob/master/docs/_includes/subs-symbol-repl.adoc" target="_blank" rel="noopener">Asciidoctor Project Site</a> repository, and it&#8217;s
-Copyright &#169; Asciidoctor Project, 2018.
-Content licensed under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-v 1.3<br>
-Last updated 2018-09-23 14:29:52 ora legale Europa occidentale
+v 1.0<br>
+Last updated 2018-10-07 11:27:52 ora legale Europa occidentale
 </div>
 </div>
 <link rel="stylesheet" href="../../_assets/hjs/styles/github.min.css">

@@ -1,37 +1,16 @@
 = Syntax Highlighting in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v1.7, September 30, 2018: Code styling previews
-:version-label: v
-:authorinitials: T.J.A.
-// =====================
-// HTML Default Settings
-// =====================
-:toolchain: pass:r[Asciidoctor's native HTML5]
-// =====================
-// PDF Settings Override
-// =====================
-ifeval::["{backend}" == "docbook"]
-:toolchain: asciidoctor-fopub
-endif::[]
-// ---------------------
-:revremark: Backend: {toolchain}
-:toc: left
-:toclevels: 5
+v2.0, October 07, 2018
+include::_inc_header-attributes.adoc[]
 :doctype: book
-:encoding: utf-8
-:lang: en
-// Misc Settings:
-:experimental: true
-:icons: font
-:linkattrs: true
+:toclevels: 5
+
 
 // =============================================================================
 //                         Custom Attributes Definition
 // =============================================================================
-// Some attributes for custom substitution of multiple occurences of same text.
-
-:fopub: https://github.com/asciidoctor/asciidoctor-fopub[asciidoctor-fopub^]
-:Highlight: http://www.andre-simon.de/[Highlight^]
+// Custom attributes shared by all docs:
+include::_inc_custom-attributes.adoc[]
 
 // *****************************************************************************
 // *                                                                           *
@@ -54,12 +33,7 @@ For syntax highlighting in the HTML5 backend we use a custom build of https://hi
 https://github.com/tajmone/highlight.js/blob/Alan/src/languages/alan.js[Alan syntax definition^] from scratch.
 ================================================================================
 
-// Theme Warning:
-// ==============
-// Warning about use of native Asciidoctor theme and missing custom styles...
-include::_inc_html-warning.adoc[]
 endif::[]
-
 
 // ===================
 // FOPUB Backend Only:

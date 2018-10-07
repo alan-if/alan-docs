@@ -1,0 +1,74 @@
+= Alan Documentation Styles: templates styles samples
+Tristano Ajmone <tajmone@gmail.com>
+v1.0, October 07, 2018
+include::_inc_header-attributes.adoc[]
+:toclevels: 5
+:doctype: book
+// Sections Numbering:
+:sectnums:
+:sectnumlevels: 2
+
+// =============================================================================
+//                         Custom Attributes Definition
+// =============================================================================
+// Custom attributes shared by all docs:
+include::_inc_custom-attributes.adoc[]
+
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+
+This document offers a comprehensive preview of the templates used for Alan documentation, offering samples of how fonts, typography, AsciiDoc elements, custom styles and syntax highlighting will be rendered and styled in the final documentation, allowing to compare quality and differences across all the supported output formats.
+
+Some contents are format dependent and will vary according to the document's output format and the backend employed, providing additional information specific to that format and/or backend.
+
+
+[WARNING]
+================================================================================
+This document is still under construction.
+================================================================================
+
+
+// *****************************************************************************
+// *                                                                           *
+// *                             Fonts Specimens                               *
+// *                                                                           *
+// *****************************************************************************
+
+== Fonts Specimens
+
+Specimens of the three main fonts used for base body text, verbatim text, and headings.
+
+[subs="post_replacements,attributes"]
+--
+{font-speciemen1} +
+{font-speciemen2} +
+{font-speciemen3} +
+{font-speciemen4}
+--
+
+
+[subs="attributes"]
+----
+{font-speciemen1}
+{font-speciemen2}
+{font-speciemen3}
+{font-speciemen4}
+----
+
+
+[discrete]
+=== {font-speciemen1}
+[discrete]
+=== {font-speciemen2}
+[discrete]
+=== {font-speciemen3}
+[discrete]
+=== {font-speciemen4}
+
+
+
+// EOF //

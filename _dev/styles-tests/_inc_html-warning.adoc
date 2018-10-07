@@ -1,5 +1,0 @@
-[WARNING]
-================================================================================
-Currently no theme customizations have been done for the HTML backend.
-This document uses Asciidoctor's native theme, and many elements with custom roles (classes) are not being rendered as intended.
-================================================================================

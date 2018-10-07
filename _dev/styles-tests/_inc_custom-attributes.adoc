@@ -1,0 +1,20 @@
+// =============================================================================
+//                         Custom Attributes Definition
+// =============================================================================
+// Some attributes for custom substitution of multiple occurences of same text.
+
+:fopub: https://github.com/asciidoctor/asciidoctor-fopub[asciidoctor-fopub^]
+:Highlight: http://www.andre-simon.de/[Highlight^]
+
+// =============================================================================
+//                               Fonts Specimens
+// =============================================================================
+// These are used on a per-line basis because depending on their context they
+// might require a ' +' at line-end.
+// -----------------------------------------------------------------------------
+:font-speciemen1: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+:font-speciemen2: abcdefghijklmnopqrstuvwxyz
+:font-speciemen3: 1234567890 + - * /
+:font-speciemen4: !?|()[]{}<>$@
+
+// EOF //
