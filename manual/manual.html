@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.64,</span>
+<span id="revnumber">version 0.1.65,</span>
 <span id="revdate">November 20, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.64
+<pre>Doc version: 0.1.65
 Last edited: November 20, 2018</pre>
 </div>
 </div>
@@ -5031,7 +5031,7 @@ It is possible to implement your own timing mechanism, in which case the <code>M
 <div class="sect3">
 <h4 id="_verbs_in_locations"><a class="anchor" href="#_verbs_in_locations"></a>Verbs in Locations</h4>
 <div class="paragraph">
-<p>A special case is a verb declared in, or inherited by, the location where the player currently is located.
+<p>A special case is a <code>Verb</code> declared in, or inherited by, the <code>location</code> where the player is currently located.
 If this verb is used, any checks or body of that verb will be considered before the verbs in the parameters.
 An example might be a location representing walking on a high wire.
 Anything dropped at the following location will disappear:</p>
@@ -5064,13 +5064,13 @@ check_list = 'CHECK' expression 'ELSE' {statement}
 </div>
 </div>
 <div class="paragraph">
-<p>To determine if the action is possible to carry out, the CHECK <code>Check</code>s are executed.
-Which checks to run, is determined by the class of the instances bound by the parameters to the verb.
+<p>To determine if the action is possible to carry out, the checks in  <code>Check</code> are executed.
+Which checks to run, is determined by the class of the instances bound to the verb by the parameters.
 All checks in the inheritance tree are tried by starting at the base class.
-In this way, the most general checks are tried first, then more specific.</p>
+This way, the more general checks are tried first, followed by increasingly more specific checks.</p>
 </div>
 <div class="paragraph">
-<p>A typical use of a check is to verify if the parameter has a particular property:</p>
+<p>A typical use of <code>Check</code> is to verify if the parameter has a particular property:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5082,8 +5082,8 @@ End Verb take.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If no expression is specified for a check, that check will always fail, in effect becoming an  unconditional <code>Check</code>.
-This is useful for preventing certain actions, such as at specific locations, since the checks are always executed first.</p>
+<p>If no expression is specified for a <code>Check</code>, that check will always fail, in effect becoming an  unconditional <code>Check</code>.
+This is useful for preventing certain actions, for example at specific locations, since the checks are always executed first:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5097,7 +5097,7 @@ End The jumpless.</code></pre>
 <div class="paragraph">
 <p>If any check should fail, the execution of the current verb is interrupted and the statements following the failing check are executed.
 The user (player) is then prompted for another command.
-So in the above example, the verb &#8220;jump&#8221; will always result in &#8220;You can&#8217;t do that here.&#8221; at the location &#8220;jumpless&#8221;.</p>
+So in the above example, the verb &#8220;jump&#8221; will always result in &#8220;You can&#8217;t do that here.&#8221; at the location <code>jumpless</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5108,7 +5108,7 @@ So in the above example, the verb &#8220;jump&#8221; will always result in &#822
 <td class="content">
 <div class="paragraph">
 <p><code>Check</code>s are intended to take care of any <em>exceptions</em> for executing the normal case.
-The normal, or positive/affirmative, case should be handled by the <code>Does</code>-clause.</p>
+The normal, or positive/affirmative, case should be handled by the <code>Does</code> clause.</p>
 </div>
 </td>
 </tr>
@@ -5118,10 +5118,10 @@ The normal, or positive/affirmative, case should be handled by the <code>Does</c
 <p>With this in mind, <code>Check</code>s are also used when handling the user input <strong>ALL</strong>  (see <a href="#_player_input">Sect. 5.2</a> for details on possible player input).
 The mechanisms for this involve examining all objects at the current location and evaluating all checks for the verb.
 Any objects that do not pass the checks are not considered for execution.
-This limits the handling of <strong>all</strong> to only executing the verb bodies for objects that are reasonable, i.e. that will not fail in the <code>Check</code>s.</p>
+This limits the handling of <strong>ALL</strong> to executing only the verb bodies of objects that are reasonable, i.e. whose <code>Check</code>s will not fail.</p>
 </div>
 <div class="paragraph">
-<p>For example assuming the above definition of the verb take and a location containing the two objects, <code>ball</code> and <code>box</code>, of which only the <code>ball</code> is <code>takeable</code> the player input</p>
+<p>For example assuming the above definition of the verb <code>take</code> and a location containing the objects <code>ball</code> and <code>box</code>, where only the ball is <code>moveable</code>, the player input:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -5131,7 +5131,7 @@ This limits the handling of <strong>all</strong> to only executing the verb bodi
 </div>
 </div>
 <div class="paragraph">
-<p>would result in <strong>all</strong> representing only the ball.
+<p>would result in <strong>ALL</strong> representing only the ball.
 See <a href="#_player_input">Sect. 5.2</a> for an explanation of the player view of this.</p>
 </div>
 </div>
@@ -5153,14 +5153,14 @@ qualifier = 'BEFORE'
 <div class="paragraph">
 <p>If all checks succeed, the execution  of the verb will be carried out.
 Multiple verb bodies may be involved.
-The order is by default to first execute the body of any verb declaration for the current location (including verb bodies inherited by it).
+The default order is to execute first the body of any verb declaration for the current location (including verb bodies inherited by it).
 Each parameter is then examined to find any declarations of that verb for the instance (including inherited verb bodies).
-These verb bodies are then executed in the order in which the parameters occurred in the syntax declaration, for each parameter starting with the body in the most basic class.
+These verb bodies are then executed in the order in which the parameters occurred in the <code>Syntax</code> declaration, for each parameter starting with the body in the most basic class.
 By default, all of the involved verb bodies are executed.
 This is the most natural order and covers most cases.</p>
 </div>
 <div class="paragraph">
-<p>In some infrequent situations, another order may be necessary.
+<p>In some unfrequent situations, another order may be necessary.
 By using the  qualifiers, <code>Before</code>/<code>After</code>/<code>Only</code>, the author can decide which verb bodies will be executed and in which order (see <a href="#_verb_qualification"><em>Verb Qualification</em></a> below for details).</p>
 </div>
 <div class="paragraph">
@@ -5190,15 +5190,15 @@ End Verb take.</code></pre>
 </div>
 <div class="paragraph">
 <p>When a <code>Verb</code>  is declared within an instance declaration, verb alternatives are allowed.
-These alternatives are used in conjunction with the <code>Syntax</code> declaration defined for the verb and allows differentiating between the instances occurring in different places in the input.</p>
+These alternatives are used in conjunction with the <code>Syntax</code> declaration defined for the verb and allow differentiating between the instance occurring at different parameter positions in the input.</p>
 </div>
 <div class="paragraph">
 <p>When a player inputs a command, each parameter in the syntax (see above) is bound to an actual instance or receives the value of a literal, depending on the specified syntax.
-To determine the checks to test and verb bodies to execute the parameters are examined in turn according to the algorithm described in the section <a href="#_verb_qualification"><em>Verb Qualification</em></a> below.
-Each instance may have different verb bodies executed depending on at which position it occurred (to which parameter it was bound).</p>
+To determine which checks to test for, and which verb bodies to execute, the parameters are examined in turn according to the algorithm described in the section <a href="#_verb_qualification"><em>Verb Qualification</em></a> below.
+Each instance may have different verb bodies executed depending on which position it occurred at (to which parameter it was bound).</p>
 </div>
 <div class="paragraph">
-<p>For example, assume the following syntax definition</p>
+<p>For example, assume the following syntax definition:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5206,10 +5206,10 @@ Each instance may have different verb bodies executed depending on at which posi
 </div>
 </div>
 <div class="paragraph">
-<p>If used with the <code>delicate_vase</code> actions could differ if it occurs as the direct object (o), or if it occurs as the indirect object (w).
-To implement this the <code>Verb</code> body for <code>break_with</code> should also differ.
-For each parameter in the syntax, you may define different actions by supplying a verb alternative for each parameter identifier.
-The verb declaration could look like</p>
+<p>If used with the <code>delicate_vase</code>, the resulting actions could differ depending on whether it occurs as the direct object (<code>o</code>) or as the indirect object (<code>w</code>).
+To implement this, the <code>Verb</code> body for <code>break_with</code> should differentiate between the two cases.
+For each parameter in the <code>Syntax</code>, you may define different actions by supplying a verb alternative for each parameter identifier.
+The verb declaration could look like:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5226,7 +5226,7 @@ End The feather.</code></pre>
 </div>
 <div class="paragraph">
 <p>If no alternative is explicitly specified the verb body will be considered for all positions in the syntax.
-The compiler will warn for this if the syntax allowed the class of instance to occur in all the parameter positions.</p>
+The compiler will warn for this when it detects a syntax that allows the class or instance to occur at every parameter positions.</p>
 </div>
 </div>
 <div class="sect3">
@@ -5245,22 +5245,22 @@ The compiler will warn for this if the syntax allowed the class of instance to o
 </div>
 <div class="paragraph">
 <p>The order in which the different verb bodies are executed is normally from the most general to the most specific.
-But, to allow for local differences, i.e. special handling of the verb at this location, a any possible definition of this verb in the current location (included inherited verb bodies) are considered first.
-Then, the verb bodies in the parameters (in the order they appeared in the syntax definition) on which the verb was applied are examined to find and execute their verb definitions.
-For each parameter, its most general definition is executed first, verb bodies down the inheritance tree next, ending with any verb body declared in the specific instance bound to that parameter.</p>
+But, to allow for local differences (i.e. special handling of the verb at the current location) any definition of the verb in the current location (including inherited verb bodies) are considered first.
+Then, the verb bodies in the parameters on which the verb was applied are examined (in their order of appearance in the syntax definition) to find and execute their verb definitions.
+For each parameter, its most general definition is executed first, then verb bodies down the inheritance tree are executed next, ending with any verb body declared in the specific instance bound to that parameter.</p>
 </div>
 <div class="paragraph">
 <p>In most circumstances, this is the most logical order, but if another order is required, the <code>Verb</code> qualifiers   <code>After</code>,  <code>Before</code> and  <code>Only</code> may be used to alter this behaviour.
-The qualifiers alter the order of execution and a strict definition of this is described below.</p>
+These qualifiers alter the order of execution, a strict definition of this is described below.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_verb_execution"><a class="anchor" href="#_verb_execution"></a>Verb Execution</h4>
 <div class="paragraph">
 <p>
-First all parameters are evaluated according to the syntax restrictions (see <a href="#_parameter_restrictions"><em>Parameter Restrictions</em></a>).
-Then, if they passed, the checks of all verb declarations are evaluated (see <a href="#_verb_checks">Sect. 3.10.3</a>).
-Finally the verb bodies are executed in the normal order as explained by the table below.</p>
+First all parameters are evaluated according to the <code>Syntax</code> restrictions (see <a href="#_parameter_restrictions"><em>Parameter Restrictions</em></a>).
+Then, if they passed, the <code>Check</code>s of all verb declarations are evaluated (see <a href="#_verb_checks">Sect. 3.10.3</a>).
+Finally the <code>Verb</code> bodies are executed in the normal order, as explained in the following table.</p>
 </div>
 <table id="table-of-verbs-execution" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 4. Order of Execution of Verbs</caption>
@@ -12614,8 +12614,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.64<br>
-Last updated 2018-10-20 11:15:51 ora legale Europa occidentale
+Version 0.1.65<br>
+Last updated 2018-10-20 13:37:39 ora legale Europa occidentale
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">

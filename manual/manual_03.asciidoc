@@ -2502,12 +2502,11 @@ The `Meta Verb` feature only applies to the built-in timing mechanism known as '
 It is possible to implement your own timing mechanism, in which case the `Meta` does not help.
 ================================================================================
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 === Verbs in Locations
 
-A special case is a verb declared in, or inherited by, the location where the player currently is located.
+A special case is a `Verb` declared in, or inherited by, the `location` where the player is currently located.
 If this verb is used, any checks or body of that verb will be considered before the verbs in the parameters.
 An example might be a location representing walking on a high wire.
 Anything dropped at the following location will disappear:
@@ -2538,12 +2537,12 @@ check_list = 'CHECK' expression 'ELSE' {statement}
 --------------------------------------------------------------------------------
 
 
-To determine if the action is possible to carry out, the ((CHECK)) ``Check``s are executed.
-Which checks to run, is determined by the class of the instances bound by the parameters to the verb.
+To determine if the action is possible to carry out, the checks in (((CHECK))) `Check` are executed.
+Which checks to run, is determined by the class of the instances bound to the verb by the parameters.
 All checks in the inheritance tree are tried by starting at the base class.
-In this way, the most general checks are tried first, then more specific.
+This way, the more general checks are tried first, followed by increasingly more specific checks.
 
-A typical use of a check is to verify if the parameter has a particular property:
+A typical use of `Check` is to verify if the parameter has a particular property:
 
 
 [source,alan]
@@ -2555,8 +2554,8 @@ Verb take
 End Verb take.
 --------------------------------------------------------------------------------
 
-If no expression is specified for a check, that check will always fail, in effect becoming an (((CHECK, unconditional))) unconditional `Check`.
-This is useful for preventing certain actions, such as at specific locations, since the checks are always executed first.
+If no expression is specified for a `Check`, that check will always fail, in effect becoming an (((CHECK, unconditional))) unconditional `Check`.
+This is useful for preventing certain actions, for example at specific locations, since the checks are always executed first:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2567,24 +2566,26 @@ The jumpless IsA Location
 End The jumpless.
 --------------------------------------------------------------------------------
 
+// @TODO: Mention if an action that failed a check consumes a tick or not.
+
 If any check should fail, the execution of the current verb is interrupted and the statements following the failing check are executed.
 The user (player) is then prompted for another command.
-So in the above example, the verb "`jump`" will always result in "`You can't do that here.`" at the location "`jumpless`".
+So in the above example, the verb "`jump`" will always result in "`You can't do that here.`" at the location `jumpless`.
 
 
 [NOTE]
 ================================================================================
 ``Check``s are intended to take care of any _exceptions_ for executing the normal case.
-The normal, or positive/affirmative, case should be handled by the `Does`-clause.
+The normal, or positive/affirmative, case should be handled by the `Does` clause.
 ================================================================================
 
 
 With this in mind, ``Check``s are also used when handling the user input *ALL* (((ALL (player input)))) (see <<Player Input>> for details on possible player input).
 The mechanisms for this involve examining all objects at the current location and evaluating all checks for the verb.
 Any objects that do not pass the checks are not considered for execution.
-This limits the handling of *all* to only executing the verb bodies for objects that are reasonable, i.e. that will not fail in the ``Check``s.
+This limits the handling of *ALL* to executing only the verb bodies of objects that are reasonable, i.e. whose ``Check``s will not fail.
 
-For example assuming the above definition of the verb take and a location containing the two objects, `ball` and `box`, of which only the `ball` is `takeable` the player input
+For example assuming the above definition of the verb `take` and a location containing the objects `ball` and `box`, where only the ball is `moveable`, the player input:
 
 
 [example,role="gametranscript"]
@@ -2592,8 +2593,7 @@ For example assuming the above definition of the verb take and a location contai
 &gt; take all
 ================================================================================
 
-
-would result in *all* representing only the ball.
+would result in *ALL* representing only the ball.
 See <<Player Input>> for an explanation of the player view of this.
 
 
@@ -2613,13 +2613,13 @@ qualifier = 'BEFORE'
 
 If all checks succeed, the execution (((DOES, in verbs))) of the verb will be carried out.
 Multiple verb bodies may be involved.
-The order is by default to first execute the body of any verb declaration for the current location (including verb bodies inherited by it).
+The default order is to execute first the body of any verb declaration for the current location (including verb bodies inherited by it).
 Each parameter is then examined to find any declarations of that verb for the instance (including inherited verb bodies).
-These verb bodies are then executed in the order in which the parameters occurred in the syntax declaration, for each parameter starting with the body in the most basic class.
+These verb bodies are then executed in the order in which the parameters occurred in the `Syntax` declaration, for each parameter starting with the body in the most basic class.
 By default, all of the involved verb bodies are executed.
 This is the most natural order and covers most cases.
 
-In some infrequent situations, another order may be necessary.
+In some unfrequent situations, another order may be necessary.
 By using the (((VERB, qualifiers))) qualifiers, `Before`/`After`/`Only`, the author can decide which verb bodies will be executed and in which order (see <<Verb Qualification,_Verb Qualification_>> below for details).
 
 A simple verb example:
@@ -2646,23 +2646,23 @@ verb_alternatives = 'WHEN' id simple_verb_body
 --------------------------------------------------------------------------------
 
 When a `Verb` (((VERB, alternative))) is declared within an instance declaration, verb alternatives are allowed.
-These alternatives are used in conjunction with the `Syntax` declaration defined for the verb and allows differentiating between the instances occurring in different places in the input.
+These alternatives are used in conjunction with the `Syntax` declaration defined for the verb and allow differentiating between the instance occurring at different parameter positions in the input.
 
 When a player inputs a command, each parameter in the syntax (see above) is bound to an actual instance or receives the value of a literal, depending on the specified syntax.
-To determine the checks to test and verb bodies to execute the parameters are examined in turn according to the algorithm described in the section <<Verb Qualification,_Verb Qualification_>> below.
-Each instance may have different verb bodies executed depending on at which position it occurred (to which parameter it was bound).
+To determine which checks to test for, and which verb bodies to execute, the parameters are examined in turn according to the algorithm described in the section <<Verb Qualification,_Verb Qualification_>> below.
+Each instance may have different verb bodies executed depending on which position it occurred at (to which parameter it was bound).
 
-For example, assume the following syntax definition
+For example, assume the following syntax definition:
 
 [source,alan]
 --------------------------------------------------------------------------------
 Syntax break_with = 'break' (o) 'with' (w).
 --------------------------------------------------------------------------------
 
-If used with the `delicate_vase` actions could differ if it occurs as the direct object (o), or if it occurs as the indirect object (w).
-To implement this the `Verb` body for `break_with` should also differ.
-For each parameter in the syntax, you may define different actions by supplying a verb alternative for each parameter identifier.
-The verb declaration could look like
+If used with the `delicate_vase`, the resulting actions could differ depending on whether it occurs as the direct object (`o`) or as the indirect object (`w`).
+To implement this, the `Verb` body for `break_with` should differentiate between the two cases.
+For each parameter in the `Syntax`, you may define different actions by supplying a verb alternative for each parameter identifier.
+The verb declaration could look like:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2678,7 +2678,7 @@ End The feather.
 --------------------------------------------------------------------------------
 
 If no alternative is explicitly specified the verb body will be considered for all positions in the syntax.
-The compiler will warn for this if the syntax allowed the class of instance to occur in all the parameter positions.
+The compiler will warn for this when it detects a syntax that allows the class or instance to occur at every parameter positions.
 
 
 
@@ -2695,21 +2695,35 @@ qualifier = 'BEFORE'
 --------------------------------------------------------------------------------
 
 The order in which the different verb bodies are executed is normally from the most general to the most specific.
-But, to allow for local differences, i.e. special handling of the verb at this location, a any possible definition of this verb in the current location (included inherited verb bodies) are considered first.
-Then, the verb bodies in the parameters (in the order they appeared in the syntax definition) on which the verb was applied are examined to find and execute their verb definitions.
-For each parameter, its most general definition is executed first, verb bodies down the inheritance tree next, ending with any verb body declared in the specific instance bound to that parameter.
+But, to allow for local differences (i.e. special handling of the verb at the current location) any definition of the verb in the current location (including inherited verb bodies) are considered first.
+Then, the verb bodies in the parameters on which the verb was applied are examined (in their order of appearance in the syntax definition) to find and execute their verb definitions.
+For each parameter, its most general definition is executed first, then verb bodies down the inheritance tree are executed next, ending with any verb body declared in the specific instance bound to that parameter.
 
 In most circumstances, this is the most logical order, but if another order is required, the `Verb` qualifiers (((VERB, qualifiers))) (((AFTER, qualifier))) `After`, (((BEFORE, qualifier))) `Before` and (((ONLY, qualifier))) `Only` may be used to alter this behaviour.
-The qualifiers alter the order of execution and a strict definition of this is described below.
+These qualifiers alter the order of execution, a strict definition of this is described below.
 
+// @FIXME: Rephrase "a strict definition of this is described below"!!!
+
+
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 === Verb Execution
 
 (((VERB, execution order)))
-First all parameters are evaluated according to the syntax restrictions (see <<Parameter Restrictions,_Parameter Restrictions_>>).
-Then, if they passed, the checks of all verb declarations are evaluated (see <<Verb Checks>>).
-Finally the verb bodies are executed in the normal order as explained by the table below.
+First all parameters are evaluated according to the `Syntax` restrictions (see <<Parameter Restrictions,_Parameter Restrictions_>>).
+Then, if they passed, the ``Check``s of all verb declarations are evaluated (see <<Verb Checks>>).
+Finally the `Verb` bodies are executed in the normal order, as explained in the following table.
+
+////
+@FIXME: The special chars in the Table are not represented correctly in the PDF
+        output: '⋮' and '🡳' are rendered as '#'.
+        Possible solutions:
+          (a) Conditionally define a custom attribute for sbustitution, depending
+              on the current backend, to allow alternative characters to be used
+              in the PDF.
+          (b) Find alternative characters supported in all formats.
+////
 
 
 [[table-of-verbs-execution]]
