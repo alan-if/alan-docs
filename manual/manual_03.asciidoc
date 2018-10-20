@@ -1,9 +1,37 @@
-// ******************************************************************************
-// *                                                                            *
-// *                           3. Language Reference                            *
-// *                                                                            *
-// ******************************************************************************
+// *****************************************************************************
+// *                                                                           *
+// *                          3. Language Reference                            *
+// *                                                                           *
+// *****************************************************************************
 
+// =============================================================================
+// CUSTOM SUBSTITUTIONS-ATTRIBUTES DEFINITIONS
+// =============================================================================
+// These custom attributes are used for special characters substitutions in
+// tables, as a workaround for the problems with the Asciidoctor-fop PDF
+// backend, which is not able to represent certain characters as expected:
+//
+//    {darr}  --> Downwards arrow
+//    {vdots} --> Vertical ellipsis
+//
+// =================
+// HTML Backend Only
+// =================
+ifdef::backend-html5[]
+// WIDE-HEADED DOWNWARDS MEDIUM BARB ARROW (U+1F873): '🡳'
+:darr: &#x1F873;
+// VERTICAL ELLIPSIS (U+22EE): '⋮'
+:vdots: &#x22EE;
+endif::[]
+// ==================
+// All Other Backends
+// ==================
+ifndef::backend-html5[]
+// Downwards Arrow (U+02193): '↓'
+:darr: &#x02193;
+:vdots: :
+endif::[]
+// -----------------------------------------------------------------------------
 
 = Language Reference
 
@@ -1847,11 +1875,11 @@ The order of execution is explained by the following table:
 .Order of Execution of ENTERED in Nested Locations
 [cols="^s,3*^n",options="header"]
 |===============================================================================
-|            | Outer Region |     ...     | Current Location
-| Base class |  Outermost   |      🡳      |      🡳
-| ⋮          |      🡳      |      🡳      |      🡳
-| Leaf class |      🡳      |      🡳      |      🡳
-| Instance   |      🡳      |      🡳      |      🡳
+|            | Outer Region |     ...      | Current Location
+| Base class |  Outermost   |    {darr}    |    {darr}
+| {vdots}    |    {darr}    |    {darr}    |    {darr}
+| Leaf class |    {darr}    |    {darr}    |    {darr}
+| Instance   |    {darr}    |    {darr}    |    {darr}
 |===============================================================================
 
 This means that the first `Entered` clause to be executed is the clause in the base class of the outermost location, if any, then moving down the inheritance of the outermost.
@@ -2699,10 +2727,10 @@ But, to allow for local differences (i.e. special handling of the verb at the cu
 Then, the verb bodies in the parameters on which the verb was applied are examined (in their order of appearance in the syntax definition) to find and execute their verb definitions.
 For each parameter, its most general definition is executed first, then verb bodies down the inheritance tree are executed next, ending with any verb body declared in the specific instance bound to that parameter.
 
+// @FIXME: Rephrase "a strict definition of this is described below"!!!
+
 In most circumstances, this is the most logical order, but if another order is required, the `Verb` qualifiers (((VERB, qualifiers))) (((AFTER, qualifier))) `After`, (((BEFORE, qualifier))) `Before` and (((ONLY, qualifier))) `Only` may be used to alter this behaviour.
 These qualifiers alter the order of execution, a strict definition of this is described below.
-
-// @FIXME: Rephrase "a strict definition of this is described below"!!!
 
 
 // @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
@@ -2715,16 +2743,6 @@ First all parameters are evaluated according to the `Syntax` restrictions (see <
 Then, if they passed, the ``Check``s of all verb declarations are evaluated (see <<Verb Checks>>).
 Finally the `Verb` bodies are executed in the normal order, as explained in the following table.
 
-////
-@FIXME: The special chars in the Table are not represented correctly in the PDF
-        output: '⋮' and '🡳' are rendered as '#'.
-        Possible solutions:
-          (a) Conditionally define a custom attribute for sbustitution, depending
-              on the current backend, to allow alternative characters to be used
-              in the PDF.
-          (b) Find alternative characters supported in all formats.
-////
-
 
 [[table-of-verbs-execution]]
 .Order of Execution of Verbs
@@ -2733,17 +2751,18 @@ Finally the `Verb` bodies are executed in the normal order, as explained in the 
 |  | Outer Region | ... | Current Location | First parameter | ... | Last parameter
 
 | Base class (entity)
-| Outermost | 🡳 | 🡳 | 🡳 | 🡳 | 🡳
+| Outermost | {darr} | {darr} | {darr} | {darr} | {darr}
 
-| ⋮
-| 🡳 | 🡳 | 🡳 | 🡳 | 🡳 | 🡳
+| {vdots}
+| {darr} | {darr} | {darr} | {darr} | {darr} | {darr}
 
 | Leaf class
-| 🡳 | 🡳 | 🡳 | 🡳 | 🡳 | 🡳
+| {darr} | {darr} | {darr} | {darr} | {darr} | {darr}
 
 | Instance
-| 🡳 | 🡳 | 🡳 | 🡳 | 🡳 | Innermost
+| {darr} | {darr} | {darr} | {darr} | {darr} | Innermost
 |===============================================================================
+
 
 The table above illustrates the normal order of execution of verb bodies and checks.
 Starting with any base classes to the outermost region (containing location), continuing to the actual instance of that location, as illustrated by the first column.

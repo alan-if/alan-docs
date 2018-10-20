@@ -90,7 +90,7 @@ An here follows a task list of the remaining porting tasks:
 - [ ] Rebuild current images, in vector format (optional):
     + [ ] Figure 1 (Sec. 2.3, p.20 of PDF) — "The principles for and relations between a game description, a compiler, ...".
     + [x] Figure 2 (Sec. 2.4, p.33 of PDF) — "_Relationships between the pre-defined classes._".
-- [ ] Fix some non-Ascii chars (especially Unicode dingbats) that may cause problems in some output formats (See [Issue #23][i23]).
+- [x] Fix some non-Ascii chars (especially Unicode dingbats) that may cause problems in some output formats (See [Issue #23][i23]).
 - [ ] Fix Headings:
     + [ ] Check that all headings are properly title cased.
     + [ ] Change to all-caps Alan keywords in headings.
@@ -114,7 +114,7 @@ The PDF toolchain will employ [asciidoc-fopub] to convert from DocBook to PDF. I
         * [x] BNF rules
         * [x] Game transcripts
         * [ ] Shell output
-- [ ] Fix problem with special Unicode chars not showing in PDF (eg, arrows symbols in Tables — See [Issue #23][i23])
+- [x] Fix problem with special Unicode chars not showing in PDF (eg, arrows symbols in Tables — See [Issue #23][i23])
 - [ ] Fonts:
     + [ ] Find appropriate fonts and include them in project
     + [x] Set fonts in XSL stylesheets
