@@ -2313,14 +2313,12 @@ Where obj IsA object Else ...
   And obj IsA door Else ...
 --------------------------------------------------------------------------------
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
-
 
 References to attributes in the source are only allowed if it can be guaranteed that they exist during run-time.
 The class restrictions placed on a parameter are used by the compiler to make this guarantee for code executed by player input (verb bodies).
-The same applies for other semantic restrictions, e.g. you can only use a parameter in a `List` statement if it has been restricted to having the container property.
+The same applies for other semantic restrictions, e.g. you can only use a parameter in a `List` statement if it has been restricted to having the `Container` property.
 
-You can use `IsA Container` to restrict instances to only those entities that are containers (have the container property).
+You can use `IsA Container` to restrict instances to only those entities that are containers (have the `Container` property).
 
 If there is no restriction for a parameter, it is restricted to the class `object`.
 
@@ -2341,6 +2339,13 @@ Syntax give = give (p) (o) ...
 The syntaxes must be compatible in the sense that the parameters must be named the same.
 However, the order of the parameters may differ, they will automatically be mapped as appropriate.
 
+
+// @TODO: Add note about the fact that parameter dollar-symbols ($1, $2, etc.)
+//        will always represent the parameters as defined in the first (main)
+//        syntax declaration, and that they will therefore show the correct
+//        parameter even when syntax alternatives with inverted parameters order
+//        are used.
+
 Restrictions are only allowed in the first of such syntax declarations.
 These restrictions will be applied regardless of which syntax was used.
 
@@ -2350,33 +2355,41 @@ These restrictions will be applied regardless of which syntax was used.
 
 If no `Syntax` is defined for a `Verb` at all, this is handled with one of two default syntaxes (((SYNTAX, default))) according to the two templates below:
 
+// @NOTE: The example below could very well use AsciiDoc callouts, but there might
+//        be problems with the fact that the placeholders use the same notation as
+//        callouts.
+
+
 [source,alan]
 --------------------------------------------------------------------------------
 Syntax <1> = <1>.
 Syntax <1> = <1> (<2>).
 --------------------------------------------------------------------------------
 
-The placeholders represents 1) the name of the verb, and 2) the class in which the verb is first encountered.
+The placeholders represent 1) the name of the verb, and 2) the class in which the verb is first encountered.
 
 The first template is used for verbs that are declared globally, i.e. outside of any class or instance.
 Since these are only applied when no parameters are used, this will effectively work for simple '`verb-only`' ``Verb``s, such as `quit`, `look`, `save` etc.
 
-Verbs declared in an instance or a class, for which there is no syntax, by default receives a syntax of the common verb/object type corresponding to the second template above.
+When a `Verb` declared in an instance or a class has no `Syntax` counterpart, it automatically receives a default syntax of the common verb/object type corresponding to the second template above.
 This is a reasonable syntax for many cases and restricts the parameters to instances of the class where the verb was declared.
 It also implies that the default name for the single parameter is the same as the name of that class, e.g. `object`, `actor`, `thing`, etc. (See <<WHAT Specifications>> for the implications of this.)
 
 
 [NOTE]
 ================================================================================
-A verb which is declared in a number of classes, or instances of various heritage, can not be handled with the default rules, since that would imply that the parameter should be restricted to multiple classes at the same time.
+A `Verb` which is declared in a number of classes, or instances of various heritage, can not be handled with the default rules, since that would imply that the parameter should be restricted to multiple classes at the same time.
 This case must be handled explicitly.
 ================================================================================
 
 
+// @FIXME:  The warning below is not very clear regarding the implications of the
+//          of the parameter being restricted to the `location` class.
+//          Does it mean that the verb will be available on EVERY LOCATION?
 
-[NOTE]
+[WARNING]
 ================================================================================
-A verb with no declared syntax, which is declared in a location, will receive a default syntax restricting the parameter to the class `location`, which probably is not what you wanted.
+When a `Verb` declared in a location has no `Syntax` counterpart, it will receive a default syntax restricting the parameter to the `location` class, which probably is not what you wanted.
 ================================================================================
 
 
@@ -2390,17 +2403,18 @@ There are a number of ways to get an instance into scope:
 
 * Instances of `entity`, and of any user defined subclasses thereof, are always in scope.
 
-* An instance of `thing` and its subclasses at the current location, including any nested locations, is in scope.
+* Instances of `thing` and its subclasses at the current location, including any nested locations, are in scope.
 
-* An instance of any class inside a container that is in scope is in scope, unless that container is opaque and closed.
-  See <<Container Properties, _Container Properties_>> for details.
+* Instances of any class inside a container that is in scope are in scope too, unless that container is opaque and closed.
+  (See <<Container Properties, _Container Properties_>> for details.)
 
 * If the syntax indicated a parameter as omni-potent, any instance is in scope for that parameter position.
+  (See <<Indicators, _Indicators_>> for details.)
 
-If the interpreter finds multiple instances matching the input (the set of given adjectives and noun), it will try to disambiguate with preference to instances present, i.e. at the location of the hero.
-If there still are multiple candidates after this, the interpreter will print a message and abort execution of the current command.
+If the interpreter finds multiple instances matching the input (the set of given adjectives and noun), it will try to disambiguate giving preference to present instances -- i.e. at the location of the hero.
+If there are still multiple candidates left after this, the interpreter will print a message and abort execution of the current command.
 
-When all parameter positions in the syntax have been resolved in this way, the restrictions are executed.
+When all parameter positions in the syntax have been resolved this way, the restrictions are executed.
 
 
 
@@ -2429,27 +2443,42 @@ Verb take, get
 End Verb take.
 --------------------------------------------------------------------------------
 
-Verbs can be declared at two different levels, global (outside any other declaration) or inside a declaration of a class or instance, including inside an `Add` construct.
+Verbs can be declared at two different levels:
+
+* global (outside any other declaration), or
+* inside a class or instance declaration, including inside an `Add` construct.
 
 A global declaration will only be considered when the verb is not applied to any instance (i.e. such as the player referring to an object).
 In fact, a global verb cannot include any parameters in their syntax declaration.
 
-A verb declaration inside a class definition or an instance will be considered if that instance (or an instance inheriting from that class) is used as a parameter in the input.
+A verb declaration inside a class or instance definition will be considered if that instance (or an instance inheriting from that class) is used as a parameter in the input.
 
-The identifiers in the list (`take` and `get` in the example above) will be player words that by default can be used to invoke the verb.
+The identifiers in the list (`take` and `get` in the example above) will become the default player words that can be used to invoke the verb.
 But if a `Syntax` is declared for the `Verb` (see <<Syntax Definitions>>), the identifiers in the list will not be accessible to the player, instead the sequence of words and parameters specified in the `Syntax` must be used.
 
+
+// @FIXME: The following paragraph (which is very important for the reader) is too
+//         condensed. It might be worthy rephrasing it and make it easier to grasp,
+//         and adding examples or more details on the implications wouldn't hurt either.
+//
+//         A good example to provide here would be that of the "ask" and "tell"
+//         verbs, which are often used as one verb in many contexts.
+
 If there is more than one identifier in the list, as in the example above, this can be viewed as a short hand for declaring identical checks and bodies for all the verbs in the list.
-This will create synonymous actions for different verbs on the level where the verb declaration is.
+This will create synonymous actions for different verbs at the level of the verb declaration.
 They may differ in implementation at other places, i.e. if they are declared in the same verb declaration on one level in an inheritance tree, they can still have different bodies on another level.
 
 === Meta Verbs
 
 (((VERB, META VERB)))
-Any action from the player usually takes one 'tick' in the default simulated game time.
-Sometimes you want a player command to _not_ take a 'tick', for example administrative commands like 'help', 'score' etc.
+Any action from the player usually takes one '`tick`' in the default simulated game time.
+Sometimes you want a player command to _not_ consume a '`tick`', for example administrative commands like '`help`', '`score`' etc.
 
-You can do this by attaching (((META))) `Meta` in front of the verb definition:
+// @TODO: Add a note about out-of-game actions, and difference between diegetic
+//        and extra-diegetic actions/verbs.
+//        Quote Nick Montfort's "Twisty Little Passages" on the topic.
+
+You can achieve this by attaching (((META))) `Meta` in front of the verb definition:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -2461,20 +2490,19 @@ End Verb.
 
 
 
-If your verb has multiple definitions, e.g. for various classes, applying `Meta` to any one of them will make the verb a meta verb, meaning that if the player uses that verb in any context and on any instance, it will take no tick, even if that particular definition did not have the `Meta` property explicitly expressed.
-A library might decide that 'score' was a meta verb and there is nothing you, as an author, can do to override that short of editing the library source.
+If your `Verb` has multiple definitions (e.g. for various classes) applying `Meta` to any one of them will make the verb a meta verb, meaning that if the player uses that verb in any context and on any instance, it won't consume a tick, even if that particular definition did not have the `Meta` property explicitly expressed.
+A library might decide that `'score'` was a meta verb and there is nothing you, as an author, can do to override that short of editing the library source.
 
-A `Meta` verb also does not trigger evaluation of rules and events so they are genuinely "`outside`" the game and should only be used with verbs that are not considered part of the players progression inside the game.
+Furthermore, a `Meta` verb does not trigger evaluation of ``Rule``s and ``Event``s either, so they are genuinely "`outside`" the game and should only be used with verbs that are not considered part of the players progression inside the game.
 
 
 [NOTE]
 ================================================================================
-The meta verb feature only applies to the built in timing mechanism known as 'ticks', where every player command counts as 1 tick.
+The `Meta Verb` feature only applies to the built-in timing mechanism known as '`ticks`', where every player command counts as 1 tick.
 It is possible to implement your own timing mechanism, in which case the `Meta` does not help.
 ================================================================================
 
-
-
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 === Verbs in Locations

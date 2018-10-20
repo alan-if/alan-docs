@@ -435,8 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.63,</span>
-<span id="revdate">October 7, 2018</span>
+<span id="revnumber">version 0.1.64,</span>
+<span id="revdate">November 20, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -831,8 +831,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.63
-Last edited: October 7, 2018</pre>
+<pre>Doc version: 0.1.64
+Last edited: November 20, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -4809,10 +4809,10 @@ For example:</p>
 <div class="paragraph">
 <p>References to attributes in the source are only allowed if it can be guaranteed that they exist during run-time.
 The class restrictions placed on a parameter are used by the compiler to make this guarantee for code executed by player input (verb bodies).
-The same applies for other semantic restrictions, e.g. you can only use a parameter in a <code>List</code> statement if it has been restricted to having the container property.</p>
+The same applies for other semantic restrictions, e.g. you can only use a parameter in a <code>List</code> statement if it has been restricted to having the <code>Container</code> property.</p>
 </div>
 <div class="paragraph">
-<p>You can use <code>IsA Container</code> to restrict instances to only those entities that are containers (have the container property).</p>
+<p>You can use <code>IsA Container</code> to restrict instances to only those entities that are containers (have the <code>Container</code> property).</p>
 </div>
 <div class="paragraph">
 <p>If there is no restriction for a parameter, it is restricted to the class <code>object</code>.</p>
@@ -4853,14 +4853,14 @@ Syntax &lt;1&gt; = &lt;1&gt; (&lt;2&gt;).</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The placeholders represents 1) the name of the verb, and 2) the class in which the verb is first encountered.</p>
+<p>The placeholders represent 1) the name of the verb, and 2) the class in which the verb is first encountered.</p>
 </div>
 <div class="paragraph">
 <p>The first template is used for verbs that are declared globally, i.e. outside of any class or instance.
 Since these are only applied when no parameters are used, this will effectively work for simple &#8216;verb-only&#8217; <code>Verb</code>s, such as <code>quit</code>, <code>look</code>, <code>save</code> etc.</p>
 </div>
 <div class="paragraph">
-<p>Verbs declared in an instance or a class, for which there is no syntax, by default receives a syntax of the common verb/object type corresponding to the second template above.
+<p>When a <code>Verb</code> declared in an instance or a class has no <code>Syntax</code> counterpart, it automatically receives a default syntax of the common verb/object type corresponding to the second template above.
 This is a reasonable syntax for many cases and restricts the parameters to instances of the class where the verb was declared.
 It also implies that the default name for the single parameter is the same as the name of that class, e.g. <code>object</code>, <code>actor</code>, <code>thing</code>, etc. (See <a href="#_what_specifications">Sect. 3.19</a> for the implications of this.)</p>
 </div>
@@ -4872,22 +4872,22 @@ It also implies that the default name for the single parameter is the same as th
 </td>
 <td class="content">
 <div class="paragraph">
-<p>A verb which is declared in a number of classes, or instances of various heritage, can not be handled with the default rules, since that would imply that the parameter should be restricted to multiple classes at the same time.
+<p>A <code>Verb</code> which is declared in a number of classes, or instances of various heritage, can not be handled with the default rules, since that would imply that the parameter should be restricted to multiple classes at the same time.
 This case must be handled explicitly.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>A verb with no declared syntax, which is declared in a location, will receive a default syntax restricting the parameter to the class <code>location</code>, which probably is not what you wanted.</p>
+<p>When a <code>Verb</code> declared in a location has no <code>Syntax</code> counterpart, it will receive a default syntax restricting the parameter to the <code>location</code> class, which probably is not what you wanted.</p>
 </div>
 </td>
 </tr>
@@ -4909,23 +4909,24 @@ This is performed even before the restrictions are executed.</p>
 <p>Instances of <code>entity</code>, and of any user defined subclasses thereof, are always in scope.</p>
 </li>
 <li>
-<p>An instance of <code>thing</code> and its subclasses at the current location, including any nested locations, is in scope.</p>
+<p>Instances of <code>thing</code> and its subclasses at the current location, including any nested locations, are in scope.</p>
 </li>
 <li>
-<p>An instance of any class inside a container that is in scope is in scope, unless that container is opaque and closed.
-See <a href="#_container_properties"><em>Container Properties</em></a> for details.</p>
+<p>Instances of any class inside a container that is in scope are in scope too, unless that container is opaque and closed.
+(See <a href="#_container_properties"><em>Container Properties</em></a> for details.)</p>
 </li>
 <li>
-<p>If the syntax indicated a parameter as omni-potent, any instance is in scope for that parameter position.</p>
+<p>If the syntax indicated a parameter as omni-potent, any instance is in scope for that parameter position.
+(See <a href="#_indicators"><em>Indicators</em></a> for details.)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>If the interpreter finds multiple instances matching the input (the set of given adjectives and noun), it will try to disambiguate with preference to instances present, i.e. at the location of the hero.
-If there still are multiple candidates after this, the interpreter will print a message and abort execution of the current command.</p>
+<p>If the interpreter finds multiple instances matching the input (the set of given adjectives and noun), it will try to disambiguate giving preference to present instances&#8201;&#8212;&#8201;i.e. at the location of the hero.
+If there are still multiple candidates left after this, the interpreter will print a message and abort execution of the current command.</p>
 </div>
 <div class="paragraph">
-<p>When all parameter positions in the syntax have been resolved in this way, the restrictions are executed.</p>
+<p>When all parameter positions in the syntax have been resolved this way, the restrictions are executed.</p>
 </div>
 </div>
 </div>
@@ -4958,33 +4959,43 @@ End Verb take.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Verbs can be declared at two different levels, global (outside any other declaration) or inside a declaration of a class or instance, including inside an <code>Add</code> construct.</p>
+<p>Verbs can be declared at two different levels:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>global (outside any other declaration), or</p>
+</li>
+<li>
+<p>inside a class or instance declaration, including inside an <code>Add</code> construct.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>A global declaration will only be considered when the verb is not applied to any instance (i.e. such as the player referring to an object).
 In fact, a global verb cannot include any parameters in their syntax declaration.</p>
 </div>
 <div class="paragraph">
-<p>A verb declaration inside a class definition or an instance will be considered if that instance (or an instance inheriting from that class) is used as a parameter in the input.</p>
+<p>A verb declaration inside a class or instance definition will be considered if that instance (or an instance inheriting from that class) is used as a parameter in the input.</p>
 </div>
 <div class="paragraph">
-<p>The identifiers in the list (<code>take</code> and <code>get</code> in the example above) will be player words that by default can be used to invoke the verb.
+<p>The identifiers in the list (<code>take</code> and <code>get</code> in the example above) will become the default player words that can be used to invoke the verb.
 But if a <code>Syntax</code> is declared for the <code>Verb</code> (see <a href="#_syntax_definitions">Sect. 3.9</a>), the identifiers in the list will not be accessible to the player, instead the sequence of words and parameters specified in the <code>Syntax</code> must be used.</p>
 </div>
 <div class="paragraph">
 <p>If there is more than one identifier in the list, as in the example above, this can be viewed as a short hand for declaring identical checks and bodies for all the verbs in the list.
-This will create synonymous actions for different verbs on the level where the verb declaration is.
+This will create synonymous actions for different verbs at the level of the verb declaration.
 They may differ in implementation at other places, i.e. if they are declared in the same verb declaration on one level in an inheritance tree, they can still have different bodies on another level.</p>
 </div>
 <div class="sect3">
 <h4 id="_meta_verbs"><a class="anchor" href="#_meta_verbs"></a>Meta Verbs</h4>
 <div class="paragraph">
 <p>
-Any action from the player usually takes one 'tick' in the default simulated game time.
-Sometimes you want a player command to <em>not</em> take a 'tick', for example administrative commands like 'help', 'score' etc.</p>
+Any action from the player usually takes one &#8216;tick&#8217; in the default simulated game time.
+Sometimes you want a player command to <em>not</em> consume a &#8216;tick&#8217;, for example administrative commands like &#8216;help&#8217;, &#8216;score&#8217; etc.</p>
 </div>
 <div class="paragraph">
-<p>You can do this by attaching  <code>Meta</code> in front of the verb definition:</p>
+<p>You can achieve this by attaching  <code>Meta</code> in front of the verb definition:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4995,11 +5006,11 @@ End Verb.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If your verb has multiple definitions, e.g. for various classes, applying <code>Meta</code> to any one of them will make the verb a meta verb, meaning that if the player uses that verb in any context and on any instance, it will take no tick, even if that particular definition did not have the <code>Meta</code> property explicitly expressed.
-A library might decide that 'score' was a meta verb and there is nothing you, as an author, can do to override that short of editing the library source.</p>
+<p>If your <code>Verb</code> has multiple definitions (e.g. for various classes) applying <code>Meta</code> to any one of them will make the verb a meta verb, meaning that if the player uses that verb in any context and on any instance, it won&#8217;t consume a tick, even if that particular definition did not have the <code>Meta</code> property explicitly expressed.
+A library might decide that <code>'score'</code> was a meta verb and there is nothing you, as an author, can do to override that short of editing the library source.</p>
 </div>
 <div class="paragraph">
-<p>A <code>Meta</code> verb also does not trigger evaluation of rules and events so they are genuinely &#8220;outside&#8221; the game and should only be used with verbs that are not considered part of the players progression inside the game.</p>
+<p>Furthermore, a <code>Meta</code> verb does not trigger evaluation of <code>Rule</code>s and <code>Event</code>s either, so they are genuinely &#8220;outside&#8221; the game and should only be used with verbs that are not considered part of the players progression inside the game.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5009,7 +5020,7 @@ A library might decide that 'score' was a meta verb and there is nothing you, as
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The meta verb feature only applies to the built in timing mechanism known as 'ticks', where every player command counts as 1 tick.
+<p>The <code>Meta Verb</code> feature only applies to the built-in timing mechanism known as &#8216;ticks&#8217;, where every player command counts as 1 tick.
 It is possible to implement your own timing mechanism, in which case the <code>Meta</code> does not help.</p>
 </div>
 </td>
@@ -12603,8 +12614,8 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.63<br>
-Last updated 2018-10-07 14:57:53 ora legale Europa occidentale
+Version 0.1.64<br>
+Last updated 2018-10-20 11:15:51 ora legale Europa occidentale
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">
