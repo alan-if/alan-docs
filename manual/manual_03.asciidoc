@@ -2733,7 +2733,6 @@ In most circumstances, this is the most logical order, but if another order is r
 These qualifiers alter the order of execution, a strict definition of this is described below.
 
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 === Verb Execution
@@ -2770,7 +2769,7 @@ It then continues with any inner regions (second column) and the current locatio
 The execution then proceeds to the parameters of the syntax in order (columns four through six), traversing the inheritance tree from the base class to the instance.
 
 
-[NOTE]
+[IMPORTANT]
 ================================================================================
 If you add a verb to the class `entity`, it will be inherited by all instances, including locations and objects.
 This will result in the execution of that verb body multiple times, since it will be in every column in the table above.
@@ -2782,27 +2781,30 @@ This will result in the execution of that verb body multiple times, since it wil
 
 There are cases where you don't want all the bodies to be executed, or there is a special need to execute them in a different order.
 The most common case is to prohibit other bodies to be executed, e.g. a verb body in a location might want to stop the player from throwing any object.
-This verb body must then ensure that it is the only verb bodies to be executed.
+This verb body must then ensure that it is the only verb body to be executed.
 This can be done using the `Only` qualifier (see <<Verb Qualification>>).
 
 Qualifiers control the order of execution of verb bodies.
 How does this work?
 
 First, starting at the "`innermost`" according to the table above, the verb in the last parameter (if any) is investigated and, if any of its (inherited) verb bodies have the `Before` or `Only` qualifier it is executed.
-If the qualifier was `Only` the execution is also aborted at this stage and no more verb definitions are examined, otherwise the other parameters are examined in the same way.
+If the qualifier was `Only` then execution is also aborted at this stage and no more verb definitions are examined, otherwise the other parameters are examined in the same way.
 
-In the next step, the current location is examined and, if it contains (or inherits) a verb definition with a `Before` or `Only` qualifier, that definition is now executed (and if the qualifier was `Only`, execution is aborted).
+In the next step, the current location is examined and, if it contains (or inherits) a verb definition with a `Before` or `Only` qualifier, that definition is executed now (and if the qualifier was `Only`, execution is also aborted).
 Since locations can be nested, the surrounding locations are then examined in the same way.
 
 As a result of this behaviour, a `Before` qualifier in the verb definition in an object parameter will supersede an `Only` qualifier in the location.
 
 At this stage, all `Before` and `Only` qualifiers are handled appropriately.
 This only leaves the definitions without any qualifier or with the `After` qualifier.
-The outermost verb body (as indicated in the table above) is examined and if it did not have the `After` specification, it is executed (if it had an `Only` qualifier execution is stopped after executing it).
+The outermost verb body (as indicated in the table above) is examined and if it did not have the `After` specification, it is executed (if it had an `Only` qualifier then no furhter executions will be taken into consideration).
 Any definition of the verb in the current location is again examined and, if it did not have the `After` qualifier, it is executed.
 What remains is to execute the verb definition in the parameters if they have not been executed already, and to execute the location definition if they where declared with the `After` qualifier.
 
 So in short (with base class definitions of the outermost location being the outermost and the instance bound to the last syntax parameter the innermost):
+
+// @FIXME: Seems wrong: Aren't BEFORE verbs exectured from the inside out? ie. in
+//         reverse order?
 
 * From the outside in, find any `Before` or `Only` definitions and execute them (stop if `Only` found).
 * From the inside out, execute any definitions not already executed and not declared with the `After` qualifier.
@@ -2860,7 +2862,7 @@ End Event.
 --------------------------------------------------------------------------------
 
 The body of an event can be any sequence of statements.
-They can however not refer to any parameters, since no verb is executing, or the `Current Actor`.
+however, they can not refer to any parameters, since no verb is executing, nor to the `Current Actor`.
 See <<Run-Time Contexts,_Run-Time Contexts_>>.
 
 Events may be scheduled and cancelled with the `Schedule` and `Cancel` statements (see <<Event Statements,_Event Statements_>>).
@@ -2895,6 +2897,7 @@ End When.
 
 The expression that is tested may of course have any level of complexity:
 
+[source,alan]
 --------------------------------------------------------------------------------
 When hero At cave
   And (monster Is hungry Or monster Is angry)
@@ -2909,21 +2912,21 @@ All rule conditionals are evaluated (((RULE, execution))) after each actor (incl
 In effect this will mean that a change in state will be detected almost immediately, if there is a rule for detecting that change.
 
 The statements within the rule are triggered when the condition _becomes_ true.
-In the first example, this means that if the monster is not active, the statements will be executed when the hero enters the cave ('hero At cave' becomes true).
+In the first example, this means that if the monster is not active, the statements will be executed when the hero enters the cave (`hero At cave` becomes true).
 A rule body can never be executed twice in succession unless the conditional has been evaluated to false in between.
-In the example above, the triggering of the hunting script for the monster will not happen again unless either the hero has left the cave and entered it again, or the monster has been active and then become not active again.
+In the example above, the triggering of the `hunting` script for the monster will not happen again unless either the hero has left the cave and entered it again, or the monster has been `active` and then become `NOT active` again.
 
 The use of parameters, `Current Actor`, `Current Location`, `Here` and `Nearby` is not allowed in rules conditionals or bodies.
 
 Rules are executed at no location.
-Therefore it is not possible to communicate directly with the player in the rule with output statements (since the hero cannot be where the rule is executing, see <<Output Statements>>).
-Triggering an event that handles the output intended for the player, is the recommended solution to this.
+Therefore, within ``Rule``s it's not possible to communicate directly with the player via output statements (since the hero cannot be where the rule is executing, see <<Output Statements>>).
+Triggering an `Event` that handles the output intended for the player is the recommended solution to this.
 
 The following is a complete game using a rule:
 
 // FIXME: Render 'Count IsA actor, At kitchen = 1' in different BG color!
 
-[source,alan]
+[source,alan, subs="+quotes"]
 --------------------------------------------------------------------------------
 The kitchen IsA location
   Exit x To kitchen.
@@ -2941,7 +2944,7 @@ Start At kitchen.
 --------------------------------------------------------------------------------
 
 
-In this example the rule conditional (the text marked with grey) is using an aggregation (`count`, see <<Aggregates>>) over two filters (see <<Filters>>) that will count the number of actors at the kitchen, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.
+In this example the `Rule` conditional (i.e. `Count IsA actor, At kitchen = 1`) is using an aggregation (`count`, see <<Aggregates>>) over two filters (see <<Filters>>) that will count the number of ``actor``s at the `kitchen`, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.
 
 Again, remember that rules are checked after each actor has moved.
 What happens if there are more actors in play and they move in and out of the kitchen, is left as an exercise to the reader.
@@ -3009,9 +3012,13 @@ You can't go that way.
 ================================================================================
 
 
-The response "You can't go that way." is a typical example of such system messages (for details see <<Input Response Messages>>).
+The response "`You can't go that way.`" is a typical example of such system messages (for details see <<Input Response Messages>>).
 
-To make the user dialogue more adapted to the settings you select, Alan allows you to define your own version of these messages.
+// @NOTE: It's not clear what "to the settings you select" is referring to:
+//        The general Alan settings, or the adventures' settings (as in the epoch
+//        and environment the game takes place)?
+
+To better adapt the user dialogue to the settings you select, Alan allows you to define your own version of these messages.
 The grammar for this is
 
 (((BNF, rules of, MESSAGE)))
@@ -3062,7 +3069,7 @@ For a complete list of all the identifiers of messages and their use, see <<Run-
 
 === Message parameters
 
-Message sections must be declared at the global level, but to make it possible to create high-quality messages the message sections have parameters available.
+`Message` sections must be declared at the global level, but to make it possible to create high-quality messages, parameters are available in message sections.
 Which parameters are available vary depending on the message, the details for each message is available in <<Input Response Messages>>.
 
 The parameters can be used in the same way as in verb bodies.
@@ -3091,7 +3098,7 @@ The (((PROMPT, section))) `Prompt` section allows you to customize the way playe
 prompt = 'PROMPT' {statement}
 --------------------------------------------------------------------------------
 
-The default prompt for player input, which will be used if no `Prompt` section is declared, looks like
+The default prompt for player input, which will be used if no `Prompt` section is declared, looks like this:
 
 
 [example,role="gametranscript"]
@@ -3108,7 +3115,7 @@ Using the following `Prompt` section it can be set to something else:
 Prompt "What now?""
 --------------------------------------------------------------------------------
 
-Then the player will of course see
+Then the player will of course see:
 
 
 [example,role="gametranscript"]
@@ -3142,14 +3149,11 @@ Where do you want to go from Pirates Bay Harbor?
 ================================================================================
 
 
-
-
 [NOTE]
 ================================================================================
 The prompt section is global and applies to the whole game.
-There is currently no way to dynamically customize the prompt except by using the statements inside the Prompt section itself.
+There is currently no way to dynamically customize the prompt except by using the statements inside the `Prompt` section itself.
 ================================================================================
-
 
 
 
@@ -3165,7 +3169,7 @@ Optionally this may be followed by statements to be executed at the beginning of
 start_section = 'START' where '.' {statement}
 --------------------------------------------------------------------------------
 
-An example would be
+An example would be:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3186,7 +3190,7 @@ The start section must be the last declaration in an Alan source.
 
 === Output Statements
 
-There are various ways to present output (((output statements))) to the player, string output, descriptions, printing expressions, listing container content and showing pictures.
+There are various ways to present output (((output statements))) to the player: string output, descriptions, printing expressions, listing container content and showing pictures.
 
 The interpreter intersperses your output with spaces whenever needed.
 This might for example occur between two output strings:
@@ -3215,7 +3219,7 @@ Particularly, if the `Say` statement terminated the previous sentence, as in the
 So, the Alan interpreter will leave out the space between two outputs if the second starts with a period (full stop) followed by a space, or is the single character in the string.
 This special handling also applies to strings starting with a comma.
 
-Whenever an output statement is executed, the result will be printed on the players terminal with the following important exception: if an output statement is executed at a location in the game where the hero not presently is, the output will not be shown.
+Whenever an output statement is executed, the result will be printed on the players terminal with the following important exception: if an output statement is executed at a game location other than the hero's location, the output won't be shown.
 This important feature will relieve the author from the burden of constantly considering what the player will see.
 It can be used in the following way:
 
@@ -3228,7 +3232,7 @@ Locate charlie_chaplin At outside_house.
 
 If the hero is inside the house or out in the street, he will get different views of the situation.
 This feature ensures that the player only sees what is going on at the current location, and allows for easy adaptation to various viewpoints on the events without the need for any special tests.
-But see <<Distant Events,_Distant Events_>> for a solution in the case the hero need to be informed about things happening where he isn't.
+But see <<Distant Events,_Distant Events_>> for a solution in case the hero need to be informed about things happening in other locations.
 
 
 
@@ -3274,7 +3278,7 @@ Some character combinations (((character combinations, in strings))) have specia
 [NOTE]
 ================================================================================
 You might want to output "`$400`" but "`$4`" will be interpreted as the indefinite form of the fourth parameter, as described below.
-So you need to use the '`&#95;`' to make that happen ("`$&#95;400`").
+So you need to use the '`&#95;`' to make that happen (`$&#95;400`).
 ================================================================================
 
 
@@ -3326,11 +3330,16 @@ style = 'NORMAL'
       | 'QUOTE'
 --------------------------------------------------------------------------------
 
-
+// @NOTE: The following paragraph doesn't clarify that to end an inlne EMPHASIZED
+//        style NORMAL should be used --- it seems to say that even NORMAL would
+//        apply to the whole paragraph.
 
 The style of the text output can be controlled using the `Style` statement.
 With the exception of the `Emphasized` style, the styles are intended to be applied to whole paragraphs.
 The style indicated in the statement applies until another `Style` statement is executed.
+
+
+// @TODO: Adding an example would be nice.
 
 
 [NOTE]
@@ -3351,17 +3360,17 @@ output_statement = 'DESCRIBE' what '.'
 --------------------------------------------------------------------------------
 
 The (((DESCRIBE, statement))) `Describe` statement executes the description part for an instance, such as an actor, an object or a location.
-If no such description exists a default description, such as
+If no such description exists a default description, such as:
 
-[source,alan]
---------------------------------------------------------------------------------
-"There is a coin here."
---------------------------------------------------------------------------------
+[example,role="gametranscript"]
+================================================================================
+There is a coin here.
+================================================================================
 
 is used instead.
 In this case, if the instance has the container property, a `List` statement is also executed for that object automatically (see below).
 
-If a `Describe` statement is executed for another instance during the execution of the description clause, the system will recognise this and make sure that the second instance is not described more than once.
+If a `Describe` statement is executed for another instance during the execution of the `Description` clause, the system will recognise this and make sure that the second instance is not described more than once.
 This makes it possible to use instances as parts of a location and embedding their description at the correct place in the longer description of the location.
 
 [source,alan]
@@ -3374,6 +3383,7 @@ DESCRIBE desk.
 --------------------------------------------------------------------------------
 
 
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 ==== Say Statement

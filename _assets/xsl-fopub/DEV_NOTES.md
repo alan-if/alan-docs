@@ -99,6 +99,7 @@ Asciidoctor-fopub uses the following components versions:
 - [DocBook XSL: The Complete Guide]:
     + [Adding a font] — tutorial (FOP v0.93)
     + [Syntax highlighting]
+        * [ProgramListings]
 - [DocBook XSL Stylesheets: Reference Documentation]:
     + [`highlight.source`][highlight.source]
 - [XSLTHL Wiki]:
@@ -197,6 +198,7 @@ Dependencies:
 [DocBook XSL: The Complete Guide]: http://www.sagehill.net/docbookxsl/index.html
 [Adding a font]: http://www.sagehill.net/docbookxsl/AddFont.html
 [Syntax highlighting]: http://www.sagehill.net/docbookxsl/SyntaxHighlighting.html
+[ProgramListings]: http://www.sagehill.net/docbookxsl/ProgramListings.html
 
 <!-- Wikipedia -->
 

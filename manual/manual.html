@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.67,</span>
+<span id="revnumber">version 0.1.68,</span>
 <span id="revdate">November 24, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.67
+<pre>Doc version: 0.1.68
 Last edited: November 24, 2018</pre>
 </div>
 </div>
@@ -5329,11 +5329,11 @@ Starting with any base classes to the outermost region (containing location), co
 It then continues with any inner regions (second column) and the current location itself (third column).
 The execution then proceeds to the parameters of the syntax in order (columns four through six), traversing the inheritance tree from the base class to the instance.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -5349,7 +5349,7 @@ This will result in the execution of that verb body multiple times, since it wil
 <div class="paragraph">
 <p>There are cases where you don&#8217;t want all the bodies to be executed, or there is a special need to execute them in a different order.
 The most common case is to prohibit other bodies to be executed, e.g. a verb body in a location might want to stop the player from throwing any object.
-This verb body must then ensure that it is the only verb bodies to be executed.
+This verb body must then ensure that it is the only verb body to be executed.
 This can be done using the <code>Only</code> qualifier (see <a href="#_verb_qualification">Sect. 3.10.6</a>).</p>
 </div>
 <div class="paragraph">
@@ -5358,10 +5358,10 @@ How does this work?</p>
 </div>
 <div class="paragraph">
 <p>First, starting at the &#8220;innermost&#8221; according to the table above, the verb in the last parameter (if any) is investigated and, if any of its (inherited) verb bodies have the <code>Before</code> or <code>Only</code> qualifier it is executed.
-If the qualifier was <code>Only</code> the execution is also aborted at this stage and no more verb definitions are examined, otherwise the other parameters are examined in the same way.</p>
+If the qualifier was <code>Only</code> then execution is also aborted at this stage and no more verb definitions are examined, otherwise the other parameters are examined in the same way.</p>
 </div>
 <div class="paragraph">
-<p>In the next step, the current location is examined and, if it contains (or inherits) a verb definition with a <code>Before</code> or <code>Only</code> qualifier, that definition is now executed (and if the qualifier was <code>Only</code>, execution is aborted).
+<p>In the next step, the current location is examined and, if it contains (or inherits) a verb definition with a <code>Before</code> or <code>Only</code> qualifier, that definition is executed now (and if the qualifier was <code>Only</code>, execution is also aborted).
 Since locations can be nested, the surrounding locations are then examined in the same way.</p>
 </div>
 <div class="paragraph">
@@ -5370,7 +5370,7 @@ Since locations can be nested, the surrounding locations are then examined in th
 <div class="paragraph">
 <p>At this stage, all <code>Before</code> and <code>Only</code> qualifiers are handled appropriately.
 This only leaves the definitions without any qualifier or with the <code>After</code> qualifier.
-The outermost verb body (as indicated in the table above) is examined and if it did not have the <code>After</code> specification, it is executed (if it had an <code>Only</code> qualifier execution is stopped after executing it).
+The outermost verb body (as indicated in the table above) is examined and if it did not have the <code>After</code> specification, it is executed (if it had an <code>Only</code> qualifier then no furhter executions will be taken into consideration).
 Any definition of the verb in the current location is again examined and, if it did not have the <code>After</code> qualifier, it is executed.
 What remains is to execute the verb definition in the parameters if they have not been executed already, and to execute the location definition if they where declared with the <code>After</code> qualifier.</p>
 </div>
@@ -5453,7 +5453,7 @@ End Event.</code></pre>
 </div>
 <div class="paragraph">
 <p>The body of an event can be any sequence of statements.
-They can however not refer to any parameters, since no verb is executing, or the <code>Current Actor</code>.
+however, they can not refer to any parameters, since no verb is executing, nor to the <code>Current Actor</code>.
 See <a href="#_run_time_contexts"><em>Run-Time Contexts</em></a>.</p>
 </div>
 <div class="paragraph">
@@ -5494,12 +5494,12 @@ End When.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>When hero At cave
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">When hero At cave
   And (monster Is hungry Or monster Is angry)
   And sword Not In hero
 =&gt;
   Use Script eat_hero For monster.
-End When.</pre>
+End When.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5509,17 +5509,17 @@ In effect this will mean that a change in state will be detected almost immediat
 </div>
 <div class="paragraph">
 <p>The statements within the rule are triggered when the condition <em>becomes</em> true.
-In the first example, this means that if the monster is not active, the statements will be executed when the hero enters the cave ('hero At cave' becomes true).
+In the first example, this means that if the monster is not active, the statements will be executed when the hero enters the cave (<code>hero At cave</code> becomes true).
 A rule body can never be executed twice in succession unless the conditional has been evaluated to false in between.
-In the example above, the triggering of the hunting script for the monster will not happen again unless either the hero has left the cave and entered it again, or the monster has been active and then become not active again.</p>
+In the example above, the triggering of the <code>hunting</code> script for the monster will not happen again unless either the hero has left the cave and entered it again, or the monster has been <code>active</code> and then become <code>NOT active</code> again.</p>
 </div>
 <div class="paragraph">
 <p>The use of parameters, <code>Current Actor</code>, <code>Current Location</code>, <code>Here</code> and <code>Nearby</code> is not allowed in rules conditionals or bodies.</p>
 </div>
 <div class="paragraph">
 <p>Rules are executed at no location.
-Therefore it is not possible to communicate directly with the player in the rule with output statements (since the hero cannot be where the rule is executing, see <a href="#_output_statements">Sect. 3.17.1</a>).
-Triggering an event that handles the output intended for the player, is the recommended solution to this.</p>
+Therefore, within <code>Rule</code>s it&#8217;s not possible to communicate directly with the player via output statements (since the hero cannot be where the rule is executing, see <a href="#_output_statements">Sect. 3.17.1</a>).
+Triggering an <code>Event</code> that handles the output intended for the player is the recommended solution to this.</p>
 </div>
 <div class="paragraph">
 <p>The following is a complete game using a rule:</p>
@@ -5542,7 +5542,7 @@ Start At kitchen.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example the rule conditional (the text marked with grey) is using an aggregation (<code>count</code>, see <a href="#_aggregates">Sect. 3.20.13</a>) over two filters (see <a href="#_filters">Sect. 3.21</a>) that will count the number of actors at the kitchen, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.</p>
+<p>In this example the <code>Rule</code> conditional (i.e. <code>Count IsA actor, At kitchen = 1</code>) is using an aggregation (<code>count</code>, see <a href="#_aggregates">Sect. 3.20.13</a>) over two filters (see <a href="#_filters">Sect. 3.21</a>) that will count the number of <code>actor</code>s at the <code>kitchen</code>, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.</p>
 </div>
 <div class="paragraph">
 <p>Again, remember that rules are checked after each actor has moved.
@@ -5619,10 +5619,10 @@ You can&#8217;t go that way.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The response "You can&#8217;t go that way." is a typical example of such system messages (for details see <a href="#_input_response_messages">Sect. C.1</a>).</p>
+<p>The response &#8220;You can&#8217;t go that way.&#8221; is a typical example of such system messages (for details see <a href="#_input_response_messages">Sect. C.1</a>).</p>
 </div>
 <div class="paragraph">
-<p>To make the user dialogue more adapted to the settings you select, Alan allows you to define your own version of these messages.
+<p>To better adapt the user dialogue to the settings you select, Alan allows you to define your own version of these messages.
 The grammar for this is</p>
 </div>
 <div class="paragraph">
@@ -5675,7 +5675,7 @@ For a complete list of all the identifiers of messages and their use, see <a hre
 <div class="sect3">
 <h4 id="_message_parameters"><a class="anchor" href="#_message_parameters"></a>Message parameters</h4>
 <div class="paragraph">
-<p>Message sections must be declared at the global level, but to make it possible to create high-quality messages the message sections have parameters available.
+<p><code>Message</code> sections must be declared at the global level, but to make it possible to create high-quality messages, parameters are available in message sections.
 Which parameters are available vary depending on the message, the details for each message is available in <a href="#_input_response_messages">Sect. C.1</a>.</p>
 </div>
 <div class="paragraph">
@@ -5718,7 +5718,7 @@ Any attribute available for this class will be available in message sections wit
 </div>
 </div>
 <div class="paragraph">
-<p>The default prompt for player input, which will be used if no <code>Prompt</code> section is declared, looks like</p>
+<p>The default prompt for player input, which will be used if no <code>Prompt</code> section is declared, looks like this:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -5736,7 +5736,7 @@ Any attribute available for this class will be available in message sections wit
 </div>
 </div>
 <div class="paragraph">
-<p>Then the player will of course see</p>
+<p>Then the player will of course see:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -5779,7 +5779,7 @@ Where do you want to go from Pirates Bay Harbor?</p>
 <td class="content">
 <div class="paragraph">
 <p>The prompt section is global and applies to the whole game.
-There is currently no way to dynamically customize the prompt except by using the statements inside the Prompt section itself.</p>
+There is currently no way to dynamically customize the prompt except by using the statements inside the <code>Prompt</code> section itself.</p>
 </div>
 </td>
 </tr>
@@ -5802,7 +5802,7 @@ Optionally this may be followed by statements to be executed at the beginning of
 </div>
 </div>
 <div class="paragraph">
-<p>An example would be</p>
+<p>An example would be:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5823,7 +5823,7 @@ Any statements are allowed in the start section but they cannot refer to any par
 <div class="sect3">
 <h4 id="_output_statements"><a class="anchor" href="#_output_statements"></a>Output Statements</h4>
 <div class="paragraph">
-<p>There are various ways to present output  to the player, string output, descriptions, printing expressions, listing container content and showing pictures.</p>
+<p>There are various ways to present output  to the player: string output, descriptions, printing expressions, listing container content and showing pictures.</p>
 </div>
 <div class="paragraph">
 <p>The interpreter intersperses your output with spaces whenever needed.
@@ -5856,7 +5856,7 @@ So, the Alan interpreter will leave out the space between two outputs if the sec
 This special handling also applies to strings starting with a comma.</p>
 </div>
 <div class="paragraph">
-<p>Whenever an output statement is executed, the result will be printed on the players terminal with the following important exception: if an output statement is executed at a location in the game where the hero not presently is, the output will not be shown.
+<p>Whenever an output statement is executed, the result will be printed on the players terminal with the following important exception: if an output statement is executed at a game location other than the hero&#8217;s location, the output won&#8217;t be shown.
 This important feature will relieve the author from the burden of constantly considering what the player will see.
 It can be used in the following way:</p>
 </div>
@@ -5870,7 +5870,7 @@ Locate charlie_chaplin At outside_house.
 <div class="paragraph">
 <p>If the hero is inside the house or out in the street, he will get different views of the situation.
 This feature ensures that the player only sees what is going on at the current location, and allows for easy adaptation to various viewpoints on the events without the need for any special tests.
-But see <a href="#_distant_events"><em>Distant Events</em></a> for a solution in the case the hero need to be informed about things happening where he isn&#8217;t.</p>
+But see <a href="#_distant_events"><em>Distant Events</em></a> for a solution in case the hero need to be informed about things happening in other locations.</p>
 </div>
 <div class="sect4">
 <h5 id="_string_statement"><a class="anchor" href="#_string_statement"></a>String Statement</h5>
@@ -5911,7 +5911,7 @@ See also <a href="#_strings">Sect. 4.4</a> for some detailed descriptions on the
 <td class="content">
 <div class="paragraph">
 <p>You might want to output &#8220;$400&#8221; but &#8220;$4&#8221; will be interpreted as the indefinite form of the fourth parameter, as described below.
-So you need to use the &#8216;&#95;&#8217; to make that happen (&#8220;$&#95;400&#8221;).</p>
+So you need to use the &#8216;&#95;&#8217; to make that happen (<code>$&#95;400</code>).</p>
 </div>
 </td>
 </tr>
@@ -6013,11 +6013,13 @@ In fact, there is no guarantee that the styles will actually differ.</p>
 </div>
 <div class="paragraph">
 <p>The  <code>Describe</code> statement executes the description part for an instance, such as an actor, an object or a location.
-If no such description exists a default description, such as</p>
+If no such description exists a default description, such as:</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock gametranscript">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">"There is a coin here."</code></pre>
+<div class="paragraph">
+<p>There is a coin here.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -6025,7 +6027,7 @@ If no such description exists a default description, such as</p>
 In this case, if the instance has the container property, a <code>List</code> statement is also executed for that object automatically (see below).</p>
 </div>
 <div class="paragraph">
-<p>If a <code>Describe</code> statement is executed for another instance during the execution of the description clause, the system will recognise this and make sure that the second instance is not described more than once.
+<p>If a <code>Describe</code> statement is executed for another instance during the execution of the <code>Description</code> clause, the system will recognise this and make sure that the second instance is not described more than once.
 This makes it possible to use instances as parts of a location and embedding their description at the correct place in the longer description of the location.</p>
 </div>
 <div class="listingblock">
@@ -12623,7 +12625,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.67<br>
+Version 0.1.68<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">
