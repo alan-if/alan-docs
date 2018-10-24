@@ -1,4 +1,4 @@
-:: "HTML_BUILD.bat" v1.0.0 (2018/10/07) by Tristano Ajmone
+:: "HTML_BUILD.bat" v1.0.1 (2018/10/24) by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: This script is released into public domain via the Unlicense:
 ::     http://unlicense.org/
@@ -20,14 +20,16 @@ EXIT /B
 
 ECHO Converting to HTML: %~n1.html
 CALL asciidoctor^
-    --safe-mode unsafe^
-    --verbose^
-    -a data-uri!^
-    -a icons=font^
-    -a toc=left^
-    -a experimental^
-    -a source-highlighter=highlightjs^
-    -a highlightjsdir=../../_assets/hjs^
-    %1
+  --safe-mode unsafe^
+  --verbose^
+  -a data-uri^
+  -a experimental^
+  -a icons=font^
+  -a reproducible^
+  -a sectanchors^
+  -a toc=left^
+  -a source-highlighter=highlightjs^
+  -a highlightjsdir=../../_assets/hjs^
+  %1
 EXIT /B
 

@@ -1,4 +1,4 @@
-:: "HTML_BUILD.bat" v1.1.0 (2018/09/30) by Tristano Ajmone
+:: "HTML_BUILD.bat" v1.1.1 (2018/10/24) by Tristano Ajmone
 @ECHO.
 @ECHO ==============================================================================
 @ECHO Converting "The ALAN Language Manual" to a standalone HTML5 document...
@@ -9,9 +9,11 @@ asciidoctor^
   --safe-mode unsafe^
   --verbose^
   -a data-uri^
-  -a icons=font^
-  -a toc=left^
   -a experimental^
+  -a icons=font^
+  -a reproducible^
+  -a sectanchors^
+  -a toc=left^
   -a source-highlighter=highlightjs^
   -a highlightjsdir=../_assets/hjs^
   manual.asciidoc
