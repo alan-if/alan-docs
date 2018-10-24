@@ -63,7 +63,7 @@ The option should be followed with one of the keywords `iso`, `mac` or `dos`
 * `-verbose` print compiler version and other verbose messages
 * `-warnings`, `-infos` show warning (and/or informational) messages from the compilation process
 * `-import` (((including files, compiler switches))) add a directory to the search path for imported files (see <<Filenames>> for details on the `Import` statement).
-This switch can be used multiple times, each adding a new directory
+  This switch can be used multiple times, each adding a new directory
 * `-listing` direct compiler output (error messages etc.) to a file with the same base name as the input (source) file, but with the extension *.lis*
 * `-full` will produce a complete listing of the source on the screen, or if combined with the `-listing` option, in the listing file
 * `-debug` include debugging information in the produced adventure files (same as the debug option, see <<Options>>)
@@ -103,11 +103,14 @@ $ adventure
 ((interpreter, switches))
 The ((interpreter)) supports the following switches:
 
-* `-v` print the version of the interpreter
+* `-v` verbose mode
+* `-l` log game transcript in a log-file in the current directory
+* `-c` log all player commands in a log-file in the current directory
+* `-n` no Status Line
 * `-d` print the version of interpreter and enter debug mode
-* `-i` ignore CRC and version errors in the adventure files
 * `-t[<n>]` various levels of execution trace, higher <n> gives more details
-* `-l` log all player command in a log-file in the current directory
+* `-i` ignore CRC and version errors in the adventure files
+* `-r` make regression test easier (don't timestamp, page break, randomize...)
 
 Debugging support is described in <<Debugging>>.
 

@@ -435,8 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.66,</span>
-<span id="revdate">November 20, 2018</span>
+<span id="revnumber">version 0.1.67,</span>
+<span id="revdate">November 24, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -831,8 +831,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.66
-Last edited: November 20, 2018</pre>
+<pre>Doc version: 0.1.67
+Last edited: November 24, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -10050,19 +10050,28 @@ The interpreter supports the following switches:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>-v</code> print the version of the interpreter</p>
+<p><code>-v</code> verbose mode</p>
+</li>
+<li>
+<p><code>-l</code> log game transcript in a log-file in the current directory</p>
+</li>
+<li>
+<p><code>-c</code> log all player commands in a log-file in the current directory</p>
+</li>
+<li>
+<p><code>-n</code> no Status Line</p>
 </li>
 <li>
 <p><code>-d</code> print the version of interpreter and enter debug mode</p>
 </li>
 <li>
-<p><code>-i</code> ignore CRC and version errors in the adventure files</p>
-</li>
-<li>
 <p><code>-t[&lt;n&gt;]</code> various levels of execution trace, higher &lt;n&gt; gives more details</p>
 </li>
 <li>
-<p><code>-l</code> log all player command in a log-file in the current directory</p>
+<p><code>-i</code> ignore CRC and version errors in the adventure files</p>
+</li>
+<li>
+<p><code>-r</code> make regression test easier (don&#8217;t timestamp, page break, randomize&#8230;&#8203;)</p>
 </li>
 </ul>
 </div>
@@ -12614,8 +12623,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.66<br>
-Last updated 2018-10-20 15:01:38 ora legale Europa occidentale
+Version 0.1.67<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">
