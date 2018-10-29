@@ -435,8 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.68,</span>
-<span id="revdate">November 24, 2018</span>
+<span id="revnumber">version 0.1.69,</span>
+<span id="revdate">November 29, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -831,8 +831,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.68
-Last edited: November 24, 2018</pre>
+<pre>Doc version: 0.1.69
+Last edited: November 29, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -6055,15 +6055,15 @@ form = 'THE' | 'AN' | 'IT' | 'NO'</code></pre>
 </div>
 <div class="paragraph">
 <p>The  <code>Say</code> statement will output a short description of what is referred to by the expression.
-If it refers to an instance, it will print the name of it or execute its <code>Mentioned</code> clause if one is available.
+If it refers to an instance, it will print its name or execute its <code>Mentioned</code> clause if one is available.
 If it refers to an attribute, it will print its value, such as an integer or a string.
-Parameter names are also allowed in the <code>Say</code> statement, which, of course will result in a short description of the instance to which it is bound, or a printing of the literal (if the parameter was a <code>string</code> or <code>integer</code> parameter).</p>
+Parameter names are also allowed in the <code>Say</code> statement, which, of course will result in a short description of the instance to which it is bound, or in a literal printout if the parameter was a <code>string</code> or <code>integer</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If contents Of bottle &gt; 0 Then
   "In the bottle there are still"
-  Say contents OF bottle.
+  Say contents Of bottle.
   "litres of water left."
 Else
   "The bottle is empty."
@@ -6071,15 +6071,15 @@ End If.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the <strong>what</strong> part refers to an instance, the optional <code>form</code> may be used to control in which form the instance will be output.</p>
+<p>If the <strong>what</strong> part refers to an instance, the optional <strong>form</strong> may be used to control in which form the instance will be output.</p>
 </div>
 <div class="paragraph">
-<p>If <code>THE</code> is used the form used will be the definite form, usually the short form preceded by a definite article.
-Correspondingly, the use of <code>AN</code> indicates an indefinite form.
-A third form, using <code>NO</code>, is available.
-It indicates that the negative form as defined by the negative article or form should be output.
+<p>If <code>The</code> is used, then the definite form will be employed, which is usually the short form preceded by a definite article.
+Correspondingly, the use of <code>An</code> indicates an indefinite form.
+A third form, using <code>No</code>, is also available.
+It indicates that the negative form (as defined by the negative article or form) should be output.
 Refer to <a href="#_articles_and_forms">Sect. 3.7.8</a> for a description of the definite/indefinite articles and forms.
-Finally, the <code>IT</code> form will print the pronoun associated with the instance.</p>
+Finally, the <code>It</code> form will print the pronoun associated with the instance.</p>
 </div>
 </div>
 <div class="sect4">
@@ -6094,8 +6094,8 @@ Finally, the <code>IT</code> form will print the pronoun associated with the ins
 </div>
 </div>
 <div class="paragraph">
-<p>The  <code>List</code> statement lists all objects in a container together with the header as specified for the container.
-If the container is empty, the statements in the empty clause of the container are executed instead.</p>
+<p>The  <code>List</code> statement lists all objects in a container together with the <code>Header</code> as specified for the container.
+If the container is empty, the statements in the <code>Empty</code> clause of the container are executed instead.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6106,8 +6106,8 @@ End If.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Of course, the instance being listed must be an instance that has the container property, which may be inherited.
-This instance can be referred to by being bound to a parameter or a reference attribute for example.</p>
+<p>Of course, the instance being listed must be an instance that has the <code>Container</code> property, which may be inherited.
+This instance can be referred to by being bound to a parameter or a reference attribute, for example.</p>
 </div>
 </div>
 </div>
@@ -6119,8 +6119,8 @@ The <code>Show</code> statement, presents an image in the output window, and the
 </div>
 <div class="paragraph">
 <p>The Alan compiler will always support the multi-media statements, but a particular interpreter might not do so.
-Most GLK-based interpreters will support it but others might also.
-The game will still play fine, but the multi-media resources will silently be ignored.
+Most GLK-based interpreters will support them, but other kind of interpreters might too.
+The game will still play fine, but the multi-media resources will be silently ignored.
 There is also no way to check for this in your source code.
 So, don&#8217;t rely on them for your story, particularly do not give the player necessary information only through pictures.</p>
 </div>
@@ -6129,7 +6129,7 @@ So, don&#8217;t rely on them for your story, particularly do not give the player
 The original file will be left untouched.</p>
 </div>
 <div class="paragraph">
-<p>The format of the resource file follows the standard interactive fiction resource file format &#8220;blorb&#8221; and supports images of JPEG and PNG types, and sounds of MOD and AIFF formats.</p>
+<p>The format of the resource file follows the standard interactive fiction resource file format &#8220;blorb&#8221; and supports images of JPEG and PNG types, and sounds in MOD and AIFF formats.</p>
 </div>
 <div class="paragraph">
 <p>If a resource file is referenced from multiple statements, it will only be copied once.
@@ -6152,7 +6152,7 @@ The following extensions are recognized: <strong>.jpg</strong>, <strong>.jpeg</s
 Since filenames may contain various special characters, a quoted identifier (see <a href="#_filenames"><em>Filenames</em></a>) is usually required.</p>
 </div>
 <div class="paragraph">
-<p>Alan currently supports the PNG and JPEG formats only.</p>
+<p>Alan currently supports the JPEG and PNG formats only.</p>
 </div>
 </div>
 <div class="sect4">
@@ -6171,7 +6171,7 @@ Since filenames may contain various special characters, a quoted identifier (see
 Since filenames may contain various special characters, a quoted identifier (see <a href="#_filenames"><em>Filenames</em></a>) is usually required.</p>
 </div>
 <div class="paragraph">
-<p>Alan currently supports the MOD and AIFF formats only.<a id="X30946"></a></p>
+<p>Alan currently supports the MOD and AIFF formats only.</p>
 </div>
 </div>
 </div>
@@ -6189,9 +6189,9 @@ Since filenames may contain various special characters, a quoted identifier (see
 </div>
 <div class="paragraph">
 <p>The  <code>Locate</code> statement is a way of transferring instances to new locations.
-When executed, the indicated instance will be placed at the location given.
-For a description on how to specify where, see <a href="#_where_specifications">Sect. 3.18</a>.
-When an actor is located at a new location the <code>DOES</code> clause of that location is always executed.</p>
+When executed, the indicated instance will be placed at the specified location.
+For a description on how to specify <strong>where</strong>, see <a href="#_where_specifications">Sect. 3.18</a>.
+When an actor is located at a new location the <code>Does</code> clause of that location is always executed.</p>
 </div>
 <div class="paragraph">
 <p>One special case of the <code>Locate</code> statement is when the predefined actor <code>hero</code> is located somewhere.
@@ -6215,12 +6215,12 @@ End Event explosion.</code></pre>
 </div>
 <div class="paragraph">
 <p>Another special case is when locating  something inside a container.
-The <code>Locate</code> statement will then cause the execution of the limits of that container, and if any of the limits are exceeded the complete player turn is aborted immediately, resulting in no more statements being executed.
-So, if a player command should result in the location of an object inside a container, a good thing is to place the <code>Locate</code> statement as early as possible, as this enforces the limit checks in the beginning of this player turn.</p>
+The <code>Locate</code> statement will then cause the execution of the <code>Limits</code> of that container, and if any of the limits are exceeded the complete player turn is aborted immediately, resulting in no more statements being executed.
+So, if a player command should result in locating an object inside a container, it&#8217;s better to place the <code>Locate</code> statement as early as possible, as this enforces the <code>Limits</code> checks at the beginning of this player turn.</p>
 </div>
 <div class="paragraph">
 <p>A very special third case is locating a location at another location.
-Locations can in this way be  nested, resulting in an outer location working as a region or surrounding for the inner location.
+Locations can be  nested this way, resulting in an outer location working as a region or surrounding for the inner location.
 The effect of this is that any instances present in the outer location are reachable from the inner.</p>
 </div>
 </div>
@@ -6236,7 +6236,7 @@ The effect of this is that any instances present in the outer location are reach
 </div>
 <div class="paragraph">
 <p>The  <code>Empty</code> statement locates all instances currently located inside the given container (instance with the <code>Container</code> property) at a certain location.
-The meaning of the <code>where</code> part, is the same as in the <code>Locate</code> statement.
+The meaning of the <strong>where</strong> part is the same as in the <code>Locate</code> statement.
 If it is not specified the instances will be placed at the current location.</p>
 </div>
 <div class="listingblock">
@@ -6272,7 +6272,7 @@ into_clause = 'INTO' expression</code></pre>
 <div class="paragraph">
 <p>The  <code>Strip</code> statement is used to manipulate the contents of  strings.
 You can use it to remove words or characters from a string, starting from the beginning or the end.
-The words or characters that are removed may be placed in an attribute as specified by the optional <strong>into clause</strong>.
+The words or characters that are removed may be placed in an attribute as specified by the optional <code>Into</code> clause.
 If the statement is used to manipulate words, blanks and separators are used to separate the words.
 In this case, any resulting string is also free of leading and trailing blanks.</p>
 </div>
@@ -6324,12 +6324,12 @@ End The eliza.</code></pre>
 If no location is specified, <code>Here</code> is assumed, i.e. it will be executed at the current location, the location where the statement itself was executed.</p>
 </div>
 <div class="paragraph">
-<p>An important case is when a <code>Schedule</code> statement without a <code>where</code>-clause is executed inside a <code>Rule</code>.
+<p>An important case is when a <code>Schedule</code> statement without a <strong>where</strong> clause is executed inside a <code>Rule</code>.
 Since rules are executed at nowhere so will the event.
-This means that any printout will be done nowhere and thus will be invisible to the player.</p>
+This means that any printout will occur nowhere, and will thus be invisible to the player.</p>
 </div>
 <div class="paragraph">
-<p>If the <code>where</code>-expression has the form <code>At id</code>, and the identifier represents an instance not inheriting from <code>location</code>, the event will occur wherever that instance is when the event occurs.
+<p>If the <strong>where</strong> expression has the form <code>At id</code>, and the identifier represents an instance not inheriting from <code>location</code>, the event will occur wherever that instance is when the event occurs.
 The event will &#8216;follow&#8217; the instance.</p>
 </div>
 <div class="paragraph">
@@ -6344,7 +6344,7 @@ An event can only be scheduled for one execution at a time.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The event can be specified by giving an event identifier or referring to an attribute of Event type.</p>
+<p>The event can be specified by giving an event identifier or referring to an attribute of <code>Event</code> type.</p>
 </div>
 </td>
 </tr>
@@ -6362,8 +6362,8 @@ An event can only be scheduled for one execution at a time.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><code>Cancel</code>  will remove the event referenced from the queue of scheduled events.
-It is not an error to remove an Event, which is not currently scheduled.</p>
+<p><code>Cancel</code>  will remove the referenced event from the queue of scheduled events.
+Canceling an <code>Event</code> which is not currently scheduled is not considered an error.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6390,7 +6390,7 @@ Start At office.
 </div>
 </div>
 <div class="paragraph">
-<p>The event can be referenced using any expression of Event type, e.g. an attribute.</p>
+<p>The event can be referenced using any expression of <code>Event</code> type, e.g. an attribute.</p>
 </div>
 </div>
 </div>
@@ -6437,8 +6437,8 @@ by = 'BY' expression</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>Increase</code>  and <code>Decrease</code>  statements modifies the values of numeric attributes by increasing or decreasing them by the value of the expression given in the optional <code>By</code> clause.
-If no <code>By</code> clause is specified the attributes are changed by one.</p>
+<p>The <code>Increase</code>  and <code>Decrease</code>  statements modify the value of numeric attributes by increasing or decreasing it by the value of the expression given in the optional <code>By</code> clause.
+If no <code>By</code> clause is specified the attribute is changed by one.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12625,7 +12625,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.68<br>
+Version 0.1.69<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">

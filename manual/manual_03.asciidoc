@@ -3383,7 +3383,6 @@ DESCRIBE desk.
 --------------------------------------------------------------------------------
 
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 ==== Say Statement
@@ -3399,15 +3398,15 @@ form = 'THE' | 'AN' | 'IT' | 'NO'
 
 
 The (((SAY, statement))) `Say` statement will output a short description of what is referred to by the expression.
-If it refers to an instance, it will print the name of it or execute its `Mentioned` clause if one is available.
+If it refers to an instance, it will print its name or execute its `Mentioned` clause if one is available.
 If it refers to an attribute, it will print its value, such as an integer or a string.
-Parameter names are also allowed in the `Say` statement, which, of course will result in a short description of the instance to which it is bound, or a printing of the literal (if the parameter was a `string` or `integer` parameter).
+Parameter names are also allowed in the `Say` statement, which, of course will result in a short description of the instance to which it is bound, or in a literal printout if the parameter was a `string` or `integer`.
 
 [source,alan]
 --------------------------------------------------------------------------------
 If contents Of bottle > 0 Then
   "In the bottle there are still"
-  Say contents OF bottle.
+  Say contents Of bottle.
   "litres of water left."
 Else
   "The bottle is empty."
@@ -3415,14 +3414,14 @@ End If.
 --------------------------------------------------------------------------------
 
 
-If the *what* part refers to an instance, the optional `form` may be used to control in which form the instance will be output.
+If the *what* part refers to an instance, the optional *form* may be used to control in which form the instance will be output.
 
-If `THE` is used the form used will be the definite form, usually the short form preceded by a definite article.
-Correspondingly, the use of `AN` indicates an indefinite form.
-A third form, using `NO`, is available.
-It indicates that the negative form as defined by the negative article or form should be output.
+If `The` is used, then the definite form will be employed, which is usually the short form preceded by a definite article.
+Correspondingly, the use of `An` indicates an indefinite form.
+A third form, using `No`, is also available.
+It indicates that the negative form (as defined by the negative article or form) should be output.
 Refer to <<Articles and Forms>> for a description of the definite/indefinite articles and forms.
-Finally, the `IT` form will print the pronoun associated with the instance.
+Finally, the `It` form will print the pronoun associated with the instance.
 
 
 
@@ -3435,8 +3434,8 @@ Finally, the `IT` form will print the pronoun associated with the instance.
 output_statement = 'LIST' expression '.'
 --------------------------------------------------------------------------------
 
-The (((LIST, statement))) `List` statement lists all objects in a container together with the header as specified for the container.
-If the container is empty, the statements in the empty clause of the container are executed instead.
+The (((LIST, statement))) `List` statement lists all objects in a container together with the `Header` as specified for the container.
+If the container is empty, the statements in the `Empty` clause of the container are executed instead.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3446,8 +3445,8 @@ If chest Is open Then
 End If.
 --------------------------------------------------------------------------------
 
-Of course, the instance being listed must be an instance that has the container property, which may be inherited.
-This instance can be referred to by being bound to a parameter or a ((reference attribute)) for example.
+Of course, the instance being listed must be an instance that has the `Container` property, which may be inherited.
+This instance can be referred to by being bound to a parameter or a ((reference attribute)), for example.
 
 === Multi-media Statements
 
@@ -3455,15 +3454,15 @@ Alan has some multimedia provisions, although they may not be available on every
 The `Show` statement, presents an image in the output window, and the `Play` statement plays a sound.
 
 The Alan compiler will always support the multi-media statements, but a particular interpreter might not do so.
-Most GLK-based interpreters will support it but others might also.
-The game will still play fine, but the multi-media resources will silently be ignored.
+Most GLK-based interpreters will support them, but other kind of interpreters might too.
+The game will still play fine, but the multi-media resources will be silently ignored.
 There is also no way to check for this in your source code.
 So, don't rely on them for your story, particularly do not give the player necessary information only through pictures.
 
 Image and sound files are analyzed by the compiler and copied into an Alan v3 resource file (file extension *.a3r*) that must be distributed with your game file, otherwise they will not be available during game play.
 The original file will be left untouched.
 
-The format of the resource file follows the standard interactive fiction resource file format "`blorb`" and supports images of JPEG and PNG types, and sounds of MOD and AIFF formats.
+The format of the resource file follows the standard interactive fiction resource file format "`blorb`" and supports images of JPEG and PNG types, and sounds in MOD and AIFF formats.
 
 If a resource file is referenced from multiple statements, it will only be copied once.
 The Alan compiler uses the file extension to determine the media type of the file.
@@ -3480,10 +3479,14 @@ The following extensions are recognized: *.jpg*, *.jpeg*, *.png*, *.mod*, *.aif*
 output_statement = 'SHOW' id '.'
 --------------------------------------------------------------------------------
 
+// NOTE: It's not very clear when it says "a quoted identifier is USUALLY required".
+//       If the file extension is mandatory, then a quoted id is ALWAYS required;
+//       otherwise not. Clarify...
+
 The *id* should be the name of an image file.
 Since filenames may contain various special characters, a quoted identifier (see <<Filenames,_Filenames_>>) is usually required.
 
-Alan currently supports the PNG and JPEG formats only.
+Alan currently supports the JPEG and PNG formats only.
 
 ==== Play Statement
 
@@ -3497,10 +3500,10 @@ output_statement = 'PLAY' id '.'
 The *id* should be the name of a sound file.
 Since filenames may contain various special characters, a quoted identifier (see <<Filenames,_Filenames_>>) is usually required.
 
-Alan currently supports the MOD and AIFF formats only.[[X30946]]
+Alan currently supports the MOD and AIFF formats only.
+
 
 === Manipulation Statements
-
 
 
 ==== Locate Statement
@@ -3512,9 +3515,9 @@ locate_statement = 'LOCATE' what where '.'
 --------------------------------------------------------------------------------
 
 The (((LOCATE, statement))) `Locate` statement is a way of transferring instances to new locations.
-When executed, the indicated instance will be placed at the location given.
-For a description on how to specify where, see <<WHERE Specifications>>.
-When an actor is located at a new location the `DOES` clause of that location is always executed.
+When executed, the indicated instance will be placed at the specified location.
+For a description on how to specify *where*, see <<WHERE Specifications>>.
+When an actor is located at a new location the `Does` clause of that location is always executed.
 
 One special case of the `Locate` statement is when the predefined actor `hero` is located somewhere.
 This is analogous to the player typing a direction, i.e. the hero will be located at the appropriate location.
@@ -3535,11 +3538,11 @@ End Event explosion.
 In this case, the new location will be described and the `Does` clause of that location executed.
 
 Another special case is when locating (((locating inside containers))) something inside a container.
-The `Locate` statement will then cause the execution of the limits of that container, and if any of the limits are exceeded the complete player turn is aborted immediately, resulting in no more statements being executed.
-So, if a player command should result in the location of an object inside a container, a good thing is to place the `Locate` statement as early as possible, as this enforces the limit checks in the beginning of this player turn.
+The `Locate` statement will then cause the execution of the `Limits` of that container, and if any of the limits are exceeded the complete player turn is aborted immediately, resulting in no more statements being executed.
+So, if a player command should result in locating an object inside a container, it's better to place the `Locate` statement as early as possible, as this enforces the `Limits` checks at the beginning of this player turn.
 
 A very special third case is locating a location at another location.
-Locations can in this way be (((nested locations))) nested, resulting in an outer location working as a region or surrounding for the inner location.
+Locations can be (((nested locations))) nested this way, resulting in an outer location working as a region or surrounding for the inner location.
 The effect of this is that any instances present in the outer location are reachable from the inner.
 
 
@@ -3553,7 +3556,7 @@ empty_statement = 'EMPTY' what [where] '.'
 --------------------------------------------------------------------------------
 
 The (((EMPTY, statement))) `Empty` statement locates all instances currently located inside the given container (instance with the `Container` property) at a certain location.
-The meaning of the `where` part, is the same as in the `Locate` statement.
+The meaning of the *where* part is the same as in the `Locate` statement.
 If it is not specified the instances will be placed at the current location.
 
 [source,alan]
@@ -3592,9 +3595,13 @@ into_clause = 'INTO' expression
 
 The (((STRIP, statement))) `Strip` statement is used to manipulate the contents of (((string, functions))) strings.
 You can use it to remove words or characters from a string, starting from the beginning or the end.
-The words or characters that are removed may be placed in an attribute as specified by the optional *into clause*.
+The words or characters that are removed may be placed in an attribute as specified by the optional `Into` clause.
 If the statement is used to manipulate words, blanks and separators are used to separate the words.
 In this case, any resulting string is also free of leading and trailing blanks.
+
+// @NOTE: It's not clear in the following example if the line:
+//          Strip First Word From topic Into topic.
+//        will replace the contents of 'topic', or if it will append to them, etc.
 
 A short example:
 
@@ -3637,11 +3644,11 @@ Schedule ringing At clock After 60 - minutes Of clock.
 The number of moves can be zero, i.e. `After 0` means that the event will occur now (during this player turn, probably last, though).
 If no location is specified, `Here` is assumed, i.e. it will be executed at the current location, the location where the statement itself was executed.
 
-An important case is when a `Schedule` statement without a `where`-clause is executed inside a `Rule`.
+An important case is when a `Schedule` statement without a *where* clause is executed inside a `Rule`.
 Since rules are executed at nowhere so will the event.
-This means that any printout will be done nowhere and thus will be invisible to the player.
+This means that any printout will occur nowhere, and will thus be invisible to the player.
 
-If the `where`-expression has the form `At id`, and the identifier represents an instance not inheriting from `location`, the event will occur wherever that instance is when the event occurs.
+If the *where* expression has the form `At id`, and the identifier represents an instance not inheriting from `location`, the event will occur wherever that instance is when the event occurs.
 The event will '`follow`' the instance.
 
 Executing a second `Schedule` statement for the same event before it has occurred will reschedule the event to the new time.
@@ -3650,7 +3657,7 @@ An event can only be scheduled for one execution at a time.
 
 [NOTE]
 ================================================================================
-The event can be specified by giving an event identifier or referring to an attribute of Event type.
+The event can be specified by giving an event identifier or referring to an attribute of `Event` type.
 ================================================================================
 
 
@@ -3664,8 +3671,12 @@ The event can be specified by giving an event identifier or referring to an attr
 cancel_statement = 'CANCEL' what '.'
 --------------------------------------------------------------------------------
 
-`Cancel` (((CANCEL, statement))) will remove the event referenced from the queue of scheduled events.
-It is not an error to remove an Event, which is not currently scheduled.
+`Cancel` (((CANCEL, statement))) will remove the referenced event from the queue of scheduled events.
+Canceling an `Event` which is not currently scheduled is not considered an error.
+
+
+// @TODO: Could add a comment to the example to show that/where 'defuse' cancels
+//        an EVENT that might not be shceduled (i.e. 'explosion').
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3691,8 +3702,9 @@ Start At office.
   Schedule ticking After 1.
 --------------------------------------------------------------------------------
 
+// @TODO: Clarify better the following, possibly via an example:
 
-The event can be referenced using any expression of Event type, e.g. an attribute.
+The event can be referenced using any expression of `Event` type, e.g. an attribute.
 
 
 
@@ -3738,8 +3750,8 @@ by = 'BY' expression
 --------------------------------------------------------------------------------
 
 
-The `Increase` (((INCREASE, statement))) and `Decrease` (((DECREASE, statement))) statements modifies the values of numeric attributes by increasing or decreasing them by the value of the expression given in the optional `By` clause.
-If no `By` clause is specified the attributes are changed by one.
+The `Increase` (((INCREASE, statement))) and `Decrease` (((DECREASE, statement))) statements modify the value of numeric attributes by increasing or decreasing it by the value of the expression given in the optional `By` clause.
+If no `By` clause is specified the attribute is changed by one.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3749,6 +3761,7 @@ Decrease lives Of hero.
 
 
 
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 ==== Set Statement
