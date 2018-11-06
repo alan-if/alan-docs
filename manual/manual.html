@@ -435,8 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.69,</span>
-<span id="revdate">November 29, 2018</span>
+<span id="revnumber">version 0.1.70,</span>
+<span id="revdate">November 06, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -831,8 +831,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.69
-Last edited: November 29, 2018</pre>
+<pre>Doc version: 0.1.70
+Last edited: November 06, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -2425,7 +2425,7 @@ Each reference to an identifier of an <code>Event</code> is of course of the  <s
 <div class="sect3">
 <h4 id="_set_type"><a class="anchor" href="#_set_type"></a>Set Type</h4>
 <div class="paragraph">
-<p>A <code>Set</code> is a collection of values that may be referenced as a single value, but also investigate, added to and removed from.
+<p>A Set is a collection of values that may be referenced as a single value, but also investigate, added to and removed from.
 An example might be a set of cards in a dealt hand, the set of spells that the hero have learned, or the set of numbers guessed so far.</p>
 </div>
 <div class="paragraph">
@@ -2437,10 +2437,10 @@ It is then possible to investigate the sets and remove all members that are memb
 <div class="paragraph">
 <p>The  <strong>Set</strong> type is a compound type since it is not complete without a member type.
 You can only include members in a set if the type compatibility rules allow it.
-A <code>Set</code> may include members that are instances or integers.</p>
+A Set may include members that are instances or integers.</p>
 </div>
 <div class="paragraph">
-<p>If the <code>Set</code> includes instances, the subclass compatibility rule applies.
+<p>If the Set includes instances, the subclass compatibility rule applies.
 All members in the set must inherit from the same class.
 See the section on type compatibility below.</p>
 </div>
@@ -6458,7 +6458,7 @@ Decrease lives Of hero.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The  <code>Set</code> statement is used when assigning values to numeric, string, reference of set valued attributes.</p>
+<p>The  <code>Set</code> statement is used when assigning values to numeric, string, reference or set valued attributes.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6467,50 +6467,54 @@ Set hour Of clock To hour Of clock + 1.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Setting attributes of reference or set type requires that the expression follow the type and subclass compatibility rules.
-For example, you can only assign</p>
+<p>Setting attributes of reference or set type requires that the expression follows the type and subclass compatibility rules.
+For example, you can only assign:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>integer type expressions to an integer attribute</p>
-</li>
-</ul>
-</div>
+<p><strong>integer type expressions</strong> to an integer attribute:</p>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Set intAttr To 4. -- Correct if intAttr is of Integer type
 Set intAttr To "hi". -- Incorrect</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>an expression that refers to an instance if the attribute being assigned to is a reference attribute which has a class of which the class of the expression is a subclass</p>
-</li>
-</ul>
 </div>
+</div>
+</li>
+<li>
+<p><strong>instance type expressions</strong> to a reference attribute whose class is a parent of the expression&#8217;s instance:</p>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Has suspect butler.
 Set suspect Of detective To someLocation. -- Incorrect</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>a set valued expression to a set type attribute if all members are instances of some subclass of the member class of the target attribute.
-Here are some examples, given the natural types of the instances</p>
-</li>
-</ul>
 </div>
+</div>
+</li>
+<li>
+<p><strong>set type expressions</strong> to a set type attribute if all members in the expression are instances of a subclass of the target attribute&#8217;s member class.
+Here are some examples, given the natural types of the instances:</p>
+<div class="openblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Has friends {monica, ross, chandler, rachel, phoebe, joey}. -- persons
-Set friends Of mine To {book}. -- Incorrect, probably not a person
-Set friends Of mine To {}. -- Correct, empty set is always OK
-Set friends Of mine To {suspect Of detective}. -- Correct maybe</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Has friends {monica, ross, chandler, rachel, phoebe, joey}. -- 'person's
+Set friends Of mine To {book}. -- Incorrect, probably not a 'person'
+Set friends Of mine To {}. -- Correct, an empty set is always OK
+Set friends Of mine To {suspect Of detective}. -- Maybe correct</code></pre>
 </div>
+</div>
+</div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
@@ -6525,12 +6529,12 @@ Set friends Of mine To {suspect Of detective}. -- Correct maybe</code></pre>
 </div>
 <div class="paragraph">
 <p>The  <code>Include</code> statement is used to include a new member in a Set.
-Typically, this is used to an instance or value to a collection of such.
-See <a href="#_set_type">Sect. 3.3.4</a> for an explanation of the <code>Set</code> type.
-A member already in the <code>Set</code> will silently be accepted but not generate duplicate entries.</p>
+Typically, this is used to add an instance or value to a collection of similarly typed members.
+See <a href="#_set_type">Sect. 3.3.4</a> for an explanation of the Set type.
+Attempts to include a member already present in the Set will be silently ignored without generating duplicate entries.</p>
 </div>
 <div class="paragraph">
-<p>The set may be identified using an expression involving  reference attributes:</p>
+<p>The Set may be identified using an expression involving  reference attributes:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6559,7 +6563,7 @@ A member already in the <code>Set</code> will silently be accepted but not gener
 <div class="paragraph">
 <p>The <code>Exclude</code> statement is the reverse of the <code>Include</code> statement.
 It removes a member from a Set.
-An attempt to remove something not included in the Set will be silently ignored, so that after the execution of the statement it is guaranteed that the member is not in the Set.</p>
+Attempts to remove something not included in the Set will be silently ignored; therefore, it&#8217;s guaranteed that after executing this statement the instance or value of its expression will not be in the Set.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -6581,7 +6585,7 @@ A member may be included in multiple Sets.</p>
 <div class="sect3">
 <h4 id="_conditional_statements"><a class="anchor" href="#_conditional_statements"></a>Conditional Statements</h4>
 <div class="paragraph">
-<p>In Alan there are two conditional statements, the common <code>If</code> statement and the <code>Depending On</code> statement.</p>
+<p>In Alan there are two conditional statements: the common <code>If</code> statement and the <code>Depending On</code> statement.</p>
 </div>
 <div class="sect4">
 <h5 id="_if_statement"><a class="anchor" href="#_if_statement"></a>If Statement</h5>
@@ -12625,7 +12629,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.69<br>
+Version 0.1.70<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">

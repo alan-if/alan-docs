@@ -259,13 +259,10 @@ Expressions of *Event* type can be used in `Schedule` and `Cancel` statements.
 === Set Type
 
 
-// @NOTE: It's not easy to decide when the SET nouns should be formated as inline code
-//        or bold, or even normal text, in this section. Unlike other Alan terms, it's
-//        not always clear if the noun is being discussed as a keyword, as the Set type,
-//        or if it's being used in its general English meaning. My guess is that it
-//        actually never refers to the Set keyword in the paragraphs below!
+// @NOTE: When referring to the SET type, don't style it as inline code!
+//        `Set` should be used for the SET STATEMENT's keyword only.
 
-A `Set` is a collection of values that may be referenced as a single value, but also investigate, added to and removed from.
+A Set is a collection of values that may be referenced as a single value, but also investigate, added to and removed from.
 An example might be a set of cards in a dealt hand, the set of spells that the hero have learned, or the set of numbers guessed so far.
 
 The order of elements in the set is not specified.
@@ -275,9 +272,9 @@ It is then possible to investigate the sets and remove all members that are memb
 
 The (((SET, type))) *Set* type is a compound type since it is not complete without a member type.
 You can only include members in a set if the type compatibility rules allow it.
-A `Set` may include members that are instances or integers.
+A Set may include members that are instances or integers.
 
-If the `Set` includes instances, the subclass compatibility rule applies.
+If the Set includes instances, the subclass compatibility rule applies.
 All members in the set must inherit from the same class.
 See the section on type compatibility below.
 
@@ -3761,9 +3758,6 @@ Decrease lives Of hero.
 
 
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
-
-
 ==== Set Statement
 
 (((BNF, rules of, SET)))
@@ -3773,7 +3767,7 @@ set_statement = 'SET' what 'TO' expression '.'
 --------------------------------------------------------------------------------
 
 
-The (((SET, statement))) `Set` statement is used when assigning values to numeric, string, reference of set valued attributes.
+The (((SET, statement))) `Set` statement is used when assigning values to numeric, string, reference or set valued attributes.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3781,35 +3775,45 @@ Set mood Of king_tut To 3.
 Set hour Of clock To hour Of clock + 1.
 --------------------------------------------------------------------------------
 
-Setting attributes of reference or set type requires that the expression follow the type and subclass compatibility rules.
-For example, you can only assign
+Setting attributes of reference or set type requires that the expression follows the type and subclass compatibility rules.
+For example, you can only assign:
 
-* integer type expressions to an integer attribute
-
+* *integer type expressions* to an integer attribute:
++
+--
 [source,alan]
 --------------------------------------------------------------------------------
 Set intAttr To 4. -- Correct if intAttr is of Integer type
 Set intAttr To "hi". -- Incorrect
 --------------------------------------------------------------------------------
+--
+// @NOTE: This sentence was rephrased because it was entangled:
+//
+// * an expression that refers to an instance if the attribute being assigned to
+//   is a ((reference attribute)) which has a class of which the class of the
+//   expression is a subclass
 
-* an expression that refers to an instance if the attribute being assigned to is a ((reference attribute)) which has a class of which the class of the expression is a subclass
-
+* *instance type expressions* to a ((reference attribute)) whose class is a parent of the expression's instance:
++
+--
 [source,alan]
 --------------------------------------------------------------------------------
 Has suspect butler.
 Set suspect Of detective To someLocation. -- Incorrect
 --------------------------------------------------------------------------------
-
-* a set valued expression to a set type attribute if all members are instances of some subclass of the member class of the target attribute.
-Here are some examples, given the natural types of the instances
-
+--
+* *set type expressions* to a set type attribute if all members in the expression are instances of a subclass of the target attribute's member class.
+Here are some examples, given the natural types of the instances:
++
+--
 [source,alan]
 --------------------------------------------------------------------------------
-Has friends {monica, ross, chandler, rachel, phoebe, joey}. -- persons
-Set friends Of mine To {book}. -- Incorrect, probably not a person
-Set friends Of mine To {}. -- Correct, empty set is always OK
-Set friends Of mine To {suspect Of detective}. -- Correct maybe
+Has friends {monica, ross, chandler, rachel, phoebe, joey}. -- 'person's
+Set friends Of mine To {book}. -- Incorrect, probably not a 'person'
+Set friends Of mine To {}. -- Correct, an empty set is always OK
+Set friends Of mine To {suspect Of detective}. -- Maybe correct
 --------------------------------------------------------------------------------
+--
 
 
 
@@ -3822,11 +3826,11 @@ include_statement = 'INCLUDE' expression 'IN' set '.'
 --------------------------------------------------------------------------------
 
 The (((INCLUDE, statement))) `Include` statement is used to include a new member in a Set.
-Typically, this is used to an instance or value to a collection of such.
-See <<Set Type>> for an explanation of the `Set` type.
-A member already in the `Set` will silently be accepted but not generate duplicate entries.
+Typically, this is used to add an instance or value to a collection of similarly typed members.
+See <<Set Type>> for an explanation of the Set type.
+Attempts to include a member already present in the Set will be silently ignored without generating duplicate entries.
 
-The set may be identified using an expression involving (((reference attribute))) reference attributes:
+The Set may be identified using an expression involving (((reference attribute))) reference attributes:
 
 
 [source,alan]
@@ -3854,8 +3858,7 @@ exclude_statement = 'EXCLUDE' expression 'FROM' set '.'
 
 The `Exclude` statement is the reverse of the `Include` statement.
 It removes a member from a Set.
-An attempt to remove something not included in the Set will be silently ignored, so that after the execution of the statement it is guaranteed that the member is not in the Set.
-
+Attempts to remove something not included in the Set will be silently ignored; therefore, it's guaranteed that after executing this statement the instance or value of its expression will not be in the Set.
 
 [NOTE]
 ================================================================================
@@ -3864,10 +3867,11 @@ A member may be included in multiple Sets.
 ================================================================================
 
 
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 === Conditional Statements
 
-In Alan there are two conditional statements, the common `If` statement and the `Depending On` statement.
+In Alan there are two conditional statements: the common `If` statement and the `Depending On` statement.
 
 
 
