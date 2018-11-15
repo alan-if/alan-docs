@@ -3867,7 +3867,6 @@ A member may be included in multiple Sets.
 ================================================================================
 
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 === Conditional Statements
 
@@ -3893,10 +3892,13 @@ else_part = 'ELSE' expression 'THEN' statements
 --------------------------------------------------------------------------------
 
 The (((IF, statement))) `If` statement is essential for varying output and otherwise change the activities in the game.
-The expression is evaluated (see <<Expressions>> for details and examples of expression) and if it evaluates to true, the statements following the `Then` are executed.
+The expression is evaluated (see <<Expressions>> for details and examples of expression) and if it evaluates to true, the statements following the `Then` keyword are executed.
 Otherwise, the expressions in any following `ElsIf` clauses are evaluated (in order) and the statements following the first expression that results in a true value is executed.
-If none of the expressions in the `ElsIf` clauses evaluated to true, or there are no `ElsIf` clauses, the statements following the `Else` are executed.
+If none of the expressions in the `ElsIf` clauses evaluated to true, or if there are no `ElsIf` clauses, the statements following the `Else` keyword are executed.
 The `Else` clause is optional.
+
+// @NOTE: "The `Else` clause is optional", so is the 'ElseIf' clause. Should add
+//        that too, for the sake of clarity?
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3904,7 +3906,7 @@ If minute Of clock = 59 Then
   Set minute Of clock To 0.
   Increase hour Of clock.
 Else
-  Increase minute OF clock.
+  Increase minute Of clock.
 End If.
 If level Of bottle = 0 Then
   "You have no water."
@@ -3916,18 +3918,23 @@ End If.
 --------------------------------------------------------------------------------
 
 `If` statements which have an `IsA` expression (see <<Class Expressions>>) are particularly important.
-As an `IsA` expression test for the class of an instance, an `If` statement like
+As an `IsA` expression test for the class of an instance, an `If` statement like:
 
 [source,alan]
 --------------------------------------------------------------------------------
 If i IsA actor Then ...
 --------------------------------------------------------------------------------
 
-will quarantee that for any statement inside the `Then` part of that statement, the `i` will be of the class `actor`.
-This means that references to attributes, container properties and actor scripts etc. as if `i` belongs to the class `actor`, even if that was not known outside of the `If` statement.
+// @FIXME: Looks like some words were lost in the sentence:
+//           "This means that references to attributes [...]  ??? as if `i` belong"
+//         The sentence is incomplete, some words must have been deleted by mistake.
 
-A typical example where this is helpful is inside verbs where parameters can be restricted to more general classes by the syntax and the actual action can still perform specific actions only allowed on more specialized classes.
-Another would be in a loop over some unknown set of instances.
+will quarantee that for any statement inside the `Then` part of that statement, the `i` will be of the class `actor`.
+This means that references to attributes, container properties, actor scripts, etc. as if `i` belongs to the class `actor`, even if that was not known outside of the `If` statement.
+
+A typical example where this is helpful is inside verbs where parameters can be restricted to more general classes by the `Syntax` and the `Verb` body can still perform specific actions only allowed on more specialized classes.
+
+Another example would be looping over a set of unknown instances:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3937,8 +3944,6 @@ For Each e IsA entity, Here Do
   If e IsA container_object Then ...
 End For.
 --------------------------------------------------------------------------------
-
-
 
 
 
@@ -3955,12 +3960,15 @@ case = right_hand_side 'THEN' statements
      | 'ELSE' statements
 --------------------------------------------------------------------------------
 
-The (((DEPENDING ON, statement))) `Depending On` statement is a provided to select one of a number of possible conditional cases depending on an expression.
-The expression can be any expression.
-The right-hand side is the right hand side of any valid expression.
-When combined with expression (as the left hand side of the expression) they will be a complete expression, that is evaluated.
+// @TODO: Repharese from "The *expression* part...". The part explaining the BNF
+//        rules could be made more readable and clearer.
 
-A simple example of the `Depending On` statement is:
+The (((DEPENDING ON, statement))) `Depending On` statement enables us to select one of a number of possible conditional cases depending on an expression.
+The *expression* part can be any expression.
+The *right_hand_side* part is the right hand side of any valid expression.
+When combined with *expression* (as the left hand side of the expression) they will form a complete expression, which is evaluated.
+
+A simple example of the `Depending On` statement:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3973,16 +3981,15 @@ Depending On weight Of obj
 End Depend.
 --------------------------------------------------------------------------------
 
-
-The meaning of this example is to test the `weight Of obj` and select one of the cases depending on the value of it.
-If it is equal to one the first case will be executed.
+The purpose of this example is to test the `weight Of obj` and select one of the cases depending on its value.
+If it's equal to one, then the first case will be executed.
 If none of the cases match, the optional `Else` case will be executed (in this case it will only be executed for weights of zero or less).
 
-The cases are tested in the order specified.
+The cases are tested in the specified order.
 At most, one case will be executed.
 In the example, a weight of ten will render as "carryable".
 
-The tests are thus equivalent to
+The above tests are thus equivalent to:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -4017,7 +4024,7 @@ use_statement = 'USE' script ['FOR' actor] '.'
 // 				The *For* *actor* clause
 
 The (((USE, statement))) `Use` statement starts execution of a given script for a given actor.
-The `For actor` clause is optional when writing code within a certain actor; in this case that the statement applies to the actor that the code is in.
+The `For actor` clause is optional when writing code within a certain actor -- in this case, the statement applies to the actor (instance or class) containing the code.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -4025,10 +4032,9 @@ Use Script playing For george.
 --------------------------------------------------------------------------------
 
 
-
 [NOTE]
 ================================================================================
-You can use an expression such as a simple identifier, a parameter reference or a ((reference attribute)) as the actor clause.
+For the *actor* clause you can use an expression such as a simple identifier, a parameter reference or a ((reference attribute)).
 ================================================================================
 
 
@@ -4047,9 +4053,10 @@ actor = expression
 The (((STOP, statement))) `Stop` statement stops an actor from proceeding with any script it may be executing.
 In effect, it will abort it and put the actor in an idle state.
 The most common case is the direct reference to an actor using its identifier.
-More complex expressions resulting in an actor type value, such as a parameter reference or a ((reference attribute)), can be used as the actor clause.
+More complex expressions resulting in an actor type value, such as a parameter reference or a ((reference attribute)), can be used as the *actor* clause.
 
 
+// @NOTE: Changing "REPETITION" with "ITERATION" might be better!
 
 ==== Repetition Statements
 
@@ -4067,19 +4074,20 @@ filters = filter { ',' filter }
 --------------------------------------------------------------------------------
 
 
+You can optionally leave out either `For` or `Each`, but not both.
 
-You can optionally leave out either `For` or `Each` but not both.
+The *identifier* is called the _loop variable_, and its semantics are similar to a `Syntax` parameter.
+It will be dynamically bound to instances, one for each repetition.
+Inside the loop body (i.e. the *statements*) this variable can be referenced in the same way as a `Syntax` parameter.
 
-The identifier is called the loop variable and will have similar semantics as a syntax parameter.
-It will dynamically be bound to instances, one for each repetition.
-In the body of the loop, the statements, this variable can be referenced in the same way as a syntax parameter.
-
-The optional filters can be used to restrict the values in the loop.
-If the `Between` form is used, the loop becomes an integer loop, resulting in the loop variable having integer type and range from the two expressions inclusive.
+The optional *filters* can be used to restrict the values in the loop.
+If the `Between` form is used, the loop becomes an integer loop, resulting in the loop variable being of the integer type, and a loop range encompassing the values of the two expressions (included).
 Otherwise, the loop variable will be of instance type and will consecutively assume the value of each instance fulfilling the filters.
 See <<Filters>> for an explanation of filters.
 
-Any references to the loop variable within the repetition will refer to the instance bound, or integer value, in this repetition.
+// @FIXME: This whole paragraph should be rephrased and smoothened out:
+
+Within the repetition, any references to the loop variable will refer to the bound instance, or integer value, in this repetition.
 
 You can use any statements inside the repetition, e.g. to check for further conditions before operating on the instance.
 For example:
@@ -4094,6 +4102,7 @@ End For.
 --------------------------------------------------------------------------------
 
 
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 === Special Statements
