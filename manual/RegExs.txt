@@ -48,6 +48,46 @@ NOTE: Use to find only, change case via keyboard shortcuts!
 
 ******************************************************************************
 *                                                                            *
+*                             CONSISTENCY FIXES                              *
+*                                                                            *
+******************************************************************************
+
+==============================================================================
+                        Fix "-clause" And "-statement"                        
+==============================================================================
+Replace hyphen with space in all occurences of `XXX`-clause (or "-statement",
+"-part", etc.):
+
+(`|\*)-(clause|statement|part|construct|expression|specification|word|chain)
+$1 $2
+
+Check for remaining candidates:
+
+(`|\*)-(\w{3,})
+
+==============================================================================
+                              Fix WHAT And WHERE                              
+==============================================================================
+
+Change all occurences of WHAT and WHERE from inline code to strong style (they
+are not Alan keywords but BNF rules), and to uppercase:
+
+1. Fix WHAT (case insensitive find):
+
+([`\*])what\1
+*WHAT*
+
+2. Fix WHERE (case insensitive find):
+
+([`\*])where\1
+*WHERE*
+
+
+([`\*])(what|where)\1
+*$2*
+
+******************************************************************************
+*                                                                            *
 *                              CROSS REFERENCES                              *
 *                                                                            *
 ******************************************************************************

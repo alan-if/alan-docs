@@ -435,8 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.70,</span>
-<span id="revdate">November 06, 2018</span>
+<span id="revnumber">version 0.1.71,</span>
+<span id="revdate">November 15, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -831,8 +831,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.70
-Last edited: November 06, 2018</pre>
+<pre>Doc version: 0.1.71
+Last edited: November 15, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -1345,7 +1345,7 @@ Typing &#8220;west&#8221; will take you back to &#8220;Kitchen&#8221; again.
 </div>
 <div class="paragraph">
 <p>The identifier for a <code>location</code> is automatically used as a description, a heading, shown when that room is entered.
-And the words listed in the <code>Exit</code>-parts are translated into directional commands the player can use in his input.</p>
+And the words listed in the <code>Exit</code> parts are translated into directional commands the player can use in his input.</p>
 </div>
 <div class="paragraph">
 <p>You should remember that exits are strictly one-way.
@@ -1354,7 +1354,7 @@ Thus, you must explicitly declare the path back, in the definition of the other 
 </div>
 <div class="paragraph">
 <p>However, just the name of the location is not much of a description.
-So in order to provide the &#8220;purple prose&#8221; descriptions often found in many adventures there is an optional <code>Description</code>-clause  that you can use.
+So in order to provide the &#8220;purple prose&#8221; descriptions often found in many adventures there is an optional <code>Description</code> clause  that you can use.
 Let us describe the Hallway.</p>
 </div>
 <div class="listingblock">
@@ -1382,7 +1382,7 @@ Note also that you do not have to worry about this at all&#8201;&#8212;&#8201;in
 <p>This type of output statement is just one of the statements in the Alan Language, and we will see more of them later.</p>
 </div>
 <div class="paragraph">
-<p>It is also possible to have conditions and statements in the <code>Exit</code>-clauses of a <code>location</code> to restrict the access to the next location or to describe what happens during this movement.</p>
+<p>It is also possible to have conditions and statements in the <code>Exit</code> clauses of a <code>location</code> to restrict the access to the next location or to describe what happens during this movement.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1423,7 +1423,7 @@ End The door.</code></pre>
 </div>
 <div class="paragraph">
 <p>An <code>object</code> may initially be located at a particular <code>location</code>.
-This is indicated by the <code>At</code>-clause, in this case telling us that the door is initially located in the Hallway.
+This is indicated by the <code>At</code> clause, in this case telling us that the door is initially located in the Hallway.
 Objects do not necessarily have to start at a particular place, in which case they are not present in the game until located, by executing some code, at some place where the player may lay his hands on them.</p>
 </div>
 <div class="paragraph">
@@ -1602,9 +1602,9 @@ The house_pet IsA cat ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>Every</code>-construct defines a class and its properties, including inheriting from another, even more general class.
-The <code>The</code>-construct declares an instance, which in this example inherits from the class <code>cat</code>.
-The <code>IsA</code>-construct defines from which class properties are inherited.</p>
+<p>The <code>Every</code> construct defines a class and its properties, including inheriting from another, even more general class.
+The <code>The</code> construct declares an instance, which in this example inherits from the class <code>cat</code>.
+The <code>IsA</code> construct defines from which class properties are inherited.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1877,7 +1877,7 @@ End Verb open.</code></pre>
 <p>This definition of the <code>open</code> verb is more realistic than the previous one.
 It specifies that before the statements after <code>Does</code> are executed, the condition after <code>Check</code> must be checked (which, in this case, checks that it&#8217;s really possible to open the object indicated by the player).
 If that condition is TRUE then the requirements are fulfilled and the body of the <code>Verb</code> (following the <code>Does</code>) can be executed.
-If this is not the case the <code>Else</code>-part is executed instead (normally showing some message).</p>
+If this is not the case the <code>Else</code> part is executed instead (normally showing some message).</p>
 </div>
 <div class="paragraph">
 <p>A <code>Check</code> may have multiple conditions, as the following code shows:</p>
@@ -2243,7 +2243,7 @@ The <code>Start</code> section is mandatory.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can look up the meaning of the rules &#8220;where&#8221; and &#8220;statement&#8221; elsewhere in this chapter.</p>
+<p>You can look up the meaning of the rules "<strong>WHERE</strong>" and &#8220;statement&#8221; elsewhere in this chapter.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2815,7 +2815,7 @@ Inheriting from <code>location</code> implies the following semantic  properties
 <p>only locations can be visited by the player</p>
 </li>
 <li>
-<p>only locations may have the <code>Entered</code>-clause</p>
+<p>only locations may have the <code>Entered</code> clause</p>
 </li>
 <li>
 <p>things and locations may be located at locations</p>
@@ -2970,8 +2970,8 @@ Each inherited property may be amended or overridden by specifying it also in th
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Entered</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated. <code>Entered</code>-clauses in nested locations are executed from the outside in.
-  <code>Entered</code>-clauses in parent classes are executed first.
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accumulated. <code>Entered</code> clauses in nested locations are executed from the outside in.
+  <code>Entered</code> clauses in parent classes are executed first.
   So the first clause to be executed is the parent of an outer location.</p></td>
 </tr>
 <tr>
@@ -2997,7 +2997,7 @@ In general, all of these can be mixed freely, however, some semantic restriction
 <div class="sect3">
 <h4 id="_initial_location"><a class="anchor" href="#_initial_location"></a>Initial Location</h4>
 <div class="paragraph">
-<p>Where an instance will be located when the game starts is set using an optional <strong>WHERE</strong>-clause.
+<p>Where an instance will be located when the game starts is set using an optional <strong>WHERE</strong> clause.
 If no such clause is used the instance will have no location.
 An instance without location is not present (in the view of the player) in the game until it is moved somewhere by a <code>Locate</code> statement.</p>
 </div>
@@ -5811,7 +5811,7 @@ Optionally this may be followed by statements to be executed at the beginning of
 </div>
 </div>
 <div class="paragraph">
-<p>Only the <code>At What</code> form of the <code>Where</code> construct (see <a href="#_where_specifications">Sect. 3.18</a>) is allowed in the <code>Start</code> section.
+<p>Only the <code>At What</code> form of the <strong>WHERE</strong> construct (see <a href="#_where_specifications">Sect. 3.18</a>) is allowed in the <code>Start</code> section.
 Any statements are allowed in the start section but they cannot refer to any parameters.</p>
 </div>
 <div class="paragraph">
@@ -6071,7 +6071,7 @@ End If.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the <strong>what</strong> part refers to an instance, the optional <strong>form</strong> may be used to control in which form the instance will be output.</p>
+<p>If the <strong>WHAT</strong> part refers to an instance, the optional <strong>form</strong> may be used to control in which form the instance will be output.</p>
 </div>
 <div class="paragraph">
 <p>If <code>The</code> is used, then the definite form will be employed, which is usually the short form preceded by a definite article.
@@ -6190,7 +6190,7 @@ Since filenames may contain various special characters, a quoted identifier (see
 <div class="paragraph">
 <p>The  <code>Locate</code> statement is a way of transferring instances to new locations.
 When executed, the indicated instance will be placed at the specified location.
-For a description on how to specify <strong>where</strong>, see <a href="#_where_specifications">Sect. 3.18</a>.
+For a description on how to specify <strong>WHERE</strong>, see <a href="#_where_specifications">Sect. 3.18</a>.
 When an actor is located at a new location the <code>Does</code> clause of that location is always executed.</p>
 </div>
 <div class="paragraph">
@@ -6236,7 +6236,7 @@ The effect of this is that any instances present in the outer location are reach
 </div>
 <div class="paragraph">
 <p>The  <code>Empty</code> statement locates all instances currently located inside the given container (instance with the <code>Container</code> property) at a certain location.
-The meaning of the <strong>where</strong> part is the same as in the <code>Locate</code> statement.
+The meaning of the <strong>WHERE</strong> part is the same as in the <code>Locate</code> statement.
 If it is not specified the instances will be placed at the current location.</p>
 </div>
 <div class="listingblock">
@@ -6324,12 +6324,12 @@ End The eliza.</code></pre>
 If no location is specified, <code>Here</code> is assumed, i.e. it will be executed at the current location, the location where the statement itself was executed.</p>
 </div>
 <div class="paragraph">
-<p>An important case is when a <code>Schedule</code> statement without a <strong>where</strong> clause is executed inside a <code>Rule</code>.
+<p>An important case is when a <code>Schedule</code> statement without a <strong>WHERE</strong> clause is executed inside a <code>Rule</code>.
 Since rules are executed at nowhere so will the event.
 This means that any printout will occur nowhere, and will thus be invisible to the player.</p>
 </div>
 <div class="paragraph">
-<p>If the <strong>where</strong> expression has the form <code>At id</code>, and the identifier represents an instance not inheriting from <code>location</code>, the event will occur wherever that instance is when the event occurs.
+<p>If the <strong>WHERE</strong> expression has the form <code>At id</code>, and the identifier represents an instance not inheriting from <code>location</code>, the event will occur wherever that instance is when the event occurs.
 The event will &#8216;follow&#8217; the instance.</p>
 </div>
 <div class="paragraph">
@@ -6631,8 +6631,8 @@ End If.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>If</code> statements which have an <code>IsA</code>-expression (see <a href="#_class_expressions">Sect. 3.20.6</a>) are particularly important.
-As an <code>IsA</code>-expression test for the class of an instance, an <code>If</code> statement like</p>
+<p><code>If</code> statements which have an <code>IsA</code> expression (see <a href="#_class_expressions">Sect. 3.20.6</a>) are particularly important.
+As an <code>IsA</code> expression test for the class of an instance, an <code>If</code> statement like</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6640,7 +6640,7 @@ As an <code>IsA</code>-expression test for the class of an instance, an <code>If
 </div>
 </div>
 <div class="paragraph">
-<p>will quarantee that for any statement inside the <code>Then</code>-part of that statement, the <code>i</code> will be of the class <code>actor</code>.
+<p>will quarantee that for any statement inside the <code>Then</code> part of that statement, the <code>i</code> will be of the class <code>actor</code>.
 This means that references to attributes, container properties and actor scripts etc. as if <code>i</code> belongs to the class <code>actor</code>, even if that was not known outside of the <code>If</code> statement.</p>
 </div>
 <div class="paragraph">
@@ -7065,7 +7065,7 @@ End Verb.</code></pre>
 <h3 id="_where_specifications"><a class="anchor" href="#_where_specifications"></a>3.18. WHERE Specifications</h3>
 <div class="paragraph">
 <p>Many constructs in the Alan language require a specification of where the construct should operate.
-The general intention of such a  <strong>WHERE</strong>-specification is to specify a location.</p>
+The general intention of such a  <strong>WHERE</strong> specification is to specify a location.</p>
 </div>
 <div class="paragraph">
 <p>
@@ -7102,11 +7102,11 @@ It is allowed to refer to any instance using an identifier or expression.
 In particular, instances inheriting from <code>location</code> are allowed, which can be used to see if someone at that location can use an exit to get here.</p>
 </li>
 <li>
-<p><code>Near what</code> has a similar meaning to <code>Nearby</code> except that it refers to some other instance (the what) instead of the current location.
+<p><code>Near what</code> has a similar meaning to <code>Nearby</code> except that it refers to some other instance (the <strong>WHAT</strong>) instead of the current location.
 The results is a truth value indicating if that other instance is at a location which is nearby (has an exit to) that of the location of the first instance.</p>
 </li>
 <li>
-<p><code>At what</code> means at the location of the instance referenced by the <code>what</code> specification (see <a href="#_what_specifications">Sect. 3.19</a>).
+<p><code>At what</code> means at the location of the instance referenced by the <strong>WHAT</strong> specification (see <a href="#_what_specifications">Sect. 3.19</a>).
 Note that an instance is always <code>At</code> itself, i.e. <code>x At x</code> is always true.
 This can come as a surprise, especially if you try to aggregate or loop over instances. (See <a href="#_aggregates"><em>Aggregates</em></a> and <a href="#_repetition_statements"><em>Repetition Statements</em></a>.)</p>
 </li>
@@ -7118,7 +7118,7 @@ This can come as a surprise, especially if you try to aggregate or loop over ins
 <div class="paragraph">
 <p>These forms can be used in <code>Locate</code> statements and in some expressions for example.
 When used in their basic form in expressions they all look inside containers (and container in containers) to evaluate the expression.
-See <a href="#_the_whereabouts_of_an_entity"><em>The Whereabouts of an Entity</em></a> for more information about <code>Where</code> expressions.</p>
+See <a href="#_the_whereabouts_of_an_entity"><em>The Whereabouts of an Entity</em></a> for more information about <strong>WHERE</strong> expressions.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -7128,7 +7128,7 @@ See <a href="#_the_whereabouts_of_an_entity"><em>The Whereabouts of an Entity</e
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Not all kinds of <code>Where</code> specifications are meaningful in all constructs.
+<p>Not all kinds of <strong>WHERE</strong> specifications are meaningful in all constructs.
 Examples are <code>Nearby</code> and <code>Near</code>.
 They cannot be used in a <code>Locate</code> statement, as it requires a specific location to locate to.</p>
 </div>
@@ -7141,7 +7141,7 @@ They cannot be used in a <code>Locate</code> statement, as it requires a specifi
 <h3 id="_what_specifications"><a class="anchor" href="#_what_specifications"></a>3.19. WHAT Specifications</h3>
 <div class="paragraph">
 <p>Constructs in the grammar for the Alan language often refer to some class or instance defined in the Alan source.
-This is generally called a  <code>What</code> specification, as it specifies what the construct refers to.
+This is generally called a  <strong>WHAT</strong> specification, as it specifies what the construct refers to.
 An example is the <code>Locate</code> statement that must refer to something that should be relocated.</p>
 </div>
 <div class="paragraph">
@@ -7160,7 +7160,7 @@ An example is the <code>Locate</code> statement that must refer to something tha
 </div>
 </div>
 <div class="paragraph">
-<p>The meaning of the different forms of the <code>what</code> specification are:</p>
+<p>The meaning of the different forms of the <strong>WHAT</strong> specification are:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -7182,7 +7182,7 @@ It cannot be used in events or global verbs.</p>
 A syntax parameter may have the same name as an class or instance declared elsewhere in the source in which case the parameter has precedence.</p>
 </li>
 <li>
-<p>A reference to an attribute, as described in <a href="#_attribute_references">Sect. 3.20.3</a>, might be used depending on its type and the context of the usage of the <code>what</code>-expression.</p>
+<p>A reference to an attribute, as described in <a href="#_attribute_references">Sect. 3.20.3</a>, might be used depending on its type and the context of the usage of the <strong>WHAT</strong> expression.</p>
 </li>
 </ul>
 </div>
@@ -7194,8 +7194,8 @@ A syntax parameter may have the same name as an class or instance declared elsew
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Not all kinds of <code>What</code> specifications are meaningful in all contexts.
-For example it is not possible to use <code>Current Location</code> (nor an identifier referring to an instance inheriting from location) as the <code>what</code>-part of a <code>Locate In</code> statement. (Since it is illogical to locate locations in containers.)</p>
+<p>Not all kinds of <strong>WHAT</strong> specifications are meaningful in all contexts.
+For example it is not possible to use <code>Current Location</code> (nor an identifier referring to an instance inheriting from location) as the <strong>WHAT</strong> part of a <code>Locate In</code> statement. (Since it is illogical to locate locations in containers.)</p>
 </div>
 </td>
 </tr>
@@ -7382,7 +7382,7 @@ See <a href="#_set_type_attributes">Sect. 3.7.5.5</a>.</p>
 </div>
 <div class="paragraph">
 <p>The optional keyword <code>Directly</code> is only allowed if the expression refers to a container.
-The semantics is the same as for the <code>Where</code> expression, see <a href="#_the_whereabouts_of_an_entity">Sect. 3.20.12</a>.</p>
+The semantics is the same as for the <strong>WHERE</strong> expression, see <a href="#_the_whereabouts_of_an_entity">Sect. 3.20.12</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -7471,7 +7471,7 @@ If opponent IsA enemy Then ...</code></pre>
 <div class="paragraph">
 <p>There is a subtle but very important side effect of checking for an instance class in an <code>If</code> statement like the above.
 Doing that will ensure that the instance or parameter that is checked has all the properties.
-This holds true for all statements in the <code>Then</code>-part of the <code>If</code> statement.</p>
+This holds true for all statements in the <code>Then</code> part of the <code>If</code> statement.</p>
 </div>
 <div class="paragraph">
 <p>This is used by the compiler to allow references to attributes, scripts, container properties etc. that otherwise would not be allowed.</p>
@@ -7653,7 +7653,7 @@ When the verb body, also inherited from <code>openable</code>, is executed, it w
 </div>
 </div>
 <div class="paragraph">
-<p>An expression following the above pattern can be used to test if a particular instance, as specified by the <code>what</code>, is (or is <code>Not</code>), at the place indicated by the <code>where</code>, as in:</p>
+<p>An expression following the above pattern can be used to test if a particular instance, as specified by the <strong>WHAT</strong>, is (or is <code>Not</code>), at the place indicated by the <strong>WHERE</strong>, as in:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7669,10 +7669,10 @@ When the verb body, also inherited from <code>openable</code>, is executed, it w
 </div>
 </div>
 <div class="paragraph">
-<p>The forms available for the <code>Where</code> expression are described in detail in <a href="#_where_specifications">Sect. 3.18</a>.</p>
+<p>The forms available for the <strong>WHERE</strong> expression are described in detail in <a href="#_where_specifications">Sect. 3.18</a>.</p>
 </div>
 <div class="paragraph">
-<p>The default behaviour of a <code>Where</code> expression is to evaluate recursively through containers, e.g. if the bottle was inside a bag which was in the inventory, the first expression above would still be true.
+<p>The default behaviour of a <strong>WHERE</strong> expression is to evaluate recursively through containers, e.g. if the bottle was inside a bag which was in the inventory, the first expression above would still be true.
 This implicitly transitive evaluation can also be made explicit through the use of the keyword  <code>Indirectly</code>.
 This would result in exactly the same semantics, but it is explicitly expressed, which can be useful.</p>
 </div>
@@ -7701,7 +7701,7 @@ To test if an instance is at a particular location but not in a container at tha
 </div>
 </div>
 <div class="paragraph">
-<p>The qualifying keyword <code>Directly</code> works in the same way with all <code>Where</code> expressions.
+<p>The qualifying keyword <code>Directly</code> works in the same way with all <strong>WHERE</strong> expressions.
 Adding a <code>Directly</code> qualifier to the first example above would change the expression to only be true if the bottle was in the container but not inside any other container even if that container was in the inventory.
 See <a href="#_containment_classes_and_transitivity"><em>Containment, Classes and Transitivity</em></a> for some background information.</p>
 </div>
@@ -7801,8 +7801,8 @@ filter = 'ISA' class
 <p>Filters can be used to filter out only particular instances to loop or aggregate over.
 If one of the filters is a <strong>IsA &lt;class&gt;</strong>, only instances of that class will be bound to the loop variable or considered in the aggregation.
 In particular this is required if any of the other filters refer to attributes, which is only allowed if the class is known and that class is guaranteed to have that attribute.
-Other ways to restrict the filtered instances is to use a <code>Where</code> filter which implicitly restricts to instances available at or in that location, container or set.
-See <a href="#_the_whereabouts_of_an_entity">Sect. 3.20.12</a> for details on the various forms of the <code>Where</code> expression.</p>
+Other ways to restrict the filtered instances is to use a <strong>WHERE</strong> filter which implicitly restricts to instances available at or in that location, container or set.
+See <a href="#_the_whereabouts_of_an_entity">Sect. 3.20.12</a> for details on the various forms of the <strong>WHERE</strong> expression.</p>
 </div>
 <div class="paragraph">
 <p>Multiple filters can be listed separated with a comma.
@@ -8103,7 +8103,7 @@ The events and other actors, including turn counting, then proceeds as if the pl
 <p>The <code>Syntax</code> defined in the Alan source is the basis for what the player is allowed to input.
 Commands with the formats expressed in the syntaxes form the basic statements available to the player.
 In addition, other combinations and variations are possible using special characters and words.
-Obviously these words are different in each language, but here we&#8217;ll use generic English words, like &#8220;<strong>AND</strong>-word&#8221;, to denote all the words that can be used in the same manner.
+Obviously these words are different in each language, but here we&#8217;ll use generic English words, like &#8220;<strong>AND</strong> word&#8221;, to denote all the words that can be used in the same manner.
 The exact list of these words, for every language natively supported in Alan, is available in <a href="#_predefined_player_words">Appendix E</a>.</p>
 </div>
 <div class="paragraph">
@@ -8112,7 +8112,7 @@ The exact list of these words, for every language natively supported in Alan, is
 <div class="ulist">
 <ul>
 <li>
-<p>Concatenation of statements via   <strong>AND</strong>-words, like:</p>
+<p>Concatenation of statements via   <strong>AND</strong> words, like:</p>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
@@ -8135,7 +8135,7 @@ The exact list of these words, for every language natively supported in Alan, is
 </div>
 <div class="paragraph">
 <p>The pronouns have to be defined by the author in his source (see <a href="#_pronouns">Sect. 3.7.4</a>) or by a library.
-The only built-in pronoun is the <strong>IT</strong>-word, which is automatically defined on the class <code>thing</code>.</p>
+The only built-in pronoun is the <strong>IT</strong> word, which is automatically defined on the class <code>thing</code>.</p>
 </div>
 </li>
 </ul>
@@ -8143,7 +8143,7 @@ The only built-in pronoun is the <strong>IT</strong>-word, which is automaticall
 <div class="ulist">
 <ul>
 <li>
-<p>References to  multiple objects using  <strong>AND</strong>-word.
+<p>References to  multiple objects using  <strong>AND</strong> word.
 This allows:</p>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -8155,7 +8155,7 @@ This allows:</p>
 </div>
 </li>
 <li>
-<p>Reference to multiple objects using   <strong>ALL</strong>-word:</p>
+<p>Reference to multiple objects using   <strong>ALL</strong> word:</p>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
@@ -8169,7 +8169,7 @@ This allows:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Excluding objects using a   <strong>BUT</strong>-word, like:</p>
+<p>Excluding objects using a   <strong>BUT</strong> word, like:</p>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
@@ -8274,8 +8274,8 @@ The main way to  move the hero around the adventure&#8217;s world is through  <c
 They are executed if the player inputs a directional command, i.e. a word defined as the name for an <code>Exit</code> in any location.
 First, the current location is investigated for an <code>Exit</code> in the indicated direction, if there is none an error message is printed.
 Otherwise, that exit is examined for <code>Check</code>s, which are run according to normal rules (see <a href="#_verb_checks">Sect. 3.10.3</a>).
-If there was no  <code>Check</code>, or if the checks passed, the statements in the body (the  <code>Does</code>-part) is executed.
-The  hero is then located at the <code>location</code> indicated in the <code>Exit</code> header, which will result in the description of the location (by executing the <code>Description</code>-clause of the location) and any objects or actors present (by executing their <code>Description</code>s, explicit or implicit).</p>
+If there was no  <code>Check</code>, or if the checks passed, the statements in the body (the  <code>Does</code> part) is executed.
+The  hero is then located at the <code>location</code> indicated in the <code>Exit</code> header, which will result in the description of the location (by executing the <code>Description</code> clause of the location) and any objects or actors present (by executing their <code>Description</code>s, explicit or implicit).</p>
 </div>
 <div class="paragraph">
 <p>When any actor (including the hero) gets located at a <code>location</code>, the  <code>Entered</code> clause of that location is executed as if the actor had actually entered it by movement.
@@ -8481,7 +8481,7 @@ Yoooohooooo!</p>
 <div class="sect2">
 <h3 id="_descriptions"><a class="anchor" href="#_descriptions"></a>6.2. Descriptions</h3>
 <div class="paragraph">
-<p>Attributes come in handy when presenting information about instances to the player. The attributes can be tested in  <code>If</code>-statements to modify the <code>Description</code>s and possibly even the short description in the <code>Mentioned</code> sections.</p>
+<p>Attributes come in handy when presenting information about instances to the player. The attributes can be tested in  <code>If</code> statements to modify the <code>Description</code>s and possibly even the short description in the <code>Mentioned</code> sections.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -8711,7 +8711,7 @@ Locate charlie_chaplin At outside_house.
 </div>
 </div>
 <div class="paragraph">
-<p>Although quite feasible, this is a bit tedious. As, at least a part of, the state is indicated by the script the actor is executing, this could be used to avoid the potentially large <code>If</code>-chain. The optional  descriptions tied to each script will be executed instead of the main description when the actor is following that script. So this would allow us to simplify to:</p>
+<p>Although quite feasible, this is a bit tedious. As, at least a part of, the state is indicated by the script the actor is executing, this could be used to avoid the potentially large <code>If</code> chain. The optional  descriptions tied to each script will be executed instead of the main description when the actor is following that script. So this would allow us to simplify to:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10341,7 +10341,7 @@ I.e. the input could not be matched to any of the defined syntaxes.</p>
 <p>In a command containing   <strong>ALL BUT</strong>, the player must also give the object or objects excluded.</p>
 </div>
 <div class="paragraph">
-<p><strong>parameter1</strong> is a string containing the <strong>BUT</strong>-word the player used.</p>
+<p><strong>parameter1</strong> is a string containing the <strong>BUT</strong> word the player used.</p>
 </div>
 </div>
 </div>
@@ -10353,13 +10353,13 @@ I.e. the input could not be matched to any of the defined syntaxes.</p>
 <div class="openblock commentary">
 <div class="content">
 <div class="paragraph">
-<p>The   <strong>BUT</strong>-words may only be used after an  <strong>ALL</strong>-word.</p>
+<p>The   <strong>BUT</strong> words may only be used after an  <strong>ALL</strong> word.</p>
 </div>
 <div class="paragraph">
-<p><strong>parameter1</strong> is a string containing the <strong>BUT</strong>-word used by the player.</p>
+<p><strong>parameter1</strong> is a string containing the <strong>BUT</strong> word used by the player.</p>
 </div>
 <div class="paragraph">
-<p><strong>parameter2</strong> is a string containing the <strong>ALL</strong>-word used by the player.</p>
+<p><strong>parameter2</strong> is a string containing the <strong>ALL</strong> word used by the player.</p>
 </div>
 </div>
 </div>
@@ -11659,7 +11659,7 @@ The first word must be a player word so as to distinguish it from other forms of
 <div class="openblock commentary">
 <div class="content">
 <div class="paragraph">
-<p>The <code>Before</code>, <code>After</code> and <code>Only</code> qualifiers may not be used in a <code>Does</code>-clause in this context.</p>
+<p>The <code>Before</code>, <code>After</code> and <code>Only</code> qualifiers may not be used in a <code>Does</code> clause in this context.</p>
 </div>
 </div>
 </div>
@@ -11671,7 +11671,7 @@ The first word must be a player word so as to distinguish it from other forms of
 <div class="openblock commentary">
 <div class="content">
 <div class="paragraph">
-<p>You specified a <code>Where</code> expression in the <code>Start</code> section that did not specify an explicit <code>location</code>.
+<p>You specified a <strong>WHERE</strong> expression in the <code>Start</code> section that did not specify an explicit <code>location</code>.
 The <code>Start</code> section specifies where the hero starts and must be a <code>location</code>.</p>
 </div>
 </div>
@@ -12062,7 +12062,7 @@ If the parameter also requires the container property, use <code>Container actor
 <div class="openblock commentary">
 <div class="content">
 <div class="paragraph">
-<p>All objects must have the attribute that a <code>Limits</code>-clause is to test.</p>
+<p>All objects must have the attribute that a <code>Limits</code> clause is to test.</p>
 </div>
 </div>
 </div>
@@ -12164,7 +12164,7 @@ See <a href="#_run_time_contexts"><em>Run-Time Contexts</em></a>.</p>
 <div class="openblock commentary">
 <div class="content">
 <div class="paragraph">
-<p>The statement indicated does not allow the <code>Where</code> specification used.</p>
+<p>The statement indicated does not allow the <strong>WHERE</strong> specification used.</p>
 </div>
 </div>
 </div>
@@ -12629,7 +12629,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.70<br>
+Version 0.1.71<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">

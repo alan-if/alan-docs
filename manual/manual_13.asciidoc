@@ -282,7 +282,7 @@ The first word must be a player word so as to distinguish it from other forms of
 
 [role="commentary"]
 --
-The `Before`, `After` and `Only` qualifiers may not be used in a `Does`-clause in this context.
+The `Before`, `After` and `Only` qualifiers may not be used in a `Does` clause in this context.
 --
 
 
@@ -292,7 +292,7 @@ The `Before`, `After` and `Only` qualifiers may not be used in a `Does`-clause i
 
 [role="commentary"]
 --
-You specified a `Where` expression in the `Start` section that did not specify an explicit `location`.
+You specified a *WHERE* expression in the `Start` section that did not specify an explicit `location`.
 The `Start` section specifies where the hero starts and must be a `location`.
 --
 
@@ -631,7 +631,7 @@ If the parameter also requires the container property, use `Container actor` or 
 
 [role="commentary"]
 --
-All objects must have the attribute that a `Limits`-clause is to test.
+All objects must have the attribute that a `Limits` clause is to test.
 --
 
 
@@ -717,7 +717,7 @@ The initial `location` specified was not valid.
 
 [role="commentary"]
 --
-The statement indicated does not allow the `Where` specification used.
+The statement indicated does not allow the *WHERE* specification used.
 --
 
 

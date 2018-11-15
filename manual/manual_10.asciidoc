@@ -103,7 +103,7 @@ AFTER_BUT : "You must give at least one object after '$1'."
 --
 In a command containing (((ALL (player input)))) (((BUT (player input)))) *ALL BUT*, the player must also give the object or objects excluded.
 
-*parameter1* is a string containing the *BUT*-word the player used.
+*parameter1* is a string containing the *BUT* word the player used.
 --
 
 
@@ -113,11 +113,11 @@ BUT_ALL : "You can only use '$1' after '$2'."
 
 [role="commentary"]
 --
-The (((BUT (player input)))) (((EXCEPT (player input)))) *BUT*-words may only be used after an (((ALL (player input)))) *ALL*-word.
+The (((BUT (player input)))) (((EXCEPT (player input)))) *BUT* words may only be used after an (((ALL (player input)))) *ALL* word.
 
-*parameter1* is a string containing the *BUT*-word used by the player.
+*parameter1* is a string containing the *BUT* word used by the player.
 
-*parameter2* is a string containing the *ALL*-word used by the player.
+*parameter2* is a string containing the *ALL* word used by the player.
 --
 
 

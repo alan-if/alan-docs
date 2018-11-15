@@ -378,14 +378,14 @@ Typing "`west`" will take you back to "`Kitchen`" again.
 (Use kbd:[Ctrl+C] to exit the game if you are running it in a console window.)
 
 The identifier for a `location` is automatically used as a description, a heading, shown when that room is entered.
-And the words listed in the `Exit`-parts are translated into directional commands the player can use in his input.
+And the words listed in the `Exit` parts are translated into directional commands the player can use in his input.
 
 You should remember that exits are strictly one-way.
 An `Exit` (((EXIT))) from one location to another does not automatically imply the opposite path.
 Thus, you must explicitly declare the path back, in the definition of the other location.
 
 However, just the name of the location is not much of a description.
-So in order to provide the "`purple prose`" descriptions often found in many adventures there is an optional `Description`-clause (((DESCRIPTION, of locations))) that you can use.
+So in order to provide the "`purple prose`" descriptions often found in many adventures there is an optional `Description` clause (((DESCRIPTION, of locations))) that you can use.
 Let us describe the Hallway.
 
 [source,alan]
@@ -409,7 +409,7 @@ Note also that you do not have to worry about this at all -- in your source file
 
 This type of output statement is just one of the statements in the Alan Language, and we will see more of them later.
 
-It is also possible to have conditions and statements in the `Exit`-clauses of a `location` to restrict the access to the next location or to describe what happens during this movement.
+It is also possible to have conditions and statements in the `Exit` clauses of a `location` to restrict the access to the next location or to describe what happens during this movement.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -447,7 +447,7 @@ End The door.
 --------------------------------------------------------------------------------
 
 An `object` may initially be located at a particular ((`location`)).
-This is indicated by the `At`-clause, in this case telling us that the door is initially located in the Hallway.
+This is indicated by the `At` clause, in this case telling us that the door is initially located in the Hallway.
 Objects do not necessarily have to start at a particular place, in which case they are not present in the game until located, by executing some code, at some place where the player may lay his hands on them.
 
 In addition, objects may have ((attributes)) indicating the state of certain properties of the object.
@@ -600,9 +600,9 @@ Every mammal IsA vertebrate ...
 The house_pet IsA cat ...
 --------------------------------------------------------------------------------
 
-The `Every`-construct defines a class and its properties, including inheriting from another, even more general class.
-The `The`-construct declares an instance, which in this example inherits from the class `cat`.
-The `IsA`-construct defines from which class properties are inherited.
+The `Every` construct defines a class and its properties, including inheriting from another, even more general class.
+The `The` construct declares an instance, which in this example inherits from the class `cat`.
+The `IsA` construct defines from which class properties are inherited.
 
 
 
@@ -876,7 +876,7 @@ End Verb open.
 This definition of the `open` verb is more realistic than the previous one.
 It specifies that before the statements after `Does` are executed, the condition after `Check` must be checked (which, in this case, checks that it's really possible to open the object indicated by the player).
 If that condition is TRUE then the requirements are fulfilled and the body of the `Verb` (following the `Does`) can be executed.
-If this is not the case the `Else`-part is executed instead (normally showing some message).
+If this is not the case the `Else` part is executed instead (normally showing some message).
 
 A `Check` may have multiple conditions, as the following code shows:
 

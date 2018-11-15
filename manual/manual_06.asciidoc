@@ -143,7 +143,7 @@ So the class mechanism not only allows for another way to classify your instance
 
 == Descriptions
 
-Attributes come in handy when presenting information about instances to the player. The attributes can be tested in (((IF, statement))) `If`-statements to modify the ``Description``s and possibly even the short description in the `Mentioned` sections.
+Attributes come in handy when presenting information about instances to the player. The attributes can be tested in (((IF, statement))) `If` statements to modify the ``Description``s and possibly even the short description in the `Mentioned` sections.
 
 For example:
 
@@ -367,7 +367,7 @@ The george IsA actor
 ...
 --------------------------------------------------------------------------------
 
-Although quite feasible, this is a bit tedious. As, at least a part of, the state is indicated by the script the actor is executing, this could be used to avoid the potentially large `If`-chain. The optional (((DESCRIPTION, of actor scripts))) descriptions tied to each script will be executed instead of the main description when the actor is following that script. So this would allow us to simplify to:
+Although quite feasible, this is a bit tedious. As, at least a part of, the state is indicated by the script the actor is executing, this could be used to avoid the potentially large `If` chain. The optional (((DESCRIPTION, of actor scripts))) descriptions tied to each script will be executed instead of the main description when the actor is following that script. So this would allow us to simplify to:
 
 [source,alan]
 --------------------------------------------------------------------------------

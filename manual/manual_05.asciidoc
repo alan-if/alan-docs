@@ -68,7 +68,7 @@ The events and other actors, including turn counting, then proceeds as if the pl
 The `Syntax` defined in the Alan source is the basis for what the player is allowed to input.
 Commands with the formats expressed in the syntaxes form the basic statements available to the player.
 In addition, other combinations and variations are possible using special characters and words.
-Obviously these words are different in each language, but here we'll use generic English words, like "`*AND*-word`", to denote all the words that can be used in the same manner.
+Obviously these words are different in each language, but here we'll use generic English words, like "`*AND* word`", to denote all the words that can be used in the same manner.
 The exact list of these words, for every language natively supported in Alan, is available in <<Predefined Player Words>>.
 
 The following built-in syntax variations are available to the player:
@@ -78,7 +78,7 @@ The following built-in syntax variations are available to the player:
 //        in an input command, and we want the reader to focus only on the ones
 //        being exemplified.
 
-* Concatenation of statements via (((AND (player input)))) (((THEN (player input)))) *AND*-words, like:
+* Concatenation of statements via (((AND (player input)))) (((THEN (player input)))) *AND* words, like:
 +
 [example,role="gametranscript"]
 ================================================================================
@@ -96,12 +96,12 @@ The following built-in syntax variations are available to the player:
 ================================================================================
 +
 The pronouns have to be defined by the author in his source (see <<Pronouns>>) or by a library.
-The only built-in pronoun is the *IT*-word, which is automatically defined on the class `thing`.
+The only built-in pronoun is the *IT* word, which is automatically defined on the class `thing`.
 
 
 // @FIXME: the second command doesn't seem right, there is no verb!
 
-* References to (((multiple parameters))) multiple objects using (((AND (player input)))) *AND*-word.
+* References to (((multiple parameters))) multiple objects using (((AND (player input)))) *AND* word.
 This allows:
 +
 [example,role="gametranscript"]
@@ -112,7 +112,7 @@ This allows:
 
 
 
-* Reference to multiple objects using (((ALL (player input)))) (((EVERYTHING (player input)))) *ALL*-word:
+* Reference to multiple objects using (((ALL (player input)))) (((EVERYTHING (player input)))) *ALL* word:
 +
 [example,role="gametranscript"]
 ================================================================================
@@ -121,7 +121,7 @@ This allows:
 
 // @TODO: Could provide also an example with BUT!
 
-* Excluding objects using a (((BUT (player input)))) (((EXCEPT (player input)))) *BUT*-word, like:
+* Excluding objects using a (((BUT (player input)))) (((EXCEPT (player input)))) *BUT* word, like:
 +
 [example,role="gametranscript"]
 ================================================================================
@@ -221,8 +221,8 @@ The main way to (((HERO, movement of))) move the hero around the adventure's wor
 They are executed if the player inputs a directional command, i.e. a word defined as the name for an `Exit` in any location.
 First, the current location is investigated for an `Exit` in the indicated direction, if there is none an error message is printed.
 Otherwise, that exit is examined for ``Check``s, which are run according to normal rules (see <<Verb Checks>>).
-If there was no (((CHECK, in exits))) `Check`, or if the checks passed, the statements in the body (the (((DOES, in exits))) `Does`-part) is executed.
-The (((HERO, traversing EXITs))) hero is then located at the `location` indicated in the `Exit` header, which will result in the description of the location (by executing the `Description`-clause of the location) and any objects or actors present (by executing their ``Description``s, explicit or implicit).
+If there was no (((CHECK, in exits))) `Check`, or if the checks passed, the statements in the body (the (((DOES, in exits))) `Does` part) is executed.
+The (((HERO, traversing EXITs))) hero is then located at the `location` indicated in the `Exit` header, which will result in the description of the location (by executing the `Description` clause of the location) and any objects or actors present (by executing their ``Description``s, explicit or implicit).
 
 When any actor (including the hero) gets located at a `location`, the (((ENTERED, in locations))) `Entered` clause of that location is executed as if the actor had actually entered it by movement.
 The actor being located will be the `Current Actor` even if the movement was not caused by him (but was the result of an event, for example).

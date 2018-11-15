@@ -124,7 +124,7 @@ Start At bedroom.
      starting to feel the blood flowing through them..."
 --------------------------------------------------------------------------------
 
-You can look up the meaning of the rules "`where`" and "`statement`" elsewhere in this chapter.
+You can look up the meaning of the rules "*WHERE*" and "`statement`" elsewhere in this chapter.
 
 
 
@@ -617,7 +617,7 @@ A location is any instance inheriting directly or indirectly from the predefined
 Inheriting from `location` implies the following semantic (((semantics, of locations))) properties:
 
 * only locations can be visited by the player
-* only locations may have the `Entered`-clause
+* only locations may have the `Entered` clause
 * things and locations may be located at locations
 * ``Exit``s can only lead to locations and only locations can have ``Exit``s
 * the `Start` location must be a `location`
@@ -741,8 +741,8 @@ Each inherited property may be amended or overridden by specifying it also in th
 | Overridden, for same `Script` name.
 
 | Entered
-| Accumulated. `Entered`-clauses in nested locations are executed from the outside in.
-  `Entered`-clauses in parent classes are executed first.
+| Accumulated. `Entered` clauses in nested locations are executed from the outside in.
+  `Entered` clauses in parent classes are executed first.
   So the first clause to be executed is the parent of an outer location.
 
 | Exits
@@ -763,7 +763,7 @@ In general, all of these can be mixed freely, however, some semantic restriction
 
 === Initial Location
 
-Where an instance will be located when the game starts is set using an optional *WHERE*-clause.
+Where an instance will be located when the game starts is set using an optional *WHERE* clause.
 If no such clause is used the instance will have no location.
 An instance without location is not present (in the view of the player) in the game until it is moved somewhere by a `Locate` statement.
 
@@ -3174,7 +3174,7 @@ Start At outside_house.
   Schedule bird_chirp After 5.
 --------------------------------------------------------------------------------
 
-Only the `At What` form of the `Where` construct (see <<WHERE Specifications>>) is allowed in the `Start` section.
+Only the `At What` form of the *WHERE* construct (see <<WHERE Specifications>>) is allowed in the `Start` section.
 Any statements are allowed in the start section but they cannot refer to any parameters.
 
 The start section must be the last declaration in an Alan source.
@@ -3411,7 +3411,7 @@ End If.
 --------------------------------------------------------------------------------
 
 
-If the *what* part refers to an instance, the optional *form* may be used to control in which form the instance will be output.
+If the *WHAT* part refers to an instance, the optional *form* may be used to control in which form the instance will be output.
 
 If `The` is used, then the definite form will be employed, which is usually the short form preceded by a definite article.
 Correspondingly, the use of `An` indicates an indefinite form.
@@ -3513,7 +3513,7 @@ locate_statement = 'LOCATE' what where '.'
 
 The (((LOCATE, statement))) `Locate` statement is a way of transferring instances to new locations.
 When executed, the indicated instance will be placed at the specified location.
-For a description on how to specify *where*, see <<WHERE Specifications>>.
+For a description on how to specify *WHERE*, see <<WHERE Specifications>>.
 When an actor is located at a new location the `Does` clause of that location is always executed.
 
 One special case of the `Locate` statement is when the predefined actor `hero` is located somewhere.
@@ -3553,7 +3553,7 @@ empty_statement = 'EMPTY' what [where] '.'
 --------------------------------------------------------------------------------
 
 The (((EMPTY, statement))) `Empty` statement locates all instances currently located inside the given container (instance with the `Container` property) at a certain location.
-The meaning of the *where* part is the same as in the `Locate` statement.
+The meaning of the *WHERE* part is the same as in the `Locate` statement.
 If it is not specified the instances will be placed at the current location.
 
 [source,alan]
@@ -3641,11 +3641,11 @@ Schedule ringing At clock After 60 - minutes Of clock.
 The number of moves can be zero, i.e. `After 0` means that the event will occur now (during this player turn, probably last, though).
 If no location is specified, `Here` is assumed, i.e. it will be executed at the current location, the location where the statement itself was executed.
 
-An important case is when a `Schedule` statement without a *where* clause is executed inside a `Rule`.
+An important case is when a `Schedule` statement without a *WHERE* clause is executed inside a `Rule`.
 Since rules are executed at nowhere so will the event.
 This means that any printout will occur nowhere, and will thus be invisible to the player.
 
-If the *where* expression has the form `At id`, and the identifier represents an instance not inheriting from `location`, the event will occur wherever that instance is when the event occurs.
+If the *WHERE* expression has the form `At id`, and the identifier represents an instance not inheriting from `location`, the event will occur wherever that instance is when the event occurs.
 The event will '`follow`' the instance.
 
 Executing a second `Schedule` statement for the same event before it has occurred will reschedule the event to the new time.
@@ -3915,15 +3915,15 @@ Else
 End If.
 --------------------------------------------------------------------------------
 
-`If` statements which have an `IsA`-expression (see <<Class Expressions>>) are particularly important.
-As an `IsA`-expression test for the class of an instance, an `If` statement like
+`If` statements which have an `IsA` expression (see <<Class Expressions>>) are particularly important.
+As an `IsA` expression test for the class of an instance, an `If` statement like
 
 [source,alan]
 --------------------------------------------------------------------------------
 If i IsA actor Then ...
 --------------------------------------------------------------------------------
 
-will quarantee that for any statement inside the `Then`-part of that statement, the `i` will be of the class `actor`.
+will quarantee that for any statement inside the `Then` part of that statement, the `i` will be of the class `actor`.
 This means that references to attributes, container properties and actor scripts etc. as if `i` belongs to the class `actor`, even if that was not known outside of the `If` statement.
 
 A typical example where this is helpful is inside verbs where parameters can be restricted to more general classes by the syntax and the actual action can still perform specific actions only allowed on more specialized classes.
@@ -4285,7 +4285,7 @@ End Verb.
 == WHERE Specifications
 
 Many constructs in the Alan language require a specification of where the construct should operate.
-The general intention of such a (((WHERE, specification))) *WHERE*-specification is to specify a location.
+The general intention of such a (((WHERE, specification))) *WHERE* specification is to specify a location.
 
 (((BNF, rules of, where specification)))
 (((BNF, rules of, AT)))
@@ -4312,21 +4312,21 @@ The meaning of the different constructs is as follows
   An adjacent location means that there exists an exit from the other location to `Here` (note that the direction is from `Nearby` to `Here`).
   It is allowed to refer to any instance using an identifier or expression.
   In particular, instances inheriting from `location` are allowed, which can be used to see if someone at that location can use an exit to get here.
-* `Near what` has a similar meaning to `Nearby` except that it refers to some other instance (the what) instead of the current location.
+* `Near what` has a similar meaning to `Nearby` except that it refers to some other instance (the *WHAT*) instead of the current location.
   The results is a truth value indicating if that other instance is at a location which is nearby (has an exit to) that of the location of the first instance.
-* `At what` means at the location of the instance referenced by the `what` specification (see <<WHAT Specifications>>).
+* `At what` means at the location of the instance referenced by the *WHAT* specification (see <<WHAT Specifications>>).
   Note that an instance is always `At` itself, i.e. `x At x` is always true.
   This can come as a surprise, especially if you try to aggregate or loop over instances. (See <<Aggregates,_Aggregates_>> and <<Repetition Statements,_Repetition Statements_>>.)
 * `In what` must refer to a container and the expression refers to inside of that container.
 
 These forms can be used in `Locate` statements and in some expressions for example.
 When used in their basic form in expressions they all look inside containers (and container in containers) to evaluate the expression.
-See <<The Whereabouts of an Entity,_The Whereabouts of an Entity_>> for more information about `Where` expressions.
+See <<The Whereabouts of an Entity,_The Whereabouts of an Entity_>> for more information about *WHERE* expressions.
 
 
 [NOTE]
 ================================================================================
-Not all kinds of `Where` specifications are meaningful in all constructs.
+Not all kinds of *WHERE* specifications are meaningful in all constructs.
 Examples are `Nearby` and `Near`.
 They cannot be used in a `Locate` statement, as it requires a specific location to locate to.
 ================================================================================
@@ -4337,7 +4337,7 @@ They cannot be used in a `Locate` statement, as it requires a specific location 
 == WHAT Specifications
 
 Constructs in the grammar for the Alan language often refer to some class or instance defined in the Alan source.
-This is generally called a (((WHAT, specification))) `What` specification, as it specifies what the construct refers to.
+This is generally called a (((WHAT, specification))) *WHAT* specification, as it specifies what the construct refers to.
 An example is the `Locate` statement that must refer to something that should be relocated.
 
 (((BNF, rules of, what specification)))
@@ -4354,7 +4354,7 @@ what = 'CURRENT' 'ACTOR'
 --------------------------------------------------------------------------------
 
 
-The meaning of the different forms of the `what` specification are:
+The meaning of the different forms of the *WHAT* specification are:
 
 * `Current Actor` (((ACTOR, in WHAT specifications))) is always set to the actor currently active, e.g. when a non-player actor is running a script this refers to the actor instance that is running.
 * `Current Location` (((LOCATION, in WHAT specifications))) is the current location, i.e. the location where the current activity is performed.
@@ -4365,13 +4365,13 @@ The meaning of the different forms of the `what` specification are:
   It cannot be used in events or global verbs.
 * An identifier, *id*, refers to the class or instance with that name, a syntax parameter, script or loop variable with that name.
   A syntax parameter may have the same name as an class or instance declared elsewhere in the source in which case the parameter has precedence.
-* A reference to an attribute, as described in <<Attribute References>>, might be used depending on its type and the context of the usage of the `what`-expression.
+* A reference to an attribute, as described in <<Attribute References>>, might be used depending on its type and the context of the usage of the *WHAT* expression.
 
 
 [NOTE]
 ================================================================================
-Not all kinds of `What` specifications are meaningful in all contexts.
-For example it is not possible to use `Current Location` (nor an identifier referring to an instance inheriting from location) as the `what`-part of a `Locate In` statement. (Since it is illogical to locate locations in containers.)
+Not all kinds of *WHAT* specifications are meaningful in all contexts.
+For example it is not possible to use `Current Location` (nor an identifier referring to an instance inheriting from location) as the *WHAT* part of a `Locate In` statement. (Since it is illogical to locate locations in containers.)
 ================================================================================
 
 
@@ -4539,7 +4539,7 @@ The type and class of the entire expression is determined by the allowed members
 See <<Set Type Attributes>>.
 
 The optional keyword `Directly` is only allowed if the expression refers to a container.
-The semantics is the same as for the `Where` expression, see <<The Whereabouts of an Entity>>.
+The semantics is the same as for the *WHERE* expression, see <<The Whereabouts of an Entity>>.
 
 
 [NOTE]
@@ -4611,7 +4611,7 @@ If opponent IsA enemy Then ...
 
 There is a subtle but very important side effect of checking for an instance class in an `If` statement like the above.
 Doing that will ensure that the instance or parameter that is checked has all the properties.
-This holds true for all statements in the `Then`-part of the `If` statement.
+This holds true for all statements in the `Then` part of the `If` statement.
 
 This is used by the compiler to allow references to attributes, scripts, container properties etc. that otherwise would not be allowed.
 
@@ -4779,7 +4779,7 @@ When the verb body, also inherited from `openable`, is executed, it will set the
 expression = what ['NOT'] [transitivity] where
 --------------------------------------------------------------------------------
 
-An expression following the above pattern can be used to test if a particular instance, as specified by the `what`, is (or is `Not`), at the place indicated by the `where`, as in:
+An expression following the above pattern can be used to test if a particular instance, as specified by the *WHAT*, is (or is `Not`), at the place indicated by the *WHERE*, as in:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -4793,9 +4793,9 @@ or
 If hero Not Nearby Then ...
 --------------------------------------------------------------------------------
 
-The forms available for the `Where` expression are described in detail in <<WHERE Specifications>>.
+The forms available for the *WHERE* expression are described in detail in <<WHERE Specifications>>.
 
-The default behaviour of a `Where` expression is to evaluate recursively through containers, e.g. if the bottle was inside a bag which was in the inventory, the first expression above would still be true.
+The default behaviour of a *WHERE* expression is to evaluate recursively through containers, e.g. if the bottle was inside a bag which was in the inventory, the first expression above would still be true.
 This implicitly transitive evaluation can also be made explicit through the use of the keyword (((INDIRECTLY))) `Indirectly`.
 This would result in exactly the same semantics, but it is explicitly expressed, which can be useful.
 
@@ -4824,7 +4824,7 @@ If key Directly At treasury Then ...
 // @NOTE: Used auto generated ID for x-ref: <<_containment_classes_and_transitivity>>
 //        instead of <<Containment, Classes and Transitivity>>
 
-The qualifying keyword `Directly` works in the same way with all `Where` expressions.
+The qualifying keyword `Directly` works in the same way with all *WHERE* expressions.
 Adding a `Directly` qualifier to the first example above would change the expression to only be true if the bottle was in the container but not inside any other container even if that container was in the inventory.
 See <<_containment_classes_and_transitivity,_Containment, Classes and Transitivity_>> for some background information.
 
@@ -4909,8 +4909,8 @@ filter = 'ISA' class
 Filters can be used to filter out only particular instances to loop or aggregate over.
 If one of the filters is a *IsA <class>*, only instances of that class will be bound to the loop variable or considered in the aggregation.
 In particular this is required if any of the other filters refer to attributes, which is only allowed if the class is known and that class is guaranteed to have that attribute.
-Other ways to restrict the filtered instances is to use a `Where` filter which implicitly restricts to instances available at or in that location, container or set.
-See <<The Whereabouts of an Entity>> for details on the various forms of the `Where` expression.
+Other ways to restrict the filtered instances is to use a *WHERE* filter which implicitly restricts to instances available at or in that location, container or set.
+See <<The Whereabouts of an Entity>> for details on the various forms of the *WHERE* expression.
 
 Multiple filters can be listed separated with a comma.
 Each filter must enumerate the set of values to a compatible set, e.g. using two `IsA` filters for actors and locations respectively is not allowed since those two sets can never be compatible.
