@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.74,</span>
+<span id="revnumber">version 0.1.75,</span>
 <span id="revdate">November 16, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -698,7 +698,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_relational_and_equality_operators">Relational and Equality Operators</a></li>
 <li><a href="#_string_containment">String Containment</a></li>
 <li><a href="#_current_entities">Current Entities</a></li>
-<li><a href="#_this_instance">This Instance</a></li>
+<li><a href="#_this_instance">THIS Instance</a></li>
 <li><a href="#_the_whereabouts_of_an_entity">The Whereabouts of an Entity</a></li>
 <li><a href="#_aggregates">Aggregates</a></li>
 </ul>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.74
+<pre>Doc version: 0.1.75
 Last edited: November 16, 2018</pre>
 </div>
 </div>
@@ -7186,17 +7186,17 @@ An example is the <code>Locate</code> statement that must refer to something tha
 </li>
 <li>
 <p><code>Current Location</code>  is the current location, i.e. the location where the current activity is performed.
-Normally this is the location where the hero is, but may also be where an event is executed or the location where a scripted actor currently is executing.
+Normally this is the location where the hero is, but may also be where an event is executed or the location where a scripted actor is currently executing.
 See <a href="#_run_time_contexts"><em>Run-Time Contexts</em></a> for more details.</p>
 </li>
 <li>
-<p><code>This</code> refers to the instance in which code, such as a verb body or a script, is run.
-This can for example be used to test or set attributes in inherited code, thus testing or setting attributes in the instance while the code is defined in a class that the instance inherits from.
+<p><code>This</code> refers to the instance in which the current code (e.g. a verb body or a script) is run.
+This can be used, for example, to test or set attributes in inherited code, thus testing or setting attributes in an instance while the code is defined in the class from which the instance inherits.
 It cannot be used in events or global verbs.</p>
 </li>
 <li>
 <p>An identifier, <strong>id</strong>, refers to the class or instance with that name, a syntax parameter, script or loop variable with that name.
-A syntax parameter may have the same name as an class or instance declared elsewhere in the source in which case the parameter has precedence.</p>
+A syntax parameter may have the same name as an class or instance declared elsewhere in the source, in which case the parameter has precedence.</p>
 </li>
 <li>
 <p>A reference to an attribute, as described in <a href="#_attribute_references">Sect. 3.20.3</a>, might be used depending on its type and the context of the usage of the <strong>WHAT</strong> expression.</p>
@@ -7211,8 +7211,8 @@ A syntax parameter may have the same name as an class or instance declared elsew
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Not all kinds of <strong>WHAT</strong> specifications are meaningful in all contexts.
-For example it is not possible to use <code>Current Location</code> (nor an identifier referring to an instance inheriting from location) as the <strong>WHAT</strong> part of a <code>Locate In</code> statement. (Since it is illogical to locate locations in containers.)</p>
+<p>Not all kinds of <strong>WHAT</strong> specifications are meaningful in every contexts.
+For example, it is not possible to use <code>Current Location</code> (nor an identifier referring to an instance inheriting from location) as the <strong>WHAT</strong> part of a <code>Locate In</code> statement (since it is illogical to locate locations in containers).</p>
 </div>
 </td>
 </tr>
@@ -7222,7 +7222,7 @@ For example it is not possible to use <code>Current Location</code> (nor an iden
 <div class="sect2">
 <h3 id="_expressions"><a class="anchor" href="#_expressions"></a>3.20. Expressions</h3>
 <div class="paragraph">
-<p>The grammar for Alan refers to expression.
+<p>The Alan grammar often refers to <strong>expression</strong>.
 This is a generic name for a number of constructs yielding a value.
 The following sections describe the different kinds of expressions available in the Alan language.</p>
 </div>
@@ -7248,9 +7248,9 @@ A string is an expression and represents a string value, e.g.:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>A value of the set type can be constructed directly as an expression.
+<p>A value of the Set type can be constructed directly as an expression.
 This can be used in a <code>Set</code> statement or another expression.
-E.g.</p>
+E.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7258,7 +7258,7 @@ E.g.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Each member in the set expression can be an expression of integer or reference type in itself.</p>
+<p>Each member in the <code>Set</code> expression can be an expression of integer or reference type in itself.</p>
 </div>
 </div>
 <div class="sect3">
@@ -7274,11 +7274,11 @@ E.g.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>A references to an attribute can be used as part of any expression provided its type matches the semantics of the context.
+<p>A reference to an attribute can be used as part of any expression provided its type matches the semantics of the context.
 The type of the expression is the type of the attribute.</p>
 </div>
 <div class="paragraph">
-<p>There are two formats available, of which the first resembles plain English.</p>
+<p>There are two formats available; the first one resembles plain English:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7295,9 +7295,9 @@ See <a href="#_reference_attributes"><em>Reference Attributes</em></a> for an ex
 </div>
 </div>
 <div class="paragraph">
-<p>It might help to read the ':' as a replacement for <strong>´s</strong>.
-In this example the detective must be known to have a reference attribute, 'suspect', which can only refer to instances of a class that have an attribute named 'weapon'.
-It would be the same as</p>
+<p>It might help to read the <code>:</code> as a replacement for <strong>’s</strong>.
+In this example the detective must be known to have a reference attribute, <code>suspect</code>, which can only refer to instances of a class that have an attribute named <code>weapon</code>.
+It would be the same as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7305,7 +7305,7 @@ It would be the same as</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can test Boolean attributes of an instance by following the pattern</p>
+<p>You can test Boolean attributes of an instance by following the pattern:</p>
 </div>
 <div class="paragraph">
 <p>
@@ -7346,7 +7346,7 @@ There is a particularly useful predefined pseudo-attribute, <code>location</code
 </div>
 </div>
 <div class="paragraph">
-<p>This attribute is predefined on all instances and is guaranteed to return an instance of the class location, and it will be the innermost location of the instance (bearing in mind that locations may be nested).</p>
+<p>This attribute is predefined on all instances and is guaranteed to return an instance of the class <code>location</code>, and it will be the innermost location of the instance (bearing in mind that locations may be nested).</p>
 </div>
 </div>
 </div>
@@ -7376,7 +7376,7 @@ Decrease temp Of room By Random 0 To temp Of Room.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The second and third types return a random member in a set or in a container respectively.</p>
+<p>The second and third types return a random member in a Set or in a container respectively.</p>
 </div>
 <div class="paragraph">
 <p>
@@ -7393,25 +7393,25 @@ The type of the entire expression is instances of the class accepted by the cont
 See <a href="#_container_properties">Sect. 3.7.9</a> for details on how to determine the class of instances allowed inside a container.</p>
 </div>
 <div class="paragraph">
-<p>If the expression refers to a set, the result is one of the members in the set.
-The type and class of the entire expression is determined by the allowed members in the set.
+<p>If the expression refers to a Set, the result is one of the members in the Set.
+The type and class of the entire expression is determined by the allowed members in the Set.
 See <a href="#_set_type_attributes">Sect. 3.7.5.5</a>.</p>
 </div>
 <div class="paragraph">
 <p>The optional keyword <code>Directly</code> is only allowed if the expression refers to a container.
-The semantics is the same as for the <strong>WHERE</strong> expression, see <a href="#_the_whereabouts_of_an_entity">Sect. 3.20.12</a>.</p>
+The semantics are the same as for the <strong>WHERE</strong> expression, see <a href="#_the_whereabouts_of_an_entity">Sect. 3.20.12</a>.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Attempting to apply a random selection from an empty set or container is one of the very few situations that could lead to a runtime error.
-It is the responsibility of the author to ensure that this is not attempted.
-You should always surround a random member expression with an <code>If</code> statement that ensures that the set or container is not empty to guard against such runtime errors.
+<p>Attempting to apply a random selection from an empty Set or container is one of the very few situations that could lead to a runtime error.
+It is the author&#8217;s responsibility to ensure that this is not attempted.
+As a safeguard against similar runtime errors, you should always surround a random member expression with an <code>If</code> statement that ensures that the Set or container is not empty.
 See <a href="#_aggregates"><em>Aggregates</em></a> for descriptions on how to count members in a set or container.</p>
 </div>
 </td>
@@ -7426,7 +7426,7 @@ See <a href="#_aggregates"><em>Aggregates</em></a> for descriptions on how to co
 </td>
 <td class="content">
 <div class="paragraph">
-<p>A <code>thing</code> or <code>entity</code> inside a container, which normally do not exhibit themselves, will be candidates for being selected by a <code>Random In</code> statement, as any other instance.</p>
+<p>A <code>thing</code> or <code>entity</code> inside a container&#8201;&#8212;&#8201;which normally do not exhibit themselves&#8201;&#8212;&#8201;will be candidates for being selected by a <code>Random In</code> statement, as any other instance.</p>
 </div>
 </td>
 </tr>
@@ -7442,7 +7442,7 @@ See <a href="#_aggregates"><em>Aggregates</em></a> for descriptions on how to co
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">expression = expression ('AND' | 'OR'] expression</code></pre>
+<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">expression = expression ('AND' | 'OR') expression</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7486,16 +7486,16 @@ If opponent IsA enemy Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>There is a subtle but very important side effect of checking for an instance class in an <code>If</code> statement like the above.
-Doing that will ensure that the instance or parameter that is checked has all the properties.
+<p>There is a subtle but very important side effect when checking for an instance class in an <code>If</code> statement like the above.
+Doing so will ensure that the instance or parameter being checked has all the properties.
 This holds true for all statements in the <code>Then</code> part of the <code>If</code> statement.</p>
 </div>
 <div class="paragraph">
-<p>This is used by the compiler to allow references to attributes, scripts, container properties etc. that otherwise would not be allowed.</p>
+<p>This is used by the compiler to allow references to attributes, scripts, container properties, etc. that otherwise would not be allowed.</p>
 </div>
 <div class="paragraph">
-<p>A very common use of this is to restrict parameters in a <code>Syntax</code> to a more general class, like thing or entity, and then doing &#8220;manual&#8221; restrictions using <code>If</code> statements to ensure that usage does not conflict with the actual properties of the instance.
-Also see <a href="#_if_statement">the section on <em>If Statement</em></a>.</p>
+<p>A very common use of this is to restrict parameters in a <code>Syntax</code> to a more general class, like <code>thing</code> or <code>entity</code>, and then doing &#8220;manual&#8221; restrictions using <code>If</code> statements to ensure that their usage does not conflict with the actual properties of the instance.
+See also the <a href="#_if_statement">section on <em>If Statement</em></a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -7503,7 +7503,7 @@ Also see <a href="#_if_statement">the section on <em>If Statement</em></a>.</p>
 <div class="paragraph">
 <p>All binary operators  (plus, minus, multiplication, division) may be used on integer expressions.
 The result is another integer expression.
-The exact set of available operators is</p>
+The exact set of available operators is:</p>
 </div>
 <div class="literalblock plaintext">
 <div class="content">
@@ -7532,7 +7532,7 @@ For example:</p>
 <div class="sect3">
 <h4 id="_relational_and_equality_operators"><a class="anchor" href="#_relational_and_equality_operators"></a>Relational and Equality Operators</h4>
 <div class="paragraph">
-<p>Equality (<code>=</code>, meaning equals) and relational operators  (<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, meaning: less than, greater than, less than or equal, greater than or equal respectively) are used to compare expressions.
+<p>Equality (<code>=</code>, meaning &#8216;equals&#8217;) and relational operators  (<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, meaning: &#8216;less than&#8217;, &#8216;greater than&#8217;, &#8216;less than or equal&#8217;, &#8216;greater than or equal&#8217;, respectively) are used to compare expressions.
 The result is true or false and may be negated by using an optional <code>Not</code>.</p>
 </div>
 <div class="listingblock">
@@ -7558,7 +7558,7 @@ Verb put_in
   Check o &lt;&gt; c
     Else "That would be a good trick if you could do it!!"
   Does
-...</code></pre>
+    ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7580,7 +7580,7 @@ For example:</p>
 <div class="paragraph">
 <p>There is a string  containment operator,  <code>Contains</code>, which can be used to test if a string contains another string.
 The test ignores any differences in character case.
-An example of an expression that is true is</p>
+An example of an expression that is true is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7603,7 +7603,7 @@ An example of an expression that is true is</p>
 <h4 id="_current_entities"><a class="anchor" href="#_current_entities"></a>Current Entities</h4>
 <div class="paragraph">
 <p>There are two particularly interesting entities that you might want to know something about or which they are.
-They are</p>
+They are:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -7622,10 +7622,10 @@ Details about execution contexts can be found in <a href="#_run_time_contexts"><
 </div>
 </div>
 <div class="sect3">
-<h4 id="_this_instance"><a class="anchor" href="#_this_instance"></a>This Instance</h4>
+<h4 id="_this_instance"><a class="anchor" href="#_this_instance"></a>THIS Instance</h4>
 <div class="paragraph">
 <p>You can also refer to the instance that is actually executing the code containing the expression.
-This is particularly useful when using inheritance since the class defining the code have no way of knowing which instance will actually execute it.
+This is particularly useful when using inheritance since the class defining the code has no way of knowing which instance will actually execute it.
  This expression is <code>This</code>.</p>
 </div>
 <div class="paragraph">
@@ -7654,8 +7654,8 @@ End The door.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Given these two declarations and some syntax declarations the door will inherit the <code>open</code> attribute.
-When the verb body, also inherited from <code>openable</code>, is executed, it will set the attribute on <em>the door</em>, because this instance is running the code.</p>
+<p>Given these two declarations, and some <code>Syntax</code> declarations, the <code>door</code> will inherit the <code>open</code> attribute.
+When the verb body, also inherited from <code>openable</code>, is executed, it will set the attribute on the <code>door</code>, because this is the instance running the code.</p>
 </div>
 </div>
 <div class="sect3">
@@ -7691,7 +7691,7 @@ When the verb body, also inherited from <code>openable</code>, is executed, it w
 <div class="paragraph">
 <p>The default behaviour of a <strong>WHERE</strong> expression is to evaluate recursively through containers, e.g. if the bottle was inside a bag which was in the inventory, the first expression above would still be true.
 This implicitly transitive evaluation can also be made explicit through the use of the keyword  <code>Indirectly</code>.
-This would result in exactly the same semantics, but it is explicitly expressed, which can be useful.</p>
+This would result in exactly the same semantics, but explicitly expressed, which can be useful.</p>
 </div>
 <div class="paragraph">
 <p>
@@ -7719,7 +7719,7 @@ To test if an instance is at a particular location but not in a container at tha
 </div>
 <div class="paragraph">
 <p>The qualifying keyword <code>Directly</code> works in the same way with all <strong>WHERE</strong> expressions.
-Adding a <code>Directly</code> qualifier to the first example above would change the expression to only be true if the bottle was in the container but not inside any other container even if that container was in the inventory.
+Adding a <code>Directly</code> qualifier to the first example above would change the expression to only be true if the bottle was in the container but not inside any other container, even if that container was in the inventory.
 See <a href="#_containment_classes_and_transitivity"><em>Containment, Classes and Transitivity</em></a> for some background information.</p>
 </div>
 <div class="admonitionblock note">
@@ -7730,8 +7730,8 @@ See <a href="#_containment_classes_and_transitivity"><em>Containment, Classes an
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If the transitivity is not Directly, the compiler analyses the container to see which classes of instances might be contained transitively.
-This includes all existing instances of the class that the container takes, and if any of those are containers, those containers and all instances of the classes they take and so on.</p>
+<p>If the transitivity is not <code>Directly</code>, the compiler analyses the container to see which classes of instances might be contained transitively.
+This includes all existing instances of the class that the container takes, and if any of those are containers, those containers and all instances of the classes they take, and so on.</p>
 </div>
 </td>
 </tr>
@@ -7753,16 +7753,16 @@ aggregate = 'COUNT' | 'SUM' | 'MAX' | 'MIN'</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Aggregates are functions to calculate values from sets of instances.
-There are four aggregates available, <code>Count</code>, <code>Sum</code>, <code>Min</code> and <code>Max</code>.
-Aggregates work by inspecting all instances available, applying the filters, which may remove some, or even all, from the set of instances, and then calculate the value from the remaining instances.</p>
+<p>Aggregates are functions to calculate values from Sets of instances.
+There are four aggregates available: <code>Count</code>, <code>Sum</code>, <code>Min</code> and <code>Max</code>.
+Aggregates work by inspecting all instances available, applying the filters, which may remove some, or even all, from the Set of instances, and then calculate the value from the remaining instances.</p>
 </div>
 <div class="paragraph">
 <p>You can use filters to filter out instances belonging to a particular class, at a particular location or having a particular Boolean attribute.
 See <a href="#_filters">Sect. 3.21</a> for an explanation of filters.</p>
 </div>
 <div class="paragraph">
-<p> <code>Count</code> counts the number of instances in the set, e.g.:</p>
+<p> <code>Count</code> counts the number of instances in the Set, e.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7791,7 +7791,7 @@ You must ensure this by filtering out only instances of the relevant class, e.g.
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If Sum Of weight At bridge &gt; 500 Then ...
 If Max Of size In inventory &gt; size Of small_door Then ...
 If Count IsA lightsource, Is lit, Here &gt; 0 Then
-  "Let there be light...""
+  "Let there be light..."
 End If.</code></pre>
 </div>
 </div>
@@ -12646,7 +12646,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.74<br>
+Version 0.1.75<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">
