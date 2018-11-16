@@ -435,8 +435,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.73,</span>
-<span id="revdate">November 15, 2018</span>
+<span id="revnumber">version 0.1.74,</span>
+<span id="revdate">November 16, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -831,8 +831,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.73
-Last edited: November 15, 2018</pre>
+<pre>Doc version: 0.1.74
+Last edited: November 16, 2018</pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -6835,19 +6835,19 @@ End For.</code></pre>
 <div class="sect4">
 <h5 id="_quit_statement"><a class="anchor" href="#_quit_statement"></a>Quit Statement</h5>
 <div class="paragraph">
-<p><code>Quit</code>  prints a question giving the player the choice of restarting the game, reloading a previously saved game or to quit.
+<p><code>Quit</code>  prints a question giving the player the choice to restart the game, restore a previously saved game or to quit the game.
 Any scoring or other printouts have to be made explicitly before executing the <code>Quit</code> statement.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_look_statement"><a class="anchor" href="#_look_statement"></a>Look Statement</h5>
 <div class="paragraph">
-<p><code>Look</code>  describes the current location (the current location is dependent on in which context it is executed) and what it contains to the player.
-First the location name is output, then the <code>Description</code> part for the location is executed.
-If you do not want the name of the location to be included you can use a <code>Describe</code> statement instead.</p>
+<p><code>Look</code>  describes to the player the current location and what it contains (which location is going to be the current location depends on which context <code>Look</code> is being executed in).
+First, the location name is printed out, then the <code>Description</code> part for the location is executed.
+If you do not want the name of the location to be included, you can use a <code>Describe</code> statement instead.</p>
 </div>
 <div class="paragraph">
-<p>Then all object and actors at the location will automatically be executed by means of an implicit <code>Describe</code> for each of them.
+<p>Then, all object and actors at the location will be automatically executed by means of an implicit <code>Describe</code> for each of them.
 Any objects or actors that were explicitly described using a <code>Describe</code> statements, will be excluded from this automatic <code>Describe</code>.</p>
 </div>
 <div class="paragraph">
@@ -6880,23 +6880,39 @@ Both <code>save</code> and <code>restore</code> asks the player for a file name 
 This allows the player to use unlimited number of save files.</p>
 </div>
 <div class="paragraph">
-<p>If the player should be shown the current surroundings after a <code>Restore</code>, you will have to implement a player verb like</p>
+<p>If the player should be shown the current surroundings after a <code>Restore</code>, you will have to implement a player verb like:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb restore
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb 'restore'
   Does
     Restore.
     Look.
-End Verb restore.</code></pre>
+End Verb 'restore'.</code></pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In the above example, the verb identifier <code>'restore'</code> was enclosed in single
+quotes (i.e. a <a href="#_words_identifiers_and_names">quoted identifier</a>) to prevent
+conflict with the reserved keyword <code>Restore</code>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_score_statement"><a class="anchor" href="#_score_statement"></a>Score Statement</h5>
 <div class="paragraph">
 <p><code>Score</code>  is a way of rewarding the player by giving points for certain actions.
-This is done using the statement</p>
+This is done using the statement:</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -6925,9 +6941,9 @@ This is done using the statement</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The <code>Score</code> statements assume a simple model of scoring; a number of actions are necessary to complete the game and all those are necessary to achieve the maximum number of points.
-Negative scores are not allowed and once a score is awarded it cannot be revoked, neither will it be awarded twice.
-For adventures having a more complex and varied scoring system (particularly if the game can be successfully finished without performing all scoring actions or in multiple ways), manual scoring should instead be implemented using attributes (e.g. on the hero) and suitable manipulation and test statements.</p>
+<p>The <code>Score</code> statements assume a simple scoring model: a number of specific actions are necessary to complete the game, and all of them are necessary to achieve the maximum number of points.
+Negative scores are not allowed and once a score has been awarded it cannot be revoked, and it can&#8217;t be awarded twice either.
+For adventures requiring a more complex and varied scoring system (especially if the game can be successfully finished without performing all scoring actions, or in multiple ways), manual scoring should instead be implemented using attributes (e.g. on the hero) and suitable manipulation and test statements.</p>
 </div>
 </td>
 </tr>
@@ -6937,7 +6953,7 @@ For adventures having a more complex and varied scoring system (particularly if 
 <div class="sect4">
 <h5 id="_visits_statement"><a class="anchor" href="#_visits_statement"></a>Visits Statement</h5>
 <div class="paragraph">
-<p>The  <code>Visits</code> statement changes the number of times a location can be visited before the long description is presented again:</p>
+<p>The  <code>Visits</code> statement changes the number of times a location can be visited before its long description is presented again:</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -6951,7 +6967,7 @@ For adventures having a more complex and varied scoring system (particularly if 
 <p>The value of the argument (<strong>count,</strong> which must be an integer number) controls the number of visits to a particular location between full descriptions.
 The initial setting of 0 (zero) indicates that every time a particular location is visited its full description will be shown (which can also be expressed as: the full description will <em>not</em> be shown 0 times in between).
 Thus, a setting of 1 (one) would give a full description every second time the same location is visited.
-So</p>
+Therefore:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6961,33 +6977,33 @@ So</p>
 <div class="paragraph">
 <p>will always show full descriptions (which is also the initial setting).</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The classic and familiar commands <strong>verbose</strong>, <strong>brief</strong> etc. can be imitated using different values in the <code>Visits</code> statement.</p>
+<p>The classic and familiar commands <strong>verbose</strong>, <strong>brief</strong>, etc. can be imitated using different values in the <code>Visits</code> statement.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
 <div class="paragraph">
 <p>The handling of descriptions is rather conservative in that it also takes modified attributes into account.
-If the visits calculation would indicate no full description, a modified attribute of the location will cause the full description to be shown the next time.
+If the <code>Visits</code> calculation would indicate no full description, a modified attribute of the location will cause the full description to be shown the next time.
 That attribute might have caused the description of the location to change.
-So the visits handling ensures that the player will &#8220;see&#8221; all changes to the location.
-If you set attributes of the location every time they are visited, the built-in visits handling will not work as you expect.</p>
+So the <code>Visits</code> handling ensures that the player will &#8220;see&#8221; all changes to the location.
+If you set attributes of the location every time they are visited, the built-in <code>Visits</code> handling will not work as you expect.</p>
 </div>
 </td>
 </tr>
@@ -7025,7 +7041,7 @@ End The secret_cave.</code></pre>
 <div class="paragraph">
 <p>Using the  <code>Transcript</code> statement you can turn transcripting on or off.
 When transcripting is turned on all player input and game output is recorded in a file (or similar) which can be studied afterwards.
-Example uses are</p>
+Example uses are:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -7087,25 +7103,25 @@ The general intention of such a  <strong>WHERE</strong> specification is to spec
 </div>
 </div>
 <div class="paragraph">
-<p>The meaning of the different constructs is as follows</p>
+<p>The meaning of the different constructs is as follows:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p> <code>Here</code> is the location where the current activity is performed.
-Often this means where the hero is, but if the expression is evaluated in another run-time context this context is used.
+Often this means where the hero is, but if the expression is evaluated in another run-time context then that context is the one used.
 See <a href="#_run_time_contexts"><em>Run-Time Contexts</em></a> for a detailed discussion, but examples include an event scheduled at a particular location, in which case that location is <code>Here</code>.
 Note that <code>Here</code> is equivalent to <code>At Current Location</code>.</p>
 </li>
 <li>
 <p> <code>Nearby</code> means at any adjacent location.
-An adjacent location means that there exists an exit from the other location to <code>Here</code> (note that the direction is from <code>Nearby</code> to <code>Here</code>).
+An adjacent location means that there is an <code>Exit</code> from the other location to <code>Here</code> (note that the direction is from <code>Nearby</code> to <code>Here</code>).
 It is allowed to refer to any instance using an identifier or expression.
 In particular, instances inheriting from <code>location</code> are allowed, which can be used to see if someone at that location can use an exit to get here.</p>
 </li>
 <li>
 <p><code>Near what</code> has a similar meaning to <code>Nearby</code> except that it refers to some other instance (the <strong>WHAT</strong>) instead of the current location.
-The results is a truth value indicating if that other instance is at a location which is nearby (has an exit to) that of the location of the first instance.</p>
+The results is a truth value indicating wether that other instance is at a location which is nearby (has an <code>Exit</code> to) the location of the first instance.</p>
 </li>
 <li>
 <p><code>At what</code> means at the location of the instance referenced by the <strong>WHAT</strong> specification (see <a href="#_what_specifications">Sect. 3.19</a>).
@@ -7113,13 +7129,13 @@ Note that an instance is always <code>At</code> itself, i.e. <code>x At x</code>
 This can come as a surprise, especially if you try to aggregate or loop over instances. (See <a href="#_aggregates"><em>Aggregates</em></a> and <a href="#_repetition_statements"><em>Repetition Statements</em></a>.)</p>
 </li>
 <li>
-<p><code>In what</code> must refer to a container and the expression refers to inside of that container.</p>
+<p><code>In what</code> must refer to a container and the expression refers to being inside that container.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These forms can be used in <code>Locate</code> statements and in some expressions for example.
-When used in their basic form in expressions they all look inside containers (and container in containers) to evaluate the expression.
+<p>These forms can be used in <code>Locate</code> statements and in some expressions, for example.
+When used in their basic form in expressions they all look inside containers (and in containers inside other containers too) to evaluate the expression.
 See <a href="#_the_whereabouts_of_an_entity"><em>The Whereabouts of an Entity</em></a> for more information about <strong>WHERE</strong> expressions.</p>
 </div>
 <div class="admonitionblock note">
@@ -7130,9 +7146,8 @@ See <a href="#_the_whereabouts_of_an_entity"><em>The Whereabouts of an Entity</e
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Not all kinds of <strong>WHERE</strong> specifications are meaningful in all constructs.
-Examples are <code>Nearby</code> and <code>Near</code>.
-They cannot be used in a <code>Locate</code> statement, as it requires a specific location to locate to.</p>
+<p>Not all kinds of <strong>WHERE</strong> specifications are meaningful in every constructs.
+For example, <code>Nearby</code> and <code>Near</code> can not be used in a <code>Locate</code> statement, as it requires a specific location to locate to.</p>
 </div>
 </td>
 </tr>
@@ -12631,7 +12646,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.73<br>
+Version 0.1.74<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">

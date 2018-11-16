@@ -4102,8 +4102,6 @@ End For.
 --------------------------------------------------------------------------------
 
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
-
 
 === Special Statements
 
@@ -4111,18 +4109,22 @@ End For.
 
 ==== Quit Statement
 
-`Quit` (((QUIT, statement))) prints a question giving the player the choice of restarting the game, reloading a previously saved game or to quit.
+`Quit` (((QUIT, statement))) prints a question giving the player the choice to restart the game, restore a previously saved game or to quit the game.
 Any scoring or other printouts have to be made explicitly before executing the `Quit` statement.
 
+// @TODO: Might be worth mentioning here that although the printed message can be
+//        changed (mention related MESSAGE) the actual replies are hardconded into
+//        Alan and can't be translated. Or at least, provide a cross reference to
+//        "C.1. Input Response Messages > QUIT_ACTION"
 
 
 ==== Look Statement
 
-`Look` (((LOOK, statement))) describes the current location (the current location is dependent on in which context it is executed) and what it contains to the player.
-First the location name is output, then the `Description` part for the location is executed.
-If you do not want the name of the location to be included you can use a `Describe` statement instead.
+`Look` (((LOOK, statement))) describes to the player the current location and what it contains (which location is going to be the current location depends on which context `Look` is being executed in).
+First, the location name is printed out, then the `Description` part for the location is executed.
+If you do not want the name of the location to be included, you can use a `Describe` statement instead.
 
-Then all object and actors at the location will automatically be executed by means of an implicit `Describe` for each of them.
+Then, all object and actors at the location will be automatically executed by means of an implicit `Describe` for each of them.
 Any objects or actors that were explicitly described using a `Describe` statements, will be excluded from this automatic `Describe`.
 
 The equivalent of a `Look` is automatically performed when the hero enters a new location.
@@ -4145,23 +4147,29 @@ consideration.
 Both `save` and `restore` asks the player for a file name to use for storing and restoring.
 This allows the player to use unlimited number of save files.
 
-If the player should be shown the current surroundings after a `Restore`, you will have to implement a player verb like
+If the player should be shown the current surroundings after a `Restore`, you will have to implement a player verb like:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Verb restore
+Verb 'restore'
   Does
     Restore.
     Look.
-End Verb restore.
+End Verb 'restore'.
 --------------------------------------------------------------------------------
 
+[NOTE]
+================================================================================
+In the above example, the verb identifier `'restore'` was enclosed in single
+quotes (i.e. a <<_words_identifiers_and_names,quoted identifier>>) to prevent
+conflict with the reserved keyword `Restore`.
+================================================================================
 
 
 ==== Score Statement
 
 `Score` (((SCORE, statement))) is a way of rewarding the player by giving points for certain actions.
-This is done using the statement
+This is done using the statement:
 
 (((BNF, rules of, SCORE)))
 [source,bnf]
@@ -4176,25 +4184,33 @@ For example:
 Score 25.
 --------------------------------------------------------------------------------
 
-
+// @TODO: It's worth mentioning here the 'HAVE_SCORED' MESSAGE that controls the
+//        score printout, and maybe add a cross reference link to it in App C.1.
 
 The first time every such statement is executed the points given are added to the player's current score. `Score` without any arguments prints a message indicating the current accumulated score.
 
 
+// @FIXME: The following note was unclear, but even after adjusting it it seems
+//         ambiguos. The point is that some score-actions might not be strictly
+//         necessary to complete the game, but might be instead some bonus actions
+//         that add extra points. Possibly, the note should be rephrased to
+//         clarify this point. Is there a reason why the default scoring system
+//         can't handle bonus scores? The end of the note seems to suggest that
+//         this is the case, but doesn't explain why...What are the implications
+//         of a game which is winnable without carrying out every score action?
+
 [NOTE]
 ================================================================================
-The `Score` statements assume a simple model of scoring; a number of actions are necessary to complete the game and all those are necessary to achieve the maximum number of points.
-Negative scores are not allowed and once a score is awarded it cannot be revoked, neither will it be awarded twice.
-For adventures having a more complex and varied scoring system (particularly if the game can be successfully finished without performing all scoring actions or in multiple ways), manual scoring should instead be implemented using attributes (e.g. on the hero) and suitable manipulation and test statements.
+The `Score` statements assume a simple scoring model: a number of specific actions are necessary to complete the game, and all of them are necessary to achieve the maximum number of points.
+Negative scores are not allowed and once a score has been awarded it cannot be revoked, and it can't be awarded twice either.
+For adventures requiring a more complex and varied scoring system (especially if the game can be successfully finished without performing all scoring actions, or in multiple ways), manual scoring should instead be implemented using attributes (e.g. on the hero) and suitable manipulation and test statements.
 ================================================================================
-
-
 
 
 
 ==== Visits Statement
 
-The (((VISITS, statement))) `Visits` statement changes the number of times a location can be visited before the long description is presented again:
+The (((VISITS, statement))) `Visits` statement changes the number of times a location can be visited before its long description is presented again:
 
 (((BNF, rules of, VISITS)))
 [source,bnf]
@@ -4205,7 +4221,7 @@ visits_statement = 'VISITS' count '.'
 The value of the argument (*count,* which must be an integer number) controls the number of visits to a particular location between full descriptions.
 The initial setting of 0 (zero) indicates that every time a particular location is visited its full description will be shown (which can also be expressed as: the full description will _not_ be shown 0 times in between).
 Thus, a setting of 1 (one) would give a full description every second time the same location is visited.
-So
+Therefore:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -4216,20 +4232,20 @@ Visits 0.
 will always show full descriptions (which is also the initial setting).
 
 
-[NOTE]
+[TIP]
 ================================================================================
-The classic and familiar commands *verbose*, *brief* etc. can be imitated using different values in the `Visits` statement.
+The classic and familiar commands *verbose*, *brief*, etc. can be imitated using different values in the `Visits` statement.
 ================================================================================
 
 
 
-[NOTE]
+[IMPORTANT]
 ================================================================================
 The handling of descriptions is rather conservative in that it also takes modified attributes into account.
-If the visits calculation would indicate no full description, a modified attribute of the location will cause the full description to be shown the next time.
+If the `Visits` calculation would indicate no full description, a modified attribute of the location will cause the full description to be shown the next time.
 That attribute might have caused the description of the location to change.
-So the visits handling ensures that the player will "`see`" all changes to the location.
-If you set attributes of the location every time they are visited, the built-in visits handling will not work as you expect.
+So the `Visits` handling ensures that the player will "`see`" all changes to the location.
+If you set attributes of the location every time they are visited, the built-in `Visits` handling will not work as you expect.
 ================================================================================
 
 
@@ -4264,7 +4280,7 @@ transcript_statement = 'TRANSCRIPT' ('ON' | 'OFF') '.'
 
 Using the (((TRANSCRIPT, statement))) `Transcript` statement you can turn transcripting on or off.
 When transcripting is turned on all player input and game output is recorded in a file (or similar) which can be studied afterwards.
-Example uses are
+Example uses are:
 
 * reading the game output as a novel (player)
 * comparing the output to output from previous versions of the game (author)
@@ -4311,36 +4327,42 @@ where = 'HERE'
       | 'IN' what
 --------------------------------------------------------------------------------
 
-The meaning of the different constructs is as follows
+// @FIXME: First point: "BUT examples include an event scheduled at a particular
+//         location, in WHICH case" -- which examples is it referring to?
+//         It's unclear what these "BUT" and "WHICH" are referring to.
+
+The meaning of the different constructs is as follows:
 
 * (((HERE))) `Here` is the location where the current activity is performed.
-  Often this means where the hero is, but if the expression is evaluated in another run-time context this context is used.
+  Often this means where the hero is, but if the expression is evaluated in another run-time context then that context is the one used.
   See <<Run-Time Contexts,_Run-Time Contexts_>> for a detailed discussion, but examples include an event scheduled at a particular location, in which case that location is `Here`.
   Note that `Here` is equivalent to `At Current Location`.
 * (((NEARBY))) `Nearby` means at any adjacent location.
-  An adjacent location means that there exists an exit from the other location to `Here` (note that the direction is from `Nearby` to `Here`).
+  An adjacent location means that there is an `Exit` from the other location to `Here` (note that the direction is from `Nearby` to `Here`).
   It is allowed to refer to any instance using an identifier or expression.
   In particular, instances inheriting from `location` are allowed, which can be used to see if someone at that location can use an exit to get here.
 * `Near what` has a similar meaning to `Nearby` except that it refers to some other instance (the *WHAT*) instead of the current location.
-  The results is a truth value indicating if that other instance is at a location which is nearby (has an exit to) that of the location of the first instance.
+  The results is a truth value indicating wether that other instance is at a location which is nearby (has an `Exit` to) the location of the first instance.
 * `At what` means at the location of the instance referenced by the *WHAT* specification (see <<WHAT Specifications>>).
   Note that an instance is always `At` itself, i.e. `x At x` is always true.
   This can come as a surprise, especially if you try to aggregate or loop over instances. (See <<Aggregates,_Aggregates_>> and <<Repetition Statements,_Repetition Statements_>>.)
-* `In what` must refer to a container and the expression refers to inside of that container.
+* `In what` must refer to a container and the expression refers to being inside that container.
 
-These forms can be used in `Locate` statements and in some expressions for example.
-When used in their basic form in expressions they all look inside containers (and container in containers) to evaluate the expression.
+// @NOTE: The following paragraph could be made clearer and more readable:
+
+These forms can be used in `Locate` statements and in some expressions, for example.
+When used in their basic form in expressions they all look inside containers (and in containers inside other containers too) to evaluate the expression.
 See <<The Whereabouts of an Entity,_The Whereabouts of an Entity_>> for more information about *WHERE* expressions.
 
 
 [NOTE]
 ================================================================================
-Not all kinds of *WHERE* specifications are meaningful in all constructs.
-Examples are `Nearby` and `Near`.
-They cannot be used in a `Locate` statement, as it requires a specific location to locate to.
+Not all kinds of *WHERE* specifications are meaningful in every constructs.
+For example, `Nearby` and `Near` can not be used in a `Locate` statement, as it requires a specific location to locate to.
 ================================================================================
 
 
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 == WHAT Specifications
