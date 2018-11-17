@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.76,</span>
+<span id="revnumber">version 0.1.77,</span>
 <span id="revdate">November 17, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.76
+<pre>Doc version: 0.1.77
 Last edited: November 17, 2018</pre>
 </div>
 </div>
@@ -8337,13 +8337,18 @@ Note that this also works for direct player input.</p>
 <h2 id="_hints_and_tips"><a class="anchor" href="#_hints_and_tips"></a>6. Hints And Tips</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This chapter will give you some ideas about how the various features of Alan may be used to implement common features in an adventure game. These are only suggestions and you are, of course, welcome to invent your own, but these are probably some ideas that can get you started.</p>
+<p>This chapter will give you some ideas about how the various features of Alan may be used to implement common features in an adventure game.
+These are only suggestions and you are, of course, welcome to invent your own, but these are probably some ideas that can get you started.</p>
 </div>
 <div class="paragraph">
-<p>Using the import mechanism of the Alan language (see <a href="#_import">Sect. 3.4</a>) you can reuse snippets that you invent in multiple games or works. By building such a library you don&#8217;t have to reinvent the same thing every time.</p>
+<p>Using the <code>Import</code> mechanism of the Alan language (see <a href="#_import">Sect. 3.4</a>) you can reuse snippets that you invent in multiple games or works.
+By building such a library you don&#8217;t have to reinvent the same thing every time.</p>
 </div>
 <div class="paragraph">
-<p>A very easy way to get a lot of functionality, and learn about using the language, is to use the Alan standard library. You you can download it from the Alan Home Pages. It implements many of the things described below, and loads of other handy things for you to use directly. For details on how to use that library, refer to its documentation.</p>
+<p>A very easy way to get a lot of functionality, and learn about using the language, is to use the Alan Standard Library.
+You you can download it from the Alan website.
+The library implements many of the things described below, and loads of other handy things for you to use directly.
+For details on how to use that library, refer to its documentation.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -8353,7 +8358,7 @@ Note that this also works for direct player input.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The following examples, hints and tips does <em>not</em> use any library, only plain vanilla Alan code.</p>
+<p>The following examples, hints and tips do <em>not</em> use any library, only plain vanilla Alan code.</p>
 </div>
 </td>
 </tr>
@@ -8363,7 +8368,8 @@ Note that this also works for direct player input.</p>
 <h3 id="_use_of_attributes"><a class="anchor" href="#_use_of_attributes"></a>6.1. Use of Attributes</h3>
 <div class="paragraph">
 <p>
-Attributes are primarily used for holding status information about the instance to which it belongs. This allows, for example, a water bottle to contain three levels of water.</p>
+Attributes are primarily used for holding status information about the instance to which they belong.
+This allows, for example, a water bottle to contain three levels of water:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8373,7 +8379,7 @@ Attributes are primarily used for holding status information about the instance 
     Does
     If level Of bottle &gt; 0 Then
       "You take sip from the bottle."
-      Decrease level OF bottle.
+      Decrease level Of bottle.
     Else
       "There is no more water in the bottle."
     End If.
@@ -8382,7 +8388,7 @@ End The bottle.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Another example is the broken mirror.</p>
+<p>Another example is a breakable mirror:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8399,16 +8405,18 @@ End The mirror.</code></pre>
 <p>The appropriate verbs defined in the instances may then modify the attributes and thus update the status information.</p>
 </div>
 <div class="paragraph">
-<p>Attributes defined for a whole class of instances also allow an extra dimension of classification of the instances. If the following declaration is made</p>
+<p>Attributes defined for a whole class of instances also allow an extra dimension of classification of the instances.
+If the following declaration is made:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Add To Every object
-  Not takeable.</code></pre>
+ Is Not takeable.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>then all objects receive the attribute &#8220;takeable&#8221; and unless the attribute is specifically redeclared for a particular instance they will not be take-able. Note however that the semantic meaning (what actually happens, such as preventing the &#8220;taking&#8221;) of &#8220;takeable&#8221; must be implemented e.g. in the verb &#8220;take&#8221;:</p>
+<p>then all objects receive the attribute <code>takeable</code> and unless the attribute is specifically redeclared for a particular instance they will not be takeable.
+Note however that the semantic meaning of &#8216;takeable&#8217; (i.e. what actually happens, such as preventing the &#8216;taking&#8217; action) must be implemented e.g. in the verb &#8216;take&#8217;:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8421,16 +8429,18 @@ End Verb take.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the same way restrictions concerning what is possible to eat, drink, open etc. may be implemented. This use of attributes to classify instances is &#8220;action-oriented&#8221;, i.e. they imply that a particular action (verb) is applicable to the instance.</p>
+<p>Similarly, restrictions concerning what is possible to eat, drink, open, etc. may also be implemented.
+This use of attributes to classify instances is &#8220;action-oriented&#8221;, i.e. they imply that a particular action (verb) is applicable to the instance.</p>
 </div>
 <div class="paragraph">
-<p>An alternate approach is to use attributes to classify instances after their characteristics. Consider:</p>
+<p>An alternative approach is to use attributes to classify instances according to their characteristics.
+Consider:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb take
   Check o Is Not heavy
-    Else "That is much too heavy."
+    Else "That is too heavy."
   And o Is Not animal
     Else "$+1 moves quickly away, just far enough
           for you not to reach it."
@@ -8441,13 +8451,17 @@ End Verb take.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With this approach you need to keep track of which properties a particular verb will accept or require. This could be extended one step further, having verbs check actual dimensions, such as weight or size, instead.</p>
+<p>With this approach you need to keep track of which properties a particular verb will accept or require.
+This could be extended one step further, having verbs check actual dimensions, such as weight or size, instead.</p>
 </div>
 <div class="paragraph">
-<p>An while we are talking about classification, the Alan 3 class concept can help. Often a classification can be made, clearly and succinctly, by defining a sub-class, for which every property pertaining to that type of instances can be collected. Often, the need for an attribute disappears.</p>
+<p>And while we are talking about classification, the Alan 3 class concept can help.
+Often a classification can be made, clearly and succinctly, by defining a sub-class, for which every property pertaining to that type of instances can be collected.
+Often, the need for an attribute disappears.</p>
 </div>
 <div class="paragraph">
-<p>Further more, you don&#8217;t need to define a syntax for a single parameter verb if it only accepts instances from a particular class. Consider the following definitions:</p>
+<p>Further more, you don&#8217;t need to define a syntax for a single parameter verb if it only accepts instances from a particular class.
+Consider the following definitions:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8471,34 +8485,35 @@ End The bus1.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Without any syntax definition what so ever, Alan will supply a default syntax for the drive verb which restricts the use of it to only instances of car:</p>
+<p>Without any <code>Syntax</code> definition whatsoever, Alan will supply a default syntax for the <code>drive</code> verb which restricts its use to car instances only:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; look</p>
+<p>&gt; <em>look</em></p>
 </div>
 <div class="paragraph">
 <p>There is a car1 and a bus1 here.</p>
 </div>
 <div class="paragraph">
-<p>&gt; drive bus1<br>
+<p>&gt; <em>drive bus1</em><br>
 You can&#8217;t do that.</p>
 </div>
 <div class="paragraph">
-<p>&gt; drive car1<br>
+<p>&gt; <em>drive car1</em><br>
 Yoooohooooo!</p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>So the class mechanism not only allows for another way to classify your instances, but also makes it much easier to get player input handled correctly.</p>
+<p>So the class mechanism not only allows for another way to classify your instances, but also makes it much easier to handle player input correctly.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_descriptions"><a class="anchor" href="#_descriptions"></a>6.2. Descriptions</h3>
 <div class="paragraph">
-<p>Attributes come in handy when presenting information about instances to the player. The attributes can be tested in  <code>If</code> statements to modify the <code>Description</code>s and possibly even the short description in the <code>Mentioned</code> sections.</p>
+<p>Attributes come in handy when presenting information about instances to the player.
+The attributes can be tested in  <code>If</code> statements to modify the <code>Description</code>s and possibly even the short description in the <code>Mentioned</code> sections.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -8538,12 +8553,12 @@ End The bottle.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the bottle had level 0 and was in the hero&#8217;s container, this would result in</p>
+<p>If the bottle had <code>level</code> 0 and was in the hero&#8217;s container, this would result in:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; inventory<br>
+<p>&gt; <em>inventory</em><br>
 You are carrying an empty bottle.</p>
 </div>
 </div>
@@ -8552,13 +8567,20 @@ You are carrying an empty bottle.</p>
 <div class="sect2">
 <h3 id="_common_verbs"><a class="anchor" href="#_common_verbs"></a>6.3. Common Verbs</h3>
 <div class="paragraph">
-<p>As your library of adventures grow you will find that  some verbs are often needed, and always function the same way. Examples are &#8220;take&#8221;, &#8220;drop&#8221;, &#8220;invent&#8221;, &#8220;look&#8221;, &#8220;quit&#8221; and so on. It is advisable to put them in a file which may then be    imported into your games. See <a href="#_import">Sect. 3.4</a> about the import mechanism. The files may then containing these common verbs as well as their syntax definitions and any synonyms. Attributes needed for these particular verbs could also be placed in a  default attribute declaration in this file.</p>
+<p>As your adventures library grows, you will find that  some verbs are needed often, and always function the same way.
+Examples are &#8216;take&#8217;, &#8216;drop&#8217;, &#8216;inventory&#8217;, &#8216;look&#8217;, &#8216;quit&#8217; and so on.
+It is advisable to put them in a file which may then be    imported into your games.
+See <a href="#_import">Sect. 3.4</a> about the <code>Import</code> mechanism.
+The files may then contain these common verbs as well as their syntax definitions and any synonyms.
+Attributes needed for these particular verbs could also be placed in a  default attribute declaration in this file.</p>
 </div>
 <div class="paragraph">
-<p>All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure. All that this takes is some thought as to what names to use for the attributes as discussed in <a href="#_use_of_attributes">Sect. 6.1</a>.</p>
+<p>All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure.
+All it takes is some thought on what names to use for the attributes, as discussed in <a href="#_use_of_attributes">Sect. 6.1</a>.</p>
 </div>
 <div class="paragraph">
-<p>And of course there is already an extensive library available from the Alan website, <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a>. It also includes a lot of other features common to most adventure games.</p>
+<p>And of course there is already an extensive library available from the Alan website, <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a>.
+It also includes a lot of other features common to most adventure games.</p>
 </div>
 </div>
 <div class="sect2">
@@ -8568,7 +8590,7 @@ You are carrying an empty bottle.</p>
 </p>
 </div>
 <div class="paragraph">
-<p>An effect of the feature that output is not visible unless the hero is present, is that the description of an event might not always be presented to the player.</p>
+<p>An effect of the feature that output is not visible unless the hero is present is that the description of an <code>Event</code> might not always be presented to the player.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8584,17 +8606,18 @@ End Event.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the hero isn&#8217;t at the location where the event is executed, he will never know anything about what has happened. The solution is to create an event that goes of where the hero is.</p>
+<p>If the hero isn&#8217;t at the location where the event is executed, he will never know anything about what happened.
+The solution is to create an <code>Event</code> that goes off where the hero is.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>Event distant_explosion
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Event distant_explosion
   "Somewhere far away you can hear an explosion."
 End Event.
 ...
 If Hero Nearby Then
   Schedule distant_explosion At Hero After 0.
-...</pre>
+...</code></pre>
 </div>
 </div>
 </div>
@@ -8602,7 +8625,8 @@ If Hero Nearby Then
 <h3 id="_doors"><a class="anchor" href="#_doors"></a>6.5. Doors</h3>
 <div class="paragraph">
 <p>
-A common feature in adventure games is the closed door. Here&#8217;s one way implement it:</p>
+A common feature in adventure games is the closed door.
+Here&#8217;s one way implement it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8634,7 +8658,7 @@ The hallway_door IsA object At treasury
 End The hallway_door.
 
 The treasury IsA location
-  Exit west TO hallway
+  Exit west To hallway
     Check hallway_door Is open
       Else "The door to the hallway is closed."
   End Exit.
@@ -8642,13 +8666,16 @@ End The treasury.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that we need two doors, one at each location, but they are synchronised by always making them both opened or closed at the same time. The check in the <code>Exit</code>s makes sure that the hero cannot pass through a closed door.</p>
+<p>Note that we need two doors, one at each location, but they are synchronised by always making them both opened or closed at the same time.
+The check in the <code>Exit</code>s makes sure that the hero cannot pass through a closed door.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_questions_and_answers"><a class="anchor" href="#_questions_and_answers"></a>6.6. Questions and Answers</h3>
 <div class="paragraph">
-<p>Sometimes it may be necessary to ask the player for an answer to some question. One example is if you want to confirm an action. The following example delineates one simple way to do this, which could be adopted for various circumstances.</p>
+<p>Sometimes it may be necessary to ask the player for an answer to some question.
+One example is if you want to confirm an action.
+The following example delineates one simple way to do this, which could be adopted for various circumstances.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8688,13 +8715,18 @@ End Event unquit.</code></pre>
 <h3 id="_actors_2"><a class="anchor" href="#_actors_2"></a>6.7. Actors</h3>
 <div class="paragraph">
 <p>
-Actors are vital components to make a story dynamic. They move around and act according to their scripts. To make the player aware of the other actor&#8217;s actions they need to be described. This must be done so that the player always get the correct perspective on the actions of the actors.</p>
+Actors are vital components to make a story dynamic.
+They move around and act according to their <code>Script</code>s.
+To make the player aware of the actions of other actors they need to be described.
+This must be done so that the player always gets the correct perspective on the actors' actions.</p>
 </div>
 <div class="paragraph">
-<p>A way to ensure this is to rely on the fact that output statements are not shown unless the hero is at the location where the output is taking place. This means that for every actor action, especially movement, you need to first describe the actions, then let the actor perform them and, finally, possibly describe the effects.</p>
+<p>A way to ensure this is to rely on the fact that output statements are not shown unless the hero is at the location where the output is taking place.
+This means that for every actor action, especially movement, you need to first describe the actions, then let the actor perform them and, finally, possibly describe the effects.</p>
 </div>
 <div class="paragraph">
-<p>An example is the movement of an actor from one location to another. In this case the step could look something like</p>
+<p>An example is the movement of an actor from one location to another.
+In this case the step could look something like:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8707,7 +8739,9 @@ Locate charlie_chaplin At outside_house.
 </div>
 </div>
 <div class="paragraph">
-<p>An actor is described, for example, when a location is entered or as the result of a <strong>Look,</strong> in the same way as objects are. This means that a good idea is to include the description of an actor&#8217;s activities in the description of him. One way to do this would be to use attributes to keep track of the actors state and test these in the description clause.</p>
+<p>An actor is described, for example, when a location is entered or as the result of a <strong>look</strong> command, in the same way as objects are.
+This means that a good idea is to include the description of an actor&#8217;s activities in its <code>Description</code>.
+One way to do this would be to use attributes to keep track of the actor&#8217;s state and test these in the <code>Description</code> clause.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8728,7 +8762,10 @@ Locate charlie_chaplin At outside_house.
 </div>
 </div>
 <div class="paragraph">
-<p>Although quite feasible, this is a bit tedious. As, at least a part of, the state is indicated by the script the actor is executing, this could be used to avoid the potentially large <code>If</code> chain. The optional  descriptions tied to each script will be executed instead of the main description when the actor is following that script. So this would allow us to simplify to:</p>
+<p>Although quite feasible, this is a bit tedious.
+Since the actor&#8217;s state is partlyt indicated by the script the actor is executing, this could be used to avoid the potentially large <code>If</code> chain.
+The optional  descriptions tied to each script will be executed instead of the main description when the actor is following that script.
+So this would allow us to simplify to:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8750,22 +8787,27 @@ Locate charlie_chaplin At outside_house.
 </div>
 </div>
 <div class="paragraph">
-<p>This makes it easier to keep track of what an actor is doing. Another hint here is to describe the change in an actor&#8217;s activities at the same time as executing the <code>Use</code> statement, like</p>
+<p>This makes it easier to keep track of what an actor is doing.
+Another hint here is to describe the change in an actor&#8217;s activities at the same time as executing the <code>Use</code> statement, like</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Event start_cleaning
+  Use Script cleaning For george.
+  "All of a sudden, George starts to clean the windows."
+End Event.</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Event start_cleaning<br>
-Use Script cleaning For george.<br>
-"All of a sudden, George starts to clean the windows."<br>
-End Event.</p>
-</div>
-<div class="paragraph">
-<p>This makes the descriptions of changes to be shown when it takes place and the description of the actor is always consistent. You can, of course, still have attributes describing the actor&#8217;s state to customize the description of the actor on an even more detailed level, but it generally suffices to describe an actor in terms of what script he is executing.</p>
+<p>This makes the descriptions of changes to be shown when they take place, and the description of the actor is always consistent.
+You can, of course, still have attributes describing the actor&#8217;s state to customize the description of the actor on an even more detailed level, but it generally suffices to describe an actor in terms of what script he is executing.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_vehicles"><a class="anchor" href="#_vehicles"></a>6.8. Vehicles</h3>
 <div class="paragraph">
-<p>The current version of Alan does not support actors being inside containers or inside other actors, which could be a straight forward way to implement vehicles. However, as the reader/player does not need to know how the output is generated we can use a location and a row of events to substitute for the vehicle.</p>
+<p>The current version of Alan does not support actors being inside containers or inside other actors, which could be a straight forward way to implement vehicles.
+However, as the reader/player does not need to know how the output is generated we can use a location and a row of events to substitute for the vehicle.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s start with the geography:</p>
@@ -8798,7 +8840,8 @@ End The car.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>We also need a description of the inside of it. We will use another location for this:</p>
+<p>We also need a description of the inside of it.
+We will use another location for this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8850,7 +8893,8 @@ Syntax park = park.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also see from the code above that there are (at least) two events that need to be defined too. They handle the movement of the car from one place to another:</p>
+<p>You can also see from the code above that there are (at least) two events that need to be defined too.
+They handle the movement of the car from one place to another:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8875,7 +8919,10 @@ End Event drive_to_garage.</code></pre>
 <p>The main idea is that the player/reader is inside the car, and the events are executed at this location thus emulating movement.</p>
 </div>
 <div class="paragraph">
-<p>There is a multitude of solutions for this problem. One possibility is to exchange the car object for an actor and the events for script steps. However, in this solution the car object is not where the hero is (<code>inside_car</code>) so the output from the scripts for the car will not automatically be shown to the player. There are (at least) two different ways to deal with this (one involving attributes, the other involving an extra object), but the solutions are left as an exercise to the reader!</p>
+<p>There is a multitude of solutions for this problem.
+One possibility is to exchange the car object for an actor and the events for script steps.
+However, in this solution the car object is not where the hero is (<code>inside_car</code>) so the output from the scripts for the car will not automatically be shown to the player.
+There are (at least) two different ways to deal with this (one involving attributes, the other involving an extra object), but the solutions are left as an exercise to the reader!</p>
 </div>
 <div class="paragraph">
 <p>As Alan allows nesting locations (locating a location at another as if it was an object or actor), yet another solution would be to actually move the car location between the garage and the parking lot.</p>
@@ -8887,7 +8934,8 @@ End Event drive_to_garage.</code></pre>
 <div class="sect2">
 <h3 id="_floating_objects"><a class="anchor" href="#_floating_objects"></a>6.9. Floating Objects</h3>
 <div class="paragraph">
-<p>Floating objects is a term used for objects that are available everywhere, or at least at many places. Usually they are available wherever the hero is, and we want to avoid creating duplicate objects, so in a way we make them float along with the hero, or some other actor, instead.</p>
+<p>Floating objects is a term used for objects that are available everywhere, or at least at many places.
+Usually they are available wherever the hero is, and we want to avoid creating duplicate objects, so in a way we make them float along with the hero, or some other actor, instead.</p>
 </div>
 <div class="sect3">
 <h4 id="_body_parts"><a class="anchor" href="#_body_parts"></a>Body Parts</h4>
@@ -8895,7 +8943,8 @@ End Event drive_to_garage.</code></pre>
 <p>One example of floating objects is the various parts of the hero&#8217;s body.</p>
 </div>
 <div class="paragraph">
-<p>To create floating objects you can use a particular feature of entities, namely the fact that they are always located where the hero is. Such an entity can of course have the container property to allow it to contain a number of other instances.</p>
+<p>To create floating objects you can use a particular feature of entities, namely the fact that they are always located where the hero is.
+Such an entity can of course have the container property to allow it to contain a number of other instances.</p>
 </div>
 <div class="paragraph">
 <p>So to have the hero&#8217;s body parts available wherever the hero goes you can use:</p>
@@ -8974,10 +9023,13 @@ You are empty-handed but in your belt you have a knife.</p>
 <div class="sect3">
 <h4 id="_outdoors_and_indoors"><a class="anchor" href="#_outdoors_and_indoors"></a>Outdoors and Indoors</h4>
 <div class="paragraph">
-<p>Another example of floating objects are semi-abstract objects like the air, the ground and walls. Some of these also have the extra complexity that they should be available only under certain conditions.</p>
+<p>Another example of floating objects are semi-abstract objects like the air, the ground and walls.
+Some of these also have the extra complexity that they should be available only under certain conditions.</p>
 </div>
 <div class="paragraph">
-<p>Of course, you would not want outdoor things to be available when you are indoors. To solve this, simply create yet another container object where we can store the outdoor things when they should not be accessible and place it where the hero can never be. Now we only need to make sure that the objects are transferred between the two storages:</p>
+<p>Of course, you would not want outdoor things to be available when you are indoors.
+To solve this, simply create yet another container object where we can store the outdoor things when they should not be accessible and place it where the hero can never be.
+Now we only need to make sure that the objects are transferred between the two storages:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9002,7 +9054,8 @@ When location Of hero Is Not outdoors =&gt;
 <p>You need to add the boolean attribute <code>outdoors</code> to every location to the make the rules work, of course.</p>
 </div>
 <div class="paragraph">
-<p>And Voilà, every time the hero arrives at an outdoor location he will find the air and the sky. And every time he enters a location that has the attribute <code>outdoors</code> set to false he will not find them available.</p>
+<p>And Voilà, every time the hero arrives at an outdoor location he will find the air and the sky.
+And every time he enters a location that has the attribute <code>outdoors</code> set to false he will not find them available.</p>
 </div>
 <div class="paragraph">
 <p>Well, perhaps he would like to have the air available indoors too, but that is left as an exercise for the reader!</p>
@@ -9015,7 +9068,9 @@ When location Of hero Is Not outdoors =&gt;
 </td>
 <td class="content">
 <div class="paragraph">
-<p>An alternative to the location attribute, is to use classes. Define an outdoor_location class and an indoor_location class. Then inherit as appropriate, and the rules could instead look like:</p>
+<p>An alternative to the location attribute, is to use classes.
+Define an outdoor_location class and an indoor_location class.
+Then inherit as appropriate, and the rules could instead look like:</p>
 </div>
 </td>
 </tr>
@@ -9031,7 +9086,8 @@ When location Of hero IsA indoors_location =&gt; ...</code></pre>
 <div class="sect3">
 <h4 id="_nested_locations_as_a_solution"><a class="anchor" href="#_nested_locations_as_a_solution"></a>Nested Locations as a Solution</h4>
 <div class="paragraph">
-<p>Yet another option would be to make use of the nested locations feature. Put all your outdoor locations in a outdoor location where the outdoor_storage entity is also present (this is just a hint):</p>
+<p>Yet another option would be to make use of the nested locations feature.
+Put all your outdoor locations in a outdoor location where the outdoor_storage entity is also present (this is just a hint):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9053,10 +9109,14 @@ End The park.</code></pre>
 <p>A very common puzzle in old time adventures (so much so that it has possibly been exploited beyond its potential) is the problem of dark locations and finding a source of light.</p>
 </div>
 <div class="paragraph">
-<p>Darkness and light sources can be implemented in Alan in different ways. Again we basically have the choice between attributes and classes. The solutions are both general and rather similar so we will have a look at the solution using attributes and leave the other solution to the reader. (A good exercise to really understand the Alan class concept, so please take a stab at it. If you want to have a look at one solution, you can study the Alan standard library, which uses classes to implement light sources.)</p>
+<p>Darkness and light sources can be implemented in Alan in different ways.
+Again we basically have the choice between attributes and classes.
+The solutions are both general and rather similar so we will have a look at the solution using attributes and leave the other solution to the reader. (A good exercise to really understand the Alan class concept, so please take a stab at it.
+If you want to have a look at one solution, you can study the Alan standard library, which uses classes to implement light sources.)</p>
 </div>
 <div class="paragraph">
-<p>First we need an attribute that all objects have. We know we only need to consider objects because light sources need to be transported by the player, so they can not just be anywhere, like entities.</p>
+<p>First we need an attribute that all objects have.
+We know we only need to consider objects because light sources need to be transported by the player, so they can not just be anywhere, like entities.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9067,7 +9127,9 @@ End Add To.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This ensures that all objects have the boolean (true/false valued) attribute <code>lightsource</code> with the default not being a light source. Any object that provides light need to explicitly state that they are instead. For some instances this attribute might change value dynamically, e.g. when the lamp is lit and extinguished.</p>
+<p>This ensures that all objects have the boolean (true/false valued) attribute <code>lightsource</code> with the default not being a light source.
+Any object that provides light need to explicitly state that they are instead.
+For some instances this attribute might change value dynamically, e.g. when the lamp is lit and extinguished.</p>
 </div>
 <div class="paragraph">
 <p>Locations then must declare themselves as lit or not:</p>
@@ -9083,7 +9145,8 @@ End Add To.</code></pre>
 <p>Here we assume most locations are lit, dark locations need to declare themselves <code>Not lit</code>.</p>
 </div>
 <div class="paragraph">
-<p>We can now count the number of instances at the current location having the attribute <code>lightsource</code> set and if there are one or more there is some light provided. So, the <code>look</code> verb could be reworked to:</p>
+<p>We can now count the number of instances at the current location having the attribute <code>lightsource</code> set and if there are one or more there is some light provided.
+So, the <code>look</code> verb could be reworked to:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9101,7 +9164,8 @@ End Verb.</code></pre>
 <p>The check of the <code>look</code> verb now checks the current locations need for light and then counts instances of object, that are light sources and present, to see if there is light.</p>
 </div>
 <div class="paragraph">
-<p>Of course, we must also modify the dark locations so that they don&#8217;t display their descriptions upon entrance. This is easy to do using another addition to every location, a description check, similar to the check in the <code>look</code> verb:</p>
+<p>Of course, we must also modify the dark locations so that they don&#8217;t display their descriptions upon entrance.
+This is easy to do using another addition to every location, a description check, similar to the check in the <code>look</code> verb:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9118,12 +9182,17 @@ End Add To.</code></pre>
 <div class="sect2">
 <h3 id="_distant_imaginary_objects"><a class="anchor" href="#_distant_imaginary_objects"></a>6.11. Distant &amp; Imaginary Objects</h3>
 <div class="paragraph">
-<p>Sometimes you need to make it possible for the player to refer to things either far away, that are not really objects or that may be at many places at once. Examples of these are a distant mountain that may be examined through a set of binoculars, the melody in &#8220;whistle the melody&#8221;, and water or walls. One way of handling this is to use entities, since they are &#8220;everywhere&#8221;. But sometimes you need better control over when they are available and when not.</p>
+<p>Sometimes you need to make it possible for the player to refer to things either far away, that are not really objects or that may be at many places at once.
+Examples of these are a distant mountain that may be examined through a set of binoculars, the melody in &#8220;whistle the melody&#8221;, and water or walls.
+One way of handling this is to use entities, since they are &#8220;everywhere&#8221;.
+But sometimes you need better control over when they are available and when not.</p>
 </div>
 <div class="sect3">
 <h4 id="_a_mountain"><a class="anchor" href="#_a_mountain"></a>A Mountain</h4>
 <div class="paragraph">
-<p>For objects that need to be visible from a distance, the easiest method is to introduce a   &#8216;shadow object&#8217;. This is a second object acting on behalf of, or representing, the distant object at the locations where it should be possible to refer to it. For example:</p>
+<p>For objects that need to be visible from a distance, the easiest method is to introduce a   &#8216;shadow object&#8217;.
+This is a second object acting on behalf of, or representing, the distant object at the locations where it should be possible to refer to it.
+For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9163,7 +9232,8 @@ towards the sky.<br></p>
 </div>
 </div>
 <div class="paragraph">
-<p>If the mountain must be visible and possible to manipulate from a number of locations, you might implement one shadow object for each location, but this might become a bit tedious if they are many. If they are identical you can use a simple rule like the following:</p>
+<p>If the mountain must be visible and possible to manipulate from a number of locations, you might implement one shadow object for each location, but this might become a bit tedious if they are many.
+If they are identical you can use a simple rule like the following:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9172,7 +9242,10 @@ towards the sky.<br></p>
 </div>
 </div>
 <div class="paragraph">
-<p>This will ensure that whenever the hero moves to any of the places from where the mountain is visible, the <code>shadow_mountain</code> is sure to follow. However, as the rules are executed <em>after</em> the hero already has moved, a better strategy might be to make the <code>shadow_mountain</code> &#8216;silent&#8217;, i.e. to have no description. Instead, the description of it should then be embedded in the description of the adjacent locations. Yet, another possibility would be to move the pseudo-object around using statements in the exits, like</p>
+<p>This will ensure that whenever the hero moves to any of the places from where the mountain is visible, the <code>shadow_mountain</code> is sure to follow.
+However, as the rules are executed <em>after</em> the hero already has moved, a better strategy might be to make the <code>shadow_mountain</code> &#8216;silent&#8217;, i.e. to have no description.
+Instead, the description of it should then be embedded in the description of the adjacent locations.
+Yet, another possibility would be to move the pseudo-object around using statements in the exits, like</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9185,13 +9258,15 @@ End The scenic_vista.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Regardless of which of these strategies you chose, you need to take care that the shadow object is not present when the real object is. In this particular case, it should not be moved to the hills.</p>
+<p>Regardless of which of these strategies you chose, you need to take care that the shadow object is not present when the real object is.
+In this particular case, it should not be moved to the hills.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_the_melody"><a class="anchor" href="#_the_melody"></a>The Melody</h4>
 <div class="paragraph">
-<p>To allow the player to 'whistle the melody' for example, there are two different tactics that can be applied. One choice is to make the melody an <code>entity</code> (or some subclass thereof that you have defined), because, as we have seen, those can be manipulated from everywhere:</p>
+<p>To allow the player to 'whistle the melody' for example, there are two different tactics that can be applied.
+One choice is to make the melody an <code>entity</code> (or some subclass thereof that you have defined), because, as we have seen, those can be manipulated from everywhere:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9200,7 +9275,8 @@ Syntax 'whistle' = 'whistle' (m) ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The other route would be to make it an actual <code>object</code>. In this case the syntax for the whistle verb would need to indicate omnipotence, meaning that the player can refer to instances (even those inheriting from <code>object</code>) to be used as parameters even from afar.</p>
+<p>The other route would be to make it an actual <code>object</code>.
+In this case the syntax for the whistle verb would need to indicate omnipotence, meaning that the player can refer to instances (even those inheriting from <code>object</code>) to be used as parameters even from afar.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9212,7 +9288,8 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 <p>The melody then does not have to be reachable, near or even be at any location at all, for the player to be able to refer to it.</p>
 </div>
 <div class="paragraph">
-<p>In both cases you would most likely need to restrict the parameters for the syntax so that the player can&#8217;t 'whistle the chair'. Which of the two strategies you would chose greatly depends on things like:</p>
+<p>In both cases you would most likely need to restrict the parameters for the syntax so that the player can&#8217;t 'whistle the chair'.
+Which of the two strategies you would chose greatly depends on things like:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -9240,10 +9317,14 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 <div class="sect2">
 <h3 id="_structure"><a class="anchor" href="#_structure"></a>6.13. Structure</h3>
 <div class="paragraph">
-<p>A good thing to do when designing an interactive fiction story is to separate the geography from the story. In Alan, you can use the import facility to structure your Alan source. One approach could be to place the description of each location in a separate file together with any objects that could be considered part of the scenery or at least is not only a tool in a puzzle. These files can then be included in a &#8216;map&#8217; file, which in turn is included by the top-level file.</p>
+<p>A good thing to do when designing an interactive fiction story is to separate the geography from the story.
+In Alan, you can use the import facility to structure your Alan source.
+One approach could be to place the description of each location in a separate file together with any objects that could be considered part of the scenery or at least is not only a tool in a puzzle.
+These files can then be included in a &#8216;map&#8217; file, which in turn is included by the top-level file.</p>
 </div>
 <div class="paragraph">
-<p>The story line can be divided into files too, one for each <code>scene</code>. A scene being comments describing the important things that are suppose to happen, any prerequisites and objects, events, rules etc. which are specific for this part of the story.</p>
+<p>The story line can be divided into files too, one for each <code>scene</code>.
+A scene being comments describing the important things that are suppose to happen, any prerequisites and objects, events, rules etc. which are specific for this part of the story.</p>
 </div>
 <div class="paragraph">
 <p>This strategy will both give you a better structure of your adventure as well as help you design a better story, much like the storyboarding technique used in making movies or plays.</p>
@@ -9252,7 +9333,9 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 <div class="sect2">
 <h3 id="_debugging"><a class="anchor" href="#_debugging"></a>6.14. Debugging</h3>
 <div class="paragraph">
-<p>Occasionally your Alan code is flawed and you really can&#8217;t understand what is actually happening. To aid in discovering which part of your code is run when, the interpreter Arun incorporates some features for debugging. There are a few  debugging switches available when starting the interpreter from the command line:</p>
+<p>Occasionally your Alan code is flawed and you really can&#8217;t understand what is actually happening.
+To aid in discovering which part of your code is run when, the interpreter Arun incorporates some features for debugging.
+There are a few  debugging switches available when starting the interpreter from the command line:</p>
 </div>
 <div class="literalblock plaintext">
 <div class="content">
@@ -9279,7 +9362,9 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 <div class="sect3">
 <h4 id="_command_logs_and_game_transcripts"><a class="anchor" href="#_command_logs_and_game_transcripts"></a>Command Logs and Game Transcripts</h4>
 <div class="paragraph">
-<p>For various purposes, such as debugging, an actual log of the player commands can be handy. Such a log is created if the option <code>-c</code> is given to the interpreter when starting a game. The log files are created in the directory, which was current when the interpreter was started, the name of the log file will begin with the game name and have the extension <strong>.log</strong>.</p>
+<p>For various purposes, such as debugging, an actual log of the player commands can be handy.
+Such a log is created if the option <code>-c</code> is given to the interpreter when starting a game.
+The log files are created in the directory, which was current when the interpreter was started, the name of the log file will begin with the game name and have the extension <strong>.log</strong>.</p>
 </div>
 <div class="paragraph">
 <p>A command log can on some systems be used as input to the interpreter, and thus automate the execution of the exact player experience.</p>
@@ -9292,16 +9377,21 @@ Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
 <h4 id="_interpreter_and_instruction_trace"><a class="anchor" href="#_interpreter_and_instruction_trace"></a>Interpreter and Instruction Trace</h4>
 <div class="paragraph">
 <p>
-Trace mode can also act as an aid in debugging. Level 1 will print information about every invocation of the instruction interpreter, making it easier to see which parts of the code are being executed.</p>
+Trace mode can also act as an aid in debugging.
+Level 1 will print information about every invocation of the instruction interpreter, making it easier to see which parts of the code are being executed.</p>
 </div>
 <div class="paragraph">
-<p>Trace level 2, single instruction trace, will also trace every single Acode instruction. The Acode is based on a stack machine but single instruction trace will not show all stack operations. Level 3 shows the execution of these also. Level 4 dumps the content of the stack for every instruction.</p>
+<p>Trace level 2, single instruction trace, will also trace every single Acode instruction.
+The Acode is based on a stack machine but single instruction trace will not show all stack operations.
+Level 3 shows the execution of these also.
+Level 4 dumps the content of the stack for every instruction.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_debug_mode"><a class="anchor" href="#_debug_mode"></a>Debug mode</h4>
 <div class="paragraph">
-<p>Finally, and usually most useful, there is the debug mode. If the interpreter is started with this option, it will execute the start up sequence and then prompt for a debug command with</p>
+<p>Finally, and usually most useful, there is the debug mode.
+If the interpreter is started with this option, it will execute the start up sequence and then prompt for a debug command with</p>
 </div>
 <div class="paragraph">
 <p>abug&gt;</p>
@@ -9317,7 +9407,8 @@ Trace mode can also act as an aid in debugging. Level 1 will print information a
 <div class="sect3">
 <h4 id="_using_the_debugger"><a class="anchor" href="#_using_the_debugger"></a>Using the Debugger</h4>
 <div class="paragraph">
-<p>Abug may also be entered during the execution of an adventure. To do this you issue the single player command (type it at the game prompt)</p>
+<p>Abug may also be entered during the execution of an adventure.
+To do this you issue the single player command (type it at the game prompt)</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -9360,23 +9451,33 @@ quit               -- quit game</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Any command may be abbreviated as long as it is unambiguous. Typing 'b' for 'break' will work, for example.</p>
+<p>Any command may be abbreviated as long as it is unambiguous.
+Typing 'b' for 'break' will work, for example.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The display commands, <code>actors</code>, <code>locations</code>, <code>objects</code> and <code>events</code>, may optionally be followed by a number. Abug will then display detailed information about the entity requested, such as values of attributes, its present location etc. Currently there is no way to modify anything using Abug.</p>
+<p>The display commands, <code>actors</code>, <code>locations</code>, <code>objects</code> and <code>events</code>, may optionally be followed by a number.
+Abug will then display detailed information about the entity requested, such as values of attributes, its present location etc.
+Currently there is no way to modify anything using Abug.</p>
 </div>
 <div class="paragraph">
-<p>You can run the adventure to the next source line by using the <code>next</code> command. If the source file is available, the interpreter will also show the source line.</p>
+<p>You can run the adventure to the next source line by using the <code>next</code> command.
+If the source file is available, the interpreter will also show the source line.</p>
 </div>
 <div class="paragraph">
-<p>Breakpoints can be set on a source line. Enter the <code>break</code> command followed by the number of the source line. Alan allows the source to be separated into multiple files, so the interpreter always indicate which file the source line is in, e.g. when hitting a breakpoint or stepping to the next source line. When setting a breakpoint the current file is always assumed. You can currently set a breakpoint in another source file by preceding the line number with the file name delimited by a colon.</p>
+<p>Breakpoints can be set on a source line.
+Enter the <code>break</code> command followed by the number of the source line.
+Alan allows the source to be separated into multiple files, so the interpreter always indicate which file the source line is in, e.g. when hitting a breakpoint or stepping to the next source line.
+When setting a breakpoint the current file is always assumed.
+You can currently set a breakpoint in another source file by preceding the line number with the file name delimited by a colon.</p>
 </div>
 <div class="paragraph">
-<p>Breakpoints can be deleted. The <code>delete</code> command without a line number will remove any breakpoint at the current line. You can specify which breakpoint to delete by giving the line number (and optionally the file name).</p>
+<p>Breakpoints can be deleted.
+The <code>delete</code> command without a line number will remove any breakpoint at the current line.
+You can specify which breakpoint to delete by giving the line number (and optionally the file name).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -9386,7 +9487,9 @@ quit               -- quit game</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The debugger knows on which source lines it is possible to place a breakpoint. If you attempt to put a breakpoint at some line where it is not possible, it will attempt to place one a line which is numerically higher but as close a possible. This will sometimes cause a breakpoint to be placed in a context that will not be what you expected.</p>
+<p>The debugger knows on which source lines it is possible to place a breakpoint.
+If you attempt to put a breakpoint at some line where it is not possible, it will attempt to place one a line which is numerically higher but as close a possible.
+This will sometimes cause a breakpoint to be placed in a context that will not be what you expected.</p>
 </div>
 </td>
 </tr>
@@ -9795,7 +9898,8 @@ ee1: RETURN
 </div>
 </div>
 <div class="paragraph">
-<p>In the instruction trace, lines of &#8216;+&#8217; characters indicates the start of interpretation, thus they can be present inside other single step traces (like the <code>Look</code> in the example above). Lines of dashes, indicates the return from one such level of interpretation.</p>
+<p>In the instruction trace, lines of &#8216;+&#8217; characters indicates the start of interpretation, thus they can be present inside other single step traces (like the <code>Look</code> in the example above).
+Lines of dashes, indicates the return from one such level of interpretation.</p>
 </div>
 </div>
 </div>
@@ -12646,7 +12750,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.76<br>
+Version 0.1.77<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">

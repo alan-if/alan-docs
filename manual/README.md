@@ -95,7 +95,7 @@ An here follows a task list of the remaining porting tasks:
     + [ ] Check that all headings are properly title cased.
     + [ ] Change to all-caps Alan keywords in headings.
 - [ ] Finish reading through the whole book, checking for missing styles and fixing the ADoc source:
-    + [ ] _6. Hints And Tips_
+    + [ ] _6. Hints And Tips_ (WIP)
 
 
 
