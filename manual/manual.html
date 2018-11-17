@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.80,</span>
+<span id="revnumber">version 0.1.81,</span>
 <span id="revdate">November 17, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.80
+<pre>Doc version: 0.1.81
 Last edited: November 17, 2018</pre>
 </div>
 </div>
@@ -916,7 +916,7 @@ There are no explicit type declarations, except for instances of classes; instea
 <p>Alan v2 users wanting to upgrade&#8201;&#8212;&#8201;you should read the separate document on conversion, then <a href="#_introduction_to_the_language">Sect. 2.4</a> and onwards, with frequent use of <a href="#_language_reference">Chapter 3</a> as a reference while doing your conversion.</p>
 </li>
 <li>
-<p>Alan v3 users looking for detailed answers&#8201;&#8212;&#8201;use the <em>Index</em>, look up the relevant sections in <a href="#_language_reference">Chapter 3</a> but also glance through <a href="#_concepts">Chapter 2</a> from <a href="#_introduction_to_the_language">Sect. 2.4</a>. Visit <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a> for a collection of examples.</p>
+<p>Alan v3 users looking for detailed answers&#8201;&#8212;&#8201;use the <em>Index</em> (PDF version only), look up the relevant sections in <a href="#_language_reference">Chapter 3</a> but also glance through <a href="#_concepts">Chapter 2</a> from <a href="#_introduction_to_the_language">Sect. 2.4</a>. Visit <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a> for a collection of examples.</p>
 </li>
 </ol>
 </div>
@@ -1187,7 +1187,7 @@ An actor may be a thief running around and stealing your collected treasures or 
 <h4 id="_acting"><a class="anchor" href="#_acting"></a>Acting</h4>
 <div class="paragraph">
 <p>The player commands action by typing imperative statements.
-These statements are analysed and results in execution (&#8220;calls&#8221;) to verbs.
+These statements are analysed and result in verbs executions (&#8220;calls&#8221;).
 The effects of these commands must be declared in verbs by the game author, either in an object (describing the effects of the verb when applied to an object) or as a general (global) that only applies without object.</p>
 </div>
 </div>
@@ -1691,7 +1691,7 @@ It is initially set to <em>true</em> as specified in the declaration of the clas
 <div class="sect4">
 <h5 id="_specialising_and_overriding"><a class="anchor" href="#_specialising_and_overriding"></a>Specialising and Overriding</h5>
 <div class="paragraph">
-<p>Sub-classing,  or specialisation, is usually used to add properties and thus make the instances of the sub-class more restricted, or specialised.
+<p>Sub-classing,  or specialisation, is usually employed to add properties and thus make the instances of the sub-class more restricted, or specialised.
 In the example above, <code>openable_door</code>s are specialisations of <code>door</code>s since they have an attribute that the more general class does not have.</p>
 </div>
 <div class="paragraph">
@@ -1750,9 +1750,9 @@ End The inst.</code></pre>
 <p>When you search, recursively, for instances in the container <code>cont</code>, you might then get instances that are both of class <code>subobject</code> and <code>object</code>, e.g. if the <code>inst</code> is inside the <code>cont</code> and in turn contains something, which would then be of class <code>object</code>.</p>
 </div>
 <div class="paragraph">
-<p>This might lead to, completely correct, but surprising, error messages from the compiler indicating that an attribute or other property that you though existed is not available.
+<p>This might lead to, completely correct, but surprising, error messages from the compiler indicating that an attribute or other property that you thought existed is not available.
 Especially surprising is perhaps the case where the classes are not even decendants of each other.
-In this case the contained instances can only be guaranteed to be their common parent, which might be a quite general class like <code>thing</code> or even <code>entity</code>.</p>
+In this case the contained instances can only be guaranteed to be their common ancestor, which might be a quite general class like <code>thing</code> or even <code>entity</code>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1766,9 +1766,9 @@ Transitivity describes how e.g. containment should be interpreted.</p>
 <p>The scenario above may be described as &#8220;transitive containment&#8221; meaning that something is in a container if it is in that container or in any container it contains, recursively.</p>
 </div>
 <div class="paragraph">
-<p>There are two other types, namely DIRECT and INDIRECT transitivity.
+<p>There are two other types, namely direct and indirect transitivity.
 Direct transitivity actually means no transitivity.
-If you investigate a container with direct transitivity you will only get the direct content of it, not the content of the containers within it.</p>
+If you investigate a container with direct transitivity you will only get its direct contents, not the contents of the containers within it.</p>
 </div>
 <div class="paragraph">
 <p>Finally, indirect transitivity means instances indirectly contained by a container.
@@ -1988,7 +1988,7 @@ The parameters can only be referenced if they are defined in the current context
 </div>
 <div class="paragraph">
 <p>The <code>Syntax</code> construct allows for more than one parameter, in order to make it possible to define more complex player commands.
-Therefore, the verb execution order  described previously from execution of verbs in one instance must be generalised to verb bodies in all the parameters.
+Therefore, the verb execution order  previously described regarding execution of verbs in one instance must be generalised to verb bodies in all the parameters.
 In the example above, verb bodies in the objects or actors referenced as <code>obj</code> and <code>cont</code> (the green pearl and the black box) are executed (if the verb is present in their definitions).</p>
 </div>
 </div>
@@ -2043,7 +2043,7 @@ Postmen are working behind the counters.</p>
 Except for the following case:</p>
 <div class="paragraph">
 <p>If an output is immediately followed by another output starting with a full stop (period, the character &#8216;.&#8217;), an exclamation, a question mark or a comma, and it is the only character in that output or it is followed by a space (blank character), no space will be inserted before that output.
-  This rule will ensures that the full stop in the following source is automatically adjacent to the   previous text, without the need to suppress spacing.</p>
+  This rule will ensures that the full stop in the following source is automatically adjacent to the   previous text, without the need to suppress spacing:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2630,7 +2630,7 @@ The only difference is that an instance will actually show up in the game when i
 Remember also that properties declared in an instance are not common to any other instances (unless the declaration overrode the value of a class property).</p>
 </div>
 <div class="paragraph">
-<p>Instances inheriting, directly or indirectly, from the predefined classes <code>thing</code>, <code>entity</code>, <code>object</code>, <code>location</code>, <code>actor</code> and <strong>literal,</strong> are subject to special semantics  and restrictions.</p>
+<p>Instances inheriting, directly or indirectly, from the predefined classes <code>thing</code>, <code>entity</code>, <code>object</code>, <code>location</code>, <code>actor</code> and <code>literal</code>, are subject to special semantics  and restrictions.</p>
 </div>
 <div class="paragraph">
 <p>Here are two examples of instance declarations following the rules above:</p>
@@ -2667,7 +2667,7 @@ End The mr_brown.</code></pre>
 The rest of the lines are fairly easy to match up to the rules of the Alan language as described by the earlier box.</p>
 </div>
 <div class="paragraph">
-<p>All capitalized words in the examples above are keywords in the Alan language (see <a href="#table-of-keywords">Table 5</a> for a complete list), the rest are author defined words or identifiers (with the exception of the bold words object and actor, which are identifiers predefined to be special classes).</p>
+<p>All capitalized words in the examples above are keywords in the Alan language (see <a href="#table-of-keywords">Table 5</a> for a complete list), the rest are author defined words or identifiers (with the exception of the words <code>object</code> and <code>actor</code>, which are identifiers predefined to be special classes).</p>
 </div>
 <div class="sect3">
 <h4 id="_entities"><a class="anchor" href="#_entities"></a>Entities</h4>
@@ -3068,7 +3068,7 @@ This works fine for locations, since the player usually does not need to refer t
 <div class="paragraph">
 <p>In this example, the name is a sequence of words.
 The semantics of this declaration is that the word &#8220;chair&#8221; is a noun and &#8220;little&#8221; and &#8220;wooden&#8221; become  adjectives.
-When the player, in a command, wants to refer to the object with the author name (identifier) <code>chair3</code>, he may use just &#8220;chair&#8221; if it is the only accessible object with &#8220;chair&#8221; as its noun, or he may distinguish between multiple chairs by also giving one or more adjectives to be more precise about which chair he meant.</p>
+When the player wants to refer in a command to the object with the author name (identifier) <code>chair3</code>, he may use just &#8220;chair&#8221; if it&#8217;s the only accessible object with &#8220;chair&#8221; as its noun, or he may distinguish between multiple chairs by also providing one or more adjectives to be more precise about which chair he means.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -12677,7 +12677,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.80<br>
+Version 0.1.81<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">

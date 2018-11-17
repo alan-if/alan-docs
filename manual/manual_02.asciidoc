@@ -162,8 +162,13 @@ Much of what should be described is in terms of ordinary text shown to make the 
 You will still need to understand how to vary your output depending on various conditions or information, how the player input controls which events will happen, how to connect one location to another and how to store information for later use.
 In a way this is programming, but in an unusual sense.
 
-// @FIXE: The sentence "to have the same view that the Alan language has on..."
-//        needs rephrasing and polishing!
+// @FIXE @thoni56:
+//     The sentence "to have the same view that the Alan language has on..."
+//     needs rephrasing and polishing! too long, entangled, and a bit strecthed too.
+//
+//     PROPOSAL:
+//        As an author you'll need to learn to view a work of interactive
+//        fiction through the "`eyes of Alan language`", so to speak.
 
 In order to understand the rules of the Alan language, which this manual is all about, it is necessary to first establish some common ground.
 As an author you'll need to have the same view that the Alan language has on some fundamentals of what a work of interactive fiction is all about.
@@ -229,10 +234,8 @@ One of the interesting things about playing adventure games with actors is to fi
 
 === Acting
 
-// @FIXME: Polish "These statements are analysed and RESULTS in execution..."
-
 The player commands action by typing imperative statements.
-These statements are analysed and results in execution ("`calls`") to ((verbs)).
+These statements are analysed and result in ((verbs)) executions ("`calls`").
 The effects of these commands must be declared in verbs by the game author, either in an object (describing the effects of the verb when applied to an object) or as a general (global) that only applies without object.
 
 
@@ -275,7 +278,6 @@ For this the `Actor` class is provided.
 In this document, there are some typographical clues(((typographical notation))).
 Example Alan source code is typeset in separate sections with a mono-spaced font:
 
-// @FIXME: This block needs to be styled like Alan code, but without syntax highlighting!
 [role=alan]
 --------------------------------------------------------------------------------
 This is an example of some source code.
@@ -293,7 +295,6 @@ You are outside your grandma's house.
 Later in the manual, you will find semi-formal definitions, grammar rules, for how various constructs may be constructed.
 These sections are typeset against a coloured background:
 
-// @FIXME: This block needs to be styled like BNF code, but without syntax highlighting!
 [source,bnf,subs="normal"]
 --------------------------------------------------------------------------------
 The rules for the rules are available in <<Language Grammar>>.
@@ -301,13 +302,6 @@ The rules for the rules are available in <<Language Grammar>>.
 
 // @TODO: Either add sub-heading here "Alan Keywords Styling Conventions", or at
 //        least an anchor that could be used for xrefs!
-
-// @NOTE: It says "are keywords or signify an Alan construct", but in the new styling
-//        convention only true keywords are styled as inline code.
-//        What is meant exactly by words that "signify an Alan construct"?
-//        does it mean that words like LITERAL and STRING should be styled as code,
-//        even though they are not usable keywords? But this would embrace too many
-//        words: 'class', 'instance', etc., are all Alan constructs!
 
 In running text, words that are keywords or signify an Alan construct are written in a mono-spaced font.
 This helps distinguish the English word '`the`' from the Alan keyword `The`.
@@ -590,8 +584,6 @@ This flexibility, know as ((polymorphism)), is possible in programming only thro
 
 The Alan language supports object-orientation and inheritance via two constructs:
 
-// @PSEUDOCODE: The following code examples might not highlight well due to the
-//              presence of '...' ot square brackets placeholder!
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -635,8 +627,6 @@ Those examples show how to do it from the predefined classes.
 However, it is the identical if you have defined the class yourself.
 In general the format is:
 
-// @PSEUDOCODE: The following code examples might not highlight well due to the
-//              presence of '...' ot square brackets placeholder!
 
 [source,alan, subs="+quotes"]
 --------------------------------------------------------------------------------
@@ -667,8 +657,6 @@ End The kitchen_door.
 --------------------------------------------------------------------------------
 
 
-// @TODO: How should TRUE be styled? all caps? bold? italic?
-
 In this example, the `kitchen_door` has the attribute `open` although it does not specifically show in the declaration.
 It is initially set to _true_ as specified in the declaration of the class `openable_door`.
 
@@ -676,11 +664,7 @@ It is initially set to _true_ as specified in the declaration of the class `open
 
 ==== Specialising and Overriding
 
-
-// @FIXME: "is USUALLY USED to..."
-
-
-Sub-classing, (((sub-classing))) or ((specialisation)), is usually used to add properties and thus make the instances of the sub-class more restricted, or specialised.
+Sub-classing, (((sub-classing))) or ((specialisation)), is usually employed to add properties and thus make the instances of the sub-class more restricted, or specialised.
 In the example above, ``openable_door``s are specialisations of ``door``s since they have an attribute that the more general class does not have.
 
 However, a sub-class can also redefine a feature.
@@ -698,14 +682,14 @@ The important thing is that the feature of having the attribute is common to all
 This is called overriding a property.
 
 
-// @FIXME: "In the following DESCRIPTIONS..." --- the text refers to these "descriptions"
-//         in various places, but it's not clear what its meant by them!
+// @FIXME @thoni56:
+//     "In the following DESCRIPTIONS..." --- the text refers to these "descriptions"
+//      in various places, but it's not clear what its meant by them!
 
 This concludes our brief presentation of object-orientation and how the Alan language supports it.
 In the following descriptions, you just need to remember that most features can be inherited along the inheritance tree and be overridden, both during that inheritance and explicitly in the instance declaration itself.
 
 // @TODO: Add a cross-ref to the table of properties inheritance?
-
 
 
 === Containment, Classes and Transitivity
@@ -740,25 +724,22 @@ End The inst.
 
 When you search, recursively, for instances in the container `cont`, you might then get instances that are both of class `subobject` and `object`, e.g. if the `inst` is inside the `cont` and in turn contains something, which would then be of class `object`.
 
-// @NOTE: "to be their common PARENT" --- maybe ACENSTOR would be more appropriate here,
-//        as it might apply to inderect descendants too?
-//        Maybe the section on inheritance should introduce some basic OOP terminology too,
-//        and a Glossary could be also added ad the end of the book!
-
-This might lead to, completely correct, but surprising, error messages from the compiler indicating that an attribute or other property that you though existed is not available.
+This might lead to, completely correct, but surprising, error messages from the compiler indicating that an attribute or other property that you thought existed is not available.
 Especially surprising is perhaps the case where the classes are not even decendants of each other.
-In this case the contained instances can only be guaranteed to be their common parent, which might be a quite general class like `thing` or even `entity`.
+In this case the contained instances can only be guaranteed to be their common ancestor, which might be a quite general class like `thing` or even `entity`.
 
 
 
 ==== Transitivity
 
 
-// @FIXME: "describes how E.G. containment" Why "e.g."? One would expect a clear-cut
-//         definition of transitivty here, not an example definition. The sentence
-//         is not very cleary. Depending of what it's trying to say, it could be
-//         "Transitivity describes, among the other things, how containment..."
-//         or just "Transitivity describes how containment.."
+// @FIXME @thoni56:
+// 		"describes how E.G. containment..." Why "e.g."? One would expect a clear-cut
+// 		definition of transitivty here, not an example definition. The sentence is
+// 		not very cleary. Depending of what it's trying to say, it could be:
+// 			"Transitivity describes, among the other things, how containment..."
+//       or just:
+// 			"Transitivity describes how containment.."
 
 
 For many scenarios the above works well, and as expected.
@@ -767,9 +748,9 @@ Transitivity describes how e.g. containment should be interpreted.
 
 The scenario above may be described as "`transitive containment`" meaning that something is in a container if it is in that container or in any container it contains, recursively.
 
-There are two other types, namely DIRECT and INDIRECT transitivity.
+There are two other types, namely direct and indirect transitivity.
 Direct transitivity actually means no transitivity.
-If you investigate a container with direct transitivity you will only get the direct content of it, not the content of the containers within it.
+If you investigate a container with direct transitivity you will only get its direct contents, not the contents of the containers within it.
 
 Finally, indirect transitivity means instances indirectly contained by a container.
 In a way it is the opposite of direct transitivity, all instances recursively contained _except_ the directly contained.
@@ -783,15 +764,15 @@ Transitive = Direct + Indirect
 ================================================================================
 
 
-
 What this means is that if you use transitive containment you get the same instances that direct _and_ indirect will give you.
 And it is usually the indirect ones that you should look out for.
 
 
 === The Verb Construct
 
-// @NOTE: Maybe change to "Verbs are USUALLY associated with", because there are
-//        also the global verbs.
+// @NOTE @thoni56:
+// 		Maybe change to "Verbs are USUALLY associated with", because there are
+//      also the global verbs.
 
 The (((VERB, construct))) `Verb` is the construct that implements the effects of an action requested by the player.
 Verbs are associated with a class or an instance.
@@ -843,9 +824,11 @@ Every door IsA object
 End Every door.
 --------------------------------------------------------------------------------
 
-// @FIXME: In this sentence some words must have been lost, because it doesn't
-//         seem to make sense: "Instead need to reference the object the player..."
-
+// @FIXME @thoni56:
+// 		In this sentence some words must have been lost, because it doesn't
+//      seem to make sense:
+// 			"Instead need to reference the object the player..."
+//      Whose need does it referr to?
 
 With this definition it is possible to apply the verb to all doors.
 Instead need to reference the object the player mentioned in his command (see <<The Syntax>> and <<Syntax Definitions>> for a more thorough discussion).
@@ -893,19 +876,22 @@ Verb take
 End Verb take.
 --------------------------------------------------------------------------------
 
-// @NOTE: The following considerations might be a bit premature in the text, and
+// @NOTE @thoni56:
+// 		  The following considerations might be a bit premature in the text, and
 //        confuse the reader, as he hasn't yet been told that actors are also
-//        containers, and that the hero's inventory is just the objects contained
-//        inside the hero. The sentence below takes a big leap when it says
-//        "inside a container (the inventory)", as there is no immediate connection
-//        between the 'hero' of the example and the "container" adn "inventory"
-//        of the sentence --- it assumes the reader already posseses the knowledge
-//        to connect all these dots, but he probably doesn't, at this stage!
+//        containers, and that the hero's inventory is just the sum of objects
+//        contained inside the hero. The sentence below takes a big leap when it
+//        says "inside a container (the inventory)", as there is no immediate
+//        connection between the 'hero' of the example and the "container" and
+//        "inventory" of the sentence --- it assumes the reader already posseses
+//        the knowledge to connect all these dots, but he probably doesn't at
+//        this stage!
 
 Here we also encounter a variation on the `Locate` statement -- the capability to place an object inside a container (the inventory).
 
 
-// @NOTE: The following (rather precious) note seems a bit out of context here.
+// @NOTE @thoni56:
+// 		  The following (rather precious) note seems a bit out of context here.
 //        The section is about Verb Checks, and 'Locate' only came up as a side
 //        node, and this one is like a note on the side-note! Maybe it could be
 //        moved elsewhere? in a place where it could be better contextualized
@@ -932,9 +918,6 @@ This means that the format of player input is usually something like:
 
 This form, or syntax, is the default form if you don't specify anything else.
 The default syntax (((SYNTAX, default))) might thus be described as:
-
-// @PSEUDOCODE: The following code examples might not highlight well due to the
-//              presence of '...' ot square brackets placeholder!
 
 
 [source,alan]
@@ -986,16 +969,10 @@ This restricts (((restriction, of parameters))) the parameter `obj` to being an 
 The parameters are used as normal identifiers in the Alan source code.
 The parameters can only be referenced if they are defined in the current context, i.e. they can only be used in the various bodies of the `Verb` for which the `Syntax` applies (see also <<Run-Time Contexts>> for a detailed discussion).
 
-
-// @FIXME: The sentence "Therefore, the verb execution ..." doesn't make sense.
-
-
 The `Syntax` construct allows for more than one parameter, in order to make it possible to define more complex player commands.
-Therefore, the verb execution order (((VERB, execution order))) described previously from execution of verbs in one instance must be generalised to verb bodies in all the parameters.
+Therefore, the verb execution order (((VERB, execution order))) previously described regarding execution of verbs in one instance must be generalised to verb bodies in all the parameters.
 In the example above, verb bodies in the objects or actors referenced as `obj` and `cont` (the green pearl and the black box) are executed (if the verb is present in their definitions).
 
-
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 === Text Output Formatting
@@ -1008,6 +985,10 @@ First, text will always flow neatly inside the window or screen.
 Long lines will be automatically split without breaking in the middle of words.
 
 Secondly, a few special cases are also handled automatically:
+
+// @NOTE @thoni56:
+// 		The postmen example below would be much clearer if the sample code
+// 		included the Description string shown in the transcript!
 
 * After a full stop (period, the character '`.`'), an exclamation ('`!`') or question mark ('`?`'), and in the beginning of paragraphs, including location headings, the first character will be guaranteed to be upper case, automatically converted if necessary.
   This means for example that you don't have to consider the case when the name of an object might be printed as the first thing in a sentence.
@@ -1038,7 +1019,7 @@ This would be the case even if the description of the postmen started with a low
   Except for the following case:
 +
 If an output is immediately followed by another output starting with a full stop (period, the character '`.`'), an exclamation, a question mark or a comma, and it is the only character in that output or it is followed by a space (blank character), no space will be inserted before that output.
-  This rule will ensures that the full stop in the following source is automatically adjacent to the   previous text, without the need to suppress spacing.
+  This rule will ensures that the full stop in the following source is automatically adjacent to the   previous text, without the need to suppress spacing:
 +
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1054,7 +1035,13 @@ This means that the compiler will attempt to prevent any constructs that might g
 
 A simple example is
 
-// FIXME: Code With Line-Numbers
+// @FIXME @tajmone: Code With Line-Numbers
+// 		Should use syntax highligters line numbering. Problem is: Highlight.js
+// 		doesn't support it, and I haven't looked into if and how HL-XSL supports
+// 		it (and how to style it, etc.).
+// 		Postpone to when Highlight will be integrated instead of Highlight.js (i.e.
+// 		when an extension supporting callouts is available).
+
 [source,alan]
 --------------------------------------------------------------------------------
 1. Every animal IsA object
@@ -1078,7 +1065,7 @@ Other examples include trying to use a script for an actor (or actor subclass) t
 
 Here is a more complicated example:
 
-// FIXME: Code With Line-Numbers
+// @FIXME @tajmone: Code With Line-Numbers (see above)
 [source,alan]
 --------------------------------------------------------------------------------
  1. The cont IsA object
@@ -1100,7 +1087,7 @@ Here is a more complicated example:
 
 On line 14 we will get an error saying that `someAttribute` is not available since the class `f` can only be guaranteed to be `thing`.
 
-// @FIXME: Missing reference: "(see xxx)"
+// @FIXME @thoni56: Missing reference: "(see xxx)"
 
 Is it?
 Well, the variable `f` (in the loop) enumerates all things in the `box` and since the `box` takes ``object``s, it is possible that it may contain the `cont`.

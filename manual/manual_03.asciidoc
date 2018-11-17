@@ -39,6 +39,16 @@ This chapter describes the Alan language in detail.
 Within each section, grammar rules are used to precisely define allowed formats.
 A description of how these rules should be interpreted can be found in <<Language Grammar>>.
 
+
+// @FIXME: The following line is supposed to suppress section numbering for the
+//         "General Rules" section, and then resume at the next section.
+//         But it only works with the HTML backend, while in the PDF created via
+//         asciidoctor-fopub it's not working, so all the section numbers are out
+//         of sync (PDF having 1 number added due to this section).
+//         I could try to make this Heading "discreete" and see it gets omitted
+//         from the numbering in the PDF -- but it would also exclude it from
+//         the TOC. Otherwise, the only solution is to remove the line and let
+//         this section be numbered like all others...
 :sectnums!:
 
 
@@ -155,9 +165,6 @@ Width 128.
 
 The available options are:
 
-// @FIXME: CLEANUP TABLE
-// @FIXME: Find a better caption for the Table!
-
 [[table-of-options]]
 .Adventure Settings via OPTION
 [cols="<20m,<40d,<40d",options="header"]
@@ -258,9 +265,6 @@ Expressions of *Event* type can be used in `Schedule` and `Cancel` statements.
 
 === Set Type
 
-
-// @NOTE: When referring to the SET type, don't style it as inline code!
-//        `Set` should be used for the SET STATEMENT keyword only.
 
 A Set is a collection of values that may be referenced as a single value, but also investigate, added to and removed from.
 An example might be a set of cards in a dealt hand, the set of spells that the hero have learned, or the set of numbers guessed so far.
@@ -439,10 +443,7 @@ Exactly the same rules for declaring properties apply to instances.
 The only difference is that an instance will actually show up in the game when it is run.
 Remember also that properties declared in an instance are not common to any other instances (unless the declaration overrode the value of a class property).
 
-// @NOTE: I didn't style as inline code the classes in the following paragraph,
-// 		  as some of these are not actually referenceable in real code (eg, literal)
-
-Instances inheriting, directly or indirectly, from the predefined classes `thing`, `entity`, `object`, `location`, `actor` and *literal,* are subject to special semantics (((semantics, of predefined classes))) and restrictions.
+Instances inheriting, directly or indirectly, from the predefined classes `thing`, `entity`, `object`, `location`, `actor` and `literal`, are subject to special semantics (((semantics, of predefined classes))) and restrictions.
 
 Here are two examples of instance declarations following the rules above:
 
@@ -474,18 +475,16 @@ End The mr_brown.
 --------------------------------------------------------------------------------
 
 
-// @FIXME: "... as described by the EARLIER BOX." Which box does it refer to?
+// @FIXME @thoni56:
+//    "... as described by the EARLIER BOX."
+//  Which box is that? There doesn't seem to be any boxes in the examples.
 
 
 In these examples the source lines between `The` and `End The` all declare various properties that we will learn more about in <<Properties>>.
 The rest of the lines are fairly easy to match up to the rules of the Alan language as described by the earlier box.
 
 
-// @FIXME: "with the exception of the BOLD words object and actor, which are identifiers"
-//         This might have to be changed according to final syntax highlighting styles
-//         (different styling, or color, etc.). In the original PDF they were in bold.
-
-All capitalized words in the examples above are keywords in the Alan language (see <<table-of-keywords>> for a complete list), the rest are author defined words or identifiers (with the exception of the bold words object and actor, which are identifiers predefined to be special classes).
+All capitalized words in the examples above are keywords in the Alan language (see <<table-of-keywords>> for a complete list), the rest are author defined words or identifiers (with the exception of the words `object` and `actor`, which are identifiers predefined to be special classes).
 
 
 
@@ -649,8 +648,8 @@ The second parameter (see <<Syntax Definitions>>) in this player command is the 
 This parameter is automatically considered an instance of the predefined class `integer`.
 
 
-// @FIXME: The following paragraph doesn't clarify enough the topic.
-
+// @FIXME @thoni56:
+// The following paragraph doesn't clarify enough the topic.
 
 It is possible to add ``Verb``s to `literal` and its sub-classes.
 This way it is possible to create verbs that take strings and integers as parameters.
@@ -788,12 +787,13 @@ An instance inheriting from `location` cannot have an initial location that is `
 === Names
 
 
-// @FIXME: That "AUTHOR NAME", and it use in this section, create more confusion
-//         clarity (especially later on in the text).
-//         The original intention of distinguishing between the Id and the Name
-//         gets lost in confused and confusing sentences.
-//         Using someething like "interal use/name/Id" instead of "author name"
-//         might be better.
+// @FIXME @thoni56:
+//     That "AUTHOR NAME", and it use in this section, create more confusion
+//     than clarity (especially later on in the text).
+//     The original intention of distinguishing between the Id and the Name
+//     gets lost in confused and confusing sentences.
+//     Using something like "interal use/name/Id" instead of "author name"
+//     might be better.
 
 
 
@@ -822,13 +822,15 @@ The south_of_house IsA location
 ...
 --------------------------------------------------------------------------------
 
-// @NOTE: Here I had to use the autogenerated anchor ID:
-//            <<_words_identifiers_and_names>>
-//        instead of the plain title:
-//            <<Words, Identifiers and Names>>
-//        because of the comma in the title (interpreted as custom text separator).
-//        See Issue #1468 on this:
-//        https://github.com/asciidoctor/asciidoctor/issues/1468#issuecomment-132378305
+// @NOTE: [please, don't delete this note!]
+//
+//   Here I had to use the autogenerated anchor ID:
+//       <<_words_identifiers_and_names>>
+//   instead of the plain title:
+//       <<Words, Identifiers and Names>>
+//   because of the comma in the title (interpreted as custom text separator).
+//   See Issue #1468 on this:
+//   https://github.com/asciidoctor/asciidoctor/issues/1468#issuecomment-132378305
 
 The use of a ((quoted identifier)) in the last example causes the name (((NAME, of locations))) to be a single string of text.
 (See <<_words_identifiers_and_names>> for more details.)
@@ -840,23 +842,15 @@ The chair3 IsA object
   Name little wooden chair
 --------------------------------------------------------------------------------
 
-
-
-
-// @FIXME: Rephrase the paragraph below (too entangled)!!!
-//         Fix "to the object with the author name (identifier) `chair3`"
-//         into something like "to the object whose internal name (identifier) is `chair3`"
-//         But to dispell this entangling alltogether, it might be necessary to
-//         clarify earlier on the distinction between internal-use-only IDs and IDs which
-//         are exposed to the player!
+// @FIXME: Don't use "author name" (See notes above)!!! use something else.
 
 In this example, the name is a sequence of words.
 The semantics of this declaration is that the word "`chair`" is a ((noun)) and "`little`" and "`wooden`" become (((adjective))) adjectives.
-When the player, in a command, wants to refer to the object with the author name (identifier) `chair3`, he may use just "`chair`" if it is the only accessible object with "`chair`" as its noun, or he may distinguish between multiple chairs by also giving one or more adjectives to be more precise about which chair he meant.
+When the player wants to refer in a command to the object with the author name (identifier) `chair3`, he may use just "`chair`" if it's the only accessible object with "`chair`" as its noun, or he may distinguish between multiple chairs by also providing one or more adjectives to be more precise about which chair he means.
 
 
 
-// @FIXME: Don't used "author name" (See notes above)!!! use something else.
+// @FIXME: Don't use "author name" (See notes above)!!! use something else.
 
 [NOTE]
 ================================================================================
@@ -937,10 +931,6 @@ Such a mentioning of an instance will involve the articles, the name and possibl
 
 The basis for this mechanism is the short form, which by default is the first of the ``Name``s.
 It will, however, be overridden by any existing `Mentioned` clause (see <<Mentioned>>).
-
-// @NOTE: Had to change "article is UNDERLINED" to "BOLD" due to AsciiDoc lacking
-//        underlined text. Also, I've changed EMPHASISED to ITALIC, because here we're
-//        referring to the actual typographical style (not the semantic tag).
 
 The short form can be automatically transformed to a description (for instances that have no `Description`) by inserting the article (see <<Articles and Forms>>) and the short form in a default message.
 In the following transcript example, output of the article is shown in bold, and the short forms in italic, the rest is the default message templates.
