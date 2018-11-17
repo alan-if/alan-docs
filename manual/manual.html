@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.81,</span>
+<span id="revnumber">version 0.1.82,</span>
 <span id="revdate">November 17, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.81
+<pre>Doc version: 0.1.82
 Last edited: November 17, 2018</pre>
 </div>
 </div>
@@ -3279,8 +3279,8 @@ The combination_lock Has numbers {1,2,4,8}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Attributes that you want every instance of a class to have must be declared in that class.
-E.g. to declare a Boolean attribute that all instances of the class <code>animal</code> will have in common, the following code can be used:</p>
+<p>If you want some attributes to be present on every instance of a given class, then you must declare them in that class.
+E.g. to declare a Boolean attribute that will be shared by all instances of the <code>animal</code> class, the following code can be used:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3448,14 +3448,15 @@ This will create an empty set with instance type members restricted to that part
 <div class="sect4">
 <h5 id="_inheriting_attributes"><a class="anchor" href="#_inheriting_attributes"></a>Inheriting Attributes</h5>
 <div class="paragraph">
-<p>Attributes can be inherited  like any other property.
-A declaration of an attribute with the same name as in any of the parents of the instance or class, will inherit the type of the attribute, you cannot change it in subsequent declarations.
-This means that any declaration of a different initial value than the inherited must follow the rules of type compatibility for assignment. (See <a href="#_type_compatibility">Sect. 3.3.5</a>.)</p>
+<p>Attributes are inherited  like any other property.
+An attribute declaration employing the same name of an attribute already present in any ancestor of the instance or class will inherit the type of that attribute, for you cannot change its type in subsequent declarations.
+This means that any declaration of a value different from the inherited one must therefore
+follow the rules of type compatibility for assignment. (See <a href="#_type_compatibility">Sect. 3.3.5</a>.)</p>
 </div>
 <div class="paragraph">
-<p>This also applies to classes of instances in the reference and set types attributes.
+<p>This also applies to classes of instances in the reference and Set types attributes.
 Both these types allow references to instances.
-The initial value given at the point where the attribute is introduced determines the required class of the set members or referenced instances.
+The initial value given at the point where the attribute is introduced determines the required class of the Set members or referenced instances.
 This is retained throughout the complete inheritance of that attribute even if a subsequent initial value would imply a more specialised class.
 An example:</p>
 </div>
@@ -4422,7 +4423,7 @@ The author is responsible for handling this, e.g. by using rules to ensure that 
 <div class="paragraph">
 <p>A script is divided into steps.
 Each  <code>Step</code> contains statements representing what the actor will do in what corresponds to one player move.
-A step can be defined to be executed immediately next move, to wait a number of moves before it is executed or even to wait for a special situation (condition) to arise.</p>
+A step can be defined to be executed immediately, at the next move, to wait a number of moves before it&#8217;s executed or even to wait for a special situation (condition) to arise.</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -4857,7 +4858,7 @@ Syntax &lt;1&gt; = &lt;1&gt; (&lt;2&gt;).</code></pre>
 </div>
 <div class="paragraph">
 <p>The first template is used for verbs that are declared globally, i.e. outside of any class or instance.
-Since these are only applied when no parameters are used, this will effectively work for simple &#8216;verb-only&#8217; <code>Verb</code>s, such as <code>quit</code>, <code>look</code>, <code>save</code> etc.</p>
+Since these are only applied when no parameters are used, this will effectively work for simple &#8216;verb-only&#8217; <code>Verb</code>s, such as &#8216;quit&#8217;, &#8216;look&#8217;, &#8216;save&#8217;, etc.</p>
 </div>
 <div class="paragraph">
 <p>When a <code>Verb</code> declared in an instance or a class has no <code>Syntax</code> counterpart, it automatically receives a default syntax of the common verb/object type corresponding to the second template above.
@@ -4983,7 +4984,7 @@ In fact, a global verb cannot include any parameters in their syntax declaration
 But if a <code>Syntax</code> is declared for the <code>Verb</code> (see <a href="#_syntax_definitions">Sect. 3.9</a>), the identifiers in the list will not be accessible to the player, instead the sequence of words and parameters specified in the <code>Syntax</code> must be used.</p>
 </div>
 <div class="paragraph">
-<p>If there is more than one identifier in the list, as in the example above, this can be viewed as a short hand for declaring identical checks and bodies for all the verbs in the list.
+<p>If there is more than one identifier in the list, as in the example above, this can be viewed as a shorthand for declaring identical checks and bodies for all the verbs in the list.
 This will create synonymous actions for different verbs at the level of the verb declaration.
 They may differ in implementation at other places, i.e. if they are declared in the same verb declaration on one level in an inheritance tree, they can still have different bodies on another level.</p>
 </div>
@@ -5251,7 +5252,7 @@ For each parameter, its most general definition is executed first, then verb bod
 </div>
 <div class="paragraph">
 <p>In most circumstances, this is the most logical order, but if another order is required, the <code>Verb</code> qualifiers   <code>After</code>,  <code>Before</code> and  <code>Only</code> may be used to alter this behaviour.
-These qualifiers alter the order of execution, a strict definition of this is described below.</p>
+These qualifiers alter the order of execution, as described in full detail below.</p>
 </div>
 </div>
 <div class="sect3">
@@ -12677,7 +12678,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.81<br>
+Version 0.1.82<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">

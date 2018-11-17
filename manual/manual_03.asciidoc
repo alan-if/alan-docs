@@ -1001,13 +1001,11 @@ is = 'IS'
 --------------------------------------------------------------------------------
 
 
-// @NOTE: I've added "declaration" here because there was a word missing:
-//        "And the actual of an attribute..."
-
 And the actual declaration of an attribute follows the structure:
 
-// @NOTE: In the BNF rule below it might help to add side comments indicating
-//        which type of attributes it's referring to. Ex:
+// @NOTE @thoni56:
+//    In the BNF rule below it might help to add side comments indicating
+//    which type of attributes it's referring to. Ex:
 //
 //        attribute_declaration = id                    // boolean
 //                              | 'NOT' id              // boolean
@@ -1042,11 +1040,9 @@ The combination_lock Has numbers {1,2,4,8}
 --------------------------------------------------------------------------------
 
 
-// @FIXME: The paragraph below must be completely rephrased:
+If you want some attributes to be present on every instance of a given class, then you must declare them in that class.
+E.g. to declare a Boolean attribute that will be shared by all instances of the `animal` class, the following code can be used:
 
-
-Attributes that you want every instance of a class to have must be declared in that class.
-E.g. to declare a Boolean attribute that all instances of the class `animal` will have in common, the following code can be used:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1190,15 +1186,14 @@ If you require an initially empty set of another type, e.g. integer, and you can
 ==== Inheriting Attributes
 
 
-// @FIXME: The paragraph below needs polishing!
+Attributes are inherited (((inheriting attributes))) like any other property.
+An attribute declaration employing the same name of an attribute already present in any ancestor of the instance or class will inherit the type of that attribute, for you cannot change its type in subsequent declarations.
+This means that any declaration of a value different from the inherited one must therefore
+follow the rules of type compatibility for assignment. (See <<Type Compatibility>>.)
 
-Attributes can be inherited (((inheriting attributes))) like any other property.
-A declaration of an attribute with the same name as in any of the parents of the instance or class, will inherit the type of the attribute, you cannot change it in subsequent declarations.
-This means that any declaration of a different initial value than the inherited must follow the rules of type compatibility for assignment. (See <<Type Compatibility>>.)
-
-This also applies to classes of instances in the reference and set types attributes.
+This also applies to classes of instances in the reference and Set types attributes.
 Both these types allow references to instances.
-The initial value given at the point where the attribute is introduced determines the required class of the set members or referenced instances.
+The initial value given at the point where the attribute is introduced determines the required class of the Set members or referenced instances.
 This is retained throughout the complete inheritance of that attribute even if a subsequent initial value would imply a more specialised class.
 An example:
 
@@ -1361,10 +1356,6 @@ Of course, there are no qualifiers possible here.
 To be able to separate the checks statement from the actual description statements the keyword `Does` (((DOES, in descriptions))) is required.
 This is an example of the checks for a dark location:
 
-// @NOTE: The above paragraph mentions using DOES, but the followin example doesn't
-//        include a DOES!!! Although it explains why, in the next paragraph, it
-//        would stille be better to provide a full example!
-
 [source,alan]
 --------------------------------------------------------------------------------
 Every dark_location IsA location
@@ -1375,8 +1366,6 @@ Every dark_location IsA location
 End Every dark_location.
 --------------------------------------------------------------------------------
 
-
-// @NOTE: Here we cross-reference directly the Table of "Inherited Properties"
 
 Note that it does not specify any description statements.
 This is because the checks and the actual description are inherited separately, as described in <<table-of-properties-inheritance>>.
@@ -2004,15 +1993,9 @@ The author is responsible for handling this, e.g. by using rules to ensure that 
 ==== Steps
 
 
-// @FIXME: Fix "... be executed immediately next move, ", looks like something
-//         went lost. Could be either:
-//            "be executed immediately, after the next move,"
-//            "be executed immediately, at the next move,"
-
-
 A script is divided into steps.
 Each (((STEP))) `Step` contains statements representing what the actor will do in what corresponds to one player move.
-A step can be defined to be executed immediately next move, to wait a number of moves before it is executed or even to wait for a special situation (condition) to arise.
+A step can be defined to be executed immediately, at the next move, to wait a number of moves before it's executed or even to wait for a special situation (condition) to arise.
 
 (((BNF, rules of, STEP)))
 [source,bnf]
@@ -2119,9 +2102,6 @@ Consider the `unlock_with` syntax declaration of the previous example, the follo
 
 
 
-// @CAPTION: This table doesn't seem to need a caption for it's more of an example
-//           than a standalone reference table.
-
 [[table-syntax-parameters]]
 [cols="<60a,2*<20n",options="header"]
 |===============================================================================
@@ -2205,8 +2185,6 @@ Refer to <<Player Input>> for details on multiple parameters references in playe
 
 The above declarations would force the interpreter to reject player input like:
 
-
-// @TODO: Add parser response below player input?
 
 [example,role="gametranscript"]
 ================================================================================
@@ -2384,7 +2362,7 @@ Syntax <1> = <1> (<2>).
 The placeholders represent 1) the name of the verb, and 2) the class in which the verb is first encountered.
 
 The first template is used for verbs that are declared globally, i.e. outside of any class or instance.
-Since these are only applied when no parameters are used, this will effectively work for simple '`verb-only`' ``Verb``s, such as `quit`, `look`, `save` etc.
+Since these are only applied when no parameters are used, this will effectively work for simple '`verb-only`' ``Verb``s, such as '`quit`', '`look`', '`save`', etc.
 
 When a `Verb` declared in an instance or a class has no `Syntax` counterpart, it automatically receives a default syntax of the common verb/object type corresponding to the second template above.
 This is a reasonable syntax for many cases and restricts the parameters to instances of the class where the verb was declared.
@@ -2399,8 +2377,10 @@ This case must be handled explicitly.
 
 
 // @FIXME:  The warning below is not very clear regarding the implications of the
-//          of the parameter being restricted to the `location` class.
-//          Does it mean that the verb will be available on EVERY LOCATION?
+//          parameter being restricted to the `location` class.
+//          The way it's phrased it seem to mean that the verb will be available
+//          on EVERY LOCATION -- because it mentions "the location class" and
+//          not the specific instance where it resides.
 
 [WARNING]
 ================================================================================
@@ -2472,14 +2452,16 @@ The identifiers in the list (`take` and `get` in the example above) will become 
 But if a `Syntax` is declared for the `Verb` (see <<Syntax Definitions>>), the identifiers in the list will not be accessible to the player, instead the sequence of words and parameters specified in the `Syntax` must be used.
 
 
-// @FIXME: The following paragraph (which is very important for the reader) is too
-//         condensed. It might be worthy rephrasing it and make it easier to grasp,
-//         and adding examples or more details on the implications wouldn't hurt either.
+// @FIXME @thoni56:
 //
-//         A good example to provide here would be that of the "ask" and "tell"
-//         verbs, which are often used as one verb in many contexts.
+//   The following paragraph (which is very important for the reader) is too
+//   condensed. It might be worthy rephrasing it and make it easier to grasp,
+//   and adding examples or more details on the implications wouldn't hurt either.
+//
+//   A good example to provide here would be that of the "ask" and "tell"
+//   verbs, which are often used as one verb in many contexts.
 
-If there is more than one identifier in the list, as in the example above, this can be viewed as a short hand for declaring identical checks and bodies for all the verbs in the list.
+If there is more than one identifier in the list, as in the example above, this can be viewed as a shorthand for declaring identical checks and bodies for all the verbs in the list.
 This will create synonymous actions for different verbs at the level of the verb declaration.
 They may differ in implementation at other places, i.e. if they are declared in the same verb declaration on one level in an inheritance tree, they can still have different bodies on another level.
 
@@ -2489,9 +2471,10 @@ They may differ in implementation at other places, i.e. if they are declared in 
 Any action from the player usually takes one '`tick`' in the default simulated game time.
 Sometimes you want a player command to _not_ consume a '`tick`', for example administrative commands like '`help`', '`score`' etc.
 
-// @TODO: Add a note about out-of-game actions, and difference between diegetic
-//        and extra-diegetic actions/verbs.
-//        Quote Nick Montfort's "Twisty Little Passages" on the topic.
+// @TODO @tajmone:
+//    Add a note about out-of-game actions (aka "directives"), and difference
+//    between diegetic and extra-diegetic actions/verbs (indeed: commands/directives).
+//    Quote Nick Montfort's "Twisty Little Passages" on the topic.
 
 You can achieve this by attaching (((META))) `Meta` in front of the verb definition:
 
@@ -2580,8 +2563,6 @@ The jumpless IsA Location
   End Verb jump.
 End The jumpless.
 --------------------------------------------------------------------------------
-
-// @TODO: Mention if an action that failed a check consumes a tick or not.
 
 If any check should fail, the execution of the current verb is interrupted and the statements following the failing check are executed.
 The user (player) is then prompted for another command.
@@ -2714,11 +2695,9 @@ But, to allow for local differences (i.e. special handling of the verb at the cu
 Then, the verb bodies in the parameters on which the verb was applied are examined (in their order of appearance in the syntax definition) to find and execute their verb definitions.
 For each parameter, its most general definition is executed first, then verb bodies down the inheritance tree are executed next, ending with any verb body declared in the specific instance bound to that parameter.
 
-// @FIXME: Rephrase "a strict definition of this is described below"!!!
 
 In most circumstances, this is the most logical order, but if another order is required, the `Verb` qualifiers (((VERB, qualifiers))) (((AFTER, qualifier))) `After`, (((BEFORE, qualifier))) `Before` and (((ONLY, qualifier))) `Only` may be used to alter this behaviour.
-These qualifiers alter the order of execution, a strict definition of this is described below.
-
+These qualifiers alter the order of execution, as described in full detail below.
 
 
 
@@ -2790,8 +2769,10 @@ What remains is to execute the verb definition in the parameters if they have no
 
 So in short (with base class definitions of the outermost location being the outermost and the instance bound to the last syntax parameter the innermost):
 
-// @FIXME: Seems wrong: Aren't BEFORE verbs exectured from the inside out? ie. in
-//         reverse order?
+// @FIXME @thoni56:
+//    Seems wrong: Aren't BEFORE verbs exectured from the inside out? ie. in
+//    reverse order? This whole part needs to be revisited (it's complex enough
+//    as a topic, but something here is either wrong or too entagled)
 
 * From the outside in, find any `Before` or `Only` definitions and execute them (stop if `Only` found).
 * From the inside out, execute any definitions not already executed and not declared with the `After` qualifier.
@@ -3001,9 +2982,10 @@ You can't go that way.
 
 The response "`You can't go that way.`" is a typical example of such system messages (for details see <<Input Response Messages>>).
 
-// @NOTE: It's not clear what "to the settings you select" is referring to:
-//        The general Alan settings, or the adventures' settings (as in the epoch
-//        and environment the game takes place)?
+// @NOTE @thoni56:
+//    It's not clear what "to the settings you select" is referring to:
+//    The general Alan settings, or the adventures' settings (as in the epoch
+//    and environment the game takes place)?
 
 To better adapt the user dialogue to the settings you select, Alan allows you to define your own version of these messages.
 The grammar for this is
@@ -3239,8 +3221,12 @@ Some character combinations (((character combinations, in strings))) have specia
 // @TODO: Should add a Title and anchor to this list of special symbols, as they
 //        are rather important and the user might wish to find it often for
 //        consultation.
-// @TODO: Possibly, these special chars should be given a name or definition of
-//        some type, so they can be mentioned in the text too!
+
+// @TODO @thoni56:
+//    Possibly, these special chars should be given a name or definition of
+//    some type, so they can be mentioned in the text too!
+//    ("characters combinations" isn't an intuitive way to refer to them;
+//     maybe "escape sequences"? they are similar to esc.seq. in many ways)
 
 [literal, role="plaintext", subs="normal"]
 ................................................................................
@@ -3260,7 +3246,7 @@ Some character combinations (((character combinations, in strings))) have specia
 //        was breaking syntax highlighting in Sublime Text's AsciiDoctor package!
 //        The problem is only in ST, and the original compiled well, but it broke
 //        up the whole document syntax from this point on, making it impossible
-//        to work on it using Sublime text.
+//        to work on it using Sublime Text.
 
 [NOTE]
 ================================================================================
@@ -3273,7 +3259,8 @@ So you need to use the '`&#95;`' to make that happen (`$&#95;400`).
 
 The following can be used to refer to parameters while executing a verb, but the `Say` statement (see below) is safer and preferred whenever possible:
 
-// @TODO: These special chars should be given a caption and a proper name too!
+// @NOTE @thoni56:
+//    These special chars should be given a caption and a proper name too!
 
 [literal, role="plaintext", subs="normal"]
 ................................................................................
@@ -3317,16 +3304,17 @@ style = 'NORMAL'
       | 'QUOTE'
 --------------------------------------------------------------------------------
 
-// @NOTE: The following paragraph doesn't clarify that to end an inlne EMPHASIZED
-//        style NORMAL should be used --- it seems to say that even NORMAL would
-//        apply to the whole paragraph.
+// @FIXME @thoni56:
+//    The following paragraph doesn't clarify that to end an inlne EMPHASIZED
+//    style NORMAL should be used --- it seems to say that even NORMAL would
+//    apply to the whole paragraph.
 
 The style of the text output can be controlled using the `Style` statement.
 With the exception of the `Emphasized` style, the styles are intended to be applied to whole paragraphs.
 The style indicated in the statement applies until another `Style` statement is executed.
 
 
-// @TODO: Adding an example would be nice.
+// @TODO: Adding an example here would be nice.
 
 
 [NOTE]
@@ -3575,20 +3563,18 @@ from_clause = 'FROM' expression
 into_clause = 'INTO' expression
 --------------------------------------------------------------------------------
 
-// @NOTE: Here I'd change:
-// 				the optional *into clause*.
-// 		  ...into:
-// 				the optional `into` clause.
-
 The (((STRIP, statement))) `Strip` statement is used to manipulate the contents of (((string, functions))) strings.
 You can use it to remove words or characters from a string, starting from the beginning or the end.
 The words or characters that are removed may be placed in an attribute as specified by the optional `Into` clause.
 If the statement is used to manipulate words, blanks and separators are used to separate the words.
 In this case, any resulting string is also free of leading and trailing blanks.
 
-// @NOTE: It's not clear in the following example if the line:
-//          Strip First Word From topic Into topic.
-//        will replace the contents of 'topic', or if it will append to them, etc.
+// @NOTE @thoni56:
+//    It's not clear in the following example if the line:
+//
+//       Strip First Word From topic Into topic.
+//
+//    will replace the contents of 'topic', or if it will append to them, etc.
 
 A short example:
 
@@ -3689,7 +3675,8 @@ Start At office.
   Schedule ticking After 1.
 --------------------------------------------------------------------------------
 
-// @TODO: Clarify better the following, possibly via an example:
+// @TODO @thoni56:
+//    Clarify better the following, possibly via an example:
 
 The event can be referenced using any expression of `Event` type, e.g. an attribute.
 
@@ -3777,12 +3764,6 @@ Set intAttr To 4. -- Correct if intAttr is of Integer type
 Set intAttr To "hi". -- Incorrect
 --------------------------------------------------------------------------------
 --
-// @NOTE: This sentence was rephrased because it was entangled:
-//
-// * an expression that refers to an instance if the attribute being assigned to
-//   is a ((reference attribute)) which has a class of which the class of the
-//   expression is a subclass
-
 * *instance type expressions* to a ((reference attribute)) whose class is a parent of the instance in the expression:
 +
 --
@@ -3887,8 +3868,11 @@ Otherwise, the expressions in any following `ElsIf` clauses are evaluated (in or
 If none of the expressions in the `ElsIf` clauses evaluated to true, or if there are no `ElsIf` clauses, the statements following the `Else` keyword are executed.
 The `Else` clause is optional.
 
-// @NOTE: "The `Else` clause is optional", so is the 'ElseIf' clause. Should add
-//        that too, for the sake of clarity?
+// @NOTE @thoni56:
+//   Previous paragraph, last line:
+//      "The `Else` clause is optional"
+//   ... so is the 'ElseIf' clause! Should add that too, for the sake of clarity?
+//   Otherwise it makes the reader wonder why it was left out.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -3915,9 +3899,12 @@ As an `IsA` expression test for the class of an instance, an `If` statement like
 If i IsA actor Then ...
 --------------------------------------------------------------------------------
 
-// @FIXME: Looks like some words were lost in the sentence:
-//           "This means that references to attributes [...]  ??? as if `i` belong"
-//         The sentence is incomplete, some words must have been deleted by mistake.
+// @FIXME @thoni56:
+//    Looks like some words were lost in the sentence:
+//
+//        This means that references to attributes [...]  ??? as if `i` belong"
+//
+//    The sentence is incomplete, some words must have been deleted by mistake.
 
 will quarantee that for any statement inside the `Then` part of that statement, the `i` will be of the class `actor`.
 This means that references to attributes, container properties, actor scripts, etc. as if `i` belongs to the class `actor`, even if that was not known outside of the `If` statement.
