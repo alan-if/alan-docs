@@ -69,7 +69,7 @@ The porting work is pretty much finished, a couple of (rather long) chapters sti
 - [x] _3. Lexical Definitions_
 - [x] _4. Language Reference_
 - [x] _5. Running An Adventure_
-- [ ] _6. Hints And Tips_
+- [x] _6. Hints And Tips_
 - [x] _7. Adventure Construction_
 - [x] _Appendix A: How To Use The System_
 - [x] _Appendix B: A Sample Interaction_
@@ -94,8 +94,7 @@ An here follows a task list of the remaining porting tasks:
 - [ ] Fix Headings:
     + [ ] Check that all headings are properly title cased.
     + [ ] Change to all-caps Alan keywords in headings.
-- [ ] Finish reading through the whole book, checking for missing styles and fixing the ADoc source:
-    + [ ] _6. Hints And Tips_ (WIP)
+- [x] Finish reading through the whole book, checking for missing styles and fixing the ADoc source:
 
 
 

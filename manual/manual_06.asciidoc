@@ -901,18 +901,18 @@ TBD.
 ================================================================================
 
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
-
-
 == Structure
 
+
+// @FIXME: The part "or at least is not only a tool in a puzzle" is not clear,
+//         and needs repharsing too.
+
 A good thing to do when designing an interactive fiction story is to separate the geography from the story.
-In Alan, you can use the import facility to structure your Alan source.
-One approach could be to place the description of each location in a separate file together with any objects that could be considered part of the scenery or at least is not only a tool in a puzzle.
+In Alan, you can use the `Import` facility to structure your Alan source.
+One approach could be to place the description of each location in a separate file along with any objects that could be considered part of the scenery or at least is not only a tool in a puzzle.
 These files can then be included in a '`map`' file, which in turn is included by the top-level file.
 
-The story line can be divided into files too, one for each `scene`.
-A scene being comments describing the important things that are suppose to happen, any prerequisites and objects, events, rules etc. which are specific for this part of the story.
+The story line can be divided into files too, one for each '`scene`' -- a scene being comments describing the important things that are suppose to happen, any prerequisites and objects, events, rules, etc. which are specific for this part of the story.
 
 This strategy will both give you a better structure of your adventure as well as help you design a better story, much like the storyboarding technique used in making movies or plays.
 
@@ -921,7 +921,7 @@ This strategy will both give you a better structure of your adventure as well as
 == Debugging
 
 Occasionally your Alan code is flawed and you really can't understand what is actually happening.
-To aid in discovering which part of your code is run when, the interpreter ((Arun)) incorporates some features for ((debugging)).
+To aid in discovering which part of your code is run when, the interpreter ((Arun)) incorporates some ((debugging)) features.
 There are a few (((debugging, switches))) debugging switches available when starting the interpreter from the command line:
 
 
@@ -933,10 +933,12 @@ There are a few (((debugging, switches))) debugging switches available when star
 *-d*       Start the debugger
 ................................................................................
 
+// @NOTE: Is it truely so? Can't the '-c' and '-l' switches be used unless the
+//        adventure was compiled with 'Debug' option?
 
-[NOTE]
+[IMPORTANT]
 ================================================================================
-None of the above switches can be used unless the adventure was compiled with the debug option set (see <<Options>>).
+None of the above switches can be used unless the adventure was compiled with the `Debug` option set (see <<Options>>).
 ================================================================================
 
 
@@ -945,7 +947,7 @@ None of the above switches can be used unless the adventure was compiled with th
 
 For various purposes, such as debugging, an actual log of the player commands can be handy.
 Such a log is created if the option `-c` is given to the interpreter when starting a game.
-The log files are created in the directory, which was current when the interpreter was started, the name of the log file will begin with the game name and have the extension *.log*.
+The log files are created in the directory which was current when the interpreter was started, the name of the log file will begin with the game name and have the extension *.log*.
 
 A command log can on some systems be used as input to the interpreter, and thus automate the execution of the exact player experience.
 
@@ -959,6 +961,8 @@ You can only activate one of the logs in a single session.
 Trace mode can also act as an aid in debugging.
 Level 1 will print information about every invocation of the instruction interpreter, making it easier to see which parts of the code are being executed.
 
+// @NOTE: Here "Acode" is mentioned, but the term wasn't explained:
+
 Trace level 2, single instruction trace, will also trace every single Acode instruction.
 The Acode is based on a stack machine but single instruction trace will not show all stack operations.
 Level 3 shows the execution of these also.
@@ -969,14 +973,12 @@ Level 4 dumps the content of the stack for every instruction.
 === Debug mode
 
 Finally, and usually most useful, there is the debug mode.
-If the interpreter is started with this option, it will execute the start up sequence and then prompt for a debug command with
+If the interpreter is started with this option, it will execute the start up sequence and then prompt for a debug command with:
 
 
-// FIXME: The actual prompt is "adbg>" !!!!
-abug>
 [example,role="gametranscript"]
 ================================================================================
-abug&gt;
+adbg&gt;
 ================================================================================
 
 
@@ -984,19 +986,18 @@ abug&gt;
 === Using the Debugger
 
 ((Abug)) may also be entered during the execution of an adventure.
-To do this you issue the single player command (type it at the game prompt)
+To do this you issue the single player command (type it at the game prompt):
 
 
 [example,role="gametranscript"]
 ================================================================================
-&gt; debug
+&gt; _debug_
 ================================================================================
-
 
 
 The game must have been compiled with the debug option or the command will be sent to the game which probably does not recognize it.
 
-Typing a question mark or '`help`' in response to the debug prompt will give a brief listing of the commands available in Abug:
+Typing a question mark or *help* in response to the debug prompt will give a brief listing of the commands available in Abug:
 
 
 // FIXME: Current ADBG Help has changed slightly.
@@ -1020,161 +1021,137 @@ quit               -- quit game
 ................................................................................
 
 
-[NOTE]
+[TIP]
 ================================================================================
 Any command may be abbreviated as long as it is unambiguous.
-Typing 'b' for 'break' will work, for example.
+Typing *b* for *break* will work, for example.
 ================================================================================
 
 
 
-The display commands, `actors`, `locations`, `objects` and `events`, may optionally be followed by a number.
-Abug will then display detailed information about the entity requested, such as values of attributes, its present location etc.
+The display commands, *actors*, *locations*, *objects* and *events*, may optionally be followed by a number.
+Abug will then display detailed information about the entity requested, such as values of attributes, its present location, etc.
 Currently there is no way to modify anything using Abug.
 
-You can run the adventure to the next source line by using the `next` command.
+You can run the adventure to the next source line by using the *next* command.
 If the source file is available, the interpreter will also show the source line.
 
 Breakpoints can be set on a source line.
-Enter the `break` command followed by the number of the source line.
+Enter the *break* command followed by the number of the source line.
 Alan allows the source to be separated into multiple files, so the interpreter always indicate which file the source line is in, e.g. when hitting a breakpoint or stepping to the next source line.
-When setting a breakpoint the current file is always assumed.
+When setting a breakpoint, the current file is always assumed.
 You can currently set a breakpoint in another source file by preceding the line number with the file name delimited by a colon.
 
 Breakpoints can be deleted.
-The `delete` command without a line number will remove any breakpoint at the current line.
+The *delete* command without a line number will remove any breakpoint at the current line.
 You can specify which breakpoint to delete by giving the line number (and optionally the file name).
 
 
 [NOTE]
 ================================================================================
 The debugger knows on which source lines it is possible to place a breakpoint.
-If you attempt to put a breakpoint at some line where it is not possible, it will attempt to place one a line which is numerically higher but as close a possible.
+If you attempt to put a breakpoint at some line where it is not possible, it will attempt to place one at a line which is numerically higher but as close a possible.
 This will sometimes cause a breakpoint to be placed in a context that will not be what you expected.
 ================================================================================
 
 
-
-The trace command and its options corresponds to the types of traces described in the section on <<Command Logs and Game Transcripts,_Command Logs and Game Transcripts_>> above.
+The *trace* command and its options correspond to the types of traces described in the section on <<Command Logs and Game Transcripts,_Command Logs and Game Transcripts_>> above.
 
 Wherever different output styles are available, e.g. in GLK based interpreters like WinArun, the Alan debugger tries to use them to distinguish the debugger output from the output of your game by using the pre-formatted style (see the section on styles in <<Output Statements>>).
 
-// FIXME: The transcript styling mentioned in the next paragraph isn't applied
-//        in the actual transcript of the book; will need to work out manually
-//        what should be what.
+// @NOTE: For the following transcript session I've dropped the "gametranscript"
+//        style (role) in favour of a verbatim block (with role="shell") because
+//        the "gametranscript" style was meant to mimick Gargoyle, and it was
+//        difficoult to preserve the monospaced debugging style along with the
+//        serif fonts.
+//        Also, I've only kept the italic for player input, and dropped the bold
+//        for output -- which was mentioned in the text but not actually present
+//        in the PDF document either!
 
-The following is a short excerpt from a debugging session (user input in italics, game input/output in bold face):
+The following is a short excerpt from a command line debugging session (user input in
+italics):
 
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
-// FIXME: Styles for player input, etc.
+// @FIXME: This debug transcript seems rather old, and different from what you
+//         get with the latest ARun terp! It would be best to generated this
+//         transcript from a real game using a commands script, and then import
+//         in the document the generated trascript log.
+
+[literal, role="shell", subs="+quotes"]
 ................................................................................
 <Arun, Adventure Interpreter version 3.0beta1 (2010-12-19 16:26:05)>
 
 <Version of 'saviour.a3c' is 3.0beta1>
-
 <Hmm, this is a little-endian machine, fixing byte ordering.... OK.>
-
-<Hi! This is Alan interactive fiction interpreter Arun, version
-
-3.0beta1 !>
+<Hi! This is Alan interactive fiction interpreter Arun, version 3.0beta1 !>
 
 adbg> _n_
 
-adbg: Stepping to saviour.alan:1346
-
-<01346>: "$pWelcome to the game of SAVIOUR!$pIn this game your mission
-
+adbg:  Stepping to saviour.alan:1346
+<01346>:     "$pWelcome to the game of SAVIOUR!$pIn this game your mission
 adbg> _n_
 
 Welcome to the game of SAVIOUR!
 
 <<Game output deleted for breivity>>
 
-adbg: Stepping to saviour.alan:1354
-
-<01354>: Show 'logo.png'.
-
+adbg:  Stepping to saviour.alan:1354
+<01354>:     Show 'logo.png'.
 adbg> _n_
 
-adbg: Stepping to saviour.alan:1355
-
-<01355>: "$iVisit the Alan Home Pages at:"
+adbg:  Stepping to saviour.alan:1355
+<01355>:     "$iVisit the Alan Home Pages at:"
 
 adbg> _break 1357_
-
 Line 1357 not available, breakpoint instead set at saviour.alan:1358
-
-<01358>: Visits 2.
+<01358>:     Visits 2.
 
 adbg> _g_
 
-Visit the Alan Home Pages at:
+    Visit the Alan Home Pages at:
 
-http://www.alanif.se
 
-adbg: Breakpoint hit at saviour.alan:1358
+    http://www.alanif.se
 
-<01358>: Visits 2.
-
+adbg:  Breakpoint hit at saviour.alan:1358
+<01358>:     Visits 2.
 adbg> _n_
 
 Outside The Tall Building
 
-adbg: Stepping to saviour.alan:318
-
-<00318>: "To the north is a tall ancient building with a large entrance.
-
+adbg:  Stepping to saviour.alan:318
+<00318>:         "To the north is a tall ancient building with a large entrance.
 adbg> _n_
+To the north is a tall ancient building with a large entrance. On the top there
+is a clock tower. Most of the windows in the building are broken, and a sign
+with three oval objects are hanging lose from the wall.
 
-To the north is a tall ancient building with a large entrance. On the top there is a clock tower. Most of the windows in the building are broken, and a sign with three oval objects are hanging lose from the wall.
-
-*> _north_*
-
-adbg: Stepping to saviour.alan:325
-
-<00325>: Score 5.
+> _north_
+adbg:  Stepping to saviour.alan:325
+<00325>:             Score 5.
 
 adbg> _?_
-
 Alan 3.0beta1 -- Adventure Language System (2010-12-19 16:26)
-
 ADBG Commands (can be abbreviated):
-
-help -- this help
-
-? -- d:o
-
-break [file:[n]] -- set breakpoint at source line [n] in [file]
-
-delete [file:[n]] -- delete breakpoint at source line [n] in [file]
-
-files -- list source files
-
-events -- show events
-
-classes -- show class hierarchy
-
-instances [n] -- show instance(s)
-
-objects [n] -- show instance(s) that are objects
-
-actors [n] -- show instance(s) that are actors
-
-locations [n] -- show instances that are locations
-
-trace ('source'|'section'|'instruction'|'push'|'stack')
-
--- toggle various traces
-
-next -- execute to next source line
-
-go -- go another player turn
-
-exit -- exit to game, enter 'debug' to get back
-
-x -- d:o
-
-quit -- quit game
+    help               -- this help
+    ?                  -- d:o
+    break [file:[n]]   -- set breakpoint at source line [n] in [file]
+    delete [file:[n]]  -- delete breakpoint at source line [n] in [file]
+    files              -- list source files
+    events             -- show events
+    classes            -- show class hierarchy
+    instances [n]      -- show instance(s)
+    objects [n]        -- show instance(s) that are objects
+    actors [n]         -- show instance(s) that are actors
+    locations [n]      -- show instances that are locations
+    trace ('source'|'section'|'instruction'|'push'|'stack')
+                       -- toggle various traces
+    next               -- execute to next source line
+    go                 -- go another player turn
+    exit               -- exit to game, enter 'debug' to get back
+    x                  -- d:o
+    quit               -- quit game
 
 adbg> _trace section_
 
@@ -1183,284 +1160,205 @@ Section trace on.
 adbg> _n_
 
 <EXIT north[1] from Outside The Tall Building[4], Moving:>
-
 <ENTERED in class entity[1] is empty>
-
 <ENTERED in class location[2] is empty>
-
 <ENTERED in instance Hall[5] is empty>
 
 Hall
 
-adbg: Stepping to saviour.alan:332
-
-<00332>: "Inside the entrance is a hallway full of dust and pieces of
+adbg:  Stepping to saviour.alan:332
+<00332>:         "Inside the entrance is a hallway full of dust and pieces of
 
 adbg> _instances_
-
 Instances:
-
-1: #nowhere
-
-2: pseudowords (container), at #nowhere [1]
-
-3: nowhere
-
-4: Outside The Tall Building
-
-5: Hall
-
-6: door, at Hall [5]
-
-7: Stairs
-
-8: cellar
-
-9: rats, at cellar [8]
-
-10: store
-
-11: spool of computer tape, at store [10]
-
-12: First Floor
-
-13: old book, at First Floor [12]
-
+      1: #nowhere
+      2: pseudowords (container), at #nowhere [1]
+      3: nowhere
+      4: Outside The Tall Building
+      5: Hall
+      6: door, at Hall [5]
+      7: Stairs
+      8: cellar
+      9: rats, at cellar [8]
+     10: store
+     11: spool of computer tape, at store [10]
+     12: First Floor
+     13: old book, at First Floor [12]
 <<list abbreviated>>
 
 adbg> _instance 13_
-
 The old book [13] IsA object[4]
-
-Location: at First Floor [12]
-
-Attributes:
-
-Takeable[2] = 1
-
-Readable[3] = 1
-
-openable[4] = 0
-
-startable[5] = 0
-
-examinable[6] = 1
+    Location: at First Floor [12]
+    Attributes:
+        Takeable[2] = 1
+        Readable[3] = 1
+        openable[4] = 0
+        startable[5] = 0
+        examinable[6] = 1
 
 adbg> _g_
+Inside the entrance is a hallway full of dust and pieces of the ceiling has
+fallen to the floor. At the west end is a staircase, and to the south is the
+exit. To the east is a folding door. It is closed.
 
-Inside the entrance is a hallway full of dust and pieces of the
-
-ceiling has fallen to the floor. At the west end is a staircase, and to the south is the exit. To the east is a folding door. It is closed.
-
-*> _west_*
+> _west_
 
 <EXIT west[3] from Hall[5], Moving:>
-
 <ENTERED in class entity[1] is empty>
-
 <ENTERED in class location[2] is empty>
-
 <ENTERED in instance Stairs[7] is empty>
 
 Stairs
 
-You are at the landing of an old staircase. It seem steady enough to walk in, but be careful if you are going to use it. There is a passage leading up, and another leading down into a dark cellar. To the east is the hallway. A strange smell emerges from below.
+You are at the landing of an old staircase. It seem steady enough to walk in,
+but be careful if you are going to use it. There is a passage leading up, and
+another leading down into a dark cellar. To the east is the hallway. A strange
+smell emerges from below.
 
-*> _up_*
+> _up_
 
 <EXIT up[5] from Stairs[7], Moving:>
-
 <ENTERED in class entity[1] is empty>
-
 <ENTERED in class location[2] is empty>
-
 <ENTERED in instance First Floor[12] is empty>
 
 First Floor
 
-The landing on the first floor is as dirty as all the others. Meters and meters of old cables are laying around, leading into a room to the east. The stairs leads up and down. They still seem alright. Through the dirty windows the barren field outside the building can be seen. Almost completely covered by dust, there is an old book laying on the floor here.
+The landing on the first floor is as dirty as all the others. Meters and meters
+of old cables are laying around, leading into a room to the east. The stairs
+leads up and down. They still seem alright. Through the dirty windows the barren
+field outside the building can be seen. Almost completely covered by dust, there
+is an old book laying on the floor here.
 
-*> _take book and read it_*
+> _take book and read it_
 
 <VERB 21, in parameter object(#1)=old book[13], inherited from object[4], CHECK:>
-
 <VERB 21, in parameter object(#1)=old book[13], inherited from object[4], DOES:>
-
 Taken.
 
 <VERB 5, in parameter object(#1)=old book[13], inherited from object[4], CHECK:>
-
 <VERB 5, in parameter object(#1)=old book[13], DOES:>
+As you carefully try to open the book it falls apart into dust and falls to the
+floor through your fingers.
 
-As you carefully try to open the book it falls apart into dust and falls
+> _debug_
 
-to the floor through your fingers.
-
-*> _debug_*
-
-adbg> instance 13
-
+adbg> _instance 13_
 The old book [13] IsA object[4]
-
-Location: at nowhere [3]
-
-Attributes:
-
-Takeable[2] = 1
-
-Readable[3] = 1
-
-openable[4] = 0
-
-startable[5] = 0
-
-examinable[6] = 1
+    Location: at nowhere [3]
+    Attributes:
+        Takeable[2] = 1
+        Readable[3] = 1
+        openable[4] = 0
+        startable[5] = 0
+        examinable[6] = 1
 
 adbg> _trace instruction_
-
 Single instruction trace on.
 
 adbg> _n_
-
-*> _north_*
-
-++++++++++++++++++++++++++++++++++++++++++++++++++
-
-1dbd: PRINT 10037, 22 "You can't go that way."
-
-1dbe: RETURN
-
---------------------------------------------------
-
-*> _west_*
+> _north_
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-1dbd: PRINT 10037, 22 "You can't go that way."
-
+1dbd: PRINT       10037,      22       "You can't go that way."
 1dbe: RETURN
-
 --------------------------------------------------
 
-*> _east_*
+> _west_
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+1dbd: PRINT       10037,      22       "You can't go that way."
+1dbe: RETURN
+--------------------------------------------------
+
+> _east_
 
 <EXIT east[2] from First Floor[12], Moving:>
-
 <ENTERED in class entity[1] is empty>
-
 <ENTERED in class location[2] is empty>
-
 <ENTERED in instance office[14] is empty>
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-e82: LINE 0, 0
-
-e85: PRINT 3479, 6 "Office"
-
-e86: RETURN
-
+ e82: LINE            0,       0
+ e85: PRINT        3479,       6       "Office"
+ e86: RETURN
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-e89: LINE 0, 598
-
-adbg: Stepping to saviour.alan:598
-
-<00598>: "In front of you is a deserted office area. Desks and chairs
+e89: LINE            0,     598
+adbg:  Stepping to saviour.alan:598
+<00598>:         "In front of you is a deserted office area. Desks and chairs
 
 adbg> _g_
 
-e8c: PRINT 3485, 404 "In front of you is a deserted office area. Desks and chairs are piled up in one corner. The ventilation system has partly fallen to the floor, tearing part of the ceiling down with it. Under the twisted tubing a couple of old coffee makers are crushed to pieces. One shelf, having some kind of lettering, no longer readable, is thrown to one side, and another is still standing in a corner, full of dust."
-
+e8c: PRINT        3485,     404 "In front of you is a deserted office area.
+Desks and chairs are piled up in one corner. The ventilation system has partly
+fallen to the floor, tearing part of the ceiling down with it. Under the twisted
+tubing a couple of old coffee makers are crushed to pieces. One shelf, having
+some kind of lettering, no longer readable, is thrown to one side, and another
+is still standing in a corner, full of dust."
 e8d: RETURN
-
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-ec3: LINE 0, 616
-
-ec6: ATTRIBUTE 15, 17 =0
-
-ec7: NOT FALSE =TRUE
-
-ec8: IF TRUE
-
-ecb: LINE 0, 617
-
-ece: PRINT 3711, 43 " There is a ladder laying on the floor here."
-
-ecf: ELSE
-
-:
-
-ee1: RETURN
-
+ ec3: LINE            0,     616
+ ec6: ATTRIBUTE      15,      17                =0
+ ec7: NOT         FALSE                         =TRUE
+ ec8: IF           TRUE
+ ecb: LINE            0,     617
+ ece: PRINT        3711,      43      " There is a ladder
+ laying on the floor here."
+ ecf: ELSE
+   :
+ ee1: RETURN
 --------------------------------------------------
 
-*> _look_*
+> _look_
 
 <VERB 19, GLOBAL, DOES:>
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-71c: LINE 0, 199
-
-71d: LOOK
-
+ 71c: LINE            0,     199
+ 71d: LOOK
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-e82: LINE 0, 0
-
-e85: PRINT 3479, 6 "Office"
-
-e86: RETURN
-
+ e82: LINE            0,       0
+ e85: PRINT        3479,       6         "Office"
+ e86: RETURN
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-e89: LINE 0, 598
-
-e8c: PRINT 3485, 404 "In front of you is a deserted office area. Desks and chairs are piled up in one corner. The ventilation system has partly fallen to the floor, tearing part of the ceiling down with it. Under the twisted tubing a couple of old coffee makers are crushed to pieces. One shelf, having some kind of lettering, no longer readable, is thrown to one side, and another is still standing in a corner, full of dust."
-
+ e89: LINE             0,     598
+ e8c: PRINT         3485,     404         "In front of you is a deserted office
+area. Desks and chairs are piled up in one corner. The ventilation system has
+partly fallen to the floor, tearing part of the ceiling down with it. Under the
+twisted tubing a couple of old coffee makers are crushed to pieces. One shelf,
+having some kind of lettering, no longer readable, is thrown to one side, and
+another is still standing in a corner, full of dust."
 e8d: RETURN
 
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-ec3: LINE 0, 616
-
-ec6: ATTRIBUTE 15, 17 =0
-
-ec7: NOT FALSE =TRUE
-
-ec8: IF TRUE
-
-ecb: LINE 0, 617
-
-ece: PRINT 3711, 43 " There is a ladder laying on the floor here."
-
-ecf: ELSE
-
-:
-
-ee1: RETURN
-
+ ec3: LINE+++++++++++0,+++++616++++++++++++++++
+ ec3: LINE           0,     616
+ ec6: ATTRIBUTE     15,      17                =0
+ ec7: NOT        FALSE                         =TRUE
+ ec8: IF          TRUE
+ ecb: LINE           0,     617
+ ece: PRINT       3711,      43            " There is a ladder
+laying on the floor here."
+ ecf: ELSE
+    :
+ ee1: RETURN
+--------------------------------------------------
+ 71e: RETURN
 --------------------------------------------------
 
-71e: RETURN
-
---------------------------------------------------
-
-*> _q_*
+> _q_
 ................................................................................
 
 
-In the instruction trace, lines of '`+`' characters indicates the start of interpretation, thus they can be present inside other single step traces (like the `Look` in the example above).
+In the instruction trace, lines of `+` characters indicates the start of interpretation, thus they can be present inside other single step traces (like the `Look` in the example above).
 Lines of dashes, indicates the return from one such level of interpretation.
 
 

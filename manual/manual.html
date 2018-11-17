@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.79,</span>
+<span id="revnumber">version 0.1.80,</span>
 <span id="revdate">November 17, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.79
+<pre>Doc version: 0.1.80
 Last edited: November 17, 2018</pre>
 </div>
 </div>
@@ -9325,13 +9325,12 @@ Which of the two strategies you would chose depends mainly on things like:</p>
 <h3 id="_structure"><a class="anchor" href="#_structure"></a>6.13. Structure</h3>
 <div class="paragraph">
 <p>A good thing to do when designing an interactive fiction story is to separate the geography from the story.
-In Alan, you can use the import facility to structure your Alan source.
-One approach could be to place the description of each location in a separate file together with any objects that could be considered part of the scenery or at least is not only a tool in a puzzle.
+In Alan, you can use the <code>Import</code> facility to structure your Alan source.
+One approach could be to place the description of each location in a separate file along with any objects that could be considered part of the scenery or at least is not only a tool in a puzzle.
 These files can then be included in a &#8216;map&#8217; file, which in turn is included by the top-level file.</p>
 </div>
 <div class="paragraph">
-<p>The story line can be divided into files too, one for each <code>scene</code>.
-A scene being comments describing the important things that are suppose to happen, any prerequisites and objects, events, rules etc. which are specific for this part of the story.</p>
+<p>The story line can be divided into files too, one for each &#8216;scene&#8217;&#8201;&#8212;&#8201;a scene being comments describing the important things that are suppose to happen, any prerequisites and objects, events, rules, etc. which are specific for this part of the story.</p>
 </div>
 <div class="paragraph">
 <p>This strategy will both give you a better structure of your adventure as well as help you design a better story, much like the storyboarding technique used in making movies or plays.</p>
@@ -9341,7 +9340,7 @@ A scene being comments describing the important things that are suppose to happe
 <h3 id="_debugging"><a class="anchor" href="#_debugging"></a>6.14. Debugging</h3>
 <div class="paragraph">
 <p>Occasionally your Alan code is flawed and you really can&#8217;t understand what is actually happening.
-To aid in discovering which part of your code is run when, the interpreter Arun incorporates some features for debugging.
+To aid in discovering which part of your code is run when, the interpreter Arun incorporates some debugging features.
 There are a few  debugging switches available when starting the interpreter from the command line:</p>
 </div>
 <div class="literalblock plaintext">
@@ -9352,15 +9351,15 @@ There are a few  debugging switches available when starting the interpreter from
 <strong>-d</strong>       Start the debugger</pre>
 </div>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>None of the above switches can be used unless the adventure was compiled with the debug option set (see <a href="#_options">Sect. 3.2</a>).</p>
+<p>None of the above switches can be used unless the adventure was compiled with the <code>Debug</code> option set (see <a href="#_options">Sect. 3.2</a>).</p>
 </div>
 </td>
 </tr>
@@ -9371,7 +9370,7 @@ There are a few  debugging switches available when starting the interpreter from
 <div class="paragraph">
 <p>For various purposes, such as debugging, an actual log of the player commands can be handy.
 Such a log is created if the option <code>-c</code> is given to the interpreter when starting a game.
-The log files are created in the directory, which was current when the interpreter was started, the name of the log file will begin with the game name and have the extension <strong>.log</strong>.</p>
+The log files are created in the directory which was current when the interpreter was started, the name of the log file will begin with the game name and have the extension <strong>.log</strong>.</p>
 </div>
 <div class="paragraph">
 <p>A command log can on some systems be used as input to the interpreter, and thus automate the execution of the exact player experience.</p>
@@ -9398,15 +9397,12 @@ Level 4 dumps the content of the stack for every instruction.</p>
 <h4 id="_debug_mode"><a class="anchor" href="#_debug_mode"></a>Debug mode</h4>
 <div class="paragraph">
 <p>Finally, and usually most useful, there is the debug mode.
-If the interpreter is started with this option, it will execute the start up sequence and then prompt for a debug command with</p>
-</div>
-<div class="paragraph">
-<p>abug&gt;</p>
+If the interpreter is started with this option, it will execute the start up sequence and then prompt for a debug command with:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>abug&gt;</p>
+<p>adbg&gt;</p>
 </div>
 </div>
 </div>
@@ -9415,12 +9411,12 @@ If the interpreter is started with this option, it will execute the start up seq
 <h4 id="_using_the_debugger"><a class="anchor" href="#_using_the_debugger"></a>Using the Debugger</h4>
 <div class="paragraph">
 <p>Abug may also be entered during the execution of an adventure.
-To do this you issue the single player command (type it at the game prompt)</p>
+To do this you issue the single player command (type it at the game prompt):</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; debug</p>
+<p>&gt; <em>debug</em></p>
 </div>
 </div>
 </div>
@@ -9428,7 +9424,7 @@ To do this you issue the single player command (type it at the game prompt)</p>
 <p>The game must have been compiled with the debug option or the command will be sent to the game which probably does not recognize it.</p>
 </div>
 <div class="paragraph">
-<p>Typing a question mark or &#8216;help&#8217; in response to the debug prompt will give a brief listing of the commands available in Abug:</p>
+<p>Typing a question mark or <strong>help</strong> in response to the debug prompt will give a brief listing of the commands available in Abug:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -9450,40 +9446,40 @@ x                  -- d:o
 quit               -- quit game</pre>
 </div>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
 <p>Any command may be abbreviated as long as it is unambiguous.
-Typing 'b' for 'break' will work, for example.</p>
+Typing <strong>b</strong> for <strong>break</strong> will work, for example.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The display commands, <code>actors</code>, <code>locations</code>, <code>objects</code> and <code>events</code>, may optionally be followed by a number.
-Abug will then display detailed information about the entity requested, such as values of attributes, its present location etc.
+<p>The display commands, <strong>actors</strong>, <strong>locations</strong>, <strong>objects</strong> and <strong>events</strong>, may optionally be followed by a number.
+Abug will then display detailed information about the entity requested, such as values of attributes, its present location, etc.
 Currently there is no way to modify anything using Abug.</p>
 </div>
 <div class="paragraph">
-<p>You can run the adventure to the next source line by using the <code>next</code> command.
+<p>You can run the adventure to the next source line by using the <strong>next</strong> command.
 If the source file is available, the interpreter will also show the source line.</p>
 </div>
 <div class="paragraph">
 <p>Breakpoints can be set on a source line.
-Enter the <code>break</code> command followed by the number of the source line.
+Enter the <strong>break</strong> command followed by the number of the source line.
 Alan allows the source to be separated into multiple files, so the interpreter always indicate which file the source line is in, e.g. when hitting a breakpoint or stepping to the next source line.
-When setting a breakpoint the current file is always assumed.
+When setting a breakpoint, the current file is always assumed.
 You can currently set a breakpoint in another source file by preceding the line number with the file name delimited by a colon.</p>
 </div>
 <div class="paragraph">
 <p>Breakpoints can be deleted.
-The <code>delete</code> command without a line number will remove any breakpoint at the current line.
+The <strong>delete</strong> command without a line number will remove any breakpoint at the current line.
 You can specify which breakpoint to delete by giving the line number (and optionally the file name).</p>
 </div>
 <div class="admonitionblock note">
@@ -9495,7 +9491,7 @@ You can specify which breakpoint to delete by giving the line number (and option
 <td class="content">
 <div class="paragraph">
 <p>The debugger knows on which source lines it is possible to place a breakpoint.
-If you attempt to put a breakpoint at some line where it is not possible, it will attempt to place one a line which is numerically higher but as close a possible.
+If you attempt to put a breakpoint at some line where it is not possible, it will attempt to place one at a line which is numerically higher but as close a possible.
 This will sometimes cause a breakpoint to be placed in a context that will not be what you expected.</p>
 </div>
 </td>
@@ -9503,409 +9499,296 @@ This will sometimes cause a breakpoint to be placed in a context that will not b
 </table>
 </div>
 <div class="paragraph">
-<p>The trace command and its options corresponds to the types of traces described in the section on <a href="#_command_logs_and_game_transcripts"><em>Command Logs and Game Transcripts</em></a> above.</p>
+<p>The <strong>trace</strong> command and its options correspond to the types of traces described in the section on <a href="#_command_logs_and_game_transcripts"><em>Command Logs and Game Transcripts</em></a> above.</p>
 </div>
 <div class="paragraph">
 <p>Wherever different output styles are available, e.g. in GLK based interpreters like WinArun, the Alan debugger tries to use them to distinguish the debugger output from the output of your game by using the pre-formatted style (see the section on styles in <a href="#_output_statements">Sect. 3.17.1</a>).</p>
 </div>
 <div class="paragraph">
-<p>The following is a short excerpt from a debugging session (user input in italics, game input/output in bold face):</p>
+<p>The following is a short excerpt from a command line debugging session (user input in
+italics):</p>
 </div>
-<div class="literalblock">
+<div class="literalblock shell">
 <div class="content">
 <pre>&lt;Arun, Adventure Interpreter version 3.0beta1 (2010-12-19 16:26:05)&gt;
 
 &lt;Version of 'saviour.a3c' is 3.0beta1&gt;
-
 &lt;Hmm, this is a little-endian machine, fixing byte ordering.... OK.&gt;
+&lt;Hi! This is Alan interactive fiction interpreter Arun, version 3.0beta1 !&gt;
 
-&lt;Hi! This is Alan interactive fiction interpreter Arun, version
+adbg&gt; <em>n</em>
 
-3.0beta1 !&gt;
-
-adbg&gt; _n_
-
-adbg: Stepping to saviour.alan:1346
-
-&lt;01346&gt;: "$pWelcome to the game of SAVIOUR!$pIn this game your mission
-
-adbg&gt; _n_
+adbg:  Stepping to saviour.alan:1346
+&lt;01346&gt;:     "$pWelcome to the game of SAVIOUR!$pIn this game your mission
+adbg&gt; <em>n</em>
 
 Welcome to the game of SAVIOUR!
 
 &lt;&lt;Game output deleted for breivity&gt;&gt;
 
-adbg: Stepping to saviour.alan:1354
+adbg:  Stepping to saviour.alan:1354
+&lt;01354&gt;:     Show 'logo.png'.
+adbg&gt; <em>n</em>
 
-&lt;01354&gt;: Show 'logo.png'.
+adbg:  Stepping to saviour.alan:1355
+&lt;01355&gt;:     "$iVisit the Alan Home Pages at:"
 
-adbg&gt; _n_
-
-adbg: Stepping to saviour.alan:1355
-
-&lt;01355&gt;: "$iVisit the Alan Home Pages at:"
-
-adbg&gt; _break 1357_
-
+adbg&gt; <em>break 1357</em>
 Line 1357 not available, breakpoint instead set at saviour.alan:1358
+&lt;01358&gt;:     Visits 2.
 
-&lt;01358&gt;: Visits 2.
+adbg&gt; <em>g</em>
 
-adbg&gt; _g_
+    Visit the Alan Home Pages at:
 
-Visit the Alan Home Pages at:
 
-http://www.alanif.se
+    http://www.alanif.se
 
-adbg: Breakpoint hit at saviour.alan:1358
-
-&lt;01358&gt;: Visits 2.
-
-adbg&gt; _n_
+adbg:  Breakpoint hit at saviour.alan:1358
+&lt;01358&gt;:     Visits 2.
+adbg&gt; <em>n</em>
 
 Outside The Tall Building
 
-adbg: Stepping to saviour.alan:318
+adbg:  Stepping to saviour.alan:318
+&lt;00318&gt;:         "To the north is a tall ancient building with a large entrance.
+adbg&gt; <em>n</em>
+To the north is a tall ancient building with a large entrance. On the top there
+is a clock tower. Most of the windows in the building are broken, and a sign
+with three oval objects are hanging lose from the wall.
 
-&lt;00318&gt;: "To the north is a tall ancient building with a large entrance.
+&gt; <em>north</em>
+adbg:  Stepping to saviour.alan:325
+&lt;00325&gt;:             Score 5.
 
-adbg&gt; _n_
-
-To the north is a tall ancient building with a large entrance. On the top there is a clock tower. Most of the windows in the building are broken, and a sign with three oval objects are hanging lose from the wall.
-
-*&gt; _north_*
-
-adbg: Stepping to saviour.alan:325
-
-&lt;00325&gt;: Score 5.
-
-adbg&gt; _?_
-
+adbg&gt; <em>?</em>
 Alan 3.0beta1 -- Adventure Language System (2010-12-19 16:26)
-
 ADBG Commands (can be abbreviated):
+    help               -- this help
+    ?                  -- d:o
+    break [file:[n]]   -- set breakpoint at source line [n] in [file]
+    delete [file:[n]]  -- delete breakpoint at source line [n] in [file]
+    files              -- list source files
+    events             -- show events
+    classes            -- show class hierarchy
+    instances [n]      -- show instance(s)
+    objects [n]        -- show instance(s) that are objects
+    actors [n]         -- show instance(s) that are actors
+    locations [n]      -- show instances that are locations
+    trace ('source'|'section'|'instruction'|'push'|'stack')
+                       -- toggle various traces
+    next               -- execute to next source line
+    go                 -- go another player turn
+    exit               -- exit to game, enter 'debug' to get back
+    x                  -- d:o
+    quit               -- quit game
 
-help -- this help
-
-? -- d:o
-
-break [file:[n]] -- set breakpoint at source line [n] in [file]
-
-delete [file:[n]] -- delete breakpoint at source line [n] in [file]
-
-files -- list source files
-
-events -- show events
-
-classes -- show class hierarchy
-
-instances [n] -- show instance(s)
-
-objects [n] -- show instance(s) that are objects
-
-actors [n] -- show instance(s) that are actors
-
-locations [n] -- show instances that are locations
-
-trace ('source'|'section'|'instruction'|'push'|'stack')
-
--- toggle various traces
-
-next -- execute to next source line
-
-go -- go another player turn
-
-exit -- exit to game, enter 'debug' to get back
-
-x -- d:o
-
-quit -- quit game
-
-adbg&gt; _trace section_
+adbg&gt; <em>trace section</em>
 
 Section trace on.
 
-adbg&gt; _n_
+adbg&gt; <em>n</em>
 
 &lt;EXIT north[1] from Outside The Tall Building[4], Moving:&gt;
-
 &lt;ENTERED in class entity[1] is empty&gt;
-
 &lt;ENTERED in class location[2] is empty&gt;
-
 &lt;ENTERED in instance Hall[5] is empty&gt;
 
 Hall
 
-adbg: Stepping to saviour.alan:332
+adbg:  Stepping to saviour.alan:332
+&lt;00332&gt;:         "Inside the entrance is a hallway full of dust and pieces of
 
-&lt;00332&gt;: "Inside the entrance is a hallway full of dust and pieces of
-
-adbg&gt; _instances_
-
+adbg&gt; <em>instances</em>
 Instances:
-
-1: #nowhere
-
-2: pseudowords (container), at #nowhere [1]
-
-3: nowhere
-
-4: Outside The Tall Building
-
-5: Hall
-
-6: door, at Hall [5]
-
-7: Stairs
-
-8: cellar
-
-9: rats, at cellar [8]
-
-10: store
-
-11: spool of computer tape, at store [10]
-
-12: First Floor
-
-13: old book, at First Floor [12]
-
+      1: #nowhere
+      2: pseudowords (container), at #nowhere [1]
+      3: nowhere
+      4: Outside The Tall Building
+      5: Hall
+      6: door, at Hall [5]
+      7: Stairs
+      8: cellar
+      9: rats, at cellar [8]
+     10: store
+     11: spool of computer tape, at store [10]
+     12: First Floor
+     13: old book, at First Floor [12]
 &lt;&lt;list abbreviated&gt;&gt;
 
-adbg&gt; _instance 13_
-
+adbg&gt; <em>instance 13</em>
 The old book [13] IsA object[4]
+    Location: at First Floor [12]
+    Attributes:
+        Takeable[2] = 1
+        Readable[3] = 1
+        openable[4] = 0
+        startable[5] = 0
+        examinable[6] = 1
 
-Location: at First Floor [12]
+adbg&gt; <em>g</em>
+Inside the entrance is a hallway full of dust and pieces of the ceiling has
+fallen to the floor. At the west end is a staircase, and to the south is the
+exit. To the east is a folding door. It is closed.
 
-Attributes:
-
-Takeable[2] = 1
-
-Readable[3] = 1
-
-openable[4] = 0
-
-startable[5] = 0
-
-examinable[6] = 1
-
-adbg&gt; _g_
-
-Inside the entrance is a hallway full of dust and pieces of the
-
-ceiling has fallen to the floor. At the west end is a staircase, and to the south is the exit. To the east is a folding door. It is closed.
-
-*&gt; _west_*
+&gt; <em>west</em>
 
 &lt;EXIT west[3] from Hall[5], Moving:&gt;
-
 &lt;ENTERED in class entity[1] is empty&gt;
-
 &lt;ENTERED in class location[2] is empty&gt;
-
 &lt;ENTERED in instance Stairs[7] is empty&gt;
 
 Stairs
 
-You are at the landing of an old staircase. It seem steady enough to walk in, but be careful if you are going to use it. There is a passage leading up, and another leading down into a dark cellar. To the east is the hallway. A strange smell emerges from below.
+You are at the landing of an old staircase. It seem steady enough to walk in,
+but be careful if you are going to use it. There is a passage leading up, and
+another leading down into a dark cellar. To the east is the hallway. A strange
+smell emerges from below.
 
-*&gt; _up_*
+&gt; <em>up</em>
 
 &lt;EXIT up[5] from Stairs[7], Moving:&gt;
-
 &lt;ENTERED in class entity[1] is empty&gt;
-
 &lt;ENTERED in class location[2] is empty&gt;
-
 &lt;ENTERED in instance First Floor[12] is empty&gt;
 
 First Floor
 
-The landing on the first floor is as dirty as all the others. Meters and meters of old cables are laying around, leading into a room to the east. The stairs leads up and down. They still seem alright. Through the dirty windows the barren field outside the building can be seen. Almost completely covered by dust, there is an old book laying on the floor here.
+The landing on the first floor is as dirty as all the others. Meters and meters
+of old cables are laying around, leading into a room to the east. The stairs
+leads up and down. They still seem alright. Through the dirty windows the barren
+field outside the building can be seen. Almost completely covered by dust, there
+is an old book laying on the floor here.
 
-*&gt; _take book and read it_*
+&gt; <em>take book and read it</em>
 
 &lt;VERB 21, in parameter object(#1)=old book[13], inherited from object[4], CHECK:&gt;
-
 &lt;VERB 21, in parameter object(#1)=old book[13], inherited from object[4], DOES:&gt;
-
 Taken.
 
 &lt;VERB 5, in parameter object(#1)=old book[13], inherited from object[4], CHECK:&gt;
-
 &lt;VERB 5, in parameter object(#1)=old book[13], DOES:&gt;
+As you carefully try to open the book it falls apart into dust and falls to the
+floor through your fingers.
 
-As you carefully try to open the book it falls apart into dust and falls
+&gt; <em>debug</em>
 
-to the floor through your fingers.
-
-*&gt; _debug_*
-
-adbg&gt; instance 13
-
+adbg&gt; <em>instance 13</em>
 The old book [13] IsA object[4]
+    Location: at nowhere [3]
+    Attributes:
+        Takeable[2] = 1
+        Readable[3] = 1
+        openable[4] = 0
+        startable[5] = 0
+        examinable[6] = 1
 
-Location: at nowhere [3]
-
-Attributes:
-
-Takeable[2] = 1
-
-Readable[3] = 1
-
-openable[4] = 0
-
-startable[5] = 0
-
-examinable[6] = 1
-
-adbg&gt; _trace instruction_
-
+adbg&gt; <em>trace instruction</em>
 Single instruction trace on.
 
-adbg&gt; _n_
-
-*&gt; _north_*
-
-++++++++++++++++++++++++++++++++++++++++++++++++++
-
-1dbd: PRINT 10037, 22 "You can't go that way."
-
-1dbe: RETURN
-
---------------------------------------------------
-
-*&gt; _west_*
+adbg&gt; <em>n</em>
+&gt; <em>north</em>
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-1dbd: PRINT 10037, 22 "You can't go that way."
-
+1dbd: PRINT       10037,      22       "You can't go that way."
 1dbe: RETURN
-
 --------------------------------------------------
 
-*&gt; _east_*
+&gt; <em>west</em>
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+1dbd: PRINT       10037,      22       "You can't go that way."
+1dbe: RETURN
+--------------------------------------------------
+
+&gt; <em>east</em>
 
 &lt;EXIT east[2] from First Floor[12], Moving:&gt;
-
 &lt;ENTERED in class entity[1] is empty&gt;
-
 &lt;ENTERED in class location[2] is empty&gt;
-
 &lt;ENTERED in instance office[14] is empty&gt;
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-e82: LINE 0, 0
-
-e85: PRINT 3479, 6 "Office"
-
-e86: RETURN
-
+ e82: LINE            0,       0
+ e85: PRINT        3479,       6       "Office"
+ e86: RETURN
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
+e89: LINE            0,     598
+adbg:  Stepping to saviour.alan:598
+&lt;00598&gt;:         "In front of you is a deserted office area. Desks and chairs
 
-e89: LINE 0, 598
+adbg&gt; <em>g</em>
 
-adbg: Stepping to saviour.alan:598
-
-&lt;00598&gt;: "In front of you is a deserted office area. Desks and chairs
-
-adbg&gt; _g_
-
-e8c: PRINT 3485, 404 "In front of you is a deserted office area. Desks and chairs are piled up in one corner. The ventilation system has partly fallen to the floor, tearing part of the ceiling down with it. Under the twisted tubing a couple of old coffee makers are crushed to pieces. One shelf, having some kind of lettering, no longer readable, is thrown to one side, and another is still standing in a corner, full of dust."
-
+e8c: PRINT        3485,     404 "In front of you is a deserted office area.
+Desks and chairs are piled up in one corner. The ventilation system has partly
+fallen to the floor, tearing part of the ceiling down with it. Under the twisted
+tubing a couple of old coffee makers are crushed to pieces. One shelf, having
+some kind of lettering, no longer readable, is thrown to one side, and another
+is still standing in a corner, full of dust."
 e8d: RETURN
-
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-ec3: LINE 0, 616
-
-ec6: ATTRIBUTE 15, 17 =0
-
-ec7: NOT FALSE =TRUE
-
-ec8: IF TRUE
-
-ecb: LINE 0, 617
-
-ece: PRINT 3711, 43 " There is a ladder laying on the floor here."
-
-ecf: ELSE
-
-:
-
-ee1: RETURN
-
+ ec3: LINE            0,     616
+ ec6: ATTRIBUTE      15,      17                =0
+ ec7: NOT         FALSE                         =TRUE
+ ec8: IF           TRUE
+ ecb: LINE            0,     617
+ ece: PRINT        3711,      43      " There is a ladder
+ laying on the floor here."
+ ecf: ELSE
+   :
+ ee1: RETURN
 --------------------------------------------------
 
-*&gt; _look_*
+&gt; <em>look</em>
 
 &lt;VERB 19, GLOBAL, DOES:&gt;
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-71c: LINE 0, 199
-
-71d: LOOK
-
+ 71c: LINE            0,     199
+ 71d: LOOK
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-e82: LINE 0, 0
-
-e85: PRINT 3479, 6 "Office"
-
-e86: RETURN
-
+ e82: LINE            0,       0
+ e85: PRINT        3479,       6         "Office"
+ e86: RETURN
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-e89: LINE 0, 598
-
-e8c: PRINT 3485, 404 "In front of you is a deserted office area. Desks and chairs are piled up in one corner. The ventilation system has partly fallen to the floor, tearing part of the ceiling down with it. Under the twisted tubing a couple of old coffee makers are crushed to pieces. One shelf, having some kind of lettering, no longer readable, is thrown to one side, and another is still standing in a corner, full of dust."
-
+ e89: LINE             0,     598
+ e8c: PRINT         3485,     404         "In front of you is a deserted office
+area. Desks and chairs are piled up in one corner. The ventilation system has
+partly fallen to the floor, tearing part of the ceiling down with it. Under the
+twisted tubing a couple of old coffee makers are crushed to pieces. One shelf,
+having some kind of lettering, no longer readable, is thrown to one side, and
+another is still standing in a corner, full of dust."
 e8d: RETURN
 
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-ec3: LINE 0, 616
-
-ec6: ATTRIBUTE 15, 17 =0
-
-ec7: NOT FALSE =TRUE
-
-ec8: IF TRUE
-
-ecb: LINE 0, 617
-
-ece: PRINT 3711, 43 " There is a ladder laying on the floor here."
-
-ecf: ELSE
-
-:
-
-ee1: RETURN
-
+ ec3: LINE+++++++++++0,+++++616++++++++++++++++
+ ec3: LINE           0,     616
+ ec6: ATTRIBUTE     15,      17                =0
+ ec7: NOT        FALSE                         =TRUE
+ ec8: IF          TRUE
+ ecb: LINE           0,     617
+ ece: PRINT       3711,      43            " There is a ladder
+laying on the floor here."
+ ecf: ELSE
+    :
+ ee1: RETURN
+--------------------------------------------------
+ 71e: RETURN
 --------------------------------------------------
 
-71e: RETURN
-
---------------------------------------------------
-
-*&gt; _q_*</pre>
+&gt; <em>q</em></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the instruction trace, lines of &#8216;+&#8217; characters indicates the start of interpretation, thus they can be present inside other single step traces (like the <code>Look</code> in the example above).
+<p>In the instruction trace, lines of <code>+</code> characters indicates the start of interpretation, thus they can be present inside other single step traces (like the <code>Look</code> in the example above).
 Lines of dashes, indicates the return from one such level of interpretation.</p>
 </div>
 </div>
@@ -12794,7 +12677,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.79<br>
+Version 0.1.80<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">
