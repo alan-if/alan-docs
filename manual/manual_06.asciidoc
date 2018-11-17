@@ -436,13 +436,11 @@ This makes the descriptions of changes to be shown when they take place, and the
 You can, of course, still have attributes describing the actor's state to customize the description of the actor on an even more detailed level, but it generally suffices to describe an actor in terms of what script he is executing.
 
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
-
 
 == Vehicles
 
 The current version of Alan does not support actors being inside containers or inside other actors, which could be a straight forward way to implement vehicles.
-However, as the reader/player does not need to know how the output is generated we can use a location and a row of events to substitute for the vehicle.
+However, since the reader/player does not need to know how the output is generated, we can use a location and a chain of events to substitute for the vehicle.
 
 Let's start with the geography:
 
@@ -455,7 +453,7 @@ The parking_lot IsA location Name 'Large Parking Lot'
 End The parking_lot.
 --------------------------------------------------------------------------------
 
-Then we need the actual car:
+Then we implement the actual car:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -472,7 +470,7 @@ The car IsA object Name little red sporty ferrari Name car
 End The car.
 --------------------------------------------------------------------------------
 
-We also need a description of the inside of it.
+We also need a description for the inside of the car.
 We will use another location for this:
 
 [source,alan]
@@ -481,7 +479,7 @@ The inside_car IsA location Name 'Inside the Ferrari'
   Description
     "This sporty little red vehicle can really take you
      places..."
-  Exit out TO inside_car
+  Exit out To inside_car
     Check car Is Not running
       Else "I think you should stop the car before getting
             out..."
@@ -516,7 +514,7 @@ End The inside_car.
 --------------------------------------------------------------------------------
 
 
-We must make sure that the player can just say "`drive`" and "`park`" by defining the syntax for those single word commands:
+We must ensure that the player can say just "`drive`" and "`park`" by defining the `Syntax` for those single word commands:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -524,31 +522,31 @@ Syntax drive = drive.
 Syntax park = park.
 --------------------------------------------------------------------------------
 
-You can also see from the code above that there are (at least) two events that need to be defined too.
+You can also see from the above code that there are (at least) two events that need to be defined too.
 They handle the movement of the car from one place to another:
 
 [source,alan]
 --------------------------------------------------------------------------------
 Event drive_to_parking
-  "You drive out from your garage and approach a large
-   parking lot."
+  "You drive out from your garage and approach
+   a large parking lot."
   Set position Of car To 1.
   Locate car At parking_lot.
   Schedule drive_to_garage After 1.
 End Event drive_to_parking.
 
 Event drive_to_garage
-  "You drive out from the parking lot and approach your own
-   garage."
+  "You drive out from the parking lot and approach
+   your own garage."
   Set position Of car To 0.
   Locate car At garage.
   Schedule drive_to_parking After 1.
 End Event drive_to_garage.
 --------------------------------------------------------------------------------
 
-The main idea is that the player/reader is inside the car, and the events are executed at this location thus emulating movement.
+The main idea is that the player/reader is inside the car, and the events are executed at this location, thus emulating movement.
 
-There is a multitude of solutions for this problem.
+There are a multitude of different solutions to this problem.
 One possibility is to exchange the car object for an actor and the events for script steps.
 However, in this solution the car object is not where the hero is (`inside_car`) so the output from the scripts for the car will not automatically be shown to the player.
 There are (at least) two different ways to deal with this (one involving attributes, the other involving an extra object), but the solutions are left as an exercise to the reader!
@@ -562,7 +560,7 @@ Sincere thanks go to Walt (sandsquish@aol.com) for inspiring communication that 
 == Floating Objects
 
 Floating objects is a term used for objects that are available everywhere, or at least at many places.
-Usually they are available wherever the hero is, and we want to avoid creating duplicate objects, so in a way we make them float along with the hero, or some other actor, instead.
+Usually they are available wherever the hero is, and we want to avoid creating duplicate objects, so in a way we make them "`float`" along with the hero, or some other actor, instead.
 
 
 
@@ -586,7 +584,7 @@ The head IsA object Name head In body_parts ...
 --------------------------------------------------------------------------------
 
 
-Using entity containers is also a simple way to create other compartments on the hero, such as a belt.
+Using entity containers is also a simple way to create other compartments on the hero, such as a belt:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -601,7 +599,13 @@ The belt IsA entity
 End The belt.
 --------------------------------------------------------------------------------
 
-You can combine that with the following definitions of the hero and the 'invent' verb:
+// @NOTE: Why 'invent' instead of 'inventory'? Most readers will be familiar
+//        with the latter -- the former seems odd, and I can't recall ever
+//        seeing it in an IF work. Also, 'invent' suggests the verb "to invent"
+//        (i.e. fabbricate, make up), and as a shorthand of 'inventory' is odd
+//        indeed.
+
+You can combine that with the following definitions of the hero and the *invent* verb:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -623,7 +627,7 @@ And the following output could result:
 
 [example,role="gametranscript"]
 ================================================================================
-&gt; invent +
+&gt; _invent_ +
 You are empty-handed but in your belt you have a knife.
 ================================================================================
 
@@ -631,15 +635,15 @@ You are empty-handed but in your belt you have a knife.
 
 [NOTE]
 ================================================================================
-The example use the count aggregate to see if the other container is empty or not, and select appropriate output depending on that.
+The example uses the `Count` aggregate to see if the other container is empty or not, and select the appropriate output accordingly.
 ================================================================================
 
 
 
 === Outdoors and Indoors
 
-Another example of floating objects are semi-abstract objects like the air, the ground and walls.
-Some of these also have the extra complexity that they should be available only under certain conditions.
+Another example of floating objects are semi-abstract objects like air, ground and walls.
+Some of these add some extra complexity for they should be available only under certain conditions.
 
 Of course, you would not want outdoor things to be available when you are indoors.
 To solve this, simply create yet another container object where we can store the outdoor things when they should not be accessible and place it where the hero can never be.
@@ -667,33 +671,30 @@ When location Of hero Is Not outdoors =>
 
 You need to add the boolean attribute `outdoors` to every location to the make the rules work, of course.
 
-And Voilà, every time the hero arrives at an outdoor location he will find the air and the sky.
+And, _voilà_, every time the hero arrives at an outdoor location he will find the air and the sky.
 And every time he enters a location that has the attribute `outdoors` set to false he will not find them available.
 
 Well, perhaps he would like to have the air available indoors too, but that is left as an exercise for the reader!
 
 
-[NOTE]
+[TIP]
 ================================================================================
-An alternative to the location attribute, is to use classes.
-Define an outdoor_location class and an indoor_location class.
+An alternative to the location attribute is to use classes.
+Define an `outdoor_location` class and an `indoor_location` class.
 Then inherit as appropriate, and the rules could instead look like:
-================================================================================
-
-
 
 [source,alan]
 --------------------------------------------------------------------------------
 When location Of hero IsA outdoors_location => ...
 When location Of hero IsA indoors_location => ...
 --------------------------------------------------------------------------------
-
+================================================================================
 
 
 === Nested Locations as a Solution
 
 Yet another option would be to make use of the ((nested locations)) feature.
-Put all your outdoor locations in a outdoor location where the outdoor_storage entity is also present (this is just a hint):
+Put all your outdoor locations in a outdoor location where the `outdoor_storage` entity is also present (this is just a hint):
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -714,24 +715,23 @@ Then the outdoor items can stay at this "`region`" location, no need for rules o
 A very common puzzle in old time adventures (so much so that it has possibly been exploited beyond its potential) is the problem of dark locations and finding a source of light.
 
 Darkness and light sources can be implemented in Alan in different ways.
-Again we basically have the choice between attributes and classes.
-The solutions are both general and rather similar so we will have a look at the solution using attributes and leave the other solution to the reader. (A good exercise to really understand the Alan class concept, so please take a stab at it.
-If you want to have a look at one solution, you can study the Alan standard library, which uses classes to implement light sources.)
+Again, we basically have the choice between attributes and classes.
+The solutions are both general and rather similar, so we will have a look at the solution using attributes and leave the other solution to the reader. (A good exercise to really understand the Alan class concept, so please take a stab at it.
+If you want to have a look at one solution, you can study the Alan Standard Library, which uses classes to implement light sources.)
 
-First we need an attribute that all objects have.
+First we need an attribute owned by all objects.
 We know we only need to consider objects because light sources need to be transported by the player, so they can not just be anywhere, like entities.
 
 [source,alan]
 --------------------------------------------------------------------------------
 Add To Every object
-  Is
-    Not lightsource.
+  Is Not lightsource.
 End Add To.
 --------------------------------------------------------------------------------
 
 
 This ensures that all objects have the boolean (true/false valued) attribute `lightsource` with the default not being a light source.
-Any object that provides light need to explicitly state that they are instead.
+Any objects that provide light need to explicitly state that they are instead.
 For some instances this attribute might change value dynamically, e.g. when the lamp is lit and extinguished.
 
 Locations then must declare themselves as lit or not:
@@ -745,8 +745,8 @@ End Add To.
 
 Here we assume most locations are lit, dark locations need to declare themselves `Not lit`.
 
-We can now count the number of instances at the current location having the attribute `lightsource` set and if there are one or more there is some light provided.
-So, the `look` verb could be reworked to:
+We can now count the number of instances at the current location having the attribute `lightsource` set, and if there are one or more there is some light provided.
+So, the *look* verb could be reworked to:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -761,19 +761,19 @@ End Verb.
 --------------------------------------------------------------------------------
 
 
-The check of the `look` verb now checks the current locations need for light and then counts instances of object, that are light sources and present, to see if there is light.
+The `Check` of the `'look'` verb now checks the current locations need for light and then counts instances of object which are both light sources and present, to see if there is light.
 
 Of course, we must also modify the dark locations so that they don't display their descriptions upon entrance.
-This is easy to do using another addition to every location, a description check, similar to the check in the `look` verb:
+This is easy to do using another addition to every location, a description check, similar to the check in the `'look'` verb:
 
 [source,alan]
 --------------------------------------------------------------------------------
 Add To Every location
   Description
-  Check Current Location Is lit
-    Or Count IsA object, Is lightsource, Here > 0
-  Else
-    "You cannot see anything without any light."
+    Check Current Location Is lit
+      Or Count IsA object, Is lightsource, Here > 0
+    Else
+      "You cannot see anything without any light."
 End Add To.
 --------------------------------------------------------------------------------
 
@@ -792,7 +792,7 @@ But sometimes you need better control over when they are available and when not.
 
 === A Mountain
 
-For objects that need to be visible from a distance, the easiest method is to introduce a (((object, shadow objects))) (((shadow objects))) '`shadow object`'.
+For objects that need to be visible from a distance, the easiest method is to introduce a (((object, shadow objects))) (((shadow objects))) "`shadow object`".
 This is a second object acting on behalf of, or representing, the distant object at the locations where it should be possible to refer to it.
 For example:
 
@@ -818,17 +818,15 @@ End The shadow_mountain.
 --------------------------------------------------------------------------------
 
 
-
-This would allow for example at scenic_vista:
+This would allow for example at `scenic_vista`:
 
 
 [example,role="gametranscript"]
 ================================================================================
 *Scenic Vista.* +
-Far in the distance you can see the Pebbly Mountain raising +
-towards the sky. +
+Far in the distance you can see the Pebbly Mountain raising towards the sky. +
 
-&gt; look at mountain through the binoculars +
+&gt; _look at mountain through the binoculars_ +
 ...
 ================================================================================
 
@@ -843,10 +841,10 @@ When hero At scenic_vista Or hero At hill_road =>
   Locate shadow_mountain At hero.
 --------------------------------------------------------------------------------
 
-This will ensure that whenever the hero moves to any of the places from where the mountain is visible, the `shadow_mountain` is sure to follow.
-However, as the rules are executed _after_ the hero already has moved, a better strategy might be to make the `shadow_mountain` '`silent`', i.e. to have no description.
-Instead, the description of it should then be embedded in the description of the adjacent locations.
-Yet, another possibility would be to move the pseudo-object around using statements in the exits, like
+This will ensure that whenever the hero moves to any of the places from where the mountain is visible, the `shadow_mountain` will surely follow.
+However, as the rules are executed _after_ the hero has already moved, a better strategy might be to make the `shadow_mountain` '`silent`', i.e. to have no description.
+Instead, its description should be embedded in the description of the adjacent locations.
+Yet, another possibility would be to move the pseudo-object around using statements in the ``Exit``s, like:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -859,47 +857,51 @@ End The scenic_vista.
 --------------------------------------------------------------------------------
 
 Regardless of which of these strategies you chose, you need to take care that the shadow object is not present when the real object is.
-In this particular case, it should not be moved to the hills.
+In this particular case, it should not be moved to the `hills`.
 
 
 
 === The Melody
 
-To allow the player to 'whistle the melody' for example, there are two different tactics that can be applied.
+To allow the player to '`whistle the melody`' for example, there are two different tactics that can be employed.
 One choice is to make the melody an `entity` (or some subclass thereof that you have defined), because, as we have seen, those can be manipulated from everywhere:
 
 [source,alan]
 --------------------------------------------------------------------------------
 The melody IsA entity ...
-Syntax 'whistle' = 'whistle' (m) ...
+Syntax whistle = whistle (m) ...
 --------------------------------------------------------------------------------
 
+// @TODO: Rephrase "refer to instances ... to be used as parameters even from afar"
+
 The other route would be to make it an actual `object`.
-In this case the syntax for the whistle verb would need to indicate omnipotence, meaning that the player can refer to instances (even those inheriting from `object`) to be used as parameters even from afar.
+In this case the syntax for the `whistle` verb would need to indicate omnipotence, meaning that the player can refer to instances (even those inheriting from `object`) to be used as parameters even from afar.
 
 [source,alan]
 --------------------------------------------------------------------------------
 The melody IsA object ...
-Syntax 'whistle' = 'whistle' (m)! ...
+Syntax whistle = whistle (m)! ...
 --------------------------------------------------------------------------------
 
 The melody then does not have to be reachable, near or even be at any location at all, for the player to be able to refer to it.
 
-In both cases you would most likely need to restrict the parameters for the syntax so that the player can't 'whistle the chair'.
-Which of the two strategies you would chose greatly depends on things like:
+In both cases you would most likely need to restrict the parameters for the syntax so that the player can't '`whistle the chair`'.
+Which of the two strategies you would chose depends mainly on things like:
 
-* are there many things that this applies to (many 'melodies', perhaps)?
+* are there many things that this applies to (many '`melodies`', perhaps)?
 * should the player be able to manipulate this instance in other ways?
 * do you need many different entities for various purposes?
 
 
 == Using Events as Functions
 
-[literal, role="plaintext", subs="normal"]
-................................................................................
-<to be supplied>
-................................................................................
+[WARNING]
+================================================================================
+TBD.
+================================================================================
 
+
+// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 == Structure

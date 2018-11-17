@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.77,</span>
+<span id="revnumber">version 0.1.78,</span>
 <span id="revdate">November 17, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.77
+<pre>Doc version: 0.1.78
 Last edited: November 17, 2018</pre>
 </div>
 </div>
@@ -8807,7 +8807,7 @@ You can, of course, still have attributes describing the actor&#8217;s state to 
 <h3 id="_vehicles"><a class="anchor" href="#_vehicles"></a>6.8. Vehicles</h3>
 <div class="paragraph">
 <p>The current version of Alan does not support actors being inside containers or inside other actors, which could be a straight forward way to implement vehicles.
-However, as the reader/player does not need to know how the output is generated we can use a location and a row of events to substitute for the vehicle.</p>
+However, since the reader/player does not need to know how the output is generated, we can use a location and a chain of events to substitute for the vehicle.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s start with the geography:</p>
@@ -8822,7 +8822,7 @@ End The parking_lot.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then we need the actual car:</p>
+<p>Then we implement the actual car:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8840,7 +8840,7 @@ End The car.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>We also need a description of the inside of it.
+<p>We also need a description for the inside of the car.
 We will use another location for this:</p>
 </div>
 <div class="listingblock">
@@ -8849,7 +8849,7 @@ We will use another location for this:</p>
   Description
     "This sporty little red vehicle can really take you
      places..."
-  Exit out TO inside_car
+  Exit out To inside_car
     Check car Is Not running
       Else "I think you should stop the car before getting
             out..."
@@ -8884,7 +8884,7 @@ End The inside_car.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>We must make sure that the player can just say &#8220;drive&#8221; and &#8220;park&#8221; by defining the syntax for those single word commands:</p>
+<p>We must ensure that the player can say just &#8220;drive&#8221; and &#8220;park&#8221; by defining the <code>Syntax</code> for those single word commands:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8893,22 +8893,22 @@ Syntax park = park.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also see from the code above that there are (at least) two events that need to be defined too.
+<p>You can also see from the above code that there are (at least) two events that need to be defined too.
 They handle the movement of the car from one place to another:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Event drive_to_parking
-  "You drive out from your garage and approach a large
-   parking lot."
+  "You drive out from your garage and approach
+   a large parking lot."
   Set position Of car To 1.
   Locate car At parking_lot.
   Schedule drive_to_garage After 1.
 End Event drive_to_parking.
 
 Event drive_to_garage
-  "You drive out from the parking lot and approach your own
-   garage."
+  "You drive out from the parking lot and approach
+   your own garage."
   Set position Of car To 0.
   Locate car At garage.
   Schedule drive_to_parking After 1.
@@ -8916,10 +8916,10 @@ End Event drive_to_garage.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The main idea is that the player/reader is inside the car, and the events are executed at this location thus emulating movement.</p>
+<p>The main idea is that the player/reader is inside the car, and the events are executed at this location, thus emulating movement.</p>
 </div>
 <div class="paragraph">
-<p>There is a multitude of solutions for this problem.
+<p>There are a multitude of different solutions to this problem.
 One possibility is to exchange the car object for an actor and the events for script steps.
 However, in this solution the car object is not where the hero is (<code>inside_car</code>) so the output from the scripts for the car will not automatically be shown to the player.
 There are (at least) two different ways to deal with this (one involving attributes, the other involving an extra object), but the solutions are left as an exercise to the reader!</p>
@@ -8935,7 +8935,7 @@ There are (at least) two different ways to deal with this (one involving attribu
 <h3 id="_floating_objects"><a class="anchor" href="#_floating_objects"></a>6.9. Floating Objects</h3>
 <div class="paragraph">
 <p>Floating objects is a term used for objects that are available everywhere, or at least at many places.
-Usually they are available wherever the hero is, and we want to avoid creating duplicate objects, so in a way we make them float along with the hero, or some other actor, instead.</p>
+Usually they are available wherever the hero is, and we want to avoid creating duplicate objects, so in a way we make them &#8220;float&#8221; along with the hero, or some other actor, instead.</p>
 </div>
 <div class="sect3">
 <h4 id="_body_parts"><a class="anchor" href="#_body_parts"></a>Body Parts</h4>
@@ -8960,7 +8960,7 @@ The head IsA object Name head In body_parts ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Using entity containers is also a simple way to create other compartments on the hero, such as a belt.</p>
+<p>Using entity containers is also a simple way to create other compartments on the hero, such as a belt:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8976,7 +8976,7 @@ End The belt.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can combine that with the following definitions of the hero and the 'invent' verb:</p>
+<p>You can combine that with the following definitions of the hero and the <strong>invent</strong> verb:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9000,7 +9000,7 @@ End Verb invent.</code></pre>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; invent<br>
+<p>&gt; <em>invent</em><br>
 You are empty-handed but in your belt you have a knife.</p>
 </div>
 </div>
@@ -9013,7 +9013,7 @@ You are empty-handed but in your belt you have a knife.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The example use the count aggregate to see if the other container is empty or not, and select appropriate output depending on that.</p>
+<p>The example uses the <code>Count</code> aggregate to see if the other container is empty or not, and select the appropriate output accordingly.</p>
 </div>
 </td>
 </tr>
@@ -9023,8 +9023,8 @@ You are empty-handed but in your belt you have a knife.</p>
 <div class="sect3">
 <h4 id="_outdoors_and_indoors"><a class="anchor" href="#_outdoors_and_indoors"></a>Outdoors and Indoors</h4>
 <div class="paragraph">
-<p>Another example of floating objects are semi-abstract objects like the air, the ground and walls.
-Some of these also have the extra complexity that they should be available only under certain conditions.</p>
+<p>Another example of floating objects are semi-abstract objects like air, ground and walls.
+Some of these add some extra complexity for they should be available only under certain conditions.</p>
 </div>
 <div class="paragraph">
 <p>Of course, you would not want outdoor things to be available when you are indoors.
@@ -9054,27 +9054,23 @@ When location Of hero Is Not outdoors =&gt;
 <p>You need to add the boolean attribute <code>outdoors</code> to every location to the make the rules work, of course.</p>
 </div>
 <div class="paragraph">
-<p>And Voilà, every time the hero arrives at an outdoor location he will find the air and the sky.
+<p>And, <em>voilà</em>, every time the hero arrives at an outdoor location he will find the air and the sky.
 And every time he enters a location that has the attribute <code>outdoors</code> set to false he will not find them available.</p>
 </div>
 <div class="paragraph">
 <p>Well, perhaps he would like to have the air available indoors too, but that is left as an exercise for the reader!</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>An alternative to the location attribute, is to use classes.
-Define an outdoor_location class and an indoor_location class.
+<p>An alternative to the location attribute is to use classes.
+Define an <code>outdoor_location</code> class and an <code>indoor_location</code> class.
 Then inherit as appropriate, and the rules could instead look like:</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9082,12 +9078,16 @@ Then inherit as appropriate, and the rules could instead look like:</p>
 When location Of hero IsA indoors_location =&gt; ...</code></pre>
 </div>
 </div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_nested_locations_as_a_solution"><a class="anchor" href="#_nested_locations_as_a_solution"></a>Nested Locations as a Solution</h4>
 <div class="paragraph">
 <p>Yet another option would be to make use of the nested locations feature.
-Put all your outdoor locations in a outdoor location where the outdoor_storage entity is also present (this is just a hint):</p>
+Put all your outdoor locations in a outdoor location where the <code>outdoor_storage</code> entity is also present (this is just a hint):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9110,25 +9110,24 @@ End The park.</code></pre>
 </div>
 <div class="paragraph">
 <p>Darkness and light sources can be implemented in Alan in different ways.
-Again we basically have the choice between attributes and classes.
-The solutions are both general and rather similar so we will have a look at the solution using attributes and leave the other solution to the reader. (A good exercise to really understand the Alan class concept, so please take a stab at it.
-If you want to have a look at one solution, you can study the Alan standard library, which uses classes to implement light sources.)</p>
+Again, we basically have the choice between attributes and classes.
+The solutions are both general and rather similar, so we will have a look at the solution using attributes and leave the other solution to the reader. (A good exercise to really understand the Alan class concept, so please take a stab at it.
+If you want to have a look at one solution, you can study the Alan Standard Library, which uses classes to implement light sources.)</p>
 </div>
 <div class="paragraph">
-<p>First we need an attribute that all objects have.
+<p>First we need an attribute owned by all objects.
 We know we only need to consider objects because light sources need to be transported by the player, so they can not just be anywhere, like entities.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Add To Every object
-  Is
-    Not lightsource.
+  Is Not lightsource.
 End Add To.</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>This ensures that all objects have the boolean (true/false valued) attribute <code>lightsource</code> with the default not being a light source.
-Any object that provides light need to explicitly state that they are instead.
+Any objects that provide light need to explicitly state that they are instead.
 For some instances this attribute might change value dynamically, e.g. when the lamp is lit and extinguished.</p>
 </div>
 <div class="paragraph">
@@ -9145,8 +9144,8 @@ End Add To.</code></pre>
 <p>Here we assume most locations are lit, dark locations need to declare themselves <code>Not lit</code>.</p>
 </div>
 <div class="paragraph">
-<p>We can now count the number of instances at the current location having the attribute <code>lightsource</code> set and if there are one or more there is some light provided.
-So, the <code>look</code> verb could be reworked to:</p>
+<p>We can now count the number of instances at the current location having the attribute <code>lightsource</code> set, and if there are one or more there is some light provided.
+So, the <strong>look</strong> verb could be reworked to:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9161,20 +9160,20 @@ End Verb.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The check of the <code>look</code> verb now checks the current locations need for light and then counts instances of object, that are light sources and present, to see if there is light.</p>
+<p>The <code>Check</code> of the <code>'look'</code> verb now checks the current locations need for light and then counts instances of object which are both light sources and present, to see if there is light.</p>
 </div>
 <div class="paragraph">
 <p>Of course, we must also modify the dark locations so that they don&#8217;t display their descriptions upon entrance.
-This is easy to do using another addition to every location, a description check, similar to the check in the <code>look</code> verb:</p>
+This is easy to do using another addition to every location, a description check, similar to the check in the <code>'look'</code> verb:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Add To Every location
   Description
-  Check Current Location Is lit
-    Or Count IsA object, Is lightsource, Here &gt; 0
-  Else
-    "You cannot see anything without any light."
+    Check Current Location Is lit
+      Or Count IsA object, Is lightsource, Here &gt; 0
+    Else
+      "You cannot see anything without any light."
 End Add To.</code></pre>
 </div>
 </div>
@@ -9190,7 +9189,7 @@ But sometimes you need better control over when they are available and when not.
 <div class="sect3">
 <h4 id="_a_mountain"><a class="anchor" href="#_a_mountain"></a>A Mountain</h4>
 <div class="paragraph">
-<p>For objects that need to be visible from a distance, the easiest method is to introduce a   &#8216;shadow object&#8217;.
+<p>For objects that need to be visible from a distance, the easiest method is to introduce a   &#8220;shadow object&#8221;.
 This is a second object acting on behalf of, or representing, the distant object at the locations where it should be possible to refer to it.
 For example:</p>
 </div>
@@ -9216,17 +9215,16 @@ End The shadow_mountain.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This would allow for example at scenic_vista:</p>
+<p>This would allow for example at <code>scenic_vista</code>:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
 <p><strong>Scenic Vista.</strong><br>
-Far in the distance you can see the Pebbly Mountain raising<br>
-towards the sky.<br></p>
+Far in the distance you can see the Pebbly Mountain raising towards the sky.<br></p>
 </div>
 <div class="paragraph">
-<p>&gt; look at mountain through the binoculars<br>
+<p>&gt; <em>look at mountain through the binoculars</em><br>
 &#8230;&#8203;</p>
 </div>
 </div>
@@ -9242,10 +9240,10 @@ If they are identical you can use a simple rule like the following:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This will ensure that whenever the hero moves to any of the places from where the mountain is visible, the <code>shadow_mountain</code> is sure to follow.
-However, as the rules are executed <em>after</em> the hero already has moved, a better strategy might be to make the <code>shadow_mountain</code> &#8216;silent&#8217;, i.e. to have no description.
-Instead, the description of it should then be embedded in the description of the adjacent locations.
-Yet, another possibility would be to move the pseudo-object around using statements in the exits, like</p>
+<p>This will ensure that whenever the hero moves to any of the places from where the mountain is visible, the <code>shadow_mountain</code> will surely follow.
+However, as the rules are executed <em>after</em> the hero has already moved, a better strategy might be to make the <code>shadow_mountain</code> &#8216;silent&#8217;, i.e. to have no description.
+Instead, its description should be embedded in the description of the adjacent locations.
+Yet, another possibility would be to move the pseudo-object around using statements in the <code>Exit</code>s, like:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9259,42 +9257,42 @@ End The scenic_vista.</code></pre>
 </div>
 <div class="paragraph">
 <p>Regardless of which of these strategies you chose, you need to take care that the shadow object is not present when the real object is.
-In this particular case, it should not be moved to the hills.</p>
+In this particular case, it should not be moved to the <code>hills</code>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_the_melody"><a class="anchor" href="#_the_melody"></a>The Melody</h4>
 <div class="paragraph">
-<p>To allow the player to 'whistle the melody' for example, there are two different tactics that can be applied.
+<p>To allow the player to &#8216;whistle the melody&#8217; for example, there are two different tactics that can be employed.
 One choice is to make the melody an <code>entity</code> (or some subclass thereof that you have defined), because, as we have seen, those can be manipulated from everywhere:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The melody IsA entity ...
-Syntax 'whistle' = 'whistle' (m) ...</code></pre>
+Syntax whistle = whistle (m) ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The other route would be to make it an actual <code>object</code>.
-In this case the syntax for the whistle verb would need to indicate omnipotence, meaning that the player can refer to instances (even those inheriting from <code>object</code>) to be used as parameters even from afar.</p>
+In this case the syntax for the <code>whistle</code> verb would need to indicate omnipotence, meaning that the player can refer to instances (even those inheriting from <code>object</code>) to be used as parameters even from afar.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The melody IsA object ...
-Syntax 'whistle' = 'whistle' (m)! ...</code></pre>
+Syntax whistle = whistle (m)! ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The melody then does not have to be reachable, near or even be at any location at all, for the player to be able to refer to it.</p>
 </div>
 <div class="paragraph">
-<p>In both cases you would most likely need to restrict the parameters for the syntax so that the player can&#8217;t 'whistle the chair'.
-Which of the two strategies you would chose greatly depends on things like:</p>
+<p>In both cases you would most likely need to restrict the parameters for the syntax so that the player can&#8217;t &#8216;whistle the chair&#8217;.
+Which of the two strategies you would chose depends mainly on things like:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>are there many things that this applies to (many 'melodies', perhaps)?</p>
+<p>are there many things that this applies to (many &#8216;melodies&#8217;, perhaps)?</p>
 </li>
 <li>
 <p>should the player be able to manipulate this instance in other ways?</p>
@@ -9308,10 +9306,19 @@ Which of the two strategies you would chose greatly depends on things like:</p>
 </div>
 <div class="sect2">
 <h3 id="_using_events_as_functions"><a class="anchor" href="#_using_events_as_functions"></a>6.12. Using Events as Functions</h3>
-<div class="literalblock plaintext">
-<div class="content">
-<pre>&lt;to be supplied&gt;</pre>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>TBD.</p>
 </div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -12474,24 +12481,61 @@ These can either be changed by the <code>Language</code> option (if the language
 </div>
 <div class="sect2">
 <h3 id="_player_words"><a class="anchor" href="#_player_words"></a>G.3. Player words</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>TBD.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_word_variations"><a class="anchor" href="#_word_variations"></a>G.4. Word variations</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>TBD.
-&lt;Text about using multiple names for the same objects &amp; synonyms, and how the interpreter chooses which word to use when&gt;</p>
+<p>TBD.</p>
+</div>
+<div class="paragraph">
+<p>Text about using multiple names for the same objects &amp; synonyms, and how the interpreter chooses which word to use when</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_word_order"><a class="anchor" href="#_word_order"></a>G.5. Word order</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>TBD.
-&lt;Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes.
+<p>TBD.</p>
+</div>
+<div class="paragraph">
+<p>Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes.
 Or does it?
-With the noun first is it possible to implement &#8220;das buch nehmen&#8221; with the syntax <code>take = (o) nehmen</code>?&gt;</p>
+With the noun first is it possible to implement &#8220;das buch nehmen&#8221; with the syntax <code>take = (o) nehmen</code>?</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -12750,7 +12794,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.77<br>
+Version 0.1.78<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">

@@ -39,19 +39,32 @@ There are a few special words that are currently not author translatable, as des
 
 == Player words
 
+[WARNING]
+================================================================================
 TBD.
+================================================================================
 
 == Word variations
 
+[WARNING]
+================================================================================
 TBD.
-<Text about using multiple names for the same objects & synonyms, and how the interpreter chooses which word to use when>
+
+Text about using multiple names for the same objects & synonyms, and how the interpreter chooses which word to use when
+================================================================================
+
 
 == Word order
 
+
+[WARNING]
+================================================================================
 TBD.
-<Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes.
+
+Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes.
 Or does it?
-With the noun first is it possible to implement "`das buch nehmen`" with the syntax `take = (o) nehmen`?>
+With the noun first is it possible to implement "`das buch nehmen`" with the syntax `take = (o) nehmen`?
+================================================================================
 
 // @NOTE: Elsewhere in the Manual (App F.2. Message explanations) it states that
 // 			«The definition of a Syntax construct may not start with a parameter.
