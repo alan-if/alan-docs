@@ -103,7 +103,7 @@ Some of the issues are simple; others may affect the basis of your story.
 You should seriously consider (and if possible discuss) such suggestions.
 
 // @FIXME: Change "the log file FACILITY of the interpreter" with something like
-//         "the interpreter's transcript file [feature/functionality]"
+//         "the interpreter transcript file [feature/functionality]"
 
 One aid in finding any problems in the playability of the game is to use the log file facility of the interpreter (see the section <<Command Logs and Game Transcripts,_Command Logs and Game Transcripts_>>) to produce a list of the commands a player have used.
 This can greatly aid in spotting troublesome areas in your game.

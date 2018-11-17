@@ -435,7 +435,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.78,</span>
+<span id="revnumber">version 0.1.79,</span>
 <span id="revdate">November 17, 2018</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -831,7 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.78
+<pre>Doc version: 0.1.79
 Last edited: November 17, 2018</pre>
 </div>
 </div>
@@ -1444,7 +1444,7 @@ There are further variations of expressions and the <code>If</code> statement, b
 <p>Instead, let&#8217;s look at some other statements in relation to objects.</p>
 </div>
 <div class="paragraph">
-<p>It must of course be possible to change the value of an object&#8217;s attributes.
+<p>It must of course be possible to change the attributes value of an object.
 You can do this using the  <code>Make</code> or the  <code>Set</code> statements.
 For example, if the door should be opened (the player having said &#8220;open door&#8221;, perhaps) this could be performed by stating:</p>
 </div>
@@ -2983,7 +2983,7 @@ Each inherited property may be amended or overridden by specifying it also in th
 <div class="paragraph">
 <p>The table also show which properties are inherited separately from the parent.
 E.g. you can override the <code>Description</code> but keep the description check, or even add another (since they are accumulated).
-You cannot override a container&#8217;s <code>Limits</code> and keep the <code>Header</code> section since the <code>Container</code> property is overridden in its entirety.</p>
+You cannot override the <code>Limits</code> of a container and keep the <code>Header</code> section since the <code>Container</code> property is overridden in its entirety.</p>
 </div>
 <div class="paragraph">
 <p>In an inheriting class, you can also add new properties.
@@ -3117,7 +3117,7 @@ For example:</p>
 The first <code>Name</code> clause is used for building a default description, if necessary (see <a href="#_description">Sect. 3.7.7</a>).</p>
 </div>
 <div class="paragraph">
-<p>The letter case used in the original words is preserved in the adventure&#8217;s output, but player input will always be matched without taking into account letter case (i.e. case-insensitively).
+<p>The letter case used in the original words is preserved in the adventure output, but player input will always be matched without taking into account letter case (i.e. case-insensitively).
 This allows you, for example, to give capitalized names to people actors, which would then be shown correctly in the output.</p>
 </div>
 <div class="sect4">
@@ -4344,7 +4344,7 @@ It is not created automatically.</p>
 <div class="sect3">
 <h4 id="_scripts"><a class="anchor" href="#_scripts"></a>Scripts</h4>
 <div class="paragraph">
-<p>The  <code>Script</code> is the actor&#8217;s way of performing things.
+<p>The  <code>Script</code> is the way actors perform things.
 In a way, it corresponds to what the hero is ordered to do by the player&#8217;s typed-in commands.</p>
 </div>
 <div class="paragraph">
@@ -4619,7 +4619,7 @@ using <strong>ALL</strong>  or concatenating a number of parameters using a conj
 <li>
 <p><code>!</code>&#8201;&#8212;&#8201;
 The parameter (the instance the player refers to in this position in the syntax) need not be present at the current location.
-Alan interpreter&#8217;s default behavior requires that a referenced instance must be present at the same location as the hero, if the parameter inherits from <code>thing</code>.
+The default behavior of the Alan interpreter requires that a referenced instance must be present at the same location as the hero, if the parameter inherits from <code>thing</code>.
 (Note that <strong>entities</strong> are always accessible).
 For cases when the player must be able to refer to objects and actors that are not present (e.g. in a verb like <code>talk_about</code>) this <em>omnipotent indicator</em> can be used to force the interpreter to accept references to any object or actor.</p>
 </li>
@@ -6486,7 +6486,7 @@ Set intAttr To "hi". -- Incorrect</code></pre>
 </div>
 </li>
 <li>
-<p><strong>instance type expressions</strong> to a reference attribute whose class is a parent of the expression&#8217;s instance:</p>
+<p><strong>instance type expressions</strong> to a reference attribute whose class is a parent of the instance in the expression:</p>
 <div class="openblock">
 <div class="content">
 <div class="listingblock">
@@ -6499,7 +6499,7 @@ Set suspect Of detective To someLocation. -- Incorrect</code></pre>
 </div>
 </li>
 <li>
-<p><strong>set type expressions</strong> to a set type attribute if all members in the expression are instances of a subclass of the target attribute&#8217;s member class.
+<p><strong>set type expressions</strong> to a Set type attribute if all members in the expression are instances of a subclass of the member class of the target attribute.
 Here are some examples, given the natural types of the instances:</p>
 <div class="openblock">
 <div class="content">
@@ -8287,7 +8287,7 @@ Any output statement in this context will be completely useless since the hero c
 <h3 id="_moving_actors"><a class="anchor" href="#_moving_actors"></a>5.4. Moving Actors</h3>
 <div class="paragraph">
 <p>
-The main way to  move the hero around the adventure&#8217;s world is through  <code>Exit</code>s (see <a href="#_exits">Sect. 3.7.12</a>).
+The main way to  move the hero around the adventure world is through  <code>Exit</code>s (see <a href="#_exits">Sect. 3.7.12</a>).
 They are executed if the player inputs a directional command, i.e. a word defined as the name for an <code>Exit</code> in any location.
 First, the current location is investigated for an <code>Exit</code> in the indicated direction, if there is none an error message is printed.
 Otherwise, that exit is examined for <code>Check</code>s, which are run according to normal rules (see <a href="#_verb_checks">Sect. 3.10.3</a>).
@@ -8553,7 +8553,7 @@ End The bottle.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the bottle had <code>level</code> 0 and was in the hero&#8217;s container, this would result in:</p>
+<p>If the bottle had <code>level</code> 0 and was in the hero container, this would result in:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -11215,7 +11215,7 @@ Basically this means that if you surround them by single quotes they can be used
 This might be especially important if you want to use any of these words as words the player might want to input, such as part of a name for an item.</p>
 </div>
 <table id="table-of-keywords" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. List of Alan Language&#8217;s Keywords</caption>
+<caption class="title">Table 5. List of Alan Keywords</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -12794,7 +12794,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.78<br>
+Version 0.1.79<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">

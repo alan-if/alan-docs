@@ -128,7 +128,7 @@ This might be especially important if you want to use any of these words as word
 
 
 [[table-of-keywords]]
-.List of Alan Language's Keywords
+.List of Alan Keywords
 [format=csv,cols="5*m"]
 |======================
 include::manual_keywords.csv[]

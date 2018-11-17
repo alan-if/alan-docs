@@ -260,7 +260,7 @@ Expressions of *Event* type can be used in `Schedule` and `Cancel` statements.
 
 
 // @NOTE: When referring to the SET type, don't style it as inline code!
-//        `Set` should be used for the SET STATEMENT's keyword only.
+//        `Set` should be used for the SET STATEMENT keyword only.
 
 A Set is a collection of values that may be referenced as a single value, but also investigate, added to and removed from.
 An example might be a set of cards in a dealt hand, the set of spells that the hero have learned, or the set of numbers guessed so far.
@@ -751,7 +751,7 @@ Each inherited property may be amended or overridden by specifying it also in th
 
 The table also show which properties are inherited separately from the parent.
 E.g. you can override the `Description` but keep the description check, or even add another (since they are accumulated).
-You cannot override a container's `Limits` and keep the `Header` section since the `Container` property is overridden in its entirety.
+You cannot override the `Limits` of a container and keep the `Header` section since the `Container` property is overridden in its entirety.
 
 In an inheriting class, you can also add new properties.
 More attributes, ``Verb``s, ``Exit``s and ``Script``s can be added to those already present through the inheritance.
@@ -886,7 +886,7 @@ The rod IsA object At grate
 This would allow the player to refer to the object using either '`rusty rod`' or '`dynamite`'. (Or, as a side effect, even '`rusty dynamite`'.)
 The first `Name` clause is used for building a default description, if necessary (see <<Description>>).
 
-The letter case used in the original words is preserved in the adventure's output, but player input will always be matched without taking into account letter case (i.e. case-insensitively).
+The letter case used in the original words is preserved in the adventure output, but player input will always be matched without taking into account letter case (i.e. case-insensitively).
 This allows you, for example, to give capitalized names to people actors, which would then be shown correctly in the output.
 
 
@@ -1958,7 +1958,7 @@ Exits are only allowed in classes or instances inheriting from the predefined cl
 
 === Scripts
 
-The (((SCRIPT))) `Script` is the actor's way of performing things.
+The (((SCRIPT))) `Script` is the way actors perform things.
 In a way, it corresponds to what the hero is ordered to do by the player's typed-in commands.
 
 (((BNF, rules of, SCRIPT)))
@@ -2186,7 +2186,7 @@ There are two indicators available (_multiple_ and _omnipotent_):
 
 * `!` -- (((indicator, omnipotent)))(((omnipotent indicator)))
   The parameter (the instance the player refers to in this position in the syntax) need not be present at the current location.
-  Alan interpreter's default behavior requires that a referenced instance must be present at the same location as the hero, if the parameter inherits from `thing`.
+  The default behavior of the Alan interpreter requires that a referenced instance must be present at the same location as the hero, if the parameter inherits from `thing`.
   (Note that *entities* are always accessible).
   For cases when the player must be able to refer to objects and actors that are not present (e.g. in a verb like `talk_about`) this _omnipotent indicator_ can be used to force the interpreter to accept references to any object or actor.
 
@@ -3793,7 +3793,7 @@ Set intAttr To "hi". -- Incorrect
 //   is a ((reference attribute)) which has a class of which the class of the
 //   expression is a subclass
 
-* *instance type expressions* to a ((reference attribute)) whose class is a parent of the expression's instance:
+* *instance type expressions* to a ((reference attribute)) whose class is a parent of the instance in the expression:
 +
 --
 [source,alan]
@@ -3802,7 +3802,7 @@ Has suspect butler.
 Set suspect Of detective To someLocation. -- Incorrect
 --------------------------------------------------------------------------------
 --
-* *set type expressions* to a set type attribute if all members in the expression are instances of a subclass of the target attribute's member class.
+* *set type expressions* to a Set type attribute if all members in the expression are instances of a subclass of the member class of the target attribute.
 Here are some examples, given the natural types of the instances:
 +
 --

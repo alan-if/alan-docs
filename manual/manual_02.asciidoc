@@ -463,7 +463,7 @@ There are further variations of expressions and the `If` statement, but we will 
 
 Instead, let's look at some other statements in relation to objects.
 
-It must of course be possible to change the value of an object's attributes.
+It must of course be possible to change the attributes value of an object.
 You can do this using the (((MAKE, statement))) `Make` or the (((SET, statement))) `Set` statements.
 For example, if the door should be opened (the player having said "`open door`", perhaps) this could be performed by stating:
 

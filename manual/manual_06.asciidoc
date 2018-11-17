@@ -196,7 +196,7 @@ End The bottle.
 --------------------------------------------------------------------------------
 
 
-If the bottle had `level` 0 and was in the hero's container, this would result in:
+If the bottle had `level` 0 and was in the hero container, this would result in:
 
 
 [example,role="gametranscript"]

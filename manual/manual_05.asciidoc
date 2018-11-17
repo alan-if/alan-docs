@@ -160,7 +160,7 @@ If the player uses *ALL* instead of a reference to an instance in his command, t
 
 // @FIXME: That "alphanumeric characters" doesn't really help the reader; we should
 //         include something like (a-z, A-Z, 0-9), but again this wouldn't help
-//         either since Alan will also allow any alphabet letters of the adventure's
+//         either since Alan will also allow any alphabet letters of the adventure
 //         encoding (ISO-8859-1, or others). It might be better to specify
 //         "letters, numbers, underscores and hyphens"
 
@@ -217,7 +217,7 @@ So, the execution of various parts of the adventure source can also be said to h
 == Moving Actors
 
 (((ACTOR, movement of actors)))
-The main way to (((HERO, movement of))) move the hero around the adventure's world is through (((EXIT))) ``Exit``s (see <<Exits>>).
+The main way to (((HERO, movement of))) move the hero around the adventure world is through (((EXIT))) ``Exit``s (see <<Exits>>).
 They are executed if the player inputs a directional command, i.e. a word defined as the name for an `Exit` in any location.
 First, the current location is investigated for an `Exit` in the indicated direction, if there is none an error message is printed.
 Otherwise, that exit is examined for ``Check``s, which are run according to normal rules (see <<Verb Checks>>).
