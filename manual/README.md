@@ -66,7 +66,7 @@ The porting work is pretty much finished, a couple of (rather long) chapters sti
 
 - [x] _1. Introduction_
 - [x] _2. Concepts_
-- [ ] _3. Lexical Definitions_
+- [x] _3. Lexical Definitions_
 - [x] _4. Language Reference_
 - [x] _5. Running An Adventure_
 - [ ] _6. Hints And Tips_
@@ -95,7 +95,6 @@ An here follows a task list of the remaining porting tasks:
     + [ ] Check that all headings are properly title cased.
     + [ ] Change to all-caps Alan keywords in headings.
 - [ ] Finish reading through the whole book, checking for missing styles and fixing the ADoc source:
-    + [ ] _3. Lexical Definitions_ (WIP)
     + [ ] _6. Hints And Tips_
 
 

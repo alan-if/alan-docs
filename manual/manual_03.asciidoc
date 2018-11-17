@@ -4869,7 +4869,6 @@ If the transitivity is not `Directly`, the compiler analyses the container to se
 This includes all existing instances of the class that the container takes, and if any of those are containers, those containers and all instances of the classes they take, and so on.
 ================================================================================
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
 
 
 
@@ -4887,7 +4886,7 @@ aggregate = 'COUNT' | 'SUM' | 'MAX' | 'MIN'
 
 Aggregates are functions to calculate values from Sets of instances.
 There are four aggregates available: `Count`, `Sum`, `Min` and `Max`.
-Aggregates work by inspecting all instances available, applying the filters, which may remove some, or even all, from the Set of instances, and then calculate the value from the remaining instances.
+Aggregates work by inspecting all instances available, applying the *filters*, which may remove some, or even all, from the Set of instances, and then calculate the value from the remaining instances.
 
 You can use filters to filter out instances belonging to a particular class, at a particular location or having a particular Boolean attribute.
 See <<Filters>> for an explanation of filters.
@@ -4942,13 +4941,13 @@ filter = 'ISA' class
 
 
 Filters can be used to filter out only particular instances to loop or aggregate over.
-If one of the filters is a *IsA <class>*, only instances of that class will be bound to the loop variable or considered in the aggregation.
-In particular this is required if any of the other filters refer to attributes, which is only allowed if the class is known and that class is guaranteed to have that attribute.
-Other ways to restrict the filtered instances is to use a *WHERE* filter which implicitly restricts to instances available at or in that location, container or set.
+If one of the filters is a `IsA class`, only instances of that class will be bound to the loop variable or considered in the aggregation.
+In particular, this is required if any of the other filters refer to attributes, which is only allowed if the class is known and that class is guaranteed to have that attribute.
+Other ways to restrict the filtered instances is to use a *WHERE* filter which implicitly restricts to instances available at or in that location, container or Set.
 See <<The Whereabouts of an Entity>> for details on the various forms of the *WHERE* expression.
 
-Multiple filters can be listed separated with a comma.
-Each filter must enumerate the set of values to a compatible set, e.g. using two `IsA` filters for actors and locations respectively is not allowed since those two sets can never be compatible.
+Multiple filters can be listed by using a comma to separate them.
+Each filter must enumerate the Set of values to a compatible Set, e.g. using two `IsA` filters for actors and locations respectively is not allowed since those two Sets can never be compatible.
 
 
 // EOF //
