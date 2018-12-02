@@ -76,7 +76,29 @@ TBD.
 
 // @FIXME: CLEANUP TABLE
 
+// @CHANGED STYLES:
+// @CHECKME @tajmone:
+// @CHECKME @thoni56:
+// @FIXME @tajmone:
 // @FIXME @thoni56:
+// @IMPROVE @tajmone:
+// @IMPROVE @thoni56:
+// @NOTE @tajmone:
 // @NOTE @thoni56:
+// @TODO @tajmone:
+// @TODO @thoni56:
+
+
+// ==================
+// HTML Backend Only:
+// ==================
+ifeval::["{backend}" == "html5"]
+endif::[]
+
+// ===================
+// FOPUB Backend Only:
+// ===================
+ifeval::["{toolchain}" == "asciidoctor-fopub"]
+endif::[]
 
 // EOF //

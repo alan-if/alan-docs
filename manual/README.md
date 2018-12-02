@@ -18,6 +18,7 @@ Links to the converted _Alan Manual_:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Document Status](#document-status)
+    - [Annotated Tasks in Comments](#annotated-tasks-in-comments)
     - [AsciiDoc Conversion](#asciidoc-conversion)
     - [PDF Toolchain Setup](#pdf-toolchain-setup)
     - [HTML Toolchain Setup](#html-toolchain-setup)
@@ -31,7 +32,6 @@ Links to the converted _Alan Manual_:
 - [DocBook XSL Stylesheets](#docbook-xsl-stylesheets)
 - [Misc Work Notes](#misc-work-notes)
     - [Conversion from ODT to AsciiDoc](#conversion-from-odt-to-asciidoc)
-    - [Annotated Comments](#annotated-comments)
 
 <!-- /MarkdownTOC -->
 
@@ -58,6 +58,15 @@ Before the new version of the _Alan Manual_ is ready, some pending tasks must be
 [HTML template miles]: https://github.com/alan-if/alan-docs/milestone/7 "See the milestone for this task"
 
 [Alan Manual project board]: https://github.com/alan-if/alan-docs/projects/1 "See the project board on GitHub"
+
+## Annotated Tasks in Comments
+
+I've also annotated in comments various pending tasks as I've encountered during the proofreading stage. These tasks vary from errors which need to be corrected ASAP to improvements and ideas that could be handled sometime in the future.
+
+As a convention, all commented annotations inside document source files will begin with "`// @`" to allow finding them quickly via Search functionality (eg, "`// @TODO:`", "`// @FIXME:`", "`// @NOTE`", "`// @CHECKME`", "`@IMPROVE`", etc.).
+
+In some tasks I've also added either `@thoni56` or `@tajmone`, to indicate the user that should address the issue. As a rule, I've used `@tajmone` in annotated tasks which I'll need to address at some point in the future, acting as reminders; and I've used `@thoni56` for tasks that require Thomas' attention or approval.
+
 
 ## AsciiDoc Conversion
 
@@ -237,9 +246,6 @@ pandoc ^
 
 Although some styles were lost in the process, the final ADoc was a rather good starting point.
 
-## Annotated Comments
-
-As a convention, all commented annotations inside document source files will begin with "`// @`" to allow finding them quickly via Search functionality (eg, "`// @TODO:`", "`// @FIXME:`", "`// @NOTE`", etc.).
 
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS                                

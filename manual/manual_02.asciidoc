@@ -125,8 +125,9 @@ This game file can be transferred and used without the compiler.
 Instead, to run an adventure the _interpreter_ is needed.
 The interpreter is another program that reads the information in the game file, communicates with the player of the game (or reader of the work, if you like) and interprets all the complex mechanisms in your game logic so that it gives the player the illusion of the activities and events that you have designed.
 
-// @TODO: This image was grabbed by capturing the PDF page. It could be reconstructed
-//        from scratch, in vector format, to ensure good quality in all formats!
+// @TODO @tajmone: Raster Image 2 Vector.
+//    This image was grabbed by capturing the PDF page. It could be reconstructed
+//    from scratch, in vector format, to ensure good quality in all formats!
 
 [fig-game-compiler-terp]
 .The principles for and relations between a game description, a compiler, a game file and the interpreter, or, in other words, authoring and playing.
@@ -300,8 +301,9 @@ These sections are typeset against a coloured background:
 The rules for the rules are available in <<Language Grammar>>.
 --------------------------------------------------------------------------------
 
-// @TODO: Either add sub-heading here "Alan Keywords Styling Conventions", or at
-//        least an anchor that could be used for xrefs!
+// @TODO: Heading or Anchor Needed!
+//    Either add sub-heading here "Alan Keywords Styling Conventions", or at
+//    least an anchor that could be used for xrefs!
 
 In running text, words that are keywords or signify an Alan construct are written in a mono-spaced font.
 This helps distinguish the English word '`the`' from the Alan keyword `The`.
@@ -734,12 +736,12 @@ In this case the contained instances can only be guaranteed to be their common a
 
 
 // @FIXME @thoni56:
-// 		"describes how E.G. containment..." Why "e.g."? One would expect a clear-cut
-// 		definition of transitivty here, not an example definition. The sentence is
-// 		not very cleary. Depending of what it's trying to say, it could be:
-// 			"Transitivity describes, among the other things, how containment..."
+//      "describes how E.G. containment..." Why "e.g."? One would expect a clear-cut
+//      definition of transitivty here, not an example definition. The sentence is
+//      not very cleary. Depending of what it's trying to say, it could be:
+//          "Transitivity describes, among the other things, how containment..."
 //       or just:
-// 			"Transitivity describes how containment.."
+//          "Transitivity describes how containment.."
 
 
 For many scenarios the above works well, and as expected.
@@ -771,7 +773,7 @@ And it is usually the indirect ones that you should look out for.
 === The Verb Construct
 
 // @NOTE @thoni56:
-// 		Maybe change to "Verbs are USUALLY associated with", because there are
+//      Maybe change to "Verbs are USUALLY associated with", because there are
 //      also the global verbs.
 
 The (((VERB, construct))) `Verb` is the construct that implements the effects of an action requested by the player.
@@ -825,9 +827,9 @@ End Every door.
 --------------------------------------------------------------------------------
 
 // @FIXME @thoni56:
-// 		In this sentence some words must have been lost, because it doesn't
+//      In this sentence some words must have been lost, because it doesn't
 //      seem to make sense:
-// 			"Instead need to reference the object the player..."
+//          "Instead need to reference the object the player..."
 //      Whose need does it referr to?
 
 With this definition it is possible to apply the verb to all doors.
@@ -877,7 +879,7 @@ End Verb take.
 --------------------------------------------------------------------------------
 
 // @NOTE @thoni56:
-// 		  The following considerations might be a bit premature in the text, and
+//        The following considerations might be a bit premature in the text, and
 //        confuse the reader, as he hasn't yet been told that actors are also
 //        containers, and that the hero's inventory is just the sum of objects
 //        contained inside the hero. The sentence below takes a big leap when it
@@ -891,7 +893,7 @@ Here we also encounter a variation on the `Locate` statement -- the capability t
 
 
 // @NOTE @thoni56:
-// 		  The following (rather precious) note seems a bit out of context here.
+//        The following (rather precious) note seems a bit out of context here.
 //        The section is about Verb Checks, and 'Locate' only came up as a side
 //        node, and this one is like a note on the side-note! Maybe it could be
 //        moved elsewhere? in a place where it could be better contextualized
@@ -987,8 +989,8 @@ Long lines will be automatically split without breaking in the middle of words.
 Secondly, a few special cases are also handled automatically:
 
 // @NOTE @thoni56:
-// 		The postmen example below would be much clearer if the sample code
-// 		included the Description string shown in the transcript!
+//      The postmen example below would be much clearer if the sample code
+//      included the Description string shown in the transcript!
 
 * After a full stop (period, the character '`.`'), an exclamation ('`!`') or question mark ('`?`'), and in the beginning of paragraphs, including location headings, the first character will be guaranteed to be upper case, automatically converted if necessary.
   This means for example that you don't have to consider the case when the name of an object might be printed as the first thing in a sentence.
@@ -1036,11 +1038,11 @@ This means that the compiler will attempt to prevent any constructs that might g
 A simple example is
 
 // @FIXME @tajmone: Code With Line-Numbers
-// 		Should use syntax highligters line numbering. Problem is: Highlight.js
-// 		doesn't support it, and I haven't looked into if and how HL-XSL supports
-// 		it (and how to style it, etc.).
-// 		Postpone to when Highlight will be integrated instead of Highlight.js (i.e.
-// 		when an extension supporting callouts is available).
+//      Should use syntax highligters line numbering. Problem is: Highlight.js
+//      doesn't support it, and I haven't looked into if and how HL-XSL supports
+//      it (and how to style it, etc.).
+//      Postpone to when Highlight will be integrated instead of Highlight.js (i.e.
+//      when an extension supporting callouts is available).
 
 [source,alan]
 --------------------------------------------------------------------------------

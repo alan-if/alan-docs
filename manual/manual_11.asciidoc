@@ -38,28 +38,38 @@ The equal sign (`=`) may be read as "`consists of`" or "`is defined as`".
 Optional parts are surrounded by square brackets (`[` and `]`).
 Parts that may be repeated are enclosed in curly braces (`{` and `}`).
 
-// @NOTE: This looked much nicer in the HTML output, but not in PDF:
+// @NOTE: Backend differentation.
+//    For the following illustration I've used a different source block for the
+//    HTML and PDF Backends:
+//
+//      * HTML BACKEND: Example block with horiziontal description list.
+//      * PDF BACKEND: Verbatim listing block.
+//
+//    The reason for this is that the example block looks much nicer in HTML,
+//    but turns out hugly in the PDF --- the example frame was square and
+//    hugly, and if you add a title it ends up inside the frame, and most of all
+//    it adds huge space between left- and right-handside of list elements.
+//
+//    If I can fix a way to fix these problems in the XSL template, I should use
+//    the example block for the PDF too, instead of the listing block.
 
-////
-PROBLEM: In PDF output it looks hugly: the example frame is square and horrible,
-         if you add a title it ends up inside the frame, and most of all it adds
-         huge space between left- and right-handside of list elements!
-
-		 If I can fix these problems in the XSL template, I should use this instead
-		 of the listing block.
-
+// ==================
+// HTML Backend Only:
+// ==================
+ifeval::["{backend}" == "html5"]
 ===========================
 [horizontal]
-=   :: -> {nbsp}is defined as
+=   :: -> {nbsp} '`is defined as`'
 
-[ ] :: -> {nbsp}optional
+[ ] :: -> {nbsp} '`optional`'
 
-{ } :: -> {nbsp}zero or more times
+{ } :: -> {nbsp} '`zero or more times`'
 ===========================
-////
-
-// FIMXE: Apply some custom styling to this block:
-
+endif::[]
+// ==================
+// Non HTML Backends:
+// ==================
+ifeval::["{backend}" != "html5"]
 .........................
 =  : 'is defined as'
 
@@ -67,6 +77,8 @@ PROBLEM: In PDF output it looks hugly: the example frame is square and horrible,
 
 {} : 'zero or more times'
 .........................
+endif::[]
+
 
 So the rule might be read as "`an adventure consists of *options* which are optional, zero or more *declarations* and a *start_section*`".
 
@@ -99,9 +111,7 @@ Character case is not significant.
 random_expression = 'RANDOM' 'IN' expression
 --------------------------------------------------------------------------------
 
-// @NOTE: Should replace "CAN be followed by" with "MUST be followed by"?
-
-The reserved words `Random` and `In` can be followed by an expression (which, to make sense, must refer to a `container` instance) to form a *random_expression* (which in itself is an expression).
+The reserved words `Random` and `In` must be followed by an expression (which, to make sense, must refer to a `container` instance) to form a *random_expression* (which in itself is an expression).
 
 == Keywords
 
@@ -117,15 +127,6 @@ This might be especially important if you want to use any of these words as word
 // updated (if the need arises) and it could allow to control the number of columns
 // on a per-format basis, via custom attributes.
 // Keywords are cased following the styling conventions adopted in the document.
-
-// @TODO:
-//   - [ ] Check why 'actor' and 'location' are present but some of the other
-//         built-in clases aren't: 'thing', 'object',
-//   - [ ] The casing convention for some keywords hasn't yet been discussed:
-//         - [ ] Should pseudo attributes like 'container', 'on', 'off', 'opaque'
-//               etc be all lowercase (like built-in classes)?
-//
-
 
 [[table-of-keywords]]
 .List of Alan Keywords

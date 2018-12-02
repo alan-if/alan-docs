@@ -22,8 +22,21 @@ A comment starts with double hyphens (`--`) and extends to the end of the line.
 
 == Words, Identifiers and Names
 
-// @NOTE: Might be worth mentioning that letters also include letters with accents,
-// 		  diacritics, etc, which are supported by the encoding set for the adventure.
+// @IMPROVE @thoni56: Accented Letters in Identifiers.
+//   Might be worth mentioning that letters also include letters with accents,
+//   diacritics, etc., which are supported by the encoding set for the adventure.
+//   This is an important topic for users authoring in languages other than English
+//   which use special letters, as they'd naturally use them in identifiers too.
+//   The whole topic of the different encodings supported by Alan in source files,
+//   compiler switches, etc., is not covered at all in the Manual, and can lead
+//   to confusion and problems. Some important questions to address:
+//
+//      * How do encoding settings affect the range of usable chars in identifiers?
+//      * Which are the usable characters in identifiers?
+//
+//   The BNF rule and the text below mention "letter", but the term is rather
+//   generic as it could mean many different things in different contexts -- e.g.
+//   in RegEx it could be just Ascii letters, or any letter in the Unicode range.
 
 An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance.
 Identifiers (((identifier, lexical definition))) may only be composed of letters, digits and underscores.
@@ -88,7 +101,6 @@ The first word in the name will always be printed with a capital '`E`'.
 However, when comparing the word to player input and other occurrences of the same word in the source, case will be ignored.
 This means that you cannot have two words or identifiers that differ only in case, they will be the same and stored in the game data as one of the occurrences, which one is implementation dependent.
 
-// @NOTE: Admonition changed from NOTE to WARNING!
 
 [WARNING]
 ================================================================================
@@ -96,7 +108,6 @@ Do _NOT_ use a single quoted identifier with spaces or special characters in the
 Except for this you should only quote single words to avoid clashes with reserved words.
 ================================================================================
 
-// @NOTE: Admonition changed from NOTE to CAUTION!
 
 [CAUTION]
 ================================================================================
@@ -113,7 +124,6 @@ A player cannot input words containing spaces or other special characters or sep
 The only exception being underscores and dashes.
 A player input word must start with a letter.
 
-// @NOTE: Admonition changed from NOTE to TIP!
 
 [TIP]
 ================================================================================
@@ -159,7 +169,6 @@ When processed by the Alan compiler, any multiple spaces, newlines and tabs will
 You may therefore write your strings any way you like; they will always be neatly formatted on the player's screen.
 You can use special codes (see <<String Statement>> for a list) to indicate (but not precisely control) the formatting.
 
-// @NOTE: Admonition changed from NOTE to WARNING!
 
 [WARNING]
 ================================================================================
@@ -167,8 +176,6 @@ As strings may contain any character, a missing double quote may lead to many se
 If the compiler points to the first word after a double quote and indicates that it has deleted a lot if IDs (identifiers), this is probably due to a missing end quote in the previous string.
 ================================================================================
 
-
-// @NOTE: Admonition changed from NOTE to TIP!
 
 [TIP]
 ================================================================================

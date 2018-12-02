@@ -3937,8 +3937,9 @@ case = right_hand_side 'THEN' statements
      | 'ELSE' statements
 --------------------------------------------------------------------------------
 
-// @TODO: Repharese from "The *expression* part...". The part explaining the BNF
-//        rules could be made more readable and clearer.
+// @TODO: Rephrase Paragraph.
+//    Rephrase from "The *expression* part...".
+//    The part explaining the BNF rules could be made more readable and clearer.
 
 The (((DEPENDING ON, statement))) `Depending On` statement enables us to select one of a number of possible conditional cases depending on an expression.
 The *expression* part can be any expression.
@@ -3996,9 +3997,6 @@ Actor statements are statements that are used to control actors.
 --------------------------------------------------------------------------------
 use_statement = 'USE' script ['FOR' actor] '.'
 --------------------------------------------------------------------------------
-
-// @FIXME: Not sure how this should be formatted:
-// 				The *For* *actor* clause
 
 The (((USE, statement))) `Use` statement starts execution of a given script for a given actor.
 The `For actor` clause is optional when writing code within a certain actor -- in this case, the statement applies to the actor (instance or class) containing the code.
@@ -4167,14 +4165,15 @@ Score 25.
 The first time every such statement is executed the points given are added to the player's current score. `Score` without any arguments prints a message indicating the current accumulated score.
 
 
-// @FIXME: The following note was unclear, but even after adjusting it it seems
-//         ambiguos. The point is that some score-actions might not be strictly
-//         necessary to complete the game, but might be instead some bonus actions
-//         that add extra points. Possibly, the note should be rephrased to
-//         clarify this point. Is there a reason why the default scoring system
-//         can't handle bonus scores? The end of the note seems to suggest that
-//         this is the case, but doesn't explain why...What are the implications
-//         of a game which is winnable without carrying out every score action?
+// @FIXME @thoni56: Meaning Unclear.
+//    The following note was unclear, but even after adjusting it it seems
+//    ambiguos. The point is that some score-actions might not be strictly
+//    necessary to complete the game, but might be instead some bonus actions
+//    that add extra points. Possibly, the note should be rephrased to
+//    clarify this point. Is there a reason why the default scoring system
+//    can't handle bonus scores? The end of the note seems to suggest that
+//    this is the case, but doesn't explain why...What are the implications
+//    of a game which is winnable without carrying out every score action?
 
 [NOTE]
 ================================================================================
@@ -4304,9 +4303,13 @@ where = 'HERE'
       | 'IN' what
 --------------------------------------------------------------------------------
 
-// @FIXME: First point: "BUT examples include an event scheduled at a particular
-//         location, in WHICH case" -- which examples is it referring to?
-//         It's unclear what these "BUT" and "WHICH" are referring to.
+// @FIXME @thoni56: Unclear Paragraph.
+//   First list item:
+//
+//     "BUT examples include an event scheduled at a particular location, in WHICH case"
+//
+//   Which examples is it referring to?
+//   It's unclear what these "BUT" and "WHICH" are referring to.
 
 The meaning of the different constructs is as follows:
 
@@ -4325,7 +4328,7 @@ The meaning of the different constructs is as follows:
   This can come as a surprise, especially if you try to aggregate or loop over instances. (See <<Aggregates,_Aggregates_>> and <<Repetition Statements,_Repetition Statements_>>.)
 * `In what` must refer to a container and the expression refers to being inside that container.
 
-// @NOTE: The following paragraph could be made clearer and more readable:
+// @FIXME: Rephrase paragraph and make it more readable.
 
 These forms can be used in `Locate` statements and in some expressions, for example.
 When used in their basic form in expressions they all look inside containers (and in containers inside other containers too) to evaluate the expression.
@@ -4726,11 +4729,15 @@ The expression yields a Boolean value.
 
 === Current Entities
 
-// @FIXME: Rephrase "want to know something about or which (???) THEY ARE. THEY ARE"
-//         Not clear, especially the "ABOUT OR WHICH" part.
-//        The consecutive "THEY ARE. THEY ARE" sounds bad...
 
-There are two particularly interesting entities that you might want to know something about or which they are.
+// @FIXME @thoni56: Entities or Expressions?
+//   Here Current Actor/Location are first introduced as "entities", but then in
+//   the next paragraph they are referred to as "expressions".
+//   What are they then? the former or the latter?
+//   It's somewhat confusing -- especially referring to them as "entities", for
+//   one is led to think that an entity is always reachable, everywhere.
+
+There are two particularly interesting entities that you might want to learn about.
 They are:
 
 * (((CURRENT ACTOR))) `Current Actor`
@@ -4831,9 +4838,6 @@ To test if an instance is at a particular location but not in a container at tha
 --------------------------------------------------------------------------------
 If key Directly At treasury Then ...
 --------------------------------------------------------------------------------
-
-// @NOTE: Used auto generated ID for x-ref: <<_containment_classes_and_transitivity>>
-//        instead of <<Containment, Classes and Transitivity>>
 
 The qualifying keyword `Directly` works in the same way with all *WHERE* expressions.
 Adding a `Directly` qualifier to the first example above would change the expression to only be true if the bottle was in the container but not inside any other container, even if that container was in the inventory.

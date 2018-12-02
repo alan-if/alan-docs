@@ -3,14 +3,6 @@
 // *                     Appendix B: A Sample Interaction                      *
 // *                                                                           *
 // *****************************************************************************
-// This section is ready except for some problems with rendering the indentation
-// found in the original (since we're not using monospaced fonts here).
-
-// @FIXME: The indentation of the following output is not being preserved:
-//         -- "    ThoNi & GorFo Adventure Factories"
-//         -- "    US NEWS & DUNGEON REPORT"
-//         -- "    --- LATE NEWS FLASH!! ---"
-
 
 [appendix]
 = A Sample Interaction
@@ -42,7 +34,7 @@ The small mailbox is now open. The small mailbox contains a leaflet.
 &gt; _take the leaflet and read it_ +
 Taken! +
 'I hope you have noticed that this isn't your usual Dungeon but rather an ALAN implementation brought to you by +
-    ThoNi & GorFo Adventure Factories +
+{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}ThoNi & GorFo Adventure Factories +
 Happy Adventuring!'
 
 &gt; _inventory_ +
@@ -108,9 +100,9 @@ The door reluctantly opens to reveal a rickety staircase descending into darknes
 (issue) Taken!
 
 &gt; _read issue_ +
-    US NEWS & DUNGEON REPORT +
+{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}US NEWS & DUNGEON REPORT +
 29-FEB-92................................Late Dungeon Edition +
-    --- LATE NEWS FLASH!! --- +
+{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}--- LATE NEWS FLASH!! --- +
 The Dungeon prelude is now available as an ALAN implementation. The Dungeon game was selected as an example that everybody interested in adventure gaming should recognize.
 ================================================================================
 

@@ -3,8 +3,8 @@
 // *                       Appendix C: Run-Time Messages                        *
 // *                                                                            *
 // ******************************************************************************
-// @NOTE: The error description paragraphs are enclosed in openblocks with role
-//        "commentary" to allow styling them with left margin, as in original!
+// NOTE: The error description paragraphs are enclosed in openblocks with role
+//       "commentary" to allow styling them with left margin, as in original!
 
 [appendix]
 = Run-Time Messages
@@ -208,8 +208,9 @@ SEE_AND : "and $01"
 SEE_END : "here. "
 ..........................
 
-// @NOTE: Had to change "The underlined parts" to "The parts in bold" because in
-//        AsciiDoc underlined text had to be restyled to strong!
+// @CHANGED STYLES: Underline --> Bold
+//   Had to change "The underlined parts" to "The parts in bold" because in
+//   AsciiDoc underlined text had to be restyled to strong!
 
 [role="commentary"]
 --

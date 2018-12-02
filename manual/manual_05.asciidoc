@@ -11,30 +11,30 @@
 
 == A Turn of Events
 
-// @NOTE: In the following paragraphs there are many Alan keywords, which should
-//        be styled as inline code. Maybe it's better not overdoing it, and just
-//        style a few keywords here and there, to clarify the context to reader
-//        and allow quickly spotting keywords in the page, but once a keyword has
-//        been styled as code in a sentence, further occurences don't need to be
-//        styled when the English meaning and the keyword overlap in that context.
+// NOTE: In the following paragraphs there are many Alan keywords, which could
+//       be styled as inline code. Maybe it's better not overdoing it, and just
+//       style a few keywords here and there, to clarify the context to reader
+//       and allow quickly spotting keywords in the page, but once a keyword has
+//       been styled as code in a sentence, further occurences don't need to be
+//       styled when the English meaning and the keyword overlap in that context.
 
 The player controls the (((execution, of an adventure))) execution of an Alan adventure.
 Each of his inputs are taken care of and acted upon by the run-time system in the interpreter.
 The execution of an Alan adventure starts by executing the `Start` section.
-The player is then placed in the `location` indicated in the `Start` section, the location is described, and the player is prompted for a command.
+The player is then placed in the location indicated in the `Start` section, the location is described, and the player is prompted for a command.
 
 The player input is analysed according to the explicit and implicit `Syntax` rules and converted to an execution of verb checks and bodies.
 Global `Verb` ``Check``s and bodies are used for verbs taking no parameters, otherwise the verb bodies are found in the parameter instances or their classes.
 In case the player typed a directional command the corresponding `Exit` check and code is executed.
 
 After the (((player commands))) player's command has been taken care of, all ``Rule``s are evaluated and possibly executed.
-Then each of the other ``actor``s executes one step in their ``Script``s (if active) and for each actor the rules are evaluated again.
+Then each of the other actors executes one step in their ``Script``s (if active) and for each actor the rules are evaluated again.
 Finally, each `Event` that is scheduled for this round is fired, and the rules evaluated yet again.
 Finally the player is prompted for another command.
 
 So, to summarise:
 
-// @TODO: Could improve styling and layout of the following block:
+// @TODO @tajmone: Could improve styling and layout of the following block:
 
 [literal, role="plaintext", subs="normal"]
 ................................................................................
@@ -55,11 +55,9 @@ A player command may be either a verb or a direction.
 A verb is executed by checking the syntax of the input, performing any preconditions (``Check``s) and then executing the verb bodies (as described in <<Verbs,_Verbs_>> and <<Scope,_Scope_>>).
 A directional command is executed by finding any `Exit` in that direction, evaluating the ``Check``s and the body (if any) of that exit and locating the _hero_ at the new location.
 
-// @FIXME: The sentence "The events and other actors" needs some polishing!
-
 If the player inputs an empty command, this is equivalent to forfeiting his turn.
 The empty command will simply be ignored.
-The events and other actors, including turn counting, then proceeds as if the player had input a proper input, before returning to the player prompt.
+Nevertheless, events and other actors, including turn counting, will proceed as if the player had provided a proper input, before returning to the player prompt.
 
 
 
@@ -73,10 +71,6 @@ The exact list of these words, for every language natively supported in Alan, is
 
 The following built-in syntax variations are available to the player:
 
-// @NOTE: I've styled in ALL-CAPS the player-words in the examples, to highlight
-//        them. It makes sense, because often there are multiple player-words in
-//        in an input command, and we want the reader to focus only on the ones
-//        being exemplified.
 
 * Concatenation of statements via (((AND (player input)))) (((THEN (player input)))) *AND* words, like:
 +
@@ -98,8 +92,10 @@ The following built-in syntax variations are available to the player:
 The pronouns have to be defined by the author in his source (see <<Pronouns>>) or by a library.
 The only built-in pronoun is the *IT* word, which is automatically defined on the class `thing`.
 
-
-// @FIXME: the second command doesn't seem right, there is no verb!
+// @FIXME @thoni56:
+//    The second player input doesn't seem right, there is no verb:
+//
+//        > the red key, the glass bowl AND the compass
 
 * References to (((multiple parameters))) multiple objects using (((AND (player input)))) *AND* word.
 This allows:
@@ -119,7 +115,8 @@ This allows:
 &gt; _drop ALL_
 ================================================================================
 
-// @TODO: Could provide also an example with BUT!
+// @IMPROVE @thoni56: Add BUT-Word Example.
+//    Here we could provide also an example with BUT!
 
 * Excluding objects using a (((BUT (player input)))) (((EXCEPT (player input)))) *BUT* word, like:
 +
@@ -148,21 +145,29 @@ For some hints on ways to allow the player to refer to objects and actors that a
 
 If the player uses *ALL* instead of a reference to an instance in his command, the verb will be applied to all appropriate instances at the current location, _except_ the ones that do not pass all checks for the verb (see <<Verbs>> for further details on this).
 
-// @TODO:  Could add xref to "4.2. Words, Identifiers and Names"!
+// @TODO @tajmone: Add xref to "4.2. Words, Identifiers and Names"!
 
-// @CHECK: Here it mentions "underscores and DASH", but it doesn't sound right.
-//         Maybe "hyphen"? "Dash" is ambiguos here, as it usually refers to em-
-//         or en-dashes, which are long dashes.
+// @FIXME @thoni56: UNDERSCORES and DASH in Player Words & Identifiers.
+//    Here it mentions "underscores and DASH", but it doesn't sound right.
+//    Maybe "hyphen"? "Dash" is ambiguos here, as it usually refers to em-
+//    or en-dashes, which are long dashes.
 
-// @CHECK2: What about single and double quotes? After all, identifiers can contain
-//          escaped single quotes (eg: rock'n'roll), and player input could consist
-//          in a string (eg: say "Hello!").
+// @CHECKME @thoni56: Quotes in Player Words & Identifiers.
+//    What about single and double quotes? After all, identifiers can contain
+//    escaped single quotes (eg: rock'n'roll), and player input could consist
+//    in a string (eg: say "Hello!").
+//    Again, this might be a good place to clarify the issue, or provide a cross
+//    reference to a place where it's explained in detail (not currently covered).
 
-// @FIXME: That "alphanumeric characters" doesn't really help the reader; we should
-//         include something like (a-z, A-Z, 0-9), but again this wouldn't help
-//         either since Alan will also allow any alphabet letters of the adventure
-//         encoding (ISO-8859-1, or others). It might be better to specify
-//         "letters, numbers, underscores and hyphens"
+// @FIXME @thoni56: Alphanumeric Characters in Identifiers.
+//    That "alphanumeric characters" doesn't really help the reader; we should
+//    include something like (a-z, A-Z, 0-9), but again this wouldn't help
+//    either since Alan will also allow any alphabet letters of the adventure
+//    encoding (ISO-8859-1, or others). It might be better to specify
+//    letters, numbers, underscores and hyphens".
+//    This topic is not currently covered anywhere in the Manual, and it needs
+//    to be addressed, especially for users of languages other than English which
+//    employ accented letters and other special chars (German, Spanish, etc.).
 
 A restriction placed on the player input by the interpreter is that the words the player is allowed to use can only contain alphanumeric characters, underscores and dash.
 This must be kept in mind when naming verbs that use the default syntax (an explicit `Syntax` statement can always specify other player words to trigger the verb).
@@ -171,12 +176,14 @@ This must be kept in mind when naming verbs that use the default syntax (an expl
 
 == Run-Time Contexts
 
-// @NOTE: Instead of "adventure DESCRIPTION (source)" we could use:
-//        "adventure GRAMMAR (source)"? or "DEFINITION"?
-//        In any case, in this particulare sentence using DESCRIPTION and DESCRIBED
-//        so close to each other doesn't sound good. But I like GRAMMAR because
-//        the term is used in BNF contexts, so it might be adopted in the Manual
-//        (not just here, but elsewhere too).
+// @NOTE @thoni56: Alan Sources, GRAMMARs vs DESCRIPTIONs.
+//    Instead of "adventure DESCRIPTION (source)" we could use:
+//      * "adventure GRAMMAR (source)"?
+//      * "DEFINITION"?
+//    In any case, in this particulare sentence using DESCRIPTION and DESCRIBED
+//    so close to each other doesn't sound good. But I like GRAMMAR because
+//    the term is used in BNF contexts, so it might be adopted in the Manual
+//    (not just here, but elsewhere too).
 
 When the player enters a command, the Alan run-time system evaluates the various constructs from the adventure description (source) as described above.
 Depending on the player's command evaluation, different parts of the adventure may be triggered.
@@ -233,8 +240,8 @@ Therefore, this is also the last step in the sequence of events caused by locati
 == Undoing
 
 
-// @FIXME: That "the player can backup commands" doesn't sound right!
-// @FIXME: "works completely automatically" sounds really bad!
+// @FIXME @thoni56: That "the player can backup commands" doesn't sound right!
+// @FIXME @thoni56: "works completely automatically" sounds really bad!
 
 A player might occasionally regret an imparted command, perhaps realising that it was not the correct one.
 The Alan interpreter supports such undoing of commands.
@@ -249,28 +256,31 @@ It must consist of the single word `undo`.
 
 == Scripting and Commenting
 
-// @TODO: Might be worth mentioning that command scripts are also often referred to
-//        as "solution" files, which are used as walkthroughs and are often included
-//        in the adventure distribution as a fallback to complete the game (especially
-//        in adventure contents, where the judges might need to complete the game
-//        before voting). It might also be worth adding here some instructions on
-//        how to create a solution file. Also, mention the various conventions
-//        in naming these file (eg "walktrhough", "walktrhough.sol" and
-//        "<adventure>.sol", etc). The point being that it would be nice to connect
-//        this section with the wider world of Interactive Fiction, games distribution
-//        common practices, etc.
+// @TODO: Command Scripts vs Solution Files.
+//    Might be worth mentioning that command scripts are also often referred to
+//    as "solution" files, which are used as walkthroughs and are often included
+//    in the adventure distribution as a fallback to complete the game (especially
+//    in adventure contents, where the judges might need to complete the game
+//    before voting). It might also be worth adding here some instructions on
+//    how to create a solution file. Also, mention the various conventions
+//    in naming these file (eg "walktrhough", "walktrhough.sol" and
+//    adventure>.sol", etc). The point being that it would be nice to connect
+//    this section with the wider world of Interactive Fiction, games distribution
+//    common practices, etc.
 
-// @TODO: File extensions of transcripts and solution files? Arun seems to use
-//        ".log" as default extension. Might be worth mentioning that file extensions
-//        are not important here, and that usually the convention is to use ".sol"
-//        for solution files, and the various extensions used for transcripts (by
-//        other terps as well!).
+// @TODO: Transcripts & Command Scripts Files Extensions.
+//    File extensions of transcripts and solution files? Arun seems to use
+//    ".log" as default extension. Might be worth mentioning that file extensions
+//    are not important here, and that usually the convention is to use ".sol"
+//    for solution files, and the various extensions used for transcripts (by
+//    other terps as well!).
 
 Most versions of the Alan interpreter, Arun, supports both the creation of a transcript for the game in progress, as well as playing back a saved transcript as input passed to the interpreter.
 
 These feature are very useful during the development of a game, allowing to play through the game up to a desired point and start from there, or even to automatically test your game.
 
-// @TODO: Add practical examples (transcipt blocks)!
+// @TODO @thoni56: Examples Needed.
+//   Add practical examples (transcipt blocks) for the features mentioned below.
 
 To make Arun read input from a script file, you can use the special command character '```@```', which should be followed by the name of the text file in which your commands are listed.
 

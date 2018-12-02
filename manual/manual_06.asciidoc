@@ -599,11 +599,12 @@ The belt IsA entity
 End The belt.
 --------------------------------------------------------------------------------
 
-// @NOTE: Why 'invent' instead of 'inventory'? Most readers will be familiar
-//        with the latter -- the former seems odd, and I can't recall ever
-//        seeing it in an IF work. Also, 'invent' suggests the verb "to invent"
-//        (i.e. fabbricate, make up), and as a shorthand of 'inventory' is odd
-//        indeed.
+// @NOTE @thoni56: INVENT vs INVENTORY.
+//    Why 'invent' instead of 'inventory'? Most readers will be familiar
+//    with the latter -- the former seems odd, and I can't recall ever
+//    seeing it in an IF work. Also, 'invent' suggests the verb "to invent"
+//    i.e. fabbricate, make up), and as a shorthand of 'inventory' is odd
+//    indeed.
 
 You can combine that with the following definitions of the hero and the *invent* verb:
 
@@ -872,10 +873,9 @@ The melody IsA entity ...
 Syntax whistle = whistle (m) ...
 --------------------------------------------------------------------------------
 
-// @TODO: Rephrase "refer to instances ... to be used as parameters even from afar"
 
 The other route would be to make it an actual `object`.
-In this case the syntax for the `whistle` verb would need to indicate omnipotence, meaning that the player can refer to instances (even those inheriting from `object`) to be used as parameters even from afar.
+In this case the `Syntax` for the `whistle` verb would need to indicate omnipotence -- i.e. that the player can refer in the parameter to instances which are far away, including istances inheriting from `object`. (See <<Indicators>> for more details on the _omnipotent indicator_.)
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -904,8 +904,14 @@ TBD.
 == Structure
 
 
-// @FIXME: The part "or at least is not only a tool in a puzzle" is not clear,
-//         and needs repharsing too.
+// @TODO @thoni56:
+//    The part "or at least is NOT ONLY a tool in a puzzle" is unclear, and also
+//    needs to be rephrased. The confusion is due to that "ONLY" and the "PUZZLE".
+//    On the one hand, it seems to say that merely aesthetic elements of the story
+//    (i.e. descriptions and scenery-like props) should be in a separate file,
+//    but then the "is NOT ONLY A TOOL..." introduces confusion as to what qualifies
+//    as ornamental-like objects --- i.e. "tools in a puzzle" suggests that the
+//    item is important for solving the puzzle, so why the use of "ONLY"?
 
 A good thing to do when designing an interactive fiction story is to separate the geography from the story.
 In Alan, you can use the `Import` facility to structure your Alan source.
@@ -933,8 +939,13 @@ There are a few (((debugging, switches))) debugging switches available when star
 *-d*       Start the debugger
 ................................................................................
 
-// @NOTE: Is it truely so? Can't the '-c' and '-l' switches be used unless the
-//        adventure was compiled with 'Debug' option?
+// @CHECKME @thoni56: Interpreter Switches.
+//    Below it states:
+//
+//        NONE OF THE ABOVE SWITCHES can be used unless ... compiled with the Debug ...
+//
+//    Is it truely so? Can't the '-c' and '-l' switches be used unless the
+//    adventure was compiled with 'Debug' option?
 
 [IMPORTANT]
 ================================================================================
@@ -961,7 +972,10 @@ You can only activate one of the logs in a single session.
 Trace mode can also act as an aid in debugging.
 Level 1 will print information about every invocation of the instruction interpreter, making it easier to see which parts of the code are being executed.
 
-// @NOTE: Here "Acode" is mentioned, but the term wasn't explained:
+// @NOTE @thoni56: Acode term unexplained / Add Glossary?.
+//    Here "Acode" is mentioned, but the term wasn't introduced nor explained
+//    anywhere in the Manual. Might be worth introducing the term somewhere and
+//    cross reference it, or either create a Glossary section and add to it.
 
 Trace level 2, single instruction trace, will also trace every single Acode instruction.
 The Acode is based on a stack machine but single instruction trace will not show all stack operations.
@@ -1059,24 +1073,26 @@ The *trace* command and its options correspond to the types of traces described 
 
 Wherever different output styles are available, e.g. in GLK based interpreters like WinArun, the Alan debugger tries to use them to distinguish the debugger output from the output of your game by using the pre-formatted style (see the section on styles in <<Output Statements>>).
 
-// @NOTE: For the following transcript session I've dropped the "gametranscript"
-//        style (role) in favour of a verbatim block (with role="shell") because
-//        the "gametranscript" style was meant to mimick Gargoyle, and it was
-//        difficoult to preserve the monospaced debugging style along with the
-//        serif fonts.
-//        Also, I've only kept the italic for player input, and dropped the bold
-//        for output -- which was mentioned in the text but not actually present
-//        in the PDF document either!
+// @NOTE STYLES:
+//    For the following transcript session I've dropped the "gametranscript"
+//    style (role) in favour of a verbatim block (with role="shell") because
+//    the "gametranscript" style was meant to mimick Gargoyle, and it was
+//    difficoult to preserve the monospaced debugging style along with the
+//    serif fonts.
+
+// @CHANGED STYLES: Dropped bold.
+//    Also, I've only kept the italic for player input, and dropped the bold
+//    for output -- which was mentioned in the text but not actually present
+//    in the PDF document either!
 
 The following is a short excerpt from a command line debugging session (user input in
 italics):
 
-// @PROOFREAD UP TO HERE! //////////////////////////////////////////////////////
-
-// @FIXME: This debug transcript seems rather old, and different from what you
-//         get with the latest ARun terp! It would be best to generated this
-//         transcript from a real game using a commands script, and then import
-//         in the document the generated trascript log.
+// @FIXME OBSOLETE DEBUG TRANSCRIPT:
+//   This debug transcript seems rather old, and different from what you
+//   get with the latest ARun terp! It would be best to generated this
+//   transcript from a real game using a commands script, and then import
+//   in the document the generated trascript log.
 
 [literal, role="shell", subs="+quotes"]
 ................................................................................

@@ -66,11 +66,12 @@ Or does it?
 With the noun first is it possible to implement "`das buch nehmen`" with the syntax `take = (o) nehmen`?
 ================================================================================
 
-// @NOTE: Elsewhere in the Manual (App F.2. Message explanations) it states that
-// 			«The definition of a Syntax construct may not start with a parameter.
-// 			 The first word must be a player word so as to distinguish it from
-//           other forms of input.»
-// 		  Might need some testing to check if this was changed in the meantime!!!
+// @CHECKME:
+//   Elsewhere in the Manual (App F.2. Message explanations) it states that
+//      «The definition of a Syntax construct may not start with a parameter.
+//       The first word must be a player word so as to distinguish it from
+//       other forms of input.»
+//   Might need some testing to check if this was changed in the meantime!!!
 
 // EOF //
 
