@@ -13,7 +13,7 @@ But I would suggest that you read through it anyway since it introduces some imp
 
 
 
-== What Is An Adventure?
+== What Is an Adventure?
 
 As long as man has been around there have been stories, fairy tales and fantasies.
 In the early days, storytellers told their stories to silent and astonished audiences.
@@ -56,7 +56,7 @@ In <<A Sample Interaction>> you can find a sample of this type of interaction.
 
 
 
-== Elements Of Adventures
+== Elements of Adventures
 
 The success of all ((Infocom)) games can probably be attributed to three distinctive features.
 First, they all have a '`believable`' and consistent plot, which is flavoured with humour and wittiness.
@@ -106,7 +106,7 @@ But the technical platform, the Alan language and its support system, is the sam
 
 
 
-=== What Is A Language?
+=== What Is a Language?
 
 A ((computer language)) is usually described as a set of rules for textual instructions for a computer.
 The idea is that a computer can follow those rules and perform the necessary and/or intended actions.
@@ -356,7 +356,7 @@ This is a complete Alan adventure (although very primitive).
 As you can see, every Alan construct ends with a period (`.`) and there is a "```Start At```" sentence at the end, indicating in which location to put the hero when the game starts.
 
 Type the above text into a text file, e.g. using a notepad program.
-Run this little Alan source through the Alan compiler and try the adventure (see <<How To Use The System>> on how to do this).
+Run this little Alan source through the Alan compiler and try the adventure (see <<How to Use the System>> on how to do this).
 After starting the adventure, two lines will be shown on your screen.
 
 [example,role="gametranscript"]
@@ -455,7 +455,7 @@ Alternatively, attributes may be numeric (e.g. `Has weight 5`) or be of string t
 The example also introduced another Alan statement, the `If` statement.
 The `If` statement (((IF, statement))) allows you to select which statements to execute according to some condition.
 In the example, the `closed` attribute of the door selects which description to show.
-There are further variations of expressions and the `If` statement, but we will come back to these later (<<Expressions>> and <<If Statement>>).
+There are further variations of expressions and the `If` statement, but we will come back to these later (<<Expressions>> and <<IF Statement>>).
 
 Instead, let's look at some other statements in relation to objects.
 
@@ -770,7 +770,7 @@ What this means is that if you use transitive containment you get the same insta
 And it is usually the indirect ones that you should look out for.
 
 
-=== The Verb Construct
+=== The VERB Construct
 
 // @NOTE @thoni56:
 //      Maybe change to "Verbs are USUALLY associated with", because there are
@@ -833,7 +833,7 @@ End Every door.
 //      Whose need does it referr to?
 
 With this definition it is possible to apply the verb to all doors.
-Instead need to reference the object the player mentioned in his command (see <<The Syntax>> and <<Syntax Definitions>> for a more thorough discussion).
+Instead need to reference the object the player mentioned in his command (see <<The SYNTAX>> and <<SYNTAX Definitions>> for a more thorough discussion).
 In this case, the attribute `closed` must also be available for all objects by ensuring that the attribute exists in the class.
 (See <<Additions>> on how to add an attribute to a predefined class such as `object`).
 
@@ -906,7 +906,7 @@ Instead, you can define a limbo location, i.e. a location that is not accessible
 ================================================================================
 
 
-=== The Syntax
+=== The SYNTAX
 
 Normally a verb acts on an object or actor, henceforth called a ((parameter)), referenced by the player in a command.
 This means that the format of player input is usually something like:

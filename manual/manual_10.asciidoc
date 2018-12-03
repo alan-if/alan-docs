@@ -23,7 +23,7 @@ However, some messages can be given directly by the ((Arun)) interpreter.
 They are presented below using the Alan STRING-format, i.e. containing the special character combinations described in <<Output Statements,_Output Statements_>>.
 These standard messages exist for all ((languages)) and the default value of the texts are selected depending upon the setting of the language option.
 
-The contents of any message may be modified using the `Message` statement (see <<Messages>>).
+The contents of any message may be modified using the `Message` statement (see <<MESSAGEs>>).
 The identifier on the first line of a message explanation is the identifier that should be used in the `Message` statement to change the contents of that message.
 The text after the colon on the first line is the default English message text.
 Then follows a short explanation, including possible availability of parameters and their types.
@@ -35,7 +35,7 @@ All messages are available in all supported languages but below the English text
 ================================================================================
 Although the default values of the messages are static strings, it is possible to create messages that are more dynamic.
 The `Message` statement allows any statements, not only strings, and supplies dynamic values as parameters for many messages.
-See <<Messages>> for details.
+See <<MESSAGEs>> for details.
 ================================================================================
 
 

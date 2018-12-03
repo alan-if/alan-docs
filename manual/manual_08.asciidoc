@@ -1,11 +1,11 @@
 // ******************************************************************************
 // *                                                                            *
-// *                     Appendix A: How To Use The System                      *
+// *                     Appendix A: How to Use the System                      *
 // *                                                                            *
 // ******************************************************************************
 
 [appendix]
-= How To Use The System
+= How to Use the System
 
 How to actually set up and use the complete Alan system depends very much on which platform, OS and in which environment you are going to use it.
 

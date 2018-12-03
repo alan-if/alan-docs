@@ -10,7 +10,7 @@
 To create adventures in languages other than English, there are a few separate issues to consider.
 The sections below describes the support that Alan provides for each of them.
 
-== Character/Glyph availability
+== Character/Glyph Availability
 
 Most languages have characters, or glyphs, other than the common ones used in English, like ö, Ñ or æ.
 Alan uses a character encoding called ISO-8859-1 which allows for many characters (but not all) used in European and other countries.
@@ -21,7 +21,7 @@ Usually you can do this in the editor you are using, often when you save a file 
 If the Alan source files are encoded using ISO-8859-1 they will be presented correctly when the game is run using e.g. WinArun.
 If you run the games in console mode you have to ensure that both your console program and your operating system are set (and able) to show characters using the ISO-8859-1 encoding.
 
-== Standard messages
+== Standard Messages
 
 There are two main types of messages that are output by the interpreter to the player.
 They are initiated by various parts of the Alan system.
@@ -37,14 +37,14 @@ These can either be changed by the `Language` option (if the language of your ch
 
 There are a few special words that are currently not author translatable, as described in <<Predefined Player Words>>.
 
-== Player words
+== Player Words
 
 [WARNING]
 ================================================================================
 TBD.
 ================================================================================
 
-== Word variations
+== Word Variations
 
 [WARNING]
 ================================================================================
@@ -54,7 +54,7 @@ Text about using multiple names for the same objects & synonyms, and how the int
 ================================================================================
 
 
-== Word order
+== Word Order
 
 
 [WARNING]
@@ -67,7 +67,7 @@ With the noun first is it possible to implement "`das buch nehmen`" with the syn
 ================================================================================
 
 // @CHECKME:
-//   Elsewhere in the Manual (App F.2. Message explanations) it states that
+//   Elsewhere in the Manual (App F.2. Message Explanations) it states that
 //      «The definition of a Syntax construct may not start with a parameter.
 //       The first word must be a player word so as to distinguish it from
 //       other forms of input.»

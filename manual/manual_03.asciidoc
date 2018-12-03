@@ -322,7 +322,7 @@ Examples include the conditional (((IF, statement))) `If` statement, that requir
 
 
 
-== Import
+== IMPORT
 
 The source text for a large adventure might become entangled and complex.
 A way to break up a large text is to divide it into separate files.
@@ -521,7 +521,7 @@ Creating an instance of `thing` is a good choice if you want an invisible instan
 Note that a `thing` can be put in a container, but that container will not show any visible traces of that thing.
 It will be rendered as empty if listed.
 The `thing` is however subject to other effects of being part of a container, such as the removal rules and selection by a random selection of items in the container.
-See <<Random Values,_Random Values_>> for a description of random selections of container items.
+See <<RANDOM Values,_RANDOM Values_>> for a description of random selections of container items.
 ================================================================================
 
 
@@ -546,7 +546,7 @@ Actors can be located, as can any `thing`, but not be inside a container.
 In addition, they can have scripts.
 
 Actors also exhibit special behaviour when they are described, e.g. when they are encountered.
-If an actor (((ACTOR, description))) is executing a `Script` with a `Description`, (see <<Scripts,_Scripts_>>) this description will be used instead of the one declared in the description clause.
+If an actor (((ACTOR, description))) is executing a `Script` with a `Description`, (see <<SCRIPTs,_SCRIPTs_>>) this description will be used instead of the one declared in the description clause.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -577,7 +577,7 @@ The george IsA actor
 
 
 
-==== The Hero
+==== The HERO
 
 There is one very special actor, the `hero`, ((("HERO, the"))) which represents the player.
 This actor is always pre-declared with some basic properties, so you don't have to declare it.
@@ -644,7 +644,7 @@ For example:
 ================================================================================
 
 
-The second parameter (see <<Syntax Definitions>>) in this player command is the integer 12.
+The second parameter (see <<SYNTAX Definitions>>) in this player command is the integer 12.
 This parameter is automatically considered an instance of the predefined class `integer`.
 
 
@@ -784,7 +784,7 @@ An instance inheriting from `location` cannot have an initial location that is `
 
 
 
-=== Names
+=== NAMEs
 
 
 // @FIXME @thoni56:
@@ -878,7 +878,7 @@ The rod IsA object At grate
 
 
 This would allow the player to refer to the object using either '`rusty rod`' or '`dynamite`'. (Or, as a side effect, even '`rusty dynamite`'.)
-The first `Name` clause is used for building a default description, if necessary (see <<Description>>).
+The first `Name` clause is used for building a default description, if necessary (see <<DESCRIPTION>>).
 
 The letter case used in the original words is preserved in the adventure output, but player input will always be matched without taking into account letter case (i.e. case-insensitively).
 This allows you, for example, to give capitalized names to people actors, which would then be shown correctly in the output.
@@ -924,13 +924,13 @@ Both the Gravensteiner and the McIntosh would be apples, not only by name, but a
 
 When an instance is to be shown to the player, (((instance, displaying))) it must be displayed in form of text.
 An instance can be printed in several different ways, it can be described or only mentioned.
-A description of an instance is a complete and usually more elaborate description of it (see <<Description>>).
+A description of an instance is a complete and usually more elaborate description of it (see <<DESCRIPTION>>).
 However, often an instance must be mentioned as a part of a sentence, or in a list.
 
 Such a mentioning of an instance will involve the articles, the name and possibly the `Mentioned` clause.
 
 The basis for this mechanism is the short form, which by default is the first of the ``Name``s.
-It will, however, be overridden by any existing `Mentioned` clause (see <<Mentioned>>).
+It will, however, be overridden by any existing `Mentioned` clause (see <<MENTIONED>>).
 
 The short form can be automatically transformed to a description (for instances that have no `Description`) by inserting the article (see <<Articles and Forms>>) and the short form in a default message.
 In the following transcript example, output of the article is shown in bold, and the short forms in italic, the rest is the default message templates.
@@ -940,11 +940,11 @@ In the following transcript example, output of the article is shown in bold, and
 There is *a* _little black book_, *a* _green pearl_ and *an* _owl_ here.
 ================================================================================
 
-The interpreter also uses this principle when constructing lists of instances in container content lists (as the result of the execution of an implicit or explicit `List` statement, see <<List Statement>>).
+The interpreter also uses this principle when constructing lists of instances in container content lists (as the result of the execution of an implicit or explicit `List` statement, see <<LIST Statement>>).
 
 
 
-=== Pronouns
+=== PRONOUNs
 
 In player input, it is often handy and natural to refer to items using (((PRONOUN, clause))) pronouns, such as "`it`", "`them`" or "`her`".
 Alan provides a means to define which pronouns each instance can be associated with.
@@ -1249,7 +1249,7 @@ This changes the semantics so that the subclass indicated by `lockable_door` act
 
 Using (((abstract attribute))) abstract reference attribute declarations in class declarations allows you to progressively refine the class of the instances that that attribute may refer to.
 
-=== Initialize
+=== INITIALIZE
 
 The attributes of an instance can be initialised using values in the attribute declaration.
 This is usually sufficient for many situations.
@@ -1285,7 +1285,7 @@ This lets the base classes do their initialisation before the initialisation of 
 
 
 
-=== Description
+=== DESCRIPTION
 
 The statements in the (((DESCRIPTION, clause))) `Description` clause should print a description of the instance.
 These statements are executed when the hero encounters the instance.
@@ -1351,7 +1351,7 @@ The syntax for such a description is:
 description = 'DESCRIPTION' [checks] [does]
 --------------------------------------------------------------------------------
 
-You can guard the description with a `Check` in the same form as with `Verb` bodies (see <<Verb Checks>> for a detailed description of checks).
+You can guard the description with a `Check` in the same form as with `Verb` bodies (see <<Verb CHECKs>> for a detailed description of checks).
 Of course, there are no qualifiers possible here.
 To be able to separate the checks statement from the actual description statements the keyword `Does` (((DOES, in descriptions))) is required.
 This is an example of the checks for a dark location:
@@ -1447,7 +1447,7 @@ You may override this by using an `Add` statement.
 
 
 
-==== Articles
+==== ARTICLE
 
 Printing the indefinite (or definite or negative) form of an instance having an indefinite (or definite or negative) article is simply performed by executing the `Article` statements and then the normal printing of the instance, usually the first set of names.
 
@@ -1518,7 +1518,7 @@ There is some money here.
 
 
 
-==== Form
+==== FORM
 
 If an instance has a `Definite` (`Indefinite` or `Negative`) `Form`, either through declaration or inheritance, the printing of its definite, indefinite or negative form will be by executing the corresponding statements only; no article declaration is involved.
 In this way, the author gets complete control over the spelling and inflection of the instance name in definite, indefinite or negative forms.
@@ -1534,12 +1534,12 @@ That means that an instance may override its inherited form using either of the 
 ==== Printing
 
 
-You can use various forms of the `Say` statement (see <<Say Statement>>) to choose in which form the instance will be presented.
+You can use various forms of the `Say` statement (see <<SAY Statement>>) to choose in which form the instance will be presented.
 In addition, the embedded parameter references allow selection of the form (<<String Statement>>).
 
 
 
-==== Mentioned
+==== MENTIONED
 
 The optional (((MENTIONED, clause))) `Mentioned` clause overrides the name for displaying an instance in a short form that will be used when the instance is mentioned e.g. in listings of containers or when the *ALL* (((ALL (player input)))) form of player input is used.
 A typical use of the `Mentioned` clause is to let some internal state of the instance be reflected in the short form, e.g. if you want the short form of a box to show if it is open or closed you cannot rely on the Names since they are static.
@@ -1584,7 +1584,7 @@ A `Mentioned` clause declared on a class will override the names of any instance
 
 
 
-=== Container Properties
+=== CONTAINER Properties
 
 An instance can also be a container.
 This is declared by using the (((CONTAINER, property, of objects))) `Container` property clause.
@@ -1670,7 +1670,7 @@ If the instance has a default description the contents of the container will be 
 
 
 
-==== Limits
+==== LIMITS
 
 The (((LIMITS, clause))) `Limits` clause of the `Container` property declaration put limitations on what and how much can be put in the container.
 
@@ -1717,7 +1717,7 @@ Locations can't have container properties.
 
 
 
-==== Header and Else
+==== HEADER and ELSE
 
 (((BNF, rules of, HEADER)))
 [source,bnf]
@@ -1746,7 +1746,7 @@ or:
 ================================================================================
 
 
-It is followed by a list of instances mentioned. <<Mentioned>> describes this listing.
+It is followed by a list of instances mentioned. <<MENTIONED>> describes this listing.
 
 The `Else` part is used instead of the `Header` if the container is empty.
 
@@ -1764,7 +1764,7 @@ Empty
 
 
 
-==== Extract
+==== EXTRACT
 
 The (((EXTRACT, clause))) `Extract` clause defines what happens when anything is extracted from a container.
 Any `Locate` statement that moves an instance out of a container is considered an extraction.
@@ -1779,12 +1779,12 @@ extract = 'EXTRACT' [check] [does]
 
 
 The `Extract` clause, including optional `Check` and `Does` clauses, allows prohibiting the extraction of the item from the container depending on some condition.
-If the `Check` is present, it works the same way as for ``Verb``s (see <<Verb Checks>>).
+If the `Check` is present, it works the same way as for ``Verb``s (see <<Verb CHECKs>>).
 I.e. a `Check` without a guard expression will unconditionally prohibit extractions; a `Check` with an expression will evaluate that expression and, if false, execute its `Else` clause, and then abort the move.
 The `Does` clause will be executed if the optional `Check` passes, or there was no `Check`.
 
 An `Extract` clause without a `Check`, but with a `Does` clause, executes the `Does` clause and then allows the extraction to take place.
-So, in a way, ``Check``s, if triggered, prevents the extraction, and the `Does` clause amends to it, being an extensions of the normal case, much like the `Check` and `Does` clauses for ``Verb``s (see <<Verbs>>).
+So, in a way, ``Check``s, if triggered, prevents the extraction, and the `Does` clause amends to it, being an extensions of the normal case, much like the `Check` and `Does` clauses for ``Verb``s (see <<VERBs>>).
 The second form of the clause, with just the statements, is equivalent to an `Extract` with only a `Does` clause.
 
 An example use of the `Extract` clause is to prohibit, put restrictions on, or modify the behaviour when the hero attempts to take things carried by another actor.
@@ -1812,17 +1812,17 @@ End The waiter.
 
 
 
-=== Verbs
+=== VERBs
 
 ``Verb``s declared inside an class or instance are inherited in the same way as other properties.
-See <<Verbs>> for a description on how to declare verbs.
+See <<VERBs>> for a description on how to declare verbs.
 
 The verbs in a class or instance will only be a candidate for execution if the instance bound to a parameter is of the corresponding class, or is the instance.
 See <<Verb Execution>> for a detailed explanation.
 
 
 
-=== Entered
+=== ENTERED
 
 (((BNF, rules of, ENTERED)))
 [source,bnf]
@@ -1837,7 +1837,7 @@ Game state changes can be made without restriction.
 However, the `Entered` clause is primarily intended for setting up the location in a correct way, not for describing events, actions and states changes.
 For this the `Description` clause is recommended.
 
-The `Entered` clause can also be used to restrict the movements of actors other than the `Hero`. (The hero's travels are controlled by `Exit` checks as described in <<Exits,_Exits_>>).
+The `Entered` clause can also be used to restrict the movements of actors other than the `Hero`. (The hero's travels are controlled by `Exit` checks as described in <<EXITs,_EXITs_>>).
 
 If some of the statements should only apply to a particular actor, it is possible to test for the `Current Actor` with a simple `If` statement.
 
@@ -1880,7 +1880,7 @@ If it is the hero that is moving, the `Description`, including the normal header
 
 
 
-=== Exits
+=== EXITs
 
 To build a traversable world of locations, they must be connected.
 This is done using ``Exit``s.
@@ -1897,7 +1897,7 @@ exit_body = [checks] [does] 'END' 'EXIT' [id]
 An (((EXIT))) `Exit` has a list of identifiers, all of which are considered directional words.
 I.e. when any of those words is input by the player, he will be located at the location identified as the target of the exit.
 It is possible to customize the exit using a (((CHECK, in exits))) `Check`, that must be satisfied to allow passage through the exit, and statements (`Does`) that will be executed when the player passes through.
-The checks work as described in <<Verb Checks,_Verb Checks_>>.
+The checks work as described in <<Verb CHECKs,_Verb CHECKs_>>.
 
 If either of the `Check` or `Does` clauses is present, the `End Exit` is required.
 
@@ -1935,7 +1935,7 @@ Exits are only allowed in classes or instances inheriting from the predefined cl
 
 
 
-=== Scripts
+=== SCRIPTs
 
 The (((SCRIPT))) `Script` is the way actors perform things.
 In a way, it corresponds to what the hero is ordered to do by the player's typed-in commands.
@@ -1990,7 +1990,7 @@ The author is responsible for handling this, e.g. by using rules to ensure that 
 
 
 
-==== Steps
+==== STEPs
 
 
 A script is divided into steps.
@@ -2047,11 +2047,11 @@ If such a package required particular attributes in classes, they could be added
 
 
 
-== Syntax Definitions
+== SYNTAX Definitions
 
 The (((SYNTAX, construct))) `Syntax` construct is used to specify the allowed structure of the player's input.
 Each definition defines the syntax for one `Verb`.
-The effects triggered by the player input are declared using the `Verb` construct (see <<Verbs>>).
+The effects triggered by the player input are declared using the `Verb` construct (see <<VERBs>>).
 
 (((BNF, rules of, SYNTAX)))
 [source,bnf]
@@ -2401,7 +2401,7 @@ There are a number of ways to get an instance into scope:
 * Instances of `thing` and its subclasses at the current location, including any nested locations, are in scope.
 
 * Instances of any class inside a container that is in scope are in scope too, unless that container is opaque and closed.
-  (See <<Container Properties, _Container Properties_>> for details.)
+  (See <<CONTAINER Properties, _Container Properties_>> for details.)
 
 * If the syntax indicated a parameter as omni-potent, any instance is in scope for that parameter position.
   (See <<Indicators, _Indicators_>> for details.)
@@ -2413,7 +2413,7 @@ When all parameter positions in the syntax have been resolved this way, the rest
 
 
 
-== Verbs
+== VERBs
 
 (((BNF, rules of, VERB)))
 (((BNF, rules of, META VERB)))
@@ -2449,7 +2449,7 @@ In fact, a global verb cannot include any parameters in their syntax declaration
 A verb declaration inside a class or instance definition will be considered if that instance (or an instance inheriting from that class) is used as a parameter in the input.
 
 The identifiers in the list (`take` and `get` in the example above) will become the default player words that can be used to invoke the verb.
-But if a `Syntax` is declared for the `Verb` (see <<Syntax Definitions>>), the identifiers in the list will not be accessible to the player, instead the sequence of words and parameters specified in the `Syntax` must be used.
+But if a `Syntax` is declared for the `Verb` (see <<SYNTAX Definitions>>), the identifiers in the list will not be accessible to the player, instead the sequence of words and parameters specified in the `Syntax` must be used.
 
 
 // @FIXME @thoni56:
@@ -2465,7 +2465,7 @@ If there is more than one identifier in the list, as in the example above, this 
 This will create synonymous actions for different verbs at the level of the verb declaration.
 They may differ in implementation at other places, i.e. if they are declared in the same verb declaration on one level in an inheritance tree, they can still have different bodies on another level.
 
-=== Meta Verbs
+=== META VERBs
 
 (((VERB, META VERB)))
 Any action from the player usually takes one '`tick`' in the default simulated game time.
@@ -2502,7 +2502,7 @@ It is possible to implement your own timing mechanism, in which case the `Meta` 
 
 
 
-=== Verbs in Locations
+=== VERBs in Locations
 
 A special case is a `Verb` declared in, or inherited by, the `location` where the player is currently located.
 If this verb is used, any checks or body of that verb will be considered before the verbs in the parameters.
@@ -2520,7 +2520,7 @@ End The.
 --------------------------------------------------------------------------------
 
 
-=== Verb Checks
+=== Verb CHECKs
 
 (((BNF, rules of, CHECK)))
 [source,bnf]
@@ -2594,7 +2594,7 @@ See <<Player Input>> for an explanation of the player view of this.
 
 
 
-=== Does-clause
+=== DOES Clause
 
 (((BNF, rules of, DOES)))  (((BNF, rules of, BEFORE)))
 (((BNF, rules of, AFTER))) (((BNF, rules of, ONLY)))
@@ -2705,7 +2705,7 @@ These qualifiers alter the order of execution, as described in full detail below
 
 (((VERB, execution order)))
 First all parameters are evaluated according to the `Syntax` restrictions (see <<Parameter Restrictions,_Parameter Restrictions_>>).
-Then, if they passed, the ``Check``s of all verb declarations are evaluated (see <<Verb Checks>>).
+Then, if they passed, the ``Check``s of all verb declarations are evaluated (see <<Verb CHECKs>>).
 Finally the `Verb` bodies are executed in the normal order, as explained in the following table.
 
 
@@ -2814,7 +2814,7 @@ This also illustrates the fact that the most commonly used qualifier is the `Onl
 
 
 
-== Events
+== EVENTs
 
 An (((EVENT))) `Event` is a sequence of statements executed at a specified time (count of turns).
 It is also executed at some specific location.
@@ -2833,7 +2833,7 @@ The body of an event can be any sequence of statements.
 however, they can not refer to any parameters, since no verb is executing, nor to the `Current Actor`.
 See <<Run-Time Contexts,_Run-Time Contexts_>>.
 
-Events may be scheduled and cancelled with the `Schedule` and `Cancel` statements (see <<Event Statements,_Event Statements_>>).
+Events may be scheduled and cancelled with the `Schedule` and `Cancel` statements (see <<EVENT Statements,_EVENT Statements_>>).
 
 
 
@@ -2919,7 +2919,7 @@ What happens if there are more actors in play and they move in and out of the ki
 
 
 
-== Synonyms
+== SYNONYMS
 
 (((BNF, rules of, SYNONYMS)))
 [source,bnf]
@@ -2959,14 +2959,14 @@ This will result in an error message indicating that the synonym word `look_at` 
 This is because the `Syntax` (see <<Additions>>) defined the verb `look_at` to have the specified syntax (including the player words '`look`' and '`at`'), the player word `look_at` is not defined, which is as well as the player would not be able to input a word with an underscore (see <<Player Input>>).
 
 You can achieve the desired effect by instead giving multiple verb identifiers in the verb declarations; this will give the same verb bodies (checks and actions) to multiple verbs.
-See <<Verbs,the section on _Verbs_>> for details on verb declarations.
+See <<VERBs,the section on _VERBs_>> for details on verb declarations.
 
 It is also possible to define multiple names for an instance to achieve other effects similar to synonyms.
-See <<Names>> for a description of this.
+See <<NAMEs>> for a description of this.
 
 
 
-== Messages
+== MESSAGEs
 
 The Alan system has a number of standard messages built in.
 These messages are presented to the player in various situations, both normal and otherwise.
@@ -3036,7 +3036,7 @@ For a complete list of all the identifiers of messages and their use, see <<Run-
 
 
 
-=== Message parameters
+=== MESSAGE Parameters
 
 `Message` sections must be declared at the global level, but to make it possible to create high-quality messages, parameters are available in message sections.
 Which parameters are available vary depending on the message, the details for each message is available in <<Input Response Messages>>.
@@ -3057,7 +3057,7 @@ If the message must be modified according to the case of the noun, which is the 
 
 
 
-== Prompt Section
+== PROMPT Section
 
 The (((PROMPT, section))) `Prompt` section allows you to customize the way players are prompted for their input.
 
@@ -3126,7 +3126,7 @@ There is currently no way to dynamically customize the prompt except by using th
 
 
 
-== Start Section
+== START Section
 
 The (((START, section))) `Start` section defines where the player (the hero) will be at the start of the game.
 This must be a location.
@@ -3277,7 +3277,7 @@ The following can be used to refer to parameters while executing a verb, but the
 ================================================================================
 The `$<n>` formats must be used with care as they are not checked at compile time, e.g. you can use "```$+1```" in a context where no parameter is defined which would lead to a run-time error.
 To avoid the risk of any run-time problems use the `Say` statement with the parameter name wherever possible.
-See <<Say Statement,_Say Statement_>> below.
+See <<SAY Statement,_SAY Statement_>> below.
 ================================================================================
 
 
@@ -3290,7 +3290,7 @@ This will ensure full reference analysis by the compiler protecting against any 
 ================================================================================
 
 
-==== Style Statement
+==== STYLE Statement
 
 (((BNF, rules of, STYLE)))
 [source,bnf]
@@ -3325,7 +3325,7 @@ In fact, there is no guarantee that the styles will actually differ.
 
 
 
-==== Describe Statement
+==== DESCRIBE Statement
 
 (((BNF, rules of, DESCRIBE)))
 (((BNF, rules of, output statements, DESCRIBE)))
@@ -3360,7 +3360,7 @@ DESCRIBE desk.
 
 
 
-==== Say Statement
+==== SAY Statement
 
 (((BNF, rules of, SAY)))
 (((BNF, rules of, output statements, SAY)))
@@ -3400,7 +3400,7 @@ Finally, the `It` form will print the pronoun associated with the instance.
 
 
 
-==== List Statement
+==== LIST Statement
 
 (((BNF, rules of, LIST)))
 (((BNF, rules of, output statements, LIST)))
@@ -3423,14 +3423,14 @@ End If.
 Of course, the instance being listed must be an instance that has the `Container` property, which may be inherited.
 This instance can be referred to by being bound to a parameter or a ((reference attribute)), for example.
 
-=== Multi-media Statements
+=== Multimedia Statements
 
 Alan has some multimedia provisions, although they may not be available on every platform and implementation.
 The `Show` statement, presents an image in the output window, and the `Play` statement plays a sound.
 
-The Alan compiler will always support the multi-media statements, but a particular interpreter might not do so.
+The Alan compiler will always support the multimedia statements, but a particular interpreter might not do so.
 Most GLK-based interpreters will support them, but other kind of interpreters might too.
-The game will still play fine, but the multi-media resources will be silently ignored.
+The game will still play fine, but the multimedia resources will be silently ignored.
 There is also no way to check for this in your source code.
 So, don't rely on them for your story, particularly do not give the player necessary information only through pictures.
 
@@ -3445,7 +3445,7 @@ The following extensions are recognized: *.jpg*, *.jpeg*, *.png*, *.mod*, *.aif*
 
 
 
-==== Show Statement
+==== SHOW Statement
 
 (((BNF, rules of, SHOW)))
 (((BNF, rules of, output statements, SHOW)))
@@ -3463,7 +3463,7 @@ Since filenames may contain various special characters, a quoted identifier (see
 
 Alan currently supports the JPEG and PNG formats only.
 
-==== Play Statement
+==== PLAY Statement
 
 (((BNF, rules of, PLAY)))
 (((BNF, rules of, output statements, PLAY)))
@@ -3481,7 +3481,7 @@ Alan currently supports the MOD and AIFF formats only.
 === Manipulation Statements
 
 
-==== Locate Statement
+==== LOCATE Statement
 
 (((BNF, rules of, LOCATE)))
 [source,bnf]
@@ -3522,7 +3522,7 @@ The effect of this is that any instances present in the outer location are reach
 
 
 
-==== Empty Statement
+==== EMPTY Statement
 
 (((BNF, rules of, EMPTY)))
 [source,bnf]
@@ -3544,7 +3544,7 @@ Locate hero At restart_point.
 
 
 
-==== Strip Statement
+==== STRIP Statement
 
 (((BNF, rules of, STRIP)))
 [source,bnf]
@@ -3593,10 +3593,10 @@ End The eliza.
 --------------------------------------------------------------------------------
 
 
-=== Event Statements
+=== EVENT Statements
 
 
-==== Schedule Statement
+==== SCHEDULE Statement
 
 `Schedule` (((SCHEDULE, statement))) will queue an event to occur at a specified location after the number of player turns specified by the expression.
 
@@ -3636,7 +3636,7 @@ The event can be specified by giving an event identifier or referring to an attr
 
 
 
-==== Cancel Statement
+==== CANCEL Statement
 
 (((BNF, rules of, CANCEL)))
 [source,bnf]
@@ -3688,7 +3688,7 @@ There are a number of statements for changing values of attributes.
 
 
 
-==== Make Statement
+==== MAKE Statement
 
 (((BNF, rules of, MAKE)))
 [source,bnf]
@@ -3710,7 +3710,7 @@ Make door Not open.
 
 
 
-==== Increase and Decrease Statements
+==== INCREASE and DECREASE Statements
 
 (((BNF, rules of, INCREASE)))
 (((BNF, rules of, DECREASE)))
@@ -3735,7 +3735,7 @@ Decrease lives Of hero.
 
 
 
-==== Set Statement
+==== SET Statement
 
 (((BNF, rules of, SET)))
 [source,bnf]
@@ -3788,7 +3788,7 @@ Set friends Of mine To {suspect Of detective}. -- Maybe correct
 
 
 
-==== Include Statement
+==== INCLUDE Statement
 
 (((BNF, rules of, INCLUDE)))
 [source,bnf]
@@ -3819,7 +3819,7 @@ Include driver Of car In friends Of hitchhiker.
 
 
 
-==== Exclude Statement
+==== EXCLUDE Statement
 
 (((BNF, rules of, EXCLUDE)))
 [source,bnf]
@@ -3845,7 +3845,7 @@ In Alan there are two conditional statements: the common `If` statement and the 
 
 
 
-==== If Statement
+==== IF Statement
 
 (((BNF, rules of, IF)))
 (((BNF, rules of, ELSE)))
@@ -3924,7 +3924,7 @@ End For.
 
 
 
-==== Depending On Statement
+==== DEPENDING ON Statement
 
 (((BNF, rules of, DEPENDING ON)))
 [source,bnf]
@@ -3990,7 +3990,7 @@ Actor statements are statements that are used to control actors.
 
 
 
-==== Use Statement
+==== USE Statement
 
 (((BNF, rules of, USE)))
 [source,bnf]
@@ -4014,7 +4014,7 @@ For the *actor* clause you can use an expression such as a simple identifier, a 
 
 
 
-==== Stop Statement
+==== STOP Statement
 
 (((BNF, rules of, STOP)))
 [source,bnf]
@@ -4082,7 +4082,7 @@ End For.
 
 
 
-==== Quit Statement
+==== QUIT Statement
 
 `Quit` (((QUIT, statement))) prints a question giving the player the choice to restart the game, restore a previously saved game or to quit the game.
 Any scoring or other printouts have to be made explicitly before executing the `Quit` statement.
@@ -4093,7 +4093,7 @@ Any scoring or other printouts have to be made explicitly before executing the `
 //        "C.1. Input Response Messages > QUIT_ACTION"
 
 
-==== Look Statement
+==== LOOK Statement
 
 `Look` (((LOOK, statement))) describes to the player the current location and what it contains (which location is going to be the current location depends on which context `Look` is being executed in).
 First, the location name is printed out, then the `Description` part for the location is executed.
@@ -4116,7 +4116,7 @@ consideration.
 
 
 
-==== Save and Restore Statements
+==== SAVE and RESTORE Statements
 
 `Save` (((SAVE, statement))) saves the game on a file for later use with (((RESTORE, statement))) `Restore`.
 Both `save` and `restore` asks the player for a file name to use for storing and restoring.
@@ -4141,7 +4141,7 @@ conflict with the reserved keyword `Restore`.
 ================================================================================
 
 
-==== Score Statement
+==== SCORE Statement
 
 `Score` (((SCORE, statement))) is a way of rewarding the player by giving points for certain actions.
 This is done using the statement:
@@ -4184,7 +4184,7 @@ For adventures requiring a more complex and varied scoring system (especially if
 
 
 
-==== Visits Statement
+==== VISITS Statement
 
 The (((VISITS, statement))) `Visits` statement changes the number of times a location can be visited before its long description is presented again:
 
@@ -4245,7 +4245,7 @@ End The secret_cave.
 
 
 
-==== Transcript Statement
+==== TRANSCRIPT Statement
 
 
 (((BNF, rules of, TRANSCRIPT)))
@@ -4491,7 +4491,7 @@ If hero Is Not hungry Then ...
 
 
 
-==== Location Of
+==== LOCATION OF
 
 (((predefined attributes, LOCATION attribute)))
 (((attributes, predefined, LOCATION attribute)))
@@ -4508,7 +4508,7 @@ This attribute is predefined on all instances and is guaranteed to return an ins
 
 
 
-=== Random Values
+=== RANDOM Values
 
 There are three types of random expressions.
 The first is the traditional random integer expression.
@@ -4542,7 +4542,7 @@ expression = 'RANDOM' ['DIRECTLY'] 'IN' expression
 
 If the expression refers to a container, the expression returns one of the instances currently in that container.
 The type of the entire expression is instances of the class accepted by the container.
-See <<Container Properties>> for details on how to determine the class of instances allowed inside a container.
+See <<CONTAINER Properties>> for details on how to determine the class of instances allowed inside a container.
 
 If the expression refers to a Set, the result is one of the members in the Set.
 The type and class of the entire expression is determined by the allowed members in the Set.
@@ -4626,7 +4626,7 @@ This holds true for all statements in the `Then` part of the `If` statement.
 This is used by the compiler to allow references to attributes, scripts, container properties, etc. that otherwise would not be allowed.
 
 A very common use of this is to restrict parameters in a `Syntax` to a more general class, like `thing` or `entity`, and then doing "`manual`" restrictions using `If` statements to ensure that their usage does not conflict with the actual properties of the instance.
-See also the <<If Statement,section on _If Statement_>>.
+See also the <<IF Statement,section on _IF Statement_>>.
 
 
 
@@ -4727,7 +4727,7 @@ The expression yields a Boolean value.
 
 
 
-=== Current Entities
+=== CURRENT Entities
 
 
 // @FIXME @thoni56: Entities or Expressions?

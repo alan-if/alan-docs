@@ -100,9 +100,9 @@ An here follows a task list of the remaining porting tasks:
     + [ ] Figure 1 (Sec. 2.3, p.20 of PDF) — "The principles for and relations between a game description, a compiler, ...".
     + [x] Figure 2 (Sec. 2.4, p.33 of PDF) — "_Relationships between the pre-defined classes._".
 - [x] Fix some non-Ascii chars (especially Unicode dingbats) that may cause problems in some output formats (See [Issue #23][i23]).
-- [ ] Fix Headings:
-    + [ ] Check that all headings are properly title cased.
-    + [ ] Change to all-caps Alan keywords in headings.
+- [x] Fix Headings:
+    + [x] Check that all headings are properly title cased.
+    + [x] Change to all-caps Alan keywords in headings.
 - [x] Finish reading through the whole book, checking for missing styles and fixing the ADoc source:
 
 
@@ -112,20 +112,6 @@ An here follows a task list of the remaining porting tasks:
 The PDF toolchain will employ [asciidoc-fopub] to convert from DocBook to PDF. I've just started working on this, and there is still a lot to do before the required custom styles will be usable to create a distributable PDF.
 
 - [ ] Customize XSL styles (See [Issue #14][i14]):
-    + [ ] Footnotes: use numbers instead of letters.
-    + [ ] Improve admonitions styles:
-        * [ ] Nicer icons
-        * [ ] Icons colors according to type of admonition (red, yellow, green, blue, etc.)
-    + [ ] Customize Verbatim blocks (colors and styles):
-        * [x] Alan code examples
-        * [x] BNF rules
-        * [x] Game transcripts
-        * [ ] Shell output
-- [x] Fix problem with special Unicode chars not showing in PDF (eg, arrows symbols in Tables — See [Issue #23][i23])
-- [ ] Fonts:
-    + [ ] Find appropriate fonts and include them in project
-    + [x] Set fonts in XSL stylesheets
-- [ ]  (_more issues expected soon..._)
 
 ## HTML Toolchain Setup
 

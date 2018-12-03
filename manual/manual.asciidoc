@@ -1,6 +1,6 @@
 :doctitle:  The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.83
-:revdate:   December 2, 2018
+:revnumber: 0.1.84
+:revdate:   December 3, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
 :encoding: utf-8
@@ -86,7 +86,7 @@ include::manual_04.asciidoc[]
 // =======================
 include::manual_05.asciidoc[]
 
-// 6. Hints And Tips
+// 6. Hints and Tips
 // =================
 include::manual_06.asciidoc[]
 
@@ -94,7 +94,7 @@ include::manual_06.asciidoc[]
 // =========================
 include::manual_07.asciidoc[]
 
-// Appendix A: How To Use The System
+// Appendix A: How to Use the System
 // =================================
 include::manual_08.asciidoc[]
 

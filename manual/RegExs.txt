@@ -151,6 +151,15 @@ FIND APPENDIXES: ( [appendix] )
 ^=
 \n\n=
 
+==============================================================================
+                               Change Headings                                
+==============================================================================
+
+Because xrefs are case-sensitive, when changing a heading wordings or lettercase,
+we must ensure that we also change any xrefs pointing to it:
+
+(= |<<)ORIGINALHEADING\b
+$1CHANGEDHEADING
 
 ******************************************************************************
 *                                                                            *
