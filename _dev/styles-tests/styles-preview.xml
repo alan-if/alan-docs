@@ -5,7 +5,7 @@
 <info>
 <title>Alan Documentation Styles</title>
 <subtitle>templates styles samples</subtitle>
-<date>October 07, 2018</date>
+<date>December 3, 2018</date>
 <author>
 <personname>
 <firstname>Tristano</firstname>
@@ -16,8 +16,8 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>1.0</revnumber>
-<date>October 07, 2018</date>
+<revnumber>1.1</revnumber>
+<date>December 3, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: Asciidoctor&#8217;s native HTML5</revremark>
 </revision>
@@ -46,5 +46,414 @@ abcdefghijklmnopqrstuvwxyz
 <bridgehead xml:id="_abcdefghijklmnopqrstuvwxyz_2" renderas="sect2">abcdefghijklmnopqrstuvwxyz</bridgehead>
 <bridgehead xml:id="_1234567890" renderas="sect2">1234567890 + - * /</bridgehead>
 <bridgehead xml:id="" renderas="sect2">!?|()[]{}&lt;&gt;$@</bridgehead>
+</chapter>
+<chapter xml:id="_lists">
+<title>Lists</title>
+<section xml:id="_unrdered_list">
+<title>Unrdered List</title>
+<itemizedlist>
+<title>List Title</title>
+<listitem>
+<simpara>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro.</simpara>
+</listitem>
+<listitem>
+<simpara>De carne lumbering animata corpora quaeritis.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Summus brains sit​​, morbo vel maleficia?</simpara>
+<itemizedlist>
+<listitem>
+<simpara>De apocalypsi gorger omero undead survivor dictum mauris.</simpara>
+</listitem>
+<listitem>
+<simpara>Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium.</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara>Qui animated corpse, cricket bat max brucks terribilem incessu zomby.</simpara>
+</listitem>
+<listitem>
+<simpara>The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Zonbi tattered for solum oculi eorum defunctis go lum cerebro.</simpara>
+</listitem>
+<listitem>
+<simpara>Nescio brains an Undead zombies.</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara>Sicut malus putrid voodoo horror.</simpara>
+</listitem>
+<listitem>
+<simpara>Nigh tofth eliv ingdead.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_ordered_list">
+<title>Ordered List</title>
+<orderedlist numeration="arabic">
+<title>List Title</title>
+<listitem>
+<simpara>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens.</simpara>
+<orderedlist numeration="loweralpha">
+<listitem>
+<simpara>Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams.</simpara>
+<orderedlist numeration="lowerroman">
+<listitem>
+<simpara>Pestilentia est plague haec decaying ambulabat mortuos.</simpara>
+<orderedlist numeration="upperalpha">
+<listitem>
+<simpara>Putridi braindead odores kill and infect, aere implent left four dead.</simpara>
+</listitem>
+</orderedlist>
+</listitem>
+</orderedlist>
+</listitem>
+<listitem>
+<simpara>Sicut zeder apathetic malus voodoo.</simpara>
+</listitem>
+</orderedlist>
+</listitem>
+<listitem>
+<simpara>Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife.</simpara>
+</listitem>
+<listitem>
+<simpara>Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis.</simpara>
+<orderedlist numeration="loweralpha">
+<listitem>
+<simpara>Alii missing oculis aliorum sicut serpere crabs nostram.</simpara>
+<orderedlist numeration="lowerroman">
+<listitem>
+<simpara>Putridi braindead odores kill and infect, aere implent left four dead.</simpara>
+</listitem>
+</orderedlist>
+</listitem>
+</orderedlist>
+</listitem>
+</orderedlist>
+</section>
+<section xml:id="_description_list">
+<title>Description List</title>
+<variablelist>
+<varlistentry>
+<term>Lucio </term>
+<listitem>
+<simpara>fulci tremor est dark vivos magna.</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Expansis </term>
+<listitem>
+<simpara>creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis.</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Romero </term>
+<listitem>
+<simpara>morbo Congress amarus in auras.</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Nihil </term>
+<listitem>
+<simpara>horum sagittis tincidunt, zombie slack-jawed gelida survival portenta.</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>The unleashed </term>
+<listitem>
+<simpara>virus est, et iam zombie mortui ambulabunt super terram.</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Souless mortuum  </term>
+<listitem>
+<simpara>glassy-eyed oculos attonitos indifferent back zom bieapoc alypse.</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>An hoc </term>
+<listitem>
+<simpara>dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante?</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Is bello </term>
+<listitem>
+<simpara>mundi z?</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section xml:id="_description_list_horizontal">
+<title>Description List Horizontal</title>
+<informaltable tabstyle="horizontal" frame="none" colsep="0" rowsep="0">
+<tgroup cols="2">
+<colspec colwidth="15*"/>
+<colspec colwidth="85*"/>
+<tbody valign="top">
+<row>
+<entry>
+<simpara>Lucio </simpara>
+</entry>
+<entry>
+<simpara>fulci tremor est dark vivos magna.</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>Expansis </simpara>
+</entry>
+<entry>
+<simpara>creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis.</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>Romero </simpara>
+</entry>
+<entry>
+<simpara>morbo Congress amarus in auras.</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>Nihil </simpara>
+</entry>
+<entry>
+<simpara>horum sagittis tincidunt, zombie slack-jawed gelida survival portenta.</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>The unleashed </simpara>
+</entry>
+<entry>
+<simpara>virus est, et iam zombie mortui ambulabunt super terram.</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>Souless mortuum  </simpara>
+</entry>
+<entry>
+<simpara>glassy-eyed oculos attonitos indifferent back zom bieapoc alypse.</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>An hoc </simpara>
+</entry>
+<entry>
+<simpara>dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante?</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>Is bello </simpara>
+</entry>
+<entry>
+<simpara>mundi z?</simpara>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</section>
+<section xml:id="_qa_list">
+<title>Q&amp;A List</title>
+<qandaset>
+<qandaentry>
+<question>
+<simpara>Clairvius Narcisse, an ante?</simpara>
+</question>
+<answer>
+<simpara>The unleashed virus est, et iam zombie mortui ambulabunt super terram.</simpara>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<simpara>Is bello mundi z?</simpara>
+</question>
+<answer>
+<simpara>Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse.</simpara>
+</answer>
+</qandaentry>
+</qandaset>
+</section>
+</chapter>
+<chapter xml:id="_block_elements">
+<title>Block Elements</title>
+<section xml:id="_quotations">
+<title>Quotations</title>
+<blockquote>
+<simpara>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
+et hoc.</simpara>
+<simpara>Post iacentem praescia neci audire fausto revellit aequo reflectitur et
+opem.</simpara>
+<blockquote>
+<simpara>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
+et hoc.</simpara>
+<simpara>Post iacentem praescia neci audire fausto revellit aequo reflectitur et</simpara>
+<blockquote>
+<simpara>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
+et hoc.</simpara>
+<simpara>Post iacentem praescia neci audire fausto revellit aequo reflectitur et
+opem.</simpara>
+</blockquote>
+</blockquote>
+</blockquote>
+</section>
+<section xml:id="_example">
+<title>Example</title>
+<informalexample>
+<simpara>Lucibus ibi medio generis amore, post sibi, puellae Ophiusiaque aera incerti
+nuda. Quos et potero inpune iam. Amissa aetas! Sis <emphasis role="strong">cultro</emphasis> spissus rostro
+aliquemque pio fugit, suum in Iovis, circumdata curru non, et spectantur
+incognita carchesia</simpara>
+</informalexample>
+</section>
+</chapter>
+<chapter xml:id="_admonitions">
+<title>Admonitions</title>
+<section xml:id="_note">
+<title>Note</title>
+<note>
+<simpara>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
+et hoc. Post iacentem praescia neci audire fausto revellit aequo reflectitur et
+opem. Quaesitique ferarum praestantior inter tunc uterque depresso an ego partim
+volatu. Invita undis dei nec bibat.</simpara>
+</note>
+</section>
+<section xml:id="_tip">
+<title>Tip</title>
+<tip>
+<simpara>Qui flere et propior umbra senectus moriturus scelus primus, de magis culpetne
+utque retinens: longa cogeris Bacchus. Obruta urbe tandemque ausi utque
+vastum, bracchiaque Europam mora murmur. Dulce voce in quoque, sub est nullaque,
+siccantem adverso!</simpara>
+</tip>
+</section>
+<section xml:id="_warning">
+<title>Warning</title>
+<warning>
+<simpara>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
+et hoc. Post iacentem praescia neci audire fausto revellit aequo reflectitur et
+opem. Quaesitique ferarum praestantior inter tunc uterque depresso an ego partim
+volatu. Invita undis dei nec bibat.</simpara>
+</warning>
+</section>
+<section xml:id="_caution">
+<title>Caution</title>
+<caution>
+<simpara>Qui flere et propior umbra senectus moriturus scelus primus, de magis culpetne
+utque retinens: longa cogeris Bacchus. Obruta urbe tandemque ausi utque
+vastum, bracchiaque Europam mora murmur. Dulce voce in quoque, sub est nullaque,
+siccantem adverso!</simpara>
+</caution>
+</section>
+<section xml:id="_important">
+<title>Important</title>
+<important>
+<simpara>Qui flere et propior umbra senectus moriturus scelus primus, de magis culpetne
+utque retinens: longa cogeris Bacchus. Obruta urbe tandemque ausi utque
+vastum, bracchiaque Europam mora murmur. Dulce voce in quoque, sub est nullaque,
+siccantem adverso!</simpara>
+</important>
+</section>
+</chapter>
+<chapter xml:id="_tables">
+<title>Tables</title>
+<table frame="all" rowsep="1" colsep="1">
+<title>Textual symbol replacements</title>
+<tgroup cols="4">
+<colspec colname="col_1" colwidth="30*"/>
+<colspec colname="col_2" colwidth="20*"/>
+<colspec colname="col_3" colwidth="30*"/>
+<colspec colname="col_4" colwidth="20*"/>
+<thead>
+<row>
+<entry align="left" valign="top">Name</entry>
+<entry align="center" valign="top">Syntax</entry>
+<entry align="center" valign="top">Unicode Replacement</entry>
+<entry align="center" valign="top">Rendered</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara>Copyright</simpara></entry>
+<entry align="center" valign="top"><simpara>(C)</simpara></entry>
+<entry align="center" valign="top"><simpara>&amp;#169;</simpara></entry>
+<entry align="center" valign="top"><simpara>&#169;</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Registered</simpara></entry>
+<entry align="center" valign="top"><simpara>(R)</simpara></entry>
+<entry align="center" valign="top"><simpara>&amp;#174;</simpara></entry>
+<entry align="center" valign="top"><simpara>&#174;</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Trademark</simpara></entry>
+<entry align="center" valign="top"><simpara>(TM)</simpara></entry>
+<entry align="center" valign="top"><simpara>&amp;#8482;</simpara></entry>
+<entry align="center" valign="top"><simpara>&#8482;</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Em dash</simpara></entry>
+<entry align="center" valign="top"><simpara>--</simpara></entry>
+<entry align="center" valign="top"><simpara>&amp;#8212;</simpara></entry>
+<entry align="center" valign="top"><simpara>&#8201;&#8212;&#8201;</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>ellipses</simpara></entry>
+<entry align="center" valign="top"><simpara>...</simpara></entry>
+<entry align="center" valign="top"><simpara>&amp;#8230;</simpara></entry>
+<entry align="center" valign="top"><simpara>&#8230;&#8203;</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>right single arrow</simpara></entry>
+<entry align="center" valign="top"><simpara>-&gt;</simpara></entry>
+<entry align="center" valign="top"><simpara>&amp;#8594;</simpara></entry>
+<entry align="center" valign="top"><simpara>&#8594;</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>right double arrow</simpara></entry>
+<entry align="center" valign="top"><simpara>=&gt;</simpara></entry>
+<entry align="center" valign="top"><simpara>&amp;#8658;</simpara></entry>
+<entry align="center" valign="top"><simpara>&#8658;</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>left single arrow</simpara></entry>
+<entry align="center" valign="top"><simpara>&lt;-</simpara></entry>
+<entry align="center" valign="top"><simpara>&amp;#8592;</simpara></entry>
+<entry align="center" valign="top"><simpara>&#8592;</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>left double arrow</simpara></entry>
+<entry align="center" valign="top"><simpara>&lt;=</simpara></entry>
+<entry align="center" valign="top"><simpara>&amp;#8656;</simpara></entry>
+<entry align="center" valign="top"><simpara>&#8656;</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>apostrophe</simpara></entry>
+<entry align="center" valign="top"><simpara>Sam's</simpara></entry>
+<entry align="center" valign="top"><simpara>Sam&#8217;s</simpara></entry>
+<entry align="center" valign="top"><simpara>Sam&#8217;s</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<simpara><?asciidoc-hr?></simpara>
+<note>
+<simpara>This table was taken and adapated from the
+<link xl:href="https://github.com/asciidoctor/asciidoctor.org/blob/master/docs/_includes/subs-symbol-repl.adoc">Asciidoctor Project Site</link> repository, and it&#8217;s
+Copyright &#169; Asciidoctor Project, 2018.
+Content licensed under <link xl:href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</link>.</simpara>
+</note>
 </chapter>
 </book>
