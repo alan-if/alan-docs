@@ -18,7 +18,7 @@
 <revnumber>2.0</revnumber>
 <date>October 07, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
-<revremark>Backend: Asciidoctor&#8217;s native HTML5</revremark>
+<revremark>Backend: {toolchain}</revremark>
 </revision>
 </revhistory>
 </info>

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?asciidoc-toc maxdepth="5"?>
-<?asciidoc-numbered?>
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>Syntax Highlighting in Alan Documentation</title>
-<date>October 07, 2018</date>
+<date>December 5, 2018</date>
 <author>
 <personname>
 <firstname>Tristano</firstname>
@@ -15,10 +14,10 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>2.0</revnumber>
-<date>October 07, 2018</date>
+<revnumber>2.1</revnumber>
+<date>December 5, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
-<revremark>Backend: Asciidoctor&#8217;s native HTML5</revremark>
+<revremark>Backend: {toolchain}</revremark>
 </revision>
 </revhistory>
 </info>
@@ -26,15 +25,23 @@
 <title></title>
 <simpara>This document is for previewing how source code and other verbatim blocks will be rendered and styled in the final documentation, and for comparing quality and differences across all the supported output formats.</simpara>
 <simpara>Some contents are format dependent and will vary according to the document&#8217;s output format and the backend employed, providing additional information specific to that format and/or backend.</simpara>
+<note>
+<simpara>For syntax highlighting in the PDF backend we use <link xl:href="https://sourceforge.net/projects/xslthl/">XSLTHL</link> for which we&#8217;ve created an Alan syntax definition from scratch.</simpara>
+</note>
 </preface>
-<chapter xml:id="_syntaxes_preview">
+<part xml:id="part_one" xreflabel="Part I">
 <title>Syntaxes Preview</title>
-<section xml:id="_alan">
+<partintro>
+<simpara>The first part of this document offers a quick preview of all the colored syntaxes supported by the Alan Docs template.</simpara>
+<simpara>In-depth information and contextual tests for syntaxes that support syntax highlighing can be found in <xref linkend="part_two"/> of this document.</simpara>
+</partintro>
+<chapter xml:id="_alan">
 <title>Alan</title>
+<simpara>Alan code examples are styles as <literal>alan</literal> source blocks.</simpara>
 <programlisting language="alan" linenumbering="unnumbered">--==============================================================================
--- "Barracks Example" by Tristano Ajmone
+-- "Barracks Example" by Tristano Ajmone <co xml:id="CO1-1"/>
 --==============================================================================
-The canteen IsA LOCATION
+The canteen IsA LOCATION <co xml:id="CO1-2"/>
   Name 'The Barrack''s Mess Hall'.
 END The canteen.
 
@@ -56,16 +63,46 @@ The trolley IsA object At canteen
 End The trolley.
 --------------------------------------------------------------------------------
 Start at canteen.</programlisting>
-</section>
-<section xml:id="_bnf">
+<calloutlist>
+<callout arearefs="CO1-1">
+<para>Callouts use default colors, no customization.</para>
+</callout>
+<callout arearefs="CO1-2">
+<para>Callouts use default colors, no customization.</para>
+</callout>
+</calloutlist>
+<note>
+<simpara>Currently, there aren&#8217;t any Alan sourcecode examples with callouts in the <emphasis>Alan Manual</emphasis>.</simpara>
+</note>
+</chapter>
+<chapter xml:id="_bnf">
 <title>BNF</title>
+<simpara>BNF rules are styles as <literal>bnf</literal> source blocks.</simpara>
 <programlisting language="bnf" linenumbering="unnumbered">class = 'EVERY' id
             [inheritance]
             {property}
         'END' 'EVERY' [id] ['.']</programlisting>
-</section>
-<section xml:id="_game_transcripts">
+<note>
+<simpara>Currently, there aren&#8217;t any BNF rules with callouts in the <emphasis>Alan Manual</emphasis>.</simpara>
+</note>
+<important>
+<title>CALLOUTS NOT SUPPORTED</title>
+<simpara>Neither the HTML nor the PDF syntax highlighters are currently set to support BNF syntax.
+This means that callouts are not currently being processed and can&#8217;t be used.</simpara>
+<simpara>If callouts need to be used inside BNF rules, we need to either:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Add a BNF syntax to the highlighters.</simpara>
+</listitem>
+<listitem>
+<simpara>Use a different type of verbatim block.</simpara>
+</listitem>
+</itemizedlist>
+</important>
+</chapter>
+<chapter xml:id="_game_transcripts">
 <title>Game Transcripts</title>
+<simpara>Game transcript use an <literal>example</literal> block with <literal>role="gametranscript"</literal>.</simpara>
 <simpara>Although a game transcript is neither source code nor a verbatim block, I&#8217;m including it in this document to allow comparing its styles and colors to other block-type elements in the documentation.</simpara>
 <informalexample role="gametranscript">
 <simpara><emphasis role="strong">West of House.</emphasis><?asciidoc-br?>
@@ -76,14 +113,77 @@ I see nothing special about the mailbox.</simpara>
 <simpara>&gt; <emphasis>open it</emphasis><?asciidoc-br?>
 The small mailbox is now open. The small mailbox contains a leaflet.</simpara>
 </informalexample>
-</section>
+<important>
+<title>CALLOUTS NOT SUPPORTED</title>
+<simpara>Game transcripts are not verbatim blocks, so callouts are not supported.</simpara>
+</important>
 </chapter>
-<chapter xml:id="_the_alan_syntax">
-<title>The Alan Syntax</title>
+<chapter xml:id="_shell">
+<title>Shell</title>
+<simpara>For shell usage examples we use a <literal>literal</literal> block with <literal>role="shell"</literal>.
+The color scheme employed is based on the <link xl:href="https://blogs.msdn.microsoft.com/commandline/2017/08/02/updating-the-windows-console-colors/">new default console scheme of Windows 10</link>.</simpara>
+<literallayout role="shell" class="monospaced">D:\&gt;alan -help <co xml:id="CO2-1"/>
+Usage: ALAN &lt;adventure&gt; [-help] [options]
+
+Arguments:
+  &lt;adventure&gt;       -- file name, default extension '.alan' <co xml:id="CO2-2"/> <co xml:id="CO2-3"/>
+
+Options:
+  -help             -- this help
+  -[-]verbose       -- verbose messages (default: OFF)
+  -[-]warnings      -- [don't] show warning messages (default: ON)
+  -[-]infos         -- [don't] show informational messages (default: OFF)
+  -include &lt;path&gt;   -- additional directory to search after current when
+                       looking for imported files (may be repeated)</literallayout>
+<calloutlist>
+<callout arearefs="CO2-1">
+<para>I&#8217;ve also styled the callouts background and foreground colors to match the shell scheme.</para>
+</callout>
+<callout arearefs="CO2-2">
+<para>By default, callouts have black circles and white numbers, which don&#8217;t work well with the black background of the shell scheme.</para>
+</callout>
+<callout arearefs="CO2-3">
+<para>In the PDF document I haven&#8217;t been able to tweak callouts colors.</para>
+</callout>
+</calloutlist>
+<note>
+<simpara>The <emphasis>Alan Manual</emphasis> contains shell examples with callouts in
+<link xl:href="../../manual/manual.html#_format_of_messages">App. F.1. Format of Messages</link>.</simpara>
+</note>
+<warning>
+<title>CALLOUTS PROBLEM</title>
+<simpara>Unlike the HTML backend, I haven&#8217;t found a way to customize the background color of callout discs inside shell examples; therefore the default black colored reverse-video circles are lost in the black background of the shell color scheme.</simpara>
+<simpara>The PDF template uses SVG image files to render the reverse-video circled numbers; although it&#8217;s possible to customize the XSL settings to point to customized SVG images, this setting would affect all callouts&#8201;&#8212;&#8201;i.e. I haven&#8217;t found a way to use different callout images depending on the block role.</simpara>
+<simpara>Possible solutions to this problem:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Provide customized SVG iamges with different background color (affects all callouts in the book).</simpara>
+</listitem>
+<listitem>
+<simpara>Disable callout icons and use text instead (i.e. <literal>(1)</literal>) via the <literal>callout.graphics</literal> setting.</simpara>
+</listitem>
+<listitem>
+<simpara>Use a lighter color scheme for shell (simplest solution).</simpara>
+</listitem>
+</itemizedlist>
+</warning>
+</chapter>
+</part>
+<part xml:id="part_two" xreflabel="Part II">
+<title>Syntaxes Details</title>
+<partintro>
+<simpara>This part of the document covers in more detail the syntaxes which are syntax highlighted in the Alan Doc template, and provides also various tests to check how styles are rendered in various contexts.</simpara>
+</partintro>
+<chapter xml:id="_alan_syntax">
+<title>Alan Syntax</title>
 <simpara>Different conversion toolchains use different tools for syntax highlighting.
 For HTML format conversion, various highlighters are natively supported by Asciidoctor.
 For PDF conversion, the usable highlighting tool(s) will be dictated by the third party backend employed.</simpara>
 <simpara>In all cases, a custom Alan syntax definiton would have to be created for the highlighter tool used with each backend, as none of them ships with a native Alan definition (the sole exception being <link xl:href="http://www.andre-simon.de/">Highlight</link>, which is not natively supported in any of the backends, but could be integrated into some of them).</simpara>
+<note>
+<simpara>The PDF conversion toolchain uses <link xl:href="https://github.com/asciidoctor/asciidoctor-fopub">asciidoctor-fopub</link> to create the PDF from the DocBook version of the documents.
+Asciidoc-fopub ships with an integrated syntax highlighter, called XSLHL.</simpara>
+</note>
 <section xml:id="_syntax_tests">
 <title>Syntax Tests</title>
 <simpara>Here follow some code snippets for testing both common- and edge-cases in the language and ensure they are rendered as expected.</simpara>
@@ -197,15 +297,15 @@ When hero At cave =&gt;</programlisting>
 <section xml:id="_callouts_support">
 <title>Callouts Support</title>
 <simpara>Now it&#8217;s time to test how callouts interact with the syntax highligher.</simpara>
-<programlisting language="alan" linenumbering="unnumbered">The shore IsA location <co xml:id="CO1-1"/>
-  Name Shore of Great Sea <co xml:id="CO1-2"/>
+<programlisting language="alan" linenumbering="unnumbered">The shore IsA location <co xml:id="CO3-1"/>
+  Name Shore of Great Sea <co xml:id="CO3-2"/>
   Description "A beautifyl sea shore, probably Paradise lost."
 End The shore.</programlisting>
 <calloutlist>
-<callout arearefs="CO1-1">
+<callout arearefs="CO3-1">
 <para>Instance declaration.</para>
 </callout>
-<callout arearefs="CO1-2">
+<callout arearefs="CO3-2">
 <para>Instance name.</para>
 </callout>
 </calloutlist>
@@ -232,4 +332,5 @@ negative = 'NEGATIVE' article_or_form
 article_or_form = 'ARTICLE' {statement}
                 | 'FORM' {statement}</programlisting>
 </chapter>
+</part>
 </book>

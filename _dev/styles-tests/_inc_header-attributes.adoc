@@ -11,7 +11,9 @@
 // =====================
 // HTML Default Settings
 // =====================
+ifeval::["{backend}" == "html5"]
 :toolchain: pass:r[Asciidoctor's native HTML5]
+endif::[]
 // =====================
 // PDF Settings Override
 // =====================

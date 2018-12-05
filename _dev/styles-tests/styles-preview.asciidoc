@@ -166,6 +166,54 @@ Is bello mundi z?::
 == Block Elements
 
 
+
+
+=== Example
+
+[example]
+============================================================================
+Lucibus ibi medio generis amore, post sibi, puellae Ophiusiaque aera incerti
+nuda. Quos et potero inpune iam. Amissa aetas! Sis *cultro* spissus rostro
+aliquemque pio fugit, suum in Iovis, circumdata curru non, et spectantur
+incognita carchesia
+============================================================================
+
+
+=== Listing
+
+[listing]
+--------------------------------------------
+Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
+et hoc.
+
+Post iacentem praescia neci audire fausto revellit aequo reflectitur et
+opem.
+--------------------------------------------
+
+
+=== Literal
+
+
+[literal]
+............................................
+Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
+et hoc.
+
+Post iacentem praescia neci audire fausto revellit aequo reflectitur et
+opem.
+............................................
+
+
+=== Source
+
+[source]
+--------------------------------------------
+For i=1 To 10
+  Print "Hello World!"
+Next
+--------------------------------------------
+
+
 === Quotations
 
 ____
@@ -190,19 +238,6 @@ opem.
 ____________
 ________
 ____
-
-
-
-=== Example
-
-[example]
-============================================================================
-Lucibus ibi medio generis amore, post sibi, puellae Ophiusiaque aera incerti
-nuda. Quos et potero inpune iam. Amissa aetas! Sis *cultro* spissus rostro
-aliquemque pio fugit, suum in Iovis, circumdata curru non, et spectantur
-incognita carchesia
-============================================================================
-
 
 
 // *****************************************************************************

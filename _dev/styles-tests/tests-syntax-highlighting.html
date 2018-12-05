@@ -438,21 +438,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">v 2.0,</span>
-<span id="revdate">October 07, 2018</span>
+<span id="revnumber">v 2.1,</span>
+<span id="revdate">December 5, 2018</span>
 <br><span id="revremark">Backend: Asciidoctor&#8217;s native HTML5</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#part_one">Syntaxes Preview</a>
 <ul class="sectlevel1">
-<li><a href="#_syntaxes_preview">Syntaxes Preview</a>
-<ul class="sectlevel2">
 <li><a href="#_alan">Alan</a></li>
 <li><a href="#_bnf">BNF</a></li>
 <li><a href="#_game_transcripts">Game Transcripts</a></li>
+<li><a href="#_shell">Shell</a></li>
 </ul>
 </li>
-<li><a href="#_the_alan_syntax">The Alan Syntax</a>
+<li><a href="#part_two">Syntaxes Details</a>
+<ul class="sectlevel1">
+<li><a href="#_alan_syntax">Alan Syntax</a>
 <ul class="sectlevel2">
 <li><a href="#_syntax_tests">Syntax Tests</a>
 <ul class="sectlevel3">
@@ -471,6 +474,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_bnf_syntax">BNF Syntax</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -500,17 +505,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
+<h1 id="part_one" class="sect0"><a class="anchor" href="#part_one"></a>Syntaxes Preview</h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="paragraph">
+<p>The first part of this document offers a quick preview of all the colored syntaxes supported by the Alan Docs template.</p>
+</div>
+<div class="paragraph">
+<p>In-depth information and contextual tests for syntaxes that support syntax highlighing can be found in <a href="#part_two">Part II</a> of this document.</p>
+</div>
+</div>
+</div>
 <div class="sect1">
-<h2 id="_syntaxes_preview"><a class="anchor" href="#_syntaxes_preview"></a>Syntaxes Preview</h2>
+<h2 id="_alan"><a class="anchor" href="#_alan"></a>Alan</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_alan"><a class="anchor" href="#_alan"></a>Alan</h3>
+<div class="paragraph">
+<p>Alan code examples are styles as <code>alan</code> source blocks.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">--==============================================================================
--- "Barracks Example" by Tristano Ajmone
+-- "Barracks Example" by Tristano Ajmone <i class="conum" data-value="1"></i><b>(1)</b>
 --==============================================================================
-The canteen IsA LOCATION
+The canteen IsA LOCATION <i class="conum" data-value="2"></i><b>(2)</b>
   Name 'The Barrack''s Mess Hall'.
 END The canteen.
 
@@ -534,9 +551,40 @@ End The trolley.
 Start at canteen.</code></pre>
 </div>
 </div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Callouts use default colors, no customization.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Callouts use default colors, no customization.</td>
+</tr>
+</table>
 </div>
-<div class="sect2">
-<h3 id="_bnf"><a class="anchor" href="#_bnf"></a>BNF</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Currently, there aren&#8217;t any Alan sourcecode examples with callouts in the <em>Alan Manual</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bnf"><a class="anchor" href="#_bnf"></a>BNF</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>BNF rules are styles as <code>bnf</code> source blocks.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">class = 'EVERY' id
@@ -545,9 +593,57 @@ Start at canteen.</code></pre>
         'END' 'EVERY' [id] ['.']</code></pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Currently, there aren&#8217;t any BNF rules with callouts in the <em>Alan Manual</em>.</p>
 </div>
-<div class="sect2">
-<h3 id="_game_transcripts"><a class="anchor" href="#_game_transcripts"></a>Game Transcripts</h3>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">CALLOUTS NOT SUPPORTED</div>
+<div class="paragraph">
+<p>Neither the HTML nor the PDF syntax highlighters are currently set to support BNF syntax.
+This means that callouts are not currently being processed and can&#8217;t be used.</p>
+</div>
+<div class="paragraph">
+<p>If callouts need to be used inside BNF rules, we need to either:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add a BNF syntax to the highlighters.</p>
+</li>
+<li>
+<p>Use a different type of verbatim block.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_game_transcripts"><a class="anchor" href="#_game_transcripts"></a>Game Transcripts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Game transcript use an <code>example</code> block with <code>role="gametranscript"</code>.</p>
+</div>
 <div class="paragraph">
 <p>Although a game transcript is neither source code nor a verbatim block, I&#8217;m including it in this document to allow comparing its styles and colors to other block-type elements in the documentation.</p>
 </div>
@@ -570,11 +666,90 @@ The small mailbox is now open. The small mailbox contains a leaflet.</p>
 </div>
 </div>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">CALLOUTS NOT SUPPORTED</div>
+<div class="paragraph">
+<p>Game transcripts are not verbatim blocks, so callouts are not supported.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_alan_syntax"><a class="anchor" href="#_the_alan_syntax"></a>The Alan Syntax</h2>
+<h2 id="_shell"><a class="anchor" href="#_shell"></a>Shell</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For shell usage examples we use a <code>literal</code> block with <code>role="shell"</code>.
+The color scheme employed is based on the <a href="https://blogs.msdn.microsoft.com/commandline/2017/08/02/updating-the-windows-console-colors/" target="_blank" rel="noopener">new default console scheme of Windows 10</a>.</p>
+</div>
+<div class="literalblock shell">
+<div class="content">
+<pre>D:\&gt;alan -help <i class="conum" data-value="1"></i><b>(1)</b>
+Usage: ALAN &lt;adventure&gt; [-help] [options]
+
+Arguments:
+  &lt;adventure&gt;       -- file name, default extension '.alan' <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b>
+
+Options:
+  -help             -- this help
+  -[-]verbose       -- verbose messages (default: OFF)
+  -[-]warnings      -- [don't] show warning messages (default: ON)
+  -[-]infos         -- [don't] show informational messages (default: OFF)
+  -include &lt;path&gt;   -- additional directory to search after current when
+                       looking for imported files (may be repeated)</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>I&#8217;ve also styled the callouts background and foreground colors to match the shell scheme.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>By default, callouts have black circles and white numbers, which don&#8217;t work well with the black background of the shell scheme.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>In the PDF document I haven&#8217;t been able to tweak callouts colors.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <em>Alan Manual</em> contains shell examples with callouts in
+<a href="../../manual/manual.html#_format_of_messages" target="_blank" rel="noopener">App. F.1. Format of Messages</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<h1 id="part_two" class="sect0"><a class="anchor" href="#part_two"></a>Syntaxes Details</h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="paragraph">
+<p>This part of the document covers in more detail the syntaxes which are syntax highlighted in the Alan Doc template, and provides also various tests to check how styles are rendered in various contexts.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_alan_syntax"><a class="anchor" href="#_alan_syntax"></a>Alan Syntax</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Different conversion toolchains use different tools for syntax highlighting.
@@ -813,7 +988,7 @@ article_or_form = 'ARTICLE' {statement}
 </div>
 <div id="footer">
 <div id="footer-text">
-v 2.0<br>
+v 2.1<br>
 </div>
 </div>
 <link rel="stylesheet" href="../../_assets/hjs/styles/github.min.css">

@@ -1,9 +1,12 @@
 = Syntax Highlighting in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v2.0, October 07, 2018
+v2.1, December 5, 2018
 include::_inc_header-attributes.adoc[]
 :doctype: book
 :toclevels: 5
+// Sections Numbering:
+:sectnums!:
+:sectnumlevels: 2
 
 
 // =============================================================================
@@ -35,10 +38,10 @@ https://github.com/tajmone/highlight.js/blob/Alan/src/languages/alan.js[Alan syn
 
 endif::[]
 
-// ===================
-// FOPUB Backend Only:
-// ===================
-ifeval::["{toolchain}" == "asciidoctor-fopub"]
+// =================
+// PDF Backend Only:
+// =================
+ifeval::["{backend}" != "html5"]
 
 [NOTE]
 ================================================================================
@@ -47,16 +50,44 @@ For syntax highlighting in the PDF backend we use https://sourceforge.net/projec
 endif::[]
 
 
-== Syntaxes Preview
+// *****************************************************************************
+// *                                                                           *
+// *                         PART I. SYNTAXES PREVIEW                          *
+// *                                                                           *
+// *****************************************************************************
 
-=== Alan
+[[part_one]]
+[reftext="Part I"]
+= Syntaxes Preview
+
+[partintro]
+--
+The first part of this document offers a quick preview of all the colored syntaxes supported by the Alan Docs template.
+
+In-depth information and contextual tests for syntaxes that support syntax highlighing can be found in <<part_two>> of this document.
+--
+
+== Alan
+
+Alan code examples are styles as `alan` source blocks.
 
 [source,alan]
 --------------------
 include::snippets.alan[tag=sample]
 --------------------
 
-=== BNF
+<1> Callouts use default colors, no customization.
+<2> Callouts use default colors, no customization.
+
+[NOTE]
+================================================================================
+Currently, there aren't any Alan sourcecode examples with callouts in the _Alan Manual_.
+================================================================================
+
+
+== BNF
+
+BNF rules are styles as `bnf` source blocks.
 
 [source,bnf,subs="macros"]
 --------------------------------------------------------------------------------
@@ -66,8 +97,27 @@ class = 'EVERY' id
         'END' 'EVERY' [id] ['.']
 --------------------------------------------------------------------------------
 
+[NOTE]
+================================================================================
+Currently, there aren't any BNF rules with callouts in the _Alan Manual_.
+================================================================================
 
-=== Game Transcripts
+[IMPORTANT]
+.CALLOUTS NOT SUPPORTED
+================================================================================
+Neither the HTML nor the PDF syntax highlighters are currently set to support BNF syntax.
+This means that callouts are not currently being processed and can't be used.
+
+If callouts need to be used inside BNF rules, we need to either:
+
+* Add a BNF syntax to the highlighters.
+* Use a different type of verbatim block.
+================================================================================
+
+
+== Game Transcripts
+
+Game transcript use an `example` block with `role="gametranscript"`.
 
 Although a game transcript is neither source code nor a verbatim block, I'm including it in this document to allow comparing its styles and colors to other block-type elements in the documentation.
 
@@ -85,11 +135,86 @@ I see nothing special about the mailbox.
 The small mailbox is now open. The small mailbox contains a leaflet.
 ================================================================================
 
+[IMPORTANT]
+.CALLOUTS NOT SUPPORTED
+================================================================================
+Game transcripts are not verbatim blocks, so callouts are not supported.
+================================================================================
 
 
 
+== Shell
 
-== The Alan Syntax
+For shell usage examples we use a `literal` block with `role="shell"`.
+The color scheme employed is based on the link:https://blogs.msdn.microsoft.com/commandline/2017/08/02/updating-the-windows-console-colors/[new default console scheme of Windows 10^].
+
+[literal, role="shell"]
+................................................................................
+D:\>alan -help <1>
+Usage: ALAN <adventure> [-help] [options]
+
+Arguments:
+  <adventure>       -- file name, default extension '.alan' <2> <3>
+
+Options:
+  -help             -- this help
+  -[-]verbose       -- verbose messages (default: OFF)
+  -[-]warnings      -- [don't] show warning messages (default: ON)
+  -[-]infos         -- [don't] show informational messages (default: OFF)
+  -include <path>   -- additional directory to search after current when
+                       looking for imported files (may be repeated)
+................................................................................
+
+<1> I've also styled the callouts background and foreground colors to match the shell scheme.
+<2> By default, callouts have black circles and white numbers, which don't work well with the black background of the shell scheme.
+<3> In the PDF document I haven't been able to tweak callouts colors.
+
+[NOTE]
+================================================================================
+The _Alan Manual_ contains shell examples with callouts in
+link:../../manual/manual.html#_format_of_messages[App. F.1. Format of Messages^].
+================================================================================
+
+// =================
+// PDF Backend Only:
+// =================
+ifeval::["{backend}" != "html5"]
+
+[WARNING]
+.CALLOUTS PROBLEM
+================================================================================
+Unlike the HTML backend, I haven't found a way to customize the background color of callout discs inside shell examples; therefore the default black colored reverse-video circles are lost in the black background of the shell color scheme.
+
+The PDF template uses SVG image files to render the reverse-video circled numbers; although it's possible to customize the XSL settings to point to customized SVG images, this setting would affect all callouts -- i.e. I haven't found a way to use different callout images depending on the block role.
+
+Possible solutions to this problem:
+
+* Provide customized SVG iamges with different background color (affects all callouts in the book).
+* Disable callout icons and use text instead (i.e. `(1)`) via the `callout.graphics` setting.
+* Use a lighter color scheme for shell (simplest solution).
+================================================================================
+endif::[]
+
+// *****************************************************************************
+// *                                                                           *
+// *                        PART II. SYNTAXES DETAILS                          *
+// *                                                                           *
+// *****************************************************************************
+
+[[part_two]]
+[reftext="Part II"]
+= Syntaxes Details
+
+[partintro]
+--
+This part of the document covers in more detail the syntaxes which are syntax highlighted in the Alan Doc template, and provides also various tests to check how styles are rendered in various contexts.
+--
+
+// =============================================================================
+//                                 Alan Syntax
+// =============================================================================
+
+== Alan Syntax
 
 Different conversion toolchains use different tools for syntax highlighting.
 For HTML format conversion, various highlighters are natively supported by Asciidoctor.
@@ -110,10 +235,10 @@ Although it's not among the natively supported highlighters, it should be possib
 ================================================================================
 endif::[]
 
-// ===================
-// FOPUB Backend Only:
-// ===================
-ifeval::["{toolchain}" == "asciidoctor-fopub"]
+// =================
+// PDF Backend Only:
+// =================
+ifeval::["{backend}" != "html5"]
 
 [NOTE]
 ================================================================================
@@ -230,6 +355,9 @@ End The shore.
 <1> Instance declaration.
 <2> Instance name.
 
+// =============================================================================
+//                                  BNF Syntax
+// =============================================================================
 
 == BNF Syntax
 

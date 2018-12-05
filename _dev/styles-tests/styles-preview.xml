@@ -19,7 +19,7 @@
 <revnumber>1.1</revnumber>
 <date>December 3, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
-<revremark>Backend: Asciidoctor&#8217;s native HTML5</revremark>
+<revremark>Backend: {toolchain}</revremark>
 </revision>
 </revhistory>
 </info>
@@ -289,6 +289,37 @@ abcdefghijklmnopqrstuvwxyz
 </chapter>
 <chapter xml:id="_block_elements">
 <title>Block Elements</title>
+<section xml:id="_example">
+<title>Example</title>
+<informalexample>
+<simpara>Lucibus ibi medio generis amore, post sibi, puellae Ophiusiaque aera incerti
+nuda. Quos et potero inpune iam. Amissa aetas! Sis <emphasis role="strong">cultro</emphasis> spissus rostro
+aliquemque pio fugit, suum in Iovis, circumdata curru non, et spectantur
+incognita carchesia</simpara>
+</informalexample>
+</section>
+<section xml:id="_listing">
+<title>Listing</title>
+<screen>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
+et hoc.
+
+Post iacentem praescia neci audire fausto revellit aequo reflectitur et
+opem.</screen>
+</section>
+<section xml:id="_literal">
+<title>Literal</title>
+<literallayout class="monospaced">Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
+et hoc.
+
+Post iacentem praescia neci audire fausto revellit aequo reflectitur et
+opem.</literallayout>
+</section>
+<section xml:id="_source">
+<title>Source</title>
+<screen>For i=1 To 10
+  Print "Hello World!"
+Next</screen>
+</section>
 <section xml:id="_quotations">
 <title>Quotations</title>
 <blockquote>
@@ -308,15 +339,6 @@ opem.</simpara>
 </blockquote>
 </blockquote>
 </blockquote>
-</section>
-<section xml:id="_example">
-<title>Example</title>
-<informalexample>
-<simpara>Lucibus ibi medio generis amore, post sibi, puellae Ophiusiaque aera incerti
-nuda. Quos et potero inpune iam. Amissa aetas! Sis <emphasis role="strong">cultro</emphasis> spissus rostro
-aliquemque pio fugit, suum in Iovis, circumdata curru non, et spectantur
-incognita carchesia</simpara>
-</informalexample>
 </section>
 </chapter>
 <chapter xml:id="_admonitions">

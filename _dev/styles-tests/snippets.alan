@@ -32,9 +32,9 @@
 
 -- tag::sample[]
 --==============================================================================
--- "Barracks Example" by Tristano Ajmone
+-- "Barracks Example" by Tristano Ajmone <1>
 --==============================================================================
-The canteen IsA LOCATION
+The canteen IsA LOCATION -- <2>
   Name 'The Barrack''s Mess Hall'.
 END The canteen.
 

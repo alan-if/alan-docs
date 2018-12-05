@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "common.xsl" v0.3.2 (2018/09/15)
+  "common.xsl" v0.3.3 (2018/12/05)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -13,6 +13,11 @@
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+  <!--**************************************************************************
+  *                                                                            *
+  *                                COLOR SCHEME                                *
+  *                                                                            *
+  ***************************************************************************-->
   <!-- Alan-Docs theme -->
   <xsl:param name="text.color">#222222</xsl:param>
   <xsl:param name="link.color">#005498</xsl:param>
@@ -26,137 +31,73 @@
   <xsl:param name="code.font-weight">normal</xsl:param>
   <xsl:param name="code.background-color">#EEEEEE</xsl:param>
 
-<!-- =============================================== -->
-<!-- Boxed-Blocks Default Settings                   -->
-<!-- =============================================== -->
-<!-- Some default values to use for Code, Verbatim and Example blocks -->
-  <xsl:param name="Default_Box.border.color" >#E6E6E6</xsl:param>
+  <!-- ============================= -->
+  <!-- Boxed-Blocks Default Settings -->
+  <!-- ============================= -->
+  <!-- Some default values to use for Code, Verbatim and Example blocks -->
+  <xsl:param name="Default_Box.background"   >#FCFCFC</xsl:param><!-- Warm White -->
+  <xsl:param name="Default_Box.color"        >#222222</xsl:param><!-- Warm Black -->
+  <xsl:param name="Default_Box.border.color" >#E6E6E6</xsl:param><!-- Warm Grey -->
   <xsl:param name="Default_Box.border.radius">3pt</xsl:param>
   <xsl:param name="Default_Box.border.width" >.25pt</xsl:param>
+  <xsl:param name="Default_Box.border.style" >solid</xsl:param>
 
-<!-- =============================================== -->
-<!-- Monokai Base16 Color Scheme, by Wimer Hazenberg -->
-<!-- =============================================== -->
-  <xsl:param name="Monokai.base00">#272822</xsl:param><!-- Rangoon Green ( almost black ) -->
-  <xsl:param name="Monokai.base01">#383830</xsl:param><!-- Armadillo ( almost black ) -->
-  <xsl:param name="Monokai.base02">#49483E</xsl:param><!-- Fuscous Gray ( blackboard-like brown ) -->
-  <xsl:param name="Monokai.base03">#75715E</xsl:param><!-- Crocodile -->
-  <xsl:param name="Monokai.base04">#A59F85</xsl:param><!-- Tallow -->
-  <xsl:param name="Monokai.base05">#F8F8F2</xsl:param><!-- Bianca -->
-  <xsl:param name="Monokai.base06">#F5F4F1</xsl:param><!-- Pampas -->
-  <xsl:param name="Monokai.base07">#F9F8F5</xsl:param><!-- Desert Storm -->
-  <xsl:param name="Monokai.base08">#F92672</xsl:param><!-- Rose ( red ) -->
-  <xsl:param name="Monokai.base09">#FD971F</xsl:param><!-- West Side ( intense orange ) -->
-  <xsl:param name="Monokai.base0A">#F4BF75</xsl:param><!-- Rajah  ( orange ) -->
-  <xsl:param name="Monokai.base0B">#A6E22E</xsl:param><!-- Inch Worm ( green ) -->
-  <xsl:param name="Monokai.base0C">#A1EFE4</xsl:param><!-- Water Leaf ( cyan/turquoise ) -->
-  <xsl:param name="Monokai.base0D">#66D9EF</xsl:param><!-- Sky Blue -->
-  <xsl:param name="Monokai.base0E">#AE81FF</xsl:param><!-- Lavender ( purple ) -->
-  <xsl:param name="Monokai.base0F">#CC6633</xsl:param><!-- Piper ( brick red ) -->
-  <!-- Extra colors (not in original scheme): -->
-  <xsl:param name="Monokai.base10">#FFE792</xsl:param><!-- Golden Glow ( yellow ) -->
-  <xsl:param name="Monokai.base11">#E6DB74</xsl:param><!-- Flax ( dull yellow ) -->
-  <xsl:param name="Monokai.base12">#1776BC</xsl:param><!-- Lochmara ( blue ) -->
-  <xsl:param name="Monokai.base13">#6298CD</xsl:param><!-- Danube ( dull blue ) -->
-
-  <!-- ================================== -->
-  <!-- Syntax Highlighting Theme for Alan -->
-  <!-- ================================== -->
+  <!-- ========================================= -->
+  <!-- Alan Sourcecode Syntax Highlighting Theme -->
+  <!-- ========================================= -->
   <!-- GITHUB SCHEME - Based on "github.com style" for highlight.js:
-        https://github.com/highlightjs/highlight.js/blob/master/src/styles/github.css
-        Author:  (c) Vasily Polovnyov <vast@whiteants.net>
-   -->
-  <xsl:param name="AlanHL.background">#F8F8F8</xsl:param>
-
-  <xsl:param name="AlanHL.class"   >#000080</xsl:param><!-- Dark Blue -->
-  <xsl:param name="AlanHL.comment" >#999988</xsl:param><!-- Dark Grey -->
-  <xsl:param name="AlanHL.hero"     select="$AlanHL.normal"></xsl:param>
-  <xsl:param name="AlanHL.keyword" >#990000</xsl:param><!-- Dark Red -->
-  <xsl:param name="AlanHL.normal"  >#333333</xsl:param>
-  <xsl:param name="AlanHL.number"   select="$AlanHL.normal"></xsl:param><!-- Was: #DD1144 bright red -->
-  <xsl:param name="AlanHL.operator" select="$AlanHL.normal"></xsl:param>
-  <xsl:param name="AlanHL.quotedId" select="$AlanHL.normal"></xsl:param>
-  <xsl:param name="AlanHL.string"  >#008080</xsl:param><!-- Dark Green -->
-
+       https://github.com/highlightjs/highlight.js/blob/master/src/styles/github.css
+       Author:  (c) Vasily Polovnyov <vast@whiteants.net> -->
+  <xsl:param name="AlanHL.background">#F8F8F8</xsl:param><!-- Warm White -->
+  <xsl:param name="AlanHL.class"     >#000080</xsl:param><!-- Dark Blue -->
+  <xsl:param name="AlanHL.comment"   >#999988</xsl:param><!-- Dark Grey -->
+  <xsl:param name="AlanHL.hero"       select="$AlanHL.normal"></xsl:param>
+  <xsl:param name="AlanHL.keyword"   >#990000</xsl:param><!-- Dark Red -->
+  <xsl:param name="AlanHL.normal"    >#333333</xsl:param>
+  <xsl:param name="AlanHL.number"     select="$AlanHL.normal"></xsl:param>
+  <xsl:param name="AlanHL.operator"   select="$AlanHL.normal"></xsl:param>
+  <xsl:param name="AlanHL.quotedId"   select="$AlanHL.normal"></xsl:param>
+  <xsl:param name="AlanHL.string"    >#008080</xsl:param><!-- Dark Green -->
+  <!-- Borderless: -->
   <xsl:param name="AlanHL.border.color">transparent</xsl:param>
   <xsl:param name="AlanHL.border.width">0</xsl:param>
   <xsl:param name="AlanHL.border.style">none</xsl:param>
 
-  <!-- ============================== -->
-  <!-- Game Transcripts Color Scheme  -->
-  <!-- ============================== -->
-<!--   <xsl:param name="IFPlay.background"  >#E2EEF9</xsl:param>
-  <xsl:param name="IFPlay.color"       >#224466</xsl:param>
-  <xsl:param name="IFPlay.border.color">BAC6D3</xsl:param>
- -->
+  <!-- ====================== -->
+  <!-- BNF Rules Color Scheme -->
+  <!-- ====================== -->
+  <xsl:param name="BNF.background"  >#FFEBD6</xsl:param>
+  <xsl:param name="BNF.color"       >#492E11</xsl:param>
+  <!-- Borderless: -->
+  <xsl:param name="BNF.border.color">transparent</xsl:param>
+  <xsl:param name="BNF.border.width">0</xsl:param>
+  <xsl:param name="BNF.border.style">none</xsl:param>
+
+  <!-- ============================= -->
+  <!-- Game Transcripts Color Scheme -->
+  <!-- ============================= -->
   <xsl:param name="IFPlay.background"  >#F7FDFF</xsl:param>
   <xsl:param name="IFPlay.color"       >#0089B6</xsl:param>
   <xsl:param name="IFPlay.border.color">#CCF2FF</xsl:param>
-  <!--
-  <xsl:param name="IFPlay.border.width">0</xsl:param>
-  <xsl:param name="IFPlay.border.style">none</xsl:param>
-  -->
 
+  <!-- =========================== -->
+  <!-- Shell Examples Color Scheme -->
+  <!-- =========================== -->
+  <xsl:param name="Shell.background">#0C0C0C</xsl:param>
+  <xsl:param name="Shell.color"     >#F2F2F2</xsl:param>
+  <xsl:param name="Shell.callout_bg">#FFF945</xsl:param>
 
-<!-- 
-  <xsl:param name="AlanHL.xxx" select="$Monokai.xxx"></xsl:param>
--->
-
-
-  <!-- Asciidoctor theme -->
-  <!-- 
-  <xsl:param name="text.color">#222222</xsl:param>
-  <xsl:param name="link.color">#005498</xsl:param>
-  <xsl:param name="border.color">#DDDDDD</xsl:param>
-  <xsl:param name="header.font-weight">normal</xsl:param>
-  <xsl:param name="title.color">#BA3925</xsl:param>
-  <xsl:param name="chapter.title.color" select="$title.color"/>
-  <xsl:param name="section.title.color" select="$title.color"/>
-  <xsl:param name="caption.color">#7A2518</xsl:param>
-  <xsl:param name="code.color" select="$text.color"/>
-  <xsl:param name="code.font-weight">normal</xsl:param>
-  <xsl:param name="code.background-color">#EEEEEE</xsl:param>
-  -->
-
-  <!-- Foundation theme -->
-  <!--   
-  <xsl:param name="text.color">#222222</xsl:param>
-  <xsl:param name="link.color">#2BA6CB</xsl:param>
-  <xsl:param name="border.color">#DDDDDD</xsl:param>
-  <xsl:param name="header.font-weight">bold</xsl:param>
-  <xsl:param name="title.color">#222222</xsl:param>
-  <xsl:param name="chapter.title.color" select="$title.color"/>
-  <xsl:param name="section.title.color" select="$title.color"/>
-  <xsl:param name="caption.color">#7A2518</xsl:param>
-  <xsl:param name="code.color">#7F0A0C</xsl:param>
-  <xsl:param name="code.font-weight">bold</xsl:param>
-  <xsl:param name="code.background-color">transparent</xsl:param>
-  -->
-  
-  <!-- Colony theme -->
-  <!-- 
-  <xsl:param name="text.color">#222222</xsl:param>
-  <xsl:param name="link.color">#00579E</xsl:param>
-  <xsl:param name="border.color">#DDDDDD</xsl:param>
-  <xsl:param name="header.font-weight">normal</xsl:param>
-  <xsl:param name="title.color">#7B2D00</xsl:param>
-  <xsl:param name="chapter.title.color" select="$title.color"/>
-  <xsl:param name="section.title.color" select="$title.color"/>
-  <xsl:param name="caption.color">#003B6B</xsl:param>
-  <xsl:param name="code.color">#003426</xsl:param>
-  <xsl:param name="code.font-weight">bold</xsl:param>
-  <xsl:param name="code.background-color">transparent</xsl:param>
-  -->
+  <!--**************************************************************************
+  *                                                                            *
+  *                                  SETTINGS                                  *
+  *                                                                            *
+  ***************************************************************************-->
 
   <!-- disable messages that cause some processors to exit prematurely -->
   <xsl:template name="root.messages"/>
 
   <!-- Disable watermark image to avoid long timeouts fetching from internet -->
   <xsl:param name="draft.watermark.image"/>
-
-<!-- (originally commented out:) -->
-<!--   <xsl:param name="use.extensions">1</xsl:param> -->
-  
 
   <!-- show URLs of links in footnotes -->
   <xsl:param name="ulink.show" select="1"/>
@@ -223,8 +164,8 @@
     Enabling linenumbering also requires enabling extensiones (also found at line 123): -->
   <!-- <xsl:param name="use.extensions">1</xsl:param> -->
 
-<!-- (present in original file, but as commented out:) -->  
-<!-- 
+<!-- (present in original file, but as commented out:) -->
+<!--
   <xsl:param name="linenumbering.extension">1</xsl:param>
   <xsl:param name="linenumbering.width">2</xsl:param>
   <xsl:param name="linenumbering.everyNth">1</xsl:param>
@@ -234,6 +175,9 @@
   <!-- <xsl:param name="linenumbering.separator">1</xsl:param> -->
 <!-- <<< END   <<< TRYING TO ENABLE LINE-NUMBERING IN CODE BLOCKS ========== -->
 
+  <!--==========================================================================
+                                   Admonitions
+  ===========================================================================-->
   <xsl:param name="admon.graphics">1</xsl:param>
   <xsl:param name="admon.graphics.path">images/icons/</xsl:param>
   <xsl:param name="admon.graphics.extension">.svg</xsl:param>
@@ -246,13 +190,15 @@
   </xsl:param>
   -->
   <xsl:param name="admon.textlabel">0</xsl:param>
-
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
   <xsl:param name="chunk.first.sections" select="0"/>
   <xsl:param name="chunk.quietly" select="0"/>
   <xsl:param name="chunk.section.depth" select="1"/>
   <xsl:param name="chunk.toc" select="''"/>
   <xsl:param name="chunk.tocs.and.lots" select="0"/>
-
+  <!--==========================================================================
+                                      Tables
+  ===========================================================================-->
   <xsl:param name="table.borders.with.css" select="1"/>
   <xsl:param name="table.cell.border.color" select="'#527bbd'"/>
 
@@ -265,7 +211,9 @@
   <xsl:param name="table.frame.border.thickness" select="'2px'"/>
   <!-- disabled due to missing adjustColumnWidths function -->
   <xsl:param name="tablecolumns.extension">0</xsl:param>
-
+  <!--==========================================================================
+                                Table of Contents
+  ===========================================================================-->
   <xsl:param name="generate.toc">
     <xsl:choose>
       <xsl:when test="/processing-instruction('asciidoc-toc')">

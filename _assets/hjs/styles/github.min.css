@@ -9,7 +9,7 @@
 /* HLJS Alan */
 code.hljs[data-lang=alan] {
   color: #333;
-  background: #FEFEFE; }
+  background: #F8F8F8; }
   code.hljs[data-lang=alan] .hljs-comment {
     color: #998; }
   code.hljs[data-lang=alan] .hljs-string {
@@ -22,12 +22,12 @@ code.hljs[data-lang=alan] {
 /* Alan Code Notation Mockup */
 .listingblock.alan pre {
   color: #333;
-  background: #FEFEFE; }
+  background: #F8F8F8; }
 
 /* HLJS BNF */
 code.hljs[data-lang=bnf] {
-  color: #222;
-  background: #FFCC99; }
+  color: #492E11;
+  background: #FFEBD6; }
 
 /* Shell/CMD */
 div.literalblock.shell pre {
