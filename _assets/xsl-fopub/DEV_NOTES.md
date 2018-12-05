@@ -15,6 +15,8 @@ Some notes and useful links for working on FOP/XSL customization of the PDF temp
         - [Custom Fonts](#custom-fonts)
         - [Font Ligatures](#font-ligatures)
     - [Callouts](#callouts)
+    - [Admonitions](#admonitions)
+    - [Running Headers & Footers](#running-headers--footers)
 - [Tech Specs](#tech-specs)
 - [Useful Links](#useful-links)
 - [Reference Links](#reference-links)
@@ -77,6 +79,14 @@ References:
 - https://www.oxygenxml.com/samples/xslt-documentation/docbook/docbook2.html#P_callout.defaultcolumnS_param.xsl
 - https://www.systutorials.com/docs/linux/packages/docbook-style-xsl-1.78.1/doc/html/callouts.html
 
+## Admonitions
+
+- http://www.sagehill.net/docbookxsl/CustomAdmonitions.html
+- http://www.sagehill.net/docbookxsl/PrintIcons.html#PrintAdmonGraphics
+
+## Running Headers & Footers
+
+- http://www.sagehill.net/docbookxsl/PrintHeaders.html
 
 -------------------------------------------------------------------------------
 

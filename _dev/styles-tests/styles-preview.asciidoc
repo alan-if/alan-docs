@@ -252,56 +252,31 @@ ____
 === Note
 
 [NOTE]
-================================================================================
-Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
-et hoc. Post iacentem praescia neci audire fausto revellit aequo reflectitur et
-opem. Quaesitique ferarum praestantior inter tunc uterque depresso an ego partim
-volatu. Invita undis dei nec bibat.
-================================================================================
+include::_snippets.adoc[tag=admonitions_test]
 
 
 === Tip
 
 [TIP]
-================================================================================
-Qui flere et propior umbra senectus moriturus scelus primus, de magis culpetne
-utque retinens: longa cogeris Bacchus. Obruta urbe tandemque ausi utque
-vastum, bracchiaque Europam mora murmur. Dulce voce in quoque, sub est nullaque,
-siccantem adverso!
-================================================================================
+include::_snippets.adoc[tag=admonitions_test]
 
 
 === Warning
 
 [WARNING]
-================================================================================
-Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
-et hoc. Post iacentem praescia neci audire fausto revellit aequo reflectitur et
-opem. Quaesitique ferarum praestantior inter tunc uterque depresso an ego partim
-volatu. Invita undis dei nec bibat.
-================================================================================
+include::_snippets.adoc[tag=admonitions_test]
 
 
 === Caution
 
 [CAUTION]
-================================================================================
-Qui flere et propior umbra senectus moriturus scelus primus, de magis culpetne
-utque retinens: longa cogeris Bacchus. Obruta urbe tandemque ausi utque
-vastum, bracchiaque Europam mora murmur. Dulce voce in quoque, sub est nullaque,
-siccantem adverso!
-================================================================================
+include::_snippets.adoc[tag=admonitions_test]
 
 
 === Important
 
 [IMPORTANT]
-================================================================================
-Qui flere et propior umbra senectus moriturus scelus primus, de magis culpetne
-utque retinens: longa cogeris Bacchus. Obruta urbe tandemque ausi utque
-vastum, bracchiaque Europam mora murmur. Dulce voce in quoque, sub est nullaque,
-siccantem adverso!
-================================================================================
+include::_snippets.adoc[tag=admonitions_test]
 
 // *****************************************************************************
 // *                                                                           *

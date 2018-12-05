@@ -179,13 +179,13 @@ https://github.com/tonsky/FiraCode[Fira Code^] project.
 First we'll test for ligatures inside a source code block.
 Here ligatures support could depend on the monospaced font, the backend or the syntax highligher (which may or may not filter contents of the block).
 
-include::ligatures_test.adoc[tag=code_ligatures_source]
+include::_ligatures_test.adoc[tag=code_ligatures_source]
 
 
 And now we'll carry out the test (part of it) in an example block, for here a different font is being used which may support code related ligatures.
 The example block below has not special substitutions settings.
 
-include::ligatures_test.adoc[tag=code_ligatures_example]
+include::_ligatures_test.adoc[tag=code_ligatures_example]
 
 // ******************************************************************************
 // *                                                                            *

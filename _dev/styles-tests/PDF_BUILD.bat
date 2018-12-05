@@ -1,4 +1,4 @@
-:: "PDF_BUILD.bat" v1.0.0 (2018/10/07) by Tristano Ajmone
+:: "PDF_BUILD.bat" v1.0.1 (2018/10/07) by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: This script is released into public domain via the Unlicense:
 ::     http://unlicense.org/
@@ -35,6 +35,7 @@ CALL asciidoctor^
 CALL fopub^
     -t xsl-fopub^
     %~dpn1.xml
+ECHO ------------------------------------------------------------------------------
 :: Restore origignal script working directory:
 CD %CURRDIR%
 

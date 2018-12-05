@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "fo-pdf.xsl" v0.1.7 (2018/12/05)
+  "fo-pdf.xsl" v0.2.0 (2018/12/05)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -30,6 +30,7 @@
     %docbook-style-xsl-version% represents the version installed on the system.
   -->
   <xsl:import href="https://cdn.docbook.org/release/xsl/current/fo/docbook.xsl"/>
+  <xsl:import href="color-scheme.xsl"/>
   <xsl:import href="common.xsl"/>
   <xsl:import href="highlight.xsl"/>
   <xsl:import href="callouts.xsl"/>
@@ -182,18 +183,18 @@
                                      MONOSPACE
   ===========================================================================-->
   <xsl:attribute-set name="monospace.properties">
-    <xsl:attribute name="color"><xsl:value-of select="$code.color"/></xsl:attribute>
-    <xsl:attribute name="font-weight"><xsl:value-of select="$code.font-weight"/></xsl:attribute>
-    <!--
-    <xsl:attribute name="font-size">
+    <xsl:attribute name="color"><xsl:value-of select="$inline_code.color"/></xsl:attribute>
+    <xsl:attribute name="font-weight"><xsl:value-of select="$inline_code.font-weight"/></xsl:attribute>
+
+    <xsl:attribute name="font-size"><!-- Slightly smaller than body font! -->
       <xsl:value-of select="$body.font.master * 0.9"/><xsl:text>pt</xsl:text>
     </xsl:attribute>
-    -->
+
     <xsl:attribute name="fox:border-radius">.15em</xsl:attribute>
-    <xsl:attribute name="background-color"><xsl:value-of select="$code.background-color"/></xsl:attribute>
+    <xsl:attribute name="background-color"><xsl:value-of select="$inline_code.background-color"/></xsl:attribute>
     <xsl:attribute name="padding">
       <xsl:choose>
-        <xsl:when test="$code.background-color != 'transparent'">.3em .25em .1em .25em</xsl:when>
+        <xsl:when test="$inline_code.background-color != 'transparent'">.3em .25em .1em .25em</xsl:when>
         <xsl:otherwise>0</xsl:otherwise>
       </xsl:choose>
     </xsl:attribute>
@@ -204,7 +205,7 @@
   <xsl:param name="fox:border-radius.extension">1</xsl:param>
 
   <xsl:attribute-set name="verbatim.properties">
-    <xsl:attribute name="color"><xsl:value-of select="$text.color"/></xsl:attribute>
+    <xsl:attribute name="color"><xsl:value-of select="$Verbatim.color"/></xsl:attribute>
     <xsl:attribute name="font-weight">normal</xsl:attribute>
 
     <!-- begin >>> customization -->
@@ -212,7 +213,7 @@
         BORDER RADIUS
         =============-->
     <xsl:attribute name="fox:border-radius">
-      <xsl:value-of select="$Default_Box.border.radius"/>
+      <xsl:value-of select="$Verbatim.border.radius"/>
     </xsl:attribute>
     <!--============
         BORDER STYLE
@@ -229,7 +230,7 @@
         </xsl:when>
         <!-- Default -->
         <xsl:otherwise>
-          <xsl:value-of select="$Default_Box.border.style"/>
+          <xsl:value-of select="$Verbatim.border.style"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:attribute>
@@ -248,7 +249,7 @@
         </xsl:when>
         <!-- Default -->
         <xsl:otherwise>
-          <xsl:value-of select="$Default_Box.border.width"/>
+          <xsl:value-of select="$Verbatim.border.width"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:attribute>
@@ -267,7 +268,7 @@
         </xsl:when>
         <!-- Default -->
         <xsl:otherwise>
-          <xsl:value-of select="$Default_Box.border.color"/>
+          <xsl:value-of select="$Verbatim.border.color"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:attribute>
@@ -348,7 +349,7 @@
         </xsl:when>
         <!-- Default -->
         <xsl:otherwise>
-          <xsl:value-of select="$Default_Box.background"/>
+          <xsl:value-of select="$Verbatim.background"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:attribute>
@@ -388,7 +389,7 @@
         </xsl:when>
         <!-- Default -->
         <xsl:otherwise>
-          <xsl:value-of select="$Default_Box.color"/>
+          <xsl:value-of select="$Verbatim.color"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:attribute>
@@ -547,11 +548,11 @@
   <xsl:attribute name="border-style">solid</xsl:attribute>
   <!-- BORDER Radius-->
   <xsl:attribute name="fox:border-radius">
-    <xsl:value-of select="$Default_Box.border.radius"/>
+    <xsl:value-of select="$Example.border.radius"/>
   </xsl:attribute>
   <!-- BORDER Width -->
   <xsl:attribute name="border-width">
-    <xsl:value-of select="$Default_Box.border.width"/>
+    <xsl:value-of select="$Example.border.width"/>
   </xsl:attribute>
   <!-- BORDER Color -->
   <xsl:attribute name="border-color">
@@ -560,7 +561,7 @@
         <xsl:value-of select="$IFPlay.border.color"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="$Default_Box.border.color"/>
+        <xsl:value-of select="$Example.border.color"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:attribute>

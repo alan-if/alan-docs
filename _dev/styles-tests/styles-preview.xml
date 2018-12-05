@@ -346,46 +346,61 @@ opem.</simpara>
 <section xml:id="_note">
 <title>Note</title>
 <note>
-<simpara>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
-et hoc. Post iacentem praescia neci audire fausto revellit aequo reflectitur et
-opem. Quaesitique ferarum praestantior inter tunc uterque depresso an ego partim
-volatu. Invita undis dei nec bibat.</simpara>
+<title>Admonition Title</title>
+<simpara>Lorem <emphasis>ipsum</emphasis> dolor sit amet, at <emphasis role="strong">paulo</emphasis> salutatus mel, no nisl fabellas vim. Eu qui fugit dicant tantas, ad cum semper putant eloquentiam.</simpara>
+<simpara>Et pri <literal>inermis ceteros</literal>, mel te <literal>tale</literal> nominavi consetetur, tamquam disputando mea ad.
+Etiam ridens repudiare et nam. Ei iuvaret petentium sit.</simpara>
+<literallayout class="monospaced">For i=1 To 10
+  Print "Hello World!"
+Next</literallayout>
 </note>
 </section>
 <section xml:id="_tip">
 <title>Tip</title>
 <tip>
-<simpara>Qui flere et propior umbra senectus moriturus scelus primus, de magis culpetne
-utque retinens: longa cogeris Bacchus. Obruta urbe tandemque ausi utque
-vastum, bracchiaque Europam mora murmur. Dulce voce in quoque, sub est nullaque,
-siccantem adverso!</simpara>
+<title>Admonition Title</title>
+<simpara>Lorem <emphasis>ipsum</emphasis> dolor sit amet, at <emphasis role="strong">paulo</emphasis> salutatus mel, no nisl fabellas vim. Eu qui fugit dicant tantas, ad cum semper putant eloquentiam.</simpara>
+<simpara>Et pri <literal>inermis ceteros</literal>, mel te <literal>tale</literal> nominavi consetetur, tamquam disputando mea ad.
+Etiam ridens repudiare et nam. Ei iuvaret petentium sit.</simpara>
+<literallayout class="monospaced">For i=1 To 10
+  Print "Hello World!"
+Next</literallayout>
 </tip>
 </section>
 <section xml:id="_warning">
 <title>Warning</title>
 <warning>
-<simpara>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
-et hoc. Post iacentem praescia neci audire fausto revellit aequo reflectitur et
-opem. Quaesitique ferarum praestantior inter tunc uterque depresso an ego partim
-volatu. Invita undis dei nec bibat.</simpara>
+<title>Admonition Title</title>
+<simpara>Lorem <emphasis>ipsum</emphasis> dolor sit amet, at <emphasis role="strong">paulo</emphasis> salutatus mel, no nisl fabellas vim. Eu qui fugit dicant tantas, ad cum semper putant eloquentiam.</simpara>
+<simpara>Et pri <literal>inermis ceteros</literal>, mel te <literal>tale</literal> nominavi consetetur, tamquam disputando mea ad.
+Etiam ridens repudiare et nam. Ei iuvaret petentium sit.</simpara>
+<literallayout class="monospaced">For i=1 To 10
+  Print "Hello World!"
+Next</literallayout>
 </warning>
 </section>
 <section xml:id="_caution">
 <title>Caution</title>
 <caution>
-<simpara>Qui flere et propior umbra senectus moriturus scelus primus, de magis culpetne
-utque retinens: longa cogeris Bacchus. Obruta urbe tandemque ausi utque
-vastum, bracchiaque Europam mora murmur. Dulce voce in quoque, sub est nullaque,
-siccantem adverso!</simpara>
+<title>Admonition Title</title>
+<simpara>Lorem <emphasis>ipsum</emphasis> dolor sit amet, at <emphasis role="strong">paulo</emphasis> salutatus mel, no nisl fabellas vim. Eu qui fugit dicant tantas, ad cum semper putant eloquentiam.</simpara>
+<simpara>Et pri <literal>inermis ceteros</literal>, mel te <literal>tale</literal> nominavi consetetur, tamquam disputando mea ad.
+Etiam ridens repudiare et nam. Ei iuvaret petentium sit.</simpara>
+<literallayout class="monospaced">For i=1 To 10
+  Print "Hello World!"
+Next</literallayout>
 </caution>
 </section>
 <section xml:id="_important">
 <title>Important</title>
 <important>
-<simpara>Qui flere et propior umbra senectus moriturus scelus primus, de magis culpetne
-utque retinens: longa cogeris Bacchus. Obruta urbe tandemque ausi utque
-vastum, bracchiaque Europam mora murmur. Dulce voce in quoque, sub est nullaque,
-siccantem adverso!</simpara>
+<title>Admonition Title</title>
+<simpara>Lorem <emphasis>ipsum</emphasis> dolor sit amet, at <emphasis role="strong">paulo</emphasis> salutatus mel, no nisl fabellas vim. Eu qui fugit dicant tantas, ad cum semper putant eloquentiam.</simpara>
+<simpara>Et pri <literal>inermis ceteros</literal>, mel te <literal>tale</literal> nominavi consetetur, tamquam disputando mea ad.
+Etiam ridens repudiare et nam. Ei iuvaret petentium sit.</simpara>
+<literallayout class="monospaced">For i=1 To 10
+  Print "Hello World!"
+Next</literallayout>
 </important>
 </section>
 </chapter>

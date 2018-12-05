@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "common.xsl" v0.3.3 (2018/12/05)
+  "common.xsl" v0.4.0 (2018/12/05)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -13,79 +13,6 @@
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <!--**************************************************************************
-  *                                                                            *
-  *                                COLOR SCHEME                                *
-  *                                                                            *
-  ***************************************************************************-->
-  <!-- Alan-Docs theme -->
-  <xsl:param name="text.color">#222222</xsl:param>
-  <xsl:param name="link.color">#005498</xsl:param>
-  <xsl:param name="border.color">#DDDDDD</xsl:param>
-  <xsl:param name="header.font-weight">normal</xsl:param>
-  <xsl:param name="title.color">#BA3925</xsl:param>
-  <xsl:param name="chapter.title.color" select="$title.color"/>
-  <xsl:param name="section.title.color" select="$title.color"/>
-  <xsl:param name="caption.color">#7A2518</xsl:param>
-  <xsl:param name="code.color" select="$text.color"/>
-  <xsl:param name="code.font-weight">normal</xsl:param>
-  <xsl:param name="code.background-color">#EEEEEE</xsl:param>
-
-  <!-- ============================= -->
-  <!-- Boxed-Blocks Default Settings -->
-  <!-- ============================= -->
-  <!-- Some default values to use for Code, Verbatim and Example blocks -->
-  <xsl:param name="Default_Box.background"   >#FCFCFC</xsl:param><!-- Warm White -->
-  <xsl:param name="Default_Box.color"        >#222222</xsl:param><!-- Warm Black -->
-  <xsl:param name="Default_Box.border.color" >#E6E6E6</xsl:param><!-- Warm Grey -->
-  <xsl:param name="Default_Box.border.radius">3pt</xsl:param>
-  <xsl:param name="Default_Box.border.width" >.25pt</xsl:param>
-  <xsl:param name="Default_Box.border.style" >solid</xsl:param>
-
-  <!-- ========================================= -->
-  <!-- Alan Sourcecode Syntax Highlighting Theme -->
-  <!-- ========================================= -->
-  <!-- GITHUB SCHEME - Based on "github.com style" for highlight.js:
-       https://github.com/highlightjs/highlight.js/blob/master/src/styles/github.css
-       Author:  (c) Vasily Polovnyov <vast@whiteants.net> -->
-  <xsl:param name="AlanHL.background">#F8F8F8</xsl:param><!-- Warm White -->
-  <xsl:param name="AlanHL.class"     >#000080</xsl:param><!-- Dark Blue -->
-  <xsl:param name="AlanHL.comment"   >#999988</xsl:param><!-- Dark Grey -->
-  <xsl:param name="AlanHL.hero"       select="$AlanHL.normal"></xsl:param>
-  <xsl:param name="AlanHL.keyword"   >#990000</xsl:param><!-- Dark Red -->
-  <xsl:param name="AlanHL.normal"    >#333333</xsl:param>
-  <xsl:param name="AlanHL.number"     select="$AlanHL.normal"></xsl:param>
-  <xsl:param name="AlanHL.operator"   select="$AlanHL.normal"></xsl:param>
-  <xsl:param name="AlanHL.quotedId"   select="$AlanHL.normal"></xsl:param>
-  <xsl:param name="AlanHL.string"    >#008080</xsl:param><!-- Dark Green -->
-  <!-- Borderless: -->
-  <xsl:param name="AlanHL.border.color">transparent</xsl:param>
-  <xsl:param name="AlanHL.border.width">0</xsl:param>
-  <xsl:param name="AlanHL.border.style">none</xsl:param>
-
-  <!-- ====================== -->
-  <!-- BNF Rules Color Scheme -->
-  <!-- ====================== -->
-  <xsl:param name="BNF.background"  >#FFEBD6</xsl:param>
-  <xsl:param name="BNF.color"       >#492E11</xsl:param>
-  <!-- Borderless: -->
-  <xsl:param name="BNF.border.color">transparent</xsl:param>
-  <xsl:param name="BNF.border.width">0</xsl:param>
-  <xsl:param name="BNF.border.style">none</xsl:param>
-
-  <!-- ============================= -->
-  <!-- Game Transcripts Color Scheme -->
-  <!-- ============================= -->
-  <xsl:param name="IFPlay.background"  >#F7FDFF</xsl:param>
-  <xsl:param name="IFPlay.color"       >#0089B6</xsl:param>
-  <xsl:param name="IFPlay.border.color">#CCF2FF</xsl:param>
-
-  <!-- =========================== -->
-  <!-- Shell Examples Color Scheme -->
-  <!-- =========================== -->
-  <xsl:param name="Shell.background">#0C0C0C</xsl:param>
-  <xsl:param name="Shell.color"     >#F2F2F2</xsl:param>
-  <xsl:param name="Shell.callout_bg">#FFF945</xsl:param>
 
   <!--**************************************************************************
   *                                                                            *

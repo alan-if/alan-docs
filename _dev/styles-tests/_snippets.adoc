@@ -1,0 +1,26 @@
+// *****************************************************************************
+// *                                                                           *
+// *                            Reusable Snippets                              *
+// *                                                                           *
+// *****************************************************************************
+// Some snippets in tagged regions for inclusion in test docs...
+
+
+
+// tag::admonitions_test[]
+.Admonition Title
+================================================================================
+Lorem _ipsum_ dolor sit amet, at *paulo* salutatus mel, no nisl fabellas vim. Eu qui fugit dicant tantas, ad cum semper putant eloquentiam.
+
+Et pri `inermis ceteros`, mel te `tale` nominavi consetetur, tamquam disputando mea ad.
+Etiam ridens repudiare et nam. Ei iuvaret petentium sit.
+
+......................
+For i=1 To 10
+  Print "Hello World!"
+Next
+......................
+================================================================================
+// end::admonitions_test[]
+
+// EOF //
