@@ -16,7 +16,7 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>1.2</revnumber>
+<revnumber>1.3</revnumber>
 <date>December 9, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: {toolchain}</revremark>
@@ -158,6 +158,19 @@ abcdefghijklmnopqrstuvwxyz
 <simpara>&#10003; Checked item.</simpara>
 </listitem>
 </itemizedlist>
+<note>
+<simpara>The characters used to represent the check boxes can&#8217;t be controlled via XSL stylesheets, for this is not a DocBook feature but an Asciidoctor feature.
+During the conversion to DocBook, Asciidoctor converts checklists to unordered lists without bullets, and injects the checkbox character before the list item:</simpara>
+<itemizedlist>
+<listitem>
+<simpara><literal>&amp;&#35;10063;</literal> (unchecked box)</simpara>
+</listitem>
+<listitem>
+<simpara><literal>&amp;&#35;10003;</literal> (checked box)</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Therefore, for the FOP converter these are just list items without bullets, and the checkboxes are just part of the list entry contents.</simpara>
+</note>
 </section>
 <section xml:id="_description_list">
 <title>Description List</title>
@@ -347,38 +360,55 @@ Squirty cheese when the cheese comes out everybody&#8217;s happy.<footnoteref li
 <title>Block Elements</title>
 <section xml:id="_example">
 <title>Example</title>
-<informalexample>
+<example>
+<title>Sample Title</title>
 <simpara>Lucibus ibi medio generis amore, post sibi, puellae Ophiusiaque aera incerti
 nuda. Quos et potero inpune iam. Amissa aetas! Sis <emphasis role="strong">cultro</emphasis> spissus rostro
 aliquemque pio fugit, suum in Iovis, circumdata curru non, et spectantur
 incognita carchesia</simpara>
-</informalexample>
+</example>
 </section>
 <section xml:id="_listing">
 <title>Listing</title>
+<formalpara>
+<title>Sample Title</title>
+<para>
 <screen>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
 et hoc.
 
 Post iacentem praescia neci audire fausto revellit aequo reflectitur et
 opem.</screen>
+</para>
+</formalpara>
 </section>
 <section xml:id="_literal">
 <title>Literal</title>
+<formalpara>
+<title>Sample Title</title>
+<para>
 <literallayout class="monospaced">Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
 et hoc.
 
 Post iacentem praescia neci audire fausto revellit aequo reflectitur et
 opem.</literallayout>
+</para>
+</formalpara>
 </section>
 <section xml:id="_source">
 <title>Source</title>
+<formalpara>
+<title>Sample Title</title>
+<para>
 <screen>For i=1 To 10
   Print "Hello World!"
 Next</screen>
+</para>
+</formalpara>
 </section>
 <section xml:id="_quotations">
 <title>Quotations</title>
 <blockquote>
+<title>Sample Title</title>
 <simpara>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
 et hoc.</simpara>
 <simpara>Post iacentem praescia neci audire fausto revellit aequo reflectitur et
@@ -548,5 +578,17 @@ Next</literallayout>
 Copyright &#169; Asciidoctor Project, 2018.
 Content licensed under <link xl:href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</link>.</simpara>
 </note>
+</chapter>
+<chapter xml:id="_figures">
+<title>Figures</title>
+<figure>
+<title>Caption Example</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="fruits.png" contentwidth="300" contentdepth="200"/>
+</imageobject>
+<textobject><phrase>Fruits photograph</phrase></textobject>
+</mediaobject>
+</figure>
 </chapter>
 </book>

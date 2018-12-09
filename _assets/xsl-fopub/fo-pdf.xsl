@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "fo-pdf.xsl" v0.2.1 (2018/12/09)
+  "fo-pdf.xsl" v0.2.2 (2018/12/09)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -91,6 +91,20 @@
   <xsl:template name="pickfont-math">
     <xsl:text>Liberation Serif,Times-Roman</xsl:text>
   </xsl:template>
+
+  <!-- ============
+       Font Awesome
+       ============ -->
+<!--   Example of how to include Font Awesome font icons:
+
+  <xsl:template name="fa-regular">
+    <xsl:text>Font Awesome 5 Free</xsl:text>
+  </xsl:template>
+
+   <xsl:template name="fa-brands">
+    <xsl:text>Font Awesome 5 Brands</xsl:text>
+  </xsl:template>
+-->
 
   <!--==========================================================================
                                     Fonts
@@ -641,6 +655,7 @@
     <xsl:attribute name="padding-bottom">2pt</xsl:attribute>
   </xsl:attribute-set>
 
+
   <!--==========================================================================
                                      Graphics
   ===========================================================================-->
@@ -872,36 +887,54 @@
     <xsl:attribute name="start-indent"><xsl:value-of select="$title.margin.left"/></xsl:attribute>
   </xsl:attribute-set>
 
+  <!-- ================
+       Section Level 1
+       ================ -->
   <xsl:attribute-set name="section.title.level1.properties">
     <xsl:attribute name="font-size">
       <xsl:value-of select="$body.font.master * 1.6"/><xsl:text>pt</xsl:text>
     </xsl:attribute>
   </xsl:attribute-set>
 
+  <!-- ================
+       Section Level 2
+       ================ -->
   <xsl:attribute-set name="section.title.level2.properties">
     <xsl:attribute name="font-size">
       <xsl:value-of select="$body.font.master * 1.4"/><xsl:text>pt</xsl:text>
     </xsl:attribute>
   </xsl:attribute-set>
 
+  <!-- ================
+       Section Level 3
+       ================ -->
   <xsl:attribute-set name="section.title.level3.properties">
     <xsl:attribute name="font-size">
       <xsl:value-of select="$body.font.master * 1.3"/><xsl:text>pt</xsl:text>
     </xsl:attribute>
   </xsl:attribute-set>
 
+  <!-- ================
+       Section Level 4
+       ================ -->
   <xsl:attribute-set name="section.title.level4.properties">
     <xsl:attribute name="font-size">
       <xsl:value-of select="$body.font.master * 1.2"/><xsl:text>pt</xsl:text>
     </xsl:attribute>
   </xsl:attribute-set>
 
+  <!-- ================
+       Section Level 5
+       ================ -->
   <xsl:attribute-set name="section.title.level5.properties">
     <xsl:attribute name="font-size">
       <xsl:value-of select="$body.font.master * 1.1"/><xsl:text>pt</xsl:text>
     </xsl:attribute>
   </xsl:attribute-set>
 
+  <!-- ================
+       Section Level 6
+       ================ -->
   <xsl:attribute-set name="section.title.level6.properties">
     <xsl:attribute name="font-size">
       <xsl:value-of select="$body.font.master"/><xsl:text>pt</xsl:text>
@@ -986,6 +1019,18 @@
     </xsl:if>
   </xsl:template>
 
+  <!-- ============
+       TITLES SIZES
+       ============
+       Define font-size for titles in Tables, Figures, Examples.
+  -->
+  <xsl:attribute-set name="formal.title.properties">
+    <xsl:attribute name="font-size">
+      <xsl:value-of select="$body.font.master * 0.9"/><xsl:text>pt</xsl:text>
+    </xsl:attribute>
+  </xsl:attribute-set>
+
+
   <!--==========================================================================
                                  Anchors & Links
   ===========================================================================-->
@@ -1034,6 +1079,18 @@
                                    Bullet Lists
   ===========================================================================-->
 
+  <!-- ==================
+       BULLETS PROPERTIES
+       ==================
+       Define bullets character attributes.
+  -->
+  <xsl:attribute-set name="itemizedlist.label.properties">
+    <xsl:attribute name="font-weight">bold</xsl:attribute>
+    <xsl:attribute name="color">
+      <xsl:value-of select="$list_bullet.color"/>
+    </xsl:attribute> 
+  </xsl:attribute-set>
+
   <!-- ====================================
        BULLETS SEQUENCES FOR NESTING LEVELS
        ====================================
@@ -1044,8 +1101,8 @@
     <xsl:param name="itemsymbol" select="'default'"/>
     <xsl:choose>
       <!-- Symbols alternation list (circular loop): -->
-      <xsl:when test="$itemsymbol = 'square'">square</xsl:when>
-      <xsl:otherwise>square</xsl:otherwise>
+      <xsl:when test="$itemsymbol = 'star'">star</xsl:when>
+      <xsl:otherwise>star</xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
@@ -1061,13 +1118,21 @@
 
     <xsl:choose>
       <xsl:when test="$itemsymbol='none'"></xsl:when>
-      <xsl:when test="$itemsymbol='circle'">&#x2022;</xsl:when><!-- was: &#x25E6; -->
-      <xsl:when test="$itemsymbol='disc'">&#x25CF;</xsl:when><!-- was: &#x2022; -->
-      <xsl:when test="$itemsymbol='square'">&#x25A0;</xsl:when><!-- was: &#x25AA; -->
-      <xsl:when test="$itemsymbol='checked'">&#x25A0;</xsl:when><!-- was: &#x25A0; -->
+      <xsl:when test="$itemsymbol='circle'"   >&#x2022;</xsl:when><!-- was: &#x25E6; -->
+      <xsl:when test="$itemsymbol='disc'"     >&#x25CF;</xsl:when><!-- was: &#x2022; -->
+      <xsl:when test="$itemsymbol='square'"   >&#x25A0;</xsl:when><!-- was: &#x25AA; -->
+      <xsl:when test="$itemsymbol='checked'"  >&#x25A0;</xsl:when><!-- was: &#x25A0; -->
       <xsl:when test="$itemsymbol='unchecked'">&#x25A0;</xsl:when><!-- was: &#x25A1; -->
-      <xsl:when test="$itemsymbol='diamond'">&#x2666;</xsl:when><!-- added -->
+      <xsl:when test="$itemsymbol='diamond'"  >&#x2666;</xsl:when><!-- added -->
+      <xsl:when test="$itemsymbol='star'"     >*</xsl:when><!-- added -->
+
+      <!-- Example on how to use Font Awesome icon as bullet:
+
+      <xsl:when test="$itemsymbol='test'">
+         <fo:inline font-family="Font Awesome 5 Free">&#xf111;</fo:inline></xsl:when>
       <xsl:otherwise>&#x2666;</xsl:otherwise>
+      -->
+
     </xsl:choose>
   </xsl:template>
 
@@ -1222,10 +1287,10 @@
     <!-- override font-family for mark since we don't need full font set -->
     <xsl:attribute name="font-family"><xsl:value-of select="$body.font.family"/></xsl:attribute>
     <xsl:attribute name="font-size">
-      <xsl:value-of select="$body.font.master * 0.8"/><xsl:text>pt</xsl:text>
+      <xsl:value-of select="$body.font.master * 0.6"/><xsl:text>pt</xsl:text>   <!-- was: * 0.8 -->
     </xsl:attribute>
     <xsl:attribute name="color"><xsl:value-of select="$link.color"/></xsl:attribute>
-    <xsl:attribute name="font-weight">bold</xsl:attribute>
+    <xsl:attribute name="font-weight">normal</xsl:attribute>                    <!-- was: bold -->
     <xsl:attribute name="padding">0 1pt</xsl:attribute>
   </xsl:attribute-set>
 

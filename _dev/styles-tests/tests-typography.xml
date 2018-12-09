@@ -15,7 +15,7 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>2.1</revnumber>
+<revnumber>2.2</revnumber>
 <date>December 9, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: {toolchain}</revremark>
@@ -283,6 +283,11 @@ Some bullets characters might not be available in some backends, so depending on
 </listitem>
 </itemizedlist>
 <simpara>And these are the current bullets types by their name, and how the template renders them:</simpara>
+<itemizedlist mark="checked">
+<listitem>
+<simpara>checked.</simpara>
+</listitem>
+</itemizedlist>
 <itemizedlist mark="circle">
 <listitem>
 <simpara>circle.</simpara>
@@ -303,14 +308,14 @@ Some bullets characters might not be available in some backends, so depending on
 <simpara>square.</simpara>
 </listitem>
 </itemizedlist>
+<itemizedlist mark="star">
+<listitem>
+<simpara>star (custom definition).</simpara>
+</listitem>
+</itemizedlist>
 <itemizedlist mark="unchecked">
 <listitem>
 <simpara>unchecked.</simpara>
-</listitem>
-</itemizedlist>
-<itemizedlist mark="checked">
-<listitem>
-<simpara>checked.</simpara>
 </listitem>
 </itemizedlist>
 <itemizedlist mark="xxxx">

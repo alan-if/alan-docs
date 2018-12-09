@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "color-scheme.xsl" v0.1.0 (2018/12/05)
+  "color-scheme.xsl" v0.1.1 (2018/12/09)
   ==============================================================================
   This file defines the color schemes used in the documents of the Alan-Docs
   project:
@@ -28,6 +28,9 @@
   <xsl:param name="section.title.color" select="$title.color"/>
   <xsl:param name="caption.color">#7A2518</xsl:param>
   
+  <!-- List Bullet Color -->
+  <xsl:param name="list_bullet.color">#FD7070</xsl:param><!-- Red -->
+
   <!-- Inline Code -->
   <xsl:param name="inline_code.color" select="$text.color"/>
   <xsl:param name="inline_code.font-weight">normal</xsl:param>

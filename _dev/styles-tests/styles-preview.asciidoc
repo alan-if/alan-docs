@@ -1,6 +1,6 @@
 = Alan Documentation Styles: templates styles samples
 Tristano Ajmone <tajmone@gmail.com>
-v1.2, December 9, 2018
+v1.3, December 9, 2018
 include::_inc_header-attributes.adoc[]
 :toclevels: 5
 :doctype: book
@@ -127,6 +127,26 @@ Specimens of the three main fonts used for base body text, verbatim text, and he
 * [ ] Unchecked item.
 * [x] Checked item.
 
+// =================
+// PDF Backend Only:
+// =================
+ifeval::["{backend}" != "html5"]
+
+:pound: &#35;
+
+[NOTE]
+================================================================================
+The characters used to represent the check boxes can't be controlled via XSL stylesheets, for this is not a DocBook feature but an Asciidoctor feature.
+During the conversion to DocBook, Asciidoctor converts checklists to unordered lists without bullets, and injects the checkbox character before the list item:
+
+* `&{pound}10063;` (unchecked box)
+* `&{pound}10003;` (checked box)
+
+Therefore, for the FOP converter these are just list items without bullets, and the checkboxes are just part of the list entry contents.
+================================================================================
+endif::[]
+
+
 === Description List
 
 
@@ -210,6 +230,7 @@ Squirty cheese when the cheese comes out everybody's happy.footnoteref:[cheese_l
 === Example
 
 [example]
+.Sample Title
 ============================================================================
 Lucibus ibi medio generis amore, post sibi, puellae Ophiusiaque aera incerti
 nuda. Quos et potero inpune iam. Amissa aetas! Sis *cultro* spissus rostro
@@ -221,6 +242,7 @@ incognita carchesia
 === Listing
 
 [listing]
+.Sample Title
 --------------------------------------------
 Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
 et hoc.
@@ -234,6 +256,7 @@ opem.
 
 
 [literal]
+.Sample Title
 ............................................
 Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
 et hoc.
@@ -246,6 +269,7 @@ opem.
 === Source
 
 [source]
+.Sample Title
 --------------------------------------------
 For i=1 To 10
   Print "Hello World!"
@@ -255,6 +279,7 @@ Next
 
 === Quotations
 
+.Sample Title
 ____
 Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
 et hoc.
@@ -329,7 +354,21 @@ include::_snippets.adoc[tag=admonitions_test]
 
 include::_table_symbols-repl.adoc[]
 
+// ******************************************************************************
+// *                                                                            *
+// *                                  Figures                                   *
+// *                                                                            *
+// ******************************************************************************
 
+
+== Figures
+
+
+// Public domain image downloaded from:
+// http://homepages.cae.wisc.edu/~ece533/images/fruits.png
+
+.Caption Example
+image::fruits.png[Fruits photograph,300,200]
 
 
 // EOF //

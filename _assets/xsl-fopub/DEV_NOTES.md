@@ -1,5 +1,8 @@
 # XSL Dev Notes
 
+    Apache FOP 2.1 | DocBook XSL 1.78.1
+
+
 Some notes and useful links for working on FOP/XSL customization of the PDF template.
 
 
@@ -17,6 +20,7 @@ Some notes and useful links for working on FOP/XSL customization of the PDF temp
     - [Lists](#lists)
         - [Ordered Lists](#ordered-lists)
         - [Bulleted Lists](#bulleted-lists)
+    - [Footnotes](#footnotes)
     - [Callouts](#callouts)
     - [Admonitions](#admonitions)
     - [Running Headers & Footers](#running-headers--footers)
@@ -33,6 +37,8 @@ Some notes and useful links for working on FOP/XSL customization of the PDF temp
 -----
 
 # Customization Topics
+
+- https://www.webucator.com/tutorial/learn-xsl-fo/blocks-inlines.cfm
 
 ## Fonts
 
@@ -75,10 +81,10 @@ FOP 2.1 doesn't support font ligatures in PDF:
 
 > OpenType fonts support advanced layout features such as ligatures, small caps, swashes, alternates, old style figures and more. [...] These features are currently missing within FOP due to the implementation opting to favor a greater number of formats. [...] the current method extracts the Compact Font Format (CFF) data containing among other things the character definitions, optionally subsets and embeds the result as a Type1C font.
 
+
 ## Lists
 
 - [DocBook XSL Guide: Chapter 21. Lists](http://www.sagehill.net/docbookxsl/Lists.html)
-
 
 ### Ordered Lists
 
@@ -88,6 +94,10 @@ FOP 2.1 doesn't support font ligatures in PDF:
 
 - [DocBook XSL Guide: itemizedlist options](http://www.sagehill.net/docbookxsl/Itemizedlists.html)
 
+## Footnotes
+
+- [DocBook XSL Guide: Chapter 16. Footnotes](http://www.sagehill.net/docbookxsl/Footnotes.html)
+    + [Formatting footnotes in print](http://www.sagehill.net/docbookxsl/PrintFootnotes.html)
 
 
 ## Callouts

@@ -1,6 +1,6 @@
 = Typography in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v2.1, December 9, 2018
+v2.2, December 9, 2018
 include::_inc_header-attributes.adoc[]
 // Sections Numbering:
 :sectnums:
@@ -241,6 +241,10 @@ And here is a preview of how bulleted lists are being rendered by the current te
 
 And these are the current bullets types by their name, and how the template renders them:
 
+[checked]
+* checked.
+
+//
 [circle]
 * circle.
 
@@ -257,12 +261,12 @@ And these are the current bullets types by their name, and how the template rend
 * square.
 
 //
-[unchecked]
-* unchecked.
+[star]
+* star (custom definition).
 
 //
-[checked]
-* checked.
+[unchecked]
+* unchecked.
 
 //
 [xxxx]
