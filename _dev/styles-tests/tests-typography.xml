@@ -4,7 +4,7 @@
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>Typography in Alan Documentation</title>
-<date>October 07, 2018</date>
+<date>December 9, 2018</date>
 <author>
 <personname>
 <firstname>Tristano</firstname>
@@ -15,8 +15,8 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>2.0</revnumber>
-<date>October 07, 2018</date>
+<revnumber>2.1</revnumber>
+<date>December 9, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: {toolchain}</revremark>
 </revision>
@@ -97,6 +97,227 @@ And this isn&#8217;t my nose. This is a false one.</simpara>
 <bridgehead xml:id="_miscellanea" renderas="sect2">Miscellanea</bridgehead>
 <simpara>Horizontal rule:</simpara>
 <simpara><?asciidoc-hr?></simpara>
+</section>
+<section xml:id="_list_bullets">
+<title>List Bullets</title>
+<simpara>Here we test the availability of the different bullet chars that can be used in unordered lists as bullets.
+Some bullets characters might not be available in some backends, so depending on the font used by template it might be necessary to tweak the unordered list settings that control bullets characters.</simpara>
+<important>
+<title>Asciidoctor Fopub</title>
+<simpara>Bullet characters rely on the font having the right glyph, and the XSL-FO processor being able to find the font with that glyph.</simpara>
+</important>
+<simpara>Some common bullets types definitions:</simpara>
+<informaltable frame="all" rowsep="1" colsep="1">
+<tgroup cols="3">
+<colspec colname="col_1" colwidth="20*"/>
+<colspec colname="col_2" colwidth="10*"/>
+<colspec colname="col_3" colwidth="70*"/>
+<thead>
+<row>
+<entry align="left" valign="top">entity</entry>
+<entry align="center" valign="top">char</entry>
+<entry align="left" valign="top">type</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x2013;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x2013;</simpara></entry>
+<entry align="left" valign="top"><simpara>endash</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x2014;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x2014;</simpara></entry>
+<entry align="left" valign="top"><simpara>emdash</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x2022;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x2022;</simpara></entry>
+<entry align="left" valign="top"><simpara>bullet</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x2022;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x2022;</simpara></entry>
+<entry align="left" valign="top"><simpara>disc</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x2023;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x2023;</simpara></entry>
+<entry align="left" valign="top"><simpara>triangle</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x203A;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x203A;</simpara></entry>
+<entry align="left" valign="top"><simpara>point</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25A0;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25A0;</simpara></entry>
+<entry align="left" valign="top"><simpara>box</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25A0;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25A0;</simpara></entry>
+<entry align="left" valign="top"><simpara>square</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25A1;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25A1;</simpara></entry>
+<entry align="left" valign="top"><simpara>unchecked</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25A1;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25A1;</simpara></entry>
+<entry align="left" valign="top"><simpara>whitesquare</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25AA;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25AA;</simpara></entry>
+<entry align="left" valign="top"><simpara>smallblacksquare</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25AA;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25AA;</simpara></entry>
+<entry align="left" valign="top"><simpara>square</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25AB;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25AB;</simpara></entry>
+<entry align="left" valign="top"><simpara>smallwhitesquare</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25CB;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25CB;</simpara></entry>
+<entry align="left" valign="top"><simpara>circle</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25CB;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25CB;</simpara></entry>
+<entry align="left" valign="top"><simpara>opencircle</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25CF;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25CF;</simpara></entry>
+<entry align="left" valign="top"><simpara>blackcircle</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25CF;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25CF;</simpara></entry>
+<entry align="left" valign="top"><simpara>round</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25E6;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25E6;</simpara></entry>
+<entry align="left" valign="top"><simpara>circle</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25E6;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25E6;</simpara></entry>
+<entry align="left" valign="top"><simpara>whitebullet</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+<simpara><?asciidoc-pagebreak?></simpara>
+<simpara>These were the default bullets settting of asciidoctor-fopub:</simpara>
+<informaltable frame="all" rowsep="1" colsep="1">
+<tgroup cols="3">
+<colspec colname="col_1" colwidth="20*"/>
+<colspec colname="col_2" colwidth="10*"/>
+<colspec colname="col_3" colwidth="70*"/>
+<thead>
+<row>
+<entry align="left" valign="top">entity</entry>
+<entry align="center" valign="top">char</entry>
+<entry align="left" valign="top">type</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x2022;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x2022;</simpara></entry>
+<entry align="left" valign="top"><simpara>disc</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25E6;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25E6;</simpara></entry>
+<entry align="left" valign="top"><simpara>circle</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25AA;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25AA;</simpara></entry>
+<entry align="left" valign="top"><simpara>square</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><literal>&amp;#x25A1;</literal></simpara></entry>
+<entry align="center" valign="top"><simpara>&#x25A1;</simpara></entry>
+<entry align="left" valign="top"><simpara>unchecked</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+<simpara>And here is a preview of how bulleted lists are being rendered by the current template:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>level 1</simpara>
+<itemizedlist>
+<listitem>
+<simpara>level 2</simpara>
+<itemizedlist>
+<listitem>
+<simpara>level 3</simpara>
+<itemizedlist>
+<listitem>
+<simpara>level 4</simpara>
+<itemizedlist>
+<listitem>
+<simpara>level 5</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+<simpara>And these are the current bullets types by their name, and how the template renders them:</simpara>
+<itemizedlist mark="circle">
+<listitem>
+<simpara>circle.</simpara>
+</listitem>
+</itemizedlist>
+<itemizedlist mark="disc">
+<listitem>
+<simpara>disc.</simpara>
+</listitem>
+</itemizedlist>
+<itemizedlist mark="diamond">
+<listitem>
+<simpara>diamond (custom definition: <literal>&amp;#x2666;</literal>).</simpara>
+</listitem>
+</itemizedlist>
+<itemizedlist mark="square">
+<listitem>
+<simpara>square.</simpara>
+</listitem>
+</itemizedlist>
+<itemizedlist mark="unchecked">
+<listitem>
+<simpara>unchecked.</simpara>
+</listitem>
+</itemizedlist>
+<itemizedlist mark="checked">
+<listitem>
+<simpara>checked.</simpara>
+</listitem>
+</itemizedlist>
+<itemizedlist mark="xxxx">
+<listitem>
+<simpara><emphasis>fallback symbol</emphasis> (unknow bullet types).</simpara>
+</listitem>
+</itemizedlist>
 </section>
 <section xml:id="_ligatures_tests">
 <title>Ligatures Tests</title>

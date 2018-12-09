@@ -1,6 +1,6 @@
 = Typography in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v2.0, October 07, 2018
+v2.1, December 9, 2018
 include::_inc_header-attributes.adoc[]
 // Sections Numbering:
 :sectnums:
@@ -157,6 +157,116 @@ ____
 Horizontal rule:
 
 '''
+
+// ******************************************************************************
+// *                                                                            *
+// *                                List Bullets                                *
+// *                                                                            *
+// ******************************************************************************
+
+
+== List Bullets
+
+Here we test the availability of the different bullet chars that can be used in unordered lists as bullets.
+Some bullets characters might not be available in some backends, so depending on the font used by template it might be necessary to tweak the unordered list settings that control bullets characters.
+
+// =================
+// PDF Backend Only:
+// =================
+ifeval::["{backend}" != "html5"]
+
+[IMPORTANT]
+.Asciidoctor Fopub
+================================================================================
+Bullet characters rely on the font having the right glyph, and the XSL-FO processor being able to find the font with that glyph.
+================================================================================
+endif::[]
+
+Some common bullets types definitions:
+
+[cols="<2m,^1d,<7d"]
+|=============================================
+| entity | char | type
+
+| ++&#x2013;++ | &#x2013; | endash
+| ++&#x2014;++ | &#x2014; | emdash
+| ++&#x2022;++ | &#x2022; | bullet
+| ++&#x2022;++ | &#x2022; | disc
+| ++&#x2023;++ | &#x2023; | triangle
+| ++&#x203A;++ | &#x203A; | point
+| ++&#x25A0;++ | &#x25A0; | box
+| ++&#x25A0;++ | &#x25A0; | square
+| ++&#x25A1;++ | &#x25A1; | unchecked
+| ++&#x25A1;++ | &#x25A1; | whitesquare
+| ++&#x25AA;++ | &#x25AA; | smallblacksquare
+| ++&#x25AA;++ | &#x25AA; | square
+| ++&#x25AB;++ | &#x25AB; | smallwhitesquare
+| ++&#x25CB;++ | &#x25CB; | circle
+| ++&#x25CB;++ | &#x25CB; | opencircle
+| ++&#x25CF;++ | &#x25CF; | blackcircle
+| ++&#x25CF;++ | &#x25CF; | round
+| ++&#x25E6;++ | &#x25E6; | circle
+| ++&#x25E6;++ | &#x25E6; | whitebullet
+|=============================================
+
+<<<
+
+// =================
+// PDF Backend Only:
+// =================
+ifeval::["{backend}" != "html5"]
+
+These were the default bullets settting of asciidoctor-fopub:
+
+[cols="<2m,^1d,<7d"]
+|=============================================
+| entity | char | type
+
+| ++&#x2022;++ | &#x2022; | disc
+| ++&#x25E6;++ | &#x25E6; | circle
+| ++&#x25AA;++ | &#x25AA; | square
+| ++&#x25A1;++ | &#x25A1; | unchecked
+
+|=============================================
+endif::[]
+
+
+And here is a preview of how bulleted lists are being rendered by the current template:
+
+* level 1
+** level 2
+*** level 3
+**** level 4
+***** level 5
+
+And these are the current bullets types by their name, and how the template renders them:
+
+[circle]
+* circle.
+
+//
+[disc]
+* disc.
+
+//
+[diamond]
+* diamond (custom definition: `++&#x2666;++`).
+
+//
+[square]
+* square.
+
+//
+[unchecked]
+* unchecked.
+
+//
+[checked]
+* checked.
+
+//
+[xxxx]
+* _fallback symbol_ (unknow bullet types).
 
 // *****************************************************************************
 // *                                                                           *

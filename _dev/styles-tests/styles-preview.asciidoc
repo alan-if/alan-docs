@@ -1,6 +1,6 @@
 = Alan Documentation Styles: templates styles samples
 Tristano Ajmone <tajmone@gmail.com>
-v1.1, December 3, 2018
+v1.2, December 9, 2018
 include::_inc_header-attributes.adoc[]
 :toclevels: 5
 :doctype: book
@@ -89,14 +89,14 @@ Specimens of the three main fonts used for base body text, verbatim text, and he
 == Lists
 
 
-=== Unrdered List
+=== Unordered List
 
 
 .List Title
 * Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro.
-* De carne lumbering animata corpora quaeritis.
-** Summus brains sit​​, morbo vel maleficia?
-*** De apocalypsi gorger omero undead survivor dictum mauris.
+** De carne lumbering animata corpora quaeritis.
+*** Summus brains sit​​, morbo vel maleficia?
+**** De apocalypsi gorger omero undead survivor dictum mauris.
 *** Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium.
 * Qui animated corpse, cricket bat max brucks terribilem incessu zomby.
 * The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus.
@@ -118,6 +118,14 @@ Specimens of the three main fonts used for base body text, verbatim text, and he
 .. Alii missing oculis aliorum sicut serpere crabs nostram.
 ... Putridi braindead odores kill and infect, aere implent left four dead.
 
+
+=== Checklist
+
+* [ ] Unchecked item.
+* [x] Checked item.
+* [x] Checked item.
+* [ ] Unchecked item.
+* [x] Checked item.
 
 === Description List
 
@@ -153,15 +161,46 @@ Is bello mundi z?::
 	Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse.
 
 
-
-
-
-
 // ******************************************************************************
 // *                                                                            *
-// *                               Block Elements                               *
+// *                                 Footnotes                                  *
 // *                                                                            *
 // ******************************************************************************
+
+
+== Footnotes
+
+
+Everyone loves cheese and biscuits halloumi.footnote:[Courtesy of Cheese Ipsum, a cheesy lorem ipsum generator.]
+Bocconcini mozzarella cottage cheese jarlsberg taleggio ricotta hard cheese cheddar.
+Stilton pecorino brie when the cheese comes out everybody's happy squirty cheese cheese and wine pecorino cheesecake.
+Everyone loves stilton hard cheese stinking bishop mascarpone cheese slices boursin st. agur blue cheese.
+Cheeseburger airedale.footnoteref:[cheese_link,http://www.cheeseipsum.co.uk/]
+
+
+[NOTE]
+================================================================================
+Squirty cheese swiss parmesan.footnoteref:[rubber,Thanks to Rubber Cheese Limited.]
+Squirty cheese when the cheese comes out everybody's happy.footnoteref:[cheese_link]
+================================================================================
+
+[cols="2*"]
+|==========
+| column 1 | column 2
+
+| Squirty cheese swiss parmesan.footnoteref:[rubber]
+| When the cheese comes out everybody's happy chalk and cheese.
+
+| I love cheese, especially briefootnoteref:[cheese_link] cheese strings.
+| Red leicester bavarian bergkase lancashire melted cheese.
+
+|==========
+
+// *****************************************************************************
+// *                                                                           *
+// *                              Block Elements                               *
+// *                                                                           *
+// *****************************************************************************
 
 == Block Elements
 
@@ -283,6 +322,8 @@ include::_snippets.adoc[tag=admonitions_test]
 // *                                  Tables                                   *
 // *                                                                           *
 // *****************************************************************************
+
+// @TODO: Create ad hoc tables with title, footnotes, and misc elements inside.
 
 == Tables
 

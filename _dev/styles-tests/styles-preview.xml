@@ -5,7 +5,7 @@
 <info>
 <title>Alan Documentation Styles</title>
 <subtitle>templates styles samples</subtitle>
-<date>December 3, 2018</date>
+<date>December 9, 2018</date>
 <author>
 <personname>
 <firstname>Tristano</firstname>
@@ -16,8 +16,8 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>1.1</revnumber>
-<date>December 3, 2018</date>
+<revnumber>1.2</revnumber>
+<date>December 9, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: {toolchain}</revremark>
 </revision>
@@ -49,13 +49,13 @@ abcdefghijklmnopqrstuvwxyz
 </chapter>
 <chapter xml:id="_lists">
 <title>Lists</title>
-<section xml:id="_unrdered_list">
-<title>Unrdered List</title>
+<section xml:id="_unordered_list">
+<title>Unordered List</title>
 <itemizedlist>
 <title>List Title</title>
 <listitem>
 <simpara>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro.</simpara>
-</listitem>
+<itemizedlist>
 <listitem>
 <simpara>De carne lumbering animata corpora quaeritis.</simpara>
 <itemizedlist>
@@ -64,6 +64,8 @@ abcdefghijklmnopqrstuvwxyz
 <itemizedlist>
 <listitem>
 <simpara>De apocalypsi gorger omero undead survivor dictum mauris.</simpara>
+</listitem>
+</itemizedlist>
 </listitem>
 <listitem>
 <simpara>Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium.</simpara>
@@ -136,6 +138,26 @@ abcdefghijklmnopqrstuvwxyz
 </orderedlist>
 </listitem>
 </orderedlist>
+</section>
+<section xml:id="_checklist">
+<title>Checklist</title>
+<itemizedlist mark="none">
+<listitem>
+<simpara>&#10063; Unchecked item.</simpara>
+</listitem>
+<listitem>
+<simpara>&#10003; Checked item.</simpara>
+</listitem>
+<listitem>
+<simpara>&#10003; Checked item.</simpara>
+</listitem>
+<listitem>
+<simpara>&#10063; Unchecked item.</simpara>
+</listitem>
+<listitem>
+<simpara>&#10003; Checked item.</simpara>
+</listitem>
+</itemizedlist>
 </section>
 <section xml:id="_description_list">
 <title>Description List</title>
@@ -286,6 +308,40 @@ abcdefghijklmnopqrstuvwxyz
 </qandaentry>
 </qandaset>
 </section>
+</chapter>
+<chapter xml:id="_footnotes">
+<title>Footnotes</title>
+<simpara>Everyone loves cheese and biscuits halloumi.<footnote><simpara>Courtesy of Cheese Ipsum, a cheesy lorem ipsum generator.</simpara></footnote>
+Bocconcini mozzarella cottage cheese jarlsberg taleggio ricotta hard cheese cheddar.
+Stilton pecorino brie when the cheese comes out everybody&#8217;s happy squirty cheese cheese and wine pecorino cheesecake.
+Everyone loves stilton hard cheese stinking bishop mascarpone cheese slices boursin st. agur blue cheese.
+Cheeseburger airedale.<footnote xml:id="cheese_link"><simpara>http://www.cheeseipsum.co.uk/</simpara></footnote></simpara>
+<note>
+<simpara>Squirty cheese swiss parmesan.<footnote xml:id="rubber"><simpara>Thanks to Rubber Cheese Limited.</simpara></footnote>
+Squirty cheese when the cheese comes out everybody&#8217;s happy.<footnoteref linkend="cheese_link"/></simpara>
+</note>
+<informaltable frame="all" rowsep="1" colsep="1">
+<tgroup cols="2">
+<colspec colname="col_1" colwidth="50*"/>
+<colspec colname="col_2" colwidth="50*"/>
+<thead>
+<row>
+<entry align="left" valign="top">column 1</entry>
+<entry align="left" valign="top">column 2</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara>Squirty cheese swiss parmesan.<footnoteref linkend="rubber"/></simpara></entry>
+<entry align="left" valign="top"><simpara>When the cheese comes out everybody&#8217;s happy chalk and cheese.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>I love cheese, especially brie<footnoteref linkend="cheese_link"/> cheese strings.</simpara></entry>
+<entry align="left" valign="top"><simpara>Red leicester bavarian bergkase lancashire melted cheese.</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
 </chapter>
 <chapter xml:id="_block_elements">
 <title>Block Elements</title>

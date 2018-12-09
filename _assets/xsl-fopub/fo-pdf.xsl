@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "fo-pdf.xsl" v0.2.0 (2018/12/05)
+  "fo-pdf.xsl" v0.2.1 (2018/12/09)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -998,9 +998,11 @@
     <xsl:attribute name="color"><xsl:value-of select="$link.color"/></xsl:attribute>
   </xsl:attribute-set>
 
-  <!--==========================================================================
-                                      Lists
-  ===========================================================================-->
+  <!--**************************************************************************
+  *                                                                            *
+  *                                   Lists                                    *
+  *                                                                            *
+  ***************************************************************************-->
 
   <xsl:param name="qandadiv.autolabel">0</xsl:param>
   <xsl:param name="variablelist.as.blocks">1</xsl:param>
@@ -1028,17 +1030,44 @@
     <xsl:attribute name="font-weight">bold</xsl:attribute>
   </xsl:attribute-set>
 
+  <!--==========================================================================
+                                   Bullet Lists
+  ===========================================================================-->
+
+  <!-- ====================================
+       BULLETS SEQUENCES FOR NESTING LEVELS
+       ====================================
+       Define the bullets types to use for each item level in unordered lists.
+       I've changed the settings so that the same bullet is used for all levels.
+  -->
+  <xsl:template name="next.itemsymbol">
+    <xsl:param name="itemsymbol" select="'default'"/>
+    <xsl:choose>
+      <!-- Symbols alternation list (circular loop): -->
+      <xsl:when test="$itemsymbol = 'square'">square</xsl:when>
+      <xsl:otherwise>square</xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <!-- ======================
+       BULLETS CHARS ENTITIES
+       ======================
+       Define the bullets characters entities to use for the various bullets types.
+       We had to adapt some entities to characters supported by the template font.
+  -->
   <xsl:template name="itemizedlist.label.markup">
-    <xsl:param name="itemsymbol" select="'disc'"/>
+    <!-- <xsl:param name="itemsymbol" select="'disc'"/> -->
+    <xsl:param name="itemsymbol" select="'square'"/>
 
     <xsl:choose>
       <xsl:when test="$itemsymbol='none'"></xsl:when>
-      <xsl:when test="$itemsymbol='circle'">&#x25E6;</xsl:when>
-      <xsl:when test="$itemsymbol='disc'">&#x2022;</xsl:when>
-      <xsl:when test="$itemsymbol='square'">&#x25AA;</xsl:when>
-      <xsl:when test="$itemsymbol='checked'">&#x25A0;</xsl:when>
-      <xsl:when test="$itemsymbol='unchecked'">&#x25A1;</xsl:when>
-      <xsl:otherwise>&#x2022;</xsl:otherwise>
+      <xsl:when test="$itemsymbol='circle'">&#x2022;</xsl:when><!-- was: &#x25E6; -->
+      <xsl:when test="$itemsymbol='disc'">&#x25CF;</xsl:when><!-- was: &#x2022; -->
+      <xsl:when test="$itemsymbol='square'">&#x25A0;</xsl:when><!-- was: &#x25AA; -->
+      <xsl:when test="$itemsymbol='checked'">&#x25A0;</xsl:when><!-- was: &#x25A0; -->
+      <xsl:when test="$itemsymbol='unchecked'">&#x25A0;</xsl:when><!-- was: &#x25A1; -->
+      <xsl:when test="$itemsymbol='diamond'">&#x2666;</xsl:when><!-- added -->
+      <xsl:otherwise>&#x2666;</xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 

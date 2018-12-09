@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">v 2.0,</span>
-<span id="revdate">October 07, 2018</span>
+<span id="revnumber">v 2.1,</span>
+<span id="revdate">December 9, 2018</span>
 <br><span id="revremark">Backend: Asciidoctor&#8217;s native HTML5</span>
 </div>
 <div id="toc" class="toc2">
@@ -448,14 +448,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_fonts_specimens">1. Fonts Specimens</a></li>
 <li><a href="#_font_styles_availability_checks">2. Font Styles Availability Checks</a></li>
 <li><a href="#_fonts_combination_preview">3. Fonts Combination Preview</a></li>
-<li><a href="#_ligatures_tests">4. Ligatures Tests</a>
+<li><a href="#_list_bullets">4. List Bullets</a></li>
+<li><a href="#_ligatures_tests">5. Ligatures Tests</a>
 <ul class="sectlevel2">
-<li><a href="#_code_ligatures">4.1. Code Ligatures</a></li>
+<li><a href="#_code_ligatures">5.1. Code Ligatures</a></li>
 </ul>
 </li>
-<li><a href="#_special_charachters">5. Special Charachters</a>
+<li><a href="#_special_charachters">6. Special Charachters</a>
 <ul class="sectlevel2">
-<li><a href="#_text_replacements">5.1. Text Replacements</a></li>
+<li><a href="#_text_replacements">6.1. Text Replacements</a></li>
 </ul>
 </li>
 </ul>
@@ -595,13 +596,227 @@ And this isn&#8217;t my nose. This is a false one.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_ligatures_tests"><a class="anchor" href="#_ligatures_tests"></a>4. Ligatures Tests</h2>
+<h2 id="_list_bullets"><a class="anchor" href="#_list_bullets"></a>4. List Bullets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here we test the availability of the different bullet chars that can be used in unordered lists as bullets.
+Some bullets characters might not be available in some backends, so depending on the font used by template it might be necessary to tweak the unordered list settings that control bullets characters.</p>
+</div>
+<div class="paragraph">
+<p>Some common bullets types definitions:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 10%;">
+<col style="width: 70%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">entity</th>
+<th class="tableblock halign-center valign-top">char</th>
+<th class="tableblock halign-left valign-top">type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x2013;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2013;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">endash</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x2014;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2014;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">emdash</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x2022;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2022;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bullet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x2022;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2022;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x2023;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2023;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">triangle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x203A;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x203A;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">point</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x25A0;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x25A0;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x25A0;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x25A0;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">square</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x25A1;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x25A1;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unchecked</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x25A1;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x25A1;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">whitesquare</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x25AA;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x25AA;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smallblacksquare</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x25AA;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x25AA;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">square</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x25AB;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x25AB;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smallwhitesquare</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x25CB;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x25CB;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">circle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x25CB;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x25CB;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">opencircle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x25CF;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x25CF;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blackcircle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x25CF;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x25CF;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">round</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x25E6;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x25E6;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">circle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#x25E6;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x25E6;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">whitebullet</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<div class="paragraph">
+<p>And here is a preview of how bulleted lists are being rendered by the current template:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>level 1</p>
+<div class="ulist">
+<ul>
+<li>
+<p>level 2</p>
+<div class="ulist">
+<ul>
+<li>
+<p>level 3</p>
+<div class="ulist">
+<ul>
+<li>
+<p>level 4</p>
+<div class="ulist">
+<ul>
+<li>
+<p>level 5</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>And these are the current bullets types by their name, and how the template renders them:</p>
+</div>
+<div class="ulist circle">
+<ul class="circle">
+<li>
+<p>circle.</p>
+</li>
+</ul>
+</div>
+<div class="ulist disc">
+<ul class="disc">
+<li>
+<p>disc.</p>
+</li>
+</ul>
+</div>
+<div class="ulist diamond">
+<ul class="diamond">
+<li>
+<p>diamond (custom definition: <code>&amp;#x2666;</code>).</p>
+</li>
+</ul>
+</div>
+<div class="ulist square">
+<ul class="square">
+<li>
+<p>square.</p>
+</li>
+</ul>
+</div>
+<div class="ulist unchecked">
+<ul class="unchecked">
+<li>
+<p>unchecked.</p>
+</li>
+</ul>
+</div>
+<div class="ulist checked">
+<ul class="checked">
+<li>
+<p>checked.</p>
+</li>
+</ul>
+</div>
+<div class="ulist xxxx">
+<ul class="xxxx">
+<li>
+<p><em>fallback symbol</em> (unknow bullet types).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ligatures_tests"><a class="anchor" href="#_ligatures_tests"></a>5. Ligatures Tests</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Here we test if ligatures are being supported by the current backend and font.</p>
 </div>
 <div class="sect2">
-<h3 id="_code_ligatures"><a class="anchor" href="#_code_ligatures"></a>4.1. Code Ligatures</h3>
+<h3 id="_code_ligatures"><a class="anchor" href="#_code_ligatures"></a>5.1. Code Ligatures</h3>
 <div class="paragraph">
 <p>Some fonts support source code related ligatures.
 We&#8217;ll test these code related ligatures using a test file taken from Nikita Prokopov&#8217;s
@@ -683,10 +898,10 @@ The example block below has not special substitutions settings.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_special_charachters"><a class="anchor" href="#_special_charachters"></a>5. Special Charachters</h2>
+<h2 id="_special_charachters"><a class="anchor" href="#_special_charachters"></a>6. Special Charachters</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_text_replacements"><a class="anchor" href="#_text_replacements"></a>5.1. Text Replacements</h3>
+<h3 id="_text_replacements"><a class="anchor" href="#_text_replacements"></a>6.1. Text Replacements</h3>
 <div class="paragraph">
 <p>The following table is used for checking that default Asciidoctor textual symbols replacement works fine.</p>
 </div>
@@ -793,7 +1008,7 @@ Content licensed under <a href="https://creativecommons.org/licenses/by/3.0/" ta
 </div>
 <div id="footer">
 <div id="footer-text">
-v 2.0<br>
+v 2.1<br>
 </div>
 </div>
 <link rel="stylesheet" href="../../_assets/hjs/styles/github.min.css">

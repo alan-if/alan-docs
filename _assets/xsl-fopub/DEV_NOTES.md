@@ -14,6 +14,9 @@ Some notes and useful links for working on FOP/XSL customization of the PDF temp
         - [Base-14 Fonts Set](#base-14-fonts-set)
         - [Custom Fonts](#custom-fonts)
         - [Font Ligatures](#font-ligatures)
+    - [Lists](#lists)
+        - [Ordered Lists](#ordered-lists)
+        - [Bulleted Lists](#bulleted-lists)
     - [Callouts](#callouts)
     - [Admonitions](#admonitions)
     - [Running Headers & Footers](#running-headers--footers)
@@ -71,6 +74,21 @@ Some notes and useful links for working on FOP/XSL customization of the PDF temp
 FOP 2.1 doesn't support font ligatures in PDF:
 
 > OpenType fonts support advanced layout features such as ligatures, small caps, swashes, alternates, old style figures and more. [...] These features are currently missing within FOP due to the implementation opting to favor a greater number of formats. [...] the current method extracts the Compact Font Format (CFF) data containing among other things the character definitions, optionally subsets and embeds the result as a Type1C font.
+
+## Lists
+
+- [DocBook XSL Guide: Chapter 21. Lists](http://www.sagehill.net/docbookxsl/Lists.html)
+
+
+### Ordered Lists
+
+- [DocBook XSL Guide: orderedlist options](http://www.sagehill.net/docbookxsl/Orderedlists.html)
+
+### Bulleted Lists
+
+- [DocBook XSL Guide: itemizedlist options](http://www.sagehill.net/docbookxsl/Itemizedlists.html)
+
+
 
 ## Callouts
 

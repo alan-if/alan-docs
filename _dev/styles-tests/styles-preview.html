@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">v 1.1,</span>
-<span id="revdate">December 3, 2018</span>
+<span id="revnumber">v 1.2,</span>
+<span id="revdate">December 9, 2018</span>
 <br><span id="revremark">Backend: Asciidoctor&#8217;s native HTML5</span>
 </div>
 <div id="toc" class="toc2">
@@ -448,32 +448,34 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_fonts_specimens">1. Fonts Specimens</a></li>
 <li><a href="#_lists">2. Lists</a>
 <ul class="sectlevel2">
-<li><a href="#_unrdered_list">2.1. Unrdered List</a></li>
+<li><a href="#_unordered_list">2.1. Unordered List</a></li>
 <li><a href="#_ordered_list">2.2. Ordered List</a></li>
-<li><a href="#_description_list">2.3. Description List</a></li>
-<li><a href="#_description_list_horizontal">2.4. Description List Horizontal</a></li>
-<li><a href="#_qa_list">2.5. Q&amp;A List</a></li>
+<li><a href="#_checklist">2.3. Checklist</a></li>
+<li><a href="#_description_list">2.4. Description List</a></li>
+<li><a href="#_description_list_horizontal">2.5. Description List Horizontal</a></li>
+<li><a href="#_qa_list">2.6. Q&amp;A List</a></li>
 </ul>
 </li>
-<li><a href="#_block_elements">3. Block Elements</a>
+<li><a href="#_footnotes">3. Footnotes</a></li>
+<li><a href="#_block_elements">4. Block Elements</a>
 <ul class="sectlevel2">
-<li><a href="#_example">3.1. Example</a></li>
-<li><a href="#_listing">3.2. Listing</a></li>
-<li><a href="#_literal">3.3. Literal</a></li>
-<li><a href="#_source">3.4. Source</a></li>
-<li><a href="#_quotations">3.5. Quotations</a></li>
+<li><a href="#_example">4.1. Example</a></li>
+<li><a href="#_listing">4.2. Listing</a></li>
+<li><a href="#_literal">4.3. Literal</a></li>
+<li><a href="#_source">4.4. Source</a></li>
+<li><a href="#_quotations">4.5. Quotations</a></li>
 </ul>
 </li>
-<li><a href="#_admonitions">4. Admonitions</a>
+<li><a href="#_admonitions">5. Admonitions</a>
 <ul class="sectlevel2">
-<li><a href="#_note">4.1. Note</a></li>
-<li><a href="#_tip">4.2. Tip</a></li>
-<li><a href="#_warning">4.3. Warning</a></li>
-<li><a href="#_caution">4.4. Caution</a></li>
-<li><a href="#_important">4.5. Important</a></li>
+<li><a href="#_note">5.1. Note</a></li>
+<li><a href="#_tip">5.2. Tip</a></li>
+<li><a href="#_warning">5.3. Warning</a></li>
+<li><a href="#_caution">5.4. Caution</a></li>
+<li><a href="#_important">5.5. Important</a></li>
 </ul>
 </li>
-<li><a href="#_tables">5. Tables</a></li>
+<li><a href="#_tables">6. Tables</a></li>
 </ul>
 </div>
 </div>
@@ -536,13 +538,14 @@ abcdefghijklmnopqrstuvwxyz
 <h2 id="_lists"><a class="anchor" href="#_lists"></a>2. Lists</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_unrdered_list"><a class="anchor" href="#_unrdered_list"></a>2.1. Unrdered List</h3>
+<h3 id="_unordered_list"><a class="anchor" href="#_unordered_list"></a>2.1. Unordered List</h3>
 <div class="ulist">
 <div class="title">List Title</div>
 <ul>
 <li>
 <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro.</p>
-</li>
+<div class="ulist">
+<ul>
 <li>
 <p>De carne lumbering animata corpora quaeritis.</p>
 <div class="ulist">
@@ -553,6 +556,9 @@ abcdefghijklmnopqrstuvwxyz
 <ul>
 <li>
 <p>De apocalypsi gorger omero undead survivor dictum mauris.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium.</p>
@@ -644,7 +650,29 @@ abcdefghijklmnopqrstuvwxyz
 </div>
 </div>
 <div class="sect2">
-<h3 id="_description_list"><a class="anchor" href="#_description_list"></a>2.3. Description List</h3>
+<h3 id="_checklist"><a class="anchor" href="#_checklist"></a>2.3. Checklist</h3>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> Unchecked item.</p>
+</li>
+<li>
+<p><i class="fa fa-check-square-o"></i> Checked item.</p>
+</li>
+<li>
+<p><i class="fa fa-check-square-o"></i> Checked item.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Unchecked item.</p>
+</li>
+<li>
+<p><i class="fa fa-check-square-o"></i> Checked item.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description_list"><a class="anchor" href="#_description_list"></a>2.4. Description List</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Lucio </dt>
@@ -683,7 +711,7 @@ abcdefghijklmnopqrstuvwxyz
 </div>
 </div>
 <div class="sect2">
-<h3 id="_description_list_horizontal"><a class="anchor" href="#_description_list_horizontal"></a>2.4. Description List Horizontal</h3>
+<h3 id="_description_list_horizontal"><a class="anchor" href="#_description_list_horizontal"></a>2.5. Description List Horizontal</h3>
 <div class="hdlist">
 <table>
 <tr>
@@ -754,7 +782,7 @@ Is bello
 </div>
 </div>
 <div class="sect2">
-<h3 id="_qa_list"><a class="anchor" href="#_qa_list"></a>2.5. Q&amp;A List</h3>
+<h3 id="_qa_list"><a class="anchor" href="#_qa_list"></a>2.6. Q&amp;A List</h3>
 <div class="qlist qanda">
 <ol>
 <li>
@@ -771,10 +799,59 @@ Is bello
 </div>
 </div>
 <div class="sect1">
-<h2 id="_block_elements"><a class="anchor" href="#_block_elements"></a>3. Block Elements</h2>
+<h2 id="_footnotes"><a class="anchor" href="#_footnotes"></a>3. Footnotes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Everyone loves cheese and biscuits halloumi.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>
+Bocconcini mozzarella cottage cheese jarlsberg taleggio ricotta hard cheese cheddar.
+Stilton pecorino brie when the cheese comes out everybody&#8217;s happy squirty cheese cheese and wine pecorino cheesecake.
+Everyone loves stilton hard cheese stinking bishop mascarpone cheese slices boursin st. agur blue cheese.
+Cheeseburger airedale.<sup class="footnote" id="_footnote_cheese_link">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Squirty cheese swiss parmesan.<sup class="footnote" id="_footnote_rubber">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>
+Squirty cheese when the cheese comes out everybody&#8217;s happy.<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">column 1</th>
+<th class="tableblock halign-left valign-top">column 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Squirty cheese swiss parmesan.<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When the cheese comes out everybody&#8217;s happy chalk and cheese.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I love cheese, especially brie<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> cheese strings.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red leicester bavarian bergkase lancashire melted cheese.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_block_elements"><a class="anchor" href="#_block_elements"></a>4. Block Elements</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_example"><a class="anchor" href="#_example"></a>3.1. Example</h3>
+<h3 id="_example"><a class="anchor" href="#_example"></a>4.1. Example</h3>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -787,7 +864,7 @@ incognita carchesia</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_listing"><a class="anchor" href="#_listing"></a>3.2. Listing</h3>
+<h3 id="_listing"><a class="anchor" href="#_listing"></a>4.2. Listing</h3>
 <div class="listingblock">
 <div class="content">
 <pre>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
@@ -799,7 +876,7 @@ opem.</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_literal"><a class="anchor" href="#_literal"></a>3.3. Literal</h3>
+<h3 id="_literal"><a class="anchor" href="#_literal"></a>4.3. Literal</h3>
 <div class="literalblock">
 <div class="content">
 <pre>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
@@ -811,7 +888,7 @@ opem.</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_source"><a class="anchor" href="#_source"></a>3.4. Source</h3>
+<h3 id="_source"><a class="anchor" href="#_source"></a>4.4. Source</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code>For i=1 To 10
@@ -821,7 +898,7 @@ Next</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_quotations"><a class="anchor" href="#_quotations"></a>3.5. Quotations</h3>
+<h3 id="_quotations"><a class="anchor" href="#_quotations"></a>4.5. Quotations</h3>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
@@ -861,10 +938,10 @@ opem.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_admonitions"><a class="anchor" href="#_admonitions"></a>4. Admonitions</h2>
+<h2 id="_admonitions"><a class="anchor" href="#_admonitions"></a>5. Admonitions</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_note"><a class="anchor" href="#_note"></a>4.1. Note</h3>
+<h3 id="_note"><a class="anchor" href="#_note"></a>5.1. Note</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -893,7 +970,7 @@ Next</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_tip"><a class="anchor" href="#_tip"></a>4.2. Tip</h3>
+<h3 id="_tip"><a class="anchor" href="#_tip"></a>5.2. Tip</h3>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -922,7 +999,7 @@ Next</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_warning"><a class="anchor" href="#_warning"></a>4.3. Warning</h3>
+<h3 id="_warning"><a class="anchor" href="#_warning"></a>5.3. Warning</h3>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -951,7 +1028,7 @@ Next</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_caution"><a class="anchor" href="#_caution"></a>4.4. Caution</h3>
+<h3 id="_caution"><a class="anchor" href="#_caution"></a>5.4. Caution</h3>
 <div class="admonitionblock caution">
 <table>
 <tr>
@@ -980,7 +1057,7 @@ Next</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_important"><a class="anchor" href="#_important"></a>4.5. Important</h3>
+<h3 id="_important"><a class="anchor" href="#_important"></a>5.5. Important</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -1011,7 +1088,7 @@ Next</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_tables"><a class="anchor" href="#_tables"></a>5. Tables</h2>
+<h2 id="_tables"><a class="anchor" href="#_tables"></a>6. Tables</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Textual symbol replacements</caption>
@@ -1113,9 +1190,21 @@ Content licensed under <a href="https://creativecommons.org/licenses/by/3.0/" ta
 </div>
 </div>
 </div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. Courtesy of Cheese Ipsum, a cheesy lorem ipsum generator.
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. http://www.cheeseipsum.co.uk/
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. Thanks to Rubber Cheese Limited.
+</div>
+</div>
 <div id="footer">
 <div id="footer-text">
-v 1.1<br>
+v 1.2<br>
 </div>
 </div>
 <link rel="stylesheet" href="../../_assets/hjs/styles/github.min.css">
