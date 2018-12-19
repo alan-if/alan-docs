@@ -1,5 +1,5 @@
 :doctitle:  The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.89
+:revnumber: 0.1.90
 :revdate:   December 19, 2018
 :revremark: AsciiDoc conversion work
 :doctype: book
@@ -37,16 +37,9 @@
 // *****************************************************************************
 // Show document info and AsciiDoc conversion version and date...
 
-[subs=attributes+]
-..................................
-Doc version: {revnumber}
-Last edited: {revdate}
-..................................
-
 .About This Document
-********************************************************************************
-This document was coverted to AsciiDoc and is being reformated by Tristano Ajmone; and it's still a work-in-progress draft.
-The above version number and date refer to the editing status of the conversion work (ie, this document), not to the original manual from which the present document was derived.
+This document was converted to AsciiDoc by Tristano Ajmone; and it's still a work-in-progress draft.
+The revision number and date refer to the editing status of the conversion work (ie, this document), not to the original manual from which the present document was derived.
 
 This document was converted from the original _Alan Manual_ (in ODT format), version 3.0beta5 (August 9, 2018),
 downloaded from:
@@ -54,7 +47,6 @@ downloaded from:
 * https://bitbucket.org/alanif/alan/src/fb81645/doc/manual/
 
 This document is subjected to the https://bitbucket.org/alanif/alan/src/master/COPYING[Artistic License 2.0] terms.
-********************************************************************************
 
 // >>> Alan Logo >>>
 :logo_width: width=500
