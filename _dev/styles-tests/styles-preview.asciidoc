@@ -1,6 +1,6 @@
 = Alan Documentation Styles: templates styles samples
 Tristano Ajmone <tajmone@gmail.com>
-v1.3, December 9, 2018
+v1.4, December 19, 2018
 include::_inc_header-attributes.adoc[]
 :toclevels: 5
 :doctype: book
@@ -229,47 +229,64 @@ Squirty cheese when the cheese comes out everybody's happy.footnoteref:[cheese_l
 
 === Example
 
+Informal Example:
+
 [example]
-.Sample Title
 ============================================================================
-Lucibus ibi medio generis amore, post sibi, puellae Ophiusiaque aera incerti
-nuda. Quos et potero inpune iam. Amissa aetas! Sis *cultro* spissus rostro
-aliquemque pio fugit, suum in Iovis, circumdata curru non, et spectantur
-incognita carchesia
+include::_snippets.adoc[tag=lorem_styled]
+============================================================================
+
+Formal Example:
+
+[example]
+.Example With Title
+============================================================================
+include::_snippets.adoc[tag=lorem_styled]
 ============================================================================
 
 
 === Listing
 
 [listing]
-.Sample Title
---------------------------------------------
-Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
-et hoc.
+----------------------------------------
+include::_snippets.adoc[tag=lorem_plain]
+----------------------------------------
 
-Post iacentem praescia neci audire fausto revellit aequo reflectitur et
-opem.
---------------------------------------------
+[listing]
+.Listing With Title
+----------------------------------------
+include::_snippets.adoc[tag=lorem_plain]
+----------------------------------------
 
 
 === Literal
 
 
 [literal]
-.Sample Title
-............................................
-Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
-et hoc.
+........................................
+include::_snippets.adoc[tag=lorem_plain]
+........................................
 
-Post iacentem praescia neci audire fausto revellit aequo reflectitur et
-opem.
-............................................
+
+[literal]
+.Literal With Title
+........................................
+include::_snippets.adoc[tag=lorem_plain]
+........................................
 
 
 === Source
 
 [source]
-.Sample Title
+--------------------------------------------
+For i=1 To 10
+  Print "Hello World!"
+Next
+--------------------------------------------
+
+
+[source]
+.Source With Title
 --------------------------------------------
 For i=1 To 10
   Print "Hello World!"
@@ -311,6 +328,22 @@ ____
 // *****************************************************************************
 
 == Admonitions
+
+
+[NOTE]
+I'm an NOTE admonition.
+
+[TIP]
+I'm an TIP admonition.
+
+[WARNING]
+I'm an WARNING admonition.
+
+[CAUTION]
+I'm an CAUTION admonition.
+
+[IMPORTANT]
+I'm an IMPORTANT admonition.
 
 
 === Note

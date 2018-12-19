@@ -3,7 +3,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>Syntax Highlighting in Alan Documentation</title>
-<date>December 5, 2018</date>
+<date>December 19, 2018</date>
 <author>
 <personname>
 <firstname>Tristano</firstname>
@@ -14,8 +14,8 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>2.1</revnumber>
-<date>December 5, 2018</date>
+<revnumber>2.2</revnumber>
+<date>December 19, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: {toolchain}</revremark>
 </revision>
@@ -71,6 +71,14 @@ Start at canteen.</programlisting>
 <para>Callouts use default colors, no customization.</para>
 </callout>
 </calloutlist>
+<formalpara>
+<title>Alan Code With Title</title>
+<para>
+<programlisting language="alan" linenumbering="unnumbered">Every book IsA object.
+  Description "It's just a book."
+End Every.</programlisting>
+</para>
+</formalpara>
 <note>
 <simpara>Currently, there aren&#8217;t any Alan sourcecode examples with callouts in the <emphasis>Alan Manual</emphasis>.</simpara>
 </note>
@@ -82,6 +90,15 @@ Start at canteen.</programlisting>
             [inheritance]
             {property}
         'END' 'EVERY' [id] ['.']</programlisting>
+<formalpara>
+<title>BNF Rules Block With Title</title>
+<para>
+<programlisting language="bnf" linenumbering="unnumbered">class = 'EVERY' id
+            [inheritance]
+            {property}
+        'END' 'EVERY' [id] ['.']</programlisting>
+</para>
+</formalpara>
 <note>
 <simpara>Currently, there aren&#8217;t any BNF rules with callouts in the <emphasis>Alan Manual</emphasis>.</simpara>
 </note>
@@ -113,6 +130,10 @@ I see nothing special about the mailbox.</simpara>
 <simpara>&gt; <emphasis>open it</emphasis><?asciidoc-br?>
 The small mailbox is now open. The small mailbox contains a leaflet.</simpara>
 </informalexample>
+<example role="gametranscript">
+<title>Game Transcript With Title</title>
+<simpara>&gt; <emphasis>north</emphasis><?asciidoc-br?></simpara>
+</example>
 <important>
 <title>CALLOUTS NOT SUPPORTED</title>
 <simpara>Game transcripts are not verbatim blocks, so callouts are not supported.</simpara>
@@ -146,6 +167,12 @@ Options:
 <para>In the PDF document I haven&#8217;t been able to tweak callouts colors.</para>
 </callout>
 </calloutlist>
+<formalpara>
+<title>Shell Sample With Title</title>
+<para>
+<literallayout role="shell" class="monospaced">D:\&gt;dir</literallayout>
+</para>
+</formalpara>
 <note>
 <simpara>The <emphasis>Alan Manual</emphasis> contains shell examples with callouts in
 <link xl:href="../../manual/manual.html#_format_of_messages">App. F.1. Format of Messages</link>.</simpara>

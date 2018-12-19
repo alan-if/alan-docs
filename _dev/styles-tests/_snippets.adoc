@@ -15,12 +15,45 @@ Lorem _ipsum_ dolor sit amet, at *paulo* salutatus mel, no nisl fabellas vim. Eu
 Et pri `inermis ceteros`, mel te `tale` nominavi consetetur, tamquam disputando mea ad.
 Etiam ridens repudiare et nam. Ei iuvaret petentium sit.
 
+.Verbatim Sample
 ......................
 For i=1 To 10
   Print "Hello World!"
 Next
 ......................
+
+.Alan Sample
+[source,alan]
+-------------------------------------------
+Every book IsA object.
+  Description "It's just a book."
+End Every.
+-------------------------------------------
+
+.Transcript Sample
+[example,role="gametranscript"]
+============
+&gt; _north_
+============
+
 ================================================================================
 // end::admonitions_test[]
+
+// tag::lorem_plain[]
+Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
+et hoc.
+
+Post iacentem praescia neci audire fausto revellit aequo reflectitur et
+opem.
+// end::lorem_plain[]
+
+// tag::lorem_styled[]
+Lucibus ibi medio `generis amore`, post sibi, puellae _Ophiusiaque_ aera incerti
+nuda.
+
+Quos et potero inpune iam. Amissa aetas! Sis *cultro* spissus rostro
+aliquemque pio fugit, suum in Iovis, circumdata curru non, et spectantur
+incognita carchesia
+// end::lorem_styled[]
 
 // EOF //

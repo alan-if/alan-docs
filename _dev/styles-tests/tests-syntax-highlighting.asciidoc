@@ -1,6 +1,6 @@
 = Syntax Highlighting in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v2.1, December 5, 2018
+v2.2, December 19, 2018
 include::_inc_header-attributes.adoc[]
 :doctype: book
 :toclevels: 5
@@ -79,6 +79,14 @@ include::snippets.alan[tag=sample]
 <1> Callouts use default colors, no customization.
 <2> Callouts use default colors, no customization.
 
+.Alan Code With Title
+[source,alan]
+-------------------------------------------
+Every book IsA object.
+  Description "It's just a book."
+End Every.
+-------------------------------------------
+
 [NOTE]
 ================================================================================
 Currently, there aren't any Alan sourcecode examples with callouts in the _Alan Manual_.
@@ -89,6 +97,15 @@ Currently, there aren't any Alan sourcecode examples with callouts in the _Alan 
 
 BNF rules are styles as `bnf` source blocks.
 
+[source,bnf,subs="macros"]
+--------------------------------------------------------------------------------
+class = 'EVERY' id
+            [inheritance]
+            {property}
+        'END' 'EVERY' [id] ['.']
+--------------------------------------------------------------------------------
+
+.BNF Rules Block With Title
 [source,bnf,subs="macros"]
 --------------------------------------------------------------------------------
 class = 'EVERY' id
@@ -135,6 +152,12 @@ I see nothing special about the mailbox.
 The small mailbox is now open. The small mailbox contains a leaflet.
 ================================================================================
 
+.Game Transcript With Title
+[example,role="gametranscript"]
+================================================================================
+&gt; _north_ +
+================================================================================
+
 [IMPORTANT]
 .CALLOUTS NOT SUPPORTED
 ================================================================================
@@ -168,6 +191,14 @@ Options:
 <1> I've also styled the callouts background and foreground colors to match the shell scheme.
 <2> By default, callouts have black circles and white numbers, which don't work well with the black background of the shell scheme.
 <3> In the PDF document I haven't been able to tweak callouts colors.
+
+.Shell Sample With Title
+--
+[literal, role="shell"]
+................................................................................
+D:\>dir
+................................................................................
+--
 
 [NOTE]
 ================================================================================

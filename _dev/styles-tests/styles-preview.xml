@@ -5,7 +5,7 @@
 <info>
 <title>Alan Documentation Styles</title>
 <subtitle>templates styles samples</subtitle>
-<date>December 9, 2018</date>
+<date>December 19, 2018</date>
 <author>
 <personname>
 <firstname>Tristano</firstname>
@@ -16,8 +16,8 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>1.3</revnumber>
-<date>December 9, 2018</date>
+<revnumber>1.4</revnumber>
+<date>December 19, 2018</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: {toolchain}</revremark>
 </revision>
@@ -360,18 +360,33 @@ Squirty cheese when the cheese comes out everybody&#8217;s happy.<footnoteref li
 <title>Block Elements</title>
 <section xml:id="_example">
 <title>Example</title>
+<simpara>Informal Example:</simpara>
+<informalexample>
+<simpara>Lucibus ibi medio <literal>generis amore</literal>, post sibi, puellae <emphasis>Ophiusiaque</emphasis> aera incerti
+nuda.</simpara>
+<simpara>Quos et potero inpune iam. Amissa aetas! Sis <emphasis role="strong">cultro</emphasis> spissus rostro
+aliquemque pio fugit, suum in Iovis, circumdata curru non, et spectantur
+incognita carchesia</simpara>
+</informalexample>
+<simpara>Formal Example:</simpara>
 <example>
-<title>Sample Title</title>
-<simpara>Lucibus ibi medio generis amore, post sibi, puellae Ophiusiaque aera incerti
-nuda. Quos et potero inpune iam. Amissa aetas! Sis <emphasis role="strong">cultro</emphasis> spissus rostro
+<title>Example With Title</title>
+<simpara>Lucibus ibi medio <literal>generis amore</literal>, post sibi, puellae <emphasis>Ophiusiaque</emphasis> aera incerti
+nuda.</simpara>
+<simpara>Quos et potero inpune iam. Amissa aetas! Sis <emphasis role="strong">cultro</emphasis> spissus rostro
 aliquemque pio fugit, suum in Iovis, circumdata curru non, et spectantur
 incognita carchesia</simpara>
 </example>
 </section>
 <section xml:id="_listing">
 <title>Listing</title>
+<screen>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
+et hoc.
+
+Post iacentem praescia neci audire fausto revellit aequo reflectitur et
+opem.</screen>
 <formalpara>
-<title>Sample Title</title>
+<title>Listing With Title</title>
 <para>
 <screen>Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
 et hoc.
@@ -383,8 +398,13 @@ opem.</screen>
 </section>
 <section xml:id="_literal">
 <title>Literal</title>
+<literallayout class="monospaced">Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
+et hoc.
+
+Post iacentem praescia neci audire fausto revellit aequo reflectitur et
+opem.</literallayout>
 <formalpara>
-<title>Sample Title</title>
+<title>Literal With Title</title>
 <para>
 <literallayout class="monospaced">Lorem markdownum rerum: est, in quod iam in. Incaluit vacuus ignibus, probetne
 et hoc.
@@ -396,8 +416,11 @@ opem.</literallayout>
 </section>
 <section xml:id="_source">
 <title>Source</title>
+<screen>For i=1 To 10
+  Print "Hello World!"
+Next</screen>
 <formalpara>
-<title>Sample Title</title>
+<title>Source With Title</title>
 <para>
 <screen>For i=1 To 10
   Print "Hello World!"
@@ -429,6 +452,21 @@ opem.</simpara>
 </chapter>
 <chapter xml:id="_admonitions">
 <title>Admonitions</title>
+<note>
+<simpara>I&#8217;m an NOTE admonition.</simpara>
+</note>
+<tip>
+<simpara>I&#8217;m an TIP admonition.</simpara>
+</tip>
+<warning>
+<simpara>I&#8217;m an WARNING admonition.</simpara>
+</warning>
+<caution>
+<simpara>I&#8217;m an CAUTION admonition.</simpara>
+</caution>
+<important>
+<simpara>I&#8217;m an IMPORTANT admonition.</simpara>
+</important>
 <section xml:id="_note">
 <title>Note</title>
 <note>
@@ -436,9 +474,26 @@ opem.</simpara>
 <simpara>Lorem <emphasis>ipsum</emphasis> dolor sit amet, at <emphasis role="strong">paulo</emphasis> salutatus mel, no nisl fabellas vim. Eu qui fugit dicant tantas, ad cum semper putant eloquentiam.</simpara>
 <simpara>Et pri <literal>inermis ceteros</literal>, mel te <literal>tale</literal> nominavi consetetur, tamquam disputando mea ad.
 Etiam ridens repudiare et nam. Ei iuvaret petentium sit.</simpara>
+<formalpara>
+<title>Verbatim Sample</title>
+<para>
 <literallayout class="monospaced">For i=1 To 10
   Print "Hello World!"
 Next</literallayout>
+</para>
+</formalpara>
+<formalpara>
+<title>Alan Sample</title>
+<para>
+<programlisting language="alan" linenumbering="unnumbered">Every book IsA object.
+  Description "It's just a book."
+End Every.</programlisting>
+</para>
+</formalpara>
+<example role="gametranscript">
+<title>Transcript Sample</title>
+<simpara>&gt; <emphasis>north</emphasis></simpara>
+</example>
 </note>
 </section>
 <section xml:id="_tip">
@@ -448,9 +503,26 @@ Next</literallayout>
 <simpara>Lorem <emphasis>ipsum</emphasis> dolor sit amet, at <emphasis role="strong">paulo</emphasis> salutatus mel, no nisl fabellas vim. Eu qui fugit dicant tantas, ad cum semper putant eloquentiam.</simpara>
 <simpara>Et pri <literal>inermis ceteros</literal>, mel te <literal>tale</literal> nominavi consetetur, tamquam disputando mea ad.
 Etiam ridens repudiare et nam. Ei iuvaret petentium sit.</simpara>
+<formalpara>
+<title>Verbatim Sample</title>
+<para>
 <literallayout class="monospaced">For i=1 To 10
   Print "Hello World!"
 Next</literallayout>
+</para>
+</formalpara>
+<formalpara>
+<title>Alan Sample</title>
+<para>
+<programlisting language="alan" linenumbering="unnumbered">Every book IsA object.
+  Description "It's just a book."
+End Every.</programlisting>
+</para>
+</formalpara>
+<example role="gametranscript">
+<title>Transcript Sample</title>
+<simpara>&gt; <emphasis>north</emphasis></simpara>
+</example>
 </tip>
 </section>
 <section xml:id="_warning">
@@ -460,9 +532,26 @@ Next</literallayout>
 <simpara>Lorem <emphasis>ipsum</emphasis> dolor sit amet, at <emphasis role="strong">paulo</emphasis> salutatus mel, no nisl fabellas vim. Eu qui fugit dicant tantas, ad cum semper putant eloquentiam.</simpara>
 <simpara>Et pri <literal>inermis ceteros</literal>, mel te <literal>tale</literal> nominavi consetetur, tamquam disputando mea ad.
 Etiam ridens repudiare et nam. Ei iuvaret petentium sit.</simpara>
+<formalpara>
+<title>Verbatim Sample</title>
+<para>
 <literallayout class="monospaced">For i=1 To 10
   Print "Hello World!"
 Next</literallayout>
+</para>
+</formalpara>
+<formalpara>
+<title>Alan Sample</title>
+<para>
+<programlisting language="alan" linenumbering="unnumbered">Every book IsA object.
+  Description "It's just a book."
+End Every.</programlisting>
+</para>
+</formalpara>
+<example role="gametranscript">
+<title>Transcript Sample</title>
+<simpara>&gt; <emphasis>north</emphasis></simpara>
+</example>
 </warning>
 </section>
 <section xml:id="_caution">
@@ -472,9 +561,26 @@ Next</literallayout>
 <simpara>Lorem <emphasis>ipsum</emphasis> dolor sit amet, at <emphasis role="strong">paulo</emphasis> salutatus mel, no nisl fabellas vim. Eu qui fugit dicant tantas, ad cum semper putant eloquentiam.</simpara>
 <simpara>Et pri <literal>inermis ceteros</literal>, mel te <literal>tale</literal> nominavi consetetur, tamquam disputando mea ad.
 Etiam ridens repudiare et nam. Ei iuvaret petentium sit.</simpara>
+<formalpara>
+<title>Verbatim Sample</title>
+<para>
 <literallayout class="monospaced">For i=1 To 10
   Print "Hello World!"
 Next</literallayout>
+</para>
+</formalpara>
+<formalpara>
+<title>Alan Sample</title>
+<para>
+<programlisting language="alan" linenumbering="unnumbered">Every book IsA object.
+  Description "It's just a book."
+End Every.</programlisting>
+</para>
+</formalpara>
+<example role="gametranscript">
+<title>Transcript Sample</title>
+<simpara>&gt; <emphasis>north</emphasis></simpara>
+</example>
 </caution>
 </section>
 <section xml:id="_important">
@@ -484,9 +590,26 @@ Next</literallayout>
 <simpara>Lorem <emphasis>ipsum</emphasis> dolor sit amet, at <emphasis role="strong">paulo</emphasis> salutatus mel, no nisl fabellas vim. Eu qui fugit dicant tantas, ad cum semper putant eloquentiam.</simpara>
 <simpara>Et pri <literal>inermis ceteros</literal>, mel te <literal>tale</literal> nominavi consetetur, tamquam disputando mea ad.
 Etiam ridens repudiare et nam. Ei iuvaret petentium sit.</simpara>
+<formalpara>
+<title>Verbatim Sample</title>
+<para>
 <literallayout class="monospaced">For i=1 To 10
   Print "Hello World!"
 Next</literallayout>
+</para>
+</formalpara>
+<formalpara>
+<title>Alan Sample</title>
+<para>
+<programlisting language="alan" linenumbering="unnumbered">Every book IsA object.
+  Description "It's just a book."
+End Every.</programlisting>
+</para>
+</formalpara>
+<example role="gametranscript">
+<title>Transcript Sample</title>
+<simpara>&gt; <emphasis>north</emphasis></simpara>
+</example>
 </important>
 </section>
 </chapter>
