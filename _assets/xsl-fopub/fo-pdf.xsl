@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "fo-pdf.xsl" v0.2.2 (2018/12/09)
+  "fo-pdf.xsl" v0.2.3 (2018/12/19)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -227,22 +227,43 @@
         BORDER RADIUS
         =============-->
     <xsl:attribute name="fox:border-radius">
-      <xsl:value-of select="$Verbatim.border.radius"/>
+      <xsl:choose>
+        <!-- ****| Alan |**** -->
+        <xsl:when test="@language = 'alan'">
+          <xsl:value-of select="$AlanHL.border.radius"/>
+        </xsl:when>
+        <!-- ****| BNF |**** -->
+        <xsl:when test="@language = 'bnf'">
+          <xsl:value-of select="$BNF.border.radius"/>
+        </xsl:when>
+        <!-- ****| Shell |**** -->
+        <xsl:when test="@role = 'shell'">
+          <xsl:value-of select="$Shell.border.radius"/>
+        </xsl:when>
+        <!-- ****| Default |**** -->
+        <xsl:otherwise>
+          <xsl:value-of select="$Verbatim.border.radius"/>
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:attribute>
     <!--============
         BORDER STYLE
         ============-->
     <xsl:attribute name="border-style">
       <xsl:choose>
-        <!--|*| Alan |*|-->
+        <!-- ****| Alan |**** -->
         <xsl:when test="@language = 'alan'">
           <xsl:value-of select="$AlanHL.border.style"/>
         </xsl:when>
-        <!--|*| BNF |*|-->
+        <!-- ****| BNF |**** -->
         <xsl:when test="@language = 'bnf'">
           <xsl:value-of select="$BNF.border.style"/>
         </xsl:when>
-        <!-- Default -->
+         <!-- ****| Shell |**** -->
+        <xsl:when test="@role = 'shell'">
+          <xsl:value-of select="$Shell.border.style"/>
+        </xsl:when>
+       <!-- ****| Default |**** -->
         <xsl:otherwise>
           <xsl:value-of select="$Verbatim.border.style"/>
         </xsl:otherwise>
@@ -253,15 +274,19 @@
         ============-->
     <xsl:attribute name="border-width">
       <xsl:choose>
-        <!--|*| Alan |*|-->
+        <!-- ****| Alan |**** -->
         <xsl:when test="@language = 'alan'">
           <xsl:value-of select="$AlanHL.border.width"/>
         </xsl:when>
-        <!--|*| BNF |*|-->
+        <!-- ****| BNF |**** -->
         <xsl:when test="@language = 'bnf'">
           <xsl:value-of select="$BNF.border.width"/>
         </xsl:when>
-        <!-- Default -->
+        <!-- ****| Shell |**** -->
+        <xsl:when test="@role = 'shell'">
+          <xsl:value-of select="$Shell.border.width"/>
+        </xsl:when>
+        <!-- ****| Default |**** -->
         <xsl:otherwise>
           <xsl:value-of select="$Verbatim.border.width"/>
         </xsl:otherwise>
@@ -272,15 +297,19 @@
         ============-->
     <xsl:attribute name="border-color">
       <xsl:choose>
-        <!--|*| Alan |*|-->
+        <!-- ****| Alan |**** -->
         <xsl:when test="@language = 'alan'">
           <xsl:value-of select="$AlanHL.border.color"/>
         </xsl:when>
-        <!--|*| BNF |*|-->
+        <!-- ****| BNF |**** -->
         <xsl:when test="@language = 'bnf'">
           <xsl:value-of select="$BNF.border.color"/>
         </xsl:when>
-        <!-- Default -->
+        <!-- ****| Shell |**** -->
+        <xsl:when test="@role = 'shell'">
+          <xsl:value-of select="$Shell.border.color"/>
+        </xsl:when>
+        <!-- ****| Default |**** -->
         <xsl:otherwise>
           <xsl:value-of select="$Verbatim.border.color"/>
         </xsl:otherwise>
@@ -329,39 +358,54 @@
     <!-- <xsl:attribute name="background-color">transparent</xsl:attribute> -->
     <xsl:attribute name="background-color">
       <xsl:choose>
+<!-- DISABLE: AD HOC VERBATIM BG COLORS IN ADMONITIONS -->
         <!-- Admonition: Note -->
+<!--
         <xsl:when test="ancestor::db:note">
           <xsl:text>#D6DEE0</xsl:text>
         </xsl:when>
+-->
         <!-- Admonition: Caution -->
+<!--
+
         <xsl:when test="ancestor::db:caution">
           <xsl:text>#FAF8ED</xsl:text>
         </xsl:when>
+-->
         <!-- Admonition: Important -->
+<!--
+
         <xsl:when test="ancestor::db:important">
           <xsl:text>#E1EEF4</xsl:text>
         </xsl:when>
+-->
         <!-- Admonition: Warning -->
+<!--
+
         <xsl:when test="ancestor::db:warning">
           <xsl:text>#FAF8ED</xsl:text>
         </xsl:when>
+-->
         <!-- Admonition: Tip -->
+<!--
+
         <xsl:when test="ancestor::db:tip">
           <xsl:text>#D5E1D5</xsl:text>
         </xsl:when>
-        <!--|*| Alan |*|-->
+-->
+        <!-- ****| Alan |**** -->
         <xsl:when test="@language = 'alan'">
           <xsl:value-of select="$AlanHL.background"/>
         </xsl:when>
-        <!--|*| BNF |*|-->
+        <!-- ****| BNF |**** -->
         <xsl:when test="@language = 'bnf'">
           <xsl:value-of select="$BNF.background"/>
         </xsl:when>
-        <!--|*| Shell |*|-->
+        <!-- ****| Shell |**** -->
         <xsl:when test="@role = 'shell'">
           <xsl:value-of select="$Shell.background"/>
         </xsl:when>
-        <!-- Default -->
+        <!-- ****| Default |**** -->
         <xsl:otherwise>
           <xsl:value-of select="$Verbatim.background"/>
         </xsl:otherwise>
@@ -372,8 +416,10 @@
     <!-- FOREGROUND COLOR -->
     <!-- ================ -->
     <!-- <xsl:attribute name="color"><xsl:value-of select="$text.color"/></xsl:attribute> -->
+<!-- DISABLE: AD HOC VERBATIM FG COLORS IN ADMONITIONS -->
     <xsl:attribute name="color">
       <xsl:choose>
+<!--
         <xsl:when test="ancestor::db:note">
           <xsl:text>#334558</xsl:text>
         </xsl:when>
@@ -389,19 +435,20 @@
         <xsl:when test="ancestor::db:tip">
           <xsl:text>#334558</xsl:text>
         </xsl:when>
-        <!--|*| Alan |*|-->
+-->
+        <!-- ****| Alan |**** -->
         <xsl:when test="@language = 'alan'">
           <xsl:value-of select="$AlanHL.normal"/>
         </xsl:when>
-        <!--|*| BNF |*|-->
+        <!-- ****| BNF |**** -->
         <xsl:when test="@language = 'bnf'">
           <xsl:value-of select="$BNF.color"/>
         </xsl:when>
-        <!--|*| Shell |*|-->
+        <!-- ****| Shell |**** -->
         <xsl:when test="@role = 'shell'">
           <xsl:value-of select="$Shell.color"/>
         </xsl:when>
-        <!-- Default -->
+        <!-- ****| Default |**** -->
         <xsl:otherwise>
           <xsl:value-of select="$Verbatim.color"/>
         </xsl:otherwise>
@@ -535,54 +582,94 @@
 
 <!-- CUSTOMIZATION BEGIN -->
 <!--============================================================================
-                         EXAMPLES :: GAME TRANSCRIPTS
+                               EXAMPLES (INFORMAL)                              
 =============================================================================-->
 <xsl:attribute-set name="informalexample.properties" use-attribute-sets="informal.object.properties">
-  <!-- BG-COLOR -->
+  <!-- ========
+       BG-COLOR
+       ======== -->
   <xsl:attribute name="background-color">
     <xsl:choose>
+      <!-- ****| Game Transcript |**** -->
       <xsl:when test="@role = 'gametranscript'">
         <xsl:value-of select="$IFPlay.background"/>
       </xsl:when>
+      <!-- ****| Default |**** -->
       <xsl:otherwise>transparent</xsl:otherwise>
     </xsl:choose>
   </xsl:attribute>
-  <!-- FG-COLOR -->
+  <!-- ========
+       FG-COLOR
+       ======== -->
   <xsl:attribute name="color">
     <xsl:choose>
+      <!-- ****| Game Transcript |**** -->
       <xsl:when test="@role = 'gametranscript'">
         <xsl:value-of select="$IFPlay.color"/>
       </xsl:when>
+      <!-- ****| Default |**** -->
       <xsl:otherwise>
         <xsl:value-of select="$text.color"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:attribute>
-  <!-- BORDER Style -->
+  <!-- ============
+       BORDER STYLE
+       ============ -->
   <xsl:attribute name="border-style">solid</xsl:attribute>
-  <!-- BORDER Radius-->
+  <!-- =============
+       BORDER RADIUS
+       ============= -->
   <xsl:attribute name="fox:border-radius">
-    <xsl:value-of select="$Example.border.radius"/>
+    <xsl:choose>
+      <!-- ****| Game Transcript |**** -->
+      <xsl:when test="@role = 'gametranscript'">
+        <xsl:value-of select="$IFPlay.border.radius"/>
+      </xsl:when>
+      <!-- ****| Default |**** -->
+      <xsl:otherwise>
+        <xsl:value-of select="$Example.border.radius"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:attribute>
-  <!-- BORDER Width -->
+  <!-- ============
+       BORDER WIDTH
+       ============ -->
   <xsl:attribute name="border-width">
-    <xsl:value-of select="$Example.border.width"/>
+    <xsl:choose>
+      <!-- ****| Game Transcript |**** -->
+      <xsl:when test="@role = 'gametranscript'">
+        <xsl:value-of select="$IFPlay.border.width"/>
+      </xsl:when>
+      <!-- ****| Default |**** -->
+      <xsl:otherwise>
+        <xsl:value-of select="$Example.border.width"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:attribute>
-  <!-- BORDER Color -->
+  <!-- ============
+       BORDER COLOR
+       ============ -->
   <xsl:attribute name="border-color">
     <xsl:choose>
+      <!-- ****| Game Transcript |**** -->
       <xsl:when test="@role = 'gametranscript'">
         <xsl:value-of select="$IFPlay.border.color"/>
       </xsl:when>
+      <!-- ****| Default |**** -->
       <xsl:otherwise>
         <xsl:value-of select="$Example.border.color"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:attribute>
-  <!-- PADDING & MARGINS -->
+  <!-- =================
+       PADDING & MARGINS
+       ================= -->
   <xsl:attribute name="padding">12pt 12pt 0 12pt</xsl:attribute>
   <xsl:attribute name="margin-left"><xsl:value-of select="$title.margin.left"/></xsl:attribute>
-  <!-- FONT-SIZE -->
+  <!-- =========
+       FONT-SIZE
+       ========= -->
   <xsl:attribute name="font-size">
     <xsl:value-of select="$body.font.master * 0.75"/><xsl:text>pt</xsl:text>
   </xsl:attribute>
@@ -591,7 +678,7 @@
 
 
   <!--==========================================================================
-                                     Examples
+                                EXAMPLES (FORMAL)                               
   ===========================================================================-->
   <xsl:attribute-set name="example.properties" use-attribute-sets="formal.object.properties">
     <xsl:attribute name="border-width">1pt</xsl:attribute>
@@ -603,6 +690,96 @@
     <xsl:attribute name="padding-left">12pt</xsl:attribute>
     <xsl:attribute name="margin-left">0</xsl:attribute>
     <xsl:attribute name="margin-right">0</xsl:attribute>
+<!-- CUTOMIZATION BEGIN -->
+    <!-- ========
+         BG-COLOR
+         ======== -->
+    <xsl:attribute name="background-color">
+      <xsl:choose>
+        <!-- ****| Game Transcript |**** -->
+        <xsl:when test="@role = 'gametranscript'">
+          <xsl:value-of select="$IFPlay.background"/>
+        </xsl:when>
+        <!-- ****| Default |**** -->
+        <xsl:otherwise>transparent</xsl:otherwise>
+      </xsl:choose>
+    </xsl:attribute>
+    <!-- ========
+         FG-COLOR
+         ======== -->
+    <xsl:attribute name="color">
+      <xsl:choose>
+        <!-- ****| Game Transcript |**** -->
+        <xsl:when test="@role = 'gametranscript'">
+          <xsl:value-of select="$IFPlay.color"/>
+        </xsl:when>
+        <!-- ****| Default |**** -->
+        <xsl:otherwise>
+          <xsl:value-of select="$text.color"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:attribute>
+    <!-- ============
+         BORDER STYLE
+         ============ -->
+    <xsl:attribute name="border-style">solid</xsl:attribute>
+    <!-- =============
+         BORDER RADIUS
+         ============= -->
+    <xsl:attribute name="fox:border-radius">
+      <xsl:choose>
+        <!-- ****| Game Transcript |**** -->
+        <xsl:when test="@role = 'gametranscript'">
+          <xsl:value-of select="$IFPlay.border.radius"/>
+        </xsl:when>
+        <!-- ****| Default |**** -->
+        <xsl:otherwise>
+          <xsl:value-of select="$Example.border.radius"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:attribute>
+    <!-- ============
+         BORDER WIDTH
+         ============ -->
+    <xsl:attribute name="border-width">
+      <xsl:choose>
+        <!-- ****| Game Transcript |**** -->
+        <xsl:when test="@role = 'gametranscript'">
+          <xsl:value-of select="$IFPlay.border.width"/>
+        </xsl:when>
+        <!-- ****| Default |**** -->
+        <xsl:otherwise>
+          <xsl:value-of select="$Example.border.width"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:attribute>
+    <!-- ============
+         BORDER COLOR
+         ============ -->
+    <xsl:attribute name="border-color">
+      <xsl:choose>
+        <!-- ****| Game Transcript |**** -->
+        <xsl:when test="@role = 'gametranscript'">
+          <xsl:value-of select="$IFPlay.border.color"/>
+        </xsl:when>
+        <!-- ****| Default |**** -->
+        <xsl:otherwise>
+          <xsl:value-of select="$Example.border.color"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:attribute>
+    <!-- =================
+         PADDING & MARGINS
+         ================= -->
+    <xsl:attribute name="padding">12pt 12pt 0 12pt</xsl:attribute>
+    <xsl:attribute name="margin-left"><xsl:value-of select="$title.margin.left"/></xsl:attribute>
+    <!-- =========
+         FONT-SIZE
+         ========= -->
+    <xsl:attribute name="font-size">
+      <xsl:value-of select="$body.font.master * 0.75"/><xsl:text>pt</xsl:text>
+    </xsl:attribute>
+<!-- CUTOMIZATION END -->
   </xsl:attribute-set>
 
   <xsl:attribute-set name="sidebar.properties" use-attribute-sets="formal.object.properties">

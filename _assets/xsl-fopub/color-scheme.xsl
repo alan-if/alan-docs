@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "color-scheme.xsl" v0.1.1 (2018/12/09)
+  "color-scheme.xsl" v0.1.2 (2018/12/19)
   ==============================================================================
   This file defines the color schemes used in the documents of the Alan-Docs
   project:
@@ -84,6 +84,7 @@
   <xsl:param name="AlanHL.border.color">transparent</xsl:param>
   <xsl:param name="AlanHL.border.width">0</xsl:param>
   <xsl:param name="AlanHL.border.style">none</xsl:param>
+  <xsl:param name="AlanHL.border.radius" select="$Verbatim.border.radius"></xsl:param>
 
   <!--==========================================================================
                                        BNF                                      
@@ -96,6 +97,7 @@
   <xsl:param name="BNF.border.color">transparent</xsl:param>
   <xsl:param name="BNF.border.width">0</xsl:param>
   <xsl:param name="BNF.border.style">none</xsl:param>
+  <xsl:param name="BNF.border.radius" select="$Verbatim.border.radius"></xsl:param>
 
   <!--==========================================================================
                                  Game Transcripts                               
@@ -105,18 +107,23 @@
   <xsl:param name="IFPlay.background"  >#F7FDFF</xsl:param>
   <xsl:param name="IFPlay.color"       >#0089B6</xsl:param>
   <xsl:param name="IFPlay.border.color">#CCF2FF</xsl:param>
-
+  <xsl:param name="IFPlay.border.width" >.15pt</xsl:param>
+  <xsl:param name="IFPlay.border.style" >solid</xsl:param>
+  <xsl:param name="IFPlay.border.radius" select="$Verbatim.border.radius"></xsl:param>
+ 
   <!--==========================================================================
                                       Shell                                     
   ==============================================================================
   Shell examples color scheme.
 
-  Based on Windows 10 new default console scheme, by MicroSoft corporation:
+  Based on Windows CMD legacy console scheme, by MicroSoft corporation:
       https://blogs.msdn.microsoft.com/commandline/2017/08/02/updating-the-windows-console-colors/
   -->
-
-  <xsl:param name="Shell.background">#0C0C0C</xsl:param>
-  <xsl:param name="Shell.color"     >#F2F2F2</xsl:param>
-  <xsl:param name="Shell.callout_bg">#FFF945</xsl:param>
+  <xsl:param name="Shell.background">#000080</xsl:param><!-- DARK_BLUE  -->
+  <xsl:param name="Shell.color"     >#C0C0C0</xsl:param><!-- DARK_WHITE -->
+  <xsl:param name="Shell.border.color" select="$Shell.background"></xsl:param>
+  <xsl:param name="Shell.border.width" >0</xsl:param>
+  <xsl:param name="Shell.border.style">none</xsl:param>
+  <xsl:param name="Shell.border.radius" select="$Verbatim.border.radius"></xsl:param>
 
 </xsl:stylesheet>
