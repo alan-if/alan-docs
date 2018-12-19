@@ -3081,7 +3081,7 @@ Using the following `Prompt` section it can be set to something else:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Prompt "What now?""
+Prompt "What now?"
 --------------------------------------------------------------------------------
 
 Then the player will of course see:
