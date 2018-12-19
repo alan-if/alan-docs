@@ -11,7 +11,7 @@ This directory tree contains some third party fonts.
 
 - [Fonts Lists](#fonts-lists)
     - [Fira Sans Condensed](#fira-sans-condensed)
-    - [Open Sans](#open-sans)
+    - [Noto Sans](#noto-sans)
     - [Roboto Mono](#roboto-mono)
 
 <!-- /MarkdownTOC -->
@@ -24,7 +24,7 @@ This directory tree contains some third party fonts.
 |       Font Name       |             Author            |     License     |
 |-----------------------|-------------------------------|-----------------|
 | [Fira Sans Condensed] | Carrois Apostrophe / Mozzilla | [SIL Open Font] |
-| [Open Sans]           | Steve Matteson                | [Apache 2.0]    |
+| [Noto Sans]           | Steve Matteson                | [Apache 2.0]    |
 | [Roboto Mono]         | Christian Robertson / Google  | [Apache 2.0]    |
 
 The `LICENSE` file of each font can be found inside its subfolder.
@@ -36,10 +36,10 @@ The `LICENSE` file of each font can be found inside its subfolder.
 - https://github.com/mozilla/Fira
 - http://mozilla.github.io/Fira/
 
-## Open Sans
+## Noto Sans
 
-- [`./Open_Sans/`](./Open_Sans)
-- [Google Fonts » Open Sans](https://fonts.google.com/specimen/Open+Sans)
+- [`./Noto_Sans/`](./Noto_Sans)
+- [Google Fonts » Noto Sans](https://fonts.google.com/specimen/Noto+Sans)
 
 
 ## Roboto Mono
@@ -57,7 +57,7 @@ The `LICENSE` file of each font can be found inside its subfolder.
 <!-- In-Doc Links -->
 
 [Fira Sans Condensed]: #fira-sans-condensed
-[Open Sans]: #open-sans
+[Noto Sans]: #open-sans
 [Roboto Mono]: #roboto-mono
 
 <!-- Licenses -->

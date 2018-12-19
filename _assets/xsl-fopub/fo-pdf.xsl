@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "fo-pdf.xsl" v0.2.4 (2018/12/19)
+  "fo-pdf.xsl" v0.2.5 (2018/12/19)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -66,8 +66,7 @@
   </xsl:template>
 
   <xsl:template name="pickfont-sans">
-    <xsl:text>Open Sans,sans-serif</xsl:text>
-    <!-- <xsl:text>Arial,sans-serif</xsl:text> -->
+    <xsl:text>Noto Sans,sans-serif</xsl:text>
   </xsl:template>
 
   <!-- CURRENTLY NOT USED!!! -->
@@ -77,7 +76,6 @@
 
   <xsl:template name="pickfont-mono">
     <xsl:text>Roboto Mono,Courier New,Courier,monospace</xsl:text>
-    <!-- <xsl:text>Liberation Mono,Courier New,Courier,monospace</xsl:text> -->
   </xsl:template>
 
   <xsl:template name="pickfont-dingbat">
@@ -1301,8 +1299,8 @@
     <xsl:param name="itemsymbol" select="'default'"/>
     <xsl:choose>
       <!-- Symbols alternation list (circular loop): -->
-      <xsl:when test="$itemsymbol = 'star'">star</xsl:when>
-      <xsl:otherwise>star</xsl:otherwise>
+      <xsl:when test="$itemsymbol = 'square'">square</xsl:when>
+      <xsl:otherwise>square</xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
@@ -1318,13 +1316,13 @@
 
     <xsl:choose>
       <xsl:when test="$itemsymbol='none'"></xsl:when>
-      <xsl:when test="$itemsymbol='circle'"   >&#x2022;</xsl:when><!-- was: &#x25E6; -->
+      <xsl:when test="$itemsymbol='checked'"  >&#x25A0;</xsl:when><!-- was: &#x25A0; -->
+      <xsl:when test="$itemsymbol='circle'"   >&#x25CB;</xsl:when><!-- was: &#x25E6; -->
+      <xsl:when test="$itemsymbol='diamond'"  >&#x2666;</xsl:when><!-- added -->
       <xsl:when test="$itemsymbol='disc'"     >&#x25CF;</xsl:when><!-- was: &#x2022; -->
       <xsl:when test="$itemsymbol='square'"   >&#x25A0;</xsl:when><!-- was: &#x25AA; -->
-      <xsl:when test="$itemsymbol='checked'"  >&#x25A0;</xsl:when><!-- was: &#x25A0; -->
-      <xsl:when test="$itemsymbol='unchecked'">&#x25A0;</xsl:when><!-- was: &#x25A1; -->
-      <xsl:when test="$itemsymbol='diamond'"  >&#x2666;</xsl:when><!-- added -->
       <xsl:when test="$itemsymbol='star'"     >*</xsl:when><!-- added -->
+      <xsl:when test="$itemsymbol='unchecked'">&#x25A1;</xsl:when><!-- was: &#x25A1; -->
 
       <!-- Example on how to use Font Awesome icon as bullet:
 
