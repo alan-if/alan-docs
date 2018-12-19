@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "fo-pdf.xsl" v0.2.3 (2018/12/19)
+  "fo-pdf.xsl" v0.2.4 (2018/12/19)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -465,7 +465,7 @@
   ===========================================================================-->
 
   <xsl:param name="paper.type">A4</xsl:param> <!-- alternative size is USletter -->
-  <xsl:param name="headers.on.blank.pages">1</xsl:param>
+  <xsl:param name="headers.on.blank.pages">0</xsl:param>
   <xsl:param name="footers.on.blank.pages">1</xsl:param>
   <xsl:param name="page.margin.top">10mm</xsl:param> <!-- top margin of page -->
   <xsl:param name="page.margin.bottom">10mm</xsl:param> <!-- top margin of page -->
@@ -479,7 +479,30 @@
   <xsl:param name="body.end.indent">0</xsl:param> <!-- text recess from right -->
   <xsl:param name="region.before.extent">10mm</xsl:param> <!-- height of page header -->
   <xsl:param name="region.after.extent">10mm</xsl:param> <!-- height of page footer -->
-  <xsl:param name="header.column.widths">1 5 1</xsl:param>
+  <xsl:param name="header.column.widths">1 11 1</xsl:param> <!-- WAS: 1 5 1 -->
+
+  <!-- =========================
+       CUSTOMIZE HEADER BORDERS:
+       ========================= -->
+  <xsl:template name="head.sep.rule">
+    <xsl:param name="pageclass"/>
+    <xsl:param name="sequence"/>
+    <xsl:param name="gentext-key"/>
+
+    <xsl:if test="$header.rule != 0">
+      <xsl:attribute name="border-bottom-width">0.5pt</xsl:attribute>
+
+      <!-- No header borders in headerless pages: -->
+      <xsl:attribute name="border-bottom-style">
+        <xsl:choose>
+          <xsl:when test="$sequence = 'first' or $sequence = 'blank'"> none</xsl:when>
+          <xsl:otherwise>solid</xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
+
+      <xsl:attribute name="border-bottom-color">black</xsl:attribute>
+    </xsl:if>
+  </xsl:template>
 
   <!--==========================================================================
                                 Table of Contents

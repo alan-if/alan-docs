@@ -23,7 +23,8 @@ Some notes and useful links for working on FOP/XSL customization of the PDF temp
     - [Footnotes](#footnotes)
     - [Callouts](#callouts)
     - [Admonitions](#admonitions)
-    - [Running Headers & Footers](#running-headers--footers)
+    - [Running Headers and Footers](#running-headers-and-footers)
+    - [Book Cover](#book-cover)
 - [Tech Specs](#tech-specs)
 - [Useful Links](#useful-links)
 - [Reference Links](#reference-links)
@@ -112,9 +113,14 @@ References:
 - http://www.sagehill.net/docbookxsl/CustomAdmonitions.html
 - http://www.sagehill.net/docbookxsl/PrintIcons.html#PrintAdmonGraphics
 
-## Running Headers & Footers
+## Running Headers and Footers
 
 - http://www.sagehill.net/docbookxsl/PrintHeaders.html
+- http://infohost.nmt.edu/~shipman/doc/doc5style/web/fo-head-foot.html
+
+## Book Cover
+
+- https://stackoverflow.com/questions/34932347/how-to-generate-a-cover-image-picture-with-asciidoctor-fopub
 
 -------------------------------------------------------------------------------
 

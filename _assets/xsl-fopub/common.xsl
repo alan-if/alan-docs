@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "common.xsl" v0.4.0 (2018/12/05)
+  "common.xsl" v0.4.1 (2018/12/19)
   ==============================================================================
   This file was taken from the asciidoctor-fopub project, Copyright (C) 2013
   Dan Allen (MIT License):
@@ -22,6 +22,9 @@
 
   <!-- disable messages that cause some processors to exit prematurely -->
   <xsl:template name="root.messages"/>
+
+  <!-- Default to double-sided document (tweaked) -->
+  <xsl:param name="double.sided" select="1"></xsl:param>
 
   <!-- Disable watermark image to avoid long timeouts fetching from internet -->
   <xsl:param name="draft.watermark.image"/>
