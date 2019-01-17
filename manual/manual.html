@@ -441,9 +441,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.98-PreReleaseBeta7,</span>
-<span id="revdate">September 1, 2019</span>
-<br><span id="revremark">AsciiDoc conversion work</span>
+<span id="revnumber">version 0.1.99-PreReleaseBeta7,</span>
+<span id="revdate">September 11, 2019</span>
+<br><span id="revremark">Beta7 Ed. work</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -831,6 +831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_player_words_2">G.3. Player Words</a></li>
 <li><a href="#_word_variations">G.4. Word Variations</a></li>
 <li><a href="#_word_order">G.5. Word Order</a></li>
+<li><a href="#_useful_links">G.6. Useful Links</a></li>
 </ul>
 </li>
 <li><a href="#_portability_of_games">Appendix H: Portability of Games</a></li>
@@ -12516,22 +12517,83 @@ Please report.</p>
 <h2 id="_localization"><a class="anchor" href="#_localization"></a>Appendix G: Localization</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To create adventures in languages other than English, there are a few separate issues to consider.
-The sections below describes the support that Alan provides for each of them.</p>
+<p>When it comes to writing text adventures in languages other than English, the Alan IF system is a great choice.
+Since Alan doesn&#8217;t enforce on authors a fixed world model nor a predefined set of verbs, its open-ended philosophy simplifies adapting Alan to other languages.</p>
+</div>
+<div class="paragraph">
+<p>To create adventures in languages other than English, there are a few issues that need to be taken into account first:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Special characters support (letters with accents, diacritics, etc.).</p>
+</li>
+<li>
+<p>Handling of grammatical number, gender person and case.</p>
+</li>
+<li>
+<p>Defining <code>Synonym</code>s for variations of the basic articles and prepositions.</p>
+</li>
+<li>
+<p>Provide some initialization mechanism on all game instances to enforce grammatical consistency via custom attributes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alan was designed around English as the default language, but implementing support for other languages should be a fairly easy task, thanks to Alan&#8217;s flexible design and syntax.
+The best approach is to create a dedicated &#8220;grammar module&#8221; to supported your desired language, which can then be reused to create any adventure in that language.
+Alan has already been successfully
+<a href="https://github.com/tajmone/Alan3-Italian" title="Visit the Alan Italian project on GitHub" target="_blank" rel="noopener">localized to Italian</a>,
+so you could look at the Italian grammar module for inspiration.</p>
+</div>
+<div class="paragraph">
+<p>The sections below provide some guidelines and insight on establishing if Alan is able to support a given language, and which steps are required to implement a core grammar module to support that language.
+Because every language is different, it&#8217;s impossible to provide a set of fixed guidelines; instead, we can provide practical examples of how specific features of other languages where (or could be) implemented in Alan.</p>
+</div>
+<div class="paragraph">
+<p>Before embarking on localizing Alan to a specific target language, you&#8217;re advised to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Study how other languages where implemented in Alan.</p>
+</li>
+<li>
+<p>Study how the target language was implemented in other IF systems (if any).</p>
+</li>
+<li>
+<p>Read <a href="https://www.inform-fiction.org/manual/html/ch5.html" title="Read online 'Ch. V: Natural Language' of 'The Inform Designer&#8217;s Manual' (4th Ed.)" target="_blank" rel="noopener">Chapter V: Natural Language</a> of <a href="https://www.inform-fiction.org/manual/html/" title="Read online 'The Inform Designer&#8217;s Manual' (4th Ed.)" target="_blank" rel="noopener"><em>The Inform Designer&#8217;s Manual</em></a> (<em>DM4</em>), by Graham Nelson, which provides precious insights on how IF systems can handle different languages.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Looking at how others have accomplished similar tasks is always a great source of inspiration.</p>
 </div>
 <div class="sect2">
 <h3 id="_characterglyph_availability"><a class="anchor" href="#_characterglyph_availability"></a>G.1. Character/Glyph Availability</h3>
 <div class="paragraph">
-<p>Most languages have characters, or glyphs, other than the common ones used in English, like ö, Ñ or æ.
-Alan uses a character encoding called ISO-8859-1 which allows for many characters (but not all) used in European and other countries.</p>
+<p>Many languages rely on characters (or glyphs) which are not found in the English alphabet, like ö, Ñ or æ.
+Alan uses a character encoding called <a href="https://en.wikipedia.org/wiki/ISO/IEC_8859-1" title="Visit Wikipedia page on ISO-8859-1" target="_blank" rel="noopener">ISO-8859-1</a> (aka Latin1) which covers most characters (but not all) used in European and Western countries.</p>
 </div>
 <div class="paragraph">
-<p>To make use of these characters you just need to make sure that the adventure text files use this character encoding.
-Usually you can do this in the editor you are using, often when you save a file the first time, or there should be a setting in your operating system to define the default encoding.</p>
+<p>To use these characters you just need to ensure that the adventure source files adopt this character encoding.
+Most editors allow specifying a specific encoding, either when you save a file the first time, or through a dedicated menu entry, the settings panel or by associating a file extension with a specific encoding.
+Some operating systems might allow you to define the default encoding.</p>
 </div>
 <div class="paragraph">
-<p>If the Alan source files are encoded using ISO-8859-1 they will be presented correctly when the game is run using e.g. WinArun.
-If you run the games in console mode you have to ensure that both your console program and your operating system are set (and able) to show characters using the ISO-8859-1 encoding.</p>
+<p>If the Alan source files are encoded using ISO-8859-1 they will be presented correctly when the game is run in graphical interpreters like WinArun and Gargoyle.
+If you run the game in console mode, you must ensure that both your console program and your operating system are set (and able) to show characters using the ISO-8859-1 encoding&#8201;&#8212;&#8201;often just setting the correct encoding is not enough, because some console fonts might not contain all the special characters glyphs required, and will be unable to represent them.
+Make sure that you also install the right console font, and to set it as your shell/CMD default font.</p>
+</div>
+<div class="paragraph">
+<p>For languages with non-Latin alphabets, currently the only viable solution is to fallback on some romanization convention.
+In the early years of the Internet, when Ascii was the standard charset in communications, many creative solutions were devised to allow communicating in non-Latin languages over BBSs, chats and (later on) via sms using only Ascii characters.
+Many of these &#8220;chat alphabets&#8221; are still popular today, and you can find many tools to convert to and from them.
+For example, there is the <a href="https://en.wikipedia.org/wiki/Arabic_chat_alphabet" title="See Wikipedia page on Arabish" target="_blank" rel="noopener">Arabish</a> chat alphabet for Arabic, <a href="https://en.wikipedia.org/wiki/Informal_romanizations_of_Cyrillic#Volapuk_encoding" title="See Wikipedia page on Informal romanizations of Cyrillic" target="_blank" rel="noopener">Volapuk</a> for Russian, and <a href="https://en.wikipedia.org/wiki/Informal_romanizations_of_Cyrillic#Translit_in_Bulgaria" title="See Wikipedia page on Informal romanizations of Cyrillic" target="_blank" rel="noopener">Shlyokavitsa</a> (or Maimunitsa) for Bulgarian&#8201;&#8212;&#8201;just to mention a few.</p>
+</div>
+<div class="paragraph">
+<p>Beware though that in Alan you won&#8217;t be able to freely mix letters, numbers and symbols as these alphabets do, for there are some strict rules on what is considered a valid player input token.
+You&#8217;ll need to be creative, and find ways to adapt your needs to the restrictions of the Alan language.</p>
 </div>
 </div>
 <div class="sect2">
@@ -12557,19 +12619,54 @@ These can either be changed by the <code>Language</code> option (if the language
 </div>
 <div class="sect2">
 <h3 id="_player_words_2"><a class="anchor" href="#_player_words_2"></a>G.3. Player Words</h3>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>TBD.</p>
+<p>When creating adventures in a language not natively supported by Alan, one of the first things you&#8217;ll need to look into are the <em>predefined player words</em> (see <a href="#_predefined_player_words">Appendix E</a> for more details).</p>
 </div>
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>For example, <em>noise words</em> are useful for defining words which should be ignored by the parser.
+Articles are usually defined as noise since they are irrelevant in adventure games input, and it&#8217;s convenient that when the player types:</p>
+</div>
+<div class="exampleblock gametranscript">
+<div class="content">
+<div class="paragraph">
+<p>&gt; <em>take the apple</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>the parser will only have to process &#8220;take apple&#8221; (the article &#8220;the&#8221; having been discarded as noise).
+If this wasn&#8217;t the case, then authors would have to define multiple syntaxes for every verb in order to account for the presence of the article&#8201;&#8212;&#8201;which, in terms of understanding player commands, doesn&#8217;t provide any meaningful information.
+Some languages have many different articles forms, one for each number and gender combination, and unless these are defined as <em>noise words</em> they would lead to numerous alternative syntaxes in the adventure source.</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re adventure uses English as the base language, then you can define your noise words by making them synonyms of a known English noise word (e.g. &#8220;the&#8221; or &#8220;go&#8221;).
+For example, with the Italian language we would define all possible articles as noise this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">SYNONYMS il, lo, la, 'l''', i, gli, le = 'the'.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This line of code ensures that all Italian definite articles will be ignored by the parser (stripped away from the player input).</p>
+</div>
+<div class="paragraph">
+<p>In this regard, it&#8217;s important that you study carefully the list of all the <em>predefined player words</em> in the supported languages, as found in <a href="#_predefined_player_words">Appendix E</a>, to check that none of them conflicts with a needed word of your language.
+Since these player words are hardcoded into Alan, you can&#8217;t change them nor undefine them.
+This is the criteria for choosing the base language for your adventure.</p>
+</div>
+<div class="paragraph">
+<p>Ultimately, whichever base language you choose is irrelevant, for you&#8217;ll be translating all the Alan messages, so the base language is going to be hidden away in the background of your adventure.</p>
+</div>
+<div class="paragraph">
+<p>If you can use English without conflicts, then go for it since it&#8217;s the default language.
+To use another natively supported language (i.e. German or Swedish), just enable it via the <code>Language</code> option.
+E.g.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Language German.</code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -12585,7 +12682,7 @@ These can either be changed by the <code>Language</code> option (if the language
 <p>TBD.</p>
 </div>
 <div class="paragraph">
-<p>Text about using multiple names for the same objects &amp; synonyms, and how the interpreter chooses which word to use when</p>
+<p>Text about using multiple names for the same objects &amp; synonyms, and how the interpreter chooses which word to use when.</p>
 </div>
 </td>
 </tr>
@@ -12605,13 +12702,85 @@ These can either be changed by the <code>Language</code> option (if the language
 <p>TBD.</p>
 </div>
 <div class="paragraph">
-<p>Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes.
-Or does it?
-With the noun first is it possible to implement &#8220;das buch nehmen&#8221; with the syntax <code>take = (o) nehmen</code>?</p>
+<p>Some languages require (or allow) commands where the parameter precedes the verb.</p>
+</div>
+<div class="paragraph">
+<p>For example, in German the command for &#8220;take the book&#8221; would be:</p>
+</div>
+<div class="exampleblock gametranscript">
+<div class="content">
+&gt; <em>das buch nehmen</em>
+</div>
+</div>
+<div class="paragraph">
+<p>(literally, &#8220;the book take [it]&#8221;) where the parameter occurs in first position, requiring the following <code>Syntax</code> definition:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax take = (o) nehmen.</code></pre>
+</div>
 </div>
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_useful_links"><a class="anchor" href="#_useful_links"></a>G.6. Useful Links</h3>
+<div class="paragraph">
+<p>Here are some links to useful resources for localizing Alan to other languages.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/tajmone/Alan3-Italian" title="Visit the Alan Italian project on GitHub" target="_blank" rel="noopener">Alan Italian</a>&#8201;&#8212;&#8201;Alan 3 support for Italian via a core grammar module, and an Italian port of the <a href="https://github.com/AnssiR66/AlanStdLib" title="Visit the Alan Standard Library project on GitHub" target="_blank" rel="noopener">Alan Standard Library</a>.</p>
+</li>
+<li>
+<p><a href="https://www.inform-fiction.org/manual/html/" title="Read online 'The Inform Designer&#8217;s Manual' (4th Ed.)" target="_blank" rel="noopener"><em>The Inform Designer&#8217;s Manual</em></a> (4<sup>th</sup> Ed.) by Graham Nelson, 2001:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.inform-fiction.org/manual/html/ch5.html" title="Read online 'Ch. V: Natural Language' of 'The Inform Designer&#8217;s Manual' (4th Ed.)" target="_blank" rel="noopener">Chapter V: Natural Language</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.inform-fiction.org/manual/html/s34.html" title="Read online '§34. Linguistics and the Inform parser' of 'The Inform Designer&#8217;s Manual' (4th Ed.)" target="_blank" rel="noopener">§34. Linguistics and the Inform parser</a></p>
+</li>
+<li>
+<p><a href="https://www.inform-fiction.org/manual/html/s35.html" title="Read online '§35. Case and parsing noun phrases' of 'The Inform Designer&#8217;s Manual' (4th Ed.)" target="_blank" rel="noopener">§35. Case and parsing noun phrases</a></p>
+</li>
+<li>
+<p><a href="https://www.inform-fiction.org/manual/html/s36.html" title="Read online '§36. Parsing non-English languages' of 'The Inform Designer&#8217;s Manual' (4th Ed.)" target="_blank" rel="noopener">§36. Parsing non-English languages</a></p>
+</li>
+<li>
+<p><a href="https://www.inform-fiction.org/manual/html/s37.html" title="Read online '§37. Names and messages in non-English languages' of 'The Inform Designer&#8217;s Manual' (4th Ed.)" target="_blank" rel="noopener">§37. Names and messages in non-English languages</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org" title="Visit the Wikipedia portal" target="_blank" rel="noopener">Wikipedia</a>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Definiteness" title="Read Wikipedia page on Definiteness" target="_blank" rel="noopener">Definiteness</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Grammatical_gender" title="Read Wikipedia page on Grammatical gender" target="_blank" rel="noopener">Grammatical gender</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Inflection" title="Read Wikipedia page on Inflection" target="_blank" rel="noopener">Inflection</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Specificity_(linguistics)" title="Read Wikipedia page on linguistics Specificity" target="_blank" rel="noopener">Specificity</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -12891,7 +13060,7 @@ For more info on stropping, see <a href="https://en.wikipedia.org/wiki/Stropping
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.98-PreReleaseBeta7<br>
+Version 0.1.99-PreReleaseBeta7<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">

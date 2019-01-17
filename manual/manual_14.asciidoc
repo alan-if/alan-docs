@@ -7,21 +7,85 @@
 [appendix]
 = Localization
 
-To create adventures in languages other than English, there are a few separate issues to consider.
-The sections below describes the support that Alan provides for each of them.
+When it comes to writing text adventures in languages other than English, the Alan IF system is a great choice.
+Since Alan doesn't enforce on authors a fixed world model nor a predefined set of verbs, its open-ended philosophy simplifies adapting Alan to other languages.
+
+To create adventures in languages other than English, there are a few issues that need to be taken into account first:
+
+* Special characters support (letters with accents, diacritics, etc.).
+* Handling of grammatical number, gender person and case.
+* Defining ``Synonym``s for variations of the basic articles and prepositions.
+* Provide some initialization mechanism on all game instances to enforce grammatical consistency via custom attributes.
+
+Alan was designed around English as the default language, but implementing support for other languages should be a fairly easy task, thanks to Alan's flexible design and syntax.
+The best approach is to create a dedicated "`grammar module`" to supported your desired language, which can then be reused to create any adventure in that language.
+Alan has already been successfully
+link:https://github.com/tajmone/Alan3-Italian[localized to Italian^,title="Visit the Alan Italian project on GitHub"],
+so you could look at the Italian grammar module for inspiration.
+
+The sections below provide some guidelines and insight on establishing if Alan is able to support a given language, and which steps are required to implement a core grammar module to support that language.
+Because every language is different, it's impossible to provide a set of fixed guidelines; instead, we can provide practical examples of how specific features of other languages where (or could be) implemented in Alan.
+
+Before embarking on localizing Alan to a specific target language, you're advised to:
+
+:DM4: pass:q[link:https://www.inform-fiction.org/manual/html/[_The Inform Designer's Manual_^,title="Read online 'The Inform Designer's Manual' (4th Ed.)"]]
+:DM4-Chapter-V: link:https://www.inform-fiction.org/manual/html/ch5.html[Chapter V: Natural Language^,title="Read online 'Ch. V: Natural Language' of 'The Inform Designer's Manual' (4th Ed.)"]
+
+* Study how other languages where implemented in Alan.
+* Study how the target language was implemented in other IF systems (if any).
+* Read {DM4-Chapter-V} of {DM4} (_DM4_), by Graham Nelson, which provides precious insights on how IF systems can handle different languages.
+
+Looking at how others have accomplished similar tasks is always a great source of inspiration.
+
 
 == Character/Glyph Availability
 
-Most languages have characters, or glyphs, other than the common ones used in English, like ö, Ñ or æ.
-Alan uses a character encoding called ISO-8859-1 which allows for many characters (but not all) used in European and other countries.
+:ISO-8859-1: link:https://en.wikipedia.org/wiki/ISO/IEC_8859-1[ISO-8859-1^,title="Visit Wikipedia page on ISO-8859-1"]
 
-To make use of these characters you just need to make sure that the adventure text files use this character encoding.
-Usually you can do this in the editor you are using, often when you save a file the first time, or there should be a setting in your operating system to define the default encoding.
+Many languages rely on characters (or glyphs) which are not found in the English alphabet, like ö, Ñ or æ.
+Alan uses a character encoding called {ISO-8859-1} (aka Latin1) which covers most characters (but not all) used in European and Western countries.
 
-If the Alan source files are encoded using ISO-8859-1 they will be presented correctly when the game is run using e.g. WinArun.
-If you run the games in console mode you have to ensure that both your console program and your operating system are set (and able) to show characters using the ISO-8859-1 encoding.
+To use these characters you just need to ensure that the adventure source files adopt this character encoding.
+Most editors allow specifying a specific encoding, either when you save a file the first time, or through a dedicated menu entry, the settings panel or by associating a file extension with a specific encoding.
+Some operating systems might allow you to define the default encoding.
+
+If the Alan source files are encoded using ISO-8859-1 they will be presented correctly when the game is run in graphical interpreters like WinArun and Gargoyle.
+If you run the game in console mode, you must ensure that both your console program and your operating system are set (and able) to show characters using the ISO-8859-1 encoding -- often just setting the correct encoding is not enough, because some console fonts might not contain all the special characters glyphs required, and will be unable to represent them.
+Make sure that you also install the right console font, and to set it as your shell/CMD default font.
+
+
+// @TODO: CMD Code Page
+//
+//      Should add a note on how to correctly set the Windows CMD via CHCP command.
+//      I need to do some testing first for although the Windows code page for
+//      ISO-8859-1 is 28591, I've always used CHCP 65001 (UTF-8) without any
+//      problems (all auotmated tests work fine) and it also ensures that echoed
+//      messages are shown correctly. Need to investigate this further...
+
+:Arabish: link:https://en.wikipedia.org/wiki/Arabic_chat_alphabet[Arabish^,title="See Wikipedia page on Arabish"]
+:Volapuk: link:https://en.wikipedia.org/wiki/Informal_romanizations_of_Cyrillic#Volapuk_encoding[Volapuk^,title="See Wikipedia page on Informal romanizations of Cyrillic"]
+:Shlyokavitsa: link:https://en.wikipedia.org/wiki/Informal_romanizations_of_Cyrillic#Translit_in_Bulgaria[Shlyokavitsa^,title="See Wikipedia page on Informal romanizations of Cyrillic"]
+
+For languages with non-Latin alphabets, currently the only viable solution is to fallback on some romanization convention.
+In the early years of the Internet, when Ascii was the standard charset in communications, many creative solutions were devised to allow communicating in non-Latin languages over BBSs, chats and (later on) via sms using only Ascii characters.
+Many of these "`chat alphabets`" are still popular today, and you can find many tools to convert to and from them.
+For example, there is the {Arabish} chat alphabet for Arabic, {Volapuk} for Russian, and {Shlyokavitsa} (or Maimunitsa) for Bulgarian -- just to mention a few.
+
+Beware though that in Alan you won't be able to freely mix letters, numbers and symbols as these alphabets do, for there are some strict rules on what is considered a valid player input token.
+You'll need to be creative, and find ways to adapt your needs to the restrictions of the Alan language.
+
 
 == Standard Messages
+
+// @TODO:
+//  The following paragraph could be more explicit about the differences
+//  between "two main types of messages" -- for we're presented with more than
+//  just two types here:
+//    * Hardcoded in compiler, according to locale (EN, DE, SE) via OPTION.
+//    * Hardcoded in compiler, overridable via MESSAGE.
+//    * Library-defined MESSAGEs and verb responses.
+//    * Predefined Player Words
+//  so the division line between the two main types" is somehow blurred...
 
 There are two main types of messages that are output by the interpreter to the player.
 They are initiated by various parts of the Alan system.
@@ -37,41 +101,147 @@ These can either be changed by the `Language` option (if the language of your ch
 
 There are a few special words that are currently not author translatable, as described in <<Predefined Player Words>>.
 
+// @TODO: Mention also that the QUIT/RESTART/UNDO commands can't be translated,
+//        although their message can.
+
 == Player Words
 
-[WARNING]
-================================================================================
-TBD.
-================================================================================
+// cf. Issue #26:
+// https://github.com/alan-if/alan-docs/issues/26
+
+When creating adventures in a language not natively supported by Alan, one of the first things you'll need to look into are the _predefined player words_ (see <<Predefined Player Words>> for more details).
+
+For example, _noise words_ are useful for defining words which should be ignored by the parser.
+Articles are usually defined as noise since they are irrelevant in adventure games input, and it's convenient that when the player types:
+
+[example,role="gametranscript"]
+=====================
+&gt; _take the apple_
+=====================
+
+the parser will only have to process "`take apple`" (the article "`the`" having been discarded as noise).
+If this wasn't the case, then authors would have to define multiple syntaxes for every verb in order to account for the presence of the article -- which, in terms of understanding player commands, doesn't provide any meaningful information.
+Some languages have many different articles forms, one for each number and gender combination, and unless these are defined as _noise words_ they would lead to numerous alternative syntaxes in the adventure source.
+
+If you're adventure uses English as the base language, then you can define your noise words by making them synonyms of a known English noise word (e.g. "`the`" or "`go`").
+For example, with the Italian language we would define all possible articles as noise this way:
+
+[source,alan]
+-----------------------------------------------
+SYNONYMS il, lo, la, 'l''', i, gli, le = 'the'.
+-----------------------------------------------
+
+This line of code ensures that all Italian definite articles will be ignored by the parser (stripped away from the player input).
+
+In this regard, it's important that you study carefully the list of all the _predefined player words_ in the supported languages, as found in <<Predefined Player Words>>, to check that none of them conflicts with a needed word of your language.
+Since these player words are hardcoded into Alan, you can't change them nor undefine them.
+This is the criteria for choosing the base language for your adventure.
+
+Ultimately, whichever base language you choose is irrelevant, for you'll be translating all the Alan messages, so the base language is going to be hidden away in the background of your adventure.
+
+If you can use English without conflicts, then go for it since it's the default language.
+To use another natively supported language (i.e. German or Swedish), just enable it via the `Language` option.
+E.g.:
+
+[source,alan]
+----------------
+Language German.
+----------------
+
+// @TODO: Emphasize the differences between player input and printed messages,
+//        and how for the former you need to cut down the number of input words
+//        by using noise words or synonyms, in order to simplify the correlation
+//        between syntaxes and parsed input; whereas in the latter you need to
+//        be able to print well formed messages, where parameters are coupled
+//        to articles, prepositions and adjectives with the correct gender, number
+//        and person concordance.
+
 
 == Word Variations
 
+// cf. Issue #27:
+// https://github.com/alan-if/alan-docs/issues/27
+
 [WARNING]
 ================================================================================
 TBD.
 
-Text about using multiple names for the same objects & synonyms, and how the interpreter chooses which word to use when
+Text about using multiple names for the same objects & synonyms, and how the interpreter chooses which word to use when.
 ================================================================================
 
 
 == Word Order
 
+// cf. Issue #28:
+// https://github.com/alan-if/alan-docs/issues/28
 
 [WARNING]
 ================================================================================
 TBD.
 
-Text about how the rigid word order (verb first, possibly prefixed with a noun) that Alan imposes.
-Or does it?
-With the noun first is it possible to implement "`das buch nehmen`" with the syntax `take = (o) nehmen`?
+Some languages require (or allow) commands where the parameter precedes the verb.
+
+For example, in German the command for "`take the book`" would be:
+
+[example,role="gametranscript"]
+&gt; _das buch nehmen_
+
+(literally, "`the book take [it]`") where the parameter occurs in first position, requiring the following `Syntax` definition:
+
+[source,alan]
+Syntax take = (o) nehmen.
 ================================================================================
 
-// @CHECKME:
-//   Elsewhere in the Manual (App F.2. Message Explanations) it states that
-//      «The definition of a Syntax construct may not start with a parameter.
-//       The first word must be a player word so as to distinguish it from
-//       other forms of input.»
-//   Might need some testing to check if this was changed in the meantime!!!
+// ORIGINAL TBD NOTE:
+//    Text about how the rigid word order (verb first, possibly prefixed with a
+//    noun) that Alan imposes. Or does it? With the noun first is it possible to
+//    implement "`das buch nehmen`" with the syntax `take = (o) nehmen`?
+//
+// But we've already established that Alan does support SYNTAX with parameter in
+// 1st position:
+//      Syntax take = (obj) take.
+// Error 209 ("First element in a SYNTAX must be a player word.") was abrogated.
+// See: https://github.com/alan-if/alan-docs/issues/61
+
+// @NOTE:
+//   This topic is also worth mentioning in the Manual itself (possibly,
+//   under "SYNTAX") for it affects also the creation of VERBs like:
+//       > Bob take the apple
+//   ... which are commonly found in other IF systems -- and some authors
+//   are likely to attempt implementing in ALAN too!
+
+
+== Useful Links
+
+Here are some links to useful resources for localizing Alan to other languages.
+
+:Alan-Italian: link:https://github.com/tajmone/Alan3-Italian[Alan Italian^,title="Visit the Alan Italian project on GitHub"]
+:StdLib: link:https://github.com/AnssiR66/AlanStdLib[Alan Standard Library^,title="Visit the Alan Standard Library project on GitHub"]
+// DM4 Links:
+:DM4-Section-34: link:https://www.inform-fiction.org/manual/html/s34.html[§34. Linguistics and the Inform parser^,title="Read online '§34. Linguistics and the Inform parser' of 'The Inform Designer's Manual' (4th Ed.)"]
+:DM4-Section-35: link:https://www.inform-fiction.org/manual/html/s35.html[§35. Case and parsing noun phrases^,title="Read online '§35. Case and parsing noun phrases' of 'The Inform Designer's Manual' (4th Ed.)"]
+:DM4-Section-36: link:https://www.inform-fiction.org/manual/html/s36.html[§36. Parsing non-English languages^,title="Read online '§36. Parsing non-English languages' of 'The Inform Designer's Manual' (4th Ed.)"]
+:DM4-Section-37: link:https://www.inform-fiction.org/manual/html/s37.html[§37. Names and messages in non-English languages^,title="Read online '§37. Names and messages in non-English languages' of 'The Inform Designer's Manual' (4th Ed.)"]
+// Wikipedia Links
+:Wikipedia: link:https://en.wikipedia.org[Wikipedia^,title="Visit the Wikipedia portal"]
+:Wikipedia-Definiteness: link:https://en.wikipedia.org/wiki/Definiteness[Definiteness^,title="Read Wikipedia page on Definiteness"]
+:Wikipedia-Grammatical-gender: link:https://en.wikipedia.org/wiki/Grammatical_gender[Grammatical gender^,title="Read Wikipedia page on Grammatical gender"]
+:Wikipedia-Inflection: link:https://en.wikipedia.org/wiki/Inflection[Inflection^,title="Read Wikipedia page on Inflection"]
+:Wikipedia-Specificity: link:https://en.wikipedia.org/wiki/Specificity_(linguistics)[Specificity^,title="Read Wikipedia page on linguistics Specificity"]
+
+
+* {Alan-Italian} -- Alan 3 support for Italian via a core grammar module, and an Italian port of the {StdLib}.
+* {DM4} (4^th^ Ed.) by Graham Nelson, 2001:
+** {DM4-Chapter-V}
+*** {DM4-Section-34}
+*** {DM4-Section-35}
+*** {DM4-Section-36}
+*** {DM4-Section-37}
+* {Wikipedia}:
+** {Wikipedia-Definiteness}
+** {Wikipedia-Grammatical-gender}
+** {Wikipedia-Inflection}
+** {Wikipedia-Specificity}
 
 // EOF //
 
