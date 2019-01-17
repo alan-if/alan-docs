@@ -51,25 +51,26 @@ end for
 ................................................................................
 
 
-A player command may be either a verb or a direction.
-A verb is executed by checking the syntax of the input, performing any preconditions (``Check``s) and then executing the verb bodies (as described in <<Verbs,_Verbs_>> and <<Scope,_Scope_>>).
+A player command may be either a verb command or a directional command.
+A verb command is executed by checking the syntax of the input, performing any preconditions (``Check``s) and then executing the verb bodies (as described in <<Verbs,_Verbs_>> and <<Scope,_Scope_>>).
 A directional command is executed by finding any `Exit` in that direction, evaluating the ``Check``s and the body (if any) of that exit and locating the _hero_ at the new location.
 
-// @FIXME: The sentence "The events and other actors" needs some polishing!
-
-If the player inputs an empty command, this is equivalent to forfeiting his turn.
-The empty command will simply be ignored.
-The events and other actors, including turn counting, then proceeds as if the player had input a proper input, before returning to the player prompt.
+If the player enters an empty command, this is equivalent to forfeiting the turn.
+The empty command will result in no action from the hero, but counted as a player turn. Pending events will run and other actors will move as usual.
 
 
 
 == Player Input
 
-The `Syntax` defined in the Alan source is the basis for what the player is allowed to input.
-Commands with the formats expressed in the syntaxes form the basic statements available to the player.
+The `Syntax` defined in the Alan source is the basis for what verb commands the player is allowed to input.
+If the syntax statement allowed referencing an instance (such as an object), then the syntax declares the basic form of that statement.
 In addition, other combinations and variations are possible using special characters and words.
+
+[NOTE]
+================================================================================
 Obviously these words are different in each language, but here we'll use generic English words, like "`*AND*-word`", to denote all the words that can be used in the same manner.
 The exact list of these words, for every language natively supported in Alan, is available in <<Predefined Player Words>>.
+================================================================================
 
 The following built-in syntax variations are available to the player:
 
@@ -78,7 +79,7 @@ The following built-in syntax variations are available to the player:
 //        in an input command, and we want the reader to focus only on the ones
 //        being exemplified.
 
-* Concatenation of statements via (((AND (player input)))) (((THEN (player input)))) *AND*-words, like:
+* Concatenation of commands via (((AND (player input)))) (((THEN (player input)))) *AND*-words, like:
 +
 [example,role="gametranscript"]
 ================================================================================
@@ -95,11 +96,9 @@ The following built-in syntax variations are available to the player:
 &gt; _give key to guard and ask HIM to open the door with IT_
 ================================================================================
 +
-The pronouns have to be defined by the author in his source (see <<Pronouns>>) or by a library.
-The only built-in pronoun is the *IT*-word, which is automatically defined on the class `thing`.
+The pronouns have to be defined by the author in the source (see <<Pronouns>>) or by a library.
+The only built-in pronoun is the *IT*-word, which is automatically defined for the class `thing`.
 
-
-// @FIXME: the second command doesn't seem right, there is no verb!
 
 * References to (((multiple parameters))) multiple objects using (((AND (player input)))) *AND*-word.
 This allows:
@@ -107,7 +106,7 @@ This allows:
 [example,role="gametranscript"]
 ================================================================================
 &gt; _take the blue vase AND the pillow_ +
-&gt; _the red key, the glass bowl AND the compass_
+&gt; _examine the red key, the glass bowl AND the compass_
 ================================================================================
 
 
@@ -167,6 +166,37 @@ If the player uses *ALL* instead of a reference to an instance in his command, t
 A restriction placed on the player input by the interpreter is that the words the player is allowed to use can only contain alphanumeric characters, underscores and dash.
 This must be kept in mind when naming verbs that use the default syntax (an explicit `Syntax` statement can always specify other player words to trigger the verb).
 
+== Player Words
+
+You use Syntax statements to define the structure of available player commands. The actual player input consist of "tokens" which are matched those structures. The most prominent part of that are the words.
+The allowed words comes from
+
+* the syntax statement - the verb word itself and any "filler" words, in Alan generalized to "prepositions"
+* the special words mentioned above to allow variations in reference forms
+* synonyms - directly from the Synonyms statements
+* instance names - adjectives and nouns
+
+All those words are collected by the Alan compiler into a dictionary of known words.
+
+Words in the player input are separated into tokens by space or by characters not allowed inside words (see above).
+
+Other characters are considered separate tokens.
+Some of those tokens are used in some forms of player input, such as comma and period, as seen above. Unrecognized characters will just result in an error.
+
+=== Contractions
+// Here we should have index targets for "contraction", "apostrophe" etc.
+One special case is the apostrophe ("´"). It is allowed inside words. But in many languages this is also used for (((contractions))) contractions, or (((elisions))) elisions, such as (English) "can't", or (Italian) "l'acqua" for the contraction of the definite article and the noun, leaving out some other characters and sounds.
+
+In order to support the contraction of multiple words using the apostrophe, Alan does some special handling of word tokens containing an apostrophe. The complete word will first by looked up, but if that is not defined the separate parts will be looked up. E.g.
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _prendi l'acqua_
+================================================================================
+
+In this example the word "l'acqua" will first be tried as a complete word, and if found in the dictionary, the input will be interpreted as using that word (perhaps a noun). If it isn't found, the command parser will split at the apostrophe, first trying "l'" (the contracted definite article) as a separate word. Then the second part will be tried, in this case "acqua".
+
+This makes it possible to use natural words as nouns and create "l'" as a synonym for the (((article, definite, contracted))) definite article.
 
 
 == Run-Time Contexts
@@ -233,14 +263,10 @@ Therefore, this is also the last step in the sequence of events caused by locati
 == Undoing
 
 
-// @FIXME: That "the player can backup commands" doesn't sound right!
-// @FIXME: "works completely automatically" sounds really bad!
-
-A player might occasionally regret an imparted command, perhaps realising that it was not the correct one.
+A player might occasionally regret an command already input, perhaps realising that it was not the correct one.
 The Alan interpreter supports such undoing of commands.
-This means that the player can backup commands that (s)he later regretted.
 The interpreter stores each game state as soon as it has changed, and an (((UNDO command))) `undo` command resets the game state to the last saved one.
-This works completely automatically, and as many states as memory permits are saved, providing almost unlimited `undo` capability.
+The command history is saved automatically, and as many states as memory permits are saved, providing almost unlimited `undo` capability.
 
 The player command to restore a previous game state is handled directly by the interpreter.
 It must consist of the single word `undo`.
