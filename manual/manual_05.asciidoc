@@ -189,11 +189,10 @@ Unrecognized characters will just result in an error.
 
 === Contractions
 
-// Here we should have index targets for "contraction", "apostrophe" etc.
-
+(((apostrophe, contraction)))(((apostrophe, elision)))
 One special case is the apostrophe ("`{nbsp}`'{nbsp}`").
 It is allowed inside words.
-But in many languages this is also used for (((contractions))) contractions, or (((elisions))) elisions, such as (English) "`can't`", or (Italian) "`l'acqua`" for the contraction of the definite article and the noun, leaving out some other characters and sounds.
+But in many languages this is also used for ((contractions)), or ((elisions)), such as (English) "`can't`", or (Italian) "`l'acqua`" for the contraction of the definite article and the noun, leaving out some other characters and sounds.
 
 In order to support the contraction of multiple words using the apostrophe, Alan does some special handling of word tokens containing an apostrophe.
 The complete word will first be looked up, but if that is not defined the separate parts will be looked up.
