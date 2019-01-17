@@ -56,7 +56,8 @@ A verb command is executed by checking the syntax of the input, performing any p
 A directional command is executed by finding any `Exit` in that direction, evaluating the ``Check``s and the body (if any) of that exit and locating the _hero_ at the new location.
 
 If the player enters an empty command, this is equivalent to forfeiting the turn.
-The empty command will result in no action from the hero, but counted as a player turn. Pending events will run and other actors will move as usual.
+The empty command will result in no action from the hero, but counted as a player turn.
+Pending events will run and other actors will move as usual.
 
 
 
@@ -168,7 +169,9 @@ This must be kept in mind when naming verbs that use the default syntax (an expl
 
 == Player Words
 
-You use Syntax statements to define the structure of available player commands. The actual player input consist of "tokens" which are matched those structures. The most prominent part of that are the words.
+You use Syntax statements to define the structure of available player commands.
+The actual player input consist of "tokens" which are matched those structures.
+The most prominent part of that are the words.
 The allowed words comes from
 
 * the syntax statement - the verb word itself and any "filler" words, in Alan generalized to "prepositions"
@@ -181,20 +184,27 @@ All those words are collected by the Alan compiler into a dictionary of known wo
 Words in the player input are separated into tokens by space or by characters not allowed inside words (see above).
 
 Other characters are considered separate tokens.
-Some of those tokens are used in some forms of player input, such as comma and period, as seen above. Unrecognized characters will just result in an error.
+Some of those tokens are used in some forms of player input, such as comma and period, as seen above.
+Unrecognized characters will just result in an error.
 
 === Contractions
 // Here we should have index targets for "contraction", "apostrophe" etc.
-One special case is the apostrophe ("´"). It is allowed inside words. But in many languages this is also used for (((contractions))) contractions, or (((elisions))) elisions, such as (English) "can't", or (Italian) "l'acqua" for the contraction of the definite article and the noun, leaving out some other characters and sounds.
+One special case is the apostrophe ("´").
+It is allowed inside words.
+But in many languages this is also used for (((contractions))) contractions, or (((elisions))) elisions, such as (English) "can't", or (Italian) "l'acqua" for the contraction of the definite article and the noun, leaving out some other characters and sounds.
 
-In order to support the contraction of multiple words using the apostrophe, Alan does some special handling of word tokens containing an apostrophe. The complete word will first by looked up, but if that is not defined the separate parts will be looked up. E.g.
+In order to support the contraction of multiple words using the apostrophe, Alan does some special handling of word tokens containing an apostrophe.
+The complete word will first by looked up, but if that is not defined the separate parts will be looked up.
+E.g.
 
 [example,role="gametranscript"]
 ================================================================================
 &gt; _prendi l'acqua_
 ================================================================================
 
-In this example the word "l'acqua" will first be tried as a complete word, and if found in the dictionary, the input will be interpreted as using that word (perhaps a noun). If it isn't found, the command parser will split at the apostrophe, first trying "l'" (the contracted definite article) as a separate word. Then the second part will be tried, in this case "acqua".
+In this example the word "l'acqua" will first be tried as a complete word, and if found in the dictionary, the input will be interpreted as using that word (perhaps a noun).
+If it isn't found, the command parser will split at the apostrophe, first trying "l'" (the contracted definite article) as a separate word.
+Then the second part will be tried, in this case "acqua".
 
 This makes it possible to use natural words as nouns and create "l'" as a synonym for the (((article, definite, contracted))) definite article.
 
