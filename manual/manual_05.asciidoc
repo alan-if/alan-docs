@@ -263,7 +263,7 @@ Therefore, this is also the last step in the sequence of events caused by locati
 == Undoing
 
 
-A player might occasionally regret an command already input, perhaps realising that it was not the correct one.
+A player might occasionally regret a typed command, perhaps realising that it was not the correct one.
 The Alan interpreter supports such undoing of commands.
 The interpreter stores each game state as soon as it has changed, and an (((UNDO command))) `undo` command resets the game state to the last saved one.
 The command history is saved automatically, and as many states as memory permits are saved, providing almost unlimited `undo` capability.
