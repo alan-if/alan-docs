@@ -1947,7 +1947,7 @@ script = 'SCRIPT' id ['.'] [description] {step}
 --------------------------------------------------------------------------------
 
 Every script has an identifier (the *id*) to identify it.
-A script is selected by the (((USE, statement))) `Use` statement.
+A script is selected by the (((USE, statement))) <<USE Statement,`Use` statement>>.
 When an actor starts following a script, it will continue with one step after the other, with all the other actors, including the hero, taking turns.
 
 The optional `Description` (((DESCRIPTION, of ACTOR scripts))) allowed in the beginning of a script is used instead of the general description (from the instance declaration) whenever the actor is executing that particular script.
@@ -1975,7 +1975,7 @@ An actor continues executing its script until:
 
 * it reaches the end
 * another `Use` statement is executed for that actor
-* the actor is stopped using the `Stop` statement
+* the actor is stopped using the <<STOP Statement,`Stop` statement>>
 * something fails
 
 
@@ -3998,7 +3998,7 @@ Actor statements are statements that are used to control actors.
 use_statement = 'USE' script ['FOR' actor] '.'
 --------------------------------------------------------------------------------
 
-The (((USE, statement))) `Use` statement starts execution of a given script for a given actor.
+The (((USE, statement))) `Use` statement starts execution of a given <<SCRIPTs,`Script`>> for a given actor.
 The `For actor` clause is optional when writing code within a certain actor -- in this case, the statement applies to the actor (instance or class) containing the code.
 
 [source,alan]
