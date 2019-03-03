@@ -52,7 +52,7 @@ end for
 
 
 A player command may be either a verb command or a directional command.
-A verb command is executed by checking the syntax of the input, performing any preconditions (``Check``s) and then executing the verb bodies (as described in <<Verbs,_Verbs_>> and <<Scope,_Scope_>>).
+A verb command is executed by checking the syntax of the input, performing any preconditions (``Check``s) and then executing the verb bodies (as described in <<VERBs,_Verbs_>> and <<Scope,_Scope_>>).
 A directional command is executed by finding any `Exit` in that direction, evaluating the ``Check``s and the body (if any) of that exit and locating the _hero_ at the new location.
 
 If the player enters an empty command, this is equivalent to forfeiting the turn.
@@ -97,7 +97,7 @@ The following built-in syntax variations are available to the player:
 &gt; _give key to guard and ask HIM to open the door with IT_
 ================================================================================
 +
-The pronouns have to be defined by the author in the source (see <<Pronouns>>) or by a library.
+The pronouns have to be defined by the author in the source (see <<PRONOUNs>>) or by a library.
 The only built-in pronoun is the *IT*-word, which is automatically defined for the class `thing`.
 
 
@@ -139,14 +139,14 @@ This allows:
 
 // FIXME: The first sentence below could be polished a bit!
 
-The reference to multiple objects (or actors) in a position is only possible if the adventure author has allowed it by using a ((multiple indicator)) (((parameter, indicators, multiple))) in the `Syntax` definition (see <<Syntax Definitions>>).
+The reference to multiple objects (or actors) in a position is only possible if the adventure author has allowed it by using a ((multiple indicator)) (((parameter, indicators, multiple))) in the `Syntax` definition (see <<SYNTAX Definitions>>).
 All the variations above are built-in and handled automatically by the run-time system.
 
 The interpreter also automatically restricts (((parameter, referencing))) parameter references to things which are reachable according to the semantic rules of each built-in base class (see <<Instances>> for the complete details).
-For example, objects can only be referred to if they are present at the current location, except if the `Syntax` for the command uses the (((omnipotent indicator))) (((parameter, indicators, omnipotent))) omnipotent `!` indicator (see <<Syntax Definitions>> for details).
-For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to <<Distant & Imaginary Objects,_Distant & Imaginary Objects_>>.
+For example, objects can only be referred to if they are present at the current location, except if the `Syntax` for the command uses the (((omnipotent indicator))) (((parameter, indicators, omnipotent))) omnipotent `!` indicator (see <<SYNTAX Definitions>> for details).
+For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to <<Distant and Imaginary Objects,_Distant & Imaginary Objects_>>.
 
-If the player uses *ALL* instead of a reference to an instance in his command, the verb will be applied to all appropriate instances at the current location, _except_ the ones that do not pass all checks for the verb (see <<Verbs>> for further details on this).
+If the player uses *ALL* instead of a reference to an instance in his command, the verb will be applied to all appropriate instances at the current location, _except_ the ones that do not pass all checks for the verb (see <<VERBs>> for further details on this).
 
 // @TODO:  Could add xref to "4.2. Words, Identifiers and Names"!
 
@@ -258,10 +258,10 @@ So, the execution of various parts of the adventure source can also be said to h
 == Moving Actors
 
 (((ACTOR, movement of actors)))
-The main way to (((HERO, movement of))) move the hero around the adventure's world is through (((EXIT))) ``Exit``s (see <<Exits>>).
+The main way to (((HERO, movement of))) move the hero around the adventure's world is through (((EXIT))) ``Exit``s (see <<EXITs>>).
 They are executed if the player inputs a directional command, i.e. a word defined as the name for an `Exit` in any location.
 First, the current location is investigated for an `Exit` in the indicated direction, if there is none an error message is printed.
-Otherwise, that exit is examined for ``Check``s, which are run according to normal rules (see <<Verb Checks>>).
+Otherwise, that exit is examined for ``Check``s, which are run according to normal rules (see <<Verb CHECKs>>).
 If there was no (((CHECK, in exits))) `Check`, or if the checks passed, the statements in the body (the (((DOES, in exits))) `Does`-part) is executed.
 The (((HERO, traversing EXITs))) hero is then located at the `location` indicated in the `Exit` header, which will result in the description of the location (by executing the `Description`-clause of the location) and any objects or actors present (by executing their ``Description``s, explicit or implicit).
 
