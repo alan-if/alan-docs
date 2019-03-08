@@ -21,6 +21,7 @@ Some notes and useful links for working on FOP/XSL customization of the PDF temp
         - [Ordered Lists](#ordered-lists)
         - [Bulleted Lists](#bulleted-lists)
     - [Footnotes](#footnotes)
+    - [Source Code Listings](#source-code-listings)
     - [Callouts](#callouts)
     - [Admonitions](#admonitions)
     - [Running Headers and Footers](#running-headers-and-footers)
@@ -100,6 +101,14 @@ FOP 2.1 doesn't support font ligatures in PDF:
 - [DocBook XSL Guide: Chapter 16. Footnotes](http://www.sagehill.net/docbookxsl/Footnotes.html)
     + [Formatting footnotes in print](http://www.sagehill.net/docbookxsl/PrintFootnotes.html)
 
+## Source Code Listings
+
+- [DocBook XSL: The Complete Guide]:
+    + [Syntax highlighting]
+        * [ProgramListings]
+        * [Annotating program listings]
+- [programlisting and other verbatim elements] — by New Mexico Tech Computer Center.
+
 
 ## Callouts
 
@@ -152,6 +161,7 @@ Asciidoctor-fopub uses the following components versions:
     + [Adding a font] — tutorial (FOP v0.93)
     + [Syntax highlighting]
         * [ProgramListings]
+        * [Annotating program listings]
 - [DocBook XSL Stylesheets: Reference Documentation]:
     + [`highlight.source`][highlight.source]
 - [XSLTHL Wiki]:
@@ -238,6 +248,7 @@ Dependencies:
 
 [Schema Central » XSL-FO 1.1]: http://www.datypic.com/sc/fo11/s-fo.xsd.html
 [fo:border-style]: http://www.datypic.com/sc/fo11/t-fo_border-style.html
+[programlisting and other verbatim elements]: http://infohost.nmt.edu/tcc/help/pubs/docbook5/tccstyle5/web/fo-programlisting.html
 
 <!-- XSLTHL -->
 
@@ -251,6 +262,7 @@ Dependencies:
 [Adding a font]: http://www.sagehill.net/docbookxsl/AddFont.html
 [Syntax highlighting]: http://www.sagehill.net/docbookxsl/SyntaxHighlighting.html
 [ProgramListings]: http://www.sagehill.net/docbookxsl/ProgramListings.html
+[Annotating program listings]: http://www.sagehill.net/docbookxsl/AnnotateListing.html
 
 <!-- Wikipedia -->
 
