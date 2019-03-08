@@ -1,4 +1,4 @@
-// v1.1.0 (2018/12/05)
+// v1.2.0 (2019/03/08)
 // ******************************************************************************
 // *                                                                            *
 // *                     Highlight.js Themes for Alan-Docs                      *
@@ -143,6 +143,16 @@ div.gametranscript,
 
 div.openblock.commentary {
     padding-left: 6em;
+}
+
+// -----------------------------------------------------------------------------
+/* Inline Highlighting */
+// -----------------------------------------------------------------------------
+// Used to provide a highlighter marker effect to both text and code examples.
+// Mainly used in "ALAN Beginner's Guide" to mark added code in the source code
+// examples.
+span.green {
+    background-color: #A3FF8A;
 }
 
 // EOF //

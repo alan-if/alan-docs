@@ -48,4 +48,8 @@ div.gametranscript,
 div.openblock.commentary {
   padding-left: 6em; }
 
+/* Inline Highlighting */
+span.green {
+  background-color: #A3FF8A; }
+
 /*# sourceMappingURL=github.min.css.map */

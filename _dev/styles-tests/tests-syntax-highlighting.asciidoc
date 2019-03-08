@@ -1,6 +1,6 @@
 = Syntax Highlighting in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v2.2, December 19, 2018
+v2.3, March 8, 2019
 include::_inc_header-attributes.adoc[]
 :doctype: book
 :toclevels: 5
@@ -419,5 +419,101 @@ negative = 'NEGATIVE' article_or_form
 article_or_form = 'ARTICLE' {statement}
                 | 'FORM' {statement}
 --------------------------------------------------------------------------------
+
+// *****************************************************************************
+// *                                                                           *
+// *                  PART III. CUSTOMIZING THE LOOK OF CODE                   *
+// *                                                                           *
+// *****************************************************************************
+
+
+[[part_three]]
+[reftext="Part III"]
+= Customizing The Look of Code
+
+[partintro]
+--
+Sometimes we need to customize how the code is presented to the reader, beyond what syntax highlighting automatically provides.
+
+This part is dedicated to show how this can be achieved and how it looks like in the output of the different backends.
+--
+
+== Custom Color-Marking
+
+The _ALAN Beginner's Guide_ uses this technique to mark specific lines of code, or to single out certain parts of a line, by adopting a custom coloring notation to show which code was added in each step of a tutorial, or just to draw the reader's attention to specific parts of the code.
+
+
+==== Yellow Highlighting
+
+To mark part of the code as if it was highlighted with a yellow marker, we can enclose it within a pair of single or double hash symbols (`&#35;`).
+
+
+[source,alan,subs="quotes"]
+-------------------------------------------
+-- Custom coloring.
+-- Example 1: #Yellow highlighting#.
+Every book IsA object.
+  #Description "It's just a book."
+  Has not been_read.#
+End Every.
+-------------------------------------------
+
+// ==================
+// HTML Backend Only:
+// ==================
+ifeval::["{backend}" == "html5"]
+In the HTML output it will wrapped in a `&lt;mark&gt;` tag.
+The Asciidoctor HTML backend natively supports this element in the default stylesheet.
+endif::[]
+
+
+// =================
+// PDF Backend Only:
+// =================
+ifeval::["{backend}" != "html5"]
+[WARNING]
+================================================================================
+Currently the PDF toolchain doesn't support correct styling of the `marked` element, it will be only rendered in italics.
+I'm still trying to work out how to style this in the custom FOPUB template.
+================================================================================
+endif::[]
+
+
+==== Green Highlighting
+
+To use a green color, the `[green]&#35;` variant must be used instead, which uses a custom defined style.
+
+
+[source,alan,subs="quotes"]
+-------------------------------------------
+-- Custom coloring.
+-- Example 2: [green]#green highlighting#.
+Every book IsA object.
+  [green]#Description "It's just a book."
+  Has not been_read.#
+End Every.
+-------------------------------------------
+
+// ==================
+// HTML Backend Only:
+// ==================
+ifeval::["{backend}" == "html5"]
+In the HTML output it will wrapped in a `&lt;span class="green"&gt;` tag.
+Styling of this custom span class is supported via the custom stylesheet used in this project for highlight.js.
+endif::[]
+
+
+
+// =================
+// PDF Backend Only:
+// =================
+ifeval::["{backend}" != "html5"]
+[WARNING]
+================================================================================
+Currently the PDF toolchain doesn't support styling this custom inline element at all, therefore it won't produce any visible result in the PDF document.
+I'm still trying to work out how to support styling this element.
+================================================================================
+endif::[]
+
 
 // EOF //
