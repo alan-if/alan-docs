@@ -13,6 +13,7 @@ Laying out a ground plan and noting down the pending tasks to finish porting to 
     - [Original HTML Document](#original-html-document)
 - [AsciiDoc Porting](#asciidoc-porting)
     - [Color Coding Conventions](#color-coding-conventions)
+        - [The AsciiDoc Solution](#the-asciidoc-solution)
         - [Original Colors](#original-colors)
 - [Contents Updating](#contents-updating)
 
@@ -48,11 +49,36 @@ The AsciiDoc reconstruction of this document takes on from where Thomas Nilefalk
 
 The original document uses a custom color-coding convention to simplify visually sifiting through the text and source code examples.
 
-The main challenge here is to introduce syntax highlighting of Alan source code and at the same time preserve the original color notation. It should be possible to achieve this, but it will require some changes:
+The main challenge here is to introduce syntax highlighting of Alan source code and at the same time preserve the original color notation. This is achievable but it will require some changes:
 
 - Use background coloring instead (highlighter marker style).
 - Change colors to fit the syntax theme and preserve code readability.
 - Update all references to the original color system in the document.
+
+### The AsciiDoc Solution
+
+I've managed to achieve both syntax highlighting and custom color-marking of code via custom styling using the `#` element (see Asciidoctor Manual [§19.5 _Custom Styling With Attributes_][§19.5]):
+
+- `#`...`#` — for yellow highlighting.
+- `[green]#`...`#` — for green highlighting.
+
+This solution overlaps neatly with Alan syntax highlighting, and it only requires specifying the appropriate text substitutions in the code block:
+
+```asciidoc
+[source,alan,subs="quotes"]
+-------------------------------------------
+-- Custom coloring.
+-- Example 1: #Yellow highlighting#.
+-- Example 2: [green]#green highlighting#.
+Every book IsA object.
+  [green]#Description "It's just a book."
+  Has not been_read.#
+End Every.
+-------------------------------------------
+```
+
+> __PDF WARNING!__ — The above solution currently works only with the HTML backend; I still need to work out how to adapt the FOP XSL template to support it.
+
 
 ### Original Colors
 
@@ -70,9 +96,11 @@ As a general rule, cyan-highlighted text is being converted to an admonition blo
 
 In the original doc, __red__ is used to indicate new code added to the examples:
 
-![cyan color][screenshot red]
+![red color][screenshot red]
 
 This makes it easier for the reader to follow the step-by-step tutorial and visually track the changes introduced at each step.
+
+> __NOTE__ — In the ported version we shall use green instead, because a red background would make the code less readable, and also because green background coloring is also used in diff logs to indicate additions (whereas red is usually associated with deletions).
 
 #### Yellow Highlighting
 
@@ -120,5 +148,9 @@ Then, at some point in the future, all the examples could be updated/ported to t
 [screenshot cyan]: ./screenshots/cyan-highlighting.png "Example of cyan coloring of text in original document"
 [screenshot red]: ./screenshots/red-code.png "Example of red coloring of code in original document"
 [screenshot yellow]: ./screenshots/yellow-highlighting.png "Example of yellow highlighting of code in original document"
+
+<!---------------------- Asciidoctor Manual references ----------------------->
+
+[§19.5]: https://asciidoctor.org/docs/user-manual/#custom-styling-with-attributes "Read the Asciidoctor Manual on this topic..."
 
 <!-- EOF -->
