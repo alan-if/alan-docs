@@ -29,11 +29,13 @@ License: [Artistic License 2.0].
 
 # Beginner's Guide
 
+- [`/images/`][images]
 - [`alanguide.adoc`][alanguide.adoc]
+- [`alanguide.html`][alanguide.html]
 
-AsciiDoc version of Michael Arnaud's _Alan 3 Beginner's Guide_ (2006); taken from [Alan repository], commit [`fb81645`][fb81645].
+Michael Arnaud's _Alan 3 Beginner's Guide_ (2006). The AsciiDoc version was taken from [Alan repository], commit [`fb81645`][fb81645]; the HTML version from [Alan website][alanguide www].
 
-The original source document was lost, but the HTML version survived on Alan website ([still available at this link][alanguide www]). In 2014, Thomas Nilefalk converted the HTML version to AsciiDoc and began to clean up and restyle the ported document and update its contents.
+The original source document was lost, but the HTML-converted version survived on Alan website ([still available at this link][alanguide www]). In 2014, Thomas Nilefalk converted the HTML version to AsciiDoc and began to clean up and restyle the ported document and update its contents.
 
 The AsciiDoc still needs some cleaning up, and the contents relating to the Standard Library need to be updated because they refer to the old version of the Library. 
 
@@ -54,7 +56,9 @@ The AsciiDoc still needs some cleaning up, and the contents relating to the Stan
 [manual.odt]: ./manual.odt "'The ALAN Adventure Language Reference Manual' (ODT)"
 [manual.pdf]: ./manual.pdf "'The ALAN Adventure Language Reference Manual' (PDF)"
 
-[alanguide.adoc]: ./alanguide.adoc
+[alanguide.adoc]: ./alanguide.adoc "View source file"
+[alanguide.html]: ./alanguide.html "View source file"
+[images]: ./images/ "Navigate to folder"
 
 
 [Artistic License 2.0]: ../LICENSE

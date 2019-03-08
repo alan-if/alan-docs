@@ -13,6 +13,7 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Original Guide Documents](#original-guide-documents)
 - [Folder Contents](#folder-contents)
     - [Guide Source Files](#guide-source-files)
     - [Conversion Scripts](#conversion-scripts)
@@ -25,13 +26,17 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 
 -----
 
+
+# Original Guide Documents
+
+The original files of the _Alan Beginner's Guide_ used as base document are available in:
+
+- [`../_assets-src/original-docs/`][original-docs]
+    + [`/images/`][images] — original images.
+    + [`alanguide.html`][alanguide.html] — survived HTML version of original document.
+    + [`alanguide.adoc`][alanguide.adoc] — AsciiDoc port of the HTML version.
+
 # Folder Contents
-
-The original file of the _Alan Beginner's Guide_ used as base document is available in:
-
-- [`../_assets-src/original-docs/`](../_assets-src/original-docs/)
-    + [`alanguide.adoc`](../_assets-src/original-docs/alanguide.adoc)
-
 
 ## Guide Source Files
 
@@ -75,11 +80,13 @@ The AsciiDoc formatting still needs some cleaning up, and the contents relating 
 
 # Document History
 
-The original source document of the _Alan 3 Beginner's Guide_ was lost, but the HTML version survived on Alan website ([still available at this link][alanguide www]). In 2014, Thomas Nilefalk converted the HTML version to AsciiDoc and began to clean up and restyle the ported document and update its contents.
+The original source document of the _Alan 3 Beginner's Guide_ was lost, but the [HTML converted version][alanguide.html] survived on Alan website ([still available at this link][alanguide www]). In 2014, Thomas Nilefalk [converted to AsciiDoc][alanguide.adoc] the survived HTML version and began to clean up and restyle the ported document and update its contents.
 
 The original AsciiDoc document was taken from [Alan repository], commit [`fb81645`][fb81645]:
 
 - https://bitbucket.org/alanif/alan/src/fb81645/doc/guide/
+
+The HTML version was [taken from the Alan website][alanguide www].
 
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS                                
@@ -122,6 +129,12 @@ The original AsciiDoc document was taken from [Alan repository], commit [`fb8164
 [HTML_BUILD.bat]: ./HTML_BUILD.bat "Batch script to convert the Alan Guide to a single-file standalone HTML5 document."
 [PDF_BUILD.bat]: ./PDF_BUILD.bat "Batch script to convert the Alan Guide to PDF document."
 
+<!-- original guide files -->
+
+[original-docs]: ../_assets-src/original-docs/ "Navigate to folder"
+[images]: ../_assets-src/original-docs/images/ "Navigate to folder"
+[alanguide.adoc]: ../_assets-src/original-docs/alanguide.adoc "View source file"
+[alanguide.html]: ../_assets-src/original-docs/alanguide.html "View source file"
 
 
 <!-- In-Doc Croos References -->
