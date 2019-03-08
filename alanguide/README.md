@@ -1,6 +1,6 @@
 # The Alan Beginner's Guide
 
-AsciiDoc reconstruction of _Alan 3 Beginner's Guide_ by Michael Arnaud, 2006 (WIP).
+AsciiDoc reconstruction of _Alan 3 Beginner's Guide_ by Michael Arnaud, 2006 ([WIP][TODO]).
 
 __[Click here for an HTML Live Preview][HTML Live Preview]__
 
@@ -72,10 +72,13 @@ These stylesheets were adapted from the [asciidoctor-fopub] project, Copyright (
 
 # Document Status
 
+- [`TODO.md`][TODO]
+
 The AsciiDoc reconstruction of this document takes on from where Thomas Nilefalk left (see [Document History] below).
 
 The AsciiDoc formatting still needs some cleaning up, and the contents relating to the Standard Library need to be updated because they refer to the old version of the Library. Also, the document should be adapted to the [styling conventions] adopted in this project.
 
+For more details on the pending tasks and guidelines on the adaptation workflow, see the [`TODO.md`][TODO] document.
 
 
 # Document History
@@ -128,6 +131,7 @@ The HTML version was [taken from the Alan website][alanguide www].
 [BUILD_ALL.bat]:  ./BUILD_ALL.bat  "Batch script to invoke all the Alan Guide conversion scripts."
 [HTML_BUILD.bat]: ./HTML_BUILD.bat "Batch script to convert the Alan Guide to a single-file standalone HTML5 document."
 [PDF_BUILD.bat]: ./PDF_BUILD.bat "Batch script to convert the Alan Guide to PDF document."
+[TODO]: ./TODO.md "View the TODO document"
 
 <!-- original guide files -->
 
