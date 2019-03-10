@@ -13,11 +13,12 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [Original Guide Documents](#original-guide-documents)
+- [Introduction](#introduction)
 - [Folder Contents](#folder-contents)
-    - [Guide Source Files](#guide-source-files)
+    - [Converted Guide and Assets](#converted-guide-and-assets)
+    - [Document Source Files](#document-source-files)
     - [Conversion Scripts](#conversion-scripts)
-    - [Converted Guide](#converted-guide)
+- [Original Guide Documents](#original-guide-documents)
 - [DocBook XSL Stylesheets](#docbook-xsl-stylesheets)
 - [Document Status](#document-status)
 - [Document History](#document-history)
@@ -26,21 +27,41 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 
 -----
 
+# Introduction
 
-# Original Guide Documents
+Michael Arnaud's _Alan 3 Beginner's Guide_ (2006) is an excellent step-by-step tutorial that will guide the reader through the creation of a full adventure using ALAN Library v0.6.1 — the _TV TIME!_ adventure.
 
-The original files of the _Alan Beginner's Guide_ used as base document are available in:
+The fact that the Library used in this tutorial is a very old version (now superseded by [Anssi Räisänen]'s [ALAN Standard Library 2]) doesn't affect the usefulness of this tutorial. As a matter of fact, it's actually easier for a beginner to work with this older version of the Library for it's much smaller and manageable, and therefore easier to study and experiment with.
 
-- [`../_assets-src/original-docs/`][original-docs]
-    + [`/images/`][images] — original images.
-    + [`alanguide.html`][alanguide.html] — survived HTML version of original document.
-    + [`alanguide.adoc`][alanguide.adoc] — AsciiDoc port of the HTML version.
+When the adapatation work started, there were initial concerns about this obsolete library version, and the original intention was to adapt the tutorial contents and code to make it work the latest StdLib 2.1. The rationale was that it would have been more useful for the reader to start working with a current version of the library instead of an obsolete version. 
+
+Also, there were concernes that Library v0.6.1 (dates back to 2007) might no longer be compatible with the current version of ALAN, for the language has undergone considerable changes in 12 years. As it turns out, Library v0.6.1 still works fine today and I was able to compile the _TV TIME!_ adventure of this tutorial without problems. I've only tweaked the library in a couple of places to introduce two minor fixes and improvements from v0.6.2 that specifically targetted changes in ALAN features. (v0.6.2 was the last update in the v0.X series, before migration to Library v1, which superseded it in 2010, which in turn was superseded by StdLib v2.0 in 2016).
+
+Therefore, the decision was to preserve the _Alan 3 Beginner's Guide_ tutorial as it is, and provide the reader with a (slightly tweaked) copy of the Library v0.6.1 sources so that he/she might enjoy putting into practice the step-by-step instructions of the tutorial. After all, the philosophy behind ALAN is not to enforce any library on authors, so ultimately there is no "official" ALAN library — all these libraries are the result of collective efforts and shared knowledge, experience and needs.
+
+Obviously, the reader is encouraged to study and use the newest [ALAN Standard Library 2] by [Anssi Räisänen], for Library v0.6.1 was an adpatation of v0.4.0, originally designed for ALAN 2 and then ported to ALAN 3 in v0.4.1, while the Library v2.0 was designed from the onset as an ALAN 3 library, and therefore takes full advantage of the new features of the language.
+
+
 
 # Folder Contents
 
-## Guide Source Files
+## Converted Guide and Assets
+
+- [`/alanguide-code/`][alanguide-code] — Alan sources of (and for) tutorial.
+    + [`/lib/`][lib] — ALAN Library v0.6.2.
+    + [`/mylib/`][mylib] — ALAN Library v0.6.2 modified for tutorial.
+    + [`COMPILE.bat`][COMPILE] — script to compile the adventure.
+    + [`plasma.jpg`][plasma] — required adventure asset.
+    + [`tvtime.alan`][tvtime.alan] — the final _TV TIME!_ adventure.
+- [`alanguide.html`][guide html] — _Beginner's Guide_ converted to standalone HTML5 ([HTML Live Preview]).
+
+An [HTML Live Preview] of the converted document is available via [GitHub & BitBucket HTML Preview] online service.
+
+
+## Document Source Files
 
 - [`alanguide.asciidoc`][guide]
+
 
 ## Conversion Scripts
 
@@ -53,11 +74,14 @@ The original files of the _Alan Beginner's Guide_ used as base document are avai
 > See: [Instructions on setting up asciidoctor-fopub].
 
 
-## Converted Guide
+# Original Guide Documents
 
-- [`alanguide.html`][guide html] — Beginner's Guide converted to standalone HTML5 ([HTML Live Preview]).
+The original files of the _Alan Beginner's Guide_ used as base document are available in:
 
-An [HTML Live Preview] of the converted document is available via [GitHub & BitBucket HTML Preview] online service.
+- [`../_assets-src/original-docs/`][original-docs]
+    + [`/images/`][images] — original images.
+    + [`alanguide.html`][alanguide.html] — survived HTML version of original document.
+    + [`alanguide.adoc`][alanguide.adoc] — AsciiDoc port of the HTML version.
 
 # DocBook XSL Stylesheets
 
@@ -76,7 +100,7 @@ These stylesheets were adapted from the [asciidoctor-fopub] project, Copyright (
 
 The AsciiDoc reconstruction of this document takes on from where Thomas Nilefalk left (see [Document History] below).
 
-The AsciiDoc formatting still needs some cleaning up, and the contents relating to the Standard Library need to be updated because they refer to the old version of the Library. Also, the document should be adapted to the [styling conventions] adopted in this project.
+The AsciiDoc formatting still needs some cleaning up, and the document should be adapted to the [styling conventions] adopted in this project. The source files of the tutorial are being reconstructed, along with a copy of the required Library (v0.6.2) so that the reader is able to actually work on the tutorial.
 
 For more details on the pending tasks and guidelines on the adaptation workflow, see the [`TODO.md`][TODO] document.
 
@@ -110,6 +134,12 @@ The HTML version was [taken from the Alan website][alanguide www].
 [HTML_BUILD.bat]: ./HTML_BUILD.bat "Batch script to convert the Alan Guide to a single-file standalone HTML5 document."
 [PDF_BUILD.bat]: ./PDF_BUILD.bat "Batch script to convert the Alan Guide to PDF document."
 
+[ALAN Standard Library 2]: https://github.com/AnssiR66/AlanStdLib "Visit the official repository of the ALAN Standard Library 2"
+
+
+<!-- people ------------------------------------------------------------------>
+
+[Anssi Räisänen]: https://github.com/AnssiR66 "View Anssi Räisänen's GitHub profile"
 
 <!-- AsciiDoctor -->
 
@@ -132,6 +162,16 @@ The HTML version was [taken from the Alan website][alanguide www].
 [HTML_BUILD.bat]: ./HTML_BUILD.bat "Batch script to convert the Alan Guide to a single-file standalone HTML5 document."
 [PDF_BUILD.bat]: ./PDF_BUILD.bat "Batch script to convert the Alan Guide to PDF document."
 [TODO]: ./TODO.md "View the TODO document"
+
+<!-- Tutorial code assets -->
+
+[alanguide-code]: ./alanguide-code/ "Navigate to folder"
+[lib]: ./alanguide-code/lib/ "Navigate to folder"
+[mylib]: ./alanguide-code/mylib/ "Navigate to folder"
+[tvtime.alan]: ./alanguide-code/tvtime.alan "View source file"
+[COMPILE]: ./alanguide-code/COMPILE.bat "View source file"
+[plasma]: ./alanguide-code/plasma.jpg "View image"
+
 
 <!-- original guide files -->
 
