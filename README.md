@@ -16,6 +16,8 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Latest News](#latest-news)
+    - [Switching to Dart Sass](#switching-to-dart-sass)
 - [About This Project](#about-this-project)
     - [License Terms](#license-terms)
     - [Project Contents](#project-contents)
@@ -40,6 +42,28 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
 <!-- /MarkdownTOC -->
 
 -----
+
+# Latest News
+
+Some important news for project maintainers and contributors...
+
+## Switching to Dart Sass
+
+Since March 11 2019 this project has switched from using [Ruby Sass] to the newest [Dart Sass] because starting from March 26 2019 Ruby Sass will no longer be maintained.
+
+Since Dart Sass behavior is slightly different from Ruby Sass, anyone working on the repository Sass sources must ensure to switch to Dart Sass to avoid creating divergent CSS stylesheets.
+
+The easiest way to install Dart Sass on Windows, and keep it always updated, is to [install it via Chocolatey][Choco Sass].
+
+From [Ruby Sass homepage][Ruby Sass]:
+
+> Ruby Sass will continue to be maintained until 26 March 2019. During this maintenance period, bugs will be fixed as much as possible but no new features will be added. The only exception is for features that are necessary to support new CSS syntax, which will continue to be added.
+> 
+> Dart Sass, the new primary implementation, doesn't always behave 100% the same as Ruby Sass—it implements a number of behavioral changes that were planned for Ruby Sass, but were never implemented in a stable version. To make migration easier, recent versions of Ruby Sass emit warnings for any code that won't be compatible with Dart Sass. Ongoing maintenance includes adding any warnings for new behavioral differences, if they come up.
+> 
+> Once the maintenance period ends, Ruby Sass's repository will be archived, no more changes of any kind will be made, and no new releases will be cut.
+
+
 
 # About This Project
 
@@ -287,6 +311,10 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 <!-- External Tools and Dependencies -->
 
 [Sass]: https://sass-lang.com "Visit Sass website"
+[Sass]: https://sass-lang.com "Visit Sass website"
+[Dart Sass]: https://github.com/sass/dart-sass "Visit Dart Sass repository on GitHub"
+[Ruby Sass]: https://sass-lang.com/ruby-sass "Visit Ruby Sass homepage"
+[Choco Sass]: https://chocolatey.org/packages/sass "View the Chocolatey package for Dart Sass"
 
 [highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
 

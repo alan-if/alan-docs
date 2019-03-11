@@ -2,6 +2,7 @@
 
 Source [Sass] SCSS files to build CSS stylesheets used in this project.
 
+> __NOTE__ — The project has swtiched to [Dart Sass] now.
 
 -----
 
@@ -14,6 +15,7 @@ Source [Sass] SCSS files to build CSS stylesheets used in this project.
     - [Main Stylesheets](#main-stylesheets)
     - [SCSS Modules](#scss-modules)
     - [Automation Scripts](#automation-scripts)
+- [Installing Dart Sass](#installing-dart-sass)
 
 <!-- /MarkdownTOC -->
 
@@ -56,11 +58,25 @@ The build scripts will output the CSS stylesheets in their destination folders o
 |-----------------------|-------------------------------------------|------------------------------|
 | `./highlight-js.scss` | `../../_assets/hjs/styles/github.min.css` | Alan Docs using highlight.js |
 
+
+# Installing Dart Sass
+
+Since March 11 2019 this project has switched from using [Ruby Sass] to the newest [Dart Sass] because starting from March 26 2019 Ruby Sass will no longer be maintained.
+
+Since Dart Sass behavior is slightly different from Ruby Sass, anyone working on the repository Sass sources must ensure to switch to Dart Sass to avoid creating divergent CSS stylesheets.
+
+The easiest way to install Dart Sass on Windows, and keep it always updated, is to install it via Chocolatey:
+
+- https://chocolatey.org/packages/sass
+
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
 
 [Sass]: https://sass-lang.com "Visit Sass website"
+[Dart Sass]: https://github.com/sass/dart-sass "Visit Dart Sass repository on GitHub"
+[Ruby Sass]: https://sass-lang.com/ruby-sass "Visit Ruby Sass homepage"
+[Choco Sass]: https://chocolatey.org/packages/sass "View the Chocolatey package for Dart Sass"
 
 [Highlight]: http://www.andre-simon.de/ "Visit Highlight website"
 [highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
