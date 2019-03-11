@@ -19,15 +19,15 @@ code.hljs[data-lang=alan] {
   code.hljs[data-lang=alan] .hljs-keyword {
     color: #990000; }
 
-/* Alan Code Notation Mockup */
-.listingblock.alan pre {
-  color: #333;
-  background: #F8F8F8; }
-
 /* HLJS BNF */
 code.hljs[data-lang=bnf] {
   color: #492E11;
   background: #FFEBD6; }
+
+/* Alan Code Notation Mockup */
+.listingblock.alan pre {
+  color: #333;
+  background: #F8F8F8; }
 
 /* Shell/CMD */
 div.literalblock.shell pre {
@@ -38,7 +38,6 @@ div.literalblock.shell pre {
     color: #0C0C0C !important; }
 
 /* Game Transcripts */
-div.gametranscript,
 .exampleblock.gametranscript > .content {
   background: #F7FDFF;
   color: #0089B6;

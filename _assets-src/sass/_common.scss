@@ -1,0 +1,86 @@
+// "_common.scss"                       v1.0.0 | 2019/03/11 | by Tristano Ajmone
+// *****************************************************************************
+// *                                                                           *
+// *                        Common Styles Definitions                          *
+// *                                                                           *
+// *****************************************************************************
+// These are some custom styles which don't depend on the syntax highlighter
+// used and can be safely used by all documents.
+
+// =============================================================================
+//                            Blocks & Code Mockups                             
+// =============================================================================
+// Some code block are not syntax higlighted but just given some basic colors
+// for background, foreground and border. Mockups are fake-code blocks, usually
+// employed to illustrate the styling notation of the document, or for some
+// pseudocode examples that can't be highlighted properly.
+
+// -----------------------------------------------------------------------------
+/* Alan Code Notation Mockup */
+// -----------------------------------------------------------------------------
+// Mockup Alan code style for listing block example in §2.4 Notation.
+// Applied using: [role=alan]
+
+.listingblock.alan pre {
+    color: $Alan-normal;
+    background: $Alan-background;
+}
+// -----------------------------------------------------------------------------
+/* Shell/CMD */
+// -----------------------------------------------------------------------------
+// This isn't a syntax highlighted block, it's just a literal block with custom
+// styles to emulate the look and feel of a Windows CMD, but we throw it in here
+// to keep it simpler...
+
+div.literalblock.shell pre {
+    background-color: $CMD-Black;
+    color: $CMD-White;
+    
+    // AsciiDoc Callouts
+    .conum {
+        background: $Shell-callouts-background !important;
+        color: $CMD-Black !important;
+    }
+}
+// -----------------------------------------------------------------------------
+/* Game Transcripts */
+// -----------------------------------------------------------------------------
+// This isn't a syntax highlighted block, it's just an example block with custom
+// colors.
+
+.exampleblock.gametranscript>.content {
+    background: $Transcript-background;
+    color: $Transcript-normal;
+    border-color: $Transcript-border;
+}
+
+// =============================================================================
+//                          Other CSS Template Tweaks                           
+// =============================================================================
+// We might as well exploit Highlight.js' stylesheet to implement other template
+// tweaks instead of loading a separate CSS file.
+
+// -----------------------------------------------------------------------------
+/* Commentary Blocks */
+// -----------------------------------------------------------------------------
+// PARAGRAPHS WITH COMMENTARY ROLE (indented left)
+//         This applies to paragraphs that comment on Alan compiler output
+//         (see "App C - Run-Time Messages).
+
+div.openblock.commentary {
+    padding-left: 6em;
+}
+
+// -----------------------------------------------------------------------------
+/* Inline Highlighting */
+// -----------------------------------------------------------------------------
+// Used to provide a highlighter marker effect to both text and code examples.
+// Mainly used in "ALAN Beginner's Guide" to mark added code in the source code
+// examples.
+
+span.green {
+    background-color: $highlighter-green;
+}
+
+
+// EOF //

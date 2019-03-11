@@ -1,158 +1,18 @@
-// v1.2.0 (2019/03/08)
-// ******************************************************************************
-// *                                                                            *
-// *                     Highlight.js Themes for Alan-Docs                      *
-// *                                                                            *
-// ******************************************************************************
-// Syntax highlighting color schemes for the Alan-Docs project.
-// Created by Tristano Ajmone.
+// "highlight-js.scss"                  v2.0.0 | 2019/03/11 | by Tristano Ajmone
+// *****************************************************************************
+// *                                                                           *
+// *               Custom CSS for Alan-Docs using Highlight.js                 *
+// *                                                                           *
+// *****************************************************************************
+// Additional custom CSS styles for the Alan-Docs project, using Highlight.js.
+// 
+// This is the default stylesheet for the official Alan-Docs documentation, it
+// follows the styles guidelines of the project and supports all elements used
+// by the "Alan Manual", and serves as the base stylesheet for most documents
+// that need to use Highlight.js.
 
-// ==============
-// Color Palettes
-// ==============
-
-// --------------
-// Default Colors
-// --------------
-$default-background: #FEFEFE;
-$default-normal:     #000;
-
-// ---------------
-// Alan Sourcecode
-// ---------------
-// Based on "github.com style" for highlight.js:
-// https://github.com/highlightjs/highlight.js/blob/master/src/styles/github.css
-// Author:  (c) Vasily Polovnyov <vast@whiteants.net>
-$Alan-background: #F8F8F8;
-$Alan-normal:     #333;
-$Alan-comment:    #998;
-$Alan-string:     #008080;
-$Alan-built_in:   #000080;
-$Alan-keyword:    #990000;
-
-// ---------
-// BNF Rules
-// ---------
-$BNF-background: #FFEBD6;
-$BNF-normal:     #492E11;
-
-// ---------------
-// Game Transcript
-// ---------------
-$Transcript-background: #F7FDFF;
-$Transcript-normal:     #0089B6;
-$Transcript-border:     #CCF2FF;
-
-// --------------
-// Shell Examples
-// --------------
-// Based on Windows 10 new CMD default colors:
-// https://blogs.msdn.microsoft.com/commandline/2017/08/02/updating-the-windows-console-colors/
-$CMD-Black:     #0C0C0C;
-$CMD-White:     #F2F2F2;
-// Callouts BG:
-$Shell-callouts-background: #FFF945; // bright yellow
-
-
-// ------------------------
-/* Highlight.js base styles */
-// ------------------------
-.hljs {
-    display: block;
-    overflow-x: auto;
-    padding: 0.5em;
-    color: $default-normal;
-    background: $default-background;
-}
-// -----------------------------------------------------------------------------
-/* HLJS Alan */
-// -----------------------------------------------------------------------------
-// NOTE: We don't style numbers (.hljs-number).
-code.hljs[data-lang=alan] {
-    color: $Alan-normal;
-    background: $Alan-background;
-
-    .hljs-comment {
-      color: $Alan-comment;
-    }
-    .hljs-string {
-      color: $Alan-string;
-    }
-    .hljs-built_in {
-      color: $Alan-built_in;
-    }
-    .hljs-keyword {
-      color: $Alan-keyword;
-    }
-}
-// -----------------------------------------------------------------------------
-/* Alan Code Notation Mockup */
-// -----------------------------------------------------------------------------
-// Mockup Alan code style for listing block example in §2.4 Notation.
-.listingblock.alan pre {
-    color: $Alan-normal;
-    background: $Alan-background;
-}
-// -----------------------------------------------------------------------------
-/* HLJS BNF */
-// -----------------------------------------------------------------------------
-code.hljs[data-lang=bnf] {
-    color: $BNF-normal;
-    background: $BNF-background;
-}
-// -----------------------------------------------------------------------------
-/* Shell/CMD */
-// -----------------------------------------------------------------------------
-// This isn't a syntax highlighted block, it's just a literal block with custom
-// styles to emulate the look and feel of a Windows CMD, but we throw it in here
-// to keep it simpler...
-div.literalblock.shell pre {
-    background-color: $CMD-Black;
-    color: $CMD-White;
-    
-    // AsciiDoc Callouts
-    .conum {
-        background: $Shell-callouts-background !important;
-        color: $CMD-Black !important;
-    }
-}
-// -----------------------------------------------------------------------------
-/* Game Transcripts */
-// -----------------------------------------------------------------------------
-// This isn't a syntax highlighted block, but we throw it in here to keep it
-// simpler...
-div.gametranscript,
-.exampleblock.gametranscript>.content {
-    background: $Transcript-background;
-    color: $Transcript-normal;
-    border-color: $Transcript-border;
-}
-
-// =============================================================================
-//                          Other CSS Template Tweaks                           
-// =============================================================================
-// We might as well exploit Highlight.js' stylesheet to implement other template
-// tweaks instead of loading a separate CSS file.
-
-// -----------------------------------------------------------------------------
-/* Commentary Blocks */
-// -----------------------------------------------------------------------------
-// PARAGRAPHS WITH COMMENTARY ROLE (indented left)
-//         This applies to paragraphs that comment on Alan compiler output
-//         (see "App C - Run-Time Messages).
-
-div.openblock.commentary {
-    padding-left: 6em;
-}
-
-// -----------------------------------------------------------------------------
-/* Inline Highlighting */
-// -----------------------------------------------------------------------------
-// Used to provide a highlighter marker effect to both text and code examples.
-// Mainly used in "ALAN Beginner's Guide" to mark added code in the source code
-// examples.
-span.green {
-    background-color: #A3FF8A;
-}
+@import 'color-scheme'; // Defines required colors.
+@import 'hjs';          // Highlight.js specific styles.
+@import 'common';       // Styles common to all documents.
 
 // EOF //

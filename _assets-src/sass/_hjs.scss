@@ -1,0 +1,51 @@
+// "_hjs.scss"                          v1.0.0 | 2019/03/11 | by Tristano Ajmone
+// *****************************************************************************
+// *                                                                           *
+// *                        Highlight.js Syntax Themes                         *
+// *                                                                           *
+// *****************************************************************************
+
+
+
+// ------------------------
+/* Highlight.js base styles */
+// ------------------------
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: $default-normal;
+    background: $default-background;
+}
+// -----------------------------------------------------------------------------
+/* HLJS Alan */
+// -----------------------------------------------------------------------------
+// NOTE: We don't style numbers (.hljs-number).
+code.hljs[data-lang=alan] {
+    color: $Alan-normal;
+    background: $Alan-background;
+
+    .hljs-comment {
+      color: $Alan-comment;
+    }
+    .hljs-string {
+      color: $Alan-string;
+    }
+    .hljs-built_in {
+      color: $Alan-built_in;
+    }
+    .hljs-keyword {
+      color: $Alan-keyword;
+    }
+}
+// -----------------------------------------------------------------------------
+/* HLJS BNF */
+// -----------------------------------------------------------------------------
+// Basic colors for a BNF code block that isn't actually syntax highlighted, but
+// nevertheless has the Highlight.js class on the code block.
+code.hljs[data-lang=bnf] {
+    color: $BNF-normal;
+    background: $BNF-background;
+}
+
+// EOF //
