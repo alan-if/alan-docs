@@ -73,6 +73,7 @@
 ## MISC. DATA FORMATS
 ## ==================
 *.csv      text
+*.haml     text
 *.json     text
 *.xhtml    text
 *.xml      text

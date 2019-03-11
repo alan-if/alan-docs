@@ -87,6 +87,7 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 - [`/_assets/`](./_assets/) (shared assets):
     + [`/fonts/`](./_assets/fonts/)
     + [`/hjs/`](./_assets/hjs/) — custom [highlight.js] build for Alan.
+    + [`/hl/`](./_assets/hl/) — assets for the Asciidoctor Highlight toolchain.
     + [`/images/`](./_assets/images/)
     + [`/xsl-fopub/`](./_assets/xsl-fopub/) — XSL Stylesheets for PDF conversion via asciidoctor-fopub.
 - [`/_assets-src/`](./_assets-src/) (assets' source files):

@@ -6,6 +6,7 @@ This folder stores assets that are (or might be) shared by multiple documents �
 
 - [`/fonts/`](./fonts)
 - [`/hjs/`](./hjs/) — custom highlight.js build for Alan.
+- [`/hl/`](./hl/) — assets for the Asciidoctor Highlight toolchain.
 - [`/images/`](./images)
 - [`/xsl-fopub/`](./xsl-fopub) — XSL PDF Stylesheets used by asciidoctor-fopub. 
 
