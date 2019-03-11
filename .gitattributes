@@ -34,6 +34,9 @@
 *.ifid     text
 *.sav      binary
 
+# UTF-8 converted Alan sources for AsciiDoc inclusion:
+*.utf8_alan text
+
 ## ===================
 ## Game Scripts & Logs
 ## ===================

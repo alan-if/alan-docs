@@ -1,0 +1,728 @@
+-----------------------------------------------
+--             *** TV TIME! ***
+-- An ALAN 3 Interactive Fiction Tutorial Game
+--        By Michael Arnaud (c) 2006
+-----------------------------------------------
+IMPORT 'std.i'.
+-----------------------
+-- *** CUSTOM CLASSES: ***
+Every SURFACE Isa OBJECT
+  CONTAINER
+    HEADER
+      "Resting on top is"
+   VERB examine
+     DOES ONLY
+       LIST THIS.
+   END VERB.
+   VERB put_in
+     WHEN obj2
+       CHECK
+         "That isn't something you can put anything ""in""."
+   END VERB.
+END EVERY.
+-----------------------
+Every CLOSEABLE Isa OBJECT
+  OPAQUE CONTAINER
+    HEADER
+      "It contains"
+  IS OPENABLE.
+  VERB open DOES AFTER
+    MAKE THIS NOT OPAQUE.
+    LIST THIS.
+  END VERB.
+  VERB close DOES AFTER
+    MAKE THIS OPAQUE.
+  END VERB.
+END EVERY.
+-----------------------
+EVERY Door Isa OBJECT
+  NAME door
+  HAS otherside Door.
+  IS OPENABLE.
+  DESCRIPTION
+  VERB open
+    DOES AFTER
+      MAKE otherside OF THIS open.
+  END VERB.
+  VERB close
+    DOES AFTER
+      MAKE otherside OF THIS NOT open.
+  END VERB.
+END EVERY.
+-----------------------
+THE tv_room Isa LOCATION
+  NAME 'TV Room'
+  DESCRIPTION
+    "This is your favorite room in the house, because you love to
+     watch television. Besides your comfy chair and table in the
+     north end of the room, there is a bookcase on the east side
+     and a bare wall on the west."
+    IF tv Here THEN
+      "$pYour new plasma TV is sitting"
+      DEPENDING ON spot OF tv
+        = 0 THEN "in the center of the room."
+        = 1 THEN "next to the chair and table."
+        = 2 THEN "against the door."
+        = 3 THEN "by the bookcase."
+        = 4 THEN "next to the wall."
+      END DEPEND.
+    ELSE
+      "$pThere is a large cardboard packing carton sitting"
+      DEPENDING ON spot OF box
+        = 0 THEN "in the center of the room."
+        = 1 THEN "next to the chair and table."
+        = 2 THEN "against the door."
+        = 3 THEN "by the bookcase."
+        = 4 THEN "next to the wall."
+      END DEPEND.
+    END IF.
+    "$pThe door to the kitchen is south."
+  EXIT south TO kitchen
+    CHECK tv_door IS OPEN
+      ELSE
+        "$t$t<BUMP>$p$t$tOof!$pThe door is closed."
+    DOES
+      "You go south, into the kitchen."
+  END EXIT.
+  EXIT north TO tv_room
+    CHECK
+      "Your chair and table are in the north end of the room."
+  END EXIT.
+  EXIT west TO tv_room
+    CHECK
+      "There is only a wall in that direction."
+  END EXIT.
+  EXIT east TO tv_room
+    CHECK
+      "The bookcase is on the east side of the room."
+  END EXIT.
+END THE tv_room.
+-----------------------
+THE bkcase Isa SCENERY AT tv_room
+  NAME bookcase NAME case
+  NAME shelves
+  CONTAINER
+    HEADER
+      "In the bookcase you see"
+  VERB examine
+    DOES ONLY
+      "It is a large bookcase. There are only a few books on its shelves:
+       $p""Help""
+       $n""Hint""
+       $n""Credits""
+       $n""Laugh"" "
+  END VERB.
+END THE bkcase.
+-----------------------
+THE books Isa OBJECT IN bkcase
+  NAME books NAME book
+  IS READABLE.
+  INDEFINITE ARTICLE "some"
+  VERB examine
+    DOES ONLY
+      "The titles are:
+       $p""Help""
+       $n""Hint""
+       $n""Credits""
+       $n""Laugh"" "
+  END VERB.
+  VERB read
+    CHECK tv IS NOT BOOKED
+      ELSE
+        "That isn't possible while they are under the tv!"
+    DOES ONLY
+      "Just type in the title of the book you want to read."
+  END VERB.
+  VERB take, pick_up1, pick_up2
+    CHECK tv IS NOT BOOKED
+      ELSE
+        "That isn't possible while they are under the tv!"
+    DOES ONLY
+      LOCATE books IN Hero.
+      "You take the books."
+  END VERB.
+  Verb put_under
+    When obj1
+      CHECK obj2 = tv
+        ELSE
+          "It won't help anything to do that."
+      Does ONLY
+        LOCATE books Here.
+        MAKE tv BOOKED.
+        SET TIPPY of TV TO 0.
+        "You carefully lift each of the four corners of the
+         plasma tv and slip a book under it."
+  End Verb.
+END THE books.
+-----------------------
+SYNONYMS
+  crate = box.
+THE box Isa OBJECT AT tv_room
+  NAME packing carton NAME heavy cardboard box
+  NAME label NAME large black letters
+  NAME upward pointing arrow
+  HAS weight 500.
+  HAS spot 0.
+  IS OPENABLE.
+     NOT SCENERY.
+     MOVEABLE.
+  DESCRIPTION
+  VERB examine
+    DOES ONLY
+      IF box IS NOT SCENERY THEN
+        "It's quite large, about five feet square. Besides
+         the label (""Ultimo Plasma TV""), there are large
+         black letters that say, ""PUSH WITH CARE"". $nAn
+         upward pointing arrow indicates ""THIS SIDE UP""."
+        "$pThe box is sitting by a wall."
+      ELSE
+        "The carton is in pieces. No need to worry about it
+         now, you can clean it up later."
+       END IF.
+  END VERB.
+  Verb open
+    CHECK box IS NOT SCENERY
+      ELSE
+        "You have done that already."
+    AND knife Here
+      ELSE
+        "You will need a knife to cut the box open."
+    Does ONLY
+      DESCRIBE open_box.
+  End Verb.
+  Verb open_with
+    When obj1
+      CHECK box IS NOT SCENERY
+        ELSE
+          "You have done that already."
+      AND obj2 = knife
+        ELSE
+          "You will need something sharper than that to
+           open the box with."
+      Does ONLY
+        DESCRIBE open_box.
+  End Verb.
+  VERB cut
+    CHECK box IS NOT SCENERY
+      ELSE
+        "You have done that already."
+    AND knife Here
+      ELSE
+        "You will need a knife to cut the box open."
+    Does ONLY
+      DESCRIBE open_box.
+  End Verb.
+  VERB cut_with
+    When obj1
+      CHECK box IS NOT SCENERY
+        ELSE
+          "You have done that already."
+      AND obj2 = knife
+        ELSE
+          "You will need something sharper than that to
+           open the box with."
+      Does ONLY
+        DESCRIBE open_box.
+   End Verb.
+   VERB pull
+     CHECK
+       "You can't get a good grip on the carton to pull it. You
+        might have better luck trying to push it."
+   End Verb.
+   Verb push
+     CHECK
+       "Please say which direction you want to push it:
+        $ppush the carton north, south, east or west."
+   End Verb.
+   Verb push_with
+     When obj1
+       Check
+         "Just push the carton with your hands."
+   End Verb.
+   VERB push_north
+     DOES ONLY
+       SET spot OF box TO 1.
+       "You push the box north, next to the chair and table."
+   END VERB.
+   VERB push_south
+     DOES ONLY
+       SET spot OF box TO 2.
+         "You push the box south, in front of the door."
+   END VERB.
+   VERB push_east
+     DOES ONLY
+       SET spot OF box TO 3.
+       "You push the box east, next to the bookcase."
+   END VERB.
+   VERB push_west
+     DOES ONLY
+       SET spot OF box TO 4.
+       "You push the box west, next to the wall."
+   END VERB.
+END THE box.
+-----------------------
+THE open_box Isa OBJECT AT Nowhere
+  DESCRIPTION
+    LOCATE tv Here.
+    LOCATE cord Here.
+    LOCATE remote Here.
+    LOCATE knife IN Hero.
+    SET spot OF tv TO spot OF box.
+    "Using the sharp blade of the knife, you cut the box open to
+     reveal the plasma TV inside. You cut and tear off the
+     remaining cardboard and cast it aside.
+     $pWow, the TV looks even better in your home than it did on
+     the showroom floor!"
+END THE open_box.
+-----------------------
+THE remote Isa OBJECT AT Nowhere
+  NAME remote control NAME controller
+  NAME control remote NAME remote
+  NAME button NAME simple push buttons
+  OPAQUE CONTAINER -- so you can put the battery in it
+  IS SWITCHABLE.
+     PUSHABLE.
+  VERB examine
+    DOES ONLY
+      "It's a very simple push-button remote control."
+  END VERB.
+  VERB put_in
+    WHEN obj2
+      CHECK obj1 = battery
+        ELSE
+          "Don't be silly. Only a battery goes in there!"
+      DOES AFTER
+        "You snap the battery into place in the remote."
+  END VERB.
+  VERB turn_on1, turn_on2, switch_on1, switch_on2
+    CHECK battery IN remote
+      ELSE
+        "Pushing the button on the remote, nothing
+         happens. The remote won't do anything without a
+         battery."
+        LOCATE remote IN Hero. -- Assumes remote is "Taken".
+    AND cord IS PLUGGED_IN
+      ELSE
+        "The TV won't turn on. It isn't getting any power."
+    DOES ONLY
+      DESCRIBE win_tv.
+  END VERB.
+  VERB push
+    CHECK battery IN remote
+      ELSE
+        "Pushing the button on the remote, nothing
+         happens. The remote won't do anything without a
+         battery."
+        LOCATE remote IN Hero.
+    AND cord IS PLUGGED_IN
+      ELSE
+        "The TV won't turn on. It isn't getting any power."
+    DOES ONLY
+      DESCRIBE win_tv.
+  END VERB.
+END THE remote.
+-----------------------
+SYNONYMS
+  television = tv.
+THE tv Isa OBJECT AT Nowhere -- until box is opened
+  NAME TV NAME plasma NAME brand NAME new
+  NAME screen NAME giant
+  NAME brand new giant screen plasma tv
+  IS SWITCHABLE.
+     PLUGGABLE.
+     MOVEABLE.
+     NOT BOOKED.
+  HAS TIPPY 1.
+  HAS spot 0.
+  DESCRIPTION
+  VERB examine
+    DOES ONLY
+      "It's your 52-inch plasma pride and joy."
+  END VERB.
+  VERB take, pick_up1, pick_up2
+    DOES ONLY
+      "You try to wrap your arms around the giant screen but it
+       is too wide.  You can't get a good grip on the heavy TV
+       to lift it."
+  END VERB.
+  VERB turn_on1, turn_on2, switch_on1, switch_on2
+    CHECK remote Here
+      ELSE
+        "There are no knobs, switches or buttons for turning
+        on the TV."
+    AND battery IN remote
+      ELSE
+        "Pushing the button on the remote, nothing happens.
+         The remote won't do anything without a battery."
+        LOCATE remote IN Hero. -- Assumes remote is "Taken".
+    AND cord IS PLUGGED_IN
+      ELSE
+        "The TV won't turn on. It isn't getting any power."
+    DOES ONLY
+      DESCRIBE win_tv.
+  END VERB.
+  VERB pull
+    CHECK
+      "You can't get a good grip on the wide screen to pull it.
+       You might have better luck trying to push it."
+  End Verb.
+  Verb push
+    CHECK tv IS BOOKED
+      ELSE
+        DESCRIBE tip_tv.
+    DOES ONLY
+      "Please say which direction you want to push it:
+       $ppush the tv north, south, east or west."
+  END VERB.
+  VERB push_north
+    CHECK tv IS BOOKED
+      ELSE
+        DESCRIBE tip_tv.
+    DOES ONLY
+      SET spot OF tv TO 1.
+      "You push the box north, next to the chair and table."
+  END VERB.
+  VERB push_south
+    CHECK tv IS BOOKED
+      ELSE
+        DESCRIBE tip_tv.
+    DOES ONLY
+      SET spot OF tv TO 2.
+      "You push the box south, in front of the door."
+  END VERB.
+  VERB push_east
+    CHECK tv IS BOOKED
+      ELSE
+        DESCRIBE tip_tv.
+    DOES ONLY
+      SET spot OF tv TO 3.
+        "You push the box east, next to the bookcase."
+  END VERB.
+  VERB push_west
+    CHECK tv IS BOOKED
+      ELSE
+        DESCRIBE tip_tv.
+    DOES ONLY
+      SET spot OF tv TO 4.
+      "You push the box west, next to the wall."
+  END VERB.
+END THE tv.
+-----------------------
+THE tip_tv Isa OBJECT AT Nowhere
+  DESCRIPTION
+    IF TIPPY OF tv >1 THEN
+      "You push harder against the big plasma tv.
+       $pOh no! It tips over and crashes to the floor.
+       Your brand new plasma tv is broken.
+       $p*** You have lost. ***"
+      QUIT.
+    ELSE
+      "You will have to push the tv harder than that
+       or find some other way to move it."
+      INCREASE TIPPY OF tv.
+    END IF.
+END THE tip_tv.
+-----------------------
+THE win_tv Isa OBJECT AT Nowhere
+  DESCRIPTION
+    IF timeinminutes OF clock > 960 THEN
+      "Ohhh, it's too late!
+       $nYou missed the big game...
+       $p*** You have lost. ***"
+      QUIT.
+    ELSE
+      MAKE tv 'on'.
+      "Wow! What a great picture!"
+      SHOW 'plasma.jpg'.
+      "$n$nYou watch the game and your favorite team wins!"
+      "$n$nAnd so have you..."
+      "$p*** You have won! ***"
+      QUIT.
+    END IF.
+END THE win_tv.
+-----------------------
+THE cord Isa OBJECT AT Nowhere
+  NAME cord NAME power electric electrical tv cord
+  DESCRIPTION
+  IS PLUGGABLE.
+     NOT PLUGGED_IN.
+  VERB examine
+    DOES ONLY
+      "The power cord is of the common sort, and just three
+       feet long."
+      IF cord IS PLUGGED_IN THEN
+        "It is plugged into the electric outlet."
+      END IF.
+  END VERB.
+  VERB take, pick_up1, pick_up2
+    CHECK
+      "You can't take it. The power cord is permanently
+       attached to the television set."
+  END VERB.
+END THE cord.
+----------------------
+THE battery Isa OBJECT AT Nowhere
+  VERB examine
+    DOES ONLY
+      "It's a regular household AAA battery."
+  END VERB.
+END THE battery.
+-----------------------
+THE chair Isa OBJECT AT tv_room
+  NAME comfy chair NAME comfy
+  NAME cushions NAME big soft chair cushion
+  DESCRIPTION
+  VERB examine
+    DOES ONLY
+      "It's your favorite chair to sit in when you're watching
+       the big game.  It has big soft comfy cushions -- just
+       the kind people lose change in all the time."
+  END VERB.
+  VERB search
+    CHECK battery AT Nowhere
+      ELSE
+        "There is nothing else to find by searching the chair."
+    DOES ONLY
+      LOCATE battery in Hero.
+      "You find a small battery, which you take."
+    END VERB.
+END THE chair.
+-----------------------
+THE table Isa SURFACE AT tv_room
+  DESCRIPTION
+  VERB examine DOES BEFORE
+    "It's an ordinary table, set conveniently by your chair."
+  END VERB.
+  VERB put_on
+    WHEN obj2
+      DOES ONLY
+        LOCATE obj1 IN table.
+          "You set" Say The obj1. "on the table."
+  END VERB.
+END THE table.
+-----------------------
+THE guide Isa OBJECT IN table
+  NAME tv 'schedule' NAME program guide
+  IS READABLE.
+  VERB examine
+    DOES ONLY
+      "It is a listing of tv programming for the week. It is
+       opened to today's schedule."
+  END VERB.
+  VERB read
+    DOES ONLY
+      IF guide NOT IN Hero THEN
+        LOCATE guide IN Hero.
+        "(First picking it up)$p"
+      END IF.
+      SCHEDULE time_pass AT Hero AFTER 4.
+      "The championship game will be played at 4 o'clock this
+       afternoon!"
+  END VERB.
+END THE guide.
+-----------------------
+EVENT time_pass
+  DEPENDING ON RANDOM 1 to 3
+    = 1 THEN "$pThe time for the big game is getting nearer."
+    = 2 THEN "$pDon't let time get away from you!"
+    = 3 THEN "$pThe clock is ticking..."
+  END DEPEND.
+  SCHEDULE time_pass AT Hero AFTER RANDOM 4 to 6.
+END EVENT.
+-----------------------
+THE tv_wall Isa SCENERY AT tv_room
+  CONTAINER
+    HEADER ""
+  NAME wall NAME walls
+  VERB examine
+    DOES ONLY
+      "The wall has an electric outlet."
+      IF cord IS PLUGGED_IN THEN
+        "The TV cord is plugged into it."
+      END IF.
+  END VERB.
+  VERB plug_in, put_in
+    WHEN obj2
+      CHECK obj1 IS PLUGGABLE
+        ELSE
+          "Hey, be careful! That doesn't go into an
+           electrical outlet!"
+      AND spot OF tv = 4
+        ELSE
+          "The cord is only three feet long. It can't reach
+           the outlet from here."
+      AND cord IS NOT PLUGGED_IN
+        ELSE
+          "The cord is already plugged in!"
+      DOES ONLY
+      MAKE cord PLUGGED_IN.
+      "You put the power cord snugly into the electrical outlet."
+  END VERB.
+END THE tv_wall.
+-----------------------
+THE outlet Isa SCENERY AT tv_room
+  NAME outlet NAME electrical electric power wall wallplug
+  CONTAINER
+    HEADER ""
+  VERB examine
+    DOES ONLY
+      "It's a three-prong electrical outlet."
+      IF cord IS PLUGGED_IN THEN
+        "The TV cord is plugged into it."
+      END IF.
+  END VERB.
+  VERB plug_in, put_in
+    WHEN obj2
+      CHECK obj1 IS PLUGGABLE
+        ELSE
+          "Hey, be careful! That doesn't go into an
+           electrical outlet!"
+      AND spot OF tv = 4
+        ELSE
+          "The cord is only three feet long.
+           It can't reach the outlet from here."
+      AND cord IS NOT PLUGGED_IN
+        ELSE
+          "The cord is already plugged in!"
+      DOES ONLY
+        MAKE cord PLUGGED_IN.
+        "You put the power cord snugly into the electrical
+         outlet."
+  END VERB.
+END THE outlet.
+-----------------------
+THE tv_door Isa Door AT tv_room
+  HAS otherside kitchen_door.
+END THE tv_door.
+-----------------------
+THE kitchen_door Isa Door AT kitchen
+  HAS otherside tv_door.
+END THE kitchen_door.
+-----------------------
+THE kitchen Isa LOCATION
+  NAME 'Kitchen'
+  DESCRIPTION
+    "This is the kitchen. There is a counter and a cupboard here.
+     $pNorth returns to the TV Room."
+  EXIT north TO tv_room
+    CHECK kitchen_door IS OPEN
+      ELSE
+        "$t$t<BUMP>$p$t$tOof!$pThe door is closed."
+    DOES
+      "You return to the TV Room, north."
+  END EXIT.
+  EXIT south, east, west TO kitchen
+    CHECK
+      "There is only a wall in that direction."
+  END EXIT.
+END THE kitchen.
+-----------------------
+The clock Isa object AT Kitchen
+  IS READABLE.
+  DESCRIPTION
+  Has hour 3.  -- set these three attributes
+  Has minute 15. -- to specify the time of day
+  Has ampm "pm". -- you want when the game starts
+  Has timeinminutes 0. -- (the time expressed as minutes past
+             -- midnight. This is calculated by the game
+             -- in the START section and updated each
+             -- turn by the TickTock event so left at the
+             -- default initial value here)
+  Verb read
+    Does Only
+      -- Display the time on screen
+      "$pThe clock reads"
+      Say hour Of clock.
+      "$$:$$"
+      If minute Of clock >9 Then
+        Say minute Of clock.
+      Else
+        "0$$"
+        Say minute Of clock.
+      End If.
+      Say ampm Of clock.
+  End Verb.
+  VERB examine
+    Does Only
+      -- Display the time on screen
+      "$pThe clock reads"
+      Say hour Of clock.
+      "$$:$$"
+      If minute Of clock >9 Then
+        Say minute Of clock.
+      Else
+        "0$$"
+        Say minute Of clock.
+      End If.
+      Say ampm Of clock.
+  End Verb.
+End The clock.
+-----------------------
+THE counter Isa SURFACE AT kitchen
+  DESCRIPTION
+END THE counter.
+-----------------------
+THE cupboard Isa CLOSEABLE AT kitchen
+  NAME cupboard NAME cabinet
+  DESCRIPTION
+END THE cupboard.
+-----------------------
+THE knife Isa OBJECT IN cupboard
+  VERB examine
+    DOES ONLY
+      "It's a sturdy, sharp knife."
+  END VERB.
+END THE knife.
+-----------------------
+Event ticktock
+  -- Increments The Time By Another Minute
+  -- Convert Time From "Minutes Past Midnight" To
+  -- Hh:Mm Am/Pm Format
+  Set hour Of clock To timeinminutes Of clock / 60.
+  If hour Of clock >=12 Then
+  Set ampm Of clock To
+  "pm".
+  If hour Of clock >12 Then
+    Set hour Of clock To hour Of clock -12.
+  End If.
+  Else
+    Set ampm Of clock To
+    "am".
+    If hour Of clock =0 Then
+      Set hour Of clock To 12.
+    End If.
+  End If.
+  Set minute Of clock To timeinminutes Of clock - ((timeinminutes
+     Of clock / 60) * 60).
+  -- Increment time by one minute
+  -- (If its 11:59pm set clock to zero ie:midnight instead)
+  If timeinminutes Of clock <1439 Then
+    Increase timeinminutes Of clock.
+  Else
+    Set timeinminutes Of clock To 0.
+  End If.
+  -- schedule this event to happen again next turn
+  Schedule ticktock After 1.
+End Event ticktock.
+-----------------------
+MESSAGE SEE_START: "You see $01"
+-----------------------
+START AT tv_room.
+  Set timeinminutes Of clock To (hour Of clock * 60) + minute Of clock.
+  If ampm Of clock = "pm" Then
+    If hour Of clock <12 Then
+      Set timeinminutes Of clock To (timeinminutes Of clock + 720).
+    End If.
+  End If.
+  Schedule ticktock After 0.       -- start the clock "ticking"
+  "$p$t$t$t$t$t$t$t$t$t*** TV TIME! ***
+   $n$t$t$t$t$t$tAn ALAN 3 Interactive Fiction Tutorial Game
+   $n$t$t$t$t$t$t$tBy Michael Arnaud © 2006
+   $p(Type ""help"" if you have not played this kind of game
+   before.)
+   $pThe greatest delight in your life is watching tv sports. And
+   the one thing that matters most to you right now is the
+   championship game that your favorite team will play this
+   afternoon.
+   $pJoy of joys, you have just purchased a brand new big screen
+   plasma TV that was delivered earlier today!"

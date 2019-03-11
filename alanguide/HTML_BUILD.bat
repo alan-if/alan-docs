@@ -1,4 +1,4 @@
-:: "HTML_BUILD.bat" v1.0.2 (2018/10/24) by Tristano Ajmone
+:: "HTML_BUILD.bat" v1.0.3 (2019/03/11) by Tristano Ajmone
 @ECHO.
 @ECHO ==============================================================================
 @ECHO Converting the "ALAN Beginner's Guide" to a standalone HTML5 document...
@@ -14,5 +14,7 @@ asciidoctor^
   -a reproducible^
   -a sectanchors^
   -a toc=left^
+  -a source-highlighter=highlightjs^
+  -a highlightjsdir=../_assets/hjs^
   alanguide.asciidoc
 @EXIT /B

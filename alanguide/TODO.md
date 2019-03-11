@@ -18,6 +18,7 @@ Laying out a ground plan and noting down the pending tasks to finish porting to 
     - [Styles](#styles)
     - [XRefs](#xrefs)
     - [Examples Code](#examples-code)
+        - [Syntax Highlighting](#syntax-highlighting)
 - [Recreate Tutorial Code](#recreate-tutorial-code)
     - [Reconstruct _TV TIME!_ Source](#reconstruct-_tv-time_-source)
     - [Add StdLib 0.6.2](#add-stdlib-062)
@@ -62,8 +63,11 @@ The AsciiDoc reconstruction of this document takes on from where Thomas Nilefalk
 
 ## Document Settings
 
-- [ ] Enable `experimental`
-- [ ] Enable font-icons.
+- [x] Enable `experimental`
+- [x] Enable font-icons.
+- [x] Enable syntax highlighting:
+    + [x] via highlight.js
+
 
 ## Document Layout
 
@@ -73,15 +77,19 @@ This document is actually a book with parts, so its structure should be reorgani
 
 ## Typography
 
+- [x] Split paragraphs one-line-per-sentence.
+- [x] Substitute thin-spaces with normal spaces.
 - [ ] Add non-breaking spaces in "ALAN 2/3" to prevent wrapping from splitting ALAN from its version number (looks bad).
 - [ ] Smart typography:
     + [ ] Fix all occurences of `--` by adding surrounding spaces.
     + [ ] Make double quotes curly.
-- [ ] Fox inline code occurences.
+- [ ] Fix inline code occurences:
+    + [ ] ALAN keywords.
+    + [ ] File names.
 
 ## Styles
 
-- [ ] Fix styling of game transcripts.
+- [x] Fix styling of game transcripts.
 
 ## XRefs
 
@@ -93,10 +101,20 @@ The _B.Guide_ references explicit Chapters and sections of the _Alan Manual_, bu
 
 ## Examples Code
 
+- [x] Mark all ALAN code occurences with `// @ALAN`
 - [ ] Enable syntax highlighting on all code blocks.
 - [ ] Preserve custom coloring in source code:
     + [ ] Red code — using `[green]#`...`#`.
     + [ ] Yellow code — using `#`...`#`.
+
+### Syntax Highlighting
+
+Since this document doesn't use call-outs, we can use Highlight instead of highlight.js.
+
+- [ ] Switch from highlight.js to Highlight.
+
+Also, the tutorial contains code from both the Library and from the _TV TIME!_ adventure, I should use different color themes to make it easier to distinguish between them.
+
 
 # Recreate Tutorial Code
 

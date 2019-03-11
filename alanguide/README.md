@@ -61,13 +61,27 @@ An [HTML Live Preview] of the converted document is available via [GitHub & BitB
 ## Document Source Files
 
 - [`alanguide.asciidoc`][guide]
+- [`inc_tvtime.utf8_alan`][inc_tvtime] — UTF-8 version of [`./alanguide-code/tvtime.alan`][tvtime.alan] (auto-generated).
 
+The file `inc_tvtime.utf8_alan` is an UTF-8 converted copy of the `tvtime.alan` source adventure, created (via `generate-inc-files.sh`) so that it might be included in the AsciiDoc document, because Asciidoctor can't handle ISO-8859-1 files.
+
+Any file with the `*.utf8_alan` extension is an Alan source file in UTF-8 encoding. 
 
 ## Conversion Scripts
 
 - [`BUILD_ALL.bat`][BUILD_ALL.bat] — convenience batch to invoke all conversion scripts at once.
 - [`HTML_BUILD.bat`][HTML_BUILD.bat] — batch script to create `alanguide.html` document (fully standalone).
 - [`PDF_BUILD.bat`][PDF_BUILD.bat] — batch script to create `alanguide.pdf` document (currently ignored in repository).
+- [`generate-inc-files.sh`][generate-inc-files] — bash script to create UTF-8 version of [`tvtime.alan`][tvtime.alan] (in [`inc_tvtime.utf8_alan`][inc_tvtime]).
+
+
+The `generate-inc-files.sh` script exploits the __[iconv]__ tool to convert Alan sources from ISO-8859-1 to UTF-8 encoding. Since Windows doesn't have an equivalent native tool, I've used a Bash script instead of a Windows batch in this case. Git for Windows ships with a Bash, which has the iconv tool. Besides, you won't need to use this script unless you modify the `tvtime.alan` source adventure.
+
+
+
+> __IMPORTANT__ — The `generate-inc-files.sh` script should be run every time the [`./alanguide-code/tvtime.alan`][tvtime.alan] is edited, so that the source of the adventure shown in the document will always reflect the actual source file of the project.
+
+<!--  -->
 
 > __PDF CONVERSION NOTE__ — The [`PDF_BUILD.bat`][PDF_BUILD.bat] script now uses [asciidoctor-fopub] to create the PDF version of the Manual. You'll need to setup it up on your machine and add it to your system Path in order to run the conversion script.
 > 
@@ -136,6 +150,7 @@ The HTML version was [taken from the Alan website][alanguide www].
 
 [ALAN Standard Library 2]: https://github.com/AnssiR66/AlanStdLib "Visit the official repository of the ALAN Standard Library 2"
 
+[iconv]: https://en.wikipedia.org/wiki/Iconv "See Wikipedia page on iconv"
 
 <!-- people ------------------------------------------------------------------>
 
@@ -162,6 +177,9 @@ The HTML version was [taken from the Alan website][alanguide www].
 [HTML_BUILD.bat]: ./HTML_BUILD.bat "Batch script to convert the Alan Guide to a single-file standalone HTML5 document."
 [PDF_BUILD.bat]: ./PDF_BUILD.bat "Batch script to convert the Alan Guide to PDF document."
 [TODO]: ./TODO.md "View the TODO document"
+
+[inc_tvtime]: ./inc_tvtime.utf8_alan "View source file"
+[generate-inc-files]: ./generate-inc-files.sh "View script source"
 
 <!-- Tutorial code assets -->
 
