@@ -3,14 +3,14 @@
 
 -- 0.4.1 - converted to ALANv3
 
-ADD TO EVERY THING 
+
+ADD TO EVERY THING
   -- IS pushable.
   IS MOVEABLE. -- *** CHANGED ***
 END ADD TO THING.
 
 SYNONYMS
   press, click = push. -- *** ADDED ***
-
 
 SYNTAX
   push = push (obj)

@@ -1,5 +1,5 @@
 
-=begin    highlight-treeprocessor_mod.rb"                    v1.0.0 (2018-10-04)
+=begin    highlight-treeprocessor_mod.rb"                    v1.1.0 (2019-03-13)
 ================================================================================
 
                         Highlight Treprocessor Extension
@@ -26,6 +26,7 @@ The Asciidoctor Project, released under MIT License:
 The extension was modified (trimmed down) in order to:
 - enforce ':highlight-css: class' without requiring attribute settingss.
 - disable the ':highlight-style:' option (we use custom CSS in this context).
+- enable substitutions (but the 'linenums' option doeesn't work anymore!)
 --------------------------------------------------------------------------------
 =end
 
@@ -45,10 +46,19 @@ Extensions.register do
     process do |document|
       document.find_by context: :listing, style: 'source' do |src|
         # TODO handle callout numbers
-        src.subs.clear
+        
+        #-----------------------------------------------------------------------
+        # NOTE: By commenting out the following line I've enbales substitutions,
+        #       but now the 'linenums' option is broken.
+        #       
+        #       Also, you *must* always specify 'subs' in code listings, even
+        #       if only 'subs=none' because passing a null value will break the
+        #       extenstion!
+        #-----------------------------------------------------------------------
+        # src.subs.clear
+        
         lang = src.attr 'language', 'text', false
         highlight = document.attr 'highlight', 'highlight'
-        # highlight = document.attr 'highlight', 'highlight'
         cmd = %(#{highlight} -f -O html --src-lang #{lang})
         cmd = %(#{cmd} -l -j 2) if src.attr? 'linenums', nil, false
         Open3.popen3 cmd do |stdin, stdout, stderr, wait_thr|

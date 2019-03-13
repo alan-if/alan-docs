@@ -7,6 +7,7 @@
 --    'openable' indicates if it is possible to open
 --    'closeable' indicates if it is possible to close
 
+
 Syntax
   open = open (obj)
     Where obj Isa object
@@ -46,7 +47,6 @@ Add To Every object
         "You can't open" Say The obj1. "with" Say The obj2. "."
   End Verb.
 End Add To.
-
 
 
 Synonyms
@@ -91,4 +91,3 @@ Add To Every object
         "You can't close" Say The obj1. "with" Say The obj2. "."
   End Verb.
 End Add To.
-

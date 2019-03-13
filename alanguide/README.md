@@ -43,10 +43,10 @@ Therefore, the decision was to preserve the _Alan 3 Beginner's Guide_ tutorial a
 Obviously, the reader is encouraged to study and use the newest [ALAN Standard Library 2] by [Anssi Räisänen], for Library v0.6.1 was an adpatation of v0.4.0, originally designed for ALAN 2 and then ported to ALAN 3 in v0.4.1, while the Library v2.0 was designed from the onset as an ALAN 3 library, and therefore takes full advantage of the new features of the language.
 
 
-
 # Folder Contents
 
 - [`alanguide.html`][guide html] — _Beginner's Guide_ converted to HTML5 ([HTML Live Preview]).
+- [`alanguide.css`][guide css] — _Beginner's Guide_ extra stylesheet.
 
 The reader will also need to download the source files of the __ALAN Library__ required to follow the tutorial steps, as well as the complete sources of the _TV TIME!_ adventure created during the tutorial.
 
@@ -57,29 +57,37 @@ The reader will also need to download the source files of the __ALAN Library__ r
     + [`plasma.jpg`][plasma] — required adventure asset.
     + [`tvtime.alan`][tvtime.alan] — the final _TV TIME!_ adventure.
 
+> __IMPORTANT__ — Some Alan sources are included in the AsciiDoc source via the `include::[]` directive targetting specific line ranges. If you need to edit those source files you'll then need to adjust the line ranges accordingly to prevent the document from showing the wrong lines of code. These are the files included by line ranges:
+> 
+> - [`./alanguide-code/lib/std.i`](./alanguide-code/lib/std.i)
 
 ## Document Source Files
 
-- [`alanguide.asciidoc`][guide]
-- [`inc_tvtime.utf8_alan`][inc_tvtime] — UTF-8 version of [`./alanguide-code/tvtime.alan`][tvtime.alan] (auto-generated).
+- [`alanguide.asciidoc`][guide] — _B.Guide_ source doc.
+- [`/_adoc/`][_adoc] — required Asciidoctor assets to build _B.Guide_:
+    + [`generate-inc-files.sh`][generate-inc-files] — script to create UTF-8 versions of Alan sources to include in _B.Guide_.
+    + [`inc_tvtime.utf8_alan`][inc_tvtime] — UTF-8 version of [`./alanguide-code/tvtime.alan`][tvtime.alan] (auto-generated).
+    + `*.utf8_alan` — other Lib sources or ALAN snippets in UTF-8.
+    + [`docinfo.html`][docinfo] — head docinfo file for including custom CSS.
 
 The file `inc_tvtime.utf8_alan` is an UTF-8 converted copy of the `tvtime.alan` source adventure, created (via `generate-inc-files.sh`) so that it might be included in the AsciiDoc document, because Asciidoctor can't handle ISO-8859-1 files.
 
 Any file with the `*.utf8_alan` extension is an Alan source file in UTF-8 encoding. 
+
+> __IMPORTANT__ — The `generate-inc-files.sh` script should be run every time the Alan sources in  [`alanguide-code/`] are edited, so that the source of the adventure shown in the document will always reflect the actual source file of the project.
+
 
 ## Conversion Scripts
 
 - [`BUILD_ALL.bat`][BUILD_ALL.bat] — convenience batch to invoke all conversion scripts at once.
 - [`HTML_BUILD.bat`][HTML_BUILD.bat] — batch script to create `alanguide.html` document.
 - [`PDF_BUILD.bat`][PDF_BUILD.bat] (_experimental_) — batch script to create `alanguide.pdf` document (currently ignored in repository).
-- [`generate-inc-files.sh`][generate-inc-files] — bash script to create UTF-8 version of [`tvtime.alan`][tvtime.alan] (in [`inc_tvtime.utf8_alan`][inc_tvtime]).
 
+There's and additional automation script that needs to be executed whenever the source files in the `alanguide-code/` are changed:
 
-The `generate-inc-files.sh` script exploits the __[iconv]__ tool to convert Alan sources from ISO-8859-1 to UTF-8 encoding. Since Windows doesn't have an equivalent native tool, I've used a Bash script instead of a Windows batch in this case. Git for Windows ships with a Bash, which has the iconv tool. Besides, you won't need to use this script unless you modify the `tvtime.alan` source adventure.
+- [`/_adoc/generate-inc-files.sh`][generate-inc-files]
 
-
-
-> __IMPORTANT__ — The `generate-inc-files.sh` script should be run every time the [`./alanguide-code/tvtime.alan`][tvtime.alan] is edited, so that the source of the adventure shown in the document will always reflect the actual source file of the project.
+The `generate-inc-files.sh` script exploits the __[iconv]__ tool to convert Alan sources from ISO-8859-1 to UTF-8 encoding. Since Windows doesn't have an equivalent native tool, I've used a Bash script instead of a Windows batch in this case. Git for Windows ships with a Bash, which has the iconv tool. Besides, you won't need to use this script unless you modify the Alan sources of the tutorial.
 
 
 ### HTML Toolchain Dependencies
@@ -185,6 +193,7 @@ The HTML version was [taken from the Alan website][alanguide www].
 
 [guide]: ./alanguide.asciidoc
 [guide html]: ./alanguide.html
+[guide css]: ./alanguide.css
 [guide pdf]: ./alanguide.pdf
 
 [BUILD_ALL.bat]:  ./BUILD_ALL.bat  "Batch script to invoke all the Alan Guide conversion scripts."
@@ -192,8 +201,13 @@ The HTML version was [taken from the Alan website][alanguide www].
 [PDF_BUILD.bat]: ./PDF_BUILD.bat "Batch script to convert the Alan Guide to PDF document."
 [TODO]: ./TODO.md "View the TODO document"
 
-[inc_tvtime]: ./inc_tvtime.utf8_alan "View source file"
-[generate-inc-files]: ./generate-inc-files.sh "View script source"
+<!-- Asciidoctor assets -->
+
+[_adoc]: ./_adoc/ "Navigate to folder"
+
+[inc_tvtime]: ./_adoc/inc_tvtime.utf8_alan "View source file"
+[docinfo]: ./_adoc/docinfo.html "View source file"
+[generate-inc-files]: ./_adoc/generate-inc-files.sh "View script source"
 
 <!-- Tutorial code assets -->
 

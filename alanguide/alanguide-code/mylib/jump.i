@@ -17,8 +17,6 @@ Add To Every thing
 End Add To.
 
 
-
-
 SYNTAX
   jump = jump.
 

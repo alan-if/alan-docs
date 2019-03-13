@@ -23,14 +23,12 @@ Add To Every object
 End Add To.
 
 
-
-
 SYNTAX
   put_in = put (obj1) 'in' (obj2)
     WHERE obj1 ISA OBJECT
       ELSE "You can't put that anywhere."
     AND obj2 ISA CONTAINER
-      ELSE "You can't put anything in that." 
+      ELSE "You can't put anything in that."
 
 Add To Every object
   Verb put_in
@@ -49,7 +47,6 @@ Add To Every object
         "Done."
     End Verb.
 End Add To.
-
 
 
 Syntax

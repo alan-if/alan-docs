@@ -1,4 +1,4 @@
-:: "HTML_BUILD.bat"                     v2.0.0 | 2019/03/11 | by Tristano Ajmone
+:: "HTML_BUILD.bat"                     v2.0.1 | 2019/03/13 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: To run this script these applications must be installed on your system:
 ::
@@ -26,6 +26,7 @@ asciidoctor^
   --template-dir ..\_assets\hl\haml^
   --require ..\_assets\hl\adoc\highlight-treeprocessor_mod.rb^
   -a source-highlighter=highlight^
+  -a docinfodir=_adoc^
   -a docinfo=shared-head^
      alanguide.asciidoc
 @EXIT /B

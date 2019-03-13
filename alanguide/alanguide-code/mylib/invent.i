@@ -4,19 +4,19 @@
 -- Library version 0.5.0
 -- 0.4.1 - converted to ALANv3
 
+
 ADD TO EVERY THING
   IS weight 0.
 END ADD TO THING.
 
 
 ADD TO EVERY ACTOR IS
-  weight 50. 
-END ADD TO ACTOR. 
+  weight 50.
+END ADD TO ACTOR.
 
 ADD TO EVERY object
   IS weight 5.
-END ADD TO object. 
-
+END ADD TO object.
 
 
 SYNONYMS
@@ -44,4 +44,3 @@ CONTAINER
   ELSE
     ""
 END THE worn.
-

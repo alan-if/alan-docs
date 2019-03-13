@@ -1,4 +1,4 @@
-// "_hl-alan-lib.scss"                  v1.0.0 | 2019/03/13 | by Tristano Ajmone
+// "_hl-alan-lib.scss"                  v1.0.1 | 2019/03/13 | by Tristano Ajmone
 // *****************************************************************************
 // *                                                                           *
 // *                       Highlight Theme for Alan Lib                        *
@@ -9,9 +9,6 @@
 // Used in the "ALAN Beginner's Guide" to distinguish between the code of the
 // tutorial and that of the Library sources. 
 
-// -----------------------------------------------------------------------------
-/* Highlight Theme for Alan Library */
-// -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // Color Scheme: Base16 Eighties
 // -----------------------------------------------------------------------------
@@ -47,7 +44,6 @@ $HL-Keywords3:          $base0D;
     }
     .hl {
         color: $HL-Default;
-
         // &.num {
         //     // Numbers
         //     // -------
@@ -89,9 +85,6 @@ $HL-Keywords3:          $base0D;
         // ---------------------
         //    Keywords Groups
         // ---------------------
-        // &.kwa, &.kwb, &.kwc, &.kwd, &.kwe, &.kwf {
-        //     font-weight: bold;
-        // }
         &.kwa {
             // Keywords group 1
             // ----------------
@@ -111,7 +104,15 @@ $HL-Keywords3:          $base0D;
             color: $HL-Keywords3;
         }
     }
-
+// -----------------------------------------------------------------------------
+// Inline Highlighting
+// -----------------------------------------------------------------------------
+// Highlighter marker effect to mark code lines or segmentes.
+// Mainly used in "ALAN Beginner's Guide" to mark added code in the source code
+// examples.
+    mark {
+        background-color: #e5ff4f; // fluorescent luorescent yellow
+    }
 }
 
 // EOF //

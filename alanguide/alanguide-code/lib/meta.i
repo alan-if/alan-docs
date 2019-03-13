@@ -15,7 +15,6 @@ VERB 'quit'
 END VERB.
 
 
-
 SYNTAX
   'save' = 'save'.
 
@@ -44,7 +43,6 @@ VERB 'restart'
   DOES
     RESTART.
 END VERB.
-
 
 
 SYNTAX
@@ -76,18 +74,17 @@ SYNTAX
 
 VERB again
   DOES
-    "The 'again' command is not available, sorry. You can probably use 
-     the up and down arrow keys to scroll through your previous commands 
-     (unless you're using the MSDOS interpreter in which case you can 
+    "The 'again' command is not available, sorry. You can probably use
+     the up and down arrow keys to scroll through your previous commands
+     (unless you're using the MSDOS interpreter in which case you can
      press the F3 key to repeat your last command.)"
 END VERB.
 
 
---SYNTAX
---    undo = undo.
+-- SYNTAX
+--   undo = undo.
 
---VERB undo
---    DOES
---        "Unfortunately you cannot 'undo' commands in this game."
---END VERB.
-
+-- VERB undo
+--   DOES
+--     "Unfortunately you cannot 'undo' commands in this game."
+-- END VERB.

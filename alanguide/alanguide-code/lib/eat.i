@@ -4,11 +4,11 @@
 -- 0.4.1 - converted to ALANv3
 
 
-ADD TO EVERY OBJECT 
+ADD TO EVERY OBJECT
 IS
   NOT edible.
   NOT drinkable.
-END ADD TO OBJECT. 
+END ADD TO OBJECT.
 
 SYNTAX
   eat = eat (obj)
@@ -36,4 +36,3 @@ Add To Every object
       "You drink" Say The obj. "."
   END VERB.
 End Add.
-

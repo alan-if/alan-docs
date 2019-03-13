@@ -22,9 +22,9 @@ import 'push.i'.
 import 'touch.i'.
 import 'examine.i'. -- + look at, search
 import 'read.i'.
-import 'put.i'.     -- + put near,behind,on,under 
+import 'put.i'.     -- + put near,behind,on,under
 import 'give.i'.
-import 'talk.i'.    -- + ask, tell, say, shout, 
+import 'talk.i'.    -- + ask, tell, say, shout,
 import 'attack.i'.  -- + shoot
 import 'kiss.i'.
 import 'turn.i'.    -- + switch

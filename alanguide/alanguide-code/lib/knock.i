@@ -4,7 +4,6 @@
 -- 0.4.1 - converted to ALANv3
 
 
-
 SYNTAX
   knock_on = knock 'on' (obj)
     WHERE obj ISA THING
@@ -16,8 +15,6 @@ Add To Every thing
       "You knock on" Say The obj. "."
   END VERB.
 End Add To.
-
-
 
 
 SYNTAX

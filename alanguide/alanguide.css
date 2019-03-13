@@ -34,8 +34,6 @@ span.green {
 /* Highlight base styles */
 .listingblock pre[class=highlight] {
   background-color: #FEFEFE;
-  padding: 0.5em;
-  overflow: auto;
 }
 .listingblock pre[class=highlight] > code {
   color: #000;
@@ -44,7 +42,7 @@ span.green {
   color: #000;
 }
 
-/* HLJS Alan */
+/* Highlight Alan */
 .listingblock pre[class=highlight][lang=alan] {
   background-color: #F8F8F8;
 }
@@ -76,8 +74,6 @@ span.green {
   color: #000080;
 }
 
-/* HLJS BNF */
-/* Highlight Theme for Alan Library */
 /* Highlight Theme for Alan Library */
 .listingblock.lib code[data-lang]::before {
   color: #d3d0c8;
@@ -112,6 +108,9 @@ span.green {
 }
 .listingblock.lib pre[class=highlight][lang=alan] .hl.kwc {
   color: #6699cc;
+}
+.listingblock.lib pre[class=highlight][lang=alan] mark {
+  background-color: #e5ff4f;
 }
 
 /*# sourceMappingURL=alanguide.css.map */

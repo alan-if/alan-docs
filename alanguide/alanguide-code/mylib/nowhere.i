@@ -4,7 +4,6 @@
 -- 0.4.1 - converted to ALANv3
 
 
-
 SYNONYMS
   n = north.
   s = south.
@@ -19,7 +18,6 @@ SYNONYMS
 
 -- Useful for placing disappearing things
 -- Also defines the default directions
-
 
 THE nowhere ISA LOCATION.
   EXIT north TO nowhere.

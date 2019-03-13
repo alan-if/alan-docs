@@ -5,9 +5,9 @@
 
 
 Add To Every thing
-Is 
+Is
    Not Shootable.
-End Add To thing. 
+End Add To thing.
 
 Add To Every object
 Is
@@ -32,7 +32,6 @@ Add To Every thing
       "Violence is not the answer."
   End Verb.
 End Add To.
-
 
 
 Syntax
@@ -75,7 +74,6 @@ Add To Every thing
 End Add To.
 
 
-
 Syntax
   shoot_at = shoot (obj) 'at' (act)
     Where obj Isa object
@@ -110,4 +108,3 @@ Add To Every thing
         "Violence is not the answer."
   End Verb.
 End Add To.
-

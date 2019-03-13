@@ -4,7 +4,6 @@
 -- 0.4.1 - converted to ALANv3
 
 
-
 SYNTAX
   listen_to = listen 'to' (obj)
     WHERE obj ISA THING
@@ -18,11 +17,8 @@ Add To Every thing
 End Add To.
 
 
-
-
 SYNTAX
   listen = listen.
-
 
 VERB listen
   DOES

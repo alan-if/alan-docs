@@ -22,7 +22,7 @@
 --              Elsif obj = fred Then
 --                  .....
 --              Else
---                  "Simon shrugs. ""Sorry, I don't know anything about 
+--                  "Simon shrugs. ""Sorry, I don't know anything about
 --                  that."""
 --              End If.
 --     End Verb ask.
@@ -34,7 +34,7 @@ Add To Every thing
   Is Not can_talk.
 End Add To thing.
 
-Add To Every actor 
+Add To Every actor
   Is can_talk.
 End Add To actor.
 
@@ -52,7 +52,6 @@ Verb shout
 End Verb.
 
 
-
 Syntax
   say_word = 'say' (topic)!
     Where topic Isa thing
@@ -64,7 +63,6 @@ Add To Every thing
       "$o? That's a nice word!"
   End Verb.
 End Add To.
-
 
 
 Syntax
@@ -85,10 +83,9 @@ Add To Every thing
 End Add To.
 
 
-
 Syntax
   ask = ask (act) about (topic)!
-    Where topic ISA THING 
+    Where topic ISA THING
       Else "You can't ask about that."
     And act Isa thing
       Else "You can't talk to that."
@@ -104,7 +101,6 @@ Add To Every thing
         Say The topic. "!"""
   End Verb.
 End Add To.
-
 
 
 Syntax

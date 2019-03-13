@@ -4,7 +4,7 @@
 -- 0.4.1 - converted to ALANv3
 
 
-Add To Every object 
+Add To Every object
   Is
     Not 'on'.
     Not switchable.
@@ -42,7 +42,6 @@ Add To Every object
 End Add To.
 
 
-
 Syntax
   turn_off1 = turn off (obj)
     Where obj Isa object
@@ -72,4 +71,3 @@ Add To Every object
       "You turn off" Say The obj. "."
   End Verb.
 End Add To.
-

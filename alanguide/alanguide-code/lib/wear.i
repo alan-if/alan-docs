@@ -4,7 +4,7 @@
 -- 0.4.1 - converted to ALANv3
 
 
-Add To Every object 
+Add To Every object
   Is Not wearable.
 End Add To object.
 
@@ -12,7 +12,7 @@ End Add To object.
 Syntax
   wear = wear (obj)
     Where obj Isa object
-      Else "You can't wear that." 
+      Else "You can't wear that."
   wear = put (obj) 'on'.
   wear = put 'on' (obj).
 
@@ -28,19 +28,17 @@ Add To Every object
       If obj Not In hero Then
         Locate obj In hero.
         "(You pick" Say The obj. "up.)$n"
-      End If. 
+      End If.
       Locate obj In worn.
       "You put on" Say The obj. "."
   End Verb.
 End Add To.
 
 
-
-
-Syntax 
+Syntax
   'remove' = 'remove' (obj)
     Where obj Isa object
-      Else "You can't remove that." 
+      Else "You can't remove that."
   'remove' = take (obj) off.
   'remove' = take off (obj).
 
@@ -53,7 +51,6 @@ Add To Every object
       "You take off" Say The obj. "."
   End Verb.
 End Add To.
-
 
 
 Syntax undress = undress.

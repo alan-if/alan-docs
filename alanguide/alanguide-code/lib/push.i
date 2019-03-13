@@ -3,7 +3,8 @@
 
 -- 0.4.1 - converted to ALANv3
 
-ADD TO EVERY THING 
+
+ADD TO EVERY THING
   IS pushable.
 END ADD TO THING.
 
@@ -38,4 +39,3 @@ Add To Every object
         "Using" Say The obj2. "you push" Say The obj1. "."
   End Verb.
 End Add To.
-

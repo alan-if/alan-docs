@@ -10,7 +10,7 @@
 --          container for holding the player's "inventory", removed
 --          inventory object from invent.i
 
---      synonyms for player's character so can "examine myself" "look at
+--          synonyms for player's character so can "examine myself" "look at
 --          me" etc and synonyms for "it" so can say "look at guard"
 --          and then "salute him"
 
@@ -18,19 +18,20 @@
 -- give the instance a capitalised name in single quotes. Since
 -- development version 3.0.29 you don't need another name without the
 -- quotes. The compiler converts all player words to lower case before
--- entering them in the dictionary. 
+-- entering them in the dictionary.
 --
 -- Deprecated:
 -- Arun will use the object's leftmost (first) name in the SAY
 -- statement and the player will be able to use the uncapitalised name
--- in player commands
---      eg: -- 
---         The robot Isa actor At spaceship Name 'Floyd' Name floyd 
+-- in player commands -- eg:
+--
+--    The robot Isa actor At spaceship Name 'Floyd' Name floyd
+
 
 Add To Every thing
   Is
     Not plural.
-End Add To thing. 
+End Add To thing.
 
 Every named_actor Isa actor
   Definite Article ""

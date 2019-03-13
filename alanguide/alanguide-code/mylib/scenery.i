@@ -1,6 +1,7 @@
 -- scenery.i
 -- Library version 0.5.0
 
+
 Every scenery Isa object
   DESCRIPTION -- *** ADDED. It should be in the default! ***
   -- *** REMOVED: ***

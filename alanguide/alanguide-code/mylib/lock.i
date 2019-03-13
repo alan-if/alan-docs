@@ -25,8 +25,7 @@ Add To Every object
     Does
       Make obj locked. Say The obj. "is now locked."
   End Verb.
-End Add To object. 
-
+End Add To object.
 
 
 Syntax

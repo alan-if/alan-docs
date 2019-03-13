@@ -4,7 +4,6 @@
 -- 0.4.1 - converted to ALANv3
 
 
-
 SYNTAX
   kiss = kiss (obj)
     WHERE obj ISA THING
@@ -18,12 +17,9 @@ Add To Every thing
       ELSE
         IF obj IS InAnimate THEN
           "You kiss" Say The obj. "."
-        ELSE 
+        ELSE
           Say The obj. "avoids your advances."
         END IF.
       END IF.
   END VERB.
 End Add To.
-
-
-

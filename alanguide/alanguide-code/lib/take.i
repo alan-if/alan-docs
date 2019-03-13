@@ -7,16 +7,15 @@
 -- 0.4.1 - converted to ALANv3
 
 
-
 Add To Every thing
   Is InAnimate.
 End Add To thing.
 
-Add To Every object 
+Add To Every object
   Is takeable.
 End Add To object.
 
-Add To Every actor 
+Add To Every actor
   Is Not inanimate.
 End Add To actor.
 
@@ -57,7 +56,6 @@ Add To Every object
 End Add To.
 
 
-
 Synonyms
   discard = drop.
 
@@ -81,7 +79,6 @@ Add To Every object
 End Add To.
 
 
-
 Syntax
   take_from = 'take' (obj) 'from' (holder)
     Where obj Isa object
@@ -94,7 +91,7 @@ Syntax
 Add To Every object
   Verb take_from
     When obj
-      Check obj Not In hero 
+      Check obj Not In hero
         Else "You already have" Say The obj. "."
       And obj In holder
         Else Say The obj. "is not there."
@@ -107,4 +104,3 @@ Add To Every object
         End If.
   End Verb.
 End Add.
-

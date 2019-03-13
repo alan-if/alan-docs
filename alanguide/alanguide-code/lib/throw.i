@@ -3,9 +3,9 @@
 
 -- 0.4.1 - converted to ALANv3
 
+
 SYNONYMS
   dump, cast = throw.
-
 
 SYNTAX
   throw = throw (obj) *
@@ -38,7 +38,7 @@ Syntax
       Else "You can't throw anything to that."
 
 Add To Every object
-  Verb throw_at, throw_to 
+  Verb throw_at, throw_to
     When obj1
       Check obj1 In hero
         Else "You haven't got that!"
@@ -49,7 +49,7 @@ Add To Every object
         Else
           "You can't throw" Say The obj1.
           "at yourself."
-      Does 
+      Does
         Say The obj1. "bounces harmlessly off"
         Say The obj2. "and ends up on the ground."
         Locate obj1 Here.
@@ -79,4 +79,3 @@ Add To Every object
         "Done."
   End Verb.
 End Add.
-

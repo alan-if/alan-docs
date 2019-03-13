@@ -5,7 +5,6 @@
 -- 0.4.1 - converted to ALANv3
 
 
-
 Syntax
   give = 'give' (obj) 'to' (recip)
     Where obj Isa object
@@ -28,5 +27,3 @@ Add To Every object
       End If.
   End Verb.
 End Add To.
-
-

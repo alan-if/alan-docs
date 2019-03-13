@@ -4,13 +4,13 @@
 -- 0.4.1 - converted to ALANv3
 
 
-ADD TO EVERY THING 
+ADD TO EVERY THING
 IS
   examinable.
   searchable.
-END ADD TO THING. 
+END ADD TO THING.
 
-ADD TO EVERY ACTOR 
+ADD TO EVERY ACTOR
 IS
   NOT searchable.
 END ADD TO ACTOR.
@@ -31,13 +31,12 @@ SYNTAX
 Add To Every thing
   Verb examine
     Check obj Is examinable
-      Else 
+      Else
   "You can't examine" Say The obj. "."
     Does
       "There is nothing special about" Say The obj. "."
   End Verb.
 End Add To.
-
 
 ----
 
@@ -45,7 +44,7 @@ SYNONYMS
   inside, into = 'in'.
 
 SYNTAX
-  look_in = 'look' 'in' (obj) 
+  look_in = 'look' 'in' (obj)
     WHERE obj ISA THING
       ELSE "You can't look inside that."
     AND obj ISA CONTAINER
@@ -54,18 +53,17 @@ SYNTAX
 Add To Every object
   VERB look_in
     CHECK obj IS examinable
-      ELSE 
+      ELSE
         "You can't look inside" Say The obj. "."
     DOES
       LIST obj.
   END VERB.
 End Add To.
 
-
 ----
 
 SYNTAX
-  search = search (obj) 
+  search = search (obj)
     WHERE obj ISA THING
       ELSE "You can't search that!"
 
@@ -73,11 +71,10 @@ Add To Every object
   VERB search
   -- *** CHANGED ***
   -- CHECK obj IS searchable
-  --  ELSE 
+  --  ELSE
   --    "You can't search" Say The obj. "."
   -- DOES
   DOES ONLY
     "You find nothing of interest."
   END VERB.
 End Add To.
-
