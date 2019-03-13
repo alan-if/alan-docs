@@ -1,4 +1,4 @@
-// "_common.scss"                       v1.0.0 | 2019/03/11 | by Tristano Ajmone
+// "_common.scss"                       v1.0.1 | 2019/03/13 | by Tristano Ajmone
 // *****************************************************************************
 // *                                                                           *
 // *                        Common Styles Definitions                          *
@@ -38,7 +38,7 @@ div.literalblock.shell pre {
     
     // AsciiDoc Callouts
     .conum {
-        background: $Shell-callouts-background !important;
+        background: $CMD-callouts-background !important;
         color: $CMD-Black !important;
     }
 }

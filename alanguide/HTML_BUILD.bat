@@ -1,10 +1,19 @@
-:: "HTML_BUILD.bat" v1.0.3 (2019/03/11) by Tristano Ajmone
+:: "HTML_BUILD.bat"                     v2.0.0 | 2019/03/11 | by Tristano Ajmone
+:: -----------------------------------------------------------------------------
+:: To run this script these applications must be installed on your system:
+::
+::    Asciidoctor (Ruby Gem):
+::    https://github.com/asciidoctor/asciidoctor
+::
+::    Highlight:
+::    http://www.andre-simon.de/
+:: -----------------------------------------------------------------------------
+@ECHO OFF
+CHCP 65001 &:: Unicode (UTF-8)
 @ECHO.
 @ECHO ==============================================================================
 @ECHO Converting the "ALAN Beginner's Guide" to a standalone HTML5 document...
 @ECHO ==============================================================================
-:: To run this script the following Ruby Gems must be installed on your system:
-::    https://github.com/asciidoctor/asciidoctor
 asciidoctor^
   --safe-mode unsafe^
   --verbose^
@@ -14,7 +23,9 @@ asciidoctor^
   -a reproducible^
   -a sectanchors^
   -a toc=left^
-  -a source-highlighter=highlightjs^
-  -a highlightjsdir=../_assets/hjs^
-  alanguide.asciidoc
+  --template-dir ..\_assets\hl\haml^
+  --require ..\_assets\hl\adoc\highlight-treeprocessor_mod.rb^
+  -a source-highlighter=highlight^
+  -a docinfo=shared-head^
+     alanguide.asciidoc
 @EXIT /B

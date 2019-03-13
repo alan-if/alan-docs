@@ -1,0 +1,27 @@
+// "alanguide.scss"                     v1.0.0 | 2019/03/13 | by Tristano Ajmone
+// *****************************************************************************
+// *                                                                           *
+// *             Custom CSS for Beginner's Guide using Highlight               *
+// *                                                                           *
+// *****************************************************************************
+// Additional custom CSS styles for the "ALAN Beginner's Guide", using Highlight  
+// instead of Highlight.js.
+
+@import 'color-scheme';     // Defines required colors.
+@import 'common';           // Styles common to all documents.
+
+// =============================================================================
+//                             Syntax Highlighting                              
+// =============================================================================
+@import 'hl';               // Highlight specific styles.
+
+// -----------------------------------------------------------------------------
+//                        Syntax Theme for Alan Lib Code                        
+// -----------------------------------------------------------------------------
+// Alternative color theme for Alan code with "role=lib", to distinguish between
+// code from the tutorial and that of the Library sources.
+
+@import 'base16-eighties';  // Base16 Eighties color scheme.
+@import 'hl-alan-lib';      // Highlight specific styles.
+
+// EOF //

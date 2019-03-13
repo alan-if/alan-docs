@@ -1,7 +1,7 @@
 :doctitle:  ALAN 3 Beginner's Guide
 :author:    Michael Arnaud
-:revnumber: 0.1.6
-:revdate:   March 11, 2019
+:revnumber: 0.1.7
+:revdate:   March 13, 2019
 :revremark: AsciiDoc reconstruction work
 :doctype: book
 :encoding: utf-8
@@ -531,39 +531,45 @@ For now, let's look at one of these ".i" files in particular, which you should b
 The file to open is called "nowhere.i".
 It should look very familiar to you:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
-[subs="quotes"]
-----
- -- nowhere.i
- -- Library version 0.5.0
- -- 0.4.1 - converted to ALANv3
- SYNONYMS
-     n = north.
-     s = south.
-     e = east.
-     w = west.
-     ne = northeast.
-     se = southeast.
-     nw = northwest.
-     sw = southwest.
-     u = up.
-     d = down.
+// @ALAN @LIBRARY:
+// - [x] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] CHECK CODE
+// - [ ] CREATE & INCLUDE UTF-8 VERSION OF "nowhere.i"
 
- -- Useful for placing disappearing things
- -- Also defines the default directions
- THE nowhere ISA LOCATION.
-     EXIT north TO nowhere.
-     EXIT south TO nowhere.
-     EXIT west TO nowhere.
-     EXIT east TO nowhere.
-     EXIT northeast TO nowhere.
-     EXIT southeast TO nowhere.
-     EXIT northwest TO nowhere.
-     EXIT southwest TO nowhere.
-     EXIT up TO nowhere.
-     EXIT down TO nowhere.
- END THE nowhere.
-----
+[source,alan,role=lib]
+--------------------------------------------------------------------------------
+-- nowhere.i
+-- Library version 0.5.0
+-- 0.4.1 - converted to ALANv3
+
+SYNONYMS
+  n = north.
+  s = south.
+  e = east.
+  w = west.
+  ne = northeast.
+  se = southeast.
+  nw = northwest.
+  sw = southwest.
+  u = up.
+  d = down.
+
+-- Useful for placing disappearing things
+-- Also defines the default directions
+
+THE nowhere ISA LOCATION.
+  EXIT north TO nowhere.
+  EXIT south TO nowhere.
+  EXIT west TO nowhere.
+  EXIT east TO nowhere.
+  EXIT northeast TO nowhere.
+  EXIT southeast TO nowhere.
+  EXIT northwest TO nowhere.
+  EXIT southwest TO nowhere.
+  EXIT up TO nowhere.
+  EXIT down TO nowhere.
+END THE nowhere.
+--------------------------------------------------------------------------------
 
 This is the same section of code we needed to establish various directions in our game, already written for us.
 The library has quite a few files of this sort, which you can explore with your text editor.

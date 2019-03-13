@@ -1,4 +1,4 @@
-// "_color-scheme.scss"                 v1.0.0 | 2019/03/11 | by Tristano Ajmone
+// "_color-scheme.scss"                 v1.1.0 | 2019/03/13 | by Tristano Ajmone
 // *****************************************************************************
 // *                                                                           *
 // *                          Alan-Docs Color-Scheme                           *
@@ -10,8 +10,8 @@
 // --------------
 // Default Colors
 // --------------
-$default-background: #FEFEFE;
-$default-normal:     #000;
+$verbatim-default-background: #FEFEFE;
+$verbatim-default-normal:     #000;
 
 // ---------------
 // Alan Sourcecode
@@ -19,12 +19,14 @@ $default-normal:     #000;
 // Based on "github.com style" for highlight.js:
 // https://github.com/highlightjs/highlight.js/blob/master/src/styles/github.css
 // Author:  (c) Vasily Polovnyov <vast@whiteants.net>
-$Alan-background: #F8F8F8;
-$Alan-normal:     #333;
-$Alan-comment:    #998;
-$Alan-string:     #008080;
-$Alan-built_in:   #000080;
-$Alan-keyword:    #990000;
+$Alan-background:    #F8F8F8;
+$Alan-normal:        #333;
+$Alan-comment:       #998;
+$Alan-string:        #008080;
+$Alan-predefined:    #000080;
+$Alan-keyword:       #990000;
+$Alan-escapes:       #ff980b; // $p $n $i $t $a $l $v $$
+$Alan-interpolation: #d572f1; // $<n> $+<n> $0<n> $-<n> $!<n> $o
 
 // ---------
 // BNF Rules
@@ -44,10 +46,10 @@ $Transcript-border:     #CCF2FF;
 // --------------
 // Based on Windows 10 new CMD default colors:
 // https://blogs.msdn.microsoft.com/commandline/2017/08/02/updating-the-windows-console-colors/
-$CMD-Black:     #0C0C0C;
-$CMD-White:     #F2F2F2;
+$CMD-Black: #0C0C0C;
+$CMD-White: #F2F2F2;
 // Callouts BG:
-$Shell-callouts-background: #FFF945; // bright yellow
+$CMD-callouts-background: #FFF945; // bright yellow
 
 // -------------------
 // Inline Highlighting

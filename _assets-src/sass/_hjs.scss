@@ -1,10 +1,9 @@
-// "_hjs.scss"                          v1.0.0 | 2019/03/11 | by Tristano Ajmone
+// "_hjs.scss"                          v1.0.1 | 2019/03/13 | by Tristano Ajmone
 // *****************************************************************************
 // *                                                                           *
 // *                        Highlight.js Syntax Themes                         *
 // *                                                                           *
 // *****************************************************************************
-
 
 
 // ------------------------
@@ -14,8 +13,8 @@
     display: block;
     overflow-x: auto;
     padding: 0.5em;
-    color: $default-normal;
-    background: $default-background;
+    color: $verbatim-default-normal;
+    background: $verbatim-default-background;
 }
 // -----------------------------------------------------------------------------
 /* HLJS Alan */
@@ -32,7 +31,7 @@ code.hljs[data-lang=alan] {
       color: $Alan-string;
     }
     .hljs-built_in {
-      color: $Alan-built_in;
+      color: $Alan-predefined;
     }
     .hljs-keyword {
       color: $Alan-keyword;

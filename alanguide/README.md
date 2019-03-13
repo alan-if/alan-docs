@@ -15,9 +15,10 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 
 - [Introduction](#introduction)
 - [Folder Contents](#folder-contents)
-    - [Converted Guide and Assets](#converted-guide-and-assets)
     - [Document Source Files](#document-source-files)
     - [Conversion Scripts](#conversion-scripts)
+        - [HTML Toolchain Dependencies](#html-toolchain-dependencies)
+        - [PDF Toolchain Dependencies](#pdf-toolchain-dependencies)
 - [Original Guide Documents](#original-guide-documents)
 - [DocBook XSL Stylesheets](#docbook-xsl-stylesheets)
 - [Document Status](#document-status)
@@ -45,7 +46,9 @@ Obviously, the reader is encouraged to study and use the newest [ALAN Standard L
 
 # Folder Contents
 
-## Converted Guide and Assets
+- [`alanguide.html`][guide html] — _Beginner's Guide_ converted to HTML5 ([HTML Live Preview]).
+
+The reader will also need to download the source files of the __ALAN Library__ required to follow the tutorial steps, as well as the complete sources of the _TV TIME!_ adventure created during the tutorial.
 
 - [`/alanguide-code/`][alanguide-code] — Alan sources of (and for) tutorial.
     + [`/lib/`][lib] — ALAN Library v0.6.2.
@@ -53,9 +56,6 @@ Obviously, the reader is encouraged to study and use the newest [ALAN Standard L
     + [`COMPILE.bat`][COMPILE] — script to compile the adventure.
     + [`plasma.jpg`][plasma] — required adventure asset.
     + [`tvtime.alan`][tvtime.alan] — the final _TV TIME!_ adventure.
-- [`alanguide.html`][guide html] — _Beginner's Guide_ converted to standalone HTML5 ([HTML Live Preview]).
-
-An [HTML Live Preview] of the converted document is available via [GitHub & BitBucket HTML Preview] online service.
 
 
 ## Document Source Files
@@ -70,8 +70,8 @@ Any file with the `*.utf8_alan` extension is an Alan source file in UTF-8 encodi
 ## Conversion Scripts
 
 - [`BUILD_ALL.bat`][BUILD_ALL.bat] — convenience batch to invoke all conversion scripts at once.
-- [`HTML_BUILD.bat`][HTML_BUILD.bat] — batch script to create `alanguide.html` document (fully standalone).
-- [`PDF_BUILD.bat`][PDF_BUILD.bat] — batch script to create `alanguide.pdf` document (currently ignored in repository).
+- [`HTML_BUILD.bat`][HTML_BUILD.bat] — batch script to create `alanguide.html` document.
+- [`PDF_BUILD.bat`][PDF_BUILD.bat] (_experimental_) — batch script to create `alanguide.pdf` document (currently ignored in repository).
 - [`generate-inc-files.sh`][generate-inc-files] — bash script to create UTF-8 version of [`tvtime.alan`][tvtime.alan] (in [`inc_tvtime.utf8_alan`][inc_tvtime]).
 
 
@@ -81,11 +81,19 @@ The `generate-inc-files.sh` script exploits the __[iconv]__ tool to convert Alan
 
 > __IMPORTANT__ — The `generate-inc-files.sh` script should be run every time the [`./alanguide-code/tvtime.alan`][tvtime.alan] is edited, so that the source of the adventure shown in the document will always reflect the actual source file of the project.
 
-<!--  -->
 
-> __PDF CONVERSION NOTE__ — The [`PDF_BUILD.bat`][PDF_BUILD.bat] script now uses [asciidoctor-fopub] to create the PDF version of the Manual. You'll need to setup it up on your machine and add it to your system Path in order to run the conversion script.
-> 
-> See: [Instructions on setting up asciidoctor-fopub].
+### HTML Toolchain Dependencies
+
+Now the HTML toolchain uses [Highlight] instead of [highlight.js], therefore you'll need André Simon's Highlight command line tool to be available on the system `%Path%`:
+
+- http://www.andre-simon.de/
+
+### PDF Toolchain Dependencies
+
+> __PDF WARNING__ — There are some difficulties in rendering in the PDF output the code coloring notation used in the _B.Guide_, therefore there won't be any PDF releases of this document until the problem is solved. 
+
+
+The [`PDF_BUILD.bat`][PDF_BUILD.bat] script now uses [asciidoctor-fopub] to create the PDF version of the Manual. You'll need to setup it up on your machine and add it to your system Path in order to run the conversion script.
 
 
 # Original Guide Documents
@@ -156,6 +164,11 @@ The HTML version was [taken from the Alan website][alanguide www].
 
 [Anssi Räisänen]: https://github.com/AnssiR66 "View Anssi Räisänen's GitHub profile"
 
+<!-- 3rd Party Tools -->
+
+[Highlight]: http://www.andre-simon.de/ "Visit Highlight website"
+[highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
+
 <!-- AsciiDoctor -->
 
 [Asciidoctor]: https://asciidoctor.org/ "Visit AsciiDoctor website (Ruby implementation)"
@@ -172,6 +185,7 @@ The HTML version was [taken from the Alan website][alanguide www].
 
 [guide]: ./alanguide.asciidoc
 [guide html]: ./alanguide.html
+[guide pdf]: ./alanguide.pdf
 
 [BUILD_ALL.bat]:  ./BUILD_ALL.bat  "Batch script to invoke all the Alan Guide conversion scripts."
 [HTML_BUILD.bat]: ./HTML_BUILD.bat "Batch script to convert the Alan Guide to a single-file standalone HTML5 document."
@@ -197,7 +211,6 @@ The HTML version was [taken from the Alan website][alanguide www].
 [images]: ../_assets-src/original-docs/images/ "Navigate to folder"
 [alanguide.adoc]: ../_assets-src/original-docs/alanguide.adoc "View source file"
 [alanguide.html]: ../_assets-src/original-docs/alanguide.html "View source file"
-
 
 <!-- In-Doc Croos References -->
 

@@ -1,0 +1,168 @@
+// "_hl.scss"                           v1.0.0 | 2019/03/13 | by Tristano Ajmone
+// *****************************************************************************
+// *                                                                           *
+// *                         Highlight Syntax Themes                           *
+// *                                                                           *
+// *****************************************************************************
+// Alternative stylesheets for docs that use Highlight instead of Highlight.js.
+
+
+// ---------------------
+/* Highlight base styles */
+// ---------------------
+// .hljs {
+//     display: block;
+//     overflow-x: auto;
+//     padding: 0.5em;
+//     color: $verbatim-default-normal;
+//     background: $verbatim-default-background;
+// }
+
+
+// .listingblock code[data-lang]::before{
+//     // Color of language name (shown when hovering)
+//     color: $verbatim-default-normal;
+// }
+
+.listingblock pre[class=highlight] {
+    background-color: $verbatim-default-background;
+    &>code {
+        color: $verbatim-default-normal;
+        // font-family: $FiraCode;
+        // font-size: 14px;
+        // letter-spacing: 1px;
+    }
+    // Border and padding
+    // border-radius: 4px;
+    // border: 1px solid $HL-Border;
+    padding: 0.5em;
+    
+    // Some basic styling, just in case you need it...
+    overflow: auto;
+
+    .hl {
+        color: $verbatim-default-normal;
+    }
+}
+
+// -----------------------------------------------------------------------------
+/* HLJS Alan */
+// -----------------------------------------------------------------------------
+// NOTE: We don't style numbers (.hljs-number).
+// code.hljs[data-lang=alan] {
+//     color: $Alan-normal;
+//     background: $Alan-background;
+
+//     .hljs-comment {
+//       color: $Alan-comment;
+//     }
+//     .hljs-string {
+//       color: $Alan-string;
+//     }
+//     .hljs-built_in {
+//       color: $Alan-predefined;
+//     }
+//     .hljs-keyword {
+//       color: $Alan-keyword;
+//     }
+// }
+
+// .listingblock code[data-lang]::before{
+//     // Color of language name (shown when hovering)
+//     color: $verbatim-default-background;
+// }
+
+.listingblock pre[class=highlight][lang=alan] {
+    background-color: $Alan-background;
+    &>code {
+        color: $Alan-normal;
+        // font-family: $FiraCode;
+        // font-size: 14px;
+        // letter-spacing: 1px;
+    }
+    // Border and padding
+    // border-radius: 4px;
+    // border: 1px solid $HL-Border;
+    // padding: 1em;
+    
+    // Some basic styling, just in case you need it...
+    // overflow: auto;
+
+    .hl {
+        color: $Alan-normal;
+
+        // &.num {
+        //     // Numbers
+        //     // -------
+        //     color: $HL-Number;
+        // }
+        &.slc {
+            // Single-line comments
+            // --------------------
+            color: $Alan-comment;
+            // font-style: italic;
+        }
+        &.str {
+            // Strings
+            // -------
+            color: $Alan-string;
+        }
+        &.esc {
+            // Escape sequences
+            // ----------------
+            // In Alan these are: $p, $n, $i, $t, $a, $l, $v and $$.
+            color: $Alan-escapes;
+        }
+        &.ipl {
+            // Interpolation sequences
+            // -----------------------
+            // In Alan these are: $<n>, $+<n>, $0<n>, $-<n>, $!<n> and $o.
+            color: $Alan-interpolation;
+        }
+        // &.lin {
+        //     // Line numbers
+        //     // ------------
+        //     color: $HL-LineNum;
+        // }
+        // &.opt {
+        //     // Operators
+        //     // ---------
+        //     color: $HL-Operator;
+        // }
+        // ---------------------
+        //    Keywords Groups
+        // ---------------------
+        // &.kwa, &.kwb, &.kwc, &.kwd, &.kwe, &.kwf {
+        //     font-weight: bold;
+        // }
+        &.kwa {
+            // Keywords group 1
+            // ----------------
+            // Alan Keywords.
+            color: $Alan-keyword;
+        }
+        &.kwb {
+            // Keywords group 2
+            // ----------------
+            // Predefined Alan Classes.
+            color: $Alan-predefined;
+        }
+        &.kwc {
+            // Keywords group 3
+            // ----------------
+            // Predefined Instances (i.e. the 'hero')
+            color: $Alan-predefined;
+        }
+    }
+}
+// -----------------------------------------------------------------------------
+/* HLJS BNF */
+// -----------------------------------------------------------------------------
+// Basic colors for a BNF code block that isn't actually syntax highlighted, but
+// nevertheless has the Highlight.js class on the code block.
+// code.hljs[data-lang=bnf] {
+//     color: $BNF-normal;
+//     background: $BNF-background;
+// }
+
+// EOF //

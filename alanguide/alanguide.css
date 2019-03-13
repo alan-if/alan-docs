@@ -1,0 +1,117 @@
+/* Alan Code Notation Mockup */
+.listingblock.alan pre {
+  color: #333;
+  background: #F8F8F8;
+}
+
+/* Shell/CMD */
+div.literalblock.shell pre {
+  background-color: #0C0C0C;
+  color: #F2F2F2;
+}
+div.literalblock.shell pre .conum {
+  background: #FFF945 !important;
+  color: #0C0C0C !important;
+}
+
+/* Game Transcripts */
+.exampleblock.gametranscript > .content {
+  background: #F7FDFF;
+  color: #0089B6;
+  border-color: #CCF2FF;
+}
+
+/* Commentary Blocks */
+div.openblock.commentary {
+  padding-left: 6em;
+}
+
+/* Inline Highlighting */
+span.green {
+  background-color: #A3FF8A;
+}
+
+/* Highlight base styles */
+.listingblock pre[class=highlight] {
+  background-color: #FEFEFE;
+  padding: 0.5em;
+  overflow: auto;
+}
+.listingblock pre[class=highlight] > code {
+  color: #000;
+}
+.listingblock pre[class=highlight] .hl {
+  color: #000;
+}
+
+/* HLJS Alan */
+.listingblock pre[class=highlight][lang=alan] {
+  background-color: #F8F8F8;
+}
+.listingblock pre[class=highlight][lang=alan] > code {
+  color: #333;
+}
+.listingblock pre[class=highlight][lang=alan] .hl {
+  color: #333;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.slc {
+  color: #998;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.str {
+  color: #008080;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.esc {
+  color: #ff980b;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.ipl {
+  color: #d572f1;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.kwa {
+  color: #990000;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.kwb {
+  color: #000080;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.kwc {
+  color: #000080;
+}
+
+/* HLJS BNF */
+/* Highlight Theme for Alan Library */
+/* Highlight Theme for Alan Library */
+.listingblock.lib code[data-lang]::before {
+  color: #d3d0c8;
+}
+
+.listingblock.lib pre[class=highlight][lang=alan] {
+  background-color: #2d2d2d;
+}
+.listingblock.lib pre[class=highlight][lang=alan] > code {
+  color: #d3d0c8;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl {
+  color: #d3d0c8;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.slc {
+  color: #a09f93;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.str {
+  color: #99cc99;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.esc {
+  color: #f99157;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.ipl {
+  color: #d27b53;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.kwa {
+  color: #f2777a;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.kwb {
+  color: #ffcc66;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.kwc {
+  color: #6699cc;
+}
+
+/*# sourceMappingURL=alanguide.css.map */

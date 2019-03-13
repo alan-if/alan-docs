@@ -81,7 +81,7 @@ This document is actually a book with parts, so its structure should be reorgani
 - [x] Substitute thin-spaces with normal spaces.
 - [ ] Add non-breaking spaces in "ALAN 2/3" to prevent wrapping from splitting ALAN from its version number (looks bad).
 - [ ] Smart typography:
-    + [ ] Fix all occurences of `--` by adding surrounding spaces.
+    + [x] Fix all occurences of `--` by adding surrounding spaces.
     + [ ] Make double quotes curly.
 - [ ] Fix inline code occurences:
     + [ ] ALAN keywords.
@@ -111,10 +111,21 @@ The _B.Guide_ references explicit Chapters and sections of the _Alan Manual_, bu
 
 Since this document doesn't use call-outs, we can use Highlight instead of highlight.js.
 
-- [ ] Switch from highlight.js to Highlight.
+- [x] Switch from highlight.js to Highlight.
 
-Also, the tutorial contains code from both the Library and from the _TV TIME!_ adventure, I should use different color themes to make it easier to distinguish between them.
+Also, the tutorial contains code from both the Library and from the _TV TIME!_ adventure, as well as some example code snippets not belonging to either. I should use different color themes to make it easier to distinguish between them.
 
+- [ ] Tutorial code (ie. _TV TIME!_):
+    + [ ] Use default Alan scheme.
+    + [ ] Apply to all _TV Time!_ code blocks.
+- [ ] Library code (via `role=lib`):
+    + [x] Create alternative theme for Lib code: __[Base16 Eighties]__ (dark).
+    + [ ] Apply to all Lib code blocks.
+- [ ] Examples snippets:
+    + [ ] Create alternative theme for snippets.
+    + [ ] Apply to all snippets code blocks.
+
+[Base16 Eighties]: http://htmlpreview.github.io/?https://github.com/chriskempson/base16/blob/a1bf436a/scheme-previews/base16-eighties.html "Live HTML Preview of Base16 Eighties color scheme"
 
 # Recreate Tutorial Code
 
@@ -131,7 +142,7 @@ Tasks list:
     + [x] Cleanup folder contents.
     + [x] Add `alanguide-code/README.md`.
     + [ ] Tweak any references to v0.6.1 accordingly.
-    + [ ] Rename `alanguide-code/lib/` folder to `alanguide-code/mylib/` (as indicated in tutorial).
+    + [x] Rename `alanguide-code/lib/` folder to `alanguide-code/mylib/` (as indicated in tutorial).
 
 ## Reconstruct _TV TIME!_ Source
 
