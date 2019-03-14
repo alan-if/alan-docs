@@ -2,6 +2,7 @@
 
 This folder contains the source files of the Alan documentation and their assets (eg, images work files, etc.).
 
+- [`/colors/`](./colors/) — Color schemes and palettes used in the documents.
 - [`/images/`](./images/):
     + [`/alan-logo/`](./images/alan-logo/) — Alan logo reconstructed as vector image (Photoshop files).
     + [`/predefined-classes/`](./images/predefined-classes/) — The predefined-classes diagram reconstructed using [Dia Diagram Editor].

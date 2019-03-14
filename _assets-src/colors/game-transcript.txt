@@ -1,0 +1,21 @@
+COLOR SPEC SHEET
+
+
+BG Color: 
+    #f7fdff
+    RGB: 247 253 255
+    HSB: 195 3 100
+    HSL: 130 240 236
+
+Border: 
+    #ccf2ff
+    RGB: 204 242 255
+    HSB: 195 20 100
+    HSL: 130 240 216
+
+Text: 
+    #0089b6
+    RGB: 0 137 182
+    HSB: 195 100 71
+    HSL: 130 240 86
+

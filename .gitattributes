@@ -161,6 +161,8 @@ LICENSE      text
 ## ==============================
 # Dia Diagram Editor: http://dia-installer.de/
 *.dia   binary
+# ColorImpact 4 palettes: http://www.tigercolor.com
+*.cifc  binary
 
 # ==============================================================================
 #                                GitHub Linguist                                

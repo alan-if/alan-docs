@@ -91,6 +91,7 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
     + [`/images/`](./_assets/images/)
     + [`/xsl-fopub/`](./_assets/xsl-fopub/) — XSL Stylesheets for PDF conversion via asciidoctor-fopub.
 - [`/_assets-src/`](./_assets-src/) (assets' source files):
+    + [`/colors/`](./_assets-src/colors/) — Color schemes and palettes used in the documents.
     + [`/images/`](./_assets-src/images/):
         * [`/alan-logo/`](./_assets-src/images/alan-logo/) — Alan logo reconstructed as vector image.
         * [`/predefined-classes/`](./_assets-src/images/predefined-classes/) — The predefined-classes diagram reconstructed using [Dia Diagram Editor].
