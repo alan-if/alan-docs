@@ -1,11 +1,14 @@
+=begin
 
-=begin    highlight-treeprocessor_mod.rb"                    v1.1.0 (2019-03-13)
+highlight-treeprocessor_mod.rb"         v1.2.0 | 2019/03/24 | by Tristano Ajmone
 ================================================================================
 
-                        Highlight Treprocessor Extension
+                        Highlight Treeprocessor Extension
 
 ================================================================================
-A treeprocessor that highlights source cdoe blocks using Highlight.
+A treeprocessor that highlights source code using André Simon's Highlight:
+
+  http://www.andre-simon.de
 
 Usage:
 
@@ -24,9 +27,10 @@ The Asciidoctor Project, released under MIT License:
     https://github.com/asciidoctor/asciidoctor-extensions-lab/
 --------------------------------------------------------------------------------
 The extension was modified (trimmed down) in order to:
-- enforce ':highlight-css: class' without requiring attribute settingss.
-- disable the ':highlight-style:' option (we use custom CSS in this context).
-- enable substitutions (but the 'linenums' option doeesn't work anymore!)
+- enforce `:highlight-css: class` without requiring attribute settings.
+- disable the `:highlight-style:` option (we use custom CSS in this context).
+- enable substitutions
+- correctly handle the `linenums` option.
 --------------------------------------------------------------------------------
 =end
 
@@ -38,7 +42,7 @@ include Asciidoctor
 
 Extensions.register do
   # =============
-  # TreeProcessor 
+  # TreeProcessor
   # =============
   # Processes the Asciidoctor::Document (AST) once parsing is complete.
   # ----------------------------------------------------------------------------
@@ -48,14 +52,17 @@ Extensions.register do
         # TODO handle callout numbers
         
         #-----------------------------------------------------------------------
-        # NOTE: By commenting out the following line I've enbales substitutions,
-        #       but now the 'linenums' option is broken.
-        #       
-        #       Also, you *must* always specify 'subs' in code listings, even
-        #       if only 'subs=none' because passing a null value will break the
-        #       extenstion!
-        #-----------------------------------------------------------------------
+        # ** SUBSTITUTIONS ** were enabled by commenting out the following line:
+        # ~~~~~~~~~~~~~~
         # src.subs.clear
+        # ~~~~~~~~~~~~~~
+        # If no `subs` are specified in the listing block, the default setting
+        # will be to substitute special characters, which breaks up the code.
+        # Therefore, we check if the `subs` array contains `:specialcharacters`
+        # and eliminate it if it does:
+        spchindx = src.subs.index(:specialcharacters)
+        src.subs.delete_at(spchindx) if spchindx
+        #-----------------------------------------------------------------------
         
         lang = src.attr 'language', 'text', false
         highlight = document.attr 'highlight', 'highlight'
@@ -73,6 +80,28 @@ Extensions.register do
         end
       end if document.attr? 'source-highlighter', 'highlight'
       nil
-    end 
+    end
   end
 end
+
+=begin
+--------------------------------------------------------------------------------
+                                   ChangeLog
+--------------------------------------------------------------------------------
+v1.2.0 (2019/03/24)
+ Fixes the problems introduced in v1.1.0:
+  - Added code to handle defaults in listing with unspecified `subs`.
+  - No longer mandatory to specify `subs` in listing block.
+  - Option `linenums` works correctly again.
+
+v1.1.0 (2019/03/13)
+  - Enabled substitutions, but the `linenums` option doesn't work anymore.
+  - Requires mandatory declaration of `subs` in code listings (even if only
+    `subs=none`) otherwise the sourcedcode breaks up in the listing block.
+
+v1.0.0 (2018/10/04)
+  First mod, based commit 18bdf62:
+  - Enforce `:highlight-css: class` without requiring attribute settings.
+  - Disable the `:highlight-style:` option (we use custom CSS in this context).
+
+=end

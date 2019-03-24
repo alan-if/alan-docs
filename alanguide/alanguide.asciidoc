@@ -1,7 +1,7 @@
 :doctitle:  ALAN 3 Beginner's Guide
 :author:    Michael Arnaud
-:revnumber: 0.1.8
-:revdate:   March 13, 2019
+:revnumber: 0.1.9
+:revdate:   March 24, 2019
 :revremark: AsciiDoc reconstruction work
 :doctype: book
 :encoding: utf-8
@@ -536,7 +536,7 @@ It should look very familiar to you:
 // - [x] CREATE & INCLUDE UTF-8 VERSION OF "lib/nowhere.i"
 // - [x] CHECK CODE
 
-[source,alan,role=lib,subs=none]
+[source,alan,role=lib]
 --------------------------------------------------------------------------------
 include::./_adoc/inc_nowhere.utf8_alan[]
 --------------------------------------------------------------------------------
