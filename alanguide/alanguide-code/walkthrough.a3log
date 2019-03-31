@@ -1,0 +1,89 @@
+
+
+                                    *** TV TIME! ***
+                        An ALAN 3 Interactive Fiction Tutorial Game
+                            By Michael Arnaud © 2006
+
+(Type "help" if you have not played this kind of game before.)
+
+The greatest delight in your life is watching tv sports. And the one
+thing that matters most to you right now is the championship game that
+your favorite team will play this afternoon.
+
+Joy of joys, you have just purchased a brand new big screen plasma TV
+that was delivered earlier today!
+
+
+TV Room
+This is your favorite room in the house, because you love to watch
+television. Besides your comfy chair and table in the north end of the
+room, there is a bookcase on the east side and a bare wall on the west. 
+
+There is a large cardboard packing carton sitting in the center of the
+room. 
+
+The door to the kitchen is south.
+
+> open door
+The door is now open.
+
+> south
+You go south, into the kitchen.
+
+Kitchen
+This is the kitchen. There is a counter and a cupboard here.
+
+North returns to the TV Room.
+
+> open cupboard
+The cupboard is now open. It contains a knife.
+
+> take knife
+Taken.
+
+> north
+You return to the TV Room, north.
+
+TV Room
+This is your favorite room in the house, because you love to watch
+television. Besides your comfy chair and table in the north end of the
+room, there is a bookcase on the east side and a bare wall on the west. 
+
+There is a large cardboard packing carton sitting in the center of the
+room. 
+
+The door to the kitchen is south.
+
+> push box west
+You push the box west, next to the wall.
+
+> open box
+Using the sharp blade of the knife, you cut the box open to reveal the
+plasma TV inside. You cut and tear off the remaining cardboard and cast
+it aside.
+
+Wow, the TV looks even better in your home than it did on the showroom
+floor!
+
+> plug tv
+I don't understand.
+
+> plug tv in outlet
+You put the power cord snugly into the electrical outlet.
+
+> search cushions
+You find a small battery, which you take.
+
+> put battery in remote
+Done. You snap the battery into place in the remote.
+
+> switch on tv
+Wow! What a great picture! 
+
+You watch the game and your favorite team wins! 
+
+And so have you... 
+
+*** You have won! ***
+
+Do you want to UNDO, RESTART, RESTORE or QUIT ? 
