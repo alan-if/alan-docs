@@ -28,7 +28,7 @@ The source files for the _TV TIME!_ adventure and its dependencies.
 - [`/lib/`][lib] — Library v0.6.2 original sources.
 - [`/mylib/`][mylib] — Library v0.6.2 modified as indicated tutorial.
 - [`COMPILE.bat`][COMPILE] — script to compile the adventure.
-- [`plasma.jpg`][plasma] — required adventure asset.
+- [`plasma.png`][plasma] — required adventure asset.
 - [`tvtime.alan`][tvtime.alan] — the final _TV TIME!_ adventure.
 
 The `lib/` folder contains a copy of the original ALAN Library v0.6.2; the reader will need it to carry out the tutorial steps, which require editing the original library sources and adapt them to the needs of the _TV TIME!_ adventure.
@@ -220,7 +220,7 @@ Also, it's not clear why the above CHECKs and defaults were removed (no other ch
 [mylib]: ./mylib/ "Navigate to folder"
 [tvtime.alan]: ./tvtime.alan "View source file"
 [COMPILE]: ./COMPILE.bat "View source file"
-[plasma]: ./plasma.jpg "View image"
+[plasma]: ./plasma.png "View image"
 
 
 <!-- people ------------------------------------------------------------------>

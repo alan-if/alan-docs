@@ -23,6 +23,8 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
 - [DocBook XSL Stylesheets](#docbook-xsl-stylesheets)
 - [Document Status](#document-status)
 - [Document History](#document-history)
+- [Changes List](#changes-list)
+    - [Document and Adventure Images](#document-and-adventure-images)
 
 <!-- /MarkdownTOC -->
 
@@ -54,7 +56,7 @@ The reader will also need to download the source files of the __ALAN Library__ r
     + [`/lib/`][lib] — ALAN Library v0.6.2.
     + [`/mylib/`][mylib] — ALAN Library v0.6.2 modified for tutorial.
     + [`COMPILE.bat`][COMPILE] — script to compile the adventure.
-    + [`plasma.jpg`][plasma] — required adventure asset.
+    + [`plasma.png`][plasma] — required adventure asset.
     + [`tvtime.alan`][tvtime.alan] — the final _TV TIME!_ adventure.
 
 > __IMPORTANT__ — Some Alan sources are included in the AsciiDoc source via the `include::[]` directive targetting specific line ranges. If you need to edit those source files you'll then need to adjust the line ranges accordingly to prevent the document from showing the wrong lines of code. These are the files included by line ranges:
@@ -145,6 +147,14 @@ The original AsciiDoc document was taken from [Alan repository], commit [`fb8164
 
 The HTML version was [taken from the Alan website][alanguide www].
 
+# Changes List
+
+Here is a list of changes to the original _Beginner's Guide_ document and it's associated source files applied by Tristano Ajmone in his conversion work and reprint.
+
+## Document and Adventure Images
+
+The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transparency where the white background was knocked off to allow the image to adapt to any background color in Alan interpreters, as well as to be able to show it properly in the tutorial transcript (which has blue background).
+
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
@@ -216,7 +226,7 @@ The HTML version was [taken from the Alan website][alanguide www].
 [mylib]: ./alanguide-code/mylib/ "Navigate to folder"
 [tvtime.alan]: ./alanguide-code/tvtime.alan "View source file"
 [COMPILE]: ./alanguide-code/COMPILE.bat "View source file"
-[plasma]: ./alanguide-code/plasma.jpg "View image"
+[plasma]: ./alanguide-code/plasma.png "View image"
 
 
 <!-- original guide files -->

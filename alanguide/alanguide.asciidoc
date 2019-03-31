@@ -1,6 +1,6 @@
 :doctitle:  ALAN 3 Beginner's Guide
 :author:    Michael Arnaud
-:revnumber: 0.1.11
+:revnumber: 0.1.12
 :revdate:   March 31, 2019
 :revremark: AsciiDoc reconstruction work
 :doctype: book
@@ -2265,22 +2265,24 @@ The default library would take care of the rest.
 But we want to do more than say "You turn on the tv." We want this display:
 
 
-// @FIXME @TRANSCRIPT:
-// - [ ] Fix image so it shows in transcript.
-// - [ ] Rename image to something more friendly.
-// - [ ] Include and format text after image.
 [example,role="gametranscript"]
 ================================================================================
 &gt; _turn on the tv_ +
 Wow! What a great picture!
-================================================================================
-image::images/73D17E1AB203F19550E0ED6670928EAA467080A2.jpg[]
-----
+
+[.float-group]
+--
+image:alanguide-code/plasma.png[float=left]
+
 You watch the game and your favorite team wins!
+
 And so have you...
-*** You have won! ***
+--
+
+{3ast} You have won! {3ast}
+
 Do you want to UNDO, RESTART, RESTORE or QUIT?
-----
+================================================================================
 
 Next part will show how we do it.
 
@@ -2325,7 +2327,7 @@ Here is how it is done for the tv:
          Does ONLY
              Make tv 'on'.
              [green]#"Wow! What a great picture!"
-             SHOW 'plasma.jpg'.
+             SHOW 'plasma.png'.
              "You watch the game and your favorite team wins!"
              "$pAnd so have you..."
              "$p\*\** You have won! \***" -- The customary IF "win" message
@@ -2339,7 +2341,7 @@ The format for the SHOW statement is the same as that for the IMPORT statement w
 The name of the .jpg file must be enclosed in single-quotes and the statement must end with a full-stop.
 It is also important to note that the image file must be in the same folder as the game source file when you compile it.
 
-The "plasma.jpg" is included in the download of this tutorial.
+The "plasma.png" is included in the download of this tutorial.
 Save it in your game folder to use as you follow this beginner's guide.
 
 You will not need to include the image file with the a3c game file (produced by the compiler) when you distribute your game, but you will need to include the a3r file (also produced by the compiler), which holds the media for your game.
@@ -2485,7 +2487,7 @@ If you want to display text not only above and below, but to the right of the im
 ----
  ...
  "Wow! What a great picture!"
- SHOW 'plasma.jpg'.
+ SHOW 'plasma.png'.
  "$n$nYou watch the game and your favorite team wins!"
  "$$n$nAnd so have you..."
  "$p\*\** You have won! \***"
@@ -2683,7 +2685,7 @@ We want the statement "turn on the remote"to turn on _the tv and win the game._ 
          Does ONLY
              [green]#Make tv on.
              "Wow! What a great picture!"
-             SHOW plasma.jpg.
+             SHOW plasma.png.
              "$n$nYou watch the game and your favorite team wins!"
              "$n$nAnd so have you…"
              "$p\*\** You have won! \***"
@@ -3002,7 +3004,7 @@ All we need to do now is make the VERB do what we want (i.e., win!) and the fine
          DOES ONLY
              MAKE tv 'on'.
              "Wow! What a great picture!"
-             SHOW 'plasma.jpg'.
+             SHOW 'plasma.png'.
              "$n$nYou watch the game and your favorite team wins!"
              "$n$nAnd so have you..."
              "$p\*\** You have won! \*\**"
@@ -3012,7 +3014,7 @@ All we need to do now is make the VERB do what we want (i.e., win!) and the fine
          DOES ONLY
              MAKE tv 'on'.
              "Wow! What a great picture!"
-             SHOW 'plasma.jpg'.
+             SHOW 'plasma.png'.
              "$n$nYou watch the game and your favorite team wins!"
              "$n$nAnd so have you..."
              "$p\*\** You have won! \***"
@@ -3092,7 +3094,7 @@ in the same way as we fine-tuned the "search" VERB for the chair.
      DOES ONLY
          MAKE tv on.
          "Wow! What a great picture!"
-         SHOW plasma.jpg.
+         SHOW plasma.png.
          "$n$nYou watch the game and your favorite team wins!"
          "$n$nAnd so have you…"
          "$p\*\** You have won! \***"
@@ -3164,7 +3166,7 @@ This completes our first "simple" game.
          DOES ONLY
              MAKE tv 'on'.
              "Wow! What a great picture!"
-             SHOW 'plasma.jpg'.
+             SHOW 'plasma.png'.
              "$n$nYou watch the game and your favorite team wins!"
              "$n$nAnd so have you..."
              "$p\*\** You have won! \***"
@@ -3174,7 +3176,7 @@ This completes our first "simple" game.
          DOES ONLY
              MAKE tv 'on'.
              "Wow! What a great picture!"
-             SHOW 'plasma.jpg'.
+             SHOW 'plasma.png'.
              "$n$nYou watch the game and your favorite team wins!"
              "$n$nAnd so have you..."
              "$p\*\** You have won! \***"
@@ -3208,7 +3210,7 @@ This completes our first "simple" game.
          DOES ONLY
              MAKE tv 'on'.
              "Wow! What a great picture!"
-             SHOW 'plasma.jpg'.
+             SHOW 'plasma.png'.
              "$n$nYou watch the game and your favorite team wins!"
              "$n$nAnd so have you..."
              "$p\*\** You have won! \***"
@@ -4237,7 +4239,7 @@ In this case we will call the cord, the "cord", and we will have the remote CHEC
          DOES ONLY
              MAKE tv 'on'.
              "Wow! What a great picture!"
-             SHOW 'plasma.jpg'.
+             SHOW 'plasma.png'.
              "$n$nYou watch the game and your favorite team wins!"
              "$n$nAnd so have you..."
              "$p\*\** You have won! \***"
@@ -4250,7 +4252,7 @@ In this case we will call the cord, the "cord", and we will have the remote CHEC
          DOES ONLY
              MAKE tv 'on'.
              "Wow! What a great picture!"
-             SHOW 'plasma.jpg'.
+             SHOW 'plasma.png'.
              "$n$nYou watch the game and your favorite team wins!"
              "$n$nAnd so have you..."
              "$p\*\** You have won! \***"
@@ -4283,7 +4285,7 @@ Disable the tv in the same way:
      DOES ONLY
          MAKE tv 'on'.
          "Wow! What a great picture!"
-         SHOW 'plasma.jpg'.
+         SHOW 'plasma.png'.
          "$n$nYou watch the game and your favorite team wins!"
          "$n$nAnd so have you..."
          "$p\*\** You have won! \***"
@@ -5165,7 +5167,7 @@ It is a simple matter to CHECK that obj1 is the battery.
          DOES ONLY
              MAKE tv 'on'.
                  "Wow! What a great picture!"
-                 SHOW 'plasma.jpg'.
+                 SHOW 'plasma.png'.
                  "$n$nYou watch the game and your favorite team wins!"
                  "$n$nAnd so have you..."
                  "$p\*\** You have won! \***"
@@ -5183,7 +5185,7 @@ It is a simple matter to CHECK that obj1 is the battery.
          DOES ONLY
              MAKE tv 'on'.
              "Wow! What a great picture!"
-             SHOW 'plasma.jpg'.
+             SHOW 'plasma.png'.
              "$n$nYou watch the game and your favorite team wins!"
              "$n$nAnd so have you..."
              "$p\*\** You have won! \***"
@@ -5223,7 +5225,7 @@ It is a simple matter to CHECK that obj1 is the battery.
      DOES ONLY
          MAKE tv 'on'.
          "Wow! What a great picture!"
-         SHOW 'plasma.jpg'.
+         SHOW 'plasma.png'.
          "$n$nYou watch the game and your favorite team wins!"
          "$n$nAnd so have you..."
          "$p\*\** You have won! \***"
@@ -5897,7 +5899,7 @@ The same can be done with the DOES ONLY "win" sequence with the remote and tv. (
      DESCRIPTION
          MAKE tv 'on'.
          "Wow! What a great picture!"
-         SHOW 'plasma.jpg'.
+         SHOW 'plasma.png'.
          "$n$nYou watch the game and your favorite team wins!"
          "$n$nAnd so have you..."
          "$p\*\** You have won! \***"
@@ -6169,7 +6171,7 @@ The same can be done with the DOES ONLY "win" sequence with the remote and tv. (
      DESCRIPTION
          MAKE tv 'on'.
          "Wow! What a great picture!"
-         SHOW 'plasma.jpg'.
+         SHOW 'plasma.png'.
          "$n$nYou watch the game and your favorite team wins!"
          "$n$nAnd so have you..."
          "$p\*\** You have won! \***"
@@ -7593,7 +7595,7 @@ This completes the main elements of our tutorial game.
      DESCRIPTION
          MAKE tv 'on'.
          "Wow! What a great picture!"
-         SHOW 'plasma.jpg'.
+         SHOW 'plasma.png'.
          "$n$nYou watch the game and your favorite team wins!"
          "$n$nAnd so have you..."
          "$p\*\** You have won! \***"
@@ -8237,7 +8239,7 @@ Since we created an OBJECT at Nowhere to act as a sub-routine for us when the pl
          ELSE#
              MAKE tv 'on'.
              "Wow! What a great picture!"
-             SHOW 'plasma.jpg'.
+             SHOW 'plasma.png'.
              "$n$nYou watch the game and your favorite team wins!"
              "$n$nAnd so have you..."
              "$p\*\** You have won! \***"
@@ -8362,7 +8364,7 @@ Here follows the complete source to the tutorial game.
 //        The conversion is done by the "generate-inc-files.sh" script via iconv.
 //        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-[source,alan,role=tutorial]
+[source,alan,,linenums,role=tutorial]
 --------------------------------------------------------------------------------
 include::./_adoc/inc_tvtime.utf8_alan[]
 --------------------------------------------------------------------------------

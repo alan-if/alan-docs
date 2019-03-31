@@ -433,7 +433,7 @@ THE win_tv Isa OBJECT AT Nowhere
     ELSE
       MAKE tv 'on'.
       "Wow! What a great picture!"
-      SHOW 'plasma.jpg'.
+      SHOW 'plasma.png'.
       "$n$nYou watch the game and your favorite team wins!"
       "$n$nAnd so have you..."
       "$p*** You have won! ***"
@@ -620,14 +620,13 @@ END THE kitchen.
 The clock Isa object AT Kitchen
   IS READABLE.
   DESCRIPTION
-  Has hour 3.  -- set these three attributes
-  Has minute 15. -- to specify the time of day
-  Has ampm "pm". -- you want when the game starts
-  Has timeinminutes 0. -- (the time expressed as minutes past
-             -- midnight. This is calculated by the game
-             -- in the START section and updated each
-             -- turn by the TickTock event so left at the
-             -- default initial value here)
+  Has hour 3.          -- Set these three attributes
+  Has minute 15.       -- to specify the time of day
+  Has ampm "pm".       -- you want when the game starts
+  Has timeinminutes 0. -- (the time expressed as minutes past midnight.
+                       -- This is calculated by the game in the START
+                       -- section and updated each turn by the TickTock
+                       -- event so left at the default initial value here)
   Verb read
     Does Only
       -- Display the time on screen
@@ -692,8 +691,8 @@ Event ticktock
       Set hour Of clock To 12.
     End If.
   End If.
-  Set minute Of clock To timeinminutes Of clock - ((timeinminutes
-     Of clock / 60) * 60).
+  Set minute Of clock To
+    timeinminutes Of clock - ((timeinminutes Of clock / 60) * 60).
   -- Increment time by one minute
   -- (If its 11:59pm set clock to zero ie:midnight instead)
   If timeinminutes Of clock <1439 Then
