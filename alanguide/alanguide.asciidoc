@@ -1,6 +1,6 @@
 :doctitle:  ALAN 3 Beginner's Guide
 :author:    Michael Arnaud
-:revnumber: 0.1.10
+:revnumber: 0.1.11
 :revdate:   March 31, 2019
 :revremark: AsciiDoc reconstruction work
 :doctype: book
@@ -201,7 +201,7 @@ In this beginner's guide we will do it this way (note than whenever new code is 
 // - [X] ENABLE HIGHLIGHTING
 // - [X] RESTORE COLOR NOTATION
 // - [X] CHECK CODE
-[source,alan,subs=quotes]
+[source,alan,role=tutorial,subs=quotes]
 -------------------------
 [green]#-----------------------------------------------
 --             \*\** TV TIME! \***
@@ -255,15 +255,15 @@ The beginning `LOCATION` for our tutorial game is the TV Room.
 A completed `LOCATION` appropriately ends with an END statement, which itself ends with a full-stop (or period ".").
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
 // - [ ] CHECK CODE
-[subs="quotes"]
-----
- ...
- [green]#THE tv_room Isa LOCATION
- END THE tv_room.#
-----
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+[green]#THE tv_room Isa LOCATION
+END THE tv_room.#
+--------------------------------------------------------------------------------
 
 The word "tv_room" is our programming word (using an underscore in the place of a space makes it a single word) for the first `LOCATION`.
 We could have called it "in_a_house", "spaceship", "gertrude", or anything at all.
@@ -277,17 +277,17 @@ The `START AT` statement always comes at the very end of your program.
 This is a complete game that will compile and run, though very limited in description or action.
 Try it.
 
-// @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
+// @ALAN @EXAMPLE:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
 // - [ ] CHECK CODE
-[subs="quotes"]
-----
- ...
- THE tv_room Isa LOCATION
- END THE tv_room.
- [green]#START AT tv_room.#
-----
+[source,alan,subs=quotes]
+--------------------------------------------------------------------------------
+...
+THE tv_room Isa LOCATION
+END THE tv_room.
+[green]#START AT tv_room.#
+--------------------------------------------------------------------------------
 
 [float]
 === Adding a NAME and DESCRIPTION
@@ -301,35 +301,35 @@ Be sure to enclose it in single (not double) quotes.
 // - [ ] ENABLE HIGHLIGHTING
 // - [ ] RESTORE COLOR NOTATION
 // - [ ] CHECK CODE
-[subs="quotes"]
-----
- ...
- THE tv_room Isa LOCATION
-     [green]#NAME 'TV Room'#
- ...
-----
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+THE tv_room Isa LOCATION
+  [green]#NAME 'TV Room'#
+...
+--------------------------------------------------------------------------------
 
 (We sometimes use the ellipsis, "...", in this guide to indicate that there is more code preceding and/or following.)
 
 Now fill out a brief `DESCRIPTION` of the `LOCATION`, basically telling the player what he/she sees when entering. `DESCRIPTIONS`, as information displayed to the player, are placed within double quotes.
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
 // - [ ] CHECK CODE
-[subs="quotes"]
-----
- ...
- THE tv_room Isa LOCATION
-     NAME 'TV Room'
-     [green]#DESCRIPTION
-         "This is your favorite room in the house, because you love to
-           watch television. You recently purchased a giant screen
-           plasma TV that is set up in this room, ideally located
-           across from your comfy chair and table."#
- END THE tv_room.
- ...
-----
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+THE tv_room Isa LOCATION
+  NAME 'TV Room'
+  [green]#DESCRIPTION
+    "This is your favorite room in the house, because you love to
+     watch television. You recently purchased a giant screen
+     plasma TV that is set up in this room, ideally located
+     across from your comfy chair and table."#
+END THE tv_room.
+...
+--------------------------------------------------------------------------------
 
 Compile and run the game to see how this is displayed to the player.
 
@@ -339,19 +339,19 @@ Compile and run the game to see how this is displayed to the player.
 Using the same basic template, let's make a second simple `LOCATION`:
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
 // - [ ] CHECK CODE
-[subs="quotes"]
-----
- ...
- [green]#THE kitchen Isa LOCATION
-     NAME 'Kitchen'
-     DESCRIPTION
-         "This is the kitchen."
- END THE kitchen.#
- ...
-----
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+[green]#THE kitchen Isa LOCATION
+  NAME 'Kitchen'
+  DESCRIPTION
+    "This is the kitchen."
+END THE kitchen.#
+...
+--------------------------------------------------------------------------------
 
 == EXITS
 
@@ -366,31 +366,31 @@ This is most often accomplished with an `EXIT`.
 Note that `EXITs` are always one-way.  If we want the `EXIT` to work in both directions (for example, "south" to the Kitchen, and "north"back to the TV Room), we need to put an `EXIT` in the other `LOCATION`.
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
 // - [ ] CHECK CODE
-[subs="quotes"]
-----
- ...
- THE tv_room Isa LOCATION
-    NAME 'TV Room'
-    DESCRIPTION
-        "This is your favorite room in the house, because you love to
-         watch television. You recently purchased a giant screen plasma
-         TV that is set up in this room, ideally located across from
-         your comfy chair and table."
-    [green]#EXIT south TO kitchen. -- Note the full-stop.#
- END THE tv_room.
- -----------------------
- THE kitchen Isa LOCATION
-    NAME Kitchen
-    DESCRIPTION
-        "This is the kitchen."
-    [green]#EXIT north TO tv_room.#
- END THE kitchen.
- -----------------------
- START AT tv_room.
-----
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+THE tv_room Isa LOCATION
+  NAME 'TV Room'
+  DESCRIPTION
+    "This is your favorite room in the house, because you love to
+     watch television. You recently purchased a giant screen plasma
+     TV that is set up in this room, ideally located across from
+     your comfy chair and table."
+  [green]#EXIT south TO kitchen. -- Note the full-stop.#
+END THE tv_room.
+-----------------------
+THE kitchen Isa LOCATION
+  NAME Kitchen
+  DESCRIPTION
+    "This is the kitchen."
+  [green]#EXIT north TO tv_room.#
+END THE kitchen.
+-----------------------
+START AT tv_room.
+--------------------------------------------------------------------------------
 
 Compile and run the game.
 You can go back and forth from the TV Room to the Kitchen.
@@ -642,7 +642,7 @@ When we typed that single line
 // - [x] ENABLE HIGHLIGHTING
 // - [x] CHECK CODE
 
-[source,alan]
+[source,alan,role=tutorial]
 ---------------
 IMPORT 'std.i'.
 ---------------
@@ -683,7 +683,7 @@ Here's how we would do that:
 // - [x] RESTORE COLOR NOTATION
 // - [ ] CHECK CODE
 
-[source,alan,subs=quotes]
+[source,alan,role=tutorial,subs=quotes]
 --------------------------------------------------------------------------------
 THE tv_room Isa LOCATION
   NAME TV Room
@@ -730,7 +730,7 @@ Also notice that several directions are included on the same line:
 // - [x] ENABLE HIGHLIGHTING
 // - [x] CHECK CODE
 
-[source,alan]
+[source,alan,role=tutorial]
 -----------------------------------
   EXIT north, east, west TO tv_room
 -----------------------------------
@@ -8362,7 +8362,7 @@ Here follows the complete source to the tutorial game.
 //        The conversion is done by the "generate-inc-files.sh" script via iconv.
 //        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-[source,alan]
+[source,alan,role=tutorial]
 --------------------------------------------------------------------------------
 include::./_adoc/inc_tvtime.utf8_alan[]
 --------------------------------------------------------------------------------

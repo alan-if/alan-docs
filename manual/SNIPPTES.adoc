@@ -126,6 +126,11 @@ include::./_adoc/inc_ XXXXXXXXX.utf8_alan[]
 // - [ ] RESTORE COLOR NOTATION
 // - [ ] CHECK CODE
 
+[source,alan,role=tutorial]
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
 // @ALAN @LIBRARY:
 // - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
 // - [ ] RESTORE COLOR NOTATION
