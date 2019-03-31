@@ -31,38 +31,44 @@ span.green {
   background-color: #A3FF8A;
 }
 
-/* Highlight base styles */
-.listingblock pre[class=highlight] {
-  background-color: #FEFEFE;
-}
-.listingblock pre[class=highlight] > code {
-  color: #000;
-}
-.listingblock pre[class=highlight] .hl {
-  color: #000;
+/* Highlight Theme for Alan -- based on "github.com style" for highlight.js, by Vasily Polovnyov */
+.listingblock code[data-lang=alan]::before {
+  color: #a09f93;
 }
 
-/* Highlight Alan */
 .listingblock pre[class=highlight][lang=alan] {
   background-color: #F8F8F8;
+  border-radius: 4px;
+  border: 1px solid #F8F8F8;
 }
 .listingblock pre[class=highlight][lang=alan] > code {
   color: #333;
+  font-family: inherit;
+  font-size: inherit;
 }
 .listingblock pre[class=highlight][lang=alan] .hl {
   color: #333;
 }
-.listingblock pre[class=highlight][lang=alan] .hl.slc {
-  color: #998;
-}
-.listingblock pre[class=highlight][lang=alan] .hl.str {
-  color: #008080;
+.listingblock pre[class=highlight][lang=alan] .hl.num {
+  color: #333;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.esc {
   color: #ff980b;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.ipl {
   color: #d572f1;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.str {
+  color: #008080;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.slc {
+  color: #998;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.lin {
+  color: #998;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.opt {
+  color: #333;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.kwa {
   color: #990000;
