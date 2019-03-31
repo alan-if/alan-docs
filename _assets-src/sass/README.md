@@ -66,6 +66,7 @@ The build scripts will output the CSS stylesheets in their destination folders o
 | [`_hjs.scss`][hjs]                           | highlight.js specific styles          | Alan Docs using [highlight.js]        |
 | [`_hl-template-alan.scss`][hl template alan] | Highlight theme template for Alan     | Alan Docs using [Highlight]           |
 | [`_hl-theme_alan-lib.scss`][hl alan lib]     | Highlight theme for Alan Library Code | _Beginner's Guide_: Alan library code |
+| [`_mixins.scss`][mixins]                     | Custom Sass helpers                   | Alan Docs using [highlight.js]        |
 
 The [`_hl-template-alan.scss`][hl template alan] is a reusable variables-based `@import` template to quickly define Highlight Asciidoctor themes for Alan code. It can create both a default Alan theme as well as themes targetting a specific role/class, via the `$HL-Role` variable. For the default theme, it will use the Alan color scheme defined in `_color-scheme.scss`.
 
@@ -147,6 +148,7 @@ SOFTWARE.
 [b16 80s]:./_base16-eighties.scss  "View SCSS source"
 [color-scheme]: ./_color-scheme.scss "View SCSS source"
 [common]: ./_common.scss "View SCSS source"
+[mixins]: ./_mixins.scss "View SCSS source"
 [hjs]: ./_hjs.scss "View SCSS source"
 [hl alan lib]: ./_hl-theme_alan-lib.scss "View SCSS source"
 [hl template alan]: ./_hl-template-alan.scss "View SCSS source"

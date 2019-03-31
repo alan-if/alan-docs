@@ -1,18 +1,17 @@
-// "_hl-theme_alan-lib"                 v1.0.2 | 2019/03/31 | by Tristano Ajmone
+// "_hl-theme_alan-lib"                 v2.0.0 | 2019/03/31 | by Tristano Ajmone
 // *****************************************************************************
-// *                                                                           *
-// *                       Highlight Theme for Alan Lib                        *
-// *                                                                           *
+/* Highlight Theme for Alan Library -- Base16 Eighties, by Chris Kempson */
 // *****************************************************************************
 // Provides an alternative color theme for Alan code with "role=lib".
 
 // Used in the "ALAN Beginner's Guide" to distinguish between the code of the
 // tutorial and that of the Library sources. 
 
-// -----------------------------------------------------------------------------
-// Color Scheme: Base16 Eighties
-// -----------------------------------------------------------------------------
-$HL-CanvasBG:           $base00;
+$HL-Role: 'lib';
+
+@import 'base16-eighties';  // Base16 Eighties color scheme.
+
+$HL-Canvas:             $base00;
 $HL-Default:            $base05;
 
 $HL-Border:             $base04;
@@ -29,90 +28,6 @@ $HL-Keywords1:          $base08;
 $HL-Keywords2:          $base0A;
 $HL-Keywords3:          $base0D;
 
-// -----------------------------------------------------------------------------
-/* Highlight Theme for Alan Library */
-// -----------------------------------------------------------------------------
-.listingblock.lib code[data-lang]::before{
-    // Color of language name (shown when hovering)
-    color: $base05;
-}
-
-.listingblock.lib pre[class=highlight][lang=alan] {
-    background-color: $HL-CanvasBG;
-    &>code {
-        color: $HL-Default;
-    }
-    .hl {
-        color: $HL-Default;
-        // &.num {
-        //     // Numbers
-        //     // -------
-        //     color: $HL-Number;
-        // }
-        &.slc {
-            // Single-line comments
-            // --------------------
-            color: $HL-Comment;
-            // font-style: italic;
-        }
-        &.str {
-            // Strings
-            // -------
-            color: $HL-String;
-        }
-        &.esc {
-            // Escape sequences
-            // ----------------
-            // In Alan these are: $p, $n, $i, $t, $a, $l, $v and $$.
-            color: $HL-Escape;
-        }
-        &.ipl {
-            // Interpolation sequences
-            // -----------------------
-            // In Alan these are: $<n>, $+<n>, $0<n>, $-<n>, $!<n> and $o.
-            color: $HL-Interpolation;
-        }
-        // &.lin {
-        //     // Line numbers
-        //     // ------------
-        //     color: $HL-LineNum;
-        // }
-        // &.opt {
-        //     // Operators
-        //     // ---------
-        //     color: $HL-Operator;
-        // }
-        // ---------------------
-        //    Keywords Groups
-        // ---------------------
-        &.kwa {
-            // Keywords group 1
-            // ----------------
-            // Alan Keywords.
-            color: $HL-Keywords1;
-        }
-        &.kwb {
-            // Keywords group 2
-            // ----------------
-            // Predefined Alan Classes.
-            color: $HL-Keywords2;
-        }
-        &.kwc {
-            // Keywords group 3
-            // ----------------
-            // Predefined Instances (i.e. the 'hero')
-            color: $HL-Keywords3;
-        }
-    }
-// -----------------------------------------------------------------------------
-// Inline Highlighting
-// -----------------------------------------------------------------------------
-// Highlighter marker effect to mark code lines or segmentes.
-// Mainly used in "ALAN Beginner's Guide" to mark added code in the source code
-// examples.
-    mark {
-        background-color: #e5ff4f; // fluorescent luorescent yellow
-    }
-}
+@import 'hl-template-alan'; // Reusable template for Alan themes.
 
 // EOF //

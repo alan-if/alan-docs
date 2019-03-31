@@ -44,6 +44,18 @@ $HL-Keywords1:      $Alan-keyword !default; // Alan keywords
 $HL-Keywords2:      $Alan-predefined !default; // Predefined classes
 $HL-Keywords3:      $Alan-predefined !default; // Predefined instances ('hero')
 
+// -----------------
+// Highlight Markers
+// -----------------
+// Yellow Marker (for <mark> tag):
+$HL-MarkerYellow1: #ccff00 !default; // Gradient begin
+$HL-MarkerYellow2: #f5ff87 !default; // Gradient end
+// $HL-MarkerYellow2: $HL-MarkerYellow1 !default; // Gradient end
+
+// Green Marker (for <span class="green"> tag):
+$HL-MarkerGreen1: #a3ff8a !default; // Gradient begin
+$HL-MarkerGreen2: rgba($HL-MarkerGreen1, .5) !default; // Gradient end
+
 // -----------------------------------------------------------------------------
 // Optional Language Settings
 // -----------------------------------------------------------------------------
@@ -61,12 +73,11 @@ $ref_role:  null;
 // Theme Definition
 // =============================================================================
 
-// .listingblock code[#{$ref_datalang}]::before{
+// Language name shown when hovering:
 .listingblock#{$ref_role} code[data-lang=alan]::before{
-   // Color of language name (shown when hovering)
     color: $HL-AlanHover;
 }
-// .listingblock pre[class="highlight"][#{$ref_lang}] {
+// Highlight Theme:
 .listingblock#{$ref_role} pre[class=highlight][lang=alan] {
     background-color: $HL-Canvas;
     &>code {
@@ -127,5 +138,27 @@ $ref_role:  null;
             color: $HL-Keywords3;
         }
     }
+    // =========================================================================
+    //                            Highlight Markers                             
+    // =========================================================================
+    // Highlighter marker effects to mark code lines or segments.
+    // Mainly used in "ALAN Beginner's Guide" to mark added code in the sources.
+    // 
+    // Two colors are passed to the mixins to create a gradient. If both colors
+    // are identical a plain background will be defined instead.
+
+    // -------------------------------------------------------------------------
+    // Yellow Marker: <mark>
+    // -------------------------------------------------------------------------
+    // Let's add to the <mark> tag a smeared fluorescent marker effect.
+
+    @include MarkerMark($HL-MarkerYellow1, $HL-MarkerYellow2);
+    @include MarkerSpan('green', $HL-MarkerGreen1, $HL-MarkerGreen2);
+
+    // -------------------------------------------------------------------------
+    // Green Marker: <span class="green">
+    // -------------------------------------------------------------------------
+    // Let's add to the <mark> tag a smeared fluorescent marker effect.
 }
+
 // EOF //
