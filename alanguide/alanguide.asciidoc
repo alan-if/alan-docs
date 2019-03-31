@@ -1,7 +1,7 @@
 :doctitle:  ALAN 3 Beginner's Guide
 :author:    Michael Arnaud
-:revnumber: 0.1.9
-:revdate:   March 24, 2019
+:revnumber: 0.1.10
+:revdate:   March 31, 2019
 :revremark: AsciiDoc reconstruction work
 :doctype: book
 :encoding: utf-8
@@ -194,17 +194,22 @@ Okay, let's get started.
 Start a new file in the text editor and save it as "tvtime.alan". (Actually, you can name it "mygame.alan" or whatever you want, but the compiler will be looking for that .alan extension.)
 
 The first couple of lines of your source file should probably be something to identify what it is.
-In this beginner's guide we will do it this way (note than whenever new code is displayed in this guide it will be in [red]#RED#):
+In this beginner's guide we will do it this way (note than whenever new code is displayed in this guide it will be in [green]#GREEN BACKGROUND#):
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
-[subs="quotes"]
-----
- [red]#-----------------------------------------------
- --             \*\** TV TIME! \***
- -- An ALAN 3 Interactive Fiction Tutorial Game
- --        By Michael Arnaud (c) 2006
- -----------------------------------------------#
-----
+
+// @ALAN @TV-TIME:
+// - [X] ENABLE HIGHLIGHTING
+// - [X] RESTORE COLOR NOTATION
+// - [X] CHECK CODE
+[source,alan,subs=quotes]
+-------------------------
+[green]#-----------------------------------------------
+--             \*\** TV TIME! \***
+-- An ALAN 3 Interactive Fiction Tutorial Game
+--        By Michael Arnaud (c) 2006
+-----------------------------------------------#
+-------------------------
+
 
 These lines won't do anything to, for, or in the game.
 They are just there for anyone who happens to read the source file.
@@ -226,7 +231,9 @@ Even though we usually think of `LOCATIONs` in terms of (as other IF languages m
 
 The basic template for a `LOCATION` is:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] CHECK CODE
 ----
  THE ? Isa LOCATION
      NAME '?'
@@ -247,11 +254,14 @@ In this case, THE (instance) Isa (particular member of the class) `LOCATION`.
 The beginning `LOCATION` for our tutorial game is the TV Room.
 A completed `LOCATION` appropriately ends with an END statement, which itself ends with a full-stop (or period ".").
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
- [red]#THE tv_room Isa LOCATION
+ [green]#THE tv_room Isa LOCATION
  END THE tv_room.#
 ----
 
@@ -267,13 +277,16 @@ The `START AT` statement always comes at the very end of your program.
 This is a complete game that will compile and run, though very limited in description or action.
 Try it.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  THE tv_room Isa LOCATION
  END THE tv_room.
- [red]#START AT tv_room.#
+ [green]#START AT tv_room.#
 ----
 
 [float]
@@ -284,12 +297,15 @@ Following the template at the top of the page, we can add a `NAME` and `DESCRIPT
 Type in the `NAME` statement followed by what you want the game to display as the NAME of the LOCATION.
 Be sure to enclose it in single (not double) quotes.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  THE tv_room Isa LOCATION
-     [red]#NAME 'TV Room'#
+     [green]#NAME 'TV Room'#
  ...
 ----
 
@@ -297,13 +313,16 @@ Be sure to enclose it in single (not double) quotes.
 
 Now fill out a brief `DESCRIPTION` of the `LOCATION`, basically telling the player what he/she sees when entering. `DESCRIPTIONS`, as information displayed to the player, are placed within double quotes.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  THE tv_room Isa LOCATION
      NAME 'TV Room'
-     [red]#DESCRIPTION
+     [green]#DESCRIPTION
          "This is your favorite room in the house, because you love to
            watch television. You recently purchased a giant screen
            plasma TV that is set up in this room, ideally located
@@ -319,11 +338,14 @@ Compile and run the game to see how this is displayed to the player.
 
 Using the same basic template, let's make a second simple `LOCATION`:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
- [red]#THE kitchen Isa LOCATION
+ [green]#THE kitchen Isa LOCATION
      NAME 'Kitchen'
      DESCRIPTION
          "This is the kitchen."
@@ -343,7 +365,10 @@ This is most often accomplished with an `EXIT`.
 
 Note that `EXITs` are always one-way.  If we want the `EXIT` to work in both directions (for example, "south" to the Kitchen, and "north"back to the TV Room), we need to put an `EXIT` in the other `LOCATION`.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -354,14 +379,14 @@ Note that `EXITs` are always one-way.  If we want the `EXIT` to work in both di
          watch television. You recently purchased a giant screen plasma
          TV that is set up in this room, ideally located across from
          your comfy chair and table."
-    [red]#EXIT south TO kitchen. -- Note the full-stop.#
+    [green]#EXIT south TO kitchen. -- Note the full-stop.#
  END THE tv_room.
  -----------------------
  THE kitchen Isa LOCATION
     NAME Kitchen
     DESCRIPTION
         "This is the kitchen."
-    [red]#EXIT north TO tv_room.#
+    [green]#EXIT north TO tv_room.#
  END THE kitchen.
  -----------------------
  START AT tv_room.
@@ -401,11 +426,14 @@ We can use such a limbo LOCATION to establish any directional or EXIT words we w
 We could call our limbo LOCATION "limbo", "bimbo", or anything else, but for our game we will call it "Nowhere".
 Put these lines before the code for the tv_room:.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
- [red]#THE Nowhere Isa LOCATION
+ [green]#THE Nowhere Isa LOCATION
          EXIT north TO Nowhere.
          EXIT south TO nowhere.
          EXIT west TO nowhere.
@@ -435,7 +463,10 @@ It is an IF convention that the player need only type "n" for north, "s" for sou
 But at this point if we type n, s, w, or e, we are back to "I don't know the word n".
 We could program these single-letter words as we did the full words above:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  THE Nowhere Isa LOCATION
@@ -445,7 +476,7 @@ We could program these single-letter words as we did the full words above:
          EXIT east TO nowhere.
          EXIT up TO nowhere.
          EXIT down TO nowhere.
-         [red]#EXIT n TO Nowhere.
+         [green]#EXIT n TO Nowhere.
          EXIT s TO Nowhere.
          EXIT w TO Nowhere.
          EXIT e TO Nowhere.#
@@ -455,7 +486,10 @@ We could program these single-letter words as we did the full words above:
 The problem with this is, both "north" and "n" are two separate directions.
 We would have to program the Kitchen, for example, with both of them to go to the same place:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -464,7 +498,7 @@ We would have to program the Kitchen, for example, with both of them to go to th
      DESCRIPTION
          "This is the kitchen."
      EXIT north TO tv_room.
-     [red]#EXIT n TO tv_room.#
+     [green]#EXIT n TO tv_room.#
  END THE kitchen.
  ...
 ----
@@ -483,11 +517,14 @@ To create a synonym, simply use the SYNONYMS statement, then first the synonym w
 Be sure to end each synonym with a full-stop.
 
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
- [red]#SYNONYMS
+ [green]#SYNONYMS
      n = north.
      s = south.
      e = east.
@@ -556,7 +593,10 @@ However, that would be tedious, it would add a lot of code for us to wade throug
 
 All we need to do is put the following line in our source code (I recommend putting it right after the introductory comment statements):
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------------------------------
@@ -564,7 +604,7 @@ All we need to do is put the following line in our source code (I recommend putt
  -- An ALAN 3 Interactive Fiction Tutorial Game
  --        By Michael Arnaud (c) 2006
  -----------------------------------------------
- [red]#IMPORT 'std.i'.#
+ [green]#IMPORT 'std.i'.#
 
  THE tv_room Isa LOCATION
  ...
@@ -598,10 +638,15 @@ In the std.i file there is a lengthy string of "import" statements.
 So here is how "nowhere.i" and a large collection of other pre-programmed files from the library are included in our program.
 When we typed that single line
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
-----
- IMPORT 'std.i'.
-----
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] CHECK CODE
+
+[source,alan]
+---------------
+IMPORT 'std.i'.
+---------------
+
 
 we also imported all those other _.i_-files in the library that are _imported by the std.i file._ This will save us a lot of time and trouble as we write our game.
 The remainder of this beginner's guide will assume that you have imported std.i and all its library files.
@@ -633,25 +678,29 @@ You can't go that way!
 It is generally desirable to tell the player why he/she "can't go that way", perhaps because there is a wall in that direction.
 Here's how we would do that:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
-[subs="quotes"]
-----
- THE tv_room Isa LOCATION
-     NAME TV Room
-     DESCRIPTION
-         "This is your favorite room in the house, because you love to
-          watch television. You recently purchased a giant screen
-          plasma TV that is set up in this room, ideally located across
-          from your comfy chair and table."
-     EXIT south TO kitchen.
-     [red]#EXIT north, east, west TO tv_room
-         CHECK
-             "There is only a wall in that direction."
-     END EXIT.#
- END THE tv_room.
- -----------------------
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+
+[source,alan,subs=quotes]
+--------------------------------------------------------------------------------
+THE tv_room Isa LOCATION
+  NAME TV Room
+  DESCRIPTION
+    "This is your favorite room in the house, because you love to
+     watch television. You recently purchased a giant screen
+     plasma TV that is set up in this room, ideally located across
+     from your comfy chair and table."
+  EXIT south TO kitchen.
+  [green]#EXIT north, east, west TO tv_room
+    CHECK
+      "There is only a wall in that direction."
+  END EXIT.#
+END THE tv_room.
+-----------------------
 ...
-----
+--------------------------------------------------------------------------------
 
 [float]
 === CHECK Means STOP
@@ -677,10 +726,14 @@ There is only a wall in that direction.
 
 Also notice that several directions are included on the same line:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
-----
- EXIT north, east, west TO tv_room
-----
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] CHECK CODE
+
+[source,alan]
+-----------------------------------
+  EXIT north, east, west TO tv_room
+-----------------------------------
 
 so that we do not have to make separate EXITS for north, east, and west.
 If they all have the same result, i.e. a wall in that direction, they can all be included in the same EXIT statement.
@@ -694,21 +747,24 @@ If our game were in a larger room, say, a banquet hall, we might want to give a 
 We might want the player to feel, not stopped by a wall or obstacle, but that they are moving around, when they are in fact not going anywhere.
 Like this:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+
 [subs="quotes"]
-----
- THE hall Isa LOCATION
-     NAME Banquet Hall
-     DESCRIPTION
-         "This is a magnificent banquet hall with many things to see."
-     EXIT south TO kitchen.
-     EXIT north, east, west TO hall
-         CHECK
-             "You move about in the great hall, examining various
-              things."
-     END EXIT.
- END THE hall.
-----
+--------------------------------------------------------------------------------
+THE hall Isa LOCATION
+  NAME Banquet Hall
+  DESCRIPTION
+    "This is a magnificent banquet hall with many things to see."
+  EXIT south TO kitchen.
+  EXIT north, east, west TO hall
+    CHECK
+      "You move about in the great hall, examining various things."
+  END EXIT.
+END THE hall.
+--------------------------------------------------------------------------------
 
 So we have still stopped the player from going in that direction, but instead of giving the sense of being stopped, we give the illusion of moving about.
 
@@ -745,7 +801,10 @@ This is the kitchen.
 We might prefer to have a bit more descriptive move from one room to another.
 We can do that within the EXIT statements.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -757,7 +816,7 @@ We can do that within the EXIT statements.
           TV that is set up in this room, ideally located across from
           your comfy chair and table."
      EXIT south TO kitchen
-         [red]#DOES
+         [green]#DOES
              "You go south, into the kitchen."
      END EXIT.#
      EXIT north, east, west TO tv_room
@@ -771,7 +830,7 @@ We can do that within the EXIT statements.
      DESCRIPTION
          "This is the kitchen."
      EXIT north TO tv_room
-         [red]#DOES
+         [green]#DOES
              "You return to the TV Room, north."
      END EXIT.
      EXIT south, east, west TO kitchen
@@ -793,14 +852,20 @@ We want the interpreter to display a transition message as the player is EXITED 
 Note the change in format whenever we put a CHECK or DOES in the EXIT statement.
 It is no longer only
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 ----
  EXIT south TO kitchen. -- NOTE THE full-stop here!
 ----
 
 but now we write it like this:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 ----
  EXIT south TO kitchen -- The full-stop is moved to after the END.
     DOES -- (or CHECK)
@@ -814,7 +879,10 @@ but now we write it like this:
 Better than having to guess, it is often good to tell the player which directions are open to him/her.
 This is often done within the LOCATION DESCRIPTION.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -824,13 +892,13 @@ This is often done within the LOCATION DESCRIPTION.
         "This is your favorite room in the house, because you love to
          watch television. You recently purchased a giant screen
          plasma TV that is set up in this room, ideally located
-         across from your comfy chair and table. [red]#The kitchen is
+         across from your comfy chair and table. [green]#The kitchen is
          south.#"
  ...
  THE kitchen Isa LOCATION
      NAME Kitchen
      DESCRIPTION
-         "This is the kitchen. [red]#North returns to the TV Room.#"
+         "This is the kitchen. [green]#North returns to the TV Room.#"
  ...
 ----
 
@@ -879,7 +947,10 @@ In our game so far we have told the player that in the TV Room there is a TV, a 
 
 The basic template for an `OBJECT` is:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE/@PSEUDOCODE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
 THE ? Isa OBJECT AT ?
@@ -893,10 +964,13 @@ END THE ?.
 
 Our first OBJECT in "TV Time!" will be the plasma TV.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
- [red]#THE tv Isa OBJECT AT tv_room
+ [green]#THE tv Isa OBJECT AT tv_room
  END THE tv.#
 ----
 
@@ -907,7 +981,10 @@ Pardon the poor grammar, but it is what we are doing: the TV is placed AT the LO
 This is all that is necessary to create an OBJECT.
 In fact even this little bit of code is more than what is necessary to create an OBJECT, for we could have left it in a true digital limbo by not giving it any LOCATION at all:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  THE tv Isa OBJECT
@@ -920,7 +997,10 @@ For now, however, we will simply place the TV in the TV Room.
 
 It is a good idea to code OBJECTS following their LOCATIONS.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -941,7 +1021,7 @@ It is a good idea to code OBJECTS following their LOCATIONS.
      END EXIT.
  END THE tv_room.
  -----------------------
- [red]#THE tv Isa OBJECT AT tv_room
+ [green]#THE tv Isa OBJECT AT tv_room
  END THE tv.#
  -----------------------
  THE kitchen Isa LOCATION
@@ -959,15 +1039,17 @@ It is a good idea to code OBJECTS following their LOCATIONS.
 As it is, the interpreter will identify the TV as, well, the tv; and the player will be able to interact with it (to a limited degree) as the tv.
 Note, however, that we have told the player in the TV Room DESCRIPTION that it is not just a "TV", but it is "a giant screen plasma TV".
 He/She may want to refer to it as "plasma tv", "screen", "television", etc.
-The interpreter will then give the message "I don't know the word television." To preclude that, we can give the TV a
-NAME.
+The interpreter will then give the message "I don't know the word television." To preclude that, we can give the TV a NAME.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  THE tv Isa OBJECT AT tv_room
-     [red]#NAME giant screen plasma TV#
+     [green]#NAME giant screen plasma TV#
  END THE tv.
  ...
 ----
@@ -980,16 +1062,19 @@ Another thing we might not be happy with is that every time the interpreter refe
 There are several ways we can make it cleaner and more co-operative.
 The first is by multiple NAME statements:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE ????:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  THE tv Isa OBJECT AT tv_room
-     [red]#NAME TV
+     [green]#NAME TV
      NAME plasma
      NAME screen
      NAME giant#
-     NAME giant screen plasma [red]#television#
+     NAME giant screen plasma [green]#television#
  END THE tv.
  ...
 ----
@@ -1007,11 +1092,14 @@ Another tool to use here is SYNONYMS, like we did in the
 xref:nowhere[Nowhere LOCATION].
 It is important to note that SYNONYMS must be declared before, not after, the main word is defined.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
- [red]#SYNONYMS
+ [green]#SYNONYMS
      television = tv.#
  THE tv Isa OBJECT AT tv_room
      NAME TV
@@ -1034,7 +1122,7 @@ So later if we create a TV remote control or a TV power cord or a TV antennae (w
 Compile and run the game.
 This is what the interpreter will display:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @TRANSCRIPT
 ----
 TV Room
 This is your favorite room in the house, because you love to watch
@@ -1050,16 +1138,14 @@ about the TV in the DESCRIPTION for the LOCATION.
 It is uncomfortably
 redundant to be told a second time, "There is a TV here."
 
-The fix comes when we understand what happens when the player enters a
-LOCATION.
-If there are OBJECTS in the LOCATION, they will be described
-to the player.
-In the case of the TV, and any other OBJECTS that we
-might not wish to have described immediately, or at all, we can assign
-a DESCRIPTION for the OBJECT -- a blank DESCRIPTION, that overrides the
-describing tendency of the LOCATION.
+The fix comes when we understand what happens when the player enters a LOCATION.
+If there are OBJECTS in the LOCATION, they will be described to the player.
+In the case of the TV, and any other OBJECTS that we might not wish to have described immediately, or at all, we can assign a DESCRIPTION for the OBJECT -- a blank DESCRIPTION, that overrides the describing tendency of the LOCATION.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1071,7 +1157,7 @@ describing tendency of the LOCATION.
      NAME screen
      NAME giant
      NAME giant screen plasma tv
-     [red]#DESCRIPTION
+     [green]#DESCRIPTION
          ""#
  END THE tv.
  ...
@@ -1079,7 +1165,10 @@ describing tendency of the LOCATION.
 
 In fact we do not even need to include the quote marks.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1091,7 +1180,7 @@ In fact we do not even need to include the quote marks.
      NAME screen
      NAME giant
      NAME giant screen plasma tv
-     [red]#DESCRIPTION#
+     [green]#DESCRIPTION#
  END THE tv.
  ...
 ----
@@ -1099,11 +1188,14 @@ In fact we do not even need to include the quote marks.
 Now the TV will only be mentioned in the LOCATION DESCRIPTION and not described a second time in an OBJECT DESCRIPTION.
 As the chair and table are similarly mentioned in the TV Room, let's go ahead and create those too.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
- [red]#-----------------------
+ [green]#-----------------------
  THE chair Isa OBJECT AT tv_room
      NAME comfy chair NAME comfy
      DESCRIPTION
@@ -1162,7 +1254,10 @@ But we can do that with the help of the library and Attributes.
 Before we see how it works, let's see how easy it is to make the TV able to turn on or off.
 Add this line to your code:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1174,7 +1269,7 @@ Add this line to your code:
      NAME screen
      NAME giant
      NAME giant screen plasma tv
-     [red]#IS SWITCHABLE. -- Note the full-stop.#
+     [green]#IS SWITCHABLE. -- Note the full-stop.#
      DESCRIPTION
  END THE tv.
  ...
@@ -1197,7 +1292,10 @@ It's important now to see how this works, and in the course of doing so to learn
 It begins with a file in the library called "turn.i", short for "turn on and turn off.i".
 The things to notice at this point are highlighted in [yellow-background]#yellow#.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -- turn.i -- Library version 0.5.0
@@ -1263,7 +1361,10 @@ The things to notice at this point are highlighted in [yellow-background]#yellow
 
 Let's look at the first section above:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 ----
  Add To Every object
      Is
@@ -1283,10 +1384,12 @@ As you can see in the example from the library, we are Adding To Every OBJECT in
 
 == VERBS and CHECKS
 
-The second and third sections in yellow highlight also Add something
-To Every OBJECT, this time several VERBS.
+The second and third sections in yellow highlight also Add something To Every OBJECT, this time several VERBS.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY ?????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Add To Every object
@@ -1304,7 +1407,10 @@ To Every OBJECT, this time several VERBS.
 
 and
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY ?????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Add To Every object
@@ -1325,10 +1431,12 @@ These two sections tell the interpreter what to do if the player should try to t
 [float]
 === VERBS and CHECKS for Attributes
 
-Without going into detail right now about how VERBS work, the main
-thing I want you to see right now is their basic format:
+Without going into detail right now about how VERBS work, the main thing I want you to see right now is their basic format:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  VERB _do_this, do_that_
@@ -1347,7 +1455,10 @@ In fact, we will most often use a CHECK conditionally, to see if it should stop 
 
 When we want to use a CHECK conditionally, we use the format:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  CHECK _whether a certain condition is met_
@@ -1360,7 +1471,10 @@ Very often the condition to be met will be whether an OBJECT'S certain Attribute
 If the OBJECT'S Attribute is true (for example), the CHECK passes and the action takes place.
 If the Attribute is not true, the CHECK stops the action that would otherwise take place.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY ????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Verb turn_on1, turn_on2, switch_on1, switch_on2
@@ -1371,7 +1485,10 @@ If the Attribute is not true, the CHECK stops the action that would otherwise ta
 That is why at first we could not turn on the TV.
 We typed "turn on the tv", the interpreter came to the CHECK, saw that the TV was not switchable -- from the first section, remember --
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME ?????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1396,7 +1513,10 @@ And the standard library is set up to let him do just that!
 
 Look in the library folder and find the file "take.i".
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1424,7 +1544,10 @@ Well, what if we don't want the player to be able to pick up the tv?
 We have several options.
 The first and perhaps easiest option is to look at the "take" VERB in the library.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1451,7 +1574,10 @@ Also notice that every OBJECT in the game is made "takeable" by default.
 Our tv is an OBJECT, so it has the default Attribute of being takeable.
 We can change the Attribute of the tv from being takeable to being not takeable.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1463,7 +1589,7 @@ We can change the Attribute of the tv from being takeable to being not takeable.
      NAME giant screen plasma tv
      IS
          SWITCHABLE.
-         [red]#NOT TAKEABLE.#
+         [green]#NOT TAKEABLE.#
      DESCRIPTION
  END THE tv.
  ...
@@ -1500,7 +1626,10 @@ For example, we could make the tv purple with "HAS color purple"; we could make 
 
 Looking at the VERB in "take.i" again, we see:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1522,7 +1651,10 @@ Looking at the VERB in "take.i" again, we see:
 All we need to do is give the TV the Attribute of weight, and a value
 greater than 50.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ....
@@ -1536,7 +1668,7 @@ greater than 50.
      NAME giant screen plasma tv
      IS SWITCHABLE.
      -- NOTE we removed the "NOT takeable."
-     [red]#HAS weight 100.#
+     [green]#HAS weight 100.#
      DESCRIPTION
  END THE tv.
  ...
@@ -1566,7 +1698,10 @@ Now it is time to learn how to modify the responses for each OBJECT.
 We will start with the "look at" command, found in the library's "examine.i" file ( not the "look.i" file, which "looks" at the LOCATION; we want to "look at", or "examine" the OBJECTS).
 Again, the relevant sections are highlighted in #yellow#.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -- examine.i
@@ -1615,7 +1750,10 @@ image::{assets-img}predefined-classes.svg[predefined classes, align="center"]
 
 The "examine.i" file says:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1633,7 +1771,10 @@ Any of these words typed by the player will be the same to the interpreter as th
 
 Now there is something new here:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1646,7 +1787,10 @@ We will look at the SYNTAX construction in detail later.
 What is important to see at this point is that this is not the same as a single-word SYNONYM for "examine".
 This SYNTAX construction allows for a multiple-word command, "look at", applied to the OBJECT (obj), meaning the same thing to the interpreter as "examine" .
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1694,7 +1838,10 @@ The simplest way to do that right now is to begin with the "copy-and-paste" meth
 Let's copy and paste the VERB from "examine.i" into our OBJECTS.
 This is the section we want from "examine.i":
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
      Verb examine
@@ -1712,7 +1859,10 @@ So before we paste it into our game file, let's remove the CHECK, etc.
 IMPORTANT: This doesn't mean the CHECKS will not apply to our OBJECTS.
 The CHECKS will still be applied by default.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY ?????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Verb examine
@@ -1723,7 +1873,10 @@ The CHECKS will still be applied by default.
 
 We can also remove the unwanted response, leaving us with:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 ----
  Verb examine
      Does
@@ -1733,7 +1886,10 @@ We can also remove the unwanted response, leaving us with:
 
 Now let's paste this into the section for each of our OBJECTS:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1747,7 +1903,7 @@ Now let's paste this into the section for each of our OBJECTS:
      IS SWITCHABLE.
      HAS weight 100.
      DESCRIPTION
-     [red]#Verb examine
+     [green]#Verb examine
          Does
              ""
      End Verb.#
@@ -1757,7 +1913,7 @@ Now let's paste this into the section for each of our OBJECTS:
      NAME comfy chair
      NAME comfy
      DESCRIPTION
-     [red]#Verb examine
+     [green]#Verb examine
          Does
              ""
      End Verb.#
@@ -1765,7 +1921,7 @@ Now let's paste this into the section for each of our OBJECTS:
  -----------------------
  THE table Isa OBJECT AT tv_room
      DESCRIPTION
-     [red]#Verb examine
+     [green]#Verb examine
          Does
              ""
      End Verb.#
@@ -1776,7 +1932,10 @@ Now let's paste this into the section for each of our OBJECTS:
 
 Now let's put in our custom responses:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1793,7 +1952,7 @@ Now let's put in our custom responses:
      DESCRIPTION
      Verb examine
          Does
-             [red]#"It's your 52-inch plasma pride and joy."#
+             [green]#"It's your 52-inch plasma pride and joy."#
      End Verb.
  END THE tv.
  -----------------------
@@ -1802,7 +1961,7 @@ Now let's put in our custom responses:
      DESCRIPTION
      Verb examine
          Does
-             [red]#"It's your favorite chair to sit in when you're watching
+             [green]#"It's your favorite chair to sit in when you're watching
               the big game."#
      End Verb.
  END THE chair.
@@ -1811,7 +1970,7 @@ Now let's put in our custom responses:
      DESCRIPTION
      Verb examine
          Does
-             [red]#"It's an ordinary table, set conveniently by your chair."#
+             [green]#"It's an ordinary table, set conveniently by your chair."#
      End Verb.
  END THE table.
  -----------------------
@@ -1843,12 +2002,15 @@ The default DOES in the library is carried out, and then the custom DOES for the
 If we want the interpreter to do only what the custom response calls for, we add the word ONLY .
 Like this:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  Verb examine
-     Does [red]#ONLY#
+     Does [green]#ONLY#
          "It's your 52-inch plasma pride and joy."
  End Verb.
  ...
@@ -1891,7 +2053,10 @@ That is too heavy to lift.
 There is still another way to override the default responses for "take", and that is to supply a custom response of our own, as we did in the last section with the "examine" VERB.
 Let's copy and paste the relevant section from the "take" VERB in "take.i":
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Verb take, pick_up1, pick_up2
@@ -1911,7 +2076,10 @@ Let's copy and paste the relevant section from the "take" VERB in "take.i":
 
 Let's remove the CHECKS and paste the remaining code in the tv OBJECT.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1924,14 +2092,14 @@ Let's remove the CHECKS and paste the remaining code in the tv OBJECT.
      NAME giant
      NAME giant screen plasma tv
      IS SWITCHABLE.
-     [red]#-- We removed the "HAS weight 100" to keep the
+     [green]#-- We removed the "HAS weight 100" to keep the
      -- default CHECK from stopping the "take" action.#
      DESCRIPTION
      Verb examine
          Does ONLY
              "It's your 52-inch plasma pride and joy."
      End Verb.
-     [red]#Verb take, pick_up1, pick_up2
+     [green]#Verb take, pick_up1, pick_up2
          Does ONLY -- We don't want the default DOES to apply!
              Locate obj In hero.
              "Taken."
@@ -1952,7 +2120,10 @@ So to LOCATE the tv IN the Hero means that the tv will no longer be in the TV Ro
 
 To prevent the tv from being moved into the player inventory, we simply omit the LOCATE statement from the "take" VERB.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ?????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1969,7 +2140,10 @@ We are overriding _everything_ in the DOES section of the default VERB with DOES
 Of course the "Taken" message makes no sense now.
 We can put a custom message in its place.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -1989,7 +2163,7 @@ We can put a custom message in its place.
      End Verb.
      Verb take, pick_up1, pick_up2
          Does ONLY
-             [red]#"You try to wrap your arms around the giant screen
+             [green]#"You try to wrap your arms around the giant screen
               but it is too wide. You can't get a good grip on the
               heavy TV to lift it."#
      End Verb.
@@ -2005,7 +2179,10 @@ This same effect could be achieved with a CHECK in the place of the DOES ONLY, b
 Let's do one more custom response to a default VERB in the library, turning the tv on and off.
 We'll start by looking once again at "turn.i" and copying what we need for the tv and removing the CHECKS.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Verb turn_on1, turn_on2, switch_on1, switch_on2
@@ -2030,7 +2207,10 @@ But we did not have to give the tv the Attribute of " on " (an Alan reserved wor
 That is, the tv has the Attribute IS NOT ON.
 We did not have to assign that Attribute to the tv in our code, because the default library ("turn.i") has already assigned it to every OBJECT in the game:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Add To Every object
@@ -2042,7 +2222,10 @@ We did not have to assign that Attribute to the tv in our code, because the defa
 
 What an OBJECT IS NOT can be changed to IS, and what it IS can be changed to IS NOT, with the MAKE statement.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Verb turn_on1, turn_on2, switch_on1, switch_on2
@@ -2061,11 +2244,14 @@ The word "obj" is a stand-in for the OBJECT, in this case the tv.
 It will work fine as it is, making the tv ON.
 But to make the code easier to understand, especially as it may become more complex, we do well to let the tv stand in for itself.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Verb turn_on1, turn_on2, switch_on1, switch_on2
-    Does [red]#ONLY
+    Does [green]#ONLY
         Make tv# 'on'.
         "You turn on" Say The obj. "."
  End Verb.
@@ -2078,6 +2264,11 @@ The default library would take care of the rest.
 
 But we want to do more than say "You turn on the tv." We want this display:
 
+
+// @FIXME @TRANSCRIPT:
+// - [ ] Fix image so it shows in transcript.
+// - [ ] Rename image to something more friendly.
+// - [ ] Include and format text after image.
 [example,role="gametranscript"]
 ================================================================================
 &gt; _turn on the tv_ +
@@ -2103,7 +2294,10 @@ Next part will show how we do it.
 It is very easy to put images in your game with the SHOW statement.
 Here is how it is done for the tv:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -2130,7 +2324,7 @@ Here is how it is done for the tv:
      Verb turn_on1, turn_on2, switch_on1, switch_on2
          Does ONLY
              Make tv 'on'.
-             [red]#"Wow! What a great picture!"
+             [green]#"Wow! What a great picture!"
              SHOW 'plasma.jpg'.
              "You watch the game and your favorite team wins!"
              "$pAnd so have you..."
@@ -2190,12 +2384,17 @@ table. The kitchen is south.
 We place our introductory information and title conveniently after the
 START AT statement.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+// - [ ] CHECK TV TIME HEADER
+
 [subs="quotes"]
 ----
  ...
  START AT tv_room.
-     [red]#"$p$t$t$t$t$t$t$t$t$t\*\** TV TIME! \***
+     [green]#"$p$t$t$t$t$t$t$t$t$t\*\** TV TIME! \***
       $n$t$t$t$t$t$tAn ALAN 3 Interactive Fiction Tutorial Game
       $n$t$t$t$t$t$t$tBy Michael Arnaud © 2006
       $p(Type ""help"" if you have not played this kind of game before.)
@@ -2235,10 +2434,13 @@ Like this:
 
 // ** (this comment is required to prevent Sublime Text syntax break up)
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
-     [red]#"$p$t$t$t$t$t$t$t$t$t\*\** TV TIME! \***"
+     [green]#"$p$t$t$t$t$t$t$t$t$t\*\** TV TIME! \***"
      "$n$t$t$t$t$t$tAn ALAN 3 Interactive Fiction Tutorial Game"
      "$n$t$t$t$t$t$t$tBy Michael Arnaud &#169; 2006"
      "$p(Type ""help"" if you have not played this kind of game
@@ -2275,7 +2477,10 @@ The formatting of text around the image is a little tricky, and trial-and-error 
 
 If you want to display text not only above and below, but to the right of the image, I have found this format effective:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -2295,14 +2500,17 @@ The $n or double $n will print the text to the right of the image, where using a
 Now that we have given introductory information at the start that the player has "just purchased a brand new big screen plasma TV that was delivered earlier today," it is redundant to repeat that same information in the TV Room.
 It's time to change the TV Room DESCRIPTION.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  THE tv_room Isa LOCATION
      NAME 'TV Room'
          DESCRIPTION
              "This is your favorite room in the house, because you
-              love to watch television. [red]#Your new plasma TV# is
+              love to watch television. [green]#Your new plasma TV# is
               set up in this room, ideally located across from your
               comfy chair and table.  $pThe kitchen is south."
  ...
@@ -2310,7 +2518,10 @@ It's time to change the TV Room DESCRIPTION.
 
 While we're at it, since we have added a few adjectives to the tv in our start-up information, let's go back to the tv and add them as well, just in cast the player wants to refer to the tv with them.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -2319,11 +2530,11 @@ While we're at it, since we have added a few adjectives to the tv in our start-u
  THE tv Isa OBJECT AT tv_room
      NAME TV
      NAME plasma
-     [red]#NAME brand
+     [green]#NAME brand
      NAME new
      NAME screen
      NAME giant#
-     NAME [red]#brand new# giant screen plasma tv
+     NAME [green]#brand new# giant screen plasma tv
  ...
 ----
 
@@ -2349,13 +2560,16 @@ The order of construction, then, should be first to disable turning on the tv wi
 [float]
 === Disable the TV
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  Verb turn_on1, turn_on2, switch_on1, switch_on2
      Does ONLY
-         [red]#-- We removed MAKE tv on.
+         [green]#-- We removed MAKE tv on.
          "There are no knobs, switches or buttons for turning on the
           TV."#
  End Verb.
@@ -2369,11 +2583,14 @@ If we are concerned that the puzzle may be too difficult, we could add a line so
 [float]
 === Create the Remote
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
- [red]#THE remote Isa OBJECT AT Nowhere
+ [green]#THE remote Isa OBJECT AT Nowhere
      NAME remote control
      NAME controller
      NAME tv control remote
@@ -2389,7 +2606,10 @@ Notice that the remote is "AT Nowhere".
 That is because it will not be introduced into the game proper until it is found by searching the chair.
 Enable the Remote Looking once again to the library for the "turn on" VERB in "turn.i":
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY ????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -2407,7 +2627,10 @@ Enable the Remote Looking once again to the library for the "turn on" VERB in "t
 
 So first thing we will make the remote "switchable".
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -2415,18 +2638,21 @@ So first thing we will make the remote "switchable".
      NAME remote control
      NAME controller
      NAME tv control remote
-     [red]#IS SWITCHABLE.#
+     [green]#IS SWITCHABLE.#
  ...
 ----
 
 Remove the CHECKS from the VERB and add DOES ONLY:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY ????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
      Verb turn_on1, turn_on2, switch_on1, switch_on2
-         Does [red]#ONLY#
+         Does [green]#ONLY#
              Make obj 'on'.
              "You turn on" Say The obj. "."
      End Verb.
@@ -2437,7 +2663,10 @@ Now notice this: "obj" is a stand-in for the remote.
 We don't really want to turn on the remote.
 We want the statement "turn on the remote"to turn on _the tv and win the game._ So:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ....
@@ -2452,7 +2681,7 @@ We want the statement "turn on the remote"to turn on _the tv and win the game._ 
      END VERB.
      Verb turn_on1, turn_on2, switch_on1, switch_on2
          Does ONLY
-             [red]#Make tv on.
+             [green]#Make tv on.
              "Wow! What a great picture!"
              SHOW plasma.jpg.
              "$n$nYou watch the game and your favorite team wins!"
@@ -2475,7 +2704,10 @@ It is also the way the Alan standard library is set up.
 
 From "examine.i":
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ?????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -2489,7 +2721,10 @@ From "examine.i":
 
 The chair is a THING, so it is "searchable".
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ?????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -2505,12 +2740,15 @@ The chair is a THING, so it is "searchable".
 
 Remove the CHECKS and add DOES ONLY:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ?????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  VERB search
-     DOES [red]#ONLY#
+     DOES [green]#ONLY#
          "You find nothing of interest."
  END VERB.
  ...
@@ -2518,25 +2756,31 @@ Remove the CHECKS and add DOES ONLY:
 
 Now let's change the default message.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  VERB search
      DOES ONLY
-         "You find [red]#the lost remote control#."
+         "You find [green]#the lost remote control#."
  END VERB.
 ----
 
 Now bring the remote into the game.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  VERB search
      DOES ONLY
-         [red]#LOCATE remote Here.#
+         [green]#LOCATE remote Here.#
          "You find the lost remote control."
  END VERB.
  ...
@@ -2546,12 +2790,15 @@ We can use "Here" to represent the LOCATION where the Hero is.
 It is helpful especially in such cases if, for example, the player were to take the chair into the kitchen before searching it.
 If we were to code it this way it would give a rather confusing result:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  VERB search
      DOES ONLY
-         [red]#LOCATE remote AT tv_room. -- But we're in the kitchen!?#
+         [green]#LOCATE remote AT tv_room. -- But we're in the kitchen!?#
          "You find the lost remote control."
  END VERB.
  ...
@@ -2559,14 +2806,17 @@ If we were to code it this way it would give a rather confusing result:
 
 An even better solution than "LOCATE remote Here" whenever the Hero finds a small OBJECT, is to assume that the player would take it upon finding it, and LOCATE the OBJECT IN the Hero, with an explanatory message.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  VERB search
      DOES ONLY
-         [red]#LOCATE remote in Hero.#
-         "You find the lost remote control, [red]#which you take#."
+         [green]#LOCATE remote in Hero.#
+         "You find the lost remote control, [green]#which you take#."
  END VERB.
  ...
 ----
@@ -2577,14 +2827,17 @@ An even better solution than "LOCATE remote Here" whenever the Hero finds a smal
 It is probably a good idea to give the player a subtle hint to search the chair.
 A good place to do that is in the "examine" VERB for the chair.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  VERB examine
      DOES ONLY
          "It's your favorite chair to sit in when you're watching the big
-          game. [red]#It has big soft comfy cushions -- just the kind people
+          game. [green]#It has big soft comfy cushions -- just the kind people
           lose change in all the time.#"
  END VERB.
  ...
@@ -2593,14 +2846,17 @@ A good place to do that is in the "examine" VERB for the chair.
 By suggesting that there may be some loose change under the cushions, it is likely that the astute player will search the chair.
 It might be a good idea to add the cushions to the NAME of the chair.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  THE chair Isa OBJECT AT tv_room
      NAME comfy chair
      NAME comfy
-     [red]#NAME cushions
+     [green]#NAME cushions
      NAME big soft chair cushion -- includes singular and plural#
      DESCRIPTION
  ...
@@ -2628,7 +2884,10 @@ But we should also weigh how much realism and detail for such things as the butt
 
 For our purposes, we will not program the buttons as a separate OBJECT, but simply include them as part of the remote with NAME statements.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -2636,7 +2895,7 @@ For our purposes, we will not program the buttons as a separate OBJECT, but simp
      NAME remote control
      NAME controller
      NAME remote
-     [red]#NAME button
+     [green]#NAME button
      NAME simple push buttons#
  ...
 ----
@@ -2644,7 +2903,10 @@ For our purposes, we will not program the buttons as a separate OBJECT, but simp
 The next thing to do is accommodate the player's likely attempt to "push the button".
 A look at "push.i" in the library tells us the remote needs to have the Attribute "IS PUSHABLE." Then we are ready to copy and paste the VERB, removing the CHECKS and adding DOES ONLY:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -2655,8 +2917,8 @@ A look at "push.i" in the library tells us the remote needs to have the Attribut
      NAME button
      NAME simple push buttons
      IS SWITCHABLE.
-        [red]#PUSHABLE.#
-     [red]#Verb push
+        [green]#PUSHABLE.#
+     [green]#Verb push
          Does ONLY
              "You push" Say The obj. "."
      End Verb.#
@@ -2677,12 +2939,15 @@ And so we have come to the reason why I said at the beginning to copy the standa
 Remember, the changes are done to your copy of the standard library in your "mylib" folder, not the "alanlib" folder.
 
 Some of the changes we will make in the future may be considerable; but for now it will be a very safe and simple one.
-The changes are indicated in [red]#RED#.
-Any time we make changes to the library, it is a good idea to add notes (indicated in this tutorial with [red]#{3ast}#) so the changes can be easily identified.
+The changes are indicated in [green]#RED#.
+Any time we make changes to the library, it is a good idea to add notes (indicated in this tutorial with [green]#{3ast}#) so the changes can be easily identified.
 
 
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -- push.i
@@ -2693,7 +2958,7 @@ Any time we make changes to the library, it is a good idea to add notes (indicat
          pushable.
  END ADD TO THING.
  SYNONYMS
-     [red]#press, click = push. -- \***** ADDED \***#
+     [green]#press, click = push. -- \***** ADDED \***#
  SYNTAX
      push = push (obj)
          WHERE obj ISA THING
@@ -2713,7 +2978,10 @@ Any time we make changes to the library, it is a good idea to add notes (indicat
 Now "press the button" or "click the remote" will work the same as "push the button".
 All we need to do now is make the VERB do what we want (i.e., win!) and the fine-tuning for the remote is complete.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -2725,7 +2993,7 @@ All we need to do now is make the VERB do what we want (i.e., win!) and the fine
      NAME button
      NAME simple push buttons
      IS SWITCHABLE.
-        [red]#PUSHABLE.#
+        [green]#PUSHABLE.#
      VERB examine
          DOES ONLY
              "It's a very simple push-button remote control."
@@ -2740,7 +3008,7 @@ All we need to do now is make the VERB do what we want (i.e., win!) and the fine
              "$p\*\** You have won! \*\**"
              QUIT.
      END VERB.
-     [red]#VERB push
+     [green]#VERB push
          DOES ONLY
              MAKE tv 'on'.
              "Wow! What a great picture!"
@@ -2779,12 +3047,15 @@ You find the lost remote control, which you take.
 
 Here is one way we might prevent that from happening:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  VERB search
-     [red]#CHECK remote AT Nowhere
+     [green]#CHECK remote AT Nowhere
          ELSE
              "There is nothing else to find by searching the chair."#
      DOES ONLY
@@ -2806,12 +3077,15 @@ remote control, he/she cannot "turn on the tv"!
 We can easily fix that
 in the same way as we fine-tuned the "search" VERB for the chair.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  VERB turn_on1, turn_on2, switch_on1, switch_on2
-     [red]#CHECK remote Here
+     [green]#CHECK remote Here
          ELSE
              "There are no knobs, switches or buttons for turning on
               the TV."#
@@ -2846,7 +3120,10 @@ This completes our first "simple" game.
 
 == Compile and Play It!
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------------------------------
@@ -3006,7 +3283,10 @@ Even though we will later program the chair for sitting in, the chair is not a C
 In fact, neither the Hero nor any Actor (NPC, or "non-player character") can be inside a CONTAINER. The proto-CONTAINER in our game is the table.
 
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -3024,12 +3304,15 @@ Oh yes, right now it is only "an ordinary table".
 But it is about to
 be transformed with a single word.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  THE table Isa OBJECT AT tv_room
-     [red]#CONTAINER#
+     [green]#CONTAINER#
      DESCRIPTION
      VERB examine
          DOES ONLY
@@ -3051,7 +3334,10 @@ But our table does not have any drawers or anything to put something inside.
 Our table is a simple surface, and all we want is to be able to put something on the table (and take from it).
 Nevertheless, in order to understand what we are going to do with the "put on" VERB, we will first have to understand the "put in" VERB, from "put.i":
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  SYNTAX
@@ -3081,7 +3367,10 @@ If the obj1 is not an OBJECT or if the obj2 is not a CONTAINER, the SYNTAX will 
 [float]
 === The put_in VERB
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -3114,15 +3403,18 @@ The next lines CHECK whether the Hero has the obj1 in his/her Inventory.
 Again, I prefer to accommodate the player if the obj1 is present in the same LOCATION.
 So let's change the library VERB to allow that.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Add To Every object
      Verb put_in
          When obj1
-             Check obj1 [red]#Here -- \*\** CHANGED FROM In Hero, etc. \***#
+             Check obj1 [green]#Here -- \*\** CHANGED FROM In Hero, etc. \***#
                  Else
-                     [red]#"You don't see" Say The obj1. "here."#
+                     [green]#"You don't see" Say The obj1. "here."#
              And obj1 &lt;&gt; obj2
                  Else "You can't put something into itself!"
              And obj2 &lt;&gt; hero
@@ -3142,7 +3434,10 @@ Finally there is the "Does", which LOCATES the obj1 IN the obj2.
 
 The library ("put.i") has the "put on" VERB:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -3160,7 +3455,10 @@ This works for us, because a CONTAINER is an OBJECT, and an OBJECT is a THING.
 The reason obj2 is a THING and not a CONTAINER is to allow the player to put <something> on himself/herself, i.e., to wear it.
 See "wear.i"in the library.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -3171,7 +3469,7 @@ See "wear.i"in the library.
          DOES ONLY
              "It's an ordinary table, set conveniently by your chair."
      END VERB.
-     [red]#VERB put_on
+     [green]#VERB put_on
          WHEN obj2
              DOES ONLY
                  LOCATE obj1 IN table.
@@ -3188,7 +3486,10 @@ There is a VERB that we do not want to apply to the table, and that is the "put 
 Our table has no drawers to put anything into.
 So:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -3205,7 +3506,7 @@ So:
                  LOCATE obj1 IN table.
                  "You set" Say The obj1. "on the table.""
      END VERB.
-     [red]#VERB put_in
+     [green]#VERB put_in
          WHEN obj2
              CHECK
                  "There are no drawers in the table to put anything in."
@@ -3243,13 +3544,16 @@ The table contains a remote control.
 
 We can change the "contains" message to better fit the table, which after all is a surface. To do this, we add a HEADER statement.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  THE table Isa OBJECT AT tv_room
      CONTAINER
-         [red]#HEADER
+         [green]#HEADER
              "Resting on the table is"#
      DESCRIPTION
      VERB examine
@@ -3293,11 +3597,14 @@ In the previous section we made the table into a CONTAINER, and further refined 
 Our game has several of these surface-type CONTAINERS.
 Instead of having to program the same Attributes and VERBS for each one, we can create a Sub-Class with the shared Attributes, etc. (¶ 2.4.5), and call it SURFACE (or "Topside" or "Pimpernel" or whatever we want).
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
- [red]#Every SURFACE Isa OBJECT
+ [green]#Every SURFACE Isa OBJECT
      CONTAINER
      HEADER
          "Resting on top is"
@@ -3314,11 +3621,14 @@ One, we don't want the default "nothing special" message from the library VERB, 
 Second, we can use "THIS" to good effect in creating Classes.
 It represents the particular subject of the VERB -- in this case the particular SURFACE in question.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
-     [red]#VERB put_in  WHEN obj2
+     [green]#VERB put_in  WHEN obj2
          CHECK
              "That isn't something you can put anything ""in""."
      END VERB.
@@ -3331,14 +3641,17 @@ It would become complicated and tedious to make wearable items into Containers; 
 
 Now that we have created a specialized Class of OBJECT-CONTAINER, we can use it for the table and for every other similar OBJECT in the game.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
- THE table Isa [red]#SURFACE# AT tv_room
+ THE table Isa [green]#SURFACE# AT tv_room
      DESCRIPTION
      VERB examine
-         DOES [red]#BEFORE#
+         DOES [green]#BEFORE#
              "It's an ordinary table, set conveniently by your chair."
      END VERB.
  END THE table.
@@ -3364,10 +3677,13 @@ There is another sort of specialized CONTAINER we might find useful (though ther
 This would be used for cabinets, treasure chests, drawers, knapsacks, secret compartments, etc.
 I like to call them CLOSEABLES, and here is how we create a Class for them:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
- [red]#Every CLOSEABLE Isa OBJECT#
+ [green]#Every CLOSEABLE Isa OBJECT#
  ...
 ----
 
@@ -3382,14 +3698,17 @@ After all, I figure if something is closeable it is probably also openable; and 
 This frees CLOSEABLE for exclusive use as a Class.
 So in "open.i" we make these changes:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  Add To Every object
-     [red]#-- \*\** REMOVED Is Not closeable. \***#
+     [green]#-- \*\** REMOVED Is Not closeable. \***#
      Verb close
-         Check obj Is [red]#OPENABLE -- \*\** CHANGED from closeable \***#
+         Check obj Is [green]#OPENABLE -- \*\** CHANGED from closeable \***#
              Else "You can't close that."
          And obj Is open
              Else "It is not open."
@@ -3403,11 +3722,14 @@ So in "open.i" we make these changes:
 
 With that resolved, let's return to creating our CLOSEABLE Class.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
- [red]#Every CLOSEABLE Isa OBJECT
+ [green]#Every CLOSEABLE Isa OBJECT
      OPAQUE CONTAINER#
  ...
 ----
@@ -3415,13 +3737,16 @@ With that resolved, let's return to creating our CLOSEABLE Class.
 An OPAQUE CONTAINER is one that the player cannot see into, that is, what it contains while it is closed.
 If we want a CLOSEABLE that the player can see into while closed, we can omit or change the OPAQUE Attribute to make it transparent.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  Every CLOSEABLE Isa OBJECT
      OPAQUE CONTAINER
-     [red]#HEADER -- For when it is open
+     [green]#HEADER -- For when it is open
          "It contains"
      IS OPENABLE. -- see "open.i"
      VERB open
@@ -3436,7 +3761,10 @@ The library VERB will MAKE the CLOSEABLE Attribute "Is open" and display the mes
 All we want to do is cause the CLOSEABLE to describe its contents after it has been opened.
 DOES AFTER accomplishes this for us.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -3447,20 +3775,23 @@ DOES AFTER accomplishes this for us.
      IS OPENABLE.
      VERB open
          DOES AFTER
-             [red]#MAKE THIS NOT OPAQUE.#
+             [green]#MAKE THIS NOT OPAQUE.#
  ...
 ----
 
 MAKE THIS NOT OPAQUE so that it will reveal its contents and make them accessible to the player.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
      VERB open
          DOES AFTER
             MAKE THIS NOT OPAQUE.
-            [red]#LIST THIS.
+            [green]#LIST THIS.
      END VERB.#
  ...
 ----
@@ -3469,11 +3800,14 @@ The LIST statement will cause THIS (particular CLOSEABLE) to describe its conten
 
 Now it is a simple matter to do the same for the "close" VERB.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
-     [red]#VERB close
+     [green]#VERB close
          DOES AFTER -- the default is in "open.i"
              MAKE THIS OPAQUE.
      END VERB.#
@@ -3483,7 +3817,10 @@ Now it is a simple matter to do the same for the "close" VERB.
 
 Just in case you're wondering where to put this code, it might be a good idea to put your custom Classes right after the " import std.i. ":
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------------------------------
@@ -3535,7 +3872,10 @@ Then open "std.i" and add "import 'custom.i'." to the list.
 
 Let's go ahead and put this Class and the SURFACE Class to use in the Kitchen:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -3543,7 +3883,7 @@ Let's go ahead and put this Class and the SURFACE Class to use in the Kitchen:
  THE kitchen Isa LOCATION
      NAME 'Kitchen'
      DESCRIPTION
-         "This is the kitchen. [red]#There is a counter and a cupboard here.#
+         "This is the kitchen. [green]#There is a counter and a cupboard here.#
           $pNorth returns to the TV Room."
      EXIT north TO tv_room
          DOES
@@ -3555,7 +3895,7 @@ Let's go ahead and put this Class and the SURFACE Class to use in the Kitchen:
      END EXIT.
  END THE kitchen.
  -----------------------
- [red]#THE counter Isa SURFACE AT kitchen
+ [green]#THE counter Isa SURFACE AT kitchen
      DESCRIPTION
  END THE counter.
  -----------------------
@@ -3580,11 +3920,14 @@ It is not much used in games anymore as a simple inconvenience between LOCATIONS
 Most doors have two sides, in which case it is necessary to program two Doors, one in each LOCATION to represent the two sides of a single Door.
 Here is how we might construct a Door Class:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
- [red]#EVERY Door Isa OBJECT
+ [green]#EVERY Door Isa OBJECT
      NAME door#
  ...
 ----
@@ -3595,6 +3938,8 @@ Every particular Instance of a Door will be called a Door, inherited from the Cl
 The following table from the manual (without the manual's nice colors, see ¶ 4.7.1) shows how the NAME as well as other properties are inherited by the Instances.
 Some are completely overridden, that is, the property if included in the Instance will replace that of the Class.
 Others are accumulated (as the NAME statement for example), generally appending to the end of the same property in the Class.
+
+// @FIXME: @TABLE
 
 [options="header"]
 |==================================
@@ -3626,26 +3971,32 @@ Qualification on page 99) if you don't want them all to execute.
 |==================================
 
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  EVERY Door Isa OBJECT
      NAME door
-     [red]#HAS otherside Door.#
+     [green]#HAS otherside Door.#
  ...
 ----
 
 The point of this line is to indicate the other side of the Door, i.e, first that it HAS the non-Boolean Attribute of an "otherside", and then to assign the Class , "Door" to that other side.
 So every Door has an other side which is also a Door.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  EVERY Door Isa OBJECT
      NAME door
      HAS otherside Door
-     [red]#IS OPENABLE. -- So we can open and close it.
+     [green]#IS OPENABLE. -- So we can open and close it.
      VERB open
          DOES AFTER
              MAKE otherside OF THIS open.
@@ -3656,11 +4007,14 @@ So every Door has an other side which is also a Door.
 The execution of the "open" VERB, after the action of the default DOES to open the Door, will change the Attribute of the Door's other side (which is also a Door) to OPEN.
 The result is similar for the "close"VERB:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
-     [red]#VERB close
+     [green]#VERB close
          DOES AFTER
              MAKE otherside OF THIS NOT open.
      END VERB.
@@ -3671,7 +4025,10 @@ And here is how we implement "a door" between the TV Room and the Kitchen.
 Note that it is really two doors, the tv_door and the kitchen_door, each having the other as its "otherside".
 The EXITS have been modified to CHECK that the door is open.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -3681,9 +4038,9 @@ The EXITS have been modified to CHECK that the door is open.
          "This is your favorite room in the house, because you love to
           watch television. Your new plasma TV is set up in this room,
           ideally located across from your comfy chair and table. $pThe
-          [red]#door to the kitchen is south#."
+          [green]#door to the kitchen is south#."
      EXIT south TO kitchen
-         [red]#CHECK tv_door IS OPEN
+         [green]#CHECK tv_door IS OPEN
              ELSE
                  "$t$t&lt;BUMP&gt;$p$t$tOof!$pThe door is closed."#
          DOES
@@ -3695,7 +4052,7 @@ The EXITS have been modified to CHECK that the door is open.
      END EXIT.
  END THE tv_room.
  -----------------------
- [red]#THE tv_door Isa Door AT tv_room
+ [green]#THE tv_door Isa Door AT tv_room
      HAS otherside kitchen_door.
  END THE tv_door.
  -----------------------
@@ -3709,7 +4066,7 @@ The EXITS have been modified to CHECK that the door is open.
          "This is the kitchen. There is a counter and a cupboard here.
           $pNorth returns to the TV Room."
      EXIT north TO tv_room
-         [red]#CHECK kitchen_door IS OPEN
+         [green]#CHECK kitchen_door IS OPEN
              ELSE
                  "$t$t&lt;BUMP&gt;$p$t$tOof!$pThe door is closed."#
          DOES
@@ -3729,7 +4086,10 @@ The EXITS have been modified to CHECK that the door is open.
 If certain conditions are met, then the CHECK passes and the action continues.
 If the conditions are not met, the CHECK stops the action that would otherwise take place and displays an explanatory message.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  VERB do_this, do_that
@@ -3750,7 +4110,10 @@ Two, CHECK only allows or stops the action, where IF-THEN does not stop the acti
 
 One way to demonstrate the IF-THEN statement is in a VERB format.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  VERB do_this, do_that
@@ -3763,7 +4126,10 @@ One way to demonstrate the IF-THEN statement is in a VERB format.
 
 The power of the IF-THEN statement increases with the IF-THEN-ELSE combination.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  VERB do_this, do_that
@@ -3778,7 +4144,10 @@ The power of the IF-THEN statement increases with the IF-THEN-ELSE combination.
 
 and
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  VERB do_this, do_that
@@ -3800,7 +4169,10 @@ It can even be used in LOCATION DESCRIPTIONS to describe changing conditions.
 
 For example:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  THE field Isa LOCATION
@@ -3838,7 +4210,10 @@ Then we will create the cord, then the wall and outlet.
 We need to keep in mind (or better yet write down somewhere) what we will call the power cord and how we will signal to the remote that it is plugged in.
 In this case we will call the cord, the "cord", and we will have the remote CHECK if the cord "IS PLUGGED_IN".
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -3856,7 +4231,7 @@ In this case we will call the cord, the "cord", and we will have the remote CHEC
              "It's a very simple push-button remote control."
      END VERB.
      VERB turn_on1, turn_on2, switch_on1, switch_on2
-         [red]#CHECK cord IS PLUGGED_IN
+         [green]#CHECK cord IS PLUGGED_IN
              ELSE
                  "The TV won't turn on. It isn't getting any power."#
          DOES ONLY
@@ -3869,7 +4244,7 @@ In this case we will call the cord, the "cord", and we will have the remote CHEC
              QUIT.
      END VERB.
      VERB push
-         [red]#CHECK cord IS PLUGGED_IN
+         [green]#CHECK cord IS PLUGGED_IN
              ELSE
                  "The TV won't turn on. It isn't getting any power."#
          DOES ONLY
@@ -3887,7 +4262,10 @@ In this case we will call the cord, the "cord", and we will have the remote CHEC
 
 Disable the tv in the same way:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  SYNONYMS
@@ -3899,7 +4277,7 @@ Disable the tv in the same way:
          ELSE
              "There are no knobs, switches or buttons for turning on
               the TV."
-     [red]#AND cord IS PLUGGED_IN
+     [green]#AND cord IS PLUGGED_IN
          ELSE
              "The TV won't turn on. It isn't getting any power."#
      DOES ONLY
@@ -3920,11 +4298,14 @@ Disable the tv in the same way:
 In the game the cord will be made to appear as part of the tv.
 The easiest way to do that is in the "examine" and other VERBS, rather than trying to code the tv as a CONTAINER just to hold the cord, and then to prevent all other properties of the CONTAINER, and to prevent removing the cord, etc.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
- [red]#THE cord Isa OBJECT AT tv_room
+ [green]#THE cord Isa OBJECT AT tv_room
      NAME cord
      NAME power electric electrical tv cord
      DESCRIPTION
@@ -3936,7 +4317,10 @@ The easiest way to do that is in the "examine" and other VERBS, rather than tryi
 We are just making up these Attributes, trying to think of terms that will suit the "plug in" VERB we will create in a moment.
 Before we get to that, let's customize the library VERBS "examine" and "take".
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  THE cord Isa OBJECT AT tv_room
@@ -3945,7 +4329,7 @@ Before we get to that, let's customize the library VERBS "examine" and "take".
      DESCRIPTION
      IS PLUGGABLE.
         NOT PLUGGED_IN.
-     [red]#VERB examine
+     [green]#VERB examine
          DOES ONLY
              "The power cord is of the common sort, and just three feet
               long."
@@ -3960,11 +4344,14 @@ Here you can see how the IF-THEN statement can be used to modify the response to
 The cord is first described, then the IF looks to see whether the cord is plugged in.
 If so, the THEN displays that information to the player.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
-     [red]#VERB take, pick_up1, pick_up2
+     [green]#VERB take, pick_up1, pick_up2
          CHECK
              "You can't take it. The power cord is permanently attached
               to the television set."
@@ -4004,7 +4391,10 @@ The first step is to make a new file called "plug.i".
 Save the file in the library folder.
 The next step is to open "std.i" and to include this line in the list of ".i"files there (if you miss this step then "plug.i" will not be imported into your game):
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  IMPORT 'plug.i'.
@@ -4013,10 +4403,13 @@ The next step is to open "std.i" and to include this line in the list of ".i"fil
 Now open the "plug.i" and the "put.i" files.
 Most text editors (such as <A HREF="http://www.crimsoneditor.com/">Crimson Editor</A>) will allow you to open multiple files and give you easy access and switching between them.
 
-I have indicated below in [red]#red# the changes to adapt
+I have indicated below in [green]#red# the changes to adapt
 "plug.i" for our VERB.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -- put.i CHANGE TO -- plug.i (Try a Universal Replace of "plug" for "put"!)
@@ -4024,7 +4417,7 @@ I have indicated below in [red]#red# the changes to adapt
  -- 0.4.1 - converted to ALANv3 OMIT
  SYNONYMS
      place = put. CHANGE TO insert = plug.
- [red]#SYNTAX -- *OMIT this whole SYNTAX statement, we don't need "plug" by itself.*
+ [green]#SYNTAX -- *OMIT this whole SYNTAX statement, we don't need "plug" by itself.*
      put = put (obj) *
          WHERE obj ISA OBJECT
              ELSE "You can't put that anywhere."
@@ -4040,9 +4433,9 @@ I have indicated below in [red]#red# the changes to adapt
  SYNTAX
      put_in = put (obj1) 'in' (obj2) plug_in = plug (obj1) 'in' (obj2)
          WHERE obj1 ISA OBJECT
-             ELSE "You can't put that anywhere." [red]#ELSE "... plug that anywhere."#
+             ELSE "You can't put that anywhere." [green]#ELSE "... plug that anywhere."#
          AND obj2 ISA CONTAINER
-             ELSE "You can't put anything in that." [red]#ELSE "... plug anything in that."#
+             ELSE "You can't put anything in that." [green]#ELSE "... plug anything in that."#
   Add To Every object
       IS NOT PLUGGABLE.
       NOT PLUGGED_IN.
@@ -4056,9 +4449,9 @@ I have indicated below in [red]#red# the changes to adapt
               AND obj1 IS NOT PLUGGED_IN
                   ELSE "That is already plugged in."
               And obj1 &lt;&gt; obj2
-                  Else "You can't put something into itself!" [red]#...plug something ..."#
+                  Else "You can't put something into itself!" [green]#...plug something ..."#
               And obj2 &lt;&gt; hero
-                  Else "You can't put" Say obj1. "into yourself!" [red]#...plug" Say obj1...#
+                  Else "You can't put" Say obj1. "into yourself!" [green]#...plug" Say obj1...#
               Does
                   Locate obj1 In obj2.
                   MAKE obj1 PLUGGED_IN.
@@ -4068,11 +4461,13 @@ I have indicated below in [red]#red# the changes to adapt
 ----
 
 OMIT all the rest.
-We won't need "plug near", "plug behind", "plug on"
-or "plug under".
+We won't need "plug near", "plug behind", "plug on"or "plug under".
 Here it is with the changes:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -- plug.i
@@ -4111,7 +4506,10 @@ Here it is with the changes:
 The player may wish to "unplug" the cord as well.
 Let's include that in "plug.i".
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Syntax
@@ -4199,7 +4597,10 @@ S O L U T I O N S!
 ================================================================================
 
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -- laugh \*\** from "jump.i" \***
@@ -4273,7 +4674,10 @@ Many Interactive Fiction games generally allow the player to move northeast, nor
 We have limited travel in our game, however, to the four cardinal directions.
 We can create a global "nodirection"VERB that will take care of the off-cardinal directions without having to code for them in every LOCATION.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -- nowhere.i
@@ -4284,7 +4688,7 @@ We can create a global "nodirection"VERB that will take care of the off-cardinal
      s = south.
      e = east.
      w = west.
-     [red]#-- ne = northeast. -- \*\** COMMENTED OUT \***
+     [green]#-- ne = northeast. -- \*\** COMMENTED OUT \***
      --  se = southeast.
      --  nw = northwest.
      -- sw = southwest.#
@@ -4296,7 +4700,7 @@ We can create a global "nodirection"VERB that will take care of the off-cardinal
      EXIT south TO nowhere.
      EXIT west TO nowhere.
      EXIT east TO nowhere.
-     [red]#-- EXIT northeast TO nowhere. -- \*\** COMMENTED OUT \***
+     [green]#-- EXIT northeast TO nowhere. -- \*\** COMMENTED OUT \***
      -- EXIT southeast TO nowhere.
      -- EXIT northwest TO nowhere.
      -- EXIT southwest TO nowhere.#
@@ -4311,7 +4715,10 @@ The player is exceedingly unlikely to type "nodirection", but this word stands i
 So if the player types "northeast"or "sw", it will be the same to the computer as though they _had_ typed "nodirection".
 
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY ????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  SYNTAX
@@ -4336,18 +4743,21 @@ We will only need to "un-comment" the ones we want and rewrite the SYNONYMS stat
 We have already mentioned the walls in the TV Room and Kitchen.
 Should the player try to go in directions that don't go from one LOCATION to the other, they will get the message:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
-----
+[example,role="gametranscript"]
+================================================================================
 There is only a wall in that direction.
-----
+================================================================================
 
 Let's create the wall, after which we will create the electrical outlet in the wall.
 We will differentiate between the wall(s) in the TV Room and in the Kitchen.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
- [red]#THE tv_wall Isa Scenery AT tv_room#
+ [green]#THE tv_wall Isa Scenery AT tv_room#
  ...
 ----
 
@@ -4357,7 +4767,10 @@ We will differentiate between the wall(s) in the TV Room and in the Kitchen.
 "Scenery" is the only default Class in the standard library.
 Let's take a look at it in "scenery.i":
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -- scenery.i
@@ -4384,11 +4797,14 @@ The only VERB implemented for Scenery is "examine" (the "take" is precluded by t
 I for one prefer to explain to the player why something cannot be searched, etc.
 Let's change the Scenery Class to do that.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Every scenery Isa object
-     [red]#DESCRIPTION -- \*\** ADDED. It should be in the default! \***
+     [green]#DESCRIPTION -- \*\** ADDED. It should be in the default! \***
      -- \*\** REMOVED: \***
      -- Is
        -- Not searchable.
@@ -4425,7 +4841,10 @@ Let's change the Scenery Class to do that.
 You might consider making other Classes of Scenery to include in "scenery.i".
 For example, a Far_Scene Class could be created for OBJECTS that are too far away to touch, get, etc.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  EVERY Far_Scene Isa OBJECT DESCRIPTION
@@ -4443,10 +4862,13 @@ I will leave that to you and your imagination.
 [float]
 === Finish Building the Wall
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
- [red]#THE tv_wall Isa SCENERY AT tv_room
+ [green]#THE tv_wall Isa SCENERY AT tv_room
      NAME wall
      NAME walls
      VERB examine
@@ -4467,10 +4889,13 @@ The outlet, however, will have to be a CONTAINER for the power cord to "plug in"
 
 Everything here has been covered in this guide to this point:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
- [red]#THE outlet Isa SCENERY AT tv_room
+ [green]#THE outlet Isa SCENERY AT tv_room
      NAME outlet
      NAME electrical electric power wall wallplug
      CONTAINER
@@ -4503,7 +4928,10 @@ Everything here has been covered in this guide to this point:
 Some explanation is needed here.
 The default VERB is in reference to obj1, not to obj2 ("plug.i"):
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -4520,7 +4948,10 @@ The default VERB is in reference to obj1, not to obj2 ("plug.i"):
 
 We are using the VERB for the outlet as obj2, the CONTAINER.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY ????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
      VERB plug_in, put_in
@@ -4562,7 +4993,10 @@ It seems to me that the player might reasonably be expected to try:
 Not to worry.
 Let's look at what we have for the wall so far.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  THE tv_wall Isa SCENERY AT tv_room
@@ -4577,23 +5011,26 @@ Let's look at what we have for the wall so far.
 
 Since we want the same VERB to apply for the wall in the very same way as for the outlet, all we have to do is copy the VERB for the wall and make sure the wall will pass the CHECKS.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
  THE tv_wall Isa SCENERY AT tv_room
-     [red]#CONTAINER -- Required for the wall to be obj2
+     [green]#CONTAINER -- Required for the wall to be obj2
          HEADER ""#
      NAME wall
      NAME walls
      VERB examine
          DOES ONLY
              "One wall in particular has an electric outlet."
-             [red]#IF cord IS PLUGGED_IN THEN
+             [green]#IF cord IS PLUGGED_IN THEN
                  "The TV cord is plugged into it."
              END IF.#
      END VERB.
-     [red]#VERB plug_in, put_in
+     [green]#VERB plug_in, put_in
          WHEN obj2
              CHECK obj1 IS PLUGGABLE
                  ELSE
@@ -4633,10 +5070,13 @@ But we will put a battery for the remote control in the chair.
 [float]
 === The Battery In the Cushion
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
- [red]#-----------------------
+ [green]#-----------------------
  THE battery Isa OBJECT AT Nowhere -- until found in the chair
      VERB examine
          DOES ONLY
@@ -4657,12 +5097,12 @@ But we will put a battery for the remote control in the chair.
               kind people lose change in all the time."
      END VERB.
      VERB search
-         CHECK [red]#battery AT Nowhere#
+         CHECK [green]#battery AT Nowhere#
              ELSE
                  "There is nothing else to find by searching the chair."
          DOES ONLY
-             LOCATE [red]#battery# in Hero.
-             "You find [red]#a small battery#, which you take."
+             LOCATE [green]#battery# in Hero.
+             "You find [green]#a small battery#, which you take."
      END VERB.
  END THE chair.
  -----------------------
@@ -4671,7 +5111,10 @@ But we will put a battery for the remote control in the chair.
 [float]
 === CHECK the Remote for the Battery
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -4682,14 +5125,14 @@ But we will put a battery for the remote control in the chair.
      NAME remote
      NAME button
      NAME simple push buttons
-     [red]#OPAQUE CONTAINER -- so you can put the battery in it#
+     [green]#OPAQUE CONTAINER -- so you can put the battery in it#
      IS SWITCHABLE.
         PUSHABLE.
      VERB examine
          DOES ONLY
              "It's a very simple push-button remote control."
      END VERB.
-     [red]#VERB put_in
+     [green]#VERB put_in
          WHEN obj2
              CHECK obj1 = battery
                  ELSE
@@ -4703,12 +5146,15 @@ But we will put a battery for the remote control in the chair.
 We want to allow only the battery to be put it in the remote control.
 It is a simple matter to CHECK that obj1 is the battery.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
      VERB turn_on1, turn_on2, switch_on1, switch_on2
-         [red]#CHECK battery IN remote
+         [green]#CHECK battery IN remote
              ELSE
                  "Pushing the button on the remote, nothing happens.
                   The remote won't do anything without a battery."
@@ -4726,7 +5172,7 @@ It is a simple matter to CHECK that obj1 is the battery.
                  QUIT.
      END VERB.
      VERB push
-         [red]#CHECK battery IN remote
+         [green]#CHECK battery IN remote
              ELSE
                  "Pushing the button on the remote, nothing happens.
                   The remote won't do anything without a battery."
@@ -4750,20 +5196,23 @@ It is a simple matter to CHECK that obj1 is the battery.
 [float]
 === The TV In the Box
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
  SYNONYMS
     television = tv.
- THE tv Isa OBJECT AT [red]#Nowhere -- until box is opened#
+ THE tv Isa OBJECT AT [green]#Nowhere -- until box is opened#
  ...
  VERB turn_on1, turn_on2, switch_on1, switch_on2
      CHECK remote Here
          ELSE
              "There are no knobs, switches or buttons for turning on the
               TV."
-     [red]#AND battery IN remote
+     [green]#AND battery IN remote
          ELSE
             "Pushing the button on the remote, nothing happens.
              The remote won't do anything without a battery."
@@ -4782,7 +5231,7 @@ It is a simple matter to CHECK that obj1 is the battery.
  END VERB.
  ...
  -----------------------
- THE cord Isa OBJECT AT [red]#Nowhere -- it's part of the tv, remember#
+ THE cord Isa OBJECT AT [green]#Nowhere -- it's part of the tv, remember#
      NAME cord
      NAME power electric electrical tv cord
      DESCRIPTION
@@ -4808,10 +5257,13 @@ It is a simple matter to CHECK that obj1 is the battery.
 [float]
 === The Box Before Opening
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
- [red]#-----------------------
+ [green]#-----------------------
  SYNONYMS
      carton, crate = box.
  THE box Isa OBJECT AT tv_room
@@ -4837,21 +5289,27 @@ It is a simple matter to CHECK that obj1 is the battery.
 [float]
 === The Knife In the Cupboard
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
- [red]#-----------------------
+ [green]#-----------------------
  THE knife Isa OBJECT IN cupboard#
  ...
 ----
 
 Notice the starting place for the knife is not "AT" but "IN" the cupboard CONTAINER.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  THE knife Isa OBJECT IN cupboard
-     [red]#VERB examine
+     [green]#VERB examine
          DOES ONLY
              "It's a sturdy, sharp knife."
      END VERB.
@@ -4862,7 +5320,10 @@ Notice the starting place for the knife is not "AT" but "IN" the cupboard CONTAI
 [float]
 === The TV Room DESCRIPTION Revisited
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -4870,7 +5331,7 @@ Notice the starting place for the knife is not "AT" but "IN" the cupboard CONTAI
      NAME 'TV Room'
      DESCRIPTION
          "This is your favorite room in the house, because you love to watch television.
-          [red]#Besides your comfy chair and table,"
+          [green]#Besides your comfy chair and table,"
          IF tv Here THEN
              "your new plasma TV is here."
          ELSE
@@ -4929,7 +5390,10 @@ This will most likely satisfy what you are looking for in 1 and 2 above as well.
 Implementing "cut open" VERBS for the Box There are VERBS in the library that will be useful.
 From "open.i":
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Syntax
@@ -4955,7 +5419,10 @@ From "open.i":
 The box will have to be openable.
 We will add a CHECK to the VERB for the knife and bring the tv, etc. into the TV Room.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -4968,7 +5435,7 @@ We will add a CHECK to the VERB for the knife and bring the tv, etc. into the TV
      NAME large black letters
      NAME upward pointing arrow
      HAS weight 500.
-     [red]#IS OPENABLE.
+     [green]#IS OPENABLE.
      HAS NOT SCENERY.#
      DESCRIPTION
  ...
@@ -4982,10 +5449,13 @@ An alternate plan would be to create an "opened_box" OBJECT At Nowhere, with app
 When the player successfully cuts the box open, switch the opened_box for the box using LOCATE statements.
 
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
- [red]#Verb open
+ [green]#Verb open
      CHECK knife Here
          ELSE
              "You will need a knife to cut the box open."
@@ -5006,7 +5476,10 @@ When the player successfully cuts the box open, switch the opened_box for the bo
 Returning to "open.i" there is another VERB we can (and should) include for the player:
 
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Syntax
@@ -5030,12 +5503,15 @@ Returning to "open.i" there is another VERB we can (and should) include for the 
 It seems strange to me that this DOES in the default library fails.
 It should read:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
           Does
-              [red]#MAKE obj1 OPEN.
+              [green]#MAKE obj1 OPEN.
               "You open" Say The obj1. "with" Say The obj2. "."#
      End Verb.
  End Add To.
@@ -5045,12 +5521,15 @@ No matter.
 Our DOES ONLY will override the default anyway.
 Adapted for our box (obj1) and knife (obj2) we get this:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  Verb open_with
      When obj1
-         [red]#CHECK obj2 = knife
+         [green]#CHECK obj2 = knife
              ELSE
                  "You will need something sharper than that to open the box with."
          Does ONLY
@@ -5092,7 +5571,10 @@ You will need to create all the default library VERBS and then adapt them for us
 
 == "cut.i"
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -- cut.i
@@ -5145,7 +5627,10 @@ You will need to create all the default library VERBS and then adapt them for us
 [[box]]
 == The Box
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -5163,7 +5648,7 @@ You will need to create all the default library VERBS and then adapt them for us
      DESCRIPTION
      VERB examine
          DOES ONLY
-             [red]#IF box IS NOT SCENERY THEN
+             [green]#IF box IS NOT SCENERY THEN
                  "It's quite large, about five feet square. Besides
                   the label (""Ultimo Plasma TV""), there are large
                   black letters that say, ""PUSH WITH CARE"".
@@ -5175,7 +5660,7 @@ You will need to create all the default library VERBS and then adapt them for us
              END IF.#
      END VERB.
      Verb open
-         CHECK [red]#box IS NOT SCENERY -- only open the box once!
+         CHECK [green]#box IS NOT SCENERY -- only open the box once!
              ELSE
                  "You have done that already."
          AND# KNIFE Here
@@ -5214,7 +5699,7 @@ You will need to create all the default library VERBS and then adapt them for us
                   $pWow, the TV looks even better in your home than it
                   did on the showroom floor!"
      End Verb.
-     [red]#VERB cut
+     [green]#VERB cut
          CHECK box IS NOT SCENERY
              ELSE
                  "You have done that already."
@@ -5269,7 +5754,10 @@ There are a couple of ways to cut down on the repetition.
 
 First, if the SYNTAX of the library VERBS are basically the same structure, then those statements can be put on the same line, like this:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  THE rock Isa OBJECT AT field
@@ -5290,10 +5778,14 @@ We simply create an invisible OBJECT to perform the same actions as the VERB and
 Like this:
 
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
- [red]#THE open_box Isa OBJECT AT Nowhere -- Hence, invisible and unreachable
+ [green]#THE open_box Isa OBJECT AT Nowhere -- Hence, invisible and unreachable
      DESCRIPTION
          LOCATE tv Here.
          LOCATE cord Here.
@@ -5310,7 +5802,11 @@ Like this:
 
 Using this like a subroutine in our program for the box, it is now less cluttered:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -5347,7 +5843,7 @@ Using this like a subroutine in our program for the box, it is now less cluttere
              ELSE
                  "You will need a knife to cut the box open."
          Does ONLY
-             [red]#DESCRIBE open_box.#
+             [green]#DESCRIBE open_box.#
      End Verb.
      Verb open_with
          When obj1
@@ -5359,7 +5855,7 @@ Using this like a subroutine in our program for the box, it is now less cluttere
                      "You will need something sharper than that to
                       open the box with."
              Does ONLY
-                 [red]#DESCRIBE open_box.#
+                 [green]#DESCRIBE open_box.#
      End Verb.
      VERB cut
          CHECK box IS NOT SCENERY
@@ -5369,7 +5865,7 @@ Using this like a subroutine in our program for the box, it is now less cluttere
              ELSE
                  "You will need a knife to cut the box open."
          Does ONLY
-             [red]#DESCRIBE open_box.#
+             [green]#DESCRIBE open_box.#
      End Verb.
      VERB cut_with
          When obj1
@@ -5381,7 +5877,7 @@ Using this like a subroutine in our program for the box, it is now less cluttere
                      "You will need something sharper than that to
                       open the box with."
              Does ONLY
-                 [red]#DESCRIBE open_box.#
+                 [green]#DESCRIBE open_box.#
      End Verb.
  END THE box.
  -----------------------
@@ -5389,11 +5885,15 @@ Using this like a subroutine in our program for the box, it is now less cluttere
 
 The same can be done with the DOES ONLY "win" sequence with the remote and tv. (See this implemented in xref:compile_and_play[Compile and Play It!])
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
- [red]#THE win_tv Isa OBJECT AT Nowhere
+ [green]#THE win_tv Isa OBJECT AT Nowhere
      DESCRIPTION
          MAKE tv 'on'.
          "Wow! What a great picture!"
@@ -5409,7 +5909,11 @@ The same can be done with the DOES ONLY "win" sequence with the remote and tv. (
 [[compile_and_play]]
 == Compile and Play It!
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] CREATE INCLUDABLE UTF-8 VERSION! (so it can be compiled and tested)
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------------------------------
@@ -5860,7 +6364,7 @@ Let's make a real game out of it.
 In the "examine" VERB for the box we have already hinted that it should be pushed ("PUSH WITH CARE").
 Let's keep a mental "map" of the TV Room, where the player might push the box.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @FIXME: VERBATIM ASCIIART > CREATE SVG IMAGE FOR THIS!
 ----
                   North
                   chair
@@ -5878,11 +6382,15 @@ We need something to the East, so we will put a bookcase there.
 If we put another wall to the east, we will have an ambiguation problem (the program would not know which "wall" was referenced by the player).
 So another reasonable OBJECT to put there is a bookcase.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
- [red]#THE bkcase Isa SCENERY AT tv_room
+ [green]#THE bkcase Isa SCENERY AT tv_room
      NAME bookcase
      NAME case
      NAME shelves
@@ -5910,18 +6418,19 @@ So another reasonable OBJECT to put there is a bookcase.
 
 We don't want the game to display a singular message for plural OBJECTS such as
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
-----
+[example,role="gametranscript"]
+================================================================================
 There is a books here.
-----
+================================================================================
 
 We can _change the indefinite article_ to one more appropriate.
 With "some", we will now get the somewhat more acceptable
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
-----
+[example,role="gametranscript"]
+================================================================================
 There is some books here.
-----
+================================================================================
+
 
 [float]
 === It's De Fault of De Messenger
@@ -5937,7 +6446,10 @@ image::images\2A2EB814DD1A96E8C7EA8E74B56266D0F832E86E.jpg[]
 
 The message we want to change is "SEE_START".
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN ?????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 ----
  MESSAGE SEE_START : "You see $01"
 ----
@@ -5946,18 +6458,22 @@ Adding this code will change the default response in the whole game.
 A convenient place for this code is just before the START section (see xref:compile_and_play[Compile and Play It!]).
 Now the program will display to the player:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
-----
+[example,role="gametranscript"]
+================================================================================
 You see some books here.
-----
+================================================================================
+
 
 Finish the books with a few appropriate VERBS.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
-     [red]#VERB examine
+     [green]#VERB examine
          DOES ONLY
              "The titles are:
               $p$t""Help""
@@ -5977,7 +6493,10 @@ Another puzzle you could create (and it would be a nasty one, possibly making th
 
 Update the tv_room DESCRIPTION with the map Since we will ask the player to push the box in one of the four cardinal directions, we should describe what those directions are in the LOCATION DESCRIPTION.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -5986,11 +6505,11 @@ Update the tv_room DESCRIPTION with the map Since we will ask the player to push
      DESCRIPTION
          "This is your favorite room in the house, because you love to
           watch television.  Besides your comfy chair and table
-          [red]#in the north end of the room, there is a bookcase on
+          [green]#in the north end of the room, there is a bookcase on
           the east side and a bare wall on the west.#"
          IF tv Here THEN
              "$pYour new plasma TV is here."
-         [red]#ELSE
+         [green]#ELSE
              "$pThere is a large cardboard packing carton here."#
          END IF.
          "$pThe door to the kitchen is south."
@@ -6001,7 +6520,7 @@ Update the tv_room DESCRIPTION with the map Since we will ask the player to push
          DOES
              "You go south, into the kitchen."
      END EXIT.
-     [red]#EXIT north TO tv_room
+     [green]#EXIT north TO tv_room
          CHECK
              "Your chair and table are in the north end of the room."
      END EXIT.
@@ -6025,7 +6544,10 @@ Update the tv_room DESCRIPTION with the map Since we will ask the player to push
 Okay, time to program pushing the box.
 Let's begin by making the box moveable.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -6039,7 +6561,7 @@ Let's begin by making the box moveable.
      NAME upward pointing arrow
      HAS weight 500.
      IS OPENABLE.
-        [red]#MOVEABLE.#
+        [green]#MOVEABLE.#
      HAS NOT SCENERY.
      DESCRIPTION
  ...
@@ -6049,11 +6571,14 @@ The MOVEABLE Attribute is the one we have assigned for both the "push"and the "p
 We don't want the player to pull the box.
 Implement the VERB from "pull.i" to prevent it.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
-     [red]#VERB pull
+     [green]#VERB pull
          CHECK
              "You can't get a good grip on the carton to pull it. You
               might have better luck trying to push it."
@@ -6063,7 +6588,10 @@ Implement the VERB from "pull.i" to prevent it.
 Now we want to adapt the "push" VERB, to push the box in one of the four cardinal directions we have established in the game.
 So first we implement for the VERBS as they are in "push.i" to ask the player which direction they want to push it.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -6078,10 +6606,13 @@ So first we implement for the VERBS as they are in "push.i" to ask the player wh
 Now let's add these "push" VERBS for each of the four cardinal directions to "push.i".
 They are adapted from VERBS that are already in the standard library (in "put.i").
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @LIBRARY ????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
- [red]#SYNTAX
+ [green]#SYNTAX
      push_north = push (obj) north
          WHERE obj Isa thing
              Else "You can't push that."
@@ -6109,7 +6640,10 @@ And finally let's implement the directional "push" VERBS for the box.
 We will create a "SPOT" Attribute for the box to indicate where it is in the room, depending on which direction the player pushes it.
 A value of Zero (0) will equal the center of the room, 1 will be equal to north; 2 to south, 3 to east and 4 to west.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -6125,10 +6659,10 @@ A value of Zero (0) will equal the center of the room, 1 will be equal to north;
          IS OPENABLE.
             MOVEABLE.
          HAS NOT SCENERY.
-         [red]#HAS SPOT 0. -- O = centered in the room#
+         [green]#HAS SPOT 0. -- O = centered in the room#
          DESCRIPTION
  ...
-         [red]#VERB push_north
+         [green]#VERB push_north
              DOES ONLY
                  SET SPOT OF box TO 1. -- north
                  "You push the box north, next to the chair and table."
@@ -6139,10 +6673,13 @@ The SET statement (¶ 4.16.6) is like the MAKE statement, to change Attributes.
 MAKE is used for Boolean Attributes; SET is used for non-Boolean Attributes.
 Here we SET the SPOT Attribute (where in the room the box is) to 1, north by the chair and table.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
-         [red]#VERB push_south
+         [green]#VERB push_south
              DOES ONLY
                  SET SPOT OF box TO 2.
                  "You push the box south, in front of the door."
@@ -6161,7 +6698,10 @@ Here we SET the SPOT Attribute (where in the room the box is) to 1, north by the
 
 Update the tv_room DESCRIPTION for the Box
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -6175,7 +6715,7 @@ Update the tv_room DESCRIPTION for the Box
          IF tv Here THEN
              "$pYour new plasma TV is here."
          ELSE
-             "$pThere is a large cardboard packing carton [red]#sitting"
+             "$pThere is a large cardboard packing carton [green]#sitting"
              IF spot OF box = 0 THEN "in the center of the room."
              ELSIF spot OF box = 1 THEN "next to the chair and table."
              ELSIF spot OF box = 2 THEN "against the door."
@@ -6191,7 +6731,10 @@ This is a good place to introduce the _DEPENDING ON_ statement.
 It is rather like a condensed IF-THEN statement; and like the IF-THEN, _every DEPENDING ON requires a _END DEPEND_.
 Here is how it is used in the TV Room DESCRIPTION.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -6205,7 +6748,7 @@ Here is how it is used in the TV Room DESCRIPTION.
          IF tv Here THEN
              "$pYour new plasma TV is here."
          ELSE
-             "$pThere is a large cardboard packing carton [red]#sitting"
+             "$pThere is a large cardboard packing carton [green]#sitting"
              DEPENDING ON spot OF box
                  = 0 THEN "in the center of the room."
                  = 1 THEN "next to the chair and table."
@@ -6226,7 +6769,10 @@ When the player opens the box to remove the tv, the tv will of course be placed 
 If the box is opened as it sits by the door, then the tv will be placed by the door.
 The first thing we need to do then is to give the SPOT Attribute to the tv, just like we did for the box.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -6241,7 +6787,7 @@ The first thing we need to do then is to give the SPOT Attribute to the tv, just
       NAME giant
       NAME brand new giant screen plasma tv
       IS SWITCHABLE.
-      [red]#HAS SPOT 0.#
+      [green]#HAS SPOT 0.#
       DESCRIPTION
  ...
 ----
@@ -6250,7 +6796,10 @@ It will be easy to "spot" the tv where the box was, simply by setting the SPOT o
 We have several VERBS that open the box, but only one place in our code we have to change.
 We created an OBJECT at Nowhere to handle all the "open the box" VERBS (xref:box[here]).
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -6261,7 +6810,7 @@ We created an OBJECT at Nowhere to handle all the "open the box" VERBS (xref:box
      LOCATE remote Here.
      LOCATE knife IN Hero.
      MAKE box SCENERY.
-     [red]#SET SPOT OF tv TO SPOT OF box.#
+     [green]#SET SPOT OF tv TO SPOT OF box.#
      "Using the sharp blade of the knife, you cut the box open to
       reveal the plasma TV inside. You cut and tear off the remaining
       cardboard and cast it aside.
@@ -6273,7 +6822,10 @@ We created an OBJECT at Nowhere to handle all the "open the box" VERBS (xref:box
 
 Update the tv_room DESCRIPTION for the TV
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -6285,7 +6837,7 @@ Update the tv_room DESCRIPTION for the TV
           north end of the room, there is a bookcase on the east side
           and a bare wall on the west."
          IF tv Here THEN
-             "Your new plasma TV is [red]#sitting";
+             "Your new plasma TV is [green]#sitting";
              DEPENDING ON spot OF tv
                  = 0 THEN "in the center of the room."
                  = 1 THEN "next to the chair and table."
@@ -6313,7 +6865,10 @@ Update the tv_room DESCRIPTION for the TV
 The point is that the power cord can only be plugged into the outlet if the tv is placed by the wall.
 Add a CHECK to the "plug" VERBS for both the outlet and tv_wall:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
@@ -6323,7 +6878,7 @@ Add a CHECK to the "plug" VERBS for both the outlet and tv_wall:
                  ELSE
                      "Hey, be careful! That doesn't go into an
                       electrical outlet!"
-             [red]#AND SPOT OF tv = 4
+             [green]#AND SPOT OF tv = 4
                  ELSE
                      "The cord is only three feet long.
                       It can't reach the outlet from here."#
@@ -6345,7 +6900,10 @@ What if the tv is not next to the wall?
 Unlike the box, it cannot be pushed.
 If the player does try more than one time to push it, the tv will tip over and break, losing the game.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -6360,18 +6918,18 @@ If the player does try more than one time to push it, the tv will tip over and b
      NAME giant
      NAME brand new giant screen plasma tv
      IS SWITCHABLE.
-        [red]#MOVEABLE.#
+        [green]#MOVEABLE.#
      HAS SPOT center.
-     [red]#HAS TIPPY 1. -- To check for tipping over (see push VERB below).#
+     [green]#HAS TIPPY 1. -- To check for tipping over (see push VERB below).#
      DESCRIPTION
  ...
-     [red]#VERB pull -- COPIED FROM THE box
+     [green]#VERB pull -- COPIED FROM THE box
          CHECK
              "You can't get a good grip on the wide screen to pull it.
               You might have better luck trying to push it."
      End Verb.#
  ...
-     [red]#Verb push
+     [green]#Verb push
          Does ONLY
              IF TIPPY OF tv >1 THEN
                  "You push harder against the big plasma tv.
@@ -6397,7 +6955,10 @@ The "INCREASE" statement will increase the numeric value by 1, unless you specif
 Book 'em! It is generally not a good idea to let the game become unwinnable.
 Let's give the player an alternate way to push the tv, by placing the books from the bookcase under the tv.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -6415,13 +6976,13 @@ Let's give the player an alternate way to push the tv, by placing the books from
               $n$t""Laugh"" "
      END VERB.
      VERB read
-         [red]#CHECK tv IS NOT BOOKED
+         [green]#CHECK tv IS NOT BOOKED
              ELSE
                  "That isn't possible while they are under the tv!"#
          DOES ONLY
              "Just type in the title of the book you want to read."
      END VERB.
-     [red]#VERB take, pick_up1, pick_up2
+     [green]#VERB take, pick_up1, pick_up2
          CHECK tv IS NOT BOOKED
              ELSE
                  "That isn't possible while they are under the tv!"
@@ -6454,7 +7015,10 @@ That is of course left for to you to do!
 Make the tv pushable if the books are under it.
 We will give it an Attribute for the books under it (BOOKED), and code the "push" VERB to CHECK for it.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -6470,7 +7034,7 @@ We will give it an Attribute for the books under it (BOOKED), and code the "push
      NAME brand new giant screen plasma tv
      IS SWITCHABLE.
         MOVEABLE.
-        [red]#NOT BOOKED.#
+        [green]#NOT BOOKED.#
      HAS SPOT center.
      HAS TIPPY 1.
      DESCRIPTION
@@ -6479,10 +7043,13 @@ We will give it an Attribute for the books under it (BOOKED), and code the "push
 
 Now to implement pushing the tv north, south, east or west, first copy-and-paste the VERBS from the box, of course changing the word "box" to "tv".
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
-     [red]#VERB push_north
+     [green]#VERB push_north
          DOES ONLY
              SET SPOT OF tv TO 1.
              "You push the tv north, next to the chair and table."
@@ -6514,11 +7081,14 @@ If the tv IS NOT BOOKED then each "push" VERB will see if the TIPPY Attribute is
 With five "push" VERBS, that means a lot of duplicated code.
 Again, however, it is a simple matter to avoid so much duplicated code for all these VERBS by creating an OBJECT at Nowhere to handle it.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
- [red]#THE tip_tv Isa OBJECT AT Nowhere
+ [green]#THE tip_tv Isa OBJECT AT Nowhere
      DESCRIPTION
          IF TIPPY OF tv >1 THEN
              "You push harder against the big plasma tv.
@@ -6537,12 +7107,15 @@ Again, however, it is a simple matter to avoid so much duplicated code for all t
 
 CHECK that the tv IS BOOKED, add the tip_tv DESCRIPTION and the tv's "push" VERBS will be completed.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  ...
      Verb push
-         [red]#CHECK tv IS BOOKED
+         [green]#CHECK tv IS BOOKED
              ELSE
                  DESCRIBE tip_tv.
          DOES ONLY
@@ -6550,7 +7123,7 @@ CHECK that the tv IS BOOKED, add the tip_tv DESCRIPTION and the tv's "push" VERB
               $ppush the carton north, south, east or west."#
      END VERB.
      VERB push_north
-         [red]#CHECK tv IS BOOKED
+         [green]#CHECK tv IS BOOKED
              ELSE
                  DESCRIBE tip_tv.#
          DOES ONLY
@@ -6558,7 +7131,7 @@ CHECK that the tv IS BOOKED, add the tip_tv DESCRIPTION and the tv's "push" VERB
              "You push the box north, next to the chair and table."
      END VERB.
      VERB push_south
-         [red]#CHECK tv IS BOOKED
+         [green]#CHECK tv IS BOOKED
              ELSE
                  DESCRIBE tip_tv.#
          DOES ONLY
@@ -6566,7 +7139,7 @@ CHECK that the tv IS BOOKED, add the tip_tv DESCRIPTION and the tv's "push" VERB
              "You push the box south, in front of the door."
      END VERB.
      VERB push_east
-         [red]#CHECK tv IS BOOKED
+         [green]#CHECK tv IS BOOKED
              ELSE
                  DESCRIBE tip_tv.#
          DOES ONLY
@@ -6574,7 +7147,7 @@ CHECK that the tv IS BOOKED, add the tip_tv DESCRIPTION and the tv's "push" VERB
              "You push the box east, next to the bookcase."
      END VERB.
      VERB push_west
-         [red]#CHECK tv IS BOOKED
+         [green]#CHECK tv IS BOOKED
              ELSE
                  DESCRIBE tip_tv.#
          DOES ONLY
@@ -6588,7 +7161,11 @@ This completes the main elements of our tutorial game.
 
 == Compile and Play It!
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] CREATE SOURCE + INCLUDABLE UTF-8 VERSION OF THIS!
+//       (so it can be compiled and tested)
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------------------------------
@@ -7213,11 +7790,17 @@ Failure to complete the goal may result in death or an otherwise lost game.
 [float]
 === A Simple EVENT Example
 
+
+// @FIXME: INLINE STYLING
+
 An EVENT requires three basic parts: 1 - an OBJECT, ACTOR or LOCATION to act upon; 2 - an EVENT statement performing the actions and descriptions; and 3 - a SCHEDULE statement to tell the EVENT when to act, and optionally where .
 
 Here is a simple time bomb EVENT:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -- 1 : THE OBJECT
@@ -7240,7 +7823,10 @@ It must be _told_ to trigger the EVENT.
 So simply setting the SCHEDULE EVENT statement somewhere in the program will not make anything happen.
 It needs to be triggered by something else, like a VERB or in the START AT section.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  THE bomb Isa OBJECT AT enemy_fort
@@ -7258,7 +7844,10 @@ After 50 turns the bomb will explode and give the "lose" message.
 We can add to the atmosphere and increase the tension with a repeating EVENT.
 This is done simply by embedding a (re-)SCHEDULE statement within the EVENT you want to repeat.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  EVENT bomb_tick
@@ -7273,7 +7862,10 @@ Every three turns the "tick" message will display until the bomb explodes and th
 But suppose the player is able to defuse the bomb in time.
 We don't want the bomb to explode after being defused, so we CANCEL the EVENT.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  THE bomb Isa OBJECT AT enemy_fort
@@ -7299,7 +7891,10 @@ The "time bomb" in our game will not explode.
 Rather, the player will only have to successfully turn on the tv in time to watch his (her) favorite sports team play for the championship; failure loses the game.
 Here is how we will tell the player what the goal is:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -7309,7 +7904,7 @@ Here is how we will tell the player what the goal is:
       $n$t$t$t$t$t$t$tBy Michael Arnaud &#169; 2006
       $p(Type ""help"" if you have not played this kind of game
       before.)
-      [red]#$pThe greatest delight in your life is watching tv
+      [green]#$pThe greatest delight in your life is watching tv
       sports. And the one thing that matters most to you right now is
       the championship game that your favorite team will play this
       afternoon.#
@@ -7319,11 +7914,14 @@ Here is how we will tell the player what the goal is:
 
 and...
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
- [red]#THE guide Isa OBJECT IN table
+ [green]#THE guide Isa OBJECT IN table
      NAME tv schedule
      NAME program guide
      IS READABLE.
@@ -7380,7 +7978,10 @@ Don't be put off or overwhelmed by what may appear to be complex or advanced pro
 It is that, but that is why we copied it from elsewhere.
 That is one of the two points I am trying to convey to you the reader: one: outside resources can help in a big way; and two: the clock is still just a simple OBJECT, EVENT, and SCHEDULE statement.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -- clock
@@ -7463,12 +8064,15 @@ Here is how we will use it in our game.
 
 Create the Clock OBJECT in the Kitchen:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
 
  -----------------------
- [red]#The clock Isa object AT Kitchen
+ [green]#The clock Isa object AT Kitchen
      IS READABLE.
      DESCRIPTION
      Has hour 3.           -- set these three attributes
@@ -7510,12 +8114,15 @@ Create the Clock OBJECT in the Kitchen:
 
 SCHEDULE the Clock to "Tick" in START AT
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
  START AT tv_room.
-     [red]#Set timeinminutes Of clock To (hour Of clock * 60) + minute
+     [green]#Set timeinminutes Of clock To (hour Of clock * 60) + minute
           Of clock.
      If ampm Of clock = "pm" Then
          If hour Of clock &lt; 12 Then
@@ -7541,11 +8148,14 @@ SCHEDULE the Clock to "Tick" in START AT
 
 Nothing new to add to this, just copy and paste.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
- [red]#Event ticktock
+ [green]#Event ticktock
      -- Increments The Time By Another Minute
      -- Convert Time From "Minutes Past Midnight" To Hh:Mm Am/Pm Format
      Set hour Of clock To timeinminutes Of clock / 60.
@@ -7576,7 +8186,10 @@ Nothing new to add to this, just copy and paste.
 
 Update the Kitchen DESCRIPTION for the Clock
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -7584,7 +8197,7 @@ Update the Kitchen DESCRIPTION for the Clock
      NAME 'Kitchen'
      DESCRIPTION
          "This is the kitchen. There is a counter and a cupboard here,
-          [red]#as well as a clock#.
+          [green]#as well as a clock#.
           $pNorth returns to the TV Room."
      EXIT north TO tv_room
          CHECK kitchen_door IS OPEN
@@ -7607,13 +8220,16 @@ Update the Kitchen DESCRIPTION for the Clock
 When the player successfully turns on the tv, the last thing to check before winning the game is whether he/she turned the tv on in time for the big game.
 Since we created an OBJECT at Nowhere to act as a sub-routine for us when the player turns on the TV, we will check the time there.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
  THE win_tv Isa OBJECT AT Nowhere
      DESCRIPTION
-         [red]#IF timeinminutes OF clock > 960 THEN -- 4 pm in minutes
+         [green]#IF timeinminutes OF clock > 960 THEN -- 4 pm in minutes
              "Ohhh, it's too late!
               $nYou missed the big game...
               $p\*\** You have lost. \***"
@@ -7626,7 +8242,7 @@ Since we created an OBJECT at Nowhere to act as a sub-routine for us when the pl
              "$n$nAnd so have you..."
              "$p\*\** You have won! \***"
              QUIT.
-         [red]#END IF.#
+         [green]#END IF.#
  END THE win_tv.
  -----------------------
 ----
@@ -7641,11 +8257,14 @@ We will trigger a repeating EVENT reminding the player of time going by, once th
 
 First, the EVENT:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
- [red]#EVENT time_pass
+ [green]#EVENT time_pass
      "$pThe clock is ticking..."
      SCHEDULE time_pass AT Hero AFTER 4.
  END EVENT.#
@@ -7657,25 +8276,31 @@ It would probably be better if this message were not to become obviously routine
 We can vary the interval to whatever we like, say, randomly every four to six turns.
 For this we use the RANDOM statement:
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
  EVENT time_pass
      "$pThe clock is ticking..."
-     SCHEDULE time_pass AT Hero AFTER [red]#RANDOM 4 TO 6#.
+     SCHEDULE time_pass AT Hero AFTER [green]#RANDOM 4 TO 6#.
  END EVENT.
  -----------------------
 ----
 
 We can vary the message as well, using the RANDOM statement along with DEPENDING ON.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
  EVENT time_pass
-     [red]#DEPENDING ON RANDOM 1 to 3
+     [green]#DEPENDING ON RANDOM 1 to 3
          = 1 THEN "$pThe time for the big game is getting nearer."
          = 2 THEN "$pDon't let time get away from you!"
          = 3 THEN "$pThe clock is ticking..."
@@ -7694,7 +8319,10 @@ Then it will generate another "random" number from 4 to 6, and SCHEDULE the EVEN
 We will SCHEDULE the time_pass EVENT to begin after the player reads the tv guide.
 But we don't want the EVENT to happen immediately upon their reading it, but a few turns after that.
 
-// @ALAN: CHECK CODE & ENABLE HIGHLIGHTING
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
 [subs="quotes"]
 ----
  -----------------------
@@ -7712,7 +8340,7 @@ But we don't want the EVENT to happen immediately upon their reading it, but a f
                  LOCATE guide IN Hero.
                  "(First picking it up)$p"
              END IF.
-             [red]#SCHEDULE time_pass AT Hero AFTER 4.#
+             [green]#SCHEDULE time_pass AT Hero AFTER 4.#
              "The championship game will be played at 4 o'clock this
               afternoon!"
      END VERB.

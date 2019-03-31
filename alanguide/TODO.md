@@ -104,8 +104,11 @@ The _B.Guide_ references explicit Chapters and sections of the _Alan Manual_, bu
 - [x] Mark all ALAN code occurences with `// @ALAN`
 - [ ] Enable syntax highlighting on all code blocks.
 - [ ] Preserve custom coloring in source code:
-    + [ ] Red code — using `[green]#`...`#`.
+    + [x] Red code — using `[green]#`...`#`.
     + [ ] Yellow code — using `#`...`#`.
+- [ ] Fix description of color conventions in Guide text:
+    + [x] "RED" to "GREEN BACKGROUND"
+    + [ ] "YELLOW" to "YELLO BACKGROUND"
 
 ### Syntax Highlighting
 
