@@ -31,4 +31,13 @@
 
 @import 'hl-theme_alan-lib';
 
+// -----------------------------------------------------------------------------
+//                     Syntax Theme for Alan Tutorial Code                      
+// -----------------------------------------------------------------------------
+// Alternative color theme for Alan code with "role=tutorial", to distinguish
+// between sourcecode of the tutorial "TV-TIME!" adventure and generic Alan
+// examples or the Library sources.
+
+@import 'hl-theme_alan-tutorial';
+
 // EOF //

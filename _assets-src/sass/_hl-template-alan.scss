@@ -48,13 +48,12 @@ $HL-Keywords3:      $Alan-predefined !default; // Predefined instances ('hero')
 // Highlight Markers
 // -----------------
 // Yellow Marker (for <mark> tag):
-$HL-MarkerYellow1: #ccff00 !default; // Gradient begin
-$HL-MarkerYellow2: #f5ff87 !default; // Gradient end
-// $HL-MarkerYellow2: $HL-MarkerYellow1 !default; // Gradient end
+$HL-MarkerYellow1: #ccff00 !default; // Gradient left
+$HL-MarkerYellow2: #f5ff87 !default; // Gradient right
 
 // Green Marker (for <span class="green"> tag):
-$HL-MarkerGreen1: #a3ff8a !default; // Gradient begin
-$HL-MarkerGreen2: rgba($HL-MarkerGreen1, .5) !default; // Gradient end
+$HL-MarkerGreen1: #a3ff8a !default; // Gradient left
+$HL-MarkerGreen2: rgba($HL-MarkerGreen1, .5) !default; // Gradient right
 
 // -----------------------------------------------------------------------------
 // Optional Language Settings

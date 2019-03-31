@@ -17,7 +17,8 @@ Source [Sass] SCSS files to build CSS stylesheets used in this project.
     - [SCSS Modules](#scss-modules)
 - [Installing Dart Sass](#installing-dart-sass)
 - [Credits and Licenses](#credits-and-licenses)
-    - [Base16 Eighties](#base16-eighties)
+    - [Base16 Color Schemes](#base16-color-schemes)
+    - [Base16 Sass](#base16-sass)
 
 <!-- /MarkdownTOC -->
 
@@ -58,15 +59,17 @@ The build scripts will output the CSS stylesheets in their destination folders o
 
 ## SCSS Modules
 
-|                    module                    |              description              |                used by                |
-|----------------------------------------------|---------------------------------------|---------------------------------------|
-| [`_color-scheme.scss`][color-scheme]         | custom colors definitions             | all documents                         |
-| [`_base16-eighties.scss`][b16 80s]           | Base16 Eighties color scheme          | _Beginner's Guide_: Alan library code |
-| [`_common.scss`][common]                     | common styles definitions             | all documents                         |
-| [`_hjs.scss`][hjs]                           | highlight.js specific styles          | Alan Docs using [highlight.js]        |
-| [`_hl-template-alan.scss`][hl template alan] | Highlight theme template for Alan     | Alan Docs using [Highlight]           |
-| [`_hl-theme_alan-lib.scss`][hl alan lib]     | Highlight theme for Alan Library Code | _Beginner's Guide_: Alan library code |
-| [`_mixins.scss`][mixins]                     | Custom Sass helpers                   | Alan Docs using [highlight.js]        |
+|                     module                    |              description               |                used by                 |
+|-----------------------------------------------|----------------------------------------|----------------------------------------|
+| [`_color-scheme.scss`][color-scheme]          | custom colors definitions              | all documents                          |
+| [`_base16-eighties.scss`][b16 80s]            | Base16 Eighties color scheme           | _Beginner's Guide_: Alan library code  |
+| [`_base16-google-dark.scss`][b16 Google]      | Base16 Google color scheme             | _Beginner's Guide_: Alan tutorial code |
+| [`_common.scss`][common]                      | common styles definitions              | all documents                          |
+| [`_hjs.scss`][hjs]                            | highlight.js specific styles           | Alan Docs using [highlight.js]         |
+| [`_hl-template-alan.scss`][hl template alan]  | Highlight theme template for Alan      | Alan Docs using [Highlight]            |
+| [`_hl-theme_alan-lib.scss`][hl alan lib]      | Highlight theme for Alan Library code  | _Beginner's Guide_: Alan library code  |
+| [`_hl-theme_alan-tutorial.scss`][hl alan tut] | Highlight theme for Alan tutorial code | _Beginner's Guide_: "TV-Time!" code    |
+| [`_mixins.scss`][mixins]                      | Custom Sass helpers                    | Alan Docs using [highlight.js]         |
 
 The [`_hl-template-alan.scss`][hl template alan] is a reusable variables-based `@import` template to quickly define Highlight Asciidoctor themes for Alan code. It can create both a default Alan theme as well as themes targetting a specific role/class, via the `$HL-Role` variable. For the default theme, it will use the Alan color scheme defined in `_color-scheme.scss`.
 
@@ -84,11 +87,29 @@ The easiest way to install Dart Sass on Windows, and keep it always updated, is 
 
 Due credits to third party assets used in this directory of the project.
 
-## Base16 Eighties
+## Base16 Color Schemes
+
+The Sass/CSS themes use the following Base16 color schemes:
+
+- _Base16 Eighties_ — by [Chris Kempson].
+- _Base16 Google Dark_ — by [Seth Wright].
+
+The *Base16* project was created by Chris Kempson:
+
+- http://chriskempson.com/projects/base16/
+
+## Base16 Sass
+
+The following Base16 SCSS files:
 
 - [`_base16-eighties.scss`][b16 80s]
+- [`_base16-google-dark.scss`][b16 Google]
 
-The __[Base16 Eighties]__ color scheme was created by [Chris Kempson] as part of the __[Base16]__ project, released under MIT License. The Sass version of the scheme used here was taken from the __[Base16 Sass]__ project by [Tristano Ajmone], also released under MIT License.
+were taken from the *Base16 Sass* project by Tristano Ajmone:
+
+- https://github.com/tajmone/Base16-Sass
+
+released under MIT License.
 
 
 ```
@@ -145,12 +166,14 @@ SOFTWARE.
 
 <!-- SCSS Modules -->
 
-[b16 80s]:./_base16-eighties.scss  "View SCSS source"
+[b16 80s]: ./_base16-eighties.scss  "View SCSS source"
+[b16 Google]: ./_base16-google-dark.scss  "View SCSS source"
 [color-scheme]: ./_color-scheme.scss "View SCSS source"
 [common]: ./_common.scss "View SCSS source"
 [mixins]: ./_mixins.scss "View SCSS source"
 [hjs]: ./_hjs.scss "View SCSS source"
 [hl alan lib]: ./_hl-theme_alan-lib.scss "View SCSS source"
+[hl alan tut]: ./_hl-theme_alan-tutorial.scss "View SCSS source"
 [hl template alan]: ./_hl-template-alan.scss "View SCSS source"
 
 <!-- CSS Output Stylesheets -->
@@ -168,5 +191,6 @@ SOFTWARE.
 
 [Chris Kempson]: https://github.com/chriskempson "View Chris Kempson's GitHub profile"
 [Tristano Ajmone]: https://github.com/tajmone "View Tristano Ajmone's GitHub profile"
+[Seth Wright]: http://sethawright.com "Visit Seth Wright's website"
 
 <!-- EOF -->

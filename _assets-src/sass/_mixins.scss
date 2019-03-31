@@ -23,6 +23,8 @@
         background-color: $gradient1;
         @if $gradient1 != $gradient2 {
             background-image: linear-gradient(to right, $gradient1 0%, $gradient2 100%);
+        } @else {
+            background-image: none;;
         }
     }
 }
@@ -37,6 +39,8 @@
         background-color: $gradient1;
         @if $gradient1 != $gradient2 {
             background-image: linear-gradient(to right, $gradient1 0%, $gradient2 100%);
+        } @else {
+            background-image: none;;
         }
     }
 }
