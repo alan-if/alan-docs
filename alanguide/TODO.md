@@ -11,7 +11,7 @@ Laying out a ground plan and noting down the pending tasks to finish porting to 
 
 - [Introduction](#introduction)
     - [Original HTML Document](#original-html-document)
-- [AsciiDoc Porting](#asciidoc-porting)
+- [1. AsciiDoc Porting](#1-asciidoc-porting)
     - [Document Settings](#document-settings)
     - [Document Layout](#document-layout)
     - [Typography](#typography)
@@ -19,12 +19,18 @@ Laying out a ground plan and noting down the pending tasks to finish porting to 
     - [XRefs](#xrefs)
     - [Examples Code](#examples-code)
         - [Syntax Highlighting](#syntax-highlighting)
-- [Recreate Tutorial Code](#recreate-tutorial-code)
+    - [Added Features](#added-features)
+        - [Downloadable Assets](#downloadable-assets)
+- [2. Recreate Tutorial Code](#2-recreate-tutorial-code)
     - [Reconstruct _TV TIME!_ Source](#reconstruct-_tv-time_-source)
+        - [Fix Possible Bugs](#fix-possible-bugs)
+    - [Reconstruct Intermediate _TV TIME!_ Sources](#reconstruct-intermediate-_tv-time_-sources)
     - [Add StdLib 0.6.2](#add-stdlib-062)
         - [Lib Fixes](#lib-fixes)
     - [Fix Compiler Errors](#fix-compiler-errors)
         - [Mylib Tweaks](#mylib-tweaks)
+    - [Enforce Consistent Code Casing](#enforce-consistent-code-casing)
+- [3. Replay Tutorial](#3-replay-tutorial)
 - [Editing Notes and Guidelines](#editing-notes-and-guidelines)
     - [Color Coding Conventions](#color-coding-conventions)
         - [The AsciiDoc Solution](#the-asciidoc-solution)
@@ -43,6 +49,10 @@ The _Guide_ still requires some adaptation work:
 + [ ] 1. __AsciiDoc porting__ — fixing/improving AsciiDoc elements and adapting it to the [styling conventions] of this project.
 + [ ] 2. __Recreate tutorial code__ — make available to the reader the source files of the tutorial "TV Time" example and the required Library v0.6.x dependencies.
 
+Also, we must check that all the tutorial steps work as expected:
+
+- [ ] 3. __Replay tutorial__ — try the whole tutorial locally, step by step, to ensure that the code will compile at each step.
+
 The AsciiDoc formatting still needs some cleaning up, and the document should be adapted to the [styling conventions] adopted in this project. At that point the document can be made puclily available again.
 
 This document serves as a guide to plan how to approach the adaption, establish some standards and then subdvide the work in isolate prending tasks.
@@ -57,7 +67,7 @@ Because the original document employed a custom color-coding convention, a copy 
 -------------------------------------------------------------------------------
 
 
-# AsciiDoc Porting
+# 1. AsciiDoc Porting
 
 The AsciiDoc reconstruction of this document takes on from where Thomas Nilefalk left.
 
@@ -74,6 +84,8 @@ The AsciiDoc reconstruction of this document takes on from where Thomas Nilefalk
 This document is actually a book with parts, so its structure should be reorganized accordingly.
 
 - [ ] Divide book into parts.
+
+> __NOTE__ — The document is already organized in Parts, I just need to check that everything is fine. 
 
 ## Typography
 
@@ -130,11 +142,44 @@ Also, the tutorial contains code from both the Library and from the _TV TIME!_ a
 
 [Base16 Eighties]: http://htmlpreview.github.io/?https://github.com/chriskempson/base16/blob/a1bf436a/scheme-previews/base16-eighties.html "Live HTML Preview of Base16 Eighties color scheme"
 
-# Recreate Tutorial Code
+## Added Features
+
+Reprinting the _ALAN Beginner's Guide_ after 12 years from its original publication justifies adding a few new features to enhance the user experience of the tutorial — after all, the WWW has changed a lot and so have the users' expectations of how HTML pages/docs should look like.
+
+Overall, apart from the AsciiDoc enhanced styles, the following additions could improve the document without being considered as changes to the _B.Guide_ contents:
+
+- [ ] Add a download link to get a Zipped file with all the tutorial assets.
+- [ ] Fix dead links and add new up-to-date links to Alan websites and resources.
+
+### Downloadable Assets
+
+Provide in the _B.Guide_ a link to download a Zip archive of the `alanguide/alanguide-code/` folder directly from the document.
+
+- [ ] Add a script to create/update the Zip archive.
+- [ ] Add a (raw) download link to get a Zipped file with all the tutorial assets.
+- [ ] Include in the Zip file a fully standalone copy of the tutorial:
+    + [ ] Could inject `alanguide.css` into `docinfo.html` so it won't require an external CSS file and would be truely standalone.
+
+I've also considered other ways then using a script to create a Zip archive and store in the repository, via some service that could create the Zip file on the demand:
+
+- [ ] Via @KinoLien’s [GitZip]  (the new GitHub API requires tokens, maybe no longer a viable solution).
+- [ ] Use one of the services suggested by [RawGit]  (which is shutting down shortly): 
+    + [ ]  [JsDelivr]
+    + [ ]  [unpkg]
+
+But I need to look better into these, for some of them depend on GitHub release tags, others can't target specif folders, etc. Right now keeping a zip archive in the repository would be the easiest solution, after all once the _Guide_ is ready it won't be updated any more (or, at least, not often).
+
+[GitZip]: https://github.com/KinoLien/gitzip
+[RawGit]: https://rawgit.com/
+[JsDelivr]: https://www.jsdelivr.com/
+[unpkg]:https://unpkg.com/
+
+
+# 2. Recreate Tutorial Code
 
 In order to make the tutorial usable, we need to provide to the end users the following:
 
-- [x] 1. `tvtime.alan` — Source code of _TV TIME!_ adventure (the final version).
+- [x] 1. [`tvtime.alan`][tvtime.alan] — Source code of _TV TIME!_ adventure (the final version).
 - [x] 2. `mylib/` — Library modified according to tutorial, so that _TV TIME!_ can be compiled.
 - [x] 3. `lib/` — The original (unchanged) Library, for the reader to edit during the tutorial.
 
@@ -149,18 +194,17 @@ Tasks list:
 
 ## Reconstruct _TV TIME!_ Source
 
-The full source of the _TV TIME!_ adventure is actually available in the _Beginner's Guide_ document, in _§50. Compile and Play It!_. But the pasted code wouldn't compile due to a missing EVENT and a wrong attribute (now fixed).
-
+The full source of the _TV TIME!_ adventure is actually available in the _Beginner's Guide_ document, in [_§50. Compile and Play It!_][§50]. But the pasted code wouldn't compile due to a missing EVENT and a wrong attribute (now fixed).
 
 - [x] Recreate source files of the tutorial:
-    + [x] Create `tvtime.alan` from the code contained _§50. Compile and Play It!_.
+    + [x] Create `tvtime.alan` from the code contained [_§50. Compile and Play It!_][§50].
     + [x] Fix attribute `closed` to `NOT open` in:
 
         ```alan
         MAKE otherside OF THIS closed.
         ```
 
-    + [x] Add the missing `time_pass` EVENT definition, taken form _§49. A Colorful EVENT_:
+    + [x] Add the missing `time_pass` EVENT definition, taken form [_§49. A Colorful EVENT_][§49]:
 
         ```alan
         EVENT time_pass
@@ -174,6 +218,23 @@ The full source of the _TV TIME!_ adventure is actually available in the _Beginn
         ```
 
         (It looks like it was accidentally left out from the final adventure code in the document.)
+
+
+### Fix Possible Bugs
+
+It seems that some verbs are not working as expected, maybe they were accidentally left out from the final source pasted in the document:
+
+- [ ] __verb "laugh"__ — this is supposed to be one of the books that can be read, but the command is not understood.
+
+## Reconstruct Intermediate _TV TIME!_ Sources
+
+During the tutorial there are various points in which an intermediate version of the adventure is presented in full source to compile. It might be worth reconstructing those file to import their UTF-8 version and slim down the document. Chances are they won't compile for they require intermediate tweaks to the Library code too, so unless I add for each source file a dedicate tweaked Library they might not be usable.
+
+- [ ] Recreate source files of intermediate _TV TIME!_ sources:
+    + [ ]  [_§24. Compile and Play It!_][§24]
+    + [ ]  [_§40. Compile and Play It!_][§40]
+    + [ ]  [_§45. Compile and Play It!_][§45]
+- [ ] Add them to UTF-8 converter script and `include::` them in tutorial. 
 
 ## Add StdLib 0.6.2
 
@@ -229,6 +290,39 @@ The tutorial requires changing the original library files, so a copy of Lib 0.6.
     + `mylib/cut.i` (as instructed in Sec. _37. "cut.i"_)
 
 
+## Enforce Consistent Code Casing
+
+- [ ] Enforce __prose-casing__ in all Alan sources:
+    + [ ]  [`/alanguide-code/`][guide code]
+        * [ ]  [`/lib/`][lib]
+        * [ ]  [`/mylib/`][mylib]
+        * [ ]  [`tvtime.alan`][tvtime.alan]
+
+
+Currently, the tutorial code contains a mixture of Alan keywords letter-casing conventions (sometimes all-caps, sometimes title-cased). This is partly due to the fact that Library code is copied and pasted into the tutorial code.
+
+Since the new reprint benefits from syntax highlighting, there isn't any more a need to resort to letter-casing to distinguish Alan keywords — neither in the tutorial nor in the Library. Therefore, it makes sense to enforce a consistent casing convention in both the Library and the tutorial.
+
+The best choice (as discussed on the Yahoo list) seems to use __prose casing__ for it maked the code look more like plain English — and chances are that most users will be typing the code that way anyhow, as it comes more natural than having to constantly turn on/off Caps Lock.
+
+Enforcing a consistent casing is also important from a document maintainance point of view, because whenever possible we shall include source code in the document directly from the Alan source files (via `include::` directive). This makes it easier to ensure that the code in the document mirrors the actual code in the source files, at all times.
+
+
+# 3. Replay Tutorial
+
+The whole tutorial must be tried out locally to ensure that following the instructions at each step will always produce a compilable adventure.
+
+While recreating and testing the final code of `tvtime.alan` contained in [_§50. Compile and Play It!_][§50] it came out that an event was left out from the source code, so chances are that there might be some other small issues due to accidental copy-&-paste omission in the original document (or its "salvaged" version anyhow).
+
+The tutorial presents the reader with the following versions of the _TV TIME!_ adventure:
+
++ [ ]  [_§24. Compile and Play It!_][§24] — first version.
++ [ ]  [_§40. Compile and Play It!_][§40]
++ [ ]  [_§45. Compile and Play It!_][§45]
++ [ ]  [_§50. Compile and Play It!_][§50] — the final adventure:
+    * [ ]  [`./alanguide-code/tvtime.alan`][tvtime.alan]
+
+But there are actually many other points in the tutorial where the reader is asked to compile adn run the edited code.
 
 -------------------------------------------------------------------------------
 
@@ -249,7 +343,7 @@ The main challenge here is to introduce syntax highlighting of Alan source code 
 
 ### The AsciiDoc Solution
 
-I've managed to achieve both syntax highlighting and custom color-marking of code via custom styling using the `#` element (see Asciidoctor Manual [§19.5 _Custom Styling With Attributes_][§19.5]):
+I've managed to achieve both syntax highlighting and custom color-marking of code via custom styling using the `#` element (see Asciidoctor Manual [§19.5 _Custom Styling With Attributes_][ADoc §19.5]):
 
 - `#`...`#` — for yellow highlighting.
 - `[green]#`...`#` — for green highlighting.
@@ -311,6 +405,13 @@ In some places, code is highlighted in yellow as a means to draw attention to sp
 
 [styling conventions]: ../CONVENTIONS.md "Read the 'Formatting and Styling Conventions' guidelines adopted in Alan-Docs"
 
+<!-- project folders --------------------------------------------------------->
+
+[lib]: ./alanguide-code/lib/ "Navigate to folder"
+[mylib]: ./alanguide-code/mylib/ "Navigate to folder"
+
+[guide code]: ./alanguide-code/ "Navigate to folder"
+
 <!-- people ------------------------------------------------------------------>
 
 [Anssi Räisänen]: https://github.com/AnssiR66 "View Anssi Räisänen's GitHub profile"
@@ -331,6 +432,18 @@ In some places, code is highlighted in yellow as a means to draw attention to sp
 
 <!-- Asciidoctor Manual references ------------------------------------------->
 
-[§19.5]: https://asciidoctor.org/docs/user-manual/#custom-styling-with-attributes "Read the Asciidoctor Manual on this topic..."
+[ADoc §19.5]: https://asciidoctor.org/docs/user-manual/#custom-styling-with-attributes "Read the Asciidoctor Manual on this topic..."
+
+<!-- B.Guide Sources --------------------------------------------------------->
+
+[tvtime.alan]: ./alanguide-code/tvtime.alan
+
+<!-- B.Guide HTML Links ------------------------------------------------------>
+
+[§24]: ./alanguide.html#_compile_and_play_it "Go to '§24. Compile and Play It!'"
+[§40]: ./alanguide.html#compile_and_play "Go to '§40. Compile and Play It!'"
+[§45]: ./alanguide.html#_compile_and_play_it_2 "Go to '§45. Compile and Play It!'"
+[§49]: ./alanguide.html#_a_colorful_event "Go to '49. A Colorful EVENT'"
+[§50]: ./alanguide.html#_compile_and_play_it_3 "Go to '§50. Compile and Play It!'"
 
 <!-- EOF -->
