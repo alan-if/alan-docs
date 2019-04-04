@@ -12,31 +12,31 @@
 -- 'verb alternatives' - in the Alan manual.  eg:
 --
 -- Actor simon
---    ....
---    Verb ask
---       When act
---           Does Only
---              If topic = ball Then
---                  "Simon replies ""I love playing ball sports. Football is
---                   my favourite."""
---              Elsif obj = fred Then
---                  .....
---              Else
---                  "Simon shrugs. ""Sorry, I don't know anything about
---                  that."""
---              End If.
---     End Verb ask.
---     ....
+--   ....
+--   Verb ask
+--     When act
+--       Does only
+--         If topic = ball then
+--           "Simon replies ""I love playing ball sports.
+--            Football is my favourite."""
+--         ElsIf obj = fred then
+--           .....
+--         Else
+--           "Simon shrugs. ""Sorry, I don't know anything
+--            about that."""
+--         End if.
+--   End verb.
+--   ....
 -- End Actor Simon.
 
 
-Add To Every thing
-  Is Not can_talk.
-End Add To thing.
+Add to every thing
+  Is not can_talk.
+End add.
 
-Add To Every actor
+Add to every actor
   Is can_talk.
-End Add To actor.
+End add.
 
 
 Synonyms
@@ -49,93 +49,93 @@ Syntax
 Verb shout
   Does
     "You make a lot of noise..."
-End Verb.
+End verb.
 
 
 Syntax
   say_word = 'say' (topic)!
-    Where topic Isa thing
-      Else "You can't say that."
+    Where topic IsA thing
+      else "You can't say that."
 
-Add To Every thing
+Add to every thing
   Verb say_word
     Does
-      "$o? That's a nice word!"
-  End Verb.
-End Add To.
+      "$1? That's a nice word!"
+  End verb.
+End add.
 
 
 Syntax
   say_to = 'say' (topic)! 'to' (act)
-    Where topic Isa thing
-      Else "You can't say that."
-    And act Isa thing
-      Else "You can't talk to that."
+    Where topic IsA thing
+      else "You can't say that."
+    And act IsA thing
+      else "You can't talk to that."
 
-Add To Every thing
+Add to every thing
   Verb say_to
     When act
       Check act Has can_talk
-        Else "You can't talk to that."
+        else "You can't talk to that."
     Does
-      Say The act. "doesn't seem interested."
-  End Verb.
-End Add To.
+      Say the act. "doesn't seem interested."
+  End verb.
+End add.
 
 
 Syntax
   ask = ask (act) about (topic)!
-    Where topic ISA THING
-      Else "You can't ask about that."
-    And act Isa thing
-      Else "You can't talk to that."
+    Where topic IsA thing
+      else "You can't ask about that."
+    And act IsA thing
+      else "You can't talk to that."
 
-Add To Every thing
+Add to every thing
   Verb ask
     When act
       Check act Has can_talk
-        Else "You can't talk to that."
+        else "You can't talk to that."
       Does
-        Say The act.
+        Say the act.
         "says ""I don't know anything about"
-        Say The topic. "!"""
-  End Verb.
-End Add To.
+        say the topic. "!"""
+  End verb.
+End add.
 
 
 Syntax
   talk_to = talk 'to' (act) about (topic)!
-    Where topic Isa thing
-      Else "You can't ask about that."
-    And act Isa thing
-      Else "You can't talk to that."
+    Where topic IsA thing
+      else "You can't ask about that."
+    And act IsA thing
+      else "You can't talk to that."
   talk_to = tell (act) about (topic)!.
 
-Add To Every thing
+Add to every thing
   Verb talk_to
     When  topic
       Check act Has can_talk
-        Else "You can't talk to that."
+        else "You can't talk to that."
       Does
         """I don't think I need to know about"
-        Say The topic. "$$,"" says"
-        Say The act. "."
-  End Verb.
-End Add To.
+        Say the topic. "$$,"" says"
+        say the act. "."
+  End verb.
+End add.
 
 
 Syntax
   talk_to_a = talk 'to' (act)
-    Where act Isa thing
-      Else "You can't talk to that."
+    Where act IsA thing
+      else "You can't talk to that."
 
-Add To Every thing
+Add to every thing
   Verb talk_to_a
     Check act Has can_talk
-      Else "You can't talk to that."
+      else "You can't talk to that."
     Does
-      Say The act.
+      Say the act.
       "looks at you, seemingly wondering if you have
        anything specific to talk about."
-  End Verb.
-End Add To.
+  End verb.
+End add.

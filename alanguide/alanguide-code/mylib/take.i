@@ -7,17 +7,17 @@
 -- 0.4.1 - converted to ALANv3
 
 
-Add To Every thing
-  Is InAnimate.
-End Add To thing.
+Add to every thing
+  Is inanimate.
+End add.
 
-Add To Every object
+Add to every object
   Is takeable.
-End Add To object.
+End add.
 
-Add To Every actor
-  Is Not inanimate.
-End Add To actor.
+Add to every actor
+  Is not inanimate.
+End add.
 
 
 Synonyms
@@ -26,34 +26,34 @@ Synonyms
 
 Syntax
   take = take (obj) *
-    Where obj Isa object
-      Else "You can't take that with you!"
+    Where obj IsA object
+      else "You can't take that with you!"
 
 
 Syntax
   pick_up1 = pick up (obj)*
-    Where obj Isa object
-      Else "You can't take that with you!"
+    Where obj IsA object
+      else "You can't take that with you!"
 
   pick_up2 = pick (obj)* up
-    Where obj Isa object
-      Else "You can't take that with you!"
+    Where obj IsA object
+      else "You can't take that with you!"
 
-Add To Every object
+Add to every object
   Verb take, pick_up1, pick_up2
-    Check obj Is takeable
-      Else "You can't take that!"
-    And obj Not In worn
-      Else "You've already got that - you're wearing that."
-    And obj Not In hero
-      Else "You've already got that."
+    Check obj is takeable
+      else "You can't take that!"
+    And obj not in worn
+      else "You've already got that - you're wearing that."
+    And obj not in hero
+      else "You've already got that."
     And weight Of obj <=50
-      Else "That is too heavy to lift."
+      else "That is too heavy to lift."
     Does
-      Locate obj In hero.
+      Locate obj in hero.
       "Taken."
-  End Verb.
-End Add To.
+  End verb.
+End add.
 
 
 Synonyms
@@ -68,39 +68,39 @@ Syntax
 Syntax
   put_down2 = put down (obj)*.
 
-Add To Every object
+Add to every object
   Verb drop, put_down1, put_down2
-    Check obj In hero
-      Else "You aren't carrying that."
+    Check obj in hero
+      else "You aren't carrying that."
     Does
-      Locate obj Here.
+      Locate obj here.
       "Dropped."
-  End Verb.
-End Add To.
+  End verb.
+End add.
 
 
 Syntax
   take_from = 'take' (obj) 'from' (holder)
-    Where obj Isa object
-      Else "You can only take objects."
-    And holder Isa thing
-      Else "You can't take things from that!"
-    And holder Isa Container
-      Else "You can't take things from that!"
+    Where obj IsA object
+      else "You can only take objects."
+    And holder IsA thing
+      else "You can't take things from that!"
+    And holder IsA container
+      else "You can't take things from that!"
 
-Add To Every object
+Add to every object
   Verb take_from
     When obj
-      Check obj Not In hero
-        Else "You already have" Say The obj. "."
-      And obj In holder
-        Else Say The obj. "is not there."
+      Check obj not in hero
+        else "You already have" say the obj. "."
+      And obj in holder
+        else Say the obj. "is not there."
       Does
-        If holder=hero Then
+        If holder=hero then
           "You don't need to take things from yourself!"
-        Else
-          Locate obj In hero.
-          "You take" Say The obj. "."
-        End If.
-  End Verb.
-End Add.
+        else
+          Locate obj in hero.
+          "You take" say the obj. "."
+        End if.
+  End verb.
+End add.

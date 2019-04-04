@@ -4,89 +4,89 @@
 -- 0.4.1 - converted to ALANv3
 
 
-Add To Every object
+Add to every object
   Is
     Not lockable.
     locked.
-End Add To object.
+End add.
 
 
 Syntax
   lock = lock (obj)
-    Where obj Isa object
-      Else "You can't lock that."
+    Where obj IsA object
+      else "You can't lock that."
 
-Add To Every object
+Add to every object
   Verb lock
-    Check obj Is lockable
-      Else "You can't lock that!"
-    And obj Is Not locked
-      Else "It's already locked."
+    Check obj is lockable
+      else "You can't lock that!"
+    And obj is not locked
+      else "It's already locked."
     Does
-      Make obj locked. Say The obj. "is now locked."
-  End Verb.
-End Add To object.
+      Make obj locked. Say the obj. "is now locked."
+  End verb.
+End add.
 
 
 Syntax
   lock_with = lock (obj) 'with' (key)
-    Where obj Isa object
-      Else "You can't lock that."
-    And key Isa object
-      Else "You can't lock anything with that."
+    Where obj IsA object
+      else "You can't lock that."
+    And key IsA object
+      else "You can't lock anything with that."
 
-Add To Every Object
+Add to every Object
   Verb lock_with
     When obj
-      Check obj Is lockable
-        Else "You can't lock that!"
-      And obj Is Not locked
-        Else "It's already locked."
-      And key In hero
-        Else "You don't have" Say The key. "."
+      Check obj is lockable
+        else "You can't lock that!"
+      And obj is not locked
+        else "It's already locked."
+      And key in hero
+        else "You don't have" say the key. "."
       Does
         Make obj locked.
-      Say The obj. "is now locked."
-  End Verb.
-End Add.
+        Say the obj. "is now locked."
+  End verb.
+End add.
 
 
 Syntax
   unlock = unlock (obj)
-    Where obj Isa object
-      Else "You can't lock that."
+    Where obj IsA object
+      else "You can't lock that."
 
-Add To Every object
+Add to every object
   Verb unlock
-    Check obj Is lockable
-      Else "You can't unlock that!"
-    And obj Is locked
-      Else "It's already unlocked."
+    Check obj is lockable
+      else "You can't unlock that!"
+    And obj is locked
+      else "It's already unlocked."
     Does
-      Make obj Not locked.
-      Say The obj. "is now unlocked."
-  End Verb.
-End Add To.
+      Make obj not locked.
+      Say the obj. "is now unlocked."
+  End verb.
+End add.
 
 
 Syntax
   unlock_with = unlock (obj) 'with' (key)
-    Where obj Isa object
-      Else "You can't lock that."
-    And key Isa object
-      Else "You can't lock anything with that."
+    Where obj IsA object
+      else "You can't lock that."
+    And key IsA object
+      else "You can't lock anything with that."
 
-Add To Every object
+Add to every object
   Verb unlock_with
     When obj
-      Check obj Is lockable
-        Else "You can't unlock that!"
-      And obj Is locked
-        Else "It's already unlocked."
-      And key In hero
-        Else "You don't have" Say The key. "."
+      Check obj is lockable
+        else "You can't unlock that!"
+      And obj is locked
+        else "It's already unlocked."
+      And key in hero
+        else "You don't have" say the key. "."
       Does
-        Make obj Not locked.
-        Say The obj. "is now unlocked."
-  End Verb.
-End Add.
+        Make obj not locked.
+        Say the obj. "is now unlocked."
+  End verb.
+End add.

@@ -4,78 +4,78 @@
 -- 0.4.1 - converted to ALANv3
 
 
-SYNONYMS
+Synonyms
   dump, cast = throw.
 
-SYNTAX
+Syntax
   throw = throw (obj) *
-    WHERE obj ISA OBJECT
-      ELSE "You can only throw objects."
+    Where obj IsA object
+      else "You can only throw objects."
 
-Add To Every object
+Add to every object
   Verb throw
-    Check obj In hero
-      Else "You haven't got that!"
+    Check obj in hero
+      else "You haven't got that!"
     Does
       "You can't throw very far,"
-      Say The obj. "ends up on the ground."
-      Locate obj Here.
-  End Verb.
-End Add To.
+      say the obj. "ends up on the ground."
+      Locate obj here.
+  End verb.
+End add.
 
 
 Syntax
   throw_at = throw (obj1) 'at' (obj2)
-    Where obj1 Isa object
-      Else "You can only throw objects."
-    And obj2 Isa thing
-      Else "You can't throw anything at that."
+    Where obj1 IsA object
+      else "You can only throw objects."
+    And obj2 IsA thing
+      else "You can't throw anything at that."
 
   throw_to = throw (obj1) 'to' (obj2)
-    Where obj1 Isa object
-      Else "You can't be serious."
-    And obj2 Isa thing
-      Else "You can't throw anything to that."
+    Where obj1 IsA object
+      else "You can't be serious."
+    And obj2 IsA thing
+      else "You can't throw anything to that."
 
-Add To Every object
+Add to every object
   Verb throw_at, throw_to
     When obj1
-      Check obj1 In hero
-        Else "You haven't got that!"
-      And obj2 Not In hero
-        Else
-          "You are carrying" Say The obj2. "."
+      Check obj1 in hero
+        else "You haven't got that!"
+      And obj2 not in hero
+        else
+          "You are carrying" say the obj2. "."
       And obj2 <> hero
-        Else
-          "You can't throw" Say The obj1.
+        else
+          "You can't throw" say the obj1.
           "at yourself."
       Does
-        Say The obj1. "bounces harmlessly off"
-        Say The obj2. "and ends up on the ground."
-        Locate obj1 Here.
-  End Verb.
-End Add To.
+        Say the obj1. "bounces harmlessly off"
+        say the obj2. "and ends up on the ground."
+        Locate obj1 here.
+  End verb.
+End add.
 
 
 Syntax
   throw_in = throw (obj1) 'in' (obj2)
-    Where obj1 Isa object
-      Else "Don't be silly."
-    And obj2 Isa Container
-      Else "You can't throw anything in that."
+    Where obj1 IsA object
+      else "Don't be silly."
+    And obj2 IsA container
+      else "You can't throw anything in that."
 
-Add To Every object
+Add to every object
   Verb throw_in
     When obj1
-      Check obj1 In hero
-        Else "You haven't got that!"
+      Check obj1 in hero
+        else "You haven't got that!"
       And obj1 <> obj2
-        Else "Now, that would be a good trick!"
+        else "Now, that would be a good trick!"
       And obj2 <> hero
-        Else
-          "You can't put" Say The obj1. "into yourself!"
+        else
+          "You can't put" say the obj1. "into yourself!"
       Does
-        Locate obj1 In obj2.
+        Locate obj1 in obj2.
         "Done."
-  End Verb.
-End Add.
+  End verb.
+End add.

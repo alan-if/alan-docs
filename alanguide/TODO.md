@@ -27,6 +27,8 @@ Laying out a ground plan and noting down the pending tasks to finish porting to 
     - [Reconstruct Intermediate _TV TIME!_ Sources](#reconstruct-intermediate-_tv-time_-sources)
     - [Add StdLib 0.6.2](#add-stdlib-062)
         - [Lib Fixes](#lib-fixes)
+        - [Obsolete Links and Info](#obsolete-links-and-info)
+        - [Lib Integrity Tests](#lib-integrity-tests)
     - [Fix Compiler Errors](#fix-compiler-errors)
         - [Mylib Tweaks](#mylib-tweaks)
     - [Enforce Consistent Code Casing](#enforce-consistent-code-casing)
@@ -255,7 +257,27 @@ At the same time, I've preserved some default attributes and CHECKS from v0.6.1 
     + Restored in `person` class definition:
         * `Is Not named.`
         * Customized `Description` based on `named` attribute.
+- `lib/talk.i`
+    + Replaced `$o` with `$1`, for the former parameter special symbol is now
+      depracated and might not be safe to use in future versions of Alan. 
 
+
+### Obsolete Links and Info
+
+In `help.i`, the text of the `credits` verb contains some obsolete info which might be worth fixing:
+
+- [x] Thomas Nilsson — now Thomas Nilefalk.
+- [x] email `thomas.nilsson@progindus.se` — now `thomas@alanif.se`
+- [x] ALAN website: http://www.welcome.to/alan-if — dead link.
+
+
+### Lib Integrity Tests
+
+Create a test adventure to check that the Library integrity is not compromised by the adaptation editings:
+
+- [x]  [`tests/lib-test.alan`](./tests/lib-test.alan)
+
+Since both the tutorial and the required Library are over 12 years old, it's a good idea to run these tests whenever Alan is updated, just in case some changes in the language might break backward compatibility.
 
 ## Fix Compiler Errors
 

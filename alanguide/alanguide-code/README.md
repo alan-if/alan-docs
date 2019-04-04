@@ -231,15 +231,15 @@ Also, it's not clear why the above CHECKs and defaults were removed (no other ch
 
 <!-- Lib v0.6.1 -->
 
-[e002f20c]: https://github.com/tajmone/alan/commit/e002f20c275e8429315580b8501d137750bd22de "View commit e002f20c of Alan repository on Bitbucket"
+[e002f20c]: https://bitbucket.org/alanif/alan/commits/e002f20c275e8429315580b8501d137750bd22de "View commit e002f20c of Alan repository on Bitbucket"
 
 <!-- Lib v0.6.2 -->
 
-[c44766fa]: https://github.com/tajmone/alan/commit/c44766faea7539806a01fa6e8bee2c84fa0b2c36 "View commit c44766fa of Alan repository on Bitbucket"
+[c44766fa]: https://bitbucket.org/alanif/alan/commits/c44766faea7539806a01fa6e8bee2c84fa0b2c36 "View commit c44766fa of Alan repository on Bitbucket"
 
 <!-- Lib removed from Alan repo -->
 
-[18c72f83]: https://github.com/tajmone/alan/commit/18c72f8378ca59651a92b580265fd814a0965ab6 "View commit 18c72f83 of Alan repository on Bitbucket"
+[18c72f83]: https://bitbucket.org/alanif/alan/commits/18c72f8378ca59651a92b580265fd814a0965ab6 "View commit 18c72f83 of Alan repository on Bitbucket"
 
 [last lib]: https://github.com/tajmone/alan/tree/c44766faea7539806a01fa6e8bee2c84fa0b2c36/lib
 [last std]: https://github.com/tajmone/alan/blob/c44766faea7539806a01fa6e8bee2c84fa0b2c36/lib/std.i

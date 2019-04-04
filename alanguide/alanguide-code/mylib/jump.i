@@ -4,23 +4,23 @@
 -- 0.4.1 - converted to ALANv3
 
 
-SYNTAX
+Syntax
   jump_on = jump 'on' (obj)
-    WHERE obj ISA THING
-      ELSE "You can't jump on that!"
+    Where obj IsA thing
+      else "You can't jump on that!"
 
-Add To Every thing
-  VERB jump_on
-    DOES
-      "You jump on" Say The obj. "."
-  END VERB.
-End Add To.
+Add to every thing
+  Verb jump_on
+    Does
+      "You jump on" say the obj. "."
+  End verb.
+End add.
 
 
-SYNTAX
+Syntax
   jump = jump.
 
-VERB jump
-  DOES
+Verb jump
+  Does
     "You jump up and down."
-END VERB.
+End verb.

@@ -4,75 +4,71 @@
 -- 0.4.1 - converted to ALANv3
 
 
-ADD TO EVERY THING
-IS
-  examinable.
-  searchable.
-END ADD TO THING.
+Add to every thing
+  Is
+    examinable.
+    searchable.
+End add.
 
-ADD TO EVERY ACTOR
-IS
-  NOT searchable.
-END ADD TO ACTOR.
+Add to every actor
+  Is not searchable.
+End add.
 
 ----
 
-SYNONYMS
+Synonyms
   x, inspect, 'check' = examine.
 
-SYNTAX
+Syntax
   examine = examine (obj) *
-    WHERE obj ISA THING
-      ELSE "You can't examine that!"
+    Where obj IsA thing
+      else "You can't examine that!"
 
-SYNTAX
+Syntax
   examine = 'look' 'at' (obj) *.
 
-Add To Every thing
+Add to every thing
   Verb examine
-    Check obj Is examinable
-      Else
-  "You can't examine" Say The obj. "."
+    Check obj is examinable
+      else "You can't examine" say the obj. "."
     Does
-      "There is nothing special about" Say The obj. "."
-  End Verb.
-End Add To.
+      "There is nothing special about" say the obj. "."
+  End verb.
+End add.
 
 ----
 
-SYNONYMS
+Synonyms
   inside, into = 'in'.
 
-SYNTAX
+Syntax
   look_in = 'look' 'in' (obj)
-    WHERE obj ISA THING
-      ELSE "You can't look inside that."
-    AND obj ISA CONTAINER
-      ELSE "You can't look inside that."
+    Where obj IsA thing
+      else "You can't look inside that."
+    And obj IsA container
+      else "You can't look inside that."
 
-Add To Every object
-  VERB look_in
-    CHECK obj IS examinable
-      ELSE
-        "You can't look inside" Say The obj. "."
-    DOES
-      LIST obj.
-  END VERB.
-End Add To.
+Add to every object
+  Verb look_in
+    Check obj is examinable
+      else "You can't look inside" say the obj. "."
+    Does
+      List obj.
+  End verb.
+End add.
 
 ----
 
-SYNTAX
+Syntax
   search = search (obj)
-    WHERE obj ISA THING
-      ELSE "You can't search that!"
+    Where obj IsA thing
+      else "You can't search that!"
 
-Add To Every object
-  VERB search
-  CHECK obj IS searchable
-   ELSE
-    "You can't search" Say The obj. "."
-  DOES
-		"You find nothing of interest."
-  END VERB.
-End Add To.
+Add to every object
+  Verb search
+    Check obj is searchable
+      else "You can't search" say the obj. "."
+    Does
+  		"You find nothing of interest."
+  End verb.
+End add.

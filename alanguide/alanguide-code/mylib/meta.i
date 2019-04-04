@@ -4,87 +4,87 @@
 -- Library version 0.5.0
 
 
-SYNONYMS q = 'quit'.
+Synonyms q = 'quit'.
 
-SYNTAX
+Syntax
   'quit' = 'quit'.
 
-VERB 'quit'
-  DOES
-    QUIT.
-END VERB.
+Verb 'quit'
+  Does
+    Quit.
+End verb.
 
 
-SYNTAX
+Syntax
   'save' = 'save'.
 
-VERB 'save'
-  DOES
-    SAVE.
+Verb 'save'
+  Does
+    Save.
     "Ok."
-END VERB.
+End verb.
 
 
-SYNTAX
+Syntax
   'restore' = 'restore'.
 
-VERB 'restore'
-  DOES
-    RESTORE.
+Verb 'restore'
+  Does
+    Restore.
     "Done.$n"
-    LOOK.
-END VERB.
+    Look.
+End verb.
 
 
-SYNTAX
+Syntax
   'restart' = 'restart'.
 
-VERB 'restart'
-  DOES
-    RESTART.
-END VERB.
+Verb 'restart'
+  Does
+    Restart.
+End verb.
 
 
-SYNTAX
+Syntax
   'score' = 'score'.
 
-VERB 'score'
-  DOES
-    SCORE.
-END VERB 'score'.
+Verb 'score'
+  Does
+    Score.
+End verb.
 
 
-SYNONYMS
+Synonyms
   z = 'wait'.
 
-SYNTAX
+Syntax
   'wait' = 'wait'.
 
-VERB 'wait'
-  DOES
+Verb 'wait'
+  Does
     "Time passes..."
-END VERB.
+End verb.
 
 
-SYNONYMS
+Synonyms
   g = again.
 
-SYNTAX
+Syntax
   again = again.
 
-VERB again
-  DOES
+Verb again
+  Does
     "The 'again' command is not available, sorry. You can probably use
      the up and down arrow keys to scroll through your previous commands
      (unless you're using the MSDOS interpreter in which case you can
      press the F3 key to repeat your last command.)"
-END VERB.
+End verb.
 
 
--- SYNTAX
+-- Syntax
 --   undo = undo.
 
--- VERB undo
---   DOES
+-- Verb undo
+--   Does
 --     "Unfortunately you cannot 'undo' commands in this game."
--- END VERB.
+-- End verb.

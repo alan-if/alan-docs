@@ -1,30 +1,31 @@
 -- plug.i -- *** ADDED FILE! ***
-SYNONYMS
+Synonyms
   insert = plug.
-SYNTAX
+Syntax
   plug_in = plug (obj1) 'in' (obj2)
-    WHERE obj1 ISA OBJECT
-      ELSE "You can't plug that anywhere."
-    AND obj2 ISA CONTAINER
-      ELSE "You can't plug anything in that."
-Add To Every object
-  IS NOT PLUGGABLE.
-  NOT PLUGGED_IN.
+    Where obj1 IsA OBJECT
+      else "You can't plug that anywhere."
+    And obj2 IsA container
+      else "You can't plug anything in that."
+Add to every object
+  Is
+    Not pluggable.
+    Not plugged_in.
   Verb plug_in
     When obj1
-      Check obj1 Here
-        Else "You don't see" Say The obj1. "here."
-      AND obj1 IS PLUGGABLE
-        ELSE "That isn't something that can be plugged in."
-      AND obj1 IS NOT PLUGGED_IN
-        ELSE "That is already plugged in."
+      Check obj1 here
+        Else "You don't see" say the obj1. "here."
+      And obj1 is pluggable
+        else "That isn't something that can be plugged in."
+      And obj1 is not plugged_in
+        else "That is already plugged in."
       And obj1 <> obj2
-        Else "You can't plug something into itself!"
+        else "You can't plug something into itself!"
       And obj2 <> hero
-        Else "You can't plug" Say obj1. "into yourself!"
+        else "You can't plug" say obj1. "into yourself!"
       Does
-        Locate obj1 In obj2.
-        MAKE obj1 PLUGGED_IN.
+        Locate obj1 in obj2.
+        make obj1 plugged_in.
         "Done."
   End Verb.
-End Add To.
+End Add.

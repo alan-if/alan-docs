@@ -128,7 +128,7 @@ SYNTAX
     drop = drop (obj) *                       -- take.i
     east                                      -- nowhere.i
     eat = eat (obj)                           -- eat.i
-    examine = examine (obj) *                 -- exanine.i
+    examine = examine (obj) *                 -- examine.i
     give = 'give' (obj) 'to' (recip)          -- give.i
     help = help                               -- help.i
     hint = hint                               -- help.i
@@ -143,8 +143,8 @@ SYNTAX
     lock = lock (obj)                         -- lock.i
     lock_with = lock (obj) with (key)         -- lock.i
     'look' = 'look'                           -- look.i
-    look_at = 'look' 'at' (obj) *             -- exanine.i
-    look_in = 'look' 'in' (obj)               -- exanine.i
+    look_at = 'look' 'at' (obj) *             -- examine.i
+    look_in = 'look' 'in' (obj)               -- examine.i
     north                                     -- nowhere.i
     northeast                                 -- nowhere.i
     northwest                                 -- nowhere.i
@@ -171,9 +171,9 @@ SYNTAX
     restart = restart                         -- meta.i
     restore = restore                         -- meta.i
     save = save                               -- meta.i
-    say_to = 'say' (obj)! 'to' (act)           -- talk.i
-    say_word = 'say' (obj)!                    -- talk.i
-    search = search (obj)                     -- exanine.i
+    say_to = 'say' (obj)! 'to' (act)          -- talk.i
+    say_word = 'say' (obj)!                   -- talk.i
+    search = search (obj)                     -- examine.i
     'score' = 'score'                         -- meta.i
     shoot = shoot (obj)                       -- attack.i
     shoot_at0 = shoot 'at' (obj)              -- attack.i
@@ -332,7 +332,7 @@ SYNTAX
 
     examine = examine (obj) *                 -- examine.i
     look_at = 'look' 'at' (obj) *             -- examine.i
-    look_in = 'look' 'in' (obj)               -- exanine.i
+    look_in = 'look' 'in' (obj)               -- examine.i
     search = search (obj)                     -- examine.i
 
     give = 'give' (obj) 'to' (recip)          -- give.i

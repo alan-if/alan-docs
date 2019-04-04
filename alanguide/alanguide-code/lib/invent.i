@@ -5,42 +5,41 @@
 -- 0.4.1 - converted to ALANv3
 
 
-ADD TO EVERY THING
-  IS weight 0.
-END ADD TO THING.
+Add to every thing
+  Has weight 0.
+End add.
 
 
-ADD TO EVERY ACTOR IS
-  weight 50.
-END ADD TO ACTOR.
+Add to every actor
+  Has weight 50.
+End add.
 
-ADD TO EVERY object
-  IS weight 5.
-END ADD TO object.
+Add to every object
+  Has weight 5.
+End add.
 
 
-SYNONYMS
+Synonyms
   i, inventory = invent.
 
-SYNTAX
+Syntax
   invent = invent.
 
-VERB invent
-  DOES
-    LIST hero.
-    LIST worn.
-END VERB invent.
+Verb invent
+  Does
+    List hero.
+    List worn.
+End verb.
 
 
-THE worn ISA entity
-CONTAINER
-  LIMITS
-    COUNT 10 THEN
-      "You can't wear anything more. You have to remove something first."
-    weight 50 THEN
+The worn IsA entity
+  Container
+    Limits
+      Count 10 then
         "You can't wear anything more. You have to remove something first."
-  HEADER
-    "You are wearing"
-  ELSE
-    ""
-END THE worn.
+      weight 50 then
+          "You can't wear anything more. You have to remove something first."
+    Header
+      "You are wearing"
+    else ""
+End the.

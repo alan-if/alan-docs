@@ -4,23 +4,23 @@
 -- 0.4.1 - converted to ALANv3
 
 
-SYNTAX
+Syntax
   listen_to = listen 'to' (obj)
-    WHERE obj ISA THING
-      ELSE "You can't listen to that!"
+    Where obj IsA thing
+      else "You can't listen to that!"
 
-Add To Every thing
-  VERB listen_to
-    DOES
-      "You listen to" Say The obj. "."
-  END VERB.
-End Add To.
+Add to every thing
+  Verb listen_to
+    Does
+      "You listen to" say the obj. "."
+  End verb.
+End add.
 
 
-SYNTAX
+Syntax
   listen = listen.
 
-VERB listen
-  DOES
+Verb listen
+  Does
     "You hear nothing unusual."
-END VERB.
+End verb.

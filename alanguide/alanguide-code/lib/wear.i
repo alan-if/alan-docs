@@ -4,65 +4,65 @@
 -- 0.4.1 - converted to ALANv3
 
 
-Add To Every object
-  Is Not wearable.
-End Add To object.
+Add to every object
+  Is not wearable.
+End add.
 
 
 Syntax
   wear = wear (obj)
-    Where obj Isa object
-      Else "You can't wear that."
+    Where obj IsA object
+      else "You can't wear that."
   wear = put (obj) 'on'.
   wear = put 'on' (obj).
 
-Add To Every object
+Add to every object
   Verb wear
-    Check obj Is wearable
-      Else "You can't wear" Say The obj. "."
-    And obj Not In worn
-      Else "You are already wearing" Say The obj. "."
-    And obj Is takeable
-      Else "You can't pick" Say The obj. "up."
+    Check obj is wearable
+      else "You can't wear" say the obj. "."
+    And obj not in worn
+      else "You are already wearing" say the obj. "."
+    And obj is takeable
+      else "You can't pick" say the obj. "up."
     Does
-      If obj Not In hero Then
-        Locate obj In hero.
-        "(You pick" Say The obj. "up.)$n"
-      End If.
-      Locate obj In worn.
-      "You put on" Say The obj. "."
-  End Verb.
-End Add To.
+      If obj not in hero then
+        Locate obj in hero.
+        "(You pick" say the obj. "up.)$n"
+      End if.
+      Locate obj in worn.
+      "You put on" say the obj. "."
+  End verb.
+End add.
 
 
 Syntax
   'remove' = 'remove' (obj)
-    Where obj Isa object
-      Else "You can't remove that."
+    Where obj IsA object
+      else "You can't remove that."
   'remove' = take (obj) off.
   'remove' = take off (obj).
 
-Add To Every object
+Add to every object
   Verb 'remove'
-    Check obj In worn
-      Else "You are not wearing" Say The obj. "."
+    Check obj in worn
+      else "You are not wearing" say the obj. "."
     Does
-      Locate obj In hero.
-      "You take off" Say The obj. "."
-  End Verb.
-End Add To.
+      Locate obj in hero.
+      "You take off" say the obj. "."
+  End verb.
+End add.
 
 
 Syntax undress = undress.
 
-Add To Every object
+Add to every object
   Verb undress
     Does
-      If Count In worn, Isa Thing > 0 Then
-        Empty worn In hero.
+      If Count in worn, IsA thing > 0 then
+        Empty worn in hero.
         "You remove all the items you where wearing."
-      Else
+      else
         "You're not wearing anything you can remove."
-      End If.
-  End Verb.
-End Add To.
+      End if.
+  End verb.
+End add.

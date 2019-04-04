@@ -4,20 +4,20 @@
 
 -- Classes for people
 
-Every person Isa actor
-  Is Not named. -- If it has a proper name
+Every person IsA actor
+  Is not named. -- If it has a proper name
   Description
-    If This Is Not named Then
-      "There is" Say An This. "here."
-    Else
-      Say This. "is here."
-    End If.
-End Every person.
+    If this is not named then
+      "There is" say an this. "here."
+    else
+      Say this. "is here."
+    End if.
+End every.
 
-Every male Isa person
+Every male IsA person
   Pronoun him.
-End Every male.
+End every.
 
-Every female Isa person
+Every female IsA person
   Pronoun her.
-End Every female.
+End every.

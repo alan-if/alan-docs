@@ -7,22 +7,22 @@
 -- the game to start in verbose or brief mode.
 --
 
-SYNTAX
+Syntax
   verbose = verbose.
 
-VERB verbose
-  DOES
+Verb verbose
+  Does
     Visits 0.
     "Verbose mode is now on."
-END VERB verbose.
+End verb.
 
 
-SYNTAX
+Syntax
   brief = brief.
 
-VERB brief
-  DOES
+Verb brief
+  Does
     Visits 1000.
     "Brief mode is now on. Location descriptions will only be shown
-    the first time you visit."
-END VERB brief.
+     the first time you visit."
+End verb.

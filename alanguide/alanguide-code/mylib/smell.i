@@ -10,17 +10,17 @@ Syntax
 Verb smell0
   Does
     "You smell nothing unusual."
-End Verb.
+End verb.
 
 
 Syntax
   smell = smell (obj)
-    Where obj Isa thing
-      Else "You can't smell that!"
+    Where obj IsA thing
+      else "You can't smell that!"
 
-Add To Every thing
+Add to every thing
   Verb smell
     Does
-      "You smell" Say The obj. "."
-  End Verb.
-End Add To.
+      "You smell" say the obj. "."
+  End verb.
+End add.

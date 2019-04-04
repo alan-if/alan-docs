@@ -1,3 +1,175 @@
+Alan Library v0.6.2
+===================
+
+A recovered copy of the last version of ALAN Library v0.6.x, for compiling old
+Alan adventures.
+
+Edited by [Tristano Ajmone] to ensure compatibility with Alan 3.0beta6.
+
+[Tristano Ajmone]: https://github.com/tajmone
+
+Last edited on April 4, 2019.
+
+License: Artistic License 2.0.
+
+
+
+Library Info
+============
+
+To the best of my knowledge, Library v0.6.2 was the latest update in the v0.x
+series, later succeeded by Library v1, and then by the Standard Library 2.
+
+This is a old version of the Alan Library, originally created for Alan 2 and
+then ported to Alan 3. It's revival is mainly for historical reasons, to allow
+compiling old adventures that depend on it.
+
+The sources of Library v0.6.2 were recovered from the [ALAN repository] on
+Bitbucket (were the Library was originally hosted), from [commit c44766fa] 
+(2017-04-17), which was the last commit before its removal from the repository.
+
+[ALAN repository]: https://bitbucket.org/alanif/alan
+
+[commit c44766fa]: https://bitbucket.org/alanif/alan/commits/c44766faea7539806a01fa6e8bee2c84fa0b2c36
+
+
+License
+-------
+
+The Library is released under the terms of the Artistic License 2.0.
+You can read the full license text in:
+
+* [`COPYING`](./COPYING)
+
+
+
+Changes List
+============
+
+    Alan Library v0.6.2 -- update 1 (2019-04-04)
+
+The Library sources were edited by [Tristano Ajmone] who carried out a few
+minor tweaks to ensure its compatibility with the current Alan release, plus
+some aesthetic changes.
+
+The goal is to preserve a usable copy of Lib 0.6.2, to compile legacy Alan
+adventures. For this reason, and because this legacy library is no longer
+actively developed, its version number was left unaltered. If future updates
+of the Alan language will break compatibility with the library, further updates
+to its code might be attempted in order to keep it compilable, if possible.
+
+As it's customary within the collaborative spirit of the Alan community, before
+publishing this code the proposed changes were announced and discussed on the
+Alan IF Yahoo list, to ensure they met the approval of the original authors and
+to allow all members of the community to express their opinions:
+
+* https://groups.yahoo.com/neo/groups/alan-if/conversations/messages/3773
+
+Here's the list of changes.
+
+
+
+Aesthetic Changes
+-----------------
+
+* Enforce prose-like casing of Alan keywords.
+* Fix indentation, using two-spaces instead of tabs.
+* Apply consistent styling and formatting across all sources.
+
+
+
+Code Fixes
+----------
+
+* `invent.i`
+    * Changed `THE worn ISA thing IN hero` to `THE worn ISA entity`.
+
+    This was actually one of the intended changes in v0.6.2, as mentioned in
+    the source header comments:
+          
+        changed 'the Worn' from a 'thing' to an 'entity'
+
+    It looks like something went wrong during the upstream commit. In any case,
+    this was causing a compile error, so it had to be changed, for it deals
+    with a backward-compatiblity breaking change in the Alan language.
+
+* `talk.i`
+    * Replaced `$o` with `$1`, for the former special parameter symbol is now
+      depracated and might not be safe to use in future versions of Alan. 
+
+
+
+
+Restored Code from Lib v0.6.1
+-----------------------------
+
+I've restored some default attributes and CHECKS from v0.6.1 that were no longer
+present in Lib v0.6.2:
+
+* `open.i`
+    * Restored the `AND obj1 IS openable` CHECK.
+* `people.i` 
+    * Restored in `person` class definition:
+        * `IS NOT named.`
+        * Customized `DESCRIPTION` based on `named` attribute.
+
+My assumption here is that there were multiple variations of the Library going
+around at that time, and that the above might have been lost due to divergent
+versions — in any case, it seemed a sensible choice to preserve them for the
+sake of maximum compatibility with old adventures (which might expect them to
+be in place).
+
+
+
+
+Outdated Info and Links
+-----------------------
+
+Some references and links were no longer valid and were updated accordingly.
+
+* `help.i`
+    * The text of the `credits` verb contained some outdated or obsolete info:
+        * Changed "Thomas Nilsson" to "Thomas Nilefalk"
+          (Thomas recently changed his surname to Nilefalk).
+        
+        * The old email contact
+          
+            <thomas.nilsson@progindus.se>
+          
+            was replaced with the new email from Alan website:
+          
+            <thomas@alanif.se>.
+        
+        * ALAN website link: replaced the old (now dead) link
+          
+            http://www.welcome.to/alan-if
+          
+            with the current (new) Alan website link
+          
+            https://www.alanif.se/
+
+
+
+Markdown Documents
+------------------
+
+To provide a better GitHub preview experience of the text documents of the
+Library, the following files were converted from plain text to markdown:
+
+- `ReadMe`    — now `README.md`
+- `index.txt` — add `INDEX.md` (original preserved too)
+- `notes.txt` — now `NOTES.md`
+
+Special care was taken to preserve their readability in pure text format, and
+at the same time provide the benefits of markdown formatting and links.
+
+
+
+# Original ReadMe
+
+Here follows the text from the orginal `ReadMe` file:
+
+```
 Proposed Alan Library v0.6.something
 ------------------------------------
 
@@ -265,4 +437,4 @@ talk.i
 meta.i
 ------
     - added restart, again and undo verbs
-
+```

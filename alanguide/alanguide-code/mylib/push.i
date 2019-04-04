@@ -4,67 +4,68 @@
 -- 0.4.1 - converted to ALANv3
 
 
-ADD TO EVERY THING
-  -- IS pushable.
-  IS MOVEABLE. -- *** CHANGED ***
-END ADD TO THING.
+Add to every thing
+  -- Is pushable.
+  Is moveable. -- *** CHANGED ***
+End add.
 
-SYNONYMS
+Synonyms
   press, click = push. -- *** ADDED ***
 
-SYNTAX
+Syntax
   push = push (obj)
-    WHERE obj ISA THING
-      ELSE "You can't push that."
-Add To Every object
+    Where obj IsA thing
+      else "You can't push that."
+
+Add to every object
   Verb push
-    -- Check obj Is pushable
-    Check obj Is MOVEABLE -- *** CHANGED ***
-      Else "You can't push that."
+    -- Check obj is pushable
+    Check obj is moveable -- *** CHANGED ***
+      else "You can't push that."
     Does
-      "You push" Say The obj. "."
-  End Verb.
-End Add To.
+      "You push" say the obj. "."
+  End verb.
+End add.
 
 
 Syntax
   push_with = push (obj1) 'with' (obj2)
-    Where obj1 Isa thing
-      Else "You can't push that."
-    And obj2 Isa object
-      Else "You can use only objects to push things with."
+    Where obj1 IsA thing
+      else "You can't push that."
+    And obj2 IsA object
+      else "You can use only objects to push things with."
 
-Add To Every object
+Add to every object
   Verb push_with
     When obj1
-      -- Check obj1 IS pushable
-      Check obj1 IS MOVEABLE -- *** CHANGED ***
-        Else "You can't push that."
+      -- Check obj1 is pushable
+      Check obj1 is moveable -- *** CHANGED ***
+        else "You can't push that."
       Does
-        "Using" Say The obj2. "you push" Say The obj1. "."
-  End Verb.
-End Add To.
+        "Using" say the obj2. "you push" say the obj1. "."
+  End verb.
+End add.
 
 -- *** ADDED: ***
-SYNTAX
+Syntax
   push_north = push (obj) north
-    WHERE obj Isa thing
-      Else "You can't push that."
+    Where obj IsA thing
+      else "You can't push that."
   push_south = push (obj) south
-    WHERE obj Isa thing
-      Else "You can't push that."
+    Where obj IsA thing
+      else "You can't push that."
   push_east = push (obj) east
-    WHERE obj Isa thing
-      Else "You can't push that."
+    Where obj IsA thing
+      else "You can't push that."
   push_west = push (obj) west
-    WHERE obj Isa thing
-      Else "You can't push that."
+    Where obj IsA thing
+      else "You can't push that."
 
-ADD TO EVERY THING
-  VERB push_north, push_south, push_east, push_west
-    CHECK obj IS MOVEABLE
-      ELSE "You can't push that."
-    DOES
+Add to every thing
+  Verb push_north, push_south, push_east, push_west
+    Check obj is moveable
+      else "You can't push that."
+    Does
       "You push it in that direction."
-  END VERB.
-END ADD TO.
+  End verb.
+End add.

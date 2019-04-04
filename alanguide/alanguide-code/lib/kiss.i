@@ -4,22 +4,22 @@
 -- 0.4.1 - converted to ALANv3
 
 
-SYNTAX
+Syntax
   kiss = kiss (obj)
-    WHERE obj ISA THING
-      ELSE "You can't kiss that!"
+    Where obj IsA thing
+      else "You can't kiss that!"
 
-Add To Every thing
-  VERB kiss
-    DOES
-      IF obj=HERO THEN
+Add to every thing
+  Verb kiss
+    Does
+      If obj=hero then
         "Well, if you must!"
-      ELSE
-        IF obj IS InAnimate THEN
-          "You kiss" Say The obj. "."
-        ELSE
-          Say The obj. "avoids your advances."
-        END IF.
-      END IF.
-  END VERB.
-End Add To.
+      else
+        If obj is inanimate then
+          "You kiss" say the obj. "."
+        else
+          Say the obj. "avoids your advances."
+        End if.
+      End if.
+  End verb.
+End add.

@@ -1,43 +1,43 @@
 -- cut.i -- *** ADDED FILE! ***
-ADD TO EVERY OBJECT
-  IS NOT CUTTER.
-END ADD.
+Add to every object
+  Is not cutter.
+End add.
 
-SYNONYMS
+Synonyms
   slash, slice, hack, saw = cut.
-SYNTAX
+Syntax
   cut = cut (obj)
-    WHERE obj Isa THING -- so can cut Actors too
-      ELSE "You can't cut that."
+    Where obj IsA thing -- so can cut Actors too
+      else "You can't cut that."
   cut = cut (obj) 'open'. -- see "wear.i"
   cut = cut 'open' (obj).
 
-ADD TO EVERY THING
-  VERB cut
-    DOES
+Add to every thing
+  Verb cut
+    Does
       "Please say what you want to cut it with."
-  END VERB.
-END ADD TO.
+  End verb.
+End add.
 
-SYNTAX
+Syntax
   cut_with = cut (obj1) 'with' (obj2)
-    WHERE obj1 Isa THING
-      ELSE "You can't cut that."
-    AND obj2 Isa OBJECT
-      ELSE "You can't cut anything with that."
+    Where obj1 IsA thing
+      else "You can't cut that."
+    And obj2 IsA object
+      else "You can't cut anything with that."
   cut_with = cut (obj1) 'open' 'with' (obj2).
   cut_with = cut 'open' (obj1) 'with' (obj2).
 
-ADD TO EVERY OBJECT
-  VERB cut_with
-    WHEN obj1
-      CHECK obj2 Here
-        ELSE "You don't see" Say The obj2. "here."
-      AND obj2 IS CUTTER
-        ELSE "You can't cut anything with that."
-      AND obj1 <> obj2
-        ELSE "You can't cut something with itself."
-      DOES
-        "You cut" Say The obj1. "with" Say The obj2. "."
-  END VERB.
-END ADD TO.
+Add to every object
+  Verb cut_with
+    When obj1
+      Check obj2 here
+        else "You don't see" say the obj2. "here."
+      And obj2 is cutter
+        else "You can't cut anything with that."
+      And obj1 <> obj2
+        else "You can't cut something with itself."
+      Does
+        "You cut" say the obj1. "with" say the obj2. "."
+  End verb.
+End add.

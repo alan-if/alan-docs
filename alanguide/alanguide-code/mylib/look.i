@@ -2,13 +2,13 @@
 -- Library version 0.5.0
 
 
-SYNONYMS
+Synonyms
   l = 'look'.
 
-SYNTAX
+Syntax
   'look' = 'look'.
 
-VERB 'look'
-  DOES
-    LOOK.
-END VERB.
+Verb 'look'
+  Does
+    Look.
+End verb.

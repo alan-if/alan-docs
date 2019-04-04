@@ -2,52 +2,52 @@
 -- Library version 0.5.0
 
 
-SYNONYMS
+Synonyms
   h = help.
 
-SYNTAX
+Syntax
   help = help.
 
-VERB help
-  DOES
+Verb help
+  Does
     "In this game I am your eyes and your body. I will describe
-    the surroundings for you. You tell me what you want to do. For
-    example if you want to go north, then type 'north'. But there
-    are a lot of other things you may do, like picking up things,
-    examining them, opening doors and so on. Try anything you
-    would do if you really were standing here!$pRemember to study
-    the descriptions very carefully, they are sure to contain
-    clues!  $p'score' may be used to see how well you are
-    doing. 'save' and 'restore' allows you to save a game and
-    restore it later.  $pGood Luck!! You'll need it!"
-END VERB.
+     the surroundings for you. You tell me what you want to do. For
+     example if you want to go north, then type 'north'. But there
+     are a lot of other things you may do, like picking up things,
+     examining them, opening doors and so on. Try anything you
+     would do if you really were standing here!$pRemember to study
+     the descriptions very carefully, they are sure to contain
+     clues!  $p'score' may be used to see how well you are
+     doing. 'save' and 'restore' allows you to save a game and
+     restore it later.  $pGood Luck!! You'll need it!"
+End verb.
 
 
-SYNONYMS
+Synonyms
   hints = hint.
 
-SYNTAX
+Syntax
   hint = hint.
 
-VERB hint
-  DOES
+Verb hint
+  Does
     "Unfortunately hints are not available in this game."
-END VERB.
+End verb.
 
 
-SYNONYMS
+Synonyms
   info, notes, author = credits.
 
-SYNTAX
+Syntax
   credits = credits.
 
-VERB credits
-  DOES
+Verb credits
+  Does
     "The author retains the copyright to this game.
-    $pThis game was written using the ALAN Adventure Language. ALAN is
-    an interactive fiction authoring system by Thomas Nilsson
-    $nemail address: thomas.nilsson@progindus.se $pFurther information
-    about the ALAN system can be obtained from
-    the World Wide Web Internet site
-    $ihttp://www.welcome.to/alan-if"
-END VERB.
+     $pThis game was written using the ALAN Adventure Language.
+     ALAN is an interactive fiction authoring system by Thomas Nilefalk
+     $nemail address: thomas@alanif.se
+     $pFurther information about the ALAN system can be obtained from
+     the World Wide Web Internet site
+     $ihttps://www.alanif.se/"
+End verb.

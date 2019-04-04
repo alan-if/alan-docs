@@ -4,23 +4,23 @@
 -- 0.4.1 - converted to ALANv3
 
 
-SYNTAX
+Syntax
   knock_on = knock 'on' (obj)
-    WHERE obj ISA THING
-      ELSE "You can't knock on that!"
+    Where obj IsA thing
+      else "You can't knock on that!"
 
-Add To Every thing
-  VERB knock_on
-    DOES
-      "You knock on" Say The obj. "."
-  END VERB.
-End Add To.
+Add to every thing
+  Verb knock_on
+    Does
+      "You knock on" say the obj. "."
+  End verb.
+End add.
 
 
-SYNTAX
+Syntax
   knock = knock.
 
-VERB knock
-  DOES
+Verb knock
+  Does
     "You need to specify what you want to knock on."
-END VERB.
+End verb.

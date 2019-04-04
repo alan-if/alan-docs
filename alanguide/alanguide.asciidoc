@@ -1,7 +1,7 @@
 :doctitle:  ALAN 3 Beginner's Guide
 :author:    Michael Arnaud
-:revnumber: 0.1.12
-:revdate:   March 31, 2019
+:revnumber: 0.1.13
+:revdate:   April 4, 2019
 :revremark: AsciiDoc reconstruction work
 :doctype: book
 :encoding: utf-8

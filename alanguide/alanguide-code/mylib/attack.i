@@ -4,16 +4,15 @@
 -- 0.4.1 - converted to ALANv3
 
 
-Add To Every thing
-Is
-   Not Shootable.
-End Add To thing.
+Add to every thing
+  Is not shootable.
+End add.
 
-Add To Every object
-Is
-  Not weapon.
-  Not shootable.
-End Add To object.
+Add to every object
+  Is
+    Not weapon.
+    Not shootable.
+End add.
 
 
 Synonyms
@@ -23,88 +22,88 @@ Synonyms
 
 Syntax
   attack = attack (act)
-    Where act Isa thing
-      Else "You can't attack that."
+    Where act IsA thing
+      else "You can't attack that."
 
-Add To Every thing
+Add to every thing
   Verb attack
     Does
       "Violence is not the answer."
-  End Verb.
-End Add To.
+  End verb.
+End add.
 
 
 Syntax
   attack_with = attack (act) 'with' (obj)
-    Where act Isa thing
-      Else "You can't attack that."
-    And obj Isa object
-      Else "You can't attack anything with that!"
+    Where act IsA thing
+      else "You can't attack that."
+    And obj IsA object
+      else "You can't attack anything with that!"
 
-Add To Every thing
+Add to every thing
   Verb attack_with
     When obj
-      Check obj In hero
-        Else "You don't have that object to attack with."
-      And obj Is weapon
-        Else "No point attacking anything with that!"
+      Check obj in hero
+        else "You don't have that object to attack with."
+      And obj is weapon
+        else "No point attacking anything with that!"
       Does
         "Violence is not the answer."
-  End Verb.
-End Add To.
+  End verb.
+End add.
 
 
 Syntax
   shoot = shoot (obj)
-    Where obj Isa thing
-      Else "You can't shoot at that."
+    Where obj IsA thing
+      else "You can't shoot at that."
   shoot = shoot 'at' (obj).
 
 
-Add To Every thing
+Add to every thing
   Verb shoot
     Does
-      If obj Is shootable Then
+      If obj is shootable then
         "You need to specify what to shoot at."
-      Else
+      else
         "You need to specify what you want to shoot"
-        Say The obj. "with."
-      End If.
-  End Verb.
-End Add To.
+        say the obj. "with."
+      End if.
+  End verb.
+End add.
 
 
 Syntax
   shoot_at = shoot (obj) 'at' (act)
-    Where obj Isa object
-      Else "You can't shoot that."
-    And act Isa thing
-      Else "You can't shoot at that."
+    Where obj IsA object
+      else "You can't shoot that."
+    And act IsA thing
+      else "You can't shoot at that."
 
   shoot_with = shoot (act) 'with' (obj)
-    Where obj Isa object
-      Else "You can't shoot that."
-    And act Isa thing
-      Else "You can't shoot at that."
+    Where obj IsA object
+      else "You can't shoot that."
+    And act IsA thing
+      else "You can't shoot at that."
 
-Add To Every thing
+Add to every thing
   Verb shoot_at
     When obj
-      Check obj In hero
-        Else "You don't have that."
-      And obj Is shootable
-        Else "You can't shoot anything with that."
+      Check obj in hero
+        else "You don't have that."
+      And obj is shootable
+        else "You can't shoot anything with that."
       Does
         "Violence is not the answer."
-  End Verb.
+  End verb.
 
   Verb shoot_with
     When obj
-      Check obj In hero
-        Else "You don't have that."
-      And obj Is shootable
-        Else "You can't shoot anything with that."
+      Check obj in hero
+        else "You don't have that."
+      And obj is shootable
+        else "You can't shoot anything with that."
       Does
         "Violence is not the answer."
-  End Verb.
-End Add To.
+  End verb.
+End add.

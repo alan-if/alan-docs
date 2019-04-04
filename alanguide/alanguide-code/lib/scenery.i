@@ -2,7 +2,7 @@
 -- Library version 0.5.0
 
 
-Every scenery Isa object
+Every scenery IsA object
   Is
     Not searchable.
     Not takeable.
@@ -10,8 +10,7 @@ Every scenery Isa object
     Not touchable.
 
   Verb examine, take
-    Does Only
+    Does only
       "That's only scenery."
-  End Verb.
-
-End Every scenery.
+  End verb.
+End every.

@@ -19,6 +19,7 @@ __[Click here for an HTML Live Preview][HTML Live Preview]__
     - [Conversion Scripts](#conversion-scripts)
         - [HTML Toolchain Dependencies](#html-toolchain-dependencies)
         - [PDF Toolchain Dependencies](#pdf-toolchain-dependencies)
+    - [Maintainers Stuff](#maintainers-stuff)
 - [Original Guide Documents](#original-guide-documents)
 - [DocBook XSL Stylesheets](#docbook-xsl-stylesheets)
 - [Document Status](#document-status)
@@ -105,6 +106,12 @@ Now the HTML toolchain uses [Highlight] instead of [highlight.js], therefore you
 
 The [`PDF_BUILD.bat`][PDF_BUILD.bat] script now uses [asciidoctor-fopub] to create the PDF version of the Manual. You'll need to setup it up on your machine and add it to your system Path in order to run the conversion script.
 
+
+## Maintainers Stuff
+
+- [`/tests/`](./tests/)
+
+This folder contains various scripts to test the integrity of the Library and the tutorial sources. Used by maintainers when editing sources, just to ensure that everything still works fine.
 
 # Original Guide Documents
 

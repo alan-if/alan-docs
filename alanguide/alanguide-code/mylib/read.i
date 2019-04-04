@@ -4,21 +4,21 @@
 -- 0.4.1 - converted to ALANv3
 
 
-Add To Every object
-  Is Not readable.
-End Add To object.
+Add to every object
+  Is not readable.
+End add.
 
 
 Syntax
   read = read (obj)
-    Where obj Isa object
-      Else "You can't read that."
+    Where obj IsA object
+      else "You can't read that."
 
-Add To Every object
+Add to every object
   Verb read
-    Check obj Is readable
-      Else "There is nothing written on" Say The obj. "."
+    Check obj is readable
+      else "There is nothing written on" say the obj. "."
     Does
-      "You read" Say The obj. "."
-  End Verb.
-End Add To.
+      "You read" say the obj. "."
+  End verb.
+End add.

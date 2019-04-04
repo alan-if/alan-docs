@@ -10,43 +10,43 @@
 
 Syntax
   open = open (obj)
-    Where obj Isa object
-      Else "You can't open that."
+    Where obj IsA object
+      else "You can't open that."
 
-Add To Every object
+Add to every object
   Is
     Not openable.
     Not open.
 
   Verb open
-    Check obj Is openable
-      Else "You can't open that!"
-    And obj Is Not open
-      Else "It's already open."
+    Check obj is openable
+      else "You can't open that!"
+    And obj is not open
+      else "It's already open."
     Does
       Make obj open.
-      Say The obj. "is now open."
-  End Verb.
+      Say the obj. "is now open."
+  End verb.
 
-End Add To.
+End add.
 
 
 Syntax
   open_with = open (obj1) 'with' (obj2)
-    Where obj1 Isa object
-      Else "You can't open that."
-    And obj2 Isa object
-      Else "You can't open anything with that."
+    Where obj1 IsA object
+      else "You can't open that."
+    And obj2 IsA object
+      else "You can't open anything with that."
 
-Add To Every object
+Add to every object
   Verb open_with
     When obj1
-      Check obj2 In hero
-        Else "You don't have" Say The obj2. "."
+      Check obj2 in hero
+        else "You don't have" say the obj2. "."
       Does
-        "You can't open" Say The obj1. "with" Say The obj2. "."
-  End Verb.
-End Add To.
+        "You can't open" say the obj1. "with" say the obj2. "."
+  End verb.
+End add.
 
 
 Synonyms
@@ -54,40 +54,40 @@ Synonyms
 
 Syntax
   close = close (obj)
-    Where obj Isa object
-      Else "You can only close objects."
+    Where obj IsA object
+      else "You can only close objects."
 
-Add To Every object
-  Is Not closeable.
+Add to every object
+  Is not closeable.
 
   Verb close
-    Check obj Is closeable
-      Else "You can't close that."
-    And obj Is open
-      Else "It is not open."
+    Check obj is closeable
+      else "You can't close that."
+    And obj is open
+      else "It is not open."
      Does
-       Make obj Not open.
-       Say The obj. "is now closed."
-    End Verb.
+       Make obj not open.
+       Say the obj. "is now closed."
+    End verb.
 
-End Add To.
+End add.
 
 
 Syntax
   close_with = close (obj1) 'with' (obj2)
-    Where obj1 Isa object
-      Else "You can't close that."
-    And obj2 Isa object
-      Else "You can't close anything with that."
+    Where obj1 IsA object
+      else "You can't close that."
+    And obj2 IsA object
+      else "You can't close anything with that."
 
-Add To Every object
+Add to every object
   Verb close_with
     When obj1
-      Check obj2 In hero
-        Else "You don't have" Say The obj2. "."
+      Check obj2 in hero
+        else "You don't have" say the obj2. "."
       And obj1 Is openable
-        Else "You can't close" Say The obj1. "."
-      Does -- To be overridden by "Does Only" Where appropriate...
-        "You can't close" Say The obj1. "with" Say The obj2. "."
-  End Verb.
-End Add To.
+        else "You can't close" say the obj1. "."
+      Does -- To be overridden by DOES ONLY where appropriate...
+        "You can't close" say the obj1. "with" say the obj2. "."
+  End verb.
+End add.

@@ -4,56 +4,56 @@
 -- All verb definitions have a small, simple default body. To make
 -- them do other things use DOES ONLY in your specialised verb body.
 
--- player character, etc
-import 'hero.i'.
-import 'global.i'.
+-- player character, etc.
+Import 'hero.i'.
+Import 'global.i'.
 
 -- People, male/female etc.
-import 'people.i'.
+Import 'people.i'.
 
 -- Standard verbs
-import 'look.i'.
-import 'take.i'.    -- + pick up, drop, put down.
-import 'open.i'.    -- + close.
-import 'lock.i'.    -- + unlock.
-import 'eat.i'.    -- + drink.
-import 'throw.i'.
-import 'push.i'.
-import 'touch.i'.
-import 'examine.i'. -- + look at, search
-import 'read.i'.
-import 'put.i'.     -- + put near,behind,on,under
-import 'give.i'.
-import 'talk.i'.    -- + ask, tell, say, shout,
-import 'attack.i'.  -- + shoot
-import 'kiss.i'.
-import 'turn.i'.    -- + switch
-import 'listen.i'.
-import 'smell.i'.
-import 'knock.i'.
-import 'jump.i'.
-import 'wear.i'.   -- + remove, undress, put on
+Import 'look.i'.
+Import 'take.i'.    -- + pick up, drop, put down.
+Import 'open.i'.    -- + close.
+Import 'lock.i'.    -- + unlock.
+Import 'eat.i'.     -- + drink.
+Import 'throw.i'.
+Import 'push.i'.
+Import 'touch.i'.
+Import 'examine.i'. -- + look at, search
+Import 'read.i'.
+Import 'put.i'.     -- + put near,behind,on,under
+Import 'give.i'.
+Import 'talk.i'.    -- + ask, tell, say, shout,
+Import 'attack.i'.  -- + shoot
+Import 'kiss.i'.
+Import 'turn.i'.    -- + switch
+Import 'listen.i'.
+Import 'smell.i'.
+Import 'knock.i'.
+Import 'jump.i'.
+Import 'wear.i'.    -- + remove, undress, put on
 
-import 'help.i'.    -- + notes, hint
+Import 'help.i'.    -- + notes, hint
 
 
 -- Scenery
-import 'scenery.i'.
+Import 'scenery.i'.
 
 -- Inventory verb and inventory limits (including clothing items)
-import 'invent.i'.
+Import 'invent.i'.
 
 
 -- The limbo location and directions
 -- Defines directions as full words, and short directions as synonyms to these.
 -- So remember to use the full words in your exits or you will have E 333's
 -- (e.g. 'e' defined both as a synonym and another word class)
-import 'nowhere.i'.
+Import 'nowhere.i'.
 
 
 -- Verbose and brief mode
-import 'brief.i'.
+Import 'brief.i'.
 
 
 -- Score, save, restore etc.
-import 'meta.i'.
+Import 'meta.i'.

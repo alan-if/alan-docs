@@ -4,35 +4,35 @@
 -- 0.4.1 - converted to ALANv3
 
 
-ADD TO EVERY OBJECT
-IS
-  NOT edible.
-  NOT drinkable.
-END ADD TO OBJECT.
+Add to every object
+Is
+  Not edible.
+  Not drinkable.
+End add.
 
-SYNTAX
+Syntax
   eat = eat (obj)
-    WHERE obj ISA OBJECT
-      ELSE "You can't eat" Say An obj. "!"
+    Where obj IsA object
+      else "You can't eat" say an obj. "!"
 
   drink = drink (obj)
-    WHERE obj ISA OBJECT
-      ELSE "You can't drink" Say An obj. "!"
+    Where obj IsA object
+      else "You can't drink" say an obj. "!"
 
-Add To Every object
-  VERB eat
-    CHECK obj IS edible
-      ELSE "You can't eat that!"
-    DOES
-      LOCATE obj AT Nowhere.
-      "You eat" Say the obj. "."
-  END VERB.
+Add to every object
+  Verb eat
+    Check obj is edible
+      else "You can't eat that!"
+    Does
+      Locate obj at nowhere.
+      "You eat" say the obj. "."
+  End verb.
 
-  VERB drink
-    CHECK obj IS drinkable
-      ELSE "That is not drinkable."
-    DOES
-      LOCATE obj AT Nowhere.
-      "You drink" Say The obj. "."
-  END VERB.
-End Add.
+  Verb drink
+    Check obj is drinkable
+      else "That is not drinkable."
+    Does
+      Locate obj at nowhere.
+      "You drink" say the obj. "."
+  End verb.
+End add.
