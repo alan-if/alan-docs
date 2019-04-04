@@ -1,6 +1,6 @@
 :doctitle:  ALAN 3 Beginner's Guide
 :author:    Michael Arnaud
-:revnumber: 0.1.13
+:revnumber: 0.1.14
 :revdate:   April 4, 2019
 :revremark: AsciiDoc reconstruction work
 :doctype: book
@@ -232,16 +232,19 @@ Even though we usually think of `LOCATIONs` in terms of (as other IF languages m
 The basic template for a `LOCATION` is:
 
 // @ALAN @EXAMPLE:
-// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
-// - [ ] CHECK CODE
-----
- THE ? Isa LOCATION
-     NAME '?'
-     DESCRIPTION
-         "? ? ?"
-     EXIT ? TO ?.
- END THE ?.
-----
+// - [x] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [x] CHECK CODE
+
+[source,alan]
+--------------------------------------------------------------------------------
+The ? IsA location
+  Name '?'
+  Description
+    "? ? ?"
+  Exit ? to ?.
+End the ?.
+--------------------------------------------------------------------------------
+
 
 Following the format of the ALAN manual, we are using "?" as a stand-in or place-holder.
 
@@ -257,12 +260,11 @@ A completed `LOCATION` appropriately ends with an END statement, which itself en
 // @ALAN @TV-TIME:
 // - [x] ENABLE HIGHLIGHTING
 // - [x] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
+// - [x] CHECK CODE
 [source,alan,role=tutorial,subs=quotes]
 --------------------------------------------------------------------------------
-...
-[green]#THE tv_room Isa LOCATION
-END THE tv_room.#
+[green]#The tv_room IsA location
+End the tv_room.#
 --------------------------------------------------------------------------------
 
 The word "tv_room" is our programming word (using an underscore in the place of a space makes it a single word) for the first `LOCATION`.
@@ -280,14 +282,15 @@ Try it.
 // @ALAN @EXAMPLE:
 // - [x] ENABLE HIGHLIGHTING
 // - [x] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
+// - [x] CHECK CODE
 [source,alan,subs=quotes]
 --------------------------------------------------------------------------------
-...
-THE tv_room Isa LOCATION
-END THE tv_room.
-[green]#START AT tv_room.#
+The tv_room IsA location
+End the tv_room.
+
+[green]#Start at tv_room.#
 --------------------------------------------------------------------------------
+
 
 [float]
 === Adding a NAME and DESCRIPTION
@@ -298,14 +301,13 @@ Type in the `NAME` statement followed by what you want the game to display as th
 Be sure to enclose it in single (not double) quotes.
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
 [source,alan,role=tutorial,subs=quotes]
 --------------------------------------------------------------------------------
-...
-THE tv_room Isa LOCATION
-  [green]#NAME 'TV Room'#
+The tv_room IsA location
+  [green]#Name 'TV Room'#
 ...
 --------------------------------------------------------------------------------
 
@@ -316,18 +318,17 @@ Now fill out a brief `DESCRIPTION` of the `LOCATION`, basically telling the play
 // @ALAN @TV-TIME:
 // - [x] ENABLE HIGHLIGHTING
 // - [x] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
+// - [x] CHECK CODE
 [source,alan,role=tutorial,subs=quotes]
 --------------------------------------------------------------------------------
-...
-THE tv_room Isa LOCATION
-  NAME 'TV Room'
-  [green]#DESCRIPTION
+The tv_room IsA location
+  Name 'TV Room'
+  [green]#Description
     "This is your favorite room in the house, because you love to
      watch television. You recently purchased a giant screen
      plasma TV that is set up in this room, ideally located
      across from your comfy chair and table."#
-END THE tv_room.
+End the tv_room.
 ...
 --------------------------------------------------------------------------------
 
@@ -341,15 +342,15 @@ Using the same basic template, let's make a second simple `LOCATION`:
 // @ALAN @TV-TIME:
 // - [x] ENABLE HIGHLIGHTING
 // - [x] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
+// - [x] CHECK CODE
 [source,alan,role=tutorial,subs=quotes]
 --------------------------------------------------------------------------------
 ...
-[green]#THE kitchen Isa LOCATION
-  NAME 'Kitchen'
-  DESCRIPTION
+[green]#The kitchen IsA location
+  Name 'Kitchen'
+  Description
     "This is the kitchen."
-END THE kitchen.#
+End the kitchen.#
 ...
 --------------------------------------------------------------------------------
 
@@ -368,28 +369,27 @@ Note that `EXITs` are always one-way.  If we want the `EXIT` to work in both di
 // @ALAN @TV-TIME:
 // - [x] ENABLE HIGHLIGHTING
 // - [x] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
+// - [x] CHECK CODE
 [source,alan,role=tutorial,subs=quotes]
 --------------------------------------------------------------------------------
-...
-THE tv_room Isa LOCATION
-  NAME 'TV Room'
-  DESCRIPTION
+The tv_room IsA location
+  Name 'TV Room'
+  Description
     "This is your favorite room in the house, because you love to
-     watch television. You recently purchased a giant screen plasma
-     TV that is set up in this room, ideally located across from
-     your comfy chair and table."
-  [green]#EXIT south TO kitchen. -- Note the full-stop.#
-END THE tv_room.
+     watch television. You recently purchased a giant screen
+     plasma TV that is set up in this room, ideally located
+     across from your comfy chair and table."
+  [green]#Exit south to kitchen. -- Note the full-stop.#
+End the tv_room.
 -----------------------
-THE kitchen Isa LOCATION
-  NAME Kitchen
-  DESCRIPTION
+The kitchen IsA location
+  Name 'Kitchen'
+  Description
     "This is the kitchen."
-  [green]#EXIT north TO tv_room.#
-END THE kitchen.
+  [green]#Exit north to tv_room.#
+End the kitchen.
 -----------------------
-START AT tv_room.
+Start at tv_room.
 --------------------------------------------------------------------------------
 
 Compile and run the game.
@@ -402,8 +402,7 @@ In our game so far, we have programmed EXITS "south" from the TV Room and "north
 But suppose the player would like to go east or west or up or down?
 The interpreter does not know what any of those words mean, and will tell the player so.
 
-TIP: In game transcripts we'll use _this type face_ to indicate what
-the player types.
+TIP: In game transcripts we'll use _this type face_ to indicate what the player types.
 
 [example,role="gametranscript"]
 ================================================================================
@@ -427,25 +426,25 @@ We could call our limbo LOCATION "limbo", "bimbo", or anything else, but for our
 Put these lines before the code for the tv_room:.
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
-[subs="quotes"]
-----
- ...
- [green]#THE Nowhere Isa LOCATION
-         EXIT north TO Nowhere.
-         EXIT south TO nowhere.
-         EXIT west TO nowhere.
-         EXIT east TO nowhere.
-         EXIT up TO nowhere.
-         EXIT down TO nowhere.
- END THE nowhere.#
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+[green]#The nowhere IsA location
+  Exit north to nowhere.
+  Exit south to nowhere.
+  Exit west to nowhere.
+  Exit east to nowhere.
+  Exit up to nowhere.
+  Exit down to nowhere.
+End the nowhere.#
 
- THE tv_room Isa LOCATION
- NAME 'TV Room'
- ...
-----
+The tv_room IsA location
+  Name 'TV Room'
+...
+--------------------------------------------------------------------------------
 
 Now compile and play the game.
 Try to go "west" in the TV Room, and instead of getting the message "I don't know the word west" you get the somewhat more reasonable response:
@@ -464,47 +463,48 @@ But at this point if we type n, s, w, or e, we are back to "I don't know the wor
 We could program these single-letter words as we did the full words above:
 
 // @ALAN @EXAMPLE:
-// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
-[subs="quotes"]
-----
- THE Nowhere Isa LOCATION
-         EXIT north TO Nowhere.
-         EXIT south TO nowhere.
-         EXIT west TO nowhere.
-         EXIT east TO nowhere.
-         EXIT up TO nowhere.
-         EXIT down TO nowhere.
-         [green]#EXIT n TO Nowhere.
-         EXIT s TO Nowhere.
-         EXIT w TO Nowhere.
-         EXIT e TO Nowhere.#
- END THE nowhere.
-----
+// - [x] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,subs=quotes]
+--------------------------------------------------------------------------------
+The nowhere IsA location
+  Exit north to nowhere.
+  Exit south to nowhere.
+  Exit west to nowhere.
+  Exit east to nowhere.
+  Exit up to nowhere.
+  Exit down to nowhere.
+  [green]#Exit n to nowhere.
+  Exit s to nowhere.
+  Exit w to nowhere.
+  Exit e to nowhere.#
+End the nowhere.
+--------------------------------------------------------------------------------
+
 
 The problem with this is, both "north" and "n" are two separate directions.
 We would have to program the Kitchen, for example, with both of them to go to the same place:
 
 // @ALAN @EXAMPLE:
-// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
-[subs="quotes"]
-----
- ...
- THE kitchen Isa LOCATION
-     NAME 'Kitchen'
-     DESCRIPTION
-         "This is the kitchen."
-     EXIT north TO tv_room.
-     [green]#EXIT n TO tv_room.#
- END THE kitchen.
- ...
-----
+// - [x] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,subs=quotes]
+--------------------------------------------------------------------------------
+...
+The kitchen IsA location
+  Name 'Kitchen'
+  Description
+    "This is the kitchen."
+  Exit north to tv_room.
+  [green]#Exit n to tv_room.#
+End the kitchen.
+...
+--------------------------------------------------------------------------------
 
 If we had four or more directions to program from the Kitchen, we would also have to double that number just to have the abbreviations for each one.
-There is, however, a much easier way: use the SYNONYMS statement.
+There is, however, a much easier way: use the `SYNONYMS` statement.
 
 == SYNONYMS
 
@@ -513,38 +513,34 @@ There is, however, a much easier way: use the SYNONYMS statement.
 
 It is a very simple matter to create synonyms, words (or letters) that the player can type and that will be understood by the interpreter to mean the same thing as the main original word.
 
-To create a synonym, simply use the SYNONYMS statement, then first the synonym word; then an equals sign followed by the word you want the synonym to equal.
+To create a synonym, simply use the `SYNONYMS` statement, then first the synonym word; then an equals sign followed by the word you want the synonym to equal.
 Be sure to end each synonym with a full-stop.
 
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
-[subs="quotes"]
-----
- ...
- [green]#SYNONYMS
-     n = north.
-     s = south.
-     e = east.
-     w = west.
-     u = up.
-     d = down.#
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+[green]#Synonyms
+  n = north.
+  s = south.
+  e = east.
+  w = west.
+  u = up.
+  d = down.#
 
- THE Nowhere Isa LOCATION
-     EXIT north TO Nowhere.
-     EXIT south TO nowhere.
-     EXIT west TO nowhere.
-     EXIT east TO nowhere.
-     EXIT up TO nowhere.
-     EXIT down TO nowhere.
- END THE nowhere.
+The nowhere IsA location
+  Exit north to nowhere.
+  Exit south to nowhere.
+  Exit west to nowhere.
+  Exit east to nowhere.
+  Exit up to nowhere.
+  Exit down to nowhere.
+End the nowhere.
+--------------------------------------------------------------------------------
 
- THE tv_room Isa LOCATION
- NAME 'TV Room'
- ...
-----
 
 Now the player can indicate which direction he/she would like to go with a single letter, rather than typing the full word.
 Try it.
@@ -594,21 +590,50 @@ However, that would be tedious, it would add a lot of code for us to wade throug
 All we need to do is put the following line in our source code (I recommend putting it right after the introductory comment statements):
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
-[subs="quotes"]
-----
- -----------------------------------------------
- --             \*\** TV TIME! \***
- -- An ALAN 3 Interactive Fiction Tutorial Game
- --        By Michael Arnaud (c) 2006
- -----------------------------------------------
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE:
+//       [ ] Needs to be checked again:!
+
+// @NOTE: I've added the lines:
+// ~~~~~~~~~~~~~
+// Synonyms
+//   n = north.
+// ~~~~~~~~~~~~~
+// instead of 'THE tv_room Isa LOCATION' because that is how the file would
+// look like by following the tutorial instructions!
+
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+-----------------------------------------------
+--             \*\** TV TIME! \***
+-- An ALAN 3 Interactive Fiction Tutorial Game
+--        By Michael Arnaud (c) 2006
+-----------------------------------------------
+
+[green]#Import 'std.i'.#
+
+Synonyms
+  n = north.
+...
+--------------------------------------------------------------------------------
+
+// @NOTE: The original code was...
+
+////
+ ----------------------------------------------
+ -             \*\** TV TIME! \***
+ - An ALAN 3 Interactive Fiction Tutorial Game
+ -        By Michael Arnaud (c) 2006
+ ----------------------------------------------
  [green]#IMPORT 'std.i'.#
 
  THE tv_room Isa LOCATION
- ...
-----
+ ..
+////
+
+// .. but the `THE tv_room Isa LOCATION` line shouldn't be there, but below!
+
 
 Be sure to type it just this way, with the single-quotes around the name of the file and a full-stop at the end.
 
@@ -621,7 +646,7 @@ Open another file in the library, this one called "std.i" -- the one we are impo
 // - [x] ENABLE HIGHLIGHTING FOR LIBRARY
 // - [x] CREATE & INCLUDE UTF-8 VERSION OF "lib/std.i"
 // - [x] YELLOW: line 51 (import 'nowhere.i'.) should be in '<mark>'.
-// - [ ] CHECK CODE.
+// - [x] CHECK CODE.
 
 [source,alan,role=lib,subs=quotes]
 --------------------------------------------------------------------------------
@@ -643,9 +668,9 @@ When we typed that single line
 // - [x] CHECK CODE
 
 [source,alan,role=tutorial]
----------------
-IMPORT 'std.i'.
----------------
+--------------------------------------------------------------------------------
+Import 'std.i'.
+--------------------------------------------------------------------------------
 
 
 we also imported all those other _.i_-files in the library that are _imported by the std.i file._ This will save us a lot of time and trouble as we write our game.
@@ -661,6 +686,7 @@ In the play of the game, type "help".
 
 You will see some helpful information displayed.
 This demonstrates the power of importing the library files.
+
 
 [[exits]]
 == CHECKING EXITS
@@ -681,24 +707,24 @@ Here's how we would do that:
 // @ALAN @TV-TIME:
 // - [x] ENABLE HIGHLIGHTING
 // - [x] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
+// - [x] CHECK CODE
 
 [source,alan,role=tutorial,subs=quotes]
 --------------------------------------------------------------------------------
-THE tv_room Isa LOCATION
-  NAME TV Room
-  DESCRIPTION
+...
+The tv_room IsA location
+  Name 'TV Room'
+  Description
     "This is your favorite room in the house, because you love to
      watch television. You recently purchased a giant screen
-     plasma TV that is set up in this room, ideally located across
-     from your comfy chair and table."
-  EXIT south TO kitchen.
-  [green]#EXIT north, east, west TO tv_room
-    CHECK
+     plasma TV that is set up in this room, ideally located
+     across from your comfy chair and table."
+  Exit south to kitchen.
+  [green]#Exit north, east, west to tv_room
+    Check
       "There is only a wall in that direction."
-  END EXIT.#
-END THE tv_room.
------------------------
+  End exit.#
+End the tv_room.
 ...
 --------------------------------------------------------------------------------
 
@@ -732,7 +758,7 @@ Also notice that several directions are included on the same line:
 
 [source,alan,role=tutorial]
 -----------------------------------
-  EXIT north, east, west TO tv_room
+  Exit north, east, west to tv_room
 -----------------------------------
 
 so that we do not have to make separate EXITS for north, east, and west.
@@ -748,22 +774,22 @@ We might want the player to feel, not stopped by a wall or obstacle, but that th
 Like this:
 
 // @ALAN @EXAMPLE:
-// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
+// - [x] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
 
-[subs="quotes"]
+[source,alan]
 --------------------------------------------------------------------------------
-THE hall Isa LOCATION
-  NAME Banquet Hall
-  DESCRIPTION
+The hall isa location
+  Name Banquet Hall
+  Description
     "This is a magnificent banquet hall with many things to see."
-  EXIT south TO kitchen.
-  EXIT north, east, west TO hall
-    CHECK
+  Exit south to kitchen.
+  Exit north, east, west to hall
+    Check
       "You move about in the great hall, examining various things."
-  END EXIT.
-END THE hall.
+  End exit.
+End the hall.
 --------------------------------------------------------------------------------
 
 So we have still stopped the player from going in that direction, but instead of giving the sense of being stopped, we give the illusion of moving about.
@@ -802,45 +828,46 @@ We might prefer to have a bit more descriptive move from one room to another.
 We can do that within the EXIT statements.
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
-[subs="quotes"]
-----
- ...
- THE tv_room Isa LOCATION
-     NAME 'TV Room'
-     DESCRIPTION
-         "This is your favorite room in the house, because you love to
-          watch television. You recently purchased a giant screen plasma
-          TV that is set up in this room, ideally located across from
-          your comfy chair and table."
-     EXIT south TO kitchen
-         [green]#DOES
-             "You go south, into the kitchen."
-     END EXIT.#
-     EXIT north, east, west TO tv_room
-         CHECK
-             "There is only a wall in that direction."
-     END EXIT.
- END THE tv_room.
- -----------------------
- THE kitchen Isa LOCATION
-     NAME 'Kitchen'
-     DESCRIPTION
-         "This is the kitchen."
-     EXIT north TO tv_room
-         [green]#DOES
-             "You return to the TV Room, north."
-     END EXIT.
-     EXIT south, east, west TO kitchen
-         CHECK
-             "There is only a wall in that direction."
-     END EXIT.#
- END THE kitchen.
- -----------------------
- ...
-----
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+The tv_room IsA location
+  Name 'TV Room'
+  Description
+    "This is your favorite room in the house, because you love to
+     watch television. You recently purchased a giant screen
+     plasma TV that is set up in this room, ideally located
+     across from your comfy chair and table."
+  Exit south to kitchen
+    [green]#Does
+      "You go south, into the kitchen."
+  End exit.#
+  Exit north, east, west to tv_room
+    Check
+      "There is only a wall in that direction."
+  End exit.
+End the tv_room.
+-----------------------
+The kitchen IsA location
+  Name 'Kitchen'
+  Description
+    "This is the kitchen."
+  Exit north to tv_room
+    [green]#Does
+      "You return to the TV Room, north."
+  End exit.
+  Exit south, east, west to kitchen
+    Check
+      "There is only a wall in that direction."
+  End exit.#
+End the kitchen.
+-----------------------
+...
+--------------------------------------------------------------------------------
+
 
 [float]
 === DOES Means GO! …er, DO!
@@ -853,25 +880,43 @@ Note the change in format whenever we put a CHECK or DOES in the EXIT statement.
 It is no longer only
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
-----
- EXIT south TO kitchen. -- NOTE THE full-stop here!
-----
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+
+// @FIXME: Add to remove code indentation because the indentation of the 1st
+//         line is always flattened out.
+
+[source,alan,role=tutorial]
+--------------------------------------------------------------------------------
+Exit south to kitchen. -- Note the full-stop.
+--------------------------------------------------------------------------------
 
 but now we write it like this:
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
-----
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+
+// @FIXME: Add to remove code indentation because the indentation of the 1st
+//         line is always flattened out.
+
+[source,alan,role=tutorial]
+--------------------------------------------------------------------------------
+Exit south to kitchen -- The full-stop is moved to after the END.
+  Does -- (or CHECK)
+    "You go south, into the kitchen."
+End exit. -- We added the END statement with a full-stop.
+--------------------------------------------------------------------------------
+////
+
  EXIT south TO kitchen -- The full-stop is moved to after the END.
     DOES -- (or CHECK)
         "You go south, into the kitchen."
  END EXIT. -- We added the END statement with a full-stop.
-----
+
+////
 
 [float]
 === Tell the Player Which Way to Go
@@ -880,27 +925,28 @@ Better than having to guess, it is often good to tell the player which direction
 This is often done within the LOCATION DESCRIPTION.
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
-[subs="quotes"]
-----
- ...
- THE tv_room Isa LOCATION
-    NAME TV Room
-    DESCRIPTION
-        "This is your favorite room in the house, because you love to
-         watch television. You recently purchased a giant screen
-         plasma TV that is set up in this room, ideally located
-         across from your comfy chair and table. [green]#The kitchen is
-         south.#"
- ...
- THE kitchen Isa LOCATION
-     NAME Kitchen
-     DESCRIPTION
-         "This is the kitchen. [green]#North returns to the TV Room.#"
- ...
-----
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+The tv_room IsA location
+  Name 'TV Room'
+  Description
+    "This is your favorite room in the house, because you love to
+     watch television. You recently purchased a giant screen
+     plasma TV that is set up in this room, ideally located
+     across from your comfy chair and table. [green]#The kitchen is#
+     [green]#south.#"
+...
+The kitchen IsA location
+  Name 'Kitchen'
+  Description
+    "This is the kitchen. [green]#North returns to the TV Room.#"
+...
+--------------------------------------------------------------------------------
+
 
 Here is the result:
 
@@ -948,10 +994,24 @@ In our game so far we have told the player that in the TV Room there is a TV, a 
 The basic template for an `OBJECT` is:
 
 // @ALAN @EXAMPLE/@PSEUDOCODE:
-// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
-// - [ ] RESTORE COLOR NOTATION
+// - [x] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [x] RESTORE COLOR NOTATION
 // - [ ] CHECK CODE
-[subs="quotes"]
+[source,alan]
+--------------------------------------------------------------------------------
+The ? IsA object at ?
+  Name '?'
+
+  <ATTRIBUTES>
+
+  Description
+    "? ? ?"
+
+  <VERBS>
+
+End the ?.
+--------------------------------------------------------------------------------
+////
 ----
 THE ? Isa OBJECT AT ?
     NAME '?'
@@ -962,17 +1022,18 @@ THE ? Isa OBJECT AT ?
 END THE ?.
 ----
 
+////
 Our first OBJECT in "TV Time!" will be the plasma TV.
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
-[subs="quotes"]
-----
- [green]#THE tv Isa OBJECT AT tv_room
- END THE tv.#
-----
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+[green]#The tv IsA object at tv_room
+End the tv.#
+--------------------------------------------------------------------------------
 
 Here we are simply telling the compiler that THE tv Isa (is a) particular _instance_ of the _class,_ OBJECT.
 We are also telling the compiler where to place the tv "AT".
@@ -982,14 +1043,14 @@ This is all that is necessary to create an OBJECT.
 In fact even this little bit of code is more than what is necessary to create an OBJECT, for we could have left it in a true digital limbo by not giving it any LOCATION at all:
 
 // @ALAN @EXAMPLE:
-// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
-[subs="quotes"]
-----
- THE tv Isa OBJECT
- END THE tv.
-----
+// - [x] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan]
+--------------------------------------------------------------------------------
+The tv IsA object
+End the tv.
+--------------------------------------------------------------------------------
 
 This would leave the TV unseen, unknown, unreachable.
 That might be where we want some OBJECTS to be at the start, perhaps to be magically transported later into the game.
@@ -998,38 +1059,43 @@ For now, however, we will simply place the TV in the TV Room.
 It is a good idea to code OBJECTS following their LOCATIONS.
 
 // @ALAN @TV-TIME:
-// - [ ] ENABLE HIGHLIGHTING
-// - [ ] RESTORE COLOR NOTATION
-// - [ ] CHECK CODE
-[subs="quotes"]
-----
- ...
- THE tv_room Isa LOCATION
-     NAME TV Room
-     DESCRIPTION
-         "This is your favorite room in the house, because you love to
-          watch television. You recently purchased a giant screen
-          plasma TV that is set up in this room, ideally located across
-          from your comfy chair and table. The kitchen is south."
-     EXIT south TO kitchen
-         DOES
-             "You go south, into the kitchen."
-     END EXIT.
-     EXIT north, east, west TO tv_room
-         CHECK
-             "There is only a wall in that direction."
-     END EXIT.
- END THE tv_room.
- -----------------------
- [green]#THE tv Isa OBJECT AT tv_room
- END THE tv.#
- -----------------------
- THE kitchen Isa LOCATION
-     NAME 'Kitchen'
-     DESCRIPTION
-         "This is the kitchen. North returns to the TV Room."
- ...
-----
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+The tv_room IsA location
+  Name 'TV Room'
+  Description
+    "This is your favorite room in the house, because you love to
+     watch television. You recently purchased a giant screen
+     plasma TV that is set up in this room, ideally located
+     across from your comfy chair and table. The kitchen is
+     south."
+  Exit south to kitchen
+    Does
+      "You go south, into the kitchen."
+  End exit.
+  Exit north, east, west to tv_room
+    Check
+      "There is only a wall in that direction."
+  End exit.
+End the tv_room.
+-----------------------
+[green]#The tv IsA object at tv_room
+End the tv.#
+-----------------------
+The kitchen IsA location
+  Name 'Kitchen'
+  Description
+    "This is the kitchen. North returns to the TV Room."
+...
+--------------------------------------------------------------------------------
+
+
+// @ARRIVED HERE! //////////////////////////////////////////////////////////////
+
 
 == NAME that OBJECT
 

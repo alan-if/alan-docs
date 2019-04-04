@@ -437,7 +437,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>ALAN 3 Beginner&#8217;s Guide</h1>
 <div class="details">
 <span id="author" class="author">Michael Arnaud</span><br>
-<span id="revnumber">version 0.1.13,</span>
+<span id="revnumber">version 0.1.14,</span>
 <span id="revdate">April 4, 2019</span>
 <br><span id="revremark">AsciiDoc reconstruction work</span>
 </div>
@@ -550,7 +550,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre>Doc version: 0.1.13
+<pre>Doc version: 0.1.14
 Last edited: April 4, 2019</pre>
 </div>
 </div>
@@ -765,7 +765,7 @@ Even though we usually think of <code>LOCATIONs</code> in terms of (as other IF 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>THE ? Isa LOCATION&#x000A;     NAME '?'&#x000A;     DESCRIPTION&#x000A;         "? ? ?"&#x000A;     EXIT ? TO ?.&#x000A; END THE ?.</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> ? <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;?&apos;&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;? ? ?&quot;</span>&#x000A;  <span class="hl kwa">Exit</span> ? <span class="hl kwa">to</span> ?<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">End the</span> ?<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -785,7 +785,7 @@ A completed <code>LOCATION</code> appropriately ends with an END statement, whic
 </div>
 <div class="listingblock tutorial">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">...</span>&#x000A;<span class="green"><span class="hl kwa">THE</span> tv_room <span class="hl kwa">Isa</span> <span class="hl kwb">LOCATION</span>&#x000A;<span class="hl kwa">END THE</span> tv_room<span class="hl kwa">.</span></span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="green"><span class="hl kwa">The</span> tv_room <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;<span class="hl kwa">End the</span> tv_room<span class="hl kwa">.</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -803,7 +803,7 @@ Try it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">...</span>&#x000A;<span class="hl kwa">THE</span> tv_room <span class="hl kwa">Isa</span> <span class="hl kwb">LOCATION</span>&#x000A;<span class="hl kwa">END THE</span> tv_room<span class="hl kwa">.</span>&#x000A;<span class="green"><span class="hl kwa">START AT</span> tv_room<span class="hl kwa">.</span></span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> tv_room <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;<span class="hl kwa">End the</span> tv_room<span class="hl kwa">.</span>&#x000A;&#x000A;<span class="green"><span class="hl kwa">Start at</span> tv_room<span class="hl kwa">.</span></span></code></pre>
 </div>
 </div>
 <h3 id="_adding_a_name_and_description" class="float">Adding a NAME and DESCRIPTION</h3>
@@ -815,7 +815,7 @@ Be sure to enclose it in single (not double) quotes.</p>
 </div>
 <div class="listingblock tutorial">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">...</span>&#x000A;<span class="hl kwa">THE</span> tv_room <span class="hl kwa">Isa</span> <span class="hl kwb">LOCATION</span>&#x000A;  <span class="green"><span class="hl kwa">NAME</span> &apos;TV Room&apos;</span>&#x000A;<span class="hl kwa">...</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> tv_room <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="green"><span class="hl kwa">Name</span> &apos;TV Room&apos;</span>&#x000A;<span class="hl kwa">...</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -826,7 +826,7 @@ Be sure to enclose it in single (not double) quotes.</p>
 </div>
 <div class="listingblock tutorial">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">...</span>&#x000A;<span class="hl kwa">THE</span> tv_room <span class="hl kwa">Isa</span> <span class="hl kwb">LOCATION</span>&#x000A;  <span class="hl kwa">NAME</span> &apos;TV Room&apos;&#x000A;  <span class="green"><span class="hl kwa">DESCRIPTION</span>&#x000A;    <span class="hl str">&quot;This is your favorite room in the house, because you love to</span>&#x000A;<span class="hl str">     watch television. You recently purchased a giant screen</span>&#x000A;<span class="hl str">     plasma TV that is set up in this room, ideally located</span>&#x000A;<span class="hl str">     across from your comfy chair and table.&quot;</span></span>&#x000A;<span class="hl kwa">END THE</span> tv_room<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">...</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> tv_room <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;TV Room&apos;&#x000A;  <span class="green"><span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;This is your favorite room in the house, because you love to</span>&#x000A;<span class="hl str">     watch television. You recently purchased a giant screen</span>&#x000A;<span class="hl str">     plasma TV that is set up in this room, ideally located</span>&#x000A;<span class="hl str">     across from your comfy chair and table.&quot;</span></span>&#x000A;<span class="hl kwa">End the</span> tv_room<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">...</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -838,7 +838,7 @@ Be sure to enclose it in single (not double) quotes.</p>
 </div>
 <div class="listingblock tutorial">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">...</span>&#x000A;<span class="green"><span class="hl kwa">THE</span> kitchen <span class="hl kwa">Isa</span> <span class="hl kwb">LOCATION</span>&#x000A;  <span class="hl kwa">NAME</span> &apos;Kitchen&apos;&#x000A;  <span class="hl kwa">DESCRIPTION</span>&#x000A;    <span class="hl str">&quot;This is the kitchen.&quot;</span>&#x000A;<span class="hl kwa">END THE</span> kitchen<span class="hl kwa">.</span></span>&#x000A;<span class="hl kwa">...</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">...</span>&#x000A;<span class="green"><span class="hl kwa">The</span> kitchen <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;Kitchen&apos;&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;This is the kitchen.&quot;</span>&#x000A;<span class="hl kwa">End the</span> kitchen<span class="hl kwa">.</span></span>&#x000A;<span class="hl kwa">...</span></code></pre>
 </div>
 </div>
 </div>
@@ -858,7 +858,7 @@ This is most often accomplished with an <code>EXIT</code>.</p>
 </div>
 <div class="listingblock tutorial">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">...</span>&#x000A;<span class="hl kwa">THE</span> tv_room <span class="hl kwa">Isa</span> <span class="hl kwb">LOCATION</span>&#x000A;  <span class="hl kwa">NAME</span> &apos;TV Room&apos;&#x000A;  <span class="hl kwa">DESCRIPTION</span>&#x000A;    <span class="hl str">&quot;This is your favorite room in the house, because you love to</span>&#x000A;<span class="hl str">     watch television. You recently purchased a giant screen plasma</span>&#x000A;<span class="hl str">     TV that is set up in this room, ideally located across from</span>&#x000A;<span class="hl str">     your comfy chair and table.&quot;</span>&#x000A;  <span class="green"><span class="hl kwa">EXIT</span> south <span class="hl kwa">TO</span> kitchen<span class="hl kwa">.</span> <span class="hl slc">-- Note the full-stop.</span></span>&#x000A;<span class="hl kwa">END THE</span> tv_room<span class="hl kwa">.</span>&#x000A;<span class="hl slc">-----------------------</span>&#x000A;<span class="hl kwa">THE</span> kitchen <span class="hl kwa">Isa</span> <span class="hl kwb">LOCATION</span>&#x000A;  <span class="hl kwa">NAME</span> Kitchen&#x000A;  <span class="hl kwa">DESCRIPTION</span>&#x000A;    <span class="hl str">&quot;This is the kitchen.&quot;</span>&#x000A;  <span class="green"><span class="hl kwa">EXIT</span> north <span class="hl kwa">TO</span> tv_room<span class="hl kwa">.</span></span>&#x000A;<span class="hl kwa">END THE</span> kitchen<span class="hl kwa">.</span>&#x000A;<span class="hl slc">-----------------------</span>&#x000A;<span class="hl kwa">START AT</span> tv_room<span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> tv_room <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;TV Room&apos;&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;This is your favorite room in the house, because you love to</span>&#x000A;<span class="hl str">     watch television. You recently purchased a giant screen</span>&#x000A;<span class="hl str">     plasma TV that is set up in this room, ideally located</span>&#x000A;<span class="hl str">     across from your comfy chair and table.&quot;</span>&#x000A;  <span class="green"><span class="hl kwa">Exit</span> south <span class="hl kwa">to</span> kitchen<span class="hl kwa">.</span> <span class="hl slc">-- Note the full-stop.</span></span>&#x000A;<span class="hl kwa">End the</span> tv_room<span class="hl kwa">.</span>&#x000A;<span class="hl slc">-----------------------</span>&#x000A;<span class="hl kwa">The</span> kitchen <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;Kitchen&apos;&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;This is the kitchen.&quot;</span>&#x000A;  <span class="green"><span class="hl kwa">Exit</span> north <span class="hl kwa">to</span> tv_room<span class="hl kwa">.</span></span>&#x000A;<span class="hl kwa">End the</span> kitchen<span class="hl kwa">.</span>&#x000A;<span class="hl slc">-----------------------</span>&#x000A;<span class="hl kwa">Start at</span> tv_room<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -882,8 +882,7 @@ The interpreter does not know what any of those words mean, and will tell the pl
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-In game transcripts we&#8217;ll use <em>this type face</em> to indicate what
-the player types.
+In game transcripts we&#8217;ll use <em>this type face</em> to indicate what the player types.
 </td>
 </tr>
 </table>
@@ -911,9 +910,9 @@ We can use such a limbo LOCATION to establish any directional or EXIT words we w
 We could call our limbo LOCATION "limbo", "bimbo", or anything else, but for our game we will call it "Nowhere".
 Put these lines before the code for the tv_room:.</p>
 </div>
-<div class="listingblock">
+<div class="listingblock tutorial">
 <div class="content">
-<pre>...&#x000A; <span class="green">THE Nowhere Isa LOCATION&#x000A;         EXIT north TO Nowhere.&#x000A;         EXIT south TO nowhere.&#x000A;         EXIT west TO nowhere.&#x000A;         EXIT east TO nowhere.&#x000A;         EXIT up TO nowhere.&#x000A;         EXIT down TO nowhere.&#x000A; END THE nowhere.</span>&#x000A;&#x000A; THE tv_room Isa LOCATION&#x000A; NAME 'TV Room'&#x000A; ...</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">...</span>&#x000A;<span class="green"><span class="hl kwa">The</span> nowhere <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Exit</span> north <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> south <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> west <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> east <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> up <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> down <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">End the</span> nowhere<span class="hl kwa">.</span></span>&#x000A;&#x000A;<span class="hl kwa">The</span> tv_room <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;TV Room&apos;&#x000A;<span class="hl kwa">...</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -936,7 +935,7 @@ We could program these single-letter words as we did the full words above:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>THE Nowhere Isa LOCATION&#x000A;         EXIT north TO Nowhere.&#x000A;         EXIT south TO nowhere.&#x000A;         EXIT west TO nowhere.&#x000A;         EXIT east TO nowhere.&#x000A;         EXIT up TO nowhere.&#x000A;         EXIT down TO nowhere.&#x000A;         <span class="green">EXIT n TO Nowhere.&#x000A;         EXIT s TO Nowhere.&#x000A;         EXIT w TO Nowhere.&#x000A;         EXIT e TO Nowhere.</span>&#x000A; END THE nowhere.</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> nowhere <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Exit</span> north <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> south <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> west <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> east <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> up <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> down <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="green"><span class="hl kwa">Exit</span> n <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> s <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> w <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> e <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span></span>&#x000A;<span class="hl kwa">End the</span> nowhere<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -945,12 +944,12 @@ We would have to program the Kitchen, for example, with both of them to go to th
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>...&#x000A; THE kitchen Isa LOCATION&#x000A;     NAME 'Kitchen'&#x000A;     DESCRIPTION&#x000A;         "This is the kitchen."&#x000A;     EXIT north TO tv_room.&#x000A;     <span class="green">EXIT n TO tv_room.</span>&#x000A; END THE kitchen.&#x000A; ...</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">...</span>&#x000A;<span class="hl kwa">The</span> kitchen <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;Kitchen&apos;&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;This is the kitchen.&quot;</span>&#x000A;  <span class="hl kwa">Exit</span> north <span class="hl kwa">to</span> tv_room<span class="hl kwa">.</span>&#x000A;  <span class="green"><span class="hl kwa">Exit</span> n <span class="hl kwa">to</span> tv_room<span class="hl kwa">.</span></span>&#x000A;<span class="hl kwa">End the</span> kitchen<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">...</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>If we had four or more directions to program from the Kitchen, we would also have to double that number just to have the abbreviations for each one.
-There is, however, a much easier way: use the SYNONYMS statement.</p>
+There is, however, a much easier way: use the <code>SYNONYMS</code> statement.</p>
 </div>
 </div>
 </div>
@@ -962,12 +961,12 @@ There is, however, a much easier way: use the SYNONYMS statement.</p>
 <p>It is a very simple matter to create synonyms, words (or letters) that the player can type and that will be understood by the interpreter to mean the same thing as the main original word.</p>
 </div>
 <div class="paragraph">
-<p>To create a synonym, simply use the SYNONYMS statement, then first the synonym word; then an equals sign followed by the word you want the synonym to equal.
+<p>To create a synonym, simply use the <code>SYNONYMS</code> statement, then first the synonym word; then an equals sign followed by the word you want the synonym to equal.
 Be sure to end each synonym with a full-stop.</p>
 </div>
-<div class="listingblock">
+<div class="listingblock tutorial">
 <div class="content">
-<pre>...&#x000A; <span class="green">SYNONYMS&#x000A;     n = north.&#x000A;     s = south.&#x000A;     e = east.&#x000A;     w = west.&#x000A;     u = up.&#x000A;     d = down.</span>&#x000A;&#x000A; THE Nowhere Isa LOCATION&#x000A;     EXIT north TO Nowhere.&#x000A;     EXIT south TO nowhere.&#x000A;     EXIT west TO nowhere.&#x000A;     EXIT east TO nowhere.&#x000A;     EXIT up TO nowhere.&#x000A;     EXIT down TO nowhere.&#x000A; END THE nowhere.&#x000A;&#x000A; THE tv_room Isa LOCATION&#x000A; NAME 'TV Room'&#x000A; ...</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="green"><span class="hl kwa">Synonyms</span>&#x000A;  n <span class="hl opt">=</span> north<span class="hl kwa">.</span>&#x000A;  s <span class="hl opt">=</span> south<span class="hl kwa">.</span>&#x000A;  e <span class="hl opt">=</span> east<span class="hl kwa">.</span>&#x000A;  w <span class="hl opt">=</span> west<span class="hl kwa">.</span>&#x000A;  u <span class="hl opt">=</span> up<span class="hl kwa">.</span>&#x000A;  d <span class="hl opt">=</span> down<span class="hl kwa">.</span></span>&#x000A;&#x000A;<span class="hl kwa">The</span> nowhere <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Exit</span> north <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> south <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> west <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> east <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> up <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> down <span class="hl kwa">to</span> nowhere<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">End the</span> nowhere<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1024,9 +1023,9 @@ However, that would be tedious, it would add a lot of code for us to wade throug
 <div class="paragraph">
 <p>All we need to do is put the following line in our source code (I recommend putting it right after the introductory comment statements):</p>
 </div>
-<div class="listingblock">
+<div class="listingblock tutorial">
 <div class="content">
-<pre>-----------------------------------------------&#x000A; --             *** TV TIME! ***&#x000A; -- An ALAN 3 Interactive Fiction Tutorial Game&#x000A; --        By Michael Arnaud (c) 2006&#x000A; -----------------------------------------------&#x000A; <span class="green">IMPORT 'std.i'.</span>&#x000A;&#x000A; THE tv_room Isa LOCATION&#x000A; ...</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-----------------------------------------------</span>&#x000A;<span class="hl slc">--             *** TV TIME! ***</span>&#x000A;<span class="hl slc">-- An ALAN 3 Interactive Fiction Tutorial Game</span>&#x000A;<span class="hl slc">--        By Michael Arnaud (c) 2006</span>&#x000A;<span class="hl slc">-----------------------------------------------</span>&#x000A;&#x000A;<span class="green"><span class="hl kwa">Import</span> &apos;std.i&apos;<span class="hl kwa">.</span></span>&#x000A;&#x000A;<span class="hl kwa">Synonyms</span>&#x000A;  n <span class="hl opt">=</span> north<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">...</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1050,7 +1049,7 @@ When we typed that single line</p>
 </div>
 <div class="listingblock tutorial">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">IMPORT</span> &apos;std.i&apos;<span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">Import</span> &apos;std.i&apos;<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1095,7 +1094,7 @@ Here&#8217;s how we would do that:</p>
 </div>
 <div class="listingblock tutorial">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">THE</span> tv_room <span class="hl kwa">Isa</span> <span class="hl kwb">LOCATION</span>&#x000A;  <span class="hl kwa">NAME</span> TV Room&#x000A;  <span class="hl kwa">DESCRIPTION</span>&#x000A;    <span class="hl str">&quot;This is your favorite room in the house, because you love to</span>&#x000A;<span class="hl str">     watch television. You recently purchased a giant screen</span>&#x000A;<span class="hl str">     plasma TV that is set up in this room, ideally located across</span>&#x000A;<span class="hl str">     from your comfy chair and table.&quot;</span>&#x000A;  <span class="hl kwa">EXIT</span> south <span class="hl kwa">TO</span> kitchen<span class="hl kwa">.</span>&#x000A;  <span class="green"><span class="hl kwa">EXIT</span> north<span class="hl kwa">,</span> east<span class="hl kwa">,</span> west <span class="hl kwa">TO</span> tv_room&#x000A;    <span class="hl kwa">CHECK</span>&#x000A;      <span class="hl str">&quot;There is only a wall in that direction.&quot;</span>&#x000A;  <span class="hl kwa">END EXIT.</span></span>&#x000A;<span class="hl kwa">END THE</span> tv_room<span class="hl kwa">.</span>&#x000A;<span class="hl slc">-----------------------</span>&#x000A;<span class="hl kwa">...</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">...</span>&#x000A;<span class="hl kwa">The</span> tv_room <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;TV Room&apos;&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;This is your favorite room in the house, because you love to</span>&#x000A;<span class="hl str">     watch television. You recently purchased a giant screen</span>&#x000A;<span class="hl str">     plasma TV that is set up in this room, ideally located</span>&#x000A;<span class="hl str">     across from your comfy chair and table.&quot;</span>&#x000A;  <span class="hl kwa">Exit</span> south <span class="hl kwa">to</span> kitchen<span class="hl kwa">.</span>&#x000A;  <span class="green"><span class="hl kwa">Exit</span> north<span class="hl kwa">,</span> east<span class="hl kwa">,</span> west <span class="hl kwa">to</span> tv_room&#x000A;    <span class="hl kwa">Check</span>&#x000A;      <span class="hl str">&quot;There is only a wall in that direction.&quot;</span>&#x000A;  <span class="hl kwa">End exit.</span></span>&#x000A;<span class="hl kwa">End the</span> tv_room<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">...</span></code></pre>
 </div>
 </div>
 <h3 id="_check_means_stop" class="float">CHECK Means STOP</h3>
@@ -1130,7 +1129,7 @@ There is only a wall in that direction.</p>
 </div>
 <div class="listingblock tutorial">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">EXIT</span> north<span class="hl kwa">,</span> east<span class="hl kwa">,</span> west <span class="hl kwa">TO</span> tv_room</code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">Exit</span> north<span class="hl kwa">,</span> east<span class="hl kwa">,</span> west <span class="hl kwa">to</span> tv_room</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1148,7 +1147,7 @@ Like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>THE hall Isa LOCATION&#x000A;  NAME Banquet Hall&#x000A;  DESCRIPTION&#x000A;    "This is a magnificent banquet hall with many things to see."&#x000A;  EXIT south TO kitchen.&#x000A;  EXIT north, east, west TO hall&#x000A;    CHECK&#x000A;      "You move about in the great hall, examining various things."&#x000A;  END EXIT.&#x000A;END THE hall.</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> hall <span class="hl kwa">isa</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> Banquet Hall&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;This is a magnificent banquet hall with many things to see.&quot;</span>&#x000A;  <span class="hl kwa">Exit</span> south <span class="hl kwa">to</span> kitchen<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Exit</span> north<span class="hl kwa">,</span> east<span class="hl kwa">,</span> west <span class="hl kwa">to</span> hall&#x000A;    <span class="hl kwa">Check</span>&#x000A;      <span class="hl str">&quot;You move about in the great hall, examining various things.&quot;</span>&#x000A;  <span class="hl kwa">End exit.</span>&#x000A;<span class="hl kwa">End the</span> hall<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1197,9 +1196,9 @@ This is the kitchen.</p>
 <p>We might prefer to have a bit more descriptive move from one room to another.
 We can do that within the EXIT statements.</p>
 </div>
-<div class="listingblock">
+<div class="listingblock tutorial">
 <div class="content">
-<pre>...&#x000A; THE tv_room Isa LOCATION&#x000A;     NAME 'TV Room'&#x000A;     DESCRIPTION&#x000A;         "This is your favorite room in the house, because you love to&#x000A;          watch television. You recently purchased a giant screen plasma&#x000A;          TV that is set up in this room, ideally located across from&#x000A;          your comfy chair and table."&#x000A;     EXIT south TO kitchen&#x000A;         <span class="green">DOES&#x000A;             "You go south, into the kitchen."&#x000A;     END EXIT.</span>&#x000A;     EXIT north, east, west TO tv_room&#x000A;         CHECK&#x000A;             "There is only a wall in that direction."&#x000A;     END EXIT.&#x000A; END THE tv_room.&#x000A; -----------------------&#x000A; THE kitchen Isa LOCATION&#x000A;     NAME 'Kitchen'&#x000A;     DESCRIPTION&#x000A;         "This is the kitchen."&#x000A;     EXIT north TO tv_room&#x000A;         <span class="green">DOES&#x000A;             "You return to the TV Room, north."&#x000A;     END EXIT.&#x000A;     EXIT south, east, west TO kitchen&#x000A;         CHECK&#x000A;             "There is only a wall in that direction."&#x000A;     END EXIT.</span>&#x000A; END THE kitchen.&#x000A; -----------------------&#x000A; ...</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">...</span>&#x000A;<span class="hl kwa">The</span> tv_room <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;TV Room&apos;&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;This is your favorite room in the house, because you love to</span>&#x000A;<span class="hl str">     watch television. You recently purchased a giant screen</span>&#x000A;<span class="hl str">     plasma TV that is set up in this room, ideally located</span>&#x000A;<span class="hl str">     across from your comfy chair and table.&quot;</span>&#x000A;  <span class="hl kwa">Exit</span> south <span class="hl kwa">to</span> kitchen&#x000A;    <span class="green"><span class="hl kwa">Does</span>&#x000A;      <span class="hl str">&quot;You go south, into the kitchen.&quot;</span>&#x000A;  <span class="hl kwa">End exit.</span></span>&#x000A;  <span class="hl kwa">Exit</span> north<span class="hl kwa">,</span> east<span class="hl kwa">,</span> west <span class="hl kwa">to</span> tv_room&#x000A;    <span class="hl kwa">Check</span>&#x000A;      <span class="hl str">&quot;There is only a wall in that direction.&quot;</span>&#x000A;  <span class="hl kwa">End exit.</span>&#x000A;<span class="hl kwa">End the</span> tv_room<span class="hl kwa">.</span>&#x000A;<span class="hl slc">-----------------------</span>&#x000A;<span class="hl kwa">The</span> kitchen <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;Kitchen&apos;&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;This is the kitchen.&quot;</span>&#x000A;  <span class="hl kwa">Exit</span> north <span class="hl kwa">to</span> tv_room&#x000A;    <span class="green"><span class="hl kwa">Does</span>&#x000A;      <span class="hl str">&quot;You return to the TV Room, north.&quot;</span>&#x000A;  <span class="hl kwa">End exit.</span>&#x000A;  <span class="hl kwa">Exit</span> south<span class="hl kwa">,</span> east<span class="hl kwa">,</span> west <span class="hl kwa">to</span> kitchen&#x000A;    <span class="hl kwa">Check</span>&#x000A;      <span class="hl str">&quot;There is only a wall in that direction.&quot;</span>&#x000A;  <span class="hl kwa">End exit.</span></span>&#x000A;<span class="hl kwa">End the</span> kitchen<span class="hl kwa">.</span>&#x000A;<span class="hl slc">-----------------------</span>&#x000A;<span class="hl kwa">...</span></code></pre>
 </div>
 </div>
 <h3 id="_does_means_go_er_do" class="float">DOES Means GO! …er, DO!</h3>
@@ -1212,17 +1211,17 @@ We want the interpreter to display a transition message as the player is EXITED 
 <p>Note the change in format whenever we put a CHECK or DOES in the EXIT statement.
 It is no longer only</p>
 </div>
-<div class="listingblock">
+<div class="listingblock tutorial">
 <div class="content">
-<pre>EXIT south TO kitchen. -- NOTE THE full-stop here!</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">Exit</span> south <span class="hl kwa">to</span> kitchen<span class="hl kwa">.</span> <span class="hl slc">-- Note the full-stop.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>but now we write it like this:</p>
 </div>
-<div class="listingblock">
+<div class="listingblock tutorial">
 <div class="content">
-<pre>EXIT south TO kitchen -- The full-stop is moved to after the END.&#x000A;    DOES -- (or CHECK)&#x000A;        "You go south, into the kitchen."&#x000A; END EXIT. -- We added the END statement with a full-stop.</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">Exit</span> south <span class="hl kwa">to</span> kitchen <span class="hl slc">-- The full-stop is moved to after the END.</span>&#x000A;  <span class="hl kwa">Does</span> <span class="hl slc">-- (or CHECK)</span>&#x000A;    <span class="hl str">&quot;You go south, into the kitchen.&quot;</span>&#x000A;<span class="hl kwa">End exit.</span> <span class="hl slc">-- We added the END statement with a full-stop.</span></code></pre>
 </div>
 </div>
 <h3 id="_tell_the_player_which_way_to_go" class="float">Tell the Player Which Way to Go</h3>
@@ -1230,9 +1229,9 @@ It is no longer only</p>
 <p>Better than having to guess, it is often good to tell the player which directions are open to him/her.
 This is often done within the LOCATION DESCRIPTION.</p>
 </div>
-<div class="listingblock">
+<div class="listingblock tutorial">
 <div class="content">
-<pre>...&#x000A; THE tv_room Isa LOCATION&#x000A;    NAME TV Room&#x000A;    DESCRIPTION&#x000A;        "This is your favorite room in the house, because you love to&#x000A;         watch television. You recently purchased a giant screen&#x000A;         plasma TV that is set up in this room, ideally located&#x000A;         across from your comfy chair and table. <span class="green">The kitchen is&#x000A;         south.</span>"&#x000A; ...&#x000A; THE kitchen Isa LOCATION&#x000A;     NAME Kitchen&#x000A;     DESCRIPTION&#x000A;         "This is the kitchen. <span class="green">North returns to the TV Room.</span>"&#x000A; ...</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">...</span>&#x000A;<span class="hl kwa">The</span> tv_room <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;TV Room&apos;&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;This is your favorite room in the house, because you love to</span>&#x000A;<span class="hl str">     watch television. You recently purchased a giant screen</span>&#x000A;<span class="hl str">     plasma TV that is set up in this room, ideally located</span>&#x000A;<span class="hl str">     across from your comfy chair and table. <span class="green">The kitchen is</span></span>&#x000A;<span class="hl str">     <span class="green">south.</span>&quot;</span>&#x000A;<span class="hl kwa">...</span>&#x000A;<span class="hl kwa">The</span> kitchen <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;Kitchen&apos;&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;This is the kitchen. <span class="green">North returns to the TV Room.</span>&quot;</span>&#x000A;<span class="hl kwa">...</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1296,15 +1295,15 @@ In our game so far we have told the player that in the TV Room there is a TV, a 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>THE ? Isa OBJECT AT ?&#x000A;    NAME '?'&#x000A;    <Attributes>&#x000A;    DESCRIPTION&#x000A;        "? ? ?"&#x000A;    <Verbs>&#x000A;END THE ?.</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> ? <span class="hl kwa">IsA</span> <span class="hl kwb">object</span> <span class="hl kwa">at</span> ?&#x000A;  <span class="hl kwa">Name</span> &apos;?&apos;&#x000A;&#x000A;  <span class="hl opt">&lt;</span><span class="hl kwa">ATTRIBUTES</span><span class="hl opt">&gt;</span>&#x000A;&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;? ? ?&quot;</span>&#x000A;&#x000A;  <span class="hl opt">&lt;</span>VERBS<span class="hl opt">&gt;</span>&#x000A;&#x000A;<span class="hl kwa">End the</span> ?<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Our first OBJECT in "TV Time!" will be the plasma TV.</p>
 </div>
-<div class="listingblock">
+<div class="listingblock tutorial">
 <div class="content">
-<pre><span class="green">THE tv Isa OBJECT AT tv_room&#x000A; END THE tv.</span></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="green"><span class="hl kwa">The</span> tv <span class="hl kwa">IsA</span> <span class="hl kwb">object</span> <span class="hl kwa">at</span> tv_room&#x000A;<span class="hl kwa">End the</span> tv<span class="hl kwa">.</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1318,7 +1317,7 @@ In fact even this little bit of code is more than what is necessary to create an
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>THE tv Isa OBJECT&#x000A; END THE tv.</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> tv <span class="hl kwa">IsA</span> <span class="hl kwb">object</span>&#x000A;<span class="hl kwa">End the</span> tv<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1329,9 +1328,9 @@ For now, however, we will simply place the TV in the TV Room.</p>
 <div class="paragraph">
 <p>It is a good idea to code OBJECTS following their LOCATIONS.</p>
 </div>
-<div class="listingblock">
+<div class="listingblock tutorial">
 <div class="content">
-<pre>...&#x000A; THE tv_room Isa LOCATION&#x000A;     NAME TV Room&#x000A;     DESCRIPTION&#x000A;         "This is your favorite room in the house, because you love to&#x000A;          watch television. You recently purchased a giant screen&#x000A;          plasma TV that is set up in this room, ideally located across&#x000A;          from your comfy chair and table. The kitchen is south."&#x000A;     EXIT south TO kitchen&#x000A;         DOES&#x000A;             "You go south, into the kitchen."&#x000A;     END EXIT.&#x000A;     EXIT north, east, west TO tv_room&#x000A;         CHECK&#x000A;             "There is only a wall in that direction."&#x000A;     END EXIT.&#x000A; END THE tv_room.&#x000A; -----------------------&#x000A; <span class="green">THE tv Isa OBJECT AT tv_room&#x000A; END THE tv.</span>&#x000A; -----------------------&#x000A; THE kitchen Isa LOCATION&#x000A;     NAME 'Kitchen'&#x000A;     DESCRIPTION&#x000A;         "This is the kitchen. North returns to the TV Room."&#x000A; ...</pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">...</span>&#x000A;<span class="hl kwa">The</span> tv_room <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;TV Room&apos;&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;This is your favorite room in the house, because you love to</span>&#x000A;<span class="hl str">     watch television. You recently purchased a giant screen</span>&#x000A;<span class="hl str">     plasma TV that is set up in this room, ideally located</span>&#x000A;<span class="hl str">     across from your comfy chair and table. The kitchen is</span>&#x000A;<span class="hl str">     south.&quot;</span>&#x000A;  <span class="hl kwa">Exit</span> south <span class="hl kwa">to</span> kitchen&#x000A;    <span class="hl kwa">Does</span>&#x000A;      <span class="hl str">&quot;You go south, into the kitchen.&quot;</span>&#x000A;  <span class="hl kwa">End exit.</span>&#x000A;  <span class="hl kwa">Exit</span> north<span class="hl kwa">,</span> east<span class="hl kwa">,</span> west <span class="hl kwa">to</span> tv_room&#x000A;    <span class="hl kwa">Check</span>&#x000A;      <span class="hl str">&quot;There is only a wall in that direction.&quot;</span>&#x000A;  <span class="hl kwa">End exit.</span>&#x000A;<span class="hl kwa">End the</span> tv_room<span class="hl kwa">.</span>&#x000A;<span class="hl slc">-----------------------</span>&#x000A;<span class="green"><span class="hl kwa">The</span> tv <span class="hl kwa">IsA</span> <span class="hl kwb">object</span> <span class="hl kwa">at</span> tv_room&#x000A;<span class="hl kwa">End the</span> tv<span class="hl kwa">.</span></span>&#x000A;<span class="hl slc">-----------------------</span>&#x000A;<span class="hl kwa">The</span> kitchen <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">Name</span> &apos;Kitchen&apos;&#x000A;  <span class="hl kwa">Description</span>&#x000A;    <span class="hl str">&quot;This is the kitchen. North returns to the TV Room.&quot;</span>&#x000A;<span class="hl kwa">...</span></code></pre>
 </div>
 </div>
 </div>
@@ -4486,7 +4485,7 @@ I hope this proves to be a help to you in using the Alan 3 Adventure language.</
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.13<br>
+Version 0.1.14<br>
 </div>
 </div>
 </body>
