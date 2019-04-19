@@ -1,4 +1,5 @@
-:: "PDF_BUILD.bat" v2.1.0 (2018/09/24) by Tristano Ajmone
+:: "PDF_BUILD.bat" v3.0.0 (2019/04/19) by Tristano Ajmone
+@ECHO OFF
 @ECHO.
 @ECHO ==============================================================================
 @ECHO Converting the "ALAN Beginner's Guide" to PDF document...
@@ -9,7 +10,7 @@
 
 :: Set some required env vars
 SET "CURRDIR=%CD%"
-SET "ASSETSDIR=..\_assets\"
+SET "FOPUB_DIR=..\_assets\alan-xsl-fopub\"
 
 CALL asciidoctor^
   -b docbook^
@@ -19,8 +20,8 @@ CALL asciidoctor^
   --verbose^
   alanguide.asciidoc
 
-:: Need to switch working directory to "//_assets/" for FOP:
-CD %ASSETSDIR%
+:: Need to switch working directory to "//_assets/alan-xsl-fopub/" for FOP:
+CD %FOPUB_DIR%
 
 CALL fopub^
   -t xsl-fopub^

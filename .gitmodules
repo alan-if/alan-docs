@@ -1,0 +1,4 @@
+[submodule "_assets/alan-xsl-fopub"]
+	path = _assets/alan-xsl-fopub
+	url = https://github.com/alan-if/alan-xsl-fopub
+	branch = master

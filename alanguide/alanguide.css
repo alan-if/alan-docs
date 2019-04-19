@@ -1,0 +1,205 @@
+/* Alan Code Notation Mockup */
+.listingblock.alan pre {
+  color: #333;
+  background: #F8F8F8;
+}
+
+/* Shell/CMD */
+div.literalblock.shell pre {
+  background-color: #0C0C0C;
+  color: #F2F2F2;
+}
+div.literalblock.shell pre .conum {
+  background: #FFF945 !important;
+  color: #0C0C0C !important;
+}
+
+/* Game Transcripts */
+.exampleblock.gametranscript > .content {
+  background: #F7FDFF;
+  color: #0089B6;
+  border-color: #CCF2FF;
+}
+
+/* Commentary Blocks */
+div.openblock.commentary {
+  padding-left: 6em;
+}
+
+/* Inline Highlighting */
+span.green {
+  background-color: #A3FF8A;
+}
+
+/* Highlight Theme for Alan -- based on "github.com style" for highlight.js, by Vasily Polovnyov */
+.listingblock code[data-lang=alan]::before {
+  color: #a09f93;
+}
+
+.listingblock pre[class=highlight][lang=alan] {
+  background-color: #F8F8F8;
+  border-radius: 4px;
+  border: 1px solid #F8F8F8;
+}
+.listingblock pre[class=highlight][lang=alan] > code {
+  color: #333;
+  font-family: inherit;
+  font-size: inherit;
+}
+.listingblock pre[class=highlight][lang=alan] .hl {
+  color: #333;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.num {
+  color: #333;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.esc {
+  color: #ff980b;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.ipl {
+  color: #d572f1;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.str {
+  color: #008080;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.slc {
+  color: #998;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.lin {
+  color: #998;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.opt {
+  color: #333;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.kwa {
+  color: #990000;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.kwb {
+  color: #000080;
+}
+.listingblock pre[class=highlight][lang=alan] .hl.kwc {
+  color: #000080;
+}
+.listingblock pre[class=highlight][lang=alan] mark {
+  background-color: #ccff00;
+  background-image: linear-gradient(to right, #ccff00 0%, #f5ff87 100%);
+}
+.listingblock pre[class=highlight][lang=alan] span.green {
+  background-color: #a3ff8a;
+  background-image: linear-gradient(to right, #a3ff8a 0%, rgba(163, 255, 138, 0.5) 100%);
+}
+
+/* Highlight Theme for Alan Library -- Base16 Eighties, by Chris Kempson */
+.listingblock.lib code[data-lang=alan]::before {
+  color: #a09f93;
+}
+
+.listingblock.lib pre[class=highlight][lang=alan] {
+  background-color: #2d2d2d;
+  border-radius: 4px;
+  border: 1px solid #a09f93;
+}
+.listingblock.lib pre[class=highlight][lang=alan] > code {
+  color: #d3d0c8;
+  font-family: inherit;
+  font-size: inherit;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl {
+  color: #d3d0c8;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.num {
+  color: #f99157;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.esc {
+  color: #f99157;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.ipl {
+  color: #d27b53;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.str {
+  color: #99cc99;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.slc {
+  color: #a09f93;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.lin {
+  color: #747369;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.opt {
+  color: #d3d0c8;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.kwa {
+  color: #f2777a;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.kwb {
+  color: #ffcc66;
+}
+.listingblock.lib pre[class=highlight][lang=alan] .hl.kwc {
+  color: #6699cc;
+}
+.listingblock.lib pre[class=highlight][lang=alan] mark {
+  background-color: #ccff00;
+  background-image: linear-gradient(to right, #ccff00 0%, #f5ff87 100%);
+}
+.listingblock.lib pre[class=highlight][lang=alan] span.green {
+  background-color: #a3ff8a;
+  background-image: linear-gradient(to right, #a3ff8a 0%, rgba(163, 255, 138, 0.5) 100%);
+}
+
+/* Highlight Theme for Alan tutorial -- Base16 Google, by  Seth Wright */
+.listingblock.tutorial code[data-lang=alan]::before {
+  color: #a09f93;
+}
+
+.listingblock.tutorial pre[class=highlight][lang=alan] {
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] > code {
+  color: #373b41;
+  font-family: inherit;
+  font-size: inherit;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] .hl {
+  color: #373b41;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] .hl.num {
+  color: #373b41;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] .hl.esc {
+  color: #F96A38;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] .hl.ipl {
+  color: #3971ED;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] .hl.str {
+  color: #198844;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] .hl.slc {
+  color: #969896;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] .hl.lin {
+  color: #c5c8c6;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] .hl.opt {
+  color: #373b41;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] .hl.kwa {
+  color: #CC342B;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] .hl.kwb {
+  color: #FBA922;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] .hl.kwc {
+  color: #3971ED;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] mark {
+  background-color: #f5ff87;
+  background-image: none;
+}
+.listingblock.tutorial pre[class=highlight][lang=alan] span.green {
+  background-color: #dbf8e6;
+  background-image: none;
+}
+
+/*# sourceMappingURL=alanguide.css.map */

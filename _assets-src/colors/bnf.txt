@@ -1,0 +1,15 @@
+COLOR SPEC SHEET
+
+
+background: 
+    #ffebd6
+    RGB: 255 235 214
+    HSB: 31 16 100
+    HSL: 20 240 221
+
+normal: 
+    #492e11
+    RGB: 73 46 17
+    HSB: 31 77 29
+    HSL: 21 149 42
+

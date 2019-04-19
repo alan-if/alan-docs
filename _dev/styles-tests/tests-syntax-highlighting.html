@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">v 2.2,</span>
-<span id="revdate">December 19, 2018</span>
+<span id="revnumber">v 2.3,</span>
+<span id="revdate">March 8, 2019</span>
 <br><span id="revremark">Backend: Asciidoctor&#8217;s native HTML5</span>
 </div>
 <div id="toc" class="toc2">
@@ -474,6 +474,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_bnf_syntax">BNF Syntax</a></li>
+</ul>
+</li>
+<li><a href="#part_three">Customizing The Look of Code</a>
+<ul class="sectlevel1">
+<li><a href="#_custom_color_marking">Custom Color-Marking</a>
+<ul class="sectlevel3">
+<li><a href="#_yellow_highlighting">Yellow Highlighting</a></li>
+<li><a href="#_green_highlighting">Green Highlighting</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1020,10 +1030,69 @@ article_or_form = 'ARTICLE' {statement}
 </div>
 </div>
 </div>
+<h1 id="part_three" class="sect0"><a class="anchor" href="#part_three"></a>Customizing The Look of Code</h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="paragraph">
+<p>Sometimes we need to customize how the code is presented to the reader, beyond what syntax highlighting automatically provides.</p>
+</div>
+<div class="paragraph">
+<p>This part is dedicated to show how this can be achieved and how it looks like in the output of the different backends.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_color_marking"><a class="anchor" href="#_custom_color_marking"></a>Custom Color-Marking</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <em>ALAN Beginner&#8217;s Guide</em> uses this technique to mark specific lines of code, or to single out certain parts of a line, by adopting a custom coloring notation to show which code was added in each step of a tutorial, or just to draw the reader&#8217;s attention to specific parts of the code.</p>
+</div>
+<div class="sect3">
+<h4 id="_yellow_highlighting"><a class="anchor" href="#_yellow_highlighting"></a>Yellow Highlighting</h4>
+<div class="paragraph">
+<p>To mark part of the code as if it was highlighted with a yellow marker, we can enclose it within a pair of single or double hash symbols (<code>&#35;</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">-- Custom coloring.
+-- Example 1: <mark>Yellow highlighting</mark>.
+Every book IsA object.
+  <mark>Description "It's just a book."
+  Has not been_read.</mark>
+End Every.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the HTML output it will wrapped in a <code>&lt;mark&gt;</code> tag.
+The Asciidoctor HTML backend natively supports this element in the default stylesheet.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_green_highlighting"><a class="anchor" href="#_green_highlighting"></a>Green Highlighting</h4>
+<div class="paragraph">
+<p>To use a green color, the <code>[green]&#35;</code> variant must be used instead, which uses a custom defined style.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">-- Custom coloring.
+-- Example 2: <span class="green">green highlighting</span>.
+Every book IsA object.
+  <span class="green">Description "It's just a book."
+  Has not been_read.</span>
+End Every.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the HTML output it will wrapped in a <code>&lt;span class="green"&gt;</code> tag.
+Styling of this custom span class is supported via the custom stylesheet used in this project for highlight.js.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-v 2.2<br>
+v 2.3<br>
 </div>
 </div>
 <link rel="stylesheet" href="../../_assets/hjs/styles/github.min.css">

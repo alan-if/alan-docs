@@ -1,0 +1,12 @@
+open door
+south
+open cupboard
+take knife
+north
+push box west
+open box
+plug tv
+plug tv in outlet
+search cushions
+put battery in remote
+switch on tv

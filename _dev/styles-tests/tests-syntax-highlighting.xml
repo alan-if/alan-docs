@@ -3,7 +3,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>Syntax Highlighting in Alan Documentation</title>
-<date>December 19, 2018</date>
+<date>March 8, 2019</date>
 <author>
 <personname>
 <firstname>Tristano</firstname>
@@ -14,8 +14,8 @@
 <authorinitials>T.J.A.</authorinitials>
 <revhistory>
 <revision>
-<revnumber>2.2</revnumber>
-<date>December 19, 2018</date>
+<revnumber>2.3</revnumber>
+<date>March 8, 2019</date>
 <authorinitials>T.J.A.</authorinitials>
 <revremark>Backend: {toolchain}</revremark>
 </revision>
@@ -358,6 +358,45 @@ negative = 'NEGATIVE' article_or_form
 
 article_or_form = 'ARTICLE' {statement}
                 | 'FORM' {statement}</programlisting>
+</chapter>
+</part>
+<part xml:id="part_three" xreflabel="Part III">
+<title>Customizing The Look of Code</title>
+<partintro>
+<simpara>Sometimes we need to customize how the code is presented to the reader, beyond what syntax highlighting automatically provides.</simpara>
+<simpara>This part is dedicated to show how this can be achieved and how it looks like in the output of the different backends.</simpara>
+</partintro>
+<chapter xml:id="_custom_color_marking">
+<title>Custom Color-Marking</title>
+<simpara>The <emphasis>ALAN Beginner&#8217;s Guide</emphasis> uses this technique to mark specific lines of code, or to single out certain parts of a line, by adopting a custom coloring notation to show which code was added in each step of a tutorial, or just to draw the reader&#8217;s attention to specific parts of the code.</simpara>
+<section xml:id="_yellow_highlighting">
+<title>Yellow Highlighting</title>
+<simpara>To mark part of the code as if it was highlighted with a yellow marker, we can enclose it within a pair of single or double hash symbols (<literal>&#35;</literal>).</simpara>
+<programlisting language="alan" linenumbering="unnumbered">-- Custom coloring.
+-- Example 1: <emphasis role="marked">Yellow highlighting</emphasis>.
+Every book IsA object.
+  <emphasis role="marked">Description "It's just a book."
+  Has not been_read.</emphasis>
+End Every.</programlisting>
+<warning>
+<simpara>Currently the PDF toolchain doesn&#8217;t support correct styling of the <literal>marked</literal> element, it will be only rendered in italics.
+I&#8217;m still trying to work out how to style this in the custom FOPUB template.</simpara>
+</warning>
+</section>
+<section xml:id="_green_highlighting">
+<title>Green Highlighting</title>
+<simpara>To use a green color, the <literal>[green]&#35;</literal> variant must be used instead, which uses a custom defined style.</simpara>
+<programlisting language="alan" linenumbering="unnumbered">-- Custom coloring.
+-- Example 2: <phrase role="green">green highlighting</phrase>.
+Every book IsA object.
+  <phrase role="green">Description "It's just a book."
+  Has not been_read.</phrase>
+End Every.</programlisting>
+<warning>
+<simpara>Currently the PDF toolchain doesn&#8217;t support styling this custom inline element at all, therefore it won&#8217;t produce any visible result in the PDF document.
+I&#8217;m still trying to work out how to support styling this element.</simpara>
+</warning>
+</section>
 </chapter>
 </part>
 </book>

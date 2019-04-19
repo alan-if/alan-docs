@@ -416,13 +416,13 @@ opem.</literallayout>
 </section>
 <section xml:id="_source">
 <title>Source</title>
-<screen>For i=1 To 10
+<screen linenumbering="unnumbered">For i=1 To 10
   Print "Hello World!"
 Next</screen>
 <formalpara>
 <title>Source With Title</title>
 <para>
-<screen>For i=1 To 10
+<screen linenumbering="unnumbered">For i=1 To 10
   Print "Hello World!"
 Next</screen>
 </para>

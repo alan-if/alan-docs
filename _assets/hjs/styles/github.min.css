@@ -4,48 +4,64 @@
   overflow-x: auto;
   padding: 0.5em;
   color: #000;
-  background: #FEFEFE; }
+  background: #FEFEFE;
+}
 
 /* HLJS Alan */
 code.hljs[data-lang=alan] {
   color: #333;
-  background: #F8F8F8; }
-  code.hljs[data-lang=alan] .hljs-comment {
-    color: #998; }
-  code.hljs[data-lang=alan] .hljs-string {
-    color: #008080; }
-  code.hljs[data-lang=alan] .hljs-built_in {
-    color: #000080; }
-  code.hljs[data-lang=alan] .hljs-keyword {
-    color: #990000; }
-
-/* Alan Code Notation Mockup */
-.listingblock.alan pre {
-  color: #333;
-  background: #F8F8F8; }
+  background: #F8F8F8;
+}
+code.hljs[data-lang=alan] .hljs-comment {
+  color: #998;
+}
+code.hljs[data-lang=alan] .hljs-string {
+  color: #008080;
+}
+code.hljs[data-lang=alan] .hljs-built_in {
+  color: #000080;
+}
+code.hljs[data-lang=alan] .hljs-keyword {
+  color: #990000;
+}
 
 /* HLJS BNF */
 code.hljs[data-lang=bnf] {
   color: #492E11;
-  background: #FFEBD6; }
+  background: #FFEBD6;
+}
+
+/* Alan Code Notation Mockup */
+.listingblock.alan pre {
+  color: #333;
+  background: #F8F8F8;
+}
 
 /* Shell/CMD */
 div.literalblock.shell pre {
   background-color: #0C0C0C;
-  color: #F2F2F2; }
-  div.literalblock.shell pre .conum {
-    background: #FFF945 !important;
-    color: #0C0C0C !important; }
+  color: #F2F2F2;
+}
+div.literalblock.shell pre .conum {
+  background: #FFF945 !important;
+  color: #0C0C0C !important;
+}
 
 /* Game Transcripts */
-div.gametranscript,
 .exampleblock.gametranscript > .content {
   background: #F7FDFF;
   color: #0089B6;
-  border-color: #CCF2FF; }
+  border-color: #CCF2FF;
+}
 
 /* Commentary Blocks */
 div.openblock.commentary {
-  padding-left: 6em; }
+  padding-left: 6em;
+}
+
+/* Inline Highlighting */
+span.green {
+  background-color: #A3FF8A;
+}
 
 /*# sourceMappingURL=github.min.css.map */

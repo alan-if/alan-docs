@@ -9,6 +9,7 @@
 ## Alan Files
 ## ==========
 *.a3c
+*.a3r
 *.ifid
 *.sav
 
@@ -22,9 +23,10 @@
 ## =================
 .gradle/
 
-## =========
+## ==========
 ## Sass cache
-## =========
+## ==========
+## Just in case someone still uses Ruby Sass:
 .sass-cache/
 
 ## Misc Work Files

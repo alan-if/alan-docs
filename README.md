@@ -9,6 +9,13 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
 - [_Alan IDE Reference Guide_][IDE PDF] —  PDF download
 - [_Alan 3 Beginner's Guide_][Guide LPrev] —  HTML Live Preview
 
+> __SUBMODULES NOTE__ — This repository now contains Git submodules; clone with:
+> 
+>     $ git clone --recursive https://github.com/alan-if/alan-docs
+> 
+> If you've already cloned it, update via:
+> 
+>     $ git submodule update --init
 
 -----
 
@@ -16,9 +23,12 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Latest News](#latest-news)
+    - [Switching to Dart Sass](#switching-to-dart-sass)
 - [About This Project](#about-this-project)
     - [License Terms](#license-terms)
     - [Project Contents](#project-contents)
+        - [Git Submodules](#git-submodules)
         - [File Extensions Conventions](#file-extensions-conventions)
     - [Development Enviroment Info](#development-enviroment-info)
     - [Project Dependencies](#project-dependencies)
@@ -41,9 +51,31 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
 
 -----
 
+# Latest News
+
+Some important news for project maintainers and contributors...
+
+## Switching to Dart Sass
+
+Since March 11 2019 this project has switched from using [Ruby Sass] to the newest [Dart Sass] because starting from March 26 2019 Ruby Sass will no longer be maintained.
+
+Since Dart Sass behavior is slightly different from Ruby Sass, anyone working on the repository Sass sources must ensure to switch to Dart Sass to avoid creating divergent CSS stylesheets.
+
+The easiest way to install Dart Sass on Windows, and keep it always updated, is to [install it via Chocolatey][Choco Sass].
+
+From [Ruby Sass homepage][Ruby Sass]:
+
+> Ruby Sass will continue to be maintained until 26 March 2019. During this maintenance period, bugs will be fixed as much as possible but no new features will be added. The only exception is for features that are necessary to support new CSS syntax, which will continue to be added.
+> 
+> Dart Sass, the new primary implementation, doesn't always behave 100% the same as Ruby Sass—it implements a number of behavioral changes that were planned for Ruby Sass, but were never implemented in a stable version. To make migration easier, recent versions of Ruby Sass emit warnings for any code that won't be compatible with Dart Sass. Ongoing maintenance includes adding any warnings for new behavioral differences, if they come up.
+> 
+> Once the maintenance period ends, Ruby Sass's repository will be archived, no more changes of any kind will be made, and no new releases will be cut.
+
+
+
 # About This Project
 
-This repository was created by Tristano Ajmone on August 15th, 2018.
+This repository was created on August 15th, 2018 by [Tristano Ajmone] on behalf of the [Alan Interactive Fiction Development team].
 
 At the present stage, Alan documentation consists of multiple documents in various formats; the goal of this project is to port them all to AsciiDoc and create a unified project and a toolchain to handle conversion to different formats.
 
@@ -61,11 +93,14 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 ## Project Contents
 
 - [`/_assets/`](./_assets/) (shared assets):
-    + [`/fonts/`](./_assets/fonts/)
     + [`/hjs/`](./_assets/hjs/) — custom [highlight.js] build for Alan.
+    + [`/hl/`](./_assets/hl/) — assets for the Asciidoctor Highlight toolchain.
     + [`/images/`](./_assets/images/)
-    + [`/xsl-fopub/`](./_assets/xsl-fopub/) — XSL Stylesheets for PDF conversion via asciidoctor-fopub.
+    + [`/alan-xsl-fopub/`](./_assets/alan-xsl-fopub/) — submoduled [alan-xsl-fopub] repository, for XSL FOP template:
+        * [`/xsl-fopub/`](./_assets/alan-xsl-fopub/xsl-fopub/) — XSL Stylesheets for PDF conversion via asciidoctor-fopub.
+        * [`/fonts/`](./_assets/alan-xsl-fopub/fonts/) — required fonts for PDF conversion.
 - [`/_assets-src/`](./_assets-src/) (assets' source files):
+    + [`/colors/`](./_assets-src/colors/) — Color schemes and palettes used in the documents.
     + [`/images/`](./_assets-src/images/):
         * [`/alan-logo/`](./_assets-src/images/alan-logo/) — Alan logo reconstructed as vector image.
         * [`/predefined-classes/`](./_assets-src/images/predefined-classes/) — The predefined-classes diagram reconstructed using [Dia Diagram Editor].
@@ -78,6 +113,20 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 - [`CONTRIBUTING.md`][CONTRIBUTING] — Guidelines for contributing to this project.
 - [`CONVENTIONS.md`][CONVENTIONS] — Editors' formatting and styles guidelines.
 - [`LICENSE`](./LICENSE) — the [Artistic License 2.0].
+
+### Git Submodules
+
+Please, be aware of the presence of a Git submodule inside the [`/alan-xsl-fopub/`](./alan-xsl-fopub/) folder, and make sure you properly update it in your local clone of the repository to avoid regressions when commiting to the project.
+
+For a tutorial on the common pitfalls of submodules, refer to Christophe Porteneuve's article [_Mastering Git submodules_] » [The dangers we face].
+
+For detailed info on how to use Git submodules, see:
+
+- [_Pro Git_ book » Git Submodules][Git Submodules] — by Scott Chacon and Ben Straub.
+- [_Learn Version Control with Git_ » Submodules] — by Git Tower.
+- [Using submodules in Git - Tutorial] — by Lars Vogel.
+
+
 
 ### File Extensions Conventions
 
@@ -92,8 +141,8 @@ Using different extensions is also required for automation scripts, which select
 
 This is the environemnt setup used for the project by its maintainer:
 
-    Ruby 2.5.1p57 (2018-03-29 revision 63029) [x64-mingw32]
-    Asciidoctor 1.5.7.1
+    Ruby 2.6.1p33 (2019-01-30 revision 66950) [x64-mingw32]
+    Asciidoctor 2.0.6
     asciidoctor-fopub
     Asciidoc FX v1.6.8
     Dia Diagram Editor v0.97.2
@@ -113,35 +162,9 @@ In order to convert the AsciiDoc sources to any format you'll need to install Ru
 
 The AsciiDoc to PDF toolchain also requires setting up asciidoctor-fopub on your machine; this tool is required to convert from DocBook to PDF.
 
-Here are some instructions on how to setup asciidoctor-fopub:
+For guidelines on setting up the asciidoctor-fopub toolchain, refer to documentation of the [alan-xsl-fopub] submodule:
 
-1. __JDK8__ — Download and install Java JDK8.
-
-    If you have other versions of Java SE/JDK uninstall them. In order to use asciidoctor-fopub you'll need Java JDK 8 (versions 6 and 7 are also known to work, but are not recomended for security reasons); you won't be able to use JDK version 10 due to [incompatibility problems with gradle].
-
-2. __Clone asciidoctor-fopub__ — There is no installation for this tool, just clone it somewhere on your hard disk using Git:
-
-    ```
-    git clone https://github.com/asciidoctor/asciidoctor-fopub
-    ```
-
-    On Windows, I also had to carry out the following one-time operation to stop some gradle errors that were preventing using asciidoctor-fopub:
-
-    - Open the CMD in the cloned asciidoctor-fopub folder, and type:
-
-        ```
-        gradlew installapp
-        ```
-
-        This (undocumented) step seems necessary to complete the gradle setup of asciidoctor-fopub.
-
-3. __Add to PATH__ —  After cloning asciidoctor-fopub locally, you should add its path to your system PATH in order to make it available to the scripts in this project.
-
-See also the [setup instructions found at the asciidoctor-fopub] repository.
-
-[setup instructions found at the asciidoctor-fopub]: https://github.com/asciidoctor/asciidoctor-fopub#prerequisites
-[Java JDK8]: https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-[incompatibility problems with gradle]: https://github.com/asciidoctor/asciidoctor-fopub/issues/87
+- [`_assets/alan-xsl-fopub/README.md`](./_assets/alan-xsl-fopub/README.md#dependencies)
 
 ### Dia Diagram Editor
 
@@ -260,8 +283,11 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 
 [Artistic License 2.0]: https://www.perlfoundation.org/artistic-license-20.html "Read the full text of the Artistic License 2.0 at The Perl Foundation website"
 
+<!-- people & organizations -------------------------------------------------->
+
 [Tristano Ajmone]: https://github.com/tajmone "View Tristano Ajmone's GitHub profile"
 
+[Alan Interactive Fiction Development team]: https://github.com/alan-if "View the Alan Interactive Fiction Development team profile on GitHub"
 
 <!-- Citations  -------------------------------------------------------------->
 
@@ -283,10 +309,17 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 [Asciidoctor]: https://github.com/asciidoctor/asciidoctor/ "Visit Asciidoctor repository at GitHub"
 [Issue #2106]: https://github.com/asciidoctor/asciidoctor/issues/2106 "Issue #2106 — Add extension point for integrating an alternative source highlighter"
 
+[asciidoctor-fopub]: https://github.com/asciidoctor/asciidoctor-fopub "Visit the asciidoctor-fopub repository on GitHub"
 
 <!-- External Tools and Dependencies -->
 
+[alan-xsl-fopub]: https://github.com/alan-if/alan-xsl-fopub "Visit the alan-xsl-fopub repository on GitHub"
+
 [Sass]: https://sass-lang.com "Visit Sass website"
+[Sass]: https://sass-lang.com "Visit Sass website"
+[Dart Sass]: https://github.com/sass/dart-sass "Visit Dart Sass repository on GitHub"
+[Ruby Sass]: https://sass-lang.com/ruby-sass "Visit Ruby Sass homepage"
+[Choco Sass]: https://chocolatey.org/packages/sass "View the Chocolatey package for Dart Sass"
 
 [highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
 
@@ -312,5 +345,16 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 [IDE PDF]: https://github.com/alan-if/alan-docs/raw/master/ideguide/Alan%20IDE%20Reference%20Guide.pdf "Download the 'Alan IDE Reference Guide' in PDF format"
 
 [GitHub & BitBucket HTML Preview]: http://htmlpreview.github.io
+
+<!-- Git references -->
+
+[Pro Git]: https://git-scm.com/book "'Pro Git' book online"
+[Git Submodules]: https://git-scm.com/book/en/v2/Git-Tools-Submodules "Read the chapter on Git Submodules from the 'Pro Git' book"
+
+[Using submodules in Git - Tutorial]: https://www.vogella.com/tutorials/GitSubmodules/article.html "Read tutorial"
+[_Learn Version Control with Git_ » Submodules]: https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/submodules#start
+
+[_Mastering Git submodules_]: https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407 "Read article"
+[The dangers we face]: https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#6b21 "Jump to section 'The dangers we face' of the 'Mastering Git submodules' article"
 
 <!-- EOF -->

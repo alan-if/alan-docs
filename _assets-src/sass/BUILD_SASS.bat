@@ -1,14 +1,27 @@
-:: "BUILD_SASS.bat" v1.0.1 (2018/10/06) by Tristano Ajmone
+:: "BUILD_SASS.bat"                     v2.1.0 | 2019/03/13 | by Tristano Ajmone
+:: -----------------------------------------------------------------------------
+:: This script requires Dart Sass to be installed on the system:
+::      https://github.com/sass/dart-sass
+::
+:: You can use Chocolatey to install Dart Sass and keep it updated:
+::      https://chocolatey.org/packages/sass
+:: -----------------------------------------------------------------------------
 @ECHO OFF
 ECHO.
 
-SET "SRC=highlight-js.scss"
-SET "OUT=../../_assets/hjs/styles/github.min.css"
+ECHO ==============================================================================
+ECHO Building highlight.js stylesheet
+ECHO ==============================================================================
+SASS highlight-js.scss ^
+     ../../_assets/hjs/styles/github.min.css
 
-ECHO =================================
-ECHO Building Highlight.js' stylesheet
-ECHO =================================
-CALL SCSS %SRC% %OUT%
+ECHO ==============================================================================
+ECHO Building Beginner's Guide stylesheet
+ECHO ==============================================================================
+SASS alanguide.scss ^
+     ../../alanguide/alanguide.css
+
+ECHO /// Finished ///
 
 EXIT /B
 

@@ -109,9 +109,17 @@ An here follows a task list of the remaining porting tasks:
 
 ## PDF Toolchain Setup
 
-The PDF toolchain will employ [asciidoc-fopub] to convert from DocBook to PDF. I've just started working on this, and there is still a lot to do before the required custom styles will be usable to create a distributable PDF.
+The PDF toolchain employs [asciidoctor-fopub] to convert from DocBook to PDF.
 
-- [ ] Customize XSL styles (See [Issue #14][i14]):
+The DocBook XSL template is now looking good and the output PDF documents are ready for distribution  
+
+- [x] Customize XSL styles (See [Issue #14][i14]).
+
+The DocBook template and its assets have now been moved to an independent repository so that other Alan projects can use it too:
+
+- https://github.com/alan-if/alan-xsl-fopub
+
+The template is now included in this project via Git submodules. See the [_DocBook XSL Stylesheets_](#docbook-xsl-stylesheets) section for more details.
 
 ## HTML Toolchain Setup
 
@@ -206,9 +214,9 @@ Some files to help editing the manual:
 
 For the conversion to PDF (from DocBook 5), asciidoc-fopub is set to use the customized XSL stylesheets in this folder:
 
-- [`../_assets/xsl-fopub/`](../_assets/xsl-fopub/)
+- [`../_assets/alan-xsl-fopub/xsl-fopub/`](../_assets/alan-xsl-fopub/xsl-fopub/)
 
-These stylesheets were adapted from the [asciidoctor-fopub] project, Copyright (C) 2013 Dan Allen ([MIT License](./manual-xsl/LICENSE)).
+These stylesheets are part of the [alan-xsl-fopub] template project, included in this repository as a Git submodule. Its XSL stylesheets were adapted from the [asciidoctor-fopub] project, Copyright (C) 2013 Dan Allen ([MIT License](../_assets/alan-xsl-fopub/xsl-fopub/LICENSE)).
 
 
 -------------------------------------------------------------------------------
@@ -236,6 +244,9 @@ Although some styles were lost in the process, the final ADoc was a rather good 
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
+
+[alan-xsl-fopub]: https://github.com/alan-if/alan-xsl-fopub "Visit the alan-xsl-fopub repository on GitHub"
+
 
 [GitHub & BitBucket HTML Preview]: http://htmlpreview.github.io
 
