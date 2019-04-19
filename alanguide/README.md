@@ -126,10 +126,11 @@ The original files of the _Alan Beginner's Guide_ used as base document are avai
 
 For the conversion to PDF (from DocBook 5), asciidoc-fopub is set to use the customized XSL stylesheets in this folder:
 
-- [`../_assets/xsl-fopub/`](../_assets/xsl-fopub/)
+- [`../_assets/alan-xsl-fopub/xsl-fopub/`](../_assets/alan-xsl-fopub/xsl-fopub/)
 
-These stylesheets were adapted from the [asciidoctor-fopub] project, Copyright (C) 2013 Dan Allen ([MIT License](./manual-xsl/LICENSE)).
+These stylesheets are part of the [alan-xsl-fopub] template project, included in this repository as a Git submodule. Its XSL stylesheets were adapted from the [asciidoctor-fopub] project, Copyright (C) 2013 Dan Allen ([MIT License](../_assets/alan-xsl-fopub/xsl-fopub/LICENSE)).
 
+[alan-xsl-fopub]: https://github.com/alan-if/alan-xsl-fopub "Visit the alan-xsl-fopub repository on GitHub"
 
 -------------------------------------------------------------------------------
 

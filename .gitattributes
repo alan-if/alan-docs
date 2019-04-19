@@ -120,7 +120,7 @@ LICENSE      text
 .gitattributes text
 .gitconfig     text
 .gitignore     text
-.gitmodules    text
+.gitmodules    text eol=lf
 
 ## ========
 ## ARCHIVES

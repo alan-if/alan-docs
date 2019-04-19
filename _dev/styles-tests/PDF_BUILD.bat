@@ -1,4 +1,4 @@
-:: "PDF_BUILD.bat" v1.0.1 (2018/10/07) by Tristano Ajmone
+:: "PDF_BUILD.bat" v3.0.0 (2019/04/19)  by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: This script is released into public domain via the Unlicense:
 ::     http://unlicense.org/
@@ -7,7 +7,7 @@
 
 :: Set some required env vars
 SET "CURRDIR=%CD%"
-SET "ASSETSDIR=..\..\_assets\"
+SET "FOPUB_DIR=..\..\_assets\alan-xsl-fopub\"
 
 ECHO ==============================================================================
 ECHO Converting to PDF
@@ -22,8 +22,8 @@ EXIT /B
 :: =============================================================================
 :ADoc2PDF
 
-:: Need to switch working directory to "//_assets/" for FOP:
-CD %ASSETSDIR%
+:: Need to switch working directory to "//_assets/alan-xsl-fopub/" for FOP:
+CD %FOPUB_DIR%
 
 ECHO Converting to PDF:  %~n1.pdf
 CALL asciidoctor^

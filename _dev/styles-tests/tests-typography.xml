@@ -334,7 +334,7 @@ We&#8217;ll test these code related ligatures using a test file taken from Nikit
 <link xl:href="https://github.com/tonsky/FiraCode">Fira Code</link> project.</simpara>
 <simpara>First we&#8217;ll test for ligatures inside a source code block.
 Here ligatures support could depend on the monospaced font, the backend or the syntax highligher (which may or may not filter contents of the block).</simpara>
-<screen>    .= ..= .- := ::= =:= __
+<screen linenumbering="unnumbered">    .= ..= .- := ::= =:= __
      == != === !== =/= =!=
 
 &lt;-&lt; &lt;&lt;- &lt;-- &lt;- &lt;-&gt; -&gt; --&gt; -&gt;&gt; &gt;-&gt;
