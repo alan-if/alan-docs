@@ -24,6 +24,7 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Latest News](#latest-news)
+    - [Switching to Java JDK 12](#switching-to-java-jdk-12)
     - [Switching to Dart Sass](#switching-to-dart-sass)
 - [About This Project](#about-this-project)
     - [License Terms](#license-terms)
@@ -54,6 +55,14 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
 # Latest News
 
 Some important news for project maintainers and contributors...
+
+## Switching to Java JDK 12
+
+Since July 2019, this project is using __[asciidoctor-fopub]__ with Java JDK 12. At the time the project was created, there was [a problem with gradle] that prevented using Java versions above v8; the problem has been fixed since (but Tristano only recently managed to actually test it locally and start using JDK 12).
+
+So, anyonw still using Java 12 for __[asciidoctor-fopub]__ should now switch to JDK 12, which fixes many security issues.
+
+[a problem with gradle]: https://github.com/asciidoctor/asciidoctor-fopub/issues/87 "Read more about the original problem on asciidoctor-fopub Issue #87"
 
 ## Switching to Dart Sass
 
@@ -164,7 +173,11 @@ The AsciiDoc to PDF toolchain also requires setting up asciidoctor-fopub on your
 
 For guidelines on setting up the asciidoctor-fopub toolchain, refer to documentation of the [alan-xsl-fopub] submodule:
 
-- [`_assets/alan-xsl-fopub/README.md`](./_assets/alan-xsl-fopub/README.md#dependencies)
+- https://github.com/alan-if/alan-xsl-fopub/blob/master/README.md
+
+Also available locally at:
+
+- `_assets/alan-xsl-fopub/README.md`
 
 ### Dia Diagram Editor
 
