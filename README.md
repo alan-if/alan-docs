@@ -275,7 +275,9 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 
 - [Alan website]
 - [Alan IF Yahoo group]
-- [Alan Git repository]
+- [Alan sources on Bitbucket][Alan Bitbucket] — source code repository on Bitbucket.
+- [Alan sources on GitHub][Alan GitHub] — source code repository on GitHub.
+- [Alan IF Development team] — GitHub profile and public projects.
 
 ## AsciiDoctor
 
@@ -300,6 +302,7 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 
 [Tristano Ajmone]: https://github.com/tajmone "View Tristano Ajmone's GitHub profile"
 
+[Alan IF Development team]: https://github.com/alan-if "Visit the Alan Interactive Fiction Development team organization on GitHub"
 [Alan Interactive Fiction Development team]: https://github.com/alan-if "View the Alan Interactive Fiction Development team profile on GitHub"
 
 <!-- Citations  -------------------------------------------------------------->
@@ -309,9 +312,9 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 <!-- Alan Links -------------------------------------------------------------->
 
 [Alan IF Yahoo group]: https://groups.yahoo.com/neo/groups/alan-if/info "Visit the Alan IF group at Yahoo! Groups"
-[Alan Git repository]: https://bitbucket.org/alanif/alan "Visit Alan Git repository on Bitbucket"
 [Alan website]: https://www.alanif.se/ "Visit Alan official website"
-
+[Alan Bitbucket]: https://bitbucket.org/alanif/alan/ "Visit the Alan source repository on Bitbucket"
+[Alan GitHub]: https://github.com/alan-if/alan/ "Visit the Alan source repository on GitHub"
 
 <!-- AsciiDoctor -->
 
