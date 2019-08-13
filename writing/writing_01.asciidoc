@@ -1,0 +1,23 @@
+// ******************************************************************************
+// *                                                                            *
+// *                              1. Introduction                               *
+// *                                                                            *
+// ******************************************************************************
+
+= Introduction
+
+Text adventures or, using a more appropriate term, interactive fiction, is a form of computer game which has many things in common with fiction in book form, role-playing games and puzzle-solving.
+To create a high quality inter­active fiction game, you need to be more of an author than a games program­mer.
+
+Alan is a special purpose computer language specifically designed to make it very easy to create such adventure games requiring only limited programming skills.
+
+This guide is written for you that are attempting to write an Alan game and want some guidance on how to do that.
+
+You will find snippets and examples in here.
+There is more complete examples and tutorials on the Alan web site, {alan-www}, where you also can find downloads, more information about Alan and how to get in touch with the authors.
+
+If you find interesting ways to implement game features, which are not covered here, or even better ways of doing what is described here, we'd love to hear from you!
+
+Happy authoring!
+
+// EOF //

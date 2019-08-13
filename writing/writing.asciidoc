@@ -1,0 +1,76 @@
+:doctitle:  The ALAN Adventure Language Author's Guide
+:revnumber: 0.0.5
+:revdate:   February 05, 2017
+:revremark: AsciiDoc conversion work
+:doctype: book
+:encoding: utf-8
+:lang: en
+// TOC Settings:
+:toc: left
+:toclevels: 5
+// Sections Numbering:
+:sectanchors:
+:sectnums:
+:sectnumlevels: 2
+// Cross References:
+:xrefstyle: short
+:section-refsig: Sect.
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+
+// =============================================================================
+//                         Custom Attributes Definition
+// =============================================================================
+// Some attributes for custom substitution of multiple occurences of same text.
+
+:alan-www: http://www.alanif.se/[www.alanif.se^]
+
+// Path to shared images:
+:assets-img: ../_assets/images/
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+// Show document info and AsciiDoc conversion version and date...
+
+.About This Document
+This document was converted to AsciiDoc by Tristano Ajmone; and it's still a work-in-progress draft.
+The revision number and date refer to the editing status of the conversion work (ie, this document), not to the original manual from which the present document was derived.
+
+This document was converted from the original _Alan Author's Guide_ (in ODT format), version 3.0beta2 (February 05, 2017),
+downloaded from:
+
+* https://github.com/alan-if/alan/blob/caedbb8/doc/manual/
+
+This document is subjected to the https://github.com/alan-if/alan/blob/master/COPYING[Artistic License 2.0] terms.
+
+// >>> Alan Logo >>>
+:logo_width: width=500
+
+ifeval::["{backend}" != "html5"]
+:logo_width: scaledwidth=70%
+endif::[]
+
+image::alan-logo.png[Alan Logo,{logo_width},align="center"]
+// <<< Alan Logo <<<
+
+
+// =============================================================================
+//                            Include Book Chapters
+// =============================================================================
+
+:leveloffset: +1
+
+// 1. Introduction
+// ===============
+include::writing_01.asciidoc[]
+
+// 2. Writing with Alan
+// ====================
+include::writing_02.asciidoc[]
+
+// EOF //

@@ -8,6 +8,7 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
 - [_Alan Manual_][Man PDF] —  PDF download
 - [_Alan IDE Reference Guide_][IDE PDF] —  PDF download
 - [_Alan 3 Beginner's Guide_][Guide LPrev] —  HTML Live Preview
+- [_Alan Author's Guide_][Writing LPrev] (WIP) —  HTML Live Preview
 
 > __SUBMODULES NOTE__ — This repository now contains Git submodules; clone with:
 > 
@@ -119,6 +120,7 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 - [`/alanguide/`](./alanguide) — _Alan 3 Beginner's Guide_ ported to AsciiDoc (WIP).
 - [`/ideguide/`](./ideguide) — _Alan IDE Reference Guide_ v1.0, by Robert DeFord, 2018.
 - [`/manual/`](./manual/) — _The Alan Manual_ ported to AsciiDoc (WIP).
+- [`/writing/`](./writing/) — _The Alan Author's Guide_ ported to AsciiDoc (WIP).
 - [`CONTRIBUTING.md`][CONTRIBUTING] — Guidelines for contributing to this project.
 - [`CONVENTIONS.md`][CONVENTIONS] — Editors' formatting and styles guidelines.
 - [`LICENSE`](./LICENSE) — the [Artistic License 2.0].
@@ -359,6 +361,8 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 [Guide LPrev]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/alanguide/alanguide.html "Preview the 'Alan 3 Beginner's Guide' via GitHub & BitBucket HTML Preview"
 
 [IDE PDF]: https://github.com/alan-if/alan-docs/raw/master/ideguide/Alan%20IDE%20Reference%20Guide.pdf "Download the 'Alan IDE Reference Guide' in PDF format"
+
+[Writing LPrev]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/writing/writing.html "Preview 'The Alan Author's Guide' via GitHub & BitBucket HTML Preview"
 
 [GitHub & BitBucket HTML Preview]: http://htmlpreview.github.io
 
