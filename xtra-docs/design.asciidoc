@@ -1,0 +1,406 @@
+= Alan Design Documentation
+Thomas Nilefalk <thomas@nilefalk.se>
+2018-10-23: Alan 3beta6
+:lang: en
+// :doctype: book
+// TOC Settings:
+:toc: left
+:toclevels: 5
+// Sections Numbering:
+:sectnums:
+:sectnumlevels: 3
+// Cross References:
+:xrefstyle: short
+:section-refsig: Sect.
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+:reproducible:
+:sectanchors:
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+
+
+== Systems Design
+
+== Language Design
+
+=== Articles
+
+Instances are mentioned and described in a number of situations.
+Sometimes it is necessary to refer to it in an indefinite form and sometimes in a definite form.
+E.g
+
+[example,role="gametranscript"]
+================================================================================
+I can't open <indefinite form> with a spanner. +
+You can't take <definite form>.
+================================================================================
+
+`INDEFINITE` & `DEFINITE` forms are required:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The article Isa b
+  Definite
+    Article "the".
+  Indefinite Article "an"
+End The article.
+
+The sak Isa x
+  Definite
+    Form "saken".
+  Indefinite
+    Article "en"
+--------------------------------------------------------------------------------
+
+Not all languages have definite and indefinite articles that work well:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Definite "den"
+Indefinite "en"
+Mentioned "stol"
+--------------------------------------------------------------------------------
+
+So we also allow
+
+[source,alan]
+--------------------------------------------------------------------------------
+Name stol
+Definite Form "stolen"
+Indefinite Form "en stol"
+--------------------------------------------------------------------------------
+
+The `Mentioned` clause should be in indefinite form.
+To say a `Definite` or `Indefinite` form of the instance:
+
+1. If that `Form` is available it will be used, else
+2. The `Article` followed by the `Mentioned` will be used
+
+With corresponding `Say` statements:
+
+[horizontal]
+
+`Say o.`      :: use `Name` => "`stol`"
+`Say The o.`  :: use `Definite` => "`stolen`"
+`Say A o.`    :: use `Indefinite` => "`en stol`"
+(`Say Any o.` :: use `Plural` => "`stolar`"??? Not needed, use `"I can't see any" Say o. "."` for now.)
+
+Since `Mentioned` is constructed from the first `Name` clause the following would work:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Every person Isa actor
+  Definite Article ""
+End Every person.
+
+The mr_a Isa person
+  Name mr 'Andersson'
+  Name mr andersson
+End The mr_a.
+--------------------------------------------------------------------------------
+
+Problem is still what to say when:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _talk to mr andersson_ +
+
+I can't see _any_ mr andersson here.
+================================================================================
+
+But the library could:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax talk_to = talk to (p)! Where p Isa person Else ...
+
+Add To Every person
+  Verb talk_to
+    Check p Is Here
+      Else "I can't see" Say The p. "here."
+  End Verb talk_to.
+End Add To Every person.
+
+Verb talk_to
+--------------------------------------------------------------------------------
+
+==== Singular and Plural
+
+Do we really need all the four forms?
+Indefinite singular/plural and definite singular/plural?
+
+==== The "Any" form
+
+Possibly there is also a fifth form, as in "`I can't see *any* door here.`" But let's leave that for later.
+Possibly: `Say Any x.` & `Say No x.`.
+
+==== Pronouns
+
+Some times a pronoun is possibly nice:
+
+[example,role="gametranscript"]
+================================================================================
+She does not want to talk to you.
+================================================================================
+
+However it is different in output and input.
+In input we would like to have "`it`" available for persons too, "`her`".
+Possibly this could be just aliases.
+
+[source,alan]
+--------------------------------------------------------------------------------
+The article Isa b
+  Definite
+    Article "the".
+    Pronoun "it".
+    Plural "articles"
+  Indefinite Form "any article"
+The sak Isa x
+  Definite
+    Form "saken".
+    Pronoun "den".
+  Indefinite
+    Form "sak"
+--------------------------------------------------------------------------------
+
+== Datastructures
+
+=== Syntax Mapping Tables
+
+Since multiple syntaxes may map to the same verb, a mapping between them is necessary.
+This mapping will convert a syntax number into a verb code as well as remapping the parameter numbers into the "`canonical`" order for this verb.
+
+The mapping is generated into two structures, the parameter order mapping, and the syntax-verb mapping table.
+The parameter mappings are generated separately.
+It is simply a table with as many entries as there are parameters in the syntax, followed by an EOF.
+As an example a parameter mapping with three parameters in canonical order would be:
+
+........................
+{empty}[1] [2] [3] [EOF]
+........................
+
+The syntax-verb mapping is a table of entries, one for each syntax.
+The entries have three fields:
+
+[source,c]
+--------------------------------------------------------------------------------
+Aint syntaxNumber; +
+Aaddr parameterMapping; +
+Aint verbCode;
+--------------------------------------------------------------------------------
+
+== Code Generation Principles
+
+=== Language Constructs
+
+==== For Each
+
+The `For Each` loop is generated into an initialization step, a filter step and the statements.
+A local variable is used since the loop-code might reference the loop value.
+Note that the loop value might be different from the loop index, e.g. when looping over a set of integers.
+The instructions used are:
+
+* `FRAME` -- start a new stack frame with one local variable
+* `LOOP` -- the loop start
+* `LOOPNEXT` -- jump to next loop index
+* `LOOPEND` -- test for and terminate loop
+* `ENDFRAME` -- drop stack frame with local variables
+
+The code layout is as follows:
+
+................................................................................
+FRAME 1                               -- create a frame with 1 local
+<calculate and push upper limit>
+PUSH 1                                -- initial loop index
+LOOP
+<calculate loop value from index>
+SETLOCAL 1                            -- save loop value in local var
+GETLOCAL 1
+<filter1>                             -- code to evaluate first filter
+NOT
+IF
+LOOPNEXT
+ENDIF
+GETLOCAL 1
+<filter2>                             -- code to evaluate 2nd filter NOT
+IF
+LOOPNEXT
+ENDIF
+...
+LOOPEND                               -- loop test and termination
+ENDFRAME
+................................................................................
+
+==== Aggregates
+
+All aggregates are generated into a loop using the same structures as `EACH`.
+The instructions used are:
+
+* `LOOP` -- start loop
+* `LOOPNEXT` -- if filter inclusion was not true
+* `COUNT`, `MAX`, `MIN` & `SUM` -- actual aggregation performed
+* `LOOPEND` -- repeat or terminate aggregation loop
+
+The code layout is as follows:
+
+................................................................................
+PUSH <maxint for MIN, 0 for all else> -- initial aggregate value
+<calculate and push limit>
+PUSH 1                                -- initial loop index
+LOOP
+<calculate loop value from index>
+<filter1>                             -- code to evaluate first filter
+NOT
+IF
+LOOPNEXT
+ENDIF
+<calculate loop value from index>
+<filter2>
+NOT
+IF
+LOOPNEXT
+ENDIF
+...
+<get attribute to aggregate over>     -- for all except COUNT
+<aggregate>                           -- COUNT, MIN, MAX or SUM
+LOOPEND                               -- loop
+................................................................................
+
+Note that for this to work the aggregate instructions have to look deep in the stack to find the current aggregate value since this is stored at the bottom.
+On top is the usual looping data, i.e. the limit, the index and temporarily a loop value.
+
+== Acode Instructions
+
+=== FRAME
+
+=== GETLOCAL, SETLOCAL
+
+=== LOOP
+
+Use: start a loop
+
+Context: on entry the stack contains from the top, starting loop value and the loop limit.
+
+Function: Act as a loop start marker.
+When executed, check for loop termination, if so, go to end of the corresponding loop.
+
+[cols="2*<m",options="header"]
+|=============================================
+2+^| LOOP
+ ^h| Before            ^h| After
+   | Loop index          | Loop index
+   | Upper limit of loop | Upper limit of loop
+|=============================================
+
+A loop value has to be calculated from the index since the index might be an index in a `SET`, such as when looping over the members in a set.
+
+
+// @FIXME: Last 2 rows should have different bcakground color:
+
+[cols="2*<m",options="header"]
+|=============================================
+2+^| CALCULATE LOOP VALUE
+ ^h| Before            ^h| After
+   |                     | Loop value
+   | Loop index          | Loop index
+   | Upper limit of loop | Upper limit of loop
+   | Aggregate value     | Aggregate value
+|=============================================
+
+=== LOOPNEXT
+
+Use: skip to next loop value
+
+Context: none
+
+Function: skip forward over instructions (possibly containing `LOOP`/`LOOPEND`-pairs) until next instruction to execute is an `LOOPEND` on the corresponding level.
+
+// @FIXME: Last 2 rows should have different bcakground color:
+
+[cols="2*<m",options="header"]
+|=============================================
+2+^| LOOPNEXT
+ ^h| Before            ^h| After
+   | Loop index          | Loop index
+   | Upper limit of loop | Upper limit of loop
+|=============================================
+
+=== LOOPEND
+
+Use: test a loop for termination
+
+Context: upper limit, and loop index on the top of the stack
+
+Function: test the loop index against the upper limit.
+If not reached then increment index and back up until next instruction to execute is the first after the matching `LOOP`, else pop off the index and the limit and continue.
+
+[cols="3*<m",options="header"]
+|=============================================================
+3+^| LOOPEND
+ ^h| Before            ^h| Continue             ^h| Terminate
+   | Loop index          | Incremented loop index |
+   | Upper limit of loop | Upper limit of loop    |
+|=============================================================
+
+=== ENDFRAME
+
+=== COUNT
+
+Use: aggregate (using counting) number of items, usually instances, matching a set of filters
+
+Context: at entry the three top values on the stack are the loop value, the loop index, and upper limit as the `COUNT` follows immediately on an `AGRCHECK`.
+Fourth value from the top is the aggregate value.
+
+Function: Increment the fourth topmost value (the aggregate value).
+
+[cols="2*<m",options="header"]
+|=================================================
+2+^| COUNT
+ ^h| Before            ^h| After
+   | Loop index          | Loop index
+   | Upper limit of loop | Upper limit of loop
+   | Aggregate value     | Updated aggregate value
+|=================================================
+
+=== MAX, MIN & SUM
+
+Works exactly like `COUNT`, except at entry there is an extra value on the stack (at the top).
+This is the attribute value that the aggregation should use.
+
+[cols="2*<m",options="header"]
+|===============================================
+2+^| MAX, MIN & SUM
+ ^h| Before         ^h| After
+| Attribute value     |
+| Loop index          | Loop index
+| Upper limit of loop | Upper limit of loop
+| Aggregate value     | Updated aggregate value
+|===============================================
+
+=== DEPEND
+
+// TBD //
+
+=== DEPCASE
+
+// TBD //
+
+=== DEPELSE
+
+// TBD //
+
+=== ENDDEP
+
+// TBD //
+
+=== DUP
+
+
+// EOF //
