@@ -1,12 +1,10 @@
-# Extra Alan Docs
+# Alan Design Documents
 
-This temporary folder contains some extra Alan documentation taken from the Alan repository and coverted to AsciiDoc.
+This folder contains some technical documents regarding Alan design and internals, taken from the Alan repository and converted to AsciiDoc.
 
-
+Most of these documents are still incomplete, but the reader might nevertheless benefit from them to better understand technical aspects about Alan and its design principles.
 
 # Folder Contents
-
-## ALAN Design Docs
 
 Taken from the [`doc/design/`](https://github.com/alan-if/alan/tree/master/doc/design/) folder.
 
