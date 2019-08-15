@@ -57,6 +57,7 @@ $ alan -help
 
 Here are some examples of other switches:
 
+* `-version` shows the version of the compiler
 * `-charset` select the character set of the input files.
 This can be handy when you get a source file written on another platform, or for Windows where you edit in a Windows editor (ISO characters) and use the compiler in a DOS window (DOS characters).
 The option should be followed with one of the keywords `iso`, `mac` or `dos`
@@ -103,14 +104,16 @@ $ adventure
 ((interpreter, switches))
 The ((interpreter)) supports the following switches:
 
+* `-h` print some help
 * `-v` verbose mode
 * `-l` log game transcript in a log-file in the current directory
 * `-c` log all player commands in a log-file in the current directory
 * `-n` no Status Line
 * `-d` print the version of interpreter and enter debug mode
 * `-t[<n>]` various levels of execution trace, higher <n> gives more details
-* `-i` ignore CRC and version errors in the adventure files
+* `-i` ignore CRC and version errors in the adventure files (dangerous)
 * `-r` make regression test easier (don't timestamp, page break, randomize...)
+* `-version` print version of the interpreter, the version and IFID of the game, if given, and then exit
 
 Debugging support is described in <<Debugging>>.
 
