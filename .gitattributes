@@ -116,7 +116,7 @@ LICENSE      text
 *.config       text
 *.ini          text
 *.prefs        text
-.editorconfig  text
+.editorconfig  text eol=lf
 .gitattributes text
 .gitconfig     text
 .gitignore     text
