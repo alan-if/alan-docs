@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.92-PreReleaseBeta7,</span>
-<span id="revdate">August 7, 2019</span>
+<span id="revnumber">version 0.1.96-PreReleaseBeta7,</span>
+<span id="revdate">September 1, 2019</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
 <div id="toc" class="toc2">
@@ -715,7 +715,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_lexical_definitions">4. Lexical Definitions</a>
 <ul class="sectlevel2">
 <li><a href="#_comments">4.1. Comments</a></li>
-<li><a href="#_words_identifiers_and_names">4.2. Words, Identifiers and Names</a></li>
+<li><a href="#_words_identifiers_and_names">4.2. Words, Identifiers and Names</a>
+<ul class="sectlevel3">
+<li><a href="#_quoted_identifiers">Quoted Identifiers</a></li>
+<li><a href="#_keywords_as_identifiers">Keywords as Identifiers</a></li>
+<li><a href="#_names_containing_multiple_words">Names Containing Multiple Words</a></li>
+</ul>
+</li>
 <li><a href="#_numbers">4.3. Numbers</a></li>
 <li><a href="#_strings">4.4. Strings</a></li>
 <li><a href="#_filenames">4.5. Filenames</a></li>
@@ -834,6 +840,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_executive_summary">Executive Summary</a></li>
 </ul>
 </li>
+<li><a href="#_glossary">Glossary</a></li>
 </ul>
 </div>
 </div>
@@ -7864,6 +7871,8 @@ The first character must be a letter.</p>
 <pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">identifier = letter {letter | digit | underscore}</code></pre>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_quoted_identifiers"><a class="anchor" href="#_quoted_identifiers"></a>Quoted Identifiers</h4>
 <div class="paragraph">
 <p>There is also a second kind of identifier, namely the quoted identifier.</p>
 </div>
@@ -7880,11 +7889,47 @@ quoted_identifier = quote {any_character} quote</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A quoted identifier starts and ends with single quotes and may contain any character except quotes (including spaces).
-By quoting any sequence of characters can become an identifier.
-A quoted identifier may also be used to make an identifier out of a reserved word such as <code>Look</code>.
-This is useful in the definition of the verb <code>look</code>.
-It would look like:</p>
+<p>A quoted identifier starts and ends with single quotes and may contain any character (including spaces) except single quotes&#8201;&#8212;&#8201;if you need to include a single quote inside a quoted identifier, you must <em>escape it</em> by doubling it, e.g.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The <mark>'Bob''s House'</mark> IsA location. -- ID will be printed as "Bob's House"
+End the.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the Alan compiler encounters two consecutive single quotes inside a quoted identifier, it will treat them as if they were one single quote which is part of the identifier, and not as a the single quote <em>delimiter</em> indicating the end of the identifier.</p>
+</div>
+<div class="paragraph">
+<p>In the above example, the identifier will be printed as &#8220;Bob&#8217;s House&#8221; in the actual game&#8201;&#8212;&#8201;the enclosing single quote delimiters being ignored in print, and the two consecutive single quotes printed as one single quote.</p>
+</div>
+<div class="paragraph">
+<p>Any sequence of characters enclosed within single quotes can become an identifier, except inside strings (where single quotes are treated as ordinary printable characters).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A single-word identifier can be written within or without single quotes, indifferently (unless it&#8217;s a keyword).
+Therefore, <code>'someID'</code> and <code>someID</code> both refer to the same identifier in the source code.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_keywords_as_identifiers"><a class="anchor" href="#_keywords_as_identifiers"></a>Keywords as Identifiers</h4>
+<div class="paragraph">
+<p>Quoted identifiers may also be used to create an identifier out of a reserved word such as <code>Look</code>, <code>The</code>, etc.
+This practice is known as <em><a href="#gloss_stropping">stropping</a></em>, and it allows the Alan compiler to distinguish between user-created identifiers and keywords in the source code, thus avoiding clashes that would lead to a compiler error.</p>
+</div>
+<div class="paragraph">
+<p>This is useful (indeed, required), for example, in the definition of the verb &#8216;look&#8217;:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7894,6 +7939,48 @@ It would look like:</p>
 End Verb 'look'.</code></pre>
 </div>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Whenever an identifier contains an Alan keyword, it&#8217;s mandatory to use a quoted identifier.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In the following example, the <code>'The Empty Room'</code> name needs to be enclosed within single quotes because it contains two Alan keywords (<code>The</code> and <code>Empty</code>), but there&#8217;s no need to do so with the <code>empty_room</code> identifier because the word <code>empty</code> doesn&#8217;t appear in isolated form (i.e. surrounded by spaces):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The empty_room IsA location   --&gt; No need to stropp 'empty_room'.
+  NAME 'The Empty Room'.      --&gt; Keywords 'THE' and 'EMPTY' stropped.
+End The.</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Stropping occurs only when the quoted identifier contains at least one Alan keyword.
+Since in Alan it&#8217;s always permissible to enclose an identifier within single quotes (where <code>'someID'</code> and <code>someID</code> both refer to the same identifier), not every quoted identifier implies stropping, but stropping <em>always</em> requires a quoted identifier.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_names_containing_multiple_words"><a class="anchor" href="#_names_containing_multiple_words"></a>Names Containing Multiple Words</h4>
 <div class="paragraph">
 <p>Quoted identifiers retain their exact content.
 They may contain spaces and other special characters, which make them useful as long names for locations as in:</p>
@@ -7920,7 +8007,7 @@ An example is:</p>
 </div>
 <div class="paragraph">
 <p>The first word in the name will always be printed with a capital &#8216;E&#8217;.
-However, when comparing the word to player input and other occurrences of the same word in the source, case will be ignored.
+However, when comparing the word to player input and other occurrences of the same word in the source, letter casing will be ignored (i.e. comparison is case insensitive).
 This means that you cannot have two words or identifiers that differ only in case, they will be the same and stored in the game data as one of the occurrences, which one is implementation dependent.</p>
 </div>
 <div class="admonitionblock warning">
@@ -7957,9 +8044,10 @@ You can avoid this by using a quoted identifier for the complete name of the loc
 </div>
 <div class="paragraph">
 <p>Be careful when using quoted identifiers, especially if the player is supposed to use the word.
-A player cannot input words containing spaces or other special characters or separators.
-The only exception being underscores and dashes.
-A player input word must start with a letter.</p>
+A player cannot refer in the typed input to words which are defined in the code as single words containing spaces or other special characters or separators (the only exception being underscores and dashes).</p>
+</div>
+<div class="paragraph">
+<p>Also, remember that a player input word must start with a letter; so the player won&#8217;t be able to refer to identifiers or names like &#8220;<code>1st</code>&#8221;, &#8220;<code>'70s</code>&#8221;, etc.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -7968,17 +8056,24 @@ A player input word must start with a letter.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
+<div class="title">Escaping Single Quotes Inside Quoted Identifiers</div>
 <div class="paragraph">
-<p>To get a  single quote within a quoted identifier repeat it (<code>'Tom''s Diner'</code>).</p>
+<p>
+To include a  single quote as part of a quoted identifier, double it (e.g. <code>'Tom''s Diner'</code>).
+Inside the adventure, it will be printed as a single quote (&#8220;Tom&#8217;s Diner&#8221;).</p>
+</div>
+<div class="paragraph">
+<p>This technique is known as <em>escaping</em>, for it allows the Alan compiler to distinguish between the quote character as delimiters of the quoted identifier and its occurrence within the identifier as a printable character.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Some of the identifiers in the source for an Alan game are by default used as player words.
+<p>Some of the identifiers in the source of an Alan game are used by default as player words.
 This is for example the case with verb names (unless a <code>Syntax</code> statement has been declared for the <code>Verb</code>) and object names (unless a <code>Name</code> clause has been used).
-If these contain special characters, the player cannot enter them.</p>
+If these contain special characters, the player won&#8217;t be able to refer to them in the typed input.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -12767,6 +12862,27 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_glossary"><a class="anchor" href="#_glossary"></a>Glossary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here follow some definitions of technical terms encountered in this manual, to bridge the gap between authorship as a writer and a programmer.
+Although Alan is designed to be usable by non-programmers, knowing the terms of this glossary might help authors to better grasp some aspects of writing adventures in Alan, by providing an outlook into the wider context of computer languages and programming, and by providing the technical jargon required to discuss technical issues and further research some topics.</p>
+</div>
+<div class="dlist glossary">
+<dl>
+<dt><a id="gloss_stropping"></a>stropping</dt>
+<dd>
+<p>In the realm of computer programming, <em>stropping</em> is a technique to enable end users to create identifiers that contain reserved words of the language, by means of a special notation that allows the compiler (or interpreter) to distinguish between a user-defined identifier and a kewyord of the language, thus avoiding clashes that would prevent compilation/execution of the code.
+In the Alan language, identifiers containing one or more reserved keywords can be stropped by enclosing the whole identifier within single straight quotes (<code>'</code>).
+Example: <code>The 'The Empty Room' IsA location.</code> (keywords <code>THE</code> and <code>EMPTY</code> stropped).
+For a detailed explanation and practical examples, see <a href="#_keywords_as_identifiers">Sect. 4.2.2</a>.
+For more info on stropping, see <a href="https://en.wikipedia.org/wiki/Stropping_(syntax)" title="Visit Wikipedia page: 'Stropping (syntax)'" target="_blank" rel="noopener">Wikipedia</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 <div id="footnotes">
 <hr>
@@ -12779,7 +12895,7 @@ If you also supply a walkthrough to your example it will be added to the growing
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.92-PreReleaseBeta7<br>
+Version 0.1.96-PreReleaseBeta7<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">
