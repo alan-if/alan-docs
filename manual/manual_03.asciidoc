@@ -2490,7 +2490,7 @@ End Verb.
 If your `Verb` has multiple definitions (e.g. for various classes) applying `Meta` to any one of them will make the verb a meta verb, meaning that if the player uses that verb in any context and on any instance, it won't consume a tick, even if that particular definition did not have the `Meta` property explicitly expressed.
 A library might decide that `'score'` was a meta verb and there is nothing you, as an author, can do to override that short of editing the library source.
 
-Furthermore, a `Meta` verb does not trigger evaluation of ``Rule``s and ``Event``s either, so they are genuinely "`outside`" the game and should only be used with verbs that are not considered part of the players progression inside the game.
+Furthermore, a `Meta` verb does not trigger evaluation of _rules_ and ``Event``s either, so they are genuinely "`outside`" the game and should only be used with verbs that are not considered part of the players progression inside the game.
 
 
 [NOTE]
@@ -2848,7 +2848,7 @@ rule = 'WHEN' expression ('THEN' | '=>')
 --------------------------------------------------------------------------------
 
 
-A (((RULE))) `Rule` is an arbitrary expression, which, when true, results in the execution of some given statements.
+A (((RULE))) _rule_ is an arbitrary expression, which, when true, results in the execution of some given statements.
 Rules can only be declared on the global level (not inside classes or instances).
 The main intended use of rules is to detect particular situations and then trigger some action.
 Typically they can be used to make things happen when certain situations arise, such as starting an actor when the hero enters the cave.
@@ -2886,7 +2886,7 @@ In the example above, the triggering of the `hunting` script for the monster wil
 The use of parameters, `Current Actor`, `Current Location`, `Here` and `Nearby` is not allowed in rules conditionals or bodies.
 
 Rules are executed at no location.
-Therefore, within ``Rule``s it's not possible to communicate directly with the player via output statements (since the hero cannot be where the rule is executing, see <<Output Statements>>).
+Therefore, within _rules_ it's not possible to communicate directly with the player via output statements (since the hero cannot be where the rule is executing, see <<Output Statements>>).
 Triggering an `Event` that handles the output intended for the player is the recommended solution to this.
 
 The following is a complete game using a rule:
@@ -2911,7 +2911,7 @@ Start At kitchen.
 --------------------------------------------------------------------------------
 
 
-In this example the `Rule` conditional (i.e. `Count IsA actor, At kitchen = 1`) is using an aggregation (`count`, see <<Aggregates>>) over two filters (see <<Filters>>) that will count the number of ``actor``s at the `kitchen`, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.
+In this example the _rule_ conditional (i.e. `Count IsA actor, At kitchen = 1`) is using an aggregation (`count`, see <<Aggregates>>) over two filters (see <<Filters>>) that will count the number of ``actor``s at the `kitchen`, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.
 
 Again, remember that rules are checked after each actor has moved.
 What happens if there are more actors in play and they move in and out of the kitchen, is left as an exercise to the reader.
@@ -3616,7 +3616,7 @@ Schedule ringing At clock After 60 - minutes Of clock.
 The number of moves can be zero, i.e. `After 0` means that the event will occur now (during this player turn, probably last, though).
 If no location is specified, `Here` is assumed, i.e. it will be executed at the current location, the location where the statement itself was executed.
 
-An important case is when a `Schedule` statement without a *WHERE* clause is executed inside a `Rule`.
+An important case is when a `Schedule` statement without a *WHERE* clause is executed inside a _rule_.
 Since rules are executed at nowhere so will the event.
 This means that any printout will occur nowhere, and will thus be invisible to the player.
 
