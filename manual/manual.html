@@ -441,7 +441,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.97-PreReleaseBeta7,</span>
+<span id="revnumber">version 0.1.98-PreReleaseBeta7,</span>
 <span id="revdate">September 1, 2019</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -5023,7 +5023,7 @@ End Verb.</code></pre>
 A library might decide that <code>'score'</code> was a meta verb and there is nothing you, as an author, can do to override that short of editing the library source.</p>
 </div>
 <div class="paragraph">
-<p>Furthermore, a <code>Meta</code> verb does not trigger evaluation of <code>Rule</code>s and <code>Event</code>s either, so they are genuinely &#8220;outside&#8221; the game and should only be used with verbs that are not considered part of the players progression inside the game.</p>
+<p>Furthermore, a <code>Meta</code> verb does not trigger evaluation of <em>rules</em> and <code>Event</code>s either, so they are genuinely &#8220;outside&#8221; the game and should only be used with verbs that are not considered part of the players progression inside the game.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5487,7 +5487,7 @@ See <a href="#_run_time_contexts"><em>Run-Time Contexts</em></a>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>A  <code>Rule</code> is an arbitrary expression, which, when true, results in the execution of some given statements.
+<p>A  <em>rule</em> is an arbitrary expression, which, when true, results in the execution of some given statements.
 Rules can only be declared on the global level (not inside classes or instances).
 The main intended use of rules is to detect particular situations and then trigger some action.
 Typically they can be used to make things happen when certain situations arise, such as starting an actor when the hero enters the cave.</p>
@@ -5531,7 +5531,7 @@ In the example above, the triggering of the <code>hunting</code> script for the 
 </div>
 <div class="paragraph">
 <p>Rules are executed at no location.
-Therefore, within <code>Rule</code>s it&#8217;s not possible to communicate directly with the player via output statements (since the hero cannot be where the rule is executing, see <a href="#_output_statements">Sect. 3.17.1</a>).
+Therefore, within <em>rules</em> it&#8217;s not possible to communicate directly with the player via output statements (since the hero cannot be where the rule is executing, see <a href="#_output_statements">Sect. 3.17.1</a>).
 Triggering an <code>Event</code> that handles the output intended for the player is the recommended solution to this.</p>
 </div>
 <div class="paragraph">
@@ -5555,7 +5555,7 @@ Start At kitchen.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example the <code>Rule</code> conditional (i.e. <code>Count IsA actor, At kitchen = 1</code>) is using an aggregation (<code>count</code>, see <a href="#_aggregates">Sect. 3.20.13</a>) over two filters (see <a href="#_filters">Sect. 3.21</a>) that will count the number of <code>actor</code>s at the <code>kitchen</code>, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.</p>
+<p>In this example the <em>rule</em> conditional (i.e. <code>Count IsA actor, At kitchen = 1</code>) is using an aggregation (<code>count</code>, see <a href="#_aggregates">Sect. 3.20.13</a>) over two filters (see <a href="#_filters">Sect. 3.21</a>) that will count the number of <code>actor</code>s at the <code>kitchen</code>, and when that number becomes one, the rule will trigger and execute the statements, in this case scheduling an event that handles the presentation of the output to the player.</p>
 </div>
 <div class="paragraph">
 <p>Again, remember that rules are checked after each actor has moved.
@@ -6337,7 +6337,7 @@ End The eliza.</code></pre>
 If no location is specified, <code>Here</code> is assumed, i.e. it will be executed at the current location, the location where the statement itself was executed.</p>
 </div>
 <div class="paragraph">
-<p>An important case is when a <code>Schedule</code> statement without a <strong>WHERE</strong> clause is executed inside a <code>Rule</code>.
+<p>An important case is when a <code>Schedule</code> statement without a <strong>WHERE</strong> clause is executed inside a <em>rule</em>.
 Since rules are executed at nowhere so will the event.
 This means that any printout will occur nowhere, and will thus be invisible to the player.</p>
 </div>
@@ -8182,7 +8182,7 @@ Global <code>Verb</code> <code>Check</code>s and bodies are used for verbs takin
 In case the player typed a directional command the corresponding <code>Exit</code> check and code is executed.</p>
 </div>
 <div class="paragraph">
-<p>After the  player&#8217;s command has been taken care of, all <code>Rule</code>s are evaluated and possibly executed.
+<p>After the  player&#8217;s command has been taken care of, all <em>rules</em> are evaluated and possibly executed.
 Then each of the other <code>actor</code>s executes one step in their <code>Script</code>s (if active) and for each actor the rules are evaluated again.
 Finally, each <code>Event</code> that is scheduled for this round is fired, and the rules evaluated yet again.
 Finally the player is prompted for another command.</p>
@@ -12891,7 +12891,7 @@ For more info on stropping, see <a href="https://en.wikipedia.org/wiki/Stropping
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.97-PreReleaseBeta7<br>
+Version 0.1.98-PreReleaseBeta7<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">
