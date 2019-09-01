@@ -267,17 +267,6 @@ The identifier on the left hand side of a `Syntax` definition was defined as som
 --
 
 
-.....................................................
-209  First element in a SYNTAX must be a player word.
-.....................................................
-
-[role="commentary"]
---
-The definition of a `Syntax` construct may not start with a parameter.
-The first word must be a player word so as to distinguish it from other forms of input.
---
-
-
 ...........................................
 210  Action qualification not allowed here.
 ...........................................

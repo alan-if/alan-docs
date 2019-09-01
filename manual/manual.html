@@ -441,7 +441,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.96-PreReleaseBeta7,</span>
+<span id="revnumber">version 0.1.97-PreReleaseBeta7,</span>
 <span id="revdate">September 1, 2019</span>
 <br><span id="revremark">AsciiDoc conversion work</span>
 </div>
@@ -10164,6 +10164,9 @@ If you run the compiler from a command line you can get information about which 
 <div class="ulist">
 <ul>
 <li>
+<p><code>-version</code> shows the version of the compiler</p>
+</li>
+<li>
 <p><code>-charset</code> select the character set of the input files.
 This can be handy when you get a source file written on another platform, or for Windows where you edit in a Windows editor (ISO characters) and use the compiler in a DOS window (DOS characters).
 The option should be followed with one of the keywords <code>iso</code>, <code>mac</code> or <code>dos</code></p>
@@ -10241,6 +10244,9 @@ The interpreter supports the following switches:</p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>-h</code> print some help</p>
+</li>
+<li>
 <p><code>-v</code> verbose mode</p>
 </li>
 <li>
@@ -10259,10 +10265,13 @@ The interpreter supports the following switches:</p>
 <p><code>-t[&lt;n&gt;]</code> various levels of execution trace, higher &lt;n&gt; gives more details</p>
 </li>
 <li>
-<p><code>-i</code> ignore CRC and version errors in the adventure files</p>
+<p><code>-i</code> ignore CRC and version errors in the adventure files (dangerous)</p>
 </li>
 <li>
 <p><code>-r</code> make regression test easier (don&#8217;t timestamp, page break, randomize&#8230;&#8203;)</p>
+</li>
+<li>
+<p><code>-version</code> print version of the interpreter, the version and IFID of the game, if given, and then exit</p>
 </li>
 </ul>
 </div>
@@ -11848,19 +11857,6 @@ You should remove the offending one.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>209  First element in a SYNTAX must be a player word.</pre>
-</div>
-</div>
-<div class="openblock commentary">
-<div class="content">
-<div class="paragraph">
-<p>The definition of a <code>Syntax</code> construct may not start with a parameter.
-The first word must be a player word so as to distinguish it from other forms of input.</p>
-</div>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
 <pre>210  Action qualification not allowed here.</pre>
 </div>
 </div>
@@ -12895,7 +12891,7 @@ For more info on stropping, see <a href="https://en.wikipedia.org/wiki/Stropping
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.96-PreReleaseBeta7<br>
+Version 0.1.97-PreReleaseBeta7<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">
