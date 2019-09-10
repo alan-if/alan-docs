@@ -34,7 +34,7 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
         - [File Extensions Conventions](#file-extensions-conventions)
     - [Development Enviroment Info](#development-enviroment-info)
     - [Project Dependencies](#project-dependencies)
-        - [AsciiDoctor](#asciidoctor)
+        - [Asciidoctor](#asciidoctor)
         - [Asciidoctor-fopub](#asciidoctor-fopub)
         - [Dia Diagram Editor](#dia-diagram-editor)
     - [Syntax Highlighting](#syntax-highlighting)
@@ -46,7 +46,7 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
     - [Alan Cookbook](#alan-cookbook)
 - [External Links](#external-links)
     - [Alan](#alan)
-    - [AsciiDoctor](#asciidoctor-1)
+    - [Asciidoctor](#asciidoctor-1)
     - [Highlight](#highlight)
 
 <!-- /MarkdownTOC -->
@@ -103,12 +103,13 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 ## Project Contents
 
 - [`/_assets/`](./_assets/) (shared assets):
-    + [`/hjs/`](./_assets/hjs/) — custom [highlight.js] build for Alan.
-    + [`/hl/`](./_assets/hl/) — assets for the Asciidoctor Highlight toolchain.
-    + [`/images/`](./_assets/images/)
     + [`/alan-xsl-fopub/`](./_assets/alan-xsl-fopub/) — submoduled [alan-xsl-fopub] repository, for XSL FOP template:
         * [`/xsl-fopub/`](./_assets/alan-xsl-fopub/xsl-fopub/) — XSL Stylesheets for PDF conversion via asciidoctor-fopub.
         * [`/fonts/`](./_assets/alan-xsl-fopub/fonts/) — required fonts for PDF conversion.
+    + [`/hjs/`](./_assets/hjs/) — custom [highlight.js] build for Alan.
+    + [`/hl/`](./_assets/hl/) — assets for the Asciidoctor Highlight toolchain.
+    + [`/images/`](./_assets/images/)
+    + [`/sh/`](./_assets/sh/) — Bash/Shell reusable scripts and modules.
 - [`/_assets-src/`](./_assets-src/) (assets' source files):
     + [`/colors/`](./_assets-src/colors/) — Color schemes and palettes used in the documents.
     + [`/images/`](./_assets-src/images/):
@@ -161,7 +162,7 @@ This is the environemnt setup used for the project by its maintainer:
 
 ## Project Dependencies
 
-### AsciiDoctor
+### Asciidoctor
 
 - https://asciidoctor.org/
 
@@ -281,7 +282,7 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 - [Alan sources on GitHub][Alan GitHub] — source code repository on GitHub.
 - [Alan IF Development team] — GitHub profile and public projects.
 
-## AsciiDoctor
+## Asciidoctor
 
 - [AsciiDoc Syntax Quick Reference]
 - [Asciidoctor User Manual]
@@ -318,7 +319,7 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 [Alan Bitbucket]: https://bitbucket.org/alanif/alan/ "Visit the Alan source repository on Bitbucket"
 [Alan GitHub]: https://github.com/alan-if/alan/ "Visit the Alan source repository on GitHub"
 
-<!-- AsciiDoctor -->
+<!-- Asciidoctor -->
 
 [AsciiDoc Syntax Quick Reference]: https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
 
