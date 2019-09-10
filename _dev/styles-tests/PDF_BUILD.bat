@@ -1,7 +1,15 @@
-:: "PDF_BUILD.bat" v3.0.0 (2019/04/19)  by Tristano Ajmone
+:: "_dev\styles-tests\PDF_BUILD.bat"    v3.0.1 | 2019/09/10 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: This script is released into public domain via the Unlicense:
 ::     http://unlicense.org/
+::
+:: To run this script these applications must be installed on your system:
+::
+::    Asciidoctor (Ruby Gem):
+::    https://github.com/asciidoctor/asciidoctor
+::
+::    asciidoctor-fopub:
+::    https://github.com/asciidoctor/asciidoctor-fopub
 :: -----------------------------------------------------------------------------
 @ECHO OFF
 

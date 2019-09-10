@@ -1,4 +1,13 @@
-:: "HTML_BUILD.bat" v1.1.1 (2018/10/24) by Tristano Ajmone
+:: "manual\HTML_BUILD.bat"              v1.1.2 | 2019/09/10 | by Tristano Ajmone
+:: -----------------------------------------------------------------------------
+:: This script is released into public domain via the Unlicense:
+::     http://unlicense.org/
+::
+:: To run this script these applications must be installed on your system:
+::
+::    Asciidoctor (Ruby Gem):
+::    https://github.com/asciidoctor/asciidoctor
+:: -----------------------------------------------------------------------------
 @ECHO.
 @ECHO ==============================================================================
 @ECHO Converting "The ALAN Language Manual" to a standalone HTML5 document...

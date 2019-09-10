@@ -1,5 +1,8 @@
-:: "HTML_BUILD.bat"                     v2.0.1 | 2019/03/13 | by Tristano Ajmone
+:: "alanguide\HTML_BUILD.bat"           v2.0.2 | 2019/09/10 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
+:: This script is released into public domain via the Unlicense:
+::     http://unlicense.org/
+::
 :: To run this script these applications must be installed on your system:
 ::
 ::    Asciidoctor (Ruby Gem):
