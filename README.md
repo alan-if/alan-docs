@@ -231,7 +231,7 @@ The Asciidoctor package adds to Sublime Text 3 AsciiDoc syntax highlighting.
 
 The complete (unported) Alan documentation can be found at:
 
-- https://bitbucket.org/alanif/alan/src/master/doc/
+- https://github.com/alan-if/alan/tree/master/doc/
 
 Which is divided into three sub-foldered groups of documents:
 
@@ -246,9 +246,9 @@ Which is divided into three sub-foldered groups of documents:
     + _Alan 3 Beginner's Guide_ (AsciiDoc) by Michael Arnaud
 
 
-[src_design]: https://bitbucket.org/alanif/alan/src/master/doc/design
-[src_guide]: https://bitbucket.org/alanif/alan/src/master/doc/guide
-[src_manual]: https://bitbucket.org/alanif/alan/src/master/doc/manual
+[src_design]: https://github.com/alan-if/alan/tree/master/doc/design
+[src_guide]: https://github.com/alan-if/alan/tree/master/doc/guide
+[src_manual]: https://github.com/alan-if/alan/tree/master/doc/manual
 
 ## Standard Library Documentation
 
@@ -278,7 +278,6 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 
 - [Alan website]
 - [Alan IF Yahoo group]
-- [Alan sources on Bitbucket][Alan Bitbucket] — source code repository on Bitbucket.
 - [Alan sources on GitHub][Alan GitHub] — source code repository on GitHub.
 - [Alan IF Development team] — GitHub profile and public projects.
 
@@ -316,7 +315,6 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 
 [Alan IF Yahoo group]: https://groups.yahoo.com/neo/groups/alan-if/info "Visit the Alan IF group at Yahoo! Groups"
 [Alan website]: https://www.alanif.se/ "Visit Alan official website"
-[Alan Bitbucket]: https://bitbucket.org/alanif/alan/ "Visit the Alan source repository on Bitbucket"
 [Alan GitHub]: https://github.com/alan-if/alan/ "Visit the Alan source repository on GitHub"
 
 <!-- Asciidoctor -->
