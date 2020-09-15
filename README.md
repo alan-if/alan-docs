@@ -61,7 +61,7 @@ Some important news for project maintainers and contributors...
 
 Since July 2019, this project is using __[asciidoctor-fopub]__ with Java JDK 12. At the time the project was created, there was [a problem with gradle] that prevented using Java versions above v8; the problem has been fixed since (but Tristano only recently managed to actually test it locally and start using JDK 12).
 
-So, anyonw still using Java 12 for __[asciidoctor-fopub]__ should now switch to JDK 12, which fixes many security issues.
+So, anyone still using Java 8 for __[asciidoctor-fopub]__ should now switch to JDK 12, which fixes many security issues.
 
 [a problem with gradle]: https://github.com/asciidoctor/asciidoctor-fopub/issues/87 "Read more about the original problem on asciidoctor-fopub Issue #87"
 
