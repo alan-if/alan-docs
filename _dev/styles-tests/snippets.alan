@@ -9,7 +9,7 @@
 --|//////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|
 --+============================================================================+
 -- Some Alan snippets to include slectively in the "Syntax Highlighting" doc.
--- 
+--
 -- WIP: Pretty much still in draft form; need to find better examples with more
 --      syntax elements coverage in a small space!
 
@@ -47,11 +47,11 @@ The trolley IsA object At canteen
     DOES
       If This Has Not been_examined
         Then "This old trolley has surely seen better days. $nIt seems barely
-              capable of carrying its own weight without collapsing, let alone 
+              capable of carrying its own weight without collapsing, let alone
               endure its daily use!"
           Make This been_examined.
         Else "It's just an old trolley."
-      End If.     
+      End If.
   END VERB examine.
 End The trolley.
 --------------------------------------------------------------------------------
@@ -78,7 +78,7 @@ Start at shore.
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
--- § 2 - Syntax Tests 
+-- § 2 - Syntax Tests
 --------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================

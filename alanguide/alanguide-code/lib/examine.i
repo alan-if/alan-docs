@@ -69,6 +69,6 @@ Add to every object
     Check obj is searchable
       else "You can't search" say the obj. "."
     Does
-  		"You find nothing of interest."
+      "You find nothing of interest."
   End verb.
 End add.

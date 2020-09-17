@@ -4,7 +4,7 @@
 -- A barebones adventure, just to test that the Library compiles without errors.
 
 -- Useful to carry out integrity checks after editing the Lib sources, or when
--- the Alan language changes due to updates. 
+-- the Alan language changes due to updates.
 --------------------------------------------------------------------------------
 
 Import 'std.i'. -- Library version 0.6.2
