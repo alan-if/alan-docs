@@ -3,7 +3,7 @@
 
 by Robert DeFord
 
-Version: Final 1.0 
+Version: Final 1.0
 
 Uncopyrighted
 
@@ -26,9 +26,9 @@ The procedure that follows assumes that you are setting up your Alan development
 
 === Verify your Java Installation
 
-You must have Java installed on your computer in order to use the Alan IDE. Perhaps the easiest way to verify that you have Java is to open the Windows Control Panel and select **View by/small icons.** 
+You must have Java installed on your computer in order to use the Alan IDE. Perhaps the easiest way to verify that you have Java is to open the Windows Control Panel and select **View by/small icons.**
 
-* If you see the _Java Control Panel_ icon, then you are probably good to go as long as you used the default settings during the Java installation process. 
+* If you see the _Java Control Panel_ icon, then you are probably good to go as long as you used the default settings during the Java installation process.
 
 * If you don’t see the Java icon, you can get Java from https://www.java.com/en/. Just click on the [underline]#Free Java Download# button and follow the instructions. It’s a good idea to stick to the defaults during the installation process.
 
@@ -36,7 +36,7 @@ NOTE: According to the Alan web site, a Java runtime environment 1.5 (5.0) or gr
 
 === Get the right compiler
 
-The Alan IDE uses the _command line_ version of the Alan compliler, so you must download the command line Alan SDK even if you’ve already downloaded and are using the Alan GUI SDK. 
+The Alan IDE uses the _command line_ version of the Alan compliler, so you must download the command line Alan SDK even if you’ve already downloaded and are using the Alan GUI SDK.
 
 .  Download the latest *Alan SDK for Windows (command line)* package from the Alan website: https://www.alanif.se/download-alan-v3/latest-releases.
 
@@ -89,13 +89,13 @@ Before you can use the Alan IDE you must configure it for use with your director
 . Leave the _Path to Standard Library_ field blank.
 
 
-. (OPTIONAL) Click the *Generate debug information:* check box if you wish to use the Alan compiler outside the IDE workbench to troubleshoot your project. You probably won’t need to do this, but it won’t hurt to generate the information in case you do. 
+. (OPTIONAL) Click the *Generate debug information:* check box if you wish to use the Alan compiler outside the IDE workbench to troubleshoot your project. You probably won’t need to do this, but it won’t hurt to generate the information in case you do.
 
 . Click the *OK* button to close the Preferences window.
 
 === Choose your Interpreter
 
-You must select which Alan Interpreter that you are going to test your game with while you are using the Alan IDE. You can use any Alan interpreter such as  _Arun_ or _Gargoyle_, but your best bet is to use the _WinArun_ interpreter. It is easy to install, always up to date with the latest Alan release, and it looks a lot better than arun.exe. 
+You must select which Alan Interpreter that you are going to test your game with while you are using the Alan IDE. You can use any Alan interpreter such as  _Arun_ or _Gargoyle_, but your best bet is to use the _WinArun_ interpreter. It is easy to install, always up to date with the latest Alan release, and it looks a lot better than arun.exe.
 
 * Download the latest _WinArun_ installer from the Alan website. (https://www.alanif.se/download-alan-v3/interpreters/interpreters-3-0beta5 as of this writing).
 
@@ -105,7 +105,7 @@ You must select which Alan Interpreter that you are going to test your game with
 
 [TIP]
 ====
-You can do this step using the Windows __Control Panel/Default Programs__, or you can right-click on any .a3c file to get the pop-up menu, and then select the _Open With_ option. 
+You can do this step using the Windows __Control Panel/Default Programs__, or you can right-click on any .a3c file to get the pop-up menu, and then select the _Open With_ option.
 ====
 
 
@@ -126,14 +126,14 @@ image::images/workbench.png[]
 
 * *Outline:* Displays an outline of the file currently being edited in the Editor. When you double-click one of the items in the outline, the editor will scroll to the code for that item.
 
-* *Problems* This tab lists compiler error messages, if any. When you expand the list, you will see a textual explanation for each problem. When you double-click one of the problems, the editor will open the appropriate file and display the code where the compiler encountered the error. 
+* *Problems* This tab lists compiler error messages, if any. When you expand the list, you will see a textual explanation for each problem. When you double-click one of the problems, the editor will open the appropriate file and display the code where the compiler encountered the error.
 
 [TIP]
 ====
-You can resize the workspace sub-windows. Just use hover the cursor over a border rule until you get the double-arrow, then click and drag the border.  
+You can resize the workspace sub-windows. Just use hover the cursor over a border rule until you get the double-arrow, then click and drag the border.
 ====
 
-=== Starting a new game 
+=== Starting a new game
 
 Starting a new game is a two-step process. First you create a project to work in, then you create a main file for the new game’s source code.
 
@@ -141,9 +141,9 @@ Starting a new game is a two-step process. First you create a project to work in
 
 The Alan IDE keeps all the files for a single game in a special container called a __project.__ You will need a project for each game that is under development.
 
-. In the Alan IDE, click on *File* in the menu bar and select *New Wizards/Alan Project* from the pop-up menu to get the _Create New Alan Project_ dialog box. 
+. In the Alan IDE, click on *File* in the menu bar and select *New Wizards/Alan Project* from the pop-up menu to get the _Create New Alan Project_ dialog box.
 
-. Think of a name for your project and type it in the __Project name__ field. 
+. Think of a name for your project and type it in the __Project name__ field.
 
 +
 
@@ -166,7 +166,7 @@ Once you have an empty project to work in, you then create the first source code
 
 . If the project is closed, select *Open Project* from the drop-down menu to open that project so you can work in it.
 
-. Click on *File* in the IDE menu bar, and select *New Wizards/Alan Main File* from the drop-down menu to get the _Create an Alan Source file_ dialog box. 
+. Click on *File* in the IDE menu bar, and select *New Wizards/Alan Main File* from the drop-down menu to get the _Create an Alan Source file_ dialog box.
 
 . Put a name for your main file in the File name field. For example,  __main.alan__.
 
@@ -185,7 +185,7 @@ You can name this primal file with any filename you wish, but you must use the *
 ====
 
 
-. Click the *Finish* button to add the file to the open project. 
+. Click the *Finish* button to add the file to the open project.
 
 The Alan IDE will do an automatic save and attempt to compile your new game. Over in the Editor you will see a tab for the main file you just created, and it is currently open for editing. As you can see, the wizard automatically generated the first line of code for you:
 
@@ -201,7 +201,7 @@ This line of code defines what is referred to as the *start section* for a game.
 
 [TIP]
 ====
-Over in the Project Explorer, you will notice that the  _.alan_ file you just created is listed as a file in your project. Along with that file, you will notice that the wizard automatically created a _.ifdb_ file and added it to your project as well. It contains only the unique IF database identifier code for the game, and you can safely ignore it while developing your game. 
+Over in the Project Explorer, you will notice that the  _.alan_ file you just created is listed as a file in your project. Along with that file, you will notice that the wizard automatically created a _.ifdb_ file and added it to your project as well. It contains only the unique IF database identifier code for the game, and you can safely ignore it while developing your game.
 ====
 
 At this time, your workbench should now look something like this:
@@ -211,15 +211,15 @@ image::images/new_main.png[]
 
 === Finding and fixing compiler errors
 
-Compiler errors are a common type of error that you will get while developing your games. An example follows that shows an example of the process used to fix a compiler error, but here is a brief overview of that process to give you an idea of what is going on ahead of time: 
+Compiler errors are a common type of error that you will get while developing your games. An example follows that shows an example of the process used to fix a compiler error, but here is a brief overview of that process to give you an idea of what is going on ahead of time:
 
-. Examine the error message’s text to figure out what the compiler is complaining about and what it thinks might resolve the issue. 
+. Examine the error message’s text to figure out what the compiler is complaining about and what it thinks might resolve the issue.
 
 . Modify the offending code statement(s) in the source code.
 
 . _Save_ the modified file.
 
-The compiler will recompile the edited code and report on any errors it finds. Hopefully, your modified code will compile without errors.  
+The compiler will recompile the edited code and report on any errors it finds. Hopefully, your modified code will compile without errors.
 
 For example, suppose you just followed the procedure in this guide to create a new .alan main file for a new game and have not yet written any code of your own. Over in the editor, where it is displaying the .alan file, you will see that the compiler is reporting an error down in the Problems sub-window:
 
@@ -236,24 +236,24 @@ As you can see, this error report has several parts:
 
 *  *301 E* is the compiler’s internal error code.
 
-* *Identifier l not defined.* is a plain text explanation of the error written from the compiler’s point of view. In this case, the compiler is telling you that you have referred to an object named  *l* that is not defined elsewhere in your source code. 
+* *Identifier l not defined.* is a plain text explanation of the error written from the compiler’s point of view. In this case, the compiler is telling you that you have referred to an object named  *l* that is not defined elsewhere in your source code.
 
 * *main.alan* is the filename of the file where the error occurred. In this case, since you have only one source code file, it may not seem very useful, but it will be later on when your source code spans multiple files.
 
 * */My Game* is the path to the file. In this example, it is a project folder named _My Game_ in the IDE workspace.
 
-* *line 1* is the line number where the error was found in the indicated file. 
+* *line 1* is the line number where the error was found in the indicated file.
 
 [NOTE]
 ====
 Line numbering has not been enabled in the IDE editor in the examples in this guide.
 ====
 
-Since there is only one line of code in this example’s source code, it is pretty easy to see where the offending line of code is. However, if your source code were to span a dozen or so files with thousands of lines of code, that would not be the case. 
+Since there is only one line of code in this example’s source code, it is pretty easy to see where the offending line of code is. However, if your source code were to span a dozen or so files with thousands of lines of code, that would not be the case.
 
 Fortunately, the Alan IDE provides a simple way to zoom right to the offending line of code; simply double-click the error message in the Problems sub-window.
 
-In response the Editor will open the appropriate file and scroll to display the offending line of code. 
+In response the Editor will open the appropriate file and scroll to display the offending line of code.
 
 To fix the error in this example you would proceed as follows:
 
@@ -268,7 +268,7 @@ image::images/starting_place.png[]
 
 [NOTE]
 ====
-Any time you Save a file in the Alan IDE, it automatically compiles the file and updates the error report. 
+Any time you Save a file in the Alan IDE, it automatically compiles the file and updates the error report.
 ====
 
 [TIP]
@@ -298,20 +298,20 @@ You will no doubt need to add an existing file to your project from time to time
 
 The file should appear in the list of files for the destination project.
 
-. In the Project Explorer, double-click the main *.alan* file in the open project to open it in the editor for editing. 
+. In the Project Explorer, double-click the main *.alan* file in the open project to open it in the editor for editing.
 
-. In the Editor, on a line by itself, somewhere prior the Start section, enclose this statement in single quotes followed by a period: *IMPORT <filename>*, where <filename> is the name of the file you copied into the project. For example: 
+. In the Editor, on a line by itself, somewhere prior the Start section, enclose this statement in single quotes followed by a period: *IMPORT <filename>*, where <filename> is the name of the file you copied into the project. For example:
 
 +
 
 image::images/importLocKan-web-200.png[]
 
-When you Save the main file, the compiler will now include the code in that file when it creates the executable file for the game. 
+When you Save the main file, the compiler will now include the code in that file when it creates the executable file for the game.
 
 
 === Creating a new file for a project
 
-While it’s possible to create a large game with just the main.alan file, trying to work with just one massive file can get cumbersome. It’s a good idea to divide your source code into multiple files with meaningful names for each file. Fortunately, the Alan IDE makes the process quick and easy:   
+While it’s possible to create a large game with just the main.alan file, trying to work with just one massive file can get cumbersome. It’s a good idea to divide your source code into multiple files with meaningful names for each file. Fortunately, the Alan IDE makes the process quick and easy:
 
 . In the Project Explorer, right-click on the project name to get the drop-down menu, and then select *New/File* to get the New File dialog box.
 
@@ -321,16 +321,16 @@ While it’s possible to create a large game with just the main.alan file, tryin
 
 [IMPORTANT]
 ====
-Every file in a project that contains ** _source code_**  you intend to be part of your game, must end with the .i filename extension. Other files, such as .txt files, can be in the project and used for notes, reference material, and so forth, but they won't be complied into the game. 
+Every file in a project that contains ** _source code_**  you intend to be part of your game, must end with the .i filename extension. Other files, such as .txt files, can be in the project and used for notes, reference material, and so forth, but they won't be complied into the game.
 ====
 
 . Click the *Finish* button. The file will appear in the Project Explorer as a new file in the project.
 
-. In the Project Explorer, double-click the main *.alan* file to open it in the editor for editing. 
+. In the Project Explorer, double-click the main *.alan* file to open it in the editor for editing.
 
 . On a line by itself, somewhere prior the Start section, enclose this statement in single quotes, *IMPORT <filename>*, and end the line with a period.
 
-For example, with a file named _L sand_cave.i_ you would do this: 
+For example, with a file named _L sand_cave.i_ you would do this:
 
 image::images/import_sand_cave-web-200.png[]
 
@@ -343,22 +343,22 @@ There is no limit to the number of files you can have in a project. For example,
 
 === Closing an open project
 
-You don't have to close a project between work sessions, and it is entirely possible to have multiple open projects in the Alan IDE workspace. However, it is sometimes a good idea to close an open project. For example, this author likes to keep just the current, active project open between work sessions because the editor could well have multiple tabs open on files from multiple open projects, which means that you can easily edit a file from the wrong project. (It has happened.) 
+You don't have to close a project between work sessions, and it is entirely possible to have multiple open projects in the Alan IDE workspace. However, it is sometimes a good idea to close an open project. For example, this author likes to keep just the current, active project open between work sessions because the editor could well have multiple tabs open on files from multiple open projects, which means that you can easily edit a file from the wrong project. (It has happened.)
 
-Over in the Project Explorer, right-click a project, and select *Close Project* from the drop-down menu to close the project. In response, the toggle button immediately to the left of the project name will disappear. 
+Over in the Project Explorer, right-click a project, and select *Close Project* from the drop-down menu to close the project. In response, the toggle button immediately to the left of the project name will disappear.
 
 === Opening a closed project
 
-When you sit down at the computer to continuing working on a game with the Alan IDE, you will typically have to open an existing project that you closed when you ended a previous work session. 
+When you sit down at the computer to continuing working on a game with the Alan IDE, you will typically have to open an existing project that you closed when you ended a previous work session.
 
-* In the Project Explorer, right-click a project and select *Open Project* from the drop-down menu to open the project. 
+* In the Project Explorer, right-click a project and select *Open Project* from the drop-down menu to open the project.
 
 In response, you will see a toggle button immediately to the left of the project name. That toggle tells you that the project is open.
 
 
 === Listing the files in a project
 
-Over in the Project Explorer, click on the toggle button immediately to the left of an open project to expand the project and display a list of the files in that project. 
+Over in the Project Explorer, click on the toggle button immediately to the left of an open project to expand the project and display a list of the files in that project.
 
 === Opening a project file for editing
 
@@ -370,7 +370,7 @@ In the Editor, right-click on the tab for a file to get the dropdown menu and se
 
 === Saving and Compiling your source code
 
-On the IDE menu bar, click on **File**, and select either _Save_ or __Save All__. The IDE will save your edits in the open project file (or files) and compile the game to create (or overwrite) an *.a3c* game file, which then appears in the Project Explorer. 
+On the IDE menu bar, click on **File**, and select either _Save_ or __Save All__. The IDE will save your edits in the open project file (or files) and compile the game to create (or overwrite) an *.a3c* game file, which then appears in the Project Explorer.
 
 [TIP]
 ====
@@ -455,7 +455,7 @@ It is a very good idea to back up the project prior to deleting it from the Alan
 
 When both files were created with the Alan IDE, and located within projects in the workspace, simply open both files in the Editor, then copy-paste the code.
 
-If one of the files was created with an external editor outside the Alan IDE, the process is a little different. In this case, just open that file with the external editor, and copy the code to the clipboard. Then, in the Alan IDE, open the destination file and paste the code into it. 
+If one of the files was created with an external editor outside the Alan IDE, the process is a little different. In this case, just open that file with the external editor, and copy the code to the clipboard. Then, in the Alan IDE, open the destination file and paste the code into it.
 
 [NOTE]
 ====
@@ -470,7 +470,7 @@ The external file must must be a plain text (.txt) file.
 
 === Importing an existing project into the workbench
 
-There are occasions when you wish to work on an existing project you have in storage. For example, you might want to fix bugs that were reported after you have released a game. 
+There are occasions when you wish to work on an existing project you have in storage. For example, you might want to fix bugs that were reported after you have released a game.
 
 . Over in the Project Explorer, right-click somewhere in the white space outside the list of projects to bring up the popup menu, then select **Import** to bring up the _Import_ dialog box.
 
@@ -526,7 +526,7 @@ The default colors for highlighting the Alan source code in the IDE editor work 
 
 === Showing line numbers
 
-You really do not need line numbers in the IDE Editor, but they are sometimes useful if you are troubleshooting your code with the help of an expert and wish to point out specific lines in your code, or maybe you just want to refer to specific lines in your code comments. 
+You really do not need line numbers in the IDE Editor, but they are sometimes useful if you are troubleshooting your code with the help of an expert and wish to point out specific lines in your code, or maybe you just want to refer to specific lines in your code comments.
 
 . In the IDE menu bar, click on the *Edit* button to bring up the dropdown menu.
 
@@ -549,24 +549,3 @@ You really do not need line numbers in the IDE Editor, but they are sometimes us
 . Change the *Binding* for each key as desired.
 
 . Click the *OK* button.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-

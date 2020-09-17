@@ -176,9 +176,9 @@ Is bello :: mundi z?
 
 [qanda]
 Clairvius Narcisse, an ante?::
-	The unleashed virus est, et iam zombie mortui ambulabunt super terram.
+  The unleashed virus est, et iam zombie mortui ambulabunt super terram.
 Is bello mundi z?::
-	Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse.
+  Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse.
 
 
 // ******************************************************************************
