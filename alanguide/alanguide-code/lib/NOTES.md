@@ -8,14 +8,14 @@ Some Usage Notes for "std.i"
 Three Steps to Using the Library
 ================================
 
-1. Store all the "[std.i]" library files in a subdirectory or file folder 
+1. Store all the "[std.i]" library files in a subdirectory or file folder
    separate from your game's files
 
 2. Add an `include` statement for the main "[std.i]" file at the top of your
    game's main sourcecode file.
    ("[std.i]" contains include statements for all the rest of the library ".i"
    files so they're automatically added to your game.)
- 
+
     An example showing the start of your game sourcecode file might be
 
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -42,7 +42,7 @@ Study the Library Files
 
 The documentation for the std.i library consists of:
 
-  * the "[README.md]" file, 
+  * the "[README.md]" file,
   * the "[INDEX.md]" file,
   * this "[NOTES.md]" file.
 
@@ -53,7 +53,7 @@ how things should be defined in your own code is to check how the relevant verbs
 Use the "[INDEX.md]" file to find which ".i" files contain the attributes or
 verbs or whatever that you wish to investigate.
 
-For example, perhaps you have an object that you want to be able to talk. 
+For example, perhaps you have an object that you want to be able to talk.
 You note while play-testing that only actors can talk in games using the
 "std.i" library but you don't want to make your object an actor because, other
 than being a talkative object, it is otherwise more convenient to code it as an
@@ -69,14 +69,14 @@ solved.
 Modify the Library Files When You Have To
 =========================================
 
-Keep the library ".i" files in their own subdirectory or file folder. If you 
-find you need to modify the contents of a ".i" file (as you probably will 
-because most games will have some unique characteristic or another that's 
-not catered for by the standard library behaviour) use a *copy* of that ".i" 
-file stored in your game's sourcecode directory. (See the [README] file for 
-a fuller explanation of why you should do this.) 
+Keep the library ".i" files in their own subdirectory or file folder. If you
+find you need to modify the contents of a ".i" file (as you probably will
+because most games will have some unique characteristic or another that's
+not catered for by the standard library behaviour) use a *copy* of that ".i"
+file stored in your game's sourcecode directory. (See the [README] file for
+a fuller explanation of why you should do this.)
 
-Don't hesitate to modify the ".i" files to meet your requirements. (But do 
+Don't hesitate to modify the ".i" files to meet your requirements. (But do
 modify a copy, not the original file — keep the originals for reference.)
 
 For example, one ".i" file which you'll almost certainly want to modify is the
@@ -89,9 +89,9 @@ take a copy the original file from the library's subdirectory into your game's
 subdirectory and then edit that copy of "help.i" to make the help and credits
 verbs display the text you want them to.
 
-If you find bugs or stupid things in the library or you have ideas to 
-expand or improve it, let the library maintainer know. The library is in the 
-early stages of development so there is certain to be many areas requiring 
+If you find bugs or stupid things in the library or you have ideas to
+expand or improve it, let the library maintainer know. The library is in the
+early stages of development so there is certain to be many areas requiring
 improvement.
 
 
@@ -99,9 +99,9 @@ improvement.
 Equivalent Verbs
 ================
 
-Note that some verbs have different syntaxes but do the same thing (eg: 
-"look at thing", "examine thing".) Such verbs should be listed together in 
-`DOES` statements in your game sourcecode so that the player can use any of 
+Note that some verbs have different syntaxes but do the same thing (eg:
+"look at thing", "examine thing".) Such verbs should be listed together in
+`DOES` statements in your game sourcecode so that the player can use any of
 the different syntaxes.
 
 Eg:
@@ -143,11 +143,11 @@ will have to be handled specially since the default is to put an article
 are to use the predefined class `named_actor` which specifies that these
 articles should be emtpy
 
-Eg: 
+Eg:
 
 > x fred
 
-should return a phrase with Fred's name with a capital first letter 
+should return a phrase with Fred's name with a capital first letter
 
 > You see nothing unusual about Fred.
 
@@ -175,24 +175,24 @@ case before entered into the dictionary of player words.
 Inventory and Container Capacity Limits
 =======================================
 
-All objects and actors have a default `weight` of 5 and of 50 respectively. 
-I think of the default object weight of '5' being about equivalent to that 
-of a book. You can give objects and actors different weights to reflect 
-their 'real world' sizes to ensure they are or aren't easy to pick up or to 
+All objects and actors have a default `weight` of 5 and of 50 respectively.
+I think of the default object weight of '5' being about equivalent to that
+of a book. You can give objects and actors different weights to reflect
+their 'real world' sizes to ensure they are or aren't easy to pick up or to
 put in containers of various sizes.
 
 The default capacity limits for carrying and wearing are ten items and a maximum
 total weight of 50. You can tweek these limits in the "[invent.i]" file to meet
 the requirements for your game.
 
-If you have container objects in your game you should give them capacity 
-limits appropriate to their sizes — eg: a chocolate box might require a 
-weight limit of 4 so that even objects of the default size can't be put in 
+If you have container objects in your game you should give them capacity
+limits appropriate to their sizes — eg: a chocolate box might require a
+weight limit of 4 so that even objects of the default size can't be put in
 it. Eg:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The cbox Isa object Name Chocolate Box At somewhere
-  Is 
+  Is
     Not closed.
     closeable.
 
@@ -203,7 +203,7 @@ The cbox Isa object Name Chocolate Box At somewhere
     weight 4 Else
       "You cannot fit that item in there."
 
-  Description 
+  Description
     "etc etc....
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -212,10 +212,10 @@ The cbox Isa object Name Chocolate Box At somewhere
 Scenery Objects
 ===============
 
-By default objects have several attributes that allow the player to 
-manipulate the object in various ways. For some objects at a location these 
-verbs (eg 'push obj', etc) may not make any sense. So, for example, make 
-distant but examinable objects not takeable, pushable, touchable, or 
+By default objects have several attributes that allow the player to
+manipulate the object in various ways. For some objects at a location these
+verbs (eg 'push obj', etc) may not make any sense. So, for example, make
+distant but examinable objects not takeable, pushable, touchable, or
 searchable. This is actually already defined in the class `scenery`. Eg:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -236,7 +236,7 @@ End The mountains.
 The mountains will then be:
 
 ~~~~~~~~~~~~~~~~~~~
-  Is 
+  Is
     Not searchable.
     Not takeable.
     Not pushable.
@@ -247,13 +247,13 @@ The mountains will then be:
 ----------------------------
 
 Stephen Griffiths (<sg@xtra.co.nz>), June 2002.
- 
+
 Updated by Thomas Nilsson, Jan 2004.
 
 Converted to markdown by Tristano Ajmone, April 2019.
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [NOTES.md]: ./NOTES.md

@@ -1,6 +1,6 @@
 
 INDEX over the Alan Library
-=========================== 
+===========================
 
 Library Version 0.4.1 -- June, 2002
 
@@ -10,7 +10,7 @@ There are two indices here. Each is divided into categories
 in alphabetical order, the second in the order of the file they are
 defined in.
 
-The purpose of this index is to act as a roadmap to the library showing 
+The purpose of this index is to act as a roadmap to the library showing
 you at a glance what is defined in the library and where to go to find
 out details about each definition.
 
@@ -478,7 +478,7 @@ File order:
 | `nowhere` | [nowhere.i] |
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [README]: ./README.md

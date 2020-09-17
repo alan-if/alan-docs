@@ -36,7 +36,7 @@ In order to edit the diagram's sourcefile, or to run the scripts in this folder,
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [Dia]: http://dia-installer.de/ "Visit Dia's website"

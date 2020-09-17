@@ -22,9 +22,9 @@ Laying out a ground plan and noting down the pending tasks to finish porting to 
     - [Added Features](#added-features)
         - [Downloadable Assets](#downloadable-assets)
 - [2. Recreate Tutorial Code](#2-recreate-tutorial-code)
-    - [Reconstruct _TV TIME!_ Source](#reconstruct-_tv-time_-source)
+    - [Reconstruct _TV TIME!_ Source](#reconstruct-tv-time-source)
         - [Fix Possible Bugs](#fix-possible-bugs)
-    - [Reconstruct Intermediate _TV TIME!_ Sources](#reconstruct-intermediate-_tv-time_-sources)
+    - [Reconstruct Intermediate _TV TIME!_ Sources](#reconstruct-intermediate-tv-time-sources)
     - [Add StdLib 0.6.2](#add-stdlib-062)
         - [Lib Fixes](#lib-fixes)
         - [Obsolete Links and Info](#obsolete-links-and-info)
@@ -87,7 +87,7 @@ This document is actually a book with parts, so its structure should be reorgani
 
 - [ ] Divide book into parts.
 
-> __NOTE__ — The document is already organized in Parts, I just need to check that everything is fine. 
+> __NOTE__ — The document is already organized in Parts, I just need to check that everything is fine.
 
 ## Typography
 
@@ -165,7 +165,7 @@ Provide in the _B.Guide_ a link to download a Zip archive of the `alanguide/alan
 I've also considered other ways then using a script to create a Zip archive and store in the repository, via some service that could create the Zip file on the demand:
 
 - [ ] Via @KinoLien’s [GitZip]  (the new GitHub API requires tokens, maybe no longer a viable solution).
-- [ ] Use one of the services suggested by [RawGit]  (which is shutting down shortly): 
+- [ ] Use one of the services suggested by [RawGit]  (which is shutting down shortly):
     + [ ]  [JsDelivr]
     + [ ]  [unpkg]
 
@@ -236,7 +236,7 @@ During the tutorial there are various points in which an intermediate version of
     + [ ]  [_§24. Compile and Play It!_][§24]
     + [ ]  [_§40. Compile and Play It!_][§40]
     + [ ]  [_§45. Compile and Play It!_][§45]
-- [ ] Add them to UTF-8 converter script and `include::` them in tutorial. 
+- [ ] Add them to UTF-8 converter script and `include::` them in tutorial.
 
 ## Add StdLib 0.6.2
 
@@ -253,13 +253,13 @@ At the same time, I've preserved some default attributes and CHECKS from v0.6.1 
 
 - `lib/open.i`
     + Restored the `And obj1 Is openable` CHECK.
-- `lib/people.i` 
+- `lib/people.i`
     + Restored in `person` class definition:
         * `Is Not named.`
         * Customized `Description` based on `named` attribute.
 - `lib/talk.i`
     + Replaced `$o` with `$1`, for the former parameter special symbol is now
-      depracated and might not be safe to use in future versions of Alan. 
+      depracated and might not be safe to use in future versions of Alan.
 
 
 ### Obsolete Links and Info
@@ -301,7 +301,7 @@ The tutorial requires changing the original library files, so a copy of Lib 0.6.
         * as instructed in Sec. _The Cutting Edge_:
             - Tweak `open_with` VERB.
     + `mylib/nowhere.i`
-        + Comment out unused directions and add custom `nodirection` definition, as instructed in _32. Cardinal Rules_. 
+        + Comment out unused directions and add custom `nodirection` definition, as instructed in _32. Cardinal Rules_.
     + `mylib/scenery.i`
         * Tweak as instructed in Sec. _What "Isa Scenery"?_.
     + `mylib/push.i`
@@ -418,7 +418,7 @@ In some places, code is highlighted in yellow as a means to draw attention to sp
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [ALAN Standard Library 2]: https://github.com/AnssiR66/AlanStdLib "Visit the official repository of the ALAN Standard Library 2"

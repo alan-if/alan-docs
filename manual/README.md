@@ -44,8 +44,8 @@ Before the new version of the _Alan Manual_ is ready, some pending tasks must be
 
 - [ ] __[AsciiDoc Conversion]__ ([milestones][ADoc miles]) — porting from ODT to ADoc, reconstructing styles and lost formatting and structure.
 - [ ] __[PDF Toolchain Setup]__ ([milestones][PDF Chain miles]):
-    + [x] organize all the tools, scripts to convert from AsciiDoc to DocBook and then to PDF via asciidoctor-fopub. 
-    + [ ] customize FOP template to produce a PDF version with custom styling. 
+    + [x] organize all the tools, scripts to convert from AsciiDoc to DocBook and then to PDF via asciidoctor-fopub.
+    + [ ] customize FOP template to produce a PDF version with custom styling.
 - [ ] __[HTML Toolchain Setup]__:
     + [ ] organize all the tools, scripts to convert to HTML.
     + [ ] ([milestones][HTML template miles]) customize template to produce an HTML version with custom styling.
@@ -91,7 +91,7 @@ The porting work is pretty much finished, a couple of (rather long) chapters sti
 - [x] _Appendix I: Copying Conditions_
 - [x] _Index_
 
-All lost cross-references, styles, the document sections hierarchy and header, as well as the Index and its entries, have all been reconstructed. The remaining work consists mainly in polishing up, ensuring that every chapter is compliant to AsciiDoc. 
+All lost cross-references, styles, the document sections hierarchy and header, as well as the Index and its entries, have all been reconstructed. The remaining work consists mainly in polishing up, ensuring that every chapter is compliant to AsciiDoc.
 
 An here follows a task list of the remaining porting tasks:
 
@@ -111,7 +111,7 @@ An here follows a task list of the remaining porting tasks:
 
 The PDF toolchain employs [asciidoctor-fopub] to convert from DocBook to PDF.
 
-The DocBook XSL template is now looking good and the output PDF documents are ready for distribution  
+The DocBook XSL template is now looking good and the output PDF documents are ready for distribution
 
 - [x] Customize XSL styles (See [Issue #14][i14]).
 
@@ -182,7 +182,7 @@ In order to auto-generate the compiler output or game transcripts shown in some 
 - [`PDF_BUILD.bat`][PDF_BUILD.bat] — batch script to create `manual.pdf` document (currently ignored in repository).
 
 > __PDF CONVERSION NOTE__ — The [`PDF_BUILD.bat`][PDF_BUILD.bat] script now uses [asciidoctor-fopub] to create the PDF version of the Manual. You'll need to setup it up on your machine and add it to your system Path in order to run the conversion script.
-> 
+>
 > See: [Instructions on setting up asciidoctor-fopub].
 
 [Instructions on setting up asciidoctor-fopub]: ../README.md#asciidoctor-fopub
@@ -203,7 +203,7 @@ An [HTML Live Preview] of the converted document is available via [GitHub & BitB
 
 Some files to help editing the manual:
 
-- [`Alan_Keywords.txt`](./Alan_Keywords.txt) — Alan keywords list in various formats. 
+- [`Alan_Keywords.txt`](./Alan_Keywords.txt) — Alan keywords list in various formats.
 - [`Cross-References.md`][Cross-References.md] — Look-up table for cross-reference links.
 - [`Manual_Index.txt`][Index txt] — Manual Index in plaintext (for reference).
 - [`Manual_TOC.txt`][TOC txt] — Manual TOC in plaintext (for reference).
@@ -242,7 +242,7 @@ Although some styles were lost in the process, the final ADoc was a rather good 
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [alan-xsl-fopub]: https://github.com/alan-if/alan-xsl-fopub "Visit the alan-xsl-fopub repository on GitHub"

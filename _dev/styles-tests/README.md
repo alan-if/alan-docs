@@ -81,7 +81,7 @@ The preview and tests documents are not yet completed, here are some pending tas
 ## Scripts
 
 - [ ] __TWEAK BUILD SCRIPT__. The introduction of cutom attributes via CLI will require per-file invocations instead of FOR loops, since since docs will have different parameters.
-- [X] __BUILD ALL__. Split the current BUILD script in two separate scripts, one for each format, and then just invoke them from here: 
+- [X] __BUILD ALL__. Split the current BUILD script in two separate scripts, one for each format, and then just invoke them from here:
     + [X] __HTML BUILD__. Add separate script for building only html version of the docs, to simplify testing (PDF creation takes too long).
     + [X] __PDF BUILD__. Add separate script to build PDFs.
 
@@ -106,7 +106,7 @@ The preview and tests documents are not yet completed, here are some pending tas
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [XSLTHL]: https://sourceforge.net/projects/xslthl/ "Visit XSLTHL project at Sourceforge"

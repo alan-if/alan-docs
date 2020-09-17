@@ -58,7 +58,7 @@ We strongly reccomend reading the _[AsciiDoc Recommended Practices]_ guidelines.
 
 From _[AsciiDoc Recommended Practices](https://asciidoctor.org/docs/asciidoc-recommended-practices/#one-sentence-per-line)_:
 
-> Don't wrap text at a fixed column width. Instead, put each sentence on its own line, a technique called _sentence per line_. This technique is similar to how you write and organize source code. 
+> Don't wrap text at a fixed column width. Instead, put each sentence on its own line, a technique called _sentence per line_. This technique is similar to how you write and organize source code.
 
 Among the (many) benefits of this approach in terms of collaborative editing and text maintainance, it also prevents lots of headaches when it comes to diffing source documents (and in all Git related diffing operations and logs).
 
@@ -123,7 +123,7 @@ Follow and contribute to the discussion on [formatting and sytling issues][Issue
 [i2]: https://github.com/alan-if/alan-docs/issues/2 "Issue #2 — Code Styling Conventions"
 [i5]: https://github.com/alan-if/alan-docs/issues/5 "Issue #5 — Index Reconstruction"
 
-<!-- 
+<!--
 - [#XX — YYY][iXX]
 [iXX]: https://github.com/alan-if/alan-docs/issues/XX "Issue #XX — YYY"
 -->
@@ -149,7 +149,7 @@ Some useful links...
 - [Capitalization][WP Capitalization]
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [Issues]: https://github.com/alan-if/alan-docs/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22styling+conventions%22+ "View all Issues on 'syling conventions'"
@@ -168,7 +168,7 @@ Some useful links...
 
 [WP Capitalization]: https://en.wikipedia.org/wiki/Capitalization "See Wikipedia page 'Capitalization'"
 
-<!-- 
+<!--
 [WP XXX]: https://en.wikipedia.org/wiki/XXX "See Wikipedia: 'XXX'"
 -->
 

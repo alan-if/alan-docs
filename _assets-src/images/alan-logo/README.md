@@ -11,7 +11,7 @@ This folder contains the Alan logo in vector format, reconstructed by Tristano A
 > __TIFF NOTE__ — The "`Alan-Logo.tif`" file was created by saving the `.psd` file as TIFF (using ZIP compression) within Photoshop; therefore, its contents are the same as the Photoshop file. It was provided as a convenience for those working with image applications other than Photoshop. Beware that not every application that recognizes the TIFF format supports all the features of this format.
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [Logo PSD]:  ./Alan-Logo.psd "Alan Logo in PSD file format"

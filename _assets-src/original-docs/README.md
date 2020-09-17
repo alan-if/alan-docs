@@ -52,11 +52,11 @@ Then, with the advent of the Alan Docs project, Tristano took on the porting and
 
 New AsciiDoc version located in [`../../alanguide/`](../../alanguide/) folder.
 
-The AsciiDoc still needs some cleaning up, but the correct Library version required to compile the tutorial sources was found and added to the project, and the Alan sources of the tutorial reconstructed and fixed to work with the current version of Alan. 
+The AsciiDoc still needs some cleaning up, but the correct Library version required to compile the tutorial sources was found and added to the project, and the Alan sources of the tutorial reconstructed and fixed to work with the current version of Alan.
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [Alan repository]: https://github.com/alan-if/alan/tree/master/doc/ "View upstream 'doc/' folder on Alan repository at GitHub"

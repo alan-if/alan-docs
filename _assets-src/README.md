@@ -11,7 +11,7 @@ This folder contains the source files of the Alan documentation and their assets
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [Dia]: http://dia-installer.de/ "Visit Dia's website"

@@ -45,7 +45,7 @@ Links to the download pages of the tools required to setup the Alan IDE:
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [IDE Guide adoc]: ./ideguide.asciidoc

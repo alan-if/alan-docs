@@ -5,7 +5,7 @@ This folder stores assets that are (or might be) shared by multiple documents �
 # Assets Tree
 
 - [`/alan-xsl-fopub/`](./alan-xsl-fopub/) — submoduled [alan-xsl-fopub] repository, for XSL FOP template:
-    + [`/xsl-fopub/`](./alan-xsl-fopub/xsl-fopub/) — XSL PDF Stylesheets used by asciidoctor-fopub. 
+    + [`/xsl-fopub/`](./alan-xsl-fopub/xsl-fopub/) — XSL PDF Stylesheets used by asciidoctor-fopub.
     + [`/fonts/`](./alan-xsl-fopub/fonts/) — required fonts for PDF conversion.
 - [`/hjs/`](./hjs/) — custom highlight.js build for Alan.
 - [`/hl/`](./hl/) — assets for the Asciidoctor Highlight toolchain.
@@ -26,7 +26,7 @@ For detailed info on how to use Git submodules, see:
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [alan-xsl-fopub]: https://github.com/alan-if/alan-xsl-fopub "Visit the alan-xsl-fopub repository on GitHub"

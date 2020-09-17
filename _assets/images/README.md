@@ -38,7 +38,7 @@ This diagram of the predefined classes was created using [Dia Diagram Editor], a
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [Dia]: http://dia-installer.de/ "Visit Dia's website"

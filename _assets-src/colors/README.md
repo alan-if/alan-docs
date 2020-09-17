@@ -104,7 +104,7 @@ The color scheme employed is based on the [new default console scheme of Windows
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [new default console scheme of Windows 10]: https://blogs.msdn.microsoft.com/commandline/2017/08/02/updating-the-windows-console-colors/ "Read more on MSDN..."

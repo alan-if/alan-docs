@@ -25,7 +25,7 @@ then ported to Alan 3. It's revival is mainly for historical reasons, to allow
 compiling old adventures that depend on it.
 
 The sources of Library v0.6.2 were recovered from the [ALAN repository] on
-Bitbucket (were the Library was originally hosted), from [commit c44766fa] 
+Bitbucket (were the Library was originally hosted), from [commit c44766fa]
 (2017-04-17), which was the last commit before its removal from the repository.
 
 [ALAN repository]: https://bitbucket.org/alanif/alan
@@ -86,7 +86,7 @@ Code Fixes
 
     This was actually one of the intended changes in v0.6.2, as mentioned in
     the source header comments:
-          
+
         changed 'the Worn' from a 'thing' to an 'entity'
 
     It looks like something went wrong during the upstream commit. In any case,
@@ -95,7 +95,7 @@ Code Fixes
 
 * `talk.i`
     * Replaced `$o` with `$1`, for the former special parameter symbol is now
-      depracated and might not be safe to use in future versions of Alan. 
+      depracated and might not be safe to use in future versions of Alan.
 
 
 
@@ -108,7 +108,7 @@ present in Lib v0.6.2:
 
 * `open.i`
     * Restored the `AND obj1 IS openable` CHECK.
-* `people.i` 
+* `people.i`
     * Restored in `person` class definition:
         * `IS NOT named.`
         * Customized `DESCRIPTION` based on `named` attribute.
@@ -131,21 +131,21 @@ Some references and links were no longer valid and were updated accordingly.
     * The text of the `credits` verb contained some outdated or obsolete info:
         * Changed "Thomas Nilsson" to "Thomas Nilefalk"
           (Thomas recently changed his surname to Nilefalk).
-        
+
         * The old email contact
-          
+
             <thomas.nilsson@progindus.se>
-          
+
             was replaced with the new email from Alan website:
-          
+
             <thomas@alanif.se>.
-        
+
         * ALAN website link: replaced the old (now dead) link
-          
+
             http://www.welcome.to/alan-if
-          
+
             with the current (new) Alan website link
-          
+
             https://www.alanif.se/
 
 
@@ -270,16 +270,16 @@ local modifications, eg:
 
     C:\MY\GAME> alan -include \ALAN\LIBRARY game.alan
 
-This is the reasoning behind the multi-file library structure. 
+This is the reasoning behind the multi-file library structure.
 
 ----
 
-The library is a work in progress. Comments and expansions to this 
+The library is a work in progress. Comments and expansions to this
 library are most welcome!
 
 The 'proposed standard library was written by Thomas Nilsson
-<thomas.nilsson@progindus.se>. This version of the library has been 
-updated by Stephen Griffiths (sg@xtra.co.nz). Please email bug reports 
+<thomas.nilsson@progindus.se>. This version of the library has been
+updated by Stephen Griffiths (sg@xtra.co.nz). Please email bug reports
 and suggestions to Stephen.
 
 The library was converted to V3 with some radical updates, such as
@@ -322,7 +322,7 @@ sprayed all over library - mostly in put.i but put_down would be in take.i
 coz its synonomous with 'drop' amd put_on in wear.i (as in "put on hat" as
 opposed to put_on as in "put hat on hat-stand")
 
-       
+
 
 My Changes to 0.0(2)
 --------------------
@@ -357,7 +357,7 @@ take.i
 ------
     - concerned about 'can't take people' msg in case the actors aren't
     people (could be monsters, animals); can't think of anything good to
-    replace it with though - just "You can only take objects."  (no change made) 
+    replace it with though - just "You can only take objects."  (no change made)
     - combined the pickup verbs with take as definition is the same
     - changed "u" to "up" in syntax of pick_up verbs to match the
     redefinition of direction words in nowhere.i
@@ -370,8 +370,8 @@ open.i
     - is it necessary to have openable AND closeable attributes? I'm trying
     to think of something that could be one but not the other. I think you
     could just test the closeable attribute to see if something can be
-    opened (no change made) 
-    - same concern about assuming non-objects are people as take.i  (no change made) 
+    opened (no change made)
+    - same concern about assuming non-objects are people as take.i  (no change made)
     - changed 'close' to 'open' in 2nd class-check msg for open_with syntax
 
 lock.i

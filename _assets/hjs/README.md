@@ -49,8 +49,8 @@ In the future, more syntaxes might be included if needed in any of the Alan docu
         * Redistributions in binary form must reproduce the above copyright
           notice, this list of conditions and the following disclaimer in the
           documentation and/or other materials provided with the distribution.
-        * Neither the name of highlight.js nor the names of its contributors 
-          may be used to endorse or promote products derived from this software 
+        * Neither the name of highlight.js nor the names of its contributors
+          may be used to endorse or promote products derived from this software
           without specific prior written permission.
 
     THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND ANY
@@ -66,7 +66,7 @@ In the future, more syntaxes might be included if needed in any of the Alan docu
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [highlight.js]: https://highlightjs.org/ "Visit highlight.js website"

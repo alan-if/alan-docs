@@ -40,7 +40,7 @@ While studuying the tutorial, the reader will need to create his/her own copy of
 
 # Alan Library v0.6.2
 
-The original _Beginner's Guide_ uses ALAN Library v0.6.1 throughout the tutorial examples, which was an old version of the ALAN Library ported from ALAN 2, and now superseeded by the newer [ALAN Standard Library 2] by [Anssi Räisänen]. 
+The original _Beginner's Guide_ uses ALAN Library v0.6.1 throughout the tutorial examples, which was an old version of the ALAN Library ported from ALAN 2, and now superseeded by the newer [ALAN Standard Library 2] by [Anssi Räisänen].
 
 In order to preserve usability of the code examples, I've included here a full copy of the ALAN Library v0.6.2, which was its latest version before the shift to Library v1, and made a few tweaks to make it closer to the original v0.6.1 used in the tutorial but keep the ALAN compatibility chages of v0.6.2 (more details below).
 
@@ -92,7 +92,7 @@ From what I've gathered, the evolution of the ALAN standard libraries is roughly
 - The original __ALAN Library__, up to v0.4.0 (2001–2002), was designed for ALAN 2.
 - __ALAN Library v0.4.1__ was ported to work with ALAN 3, and was updated up to v0.6.2 (2002–2007).
 - __[ALAN Library 1]__ (2010–2011) was a new library design (redesign?) by [Anssi Räisänen], where the library code was organized into four main sumodules.
-- The __[ALAN Standard Library 2]__ (2016–) was designed by [Anssi Räisänen], this being a new library altogether, targeting specifically ALAN 3 new features and introducing extensive features in formally organized library structure. This is the current ALAN Library in use today, v2.1 being the latest release. 
+- The __[ALAN Standard Library 2]__ (2016–) was designed by [Anssi Räisänen], this being a new library altogether, targeting specifically ALAN 3 new features and introducing extensive features in formally organized library structure. This is the current ALAN Library in use today, v2.1 being the latest release.
 
 The original ALAN Library, up to v0.6.2 was the result of the collaborative joint effort of Göran Forslund, Stephen Griffiths and Thomas Nilsson (now Thomas Nilefalk). The [ALAN Library 1] was designed by [Anssi Räisänen]. The new [ALAN Standard Library 2]  (aka StdLib) is the work of [Anssi Räisänen].
 
@@ -112,7 +112,7 @@ The [ChangeLog](./lib/ChangeLog) for v0.6.2 mentions the following changes:
 
 invent.i : changed 'the Worn' from a 'thing' to an 'entity' (to make compatible with recent versions of Alan3)
 
-meta.i : remove q verb and made q synonym of 'quit' (no longer need a warning 
+meta.i : remove q verb and made q synonym of 'quit' (no longer need a warning
 about quit being not undoable because it is undoable in recent Alan3 versions)
 ```
 
@@ -170,7 +170,7 @@ Add To Every object
 End Add To.
 ```
 
-- `lib/people.i` 
+- `lib/people.i`
 
 Restored some default for the `person` class definition:
 
@@ -204,7 +204,7 @@ Also, it's not clear why the above CHECKs and defaults were removed (no other ch
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [ALAN Library 1]: https://www.alanif.se/download-alan-v3/download-library/library-v1-00 "Go to the download page of ALAN Library v1.0 on ALAN website"

@@ -95,14 +95,14 @@ For convenience, Tables have also been given a custom ID, which might be handier
 |      2.3 | [The principles for and relations between a game description ...][Fig 1] | `fig-game-compiler-terp` |
 |      2.4 | [Relationships between the predefined classes.][Fig 2]                   | `fig-predefined-classes` |
 
-<!-- 
+<!--
 | xx          | `<<xxxxxx>>`                       |                                |
 |   | xxx | `yyy` |
  -->
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 <!-- Project Files -->
