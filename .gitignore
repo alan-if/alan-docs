@@ -1,10 +1,10 @@
-################################################################################
-# Alan IF Documentation Project                                                #
-# https://github.com/tajmone/alan-docs                                         #
-################################################################################
-
+##########################################
+#  Alan IF Documentation Project         #
+#  https://github.com/alan-if/alan-docs  #
+##########################################
 
 *.tmp
+
 ## ==========
 ## Alan Files
 ## ==========
@@ -46,7 +46,7 @@ ___*.*
 
 
 # ==============================================================================
-#                              MISC IGNORE PATTERNS                             
+#                              MISC IGNORE PATTERNS
 # ==============================================================================
 # Based on ".gitignore" created by:
 # https://www.gitignore.io/api/windows,linux,macos,purebasic

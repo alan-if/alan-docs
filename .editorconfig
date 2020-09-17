@@ -1,12 +1,93 @@
+##########################################
+#  Alan IF Documentation Project         #
+#  https://github.com/alan-if/alan-docs  #
+##########################################
+
 root = true
 
-# Common settings for all Alan files
-[*.{alan,i,a3sol,a3log}]
-indent_style = space
-indent_size = 2
-charset = latin1
+# ==============================================================================
+#                               ALAN RELATED FILES
+# ==============================================================================
 
-# Additional settings for non-generated Alan files
+# Common settings for all Alan files
 [*.{alan,i,a3sol}]
+indent_style = space
+indent_size = unset
+charset = latin1
 trim_trailing_whitespace = true
 insert_final_newline = true
+
+; Skip encoding validation on some ALAA sources that contain non-ASCII chars,
+; because of EClint's buggy support of this feature, leading to false positive
+; error reports. (See #73)
+[alanguide/alanguide-code/tvtime.alan]
+charset = unset
+[_dev/styles-tests/{demo,snippets}.alan]
+charset = unset
+
+# ==============================================================================
+#                             ASCIIDOCTOR TOOLCHAIN
+# ==============================================================================
+# Asciidoctor and related assets of our build system...
+
+## AsciiDoc
+###########
+[*.{ad,adoc,asciidoc}]
+indent_size = unset
+indent_style = space
+end_of_line = unset
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# ==============================================================================
+#                                GENERIC SETTINGS
+# ==============================================================================
+
+## Repository Configurations
+############################
+[.{git*,editorconfig,*.yml}]
+end_of_line = lf
+indent_style = space
+indent_size = unset
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[.gitmodules]
+indent_style = tab
+
+
+## Batch Scripts
+################
+[*.{bat,cmd}]
+indent_style = space
+indent_size = unset
+end_of_line = crlf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+## Shell Scripts
+################
+[*.sh]
+end_of_line = lf
+indent_style = tab
+indent_size = unset
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+## Markdown GFM
+###############
+[*.md]
+indent_style = space
+indent_size = unset
+end_of_line = unset
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# EOF #
