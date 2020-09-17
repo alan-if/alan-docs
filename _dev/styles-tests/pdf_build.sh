@@ -16,10 +16,10 @@
 
 # Abort if script is being run in Bash for Windows:
 if [[ $(uname -s) == MINGW* ]];then
-  echo -e "\e[31m//////////////////////////////////////////////////////////"
-  echo -e "//\e[33m Asciidoctor-fopub won't work under Bash for Windows! \e[31m//"
-  echo -e "\e[31m//////////////////////////////////////////////////////////"
-  exit
+	echo -e "\e[31m//////////////////////////////////////////////////////////"
+	echo -e "//\e[33m Asciidoctor-fopub won't work under Bash for Windows! \e[31m//"
+	echo -e "\e[31m//////////////////////////////////////////////////////////"
+	exit
 fi
 
 echo "=============================================================================="
@@ -31,24 +31,24 @@ CURRDIR=$PWD
 ASSETSDIR="../../_assets/alan-xsl-fopub"
 
 for adocFile in *.asciidoc ; do
-  echo "Converting to DocBook: $adocFile"
-  asciidoctor \
-  --safe-mode unsafe \
-  --verbose \
-  -b docbook \
-  -d book \
-  -a data-uri! \
-  $adocFile
+	echo "Converting to DocBook: $adocFile"
+	asciidoctor \
+	--safe-mode unsafe \
+	--verbose \
+	-b docbook \
+	-d book \
+	-a data-uri! \
+	$adocFile
 done
 
 # Need to switch working directory to "//_assets/" for FOP:
 cd $ASSETSDIR
 
 for docbookFile in $CURRDIR/*.xml ; do
-  echo "Converting to PDF: $docbookFile"
-  fopub \
-    -t xsl-fopub \
-    $docbookFile
+	echo "Converting to PDF: $docbookFile"
+	fopub \
+		-t xsl-fopub \
+		$docbookFile
 done
 
 cd $CURRDIR

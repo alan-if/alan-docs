@@ -16,10 +16,10 @@
 
 # Abort if script is being run in Bash for Windows:
 if [[ $(uname -s) == MINGW* ]];then
-  echo -e "\e[31m//////////////////////////////////////////////////////////"
-  echo -e "//\e[33m Asciidoctor-fopub won't work under Bash for Windows! \e[31m//"
-  echo -e "\e[31m//////////////////////////////////////////////////////////"
-  exit
+	echo -e "\e[31m//////////////////////////////////////////////////////////"
+	echo -e "//\e[33m Asciidoctor-fopub won't work under Bash for Windows! \e[31m//"
+	echo -e "\e[31m//////////////////////////////////////////////////////////"
+	exit
 fi
 
 echo "=============================================================================="
@@ -31,18 +31,18 @@ CURRDIR=$PWD
 ASSETSDIR="../_assets/alan-xsl-fopub"
 
 asciidoctor \
-  --safe-mode unsafe \
-  --verbose \
-  -b docbook \
-  -d book \
-  -a data-uri! \
-  manual.asciidoc
+	--safe-mode unsafe \
+	--verbose \
+	-b docbook \
+	-d book \
+	-a data-uri! \
+	manual.asciidoc
 
 # Need to switch working directory to "//_assets/" for FOP:
 cd $ASSETSDIR
 
 fopub \
-  -t xsl-fopub \
-  $CURRDIR/manual.xml
+	-t xsl-fopub \
+	$CURRDIR/manual.xml
 
 cd $CURRDIR

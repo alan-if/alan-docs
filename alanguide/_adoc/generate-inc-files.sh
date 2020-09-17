@@ -16,21 +16,21 @@ echo -e "\e[97mby Tristano Ajmone, MIT License.                           $versi
 
 
 function alan2utf8 {
-  outfile=inc_$(basename ${1%.*}.utf8_alan)
-  echo -e "\e[90m------------------------------------------------------------------------------"
-  echo -e "PROCESSING: \e[93m$1"
-  echo -e "\e[90mCONVERTING: \e[34m$outfile"
-  iconv -f ISO-8859-1 -t UTF-8 $1 > $outfile
+	outfile=inc_$(basename ${1%.*}.utf8_alan)
+	echo -e "\e[90m------------------------------------------------------------------------------"
+	echo -e "PROCESSING: \e[93m$1"
+	echo -e "\e[90mCONVERTING: \e[34m$outfile"
+	iconv -f ISO-8859-1 -t UTF-8 $1 > $outfile
 }
 
 declare -a AlanSources=(
-  "../alanguide-code/tvtime.alan"
-  "../alanguide-code/lib/nowhere.i"
-  "../alanguide-code/lib/std.i"
-  )
- 
+	"../alanguide-code/tvtime.alan"
+	"../alanguide-code/lib/nowhere.i"
+	"../alanguide-code/lib/std.i"
+	)
+
 for infile in ${AlanSources[@]}; do
-   alan2utf8 $infile
+	alan2utf8 $infile
 done
 
 echo -e "\e[90m------------------------------------------------------------------------------"
