@@ -3,7 +3,7 @@ ECHO.
 
 ECHO.
 ECHO ==============================================================================
-ECHO Converting to HTML ...                  
+ECHO Converting to HTML ...
 ECHO ==============================================================================
 FOR %%i IN (*.asciidoc) DO (
     CALL :conv2adoc %%i
