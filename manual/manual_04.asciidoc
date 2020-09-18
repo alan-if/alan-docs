@@ -41,8 +41,8 @@ A comment starts with double hyphens (`--`) and extends to the end of the line.
 An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance.
 Identifiers (((identifier, lexical definition))) may only be composed of letters, digits and underscores.
 The first character must be a letter.
-
 (((BNF, rules of, identifier)))
+
 [source,bnf]
 --------------------------------------------------------------------------------
 identifier = letter {letter | digit | underscore}
@@ -51,9 +51,9 @@ identifier = letter {letter | digit | underscore}
 === Quoted Identifiers
 
 There is also a second kind of identifier, namely the quoted identifier.
-
 (((BNF, rules of, quoted identifier)))
 (((BNF, rules of, identifier, quoted)))
+
 [source,bnf]
 --------------------------------------------------------------------------------
 id = identifier
@@ -189,18 +189,16 @@ This is for example the case with verb names (unless a `Syntax` statement has be
 If these contain special characters, the player won't be able to refer to them in the typed input.
 
 
-
 == Numbers
 
 (((numbers, lexical definition)))
 Numbers in Alan are only integers and thus may consist only of digits.
-
 (((BNF, rules of, numbers)))
+
 [source,bnf]
 --------------------------------------------------------------------------------
 number = digit {digit}
 --------------------------------------------------------------------------------
-
 
 
 == Strings
@@ -210,8 +208,8 @@ The string is the main lexical component in an Alan source.
 This is how you describe the surroundings and events to the player.
 Strings, therefore, are easy to enter and consist simply of a pair of double quotes surrounding any number of characters.
 The text may include newline characters and thus may cover multiple lines in the source.
-
 (((BNF, rules of, strings)))
+
 [source,bnf]
 --------------------------------------------------------------------------------
 string = double_quote {any_character} double_quote
@@ -235,15 +233,13 @@ To get a (((double quotes))) double quote within strings repeat it (``"The sailo
 ================================================================================
 
 
-
-
 == Filenames
 
 It is possible to write one adventure using many source files, having different parts in different files, and thus giving an opportunity for some rudimentary kind of modularisation.
 The method for this is the `import` statement.
-
 (((BNF, rules of, IMPORT)))
 (((BNF, rules of, filenames)))
+
 [source,bnf]
 --------------------------------------------------------------------------------
 import = 'IMPORT' quoted_identifier '.'

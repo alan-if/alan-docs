@@ -25,8 +25,8 @@ For details on the actual rules, refer to the content of <<Language Reference>>.
 The ((BNF)) form divides the rules for structure of the input source by describing it in smaller parts, which may in turn be defined by other rules.
 For example, a rule might say that an *ADVENTURE* (in this case an Alan program) consists of options, declarations and a start section.
 This grammar rule would look like:
-
 (((BNF, rules of, adventure)))
+
 [source,bnf]
 --------------------------------------------------------------------------------
 adventure = [options] {declaration} start_section

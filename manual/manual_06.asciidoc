@@ -228,7 +228,6 @@ It also includes a lot of other features common to most adventure games.
 
 (((events, hints about)))
 (((EVENT, distant events)))
-
 An effect of the feature that output is not visible unless the hero is present is that the description of an `Event` might not always be presented to the player.
 
 [source,alan]
