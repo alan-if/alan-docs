@@ -40,18 +40,6 @@ Within each section, grammar rules are used to precisely define allowed formats.
 A description of how these rules should be interpreted can be found in <<Language Grammar>>.
 
 
-// @FIXME: The following line is supposed to suppress section numbering for the
-//         "General Rules" section, and then resume at the next section.
-//         But it only works with the HTML backend, while in the PDF created via
-//         asciidoctor-fopub it's not working, so all the section numbers are out
-//         of sync (PDF having 1 number added due to this section).
-//         I could try to make this Heading "discreete" and see it gets omitted
-//         from the numbering in the PDF -- but it would also exclude it from
-//         the TOC. Otherwise, the only solution is to remove the line and let
-//         this section be numbered like all others...
-:sectnums!:
-
-
 == General Rules
 
 The Alan language is divided into syntactic components of different kinds.
@@ -80,7 +68,6 @@ End Exit.
 
 Note that the first is terminated, but the second example is continued with a `Check`, and not terminated until the `End Exit`.
 
-:sectnums:
 
 
 == An Adventure

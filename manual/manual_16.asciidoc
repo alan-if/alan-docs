@@ -1,4 +1,3 @@
-:sectnums!:
 
 // *****************************************************************************
 // *                                                                           *
@@ -24,6 +23,10 @@ In practical terms this means that the licensing is chosen so that it should be 
 * acquire the source code for the Standard Version
 * modify the source code for private use
 * re-distribute compiled and/or source of a Modified Version provided they are done so under a compatible license with appropriate attribution *and* that the modification is described and made available, preferably by returning it to the Copyright Holder so that it can be merged into the Standard Version
+
+
+// Disable section numbering ...
+:sectnums!:
 
 // ------------------------------------------------------------------------------
 //                         Artistic License 2.0 >>> BEGIN
