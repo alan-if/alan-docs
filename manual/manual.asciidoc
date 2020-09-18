@@ -1,6 +1,6 @@
 :doctitle:  The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.92-PreReleaseBeta7
-:revdate:   August 7, 2019
+:revnumber: 0.1.96-PreReleaseBeta7
+:revdate:   September 1, 2019
 :revremark: AsciiDoc conversion work
 :doctype: book
 :encoding: utf-8
@@ -131,17 +131,19 @@ include::manual_15.asciidoc[]
 // ==============================
 include::manual_16.asciidoc[]
 
+:sectnums!:
+
+// Glossary
+// ========
+include::manual_17.asciidoc[]
+
 // Index
 // =====
 // We'll exclude it from HTML5 documents since that backend doesn't support it:
 ifeval::["{backend}" != "html5"]
 
-:sectnums!:
-
 [index]
 = Index
-
-:sectnums:
 
 endif::[]
 

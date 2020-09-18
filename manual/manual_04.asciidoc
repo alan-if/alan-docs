@@ -48,6 +48,8 @@ The first character must be a letter.
 identifier = letter {letter | digit | underscore}
 --------------------------------------------------------------------------------
 
+=== Quoted Identifiers
+
 There is also a second kind of identifier, namely the quoted identifier.
 
 (((BNF, rules of, quoted identifier)))
@@ -60,11 +62,37 @@ id = identifier
 quoted_identifier = quote {any_character} quote
 --------------------------------------------------------------------------------
 
-A ((quoted identifier)) starts and ends with single quotes and may contain any character except quotes (including spaces).
-By quoting any sequence of characters can become an identifier.
-A quoted identifier may also be used to make an identifier out of a reserved word such as `Look`.
-This is useful in the definition of the verb `look`.
-It would look like:
+A ((quoted identifier)) starts and ends with single quotes and may contain any character (including spaces) except single quotes -- if you need to include a single quote inside a quoted identifier, you must _escape it_ by doubling it, e.g.:
+
+// @TODO: Add xred to glossary "escaping" in above sentence ("must escape it"),
+// 		  when the entry is available.
+
+[source,alan, subs="+quotes"]
+--------------------------------------------------------------------------------
+The #'Bob''s House'# IsA location. -- ID will be printed as "Bob's House"
+End the.
+--------------------------------------------------------------------------------
+
+When the Alan compiler encounters two consecutive single quotes inside a quoted identifier, it will treat them as if they were one single quote which is part of the identifier, and not as a the single quote _delimiter_ indicating the end of the identifier.
+
+In the above example, the identifier will be printed as "`Bob's House`" in the actual game -- the enclosing single quote delimiters being ignored in print, and the two consecutive single quotes printed as one single quote.
+
+Any sequence of characters enclosed within single quotes can become an identifier, except inside strings (where single quotes are treated as ordinary printable characters).
+
+
+[NOTE]
+================================================================================
+A single-word identifier can be written within or without single quotes, indifferently (unless it's a keyword).
+Therefore, `'someID'` and `someID` both refer to the same identifier in the source code.
+================================================================================
+
+=== Keywords as Identifiers
+
+// (((stropping)))
+Quoted identifiers may also be used to create an identifier out of a reserved word such as `Look`, `The`, etc.
+This practice is known as _<<gloss_stropping,((stropping))>>_, and it allows the Alan compiler to distinguish between user-created identifiers and keywords in the source code, thus avoiding clashes that would lead to a compiler error.
+
+This is useful (indeed, required), for example, in the definition of the verb '`look`':
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -74,6 +102,28 @@ Verb 'look'
 End Verb 'look'.
 --------------------------------------------------------------------------------
 
+[IMPORTANT]
+================================================================================
+Whenever an identifier contains an Alan keyword, it's mandatory to use a quoted identifier.
+================================================================================
+
+In the following example, the `'The Empty Room'` name needs to be enclosed within single quotes because it contains two Alan keywords (`The` and `Empty`), but there's no need to do so with the `empty_room` identifier because the word `empty` doesn't appear in isolated form (i.e. surrounded by spaces):
+
+[source,alan]
+--------------------------------------------------------------------------------
+The empty_room IsA location   --> No need to stropp 'empty_room'.
+  NAME 'The Empty Room'.      --> Keywords 'THE' and 'EMPTY' stropped.
+End The.
+--------------------------------------------------------------------------------
+
+[NOTE]
+================================================================================
+Stropping occurs only when the quoted identifier contains at least one Alan keyword.
+Since in Alan it's always permissible to enclose an identifier within single quotes (where `'someID'` and `someID` both refer to the same identifier), not every quoted identifier implies stropping, but stropping _always_ requires a quoted identifier.
+================================================================================
+
+
+=== Names Containing Multiple Words
 
 Quoted identifiers retain their exact content.
 They may contain spaces and other special characters, which make them useful as long names for locations as in:
@@ -84,7 +134,6 @@ The pluto IsA location Name 'At the Rim of Pluto Crater'
   Description
     ...
 --------------------------------------------------------------------------------
-
 
 One single-quoted identifier is used as the whole (((NAME, of locations))) name of the location to preserve editing and avoiding clashes with the reserved words `At` and `Of`.
 (This could also have been avoided by quoting just those words.)
@@ -98,7 +147,7 @@ The eiffel_tower Name Eiffel tower ...
 --------------------------------------------------------------------------------
 
 The first word in the name will always be printed with a capital '`E`'.
-However, when comparing the word to player input and other occurrences of the same word in the source, case will be ignored.
+However, when comparing the word to player input and other occurrences of the same word in the source, letter casing will be ignored (i.e. comparison is case insensitive).
 This means that you cannot have two words or identifiers that differ only in case, they will be the same and stored in the game data as one of the occurrences, which one is implementation dependent.
 
 
@@ -120,21 +169,24 @@ You can avoid this by using a quoted identifier for the complete name of the loc
 
 
 Be careful when using quoted identifiers, especially if the player is supposed to use the word.
-A player cannot input words containing spaces or other special characters or separators.
-The only exception being underscores and dashes.
-A player input word must start with a letter.
+A player cannot refer in the typed input to words which are defined in the code as single words containing spaces or other special characters or separators (the only exception being underscores and dashes).
 
+Also, remember that a player input word must start with a letter; so the player won't be able to refer to identifiers or names like "```1st```", "```'70s```", etc.
 
+.Escaping Single Quotes Inside Quoted Identifiers
 [TIP]
 ================================================================================
-To get a (((single quotes))) single quote within a quoted identifier repeat it (`'Tom''s Diner'`).
+(((escaping, single quotes in quoted identifiers)))
+To include a (((single quotes))) single quote as part of a quoted identifier, double it (e.g. `'Tom''s Diner'`).
+Inside the adventure, it will be printed as a single quote ("`Tom's Diner`").
+
+This technique is known as _escaping_, for it allows the Alan compiler to distinguish between the quote character as delimiters of the quoted identifier and its occurrence within the identifier as a printable character.
 ================================================================================
 
 
-
-Some of the identifiers in the source for an Alan game are by default used as player words.
+Some of the identifiers in the source of an Alan game are used by default as player words.
 This is for example the case with verb names (unless a `Syntax` statement has been declared for the `Verb`) and object names (unless a `Name` clause has been used).
-If these contain special characters, the player cannot enter them.
+If these contain special characters, the player won't be able to refer to them in the typed input.
 
 
 

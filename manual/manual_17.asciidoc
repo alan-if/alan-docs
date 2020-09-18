@@ -1,0 +1,133 @@
+// ******************************************************************************
+// *                                                                            *
+// *                                  Glossary                                  *
+// *                                                                            *
+// ******************************************************************************
+
+[glossary]
+= Glossary
+
+Here follow some definitions of technical terms encountered in this manual, to bridge the gap between authorship as a writer and a programmer.
+Although Alan is designed to be usable by non-programmers, knowing the terms of this glossary might help authors to better grasp some aspects of writing adventures in Alan, by providing an outlook into the wider context of computer languages and programming, and by providing the technical jargon required to discuss technical issues and further research some topics.
+
+[glossary]
+
+////
+******************
+** PDF BEWARE!! **
+******************
+
+The PDF backend (via DocBook + asciidoctor-fopub) is really prickly about
+Glossary entries -- what might look fine in HTML could actually be rendered
+very ugly in PDF (if not entirely broken)!!!
+
+Always double check any changes with the PDF doc, for a slight change in source
+formatting could break an entry in the PDF Glossary (but not in the HTML doc).
+
+******************
+** ANCHORS NOTE **
+******************
+
+To create a linkable anchor for a glossary entry, use the following convention:
+
+    [[gloss_<term>]]
+    <term>::
+
+where the `gloss_` prefix provides an intuitive description of what is being
+linked to.
+////
+
+// =============================================================================
+//                               GLOSSARY ENTRIES
+// =============================================================================
+// Entries pending a definition have been commented out and kept as a reminder
+// of things to be done ...
+
+// ATTRIBUTE -------------------------------------------------------------------
+
+////
+[[gloss_attribute]]attribute::
+xxxx definition.
+////
+
+// BNF -------------------------------------------------------------------------
+
+////
+[[gloss_BNF]]BNF::
+xxxx definition.
+////
+
+// CLASS -----------------------------------------------------------------------
+
+////
+[[gloss_class]]class::
+xxxx definition.
+////
+
+// CLAUSE ----------------------------------------------------------------------
+
+////
+[[gloss_clause]]clause::
+xxxx definition.
+////
+
+// CONSTRUCT -------------------------------------------------------------------
+
+////
+[[gloss_construct]]construct::
+xxxx definition.
+////
+
+// ECAPING ---------------------------------------------------------------------
+
+////
+[[gloss_ecaping]]ecaping::
+xxxx definition.
+////
+
+// EXPRESSION ------------------------------------------------------------------
+
+////
+[[gloss_expression]]expression::
+xxxx definition.
+////
+
+// IDENTIFIER ------------------------------------------------------------------
+
+////
+[[gloss_identifier]]identifier::
+xxxx definition.
+////
+
+// INHERITANCE -----------------------------------------------------------------
+
+////
+[[gloss_inheritance]]inheritance::
+xxxx definition.
+////
+
+// INSTANCE --------------------------------------------------------------------
+
+////
+[[gloss_instance]]instance::
+xxxx definition.
+////
+
+// PROPERTY --------------------------------------------------------------------
+
+////
+[[gloss_property]]property::
+xxxx definition.
+////
+
+// STROPPING -------------------------------------------------------------------
+
+[[gloss_stropping]]stropping::
+    In the realm of computer programming, _stropping_ is a technique to enable end users to create identifiers that contain reserved words of the language, by means of a special notation that allows the compiler (or interpreter) to distinguish between a user-defined identifier and a kewyord of the language, thus avoiding clashes that would prevent compilation/execution of the code.
+    In the Alan language, identifiers containing one or more reserved keywords can be stropped by enclosing the whole identifier within single straight quotes (`'`).
+    Example: `The 'The Empty Room' IsA location.` (keywords `THE` and `EMPTY` stropped).
+    For a detailed explanation and practical examples, see <<Keywords as Identifiers>>.
+    For more info on stropping, see link:https://en.wikipedia.org/wiki/Stropping_(syntax)[Wikipedia^,title="Visit Wikipedia page: 'Stropping (syntax)'"].
+
+
+// EOF //
