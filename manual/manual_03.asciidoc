@@ -4033,7 +4033,7 @@ More complex expressions resulting in an actor type value, such as a parameter r
 
 // @NOTE: Changing "REPETITION" with "ITERATION" might be better!
 
-==== Repetition Statements
+=== Repetition Statements
 
 The Alan language provides one compound statement for repetition, the `For Each` statement.
 

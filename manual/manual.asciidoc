@@ -1,6 +1,6 @@
 :doctitle:  The ALAN Adventure Language Reference Manual
-:revnumber: 0.1.90
-:revdate:   December 19, 2018
+:revnumber: 0.1.91-PreReleaseBeta7
+:revdate:   March 02, 2019
 :revremark: AsciiDoc conversion work
 :doctype: book
 :encoding: utf-8
@@ -45,6 +45,8 @@ This document was converted from the original _Alan Manual_ (in ODT format), ver
 downloaded from:
 
 * https://bitbucket.org/alanif/alan/src/fb81645/doc/manual/
+
+The current document is being updated for the upcoming Alan Beta7 release, after which it should become the official replacement of the previous ODT/PDF edition.
 
 This document is subjected to the https://bitbucket.org/alanif/alan/src/master/COPYING[Artistic License 2.0] terms.
 
