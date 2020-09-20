@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.100-PreReleaseBeta7,</span>
-<span id="revdate">September 18, 2020</span>
+<span id="revnumber">version 0.1.101-PreReleaseBeta7,</span>
+<span id="revdate">September 20, 2020</span>
 <br><span id="revremark">Beta7 Ed. work</span>
 </div>
 <div id="toc" class="toc2">
@@ -1130,10 +1130,29 @@ As an author you&#8217;ll need to have the same view that the Alan language has 
 <h4 id="_whats_happening"><a class="anchor" href="#_whats_happening"></a>What&#8217;s Happening?</h4>
 <div class="paragraph">
 <p>The execution of an adventure is primarily driven by the input of player commands.
-A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source.
-After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source.
-Scheduled events are then run, and then the player takes another turn.
-This is described in more detail in <a href="#_a_turn_of_events">Sect. 5.1</a>.</p>
+A command is analysed by the interpreter according to the command syntax prescriped by the author and, if understood, it is transformed into execution of verbs or movements.</p>
+</div>
+<div class="paragraph">
+<p>After the player has had his turn, any special conditions, or rules, that might have been programmed by the author are evaluated.</p>
+</div>
+<div class="paragraph">
+<p>Then, other, scripted non-player characters, or actors, will move.
+Their movements and actions are controlled by the computer, again according to the definitions in the source.</p>
+</div>
+<div class="paragraph">
+<p>Scheduled events are then run, and then the player takes another turn.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+This is described in more detail in <a href="#_a_turn_of_events">Sect. 5.1</a>.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The following sections describe a number of the fundamental concepts that are present in an adventure game and what the Alan view of them is.</p>
@@ -8113,8 +8132,8 @@ In case the player typed a directional command the corresponding <code>Exit</cod
 </div>
 <div class="paragraph">
 <p>After the  player&#8217;s command has been taken care of, all <em>rules</em> are evaluated and possibly executed.
-Then each of the other <code>actor</code>s executes one step in their <code>Script</code>s (if active) and for each actor the rules are evaluated again.
-Finally, each <code>Event</code> that is scheduled for this round is fired, and the rules evaluated yet again.
+Then each of the other <code>actor</code>s executes one step in its <code>Script</code> (if active) and for each actor the rules are evaluated again.
+Finally, each <code>Event</code> that is scheduled for this round is fired, and then rules are evaluated yet again.
 Finally the player is prompted for another command.</p>
 </div>
 <div class="paragraph">
@@ -12985,7 +13004,7 @@ For more info on stropping, see <a href="https://en.wikipedia.org/wiki/Stropping
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.100-PreReleaseBeta7<br>
+Version 0.1.101-PreReleaseBeta7<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">

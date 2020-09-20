@@ -178,13 +178,28 @@ As an author you'll need to have the same view that the Alan language has on som
 
 === What's Happening?
 
+// The ((execution of an adventure)) is primarily driven by the input of player commands.
+// A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source.
+// After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source.
+// Scheduled events are then run, and then the player takes another turn.
+// This is described in more detail in <<A Turn of Events>>.
+
+// --------------------------------------
+
 The ((execution of an adventure)) is primarily driven by the input of player commands.
-A command is analysed by the interpreter program according to the player command syntax allowed by the author and, if understood, transformed into execution of verbs or movements, which in turn may trigger other parts in the game as described in the Alan source.
-After a player turn, other, scripted non-player characters or actors, can move, controlled by the computer, again according to the definitions in the source.
+A command is analysed by the interpreter according to the command syntax prescriped by the author and, if understood, it is transformed into execution of verbs or movements.
+
+After the player has had his turn, any special conditions, or rules, that might have been programmed by the author are evaluated.
+
+Then, other, scripted non-player characters, or actors, will move.
+Their movements and actions are controlled by the computer, again according to the definitions in the source.
+
 Scheduled events are then run, and then the player takes another turn.
-This is described in more detail in <<A Turn of Events>>.
+
+TIP: This is described in more detail in <<A Turn of Events>>.
 
 The following sections describe a number of the fundamental concepts that are present in an adventure game and what the Alan view of them is.
+
 
 === The Map
 

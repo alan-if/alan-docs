@@ -28,8 +28,8 @@ Global `Verb` ``Check``s and bodies are used for verbs taking no parameters, oth
 In case the player typed a directional command the corresponding `Exit` check and code is executed.
 
 After the (((player commands))) player's command has been taken care of, all _rules_ are evaluated and possibly executed.
-Then each of the other ``actor``s executes one step in their ``Script``s (if active) and for each actor the rules are evaluated again.
-Finally, each `Event` that is scheduled for this round is fired, and the rules evaluated yet again.
+Then each of the other ``actor``s executes one step in its ``Script`` (if active) and for each actor the rules are evaluated again.
+Finally, each `Event` that is scheduled for this round is fired, and then rules are evaluated yet again.
 Finally the player is prompted for another command.
 
 So, to summarise:
