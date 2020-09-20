@@ -2753,16 +2753,11 @@ What remains is to execute the verb definition in the parameters if they have no
 
 So in short (with base class definitions of the outermost location being the outermost and the instance bound to the last syntax parameter the innermost):
 
-// @FIXME @thoni56:
-//    Seems wrong: Aren't BEFORE verbs exectured from the inside out? ie. in
-//    reverse order? This whole part needs to be revisited (it's complex enough
-//    as a topic, but something here is either wrong or too entagled)
+* From the inside out, find any `Before` or `Only` definitions and execute them (stop if `Only` found).
+* From the outside in, execute any definitions not already executed and not declared with the `After` qualifier.
+* Execute the remaining verb definitions (those with an `After` qualifier) from the inside out.
 
-* From the outside in, find any `Before` or `Only` definitions and execute them (stop if `Only` found).
-* From the inside out, execute any definitions not already executed and not declared with the `After` qualifier.
-* Execute the remaining verb definitions (those with an `After` qualifier) from the outside in.
-
-The second item in the above list is equivalent to the normal order of execution.
+The second item in the above list is equivalent to the normal order of execution, without any qualifiers.
 
 The qualifiers are a powerful but confusing concept.
 The normal order of execution is usually appropriate and only in special cases should qualifiers be used.
