@@ -175,13 +175,13 @@ Text about using multiple names for the same objects & synonyms, and how the int
 // cf. Issue #28:
 // https://github.com/alan-if/alan-docs/issues/28
 
-[WARNING]
-================================================================================
-TBD.
+A language may have different word ordering than English.
+Usually this is one or both of the following
 
-Some languages require (or allow) commands where the parameter precedes the verb.
+* verb/noun - does the verb preceed the noun in imperative sentences?
+* adjective/noun - does the adjectives preceed the noun
 
-For example, in German the command for "`take the book`" would be:
+For example, in German the command for "`take the book`" would have the noun preceed the verb and be:
 
 [example,role="gametranscript"]
 &gt; _das buch nehmen_
@@ -190,21 +190,16 @@ For example, in German the command for "`take the book`" would be:
 
 [source,alan]
 Syntax take = (o) nehmen.
+
+[WARNING]
+================================================================================
+TBD.
+
+Description on how to handle noun/adjectives ordering.
 ================================================================================
 
-// ORIGINAL TBD NOTE:
-//    Text about how the rigid word order (verb first, possibly prefixed with a
-//    noun) that Alan imposes. Or does it? With the noun first is it possible to
-//    implement "`das buch nehmen`" with the syntax `take = (o) nehmen`?
-//
-// But we've already established that Alan does support SYNTAX with parameter in
-// 1st position:
-//      Syntax take = (obj) take.
-// Error 209 ("First element in a SYNTAX must be a player word.") was abrogated.
-// See: https://github.com/alan-if/alan-docs/issues/61
-
 // @NOTE:
-//   This topic is also worth mentioning in the Manual itself (possibly,
+//   This topic should be described  in the Manual itself (possibly,
 //   under "SYNTAX") for it affects also the creation of VERBs like:
 //       > Bob take the apple
 //   ... which are commonly found in other IF systems -- and some authors
