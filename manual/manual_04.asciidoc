@@ -11,13 +11,29 @@
 == Comments
 
 Comments may be placed anywhere in the Alan source.
-A comment starts with double hyphens (`--`) and extends to the end of the line.
+There are two types of comments, a line comment and a block comment.
+
+A line comment starts with double hyphens (`--`) and extends to the end of the line.
 
 [source,alan]
 --------------------------------------------------------------------------------
 -- This is a comment
 --------------------------------------------------------------------------------
 
+A block comment can be used to comment out longer sections of Alan code.
+The first (ignored) line of a block comment is a line where the first four characters are forward slashes, it may then be followed by anything.
+The block comment ends with the first line that has four slashes in the first columns.
+It may be follwed by more slashes, but nothing else.
+
+[source,alan]
+--------------------------------------------------------------------------------
+//// This line starts a block comment ////
+These lines will be
+completely ignored.
+//// So will this line ////
+The block comment will end after the following line
+////////////////////////////////
+--------------------------------------------------------------------------------
 
 
 == Words, Identifiers and Names
