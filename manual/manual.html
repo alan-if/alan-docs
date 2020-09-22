@@ -5,6 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
+<meta name="description" content="<strong>The ALAN IF Manual</strong>&#8201;&#8212;&#8201;The official reference manual for the ALAN Adventure programming language for creating Interactive Fiction text-adventures.">
+<meta name="keywords" content="alan, if, interactive fiction, game, text adventures, programming">
 <title>The ALAN Adventure Language Reference Manual</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -441,9 +443,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The ALAN Adventure Language Reference Manual</h1>
 <div class="details">
-<span id="revnumber">version 0.1.101-PreReleaseBeta7,</span>
-<span id="revdate">September 20, 2020</span>
-<br><span id="revremark">Beta7 Ed. work</span>
+<span id="author" class="author">Thomas Nilefalk</span><br>
+<span id="email" class="email"><a href="mailto:thomas@alanif.se">thomas@alanif.se</a></span><br>
+<span id="revnumber">alan Beta7-RC,</span>
+<span id="revdate">September 22, 2020</span>
+<br><span id="revremark">New AsciiDoc Reprint</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -849,26 +853,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<div class="title">About This Document</div>
-<p>This document was converted to AsciiDoc by Tristano Ajmone; and it&#8217;s still a work-in-progress draft.
-The revision number and date refer to the editing status of the conversion work (ie, this document), not to the original manual from which the present document was derived.</p>
-</div>
-<div class="paragraph">
-<p>This document was converted from the original <em>Alan Manual</em> (in ODT format), version 3.0beta5 (August 9, 2018),
-downloaded from:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://bitbucket.org/alanif/alan/src/fb81645/doc/manual/" class="bare">https://bitbucket.org/alanif/alan/src/fb81645/doc/manual/</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The current document is being updated for the upcoming Alan Beta7 release, after which it should become the official replacement of the previous ODT/PDF edition.</p>
-</div>
-<div class="paragraph">
-<p>This document is subjected to the <a href="https://bitbucket.org/alanif/alan/src/master/COPYING">Artistic License 2.0</a> terms.</p>
+<p>This is the first public release of the new version of the <em>ALAN Manual</em>, ported to AsciiDoc by <a href="https://github.com/tajmone" title="Visit Tristano Ajmone&#8217;s profile on GitHub" target="_blank" rel="noopener">Tristano Ajmone</a>.
+The new edition is now availble in HTML and PDF format, featuring contents updates and many improvements, like syntax highlighting of Alan code examples.<br>
+This document is subjected to the <a href="#_copying_conditions">Artistic License 2.0</a> terms.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -5364,18 +5351,18 @@ What remains is to execute the verb definition in the parameters if they have no
 <div class="ulist">
 <ul>
 <li>
-<p>From the outside in, find any <code>Before</code> or <code>Only</code> definitions and execute them (stop if <code>Only</code> found).</p>
+<p>From the inside out, find any <code>Before</code> or <code>Only</code> definitions and execute them (stop if <code>Only</code> found).</p>
 </li>
 <li>
-<p>From the inside out, execute any definitions not already executed and not declared with the <code>After</code> qualifier.</p>
+<p>From the outside in, execute any definitions not already executed and not declared with the <code>After</code> qualifier.</p>
 </li>
 <li>
-<p>Execute the remaining verb definitions (those with an <code>After</code> qualifier) from the outside in.</p>
+<p>Execute the remaining verb definitions (those with an <code>After</code> qualifier) from the inside out.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The second item in the above list is equivalent to the normal order of execution.</p>
+<p>The second item in the above list is equivalent to the normal order of execution, without any qualifiers.</p>
 </div>
 <div class="paragraph">
 <p>The qualifiers are a powerful but confusing concept.
@@ -12635,21 +12622,22 @@ E.g.:</p>
 </div>
 <div class="sect2">
 <h3 id="_word_order"><a class="anchor" href="#_word_order"></a>G.5. Word Order</h3>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>TBD.</p>
+<p>A language may have different word ordering than English.
+Usually this is one or both of the following</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>verb/noun - does the verb preceed the noun in imperative sentences?</p>
+</li>
+<li>
+<p>adjective/noun - does the adjectives preceed the noun</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Some languages require (or allow) commands where the parameter precedes the verb.</p>
-</div>
-<div class="paragraph">
-<p>For example, in German the command for &#8220;take the book&#8221; would be:</p>
+<p>For example, in German the command for &#8220;take the book&#8221; would have the noun preceed the verb and be:</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -12663,6 +12651,19 @@ E.g.:</p>
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax take = (o) nehmen.</code></pre>
 </div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>TBD.</p>
+</div>
+<div class="paragraph">
+<p>Description on how to handle noun/adjectives ordering.</p>
 </div>
 </td>
 </tr>
@@ -13004,7 +13005,7 @@ For more info on stropping, see <a href="https://en.wikipedia.org/wiki/Stropping
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.101-PreReleaseBeta7<br>
+ALAN Beta7-RC<br>
 </div>
 </div>
 <link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">
