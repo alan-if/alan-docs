@@ -18,35 +18,25 @@ Links to the converted _Alan Manual_:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Document Status](#document-status)
-    - [Annotated Tasks in Comments](#annotated-tasks-in-comments)
-    - [AsciiDoc Conversion](#asciidoc-conversion)
-    - [PDF Toolchain Setup](#pdf-toolchain-setup)
-    - [HTML Toolchain Setup](#html-toolchain-setup)
-    - [Syntax Highlighting](#syntax-highlighting)
 - [Folder Contents](#folder-contents)
     - [Manual Source Files](#manual-source-files)
         - [Transcripts and Compiler Logs Sources](#transcripts-and-compiler-logs-sources)
     - [Conversion Scripts](#conversion-scripts)
     - [Converted Manual](#converted-manual)
     - [Helper Files](#helper-files)
-- [Document Status](#document-status-1)
-    - [Pending Tasks and Issues](#pending-tasks-and-issues)
-        - [Common Issues](#common-issues)
-        - [Issues With HTML Version](#issues-with-html-version)
-        - [Issues With PDF Version](#issues-with-pdf-version)
     - [Available Formats](#available-formats)
         - [PDF Version](#pdf-version)
         - [HTML Version](#html-version)
-    - [Syntax Highlighting](#syntax-highlighting-1)
 - [Building The Manual](#building-the-manual)
     - [System Requirements](#system-requirements)
         - [Installing Ruby on Windows](#installing-ruby-on-windows)
-    - [PDF Toolchain Setup](#pdf-toolchain-setup-1)
-    - [HTML Toolchain Setup](#html-toolchain-setup-1)
+    - [PDF Toolchain Setup](#pdf-toolchain-setup)
+    - [HTML Toolchain Setup](#html-toolchain-setup)
 - [Development](#development)
     - [Development Cycle](#development-cycle)
     - [Maintainers Check-list](#maintainers-check-list)
-    - [Annotated Tasks in Comments](#annotated-tasks-in-comments-1)
+    - [Annotated Tasks in Comments](#annotated-tasks-in-comments)
+    - [Syntax Highlighting](#syntax-highlighting)
     - [Conversion from ODT to AsciiDoc](#conversion-from-odt-to-asciidoc)
 
 <!-- /MarkdownTOC -->
@@ -56,99 +46,9 @@ Links to the converted _Alan Manual_:
 
 # Document Status
 
-Before the new version of the _Alan Manual_ is ready, some pending tasks must be resolved. For more info, visit the [Alan Manual project board].
+The new AsciiDoc port of _The ALAN Manual_ has now been official released for public consumption.
 
-- [ ] __[AsciiDoc Conversion]__ ([milestones][ADoc miles]) — porting from ODT to ADoc, reconstructing styles and lost formatting and structure.
-- [ ] __[PDF Toolchain Setup]__ ([milestones][PDF Chain miles]):
-    + [x] organize all the tools, scripts to convert from AsciiDoc to DocBook and then to PDF via asciidoctor-fopub.
-    + [ ] customize FOP template to produce a PDF version with custom styling.
-- [ ] __[HTML Toolchain Setup]__:
-    + [ ] organize all the tools, scripts to convert to HTML.
-    + [ ] ([milestones][HTML template miles]) customize template to produce an HTML version with custom styling.
-- [x] __[Syntax Highlighting]__ — find solution(s) to enable syntax highlighting of Alan examples in all output formats:
-    + [x] __PDF format__ — implemented using XSLHL with custom Alan syntax.
-    + [x] __HTML format__ — implemented using highlight.js with custom Alan syntax.
-
-[ADoc miles]: https://github.com/alan-if/alan-docs/milestone/1 "See the milestones for Alan Manual's AsciiDoc porting"
-[PDF Chain miles]: https://github.com/alan-if/alan-docs/milestone/3 "See the milestone for this task"
-[HTML template miles]: https://github.com/alan-if/alan-docs/milestone/7 "See the milestone for this task"
-
-[Alan Manual project board]: https://github.com/alan-if/alan-docs/projects/1 "See the project board on GitHub"
-
-## Annotated Tasks in Comments
-
-I've also annotated in comments various pending tasks as I've encountered during the proofreading stage. These tasks vary from errors which need to be corrected ASAP to improvements and ideas that could be handled sometime in the future.
-
-As a convention, all commented annotations inside document source files will begin with "`// @`" to allow finding them quickly via Search functionality (eg, "`// @TODO:`", "`// @FIXME:`", "`// @NOTE`", "`// @CHECKME`", "`@IMPROVE`", etc.).
-
-In some tasks I've also added either `@thoni56` or `@tajmone`, to indicate the user that should address the issue. As a rule, I've used `@tajmone` in annotated tasks which I'll need to address at some point in the future, acting as reminders; and I've used `@thoni56` for tasks that require Thomas' attention or approval.
-
-
-## AsciiDoc Conversion
-
-The porting work is pretty much finished, a couple of (rather long) chapters still need some cleaning-up, but this is the state of the finished Chapters:
-
-
-- [x] _1. Introduction_
-- [x] _2. Concepts_
-- [x] _3. Lexical Definitions_
-- [x] _4. Language Reference_
-- [x] _5. Running An Adventure_
-- [x] _6. Hints And Tips_
-- [x] _7. Adventure Construction_
-- [x] _Appendix A: How To Use The System_
-- [x] _Appendix B: A Sample Interaction_
-- [x] _Appendix C: Run-Time Messages_
-- [x] _Appendix D: Language Grammar_
-- [x] _Appendix E: Predefined player words_
-- [x] _Appendix F: Compiler Messages_
-- [x] _Appendix G: Localization_
-- [x] _Appendix H: Portability of Games_
-- [x] _Appendix I: Copying Conditions_
-- [x] _Index_
-
-All lost cross-references, styles, the document sections hierarchy and header, as well as the Index and its entries, have all been reconstructed. The remaining work consists mainly in polishing up, ensuring that every chapter is compliant to AsciiDoc.
-
-An here follows a task list of the remaining porting tasks:
-
-- [ ] Add missing header metadata (See [Issue #8][i8])
-- [ ] Rebuild current images, in vector format (optional):
-    + [ ] Figure 1 (Sec. 2.3, p.20 of PDF) — "The principles for and relations between a game description, a compiler, ...".
-    + [x] Figure 2 (Sec. 2.4, p.33 of PDF) — "_Relationships between the pre-defined classes._".
-- [x] Fix some non-Ascii chars (especially Unicode dingbats) that may cause problems in some output formats (See [Issue #23][i23]).
-- [x] Fix Headings:
-    + [x] Check that all headings are properly title cased.
-    + [x] Change to all-caps Alan keywords in headings.
-- [x] Finish reading through the whole book, checking for missing styles and fixing the ADoc source:
-
-
-
-## PDF Toolchain Setup
-
-The PDF toolchain employs [asciidoctor-fopub] to convert from DocBook to PDF.
-
-The DocBook XSL template is now looking good and the output PDF documents are ready for distribution
-
-- [x] Customize XSL styles (See [Issue #14][i14]).
-
-The DocBook template and its assets have now been moved to an independent repository so that other Alan projects can use it too:
-
-- https://github.com/alan-if/alan-xsl-fopub
-
-The template is now included in this project via Git submodules. See the [_DocBook XSL Stylesheets_](#docbook-xsl-stylesheets) section for more details.
-
-## HTML Toolchain Setup
-
-Currently I'm relying on Asciidoctor's native HTML backend to convert and preview the Manual, but some required styles are not supported by the default theme. Still need to look into it.
-
-- [ ]  (_optional_) Find a pure Sass based theme for Asciidoctor (no Compass, no Foundation)
-
-## Syntax Highlighting
-
-Currently, I've created an Alan syntax definition for André Simon's Hihglihgt tool, which should be usable at least for the HTML conversion.
-
-+ [x] Create custom Alan syntax for Highlight.js (used in HTML output).
-+ [x] Create a custom Alan syntax definition for XSLHL (used by asciidoc-fopub in PDF conversion).
+Of course, the _Manual_ is an-ongoing project and its development will still be carried out on the `dev-man` branch and merged into `master` whenever a new public release is ready.
 
 -------------------------------------------------------------------------------
 
@@ -241,67 +141,6 @@ Some files to help editing the manual:
 - [`RegExs.txt`](./RegExs.txt) — frequently needed regular expressions for S&R operations.
 - [`SNIPPTES.adoc`](./SNIPPTES.adoc) — useful snippets to copy and paste.
 
-<!---------------------------------------------------------------------------->
-
-# Document Status
-
-The original _Alan Manual_ (version 3.0beta5) has been fully ported from ODT to AsciiDoc.
-
-This is the [`beta7-prep` branch][beta7-prep], where the _Manual_ contents are being updated to include new features that will be available with the upcoming Alan Beta7 release (currently available only in [Alan development snapshots]).
-
-When Beta7 will be released, the `beta7-prep` branch will be squashed into `master` and the AsciiDoc port of the _Alan Manual_ will officially replace the old ODT-based version.
-
-For more info on the pending tasks for the upcoming _Alan Manual_ release, see:
-
-- [Milestones » Alan Beta7] — Integrate updates to the _ALAN Manual_ contents to match the upcoming beta7 release.
-- [Project » New Alan Manual Release] — Pending tasks before the 1st release of the new _ALAN Manual_ from AsciiDoc.
-
-[beta7-prep]: https://github.com/alan-if/alan-docs/tree/beta7-prep/manual
-
-[Milestones » Alan Beta7]: https://github.com/alan-if/alan-docs/milestone/10
-
-[Project » New Alan Manual Release]: https://github.com/alan-if/alan-docs/projects/1
-
-## Pending Tasks and Issues
-
-Here are some of the major pending tasks and issues with the new AsciiDoc version of the _Alan Manual_...
-
-### Common Issues
-
-Issues affecting the overall _Manual_, in all formats:
-
-- [ ] __Missing header metadata__ — (See [Issue #8][i8]) This could affect distribution of the _Alan Manual_ on eBooks platforms, due to unclear copyright and lack of essential metadata for cataloguing and legal purposes.
-
-[i8]: https://github.com/alan-if/alan-docs/issues/8 "Issue #8 — Manual Info & Metadata"
-
-### Issues With HTML Version
-
-Issues affecting only the HTML version of the _Manual_:
-
-- [ ] __Highlight not supported__ — (See [Issues #50][i50] and [#36][i36]) Currently the _Alan Manual_ relies on __[highlight.js]__ for syntax highlighting, which needs to be included by the HTML document for in-browser dynamic highlighting, whereas we'd prefer to use André Simon's __[Highlight]__ instead, which works statically and doesn't require a JS module in the final HTML.
-
-    Unfortunately, the Highlight extension for [Asciidoctor] doesn't currently support call-outs, which are present in a couple of examples in the _Manual_. To fix this, we need someone fluent in Ruby to help us by re-writing the Highlight extension from scratch, using the new Asciidoctor API 2.0 (it doesn't look like Asciidoctor is going to invest energy in Highlight, even though it's one of the oldest highlighters in the scene, with more syntaxes then others and possibly the easiest to use).
-
-    The disadvantages of using highlight.js include:
-
-    + __Overhead__ — The code in the document is highlighted dynamically, after the contentes are loaded in the browser, which can take a long time since the _Manual_ is currently a single huge document.
-    + __Not Fully Standalone__ — Currently, the HTML document requires a custom highlight.js build to provide syntax highlighting ([`../_assets/hjs/highlight.min.js`][hjs]), which means it's not fully standalone — decoupling the HTML doc from the JavaScript package would break syntax highlighting.
-    + __No CHM Support__ — Creation of a CHM Help version of the _Manual_ is not going to support highlight.js, due to the WebControl defaulting to IE7 mode (See [Rick Strahl's excellent article on the topic]).
-
-[i50]: https://github.com/alan-if/alan-docs/issues/50 "Issue #50 — ALAN Manual: Switch to Highlight"
-[i36]: https://github.com/alan-if/alan-docs/issues/36 "Issue #36 — Enable Callouts in AsciiDoc Extension for Highlight"
-
-[Rick Strahl's excellent article on the topic]: https://weblog.west-wind.com/posts/2011/may/21/web-browser-control-specifying-the-ie-version "Read the article 'Web Browser Control & Specifying the IE Version'"
-
-### Issues With PDF Version
-
-Issues affecting only the PDF version of the _Manual_:
-
-- [ ] __No Cover Design__ — (See [Issue #54][i54]) We still need to desgin a front cover page for the _Alan Manual_, and then setup up the DocBook XSL template to use the cover. Currently, the PDF document has a cover of sorts, relying on the document fonts and the Alan logo, but replacing it with an _ad hoc_ image (whole-page sized) would provide a better cover.
-
-
-[i54]: https://github.com/alan-if/alan-docs/issues/54 "Issue #54 — Add Front Cover to ALAN Manual PDF"
-
 ## Available Formats
 
 Currently the _Alan Manual_ is available in the following output formats:
@@ -356,10 +195,6 @@ External files required by Asciidoctor native HTML template:
 
 [hjs]: ../_assets/hjs/highlight.min.js "View source file"
 [hjs css]: ../_assets/hjs/styles/github.min.css "View source file"
-
-## Syntax Highlighting
-
-The HTML version uses __[highlight.js]__ for syntax highlighting the code in the _Manual_, while the PDF version uses __[XSLTHL]__ (included in __[asciidoctor-fopub]__).
 
 <!---------------------------------------------------------------------------->
 
@@ -433,6 +268,7 @@ Once [Asciidoctor] is correctly setup, you can then build the HTML document by u
 - [`HTML_BUILD.bat`][HTML_BUILD.bat] — batch script for Windows.
 - [`html_build.sh`][html_build.sh] — bash script for Linux and macOS.
 
+
 <!---------------------------------------------------------------------------->
 
 # Development
@@ -440,19 +276,17 @@ Once [Asciidoctor] is correctly setup, you can then build the HTML document by u
 The _Alan Manual_ is being actively maintained, there's always room for improvements and new contents.
 If you wish to contribute to its development, read the rest of this document and check the currently pending tasks on the repository Dashboard (issues, milestones and projects):
 
-- [Isses » Alan Manual] — Issues relating to "The Alan Language Manual".
+- [Issues » Alan Manual] — Issues relating to "The Alan Language Manual".
 - [Milestones » Alan Manual Improve Contents] — Fix and improve current contents of the _ALAN Manual_.
-- [Milestones » Appendix G: Localization] — Update _[Appendix G: Localization]_. WIP in branch [AppG-i18n].
+- [Milestones » Appendix G: Localization] — Update _[Appendix G: Localization]_.
 - [Project » Alan Manual (dev)] — Planning future changes and improvements to the _ALAN Manual_.
 
 [Appendix G: Localization]: https://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/AppG-i18n/manual/manual.html#_localization "Live preview of the Appendix WIP in AppG-i18n branch"
 
-[AppG-i18n]: https://github.com/alan-if/alan-docs/tree/AppG-i18n "View branch"
-
 [Milestones » Alan Manual Improve Contents]: https://github.com/alan-if/alan-docs/milestone/12
 [Milestones » Appendix G: Localization]: https://github.com/alan-if/alan-docs/milestone/11
 [Project » Alan Manual (dev)]: https://github.com/alan-if/alan-docs/projects/6
-[Isses » Alan Manual]: https://github.com/alan-if/alan-docs/issues?q=is%3Aopen+is%3Aissue+label%3A%22%3Abook%3A+Alan+Manual%22
+[Issues » Alan Manual]: https://github.com/alan-if/alan-docs/issues?q=is%3Aopen+is%3Aissue+label%3A%22%3Abook%3A+Alan+Manual%22
 
 ## Development Cycle
 
@@ -471,6 +305,12 @@ I've also annotated in comments various pending tasks as I've encountered during
 As a convention, all commented annotations inside document source files will begin with "`// @`" to allow finding them quickly via Search functionality (eg, "`// @TODO:`", "`// @FIXME:`", "`// @NOTE`", "`// @CHECKME`", "`@IMPROVE`", etc.).
 
 In some tasks I've also added either `@thoni56` or `@tajmone`, to indicate the user that should address the issue. As a rule, I've used `@tajmone` in annotated tasks which I'll need to address at some point in the future, acting as reminders; and I've used `@thoni56` for tasks that require Thomas' attention or approval.
+
+
+## Syntax Highlighting
+
+The HTML version uses __[highlight.js]__ for syntax highlighting the code in the _Manual_, while the PDF version uses __[XSLTHL]__ (included in __[asciidoctor-fopub]__).
+
 
 ## Conversion from ODT to AsciiDoc
 
