@@ -1,6 +1,6 @@
 :doctitle:  The ALAN Adventure Language Reference Manual
 :version-label: ALAN
-:revnumber: Beta7-RC
+:revnumber: Beta7
 :revdate:   September 22, 2020
 :revremark: New AsciiDoc Reprint
 :author:    Thomas Nilefalk
