@@ -134,6 +134,8 @@ An option follows the grammar:
 
 [source,bnf]
 --------------------------------------------------------------------------------
+options = 'OPTIONS' {option}
+
 option = id '.'
        | id id '.'
        | id integer '.'
@@ -144,10 +146,11 @@ The example below illustrate how options may be written, following the above rul
 
 [source,alan]
 --------------------------------------------------------------------------------
-Debug.
-Language Swedish.
-No Pack.
-Width 128.
+Options
+    Debug.
+    Language Swedish.
+    No Pack.
+    Width 128.
 --------------------------------------------------------------------------------
 
 The available options are:
