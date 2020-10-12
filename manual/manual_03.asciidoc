@@ -167,7 +167,7 @@ The available options are:
 
 | Width
 | 24-255
-| 80footnote:[Width and Length is overridden by the actual terminal or window size, if available.]
+| 80footnote:[Width and Length are always overridden by the actual terminal or window size, if that can be determined, dependent on the interpreter used. If not, the value of the option is used.]
 
 | Length
 | 5-255

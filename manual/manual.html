@@ -446,7 +446,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <span id="author" class="author">Thomas Nilefalk</span><br>
 <span id="email" class="email"><a href="mailto:thomas@alanif.se">thomas@alanif.se</a></span><br>
 <span id="revnumber">alan Beta7,</span>
-<span id="revdate">September 22, 2020</span>
+<span id="revdate">October 12, 2020</span>
 <br><span id="revremark">New AsciiDoc Reprint</span>
 </div>
 <div id="toc" class="toc2">
@@ -2270,7 +2270,9 @@ An option follows the grammar:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">option = id '.'
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">options = 'OPTIONS' {option}
+
+option = id '.'
        | id id '.'
        | id integer '.'</code></pre>
 </div>
@@ -2280,10 +2282,11 @@ An option follows the grammar:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Debug.
-Language Swedish.
-No Pack.
-Width 128.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Options
+    Debug.
+    Language Swedish.
+    No Pack.
+    Width 128.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13000,7 +13003,7 @@ For more info on stropping, see <a href="https://en.wikipedia.org/wiki/Stropping
 <a href="#_footnoteref_1">1</a>. Other non-English languages may be supported in the future depending on demand.
 </div>
 <div class="footnote" id="_footnotedef_2">
-<a href="#_footnoteref_2">2</a>. Width and Length is overridden by the actual terminal or window size, if available.
+<a href="#_footnoteref_2">2</a>. Width and Length are always overridden by the actual terminal or window size, if that can be determined, dependent on the interpreter used. If not, the value of the option is used.
 </div>
 </div>
 <div id="footer">
