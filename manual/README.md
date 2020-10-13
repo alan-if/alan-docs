@@ -74,16 +74,16 @@ The original files of the _Alan Manual_ used for AsciiDoc conversion are availab
     + [`manual_05.asciidoc`][man 05] — _5. Running An Adventure_
     + [`manual_06.asciidoc`][man 06] — _6. Hints And Tips_
     + [`manual_07.asciidoc`][man 07] — _7. Adventure Construction_
-    + [`manual_08.asciidoc`][man 08] — _Appendix A: How To Use The System_
-    + [`manual_09.asciidoc`][man 09] — _Appendix B: A Sample Interaction_
-    + [`manual_10.asciidoc`][man 10] — _Appendix C: Run-Time Messages_
-    + [`manual_11.asciidoc`][man 11] — _Appendix D: Language Grammar_
-    + [`manual_12.asciidoc`][man 12] — _Appendix E: Predefined player words_
-    + [`manual_13.asciidoc`][man 13] — _Appendix F: Compiler Messages_
-    + [`manual_14.asciidoc`][man 14] — _Appendix G: Localization_
-    + [`manual_15.asciidoc`][man 15] — _Appendix H: Portability of Games_
-    + [`manual_16.asciidoc`][man 16] — _Appendix I: Copying Conditions_
-    + [`manual_17.asciidoc`][man 17] — _Glossary_
+    + [`manual_a.asciidoc`][man a] — _Appendix A: How To Use The System_
+    + [`manual_b.asciidoc`][man b] — _Appendix B: A Sample Interaction_
+    + [`manual_c.asciidoc`][man c] — _Appendix C: Run-Time Messages_
+    + [`manual_d.asciidoc`][man d] — _Appendix D: Language Grammar_
+    + [`manual_e.asciidoc`][man e] — _Appendix E: Predefined player words_
+    + [`manual_f.asciidoc`][man f] — _Appendix F: Compiler Messages_
+    + [`manual_g.asciidoc`][man g] — _Appendix G: Localization_
+    + [`manual_h.asciidoc`][man h] — _Appendix H: Portability of Games_
+    + [`manual_i.asciidoc`][man i] — _Appendix I: Copying Conditions_
+    + [`manual_z.asciidoc`][man z] — _Glossary_
 
 ### Transcripts and Compiler Logs Sources
 
@@ -375,16 +375,16 @@ The single source document was then split into multiple files according to chapt
 [man 05]: ./manual_05.asciidoc "Source file of Chapter 5. Running An Adventure"
 [man 06]: ./manual_06.asciidoc "Source file of Chapter 6. Hints And Tips"
 [man 07]: ./manual_07.asciidoc "Source file of Chapter 7. Adventure Construction"
-[man 08]: ./manual_08.asciidoc "Source file of Appendix A: How To Use The System"
-[man 09]: ./manual_09.asciidoc "Source file of Appendix B: A Sample Interaction"
-[man 10]: ./manual_10.asciidoc "Source file of Appendix C: Run-Time Messages"
-[man 11]: ./manual_11.asciidoc "Source file of Appendix D: Language Grammar"
-[man 12]: ./manual_12.asciidoc "Source file of Appendix E: Predefined player words"
-[man 13]: ./manual_13.asciidoc "Source file of Appendix F: Compiler Messages"
-[man 14]: ./manual_14.asciidoc "Source file of Appendix G: Localization"
-[man 15]: ./manual_15.asciidoc "Source file of Appendix H: Portability of Games"
-[man 16]: ./manual_16.asciidoc "Source file of Appendix I: Copying Conditions"
-[man 17]: ./manual_17.asciidoc "Source file of Glossary"
+[man a]: ./manual_a.asciidoc "Source file of Appendix A: How To Use The System"
+[man b]: ./manual_b.asciidoc "Source file of Appendix B: A Sample Interaction"
+[man c]: ./manual_c.asciidoc "Source file of Appendix C: Run-Time Messages"
+[man d]: ./manual_d.asciidoc "Source file of Appendix D: Language Grammar"
+[man e]: ./manual_e.asciidoc "Source file of Appendix E: Predefined player words"
+[man f]: ./manual_f.asciidoc "Source file of Appendix F: Compiler Messages"
+[man g]: ./manual_g.asciidoc "Source file of Appendix G: Localization"
+[man h]: ./manual_h.asciidoc "Source file of Appendix H: Portability of Games"
+[man i]: ./manual_i.asciidoc "Source file of Appendix I: Copying Conditions"
+[man z]: ./manual_z.asciidoc "Source file of Glossary"
 
 
 [BUILD_ALL.bat]:  ./BUILD_ALL.bat  "Batch script to invoke all Manual conversion scripts."

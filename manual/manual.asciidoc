@@ -97,45 +97,45 @@ include::manual_07.asciidoc[]
 
 // Appendix A: How to Use the System
 // =================================
-include::manual_08.asciidoc[]
+include::manual_a.asciidoc[]
 
 // Appendix B: A Sample Interaction
 // ================================
-include::manual_09.asciidoc[]
+include::manual_b.asciidoc[]
 
 // Appendix C: Run-Time Messages
 // =============================
-include::manual_10.asciidoc[]
+include::manual_c.asciidoc[]
 
 // Appendix D: Language Grammar
 // ===========================
-include::manual_11.asciidoc[]
+include::manual_d.asciidoc[]
 
 // Appendix E: Predefined player words
 // ===================================
-include::manual_12.asciidoc[]
+include::manual_e.asciidoc[]
 
 // Appendix F: Compiler Messages
 // =============================
-include::manual_13.asciidoc[]
+include::manual_f.asciidoc[]
 
 // Appendix G: Localization
 // ========================
-include::manual_14.asciidoc[]
+include::manual_g.asciidoc[]
 
 // Appendix H: Portability of Games
 // ================================
-include::manual_15.asciidoc[]
+include::manual_h.asciidoc[]
 
 // Appendix I: Copying Conditions
 // ==============================
-include::manual_16.asciidoc[]
+include::manual_i.asciidoc[]
 
 :sectnums!:
 
 // Glossary
 // ========
-include::manual_17.asciidoc[]
+include::manual_z.asciidoc[]
 
 // Index
 // =====
