@@ -3617,8 +3617,20 @@ An important case is when a `Schedule` statement without a *WHERE* clause is exe
 Since rules are executed at nowhere so will the event.
 This means that any printout will occur nowhere, and will thus be invisible to the player.
 
-If the *WHERE* expression has the form `At id`, and the identifier represents an instance not inheriting from `location`, the event will occur wherever that instance is when the event occurs.
+The *WHERE* expression can be any expression yeilding an instance type, such as the identifier of a location or actor, an attribute referring to an instance.
+The event will occur wherever that instance is when the event occurs.
 The event will '`follow`' the instance.
+
+There is an interesting difference between the following two statements:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Schedule explosion At hero After 1.
+Schedule explosion At location Of hero After 1.
+--------------------------------------------------------------------------------
+
+The first statement will schedule the event at the hero and will execute where the hero is after one turn.
+The second will schedule the event at the location where the hero was when the statement was executed, even if the hero has moved after that.
 
 Executing a second `Schedule` statement for the same event before it has occurred will reschedule the event to the new time.
 An event can only be scheduled for one execution at a time.
