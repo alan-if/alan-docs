@@ -29,6 +29,13 @@
 ## Just in case someone still uses Ruby Sass:
 .sass-cache/
 
+## ===============
+## Misc TEMP Files
+## ===============
+
+# Chrome's temporary logs:
+debug.log
+
 ## Misc Work Files
 ## ===============
 
