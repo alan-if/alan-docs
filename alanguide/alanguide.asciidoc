@@ -1,7 +1,7 @@
 :doctitle:  ALAN 3 Beginner's Guide
 :author:    Michael Arnaud
-:revnumber: 0.1.14
-:revdate:   April 4, 2019
+:revnumber: 0.2.0
+:revdate:   December 27, 2020
 :revremark: AsciiDoc reconstruction work
 :doctype: book
 :encoding: utf-8
@@ -571,7 +571,7 @@ It should look very familiar to you:
 
 [source,alan,role=lib]
 --------------------------------------------------------------------------------
-include::./_adoc/inc_nowhere.utf8_alan[]
+include::./alanguide-code/lib/nowhere.i[encoding=iso-8859-1]
 --------------------------------------------------------------------------------
 
 This is the same section of code we needed to establish various directions in our game, already written for us.
@@ -650,9 +650,9 @@ Open another file in the library, this one called "std.i" -- the one we are impo
 
 [source,alan,role=lib,subs=quotes]
 --------------------------------------------------------------------------------
-include::./_adoc/inc_std.utf8_alan[lines=1..50]
+include::./alanguide-code/lib/std.i[encoding=iso-8859-1,lines=1..50]
 #import 'nowhere.i'.#
-include::./_adoc/inc_std.utf8_alan[lines=52..-1]
+include::./alanguide-code/lib/std.i[encoding=iso-8859-1,lines=52..-1]
 --------------------------------------------------------------------------------
 
 
@@ -8432,7 +8432,7 @@ Here follows the complete source to the tutorial game.
 
 [source,alan,,linenums,role=tutorial]
 --------------------------------------------------------------------------------
-include::./_adoc/inc_tvtime.utf8_alan[]
+include::./alanguide-code/tvtime.alan[encoding=iso-8859-1]
 --------------------------------------------------------------------------------
 
 // EOF //

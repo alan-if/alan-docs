@@ -1,4 +1,4 @@
-:: "alanguide\HTML_BUILD.bat"           v2.0.2 | 2019/09/10 | by Tristano Ajmone
+:: "alanguide\HTML_BUILD.bat"           v2.1.0 | 2021/12/27 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: This script is released into public domain via the Unlicense:
 ::     http://unlicense.org/
@@ -29,7 +29,6 @@ asciidoctor^
   --template-dir ..\_assets\hl\haml^
   --require ..\_assets\hl\adoc\highlight-treeprocessor_mod.rb^
   -a source-highlighter=highlight^
-  -a docinfodir=_adoc^
   -a docinfo=shared-head^
      alanguide.asciidoc
 @EXIT /B

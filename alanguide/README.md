@@ -67,18 +67,7 @@ The reader will also need to download the source files of the __ALAN Library__ r
 ## Document Source Files
 
 - [`alanguide.asciidoc`][guide] — _B.Guide_ source doc.
-- [`/_adoc/`][_adoc] — required Asciidoctor assets to build _B.Guide_:
-    + [`generate-inc-files.sh`][generate-inc-files] — script to create UTF-8 versions of Alan sources to include in _B.Guide_.
-    + [`inc_tvtime.utf8_alan`][inc_tvtime] — UTF-8 version of [`./alanguide-code/tvtime.alan`][tvtime.alan] (auto-generated).
-    + `*.utf8_alan` — other Lib sources or ALAN snippets in UTF-8.
-    + [`docinfo.html`][docinfo] — head docinfo file for including custom CSS.
-
-The file `inc_tvtime.utf8_alan` is an UTF-8 converted copy of the `tvtime.alan` source adventure, created (via `generate-inc-files.sh`) so that it might be included in the AsciiDoc document, because Asciidoctor can't handle ISO-8859-1 files.
-
-Any file with the `*.utf8_alan` extension is an Alan source file in UTF-8 encoding.
-
-> __IMPORTANT__ — The `generate-inc-files.sh` script should be run every time the Alan sources in  [`alanguide-code/`] are edited, so that the source of the adventure shown in the document will always reflect the actual source file of the project.
-
+- [`docinfo.html`][docinfo] — [docinfo header file] for custom CSS inclusion.
 
 ## Conversion Scripts
 
@@ -86,12 +75,8 @@ Any file with the `*.utf8_alan` extension is an Alan source file in UTF-8 encodi
 - [`HTML_BUILD.bat`][HTML_BUILD.bat] — batch script to create `alanguide.html` document.
 - [`PDF_BUILD.bat`][PDF_BUILD.bat] (_experimental_) — batch script to create `alanguide.pdf` document (currently ignored in repository).
 
-There's and additional automation script that needs to be executed whenever the source files in the `alanguide-code/` are changed:
 
-- [`/_adoc/generate-inc-files.sh`][generate-inc-files]
-
-The `generate-inc-files.sh` script exploits the __[iconv]__ tool to convert Alan sources from ISO-8859-1 to UTF-8 encoding. Since Windows doesn't have an equivalent native tool, I've used a Bash script instead of a Windows batch in this case. Git for Windows ships with a Bash, which has the iconv tool. Besides, you won't need to use this script unless you modify the Alan sources of the tutorial.
-
+> **NOTE** — (2020/12/27) Now the AsciiDoc sources exploit the new (and undocumented) `ecoding` option for the `include::` directive, so the toolchain no longer needs to first convert external ALAN sources and transcripts to UTF-8 before their inclusion in the source documents (see [Issue #84]).
 
 ### HTML Toolchain Dependencies
 
@@ -186,7 +171,7 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 
 [iconv]: https://en.wikipedia.org/wiki/Iconv "See Wikipedia page on iconv"
 
-<!-- people ------------------------------------------------------------------>
+<!-- people -->
 
 [Anssi Räisänen]: https://github.com/AnssiR66 "View Anssi Räisänen's GitHub profile"
 
@@ -207,6 +192,10 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 
 [Rouge]: http://rouge.jneen.net/ "Visti Rouge website (code highlighter in Ruby)"
 
+<!-- AsciiDoctor Manual -->
+
+[docinfo header file]: https://asciidoctor.org/docs/user-manual/#docinfo-file "See Asciidoctor Manual on docinfo files"
+
 <!-- Project Files -->
 
 [guide]: ./alanguide.asciidoc
@@ -219,13 +208,7 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 [PDF_BUILD.bat]: ./PDF_BUILD.bat "Batch script to convert the Alan Guide to PDF document."
 [TODO]: ./TODO.md "View the TODO document"
 
-<!-- Asciidoctor assets -->
-
-[_adoc]: ./_adoc/ "Navigate to folder"
-
-[inc_tvtime]: ./_adoc/inc_tvtime.utf8_alan "View source file"
-[docinfo]: ./_adoc/docinfo.html "View source file"
-[generate-inc-files]: ./_adoc/generate-inc-files.sh "View script source"
+[docinfo]: ./docinfo.html "View docinfo source"
 
 <!-- Tutorial code assets -->
 
@@ -244,8 +227,12 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 [alanguide.adoc]: ../_assets-src/original-docs/alanguide.adoc "View source file"
 [alanguide.html]: ../_assets-src/original-docs/alanguide.html "View source file"
 
-<!-- In-Doc Croos References -->
+<!-- In-Doc Cross References -->
 
 [Document History]: #document-history "Jump to the section about the history of this document"
+
+<!-- Repo Issues -->
+
+[Issue #84]: https://github.com/alan-if/alan-docs/issues/84 "Issue #84 — Use New encoding Option with include:: Directives"
 
 <!-- EOF -->

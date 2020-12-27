@@ -25,6 +25,7 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Latest News](#latest-news)
+    - [Asciidoctor Inclusions with ISO Encoding](#asciidoctor-inclusions-with-iso-encoding)
     - [Switching to Java JDK 12](#switching-to-java-jdk-12)
     - [Switching to Dart Sass](#switching-to-dart-sass)
 - [About This Project](#about-this-project)
@@ -56,6 +57,20 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
 # Latest News
 
 Some important news for project maintainers and contributors...
+
+## Asciidoctor Inclusions with ISO Encoding
+
+Since December 2020, the project began leveraging the new (and undocumented) `encoding` option for the `include::` directive, so the toolchain no longer needs to first convert external ALAN sources and transcripts to UTF-8 before their inclusion in the source documents (see [Issue #84]).
+
+The syntax of the new feature is as follows:
+
+```asciidoc
+include::./somefile.alan[encoding=iso-8859-1]
+```
+
+Being able to directly include ALAN sources and transcript in their native ISO-8859-1 encoding, without having to create UTF-8 versions via iconv, is going to have a huge build time impact on those documents that rely on external ALAN sources and dynamically generated transcripts.
+
+Huge thanks to [Dan Allen]  (@mojavelinux) for having promptly accepted and implemented [our feature request][#3248] to support on-the-fly encoding in `include::` directives.
 
 ## Switching to Java JDK 12
 
@@ -303,6 +318,7 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 
 <!-- people & organizations -------------------------------------------------->
 
+[Dan Allen]: https://github.com/mojavelinux "View Dan Allen's GitHub profile"
 [Tristano Ajmone]: https://github.com/tajmone "View Tristano Ajmone's GitHub profile"
 
 [Alan IF Development team]: https://github.com/alan-if "Visit the Alan Interactive Fiction Development team organization on GitHub"
@@ -328,6 +344,8 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 [Issue #2106]: https://github.com/asciidoctor/asciidoctor/issues/2106 "Issue #2106 — Add extension point for integrating an alternative source highlighter"
 
 [asciidoctor-fopub]: https://github.com/asciidoctor/asciidoctor-fopub "Visit the asciidoctor-fopub repository on GitHub"
+
+[#3248]: https://github.com/asciidoctor/asciidoctor/issues/3248 "View feature request #3248 on Asciidoctor repository"
 
 <!-- External Tools and Dependencies -->
 
@@ -376,5 +394,9 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 
 [_Mastering Git submodules_]: https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407 "Read article"
 [The dangers we face]: https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#6b21 "Jump to section 'The dangers we face' of the 'Mastering Git submodules' article"
+
+<!-- Repo Issues -->
+
+[Issue #84]: https://github.com/alan-if/alan-docs/issues/84 "Issue #84 — Use New encoding Option with include:: Directives"
 
 <!-- EOF -->
