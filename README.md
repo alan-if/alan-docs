@@ -280,11 +280,9 @@ Which consists of:
 
 ## Alan Cookbook
 
-Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo group]):
+Last but not least, there's _The Alan Cookbook_ by Anssi Räisänen:
 
-- _The Alan Cookbook_ (PFD & txt) by Anssi Räisänen
-
-[Alan IF Yahoo group]: https://groups.yahoo.com/neo/groups/alan-if/files
+- [_The Alan Cookbook_][Cookbook PDF] — PDF download
 
 -------------------------------------------------------------------------------
 
@@ -293,7 +291,7 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 ## Alan
 
 - [Alan website]
-- [Alan IF Yahoo group]
+- [Alan IF Google group]
 - [Alan sources on GitHub][Alan GitHub] — source code repository on GitHub.
 - [Alan IF Development team] — GitHub profile and public projects.
 
@@ -330,7 +328,7 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 
 <!-- Alan Links -------------------------------------------------------------->
 
-[Alan IF Yahoo group]: https://groups.yahoo.com/neo/groups/alan-if/info "Visit the Alan IF group at Yahoo! Groups"
+[Alan IF Google group]: https://groups.google.com/g/alan-if "Visit the Alan IF group at Google Groups"
 [Alan website]: https://www.alanif.se/ "Visit Alan official website"
 [Alan GitHub]: https://github.com/alan-if/alan/ "Visit the Alan source repository on GitHub"
 
@@ -381,6 +379,8 @@ Last but not least, there's _The Alan Cookbook_ (available on [Alan IF Yahoo gro
 [IDE PDF]: https://github.com/alan-if/alan-docs/raw/master/ideguide/Alan%20IDE%20Reference%20Guide.pdf "Download the 'Alan IDE Reference Guide' in PDF format"
 
 [Writing LPrev]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/writing/writing.html "Preview 'The Alan Author's Guide' via GitHub & BitBucket HTML Preview"
+
+[Cookbook PDF]: https://www.alanif.se/downloads/documentation/alancookbookv2.pdf "Download 'The Alan Cookbook' in PDF format"
 
 [GitHub & BitBucket HTML Preview]: http://htmlpreview.github.io
 
