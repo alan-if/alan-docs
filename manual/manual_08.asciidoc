@@ -14,17 +14,15 @@ To use this, read the relevant sections below to get a feel for how that will wo
 
 But there are also a number of other packages that include an Alan interpreter, http://ccxvii.net/gargoyle/[Gargoyle^] and http://ccxvii.net/spatterlight/[Spatterlight^], are two, with Gargoyle at the point of writing, being the one most up to date, and also available on multiple platforms.
 
-// TODO: Instead of "the complete packages" maybe "Development Kit" or "SDK"?
-
 If you actually want to write interactive fiction using Alan you also need the compiler.
-This is distributed from {alan-www} in what's called the complete packages, including compiler, interpreter, the documentation, a conversion program for v2 games and some examples.
+This is distributed from {alan-www} in what's called the Development Kit, or the SDK (for Software Development Kit), which includes the compiler, interpreter, a conversion program for v2 games and some examples.
 
 Whatever option you choose, there should be more detailed instructions on how to install included with that package.
 Below follows some information pertaining to the original versions from the Alan website.
 
 == Compiling
 
-Although there are other options, like a prototype AlanIDE, WinAlan et al., basic use of the Alan Adventure Development System is through a traditional command line batch compiler.
+Although there are other options, like the AlanIDE, WinAlan et al., basic use of the Alan Adventure Development System is through a traditional command line batch compiler.
 This means that the actual development system is a compiler that reads text files created using any standard text editor.
 To compile an adventure use the following command in a command shell:
 
