@@ -104,8 +104,8 @@ The ((interpreter)) supports the following switches:
 
 * `-h` print some help
 * `-v` verbose mode
-* `-l` log game transcript in a log-file in the current directory
-* `-c` log all player commands in a log-file in the current directory
+* `-l` log game transcript to a file ('.a3t')
+* `-c` log player command input to a file ('.a3i')
 * `-n` no Status Line
 * `-d` print the version of interpreter and enter debug mode
 * `-t[<n>]` various levels of execution trace, higher <n> gives more details
