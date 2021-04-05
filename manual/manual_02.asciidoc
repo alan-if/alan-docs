@@ -815,6 +815,7 @@ End The kitchen_door.
 
 This defines the effects of applying the `open` verb to that specific door.
 The implementation makes direct references to the `kitchen_door`, so to make the verb more general it should be possible to apply to all ``door``s.
+So let's move the definition from the `kitchen_door` instance to the `door` class:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -826,15 +827,11 @@ Every door IsA object
 End Every door.
 --------------------------------------------------------------------------------
 
-// @FIXME @thoni56:
-//      In this sentence some words must have been lost, because it doesn't
-//      seem to make sense:
-//          "Instead need to reference the object the player..."
-//      Whose need does it referr to?
-
 With this definition it is possible to apply the verb to all doors.
-Instead need to reference the object the player mentioned in his command (see <<The SYNTAX>> and <<SYNTAX Definitions>> for a more thorough discussion).
-In this case, the attribute `closed` must also be available for all objects by ensuring that the attribute exists in the class.
+
+A reference to the exact object the player mentioned in his command is propagated in the parameter (see <<The SYNTAX>> and <<SYNTAX Definitions>> for a more thorough discussion).
+Since this verb is now applicable to all `door`s, the attribute `closed` must also be available for all instances of the `door` classs.
+We can do that by ensuring that the attribute exists in the class using a normal attribute declaration.
 (See <<Additions>> on how to add an attribute to a predefined class such as `object`).
 
 Of course, there are often also conditions that need to be checked before we can execute this code (perhaps to see if it was possible to open the object!).
