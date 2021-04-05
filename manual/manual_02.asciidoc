@@ -691,13 +691,9 @@ This makes all instances of the new class have the same attribute but it is set 
 The important thing is that the feature of having the attribute is common to all ``openable_door``s.
 This is called overriding a property.
 
-
-// @FIXME @thoni56:
-//     "In the following DESCRIPTIONS..." --- the text refers to these "descriptions"
-//      in various places, but it's not clear what its meant by them!
-
 This concludes our brief presentation of object-orientation and how the Alan language supports it.
-In the following descriptions, you just need to remember that most features can be inherited along the inheritance tree and be overridden, both during that inheritance and explicitly in the instance declaration itself.
+The most important thing to remember is that you can extend the inheritance tree with new classes and that most features can be inherited along that tree and be overridden, both by intermediate classes in the inheritance chain and explicitly in the instance itself.
+
 
 // @TODO: Add a cross-ref to the table of properties inheritance?
 
