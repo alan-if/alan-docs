@@ -776,12 +776,8 @@ And it is usually the indirect ones that you should look out for.
 
 === The VERB Construct
 
-// @NOTE @thoni56:
-//      Maybe change to "Verbs are USUALLY associated with", because there are
-//      also the global verbs.
-
 The (((VERB, construct))) `Verb` is the construct that implements the effects of an action requested by the player.
-Verbs are associated with a class or an instance.
+Verbs are usually associated with a class or an instance.
 We will look at the implications of various combinations of these in the next few sections.
 
 To implement a `Verb` you need a name for it (which is also the default word the player should input to request that action).
