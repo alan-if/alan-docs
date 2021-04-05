@@ -984,7 +984,6 @@ The game must have been compiled with the debug option or the command will be se
 Typing a question mark or *help* in response to the debug prompt will give a brief listing of the commands available in Abug:
 
 
-// FIXME: Current ADBG Help has changed slightly.
 ................................................................................
 break [[file]:[n]]   -- set breakpoint at source line [n] in [file]
 delete [[file]:[n]]  -- delete breakpoint at source line [n] in [file]
@@ -1058,20 +1057,21 @@ Wherever different output styles are available, e.g. in GLK based interpreters l
 The following is a short excerpt from a command line debugging session (user input in
 italics):
 
-// @FIXME OBSOLETE DEBUG TRANSCRIPT:
-//   This debug transcript seems rather old, and different from what you
-//   get with the latest ARun terp! It would be best to generated this
-//   transcript from a real game using a commands script, and then import
-//   in the document the generated trascript log.
+// @TODO RISK FOR OBSOLETE DEBUG TRANSCRIPT:
+//   This should really be generated from a real game using a commands script,
+//   and then imported in the document. But since there are some abbreviated passages
+//   and the styling that would take some effort. It is possible that this does
+//   not actually change significantly often enough to warrant the effort of
+//   automating it.
 
 [literal, role="shell", subs="+quotes"]
 ................................................................................
-<Arun, Adventure Interpreter version 3.0beta1 (2010-12-19 16:26:05)>
-
-<Version of 'saviour.a3c' is 3.0beta1>
-<Hmm, this is a little-endian machine, fixing byte ordering.... OK.>
-<Hi! This is Alan interactive fiction interpreter Arun, version 3.0beta1 !>
-
+<Arun - Adventure Language Interpreter version 3.0beta8 (2021-04-05 21:19:57)>
+<Version of 'saviour.a3c' is 3.0beta8!>
+<Hmm, this is a little-endian machine, fixing byte ordering....OK.>
+<'saviour' contains the following IFIDs:
+  IFID:	UUID://c065a752-a476-a252-731f-e9fe96fcdc6d//
+>
 adbg> _n_
 
 adbg:  Stepping to saviour.alan:1346
@@ -1109,40 +1109,38 @@ Outside The Tall Building
 adbg:  Stepping to saviour.alan:318
 <00318>:         "To the north is a tall ancient building with a large entrance.
 adbg> _n_
-To the north is a tall ancient building with a large entrance. On the top there
-is a clock tower. Most of the windows in the building are broken, and a sign
-with three oval objects are hanging lose from the wall.
+To the north is a tall ancient building with a large entrance. On
+the top there is a clock tower. Most of the windows in the building are
+broken, and a sign with three oval objects are hanging lose from the wall.
 
 > _north_
 adbg:  Stepping to saviour.alan:325
 <00325>:             Score 5.
 
 adbg> _?_
-Alan 3.0beta1 -- Adventure Language System (2010-12-19 16:26)
-ADBG Commands (can be abbreviated):
-    help               -- this help
-    ?                  -- d:o
-    break [file:[n]]   -- set breakpoint at source line [n] in [file]
-    delete [file:[n]]  -- delete breakpoint at source line [n] in [file]
+Alan 3.0beta8 -- Adventure Language System (2021-04-05 21:19)
+ADBG Commands (can be abbreviated): 
+    help               -- this help 
+    ?                  -- d:o 
+    break [[file:]n]   -- set breakpoint at source line [n] (optionally in [file])
+    delete [[file:]n]  -- delete breakpoint at source line [n] (optionally in [file])
     files              -- list source files
-    events             -- show events
-    classes            -- show class hierarchy
-    instances [n]      -- show instance(s)
-    objects [n]        -- show instance(s) that are objects
-    actors [n]         -- show instance(s) that are actors
-    locations [n]      -- show instances that are locations
+    events             -- list events
+    classes            -- list class hierarchy
+    instances [n]      -- list instance(s), all, wildcard, number or name
+    objects [n]        -- list instance(s) that are objects
+    actors [n]         -- list instance(s) that are actors
+    locations [n]      -- list instances that are locations
     trace ('source'|'section'|'instruction'|'push'|'stack')
                        -- toggle various traces
-    next               -- execute to next source line
+    next               -- continue game and stop at next source line
     go                 -- go another player turn
     exit               -- exit to game, enter 'debug' to get back
     x                  -- d:o
     quit               -- quit game
 
 adbg> _trace section_
-
 Section trace on.
-
 adbg> _n_
 
 <EXIT north[1] from Outside The Tall Building[4], Moving:>
@@ -1154,27 +1152,26 @@ Hall
 
 adbg:  Stepping to saviour.alan:332
 <00332>:         "Inside the entrance is a hallway full of dust and pieces of
-
-adbg> _instances_
+adbg> instances
 Instances:
-      1: #nowhere
-      2: pseudowords (container), at #nowhere [1]
-      3: nowhere
-      4: Outside The Tall Building
-      5: Hall
-      6: door, at Hall [5]
-      7: Stairs
-      8: cellar
-      9: rats, at cellar [8]
-     10: store
-     11: spool of computer tape, at store [10]
-     12: First Floor
-     13: old book, at First Floor [12]
+    [1] #nowhere ("#nowhere")
+    [2] pseudowords ("pseudowords") (container), at [1] #nowhere ("#nowhere")
+    [3] nowhere ("nowhere")
+    [4] outside ("Outside The Tall Building")
+    [5] Hall ("Hall")
+    [6] door ("door"), at [5] Hall ("Hall")
+    [7] stairs ("Stairs")
+    [8] cellar ("cellar")
+    [9] rats ("rats"), at [8] cellar ("cellar")
+    [10] store ("store")
+    [11] tape ("spool of computer tape"), at [10] store ("store")
+    [12] first_floor ("First Floor")
+    [13] book ("old book"), at [12] first_floor ("First Floor")
 <<list abbreviated>>
 
-adbg> _instance 13_
-The old book [13] IsA object[4]
-    Location: at First Floor [12]
+adbg> instance 13
+The [13] book ("old book") Isa object[4]
+    Location: at [12] first_floor ("First Floor")
     Attributes:
         Takeable[2] = 1
         Readable[3] = 1
@@ -1183,9 +1180,9 @@ The old book [13] IsA object[4]
         examinable[6] = 1
 
 adbg> _g_
-Inside the entrance is a hallway full of dust and pieces of the ceiling has
-fallen to the floor. At the west end is a staircase, and to the south is the
-exit. To the east is a folding door. It is closed.
+Inside the entrance is a hallway full of dust and pieces of the
+ceiling has fallen to the floor. At the west end is a staircase, and to
+the south is the exit. To the east is a folding door. It is closed.
 
 > _west_
 
@@ -1195,11 +1192,10 @@ exit. To the east is a folding door. It is closed.
 <ENTERED in instance Stairs[7] is empty>
 
 Stairs
-
-You are at the landing of an old staircase. It seem steady enough to walk in,
-but be careful if you are going to use it. There is a passage leading up, and
-another leading down into a dark cellar. To the east is the hallway. A strange
-smell emerges from below.
+You are at the landing of an old staircase. It seem steady enough to walk
+in, but be careful if you are going to use it. There is a passage leading
+up, and another leading down into a dark cellar. To the east is the
+hallway. A strange smell emerges from below.
 
 > _up_
 
@@ -1209,29 +1205,28 @@ smell emerges from below.
 <ENTERED in instance First Floor[12] is empty>
 
 First Floor
-
-The landing on the first floor is as dirty as all the others. Meters and meters
-of old cables are laying around, leading into a room to the east. The stairs
-leads up and down. They still seem alright. Through the dirty windows the barren
-field outside the building can be seen. Almost completely covered by dust, there
-is an old book laying on the floor here.
+The landing on the first floor is as dirty as all the others. Meters and
+meters of old cables are laying around, leading into a room to the east.
+The stairs leads up and down. They still seem alright. Through the dirty
+windows the barren field outside the building can be seen. Almost
+completely covered by dust, there is an old book laying on the floor here.
 
 > _take book and read it_
 
-<VERB 21, in parameter object(#1)=old book[13], inherited from object[4], CHECK:>
-<VERB 21, in parameter object(#1)=old book[13], inherited from object[4], DOES:>
+<VERB 21, in parameter str(#1)=old book[13], inherited from object[4], CHECK:>
+<VERB 21, in parameter str(#1)=old book[13], inherited from object[4], DOES:>
 Taken.
 
 <VERB 5, in parameter object(#1)=old book[13], inherited from object[4], CHECK:>
 <VERB 5, in parameter object(#1)=old book[13], DOES:>
-As you carefully try to open the book it falls apart into dust and falls to the
-floor through your fingers.
+As you carefully try to open the book it falls apart into dust and falls
+to the floor through your fingers.
 
 > _debug_
 
 adbg> _instance 13_
-The old book [13] IsA object[4]
-    Location: at nowhere [3]
+The [13] book ("old book") Isa object[4]
+    Location: at [3] nowhere ("nowhere")
     Attributes:
         Takeable[2] = 1
         Readable[3] = 1
@@ -1240,21 +1235,20 @@ The old book [13] IsA object[4]
         examinable[6] = 1
 
 adbg> _trace instruction_
-Single instruction trace on.
-
-adbg> _n_
+Instruction trace on.
+adbg> _n
 > _north_
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-1dbd: PRINT       10037,      22       "You can't go that way."
-1dbe: RETURN
+1f85: PRINT        10048,     22                  "You can't go that way."
+1f86: RETURN
 --------------------------------------------------
 
 > _west_
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-1dbd: PRINT       10037,      22       "You can't go that way."
-1dbe: RETURN
+1f85: PRINT        10048,     22                  "You can't go that way."
+1f86: RETURN
 --------------------------------------------------
 
 > _east_
@@ -1265,38 +1259,39 @@ adbg> _n_
 <ENTERED in instance office[14] is empty>
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
- e82: LINE            0,       0
- e85: PRINT        3479,       6       "Office"
- e86: RETURN
+ fcb: LINE             0,      0
+ fce: PRINT         3479,      6                  "Office"
+ fcf: RETURN
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-e89: LINE            0,     598
+ fd2: LINE             0,    598
 adbg:  Stepping to saviour.alan:598
 <00598>:         "In front of you is a deserted office area. Desks and chairs
 
 adbg> _g_
 
-e8c: PRINT        3485,     404 "In front of you is a deserted office area.
-Desks and chairs are piled up in one corner. The ventilation system has partly
-fallen to the floor, tearing part of the ceiling down with it. Under the twisted
-tubing a couple of old coffee makers are crushed to pieces. One shelf, having
-some kind of lettering, no longer readable, is thrown to one side, and another
-is still standing in a corner, full of dust."
-e8d: RETURN
+ fd5: PRINT         3485,    404                  "In front of you is a deserted
+office area. Desks and chairs are piled up in one corner. The ventilation
+system has partly fallen to the floor, tearing part of the ceiling down
+with it. Under the twisted tubing a couple of old coffee makers are
+crushed to pieces. One shelf, having some kind of lettering, no longer
+readable, is thrown to one side, and another is still standing in a
+corner, full of dust."
+ fd6: RETURN
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
- ec3: LINE            0,     616
- ec6: ATTRIBUTE      15,      17                =0
- ec7: NOT         FALSE                         =TRUE
- ec8: IF           TRUE
- ecb: LINE            0,     617
- ece: PRINT        3711,      43      " There is a ladder
- laying on the floor here."
- ecf: ELSE
-   :
- ee1: RETURN
+100c: LINE             0,    616
+100f: ATTRIBUTE       15,     17                 =0
+1010: NOT           FALSE                        =TRUE
+1011: IF             TRUE
+1014: LINE             0,    617
+1017: PRINT         3711,     43                  " There is a ladder laying on the
+floor here."
+1018: ELSE
+    :
+1029: RETURN
 --------------------------------------------------
 
 > _look_
@@ -1304,40 +1299,39 @@ e8d: RETURN
 <VERB 19, GLOBAL, DOES:>
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
- 71c: LINE            0,     199
- 71d: LOOK
+ 7dc: LINE             0,    199
+ 7dd: LOOK
 ++++++++++++++++++++++++++++++++++++++++++++++++++
- e82: LINE            0,       0
- e85: PRINT        3479,       6         "Office"
- e86: RETURN
+ fcb: LINE             0,      0
+ fce: PRINT         3479,      6                  "Office"
+ fcf: RETURN
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
- e89: LINE             0,     598
- e8c: PRINT         3485,     404         "In front of you is a deserted office
-area. Desks and chairs are piled up in one corner. The ventilation system has
-partly fallen to the floor, tearing part of the ceiling down with it. Under the
-twisted tubing a couple of old coffee makers are crushed to pieces. One shelf,
-having some kind of lettering, no longer readable, is thrown to one side, and
-another is still standing in a corner, full of dust."
-e8d: RETURN
-
+ fd2: LINE             0,    598
+ fd5: PRINT         3485,    404                  "In front of you is a deserted
+office area. Desks and chairs are piled up in one corner. The ventilation
+system has partly fallen to the floor, tearing part of the ceiling down
+with it. Under the twisted tubing a couple of old coffee makers are
+crushed to pieces. One shelf, having some kind of lettering, no longer
+readable, is thrown to one side, and another is still standing in a
+corner, full of dust."
+ fd6: RETURN
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
- ec3: LINE+++++++++++0,+++++616++++++++++++++++
- ec3: LINE           0,     616
- ec6: ATTRIBUTE     15,      17                =0
- ec7: NOT        FALSE                         =TRUE
- ec8: IF          TRUE
- ecb: LINE           0,     617
- ece: PRINT       3711,      43            " There is a ladder
+100c: LINE             0,    616
+100f: ATTRIBUTE       15,     17                 =0
+1010: NOT           FALSE                        =TRUE
+1011: IF             TRUE
+1014: LINE             0,    617
+1017: PRINT         3711,     43                  " There is a ladder
 laying on the floor here."
- ecf: ELSE
+1018: ELSE
     :
- ee1: RETURN
+1029: RETURN
 --------------------------------------------------
- 71e: RETURN
+ 7de: RETURN
 --------------------------------------------------
 
 > _q_
