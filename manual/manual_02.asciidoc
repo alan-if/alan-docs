@@ -163,16 +163,9 @@ Much of what should be described is in terms of ordinary text shown to make the 
 You will still need to understand how to vary your output depending on various conditions or information, how the player input controls which events will happen, how to connect one location to another and how to store information for later use.
 In a way this is programming, but in an unusual sense.
 
-// @FIXE @thoni56:
-//     The sentence "to have the same view that the Alan language has on..."
-//     needs rephrasing and polishing! too long, entangled, and a bit strecthed too.
-//
-//     PROPOSAL:
-//        As an author you'll need to learn to view a work of interactive
-//        fiction through the "`eyes of Alan language`", so to speak.
-
-In order to understand the rules of the Alan language, which this manual is all about, it is necessary to first establish some common ground.
-As an author you'll need to have the same view that the Alan language has on some fundamentals of what a work of interactive fiction is all about.
+In order to understand the rules of the Alan language we will have to establish some common ground.
+As an author you'll have to learn to view works of interactive fiction in the same way as the Alan language does.
+It will not be hard as most of the concept are familiar already.
 
 
 
