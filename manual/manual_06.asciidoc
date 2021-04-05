@@ -938,17 +938,9 @@ There are a few (((debugging, switches))) debugging switches available when star
 *-d*       Start the debugger
 ................................................................................
 
-// @CHECKME @thoni56: Interpreter Switches.
-//    Below it states:
-//
-//        NONE OF THE ABOVE SWITCHES can be used unless ... compiled with the Debug ...
-//
-//    Is it truely so? Can't the '-c' and '-l' switches be used unless the
-//    adventure was compiled with 'Debug' option?
-
 [IMPORTANT]
 ================================================================================
-None of the above switches can be used unless the adventure was compiled with the `Debug` option set (see <<Options>>).
+The `-t` and `-d` switches cannot be used unless the adventure has been compiled with the `Debug` option set (see <<Options>>).
 ================================================================================
 
 
