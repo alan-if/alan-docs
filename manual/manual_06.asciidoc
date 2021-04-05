@@ -896,19 +896,10 @@ TBD.
 == Structure
 
 
-// @TODO @thoni56:
-//    The part "or at least is NOT ONLY a tool in a puzzle" is unclear, and also
-//    needs to be rephrased. The confusion is due to that "ONLY" and the "PUZZLE".
-//    On the one hand, it seems to say that merely aesthetic elements of the story
-//    (i.e. descriptions and scenery-like props) should be in a separate file,
-//    but then the "is NOT ONLY A TOOL..." introduces confusion as to what qualifies
-//    as ornamental-like objects --- i.e. "tools in a puzzle" suggests that the
-//    item is important for solving the puzzle, so why the use of "ONLY"?
-
 A good thing to do when designing an interactive fiction story is to separate the geography from the story.
 In Alan, you can use the `Import` facility to structure your Alan source.
-One approach could be to place the description of each location in a separate file along with any objects that could be considered part of the scenery or at least is not only a tool in a puzzle.
-These files can then be included in a '`map`' file, which in turn is included by the top-level file.
+One approach could be to place the description of each location in a separate file along with any objects that could be considered part of the scenery and other related items.
+These files can then all be included in a '`map`' file, which in turn is included by the top-level file.
 
 The story line can be divided into files too, one for each '`scene`' -- a scene being comments describing the important things that are suppose to happen, any prerequisites and objects, events, rules, etc. which are specific for this part of the story.
 
