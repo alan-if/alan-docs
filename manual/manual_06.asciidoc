@@ -598,14 +598,7 @@ The belt IsA entity
 End The belt.
 --------------------------------------------------------------------------------
 
-// @NOTE @thoni56: INVENT vs INVENTORY.
-//    Why 'invent' instead of 'inventory'? Most readers will be familiar
-//    with the latter -- the former seems odd, and I can't recall ever
-//    seeing it in an IF work. Also, 'invent' suggests the verb "to invent"
-//    i.e. fabbricate, make up), and as a shorthand of 'inventory' is odd
-//    indeed.
-
-You can combine that with the following definitions of the hero and the *invent* verb:
+You can combine that with the following definitions of the hero and the *inventory* verb:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -616,18 +609,18 @@ The hero IsA actor
       If Count In belt = 0 Then "." End If.
 End The hero.
 
-Verb invent
+Verb inventory
   Does
     List hero.
     List belt.
-End Verb invent.
+End Verb inventory.
 --------------------------------------------------------------------------------
 
 And the following output could result:
 
 [example,role="gametranscript"]
 ================================================================================
-&gt; _invent_ +
+&gt; _inventory_ +
 You are empty-handed but in your belt you have a knife.
 ================================================================================
 
