@@ -931,13 +931,19 @@ The `-t` and `-d` switches cannot be used unless the adventure has been compiled
 
 === Command Logs and Game Transcripts
 
-For various purposes, such as debugging, an actual log of the player commands can be handy.
-Such a log is created if the option `-c` is given to the interpreter when starting a game.
-The log files are created in the directory which was current when the interpreter was started, the name of the log file will begin with the game name and have the extension *.log*.
+For various purposes, such as debugging, a log of the game play can be handy.
 
-A command log can on some systems be used as input to the interpreter, and thus automate the execution of the exact player experience.
+There are two such options available.
+One is a command input log and it is created when the option `-c` is given to the interpreter when starting a game.
+Such a file is also sometimes called a "solution file" since it can be used to show the solution to a game.
 
-You can only activate one of the logs in a single session.
+A command input log can sometimes be used as input to the interpreter, and thus automate the execution of the exact player experience.
+
+The other options is to create a complete transcript of the game play and is created when the option `-l` is used.
+Such a log file contains both player input and the game output.
+
+Both kinds of log files are created in the directory which was current when the interpreter was started, the name of the log file will begin with the game name.
+They will have the extension *.a3i*, for "Alan v3 Input", or *.a3t*, for "Alan v3 Transcript", respectively.
 
 
 
