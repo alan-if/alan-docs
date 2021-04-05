@@ -986,22 +986,22 @@ Typing a question mark or *help* in response to the debug prompt will give a bri
 
 // FIXME: Current ADBG Help has changed slightly.
 ................................................................................
-break [file:[n]]   -- set breakpoint at source line [n] in [file]
-delete [file:[n]]  -- delete breakpoint at source line [n] in [file]
-files              -- list source files
-events             -- show events
-classes            -- show class hierarchy
-instances [n]      -- show instance(s)
-objects [n]        -- show instance(s) that are objects
-actors [n]         -- show instance(s) that are actors
-locations [n]      -- show instances that are locations
+break [[file]:[n]]   -- set breakpoint at source line [n] in [file]
+delete [[file]:[n]]  -- delete breakpoint at source line [n] in [file]
+files                -- list source files
+events               -- show events
+classes              -- show class hierarchy
+instances [n]        -- show instance(s)
+objects [n]          -- show instance(s) that are objects
+actors [n]           -- show instance(s) that are actors
+locations [n]        -- show instances that are locations
 trace ('source'|'section'|'instruction'|'push'|'stack')
-                   -- toggle various traces
-next               -- execute to next source line
-go                 -- go another player turn
-exit               -- exit debug mode and return to game, enter again using 'debug' as input
-x                  -- d:o
-quit               -- quit game
+                     -- toggle various traces
+next                 -- execute to next source line
+go                   -- go another player turn
+exit                 -- exit debug mode and return to game, enter again using 'debug' as input
+x                    -- d:o
+quit                 -- quit game
 ................................................................................
 
 
