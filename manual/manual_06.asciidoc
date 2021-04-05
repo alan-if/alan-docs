@@ -1119,9 +1119,9 @@ adbg:  Stepping to saviour.alan:325
 
 adbg> _?_
 Alan 3.0beta8 -- Adventure Language System (2021-04-05 21:19)
-ADBG Commands (can be abbreviated): 
-    help               -- this help 
-    ?                  -- d:o 
+ADBG Commands (can be abbreviated):
+    help               -- this help
+    ?                  -- d:o
     break [[file:]n]   -- set breakpoint at source line [n] (optionally in [file])
     delete [[file:]n]  -- delete breakpoint at source line [n] (optionally in [file])
     files              -- list source files
