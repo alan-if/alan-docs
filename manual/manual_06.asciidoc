@@ -944,18 +944,13 @@ You can only activate one of the logs in a single session.
 === Interpreter and Instruction Trace
 
 (((interpreter)))
-Trace mode can also act as an aid in debugging.
-Level 1 will print information about every invocation of the instruction interpreter, making it easier to see which parts of the code are being executed.
+Trace mode can also be helpful when debugging.
+Level 1 of tracing will show each section, verb, exit, description etc., the interpreter is invoked on, making it easier to see which parts of the code are executed.
 
-// @NOTE @thoni56: Acode term unexplained / Add Glossary?.
-//    Here "Acode" is mentioned, but the term wasn't introduced nor explained
-//    anywhere in the Manual. Might be worth introducing the term somewhere and
-//    cross reference it, or either create a Glossary section and add to it.
-
-Trace level 2, single instruction trace, will also trace every single Acode instruction.
-The Acode is based on a stack machine but single instruction trace will not show all stack operations.
-Level 3 shows the execution of these also.
-Level 4 dumps the content of the stack for every instruction.
+Trace level 2, instruction trace, will in addition also trace the execution of each operation in the generated code.
+Level 3 shows the execution of all steps, also those only pushing to or popping from stack.
+Level 4 dumps the content of the stack between each instruction.
+So higher numbers gives more information but is probably also less and less useful for normal debugging.
 
 
 
@@ -975,7 +970,7 @@ adbg&gt;
 === Using the Debugger
 
 ((Abug)) may also be entered during the execution of an adventure.
-To do this you issue the single player command (type it at the game prompt):
+To do this you simply give the following player command (type it at the game prompt):
 
 
 [example,role="gametranscript"]
