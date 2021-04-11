@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.12">
+<meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="description" content="<strong>The ALAN IF Manual</strong>&#8201;&#8212;&#8201;The official reference manual for the ALAN Adventure programming language for creating Interactive Fiction text-adventures.">
 <meta name="keywords" content="alan, if, interactive fiction, game, text adventures, programming">
 <title>The ALAN Adventure Language Reference Manual</title>
@@ -49,7 +49,7 @@ textarea{overflow:auto;vertical-align:top}
 table{border-collapse:collapse;border-spacing:0}
 *,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
 html,body{font-size:100%}
-body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
 a:hover{cursor:pointer}
 img,object,embed{max-width:100%;height:auto}
 object,embed{height:100%}
@@ -64,8 +64,10 @@ img{-ms-interpolation-mode:bicubic}
 img,object,svg{display:inline-block;vertical-align:middle}
 textarea{height:auto;min-height:50px}
 select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
 .subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
-div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
 a{color:#2156a5;text-decoration:underline;line-height:inherit}
 a:hover,a:focus{color:#1d4b8f}
 a img{border:0}
@@ -105,22 +107,19 @@ h1{font-size:2.75em}
 h2{font-size:2.3125em}
 h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
 h4{font-size:1.4375em}}
-table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede;word-wrap:normal}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
 table thead,table tfoot{background:#f7f8f7}
 table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
 table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
 table tr.even,table tr.alt{background:#f8f8f7}
-table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
 h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
 h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
-.center{margin-left:auto;margin-right:auto}
-.stretch{width:100%}
 .clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
 .clearfix::after,.float-group::after{clear:both}
-:not(pre).nobreak{word-wrap:normal}
-:not(pre).nowrap{white-space:nowrap}
-:not(pre).pre-wrap{white-space:pre-wrap}
-:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+:not(pre)>code.nobreak{word-wrap:normal}
+:not(pre)>code.nowrap{white-space:nowrap}
 pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
 pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
 pre>code{display:block}
@@ -185,7 +184,7 @@ body.toc2.toc-right{padding-left:0;padding-right:20em}}
 #content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
 #content #toc>:first-child{margin-top:0}
 #content #toc>:last-child{margin-bottom:0}
-#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer{max-width:100%;background:rgba(0,0,0,.8);padding:1.25em}
 #footer-text{color:rgba(255,255,255,.8);line-height:1.44}
 #content{margin-bottom:.625em}
 .sect1{padding-bottom:.625em}
@@ -208,7 +207,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .admonitionblock>table td.icon{text-align:center;width:80px}
 .admonitionblock>table td.icon img{max-width:none}
 .admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
-.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
 .exampleblock>.content>:first-child{margin-top:0}
@@ -218,7 +217,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
 .exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
-.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
 .literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
@@ -264,20 +263,21 @@ pre.pygments .lineno::before{content:"";margin-right:-.125em}
 .quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
 .quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
 .quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+table.tableblock{max-width:100%;border-collapse:separate}
 p.tableblock:last-child{margin-bottom:0}
-td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
 td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+td.tableblock>.content>:last-child.sidebarblock{margin-bottom:0}
 table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
-table.grid-all>*>tr>*{border-width:1px}
-table.grid-cols>*>tr>*{border-width:0 1px}
-table.grid-rows>*>tr>*{border-width:1px 0}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
 table.frame-all{border-width:1px}
-table.frame-ends{border-width:1px 0}
 table.frame-sides{border-width:0 1px}
-table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
-table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
-table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
-table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.frame-topbot,table.frame-ends{border-width:1px 0}
 table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
 th.halign-left,td.halign-left{text-align:left}
 th.halign-right,td.halign-right{text-align:right}
@@ -286,7 +286,7 @@ th.valign-top,td.valign-top{vertical-align:top}
 th.valign-bottom,td.valign-bottom{vertical-align:bottom}
 th.valign-middle,td.valign-middle{vertical-align:middle}
 table thead th,table tfoot th{font-weight:bold}
-tbody tr th{background:#f7f8f7}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
 tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
 p.tableblock>code:only-child{background:none;padding:0}
 p.tableblock{font-size:1em}
@@ -315,7 +315,6 @@ ol.lowergreek{list-style-type:lower-greek}
 .hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
 td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
 td.hdlist1{font-weight:bold;padding-bottom:1.25em}
-td.hdlist2{word-wrap:anywhere}
 .literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
 .colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
 .colist td:not([class]):first-child img{max-width:none}
@@ -388,7 +387,7 @@ a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
 .admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
 .admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
-.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:50%;border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
 .conum[data-value] *{color:#fff!important}
 .conum[data-value]+b{display:none}
 .conum[data-value]::after{content:attr(data-value)}
@@ -415,7 +414,6 @@ thead{display:table-header-group}
 svg{max-width:100%}
 p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
 h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
-#header,#content,#footnotes,#footer{max-width:none}
 #toc,.sidebarblock,.exampleblock>.content{background:none!important}
 #toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
 body.book #header{text-align:center}
@@ -440,7 +438,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -1112,9 +1109,8 @@ Much of what should be described is in terms of ordinary text shown to make the 
 In a way this is programming, but in an unusual sense.</p>
 </div>
 <div class="paragraph">
-<p>In order to understand the rules of the Alan language we will have to establish some common ground.
-As an author you&#8217;ll have to learn to view works of interactive fiction in the same way as the Alan language does.
-It will not be hard as most of the concept are familiar already.</p>
+<p>In order to understand the rules of the Alan language, which this manual is all about, it is necessary to first establish some common ground.
+As an author you&#8217;ll need to have the same view that the Alan language has on some fundamentals of what a work of interactive fiction is all about.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1282,7 +1278,7 @@ These sections are typeset against a coloured background:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">The rules for the rules are available in <a href="#_language_grammar">Appendix D</a>.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">The rules for the rules are available in <a href="#_language_grammar">Appendix D</a>.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1330,7 +1326,7 @@ This is so that you, the designer, may refer to that location easily, instead of
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The kitchen IsA location
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The kitchen IsA location
   Exit east To hallway.
 End The Kitchen.
 
@@ -1383,7 +1379,7 @@ Let us describe the Hallway.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The hallway IsA location
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The hallway IsA location
   Description
     "In front of you is a long hallway. In one end
      is the front door, in the other a doorway. From
@@ -1410,7 +1406,7 @@ Note also that you do not have to worry about this at all&#8201;&#8212;&#8201;in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Exit west To kitchen
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Exit west To kitchen
   Check kitchen_door Is open
     Else "The door is closed."
   Does
@@ -1433,7 +1429,7 @@ A large number of objects that can be examined and manipulated make a game so mu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The door IsA object At hallway
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The door IsA object At hallway
   Is closed.
   Description
     "The door to the kitchen is a sliding door."
@@ -1474,7 +1470,7 @@ For example, if the door should be opened (the player having said &#8220;open do
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Make door Not closed.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Make door Not closed.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1482,7 +1478,7 @@ For example, if the door should be opened (the player having said &#8220;open do
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Make door closed.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Make door closed.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1491,7 +1487,7 @@ The <code>Set</code> statement changes numeric or string attributes, for example
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Set level Of bottle To 4.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Set level Of bottle To 4.</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1537,7 +1533,7 @@ Opening a lid might cause a previously hidden object to fall to the floor, somet
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Locate treasure Here.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Locate treasure Here.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1545,7 +1541,7 @@ Opening a lid might cause a previously hidden object to fall to the floor, somet
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Locate vase At hallway.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Locate vase At hallway.</code></pre>
 </div>
 </div>
 </div>
@@ -1562,7 +1558,7 @@ Each step corresponds to one player move.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The charlie_chaplin IsA actor Name charlie chaplin
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The charlie_chaplin IsA actor Name charlie chaplin
   Script going_out
     Step
       Locate Actor At outside_house.
@@ -1620,7 +1616,7 @@ This flexibility, know as polymorphism, is possible in programming only through 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every mammal IsA vertebrate ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every mammal IsA vertebrate ...
 
 The house_pet IsA cat ...</code></pre>
 </div>
@@ -1679,7 +1675,7 @@ In general the format is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The <em>&lt;instance identifier&gt;</em> IsA <em>&lt;class identifier&gt;</em> ...</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The <em>&lt;instance identifier&gt;</em> IsA <em>&lt;class identifier&gt;</em> ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1687,7 +1683,7 @@ In general the format is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every <em>&lt;class identifier&gt;</em> ...</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every <em>&lt;class identifier&gt;</em> ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1696,7 +1692,7 @@ This could include inheriting from another class, e.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every door IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every door IsA object
 End Every.
 
 Every openable_door IsA door
@@ -1724,7 +1720,7 @@ In the example above a class named <code>closed_openable_door</code> could be de
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every closed_openable_door IsA openable_door
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every closed_openable_door IsA openable_door
   Is Not open.
 End Every.</code></pre>
 </div>
@@ -1736,7 +1732,7 @@ This is called overriding a property.</p>
 </div>
 <div class="paragraph">
 <p>This concludes our brief presentation of object-orientation and how the Alan language supports it.
-The most important thing to remember is that you can extend the inheritance tree with new classes and that most features can be inherited along that tree and be overridden, both by intermediate classes in the inheritance chain and explicitly in the instance itself.</p>
+In the following descriptions, you just need to remember that most features can be inherited along the inheritance tree and be overridden, both during that inheritance and explicitly in the instance declaration itself.</p>
 </div>
 </div>
 </div>
@@ -1758,7 +1754,7 @@ Assume there is also an instance of that class, named <code>inst</code>, which i
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every subobject IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every subobject IsA object
 End Every subobject.
 
 The cont IsA object
@@ -1823,7 +1819,7 @@ And it is usually the indirect ones that you should look out for.</p>
 <h4 id="_the_verb_construct"><a class="anchor" href="#_the_verb_construct"></a>The VERB Construct</h4>
 <div class="paragraph">
 <p>The  <code>Verb</code> is the construct that implements the effects of an action requested by the player.
-Verbs are usually associated with a class or an instance.
+Verbs are associated with a class or an instance.
 We will look at the implications of various combinations of these in the next few sections.</p>
 </div>
 <div class="paragraph">
@@ -1835,7 +1831,7 @@ You must also decide which effects this verb should have under various circumsta
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb open
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Verb open
   Does
     Make door open.
 End Verb open.</code></pre>
@@ -1850,7 +1846,7 @@ The example above should probably best be placed in the door object itself.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The kitchen_door IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The kitchen_door IsA object
   Verb open
     Does
       Make kitchen_door open.
@@ -1860,12 +1856,11 @@ End The kitchen_door.</code></pre>
 </div>
 <div class="paragraph">
 <p>This defines the effects of applying the <code>open</code> verb to that specific door.
-The implementation makes direct references to the <code>kitchen_door</code>, so to make the verb more general it should be possible to apply to all <code>door</code>s.
-So let&#8217;s move the definition from the <code>kitchen_door</code> instance to the <code>door</code> class:</p>
+The implementation makes direct references to the <code>kitchen_door</code>, so to make the verb more general it should be possible to apply to all <code>door</code>s.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every door IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every door IsA object
   Verb open
     Does
       Make This open.
@@ -1874,12 +1869,9 @@ End Every door.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With this definition it is possible to apply the verb to all doors.</p>
-</div>
-<div class="paragraph">
-<p>A reference to the exact object the player mentioned in his command is propagated in the parameter (see <a href="#_the_syntax">Sect. 2.4.8</a> and <a href="#_syntax_definitions">Sect. 3.10</a> for a more thorough discussion).
-Since this verb is now applicable to all <code>door`s, the attribute `closed</code> must also be available for all instances of the <code>door</code> classs.
-We can do that by ensuring that the attribute exists in the class using a normal attribute declaration.
+<p>With this definition it is possible to apply the verb to all doors.
+Instead need to reference the object the player mentioned in his command (see <a href="#_the_syntax">Sect. 2.4.8</a> and <a href="#_syntax_definitions">Sect. 3.10</a> for a more thorough discussion).
+In this case, the attribute <code>closed</code> must also be available for all objects by ensuring that the attribute exists in the class.
 (See <a href="#_additions">Sect. 3.9</a> on how to add an attribute to a predefined class such as <code>object</code>).</p>
 </div>
 <div class="paragraph">
@@ -1893,7 +1885,7 @@ Therefore, <code>Verb</code>s may have <code>Check</code>s, as we will see next.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb open
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Verb open
   Check o Is openable
     Else "You can't open the $o."
   Does
@@ -1912,7 +1904,7 @@ If this is not the case the <code>Else</code> part is executed instead (normally
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb take
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Verb take
   Check o takeable
     Else "You can't take that."
   And o Not In hero
@@ -1961,7 +1953,7 @@ The default syntax  might thus be described as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax
   ? = ? (parameter)</code></pre>
 </div>
 </div>
@@ -1977,7 +1969,7 @@ Below is the syntax for <code>put_in</code>, the verb to put something inside a 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax
   put_in = 'put' (obj) 'in' (cont).</code></pre>
 </div>
 </div>
@@ -1999,7 +1991,7 @@ Below is the syntax for <code>put_in</code>, the verb to put something inside a 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax
   put_in = 'put' (obj) 'in' (cont)
     Where obj IsA object
       Else "You can't put that into anything."
@@ -2043,7 +2035,7 @@ The name will automatically be capitalized.
 For example:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The postmen IsA actor At postoffice ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The postmen IsA actor At postoffice ...
 
 The postoffice IsA location
   Description
@@ -2075,7 +2067,7 @@ Except for the following case:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  "You can't take" Say p. "."</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">  "You can't take" Say p. "."</code></pre>
 </div>
 </div>
 </li>
@@ -2094,7 +2086,7 @@ This means that the compiler will attempt to prevent any constructs that might g
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">1. Every animal IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">1. Every animal IsA object
 2.   Has fur.
 3. End Every animal.
 4.
@@ -2122,7 +2114,7 @@ The <code>house_cat</code> is declared as an <code>object</code>, and not as an 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan"> 1. The cont IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs"> 1. The cont IsA object
  2.   Container Taking thing.
  3. End The cont.
  4.
@@ -2190,7 +2182,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Exit east to Kitchen.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Exit east to Kitchen.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2198,7 +2190,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Exit east To Kitchen
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Exit east To Kitchen
   Check kitchenDoor Is open
   ...
 End Exit.</code></pre>
@@ -2216,7 +2208,7 @@ End Exit.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">adventure = {option} {declaration} start_section</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">adventure = {option} {declaration} start_section</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2230,7 +2222,7 @@ The declarations can be declared in any order and repeated freely, and are of ma
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">declaration = import
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">declaration = import
             | class
             | instance
             | addition
@@ -2249,7 +2241,7 @@ The declarations can be declared in any order and repeated freely, and are of ma
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">start_section = 'START' where '.' statements</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">start_section = 'START' where '.' statements</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2258,7 +2250,7 @@ The <code>Start</code> section is mandatory.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Start At bedroom.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Start At bedroom.
   Schedule alarm_clock After 2.
     "Slowly you come to your senses, your numb limbs
      starting to feel the blood flowing through them..."</code></pre>
@@ -2278,7 +2270,7 @@ An option follows the grammar:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">options = 'OPTIONS' {option}
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">options = 'OPTIONS' {option}
 
 option = id '.'
        | id id '.'
@@ -2290,7 +2282,7 @@ option = id '.'
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Options
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Options
     Debug.
     Language Swedish.
     No Pack.
@@ -2526,7 +2518,7 @@ Each such file can then be imported into the main source using the  <code>Import
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">import = 'import' quoted_identifier '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">import = 'import' quoted_identifier '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2544,7 +2536,7 @@ In your source you would refer to the main file of such a library by:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Import 'library.i'.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Import 'library.i'.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2552,7 +2544,7 @@ In your source you would refer to the main file of such a library by:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Import 'harbor.i'.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Import 'harbor.i'.
 Import 'city.i'.
 Import 'desert.i'.
 Import 'actors.i'.
@@ -2572,7 +2564,7 @@ Instead, you have to create an instance of the class to make it available in the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">class = 'EVERY' id
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">class = 'EVERY' id
             [inheritance]
             {property}
         'END' 'EVERY' [id] ['.']</code></pre>
@@ -2599,7 +2591,7 @@ This way, you can easily create new classes by extending existing ones.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">inheritance = 'ISA' id ['.']</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">inheritance = 'ISA' id ['.']</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2607,7 +2599,7 @@ This way, you can easily create new classes by extending existing ones.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The door IsA object ...</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The door IsA object ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2615,7 +2607,7 @@ This way, you can easily create new classes by extending existing ones.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every coin IsA treasure ...</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every coin IsA treasure ...</code></pre>
 </div>
 </div>
 </div>
@@ -2630,7 +2622,7 @@ The player traverses and interacts with these in his quest to negotiating your g
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">instance = 'THE' id
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">instance = 'THE' id
               [inheritance]
               {property}
            'END' 'THE' [id] ['.']</code></pre>
@@ -2653,7 +2645,7 @@ Remember also that properties declared in an instance are not common to any othe
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The red_ball
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The red_ball
   IsA object
   At bedroom
   Name red ball
@@ -2759,7 +2751,7 @@ If an actor  is executing a <code>Script</code> with a <code>Description</code>,
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The kirk IsA actor Name Captain Kirk At control_room
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The kirk IsA actor Name Captain Kirk At control_room
   Has health 25.
   Container
     Header "Kirk is carrying"
@@ -2796,7 +2788,7 @@ A declaration like the following can then be used:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The hero IsA actor
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The hero IsA actor
   Name me
   Is Not hungry.
   Verb examine Does
@@ -2892,7 +2884,7 @@ This way it is possible to create verbs that take strings and integers as parame
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">property = initial_location
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">property = initial_location
          | name
          | pronouns
          | attributes
@@ -3017,7 +3009,7 @@ An instance without location is not present (in the view of the player) in the g
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">initial_location = where</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">initial_location = where</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3025,7 +3017,7 @@ An instance without location is not present (in the view of the player) in the g
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The chest IsA object At treasury
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The chest IsA object At treasury
 ...</code></pre>
 </div>
 </div>
@@ -3043,7 +3035,7 @@ You can do that using the  <code>Name</code> clause.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">name = 'NAME' id {id} ['.']</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">name = 'NAME' id {id} ['.']</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3055,7 +3047,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The south_door IsA object At south_of_house
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The south_door IsA object At south_of_house
   Name door
 ...
 The south_of_house IsA location
@@ -3070,7 +3062,7 @@ This works fine for locations, since the player usually does not need to refer t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The chair3 IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The chair3 IsA object
   Name little wooden chair</code></pre>
 </div>
 </div>
@@ -3115,7 +3107,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The rod IsA object At grate
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The rod IsA object At grate
   Name rusty rod
   Name dynamite
   ...</code></pre>
@@ -3140,7 +3132,7 @@ Here is an example with fruits:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every fruit IsA object Name fruit ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every fruit IsA object Name fruit ...
 Every apple IsA fruit Name apple ...
 Every pear IsA fruit Name pear ...
 The Gravensteiner IsA apple ...
@@ -3192,7 +3184,7 @@ Alan provides a means to define which pronouns each instance can be associated w
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">pronouns = 'PRONOUN' word { ',' word }</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">pronouns = 'PRONOUN' word { ',' word }</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3246,7 +3238,7 @@ An attribute declaration, or a set of declarations, is introduced using one of t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">is = 'IS'
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">is = 'IS'
    | 'ARE'
    | 'HAS'
    | 'CAN'</code></pre>
@@ -3258,7 +3250,7 @@ An attribute declaration, or a set of declarations, is introduced using one of t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">attribute_declaration = id
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">attribute_declaration = id
                       | 'NOT' id
                       | id integer
                       | id string
@@ -3275,7 +3267,7 @@ The type of an attribute is automatically inferred from the type of its initial 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The rats Are hungry
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The rats Are hungry
 The cowboy Can shoot
 The chest Is heavy
 The combination_lock Has numbers {1,2,4,8}</code></pre>
@@ -3287,7 +3279,7 @@ E.g. to declare a Boolean attribute that will be shared by all instances of the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every animal ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every animal ...
   Is
     Not human.
 ...</code></pre>
@@ -3300,7 +3292,7 @@ You can override the value in a subclass, e.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every person IsA animal ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every person IsA animal ...
   Is
     human.
 ...</code></pre>
@@ -3313,7 +3305,7 @@ You can override the value in a subclass, e.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">thirsty.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">thirsty.
 Not human.</code></pre>
 </div>
 </div>
@@ -3325,7 +3317,7 @@ Not human.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">weight 42.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">weight 42.
 message "Enter password:".</code></pre>
 </div>
 </div>
@@ -3351,7 +3343,7 @@ Such an attribute is declared by giving the identifier of an event as its initia
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Event e1
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Event e1
   "This is e1 running."
   Set e Of l To e2.
 End Event.
@@ -3374,7 +3366,7 @@ You may for example store a reference to the other side of a door:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The east_door IsA door.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The east_door IsA door.
   Has otherside west_door.
   ...</code></pre>
 </div>
@@ -3392,7 +3384,7 @@ E.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every door IsA object ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every door IsA object ...
   Has otherside door.
 End Every door.
 
@@ -3465,7 +3457,7 @@ An example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every door IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every door IsA object
   Has otherside someDoor.
 End Every door.
 
@@ -3494,7 +3486,7 @@ Despite this, the attribute in the two door instances will allow reference to do
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every door IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every door IsA object
   Has otherside door.
 End Every door.
 
@@ -3530,7 +3522,7 @@ For more flexibility, the  <code>Initialize</code> clause can be used.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">initialize = 'INITIALIZE' statements</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">initialize = 'INITIALIZE' statements</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3541,7 +3533,7 @@ Of course general statements are also allowed so any prerequisites can be catere
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Initialize
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Initialize
   Set first_course of This To Random In first_courses Of menu.
   Set second_course of This To Random In main_courses Of menu.
   Set third_course of This To Random In desserts Of menu.</code></pre>
@@ -3589,7 +3581,7 @@ This might instead be managed by the  <code>Entered</code> clause.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">description = 'DESCRIPTION' {statement}</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">description = 'DESCRIPTION' {statement}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3602,7 +3594,7 @@ This can be useful for objects already described by the location description, or
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The south_of_house IsA location
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The south_of_house IsA location
   Name 'South of House'
   Is outdoors.
   Description
@@ -3629,7 +3621,7 @@ The syntax for such a description is:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">description = 'DESCRIPTION' [checks] [does]</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">description = 'DESCRIPTION' [checks] [does]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3640,7 +3632,7 @@ This is an example of the checks for a dark location:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every dark_location IsA location
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every dark_location IsA location
   Description
     Check Sum Of light_source Here &gt; 1
       Else "It is pitch black. You are likely
@@ -3693,7 +3685,7 @@ Consider <code>Exit</code> statements and the <code>Entered</code> clause instea
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">forms = indefinite | definite | negative
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">forms = indefinite | definite | negative
 
 definite = 'DEFINITE' article_or_form
 
@@ -3758,7 +3750,7 @@ You may override this by using an <code>Add</code> statement.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The owl `IsA` object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The owl `IsA` object
   Indefinite Article "an"
   ...</code></pre>
 </div>
@@ -3790,7 +3782,7 @@ You are carrying an owl.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The money Name some money
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The money Name some money
   Article
   ...</code></pre>
 </div>
@@ -3847,7 +3839,7 @@ Instead, the <code>Mentioned</code> clause can print a different short name depe
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">mentioned = 'MENTIONED' {statement}</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">mentioned = 'MENTIONED' {statement}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3855,7 +3847,7 @@ Instead, the <code>Mentioned</code> clause can print a different short name depe
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Mentioned
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Mentioned
   If mirror Is broken Then
     "broken"
   End If.
@@ -3900,7 +3892,7 @@ The grammar is
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">container_properties = ['WITH'] ['OPAQUE'] 'CONTAINER'
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">container_properties = ['WITH'] ['OPAQUE'] 'CONTAINER'
                            ['TAKING' id]
                            [limits]
                            [header]
@@ -3913,7 +3905,7 @@ The grammar is
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The chest IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The chest IsA object
   With Container
     Limits ...
     Header ...
@@ -3940,7 +3932,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The drawer IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The drawer IsA object
   With Opaque Container
     Header "The drawer contains"
   Verb open
@@ -3998,7 +3990,7 @@ If the instance has a default description the contents of the container will be 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">limits = 'LIMITS' {limit}
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">limits = 'LIMITS' {limit}
 
 limit = limiting_attribute 'ELSE' {statement}
 
@@ -4017,7 +4009,7 @@ The special attribute <code>Count</code>  can be also be used and indicates a li
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Container
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Container
   Limits
     weight 50 Else "You can not lift that much."
     Count 2 Else "You only have two hands!"</code></pre>
@@ -4051,7 +4043,7 @@ Locations can&#8217;t have container properties.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">header = 'HEADER' {statement}
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">header = 'HEADER' {statement}
 
 empty = 'ELSE' {statement}</code></pre>
 </div>
@@ -4088,7 +4080,7 @@ It is intended to produce something like:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Header
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Header
   "The &lt;container&gt; contains"
 Empty
   "The &lt;container&gt; is empty."</code></pre>
@@ -4108,7 +4100,7 @@ The extraction will be subject to the restrictions enforced by the <code>Extract
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">extract = 'EXTRACT' [check] [does]
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">extract = 'EXTRACT' [check] [does]
         | 'EXTRACT' {statement}</code></pre>
 </div>
 </div>
@@ -4128,7 +4120,7 @@ The second form of the clause, with just the statements, is equivalent to an <co
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The waiter IsA actor
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The waiter IsA actor
   At bar.
   Is Not annoyed.
   Description
@@ -4166,7 +4158,7 @@ See <a href="#_verb_execution">Sect. 3.11.7</a> for a detailed explanation.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">entered = 'ENTERED' {statement}</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">entered = 'ENTERED' {statement}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4280,7 +4272,7 @@ The syntax for an <code>Exit</code> declaration is:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">exit = 'EXIT' id {',' id} 'TO' id [exit_body] '.'
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">exit = 'EXIT' id {',' id} 'TO' id [exit_body] '.'
 
 exit_body = [checks] [does] 'END' 'EXIT' [id]</code></pre>
 </div>
@@ -4299,7 +4291,7 @@ The checks work as described in <a href="#_verb_checks"><em>Verb CHECKs</em></a>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The east_end IsA location Name 'East End of Hall'
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The east_end IsA location Name 'East End of Hall'
   Description
     "This is the east end of a vast hall. Far
      away to the west you can see the west end."
@@ -4343,7 +4335,7 @@ In a way, it corresponds to what the hero is ordered to do by the player&#8217;s
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">script = 'SCRIPT' id ['.'] [description] {step}</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">script = 'SCRIPT' id ['.'] [description] {step}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4357,7 +4349,7 @@ If it is not present, the general description is used.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Actor george
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Actor george
   Name George Formby
   Description "George Formby is here."
   Script cleaning.
@@ -4418,7 +4410,7 @@ A step can be defined to be executed immediately, at the next move, to wait a nu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">step = 'STEP' {statement}
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">step = 'STEP' {statement}
      | 'STEP' 'AFTER' expression {statement}
      | 'STEP' 'WAIT' 'UNTIL' expression {statement}</code></pre>
 </div>
@@ -4428,7 +4420,7 @@ A step can be defined to be executed immediately, at the next move, to wait a nu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Step Wait Until hero Here
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Step Wait Until hero Here
   Locate waiter Here.
   "From the shadows a waiter emerges: $p
    '-Bonjour, monsieur', he says."
@@ -4455,7 +4447,7 @@ It follows the grammar:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">addition = 'ADD' 'TO' 'EVERY' id
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">addition = 'ADD' 'TO' 'EVERY' id
                {property}
            'END' 'ADD' ['TO'] [id] '.'</code></pre>
 </div>
@@ -4476,7 +4468,7 @@ The effects triggered by the player input are declared using the <code>Verb</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">syntaxes = 'SYNTAX' {syntax}
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">syntaxes = 'SYNTAX' {syntax}
 
 syntax = id '=' {element} syntax_end
 
@@ -4494,7 +4486,7 @@ Bare in mind that a syntax definition containing only parameters might be tricky
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax
   quit = 'quit'.
   examine = 'examine' (obj).
   command_north = (act) 'north'.
@@ -4511,7 +4503,7 @@ Any references to attributes, etc., will be done in the instance referred by the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax open = open (obj).
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax open = open (obj).
   ...
   If obj Is open Then ...
   ...</code></pre>
@@ -4585,7 +4577,7 @@ See <a href="#_syntax_synonyms"><em>Syntax Synonyms</em></a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">indicator = '*'' | '!''</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">indicator = '*'' | '!''</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4612,7 +4604,7 @@ For cases when the player must be able to refer to objects and actors that are n
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax
   take = 'take' (obj)*.
   drop = 'drop' (obj).</code></pre>
 </div>
@@ -4650,7 +4642,7 @@ Another example, this time using the <code>!</code> indicator:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax
   talk_about = 'talk' 'to' (act) 'about' (subj)!.
   find = 'find' (obj)!.</code></pre>
 </div>
@@ -4704,7 +4696,7 @@ Another example, this time using the <code>!</code> indicator:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">parameter_restrictions = 'WHERE' restriction
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">parameter_restrictions = 'WHERE' restriction
                              {'AND' restriction}
 
 restriction = id 'ISA' restriction_class
@@ -4747,7 +4739,7 @@ restriction_class = id
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax
   take = 'take' (obj)
     Where obj IsA object
       Else "You can't take that."</code></pre>
@@ -4763,7 +4755,7 @@ The default restriction is <code>object</code>, i.e. if no class restriction is 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax
   talk_about = 'talk' 'to' (act) 'about' (sub)!
     Where act IsA actor
       Else "Don't you think talking to a person
@@ -4781,7 +4773,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Where obj IsA object Else ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Where obj IsA object Else ...
   And obj IsA openable_object Else ...
   And obj IsA door Else ...</code></pre>
 </div>
@@ -4808,7 +4800,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax give = give (o) to (p) ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax give = give (o) to (p) ...
 Syntax give = give (p) (o) ...</code></pre>
 </div>
 </div>
@@ -4828,7 +4820,7 @@ These restrictions will be applied regardless of which syntax was used.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax &lt;1&gt; = &lt;1&gt;.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax &lt;1&gt; = &lt;1&gt;.
 Syntax &lt;1&gt; = &lt;1&gt; (&lt;2&gt;).</code></pre>
 </div>
 </div>
@@ -4919,7 +4911,7 @@ If there are still multiple candidates left after this, the interpreter will pri
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">verb = ['META'] 'VERB' id {',' id}
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">verb = ['META'] 'VERB' id {',' id}
            verb_body
        'END' 'VERB' [id] '.'
 
@@ -4931,7 +4923,7 @@ simple_verb_body = [check] [does]</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb take, get
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Verb take, get
   ...
 End Verb take.</code></pre>
 </div>
@@ -4977,7 +4969,7 @@ Sometimes you want a player command to <em>not</em> consume a &#8216;tick&#8217;
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Meta Verb 'score'
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Meta Verb 'score'
   Does
     Score.
 End Verb.</code></pre>
@@ -5016,7 +5008,7 @@ Anything dropped at the following location will disappear:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The high_wire IsA location
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The high_wire IsA location
   Verb drop
     Does Only
       Locate o At limbo. –- Instead of "here".
@@ -5033,7 +5025,7 @@ End The.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">check = unconditional_check
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">check = unconditional_check
       | check_list
 
 unconditional_check = 'CHECK' {statement}
@@ -5053,7 +5045,7 @@ This way, the more general checks are tried first, followed by increasingly more
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb take
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Verb take
   Check obj Is moveable
     Else "You can't take that."
   ...
@@ -5066,7 +5058,7 @@ This is useful for preventing certain actions, for example at specific locations
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The jumpless IsA Location
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The jumpless IsA Location
   Verb jump
     Check "You can't do that here."
   End Verb jump.
@@ -5123,7 +5115,7 @@ See <a href="#_player_input">Sect. 5.2</a> for an explanation of the player view
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">does = [qualifier] {statement}
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">does = [qualifier] {statement}
 
 qualifier = 'BEFORE'
           | 'AFTER'
@@ -5148,7 +5140,7 @@ By using the  qualifiers, <code>Before</code>/<code>After</code>/<code>Only</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb take
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Verb take
   Check obj Not In inventory
     Else "You already have that."
   Does
@@ -5166,7 +5158,7 @@ End Verb take.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">verb_alternatives = 'WHEN' id simple_verb_body</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">verb_alternatives = 'WHEN' id simple_verb_body</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5183,7 +5175,7 @@ Each instance may have different verb bodies executed depending on which positio
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax break_with = 'break' (o) 'with' (w).</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax break_with = 'break' (o) 'with' (w).</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5194,7 +5186,7 @@ The verb declaration could look like:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The feather IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The feather IsA object
   Verb break_with
     When o Does
       "The feather is even more flat than before."
@@ -5220,7 +5212,7 @@ The compiler will warn for this when it detects a syntax that allows the class o
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">qualifier = 'BEFORE'
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">qualifier = 'BEFORE'
           | 'AFTER'
           | 'ONLY'</code></pre>
 </div>
@@ -5401,7 +5393,7 @@ It is not expected that all this complex behaviour will be needed in practice.</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The bomb IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The bomb IsA object
   Verb examine
     Does Only
       "Your curious fingering at the intricate
@@ -5426,7 +5418,7 @@ An event can e.g. be used to create an explosion where the bomb is three moves f
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Event nearby_explosion
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Event nearby_explosion
   "Somewhere in the distance there is an explosion."
   Make bomb gone_off.
   Schedule small_avalanche After 2.
@@ -5451,7 +5443,7 @@ See <a href="#_run_time_contexts"><em>Run-Time Contexts</em></a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">rule = 'WHEN' expression ('THEN' | '=&gt;')
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">rule = 'WHEN' expression ('THEN' | '=&gt;')
            {statement}
        ['END' 'WHEN' '.' ]</code></pre>
 </div>
@@ -5467,7 +5459,7 @@ Typically they can be used to make things happen when certain situations arise, 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">When hero At cave And monster Not active Then
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">When hero At cave And monster Not active Then
   Use Script hunting For monster.
 End When.</code></pre>
 </div>
@@ -5477,7 +5469,7 @@ End When.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">When hero At cave
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">When hero At cave
   And (monster Is hungry Or monster Is angry)
   And sword Not In hero
 =&gt;
@@ -5509,7 +5501,7 @@ Triggering an <code>Event</code> that handles the output intended for the player
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The kitchen IsA location
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The kitchen IsA location
   Exit x To kitchen.
 End The kitchen.
 
@@ -5540,7 +5532,7 @@ What happens if there are more actors in play and they move in and out of the ki
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">synonyms = 'SYNONYMS' {synonym_declaration}
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">synonyms = 'SYNONYMS' {synonym_declaration}
 
 synonym_declaration = word {',' word} '=' word '.'</code></pre>
 </div>
@@ -5551,7 +5543,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Synonyms
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Synonyms
   'i', 'invent' = 'inventory'.
   'q' = 'quit'.</code></pre>
 </div>
@@ -5567,7 +5559,7 @@ The following example is incorrect.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Synonyms
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Synonyms
   'examine' = look_at.
 Syntax
   look_at = 'look' 'at' (obj).
@@ -5612,7 +5604,7 @@ The grammar for this is
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">messages = 'MESSAGE' {message}
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">messages = 'MESSAGE' {message}
 
 message = id ':' {statement}</code></pre>
 </div>
@@ -5622,7 +5614,7 @@ message = id ':' {statement}</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Message
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Message
   NOWAY: "There is no exit in that direction."</code></pre>
 </div>
 </div>
@@ -5642,7 +5634,7 @@ There is no exit in that direction.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Message NOWAY:
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Message NOWAY:
   If Random 1 To 2 = 1 Then
     "There is no way in that direction."
   Else
@@ -5694,7 +5686,7 @@ Any attribute available for this class will be available in message sections wit
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">prompt = 'PROMPT' {statement}</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">prompt = 'PROMPT' {statement}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5712,7 +5704,7 @@ Any attribute available for this class will be available in message sections wit
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Prompt "What now?"</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Prompt "What now?"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5731,7 +5723,7 @@ So you can have the prompt change during the game.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Prompt
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Prompt
   "Hello" Say hero. "!$n"
   "Where do you want to go from"
   Say Current Location. "?"</code></pre>
@@ -5776,7 +5768,7 @@ Optionally this may be followed by statements to be executed at the beginning of
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">start_section = 'START' where '.' {statement}</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">start_section = 'START' where '.' {statement}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5784,7 +5776,7 @@ Optionally this may be followed by statements to be executed at the beginning of
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Start At outside_house.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Start At outside_house.
   Schedule bird_chirp After 5.</code></pre>
 </div>
 </div>
@@ -5809,7 +5801,7 @@ This might for example occur between two output strings:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">"There is a door into the kitchen."
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">"There is a door into the kitchen."
 If kitchenDoor Is open Then
   "It is open."
 End If.</code></pre>
@@ -5823,7 +5815,7 @@ This is also the case if the output from a <code>Say</code> statement is followe
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">"Your wristwatch shows" Say hours Of watch.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">"Your wristwatch shows" Say hours Of watch.
 ". Time to go."</code></pre>
 </div>
 </div>
@@ -5840,7 +5832,7 @@ It can be used in the following way:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">"Charlie Chaplin leaves the house through the front door."
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">"Charlie Chaplin leaves the house through the front door."
 Locate charlie_chaplin At outside_house.
 "Charlie Chaplin comes out from the nearest house."</code></pre>
 </div>
@@ -5858,7 +5850,7 @@ But see <a href="#_distant_events"><em>Distant Events</em></a> for a solution in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">output_statement = string</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">output_statement = string</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5950,7 +5942,7 @@ This will ensure full reference analysis by the compiler protecting against any 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">style_statement = 'STYLE' style '.'
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">style_statement = 'STYLE' style '.'
 
 style = 'NORMAL'
       | 'EMPHASIZED'
@@ -5989,7 +5981,7 @@ In fact, there is no guarantee that the styles will actually differ.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">output_statement = 'DESCRIBE' what '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">output_statement = 'DESCRIBE' what '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6013,7 +6005,7 @@ This makes it possible to use instances as parts of a location and embedding the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">"This office is dusty and probably hasn't been used for
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">"This office is dusty and probably hasn't been used for
  many years."
 DESCRIBE desk.
 "To the west is an open door, and to the east you can see the
@@ -6030,7 +6022,7 @@ DESCRIBE desk.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">output_statement = 'SAY' [form] expression '.'
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">output_statement = 'SAY' [form] expression '.'
 
 form = 'THE' | 'AN' | 'IT' | 'NO'</code></pre>
 </div>
@@ -6043,7 +6035,7 @@ Parameter names are also allowed in the <code>Say</code> statement, which, of co
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If contents Of bottle &gt; 0 Then
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If contents Of bottle &gt; 0 Then
   "In the bottle there are still"
   Say contents Of bottle.
   "litres of water left."
@@ -6073,7 +6065,7 @@ Finally, the <code>It</code> form will print the pronoun associated with the ins
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">output_statement = 'LIST' expression '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">output_statement = 'LIST' expression '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6082,7 +6074,7 @@ If the container is empty, the statements in the <code>Empty</code> clause of th
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">"The chest is heavy."
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">"The chest is heavy."
 If chest Is open Then
   List chest.
 End If.</code></pre>
@@ -6128,7 +6120,7 @@ The following extensions are recognized: <strong>.jpg</strong>, <strong>.jpeg</s
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">output_statement = 'SHOW' id '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">output_statement = 'SHOW' id '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6148,7 +6140,7 @@ Since filenames may contain various special characters, a quoted identifier (see
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">output_statement = 'PLAY' id '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">output_statement = 'PLAY' id '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6171,7 +6163,7 @@ When executed, the indicated instance will be placed at the specified location.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">locate_statement = 'LOCATE' what where '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">locate_statement = 'LOCATE' what where '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6186,7 +6178,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Event explosion
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Event explosion
   "Suddenly the door seems to bulge outwards, it bursts
    open throwing rocks and splinters everywhere. The
    impact of the explosion literally throws you back
@@ -6217,7 +6209,7 @@ The effect of this is that any instances present in the outer location are reach
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">empty_statement = 'EMPTY' what [where] '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">empty_statement = 'EMPTY' what [where] '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6226,7 +6218,7 @@ If it is not specified the instances will be placed at the current location.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Empty inventory Here.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Empty inventory Here.
 "You seem to have lost most of your possessions. Well,
  you can't have everything."
 Locate hero At restart_point.</code></pre>
@@ -6241,7 +6233,7 @@ Locate hero At restart_point.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">strip_statement = 'STRIP' [direction] [count] [size]
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">strip_statement = 'STRIP' [direction] [count] [size]
                     from_clause [into_clause] '.'
 
 direction = 'FIRST' | 'LAST'
@@ -6266,7 +6258,7 @@ In this case, any resulting string is also free of leading and trailing blanks.<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The eliza IsA actor
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The eliza IsA actor
   Has topic "".
   Verb talk_to
     Does
@@ -6290,7 +6282,7 @@ End The eliza.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">event_statement = 'SCHEDULE' what [where]
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">event_statement = 'SCHEDULE' what [where]
                     'AFTER' expression '.'</code></pre>
 </div>
 </div>
@@ -6299,7 +6291,7 @@ End The eliza.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Schedule ringing At clock After 60 - minutes Of clock.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Schedule ringing At clock After 60 - minutes Of clock.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6312,22 +6304,8 @@ Since rules are executed at nowhere so will the event.
 This means that any printout will occur nowhere, and will thus be invisible to the player.</p>
 </div>
 <div class="paragraph">
-<p>The <strong>WHERE</strong> expression can be any expression yeilding an instance type, such as the identifier of a location or actor, an attribute referring to an instance.
-The event will occur wherever that instance is when the event occurs.
+<p>If the <strong>WHERE</strong> expression has the form <code>At id</code>, and the identifier represents an instance not inheriting from <code>location</code>, the event will occur wherever that instance is when the event occurs.
 The event will &#8216;follow&#8217; the instance.</p>
-</div>
-<div class="paragraph">
-<p>There is an interesting difference between the following two statements:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Schedule explosion At hero After 1.
-Schedule explosion At location Of hero After 1.</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The first statement will schedule the event at the hero and will execute where the hero is after one turn.
-The second will schedule the event at the location where the hero was when the statement was executed, even if the hero has moved after that.</p>
 </div>
 <div class="paragraph">
 <p>Executing a second <code>Schedule</code> statement for the same event before it has occurred will reschedule the event to the new time.
@@ -6356,7 +6334,7 @@ An event can only be scheduled for one execution at a time.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">cancel_statement = 'CANCEL' what '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">cancel_statement = 'CANCEL' what '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6364,7 +6342,7 @@ An event can only be scheduled for one execution at a time.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Event ticking
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Event ticking
   "Tick..."
   If timer Of bomb = 0 Then
     Schedule explosion After 1.
@@ -6404,7 +6382,7 @@ Start At office.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">make_statement = 'MAKE' what something '.'
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">make_statement = 'MAKE' what something '.'
 
 something = ['NOT'] id</code></pre>
 </div>
@@ -6414,7 +6392,7 @@ something = ['NOT'] id</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Make door open.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Make door open.
 Make door Not open.</code></pre>
 </div>
 </div>
@@ -6428,7 +6406,7 @@ Make door Not open.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">increase_statement = 'INCREASE' what [by] '.'
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">increase_statement = 'INCREASE' what [by] '.'
 
 decrease_statement = 'DECREASE' what [by] '.'
 
@@ -6441,7 +6419,7 @@ If no <code>By</code> clause is specified the attribute is changed by one.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Increase level Of bottle By contents Of mug.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Increase level Of bottle By contents Of mug.
 Decrease lives Of hero.</code></pre>
 </div>
 </div>
@@ -6454,7 +6432,7 @@ Decrease lives Of hero.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">set_statement = 'SET' what 'TO' expression '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">set_statement = 'SET' what 'TO' expression '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6462,7 +6440,7 @@ Decrease lives Of hero.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Set mood Of king_tut To 3.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Set mood Of king_tut To 3.
 Set hour Of clock To hour Of clock + 1.</code></pre>
 </div>
 </div>
@@ -6478,7 +6456,7 @@ For example, you can only assign:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Set intAttr To 4. -- Correct if intAttr is of Integer type
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Set intAttr To 4. -- Correct if intAttr is of Integer type
 Set intAttr To "hi". -- Incorrect</code></pre>
 </div>
 </div>
@@ -6491,7 +6469,7 @@ Set intAttr To "hi". -- Incorrect</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Has suspect butler.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Has suspect butler.
 Set suspect Of detective To someLocation. -- Incorrect</code></pre>
 </div>
 </div>
@@ -6505,7 +6483,7 @@ Here are some examples, given the natural types of the instances:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Has friends {monica, ross, chandler, rachel, phoebe, joey}. -- 'person's
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Has friends {monica, ross, chandler, rachel, phoebe, joey}. -- 'person's
 Set friends Of mine To {book}. -- Incorrect, probably not a 'person'
 Set friends Of mine To {}. -- Correct, an empty set is always OK
 Set friends Of mine To {suspect Of detective}. -- Maybe correct</code></pre>
@@ -6525,7 +6503,7 @@ Set friends Of mine To {suspect Of detective}. -- Maybe correct</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">include_statement = 'INCLUDE' expression 'IN' set '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">include_statement = 'INCLUDE' expression 'IN' set '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6538,7 +6516,7 @@ Attempts to include a member already present in the Set will be silently ignored
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Include hitchhiker In friends Of driver Of car.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Include hitchhiker In friends Of driver Of car.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6546,7 +6524,7 @@ Attempts to include a member already present in the Set will be silently ignored
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Include driver Of car In friends Of hitchhiker.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Include driver Of car In friends Of hitchhiker.</code></pre>
 </div>
 </div>
 </div>
@@ -6559,7 +6537,7 @@ It removes a member from a Set.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">exclude_statement = 'EXCLUDE' expression 'FROM' set '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">exclude_statement = 'EXCLUDE' expression 'FROM' set '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6597,7 +6575,7 @@ A member may be included in multiple Sets.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">if_statement = 'IF' expression 'THEN' statements
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">if_statement = 'IF' expression 'THEN' statements
                    { elsif_part }
                    [ else_part ]
                'END' 'IF' '.'
@@ -6615,7 +6593,7 @@ The <code>Else</code> clause is optional.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If minute Of clock = 59 Then
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If minute Of clock = 59 Then
   Set minute Of clock To 0.
   Increase hour Of clock.
 Else
@@ -6636,7 +6614,7 @@ As an <code>IsA</code> expression test for the class of an instance, an <code>If
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If i IsA actor Then ...</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If i IsA actor Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6651,7 +6629,7 @@ This means that references to attributes, container properties, actor scripts, e
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">For Each e IsA entity, Here Do
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">For Each e IsA entity, Here Do
   If e IsA actor Then ...
   If e IsA object Then ...
   If e IsA container_object Then ...
@@ -6667,7 +6645,7 @@ End For.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">depend_statement = 'DEPENDING' 'ON' expression
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">depend_statement = 'DEPENDING' 'ON' expression
                        {case}
                    'END' 'DEPEND' '.'
 
@@ -6685,7 +6663,7 @@ When combined with <strong>expression</strong> (as the left hand side of the exp
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Depending On weight Of obj
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Depending On weight Of obj
   = 1 Then "light as a feather"
   Between 2 And 10 Then "carryable"
   Between 10 And 20 Then "heavy"
@@ -6709,7 +6687,7 @@ In the example, a weight of ten will render as "carryable".</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If weight Of object = 1 Then "light as a feather"
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If weight Of object = 1 Then "light as a feather"
 ElsIf weight Of object Between 2 And 10 Then "carryable"
 ElsIf weight Of object Between 10 And 20 Then "heavy"
 ElsIf weight Of object &gt; 20 Then "immobile"
@@ -6735,7 +6713,7 @@ End If.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">use_statement = 'USE' script ['FOR' actor] '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">use_statement = 'USE' script ['FOR' actor] '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6743,7 +6721,7 @@ End If.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Use Script playing For george.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Use Script playing For george.</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -6770,7 +6748,7 @@ In effect, it will abort it and put the actor in an idle state.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">stop_statement = 'STOP' actor '.'
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">stop_statement = 'STOP' actor '.'
 
 actor = expression</code></pre>
 </div>
@@ -6789,7 +6767,7 @@ More complex expressions resulting in an actor type value, such as a parameter r
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">repetition_statement = 'FOR' 'EACH' id [filters] 'DO'
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">repetition_statement = 'FOR' 'EACH' id [filters] 'DO'
                            statements
                        'END' 'FOR' 'EACH' '.'
 
@@ -6820,7 +6798,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">For Each creature IsA actor Do
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">For Each creature IsA actor Do
   If creature Here Then
     ...
   End If.
@@ -6882,7 +6860,7 @@ This allows the player to use unlimited number of save files.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb 'restore'
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Verb 'restore'
   Does
     Restore.
     Look.
@@ -6915,7 +6893,7 @@ This is done using the statement:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">score_statement = 'SCORE' integer '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">score_statement = 'SCORE' integer '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6923,7 +6901,7 @@ This is done using the statement:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Score 25.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Score 25.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6954,7 +6932,7 @@ For adventures requiring a more complex and varied scoring system (especially if
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">visits_statement = 'VISITS' count '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">visits_statement = 'VISITS' count '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6965,7 +6943,7 @@ Therefore:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Visits 0.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Visits 0.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7013,7 +6991,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The secret_cave IsA location
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The secret_cave IsA location
   Description
     "This is the secret cave. You have visited it"
     Say visits Of This.
@@ -7030,7 +7008,7 @@ End The secret_cave.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">transcript_statement = 'TRANSCRIPT' ('ON' | 'OFF') '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">transcript_statement = 'TRANSCRIPT' ('ON' | 'OFF') '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7055,7 +7033,7 @@ Example uses are:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax script_on = 'script' 'on'.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax script_on = 'script' 'on'.
 Verb script_on
   Does
     Transcript On.
@@ -7087,7 +7065,7 @@ The general intention of such a  <strong>WHERE</strong> specification is to spec
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">where = 'HERE'
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">where = 'HERE'
       | 'NEARBY'
       | 'NEAR' what
       | 'AT' what
@@ -7159,7 +7137,7 @@ An example is the <code>Locate</code> statement that must refer to something tha
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">what = 'CURRENT' 'ACTOR'
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">what = 'CURRENT' 'ACTOR'
      | 'CURRENT' 'LOCATION'
      | 'THIS'
      | id
@@ -7234,7 +7212,7 @@ A string is an expression and represents a string value, e.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Set password Of terminal To "xyzzy".</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Set password Of terminal To "xyzzy".</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7244,7 +7222,7 @@ E.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Set suspectedWeapons Of detective To {gun, bat, axe}.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Set suspectedWeapons Of detective To {gun, bat, axe}.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7261,7 +7239,7 @@ The type of the expression is the type of the attribute.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">attribute_reference = id 'OF' expression
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">attribute_reference = id 'OF' expression
                     | expression ':' id</code></pre>
 </div>
 </div>
@@ -7270,7 +7248,7 @@ The type of the expression is the type of the attribute.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Set password Of terminal To password Of manual.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Set password Of terminal To password Of manual.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7279,7 +7257,7 @@ See <a href="#_reference_attributes"><em>Reference Attributes</em></a> for an ex
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Say detective:suspect:weapon.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Say detective:suspect:weapon.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7289,7 +7267,7 @@ It would be the same as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Say weapon Of suspect Of detective.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Say weapon Of suspect Of detective.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7299,7 +7277,7 @@ It would be the same as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">expression = expression 'IS' something</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">expression = expression 'IS' something</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7307,7 +7285,7 @@ It would be the same as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If bottle Is empty Then ...</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If bottle Is empty Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7315,7 +7293,7 @@ It would be the same as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If hero Is Not hungry Then ...</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If hero Is Not hungry Then ...</code></pre>
 </div>
 </div>
 <div class="sect4">
@@ -7328,7 +7306,7 @@ There is a particularly useful predefined pseudo-attribute, <code>location</code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Make location Of magic_lantern lit.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Make location Of magic_lantern lit.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7346,7 +7324,7 @@ The first is the traditional random integer expression.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">expression = 'RANDOM' expression 'TO' expression</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">expression = 'RANDOM' expression 'TO' expression</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7355,7 +7333,7 @@ Arbitrary expressions yielding an integer value can be used as the boundary expr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Set eyes Of first_die To Random 1 To 6.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Set eyes Of first_die To Random 1 To 6.
 Decrease temp Of room By Random 0 To temp Of Room.</code></pre>
 </div>
 </div>
@@ -7368,7 +7346,7 @@ Decrease temp Of room By Random 0 To temp Of Room.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">expression = 'RANDOM' ['DIRECTLY'] 'IN' expression</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">expression = 'RANDOM' ['DIRECTLY'] 'IN' expression</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7428,7 +7406,7 @@ The <code>And</code> and <code>Or</code> operators are standard binary Boolean  
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">expression = expression ('AND' | 'OR') expression</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">expression = expression ('AND' | 'OR') expression</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7441,7 +7419,7 @@ Otherwise the expression will be evaluated to false.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If kalif Here And mood Of sultan Is 0 Then ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If kalif Here And mood Of sultan Is 0 Then ...
 If o IsA treasure And (size Of o &gt; capacity Of c
   Or thief Is greedy) Then ...</code></pre>
 </div>
@@ -7458,7 +7436,7 @@ The resulting value is a Boolean type value.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">expression = something 'ISA' class_id</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">expression = something 'ISA' class_id</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7466,7 +7444,7 @@ The resulting value is a Boolean type value.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If p IsA object Then ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If p IsA object Then ...
 If opponent IsA enemy Then ...</code></pre>
 </div>
 </div>
@@ -7500,7 +7478,7 @@ The exact set of available operators is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">age Of golden_child + 4</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">age Of golden_child + 4</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7510,7 +7488,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">string1 + " " + anotherString</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">string1 + " " + anotherString</code></pre>
 </div>
 </div>
 </div>
@@ -7522,7 +7500,7 @@ The result is true or false and may be negated by using an optional <code>Not</c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If temperature Of oven Not &gt; 100 Then ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If temperature Of oven Not &gt; 100 Then ...
 If weather Of world Not &lt; protection Of hero Then ...</code></pre>
 </div>
 </div>
@@ -7536,7 +7514,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax put_in = 'put' (o) 'in' (c)
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax put_in = 'put' (o) 'in' (c)
   Where c IsA Container
     Else "You can't put anything in the" Say c.
 Verb put_in
@@ -7556,7 +7534,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If level Of water Between 2 And capacity Of bottle Then ...</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If level Of water Between 2 And capacity Of bottle Then ...</code></pre>
 </div>
 </div>
 </div>
@@ -7569,7 +7547,7 @@ An example of an expression that is true is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">"A string" Contains "a S"</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">"A string" Contains "a S"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7577,7 +7555,7 @@ An example of an expression that is true is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">"A string" Not Contains "a S"</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">"A string" Not Contains "a S"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7618,7 +7596,7 @@ This is particularly useful when using inheritance since the class defining the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every openable IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every openable IsA object
   Is Not open.
   Verb open
     Check ...
@@ -7652,7 +7630,7 @@ When the verb body, also inherited from <code>openable</code>, is executed, it w
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">expression = what ['NOT'] [transitivity] where</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">expression = what ['NOT'] [transitivity] where</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7660,7 +7638,7 @@ When the verb body, also inherited from <code>openable</code>, is executed, it w
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If bottle In inventory Then ...</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If bottle In inventory Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7668,7 +7646,7 @@ When the verb body, also inherited from <code>openable</code>, is executed, it w
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If hero Not Nearby Then ...</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If hero Not Nearby Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7686,7 +7664,7 @@ This would result in exactly the same semantics, but explicitly expressed, which
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">transitivity =
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">transitivity =
              | 'DIRECTLY'
              | 'INDIRECTLY'
              | 'TRANSITIVELY'</code></pre>
@@ -7698,7 +7676,7 @@ To test if an instance is at a particular location but not in a container at tha
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If key Directly At treasury Then ...</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If key Directly At treasury Then ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7732,7 +7710,7 @@ This includes all existing instances of the class that the container takes, and 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">aggregate_expression = aggregate filters
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">aggregate_expression = aggregate filters
 
 aggregate = 'COUNT' | 'SUM' | 'MAX' | 'MIN'</code></pre>
 </div>
@@ -7750,7 +7728,7 @@ See <a href="#_filters">Sect. 3.22</a> for an explanation of filters.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">"You are carrying"
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">"You are carrying"
 Say Count IsA object, In inventory, Is big.
 "big objects."</code></pre>
 </div>
@@ -7772,7 +7750,7 @@ You must ensure this by filtering out only instances of the relevant class, e.g.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">If Sum Of weight At bridge &gt; 500 Then ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">If Sum Of weight At bridge &gt; 500 Then ...
 If Max Of size In inventory &gt; size Of small_door Then ...
 If Count IsA lightsource, Is lit, Here &gt; 0 Then
   "Let there be light..."
@@ -7792,7 +7770,7 @@ End If.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">filters = filter { ',' filter }
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">filters = filter { ',' filter }
 
 filter = 'ISA' class
        | is attribute
@@ -7823,7 +7801,7 @@ A comment starts with double hyphens (<code>--</code>) and extends to the end of
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">-- This is a comment</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">-- This is a comment</code></pre>
 </div>
 </div>
 </div>
@@ -7837,7 +7815,7 @@ The first character must be a letter.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">identifier = letter {letter | digit | underscore}</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">identifier = letter {letter | digit | underscore}</code></pre>
 </div>
 </div>
 <div class="sect3">
@@ -7849,7 +7827,7 @@ The first character must be a letter.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">id = identifier
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">id = identifier
    | quoted_identifier
 
 quoted_identifier = quote {any_character} quote</code></pre>
@@ -7860,7 +7838,7 @@ quoted_identifier = quote {any_character} quote</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The <mark>'Bob''s House'</mark> IsA location. -- ID will be printed as "Bob's House"
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The <mark>'Bob''s House'</mark> IsA location. -- ID will be printed as "Bob's House"
 End the.</code></pre>
 </div>
 </div>
@@ -7900,7 +7878,7 @@ This practice is known as <em><a href="#gloss_stropping">stropping</a></em>, and
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb 'look'
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Verb 'look'
   Does
     Look.
 End Verb 'look'.</code></pre>
@@ -7925,7 +7903,7 @@ End Verb 'look'.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The empty_room IsA location   --&gt; No need to stropp 'empty_room'.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The empty_room IsA location   --&gt; No need to stropp 'empty_room'.
   NAME 'The Empty Room'.      --&gt; Keywords 'THE' and 'EMPTY' stropped.
 End The.</code></pre>
 </div>
@@ -7954,7 +7932,7 @@ They may contain spaces and other special characters, which make them useful as 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The pluto IsA location Name 'At the Rim of Pluto Crater'
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The pluto IsA location Name 'At the Rim of Pluto Crater'
   Description
     ...</code></pre>
 </div>
@@ -7969,7 +7947,7 @@ An example is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The eiffel_tower Name Eiffel tower ...</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The eiffel_tower Name Eiffel tower ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8052,7 +8030,7 @@ Numbers in Alan are only integers and thus may consist only of digits.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">number = digit {digit}</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">number = digit {digit}</code></pre>
 </div>
 </div>
 </div>
@@ -8068,7 +8046,7 @@ The text may include newline characters and thus may cover multiple lines in the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">string = double_quote {any_character} double_quote</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">string = double_quote {any_character} double_quote</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8116,7 +8094,7 @@ The method for this is the <code>import</code> statement.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">import = 'IMPORT' quoted_identifier '.'</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">import = 'IMPORT' quoted_identifier '.'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8508,7 +8486,7 @@ This allows, for example, a water bottle to contain three levels of water:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The bottle IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The bottle IsA object
   Has level 3.
   Verb drink
     Does
@@ -8527,7 +8505,7 @@ End The bottle.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The mirror IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The mirror IsA object
   Is Not broken.
   Verb break
     Does
@@ -8545,7 +8523,7 @@ If the following declaration is made:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Add To Every object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Add To Every object
  Is Not takeable.</code></pre>
 </div>
 </div>
@@ -8555,7 +8533,7 @@ Note however that the semantic meaning of &#8216;takeable&#8217; (i.e. what actu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb take
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Verb take
   Check Object Is takeable
     Else "You can't take the $o."
   Does
@@ -8573,7 +8551,7 @@ Consider:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb take
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Verb take
   Check o Is Not heavy
     Else "That is too heavy."
   And o Is Not animal
@@ -8600,7 +8578,7 @@ Consider the following definitions:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Every vehicle IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Every vehicle IsA object
 End Every vehicle.
 
 Every car IsA vehicle
@@ -8655,7 +8633,7 @@ The attributes can be tested in  <code>If</code> statements to modify the <code>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The mirror IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The mirror IsA object
   Is Not broken.
   Description
     "On the wall there is a beautiful mirror with an
@@ -8675,7 +8653,7 @@ End The mirror.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The bottle IsA object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The bottle IsA object
   Has level 3.
   Article ""
   Mentioned
@@ -8727,7 +8705,7 @@ An effect of the feature that output is not visible unless the hero is present i
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Event explosion
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Event explosion
   "A gigantic explosion fills the whole room with smoke
    and dust. Your ears ring from the loud noise. After
    a while cracks start to show in the ceiling,
@@ -8744,7 +8722,7 @@ The solution is to create an <code>Event</code> that goes off where the hero is.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Event distant_explosion
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Event distant_explosion
   "Somewhere far away you can hear an explosion."
 End Event.
 ...
@@ -8763,7 +8741,7 @@ Here&#8217;s one way implement it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The treasury_door IsA object At hallway
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The treasury_door IsA object At hallway
   Name treasury door
   Is Not open.
   Verb open
@@ -8812,7 +8790,7 @@ The following example delineates one simple way to do this, which could be adopt
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The hero IsA actor
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The hero IsA actor
   Is Not quitting.
 End The hero.
 
@@ -8863,7 +8841,7 @@ In this case the step could look something like:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">"Charlie Chaplin goes down the stairs to the hallway."
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">"Charlie Chaplin goes down the stairs to the hallway."
 Locate charlie_chaplin At hallway.
 "Charlie Chaplin comes down the stairs and
  leaves the house through the front door."
@@ -8878,7 +8856,7 @@ One way to do this would be to use attributes to keep track of the actor&#8217;s
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The george IsA actor
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The george IsA actor
   Name George Formby
   Is
     Not cleaning_windows.
@@ -8902,7 +8880,7 @@ So this would allow us to simplify to:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The george IsA actor
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The george IsA actor
   Name George Formby
   Description
     "George Formby is here."
@@ -8925,7 +8903,7 @@ Another hint here is to describe the change in an actor&#8217;s activities at th
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Event start_cleaning
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Event start_cleaning
   Use Script cleaning For george.
   "All of a sudden, George starts to clean the windows."
 End Event.</code></pre>
@@ -8947,7 +8925,7 @@ However, since the reader/player does not need to know how the output is generat
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The garage IsA location
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The garage IsA location
 End The garage.
 
 The parking_lot IsA location Name 'Large Parking Lot'
@@ -8959,7 +8937,7 @@ End The parking_lot.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The car IsA object Name little red sporty ferrari Name car
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The car IsA object Name little red sporty ferrari Name car
   At garage
   Is Not running.
   Has position 0.
@@ -8978,7 +8956,7 @@ We will use another location for this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The inside_car IsA location Name 'Inside the Ferrari'
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The inside_car IsA location Name 'Inside the Ferrari'
   Description
     "This sporty little red vehicle can really take you
      places..."
@@ -9021,7 +8999,7 @@ End The inside_car.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax drive = drive.
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax drive = drive.
 Syntax park = park.</code></pre>
 </div>
 </div>
@@ -9031,7 +9009,7 @@ They handle the movement of the car from one place to another:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Event drive_to_parking
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Event drive_to_parking
   "You drive out from your garage and approach
    a large parking lot."
   Set position Of car To 1.
@@ -9084,7 +9062,7 @@ Such an entity can of course have the container property to allow it to contain 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The body_parts IsA entity
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The body_parts IsA entity
   Container
 End The body_parts.
 
@@ -9097,7 +9075,7 @@ The head IsA object Name head In body_parts ...</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The belt IsA entity
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The belt IsA entity
   Container
     Header
       If Count In hero &gt; 0 Then "and"
@@ -9109,22 +9087,22 @@ End The belt.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can combine that with the following definitions of the hero and the <strong>inventory</strong> verb:</p>
+<p>You can combine that with the following definitions of the hero and the <strong>invent</strong> verb:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The hero IsA actor
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The hero IsA actor
   Container
     Header "You are carrying"
     Else "You are empty-handed"
       If Count In belt = 0 Then "." End If.
 End The hero.
 
-Verb inventory
+Verb invent
   Does
     List hero.
     List belt.
-End Verb inventory.</code></pre>
+End Verb invent.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9133,7 +9111,7 @@ End Verb inventory.</code></pre>
 <div class="exampleblock gametranscript">
 <div class="content">
 <div class="paragraph">
-<p>&gt; <em>inventory</em><br>
+<p>&gt; <em>invent</em><br>
 You are empty-handed but in your belt you have a knife.</p>
 </div>
 </div>
@@ -9166,7 +9144,7 @@ Now we only need to make sure that the objects are transferred between the two s
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The outdoor_things IsA entity
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The outdoor_things IsA entity
   Container
 End The outdoor_things.
 
@@ -9207,7 +9185,7 @@ Then inherit as appropriate, and the rules could instead look like:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">When location Of hero IsA outdoors_location =&gt; ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">When location Of hero IsA outdoors_location =&gt; ...
 When location Of hero IsA indoors_location =&gt; ...</code></pre>
 </div>
 </div>
@@ -9224,7 +9202,7 @@ Put all your outdoor locations in a outdoor location where the <code>outdoor_sto
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The outdoor_region IsA location
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The outdoor_region IsA location
 End The outdoor_region.
 
 The park IsA location At outdoor_region
@@ -9253,7 +9231,7 @@ We know we only need to consider objects because light sources need to be transp
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Add To Every object
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Add To Every object
   Is Not lightsource.
 End Add To.</code></pre>
 </div>
@@ -9268,7 +9246,7 @@ For some instances this attribute might change value dynamically, e.g. when the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Add To Every location
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Add To Every location
   Is lit.
 End Add To.</code></pre>
 </div>
@@ -9282,7 +9260,7 @@ So, the <strong>look</strong> verb could be reworked to:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Verb 'look'
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Verb 'look'
   Check Current Location Is lit
     Or Count IsA object, Is lightsource, Here &gt; 0
   Else
@@ -9301,7 +9279,7 @@ This is easy to do using another addition to every location, a description check
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Add To Every location
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Add To Every location
   Description
     Check Current Location Is lit
       Or Count IsA object, Is lightsource, Here &gt; 0
@@ -9328,7 +9306,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The hills IsA location
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The hills IsA location
   :
 End The hills.
 
@@ -9368,7 +9346,7 @@ If they are identical you can use a simple rule like the following:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">When hero At scenic_vista Or hero At hill_road =&gt;
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">When hero At scenic_vista Or hero At hill_road =&gt;
   Locate shadow_mountain At hero.</code></pre>
 </div>
 </div>
@@ -9380,7 +9358,7 @@ Yet, another possibility would be to move the pseudo-object around using stateme
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The scenic_vista IsA location Name Scenic Vista
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The scenic_vista IsA location Name Scenic Vista
   Exit east To path
     Does
       Locate shadow_mountain At path.
@@ -9401,7 +9379,7 @@ One choice is to make the melody an <code>entity</code> (or some subclass thereo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The melody IsA entity ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The melody IsA entity ...
 Syntax whistle = whistle (m) ...</code></pre>
 </div>
 </div>
@@ -9411,7 +9389,7 @@ In this case the <code>Syntax</code> for the <code>whistle</code> verb would nee
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">The melody IsA object ...
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">The melody IsA object ...
 Syntax whistle = whistle (m)! ...</code></pre>
 </div>
 </div>
@@ -9459,8 +9437,8 @@ Which of the two strategies you would chose depends mainly on things like:</p>
 <div class="paragraph">
 <p>A good thing to do when designing an interactive fiction story is to separate the geography from the story.
 In Alan, you can use the <code>Import</code> facility to structure your Alan source.
-One approach could be to place the description of each location in a separate file along with any objects that could be considered part of the scenery and other related items.
-These files can then all be included in a &#8216;map&#8217; file, which in turn is included by the top-level file.</p>
+One approach could be to place the description of each location in a separate file along with any objects that could be considered part of the scenery or at least is not only a tool in a puzzle.
+These files can then be included in a &#8216;map&#8217; file, which in turn is included by the top-level file.</p>
 </div>
 <div class="paragraph">
 <p>The story line can be divided into files too, one for each &#8216;scene&#8217;&#8201;&#8212;&#8201;a scene being comments describing the important things that are suppose to happen, any prerequisites and objects, events, rules, etc. which are specific for this part of the story.</p>
@@ -9492,7 +9470,7 @@ There are a few  debugging switches available when starting the interpreter from
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The <code>-t</code> and <code>-d</code> switches cannot be used unless the adventure has been compiled with the <code>Debug</code> option set (see <a href="#_options">Sect. 3.3</a>).</p>
+<p>None of the above switches can be used unless the adventure was compiled with the <code>Debug</code> option set (see <a href="#_options">Sect. 3.3</a>).</p>
 </div>
 </td>
 </tr>
@@ -9516,14 +9494,14 @@ The log files are created in the directory which was current when the interprete
 <h4 id="_interpreter_and_instruction_trace"><a class="anchor" href="#_interpreter_and_instruction_trace"></a>Interpreter and Instruction Trace</h4>
 <div class="paragraph">
 <p>
-Trace mode can also be helpful when debugging.
-Level 1 of tracing will show each section, verb, exit, description etc., the interpreter is invoked on, making it easier to see which parts of the code are executed.</p>
+Trace mode can also act as an aid in debugging.
+Level 1 will print information about every invocation of the instruction interpreter, making it easier to see which parts of the code are being executed.</p>
 </div>
 <div class="paragraph">
-<p>Trace level 2, instruction trace, will in addition also trace the execution of each operation in the generated code.
-Level 3 shows the execution of all steps, also those only pushing to or popping from stack.
-Level 4 dumps the content of the stack between each instruction.
-So higher numbers gives more information but is probably also less and less useful for normal debugging.</p>
+<p>Trace level 2, single instruction trace, will also trace every single Acode instruction.
+The Acode is based on a stack machine but single instruction trace will not show all stack operations.
+Level 3 shows the execution of these also.
+Level 4 dumps the content of the stack for every instruction.</p>
 </div>
 </div>
 <div class="sect3">
@@ -9544,7 +9522,7 @@ If the interpreter is started with this option, it will execute the start up seq
 <h4 id="_using_the_debugger"><a class="anchor" href="#_using_the_debugger"></a>Using the Debugger</h4>
 <div class="paragraph">
 <p>Abug may also be entered during the execution of an adventure.
-To do this you simply give the following player command (type it at the game prompt):</p>
+To do this you issue the single player command (type it at the game prompt):</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -9561,22 +9539,22 @@ To do this you simply give the following player command (type it at the game pro
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>break [[file]:[n]]   -- set breakpoint at source line [n] in [file]
-delete [[file]:[n]]  -- delete breakpoint at source line [n] in [file]
-files                -- list source files
-events               -- show events
-classes              -- show class hierarchy
-instances [n]        -- show instance(s)
-objects [n]          -- show instance(s) that are objects
-actors [n]           -- show instance(s) that are actors
-locations [n]        -- show instances that are locations
+<pre>break [file:[n]]   -- set breakpoint at source line [n] in [file]
+delete [file:[n]]  -- delete breakpoint at source line [n] in [file]
+files              -- list source files
+events             -- show events
+classes            -- show class hierarchy
+instances [n]      -- show instance(s)
+objects [n]        -- show instance(s) that are objects
+actors [n]         -- show instance(s) that are actors
+locations [n]      -- show instances that are locations
 trace ('source'|'section'|'instruction'|'push'|'stack')
-                     -- toggle various traces
-next                 -- execute to next source line
-go                   -- go another player turn
-exit                 -- exit debug mode and return to game, enter again using 'debug' as input
-x                    -- d:o
-quit                 -- quit game</pre>
+                   -- toggle various traces
+next               -- execute to next source line
+go                 -- go another player turn
+exit               -- exit debug mode and return to game, enter again using 'debug' as input
+x                  -- d:o
+quit               -- quit game</pre>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -9643,12 +9621,12 @@ italics):</p>
 </div>
 <div class="literalblock shell">
 <div class="content">
-<pre>&lt;Arun - Adventure Language Interpreter version 3.0beta8 (2021-04-05 21:19:57)&gt;
-&lt;Version of 'saviour.a3c' is 3.0beta8!&gt;
-&lt;Hmm, this is a little-endian machine, fixing byte ordering....OK.&gt;
-&lt;'saviour' contains the following IFIDs:
-  IFID:	UUID://c065a752-a476-a252-731f-e9fe96fcdc6d//
-&gt;
+<pre>&lt;Arun, Adventure Interpreter version 3.0beta1 (2010-12-19 16:26:05)&gt;
+
+&lt;Version of 'saviour.a3c' is 3.0beta1&gt;
+&lt;Hmm, this is a little-endian machine, fixing byte ordering.... OK.&gt;
+&lt;Hi! This is Alan interactive fiction interpreter Arun, version 3.0beta1 !&gt;
+
 adbg&gt; <em>n</em>
 
 adbg:  Stepping to saviour.alan:1346
@@ -9686,38 +9664,40 @@ Outside The Tall Building
 adbg:  Stepping to saviour.alan:318
 &lt;00318&gt;:         "To the north is a tall ancient building with a large entrance.
 adbg&gt; <em>n</em>
-To the north is a tall ancient building with a large entrance. On
-the top there is a clock tower. Most of the windows in the building are
-broken, and a sign with three oval objects are hanging lose from the wall.
+To the north is a tall ancient building with a large entrance. On the top there
+is a clock tower. Most of the windows in the building are broken, and a sign
+with three oval objects are hanging lose from the wall.
 
 &gt; <em>north</em>
 adbg:  Stepping to saviour.alan:325
 &lt;00325&gt;:             Score 5.
 
 adbg&gt; <em>?</em>
-Alan 3.0beta8 -- Adventure Language System (2021-04-05 21:19)
+Alan 3.0beta1 -- Adventure Language System (2010-12-19 16:26)
 ADBG Commands (can be abbreviated):
     help               -- this help
     ?                  -- d:o
-    break [[file:]n]   -- set breakpoint at source line [n] (optionally in [file])
-    delete [[file:]n]  -- delete breakpoint at source line [n] (optionally in [file])
+    break [file:[n]]   -- set breakpoint at source line [n] in [file]
+    delete [file:[n]]  -- delete breakpoint at source line [n] in [file]
     files              -- list source files
-    events             -- list events
-    classes            -- list class hierarchy
-    instances [n]      -- list instance(s), all, wildcard, number or name
-    objects [n]        -- list instance(s) that are objects
-    actors [n]         -- list instance(s) that are actors
-    locations [n]      -- list instances that are locations
+    events             -- show events
+    classes            -- show class hierarchy
+    instances [n]      -- show instance(s)
+    objects [n]        -- show instance(s) that are objects
+    actors [n]         -- show instance(s) that are actors
+    locations [n]      -- show instances that are locations
     trace ('source'|'section'|'instruction'|'push'|'stack')
                        -- toggle various traces
-    next               -- continue game and stop at next source line
+    next               -- execute to next source line
     go                 -- go another player turn
     exit               -- exit to game, enter 'debug' to get back
     x                  -- d:o
     quit               -- quit game
 
 adbg&gt; <em>trace section</em>
+
 Section trace on.
+
 adbg&gt; <em>n</em>
 
 &lt;EXIT north[1] from Outside The Tall Building[4], Moving:&gt;
@@ -9729,26 +9709,27 @@ Hall
 
 adbg:  Stepping to saviour.alan:332
 &lt;00332&gt;:         "Inside the entrance is a hallway full of dust and pieces of
-adbg&gt; instances
+
+adbg&gt; <em>instances</em>
 Instances:
-    [1] #nowhere ("#nowhere")
-    [2] pseudowords ("pseudowords") (container), at [1] #nowhere ("#nowhere")
-    [3] nowhere ("nowhere")
-    [4] outside ("Outside The Tall Building")
-    [5] Hall ("Hall")
-    [6] door ("door"), at [5] Hall ("Hall")
-    [7] stairs ("Stairs")
-    [8] cellar ("cellar")
-    [9] rats ("rats"), at [8] cellar ("cellar")
-    [10] store ("store")
-    [11] tape ("spool of computer tape"), at [10] store ("store")
-    [12] first_floor ("First Floor")
-    [13] book ("old book"), at [12] first_floor ("First Floor")
+      1: #nowhere
+      2: pseudowords (container), at #nowhere [1]
+      3: nowhere
+      4: Outside The Tall Building
+      5: Hall
+      6: door, at Hall [5]
+      7: Stairs
+      8: cellar
+      9: rats, at cellar [8]
+     10: store
+     11: spool of computer tape, at store [10]
+     12: First Floor
+     13: old book, at First Floor [12]
 &lt;&lt;list abbreviated&gt;&gt;
 
-adbg&gt; instance 13
-The [13] book ("old book") Isa object[4]
-    Location: at [12] first_floor ("First Floor")
+adbg&gt; <em>instance 13</em>
+The old book [13] IsA object[4]
+    Location: at First Floor [12]
     Attributes:
         Takeable[2] = 1
         Readable[3] = 1
@@ -9757,9 +9738,9 @@ The [13] book ("old book") Isa object[4]
         examinable[6] = 1
 
 adbg&gt; <em>g</em>
-Inside the entrance is a hallway full of dust and pieces of the
-ceiling has fallen to the floor. At the west end is a staircase, and to
-the south is the exit. To the east is a folding door. It is closed.
+Inside the entrance is a hallway full of dust and pieces of the ceiling has
+fallen to the floor. At the west end is a staircase, and to the south is the
+exit. To the east is a folding door. It is closed.
 
 &gt; <em>west</em>
 
@@ -9769,10 +9750,11 @@ the south is the exit. To the east is a folding door. It is closed.
 &lt;ENTERED in instance Stairs[7] is empty&gt;
 
 Stairs
-You are at the landing of an old staircase. It seem steady enough to walk
-in, but be careful if you are going to use it. There is a passage leading
-up, and another leading down into a dark cellar. To the east is the
-hallway. A strange smell emerges from below.
+
+You are at the landing of an old staircase. It seem steady enough to walk in,
+but be careful if you are going to use it. There is a passage leading up, and
+another leading down into a dark cellar. To the east is the hallway. A strange
+smell emerges from below.
 
 &gt; <em>up</em>
 
@@ -9782,28 +9764,29 @@ hallway. A strange smell emerges from below.
 &lt;ENTERED in instance First Floor[12] is empty&gt;
 
 First Floor
-The landing on the first floor is as dirty as all the others. Meters and
-meters of old cables are laying around, leading into a room to the east.
-The stairs leads up and down. They still seem alright. Through the dirty
-windows the barren field outside the building can be seen. Almost
-completely covered by dust, there is an old book laying on the floor here.
+
+The landing on the first floor is as dirty as all the others. Meters and meters
+of old cables are laying around, leading into a room to the east. The stairs
+leads up and down. They still seem alright. Through the dirty windows the barren
+field outside the building can be seen. Almost completely covered by dust, there
+is an old book laying on the floor here.
 
 &gt; <em>take book and read it</em>
 
-&lt;VERB 21, in parameter str(#1)=old book[13], inherited from object[4], CHECK:&gt;
-&lt;VERB 21, in parameter str(#1)=old book[13], inherited from object[4], DOES:&gt;
+&lt;VERB 21, in parameter object(#1)=old book[13], inherited from object[4], CHECK:&gt;
+&lt;VERB 21, in parameter object(#1)=old book[13], inherited from object[4], DOES:&gt;
 Taken.
 
 &lt;VERB 5, in parameter object(#1)=old book[13], inherited from object[4], CHECK:&gt;
 &lt;VERB 5, in parameter object(#1)=old book[13], DOES:&gt;
-As you carefully try to open the book it falls apart into dust and falls
-to the floor through your fingers.
+As you carefully try to open the book it falls apart into dust and falls to the
+floor through your fingers.
 
 &gt; <em>debug</em>
 
 adbg&gt; <em>instance 13</em>
-The [13] book ("old book") Isa object[4]
-    Location: at [3] nowhere ("nowhere")
+The old book [13] IsA object[4]
+    Location: at nowhere [3]
     Attributes:
         Takeable[2] = 1
         Readable[3] = 1
@@ -9812,20 +9795,21 @@ The [13] book ("old book") Isa object[4]
         examinable[6] = 1
 
 adbg&gt; <em>trace instruction</em>
-Instruction trace on.
-adbg&gt; <em>n
-&gt; _north</em>
+Single instruction trace on.
+
+adbg&gt; <em>n</em>
+&gt; <em>north</em>
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-1f85: PRINT        10048,     22                  "You can't go that way."
-1f86: RETURN
+1dbd: PRINT       10037,      22       "You can't go that way."
+1dbe: RETURN
 --------------------------------------------------
 
 &gt; <em>west</em>
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-1f85: PRINT        10048,     22                  "You can't go that way."
-1f86: RETURN
+1dbd: PRINT       10037,      22       "You can't go that way."
+1dbe: RETURN
 --------------------------------------------------
 
 &gt; <em>east</em>
@@ -9836,39 +9820,38 @@ adbg&gt; <em>n
 &lt;ENTERED in instance office[14] is empty&gt;
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
- fcb: LINE             0,      0
- fce: PRINT         3479,      6                  "Office"
- fcf: RETURN
+ e82: LINE            0,       0
+ e85: PRINT        3479,       6       "Office"
+ e86: RETURN
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
- fd2: LINE             0,    598
+e89: LINE            0,     598
 adbg:  Stepping to saviour.alan:598
 &lt;00598&gt;:         "In front of you is a deserted office area. Desks and chairs
 
 adbg&gt; <em>g</em>
 
- fd5: PRINT         3485,    404                  "In front of you is a deserted
-office area. Desks and chairs are piled up in one corner. The ventilation
-system has partly fallen to the floor, tearing part of the ceiling down
-with it. Under the twisted tubing a couple of old coffee makers are
-crushed to pieces. One shelf, having some kind of lettering, no longer
-readable, is thrown to one side, and another is still standing in a
-corner, full of dust."
- fd6: RETURN
+e8c: PRINT        3485,     404 "In front of you is a deserted office area.
+Desks and chairs are piled up in one corner. The ventilation system has partly
+fallen to the floor, tearing part of the ceiling down with it. Under the twisted
+tubing a couple of old coffee makers are crushed to pieces. One shelf, having
+some kind of lettering, no longer readable, is thrown to one side, and another
+is still standing in a corner, full of dust."
+e8d: RETURN
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-100c: LINE             0,    616
-100f: ATTRIBUTE       15,     17                 =0
-1010: NOT           FALSE                        =TRUE
-1011: IF             TRUE
-1014: LINE             0,    617
-1017: PRINT         3711,     43                  " There is a ladder laying on the
-floor here."
-1018: ELSE
-    :
-1029: RETURN
+ ec3: LINE            0,     616
+ ec6: ATTRIBUTE      15,      17                =0
+ ec7: NOT         FALSE                         =TRUE
+ ec8: IF           TRUE
+ ecb: LINE            0,     617
+ ece: PRINT        3711,      43      " There is a ladder
+ laying on the floor here."
+ ecf: ELSE
+   :
+ ee1: RETURN
 --------------------------------------------------
 
 &gt; <em>look</em>
@@ -9876,39 +9859,40 @@ floor here."
 &lt;VERB 19, GLOBAL, DOES:&gt;
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
- 7dc: LINE             0,    199
- 7dd: LOOK
+ 71c: LINE            0,     199
+ 71d: LOOK
 ++++++++++++++++++++++++++++++++++++++++++++++++++
- fcb: LINE             0,      0
- fce: PRINT         3479,      6                  "Office"
- fcf: RETURN
+ e82: LINE            0,       0
+ e85: PRINT        3479,       6         "Office"
+ e86: RETURN
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
- fd2: LINE             0,    598
- fd5: PRINT         3485,    404                  "In front of you is a deserted
-office area. Desks and chairs are piled up in one corner. The ventilation
-system has partly fallen to the floor, tearing part of the ceiling down
-with it. Under the twisted tubing a couple of old coffee makers are
-crushed to pieces. One shelf, having some kind of lettering, no longer
-readable, is thrown to one side, and another is still standing in a
-corner, full of dust."
- fd6: RETURN
+ e89: LINE             0,     598
+ e8c: PRINT         3485,     404         "In front of you is a deserted office
+area. Desks and chairs are piled up in one corner. The ventilation system has
+partly fallen to the floor, tearing part of the ceiling down with it. Under the
+twisted tubing a couple of old coffee makers are crushed to pieces. One shelf,
+having some kind of lettering, no longer readable, is thrown to one side, and
+another is still standing in a corner, full of dust."
+e8d: RETURN
+
 --------------------------------------------------
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
-100c: LINE             0,    616
-100f: ATTRIBUTE       15,     17                 =0
-1010: NOT           FALSE                        =TRUE
-1011: IF             TRUE
-1014: LINE             0,    617
-1017: PRINT         3711,     43                  " There is a ladder
+ ec3: LINE+++++++++++0,+++++616++++++++++++++++
+ ec3: LINE           0,     616
+ ec6: ATTRIBUTE     15,      17                =0
+ ec7: NOT        FALSE                         =TRUE
+ ec8: IF          TRUE
+ ecb: LINE           0,     617
+ ece: PRINT       3711,      43            " There is a ladder
 laying on the floor here."
-1018: ELSE
+ ecf: ELSE
     :
-1029: RETURN
+ ee1: RETURN
 --------------------------------------------------
- 7de: RETURN
+ 71e: RETURN
 --------------------------------------------------
 
 &gt; <em>q</em></pre>
@@ -10066,7 +10050,7 @@ To use this, read the relevant sections below to get a feel for how that will wo
 </div>
 <div class="paragraph">
 <p>If you actually want to write interactive fiction using Alan you also need the compiler.
-This is distributed from <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a> in what&#8217;s called the Development Kit, or the SDK (for Software Development Kit), which includes the compiler, interpreter, a conversion program for v2 games and some examples.</p>
+This is distributed from <a href="http://www.alanif.se/" target="_blank" rel="noopener">www.alanif.se</a> in what&#8217;s called the complete packages, including compiler, interpreter, the documentation, a conversion program for v2 games and some examples.</p>
 </div>
 <div class="paragraph">
 <p>Whatever option you choose, there should be more detailed instructions on how to install included with that package.
@@ -10075,7 +10059,7 @@ Below follows some information pertaining to the original versions from the Alan
 <div class="sect2">
 <h3 id="_compiling"><a class="anchor" href="#_compiling"></a>A.1. Compiling</h3>
 <div class="paragraph">
-<p>Although there are other options, like the AlanIDE, WinAlan et al., basic use of the Alan Adventure Development System is through a traditional command line batch compiler.
+<p>Although there are other options, like a prototype AlanIDE, WinAlan et al., basic use of the Alan Adventure Development System is through a traditional command line batch compiler.
 This means that the actual development system is a compiler that reads text files created using any standard text editor.
 To compile an adventure use the following command in a command shell:</p>
 </div>
@@ -11164,7 +11148,7 @@ This grammar rule would look like:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">adventure = [options] {declaration} start_section</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">adventure = [options] {declaration} start_section</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11216,7 +11200,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">declaration = messages
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">declaration = messages
             | class
             | instance
             | verb
@@ -11239,7 +11223,7 @@ Character case is not significant.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bnf hljs" data-lang="bnf">random_expression = 'RANDOM' 'IN' expression</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bnf" class="language-bnf hljs">random_expression = 'RANDOM' 'IN' expression</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12594,7 +12578,7 @@ For example, with the Italian language we would define all possible articles as 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS il, lo, la, 'l''', i, gli, le = 'the'.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">SYNONYMS il, lo, la, 'l''', i, gli, le = 'the'.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12615,7 +12599,7 @@ E.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Language German.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Language German.</code></pre>
 </div>
 </div>
 </div>
@@ -12668,7 +12652,7 @@ Usually this is one or both of the following</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">Syntax take = (o) nehmen.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="alan" class="language-alan hljs">Syntax take = (o) nehmen.</code></pre>
 </div>
 </div>
 <div class="admonitionblock warning">
@@ -13027,12 +13011,8 @@ For more info on stropping, see <a href="https://en.wikipedia.org/wiki/Stropping
 ALAN Beta7<br>
 </div>
 </div>
+<link rel="stylesheet" href="../_assets/hjs/styles/github.min.css">
 <script src="../_assets/hjs/highlight.min.js"></script>
-<script>
-if (!hljs.initHighlighting.called) {
-  hljs.initHighlighting.called = true
-  ;[].slice.call(document.querySelectorAll('pre.highlight > code')).forEach(function (el) { hljs.highlightBlock(el) })
-}
-</script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>
