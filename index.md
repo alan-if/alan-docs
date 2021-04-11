@@ -8,5 +8,5 @@ The Language manual is the primary documentation of the Alan language from an au
 
 It exists in two versions matching the two current development flows:
 
-- The Beta Manual - describes the most recent Beta release of the Alan SDK ([HTML](manual-beta/manual.html"), [PDF](manual-beta/manual.pdf))
-- The Alpha Manual - includes changes that are only in the development snapshots which will make it into the next beta release ([HTML](manual-alpha/manual.html"), [PDF](manual-alpha/manual.pdf))
+- The Beta Manual ([HTML](manual-beta/manual.html"), [PDF](manual-beta/manual.pdf)) - describes the most recent Beta release of the Alan SDK 
+- The Alpha Manual ([HTML](manual-alpha/manual.html"), [PDF](manual-alpha/manual.pdf)) - includes changes that are only in the development snapshots which will make it into the next beta release
