@@ -1,4 +1,4 @@
-# Welcome to The Alan Documentation Project
+# Welcome to The Alan IF Documentation Project
 
 Here you will find the latest and greatest version of various documentation for the Alan Interactive Fiction Language, tools and libraries.
 
