@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.10">
+<meta name="generator" content="Asciidoctor 2.0.12">
 <meta name="author" content="Thomas Nilefalk">
 <title>Alan Design Documentation</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -48,7 +48,7 @@ textarea{overflow:auto;vertical-align:top}
 table{border-collapse:collapse;border-spacing:0}
 *,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
 html,body{font-size:100%}
-body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
 a:hover{cursor:pointer}
 img,object,embed{max-width:100%;height:auto}
 object,embed{height:100%}
@@ -63,10 +63,8 @@ img{-ms-interpolation-mode:bicubic}
 img,object,svg{display:inline-block;vertical-align:middle}
 textarea{height:auto;min-height:50px}
 select{width:100%}
-.center{margin-left:auto;margin-right:auto}
-.stretch{width:100%}
 .subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
-div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
 a{color:#2156a5;text-decoration:underline;line-height:inherit}
 a:hover,a:focus{color:#1d4b8f}
 a img{border:0}
@@ -106,19 +104,22 @@ h1{font-size:2.75em}
 h2{font-size:2.3125em}
 h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
 h4{font-size:1.4375em}}
-table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede;word-wrap:normal}
 table thead,table tfoot{background:#f7f8f7}
 table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
 table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
 table tr.even,table tr.alt{background:#f8f8f7}
-table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
 h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
 h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
 .clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
 .clearfix::after,.float-group::after{clear:both}
-:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
-:not(pre)>code.nobreak{word-wrap:normal}
-:not(pre)>code.nowrap{white-space:nowrap}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
 pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
 pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
 pre>code{display:block}
@@ -183,7 +184,7 @@ body.toc2.toc-right{padding-left:0;padding-right:20em}}
 #content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
 #content #toc>:first-child{margin-top:0}
 #content #toc>:last-child{margin-bottom:0}
-#footer{max-width:100%;background:rgba(0,0,0,.8);padding:1.25em}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
 #footer-text{color:rgba(255,255,255,.8);line-height:1.44}
 #content{margin-bottom:.625em}
 .sect1{padding-bottom:.625em}
@@ -206,7 +207,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .admonitionblock>table td.icon{text-align:center;width:80px}
 .admonitionblock>table td.icon img{max-width:none}
 .admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
-.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
 .exampleblock>.content>:first-child{margin-top:0}
@@ -216,7 +217,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
 .exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
-.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
 .literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
@@ -262,21 +263,20 @@ pre.pygments .lineno::before{content:"";margin-right:-.125em}
 .quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
 .quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
 .quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
-table.tableblock{max-width:100%;border-collapse:separate}
 p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
 td.tableblock>.content>:last-child{margin-bottom:-1.25em}
-td.tableblock>.content>:last-child.sidebarblock{margin-bottom:0}
 table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
-table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
-table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
-table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
-table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
-table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
-table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
-table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
 table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
 table.frame-sides{border-width:0 1px}
-table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
 table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
 th.halign-left,td.halign-left{text-align:left}
 th.halign-right,td.halign-right{text-align:right}
@@ -285,7 +285,7 @@ th.valign-top,td.valign-top{vertical-align:top}
 th.valign-bottom,td.valign-bottom{vertical-align:bottom}
 th.valign-middle,td.valign-middle{vertical-align:middle}
 table thead th,table tfoot th{font-weight:bold}
-tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th{background:#f7f8f7}
 tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
 p.tableblock>code:only-child{background:none;padding:0}
 p.tableblock{font-size:1em}
@@ -314,6 +314,7 @@ ol.lowergreek{list-style-type:lower-greek}
 .hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
 td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
 td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
 .literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
 .colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
 .colist td:not([class]):first-child img{max-width:none}
@@ -386,7 +387,7 @@ a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
 .admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
 .admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
-.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:50%;border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
 .conum[data-value] *{color:#fff!important}
 .conum[data-value]+b{display:none}
 .conum[data-value]::after{content:attr(data-value)}
@@ -413,6 +414,7 @@ thead{display:table-header-group}
 svg{max-width:100%}
 p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
 h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
 #toc,.sidebarblock,.exampleblock>.content{background:none!important}
 #toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
 body.book #header{text-align:center}
@@ -444,54 +446,69 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Thomas Nilefalk</span><br>
 <span id="email" class="email"><a href="mailto:thomas@nilefalk.se">thomas@nilefalk.se</a></span><br>
-<span id="revdate">2018-10-23</span>
-<br><span id="revremark">Alan 3beta6</span>
+<span id="revdate">2021-04-14</span>
+<br><span id="revremark">Alan 3beta7</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_systems_design">1. Systems Design</a></li>
-<li><a href="#_language_design">2. Language Design</a>
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_overview">2. Overview</a></li>
+<li><a href="#_language_design">3. Language Design</a>
 <ul class="sectlevel2">
-<li><a href="#_articles">2.1. Articles</a>
+<li><a href="#_articles">3.1. Articles</a>
 <ul class="sectlevel3">
-<li><a href="#_singular_and_plural">2.1.1. Singular and Plural</a></li>
-<li><a href="#_the_any_form">2.1.2. The "Any" form</a></li>
-<li><a href="#_pronouns">2.1.3. Pronouns</a></li>
+<li><a href="#_singular_and_plural">3.1.1. Singular and Plural</a></li>
+<li><a href="#_the_any_form">3.1.2. The "Any" form</a></li>
+<li><a href="#_pronouns">3.1.3. Pronouns</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_datastructures">3. Datastructures</a>
+<li><a href="#_datastructures">4. Datastructures</a>
 <ul class="sectlevel2">
-<li><a href="#_syntax_mapping_tables">3.1. Syntax Mapping Tables</a></li>
+<li><a href="#_syntax_mapping_tables">4.1. Syntax Mapping Tables</a></li>
 </ul>
 </li>
-<li><a href="#_code_generation_principles">4. Code Generation Principles</a>
+<li><a href="#_code_generation_principles">5. Code Generation Principles</a>
 <ul class="sectlevel2">
-<li><a href="#_language_constructs">4.1. Language Constructs</a>
+<li><a href="#_language_constructs">5.1. Language Constructs</a>
 <ul class="sectlevel3">
-<li><a href="#_for_each">4.1.1. For Each</a></li>
-<li><a href="#_aggregates">4.1.2. Aggregates</a></li>
+<li><a href="#_for_each">5.1.1. For Each</a></li>
+<li><a href="#_aggregates">5.1.2. Aggregates</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_acode_instructions">5. Acode Instructions</a>
+<li><a href="#_systems_design">6. Systems Design</a>
 <ul class="sectlevel2">
-<li><a href="#_frame">5.1. FRAME</a></li>
-<li><a href="#_getlocal_setlocal">5.2. GETLOCAL, SETLOCAL</a></li>
-<li><a href="#_loop">5.3. LOOP</a></li>
-<li><a href="#_loopnext">5.4. LOOPNEXT</a></li>
-<li><a href="#_loopend">5.5. LOOPEND</a></li>
-<li><a href="#_endframe">5.6. ENDFRAME</a></li>
-<li><a href="#_count">5.7. COUNT</a></li>
-<li><a href="#_max_min_sum">5.8. MAX, MIN &amp; SUM</a></li>
-<li><a href="#_depend">5.9. DEPEND</a></li>
-<li><a href="#_depcase">5.10. DEPCASE</a></li>
-<li><a href="#_depelse">5.11. DEPELSE</a></li>
-<li><a href="#_enddep">5.12. ENDDEP</a></li>
-<li><a href="#_dup">5.13. DUP</a></li>
+<li><a href="#_compiler_design">6.1. Compiler Design</a></li>
+<li><a href="#_interpreter_design">6.2. Interpreter Design</a>
+<ul class="sectlevel3">
+<li><a href="#_interpreter_data_structures">6.2.1. Interpreter Data Structures</a>
+<ul class="sectlevel4">
+<li><a href="#_the_dictionary">The Dictionary</a></li>
+</ul>
+</li>
+<li><a href="#_acode_instructions">6.2.2. Acode Instructions</a>
+<ul class="sectlevel4">
+<li><a href="#_frame">FRAME</a></li>
+<li><a href="#_getlocal_setlocal">GETLOCAL, SETLOCAL</a></li>
+<li><a href="#_loop">LOOP</a></li>
+<li><a href="#_loopnext">LOOPNEXT</a></li>
+<li><a href="#_loopend">LOOPEND</a></li>
+<li><a href="#_endframe">ENDFRAME</a></li>
+<li><a href="#_count">COUNT</a></li>
+<li><a href="#_max_min_sum">MAX, MIN &amp; SUM</a></li>
+<li><a href="#_depend">DEPEND</a></li>
+<li><a href="#_depcase">DEPCASE</a></li>
+<li><a href="#_depelse">DEPELSE</a></li>
+<li><a href="#_enddep">ENDDEP</a></li>
+<li><a href="#_dup">DUP</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -499,16 +516,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_systems_design"><a class="anchor" href="#_systems_design"></a>1. Systems Design</h2>
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>This document is an attempt to describe the design of the Alan IF Language System.
+At this point it is very limited and only describes a few aspects.
+It was created so that any sudden impulses to describe anything that concerns the design of Alan should have a natural place, hopefully making it more probable that such impulses actually resulted in something.</p>
+</div>
+<div class="paragraph">
+<p>Any additions are welcome.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_language_design"><a class="anchor" href="#_language_design"></a>2. Language Design</h2>
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Alan IF Language System consists of a compiler and an interpreter.
+The compiler analyzes the input source code (following the Alan language specification) and transforms it to a format that is suitable as input to the interpreter.
+That format is referred to as the Acode.</p>
+</div>
+<div class="paragraph">
+<p>The interpreter reads that Acode, constructs some internal structures from it and then starts "executing" it.
+In this case "executing" means interpreting specific sections of the Acode, mixing that with asking the player for input and analyzing that to see what other parts of the Acode needs to be interpreted.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_language_design"><a class="anchor" href="#_language_design"></a>3. Language Design</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_articles"><a class="anchor" href="#_articles"></a>2.1. Articles</h3>
+<h3 id="_articles"><a class="anchor" href="#_articles"></a>3.1. Articles</h3>
 <div class="paragraph">
 <p>Instances are mentioned and described in a number of situations.
 Sometimes it is necessary to refer to it in an indefinite form and sometimes in a definite form.
@@ -642,7 +680,7 @@ End The mr_a.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>But the library could:</p>
+<p>But a library could:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -659,21 +697,21 @@ Verb talk_to</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_singular_and_plural"><a class="anchor" href="#_singular_and_plural"></a>2.1.1. Singular and Plural</h4>
+<h4 id="_singular_and_plural"><a class="anchor" href="#_singular_and_plural"></a>3.1.1. Singular and Plural</h4>
 <div class="paragraph">
 <p>Do we really need all the four forms?
 Indefinite singular/plural and definite singular/plural?</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_any_form"><a class="anchor" href="#_the_any_form"></a>2.1.2. The "Any" form</h4>
+<h4 id="_the_any_form"><a class="anchor" href="#_the_any_form"></a>3.1.2. The "Any" form</h4>
 <div class="paragraph">
 <p>Possibly there is also a fifth form, as in &#8220;I can&#8217;t see <strong>any</strong> door here.&#8221; But let&#8217;s leave that for later.
 Possibly: <code>Say Any x.</code> &amp; <code>Say No x.</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_pronouns"><a class="anchor" href="#_pronouns"></a>2.1.3. Pronouns</h4>
+<h4 id="_pronouns"><a class="anchor" href="#_pronouns"></a>3.1.3. Pronouns</h4>
 <div class="paragraph">
 <p>Some times a pronoun is possibly nice:</p>
 </div>
@@ -710,10 +748,10 @@ The sak Isa x
 </div>
 </div>
 <div class="sect1">
-<h2 id="_datastructures"><a class="anchor" href="#_datastructures"></a>3. Datastructures</h2>
+<h2 id="_datastructures"><a class="anchor" href="#_datastructures"></a>4. Datastructures</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_syntax_mapping_tables"><a class="anchor" href="#_syntax_mapping_tables"></a>3.1. Syntax Mapping Tables</h3>
+<h3 id="_syntax_mapping_tables"><a class="anchor" href="#_syntax_mapping_tables"></a>4.1. Syntax Mapping Tables</h3>
 <div class="paragraph">
 <p>Since multiple syntaxes may map to the same verb, a mapping between them is necessary.
 This mapping will convert a syntax number into a verb code as well as remapping the parameter numbers into the &#8220;canonical&#8221; order for this verb.</p>
@@ -744,12 +782,12 @@ Aint verbCode;</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_code_generation_principles"><a class="anchor" href="#_code_generation_principles"></a>4. Code Generation Principles</h2>
+<h2 id="_code_generation_principles"><a class="anchor" href="#_code_generation_principles"></a>5. Code Generation Principles</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_language_constructs"><a class="anchor" href="#_language_constructs"></a>4.1. Language Constructs</h3>
+<h3 id="_language_constructs"><a class="anchor" href="#_language_constructs"></a>5.1. Language Constructs</h3>
 <div class="sect3">
-<h4 id="_for_each"><a class="anchor" href="#_for_each"></a>4.1.1. For Each</h4>
+<h4 id="_for_each"><a class="anchor" href="#_for_each"></a>5.1.1. For Each</h4>
 <div class="paragraph">
 <p>The <code>For Each</code> loop is generated into an initialization step, a filter step and the statements.
 A local variable is used since the loop-code might reference the loop value.
@@ -788,23 +826,24 @@ LOOP
 SETLOCAL 1                            -- save loop value in local var
 GETLOCAL 1
 &lt;filter1&gt;                             -- code to evaluate first filter
+NOT                                   -- invert it
+IF
+LOOPNEXT                              -- if the filter did not match, next loop
+ENDIF
+GETLOCAL 1
+&lt;filter2&gt;                             -- code to evaluate 2nd filter
 NOT
 IF
 LOOPNEXT
 ENDIF
-GETLOCAL 1
-&lt;filter2&gt;                             -- code to evaluate 2nd filter NOT
-IF
-LOOPNEXT
-ENDIF
-...
+...                                   -- and so on for each filter
 LOOPEND                               -- loop test and termination
 ENDFRAME</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_aggregates"><a class="anchor" href="#_aggregates"></a>4.1.2. Aggregates</h4>
+<h4 id="_aggregates"><a class="anchor" href="#_aggregates"></a>5.1.2. Aggregates</h4>
 <div class="paragraph">
 <p>All aggregates are generated into a loop using the same structures as <code>EACH</code>.
 The instructions used are:</p>
@@ -861,18 +900,79 @@ On top is the usual looping data, i.e. the limit, the index and temporarily a lo
 </div>
 </div>
 <div class="sect1">
-<h2 id="_acode_instructions"><a class="anchor" href="#_acode_instructions"></a>5. Acode Instructions</h2>
+<h2 id="_systems_design"><a class="anchor" href="#_systems_design"></a>6. Systems Design</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_frame"><a class="anchor" href="#_frame"></a>5.1. FRAME</h3>
+<h3 id="_compiler_design"><a class="anchor" href="#_compiler_design"></a>6.1. Compiler Design</h3>
 
 </div>
 <div class="sect2">
-<h3 id="_getlocal_setlocal"><a class="anchor" href="#_getlocal_setlocal"></a>5.2. GETLOCAL, SETLOCAL</h3>
+<h3 id="_interpreter_design"><a class="anchor" href="#_interpreter_design"></a>6.2. Interpreter Design</h3>
+<div class="paragraph">
+<p>The Acode is structured in a fashion that closely supports the structure of the Alan Language.
+It consists of two types of data, one being data structures of various kinds that the interpreter is inspecting, the other sequences of "instructions" that the interpreter "executes".</p>
+</div>
+<div class="paragraph">
+<p>This chapter describes those data structures and the instructions as well as particular algorithms that are used but the interpreter.</p>
+</div>
+<div class="sect3">
+<h4 id="_interpreter_data_structures"><a class="anchor" href="#_interpreter_data_structures"></a>6.2.1. Interpreter Data Structures</h4>
+<div class="sect4">
+<h5 id="_the_dictionary"><a class="anchor" href="#_the_dictionary"></a>The Dictionary</h5>
+<div class="paragraph">
+<p>The dictionary holds all words the player is supposed to be able to input.
+A simple sequential lookup converts the string to an index into the dictionary array.</p>
+</div>
+<div class="paragraph">
+<p>Each entry has the following general structure:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>class DictionaryEntry {
+    string : StringAddress
+    classBits : WordClassBits
+    code : Integer
+    adjectiveRefs : ReferenceListAddress
+    nounRefs : ReferenceListAddress
+    pronounRefs : ReferenceListAddress
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_acode_instructions"><a class="anchor" href="#_acode_instructions"></a>6.2.2. Acode Instructions</h4>
+<div class="paragraph">
+<p>The Acode instructions are designed around the model of a stack machine.
+A stack machine primarily uses a stack to manage its state and perform operations.
+E.g. an addition of two numbers will be performed by first "executing" two push operations to get the two numbers on the stack.
+Then the "add" operation is executed, which requires that there are two numbers already on the stack, which are replaces by the sum.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>*Operation*                         *Stack After Operation*
+Push 2                                 2, 42
+Push 5                              5, 2, 42
+Add                                    7, 42</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>As we can see each operation ("instruction") is either removing something from the stack, and/or pushing something onto it.</p>
+</div>
+<div class="sect4">
+<h5 id="_frame"><a class="anchor" href="#_frame"></a>FRAME</h5>
 
 </div>
-<div class="sect2">
-<h3 id="_loop"><a class="anchor" href="#_loop"></a>5.3. LOOP</h3>
+<div class="sect4">
+<h5 id="_getlocal_setlocal"><a class="anchor" href="#_getlocal_setlocal"></a>GETLOCAL, SETLOCAL</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_loop"><a class="anchor" href="#_loop"></a>LOOP</h5>
 <div class="paragraph">
 <p>Use: start a loop</p>
 </div>
@@ -945,8 +1045,8 @@ When executed, check for loop termination, if so, go to end of the corresponding
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_loopnext"><a class="anchor" href="#_loopnext"></a>5.4. LOOPNEXT</h3>
+<div class="sect4">
+<h5 id="_loopnext"><a class="anchor" href="#_loopnext"></a>LOOPNEXT</h5>
 <div class="paragraph">
 <p>Use: skip to next loop value</p>
 </div>
@@ -982,8 +1082,8 @@ When executed, check for loop termination, if so, go to end of the corresponding
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_loopend"><a class="anchor" href="#_loopend"></a>5.5. LOOPEND</h3>
+<div class="sect4">
+<h5 id="_loopend"><a class="anchor" href="#_loopend"></a>LOOPEND</h5>
 <div class="paragraph">
 <p>Use: test a loop for termination</p>
 </div>
@@ -1024,12 +1124,12 @@ If not reached then increment index and back up until next instruction to execut
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_endframe"><a class="anchor" href="#_endframe"></a>5.6. ENDFRAME</h3>
+<div class="sect4">
+<h5 id="_endframe"><a class="anchor" href="#_endframe"></a>ENDFRAME</h5>
 
 </div>
-<div class="sect2">
-<h3 id="_count"><a class="anchor" href="#_count"></a>5.7. COUNT</h3>
+<div class="sect4">
+<h5 id="_count"><a class="anchor" href="#_count"></a>COUNT</h5>
 <div class="paragraph">
 <p>Use: aggregate (using counting) number of items, usually instances, matching a set of filters</p>
 </div>
@@ -1070,8 +1170,8 @@ Fourth value from the top is the aggregate value.</p>
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_max_min_sum"><a class="anchor" href="#_max_min_sum"></a>5.8. MAX, MIN &amp; SUM</h3>
+<div class="sect4">
+<h5 id="_max_min_sum"><a class="anchor" href="#_max_min_sum"></a>MAX, MIN &amp; SUM</h5>
 <div class="paragraph">
 <p>Works exactly like <code>COUNT</code>, except at entry there is an extra value on the stack (at the top).
 This is the attribute value that the aggregation should use.</p>
@@ -1110,25 +1210,27 @@ This is the attribute value that the aggregation should use.</p>
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_depend"><a class="anchor" href="#_depend"></a>5.9. DEPEND</h3>
+<div class="sect4">
+<h5 id="_depend"><a class="anchor" href="#_depend"></a>DEPEND</h5>
 
 </div>
-<div class="sect2">
-<h3 id="_depcase"><a class="anchor" href="#_depcase"></a>5.10. DEPCASE</h3>
+<div class="sect4">
+<h5 id="_depcase"><a class="anchor" href="#_depcase"></a>DEPCASE</h5>
 
 </div>
-<div class="sect2">
-<h3 id="_depelse"><a class="anchor" href="#_depelse"></a>5.11. DEPELSE</h3>
+<div class="sect4">
+<h5 id="_depelse"><a class="anchor" href="#_depelse"></a>DEPELSE</h5>
 
 </div>
-<div class="sect2">
-<h3 id="_enddep"><a class="anchor" href="#_enddep"></a>5.12. ENDDEP</h3>
+<div class="sect4">
+<h5 id="_enddep"><a class="anchor" href="#_enddep"></a>ENDDEP</h5>
 
 </div>
-<div class="sect2">
-<h3 id="_dup"><a class="anchor" href="#_dup"></a>5.13. DUP</h3>
+<div class="sect4">
+<h5 id="_dup"><a class="anchor" href="#_dup"></a>DUP</h5>
 
+</div>
+</div>
 </div>
 </div>
 </div>

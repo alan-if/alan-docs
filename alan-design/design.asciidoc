@@ -1,6 +1,6 @@
 = Alan Design Documentation
 Thomas Nilefalk <thomas@nilefalk.se>
-2018-10-23: Alan 3beta6
+2021-04-14: Alan 3beta7
 :lang: en
 // :doctype: book
 // TOC Settings:
@@ -25,8 +25,22 @@ Thomas Nilefalk <thomas@nilefalk.se>
 // *                                                                           *
 // *****************************************************************************
 
+== Introduction
 
-== Systems Design
+This document is an attempt to describe the design of the Alan IF Language System.
+At this point it is very limited and only describes a few aspects.
+It was created so that any sudden impulses to describe anything that concerns the design of Alan should have a natural place, hopefully making it more probable that such impulses actually resulted in something.
+
+Any additions are welcome.
+
+== Overview
+
+The Alan IF Language System consists of a compiler and an interpreter.
+The compiler analyzes the input source code (following the Alan language specification) and transforms it to a format that is suitable as input to the interpreter.
+That format is referred to as the Acode.
+
+The interpreter reads that Acode, constructs some internal structures from it and then starts "executing" it.
+In this case "executing" means interpreting specific sections of the Acode, mixing that with asking the player for input and analyzing that to see what other parts of the Acode needs to be interpreted.
 
 == Language Design
 
@@ -115,7 +129,7 @@ Problem is still what to say when:
 I can't see _any_ mr andersson here.
 ================================================================================
 
-But the library could:
+But a library could:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -224,16 +238,17 @@ LOOP
 SETLOCAL 1                            -- save loop value in local var
 GETLOCAL 1
 <filter1>                             -- code to evaluate first filter
+NOT                                   -- invert it
+IF
+LOOPNEXT                              -- if the filter did not match, next loop
+ENDIF
+GETLOCAL 1
+<filter2>                             -- code to evaluate 2nd filter
 NOT
 IF
 LOOPNEXT
 ENDIF
-GETLOCAL 1
-<filter2>                             -- code to evaluate 2nd filter NOT
-IF
-LOOPNEXT
-ENDIF
-...
+...                                   -- and so on for each filter
 LOOPEND                               -- loop test and termination
 ENDFRAME
 ................................................................................
@@ -262,7 +277,7 @@ IF
 LOOPNEXT
 ENDIF
 <calculate loop value from index>
-<filter2>
+<filter2> 
 NOT
 IF
 LOOPNEXT
@@ -276,13 +291,59 @@ LOOPEND                               -- loop
 Note that for this to work the aggregate instructions have to look deep in the stack to find the current aggregate value since this is stored at the bottom.
 On top is the usual looping data, i.e. the limit, the index and temporarily a loop value.
 
-== Acode Instructions
+== Systems Design
 
-=== FRAME
+=== Compiler Design
 
-=== GETLOCAL, SETLOCAL
+=== Interpreter Design
 
-=== LOOP
+The Acode is structured in a fashion that closely supports the structure of the Alan Language.
+It consists of two types of data, one being data structures of various kinds that the interpreter is inspecting, the other sequences of "instructions" that the interpreter "executes". 
+
+This chapter describes those data structures and the instructions as well as particular algorithms that are used but the interpreter.
+
+==== Interpreter Data Structures
+
+===== The Dictionary
+
+The dictionary holds all words the player is supposed to be able to input.
+A simple sequential lookup converts the string to an index into the dictionary array.
+
+Each entry has the following general structure:
+
+[plantuml]
+....
+class DictionaryEntry {
+    string : StringAddress
+    classBits : WordClassBits
+    code : Integer
+    adjectiveRefs : ReferenceListAddress 
+    nounRefs : ReferenceListAddress 
+    pronounRefs : ReferenceListAddress 
+}
+....
+
+==== Acode Instructions
+
+The Acode instructions are designed around the model of a stack machine.
+A stack machine primarily uses a stack to manage its state and perform operations.
+E.g. an addition of two numbers will be performed by first "executing" two push operations to get the two numbers on the stack.
+Then the "add" operation is executed, which requires that there are two numbers already on the stack, which are replaces by the sum.
+
+====
+    *Operation*                         *Stack After Operation*
+    Push 2                                 2, 42
+    Push 5                              5, 2, 42
+    Add                                    7, 42
+====
+
+As we can see each operation ("instruction") is either removing something from the stack, and/or pushing something onto it.
+
+===== FRAME
+
+===== GETLOCAL, SETLOCAL
+
+===== LOOP
 
 Use: start a loop
 
@@ -314,7 +375,7 @@ A loop value has to be calculated from the index since the index might be an ind
    | Aggregate value     | Aggregate value
 |=============================================
 
-=== LOOPNEXT
+===== LOOPNEXT
 
 Use: skip to next loop value
 
@@ -332,7 +393,7 @@ Function: skip forward over instructions (possibly containing `LOOP`/`LOOPEND`-p
    | Upper limit of loop | Upper limit of loop
 |=============================================
 
-=== LOOPEND
+===== LOOPEND
 
 Use: test a loop for termination
 
@@ -349,9 +410,9 @@ If not reached then increment index and back up until next instruction to execut
    | Upper limit of loop | Upper limit of loop    |
 |=============================================================
 
-=== ENDFRAME
+===== ENDFRAME
 
-=== COUNT
+===== COUNT
 
 Use: aggregate (using counting) number of items, usually instances, matching a set of filters
 
@@ -369,7 +430,7 @@ Function: Increment the fourth topmost value (the aggregate value).
    | Aggregate value     | Updated aggregate value
 |=================================================
 
-=== MAX, MIN & SUM
+===== MAX, MIN & SUM
 
 Works exactly like `COUNT`, except at entry there is an extra value on the stack (at the top).
 This is the attribute value that the aggregation should use.
@@ -384,23 +445,26 @@ This is the attribute value that the aggregation should use.
 | Aggregate value     | Updated aggregate value
 |===============================================
 
-=== DEPEND
+===== DEPEND
 
 // TBD //
 
-=== DEPCASE
+===== DEPCASE
 
 // TBD //
 
-=== DEPELSE
+===== DEPELSE
 
 // TBD //
 
-=== ENDDEP
+===== ENDDEP
 
 // TBD //
 
-=== DUP
+===== DUP
+
+// TBD //
 
 
 // EOF //
+
