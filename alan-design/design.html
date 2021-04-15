@@ -467,7 +467,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_datastructures">4. Datastructures</a>
 <ul class="sectlevel2">
-<li><a href="#_syntax_mapping_tables">4.1. Syntax Mapping Tables</a></li>
+<li><a href="#_parameter_syntax_mapping_tables">4.1. Parameter &amp; Syntax Mapping Tables</a></li>
 </ul>
 </li>
 <li><a href="#_code_generation_principles">5. Code Generation Principles</a>
@@ -735,12 +735,14 @@ Possibly this could be just aliases.</p>
     Pronoun "it".
     Plural "articles"
   Indefinite Form "any article"
+  ...
 The sak Isa x
   Definite
     Form "saken".
     Pronoun "den".
   Indefinite
-    Form "sak"</code></pre>
+    Form "sak"
+  ...</code></pre>
 </div>
 </div>
 </div>
@@ -751,31 +753,29 @@ The sak Isa x
 <h2 id="_datastructures"><a class="anchor" href="#_datastructures"></a>4. Datastructures</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_syntax_mapping_tables"><a class="anchor" href="#_syntax_mapping_tables"></a>4.1. Syntax Mapping Tables</h3>
+<h3 id="_parameter_syntax_mapping_tables"><a class="anchor" href="#_parameter_syntax_mapping_tables"></a>4.1. Parameter &amp; Syntax Mapping Tables</h3>
 <div class="paragraph">
 <p>Since multiple syntaxes may map to the same verb, a mapping between them is necessary.
-This mapping will convert a syntax number into a verb code as well as remapping the parameter numbers into the &#8220;canonical&#8221; order for this verb.</p>
+This mapping converts a syntax number into a verb code as well as remapping the parameter numbers into the &#8220;canonical&#8221; order for this verb.</p>
 </div>
 <div class="paragraph">
 <p>The mapping is generated into two structures, the parameter order mapping, and the syntax-verb mapping table.
-The parameter mappings are generated separately.
-It is simply a table with as many entries as there are parameters in the syntax, followed by an EOF.
-As an example a parameter mapping with three parameters in canonical order would be:</p>
+The parameter order mappings is simply a table with as many entries as there are parameters in the syntax, followed by an EOF.
+As an example the following is a parameter order mapping table for a syntax with three parameters in canonical order and would occupy 4 consequtive Awords:</p>
 </div>
-<div class="literalblock">
+<div class="imageblock">
 <div class="content">
-<pre>{empty}[1] [2] [3] [EOF]</pre>
+<img src="parameterMapping.png" alt="parameterMapping" width="210" height="98">
 </div>
 </div>
 <div class="paragraph">
 <p>The syntax-verb mapping is a table of entries, one for each syntax.
-The entries have three fields:</p>
+The correct syntax-verb mapping is found by matching the <code>syntaxNumber</code> found during command parsing with the one in each of the syntax-verb mapping entries.
+The entries have three fields, where <code>parameterMapping</code> points to a parameterMapping table as described above and the <code>verbCode</code> indicates which verb to execute.</p>
 </div>
-<div class="listingblock">
+<div class="imageblock">
 <div class="content">
-<pre class="highlight"><code class="language-c" data-lang="c">Aint syntaxNumber; +
-Aaddr parameterMapping; +
-Aint verbCode;</code></pre>
+<img src="syntaxmapentry.png" alt="syntaxmapentry" width="281" height="106">
 </div>
 </div>
 </div>
@@ -926,16 +926,9 @@ A simple sequential lookup converts the string to an index into the dictionary a
 <div class="paragraph">
 <p>Each entry has the following general structure:</p>
 </div>
-<div class="literalblock">
+<div class="imageblock">
 <div class="content">
-<pre>class DictionaryEntry {
-    string : StringAddress
-    classBits : WordClassBits
-    code : Integer
-    adjectiveRefs : ReferenceListAddress
-    nounRefs : ReferenceListAddress
-    pronounRefs : ReferenceListAddress
-}</pre>
+<img src="diag-f87c289fbc6d3424e7e02623ac6911bd.png" alt="Diagram" width="243" height="144">
 </div>
 </div>
 </div>

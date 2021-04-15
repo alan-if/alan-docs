@@ -166,7 +166,7 @@ She does not want to talk to you.
 
 However it is different in output and input.
 In input we would like to have "`it`" available for persons too, "`her`".
-Possibly this could be just aliases.
+This can often be solved using synonyms.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -176,39 +176,46 @@ The article Isa b
     Pronoun "it".
     Plural "articles"
   Indefinite Form "any article"
+  ...
 The sak Isa x
   Definite
     Form "saken".
     Pronoun "den".
   Indefinite
     Form "sak"
+  ...
 --------------------------------------------------------------------------------
 
 == Datastructures
 
-=== Syntax Mapping Tables
+=== Parameter & Syntax Mapping Tables
 
 Since multiple syntaxes may map to the same verb, a mapping between them is necessary.
-This mapping will convert a syntax number into a verb code as well as remapping the parameter numbers into the "`canonical`" order for this verb.
+This mapping converts a syntax number into a verb code as well as remapping the parameter numbers into the "`canonical`" order for this verb.
 
 The mapping is generated into two structures, the parameter order mapping, and the syntax-verb mapping table.
-The parameter mappings are generated separately.
-It is simply a table with as many entries as there are parameters in the syntax, followed by an EOF.
-As an example a parameter mapping with three parameters in canonical order would be:
+The parameter order mappings is simply a table with as many entries as there are parameters in the syntax, followed by an EOF.
+As an example the following is a parameter order mapping table for a syntax with three parameters in canonical order and would occupy 4 consequtive Awords:
 
-........................
-{empty}[1] [2] [3] [EOF]
-........................
+[ditaa,parameterMapping]
+....
++---+---+---+---+
+| 1 | 2 | 3 |EOF|
++---+---+---+---+
+....
 
 The syntax-verb mapping is a table of entries, one for each syntax.
-The entries have three fields:
+The correct syntax-verb mapping is found by matching the `syntaxNumber` found during command parsing with the one in each of the syntax-verb mapping entries.
+The entries have three fields, where `parameterMapping` points to a parameterMapping table as described above and the `verbCode` indicates which verb to execute.
 
-[source,c]
---------------------------------------------------------------------------------
-Aint syntaxNumber; +
-Aaddr parameterMapping; +
-Aint verbCode;
---------------------------------------------------------------------------------
+[plantuml,syntaxmapentry]
+----
+class SyntaxMapEntry {
+  syntaxNumber : Integer
+  parameterMapping : ParameterMapAddress
+  verbCode : Integer
+}
+----
 
 == Code Generation Principles
 
@@ -277,7 +284,7 @@ IF
 LOOPNEXT
 ENDIF
 <calculate loop value from index>
-<filter2> 
+<filter2>
 NOT
 IF
 LOOPNEXT
@@ -298,7 +305,7 @@ On top is the usual looping data, i.e. the limit, the index and temporarily a lo
 === Interpreter Design
 
 The Acode is structured in a fashion that closely supports the structure of the Alan Language.
-It consists of two types of data, one being data structures of various kinds that the interpreter is inspecting, the other sequences of "instructions" that the interpreter "executes". 
+It consists of two types of data, one being data structures of various kinds that the interpreter is inspecting, the other sequences of "instructions" that the interpreter "executes".
 
 This chapter describes those data structures and the instructions as well as particular algorithms that are used but the interpreter.
 
@@ -317,9 +324,9 @@ class DictionaryEntry {
     string : StringAddress
     classBits : WordClassBits
     code : Integer
-    adjectiveRefs : ReferenceListAddress 
-    nounRefs : ReferenceListAddress 
-    pronounRefs : ReferenceListAddress 
+    adjectiveRefs : ReferenceListAddress
+    nounRefs : ReferenceListAddress
+    pronounRefs : ReferenceListAddress
 }
 ....
 
