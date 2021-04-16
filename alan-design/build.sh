@@ -1,4 +1,7 @@
 # Generate HTML with
 # embedded images - data-uri
 # no-spurious dates - reproducible
-asciidoctor -r asciidoctor-diagram -a data-uri -a icons=font -a reproducible -a sectanchors -a toc=left design.asciidoc
+for f in design rules actors-in-containers
+do
+    asciidoctor -r asciidoctor-diagram -a data-uri -a icons=font -a reproducible -a sectanchors -a toc=left $f.asciidoc
+done
