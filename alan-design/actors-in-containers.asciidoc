@@ -454,7 +454,7 @@ The seat is already taken. +
 Note that, as discussed previously, the actors script step is aborted.
 But depending on the decision in *Question 2* a third step in that script might be next to execute.
 
-= Summary
+== Summary
 
 There seems to be quite a few issues to resolve before a complete author/language level design is complete:
 
@@ -469,7 +469,7 @@ There seems to be quite a few issues to resolve before a complete author/languag
    Note that this is in addition to the current way because the current only prints when listing content, now the container also needs to decide what to say when amending the actors description and the `Location` header (for the hero).
 
 
-= Design Decisions (so far...)
+== Design Decisions (so far...)
 
 * *DD#1* -- If the hero is in a container and moves extract checks are applied first then exit checks
 * *DD#2* -- If the extract checks prohibit moving the heros move is aborted as if an exit check failed
