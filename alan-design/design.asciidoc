@@ -194,15 +194,23 @@ Since multiple syntaxes may map to the same verb, a mapping between them is nece
 This mapping converts a syntax number into a verb code as well as remapping the parameter numbers into the "`canonical`" order for this verb.
 
 The mapping is generated into two structures, the parameter order mapping, and the syntax-verb mapping table.
-The parameter order mappings is simply a table with as many entries as there are parameters in the syntax, followed by an EOF.
-As an example the following is a parameter order mapping table for a syntax with three parameters in canonical order and would occupy 4 consequtive Awords:
+
+==== Parameter mapping
+
+The parameter order mapping is simply a table with as many entries as there are parameters in the syntax, followed by an EOF.
+Each entry is an index into the "canonical" order of the parameters.
+As an example the following is a parameter order mapping table for a syntax with three parameters in reverse canonical order and would occupy 4 consequtive Awords:
 
 [ditaa,parameterMapping]
 ....
 +---+---+---+---+
-| 1 | 2 | 3 |EOF|
+| 3 | 2 | 1 |EOF|
 +---+---+---+---+
 ....
+
+This table is used to simply swap parameters so they carry the same meaning as in the "canonical" syntax.
+
+==== Syntax-verb mapping
 
 The syntax-verb mapping is a table of entries, one for each syntax.
 The correct syntax-verb mapping is found by matching the `syntaxNumber` found during command parsing with the one in each of the syntax-verb mapping entries.
