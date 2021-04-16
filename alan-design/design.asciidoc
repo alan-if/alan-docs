@@ -337,12 +337,26 @@ A stack machine primarily uses a stack to manage its state and perform operation
 E.g. an addition of two numbers will be performed by first "executing" two push operations to get the two numbers on the stack.
 Then the "add" operation is executed, which requires that there are two numbers already on the stack, which are replaces by the sum.
 
-====
-    *Operation*                         *Stack After Operation*
-    Push 2                                 2, 42
-    Push 5                              5, 2, 42
-    Add                                    7, 42
-====
+[ditaa]
+....
+    Operation                          Stack Content
+    ---------                          -------------
+                                       +-----+
+                                       |  42 |
+                                       +-----+
+    Push 2
+                                       +-----+----+
+                                       |  2  | 42 |
+                                       +-----+----+
+    Push 5
+                                       +-----+-----+----+
+                                       |  5  |  2  | 42 |
+                                       +-----+-----+----+
+    Add
+                                       +-----+----+
+                                       |  7  | 42 |
+                                       +-----+----+
+....
 
 As we can see each operation ("instruction") is either removing something from the stack, and/or pushing something onto it.
 
@@ -474,4 +488,3 @@ This is the attribute value that the aggregation should use.
 
 
 // EOF //
-
