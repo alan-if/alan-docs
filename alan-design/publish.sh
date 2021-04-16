@@ -13,4 +13,5 @@ do
 done
 git commit -am"[publish script] new version of design documentation"
 git push
+cd ..
 rm -rf alan-docs
