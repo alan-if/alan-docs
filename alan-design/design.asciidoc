@@ -42,7 +42,78 @@ That format is referred to as the Acode.
 The interpreter reads that Acode, constructs some internal structures from it and then starts "executing" it.
 In this case "executing" means interpreting specific sections of the Acode, mixing that with asking the player for input and analyzing that to see what other parts of the Acode needs to be interpreted.
 
+[plantuml]
+....
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(author, "Game Author", "Authors the game by creating Alan source using an editor")
+System_Boundary(alan, "Alan IF Language System"){
+ Container(compiler, "Alan Compiler", "Compiles Alan source to intermediate Acode stored in an Alan game file")
+ Container(game_file, "Alan game file")
+ Container(interpreter, "Alan Interpreter", "Reads the Alan game file, and interprets player commands and appropriate instructions")
+}
+Rel(compiler, game_file, "generates")
+Rel(interpreter, game_file, "reads")
+Rel(interpreter, player, "displays effekts")
+Rel(player, interpreter, "inputs commands")
+....
+
+=== The Compiler
+
+The compiler is structured much like any other compiler.
+It has a scanner/lexer which turns text into symbols, a parser which ensures that input follows the grammar of the language, and as it does that also builds an internal representation of the input, an Abstract Syntax Tree (AST).
+The AST is the traversed to do some semantic analysis, cross-referencing and "decorating", and also building a symbol table of entities represented by the input.
+Finally that decorated AST it traversed and the output, in this case Acode, is generated.
+
+=== The Interpreter
+
+The interpreter, when started by the player, loads a file which is the result of a compilation by the Alan compiler.
+the file consists of
+
+- data structures for player command parsing, including all words that can be used
+- data structures describing the "world", locations, objects etc.
+- data strucrures for rules and events
+- instructions to be executed in various circumstances, like the checks and bodies for verbs, events etc.
+
+The steps in an interpreter "round" is described in The Manual. 
+
+==== Acode Instructions
+
+The Acode instructions are designed around the model of a stack machine.
+A stack machine primarily uses a stack to manage its state and perform operations.
+E.g. an addition of two numbers will be performed by first "executing" two push operations to get the two numbers on the stack.
+Then the "add" operation is executed, which requires that there are two numbers already on the stack, which are replaces by the sum.
+
+[ditaa]
+....
+    Operation                          Stack Content
+    ---------                          -------------
+                                       +-----+
+                                       |  42 |
+                                       +-----+
+    Push 2
+                                       +-----+----+
+                                       |  2  | 42 |
+                                       +-----+----+
+    Push 5
+                                       +-----+-----+----+
+                                       |  5  |  2  | 42 |
+                                       +-----+-----+----+
+    Add
+                                       +-----+----+
+                                       |  7  | 42 |
+                                       +-----+----+
+....
+
+As we can see each operation ("instruction") is either removing something from the stack, and/or pushing something onto it.
+
+=== Data Structures
+
+// TBD //
+
 == Language Design
+
+=== Overview
 
 === Articles
 
@@ -339,34 +410,6 @@ class DictionaryEntry {
 ....
 
 ==== Acode Instructions
-
-The Acode instructions are designed around the model of a stack machine.
-A stack machine primarily uses a stack to manage its state and perform operations.
-E.g. an addition of two numbers will be performed by first "executing" two push operations to get the two numbers on the stack.
-Then the "add" operation is executed, which requires that there are two numbers already on the stack, which are replaces by the sum.
-
-[ditaa]
-....
-    Operation                          Stack Content
-    ---------                          -------------
-                                       +-----+
-                                       |  42 |
-                                       +-----+
-    Push 2
-                                       +-----+----+
-                                       |  2  | 42 |
-                                       +-----+----+
-    Push 5
-                                       +-----+-----+----+
-                                       |  5  |  2  | 42 |
-                                       +-----+-----+----+
-    Add
-                                       +-----+----+
-                                       |  7  | 42 |
-                                       +-----+----+
-....
-
-As we can see each operation ("instruction") is either removing something from the stack, and/or pushing something onto it.
 
 ===== FRAME
 
