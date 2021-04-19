@@ -47,14 +47,18 @@ In this case "executing" means interpreting specific sections of the Acode, mixi
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 Person(author, "Game Author", "Authors the game by creating Alan source using an editor")
-System_Boundary(alan, "Alan IF Language System"){
- Container(compiler, "Alan Compiler", "Compiles Alan source to intermediate Acode stored in an Alan game file")
- Container(game_file, "Alan game file")
- Container(interpreter, "Alan Interpreter", "Reads the Alan game file, and interprets player commands and appropriate instructions")
+Person_Ext(player, "Player", "")
+System_Boundary(alan, "Alan IF Language System") {
+    Container(game_source, "Game source", "Text file(s) in the Alan Language")
+    Container(compiler, "Alan Compiler", "C code executable", "Compiles Alan source to intermediate Acode stored in an Alan game file")
+    Container(game_file, "Alan game file", "Special purpose file format containing Acode instructions and data structures")
+    Container(interpreter, "Alan Interpreter", "C code executable", "Reads the Alan game file, and interprets player commands and appropriate instructions")
 }
+Rel(author, game_source, "edits")
 Rel(compiler, game_file, "generates")
+Rel(compiler, game_source, "reads")
 Rel(interpreter, game_file, "reads")
-Rel(interpreter, player, "displays effekts")
+Rel(interpreter, player, "displays effects")
 Rel(player, interpreter, "inputs commands")
 ....
 
@@ -76,40 +80,6 @@ the file consists of
 - instructions to be executed in various circumstances, like the checks and bodies for verbs, events etc.
 
 The steps in an interpreter "round" is described in The Manual. 
-
-==== Acode Instructions
-
-The Acode instructions are designed around the model of a stack machine.
-A stack machine primarily uses a stack to manage its state and perform operations.
-E.g. an addition of two numbers will be performed by first "executing" two push operations to get the two numbers on the stack.
-Then the "add" operation is executed, which requires that there are two numbers already on the stack, which are replaces by the sum.
-
-[ditaa]
-....
-    Operation                          Stack Content
-    ---------                          -------------
-                                       +-----+
-                                       |  42 |
-                                       +-----+
-    Push 2
-                                       +-----+----+
-                                       |  2  | 42 |
-                                       +-----+----+
-    Push 5
-                                       +-----+-----+----+
-                                       |  5  |  2  | 42 |
-                                       +-----+-----+----+
-    Add
-                                       +-----+----+
-                                       |  7  | 42 |
-                                       +-----+----+
-....
-
-As we can see each operation ("instruction") is either removing something from the stack, and/or pushing something onto it.
-
-=== Data Structures
-
-// TBD //
 
 == Language Design
 
@@ -257,22 +227,37 @@ The sak Isa x
   ...
 --------------------------------------------------------------------------------
 
-== Datastructures
+== Detailed Design
 
-=== Parameter & Syntax Mapping Tables
+=== The Compiler
+
+=== The Interpreter
+
+The interpreter starts by loading the game file into memory.
+It consists of two types of data, one being data structures of various kinds that the interpreter is inspecting, the other sequences of "instructions" that the interpreter "executes".
+The Acode (data structures and instructions) is structured in a fashion that closely supports the structure of the Alan Language.
+
+This chapter describes those data structures and the instructions as well as particular algorithms that are used but the interpreter.
+
+==== Common Data Structures
+
+Since the compiler will generate data the interpreter will read, some data structures need to be known to both.
+The definitions of these are in `interpreter/acode.h`.
+
+===== Parameter & Syntax Mapping Tables
 
 Since multiple syntaxes may map to the same verb, a mapping between them is necessary.
 This mapping converts a syntax number into a verb code as well as remapping the parameter numbers into the "`canonical`" order for this verb.
 
 The mapping is generated into two structures, the parameter order mapping, and the syntax-verb mapping table.
 
-==== Parameter mapping
+====== Parameter mapping
 
 The parameter order mapping is simply a table with as many entries as there are parameters in the syntax, followed by an EOF.
 Each entry is an index into the "canonical" order of the parameters.
 As an example the following is a parameter order mapping table for a syntax with three parameters in reverse canonical order and would occupy 4 consequtive Awords:
 
-[ditaa,parameterMapping]
+[ditaa]
 ....
 +---+---+---+---+
 | 3 | 2 | 1 |EOF|
@@ -281,13 +266,13 @@ As an example the following is a parameter order mapping table for a syntax with
 
 This table is used to simply swap parameters so they carry the same meaning as in the "canonical" syntax.
 
-==== Syntax-verb mapping
+====== Syntax-verb mapping
 
 The syntax-verb mapping is a table of entries, one for each syntax.
 The correct syntax-verb mapping is found by matching the `syntaxNumber` found during command parsing with the one in each of the syntax-verb mapping entries.
 The entries have three fields, where `parameterMapping` points to a parameterMapping table as described above and the `verbCode` indicates which verb to execute.
 
-[plantuml,syntaxmapentry]
+[plantuml]
 ----
 class SyntaxMapEntry {
   syntaxNumber : Integer
@@ -295,100 +280,6 @@ class SyntaxMapEntry {
   verbCode : Integer
 }
 ----
-
-== Code Generation Principles
-
-=== Language Constructs
-
-==== For Each
-
-The `For Each` loop is generated into an initialization step, a filter step and the statements.
-A local variable is used since the loop-code might reference the loop value.
-Note that the loop value might be different from the loop index, e.g. when looping over a set of integers.
-The instructions used are:
-
-* `FRAME` -- start a new stack frame with one local variable
-* `LOOP` -- the loop start
-* `LOOPNEXT` -- jump to next loop index
-* `LOOPEND` -- test for and terminate loop
-* `ENDFRAME` -- drop stack frame with local variables
-
-The code layout is as follows:
-
-................................................................................
-FRAME 1                               -- create a frame with 1 local
-<calculate and push upper limit>
-PUSH 1                                -- initial loop index
-LOOP
-<calculate loop value from index>
-SETLOCAL 1                            -- save loop value in local var
-GETLOCAL 1
-<filter1>                             -- code to evaluate first filter
-NOT                                   -- invert it
-IF
-LOOPNEXT                              -- if the filter did not match, next loop
-ENDIF
-GETLOCAL 1
-<filter2>                             -- code to evaluate 2nd filter
-NOT
-IF
-LOOPNEXT
-ENDIF
-...                                   -- and so on for each filter
-LOOPEND                               -- loop test and termination
-ENDFRAME
-................................................................................
-
-==== Aggregates
-
-All aggregates are generated into a loop using the same structures as `EACH`.
-The instructions used are:
-
-* `LOOP` -- start loop
-* `LOOPNEXT` -- if filter inclusion was not true
-* `COUNT`, `MAX`, `MIN` & `SUM` -- actual aggregation performed
-* `LOOPEND` -- repeat or terminate aggregation loop
-
-The code layout is as follows:
-
-................................................................................
-PUSH <maxint for MIN, 0 for all else> -- initial aggregate value
-<calculate and push limit>
-PUSH 1                                -- initial loop index
-LOOP
-<calculate loop value from index>
-<filter1>                             -- code to evaluate first filter
-NOT
-IF
-LOOPNEXT
-ENDIF
-<calculate loop value from index>
-<filter2>
-NOT
-IF
-LOOPNEXT
-ENDIF
-...
-<get attribute to aggregate over>     -- for all except COUNT
-<aggregate>                           -- COUNT, MIN, MAX or SUM
-LOOPEND                               -- loop
-................................................................................
-
-Note that for this to work the aggregate instructions have to look deep in the stack to find the current aggregate value since this is stored at the bottom.
-On top is the usual looping data, i.e. the limit, the index and temporarily a loop value.
-
-== Systems Design
-
-=== Compiler Design
-
-=== Interpreter Design
-
-The Acode is structured in a fashion that closely supports the structure of the Alan Language.
-It consists of two types of data, one being data structures of various kinds that the interpreter is inspecting, the other sequences of "instructions" that the interpreter "executes".
-
-This chapter describes those data structures and the instructions as well as particular algorithms that are used but the interpreter.
-
-==== Interpreter Data Structures
 
 ===== The Dictionary
 
@@ -409,7 +300,40 @@ class DictionaryEntry {
 }
 ....
 
+
+==== Other Data Structures
+
 ==== Acode Instructions
+
+The Acode instructions are designed around the model of a stack machine.
+A stack machine primarily uses a stack to manage its state and perform operations.
+E.g. an addition of two numbers will be performed by first "executing" two push operations to get the two numbers on the stack.
+Then the "add" operation is executed, which requires that there are two numbers already on the stack, which are replaces by the sum.
+
+[ditaa]
+....
+    Operation                          Stack Content
+    ---------                          -------------
+                                       +-----+
+                                       |  42 |
+                                       +-----+
+    Push 2
+                                       +-----+----+
+                                       |  2  | 42 |
+                                       +-----+----+
+    Push 5
+                                       +-----+-----+----+
+                                       |  5  |  2  | 42 |
+                                       +-----+-----+----+
+    Add
+                                       +-----+----+
+                                       |  7  | 42 |
+                                       +-----+----+
+....
+
+As we can see each operation ("instruction") is either removing something from the stack, and/or pushing something onto it.
+
+Below is a list of instructions and details about their specifics.
 
 ===== FRAME
 
@@ -539,3 +463,87 @@ This is the attribute value that the aggregation should use.
 
 
 // EOF //
+
+=== Code Generation Principles
+
+This chapter describes some language constructs that have more complicated mappings and for which some care need to be taken when generating the code, and possibly data, to represent and execute them.
+
+==== Language Constructs
+
+===== For Each
+
+The `For Each` loop is generated into an initialization step, a filter step and the statements.
+A local variable is used since the loop-code might reference the loop value.
+Note that the loop value might be different from the loop index, e.g. when looping over a set of integers.
+The instructions used are:
+
+* `FRAME` -- start a new stack frame with one local variable
+* `LOOP` -- the loop start
+* `LOOPNEXT` -- jump to next loop index
+* `LOOPEND` -- test for and terminate loop
+* `ENDFRAME` -- drop stack frame with local variables
+
+The code layout is as follows:
+
+................................................................................
+FRAME 1                               -- create a frame with 1 local
+<calculate and push upper limit>
+PUSH 1                                -- initial loop index
+LOOP
+<calculate loop value from index>
+SETLOCAL 1                            -- save loop value in local var
+GETLOCAL 1
+<filter1>                             -- code to evaluate first filter
+NOT                                   -- invert it
+IF
+LOOPNEXT                              -- if the filter did not match, next loop
+ENDIF
+GETLOCAL 1
+<filter2>                             -- code to evaluate 2nd filter
+NOT
+IF
+LOOPNEXT
+ENDIF
+...                                   -- and so on for each filter
+LOOPEND                               -- loop test and termination
+ENDFRAME
+................................................................................
+
+===== Aggregates
+
+All aggregates are generated into a loop using the same structures as `EACH`.
+The instructions used are:
+
+* `LOOP` -- start loop
+* `LOOPNEXT` -- if filter inclusion was not true
+* `COUNT`, `MAX`, `MIN` & `SUM` -- actual aggregation performed
+* `LOOPEND` -- repeat or terminate aggregation loop
+
+The code layout is as follows:
+
+................................................................................
+PUSH <maxint for MIN, 0 for all else> -- initial aggregate value
+<calculate and push limit>
+PUSH 1                                -- initial loop index
+LOOP
+<calculate loop value from index>
+<filter1>                             -- code to evaluate first filter
+NOT
+IF
+LOOPNEXT
+ENDIF
+<calculate loop value from index>
+<filter2>
+NOT
+IF
+LOOPNEXT
+ENDIF
+...
+<get attribute to aggregate over>     -- for all except COUNT
+<aggregate>                           -- COUNT, MIN, MAX or SUM
+LOOPEND                               -- loop
+................................................................................
+
+Note that for this to work the aggregate instructions have to look deep in the stack to find the current aggregate value since this is stored at the bottom.
+On top is the usual looping data, i.e. the limit, the index and temporarily a loop value.
+
