@@ -107,6 +107,7 @@ The ((interpreter)) supports the following switches:
 * `-l` log game transcript to a file ('.a3t')
 * `-c` log player command input to a file ('.a3i')
 * `-n` no Status Line
+* `-p` don't break the output for paging
 * `-d` print the version of interpreter and enter debug mode
 * `-t[<n>]` various levels of execution trace, higher <n> gives more details
 * `-i` ignore CRC and version errors in the adventure files (dangerous)
