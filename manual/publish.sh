@@ -4,7 +4,7 @@
 # to get them published on https://alan-if.github.io/alan-docs/
 source=`git rev-parse --show-toplevel`
 case "`git branch --show-current`" in
-   "dev-man")
+   "alan-manual-alpha")
        stream=alpha
        ;;
    "master")
