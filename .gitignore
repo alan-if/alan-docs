@@ -5,6 +5,17 @@
 
 *.tmp
 
+## ===============
+## Document Builds
+## ===============
+*.html
+*.pdf
+! docinfo.html
+! /_assets-src/original-docs/**.html
+! /_assets-src/original-docs/**.pdf
+# DocBook intermediate file used in the PDF conversion:
+*.xml
+
 ## ==========
 ## Alan Files
 ## ==========
