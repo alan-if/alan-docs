@@ -2,8 +2,6 @@
 
 AsciiDoc reconstruction of _Alan 3 Beginner's Guide_ by Michael Arnaud, 2006 ([WIP][TODO]).
 
-__[Click here for an HTML Live Preview][HTML Live Preview]__
-
 > __NOTE__ — The AsciiDoc files in this project are intended for [Asciidoctor], the Ruby implementation of AsciiDoc; some required features might not be available in [AsciiDoc Python]!
 
 
@@ -48,7 +46,6 @@ Obviously, the reader is encouraged to study and use the newest [ALAN Standard L
 
 # Folder Contents
 
-- [`alanguide.html`][guide html] — _Beginner's Guide_ converted to HTML5 ([HTML Live Preview]).
 - [`alanguide.css`][guide css] — _Beginner's Guide_ extra stylesheet.
 
 The reader will also need to download the source files of the __ALAN Library__ required to follow the tutorial steps, as well as the complete sources of the _TV TIME!_ adventure created during the tutorial.
@@ -76,7 +73,7 @@ The reader will also need to download the source files of the __ALAN Library__ r
 - [`PDF_BUILD.bat`][PDF_BUILD.bat] (_experimental_) — batch script to create `alanguide.pdf` document (currently ignored in repository).
 
 
-> **NOTE** — (2020/12/27) Now the AsciiDoc sources exploit the new (and undocumented) `ecoding` option for the `include::` directive, so the toolchain no longer needs to first convert external ALAN sources and transcripts to UTF-8 before their inclusion in the source documents (see [Issue #84]).
+> **NOTE** — (2020/12/27) Now the AsciiDoc sources exploit the new (and undocumented) `encoding` option for the `include::` directive, so the toolchain no longer needs to first convert external ALAN sources and transcripts to UTF-8 before their inclusion in the source documents (see [Issue #84]).
 
 ### HTML Toolchain Dependencies
 
@@ -136,7 +133,7 @@ The original source document of the _Alan 3 Beginner's Guide_ was lost, but the 
 
 The original AsciiDoc document was taken from [Alan repository], commit [`fb81645`][fb81645]:
 
-- https://bitbucket.org/alanif/alan/src/fb81645/doc/guide/
+- https://github.com/alan-if/alan/blob/fb81645/doc/guide/
 
 The HTML version was [taken from the Alan website][alanguide www].
 
@@ -152,13 +149,9 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
-[HTML Live Preview]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/alanguide/alanguide.html "Preview the 'Alan 3 Beginner's Guide' via GitHub & BitBucket HTML Preview"
-[GitHub & BitBucket HTML Preview]: http://htmlpreview.github.io
+[Alan repository]: https://github.com/alan-if/alan "Visit Alan repository on GitHub"
 
-
-[Alan repository]: https://bitbucket.org/alanif/alan/src/master/ "Visit Alan repository at Bitbucket"
-
-[fb81645]: https://bitbucket.org/alanif/alan/src/fb81645/ "View Alan repository's commit fb81645"
+[fb81645]: https://github.com/alan-if/alan/blob/fb81645/ "View Alan repository's commit fb81645"
 
 [alanguide www]: https://alanif.se/files/alanguide/alanguide.html "View the 'Alan 3 Beginner's Guide' at Alan website (outdated version)"
 
