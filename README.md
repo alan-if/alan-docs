@@ -2,15 +2,13 @@
 
 - https://github.com/alan-if/alan-docs
 
-This repository is dedicated to the conversion of the Alan documentation to AsciiDoc. Help and contributions are welcome (see [`CONTRIBUTING.md`][CONTRIBUTING]).
+This repository contains the [AsciiDoc] sources of the ALAN Documentation published at:
 
-- [_Alan Manual_][Man LPrev] —  HTML Live Preview (short URL: https://goo.gl/DNnGx8)
-- [_Alan Manual_][Man PDF] —  PDF download
-- [_Alan IDE Reference Guide_][IDE PDF] —  PDF download
-- [_Alan 3 Beginner's Guide_][Guide LPrev] —  HTML Live Preview
-- [_Alan Author's Guide_][Writing LPrev] (WIP) —  HTML Live Preview
+- https://git.io/alan-docs
 
-> __SUBMODULES NOTE__ — This repository now contains Git submodules; clone with:
+Help and contributions are welcome (see [`CONTRIBUTING.md`][CONTRIBUTING]).
+
+> __SUBMODULES NOTE__ — This repository contains Git submodules; clone with:
 >
 >     $ git clone --recursive https://github.com/alan-if/alan-docs
 >
@@ -25,6 +23,7 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Latest News](#latest-news)
+    - [New Project Website](#new-project-website)
     - [Asciidoctor Inclusions with ISO Encoding](#asciidoctor-inclusions-with-iso-encoding)
     - [Switching to Java JDK 12](#switching-to-java-jdk-12)
     - [Switching to Dart Sass](#switching-to-dart-sass)
@@ -58,9 +57,17 @@ This repository is dedicated to the conversion of the Alan documentation to Asci
 
 Some important news for project maintainers and contributors...
 
+## New Project Website
+
+Since April 2021, this repository now has its own website were you can consult and download all the ALAN documentation:
+
+- https://git.io/alan-docs
+
+PDF and HTML builds of the documents will no longer be tracked by the repository (will be ignored by Git), and will only be available through the website.
+
 ## Asciidoctor Inclusions with ISO Encoding
 
-Since December 2020, the project began leveraging the new (and undocumented) `encoding` option for the `include::` directive, so the toolchain no longer needs to first convert external ALAN sources and transcripts to UTF-8 before their inclusion in the source documents (see [Issue #84]).
+Since December 2020, the project began levering the new (and undocumented) `encoding` option for the `include::` directive, so the toolchain no longer needs to first convert external ALAN sources and transcripts to UTF-8 before their inclusion in the source documents (see [Issue #84]).
 
 The syntax of the new feature is as follows:
 
@@ -97,16 +104,14 @@ From [Ruby Sass homepage][Ruby Sass]:
 > Once the maintenance period ends, Ruby Sass's repository will be archived, no more changes of any kind will be made, and no new releases will be cut.
 
 
-
 # About This Project
 
-This repository was created on August 15th, 2018 by [Tristano Ajmone] on behalf of the [Alan Interactive Fiction Development team].
+This repository was created on August 15th, 2018 by [Tristano Ajmone] on behalf of the [Alan Interactive Fiction Development team] in order to port to the [AsciiDoc] format the original Alan documentation, which consisted of multiple documents in various formats, and create a unified project and a toolchain to handle their conversion to different formats.
 
-At the present stage, Alan documentation consists of multiple documents in various formats; the goal of this project is to port them all to AsciiDoc and create a unified project and a toolchain to handle conversion to different formats.
+In the course of 2021, after three years of work, we finally achieved the stage where all the documents originally stored in the ALAN repository, as well as some other third party documents, were all successful recreated in AsciiDoc and made available on the project's website for online consultation or download.
 
-Other members of the Alan group are also working on porting other Alan documents to AsciiDoc, so hopefully this might become a [collaborative project][CONTRIBUTING] to join efforts and resources toward a unified goal.
+Other members of the Alan group are also working on porting other Alan related documents to AsciiDoc, so hopefully this might become a [collaborative project][CONTRIBUTING] to join efforts and resources toward a unified goal.
 
-Being still a young project, may aspects are still vaguely defined and open to suggestions.
 
 ## License Terms
 
@@ -136,7 +141,7 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 - [`/alan-design/`](./alan-design) — Various WIP documents on ALAN design and internals.
 - [`/alanguide/`](./alanguide) — _Alan 3 Beginner's Guide_ ported to AsciiDoc (WIP).
 - [`/ideguide/`](./ideguide) — _Alan IDE Reference Guide_ v1.0, by Robert DeFord, 2018.
-- [`/manual/`](./manual/) — _The Alan Manual_ ported to AsciiDoc (WIP).
+- [`/manual/`](./manual/) — _The Alan Manual_ ported to AsciiDoc.
 - [`/writing/`](./writing/) — _The Alan Author's Guide_ ported to AsciiDoc (WIP).
 - [`CONTRIBUTING.md`][CONTRIBUTING] — Guidelines for contributing to this project.
 - [`CONVENTIONS.md`][CONVENTIONS] — Editors' formatting and styles guidelines.
@@ -169,11 +174,11 @@ Using different extensions is also required for automation scripts, which select
 
 This is the environemnt setup used for the project by its maintainer:
 
-    Ruby 2.6.1p33 (2019-01-30 revision 66950) [x64-mingw32]
-    Asciidoctor 2.0.6
+    Ruby 3.0.1p64 (2021-04-05 revision 0fb782ee38) [x64-mingw32]
+    Asciidoctor 2.0.12
     asciidoctor-fopub
     Asciidoc FX v1.6.8
-    Dia Diagram Editor v0.97.2
+    Dia Diagram Editor v0.97
 
 
 ## Project Dependencies
@@ -226,7 +231,7 @@ To edit the AsciiDoc documents I'm using both Asciidoc FX and Sublime Text 3 wit
 
 - https://www.asciidocfx.com/
 
-Asciidoc FX is a cross platform and opensource book/document editor to build PDF, Epub, Mobi and HTML books, documents and slides.
+Asciidoc FX is a cross platform and open source book/document editor to build PDF, Epub, Mobi and HTML books, documents and slides.
 
 This is a great editor for AsciiDoc and offers many useful features for tracking errors and converting to various formats; but most of all it offers an in-editor live-updated HTML5 preview of the document being edited, and also supports in-browser preview with live updates.
 
@@ -311,7 +316,6 @@ Last but not least, there's _The Alan Cookbook_ by Anssi Räisänen:
                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
-
 [Artistic License 2.0]: https://www.perlfoundation.org/artistic-license-20.html "Read the full text of the Artistic License 2.0 at The Perl Foundation website"
 
 <!-- people & organizations -------------------------------------------------->
@@ -322,10 +326,6 @@ Last but not least, there's _The Alan Cookbook_ by Anssi Räisänen:
 [Alan IF Development team]: https://github.com/alan-if "Visit the Alan Interactive Fiction Development team organization on GitHub"
 [Alan Interactive Fiction Development team]: https://github.com/alan-if "View the Alan Interactive Fiction Development team profile on GitHub"
 
-<!-- Citations  -------------------------------------------------------------->
-
-[receveing the green light]: https://groups.yahoo.com/neo/groups/alan-if/conversations/messages/3513
-
 <!-- Alan Links -------------------------------------------------------------->
 
 [Alan IF Google group]: https://groups.google.com/g/alan-if "Visit the Alan IF group at Google Groups"
@@ -333,6 +333,8 @@ Last but not least, there's _The Alan Cookbook_ by Anssi Räisänen:
 [Alan GitHub]: https://github.com/alan-if/alan/ "Visit the Alan source repository on GitHub"
 
 <!-- Asciidoctor -->
+
+[AsciiDoc]: https://asciidoctor.org/ "Visit Asciidoctor website"
 
 [AsciiDoc Syntax Quick Reference]: https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
 
@@ -368,21 +370,6 @@ Last but not least, there's _The Alan Cookbook_ by Anssi Räisänen:
 
 [CONVENTIONS]: ./CONVENTIONS.md "Read the 'Formatting and Styling Conventions' guidelines adopted in Alan-Docs"
 [CONTRIBUTING]: ./CONTRIBUTING.md "Read the guidelines for contributing to Alan-Docs"
-
-<!-- PDF & HTML Live Previews -->
-
-[Man LPrev]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html "Preview 'The Alan Manual' via GitHub & BitBucket HTML Preview"
-[Man PDF]: https://github.com/alan-if/alan-docs/raw/master/manual/manual.pdf "Download 'The Alan Manual' in PDF format"
-
-[Guide LPrev]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/alanguide/alanguide.html "Preview the 'Alan 3 Beginner's Guide' via GitHub & BitBucket HTML Preview"
-
-[IDE PDF]: https://github.com/alan-if/alan-docs/raw/master/ideguide/Alan%20IDE%20Reference%20Guide.pdf "Download the 'Alan IDE Reference Guide' in PDF format"
-
-[Writing LPrev]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/writing/writing.html "Preview 'The Alan Author's Guide' via GitHub & BitBucket HTML Preview"
-
-[Cookbook PDF]: https://www.alanif.se/downloads/documentation/alancookbookv2.pdf "Download 'The Alan Cookbook' in PDF format"
-
-[GitHub & BitBucket HTML Preview]: http://htmlpreview.github.io
 
 <!-- Git references -->
 
