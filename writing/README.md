@@ -4,8 +4,6 @@ AsciiDoc port of _The ALAN Adventure Language Author's Guide_ (WIP).
 
 Links to the converted _Author's Guide_:
 
-- [`writing.html`](./writing.html) — __[Click here for an HTML Live Preview][HTML Live Preview]__
-
 > __NOTE__ — The AsciiDoc files in this project are intended for [Asciidoctor], the Ruby implementation of AsciiDoc; some required features might not be available in [AsciiDoc Python]!
 
 
@@ -19,7 +17,6 @@ Links to the converted _Author's Guide_:
 - [Folder Contents](#folder-contents)
     - [Manual Source Files](#manual-source-files)
     - [Conversion Scripts](#conversion-scripts)
-    - [Converted Manual](#converted-manual)
 - [Misc Work Notes](#misc-work-notes)
     - [Conversion from ODT to AsciiDoc](#conversion-from-odt-to-asciidoc)
 
@@ -55,15 +52,6 @@ The original files of the _Author's Guide_ used for the AsciiDoc conversion are 
 - [`HTML_BUILD.bat`][HTML_BUILD.bat] — batch script to create `manual.html` document (fully standalone).
 
 
-## Converted Manual
-
-The _Alan Author's Guide_ is also available in converted format:
-
-- [`writing.html`](./writing.html) — standalone HTML5 ([HTML Live Preview]).
-
-An [HTML Live Preview] of the converted document is available via [GitHub & BitBucket HTML Preview] online service.
-
-
 # Misc Work Notes
 
 ## Conversion from ODT to AsciiDoc
@@ -88,11 +76,6 @@ Although some styles were lost in the process, the final ADoc was a rather good 
                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
-[GitHub & BitBucket HTML Preview]: http://htmlpreview.github.io
-
-<!-- Alan-Docs Links --------------------------------------------------------->
-
-[HTML Live Preview]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/writing/writing.html "Preview 'The Alan Author's Guide' via GitHub & BitBucket HTML Preview"
 
 <!-- AsciiDoctor ------------------------------------------------------------->
 
