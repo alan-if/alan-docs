@@ -79,7 +79,7 @@ the file consists of
 - data strucrures for rules and events
 - instructions to be executed in various circumstances, like the checks and bodies for verbs, events etc.
 
-The steps in an interpreter "round" is described in The Manual. 
+The steps in an interpreter "round" is described in The Manual.
 
 == Language Design
 

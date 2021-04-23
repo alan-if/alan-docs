@@ -9,7 +9,7 @@ git clone -b published git@github.com:alan-if/alan-docs --single-branch
 cd alan-docs
 for f in design actors-in-containers rules
 do
-    cp $source/alan-design/$f.html design/
+	cp $source/alan-design/$f.html design/
 done
 git commit -am"[publish script] new version of design documentation"
 git push
