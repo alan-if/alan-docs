@@ -1,12 +1,6 @@
 # The Alan Manual
 
-AsciiDoc port of _The ALAN Adventure Language Reference Manual_ (WIP).
-
-Links to the converted _Alan Manual_:
-
-- [`manual.html`](./manual.html) — __[Click here for an HTML Live Preview][HTML Live Preview]__
-- [`manual.pdf`](./manual.pdf)
-
+AsciiDoc port of _The ALAN Adventure Language Reference Manual_.
 
 > __NOTE__ — The AsciiDoc files in this project are intended for [Asciidoctor], the Ruby implementation of AsciiDoc; some required features might not be available in [AsciiDoc Python]!
 
@@ -18,11 +12,11 @@ Links to the converted _Alan Manual_:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Document Status](#document-status)
+    - [Beta vs Alpha](#beta-vs-alpha)
 - [Folder Contents](#folder-contents)
     - [Manual Source Files](#manual-source-files)
         - [Transcripts and Compiler Logs Sources](#transcripts-and-compiler-logs-sources)
     - [Conversion Scripts](#conversion-scripts)
-    - [Converted Manual](#converted-manual)
     - [Helper Files](#helper-files)
     - [Available Formats](#available-formats)
         - [PDF Version](#pdf-version)
@@ -46,9 +40,19 @@ Links to the converted _Alan Manual_:
 
 # Document Status
 
-The new AsciiDoc port of _The ALAN Manual_ has now been official released for public consumption.
+The new AsciiDoc port of _The ALAN Manual_ is now the official version of the manual and is publicly available in HTML and PDF format on the repository website:
 
-Of course, the _Manual_ is an-ongoing project and its development will still be carried out on the `dev-man` branch and merged into `master` whenever a new public release is ready.
+- https://git.io/alan-docs
+
+## Beta vs Alpha
+
+_The ALAN Manual_ is available in two different versions, Beta and Alpha:
+
+- The __Beta Manual__ describes the latest Beta release of the [Alan SDK].
+- The __Alpha Manual__ includes changes that are only in the [development snapshots], which will make it into the next beta release.
+
+Development of the Beta version takes place in `master` branch, whereas development of the Alpha version takes place in the `alan-manual-alpha` branch.
+
 
 -------------------------------------------------------------------------------
 
@@ -118,17 +122,6 @@ Bash scripts for Linux, macOS or Bash for Windows:
 
 [Instructions on setting up asciidoctor-fopub]: ../README.md#asciidoctor-fopub
 
-## Converted Manual
-
-The _Alan Manual_ is also available in converted format:
-
-- [`manual.html`](./manual.html) — HTML5 ([HTML Live Preview]).
-- [`manual.pdf`](./manual.pdf) — PDF version
-
-Both file formats should always reflect the current AsciiDoc version, but the PDF version might not be updated in case of very small changes.
-
-An [HTML Live Preview] of the converted document is available via [GitHub & BitBucket HTML Preview] online service.
-
 
 ## Helper Files
 
@@ -151,15 +144,17 @@ Currently the _Alan Manual_ is available in the following output formats:
 In the future more output formats will be supported:
 
 - [ ] __CHM Help__ — Can be included in any Windows code editor or IDEs that supports Alan.
-- [ ] __Executable eBook__ — A standalone `.exe` file (for Windows) created with an eBook compiler that takes multiple HTML pages and creates a single binary file that can be browsed offline, adding extra features not avaiable in normal browsers.
-- [ ] __Website version__ — Will be included in the website of the Alan Docs project via [GitHub Pages].
+- [ ] __Executable eBook__ — A standalone `.exe` file (for Windows) created with an eBook compiler that takes multiple HTML pages and creates a single binary file that can be browsed offline, adding extra features not available in normal browsers.
+- [ ] __Website version__ — An online version split into multiple chapters might be made available on the [Alan Docs website], at some point.
 
 Supporting the above formats will require to split the output HTML document into individual chapters (aka HTML Chunking), instead of a single huge document.
 Also, the native HTML template used by Asciidoctor needs to be either tweaked or wholly replaced with a custom template.
 
 ### PDF Version
 
-- [`manual.pdf`](./manual.pdf)
+After running the PDF conversion script, you'll get the following file:
+
+- `manual.pdf`
 
 The PDF toolchain uses [asciidoctor-fopub] to convert from DocBook to PDF, and a custom DocBook XSL template.
 
@@ -177,9 +172,11 @@ For full instructions on how to setup the PDF toolchain and all its dependencies
 
 ### HTML Version
 
-- [`manual.html`](./manual.html) — HTML5 ([HTML Live Preview]).
+After running the HTML conversion script, you'll get the following file:
 
-The _Manual_ relies on Asciidoctor's native HTML backend for building the HTML version, so you won't need to install any extra tools beside [Asciidoctor].
+- `manual.html`
+
+The _Manual_ relies on Asciidoctor's native HTML backend for building the HTML version, so you won't need to install any extra tools beside [Asciidoctor], except for some extra Gems required by Asciidoctor.
 
 The HTML document is not fully standalone yet, for it requires some external stylesheets and the highlight.js package in order to visualize correctly and perform dynamic syntax highlighting.
 
@@ -193,19 +190,12 @@ External files required by Asciidoctor native HTML template:
 - [Google fonts: Open Sans + Noto Serif + Droid Sans Mono](https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700)
 - [`font-awesome.min.css`](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css) — [Font Awesome] CSS stylesheet.
 
-[hjs]: ../_assets/hjs/highlight.min.js "View source file"
-[hjs css]: ../_assets/hjs/styles/github.min.css "View source file"
 
 <!---------------------------------------------------------------------------->
 
 # Building The Manual
 
-The repository already contains pre-built HTML and PDF versions of the _Alan Manual_:
-
-- [`manual.html`](./manual.html)— __[Click here for an HTML Live Preview][HTML Live Preview]__
-- [`manual.pdf`](./manual.pdf)
-
-If you want to convert the _Manual_ yourself, below are some instructions on how to do it, and which dependencies are required.
+To convert the _Manual_ yourself, below are some instructions on how to do it, and which dependencies are required.
 
 To build both the HTML and the PDF  _Manual_ under Windows, open a command prompt in this folder and type:
 
@@ -290,7 +280,7 @@ If you wish to contribute to its development, read the rest of this document and
 
 ## Development Cycle
 
-The _Manual_ in `master` branch will always represent the latest Alan release (currently, Beta releases), whereas further development occurs in dedicated branche reflecting the status of the latest [Alan development snapshots]  (i.e. Alpha releases), which will be merged into `master` branch once the next beta release is ready.
+The _Manual_ in `master` branch will always represent the latest [Alan SDK] release (currently, Beta releases), whereas development in the `alan-manual-alpha` branch reflects the status of the latest Alan [development snapshots]  (i.e. Alpha releases), which will be merged into `master` branch once the next beta release is ready.
 
 ## Maintainers Check-list
 
@@ -335,14 +325,15 @@ The single source document was then split into multiple files according to chapt
                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
-
 [GitHub & BitBucket HTML Preview]: http://htmlpreview.github.io
 [GitHub Pages]: https://pages.github.com/ "Learn more about GitHub Pages"
+[Alan Docs website]: https://git.io/alan-docs "Visit the Alan Docs website"
 
 <!-- Alan -->
 
-[Alan development snapshots]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots "Visit the development snapshots page on Alan website"
+[Alan SDK]: https://www.alanif.se/download-alan-v3/development-kits "Visit the Development Kits page on ALAN website"
 [alan-xsl-fopub]: https://github.com/alan-if/alan-xsl-fopub "Visit the alan-xsl-fopub repository on GitHub"
+[development snapshots]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots "Visit the development snapshots page on Alan website"
 
 <!-- 3r party tools -->
 
@@ -350,10 +341,6 @@ The single source document was then split into multiple files according to chapt
 [highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
 [Highlight]: http://www.andre-simon.de/ "Visit Highlight website"
 [XSLTHL]: https://sourceforge.net/projects/xslthl/ "Visit the XSLTHL project on SourceForge"
-
-<!-- Alan-Docs Links --------------------------------------------------------->
-
-[HTML Live Preview]: http://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html "Preview 'The Alan Manual' via GitHub & BitBucket HTML Preview"
 
 <!-- AsciiDoctor ------------------------------------------------------------->
 
@@ -407,11 +394,13 @@ The single source document was then split into multiple files according to chapt
 [html_build.sh]: ./html_build.sh   "Bash script to convert Alan Manual to a single-file HTML5 document."
 [pdf_build.sh]:  ./pdf_build.sh    "Bash script to convert Alan Manual to PDF document."
 
-
 [Cross-References.md]: ./Cross-References.md "Look-up table for cross-reference links reconstruction"
 
 [Index txt]: ./Manual_Index.txt
 [TOC txt]:   ./Manual_TOC.txt
+
+[hjs]: ../_assets/hjs/highlight.min.js "View source file"
+[hjs css]: ../_assets/hjs/styles/github.min.css "View source file"
 
 <!-- SCREENSHOTS -->
 
