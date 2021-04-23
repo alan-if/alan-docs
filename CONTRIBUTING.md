@@ -11,12 +11,12 @@ We ask you to take just a few minutes to read through the following guidlines.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Editor and Git Setup](#editor-and-git-setup)
+    - [Code Styles Convention](#code-styles-convention)
+        - [EditorConfig Validation via Travis CI](#editorconfig-validation-via-travis-ci)
+        - [Validating Commits via EClint](#validating-commits-via-eclint)
 - [About the Different Documents](#about-the-different-documents)
 - [Styling Conventions](#styling-conventions)
-- [Submitting Changes and New Contents via Branches](#submitting-changes-and-new-contents-via-branches)
-    - [Branch Naming Conventions](#branch-naming-conventions)
-        - [Baseline Dev Branches](#baseline-dev-branches)
-        - [Dev Sub-Branches](#dev-sub-branches)
 - [Documents Features](#documents-features)
     - [Document Index](#document-index)
     - [Glossaries](#glossaries)
@@ -24,6 +24,53 @@ We ask you to take just a few minutes to read through the following guidlines.
 <!-- /MarkdownTOC -->
 
 -----
+
+# Editor and Git Setup
+
+Some technical aspects of the repository, and how to configure Git and your editor to the needs of our workflow...
+
+## Code Styles Convention
+
+This repository adopts [EditorConfig] to enforce consistent code styles in the repository contents and across different editors and IDEs:
+
+- [`.editorconfig`][.editorconfig]
+
+If you're using an [editor or IDE that natively supports EditorConfig], code styling should be handled auto-magically in the background.
+If not, check if there's an [EditorConfig plug-in/package] for your editor/IDE that you can install.
+
+### EditorConfig Validation via Travis CI
+
+Each PR and commit is tested on GitHub for code styles consistency via Travis CI, using the [EClint] validator for [EditorConfig].
+
+Travis CI validation is performed by the [`validate.sh`][validate.sh] script found in the repository root; you can run the script locally to check the integrity status of your repository folder (the script will check all files, including unstaged and ignored ones).
+
+### Validating Commits via EClint
+
+You're strongly advised to install [EClint] ([Node.js]) and our pre-commit [Git hook] to validate your changes for code consistency at commit time:
+
+- [`git-hook-install.sh`][git-hook-install.sh] — installs the pre-commit hook.
+- [`git-hook-remove.sh`][git-hook-remove.sh] — removes the pre-commit hook.
+
+Once installed the pre-commit hook, every time you carry out a commit operation the staged files will be first checked via [EClint] to ensure that they meet the code styles settings in [`.editorconfig`][.editorconfig], and if they don't the commit will fail with an error listing the files that didn't pass the validation test.
+
+> **NOTE** — You can always bypass the pre-commit hook via the `--no-verify` option, e.g.:
+>
+> ```
+> git commit --no-verify
+> ```
+
+The advantage of using this hook instead of the [`validate.sh`][validate.sh] script is that the hook will test only the staged files involved in the actual commit, whereas the script will test _every_ file in the repository folder, including ignored and unstaged files, which is more time consuming and not focused on the specific commit changes.
+
+The [`git-hook-install.sh`][git-hook-install.sh] script will create the following files inside the repository:
+
+- `.git/hooks/pre-commit-validate.sh` — the commit validation script.
+- `.git/hooks/pre-commit` — the pre-commit hook that launches the validation script.
+
+You can uninstall the Git hook at any time, by executing:
+
+- [`git-hook-remove.sh`][git-hook-remove.sh]
+
+The hook installer and uninstaller scripts are designed to coexist with other pre-commit hooks you might have added to the repository, without disrupting them.
 
 # About the Different Documents
 
@@ -44,70 +91,6 @@ Individual authors are free to adopt extra (or different) styling conventions, w
 
 So, if you've written (or are planning to write) your own article, tutorial or book on Alan, and would like to include it into this repository, you're not bound to adopt our styling conventions, but we'd appreciate it if you did.
 Bear in mind that by adhering to the standard conventions of the project you'll be simplifying future maintenance work — i.e. by reducing the number of templates, stylesheets, and other commonly shared assets that need to be updated in the course of time.
-
-
-# Submitting Changes and New Contents via Branches
-
-If you would like to submit new contents to a document, and you're not its original author, we ask you to submit them via a dedicated development branch, instead of `master` branch — i.e. even if you are a collaborator and have privileges to push directly to `master`, you should submit changes on a dedicated branch.
-
-Working on branches prevents conflicting changes on the main branch, due to different authors working on a same file, and simplifies resolving such conflicts before merging into `master` branch.
-
-Furthermore, this approach allows original authors to review and discuss proposed changes to their documents before merging them in `master`.
-Unlike minor editing changes (fixing typos, text formatting and styles), __content changes should be approved by the original author of a document__ before being merged into the main branch.
-
-Since editors will receive administrative rights to publish changes directly into `master` branch (to provide them freedom of action to work while porting and editing documents), this guideline is a reminder that any major changes to a document created by someone else should be subject to its author's approval.
-
-## Branch Naming Conventions
-
-The `master` branch is intended to host the latest version of every document, while the development branches are intended for work-in-progress changes until ready to be merged into `master`.
-
-Since this project host various documents of different nature (from short articles and tutorials, up to full fledged books), some documents might adopt more complex collaborative strategies than others — especially so for collaboratively written books (like the _Alan Manual_), which involve many contributors, are big in size, and cover many topics.
-
-Nevertheless, the following guidelines holds true for any document, regardless of its size and number of active participant.
-
-### Baseline Dev Branches
-
-The baseline development branch of every document is named with a shorthand version of the document name, preceded by the `dev-` suffix (e.g._Alan Manual_ &rarr; `man` &rarr; `dev-man`).
-The idea is to keep the baseline name of development branches short, because it will be prefixed to all their sub-branches (e.g. `dev-man_glossary`).
-
-This baseline dev-branch is where all contributions are submitted, as single commits, which will ultimately be merged into `master` when ready.
-
-Here is the list of the various documentation projects, their folders names, and their baseline dev-branches naming convention:
-
-|          document          |      folder     | base dev-branch |
-|----------------------------|-----------------|-----------------|
-| misc. Alan design docs     | `/alan-design/` | `dev-design`    |
-| _Alan 3 Beginner's Guide_  | `/alanguide/`   | `dev-guide`     |
-| _Alan IDE Reference Guide_ | `/ideguide/`    | `dev-ide`       |
-| _Alan Manual_              | `/manual/`      | `dev-man`       |
-| _Alan Author's Guide_      | `/writing/`     | `dev-auth`      |
-
-Just to be clear, this doesn't mean that at all times all these dev-branches will be found on the repository.
-Only actively developed branches will be kept on the repository — e.g. `dev-man`, since the _Alan Manual_ is constantly being updated.
-Some documents, on the other hand, are rarely updated or revised, so their development branches will be most likely destroyed after merging into `master`, to be recreated whenever new work is due for that specific document.
-
-It would be pointless to keep inactive dev-branches on the repo, because they would require constant rebasing on `master` to ensure they remain in synch with the repository development — it's far more practical to create them as the need arises, and dispose of them after merging.
-
-Therefore, when you're about to contribute to a specific document, and you can't find the required dev-branch on the repository, just create it yourself by branching off from `master`, using the naming conventions shown in the above table.
-
-### Dev Sub-Branches
-
-When working on long text edits, which might involve multiple commits, it's advisable to work on development sub-branches — i.e. create a new branch from the dev baseline, and work therein.
-
-For example, to work on the _Alan Manual_ Glossary, the `dev-man_glossary` branch could be created.
-Since the Glossary can contain dozens of entries, working on a dedicate sub-branch makes sense for it allows to focus on a specific new Glossary entry per commit, and keep working for days (or weeks) and still be able to rebase on `dev-man` whenever someone else pushes new contents.
-
-Once the editing work is ready, you should open a pull request to merge it into the baseline dev-branch, asking for the document's author to review it.
-This will give a chance to the original author to discuss with you the contents changes and additions, and ask you to fix some things before merging.
-
-When the review phase is over, the original author shall merge your edits into the dev baseline, usually squashing your contribution into a single commit (or a small number of commits) to keep the repository history clean.
-If you have collaborator privileges, the PR reviewer might just give you the green light to merge, leaving it to you to deal with all the branch cleanup and merge operations.
-
-Once your changes are in the baseline dev-branch, they'll be made available on `master` branch when the author (or a project maintainer) is ready to merge (i.e. when all other work-in-progress is production ready).
-
-As the above illustrates, the collaboration effort is based on a cycle of changes coming from different people, which are supervised by the original author of a document (or its current maintainer) in order to provide smooth transitions between work-in-progress in dev-branches and the public document made available on `master` branch.
-
-This holds true for all documents, regardless of whether they are still in Alpha or Beta, or they have reached their stable release — the whole idea is to work in an orderly manner that allows new contents and changes to flow-in without disrupting the project; and to always consult original authors before altering the contents of their works.
 
 
 # Documents Features
@@ -138,9 +121,25 @@ Whenever possible, consider adding a glossary to your document, for it can provi
                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
+[Git hook]: https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks "Learn more about Git hooks"
+
+<!-- tools and services -->
+
+[EClint]: https://www.npmjs.com/package/eclint "EClint page at NPM"
+[EditorConfig]: https://editorconfig.org "Learn more about EditorConfig on its official website"
+[Node.js]: https://nodejs.org "Visit Node.js website"
+
+[editor or IDE that natively supports EditorConfig]: https://editorconfig.org/#pre-installed "Check if your editor/IDE supports EditorConfig"
+[EditorConfig plug-in/package]: https://editorconfig.org/#download "List of EditorConfig plug-ins for various editors and IDEs"
+
 <!-- Project Files ----------------------------------------------------------->
 
 [CONVENTIONS]: ./CONVENTIONS.md "Read the 'Formatting and Styling Conventions' guidelines adopted in Alan-Docs"
+
+[.editorconfig]: ./.editorconfig "View EditorConfig settings"
+[git-hook-install.sh]: ./git-hook-install.sh "View Git hook installer script"
+[git-hook-remove.sh]: ./git-hook-remove.sh "View Git hook uninstaller script"
+[validate.sh]: ./validate.sh "View source script for code style validation"
 
 <!-- Guidelines Links -------------------------------------------------------->
 
