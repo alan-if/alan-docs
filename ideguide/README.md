@@ -28,12 +28,15 @@ operating system.
 
 The _IDE Guide_ was kindly donated to the __Alan Docs__ project by Robert DeFord in AsciiDoc format. The ADoc source here is the original document that was delivered by Robert, save for a few filenames adaptations.
 
-Currently there are no conversion scripts for this document, but a prebuilt PDF file is available.
+Currently there are no conversion scripts for this document, which was created and converted using the __[AsciidocFX]__ editor; but the original PDF file by Robert is available on the repository website:
+
+- https://git.io/alan-docs
+
 
 # Folder Contents
 
-- [`ideguide.asciidoc`][IDE Guide adoc]
-- [`ideguide.pdf`][IDE Guide pdf]
+- [`images/`][images/] — required images folder.
+- [`ideguide.asciidoc`][IDE Guide adoc] — source document.
 
 # External Links
 
@@ -43,16 +46,23 @@ Links to the download pages of the tools required to setup the Alan IDE:
 - [Alan SDK]
 - [Java]
 
+If you want to edit this document, or convert it to other formats:
+
+- [AsciidocFX] — free and open source AsciiDoc editor to build PDF, Epub, Mobi and HTML books.
 
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
-[IDE Guide adoc]: ./ideguide.asciidoc
-[IDE Guide pdf]: ./ideguide.pdf
-
 [Alan IDE]: https://www.alanif.se/download-alan-v3/alanide "Alan IDE donwload page"
 [Alan SDK]: https://www.alanif.se/download-alan-v3/development-kits "Alan SDK donwload page"
 [Java]: https://www.java.com/en/download/ "Java donwload page"
+
+[AsciidocFX]: https://www.asciidocfx.com/ "Visit AsciidocFX website"
+
+<!-- project files and folders -->
+
+[images/]: ./images/ "Navigate to images folder"
+[IDE Guide adoc]: ./ideguide.asciidoc "View source document"
 
 <!-- EOF -->
