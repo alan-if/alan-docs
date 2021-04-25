@@ -919,7 +919,7 @@ There are a few (((debugging, switches))) debugging switches available when star
 *-c*       Log the commands input by the player
 *-l*       Log a complete transcript of the game
 *-t<n>*    Enable trace mode (<n> = level 1,2,3 or 4)
-*-d*       Start the debugger
+*-d*       Enter the debugger when the game starts
 ................................................................................
 
 [IMPORTANT]
