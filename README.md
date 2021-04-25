@@ -134,7 +134,7 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
     + [`/colors/`](./_assets-src/colors/) — Color schemes and palettes used in the documents.
     + [`/images/`](./_assets-src/images/):
         * [`/alan-logo/`](./_assets-src/images/alan-logo/) — Alan logo reconstructed as vector image.
-        * [`/predefined-classes/`](./_assets-src/images/predefined-classes/) — The predefined-classes diagram reconstructed using [Dia Diagram Editor].
+        * [`/dia/`](./_assets-src/images/dia/) — [Dia Diagram Editor] source projects for SVG diagrams.
     + [`/original-docs/`](./_assets-src/original-docs/) — copy of the original docs being ported.
     + [`/sass/`](./_assets-src/sass/) — [Sass] source files to build CSS stylesheets.
 - [`/_dev/`](./_dev) — Project developers' stuff (testing, etc.).

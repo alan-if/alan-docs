@@ -32,7 +32,7 @@ Click on a file to jump to its description and preview.
 
 This diagram of the predefined classes was created using [Dia Diagram Editor], and is automatically converted to the required formats via scripts. For the source Dia file, see:
 
-- [`../../_assets-src/images/predefined-classes/`][predefined-classes src]
+- [`../../_assets-src/images/dia/`][predefined-classes src]
 
 ![predefined-classes.svg][predefined-classes.svg]
 
@@ -47,7 +47,7 @@ This diagram of the predefined classes was created using [Dia Diagram Editor], a
 <!-- Internal Links -->
 
 [predefined-classes]: #predefined-classes-diagram
-[predefined-classes src]: ../../_assets-src/images/predefined-classes/
+[predefined-classes src]: ../../_assets-src/images/dia/
 
 [predefined-classes.svg]: ./predefined-classes.svg
 
