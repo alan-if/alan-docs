@@ -36,11 +36,11 @@ Any additions are welcome.
 == Overview
 
 The Alan IF Language System consists of a compiler and an interpreter.
-The compiler analyzes the input source code (following the Alan language specification) and transforms it to a format that is suitable as input to the interpreter.
+The compiler analyses the input source code (following the Alan language specification) and transforms it to a format that is suitable as input to the interpreter.
 That format is referred to as the Acode.
 
-The interpreter reads that Acode, constructs some internal structures from it and then starts "executing" it.
-In this case "executing" means interpreting specific sections of the Acode, mixing that with asking the player for input and analyzing that to see what other parts of the Acode needs to be interpreted.
+The interpreter reads that Acode, constructs some internal structures from it and then starts "`executing`" it.
+In this case "`executing`" means interpreting specific sections of the Acode, mixing that with asking the player for input and analyzing that to see what other parts of the Acode needs to be interpreted.
 
 [plantuml]
 ....
@@ -65,21 +65,21 @@ Rel(player, interpreter, "inputs commands")
 === The Compiler
 
 The compiler is structured much like any other compiler.
-It has a scanner/lexer which turns text into symbols, a parser which ensures that input follows the grammar of the language, and as it does that also builds an internal representation of the input, an Abstract Syntax Tree (AST).
-The AST is the traversed to do some semantic analysis, cross-referencing and "decorating", and also building a symbol table of entities represented by the input.
+It has a scanner/lexer which turns text into symbols, a parser which ensures that input follows the grammar of the language, and as it does that it also builds an internal representation of the input, an Abstract Syntax Tree (AST).
+The AST is then traversed to do some semantic analysis, cross-referencing and "`decorating`", and also building a symbol table of entities represented by the input.
 Finally that decorated AST it traversed and the output, in this case Acode, is generated.
 
 === The Interpreter
 
 The interpreter, when started by the player, loads a file which is the result of a compilation by the Alan compiler.
-the file consists of
+The file consists of:
 
 - data structures for player command parsing, including all words that can be used
-- data structures describing the "world", locations, objects etc.
+- data structures describing the "`world`", locations, objects, etc.
 - data strucrures for rules and events
-- instructions to be executed in various circumstances, like the checks and bodies for verbs, events etc.
+- instructions to be executed in various circumstances, like the checks and bodies for verbs, events, etc.
 
-The steps in an interpreter "round" is described in The Manual.
+The steps in an interpreter "`round`" is described in The Manual.
 
 == Language Design
 
@@ -88,8 +88,8 @@ The steps in an interpreter "round" is described in The Manual.
 === Articles
 
 Instances are mentioned and described in a number of situations.
-Sometimes it is necessary to refer to it in an indefinite form and sometimes in a definite form.
-E.g
+Sometimes it is necessary to refer to an instance in an indefinite form, and sometimes in a definite form.
+E.g.
 
 [example,role="gametranscript"]
 ================================================================================
@@ -98,6 +98,10 @@ You can't take <definite form>.
 ================================================================================
 
 `INDEFINITE` & `DEFINITE` forms are required:
+
+// @NOTE: `The article Isa b` is a bit confusing, it seems as if you're trying
+//         to define the grammatical article -- I supposed by "article" here you
+//         mean "item".
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -147,7 +151,7 @@ With corresponding `Say` statements:
 `Say A o.`    :: use `Indefinite` => "`en stol`"
 (`Say Any o.` :: use `Plural` => "`stolar`"??? Not needed, use `"I can't see any" Say o. "."` for now.)
 
-Since `Mentioned` is constructed from the first `Name` clause the following would work:
+Since `Mentioned` is constructed from the first `Name` clause, the following would work:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -191,14 +195,23 @@ Verb talk_to
 Do we really need all the four forms?
 Indefinite singular/plural and definite singular/plural?
 
-==== The "Any" form
+// @ANSWER: Probably yes, because some languages adopt different forms according
+//          to number and gender, and with collective nouns usually the description
+//          mentions their plural form (e.g. 'some boats') but some verbs will
+//          act on one item only (e.g. 'enter boat') since some actions are not
+//          possible with all items of the collection. So authors might need to
+//          define all forms (sing. and plural) to let the interpreter know how
+//          to handle certain responses (e.g. 'I can't see any boat...').
+
+
+==== The "`Any`" form
 
 Possibly there is also a fifth form, as in "`I can't see *any* door here.`" But let's leave that for later.
 Possibly: `Say Any x.` & `Say No x.`.
 
 ==== Pronouns
 
-Some times a pronoun is possibly nice:
+Sometimes a pronoun is possibly nice:
 
 [example,role="gametranscript"]
 ================================================================================
@@ -234,10 +247,10 @@ The sak Isa x
 === The Interpreter
 
 The interpreter starts by loading the game file into memory.
-It consists of two types of data, one being data structures of various kinds that the interpreter is inspecting, the other sequences of "instructions" that the interpreter "executes".
+It consists of two types of data, one being data structures of various kinds that the interpreter is inspecting, the other being sequences of "`instructions`" that the interpreter "`executes`".
 The Acode (data structures and instructions) is structured in a fashion that closely supports the structure of the Alan Language.
 
-This chapter describes those data structures and the instructions as well as particular algorithms that are used but the interpreter.
+This chapter describes those data structures and the instructions as well as particular algorithms that are used by the interpreter.
 
 ==== Common Data Structures
 
@@ -254,8 +267,8 @@ The mapping is generated into two structures, the parameter order mapping, and t
 ====== Parameter mapping
 
 The parameter order mapping is simply a table with as many entries as there are parameters in the syntax, followed by an EOF.
-Each entry is an index into the "canonical" order of the parameters.
-As an example the following is a parameter order mapping table for a syntax with three parameters in reverse canonical order and would occupy 4 consequtive Awords:
+Each entry is an index into the "`canonical`" order of the parameters.
+As an example, the following is a parameter order mapping table for a syntax with three parameters in reverse canonical order and would occupy 4 consequtive Awords:
 
 [ditaa]
 ....
@@ -264,7 +277,7 @@ As an example the following is a parameter order mapping table for a syntax with
 +---+---+---+---+
 ....
 
-This table is used to simply swap parameters so they carry the same meaning as in the "canonical" syntax.
+This table is used to simply swap parameters so they carry the same meaning as in the "`canonical`" syntax.
 
 ====== Syntax-verb mapping
 
@@ -307,8 +320,8 @@ class DictionaryEntry {
 
 The Acode instructions are designed around the model of a stack machine.
 A stack machine primarily uses a stack to manage its state and perform operations.
-E.g. an addition of two numbers will be performed by first "executing" two push operations to get the two numbers on the stack.
-Then the "add" operation is executed, which requires that there are two numbers already on the stack, which are replaces by the sum.
+E.g. an addition of two numbers will be performed by first "`executing`" two push operations to get the two numbers on the stack.
+Then the "`add`" operation is executed, which requires that there are two numbers already on the stack, which are replaces by the sum.
 
 [ditaa]
 ....
@@ -331,7 +344,7 @@ Then the "add" operation is executed, which requires that there are two numbers 
                                        +-----+----+
 ....
 
-As we can see each operation ("instruction") is either removing something from the stack, and/or pushing something onto it.
+As we can see each operation ("`instruction`") is either removing something from the stack, and/or pushing something onto it.
 
 Below is a list of instructions and details about their specifics.
 
@@ -359,7 +372,7 @@ When executed, check for loop termination, if so, go to end of the corresponding
 A loop value has to be calculated from the index since the index might be an index in a `SET`, such as when looping over the members in a set.
 
 
-// @FIXME: Last 2 rows should have different bcakground color:
+// @FIXME: Last 2 rows should have different background colour:
 
 [cols="2*<m",options="header"]
 |=============================================
