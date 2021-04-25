@@ -614,7 +614,7 @@ To make it easy to get started there are eight classes predefined (((predefined 
 
 [[fig-predefined-classes]]
 .Relationships between the predefined classes (only classes shown with yellow background are inheritable and can be explicitly instantiated).
-image::{assets-img}predefined-classes.svg[predefined classes, align="center"]
+image::{assets-img}predefined-classes.svg[predefined classes, align="center", scaledwidth="90%", width="90%"]
 
 They are `entity`, (((ENTITY, predefined class))) `thing`, (((THING, predefined class))) `location`, (((LOCATION, predefined class))) `actor`, (((ACTOR, predefined class))) `object`, (((OBJECT, predefined class))) `literal`, (((literal, predefined class))) `string` (((STRING, predefined class))) and `integer` (((integer, predefined class))) and have the relationship, inheritance tree, shown in the figure above.
 
