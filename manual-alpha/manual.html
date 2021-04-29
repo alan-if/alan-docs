@@ -798,8 +798,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_compiling">A.1. Compiling</a></li>
 <li><a href="#_compiler_switches">A.2. Compiler Switches</a></li>
-<li><a href="#_running_the_adventure">A.3. Running the Adventure</a></li>
-<li><a href="#_interpreter_switches">A.4. Interpreter Switches</a></li>
+<li><a href="#_encodings_and_character_sets">A.3. Encodings and character sets</a></li>
+<li><a href="#_running_the_adventure">A.4. Running the Adventure</a></li>
+<li><a href="#_interpreter_switches">A.5. Interpreter Switches</a></li>
 </ul>
 </li>
 <li><a href="#_a_sample_interaction">Appendix B: A Sample Interaction</a></li>
@@ -10149,7 +10150,7 @@ If you run the compiler from a command line you can get information about which 
 <li>
 <p><code>-charset</code> select the character set of the input files.
 This can be handy when you get a source file written on another platform, or for Windows where you edit in a Windows editor (ISO characters) and use the compiler in a DOS window (DOS characters).
-The option should be followed with one of the keywords <code>iso</code>, <code>mac</code> or <code>dos</code></p>
+The option should be followed with one of the keywords <code>iso</code>, <code>dos</code> or <code>utf-8</code></p>
 </li>
 <li>
 <p><code>-verbose</code> print compiler version and other verbose messages</p>
@@ -10187,7 +10188,48 @@ Switches may be abbreviated as long as they are unambiguous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_running_the_adventure"><a class="anchor" href="#_running_the_adventure"></a>A.3. Running the Adventure</h3>
+<h3 id="_encodings_and_character_sets"><a class="anchor" href="#_encodings_and_character_sets"></a>A.3. Encodings and character sets</h3>
+<div class="paragraph">
+<p>If you are interested in writing adventures in anything other than English, then this section is important to you.
+Else you can continue to live in ignorance of the multitude of other languages that need to be supported by computer programs these days, and skip to the next section.</p>
+</div>
+<div class="paragraph">
+<p>Alan uses a single byte character encoding known as ISO8859-1 internally and in game files.
+This makes game files completely portable across various platforms.
+Historically different operating systems and environments have used different encodings for text files, so when you created Alan source code the files were encoded differently depeding on the platform (mac, dos, unix, windows, &#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>There is (still) no standardized way to deduce in which encoding a text file is, so in an attempt to handle "national characters" in the game source (particularly in Swedish), the <code>-charset</code> option was deviced.
+Using that option an author could indicate to the compiler how to interpret, and possibly convert, the characters in the source file(s) created on another platform.</p>
+</div>
+<div class="paragraph">
+<p>This has changed and an encoding called UTF-8 is becoming almost the standard encoding for text on many platforms, including Windows.</p>
+</div>
+<div class="paragraph">
+<p>The Alan compiler is capable to convert from UTF-8 (which probably is the default when you create a text file these days).
+You can instruct the compiler to assume UTF-8 encoding using the <code>-charset utf-8</code> option, but if the text file is encoded using a BOM, a special, invisible, marker in the beginning of the file, the Alan compiler will automatically assume that file is encoded using UTF-8.</p>
+</div>
+<div class="paragraph">
+<p>This should make the creation and editing of Alan source files a more streamlined experience than before.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The standard interpreters are not yet adopted to handle UTF-8 command input and display.
+Any non-ASCII character will look garbled unless your terminal is set to ISO8859-1 encoding.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_running_the_adventure"><a class="anchor" href="#_running_the_adventure"></a>A.4. Running the Adventure</h3>
 <div class="paragraph">
 <p>To play the generated adventure the  Alan interpreter, <strong>arun</strong>, is executed with the adventure name as a parameter.
 For example:</p>
@@ -10216,9 +10258,9 @@ The files <strong>adventure</strong> and <strong>adventure.a3c</strong> thus mak
 </div>
 </div>
 <div class="sect2">
-<h3 id="_interpreter_switches"><a class="anchor" href="#_interpreter_switches"></a>A.4. Interpreter Switches</h3>
+<h3 id="_interpreter_switches"><a class="anchor" href="#_interpreter_switches"></a>A.5. Interpreter Switches</h3>
 <div class="paragraph">
-<p>interpreter, switches
+<p>
 The interpreter supports the following switches:</p>
 </div>
 <div class="ulist">
