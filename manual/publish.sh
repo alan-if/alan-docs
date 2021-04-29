@@ -26,4 +26,5 @@ cp $source/manual/manual.html manual-$stream/
 cp $source/manual/manual.pdf manual-$stream/
 git commit -am"Publishing new version of $stream manual"
 git push
+cd ..
 rm -rf alan-docs
