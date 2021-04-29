@@ -4,16 +4,16 @@
 # to get them published on https://alan-if.github.io/alan-docs/
 source=`git rev-parse --show-toplevel`
 case "`git branch --show-current`" in
-	"alan-manual-alpha")
-		stream=alpha
-		;;
-	"master")
-		stream=beta
-		;;
-	*)
-		echo "Unknown branch, can't publish"
-		exit
-		;;
+    "alan-manual-alpha")
+        stream=alpha
+        ;;
+    "master")
+        stream=beta
+        ;;
+    *)
+        echo "Unknown branch, can't publish"
+        exit
+        ;;
 esac
 echo Publishing manual for $stream stream...
 cd /tmp
@@ -23,4 +23,5 @@ cp $source/manual/manual.html manual-$stream/
 cp $source/manual/manual.pdf manual-$stream/
 git commit -am"Publishing new version of $stream manual"
 git push
+cd ..
 rm -rf alan-docs
