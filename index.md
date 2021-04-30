@@ -15,6 +15,15 @@ It exists in two versions matching the two current development flows:
     + [HTML](manual-alpha/manual.html)
     + [PDF](manual-alpha/manual.pdf)
 
+
+## Alan Cookbook
+
+The ALAN Cookbook, by [Anssi Räisänen], contains an extensive list of tips and tricks on how to program various things and achieve various effects in the ALAN language.
+It covers both basic things available in the Alan language, and more advanced topics supported by the [Standard Library v2].
+
+- _Alan Cookbook v2_
+    + [PDF](alancookbook/alancookbookv2.pdf)
+
 ## ALAN 3 Beginner's Guide
 
 Michael Arnaud's _Alan 3 Beginner's Guide_ (2006) is an excellent step-by-step tutorial that will guide the reader through the creation of a full adventure using [ALAN Library v0.6.1] — the _TV TIME!_ adventure.
@@ -53,5 +62,10 @@ These documents are still incomplete, but the might be helpful to better underst
 [Alan SDK]: https://www.alanif.se/download-alan-v3/development-kits "Download page of ALAN Beta development kits"
 [alanguide files]: https://github.com/alan-if/alan-docs/tree/master/alanguide/alanguide-code "Tutorial source file for the ALAN 3 Beginner's Guide, at Alan-Docs repository on GitHub"
 [development snapshots]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots "Download page of ALAN Alpha development kit snapshots"
+[Standard Library v2]: https://github.com/AnssiR66/AlanStdLib "Visit the ALAN Standard Library v2 repository on GitHub"
+
+<!-- people -->
+
+[Anssi Räisänen]: https://github.com/AnssiR66 "View Anssi Räisänen's GitHub profile"
 
 <!-- EOF -->
