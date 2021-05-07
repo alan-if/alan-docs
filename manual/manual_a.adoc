@@ -57,8 +57,10 @@ Here are some examples of other switches:
 
 * `-version` shows the version of the compiler
 * `-charset` select the character set of the input files.
-This can be handy when you get a source file written on another platform, or for Windows where you edit in a Windows editor (ISO characters) and use the compiler in a DOS window (DOS characters).
 The option should be followed with one of the keywords `iso`, `dos` or `utf-8`
+This can be handy when you have source files written using a specific encoding.
+Many terminals and editors today use the UTF-8 encoding but historically Alan only supported ISO8859-1 for non-ASCII characters.
+Currently the Alan compiler will still default to `-charset iso` but in the near future UTF-8 will be the default encoding for Alan source files.
 * `-verbose` print compiler version and other verbose messages
 * `-warnings`, `-infos` show warning (and/or informational) messages from the compilation process
 * `-import` (((including files, compiler switches))) add a directory to the search path for imported files (see <<Filenames>> for details on the `Import` statement).
@@ -79,25 +81,20 @@ If you are interested in writing adventures in anything other than English, then
 Else you can continue to live in ignorance of the multitude of other languages that need to be supported by computer programs these days, and skip to the next section.
 
 Alan uses a single byte character encoding known as ISO8859-1 internally and in game files.
-This makes game files completely portable across various platforms.
-Historically different operating systems and environments have used different encodings for text files, so when you created Alan source code the files were encoded differently depeding on the platform (mac, dos, unix, windows, ...).
+This makes game files completely portable across various platforms and still able to support most of the glyphs ("characters") of most Western languages.
+Historically though, different operating systems and environments have used different encodings for text files, so when you created Alan source code the files were encoded differently depeding on the platform (mac, dos, unix, windows, ...).
 
 There is (still) no standardized way to deduce in which encoding a text file is, so in an attempt to handle "national characters" in the game source (particularly in Swedish), the `-charset` option was deviced.
 Using that option an author could indicate to the compiler how to interpret, and possibly convert, the characters in the source file(s) created on another platform.
 
 This has changed and an encoding called UTF-8 is becoming almost the standard encoding for text on many platforms, including Windows.
 
-The Alan compiler is capable to convert from UTF-8 (which probably is the default when you create a text file these days).
+The Alan compiler is capable to read and convert source files in UTF-8 (which probably is the default when you create a text file these days).
 You can instruct the compiler to assume UTF-8 encoding using the `-charset utf-8` option, but if the text file is encoded using a BOM, a special, invisible, marker in the beginning of the file, the Alan compiler will automatically assume that file is encoded using UTF-8.
 
 This should make the creation and editing of Alan source files a more streamlined experience than before.
 
-[NOTE]
-================================================================================
-The standard interpreters are not yet adopted to handle UTF-8 command input and display.
-Any non-ASCII character will look garbled unless your terminal is set to ISO8859-1 encoding.
-================================================================================
-
+See <<Compiler Switches>> and <<Interpreter Switches>> for details in how to control how the compiler and interpreter interpret and log input and output.
 
 == Running the Adventure
 
@@ -114,7 +111,7 @@ No extension on the adventure name is allowed, the *.a3c* and, if applicable, *.
 On platforms with graphical user interfaces to which *arun* has been natively ported will allow double clicking a game file to start a game, or double clicking the interpreter application icon, in which case a dialogue requesting a game will appear.
 
 If the interpreter program is copied to a different name, it will automatically look for a game file with the same name.
-Any parameters or switches will be ignored.
+Any parameters or switches will then be ignored.
 For example, by copying the *arun* program to *adventure* the interpreter will, when started under the new name, directly look for the file *adventure.a3c*.
 The files *adventure* and *adventure.a3c* thus make a complete game package, which is easy to start using the single command:
 
