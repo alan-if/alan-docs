@@ -130,8 +130,8 @@ The ((interpreter)) supports the following switches:
 
 * `-h` print some help
 * `-v` verbose mode
-* `-l` log game transcript to a file ('.a3t')
-* `-c` log player command input to a file ('.a3s' for "solution")
+* `-l` log complete game transcript to a file ('.a3t')
+* `-c` log all player commands to a file ('.a3s' for "solution")
 * `-n` no Status Line
 * `-p` don't break the output for paging
 * `-d` print the version of interpreter and enter debug mode
@@ -141,5 +141,50 @@ The ((interpreter)) supports the following switches:
 * `-version` print version of the interpreter, the version and IFID of the game, if given, and then exit
 
 Debugging support is described in <<Debugging>>.
+
+=== Logging options
+
+The logging options, -l and -c, will each create a new file with a name that is the combination of the game name, a time stamp and the appropriate extension in the current directory and write the log in it.
+The options can be used simultaneously and will then create two files with differing extensions for the two types of logs.
+For example
+
+[literal,role="shell"]
+................................................................................
+$ arun -c adventure
+................................................................................
+
+This will give you a file named `adventure<timestamp>.a3s` which will contain all commands the player entered.
+It may later be used as the so called "solution file" which can be followed manually to "replay" that session, or even used as a command script that can be feed to the interpreter using
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _@adventure<datestamp>.a3s_
+================================================================================
+
+On the other hand, using
+
+[literal, role="shell"]
+................................................................................
+$ arun -l adventure
+................................................................................
+
+will log the complete game transcript to a file named `adventure<timestamp>.a3t`.
+This option can be useful when collecting information from playtesters to analyse their progress e.g. to improve the game.
+
+
+[NOTE]
+================================================================================
+Particularly if you are collecting information from beta testers the timestamp will help collecting many such files in the same directory for analysis.
+You can avoid the timestamp in the filenames using the `-r` switch, e.g. to simplify scripting.
+But note that that will overwrite the same file for each run.
+================================================================================
+
+
+
+[NOTE]
+================================================================================
+Some interpreters, particularly the Glk-based ones, will have opinions on the names of files and may not follow this standardised extensions for command scripts or transcripts.
+================================================================================
+
 
 // EOF //
