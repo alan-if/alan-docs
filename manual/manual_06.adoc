@@ -943,7 +943,7 @@ The other options is to create a complete transcript of the game play and is cre
 Such a log file contains both player input and the game output.
 
 Both kinds of log files are created in the directory which was current when the interpreter was started, the name of the log file will begin with the game name.
-They will have the extension *.a3i*, for "Alan v3 Input", or *.a3t*, for "Alan v3 Transcript", respectively.
+They will have the extension *.a3s*, for "Alan v3 Solution", or *.a3t*, for "Alan v3 Transcript", respectively.
 
 
 
