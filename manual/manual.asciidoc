@@ -1,8 +1,7 @@
 :doctitle:  The ALAN Adventure Language Reference Manual
 :version-label: ALAN
-:revnumber: Beta8-snapshot
-:revdate:   September 22, 2020
-:revremark: New AsciiDoc Reprint
+:revnumber: Beta8-alpha
+:revdate:   2021-05-07
 :author:    Thomas Nilefalk
 :email:     thomas@alanif.se
 :doctype: book
@@ -46,8 +45,9 @@
 // Show document info and AsciiDoc conversion version and date...
 
 // .About This Document
-This is the first public release of the new version of the _ALAN Manual_, ported to AsciiDoc by link:https://github.com/tajmone[Tristano Ajmone^,title="Visit Tristano Ajmone's profile on GitHub"].
-The new edition is now availble in HTML and PDF format, featuring contents updates and many improvements, like syntax highlighting of Alan code examples. +
+_The Alan Manual_ has been ported to AsciiDoc by link:https://github.com/tajmone[Tristano Ajmone^,title="Visit Tristano Ajmone's profile on GitHub"].
+This makes it easy to publish it in HTML, PDF and other formats.
+It also features contents updates and many improvements, like syntax highlighting of Alan code examples. +
 This document is subjected to the <<Copying Conditions,Artistic License 2.0>> terms.
 
 // >>> Alan Logo >>>
