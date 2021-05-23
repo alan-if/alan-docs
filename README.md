@@ -23,6 +23,7 @@ Help and contributions are welcome (see [`CONTRIBUTING.md`][CONTRIBUTING]).
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Latest News](#latest-news)
+    - [Migration to Highlight v4](#migration-to-highlight-v4)
     - [New Project Website](#new-project-website)
     - [Asciidoctor Inclusions with ISO Encoding](#asciidoctor-inclusions-with-iso-encoding)
     - [Switching to Java JDK 12](#switching-to-java-jdk-12)
@@ -56,6 +57,12 @@ Help and contributions are welcome (see [`CONTRIBUTING.md`][CONTRIBUTING]).
 # Latest News
 
 Some important news for project maintainers and contributors...
+
+## Migration to Highlight v4
+
+Since May 2021, this project uses the new Highlight v4 version.
+
+Since the new major version introduced some changes in the class names in the generated HTML, we've updated all Sass/SCSS sources accordingly, and Highlight v3.x will no longer work correctly (some elements wouldn't be highlighted as expected).
 
 ## New Project Website
 
