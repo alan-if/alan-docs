@@ -36,19 +36,17 @@ The generated scripts need to be copied and pasted over the old ones, directly i
 
 > __NOTE__ — Currently, the output of these scripts is being manually copied and pasted into the AsciiDoc sources of the _Alan Manual_, after being generated/updated via their batch/shell scripts.
 >
-> In the future (if the number of scripts grows) we might include them directly into the AsciiDoc sources via the `include::` directive, but this would require an intermediate step to convert the log/transcript files from ISO-8859-1 to UTF-8, because Asciidoctor doesn't yet support including ISO files (see [asciidoctor/asciidoctor#3248]).
-> This needs to be done via Bash scripts for it requires the __iconv__ utility.
+> In the future (if the number of scripts grows) we might include them directly into the AsciiDoc sources via the `include::` directive, now that Asciidoctor added support for other encodings, including ISO-8859-1 — thanks to [Dan Allen] for the [Asciidoctor organization] for accepting our feature request (see [asciidoctor/asciidoctor#3248]).
 
-[asciidoctor/asciidoctor#3248]: https://github.com/asciidoctor/asciidoctor/issues/3248
 
 ## File Extension Conventions
 
-|     ext      | in/out |                                       description                                        |
-|--------------|--------|------------------------------------------------------------------------------------------|
-| `.log`       | output | Compiler/ARun logs (`-help`, debug, reports, etc., except game transcripts).             |
-| `.a3sol`     | input  | Commands script (aka _solution_) fed to ARun in order to produce an `.a3log` transcript. |
-| `.a3log`     | output | Generated game transcript (aka _walkthrough_).                                           |
-| `.bat`/`.sh` | —      | Scripts to generate the required output.                                                 |
+|     ext      | in/out |                                      description                                       |
+|--------------|--------|----------------------------------------------------------------------------------------|
+| `.log`       | output | Compiler/ARun logs (`-help`, debug, reports, etc., except game transcripts).           |
+| `.a3s`       | input  | Commands script (aka _solution_) fed to ARun in order to produce an `.a3t` transcript. |
+| `.a3t`       | output | Generated game transcript (aka _walkthrough_).                                         |
+| `.bat`/`.sh` | —      | Scripts to generate the required output.                                               |
 
 
 # Scripts Contents by Book Sections
@@ -76,6 +74,16 @@ CALL alan ZILexample 1> ZILexample.log
 ------------------------------------------------------------------------------>
 
 [F.1. Format of messages]: https://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#_format_of_messages "Click for a live HTML preview of 'F.1. Format of messages'"
+
+<!-- Issues -->
+
+[asciidoctor/asciidoctor#3248]: https://github.com/asciidoctor/asciidoctor/issues/3248
+
+<!-- people & orgs -->
+
+[Dan Allen]: https://github.com/mojavelinux "View Dan Allen's GitHub profile"
+
+[Asciidoctor organization]: https://github.com/asciidoctor "View Asciidoctor's organization GitHub profile"
 
 
 <!-- EOF -->

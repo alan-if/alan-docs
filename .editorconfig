@@ -10,7 +10,7 @@ root = true
 # ==============================================================================
 
 # Common settings for all Alan files
-[*.{alan,i,a3sol}]
+[*.{alan,i,a3s}]
 indent_style = space
 indent_size = unset
 charset = latin1

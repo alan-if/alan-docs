@@ -15,8 +15,6 @@
 *.alan   Alan
 *.i      Alan
 *.ifid   text linguist-generated=true
-# UTF-8 converted Alan sources for Asciidoctor inclusion:
-*.utf8_alan    text linguist-generated=true
 
 ## Alan Story-Files
 ###################
@@ -26,9 +24,9 @@
 
 ## Adventures Solutions & Transcripts
 #####################################
-*.a3sol   text linguist-detectable=false
-*.a3log   text linguist-generated=true
-*.log     text linguist-generated=true
+*.a3s   text linguist-detectable=false
+*.a3t   text linguist-generated=true
+*.log   text linguist-generated=true
 
 ## AlanIDE Files
 ################

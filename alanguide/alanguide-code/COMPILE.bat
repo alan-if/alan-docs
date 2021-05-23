@@ -26,9 +26,9 @@ ECHO [94m=======================[97m
 :: ====================
 :: Run commands scripts
 :: ====================
-FOR %%i IN (*.a3sol) DO (
+FOR %%i IN (*.a3s) DO (
   ECHO - "%%i"
-  CALL arun.exe -r tvtime.a3c < %%i > %%~ni.a3log
+  CALL arun.exe -r tvtime.a3c < %%i > %%~ni.a3t
 )
 
 ECHO.
