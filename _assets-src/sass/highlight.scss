@@ -1,10 +1,10 @@
-// "alanguide.scss"                     v2.0.0 | 2019/03/31 | by Tristano Ajmone
+// "highlight.scss"                     v1.0.0 | 2021/05/24 | by Tristano Ajmone
 // *****************************************************************************
 // *                                                                           *
-// *             Custom CSS for Beginner's Guide using Highlight               *
+// *                 Custom CSS for Alan-Docs using Highlight                  *
 // *                                                                           *
 // *****************************************************************************
-// Additional custom CSS styles for the "ALAN Beginner's Guide", using Highlight  
+// Additional custom CSS styles for the "ALAN Beginner's Guide", using Highlight
 // instead of Highlight.js.
 
 @import 'mixins';        // Custom helpers.
@@ -12,7 +12,7 @@
 @import 'common';        // Styles common to all documents.
 
 // =============================================================================
-//                             Syntax Highlighting                              
+//                             Syntax Highlighting
 // =============================================================================
 
 // -----------------------------------------------------------------------------
@@ -24,7 +24,7 @@
 @import 'hl-template-alan'; // Reusable template for Alan themes.
 
 // -----------------------------------------------------------------------------
-//                        Syntax Theme for Alan Lib Code                        
+//                        Syntax Theme for Alan Lib Code
 // -----------------------------------------------------------------------------
 // Alternative color theme for Alan code with "role=lib", to distinguish between
 // code from the tutorial and that of the Library sources.
@@ -32,7 +32,7 @@
 @import 'hl-theme_alan-lib';
 
 // -----------------------------------------------------------------------------
-//                     Syntax Theme for Alan Tutorial Code                      
+//                     Syntax Theme for Alan Tutorial Code
 // -----------------------------------------------------------------------------
 // Alternative color theme for Alan code with "role=tutorial", to distinguish
 // between sourcecode of the tutorial "TV-TIME!" adventure and generic Alan

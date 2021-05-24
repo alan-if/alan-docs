@@ -12,7 +12,7 @@ Source [Sass] SCSS files to build CSS stylesheets used in this project.
 
 - [Introduction](#introduction)
 - [Folder Contents](#folder-contents)
-    - [Automation Scripts](#automation-scripts)
+    - [Building](#building)
     - [Main Stylesheets](#main-stylesheets)
     - [SCSS Modules](#scss-modules)
 - [Installing Dart Sass](#installing-dart-sass)
@@ -35,26 +35,29 @@ Using Highlight instead of highlight.js has always been a goal of this project, 
 In the following tables, "Alan Docs" stands for any official ALAN documentation file (e.g. the _Alan Manual_), whereas "document" stands for third party contributed documents (e.g. the _Alan IDE Guide_ and the _Beginner's Guide_). The difference is that while documents from the former group will strictly adhere to the styling conventions of this project, documents from the latter may or may not do so (and, for example, might employ custom stylesheets instead).
 
 
-## Automation Scripts
+## Building
 
-To compile all the Sass sources to CSS:
+To compile all the Sass sources to CSS and update the dependencies of all HTML documents:
 
-- [`BUILD_SASS.bat`](./BUILD_SASS.bat)
+- [`build.sh`](./build.sh)
 
-To build and watch specific Sass sources:
+Beside compiling the Sass sources, the script will also build the [docinfo file] required for HTML docs that use [Highlight]:
 
-- [`alanguide.bat`](./alanguide.bat)
-- [`highlight-js.bat`](./highlight-js.bat)
+- [`docinfo.html`](./docinfo.html)
+
+and copy it to the source folders of all the documents that need it, because Asciidoctor can't locate docinfo files via relative paths:
+
+- `../../alanguide/docinfo.html`
 
 
 ## Main Stylesheets
 
 The build scripts will output the CSS stylesheets in their destination folders of this project:
 
-|             scss source             |                      css output                     |              used for              |
-|-------------------------------------|-----------------------------------------------------|------------------------------------|
-| [`highlight-js.scss`][highlight-js] | [`../../_assets/hjs/styles/github.min.css`][gh css] | Alan Docs using highlight.js       |
-| [`alanguide.scss`][alanguide]       | [`../../alanguide/alanguide.css`][alanguide css]    | _[Beginner's Guide]_ using Highlight |
+|           scss source            |                      css output                     |           used for           |
+|----------------------------------|-----------------------------------------------------|------------------------------|
+| [`highlight-js.scss`][hljs scss] | [`../../_assets/hjs/styles/github.min.css`][gh css] | Alan Docs using highlight.js |
+| [`highlight.scss`][hl scss]      | [`highlight.css`][hl css]                           | Alan Docs using Highlight    |
 
 
 ## SCSS Modules
@@ -153,6 +156,8 @@ SOFTWARE.
 [Highlight]: http://www.andre-simon.de/ "Visit Highlight website"
 [highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
 
+[docinfo file]: https://docs.asciidoctor.org/asciidoctor/latest/docinfo/ "Asciidoctor Manual » Docinfo Files"
+
 <!-- project files ----------------------------------------------------------->
 
 [Highlight.js' stylesheets]: ../../_assets/hjs/styles/ "Go to Highlight.js' stylesheets folder in the project"
@@ -161,8 +166,8 @@ SOFTWARE.
 
 <!-- SCSS Main Sources -->
 
-[highlight-js]: ./highlight-js.scss "View SCSS source"
-[alanguide]: ./alanguide.scss "View SCSS source"
+[hljs scss]: ./highlight-js.scss "View SCSS source"
+[hl scss]: ./highlight.scss "View SCSS source"
 
 <!-- SCSS Modules -->
 
@@ -179,7 +184,7 @@ SOFTWARE.
 <!-- CSS Output Stylesheets -->
 
 [gh css]: ../../_assets/hjs/styles/github.min.css "View CSS stylesheet"
-[alanguide css]: ../../alanguide/alanguide.css "View CSS stylesheet"
+[hl css]: ./highlight.css "View CSS stylesheet"
 
 <!-- 3rd Party Links -->
 

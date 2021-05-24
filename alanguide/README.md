@@ -45,7 +45,6 @@ Obviously, the reader is encouraged to study and use the newest [ALAN Standard L
 
 
 # Folder Contents
-- [`alanguide.css`][guide css] — _Beginner's Guide_ extra stylesheet.
 
 
 The reader will also need to download the source files of the __ALAN Library__ required to follow the tutorial steps, as well as the complete sources of the _TV TIME!_ adventure created during the tutorial.
@@ -194,7 +193,6 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 <!-- Project Files -->
 
 [guide]: ./alanguide.asciidoc
-[guide css]: ./alanguide.css
 
 
 [html_build.sh]: ./html_build.sh "Bash script to convert the Alan Guide to a single-file standalone HTML5 document."
