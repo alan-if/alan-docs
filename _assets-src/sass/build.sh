@@ -23,9 +23,15 @@ echo "<style>"    >  docinfo.html
 cat highlight.css >> docinfo.html
 echo "</style>"   >> docinfo.html
 
+
 if [[ $(uname -s) == MINGW* ]];then
 	unix2dos docinfo.html
 fi
 
 # Deploy docinfo file to dest folders (can't be used via relative paths):
-cp docinfo.html ../../alanguide/
+
+DestDirs="alanguide conversion"
+for folder in ${DestDirs[*]} ; do
+	echo "../../$folder/"
+	cp docinfo.html "../../$folder/"
+done
