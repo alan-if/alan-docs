@@ -4,7 +4,7 @@ Some scripts and test adventures to check the integrity of the Alan sources and 
 
 To execute tests, run:
 
-- [`RunTests.bat`](./RunTests.bat)
+- [`test.sh`](./test.sh)
 
 Since both the tutorial and the required Library are over 12 years old, it's a good idea to run these tests whenever Alan is updated, just in case some changes in the language might break backward compatibility.
 

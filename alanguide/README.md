@@ -45,8 +45,8 @@ Obviously, the reader is encouraged to study and use the newest [ALAN Standard L
 
 
 # Folder Contents
-
 - [`alanguide.css`][guide css] — _Beginner's Guide_ extra stylesheet.
+
 
 The reader will also need to download the source files of the __ALAN Library__ required to follow the tutorial steps, as well as the complete sources of the _TV TIME!_ adventure created during the tutorial.
 
@@ -68,9 +68,13 @@ The reader will also need to download the source files of the __ALAN Library__ r
 
 ## Conversion Scripts
 
-- [`BUILD_ALL.bat`][BUILD_ALL.bat] — convenience batch to invoke all conversion scripts at once.
-- [`HTML_BUILD.bat`][HTML_BUILD.bat] — batch script to create `alanguide.html` document.
-- [`PDF_BUILD.bat`][PDF_BUILD.bat] (_experimental_) — batch script to create `alanguide.pdf` document (currently ignored in repository).
+|              script              |      output      | supported OSs |
+|----------------------------------|------------------|---------------|
+| [`html_build.sh`][html_build.sh] | `alanguide.html` | all           |
+| [`pdf_build.sh`][pdf_build.sh]   | `alanguide.pdf`  | Linux, macOS  |
+| [`PDF_BUILD.bat`][PDF_BUILD.bat] | `alanguide.pdf`  | Windows       |
+
+Unfortunately, the `pdf_build.sh` script doesn't currently work under Bash for Windows due to paths resolution problems ([Issue #66]), so we need to keep also a batch version (`PDF_BUILD.bat`).
 
 
 > **NOTE** — (2020/12/27) Now the AsciiDoc sources exploit the new (and undocumented) `encoding` option for the `include::` directive, so the toolchain no longer needs to first convert external ALAN sources and transcripts to UTF-8 before their inclusion in the source documents (see [Issue #84]).
@@ -156,9 +160,7 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 [alanguide www]: https://alanif.se/files/alanguide/alanguide.html "View the 'Alan 3 Beginner's Guide' at Alan website (outdated version)"
 
 [styling conventions]: ../CONVENTIONS.md "Read the 'Formatting and Styling Conventions' guidelines adopted in Alan-Docs"
-[BUILD_ALL.bat]:  ./BUILD_ALL.bat  "Batch script to invoke all the Alan Guide conversion scripts."
-[HTML_BUILD.bat]: ./HTML_BUILD.bat "Batch script to convert the Alan Guide to a single-file standalone HTML5 document."
-[PDF_BUILD.bat]: ./PDF_BUILD.bat "Batch script to convert the Alan Guide to PDF document."
+
 
 [ALAN Standard Library 2]: https://github.com/AnssiR66/AlanStdLib "Visit the official repository of the ALAN Standard Library 2"
 
@@ -192,13 +194,12 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 <!-- Project Files -->
 
 [guide]: ./alanguide.asciidoc
-[guide html]: ./alanguide.html
 [guide css]: ./alanguide.css
-[guide pdf]: ./alanguide.pdf
 
-[BUILD_ALL.bat]:  ./BUILD_ALL.bat  "Batch script to invoke all the Alan Guide conversion scripts."
-[HTML_BUILD.bat]: ./HTML_BUILD.bat "Batch script to convert the Alan Guide to a single-file standalone HTML5 document."
+
+[html_build.sh]: ./html_build.sh "Bash script to convert the Alan Guide to a single-file standalone HTML5 document."
 [PDF_BUILD.bat]: ./PDF_BUILD.bat "Batch script to convert the Alan Guide to PDF document."
+[pdf_build.sh]: ./pdf_build.sh "Batch script to convert the Alan Guide to PDF document."
 [TODO]: ./TODO.md "View the TODO document"
 
 [docinfo]: ./docinfo.html "View docinfo source"
@@ -226,6 +227,7 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 
 <!-- Repo Issues -->
 
+[Issue #66]: https://github.com/alan-if/alan-docs/issues/66 "Issue #66 — Shell Scripts Produce Corrupt PDFs under Bash for Windows"
 [Issue #84]: https://github.com/alan-if/alan-docs/issues/84 "Issue #84 — Use New encoding Option with include:: Directives"
 
 <!-- EOF -->
