@@ -105,7 +105,7 @@ The original files of the _Alan Beginner's Guide_ used as base document are avai
 - [`../_assets-src/original-docs/`][original-docs]
     + [`/images/`][images] — original images.
     + [`alanguide.html`][alanguide.html] — survived HTML version of original document.
-    + [`alanguide.adoc`][alanguide.adoc] — AsciiDoc port of the HTML version.
+    + [`alanguide.adoc`][alanguide.adoc] — AsciiDoc port of the HTML version, by Thomas Nilefalk, 2014.
 
 # DocBook XSL Stylesheets
 

@@ -2,6 +2,8 @@
 
 This folder contains some technical documents regarding Alan design and internals, taken from the [`doc/design/`][doc/design/] folder of the [ALAN repository] and converted to AsciiDoc.
 
+The original documents can be found in the [`../_assets-src/original-docs/`][original-docs/] folder.
+
 Most of these documents are still incomplete, but the reader might nevertheless benefit from them to better understand technical aspects about Alan and its design principles.
 
 # Folder Contents
@@ -25,7 +27,9 @@ Scripts:
 [ALAN repository]: https://github.com/alan-if/alan/ "Visit the Alan source repository on GitHub"
 [doc/design/]: https://github.com/alan-if/alan/tree/master/doc/design/
 
-<!-- project files -->
+<!-- project files and folders -->
+
+[original-docs/]: ../_assets-src/original-docs/ "Navigate to original documents folder"
 
 [actors.adoc]: ./actors-in-containers.asciidoc "View source document"
 [design.adoc]: ./design.asciidoc "View source document"

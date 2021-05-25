@@ -147,6 +147,7 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 - [`/_dev/`](./_dev) — Project developers' stuff (testing, etc.).
 - [`/alan-design/`](./alan-design) — Various WIP documents on ALAN design and internals.
 - [`/alanguide/`](./alanguide) — _Alan 3 Beginner's Guide_ ported to AsciiDoc (WIP).
+- [`/conversion/`](./conversion) — _ALAN Conversion Guide from v2 to v3_ ported to AsciiDoc (WIP).
 - [`/ideguide/`](./ideguide) — _Alan IDE Reference Guide_ v1.0, by Robert DeFord, 2018.
 - [`/manual/`](./manual/) — _The Alan Manual_ ported to AsciiDoc.
 - [`/writing/`](./writing/) — _The Alan Author's Guide_ ported to AsciiDoc (WIP).
