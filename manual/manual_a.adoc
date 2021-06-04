@@ -57,9 +57,9 @@ Here are some examples of other switches:
 
 * `-version` shows the version of the compiler
 * `-encoding` assume source files are in this encoding.
-The option should be followed with one of the keywords `iso`, `dos` or `utf-8`.
-This can be handy when you have source files written using a specific encoding.
-Many terminals and editors today use the UTF-8 encoding but historically Alan only supported ISO8859-1 for non-ASCII characters.
+The option should be followed with one of the keywords `iso` or `utf-8`.
+This is required when your source files written using an encoding which isn't Alan's default..
+Many terminals and editors today use the UTF-8 encoding but historically Alan only supported the ISO8859-1 encoding for non-ASCII characters.
 Currently the Alan compiler will default to `-encoding iso` but in the near future UTF-8 will be the default encoding for Alan source files.
 * `-charset` backwards compatible alias for `-encoding`
 * `-verbose` print compiler version and other verbose messages
