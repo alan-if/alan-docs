@@ -56,19 +56,20 @@ $ alan -help
 Here are some examples of other switches:
 
 * `-version` shows the version of the compiler
-* `-charset` select the character set of the input files.
-The option should be followed with one of the keywords `iso`, `dos` or `utf-8`
+* `-encoding` assume source files are in this encoding.
+The option should be followed with one of the keywords `iso`, `dos` or `utf-8`.
 This can be handy when you have source files written using a specific encoding.
 Many terminals and editors today use the UTF-8 encoding but historically Alan only supported ISO8859-1 for non-ASCII characters.
-Currently the Alan compiler will still default to `-charset iso` but in the near future UTF-8 will be the default encoding for Alan source files.
+Currently the Alan compiler will default to `-encoding iso` but in the near future UTF-8 will be the default encoding for Alan source files.
+* `-charset` backwards compatible alias for `-encoding`
 * `-verbose` print compiler version and other verbose messages
 * `-warnings`, `-infos` show warning (and/or informational) messages from the compilation process
 * `-import` (((including files, compiler switches))) add a directory to the search path for imported files (see <<Filenames>> for details on the `Import` statement).
-  This switch can be used multiple times, each adding a new directory
+This switch can be used multiple times, each adding a new directory
 * `-listing` direct compiler output (error messages etc.) to a file with the same base name as the input (source) file, but with the extension *.lis*
 * `-full` will produce a complete listing of the source on the screen, or if combined with the `-listing` option, in the listing file
-* `-debug` include debugging information in the produced adventure files (same as the debug option, see <<Options>>)
-* `-pack` encode and compress the text data (same as the pack option, see <<Options>>)
+* `-debug` include debugging information in the produced adventure files (same as using the `debug` option in the Alan source, see <<Options>>)
+* `-pack` encode and compress the text data (same as using the `pack` option in the Alan source, see <<Options>>)
 * `-summary` produce a summary about number of actors, size of adventure files, timing information etc.
 * `-dump` print the internal form (developers use mainly)
 
@@ -127,6 +128,7 @@ The ((interpreter)) supports the following switches:
 
 * `-h` print some help
 * `-v` verbose mode
+* `-u` use UTF-8 encoding for input and output including logs and command scripts
 * `-l` log complete game transcript to a file ('.a3t')
 * `-c` log all player commands to a file ('.a3s' for "solution")
 * `-n` no Status Line
