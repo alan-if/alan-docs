@@ -1,6 +1,6 @@
 #! /bin/bash
 # ------------------------------------------------------------------------------
-# "_dev/styles-test/html_build.sh"      v1.1.2 | 2019/09/10 | by Tristano Ajmone
+# "manual/html_build.sh"                v1.1.3 | 2021/06/10 | by Tristano Ajmone
 # ------------------------------------------------------------------------------
 # This script is released into public domain via the Unlicense:
 #     http://unlicense.org/
@@ -11,7 +11,7 @@
 #    https://github.com/asciidoctor/asciidoctor
 # ------------------------------------------------------------------------------
 echo "=============================================================================="
-echo "Converting all style tests to standalone PDF documents..."
+echo "Converting The Alan Manual to a Standalone HTML Document..."
 echo "=============================================================================="
 
 asciidoctor \
