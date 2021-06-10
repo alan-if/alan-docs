@@ -188,7 +188,7 @@ To make this possible, the default messages output by the interpreter may be gen
 It is completely possible to write in other languages, but then you must customize all the message texts.
 See <<Run-Time Messages>>, <<Input Response Messages>>, for a complete list of such messages.
 
-The Alan compiler and interpreter will always allow multinational (((multinational characters))) 8-bit characters as input and the default messages are generated for 8-bit ((character sets)), internally representing national characters according to the ISO multinational character set (ISO8859-1) requiring 8 bits.
+The Alan compiler and interpreter will always allow multinational (((multinational characters))) 8-bit characters as input and the default messages are generated for 8-bit ((character sets)), internally representing national characters according to the ISO multinational character set (ISO-8859-1) requiring 8 bits.
 On output, this is converted to the native character set of the machine (whenever possible).
 This means that portability between platforms should be good even for text containing multinational (non-ASCII) characters.
 
