@@ -37,11 +37,40 @@ The option `-help` will give a brief help on other options to the compiler.
 
 The primary output from the compiler is an adventure code file *_adventure_.a3c*.
 
+// @NOTE: "Its content will be compiled into the adventure code file"
+//        maybe use "into the adventure storyfile" instead? the term is well
+//        known among IF players and authors alike, whereas "code file" is
+//        a bit vague.
+
 An identifying file, *_adventure_.ifid*, is also produced.
-This file contains a unique identification of your game for bibliographical purposes.
-The content of it will be compiled into the adventure code file, which makes your game identifiable by electronic means.
-As long as this file exist the same identification (IFID) will be used.
+This is a text file containing a unique identification string of your game, for bibliographical purposes; you can open it with a text editor, in case you're curious.
+Its content will be compiled into the adventure code file, which makes your game identifiable by electronic means.
+
+As long as this file exists, the same identification (IFID) will be used.
 If it does not exist, a new one will automatically be generated.
+
+// @TODO: Here we should add some guidelines regarding the use or substitution
+//        of and adventure's `.ifid` file.
+//
+//        QUESTION: If a user has published an adventure (v1) and then updates
+//        it (as it often happens with adventures that are submitted to
+//        contents, which are later on updated to fix bugs and typos), should
+//        the same IFID be reused, or a new one should be created?
+//        What are the Babel IF guidelines regarding this?
+//
+//        With books ISBN, the identifier is divided into segments, so the
+//        paperback and softcover edition only vary in their final segment, and
+//        updated version follow a similar line, which means that the core
+//        unique ID remains the same. But IFIDs are different, for they are not
+//        assigned by an authority but generated via algorithms, so every new
+//        IFID is unrelated to the previous one.
+//
+//        We should inform the reader on whether he/she should reuse the same
+//        IFID in updated version of the same adventure, and whether he/she
+//        should distribute the `.ifid` file with the adventure sources, and
+//        advise him/her to preserve a copy of the file, and how to recover the
+//        IFID from the storyfile (via an hex editor) in case the file went
+//        lost.
 
 == Compiler Switches
 
@@ -59,7 +88,7 @@ Here are some examples of other switches:
 * `-encoding` assume source files are in this encoding.
 The option should be followed with one of the keywords `iso` or `utf-8`.
 This is required when your source files written using an encoding which isn't Alan's default..
-Many terminals and editors today use the UTF-8 encoding but historically Alan only supported the ISO8859-1 encoding for non-ASCII characters.
+Many terminals and editors today use the UTF-8 encoding but historically Alan only supported the ISO-8859-1 encoding for non-ASCII characters.
 Currently the Alan compiler will default to `-encoding iso` but in the near future UTF-8 will be the default encoding for Alan source files.
 * `-charset` backwards compatible alias for `-encoding`
 * `-verbose` print compiler version and other verbose messages
@@ -70,32 +99,42 @@ This switch can be used multiple times, each adding a new directory
 * `-full` will produce a complete listing of the source on the screen, or if combined with the `-listing` option, in the listing file
 * `-debug` include debugging information in the produced adventure files (same as using the `debug` option in the Alan source, see <<Options>>)
 * `-pack` encode and compress the text data (same as using the `pack` option in the Alan source, see <<Options>>)
-* `-summary` produce a summary about number of actors, size of adventure files, timing information etc.
+* `-summary` produce a summary about number of actors, size of adventure files, timing information, etc.
 * `-dump` print the internal form (developers use mainly)
 
 Giving an extra hyphen before the option reverses its meaning (where appropriate), e.g. `--warnings` means don't show warnings.
 Switches may be abbreviated as long as they are unambiguous.
 
-== Encodings and character sets
+== Encodings and Character Sets
 
 If you are interested in writing adventures in anything other than English, then this section is important to you.
-Else you can continue to live in ignorance of the multitude of other languages that need to be supported by computer programs these days, and skip to the next section.
+Else you can continue to live in oblivion of the multitude of other languages that need to be supported by computer programs these days, and skip to the next section.
 
-Alan uses a single byte character encoding known as ISO8859-1 internally and in game files.
-This makes game files completely portable across various platforms and still able to support most of the glyphs ("characters") of most Western languages.
-Historically though, different operating systems and environments have used different encodings for text files, so when you created Alan source code the files were encoded differently depeding on the platform (mac, dos, unix, windows, ...).
+Alan uses a single byte character encoding known as ISO-8859-1, both internally and in game files.
+This makes game files completely portable across various platforms and still able to support most of the glyphs ("`characters`") of most Western languages.
+Historically though, different operating systems and environments have used different encodings for text files, so when you created Alan source code the files were encoded differently depending on the platform (Mac, DOS, Unix, Windows, ...).
 
-There is (still) no standardized way to deduce in which encoding a text file is, so in an attempt to handle "national characters" in the game source (particularly in Swedish), the `-charset` option was deviced.
-Using that option an author could indicate to the compiler how to interpret, and possibly convert, the characters in the source file(s) created on another platform.
+There is (still) no standardized way to deduce in which encoding a text file is, so in an attempt to handle "`national characters`" in the game source (particularly in Swedish), the `-charset` option was devised.
+Using this option an author could indicate to the compiler how to interpret, and possibly convert, the characters in the source file(s) created on another platform.
 
 This has changed and an encoding called UTF-8 is becoming almost the standard encoding for text on many platforms, including Windows.
 
-The Alan compiler is capable to read and convert source files in UTF-8 (which probably is the default when you create a text file these days).
-You can instruct the compiler to assume UTF-8 encoding using the `-charset utf-8` option, but if the text file is encoded using a BOM, a special, invisible, marker in the beginning of the file, the Alan compiler will automatically assume that file is encoded using UTF-8.
+// @FIXME: This paragraph might add more confusion than clarification!
+//         Someone with no encoding background might infer that the BOM is a
+//         substitute for UTF-8 encoding. We should clarify that the BOM is
+//         only available in Unicode files, and the its an optional addition to
+//         UTF-8 encoding (i.e. UTF-8 + BOM). Unfortunately, the whole topic is
+//         quite complex, and while we can't offer a tutorial here, we should
+//         at least strive to be precise with our terminology, to make it
+//         simpler for readers who will dig the topic further.
+//         Adding a few external links and footnotes wouldn't hurt either!
+
+The Alan compiler is capable of reading and converting source files in UTF-8 (which probably is the default when you create a text file these days).
+You can instruct the compiler to assume UTF-8 encoding using the `-charset utf-8` option, but if the text file is encoded using a BOM (a special, invisible marker at the beginning of the file) the Alan compiler will automatically assume that the file is encoded in UTF-8.
 
 This should make the creation and editing of Alan source files a more streamlined experience than before.
 
-See <<Compiler Switches>> and <<Interpreter Switches>> for details in how to control how the compiler and interpreter interpret and log input and output.
+See <<Compiler Switches>> and <<Interpreter Switches>> for ways to control how the compiler and interpreter interpret encoding of source files and log input and output.
 
 == Running the Adventure
 
@@ -107,9 +146,9 @@ For example:
 $ arun adventure
 ................................................................................
 
-No extension on the adventure name is allowed, the *.a3c* and, if applicable, *.a3r* files are found automatically from that name.
+No extension on the adventure name is allowed, the *.a3c* and, if applicable, *.a3r* files are inferred and found automatically from the base name.
 
-On platforms with graphical user interfaces to which *arun* has been natively ported will allow double clicking a game file to start a game, or double clicking the interpreter application icon, in which case a dialogue requesting a game will appear.
+On platforms with graphical user interfaces to which *arun* has been natively ported, you can double click on a game file to start a game, or double click on the interpreter application icon, in which case a dialogue requesting a game file will appear.
 
 If the interpreter program is copied to a different name, it will automatically look for a game file with the same name.
 Any parameters or switches will then be ignored.
@@ -129,8 +168,8 @@ The ((interpreter)) supports the following switches:
 * `-h` print some help
 * `-v` verbose mode
 * `-u` use UTF-8 encoding for input and output including logs and command scripts
-* `-l` log complete game transcript to a file ('.a3t')
-* `-c` log all player commands to a file ('.a3s' for "solution")
+* `-l` log complete game transcript to a file ('`.a3t`')
+* `-c` log all player commands to a file ('`.a3s`' for "`solution`")
 * `-n` no Status Line
 * `-p` don't break the output for paging
 * `-d` print the version of interpreter and enter debug mode
@@ -139,11 +178,19 @@ The ((interpreter)) supports the following switches:
 * `-r` make regression test easier (don't timestamp, page break, randomize...)
 * `-version` print version of the interpreter, the version and IFID of the game, if given, and then exit
 
+// @NOTE: What does "the version and IFID of the game, if given" mean exactly?
+//     *  The IFID is always generated, unless the game was created with a old
+//        version of ALAN that didn't support IFID -- but in this case we
+//        should mention this, either in a footnote or a NOTE admonition!
+//     *  What does the version of the game game refer to? There is no built-in
+//        mechanism to specify an adventure version, is there?
+
+
 Debugging support is described in <<Debugging>>.
 
 === Logging options
 
-The logging options, -l and -c, will each create a new file with a name that is the combination of the game name, a time stamp and the appropriate extension in the current directory and write the log in it.
+The logging options, `-l` and `-c`, will each create a new file with a name that is the combination of the game name, a time stamp and the appropriate extension in the current directory, and write the log in it.
 The options can be used simultaneously and will then create two files with differing extensions for the two types of logs.
 For example
 
@@ -153,7 +200,7 @@ $ arun -c adventure
 ................................................................................
 
 This will give you a file named `adventure<timestamp>.a3s` which will contain all commands the player entered.
-It may later be used as the so called "solution file" which can be followed manually to "replay" that session, or even used as a command script that can be feed to the interpreter using
+It may later be used as the so called "`solution file`" which can be followed manually to "`replay`" that session, or even used as a command script that can be feed to the interpreter using
 
 [example,role="gametranscript"]
 ================================================================================
@@ -168,21 +215,20 @@ $ arun -l adventure
 ................................................................................
 
 will log the complete game transcript to a file named `adventure<timestamp>.a3t`.
-This option can be useful when collecting information from playtesters to analyse their progress e.g. to improve the game.
+This option can be useful when collecting information from playtesters to analyse their progress, e.g. to improve the game.
 
 
-[NOTE]
+[TIP]
 ================================================================================
-Particularly if you are collecting information from beta testers the timestamp will help collecting many such files in the same directory for analysis.
-You can avoid the timestamp in the filenames using the `-r` switch, e.g. to simplify scripting.
-But note that that will overwrite the same file for each run.
+When you're gathering feedback from beta testers, the timestamp will help collecting many such files in the same directory for analysis.
+You can avoid the timestamp in filenames via the `-r` switch, e.g. to simplify scripting; but beware that doing so will overwrite the same file at each run.
 ================================================================================
 
 
 
-[NOTE]
+[WARNING]
 ================================================================================
-Some interpreters, particularly the Glk-based ones, will have opinions on the names of files and may not follow this standardised extensions for command scripts or transcripts.
+Some interpreters, particularly the Glk-based ones, will have their own file naming conventions, and may therefore not abide to these standardised extensions for command scripts or transcripts.
 ================================================================================
 
 
