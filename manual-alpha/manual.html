@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.13">
+<meta name="generator" content="Asciidoctor 2.0.15">
 <meta name="description" content="<strong>The ALAN IF Manual</strong>&#8201;&#8212;&#8201;The official reference manual for the ALAN Adventure programming language for creating Interactive Fiction text-adventures.">
 <meta name="keywords" content="alan, if, interactive fiction, game, text adventures, programming">
 <title>The ALAN Adventure Language Reference Manual</title>
@@ -445,8 +445,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Thomas Nilefalk</span><br>
 <span id="email" class="email"><a href="mailto:thomas@alanif.se">thomas@alanif.se</a></span><br>
-<span id="revnumber">alan Beta8-alpha,</span>
-<span id="revdate">2021-05-07</span>
+<span id="revnumber">alan Beta8-snapshot,</span>
+<span id="revdate">June 10, 2021</span>
+<br><span id="revremark">New AsciiDoc Reprint</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -794,7 +795,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_compiling">A.1. Compiling</a></li>
 <li><a href="#_compiler_switches">A.2. Compiler Switches</a></li>
-<li><a href="#_encodings_and_character_sets">A.3. Encodings and character sets</a></li>
+<li><a href="#_encodings_and_character_sets">A.3. Encodings and Character Sets</a></li>
 <li><a href="#_running_the_adventure">A.4. Running the Adventure</a></li>
 <li><a href="#_interpreter_switches">A.5. Interpreter Switches</a>
 <ul class="sectlevel3">
@@ -857,9 +858,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><em>The Alan Manual</em> has been ported to AsciiDoc by <a href="https://github.com/tajmone" title="Visit Tristano Ajmone&#8217;s profile on GitHub" target="_blank" rel="noopener">Tristano Ajmone</a>.
-This makes it easy to publish it in HTML, PDF and other formats.
-It also features contents updates and many improvements, like syntax highlighting of Alan code examples.<br>
+<p>This is the first public release of the new version of the <em>ALAN Manual</em>, ported to AsciiDoc by <a href="https://github.com/tajmone" title="Visit Tristano Ajmone&#8217;s profile on GitHub" target="_blank" rel="noopener">Tristano Ajmone</a>.
+The new edition is now availble in HTML and PDF format, featuring contents updates and many improvements, like syntax highlighting of Alan code examples.<br>
 This document is subjected to the <a href="#_copying_conditions">Artistic License 2.0</a> terms.</p>
 </div>
 <div class="imageblock text-center">
@@ -2352,7 +2352,7 @@ It is completely possible to write in other languages, but then you must customi
 See <a href="#_run_time_messages">Appendix C</a>, <a href="#_input_response_messages">Sect. C.1</a>, for a complete list of such messages.</p>
 </div>
 <div class="paragraph">
-<p>The Alan compiler and interpreter will always allow multinational  8-bit characters as input and the default messages are generated for 8-bit character sets, internally representing national characters according to the ISO multinational character set (ISO8859-1) requiring 8 bits.
+<p>The Alan compiler and interpreter will always allow multinational  8-bit characters as input and the default messages are generated for 8-bit character sets, internally representing national characters according to the ISO multinational character set (ISO-8859-1) requiring 8 bits.
 On output, this is converted to the native character set of the machine (whenever possible).
 This means that portability between platforms should be good even for text containing multinational (non-ASCII) characters.</p>
 </div>
@@ -10123,9 +10123,11 @@ The option <code>-help</code> will give a brief help on other options to the com
 </div>
 <div class="paragraph">
 <p>An identifying file, <strong><em>adventure</em>.ifid</strong>, is also produced.
-This file contains a unique identification of your game for bibliographical purposes.
-The content of it will be compiled into the adventure code file, which makes your game identifiable by electronic means.
-As long as this file exist the same identification (IFID) will be used.
+This is a text file containing a unique identification string of your game, for bibliographical purposes; you can open it with a text editor, in case you&#8217;re curious.
+Its content will be compiled into the adventure code file, which makes your game identifiable by electronic means.</p>
+</div>
+<div class="paragraph">
+<p>As long as this file exists, the same identification (IFID) will be used.
 If it does not exist, a new one will automatically be generated.</p>
 </div>
 </div>
@@ -10152,7 +10154,7 @@ If you run the compiler from a command line you can get information about which 
 <p><code>-encoding</code> assume source files are in this encoding.
 The option should be followed with one of the keywords <code>iso</code> or <code>utf-8</code>.
 This is required when your source files written using an encoding which isn&#8217;t Alan&#8217;s default..
-Many terminals and editors today use the UTF-8 encoding but historically Alan only supported the ISO8859-1 encoding for non-ASCII characters.
+Many terminals and editors today use the UTF-8 encoding but historically Alan only supported the ISO-8859-1 encoding for non-ASCII characters.
 Currently the Alan compiler will default to <code>-encoding iso</code> but in the near future UTF-8 will be the default encoding for Alan source files.</p>
 </li>
 <li>
@@ -10181,7 +10183,7 @@ This switch can be used multiple times, each adding a new directory</p>
 <p><code>-pack</code> encode and compress the text data (same as using the <code>pack</code> option in the Alan source, see <a href="#_options">Sect. 3.3</a>)</p>
 </li>
 <li>
-<p><code>-summary</code> produce a summary about number of actors, size of adventure files, timing information etc.</p>
+<p><code>-summary</code> produce a summary about number of actors, size of adventure files, timing information, etc.</p>
 </li>
 <li>
 <p><code>-dump</code> print the internal form (developers use mainly)</p>
@@ -10194,32 +10196,32 @@ Switches may be abbreviated as long as they are unambiguous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_encodings_and_character_sets"><a class="anchor" href="#_encodings_and_character_sets"></a>A.3. Encodings and character sets</h3>
+<h3 id="_encodings_and_character_sets"><a class="anchor" href="#_encodings_and_character_sets"></a>A.3. Encodings and Character Sets</h3>
 <div class="paragraph">
 <p>If you are interested in writing adventures in anything other than English, then this section is important to you.
-Else you can continue to live in ignorance of the multitude of other languages that need to be supported by computer programs these days, and skip to the next section.</p>
+Else you can continue to live in oblivion of the multitude of other languages that need to be supported by computer programs these days, and skip to the next section.</p>
 </div>
 <div class="paragraph">
-<p>Alan uses a single byte character encoding known as ISO8859-1 internally and in game files.
-This makes game files completely portable across various platforms and still able to support most of the glyphs ("characters") of most Western languages.
-Historically though, different operating systems and environments have used different encodings for text files, so when you created Alan source code the files were encoded differently depeding on the platform (mac, dos, unix, windows, &#8230;&#8203;).</p>
+<p>Alan uses a single byte character encoding known as ISO-8859-1, both internally and in game files.
+This makes game files completely portable across various platforms and still able to support most of the glyphs (&#8220;characters&#8221;) of most Western languages.
+Historically though, different operating systems and environments have used different encodings for text files, so when you created Alan source code the files were encoded differently depending on the platform (Mac, DOS, Unix, Windows, &#8230;&#8203;).</p>
 </div>
 <div class="paragraph">
-<p>There is (still) no standardized way to deduce in which encoding a text file is, so in an attempt to handle "national characters" in the game source (particularly in Swedish), the <code>-charset</code> option was deviced.
-Using that option an author could indicate to the compiler how to interpret, and possibly convert, the characters in the source file(s) created on another platform.</p>
+<p>There is (still) no standardized way to deduce in which encoding a text file is, so in an attempt to handle &#8220;national characters&#8221; in the game source (particularly in Swedish), the <code>-charset</code> option was devised.
+Using this option an author could indicate to the compiler how to interpret, and possibly convert, the characters in the source file(s) created on another platform.</p>
 </div>
 <div class="paragraph">
 <p>This has changed and an encoding called UTF-8 is becoming almost the standard encoding for text on many platforms, including Windows.</p>
 </div>
 <div class="paragraph">
-<p>The Alan compiler is capable to read and convert source files in UTF-8 (which probably is the default when you create a text file these days).
-You can instruct the compiler to assume UTF-8 encoding using the <code>-charset utf-8</code> option, but if the text file is encoded using a BOM, a special, invisible, marker in the beginning of the file, the Alan compiler will automatically assume that file is encoded using UTF-8.</p>
+<p>The Alan compiler is capable of reading and converting source files in UTF-8 (which probably is the default when you create a text file these days).
+You can instruct the compiler to assume UTF-8 encoding using the <code>-charset utf-8</code> option, but if the text file is encoded using a BOM (a special, invisible marker at the beginning of the file) the Alan compiler will automatically assume that the file is encoded in UTF-8.</p>
 </div>
 <div class="paragraph">
 <p>This should make the creation and editing of Alan source files a more streamlined experience than before.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="#_compiler_switches">Sect. A.2</a> and <a href="#_interpreter_switches">Sect. A.5</a> for details in how to control how the compiler and interpreter interpret and log input and output.</p>
+<p>See <a href="#_compiler_switches">Sect. A.2</a> and <a href="#_interpreter_switches">Sect. A.5</a> for ways to control how the compiler and interpreter interpret encoding of source files and log input and output.</p>
 </div>
 </div>
 <div class="sect2">
@@ -10234,10 +10236,10 @@ For example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>No extension on the adventure name is allowed, the <strong>.a3c</strong> and, if applicable, <strong>.a3r</strong> files are found automatically from that name.</p>
+<p>No extension on the adventure name is allowed, the <strong>.a3c</strong> and, if applicable, <strong>.a3r</strong> files are inferred and found automatically from the base name.</p>
 </div>
 <div class="paragraph">
-<p>On platforms with graphical user interfaces to which <strong>arun</strong> has been natively ported will allow double clicking a game file to start a game, or double clicking the interpreter application icon, in which case a dialogue requesting a game will appear.</p>
+<p>On platforms with graphical user interfaces to which <strong>arun</strong> has been natively ported, you can double click on a game file to start a game, or double click on the interpreter application icon, in which case a dialogue requesting a game file will appear.</p>
 </div>
 <div class="paragraph">
 <p>If the interpreter program is copied to a different name, it will automatically look for a game file with the same name.
@@ -10269,10 +10271,10 @@ The interpreter supports the following switches:</p>
 <p><code>-u</code> use UTF-8 encoding for input and output including logs and command scripts</p>
 </li>
 <li>
-<p><code>-l</code> log complete game transcript to a file ('.a3t')</p>
+<p><code>-l</code> log complete game transcript to a file (&#8216;.a3t&#8217;)</p>
 </li>
 <li>
-<p><code>-c</code> log all player commands to a file ('.a3s' for "solution")</p>
+<p><code>-c</code> log all player commands to a file (&#8216;.a3s&#8217; for &#8220;solution&#8221;)</p>
 </li>
 <li>
 <p><code>-n</code> no Status Line</p>
@@ -10303,7 +10305,7 @@ The interpreter supports the following switches:</p>
 <div class="sect3">
 <h4 id="_logging_options"><a class="anchor" href="#_logging_options"></a>Logging options</h4>
 <div class="paragraph">
-<p>The logging options, -l and -c, will each create a new file with a name that is the combination of the game name, a time stamp and the appropriate extension in the current directory and write the log in it.
+<p>The logging options, <code>-l</code> and <code>-c</code>, will each create a new file with a name that is the combination of the game name, a time stamp and the appropriate extension in the current directory, and write the log in it.
 The options can be used simultaneously and will then create two files with differing extensions for the two types of logs.
 For example</p>
 </div>
@@ -10314,7 +10316,7 @@ For example</p>
 </div>
 <div class="paragraph">
 <p>This will give you a file named <code>adventure&lt;timestamp&gt;.a3s</code> which will contain all commands the player entered.
-It may later be used as the so called "solution file" which can be followed manually to "replay" that session, or even used as a command script that can be feed to the interpreter using</p>
+It may later be used as the so called &#8220;solution file&#8221; which can be followed manually to &#8220;replay&#8221; that session, or even used as a command script that can be feed to the interpreter using</p>
 </div>
 <div class="exampleblock gametranscript">
 <div class="content">
@@ -10333,33 +10335,32 @@ It may later be used as the so called "solution file" which can be followed manu
 </div>
 <div class="paragraph">
 <p>will log the complete game transcript to a file named <code>adventure&lt;timestamp&gt;.a3t</code>.
-This option can be useful when collecting information from playtesters to analyse their progress e.g. to improve the game.</p>
+This option can be useful when collecting information from playtesters to analyse their progress, e.g. to improve the game.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Particularly if you are collecting information from beta testers the timestamp will help collecting many such files in the same directory for analysis.
-You can avoid the timestamp in the filenames using the <code>-r</code> switch, e.g. to simplify scripting.
-But note that that will overwrite the same file for each run.</p>
+<p>When you&#8217;re gathering feedback from beta testers, the timestamp will help collecting many such files in the same directory for analysis.
+You can avoid the timestamp in filenames via the <code>-r</code> switch, e.g. to simplify scripting; but beware that doing so will overwrite the same file at each run.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Some interpreters, particularly the Glk-based ones, will have opinions on the names of files and may not follow this standardised extensions for command scripts or transcripts.</p>
+<p>Some interpreters, particularly the Glk-based ones, will have their own file naming conventions, and may therefore not abide to these standardised extensions for command scripts or transcripts.</p>
 </div>
 </td>
 </tr>
@@ -13159,7 +13160,7 @@ For more info on stropping, see <a href="https://en.wikipedia.org/wiki/Stropping
 </div>
 <div id="footer">
 <div id="footer-text">
-ALAN Beta8-alpha<br>
+ALAN Beta8-snapshot<br>
 </div>
 </div>
 <script src="../_assets/hjs/highlight.min.js"></script>
