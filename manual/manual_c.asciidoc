@@ -38,6 +38,10 @@ The `Message` statement allows any statements, not only strings, and supplies dy
 See <<MESSAGEs>> for details.
 ================================================================================
 
+////
+MESSAGES LAST UPDATED 2021/07/19 by comparing them with ALAN 3beta7 source file:
+https://github.com/alan-if/alan/blob/master/compiler/msg.c
+////
 
 ............................................
 UNKNOWN_WORD : "I don't know the word '$1'."
@@ -149,10 +153,10 @@ For each message, *parameter1* is a reference to the alternative instance.
 --
 
 
-...................................................
-WHICH_PRONOUN_START : "I don't know if you by '$1'"
-WHICH_PRONOUN_FIRST : "mean $+1"
-...................................................
+...........................................................
+WHICH_PRONOUN_START : "I don't know what you mean by '$1',"
+WHICH_PRONOUN_FIRST : "$+1"
+...........................................................
 
 [role="commentary"]
 --
@@ -190,9 +194,9 @@ A directional word was used but there is no exit in that direction.
 --
 
 
-.............................
-CANT0 : "You can't do that.",
-.............................
+............................
+CANT0 : "You can't do that."
+............................
 
 [role="commentary"]
 --
@@ -205,7 +209,7 @@ This may be a situation overlooked by the author or the player may be trying to 
 SEE_START : "There is $01"
 SEE_COMMA : ", $01"
 SEE_AND : "and $01"
-SEE_END : "here. "
+SEE_END : "here."
 ..........................
 
 // @CHANGED STYLES: Underline --> Bold
@@ -276,9 +280,9 @@ The default messages for empty ``container``s that are ``actor``s.
 --
 
 
-....................................................
-HAVE_SCORED : "You have scored $1 points out of $2."
-....................................................
+................................................................
+HAVE_SCORED : "You have scored $1 points out of $2 in $3 moves."
+................................................................
 
 [role="commentary"]
 --
@@ -287,6 +291,8 @@ This is the default message for presenting scores, if you use the `Score` statem
 *parameter1* is an integer containing the current score.
 
 *parameter2* is an integer containing the maximum score possible.
+
+*parameter3* is an integer containing the elapsed turns since the game started.
 --
 
 
@@ -323,9 +329,9 @@ The name used in the previous `Save` is used as a default.
 --
 
 
-.............................................................
-SAVE_OVERWRITE : "That file already exists, overwrite (y) ? "
-.............................................................
+...........................................................................
+SAVE_OVERWRITE : "That file already exists, overwrite (RETURN confirms) ? "
+...........................................................................
 
 [role="commentary"]
 --
@@ -354,9 +360,9 @@ The previously used file name is used as the default.
 --
 
 
-.....................................................
-SAVE_MISSING : "Sorry, could not open the save file."
-.....................................................
+......................................................
+SAVE_MISSING : "Sorry, could not open that save file."
+......................................................
 
 [role="commentary"]
 --
@@ -404,9 +410,9 @@ This is the confirmation prompt, e.g. before overwriting an already existing sav
 --
 
 
-..............................................................
-QUIT_ACTION : "Do you want to RESTART, RESTORE, QUIT or UNDO?"
-..............................................................
+................................................................
+QUIT_ACTION : "Do you want to UNDO, RESTART, RESTORE or QUIT ? "
+................................................................
 
 [role="commentary"]
 --
@@ -433,9 +439,9 @@ Note that since only commands that change any state in the game world are logged
 --
 
 
-......................................
-NO_UNDO : "No further undo available."
-......................................
+............................
+NO_UNDO : "Nothing to undo."
+............................
 
 [role="commentary"]
 --
@@ -443,10 +449,10 @@ If the player tries to undo an action and no further actions where recorded (bec
 --
 
 
-..................................................
-WHICH_PRONOUN_START : "I don't know if you by '$1'
-WHICH_PRONOUN_FIRST : "mean $+1"
-..................................................
+...........................................................
+WHICH_PRONOUN_START : "I don't know what you mean by '$1',"
+WHICH_PRONOUN_FIRST : "$+1"
+...........................................................
 
 [role="commentary"]
 --
