@@ -1400,7 +1400,7 @@ article_or_form = 'ARTICLE' {statement}
                 | 'FORM' {statement}
 --------------------------------------------------------------------------------
 
-The optional `Definite`, `Indefinite` and `Negative` ((``Article``s)) and ``Form``s can be used to define how an instance is printed in its indefinite, definite and negative forms.
+The optional `Definite`, `Indefinite` and `Negative` ((``Article``s)) and ``Form``s can be used to define how an instance is printed in its definite, indefinite and negative forms.
 There are two cases for each form, either as an article prepended to the short display form of the instance (its names or `Mentioned` clause), or a complete form replacing the normal name printing.
 
 Indefinite forms are used in e.g. inventory listings and when presenting instances that have no `Description` clause.
@@ -1429,14 +1429,21 @@ I can't see any door here.
 
 [NOTE]
 ================================================================================
-The predefined base class `entity` defines the default definite, indefinite and negative article to be "`the`", "a" and "`any`" (if using English).
-You may override this by using an `Add` statement.
+The predefined base class `entity` defines the default definite, indefinite and negative article to be "`the`", "`a`" and "`any`" (if using English).
+You may override these via an `Add` statement.
 ================================================================================
 
 
 
 
 ==== ARTICLE
+
+// @tajmone: The following paragraph is a bit vague, it's not clear who's
+//    performing execution of the `Article` statements (ARun, or the author
+//    via the cdoe?) or the "normal printing of the instance".
+//    If it was rephrased in a manner which makes it clear who's doing all this,
+//    it would be much more easy to read an understand. E.g.:
+//        "To print the indefinite ... form of an instance ... ARun simply ..."
 
 Printing the indefinite (or definite or negative) form of an instance having an indefinite (or definite or negative) article is simply performed by executing the `Article` statements and then the normal printing of the instance, usually the first set of names.
 
@@ -1462,7 +1469,7 @@ You are carrying an owl.
 
 
 
-An article is not used when the instance is displayed when acting on multiple objects, as in:
+An article is not used when the instance is displayed as the result of acting on multiple objects, e.g.:
 
 
 [example,role="gametranscript"]
@@ -1509,19 +1516,34 @@ There is some money here.
 
 ==== FORM
 
+// @REPHRASE the paragraph below...
+
 If an instance has a `Definite` (`Indefinite` or `Negative`) `Form`, either through declaration or inheritance, the printing of its definite, indefinite or negative form will be by executing the corresponding statements only; no article declaration is involved.
 In this way, the author gets complete control over the spelling and inflection of the instance name in definite, indefinite or negative forms.
 Some human languages will probably require more use of the `Form` form (like Swedish), and some less (like English).
 The forms are particularly useful if the natural language used, have different forms of the noun itself in definite an indefinite forms.
 An example is the Nordic languages, which use definite suffixes instead of articles.
 
-The `Article` and `Form` are inherited as one property.
-That means that an instance may override its inherited form using either of the forms regardless of how its parent defined the form.
+
+// @ADD EXAMPLE! Thoni, could you provide a real example of the above mentioned
+//    use cases, from Sweedish? Possibly, by adding English translation in the
+//    side comments of the ALAN code.
+
+
+Both `Article` and `Form` are inherited as a single property.
+That means that an instance may override its inherited form using either of the two forms, regardless of how its parent defined the form.
 
 
 
 ==== Printing
 
+// @FIXME: Too many 'forms' in the next paragraph!
+//         The reader can't track which form refers to what.
+//         In "various forms of the `Say` statement", does the word 'form' have
+//         any relation to the forms as in ARITCLE/FORM, or is it just a way
+//         to indicate the different uses of SAY?
+//         I'm lost! It's a linguistic maze, a formless labyrinth where I feel
+//         lost and uninformed!
 
 You can use various forms of the `Say` statement (see <<SAY Statement>>) to choose in which form the instance will be presented.
 In addition, the embedded parameter references allow selection of the form (<<String Statement>>).
