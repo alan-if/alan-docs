@@ -449,18 +449,6 @@ If the player tries to undo an action and no further actions where recorded (bec
 --
 
 
-...........................................................
-WHICH_PRONOUN_START : "I don't know what you mean by '$1',"
-WHICH_PRONOUN_FIRST : "$+1"
-...........................................................
-
-[role="commentary"]
---
-These messages are presented when the player used a pronoun which was ambiguous.
-The alternatives are listed using the `WHICH_PRONOUN_FIRST` followed by the message(s) `WHICH_ONE_COMMA` (if there were more than two alternatives), and finally by `WHICH_ONE_OR`.
---
-
-
 ...............................................
 IMPOSSIBLE_WITH : "That's impossible with $+1."
 ...............................................
