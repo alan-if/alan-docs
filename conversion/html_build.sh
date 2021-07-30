@@ -1,16 +1,22 @@
 #!/bin/bash
 
+highlightDir=$(cd ../_assets/hl/; pwd)
+
+echo "========================================================================"
+echo "Converting the \"ALAN Conversion Guide\" to a standalone HTML5 document..."
+echo "========================================================================"
 asciidoctor \
 	--safe-mode unsafe \
 	--verbose \
+	--template-dir $highlightDir/haml \
+	--require $highlightDir/adoc/highlight-treeprocessor_mod.rb \
+	-a source-highlighter=highlight \
+	-a docinfodir=$highlightDir/adoc/ \
+	-a docinfo=shared-head \
 	-a data-uri \
 	-a experimental \
 	-a icons=font \
 	-a reproducible \
 	-a sectanchors \
 	-a toc=left \
-	--template-dir ../$PathFix/_assets/hl/haml \
-	--require ../_assets/hl/adoc/highlight-treeprocessor_mod.rb \
-	-a source-highlighter=highlight \
-	-a docinfo=shared-head \
 	conversion.asciidoc

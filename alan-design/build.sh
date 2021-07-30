@@ -6,6 +6,9 @@
 
 rougeDir=$(cd ../_assets/rouge/; pwd)
 
+echo "=================================================================="
+echo "Converting the ALAN Design docs to a standalone HTML5 documents..."
+echo "=================================================================="
 for f in *.asciidoc
 do
 	asciidoctor \

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# "build.sh"                            v1.1.0 | 2021/07/30 | by Tristano Ajmone
+# "build.sh"                            v1.2.0 | 2021/07/31 | by Tristano Ajmone
 # ------------------------------------------------------------------------------
 # This script requires Dart Sass to be installed on the system:
 #      https://github.com/sass/dart-sass
@@ -9,7 +9,7 @@
 #      https://chocolatey.org/packages/sass
 # ------------------------------------------------------------------------------
 
-rm -f *.css docinfo*.html
+rm -f *.css
 
 ## Build CSS Stylesheets
 ########################
@@ -20,37 +20,23 @@ sass rouge.scss rouge.css
 ## Create docinfo Files from CSS
 ################################
 
-echo "<style>"    >  docinfo_HL.html
-cat highlight.css >> docinfo_HL.html
-echo "</style>"   >> docinfo_HL.html
+docinfo_Highlight="../../_assets/hl/adoc/docinfo.html"
+docinfo_Rouge="../../_assets/rouge/docinfo.html"
+
+rm -f $docinfo_Highlight $docinfo_Rouge
+
+echo "<style>"    >  $docinfo_Highlight
+cat highlight.css >> $docinfo_Highlight
+echo "</style>"   >> $docinfo_Highlight
 
 
-echo "<style>"    >  docinfo_Rouge.html
-cat rouge.css     >> docinfo_Rouge.html
-echo "</style>"   >> docinfo_Rouge.html
+echo "<style>"    >  $docinfo_Rouge
+cat rouge.css     >> $docinfo_Rouge
+echo "</style>"   >> $docinfo_Rouge
 
 
 if [[ $(uname -s) == MINGW* ]];then
-	unix2dos docinfo*.html
+	unix2dos $docinfo_Highlight
+	unix2dos $docinfo_Rouge
 fi
 
-## Deploy docinfo Files to Dest Folders
-#######################################
-
-# docinfo files can't be used via relative paths!
-
-# =========
-# Highlight
-# =========
-
-DestDirs="alanguide conversion"
-for folder in ${DestDirs[*]} ; do
-	echo "../../$folder/docinfo.html"
-	cp docinfo_HL.html "../../$folder/docinfo.html"
-done
-
-# =====
-# Rouge
-# =====
-
-cp docinfo_Rouge.html "../../_assets/rouge/docinfo.html"
