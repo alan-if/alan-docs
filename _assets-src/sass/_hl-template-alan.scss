@@ -24,7 +24,7 @@ $HL-Font-size:      inherit !default;
 // -----------------------------------------------------------------------------
 // Default Scheme: Use Alan scheme defined in "_color-scheme.scss"
 // -----------------------------------------------------------------------------
-$HL-AlanHover:      #a09f93 !default;
+$HL-AlanHover:      #A09F93 !default;
 
 $HL-Canvas:         $GH-Whitish !default;
 $HL-Default:        $GH-Blackish !default;
@@ -48,11 +48,11 @@ $HL-Keywords3:      $GH-DarkBlu !default;  // Predefined instances ('hero')
 // Highlight Markers
 // -----------------
 // Yellow Marker (for <mark> tag):
-$HL-MarkerYellow1: #ccff00 !default; // Gradient left
-$HL-MarkerYellow2: #f5ff87 !default; // Gradient right
+$HL-MarkerYellow1: #CCFF00 !default; // Gradient left
+$HL-MarkerYellow2: #F5FF87 !default; // Gradient right
 
 // Green Marker (for <span class="green"> tag):
-$HL-MarkerGreen1: #a3ff8a !default; // Gradient left
+$HL-MarkerGreen1: #A3FF8A !default; // Gradient left
 $HL-MarkerGreen2: rgba($HL-MarkerGreen1, .5) !default; // Gradient right
 
 // -----------------------------------------------------------------------------

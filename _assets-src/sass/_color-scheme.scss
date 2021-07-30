@@ -11,7 +11,7 @@
 // Default Colors
 // --------------
 $verbatim-default-background: #FEFEFE;
-$verbatim-default-normal:     #000;
+$verbatim-default-normal:     #000000;
 
 // ---------------
 // Alan Sourcecode
@@ -20,13 +20,13 @@ $verbatim-default-normal:     #000;
 // https://github.com/highlightjs/highlight.js/blob/master/src/styles/github.css
 // Author:  (c) Vasily Polovnyov <vast@whiteants.net>
 $GH-Whitish:    #F8F8F8;
-$GH-Blackish:   #333;
-$GH-Grey:       #998;
+$GH-Blackish:   #333333;
+$GH-Grey:       #999988;
 $GH-Green:      #008080;
 $GH-DarkBlu:    #000080;
 $GH-DarkRed:    #990000;
-$GH-Orange:     #ff980b; // $p $n $i $t $a $l $v $$
-$GH-Fuchsia:    #d572f1; // $<n> $+<n> $0<n> $-<n> $!<n> $o
+$GH-Orange:     #FF980B; // $p $n $i $t $a $l $v $$
+$GH-Fuchsia:    #D572F1; // $<n> $+<n> $0<n> $-<n> $!<n> $o
 
 // ---------
 // BNF Rules

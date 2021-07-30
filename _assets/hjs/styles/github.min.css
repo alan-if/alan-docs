@@ -3,17 +3,17 @@
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  color: #000;
+  color: #000000;
   background: #FEFEFE;
 }
 
 /* HLJS Alan */
 code.hljs[data-lang=alan] {
-  color: #333;
+  color: #333333;
   background: #F8F8F8;
 }
 code.hljs[data-lang=alan] .hljs-comment {
-  color: #998;
+  color: #999988;
 }
 code.hljs[data-lang=alan] .hljs-string {
   color: #008080;
@@ -33,7 +33,7 @@ code.hljs[data-lang=bnf] {
 
 /* Alan Code Notation Mockup */
 .listingblock.alan pre {
-  color: #333;
+  color: #333333;
   background: #F8F8F8;
 }
 
