@@ -14,6 +14,7 @@ Links to the converted _Author's Guide_:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Document Status](#document-status)
+    - [Highlighter Info and Limits](#highlighter-info-and-limits)
 - [Folder Contents](#folder-contents)
     - [Manual Source Files](#manual-source-files)
     - [Conversion Scripts](#conversion-scripts)
@@ -32,6 +33,13 @@ In the meantime, anyone interested in following its development can always previ
 
 Further development of the _Author's Guide_ contents shall be done here, in AsciiDoc format, instead of the old ODT file, to simplify collaborative editing and to benefit from the shared assets of the Alan Docs project.
 
+## Highlighter Info and Limits
+
+Highlight doesn't support callouts in syntax highlighted code blocks, so don't use them!
+
+This document must use Highlight instead of Rouge because it uses [highlight marking] inside code blocks, which is currently not supported with Rouge.
+
+
 # Folder Contents
 
 The original files of the _Author's Guide_ used for the AsciiDoc conversion are available in:
@@ -49,7 +57,7 @@ The original files of the _Author's Guide_ used for the AsciiDoc conversion are 
 
 ## Conversion Scripts
 
-- [`HTML_BUILD.bat`][HTML_BUILD.bat] — batch script to create `manual.html` document (fully standalone).
+- [`html_build.sh`][html_build.sh] — bash script to create `manual.html` document (fully standalone).
 
 
 # Misc Work Notes
@@ -76,6 +84,7 @@ Although some styles were lost in the process, the final ADoc was a rather good 
                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
+[highlight marking]: https://docs.asciidoctor.org/asciidoc/latest/text/highlight/ "AsciiDoc Manual » Highlight syntax"
 
 <!-- AsciiDoctor ------------------------------------------------------------->
 
@@ -91,7 +100,7 @@ Although some styles were lost in the process, the final ADoc was a rather good 
 
 [logo]: ./alan-logo.png "Alan logo"
 
-[HTML_BUILD.bat]: ./HTML_BUILD.bat "Batch script to convert Author's Guide to a single-file standalone HTML5 document."
+[html_build.sh]: ./html_build.sh "Bash script to convert Author's Guide to a single-file standalone HTML5 document."
 
 <!-- Document Cross-References ----------------------------------------------->
 
