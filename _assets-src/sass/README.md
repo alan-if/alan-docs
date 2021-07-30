@@ -10,7 +10,9 @@ Source [Sass] SCSS files to build CSS stylesheets used in this project.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [Introduction](#introduction)
+- [About](#about)
+    - [Highlight vs highlight.js](#highlight-vs-highlightjs)
+    - [Colour Schemes](#colour-schemes)
 - [Folder Contents](#folder-contents)
     - [Building](#building)
     - [Main Stylesheets](#main-stylesheets)
@@ -24,11 +26,23 @@ Source [Sass] SCSS files to build CSS stylesheets used in this project.
 
 -----
 
-# Introduction
+# About
+
+These [Sass] SCSS source are used to create the custom CSS which is then injected into the [docinfo file] for each document in this project (different docs can use different CSS, since each doc has its own docinfo file).
+
+## Highlight vs highlight.js
 
 I've now started to break up the Sass source into modular units because some document will be using [Highlight] instead of [highlight.js] and/or because they might have different style needs (e.g. the _Beginner's Guide_ needs multiple Alan themes to distinguish between code of the adventure from that of the Library and examples snippets). A modular approach will allow the creation of different stylesheets with common reusable elements.
 
 Using Highlight instead of highlight.js has always been a goal of this project, but unfortunately Highlight integration in Asciidoctor doesn't currently support callouts nor highlighting code inside tables. So, until a custom extension is available to extend Highlight support, we'll be using Highlight only with documents that don't use callouts inside code or code blocks inside tables.
+
+## Colour Schemes
+
+The custom CSS generated is mostly used to customize the different colour themes for ALAN source code (more than one theme available for ALAN), as well as other languages and mockup blocks styles (e.g. CMD, game transcript, BNF, etc.)
+
+For more info on the colour schemes used here, and their palette swatches, see:
+
+- [`../colors/`](../colors/)
 
 # Folder Contents
 
@@ -80,7 +94,7 @@ The [`_hl-template-alan.scss`][hl template alan] is a reusable variables-based `
 
 Since March 11 2019 this project has switched from using [Ruby Sass] to the newest [Dart Sass] because starting from March 26 2019 Ruby Sass will no longer be maintained.
 
-Since Dart Sass behavior is slightly different from Ruby Sass, anyone working on the repository Sass sources must ensure to switch to Dart Sass to avoid creating divergent CSS stylesheets.
+Since Dart Sass behaviour is slightly different from Ruby Sass, anyone working on the repository Sass sources must ensure to switch to Dart Sass to avoid creating divergent CSS stylesheets.
 
 The easiest way to install Dart Sass on Windows, and keep it always updated, is to install it via Chocolatey:
 

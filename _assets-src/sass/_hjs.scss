@@ -1,4 +1,4 @@
-// "_hjs.scss"                          v1.0.1 | 2019/03/13 | by Tristano Ajmone
+// "_hjs.scss"                          v3.0.0 | 2021/07/30 | by Tristano Ajmone
 // *****************************************************************************
 // *                                                                           *
 // *                        Highlight.js Syntax Themes                         *
@@ -21,20 +21,20 @@
 // -----------------------------------------------------------------------------
 // NOTE: We don't style numbers (.hljs-number).
 code.hljs[data-lang=alan] {
-    color: $Alan-normal;
-    background: $Alan-background;
+    color: $GH-Blackish;
+    background: $GH-Whitish;
 
     .hljs-comment {
-      color: $Alan-comment;
+      color: $GH-Grey;
     }
     .hljs-string {
-      color: $Alan-string;
+      color: $GH-Green;
     }
     .hljs-built_in {
-      color: $Alan-predefined;
+      color: $GH-DarkBlu;
     }
     .hljs-keyword {
-      color: $Alan-keyword;
+      color: $GH-DarkRed;
     }
 }
 // -----------------------------------------------------------------------------

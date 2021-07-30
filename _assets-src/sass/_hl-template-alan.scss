@@ -1,4 +1,4 @@
-// "_hl-template-alan.scss"             v2.0.0 | 2021/05/23 | by Tristano Ajmone
+// "_hl-template-alan.scss"             v3.0.0 | 2021/07/30 | by Tristano Ajmone
 // *****************************************************************************
 // *                                                                           *
 // *             Highlight 4.1 Alan Theme Template for Asciidoctor             *
@@ -26,23 +26,23 @@ $HL-Font-size:      inherit !default;
 // -----------------------------------------------------------------------------
 $HL-AlanHover:      #a09f93 !default;
 
-$HL-Canvas:         $Alan-background !default;
-$HL-Default:        $Alan-normal !default;
-$HL-LineNum:        $Alan-linenums !default;
+$HL-Canvas:         $GH-Whitish !default;
+$HL-Default:        $GH-Blackish !default;
+$HL-LineNum:        $GH-Grey !default; // untested (might need better colour)
 
-$HL-Border-color:   $Alan-background !default;
+$HL-Border-color:   $GH-Whitish !default;
 $HL-Border-radius:  inherit !default;
 $HL-Border-width:   0px     !default;
 
-$HL-Number:         $Alan-normal !default; // don't show numbers!
-$HL-Escape:         $Alan-escapes !default; // $p $n $i $t $a $l $v $$
-$HL-Interpolation:  $Alan-interpolation !default; // $<n> $+<n> $0<n> $-<n> $!<n> $o
-$HL-String:         $Alan-string !default;
-$HL-Comment:        $Alan-comment !default;
+$HL-Number:         $GH-Blackish !default; // don't show numbers!
+$HL-Escape:         $GH-Orange !default;   // $p $n $i $t $a $l $v $$
+$HL-Interpolation:  $GH-Fuchsia !default;  // $<n> $+<n> $0<n> $-<n> $!<n> $o
+$HL-String:         $GH-Green !default;
+$HL-Comment:        $GH-Grey !default;
 $HL-Operator:       $HL-Default !default;
-$HL-Keywords1:      $Alan-keyword !default; // Alan keywords
-$HL-Keywords2:      $Alan-predefined !default; // Predefined classes
-$HL-Keywords3:      $Alan-predefined !default; // Predefined instances ('hero')
+$HL-Keywords1:      $GH-DarkRed !default;  // Alan keywords
+$HL-Keywords2:      $GH-DarkBlu !default;  // Predefined classes
+$HL-Keywords3:      $GH-DarkBlu !default;  // Predefined instances ('hero')
 
 // -----------------
 // Highlight Markers
