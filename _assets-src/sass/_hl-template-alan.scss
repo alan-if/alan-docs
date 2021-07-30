@@ -74,90 +74,90 @@ $ref_role:  null;
 
 // Language name shown when hovering:
 .listingblock#{$ref_role} code[data-lang=alan]::before{
-    color: $HL-AlanHover;
+  color: $HL-AlanHover;
 }
 // Highlight Theme:
 .listingblock#{$ref_role} pre[class=highlight][lang=alan] {
-    background-color: $HL-Canvas;
-    &>code {
-        color: $HL-Default;
-        font-family: $HL-Font-family;
-        font-size: $HL-Font-size;
+  background-color: $HL-Canvas;
+  &>code {
+    color: $HL-Default;
+    font-family: $HL-Font-family;
+    font-size: $HL-Font-size;
+  }
+  border-radius: $HL-Border-radius;
+  border: $HL-Border-width solid $HL-Border-color;
+  .hl {
+    color: $HL-Default;
+
+    &.num {
+      // Numbers
+      color: $HL-Number;
     }
-    border-radius: $HL-Border-radius;
-    border: $HL-Border-width solid $HL-Border-color;
-    .hl {
-        color: $HL-Default;
-
-        &.num {
-            // Numbers
-            color: $HL-Number;
-        }
-        &.esc {
-            // Escape sequences
-            // ----------------
-            // In Alan these are: $p, $n, $i, $t, $a, $l, $v and $$.
-            color: $HL-Escape;
-        }
-        &.ipl {
-            // Interpolation sequences
-            // -----------------------
-            // In Alan these are: $<n>, $+<n>, $0<n>, $-<n>, $!<n> and $o.
-            color: $HL-Interpolation;
-        }
-        &.sng {
-            // Strings
-            color: $HL-String;
-        }
-        &.slc {
-            // Single-line comments
-            color: $HL-Comment;
-        }
-        &.lin {
-            // Line numbers
-            color: $HL-LineNum;
-        }
-        &.opt {
-            // Operators
-            color: $HL-Operator;
-        }
-        // ---------------------
-        //    Keywords Groups
-        // ---------------------
-        &.kwa {
-            // (kw 1) Alan Keywords
-            color: $HL-Keywords1;
-        }
-        &.kwb {
-            // (kw 2) Predefined Alan Classes
-            color: $HL-Keywords2;
-        }
-        &.kwc {
-            // (kw 3) Predefined Instances (i.e. the 'hero')
-            color: $HL-Keywords3;
-        }
+    &.esc {
+      // Escape sequences
+      // ----------------
+      // In Alan these are: $p, $n, $i, $t, $a, $l, $v and $$.
+      color: $HL-Escape;
     }
-    // =========================================================================
-    //                            Highlight Markers
-    // =========================================================================
-    // Highlighter marker effects to mark code lines or segments.
-    // Mainly used in "ALAN Beginner's Guide" to mark added code in the sources.
-    //
-    // Two colors are passed to the mixins to create a gradient. If both colors
-    // are identical a plain background will be defined instead.
+    &.ipl {
+      // Interpolation sequences
+      // -----------------------
+      // In Alan these are: $<n>, $+<n>, $0<n>, $-<n>, $!<n> and $o.
+      color: $HL-Interpolation;
+    }
+    &.sng {
+      // Strings
+      color: $HL-String;
+    }
+    &.slc {
+      // Single-line comments
+      color: $HL-Comment;
+    }
+    &.lin {
+      // Line numbers
+      color: $HL-LineNum;
+    }
+    &.opt {
+      // Operators
+      color: $HL-Operator;
+    }
+    // ---------------------
+    //    Keywords Groups
+    // ---------------------
+    &.kwa {
+      // (kw 1) Alan Keywords
+      color: $HL-Keywords1;
+    }
+    &.kwb {
+      // (kw 2) Predefined Alan Classes
+      color: $HL-Keywords2;
+    }
+    &.kwc {
+      // (kw 3) Predefined Instances (i.e. the 'hero')
+      color: $HL-Keywords3;
+    }
+  }
+  // =========================================================================
+  //                            Highlight Markers
+  // =========================================================================
+  // Highlighter marker effects to mark code lines or segments.
+  // Mainly used in "ALAN Beginner's Guide" to mark added code in the sources.
+  //
+  // Two colors are passed to the mixins to create a gradient. If both colors
+  // are identical a plain background will be defined instead.
 
-    // -------------------------------------------------------------------------
-    // Yellow Marker: <mark>
-    // -------------------------------------------------------------------------
-    // Let's add to the <mark> tag a smeared fluorescent marker effect.
+  // -------------------------------------------------------------------------
+  // Yellow Marker: <mark>
+  // -------------------------------------------------------------------------
+  // Let's add to the <mark> tag a smeared fluorescent marker effect.
 
-    @include MarkerMark($HL-MarkerYellow1, $HL-MarkerYellow2);
-    @include MarkerSpan('green', $HL-MarkerGreen1, $HL-MarkerGreen2);
+  @include MarkerMark($HL-MarkerYellow1, $HL-MarkerYellow2);
+  @include MarkerSpan('green', $HL-MarkerGreen1, $HL-MarkerGreen2);
 
-    // -------------------------------------------------------------------------
-    // Green Marker: <span class="green">
-    // -------------------------------------------------------------------------
-    // Let's add to the <mark> tag a smeared fluorescent marker effect.
+  // -------------------------------------------------------------------------
+  // Green Marker: <span class="green">
+  // -------------------------------------------------------------------------
+  // Let's add to the <mark> tag a smeared fluorescent marker effect.
 }
 
 // EOF //

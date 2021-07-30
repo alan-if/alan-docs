@@ -8,7 +8,7 @@
 // used and can be safely used by all documents.
 
 // =============================================================================
-//                            Blocks & Code Mockups                             
+//                            Blocks & Code Mockups
 // =============================================================================
 // Some code block are not syntax higlighted but just given some basic colors
 // for background, foreground and border. Mockups are fake-code blocks, usually
@@ -22,8 +22,8 @@
 // Applied using: [role=alan]
 
 .listingblock.alan pre {
-    color: $GH-Blackish;
-    background: $GH-Whitish;
+  color: $GH-Blackish;
+  background: $GH-Whitish;
 }
 // -----------------------------------------------------------------------------
 /* Shell/CMD */
@@ -33,14 +33,14 @@
 // to keep it simpler...
 
 div.literalblock.shell pre {
-    background-color: $CMD-Black;
-    color: $CMD-White;
-    
-    // AsciiDoc Callouts
-    .conum {
-        background: $CMD-callouts-background !important;
-        color: $CMD-Black !important;
-    }
+  background-color: $CMD-Black;
+  color: $CMD-White;
+
+  // AsciiDoc Callouts
+  .conum {
+    background: $CMD-callouts-background !important;
+    color: $CMD-Black !important;
+  }
 }
 // -----------------------------------------------------------------------------
 /* Game Transcripts */
@@ -49,13 +49,13 @@ div.literalblock.shell pre {
 // colors.
 
 .exampleblock.gametranscript>.content {
-    background: $Transcript-background;
-    color: $Transcript-normal;
-    border-color: $Transcript-border;
+  background: $Transcript-background;
+  color: $Transcript-normal;
+  border-color: $Transcript-border;
 }
 
 // =============================================================================
-//                          Other CSS Template Tweaks                           
+//                          Other CSS Template Tweaks
 // =============================================================================
 // We might as well exploit Highlight.js' stylesheet to implement other template
 // tweaks instead of loading a separate CSS file.
@@ -68,7 +68,7 @@ div.literalblock.shell pre {
 //         (see "App C - Run-Time Messages).
 
 div.openblock.commentary {
-    padding-left: 6em;
+  padding-left: 6em;
 }
 
 // -----------------------------------------------------------------------------
@@ -79,7 +79,7 @@ div.openblock.commentary {
 // examples.
 
 span.green {
-    background-color: $highlighter-green;
+  background-color: $highlighter-green;
 }
 
 

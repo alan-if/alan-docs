@@ -10,32 +10,32 @@
 /* Highlight.js base styles */
 // ------------------------
 .hljs {
-    display: block;
-    overflow-x: auto;
-    padding: 0.5em;
-    color: $verbatim-default-normal;
-    background: $verbatim-default-background;
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: $verbatim-default-normal;
+  background: $verbatim-default-background;
 }
 // -----------------------------------------------------------------------------
 /* HLJS Alan */
 // -----------------------------------------------------------------------------
 // NOTE: We don't style numbers (.hljs-number).
 code.hljs[data-lang=alan] {
-    color: $GH-Blackish;
-    background: $GH-Whitish;
+  color: $GH-Blackish;
+  background: $GH-Whitish;
 
-    .hljs-comment {
-      color: $GH-Grey;
-    }
-    .hljs-string {
-      color: $GH-Green;
-    }
-    .hljs-built_in {
-      color: $GH-DarkBlu;
-    }
-    .hljs-keyword {
-      color: $GH-DarkRed;
-    }
+  .hljs-comment {
+    color: $GH-Grey;
+  }
+  .hljs-string {
+    color: $GH-Green;
+  }
+  .hljs-built_in {
+    color: $GH-DarkBlu;
+  }
+  .hljs-keyword {
+    color: $GH-DarkRed;
+  }
 }
 // -----------------------------------------------------------------------------
 /* HLJS BNF */
@@ -43,8 +43,8 @@ code.hljs[data-lang=alan] {
 // Basic colors for a BNF code block that isn't actually syntax highlighted, but
 // nevertheless has the Highlight.js class on the code block.
 code.hljs[data-lang=bnf] {
-    color: $BNF-normal;
-    background: $BNF-background;
+  color: $BNF-normal;
+  background: $BNF-background;
 }
 
 // EOF //

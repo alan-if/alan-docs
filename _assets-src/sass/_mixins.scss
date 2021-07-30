@@ -6,7 +6,7 @@
 // *****************************************************************************
 
 // =============================================================================
-//                              Highlight Markers                               
+//                              Highlight Markers
 // =============================================================================
 // Style for highlighter marker effects via <mark> and <span class="[a_color]">.
 // Creates gradient effect, unless both colors are the same.
@@ -19,14 +19,14 @@
 // YELLOW MARKER -- <mark> tag
 // -----------------------------------------------------------------------------
 @mixin MarkerMark($gradient1, $gradient2) {
-    mark {
-        background-color: $gradient1;
-        @if $gradient1 != $gradient2 {
-            background-image: linear-gradient(to right, $gradient1 0%, $gradient2 100%);
-        } @else {
-            background-image: none;;
-        }
+  mark {
+    background-color: $gradient1;
+    @if $gradient1 != $gradient2 {
+      background-image: linear-gradient(to right, $gradient1 0%, $gradient2 100%);
+    } @else {
+      background-image: none;;
     }
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -35,14 +35,14 @@
 // The $marker_color parameter will be the class name of the span element.
 
 @mixin MarkerSpan($marker_color, $gradient1, $gradient2) {
-    span.#{$marker_color} {
-        background-color: $gradient1;
-        @if $gradient1 != $gradient2 {
-            background-image: linear-gradient(to right, $gradient1 0%, $gradient2 100%);
-        } @else {
-            background-image: none;;
-        }
+  span.#{$marker_color} {
+    background-color: $gradient1;
+    @if $gradient1 != $gradient2 {
+      background-image: linear-gradient(to right, $gradient1 0%, $gradient2 100%);
+    } @else {
+      background-image: none;;
     }
+  }
 }
 
 // EOF //
