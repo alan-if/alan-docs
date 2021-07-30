@@ -16,9 +16,15 @@ Documents:
 
 Scripts:
 
-- [`BUILD_HTML.bat`][BUILD_HTML.bat] — HTML conversion script.
 - [`build.sh`][build.sh] — HTML conversion script.
 - [`publish.sh`][publish.sh] — for maintainers' use only.
+
+# System Requirements
+
+- [Ruby]  (recommended v3.x)
+    + [Asciidoctor]
+    + [Rouge] — syntax highlighter
+    + [Asciidoctor Diagram]
 
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS
@@ -26,6 +32,13 @@ Scripts:
 
 [ALAN repository]: https://github.com/alan-if/alan/ "Visit the Alan source repository on GitHub"
 [doc/design/]: https://github.com/alan-if/alan/tree/master/doc/design/
+
+<!-- dependencies -->
+
+[Ruby]: https://www.ruby-lang.org "Visit Ruby website"
+[Asciidoctor]: https://github.com/asciidoctor/asciidoctor "Asciidoctor (Ruby Gem) repository on GitHub"
+[Rouge]: https://github.com/rouge-ruby/rouge "Rouge (Ruby Gem) repository on GitHub"
+[Asciidoctor Diagram]: https://github.com/asciidoctor/asciidoctor-diagram "Asciidoctor Diagram (Ruby Gem) repository on GitHub"
 
 <!-- project files and folders -->
 
@@ -35,7 +48,6 @@ Scripts:
 [design.adoc]: ./design.asciidoc "View source document"
 [rules.adoc]: ./rules.asciidoc "View source document"
 
-[BUILD_HTML.bat]: ./BUILD_HTML.bat "View source script"
 [build.sh]: ./build.sh "View source script"
 [publish.sh]: ./publish.sh "View source script"
 

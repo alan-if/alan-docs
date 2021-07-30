@@ -1,0 +1,44 @@
+// *****************************************************************************
+/* Rouge Theme for Alan tutorial -- Base16 Google, by Seth Wright */
+// *****************************************************************************
+
+// Provides an alternative extra-light theme for Alan code with "role=tutorial"
+// to visually distinguish between code of a tutorial file from generic
+// examples.
+
+$ALAN-Role: 'tutorial';
+
+@import 'base16-google-dark';  // Base16 Google Dark color scheme (light).
+
+$ALAN-Background:      $base07;
+$ALAN-Normal-Text:     $base02;
+$ALAN-IDs:             $ALAN-Normal-Text;
+$ALAN-Numbers:         $ALAN-Normal-Text; //$base09;
+$ALAN-Operators:       $ALAN-Normal-Text;
+$ALAN-LineNumbers:     $base05;
+$ALAN-Comments:        $base03;
+$ALAN-String:          $base0B;
+$ALAN-StrDelimiter:    $ALAN-String;
+$ALAN-Escapes:         $base09; // $p $n $i $t $a $l $v $$
+$ALAN-Interpolations:  $base0F; // $<n> $+<n> $0<n> $-<n> $!<n> $o
+$ALAN-Keywords:        $base08;
+$ALAN-Punctuation:     $ALAN-Keywords;
+$ALAN-Builtin-Classes: $base0A;
+$ALAN-Hero:            $base0D;
+
+// Context Vars:
+$ALAN-Border-Color:    $base06;
+$ALAN-Callouts-BG:     black;
+$ALAN-Callouts-FG:     white;
+
+// -----------------
+// Highlight Markers
+// -----------------
+$ALAN-MarkerYellow1: #F5FF87;
+$ALAN-MarkerYellow2: $ALAN-MarkerYellow1;
+$ALAN-MarkerGreen1:  lighten($base0B, 60%);
+$ALAN-MarkerGreen2:  $ALAN-MarkerGreen1;
+
+@import 'rouge-template-alan'; // Reusable template for Alan themes.
+
+// EOF //

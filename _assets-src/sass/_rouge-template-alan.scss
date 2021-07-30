@@ -1,0 +1,204 @@
+// *****************************************************************************
+// *                                                                           *
+// *                 Rouge Alan Theme Template for Asciidoctor                 *
+// *                                                                           *
+// *****************************************************************************
+// A reusable variables-based '@import' template to quickly define Rouge themes
+// for Alan code in Asciidoctor. It can create both generic themes as well as
+// themes targetting a specific role/class, via the $ALAN-Role variable.
+
+// =============================================================================
+// Default Values
+// =============================================================================
+// Let's define some defaults for the template variables, so users don't have to
+// define every single variable.
+
+$ALAN-Border-radius:  4px !default;
+$ALAN-Border-width:   1px !default;
+$ALAN-Font-family:    inherit  !default;
+$ALAN-Font-size:      inherit !default;
+
+// Default Scheme: Use Alan scheme defined in "_color-scheme.scss"
+
+$ALAN-Background:      $GH-Whitish !default;
+$ALAN-Normal-Text:     $GH-Blackish !default;
+$ALAN-IDs:             $GH-Blackish !default;
+$ALAN-Numbers:         $GH-Blackish !default;
+$ALAN-Operators:       $GH-Blackish !default;
+$ALAN-Comments:        $GH-Grey !default;
+$ALAN-LineNumbers:     $GH-Grey !default;    // UNTESTED (need better colour?)
+$ALAN-Keywords:        $GH-DarkRed !default;
+$ALAN-Punctuation:     $GH-DarkRed !default;
+$ALAN-Builtin-Classes: $GH-DarkBlu !default;
+$ALAN-Hero:            $GH-DarkBlu !default;
+$ALAN-String:          $GH-Green !default;
+$ALAN-StrDelimiter:    $GH-Green !default;
+$ALAN-Escapes:         $GH-Orange !default;  // $p $n $i $t $a $l $v $$
+$ALAN-Interpolations:  $GH-Fuchsia !default; // $<n> $+<n> $0<n> $-<n> $!<n> $o
+
+// Context Vars:
+$ALAN-Hover:           #A09F93 !default;
+$ALAN-Border-Color:    $GH-Whitish !default;
+$ALAN-Callouts-BG:     black !default;
+$ALAN-Callouts-FG:     white !default;
+
+// -----------------
+// Highlight Markers
+// -----------------
+// Yellow Marker (for <mark> tag):
+$ALAN-MarkerYellow1: #CCFF00 !default; // Gradient left
+$ALAN-MarkerYellow2: #F5FF87 !default; // Gradient right
+
+// Green Marker (for <span class="green"> tag):
+$ALAN-MarkerGreen1: #A3FF8A !default; // Gradient left
+$ALAN-MarkerGreen2: rgba($ALAN-MarkerGreen1, .5) !default; // Gradient right
+
+// -----------------------------------------------------------------------------
+// Optional Language Settings
+// -----------------------------------------------------------------------------
+// If $ALAN-Role is set, the output theme will target that language, otherwise it
+// will be a generic theme for Highlight.
+
+$ALAN-Role: null    !default;
+$ref_role:  null;
+
+@if $ALAN-Role != null {
+  $ref_role:  ".#{$ALAN-Role}"   !global;
+}
+
+// =============================================================================
+// Theme Definition
+// =============================================================================
+
+// Language name shown when hovering:
+.listingblock#{$ref_role} code[data-lang=alan]::before{
+  color: $ALAN-Hover;
+}
+// Highlight Theme:
+.listingblock#{$ref_role} pre[class~=rouge][lang=alan] {
+  background-color: $ALAN-Background;
+  border-radius: $ALAN-Border-radius;
+  border: $ALAN-Border-width solid $ALAN-Border-Color;
+  &>code {
+    color: $ALAN-Normal-Text;
+    font-family: $ALAN-Font-family;
+    font-size: $ALAN-Font-size;
+    &>span {
+      font-style: normal;
+      font-weight: normal;
+      // AsciiDoc Callouts
+      &>.conum[data-value] {
+        background: $ALAN-Callouts-BG !important;
+        color: $ALAN-Callouts-FG !important;
+      }
+      &.m {
+        // Numbers -> Literal::Number
+        color: $ALAN-Numbers;
+      }
+      &.lin { // TBD!
+        // Line numbers
+        color: $ALAN-LineNumbers;
+      }
+      &.n {
+        // Identifiers -> Name
+        // -----------
+        color: $ALAN-IDs;
+      }
+      &.o {
+        // Operators -> Operator
+        // ---------
+        color: $ALAN-Operators;
+      }
+      &.p {
+        // Punctuation -> Punctuation
+        // -----------
+        color: $ALAN-Punctuation;
+      }
+      // -------------
+      //    Strings
+      // -------------
+      &.dl {
+        // String delimiter -> Str::Double::Delimiter
+        // ----------------
+        color: $ALAN-StrDelimiter;
+      }
+      &.s2 {
+        // String contents -> Str::Double
+        // ---------------
+        color: $ALAN-String;
+      }
+      &.s1 {
+        // Files String -> Str::Single
+        // ------------
+        color: $ALAN-String;
+      }
+      &.se {
+        // Escape sequences -> Str::Escape
+        // ----------------
+        // i.e. $$, $_, $i, $n, $p, $t and "".
+        color: $ALAN-Escapes;
+      }
+      &.si {
+        // Interpolations -> Str::Interpol
+        // --------------
+        // i.e. $<n> $+<n>, $0<n>, $-<n>, $!<n>, $a, $l, $o and $v.
+        color: $ALAN-Interpolations;
+      }
+      // --------------
+      //    Comments
+      // --------------
+      &.c1 {
+        // Single-line comments -> Comment::Single
+        // --------------------
+        color: $ALAN-Comments;
+      }
+      &.cm {
+        // Block comments -> Comment::Multiline
+        // --------------
+        color: $ALAN-Comments;
+      }
+      // --------------------------
+      //    Keywords & Built-ins
+      // --------------------------
+      &.kr {
+        // Alan Keywords -> Keyword::Reserved
+        // -------------
+        color: $ALAN-Keywords;
+      }
+      &.nb {
+        // Predefined Classes -> Name::Builtin
+        // ------------------
+        color: $ALAN-Builtin-Classes;
+      }
+      &.nx {
+        // Predefined Instances -> Name::Other
+        // --------------------
+        // i.e. the 'hero'
+        color: $ALAN-Hero;
+      }
+    }
+    // =========================================================================
+    //                            Highlight Markers
+    // =========================================================================
+    // Highlighter marker effects to mark code lines or segments.
+    // Mainly used in "ALAN Beginner's Guide" to mark added code in the sources.
+    //
+    // Two colors are passed to the mixins to create a gradient. If both colors
+    // are identical a plain background will be defined instead.
+
+    // -------------------------------------------------------------------------
+    // Yellow Marker: <mark>
+    // -------------------------------------------------------------------------
+    // Let's add to the <mark> tag a smeared fluorescent marker effect.
+
+    @include MarkerMark($ALAN-MarkerYellow1, $ALAN-MarkerYellow2);
+
+    // -------------------------------------------------------------------------
+    // Green Marker: <span class="green">
+    // -------------------------------------------------------------------------
+    // Let's add to the <mark> tag a smeared fluorescent marker effect.
+    @include MarkerSpan('green', $ALAN-MarkerGreen1, $ALAN-MarkerGreen2);
+  }
+}
+
+// EOF //

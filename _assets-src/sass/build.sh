@@ -15,6 +15,7 @@ rm -f *.css docinfo*.html
 ########################
 sass highlight-js.scss ../../_assets/hjs/styles/github.min.css
 sass highlight.scss highlight.css
+sass rouge.scss rouge.css
 
 ## Create docinfo Files from CSS
 ################################
@@ -22,6 +23,11 @@ sass highlight.scss highlight.css
 echo "<style>"    >  docinfo_HL.html
 cat highlight.css >> docinfo_HL.html
 echo "</style>"   >> docinfo_HL.html
+
+
+echo "<style>"    >  docinfo_Rouge.html
+cat rouge.css     >> docinfo_Rouge.html
+echo "</style>"   >> docinfo_Rouge.html
 
 
 if [[ $(uname -s) == MINGW* ]];then
@@ -39,6 +45,12 @@ fi
 
 DestDirs="alanguide conversion"
 for folder in ${DestDirs[*]} ; do
-	echo "../../$folder/"
+	echo "../../$folder/docinfo.html"
 	cp docinfo_HL.html "../../$folder/docinfo.html"
 done
+
+# =====
+# Rouge
+# =====
+
+cp docinfo_Rouge.html "../../_assets/rouge/docinfo.html"

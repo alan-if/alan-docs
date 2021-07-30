@@ -1,0 +1,35 @@
+// *****************************************************************************
+/* Rouge Theme for Alan Library -- Base16 Eighties, by Chris Kempson */
+// *****************************************************************************
+
+// Provides an alternative dark theme for Alan code with "role=lib" to visually
+// distinguish code excerpts from a library or third party extensions.
+
+$ALAN-Role: 'lib';
+
+@import 'base16-eighties';  // Base16 Eighties color scheme.
+
+$ALAN-Background:      $base00;
+$ALAN-Normal-Text:     $base05;
+$ALAN-IDs:             $ALAN-Normal-Text;
+$ALAN-Numbers:         $base09;
+$ALAN-Operators:       $ALAN-Normal-Text;
+$ALAN-LineNumbers:     $base03;
+$ALAN-Escapes:         $base09; // $p $n $i $t $a $l $v $$
+$ALAN-Interpolations:  $base0F; // $<n> $+<n> $0<n> $-<n> $!<n> $o
+$ALAN-String:          $base0B;
+$ALAN-StrDelimiter:    $ALAN-StrDelimiter;
+$ALAN-Operators:       $ALAN-Normal-Text;
+$ALAN-Keywords:        $base08;
+$ALAN-Punctuation:     $ALAN-Keywords;
+$ALAN-Builtin-Classes: $base0A;
+$ALAN-Hero:            $base0D;
+
+// Context Vars:
+$ALAN-Border-Color:    $base04;
+$ALAN-Callouts-BG:     white;
+$ALAN-Callouts-FG:     black;
+
+@import 'rouge-template-alan'; // Reusable template for Alan themes.
+
+// EOF //

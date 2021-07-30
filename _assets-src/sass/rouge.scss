@@ -1,0 +1,41 @@
+// "rouge.scss"                                | 2021/06/22 | by Tristano Ajmone
+// *****************************************************************************
+// *                                                                           *
+// *                   Custom CSS for Alan-Docs using Rouge                    *
+// *                                                                           *
+// *****************************************************************************
+
+@import 'mixins';        // Custom helpers.
+@import 'color-scheme';  // Defines required colors.
+@import 'common';        // Styles common to all documents.
+
+// =============================================================================
+//                             Syntax Highlighting
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+/* Highlight Theme for Alan -- based on "github.com style" for highlight.js, by Vasily Polovnyov */
+// -----------------------------------------------------------------------------
+// The imported template will generate the default Alan theme using the color
+// scheme defined in "_color-scheme.scss".
+
+@import 'rouge-template-alan'; // Reusable template for Alan themes.
+
+// -----------------------------------------------------------------------------
+//                        Syntax Theme for Alan Lib Code
+// -----------------------------------------------------------------------------
+// Alternative color theme for Alan code with "role=lib", to distinguish between
+// code from the tutorial and that of the Library sources.
+
+@import 'rouge-theme_alan-lib';
+
+// -----------------------------------------------------------------------------
+//                     Syntax Theme for Alan Tutorial Code
+// -----------------------------------------------------------------------------
+// Alternative color theme for Alan code with "role=tutorial", to distinguish
+// between sourcecode of the tutorial "TV-TIME!" adventure and generic Alan
+// examples or the Library sources.
+
+@import 'rouge-theme_alan-tutorial';
+
+// EOF //
