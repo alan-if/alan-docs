@@ -10,7 +10,7 @@
 ## ===============
 *.html
 *.pdf
-! docinfo.html
+!docinfo.html
 !/_assets-src/original-docs/**.html
 !/_assets-src/original-docs/**.pdf
 # DocBook intermediate file used in the PDF conversion:
