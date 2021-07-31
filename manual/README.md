@@ -2,6 +2,10 @@
 
 AsciiDoc port of _The ALAN Adventure Language Reference Manual_.
 
+> __NOTE__ — The _ALAN Manual_ has now switched to [Rouge] for syntax highlighting!
+
+<!-- sep -->
+
 > __NOTE__ — The AsciiDoc files in this project are intended for [Asciidoctor], the Ruby implementation of AsciiDoc; some required features might not be available in [AsciiDoc Python]!
 
 
@@ -106,8 +110,6 @@ For more info, see:
 
 Under Windows:
 
-- [`BUILD_ALL.bat`][BUILD_ALL.bat] — convenience batch to invoke all conversion scripts at once.
-- [`HTML_BUILD.bat`][HTML_BUILD.bat] — batch script to create `manual.html` document (single file document).
 - [`PDF_BUILD.bat`][PDF_BUILD.bat] — batch script to create `manual.pdf` document (currently ignored in repository).
 
 Bash scripts for Linux, macOS or Bash for Windows:
@@ -178,14 +180,7 @@ After running the HTML conversion script, you'll get the following file:
 
 The _Manual_ relies on Asciidoctor's native HTML backend for building the HTML version, so you won't need to install any extra tools beside [Asciidoctor], except for some extra Gems required by Asciidoctor.
 
-The HTML document is not fully standalone yet, for it requires some external stylesheets and the highlight.js package in order to visualize correctly and perform dynamic syntax highlighting.
-
-External files, added by us:
-
-- [`../_assets/hjs/highlight.min.js`][hjs] — Custom [highlight.js] build.
-- [`../_assets/hjs/styles/github.min.css`][hjs css] — Our CSS stylesheet for [highlight.js] code and custom template styles.
-
-External files required by Asciidoctor native HTML template:
+The generated HTML document is now fully standalone (embedded images and CSS), except for the fonts which are obviously loaded from the Internet at load time (this won't change):
 
 - [Google fonts: Open Sans + Noto Serif + Droid Sans Mono](https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700)
 - [`font-awesome.min.css`](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css) — [Font Awesome] CSS stylesheet.
@@ -197,16 +192,21 @@ External files required by Asciidoctor native HTML template:
 
 To convert the _Manual_ yourself, below are some instructions on how to do it, and which dependencies are required.
 
-To build both the HTML and the PDF  _Manual_ under Windows, open a command prompt in this folder and type:
-
-```batch
-BUILD_ALL.bat
-```
-
-Under Linux or macOS, you'll have to open a Bash terminal in this folder and manually run the following scripts:
+To build the HTML _Manual_ under any OS, open a Bash terminal in this folder and type:
 
 ```bash
 ./html_build.sh
+```
+
+To build the PDF _Manual_ under Windows, open a command prompt in this folder and type:
+
+```batch
+PDF_BUILD.bat
+```
+
+To build the PDF _Manual_ under Linux or macOS, you'll have to open a Bash terminal in this folder and type:
+
+```bash
 ./pdf_build.sh
 ```
 
@@ -255,7 +255,6 @@ The _Manual_ relies on Asciidoctor's native HTML backend for building the HTML v
 
 Once [Asciidoctor] is correctly setup, you can then build the HTML document by using the following scripts:
 
-- [`HTML_BUILD.bat`][HTML_BUILD.bat] — batch script for Windows.
 - [`html_build.sh`][html_build.sh] — bash script for Linux and macOS.
 
 
@@ -299,7 +298,7 @@ In some tasks I've also added either `@thoni56` or `@tajmone`, to indicate the u
 
 ## Syntax Highlighting
 
-The HTML version uses __[highlight.js]__ for syntax highlighting the code in the _Manual_, while the PDF version uses __[XSLTHL]__ (included in __[asciidoctor-fopub]__).
+The HTML version uses __[Rouge]__ for syntax highlighting the code in the _Manual_, while the PDF version uses __[XSLTHL]__ (included in __[asciidoctor-fopub]__).
 
 
 ## Conversion from ODT to AsciiDoc
@@ -387,8 +386,6 @@ The single source document was then split into multiple files according to chapt
 [man z]: ./manual_z.asciidoc "Source file of Glossary"
 
 
-[BUILD_ALL.bat]:  ./BUILD_ALL.bat  "Batch script to invoke all Manual conversion scripts."
-[HTML_BUILD.bat]: ./HTML_BUILD.bat "Batch script to convert Alan Manual to a single-file HTML5 document."
 [PDF_BUILD.bat]: ./PDF_BUILD.bat   "Batch script to convert Alan Manual to PDF document."
 
 [html_build.sh]: ./html_build.sh   "Bash script to convert Alan Manual to a single-file HTML5 document."

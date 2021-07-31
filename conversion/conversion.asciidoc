@@ -8,7 +8,6 @@
 :doctype: book
 :encoding: utf-8
 :lang: en
-
 // TOC Settings:
 :toc: left
 :toclevels: 5

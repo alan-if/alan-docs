@@ -12,7 +12,8 @@ echo "=================================================================="
 for f in *.asciidoc
 do
 	asciidoctor \
-		--load-path $rougeDir \
+		--safe-mode unsafe \
+		--verbose \
 		-r asciidoctor-diagram \
 		-r $rougeDir/custom-rouge-adapter.rb \
 		-a source-highlighter=rouge \

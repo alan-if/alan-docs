@@ -1,6 +1,6 @@
 #!/bin/bash
 
-highlightDir=$(cd ../_assets/hl/; pwd)
+rougeDir=$(cd ../_assets/rouge/; pwd)
 
 echo "========================================================================"
 echo "Converting the \"ALAN Conversion Guide\" to a standalone HTML5 document..."
@@ -8,14 +8,15 @@ echo "========================================================================"
 asciidoctor \
 	--safe-mode unsafe \
 	--verbose \
-	--template-dir $highlightDir/haml \
-	--require $highlightDir/adoc/highlight-treeprocessor_mod.rb \
-	-a source-highlighter=highlight \
-	-a docinfodir=$highlightDir/adoc/ \
+	-r $rougeDir/custom-rouge-adapter.rb \
+	-a source-highlighter=rouge \
+	-a rouge-style=thankful_eyes \
+	-a docinfodir=$rougeDir \
 	-a docinfo=shared-head \
 	-a data-uri \
 	-a experimental \
 	-a icons=font \
+	-a linkattrs \
 	-a reproducible \
 	-a sectanchors \
 	-a toc=left \
