@@ -1,4 +1,4 @@
-// "rouge.scss"                                | 2021/06/22 | by Tristano Ajmone
+// "rouge.scss"                                | 2021/07/31 | by Tristano Ajmone
 // *****************************************************************************
 // *                                                                           *
 // *                   Custom CSS for Alan-Docs using Rouge                    *
@@ -37,5 +37,18 @@
 // examples or the Library sources.
 
 @import 'rouge-theme_alan-tutorial';
+
+// -----------------------------------------------------------------------------
+/* BNF */
+// -----------------------------------------------------------------------------
+// Basic colors for a BNF code block that isn't actually syntax highlighted, but
+// nevertheless has the Highlight.js class on the code block.
+pre[lang=bnf] {
+  background: $BNF-background;
+  &>code.language-bnf[data-lang=bnf] {
+    color: $BNF-normal;
+    background: $BNF-background;
+  }
+}
 
 // EOF //
