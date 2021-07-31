@@ -23,14 +23,12 @@ Help and contributions are welcome (see [`CONTRIBUTING.md`][CONTRIBUTING]).
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Latest News](#latest-news)
+    - [Adopting Rouge](#adopting-rouge)
     - [Migration to Highlight v4](#migration-to-highlight-v4)
     - [New Project Website](#new-project-website)
-    - [Asciidoctor Inclusions with ISO Encoding](#asciidoctor-inclusions-with-iso-encoding)
-    - [Switching to Java JDK 12](#switching-to-java-jdk-12)
-    - [Switching to Dart Sass](#switching-to-dart-sass)
 - [About This Project](#about-this-project)
     - [License Terms](#license-terms)
-    - [Project Contents](#project-contents)
+    - [Project Structure and Contents](#project-structure-and-contents)
         - [Git Submodules](#git-submodules)
         - [File Extensions Conventions](#file-extensions-conventions)
     - [Development Enviroment Info](#development-enviroment-info)
@@ -42,9 +40,6 @@ Help and contributions are welcome (see [`CONTRIBUTING.md`][CONTRIBUTING]).
     - [Work Tools](#work-tools)
         - [Asciidoc FX](#asciidoc-fx)
         - [Sublime Text Asciidoctor](#sublime-text-asciidoctor)
-- [About Alan Documentation](#about-alan-documentation)
-    - [Standard Library Documentation](#standard-library-documentation)
-    - [Alan Cookbook](#alan-cookbook)
 - [External Links](#external-links)
     - [Alan](#alan)
     - [Asciidoctor](#asciidoctor-1)
@@ -57,6 +52,13 @@ Help and contributions are welcome (see [`CONTRIBUTING.md`][CONTRIBUTING]).
 # Latest News
 
 Some important news for project maintainers and contributors...
+
+## Adopting Rouge
+
+Since July 2021, this project support syntax highlighting via Rouge (Ruby).
+
+The new Rouge toolchain uses our own custom Rouge adapter and lexer for ALAN, allowing static highlighting supporting callouts (which Highlight doesn't support).
+All documents that don't make use of span or highlight marker formatting in highlighted code blocks (a feature currently unsupported with Rouge) are migrating from Highlight or highlight.js to the Rouge toolchain.
 
 ## Migration to Highlight v4
 
@@ -71,44 +73,6 @@ Since April 2021, this repository now has its own website were you can consult a
 - https://git.io/alan-docs
 
 PDF and HTML builds of the documents will no longer be tracked by the repository (will be ignored by Git), and will only be available through the website.
-
-## Asciidoctor Inclusions with ISO Encoding
-
-Since December 2020, the project began levering the new (and undocumented) `encoding` option for the `include::` directive, so the toolchain no longer needs to first convert external ALAN sources and transcripts to UTF-8 before their inclusion in the source documents (see [Issue #84]).
-
-The syntax of the new feature is as follows:
-
-```asciidoc
-include::./somefile.alan[encoding=iso-8859-1]
-```
-
-Being able to directly include ALAN sources and transcript in their native ISO-8859-1 encoding, without having to create UTF-8 versions via iconv, is going to have a huge build time impact on those documents that rely on external ALAN sources and dynamically generated transcripts.
-
-Huge thanks to [Dan Allen]  (@mojavelinux) for having promptly accepted and implemented [our feature request][#3248] to support on-the-fly encoding in `include::` directives.
-
-## Switching to Java JDK 12
-
-Since July 2019, this project is using __[asciidoctor-fopub]__ with Java JDK 12. At the time the project was created, there was [a problem with gradle] that prevented using Java versions above v8; the problem has been fixed since (but Tristano only recently managed to actually test it locally and start using JDK 12).
-
-So, anyone still using Java 8 for __[asciidoctor-fopub]__ should now switch to JDK 12, which fixes many security issues.
-
-[a problem with gradle]: https://github.com/asciidoctor/asciidoctor-fopub/issues/87 "Read more about the original problem on asciidoctor-fopub Issue #87"
-
-## Switching to Dart Sass
-
-Since March 11 2019 this project has switched from using [Ruby Sass] to the newest [Dart Sass] because starting from March 26 2019 Ruby Sass will no longer be maintained.
-
-Since Dart Sass behavior is slightly different from Ruby Sass, anyone working on the repository Sass sources must ensure to switch to Dart Sass to avoid creating divergent CSS stylesheets.
-
-The easiest way to install Dart Sass on Windows, and keep it always updated, is to [install it via Chocolatey][Choco Sass].
-
-From [Ruby Sass homepage][Ruby Sass]:
-
-> Ruby Sass will continue to be maintained until 26 March 2019. During this maintenance period, bugs will be fixed as much as possible but no new features will be added. The only exception is for features that are necessary to support new CSS syntax, which will continue to be added.
->
-> Dart Sass, the new primary implementation, doesn't always behave 100% the same as Ruby Sass—it implements a number of behavioral changes that were planned for Ruby Sass, but were never implemented in a stable version. To make migration easier, recent versions of Ruby Sass emit warnings for any code that won't be compatible with Dart Sass. Ongoing maintenance includes adding any warnings for new behavioral differences, if they come up.
->
-> Once the maintenance period ends, Ruby Sass's repository will be archived, no more changes of any kind will be made, and no new releases will be cut.
 
 
 # About This Project
@@ -127,33 +91,35 @@ Other members of the Alan group are also working on porting other Alan related d
 The Alan System is distributed under the [Artistic License 2.0], which includes also the documentation that ships with it.
 
 
-## Project Contents
+## Project Structure and Contents
 
-- [`/_assets/`](./_assets/) (shared assets):
-    + [`/alan-xsl-fopub/`](./_assets/alan-xsl-fopub/) — submoduled [alan-xsl-fopub] repository, for XSL FOP template:
-        * [`/xsl-fopub/`](./_assets/alan-xsl-fopub/xsl-fopub/) — XSL Stylesheets for PDF conversion via asciidoctor-fopub.
-        * [`/fonts/`](./_assets/alan-xsl-fopub/fonts/) — required fonts for PDF conversion.
-    + [`/hjs/`](./_assets/hjs/) — custom [highlight.js] build for Alan.
-    + [`/hl/`](./_assets/hl/) — assets for the Asciidoctor Highlight toolchain.
-    + [`/images/`](./_assets/images/)
-    + [`/sh/`](./_assets/sh/) — Bash/Shell reusable scripts and modules.
-- [`/_assets-src/`](./_assets-src/) (assets' source files):
-    + [`/colors/`](./_assets-src/colors/) — Color schemes and palettes used in the documents.
-    + [`/images/`](./_assets-src/images/):
-        * [`/alan-logo/`](./_assets-src/images/alan-logo/) — Alan logo reconstructed as vector image.
-        * [`/dia/`](./_assets-src/images/dia/) — [Dia Diagram Editor] source projects for SVG diagrams.
-    + [`/original-docs/`](./_assets-src/original-docs/) — copy of the original docs being ported.
-    + [`/sass/`](./_assets-src/sass/) — [Sass] source files to build CSS stylesheets.
-- [`/_dev/`](./_dev) — Project developers' stuff (testing, etc.).
-- [`/alan-design/`](./alan-design) — Various WIP documents on ALAN design and internals.
-- [`/alanguide/`](./alanguide) — _Alan 3 Beginner's Guide_ ported to AsciiDoc (WIP).
-- [`/conversion/`](./conversion) — _ALAN Conversion Guide from v2 to v3_ ported to AsciiDoc (WIP).
-- [`/ideguide/`](./ideguide) — _Alan IDE Reference Guide_ v1.0, by Robert DeFord, 2018.
-- [`/manual/`](./manual/) — _The Alan Manual_ ported to AsciiDoc.
-- [`/writing/`](./writing/) — _The Alan Author's Guide_ ported to AsciiDoc (WIP).
+- [`/_assets/`][/_assets/] — shared assets:
+    + [`/alan-xsl-fopub/`][/alan-xsl-fopub/] — submoduled [alan-xsl-fopub] repository, for XSL FOP template:
+        * [`/xsl-fopub/`][/xsl-fopub/] — XSL Stylesheets for PDF conversion via asciidoctor-fopub.
+        * [`/fonts/`][/fonts/] — required fonts for PDF conversion.
+    + [`/hjs/`][/hjs/] — custom [highlight.js] build for Alan.
+    + [`/hl/`][/hl/] — assets for the Asciidoctor Highlight toolchain.
+    + [`/images/`][/images/]
+    + [`/rouge/`][/rouge/] — assets for the Asciidoctor Rouge toolchain.
+    + [`/sh/`][/sh/] — Bash/Shell reusable scripts and modules.
+- [`/_assets-src/`][/_assets-src/] — assets source files:
+    + [`/colors/`][/colors/] — Color schemes and palettes used in the documents.
+    + [`/images/`][/images/]:
+        * [`/alan-logo/`][/alan-logo/] — Alan logo reconstructed as vector image.
+        * [`/dia/`][/dia/] — [Dia Diagram Editor] source projects for SVG diagrams.
+    + [`/original-docs/`][/original-docs/] — copy of the original docs being ported.
+    + [`/sass/`][/sass/] — [Sass] source files to build CSS stylesheets.
+- [`/_dev/`][/_dev/] — Project developers' stuff (testing, etc.).
+- [`/alan-design/`][/alan-design/] — Various WIP documents on ALAN design and internals.
+- [`/alanguide/`][/alanguide/] — _Alan 3 Beginner's Guide_ ported to AsciiDoc (WIP).
+- [`/conversion/`][/conversion/] — _ALAN Conversion Guide from v2 to v3_ ported to AsciiDoc (WIP).
+- [`/ideguide/`][/ideguide/] — _Alan IDE Reference Guide_ v1.0, by Robert DeFord, 2018.
+- [`/manual/`][/manual/] — _The Alan Manual_ ported to AsciiDoc.
+- [`/writing/`][/writing/] — _The Alan Author's Guide_ ported to AsciiDoc (WIP).
 - [`CONTRIBUTING.md`][CONTRIBUTING] — Guidelines for contributing to this project.
 - [`CONVENTIONS.md`][CONVENTIONS] — Editors' formatting and styles guidelines.
 - [`LICENSE`](./LICENSE) — the [Artistic License 2.0].
+
 
 ### Git Submodules
 
@@ -182,9 +148,11 @@ Using different extensions is also required for automation scripts, which select
 
 This is the environemnt setup used for the project by its maintainer:
 
-    Ruby 3.0.1p64 (2021-04-05 revision 0fb782ee38) [x64-mingw32]
-    Asciidoctor 2.0.12
+    ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x64-mingw32]
+    Asciidoctor 2.0.15
     asciidoctor-fopub
+    asciidoctor-diagram 2.1.2
+    Rouge 3.26.0
     Asciidoc FX v1.6.8
     Dia Diagram Editor v0.97
 
@@ -218,17 +186,16 @@ Also available locally at:
 Optionally, if you want to edit and build the diagram images, you'll need to install Dia on your machine too. This tool is required to build via automated scripts some images found in [`/_assets-src/images/`](./_assets-src/images/).
 
 
-
 ## Syntax Highlighting
 
-- [Highlight website]
-- [Highlight repository]
+This project provides all the required assets to highlight AsciiDoc documents containing ALAN code blocks, using Asciidoctor and a choice of different highlighters, for which [Tristano Ajmone] has created custom ALAN syntax definitions:
 
-[Tristano Ajmone] has created an Alan syntax definition for Highlight, the cross platform syntax highlighter by André Simon. The Alan syntax is now part of the official Highlight distribution:
-
-- https://gitlab.com/saalen/highlight/blob/master/langDefs/alan.lang
-
-We're planning to integrate Hihglight into the Asciidoctor workflow in order to syntax highlight the code examples in the documentation. For more info, see [Issue #2106] at [Asciidoctor].
+|  highlighter   | formats  |             backends             |
+|----------------|----------|----------------------------------|
+| [Highlight]    | HTML     | [Asciidoctor]                    |
+| [highlight.js] | HTML     | [Asciidoctor]                    |
+| [Rouge]        | HTML/PDF | [Asciidoctor], [asciidoctor-pdf] |
+| [XSLTHL]       | PDF      | [asciidoctor-fopub]              |
 
 
 ## Work Tools
@@ -252,52 +219,8 @@ When it comes to global editing a document or project, Sublime Text offers many 
 
 The Asciidoctor package adds to Sublime Text 3 AsciiDoc syntax highlighting.
 
-
-
 -------------------------------------------------------------------------------
 
-# About Alan Documentation
-
-The complete (unported) Alan documentation can be found at:
-
-- https://github.com/alan-if/alan/tree/master/doc/
-
-Which is divided into three sub-foldered groups of documents:
-
-- [`/manual/`][src_manual]:
-    + _Reference Manual_ (ODT document)
-    + _Author's Guide_ (ODT document)
-    + _Conversion Guide_ (ODT document)
-- [`/design/`][src_design]:
-    + _Alan Design Documentation_ (Word document)
-    + _Alan Rules_ (RTF document)
-- [`/guide/`][src_guide]:
-    + _Alan 3 Beginner's Guide_ (AsciiDoc) by Michael Arnaud
-
-
-[src_design]: https://github.com/alan-if/alan/tree/master/doc/design
-[src_guide]: https://github.com/alan-if/alan/tree/master/doc/guide
-[src_manual]: https://github.com/alan-if/alan/tree/master/doc/manual
-
-## Standard Library Documentation
-
-Furthermore, there's the documentation for Anssi Räisänen's Alan StdLib:
-
-- https://github.com/AnssiR66/AlanStdLib
-
-Which consists of:
-
-- _Alan Standard Library 2.x User's Manual_ (PDF)
-- _Quick Reference for ALAN Standard Library v2.x_
-- _The Very Quick Start Guide for ALAN Standard Library v2.x_
-
-## Alan Cookbook
-
-Last but not least, there's _The Alan Cookbook_ by Anssi Räisänen:
-
-- [_The Alan Cookbook_][Cookbook PDF] — PDF download
-
--------------------------------------------------------------------------------
 
 # External Links
 
@@ -344,20 +267,31 @@ Last but not least, there's _The Alan Cookbook_ by Anssi Räisänen:
 
 [AsciiDoc]: https://asciidoctor.org/ "Visit Asciidoctor website"
 
-[AsciiDoc Syntax Quick Reference]: https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+[AsciiDoc Syntax Quick Reference]: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/
 
-[Asciidoctor User Manual]: https://asciidoctor.org/docs/user-manual/
+[Asciidoctor User Manual]: https://docs.asciidoctor.org/asciidoc/latest/
 
 [Asciidoctor]: https://github.com/asciidoctor/asciidoctor/ "Visit Asciidoctor repository at GitHub"
 [Issue #2106]: https://github.com/asciidoctor/asciidoctor/issues/2106 "Issue #2106 — Add extension point for integrating an alternative source highlighter"
 
 [asciidoctor-fopub]: https://github.com/asciidoctor/asciidoctor-fopub "Visit the asciidoctor-fopub repository on GitHub"
-
-[#3248]: https://github.com/asciidoctor/asciidoctor/issues/3248 "View feature request #3248 on Asciidoctor repository"
+[asciidoctor-pdf]: https://github.com/asciidoctor/asciidoctor-pdf "Visit the asciidoctor-pdf repository on GitHub"
 
 <!-- External Tools and Dependencies -->
 
 [alan-xsl-fopub]: https://github.com/alan-if/alan-xsl-fopub "Visit the alan-xsl-fopub repository on GitHub"
+
+[Dia]: http://dia-installer.de/ "Visit Dia's website"
+[Dia Diagram Editor]: http://dia-installer.de/ "Visit Dia's website"
+
+[highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
+
+[Highlight]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
+[Highlight website]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
+[Highlight repository]: https://gitlab.com/saalen/highlight "Visit Highlight Git repository at GitLab"
+[Highlight's Alan syntax definition]: https://gitlab.com/saalen/highlight/blob/master/langDefs/alan.lang "View the sourcefile of the Alan syntax definition for Highlight"
+
+[Rouge]: http://rouge.jneen.net "Visit Rouge website"
 
 [Sass]: https://sass-lang.com "Visit Sass website"
 [Sass]: https://sass-lang.com "Visit Sass website"
@@ -365,19 +299,38 @@ Last but not least, there's _The Alan Cookbook_ by Anssi Räisänen:
 [Ruby Sass]: https://sass-lang.com/ruby-sass "Visit Ruby Sass homepage"
 [Choco Sass]: https://chocolatey.org/packages/sass "View the Chocolatey package for Dart Sass"
 
-[highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
-
-[Highlight website]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
-[Highlight repository]: https://gitlab.com/saalen/highlight "Visit Highlight Git repository at GitLab"
-[Highlight's Alan syntax definition]: https://gitlab.com/saalen/highlight/blob/master/langDefs/alan.lang "View the sourcefile of the Alan syntax definition for Highlight"
-
-[Dia]: http://dia-installer.de/ "Visit Dia's website"
-[Dia Diagram Editor]: http://dia-installer.de/ "Visit Dia's website"
+[XSLTHL]: https://github.com/xmlark/xslthl "Visit XSLTHL repository on GitHub"
 
 <!-- Project Files ----------------------------------------------------------->
 
 [CONVENTIONS]: ./CONVENTIONS.md "Read the 'Formatting and Styling Conventions' guidelines adopted in Alan-Docs"
 [CONTRIBUTING]: ./CONTRIBUTING.md "Read the guidelines for contributing to Alan-Docs"
+
+<!-- Project Folders --------------------------------------------------------->
+
+[/_assets/]: ./_assets/
+[/alan-xsl-fopub/]: https://github.com/alan-if/alan-xsl-fopub/
+[/xsl-fopub/]: https://github.com/alan-if/alan-xsl-fopub/tree/master/xsl-fopub/
+[/fonts/]: https://github.com/alan-if/alan-xsl-fopub/tree/master/fonts/
+[/hjs/]: ./_assets/hjs/
+[/hl/]: ./_assets/hl/
+[/images/]: ./_assets/images/
+[/rouge/]: ./_assets/rouge/
+[/sh/]: ./_assets/sh/
+[/_assets-src/]: ./_assets-src/
+[/colors/]: ./_assets-src/colors/
+[/images/]: ./_assets-src/images/
+[/alan-logo/]: ./_assets-src/images/alan-logo/
+[/dia/]: ./_assets-src/images/dia/
+[/original-docs/]: ./_assets-src/original-docs/
+[/sass/]: ./_assets-src/sass/
+[/_dev/]: ./_dev/
+[/alan-design/]: ./alan-design/
+[/alanguide/]: ./alanguide/
+[/conversion/]: ./conversion/
+[/ideguide/]: ./ideguide/
+[/manual/]: ./manual/
+[/writing/]: ./writing/
 
 <!-- Git references -->
 
