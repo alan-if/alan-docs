@@ -1,6 +1,6 @@
 #! /bin/bash
 # ------------------------------------------------------------------------------
-# "_dev/styles-test/pdf_build.sh"       v1.0.0 | 2019/09/10 | by Tristano Ajmone
+# "_dev/styles-test/pdf_build.sh"       v1.0.1 | 2021/08/04 | by Tristano Ajmone
 # ------------------------------------------------------------------------------
 # This script is released into public domain via the Unlicense:
 #     http://unlicense.org/
@@ -26,6 +26,8 @@ echo "==========================================================================
 echo "Converting all style tests to standalone PDF documents..."
 echo "=============================================================================="
 
+rm -f *.pdf
+
 # Set some required env vars
 CURRDIR=$PWD
 ASSETSDIR="../../_assets/alan-xsl-fopub"
@@ -36,7 +38,6 @@ for adocFile in *.asciidoc ; do
 	--safe-mode unsafe \
 	--verbose \
 	-b docbook \
-	-d book \
 	-a data-uri! \
 	$adocFile
 done

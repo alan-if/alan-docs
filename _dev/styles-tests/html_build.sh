@@ -49,7 +49,6 @@ HtmlConvHighlight() {
 }
 
 HtmlConvHLJS() {
-	# GetOutFName "$1" "$2"
 	outname="${1%.*}_hljs.html"
 	asciidoctor \
 		--safe-mode unsafe \

@@ -1,4 +1,4 @@
-:: "_dev\styles-tests\PDF_BUILD.bat"    v3.0.1 | 2019/09/10 | by Tristano Ajmone
+:: "_dev\styles-tests\PDF_BUILD.bat"    v3.0.2 | 2021/08/04 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: This script is released into public domain via the Unlicense:
 ::     http://unlicense.org/
@@ -20,6 +20,7 @@ SET "FOPUB_DIR=..\..\_assets\alan-xsl-fopub\"
 ECHO ==============================================================================
 ECHO Converting to PDF
 ECHO ==============================================================================
+DEL *.pdf
 FOR /R %%i IN (*.asciidoc) DO (
     CALL :ADoc2PDF %%i
 )
@@ -35,10 +36,10 @@ CD %FOPUB_DIR%
 
 ECHO Converting to PDF:  %~n1.pdf
 CALL asciidoctor^
-    -b docbook^
-    -a data-uri!^
     --safe-mode unsafe^
     --verbose^
+    -b docbook^
+    -a data-uri!^
     %1
 CALL fopub^
     -t xsl-fopub^
