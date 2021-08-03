@@ -1,16 +1,17 @@
+include::inc/attr_highlighters.adoc[]
+include::inc/attr_header.adoc[]
 = Typography in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v2.2, December 9, 2018
-include::_inc_header-attributes.adoc[]
-// Sections Numbering:
+v3.0, August 8, 2021
 :sectnums:
 :sectnumlevels: 2
+:imagesdir: img
 
 // =============================================================================
 //                         Custom Attributes Definition
 // =============================================================================
 // Custom attributes shared by all docs:
-include::_inc_custom-attributes.adoc[]
+include::inc/attr_custom.adoc[]
 
 // *****************************************************************************
 // *                                                                           *
@@ -102,7 +103,7 @@ Now leave before I am forced to taunt you a second time!
 
 [source,alan]
 --------------------
-include::snippets.alan[tag=short_sample]
+include::inc/snippets.alan[tag=short_sample]
 --------------------
 
 [discrete]
@@ -293,13 +294,13 @@ https://github.com/tonsky/FiraCode[Fira Code^] project.
 First we'll test for ligatures inside a source code block.
 Here ligatures support could depend on the monospaced font, the backend or the syntax highligher (which may or may not filter contents of the block).
 
-include::_ligatures_test.adoc[tag=code_ligatures_source]
+include::inc/ligatures_test.adoc[tag=code_ligatures_source]
 
 
 And now we'll carry out the test (part of it) in an example block, for here a different font is being used which may support code related ligatures.
 The example block below has not special substitutions settings.
 
-include::_ligatures_test.adoc[tag=code_ligatures_example]
+include::inc/ligatures_test.adoc[tag=code_ligatures_example]
 
 // ******************************************************************************
 // *                                                                            *
@@ -314,7 +315,7 @@ include::_ligatures_test.adoc[tag=code_ligatures_example]
 The following table is used for checking that default Asciidoctor textual symbols replacement works fine.
 
 
-include::_table_symbols-repl.adoc[]
+include::inc/table_symbols-repl.adoc[]
 
 
 

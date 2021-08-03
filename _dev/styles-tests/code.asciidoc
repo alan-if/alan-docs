@@ -1,31 +1,19 @@
-ifeval::["{source-highlighter}" == "highlightjs"]
-:highlighter: highlight.js
-endif::[]
-ifeval::["{source-highlighter}" == "rouge"]
-:highlighter: Rouge
-endif::[]
-ifeval::["{source-highlighter}" == "highlight"]
-:highlighter: Highlight
-endif::[]
-ifeval::["{backend}" != "html5"]
-:highlighter: XSLTHL
-endif::[]
+include::inc/attr_highlighters.adoc[]
+include::inc/attr_header.adoc[]
 = Syntax Highlighting via {highlighter}
 Tristano Ajmone <tajmone@gmail.com>
-v2.4, August 8, 2021
-include::_inc_header-attributes.adoc[]
+v3.0, August 8, 2021
 :doctype: book
 :toclevels: 5
-// Sections Numbering:
 :sectnums!:
 :sectnumlevels: 2
-
+:imagesdir: img
 
 // =============================================================================
 //                         Custom Attributes Definition
 // =============================================================================
 // Custom attributes shared by all docs:
-include::_inc_custom-attributes.adoc[]
+include::inc/attr_custom.adoc[]
 
 // *****************************************************************************
 // *                                                                           *
@@ -87,7 +75,7 @@ Alan code examples are styles as `alan` source blocks.
 
 [source,alan]
 --------------------
-include::snippets.alan[tag=sample]
+include::inc/snippets.alan[tag=sample]
 --------------------
 
 <1> Callouts use default colors, no customization.
@@ -312,7 +300,7 @@ Both can be optionally enabled by assigning styles to them, or just be ignored (
 
 [source,alan]
 --------------------
-include::snippets.alan[tag=predefined_classes]
+include::inc/snippets.alan[tag=predefined_classes]
 --------------------
 
 
@@ -374,7 +362,7 @@ Here's the test snippet:
 
 [source,alan]
 --------------------
-include::snippets.alan[tag=ligatures]
+include::inc/snippets.alan[tag=ligatures]
 --------------------
 
 And here's a screenshot of the above code displayed in Sublime Text 3 via the

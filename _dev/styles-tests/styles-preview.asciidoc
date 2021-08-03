@@ -1,18 +1,19 @@
-= Alan Documentation Styles: templates styles samples
+include::inc/attr_highlighters.adoc[]
+include::inc/attr_header.adoc[]
+= Templates Styles
 Tristano Ajmone <tajmone@gmail.com>
-v1.5, August 8, 2021
-include::_inc_header-attributes.adoc[]
+v2.0, August 8, 2021
 :toclevels: 5
 :doctype: book
-// Sections Numbering:
 :sectnums:
 :sectnumlevels: 2
+:imagesdir: img
 
 // =============================================================================
 //                         Custom Attributes Definition
 // =============================================================================
 // Custom attributes shared by all docs:
-include::_inc_custom-attributes.adoc[]
+include::inc/attr_custom.adoc[]
 
 
 // *****************************************************************************
@@ -233,7 +234,7 @@ Informal Example:
 
 [example]
 ============================================================================
-include::_snippets.adoc[tag=lorem_styled]
+include::inc/snippets.adoc[tag=lorem_styled]
 ============================================================================
 
 Formal Example:
@@ -241,7 +242,7 @@ Formal Example:
 [example]
 .Example With Title
 ============================================================================
-include::_snippets.adoc[tag=lorem_styled]
+include::inc/snippets.adoc[tag=lorem_styled]
 ============================================================================
 
 
@@ -249,13 +250,13 @@ include::_snippets.adoc[tag=lorem_styled]
 
 [listing]
 ----------------------------------------
-include::_snippets.adoc[tag=lorem_plain]
+include::inc/snippets.adoc[tag=lorem_plain]
 ----------------------------------------
 
 [listing]
 .Listing With Title
 ----------------------------------------
-include::_snippets.adoc[tag=lorem_plain]
+include::inc/snippets.adoc[tag=lorem_plain]
 ----------------------------------------
 
 
@@ -264,14 +265,14 @@ include::_snippets.adoc[tag=lorem_plain]
 
 [literal]
 ........................................
-include::_snippets.adoc[tag=lorem_plain]
+include::inc/snippets.adoc[tag=lorem_plain]
 ........................................
 
 
 [literal]
 .Literal With Title
 ........................................
-include::_snippets.adoc[tag=lorem_plain]
+include::inc/snippets.adoc[tag=lorem_plain]
 ........................................
 
 
@@ -349,31 +350,31 @@ I'm an IMPORTANT admonition.
 === Note
 
 [NOTE]
-include::_snippets.adoc[tag=admonitions_test]
+include::inc/snippets.adoc[tag=admonitions_test]
 
 
 === Tip
 
 [TIP]
-include::_snippets.adoc[tag=admonitions_test]
+include::inc/snippets.adoc[tag=admonitions_test]
 
 
 === Warning
 
 [WARNING]
-include::_snippets.adoc[tag=admonitions_test]
+include::inc/snippets.adoc[tag=admonitions_test]
 
 
 === Caution
 
 [CAUTION]
-include::_snippets.adoc[tag=admonitions_test]
+include::inc/snippets.adoc[tag=admonitions_test]
 
 
 === Important
 
 [IMPORTANT]
-include::_snippets.adoc[tag=admonitions_test]
+include::inc/snippets.adoc[tag=admonitions_test]
 
 // *****************************************************************************
 // *                                                                           *
@@ -385,7 +386,7 @@ include::_snippets.adoc[tag=admonitions_test]
 
 == Tables
 
-include::_table_symbols-repl.adoc[]
+include::inc/table_symbols-repl.adoc[]
 
 // ******************************************************************************
 // *                                                                            *
