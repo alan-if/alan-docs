@@ -1672,18 +1672,20 @@ The predefined `opaque` attribute is only available in instances and classes hav
 
 
 When an instance with the `Container` property is encountered during game play, it will be described as usual.
-If the instance has a default description the contents of the container will be listed if it is not empty and not opaque.
+By default the contents of the container will be listed unless it is empty or opaque.
+If the default description has been overridden, the author will have to explicitly decide on how to handle the container aspect and its content.
 
 
 
 ==== LIMITS
 
-The (((LIMITS, clause))) `Limits` clause of the `Container` property declaration put limitations on what and how much can be put in the container.
+The (((LIMITS, clause))) `Limits` clause of the `Container` property declaration makes it possible to define limitations on _what_ and _how much_ can be put in any given container (as a class or a instance).
+These limitations are enforced by the interpreter during gameplay.
 (((BNF, rules of, LIMITS)))
 
 [source,bnf]
 --------------------------------------------------------------------------------
-limits = 'LIMITS' {limit}
+limits = 'LIMITS' limit {limit}
 
 limit = limiting_attribute 'ELSE' {statement}
 
@@ -1693,12 +1695,16 @@ limiting_attribute = attribute_definition
 
 
 
-If any of these limits are exceeded when trying to locate anything inside the container, the statements in the corresponding `Else` part will be executed and the players turn aborted.
-In fact, these checks are performed because of the execution of a (((locating inside containers))) `Locate` statement (usually as a result of the player issuing a command with the intent of placing something in a container).
-This means that the execution of a sequence of statements can actually be interrupted in the middle by these limitations.
+If any of these limits are exceeded when trying to put (i.e. `locate`) anything inside the container, the statements in the corresponding `Else` part will be executed and the player turn aborted.
+In fact, these checks are performed because of the execution of a (((locating inside containers))) `Locate` statement (usually, but not limited to, as a result of the player issuing a command with the intent of placing something in a container).
+This means that the execution of a sequence of statements can actually be interrupted by a `Locate` statement triggering limitations.
 
-The specification of an attribute, which must be a numeric attribute on the class the container takes (by default `object`), implies that the sum of this attribute of all objects in the container cannot exceed the value specified.
-The special attribute `Count` (((COUNT, in LIMITS))) can be also be used and indicates a limitation on the number of instances allowed.
+Each `Limits` specification requires either a limiting attribute or the special meta-attribute `Count`.
+Multiple limitations can be defined on the same container.
+
+In case of a (((LIMITS, limiting attribute))) limiting attribute, it must be a numeric attribute defined on the class taken by the container (by default, `object`), and its implications are that the sum of this attribute on all objects in the container cannot exceed the specified value.
+
+As for the special attribute `Count`(((COUNT, in LIMITS))), it defines a limitation on the number of instances allowed in the container.
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1709,14 +1715,17 @@ Container
 --------------------------------------------------------------------------------
 
 
+The `Count` limit considers all instances directly in the container.
+This might differ from the number of instances listed e.g. if the container takes ``Thing``s (which are not automatically shown to the player).
+E.g. if a container contains one instance of `Thing` and one instance of `Object` a listing will only mention the object, but the `Count` limit will still consider the count to be 2.
 
-[NOTE]
-================================================================================
-The `Count` limit considers all instances in the container.
-This might differ from the number of instances listed e.g. if the container takes ``Thing``s (which are not 'visible').
-================================================================================
+The calculation of a limiting attribute always sums the values of that attribute for all contained items recursively.
+This includes the container itself and the added item, if it happens to be a container too.
+In effect the calculation is transitive (see <<Transitivity>>).
+As described in <<Containers Containing Containers>>, this process might involve instances that do not have the limiting attribute, in which case these are simply disregarded from the sum.
 
-
+If an item is being located into a target container which also happens to be inside a container, the limits of that "`outer`" container are also checked.
+This is repeated so that the limits of any containing containers are checked.
 
 `Container` properties are inherited in its entirety.
 Locations can't have container properties.
@@ -1758,7 +1767,7 @@ It is followed by a list of instances mentioned. <<MENTIONED>> describes this li
 
 The `Else` part is used instead of the `Header` if the container is empty.
 
-If `Limits` or `Header` is missing, the Alan system supplies the default of no limits, and the messages output will be equivalent with:
+If `Limits` or `Header` is missing, the Alan system supplies the default of no limits, and the messages output will be equivalent to:
 
 [source,alan]
 --------------------------------------------------------------------------------
@@ -1786,10 +1795,9 @@ extract = 'EXTRACT' [check] [does]
 --------------------------------------------------------------------------------
 
 
-The `Extract` clause, including optional `Check` and `Does` clauses, allows prohibiting the extraction of the item from the container depending on some condition.
-If the `Check` is present, it works the same way as for ``Verb``s (see <<Verb CHECKs>>).
-I.e. a `Check` without a guard expression will unconditionally prohibit extractions; a `Check` with an expression will evaluate that expression and, if false, execute its `Else` clause, and then abort the move.
-The `Does` clause will be executed if the optional `Check` passes, or there was no `Check`.
+The `Extract` clause, including optional `Check` and `Does` clauses, allows the author to prohibit the extraction of an item from the container depending on some condition.
+If the `Check` is present, it works the same way as for ``Verb``s (see <<Verb CHECKs>>), i.e. a `Check` without a guard expression will unconditionally prohibit extractions; a `Check` with an expression will evaluate that expression and, if false, execute its `Else` clause, and then abort the move.
+The `Does` clause will be executed if the optional `Check` passes, or if there was no `Check`.
 
 An `Extract` clause without a `Check`, but with a `Does` clause, executes the `Does` clause and then allows the extraction to take place.
 So, in a way, ``Check``s, if triggered, prevents the extraction, and the `Does` clause amends to it, being an extensions of the normal case, much like the `Check` and `Does` clauses for ``Verb``s (see <<VERBs>>).
@@ -1816,6 +1824,12 @@ The waiter IsA actor
 End The waiter.
 --------------------------------------------------------------------------------
 
+[WARNING]
+================================================================================
+Both limits and the `Extract` clause will, if triggered, interrupt the execution of the triggering `Locate` statement, and does not continue the execution.
+Currently there is no way to programmatically check if this will happen.
+The author needs to be aware of this effect and if necessary, take precautions.
+================================================================================
 
 === VERBs
 
