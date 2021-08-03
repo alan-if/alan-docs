@@ -1,6 +1,6 @@
 = Alan Documentation Styles: templates styles samples
 Tristano Ajmone <tajmone@gmail.com>
-v1.4, December 19, 2018
+v1.5, August 8, 2021
 include::_inc_header-attributes.adoc[]
 :toclevels: 5
 :doctype: book
@@ -195,23 +195,23 @@ Everyone loves cheese and biscuits halloumi.footnote:[Courtesy of Cheese Ipsum, 
 Bocconcini mozzarella cottage cheese jarlsberg taleggio ricotta hard cheese cheddar.
 Stilton pecorino brie when the cheese comes out everybody's happy squirty cheese cheese and wine pecorino cheesecake.
 Everyone loves stilton hard cheese stinking bishop mascarpone cheese slices boursin st. agur blue cheese.
-Cheeseburger airedale.footnoteref:[cheese_link,http://www.cheeseipsum.co.uk/]
+Cheeseburger airedale.footnote:cheese_link[http://www.cheeseipsum.co.uk/]
 
 
 [NOTE]
 ================================================================================
-Squirty cheese swiss parmesan.footnoteref:[rubber,Thanks to Rubber Cheese Limited.]
-Squirty cheese when the cheese comes out everybody's happy.footnoteref:[cheese_link]
+Squirty cheese swiss parmesan.footnote:rubber[Thanks to Rubber Cheese Limited.]
+Squirty cheese when the cheese comes out everybody's happy.footnote:cheese_link[]
 ================================================================================
 
 [cols="2*"]
 |==========
 | column 1 | column 2
 
-| Squirty cheese swiss parmesan.footnoteref:[rubber]
+| Squirty cheese swiss parmesan.footnote:rubber[]
 | When the cheese comes out everybody's happy chalk and cheese.
 
-| I love cheese, especially briefootnoteref:[cheese_link] cheese strings.
+| I love cheese, especially briefootnote:cheese_link[] cheese strings.
 | Red leicester bavarian bergkase lancashire melted cheese.
 
 |==========
