@@ -39,6 +39,7 @@
 
 ## Asciidoctor
 ##############
+*.asc        text
 *.adoc       text
 *.asciidoc   text
 *.csv        text

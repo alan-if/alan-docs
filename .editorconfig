@@ -22,7 +22,7 @@ insert_final_newline = true
 ; error reports. (See #73)
 [alanguide/alanguide-code/tvtime.alan]
 charset = unset
-[_dev/styles-tests/{demo,snippets}.alan]
+[_dev/styles-tests/**.alan]
 charset = unset
 
 # ==============================================================================
@@ -32,7 +32,7 @@ charset = unset
 
 ## AsciiDoc
 ###########
-[*.{ad,adoc,asciidoc}]
+[*.{asc,adoc,asciidoc}]
 indent_size = unset
 indent_style = space
 end_of_line = unset
