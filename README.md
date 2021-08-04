@@ -32,18 +32,22 @@ Help and contributions are welcome (see [`CONTRIBUTING.md`][CONTRIBUTING]).
         - [Git Submodules](#git-submodules)
         - [File Extensions Conventions](#file-extensions-conventions)
     - [Development Enviroment Info](#development-enviroment-info)
+    - [Syntax Highlighting](#syntax-highlighting)
     - [Project Dependencies](#project-dependencies)
         - [Asciidoctor](#asciidoctor)
         - [Asciidoctor-fopub](#asciidoctor-fopub)
+        - [Asciidoctor Diagram](#asciidoctor-diagram)
         - [Dia Diagram Editor](#dia-diagram-editor)
-    - [Syntax Highlighting](#syntax-highlighting)
+        - [Highlight](#highlight)
+        - [highlight.js](#highlightjs)
+        - [Rouge](#rouge)
     - [Work Tools](#work-tools)
         - [Asciidoc FX](#asciidoc-fx)
         - [Sublime Text Asciidoctor](#sublime-text-asciidoctor)
 - [External Links](#external-links)
     - [Alan](#alan)
     - [Asciidoctor](#asciidoctor-1)
-    - [Highlight](#highlight)
+    - [Highlight](#highlight-1)
 
 <!-- /MarkdownTOC -->
 
@@ -156,6 +160,17 @@ This is the environemnt setup used for the project by its maintainer:
     Asciidoc FX v1.6.8
     Dia Diagram Editor v0.97
 
+## Syntax Highlighting
+
+This project provides all the required assets to highlight AsciiDoc documents containing ALAN code blocks, using Asciidoctor and a choice of different highlighters, for which [Tristano Ajmone] has created custom ALAN syntax definitions:
+
+|  highlighter   | formats  |             backends             |
+|----------------|----------|----------------------------------|
+| [Highlight]    | HTML     | [Asciidoctor]                    |
+| [highlight.js] | HTML     | [Asciidoctor]                    |
+| [Rouge]        | HTML/PDF | [Asciidoctor], [asciidoctor-pdf] |
+| [XSLTHL]       | PDF      | [asciidoctor-fopub]              |
+
 
 ## Project Dependencies
 
@@ -164,6 +179,11 @@ This is the environemnt setup used for the project by its maintainer:
 - https://asciidoctor.org/
 
 In order to convert the AsciiDoc sources to any format you'll need to install Ruby and the Asciidoctor gem.
+
+Once you've installed Ruby, you can install the Asciidoctor gem via CLI:
+
+    gem install asciidoctor
+
 
 ### Asciidoctor-fopub
 
@@ -179,23 +199,52 @@ Also available locally at:
 
 - `_assets/alan-xsl-fopub/README.md`
 
+
+### Asciidoctor Diagram
+
+- https://docs.asciidoctor.org/diagram-extension/latest/
+
+This Ruby gem is an Asciidoctor extension,
+
+> Asciidoctor Diagram is a set of Asciidoctor extensions that enable you to add diagrams, which you describe using plain text, to your AsciiDoc document.
+
+It's only required to build some documents in this project, i.e. the ALAN design docs found in:
+
+- [`/alan-design/`][/alan-design/]
+
+To install the Asciidoctor Diagram via the CLI:
+
+    gem install asciidoctor-diagram
+
+
 ### Dia Diagram Editor
 
 - http://dia-installer.de/
 
 Optionally, if you want to edit and build the diagram images, you'll need to install Dia on your machine too. This tool is required to build via automated scripts some images found in [`/_assets-src/images/`](./_assets-src/images/).
 
+### Highlight
 
-## Syntax Highlighting
+- http://www.andre-simon.de/doku/highlight/en/highlight.php
 
-This project provides all the required assets to highlight AsciiDoc documents containing ALAN code blocks, using Asciidoctor and a choice of different highlighters, for which [Tristano Ajmone] has created custom ALAN syntax definitions:
+This is a cross platform application, just download the installer matching your OS and architecture.
 
-|  highlighter   | formats  |             backends             |
-|----------------|----------|----------------------------------|
-| [Highlight]    | HTML     | [Asciidoctor]                    |
-| [highlight.js] | HTML     | [Asciidoctor]                    |
-| [Rouge]        | HTML/PDF | [Asciidoctor], [asciidoctor-pdf] |
-| [XSLTHL]       | PDF      | [asciidoctor-fopub]              |
+### highlight.js
+
+- https://highlightjs.org
+
+You don't need to install anything for documents using highlight.js; the repository contains a custom highlight.js package which is used for syntax highlighting.
+
+### Rouge
+
+- http://rouge.jneen.net
+- https://github.com/rouge-ruby/rouge
+
+Rouge is our syntax highlighter of choice in this project, so you should really install it.
+
+This is a Ruby gem, to install it via CLI type:
+
+    gem install rouge
 
 
 ## Work Tools
