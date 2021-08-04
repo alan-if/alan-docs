@@ -1,11 +1,9 @@
-include::inc/attr_highlighters.adoc[]
 include::inc/attr_header.adoc[]
 = Typography in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
 v3.0, August 8, 2021
 :sectnums:
 :sectnumlevels: 2
-:imagesdir: img
 
 // =============================================================================
 //                         Custom Attributes Definition

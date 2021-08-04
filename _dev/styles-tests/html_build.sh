@@ -1,5 +1,22 @@
 #! /bin/bash
 
+# "_dev/styles-tests/html_build.sh"     v1.0.0 | 2021/08/04 | by Tristano Ajmone
+# ==============================================================================
+# This script is released into public domain via the Unlicense:
+#     http://unlicense.org/
+# ------------------------------------------------------------------------------
+# * * * * * * * * * * *   HIGHLIGHTER ATTRIBUTES ONLY!!!   * * * * * * * * * * *
+# ------------------------------------------------------------------------------
+# Documents in this folder already define all the document attributes they need,
+# both in their own header and via the shared attributes defined in:
+#
+# 	./inc/attr_header.adoc
+#
+# So command line invocation should only define attributes which are strictly
+# required to enforce a specific syntax highlighter or backend.
+# ==============================================================================
+
+
 echo -e "\n===================================================="
 echo      "Converting Test Docs to Standalone HTML Documents..."
 echo -e   "====================================================\n"
@@ -18,12 +35,6 @@ HtmlConvRouge() {
 		-a rouge-style=thankful_eyes \
 		-a docinfodir=$rougeDir \
 		-a docinfo=shared-head \
-		-a data-uri \
-		-a icons=font \
-		-a linkattrs \
-		-a reproducible \
-		-a sectanchors \
-		-a toc=left \
 		-o $outname \
 		$1
 }
@@ -38,12 +49,6 @@ HtmlConvHighlight() {
 		-a source-highlighter=highlight \
 		-a docinfodir=$highlightDir/adoc/ \
 		-a docinfo=shared-head \
-		-a data-uri \
-		-a icons=font \
-		-a linkattrs \
-		-a reproducible \
-		-a sectanchors \
-		-a toc=left \
 		-o $outname \
 		$1
 }
@@ -55,12 +60,6 @@ HtmlConvHLJS() {
 		--verbose \
 		-a source-highlighter=highlightjs \
 		-a highlightjsdir=$hljsDir \
-		-a data-uri \
-		-a icons=font \
-		-a linkattrs \
-		-a reproducible \
-		-a sectanchors \
-		-a toc=left \
 		-o $outname \
 		$1
 }
@@ -84,7 +83,3 @@ for f in *.asciidoc; do
 	HtmlConvRouge "$f"
 	echo -e "\e[0m"
 done
-
-# HtmlConvHLJS "styles-preview.asciidoc"
-# HtmlConvHLJS "tests-syntax-highlighting.asciidoc" "tests-syntax-highlighting_hljs"
-# HtmlConvHLJS "tests-typography.asciidoc"

@@ -1,4 +1,3 @@
-include::inc/attr_highlighters.adoc[]
 include::inc/attr_header.adoc[]
 = Syntax Highlighting via {highlighter}
 Tristano Ajmone <tajmone@gmail.com>
@@ -7,7 +6,6 @@ v3.0, August 8, 2021
 :toclevels: 5
 :sectnums!:
 :sectnumlevels: 2
-:imagesdir: img
 
 // =============================================================================
 //                         Custom Attributes Definition
@@ -71,15 +69,21 @@ In-depth information and contextual tests for syntaxes that support syntax highl
 
 == Alan
 
-Alan code examples are styles as `alan` source blocks.
+To enable syntax highlighting on an ALAN {source-code-block}:
+
+[source,asciidoc]
+-------------
+[source,alan]
+--------------------------
+The shore IsA location
+--------------------------
+-------------
 
 [source,alan]
 --------------------
 include::inc/snippets.alan[tag=sample]
 --------------------
 
-<1> Callouts use default colors, no customization.
-<2> Callouts use default colors, no customization.
 
 .Alan Code With Title
 [source,alan]
@@ -88,6 +92,82 @@ Every book IsA object.
   Description "It's just a book."
 End Every.
 -------------------------------------------
+
+
+=== Alernative Themes
+
+Beside the default theme for ALAN code, shown above, our toolchain provides two alternative ALAN themes.
+
+ifeval::["{source-highlighter}" == "highlightjs"]
+[WARNING]
+================================================================================
+Highlight.js doesn't currently support the alternative themes!
+They will be rendered just as the default theme.
+================================================================================
+endif::[]
+
+
+==== Library Theme
+
+The "`library`" theme is intended to differentiate code which is part of a library.
+
+To use the "`library`" theme on an ALAN code block:
+
+[source,asciidoc]
+-------------
+[source,alan,role="lib"]
+-------------
+
+
+.ALAN code with library (`lib`) theme
+[source,alan,role="lib"]
+--------------------
+include::inc/snippets.alan[tag=sample]
+--------------------
+
+
+==== Tutorial Theme
+
+The "`tutorial`" theme is intended to differentiate code which is part of a tutorial file being described (or quoted from).
+
+To use the "`tutorial`" theme on an ALAN code block:
+
+[source,asciidoc]
+-------------
+[source,alan,role="tutorial"]
+-------------
+
+
+.ALAN code with tutorial (`tutorial`) theme
+[source,alan,role="tutorial"]
+--------------------
+include::inc/snippets.alan[tag=sample]
+--------------------
+
+
+=== Callouts in Code
+
+Here's an example of ALAN code with {callouts}.
+
+ifeval::["{source-highlighter}" == "highlight"]
+[WARNING]
+======================
+Highlight doesn't currently support callouts in highlighted code blocks!
+
+As you can see from the example below, the callout numbers in the code block are not rendered as expected.
+======================
+endif::[]
+
+
+[source,alan]
+--------------------
+include::inc/snippets.alan[tag=short_sample_callouts]
+--------------------
+
+<1> Callout number one.
+<2> Callout number two.
+<3> Callout number three.
+
 
 [NOTE]
 ================================================================================

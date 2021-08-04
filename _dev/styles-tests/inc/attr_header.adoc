@@ -1,24 +1,52 @@
 // COMMONLY SHARED HEADER SETTINGS ATTRIBUTES
 :version-label: v
 :authorinitials: T.J.A.
+:lang: en
+// TOC & Sections:
+:toc: left
+:sectanchors: true
+:linkattrs: true
+// Cross References:
+:idprefix:
+:xrefstyle: full
+:chapter-refsig: Ch.
+:section-refsig: Sec.
+:appendix-refsig: App.
 // Misc Settings:
+:data-uri: true
 :encoding: utf-8
 :experimental: true
 :icons: font
-:lang: en
-:linkattrs: true
-:toc: left
-// =====================
-// HTML Default Settings
-// =====================
+:reproducible: true
+// Paths:
+:imagesdir: img
+// =======================
+// SYNTAX HIGHLIGHTER INFO
+// =======================
+// Fallback default:
+:highlighter: no highligter
+ifeval::["{source-highlighter}" == "highlightjs"]
+:highlighter: highlight.js
+endif::[]
+ifeval::["{source-highlighter}" == "rouge"]
+:highlighter: Rouge
+endif::[]
+ifeval::["{source-highlighter}" == "highlight"]
+:highlighter: Highlight
+endif::[]
+ifeval::["{backend}" != "html5"]
+:highlighter: XSLTHL
+endif::[]
+// ============
+// BACKEND INFO
+// ============
 ifeval::["{backend}" == "html5"]
 :toolchain: pass:r[Asciidoctor's native HTML5]
 endif::[]
-// =====================
-// PDF Settings Override
-// =====================
 ifeval::["{backend}" == "docbook"]
 :toolchain: asciidoctor-fopub
 endif::[]
-// ---------------------
-:revremark: Backend: {toolchain}
+// =========
+// REVREMARK
+// =========
+:revremark: Backend: {toolchain} + {highlighter}

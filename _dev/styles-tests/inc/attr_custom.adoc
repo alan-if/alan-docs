@@ -1,12 +1,21 @@
+// ******************************************************************************
+// *                                                                            *
+// *                        Custom Attributes Definition                        *
+// *                                                                            *
+// ******************************************************************************
+// Some attributes for custom substitution of multiple occurrences of same text.
+
 // =============================================================================
-//                         Custom Attributes Definition
+//                                External Links
 // =============================================================================
-// Some attributes for custom substitution of multiple occurences of same text.
 
 :fopub: https://github.com/asciidoctor/asciidoctor-fopub[asciidoctor-fopub^]
 :Highlight: http://www.andre-simon.de/[Highlight^]
 :hljs: https://highlightjs.org/[highlight.js^]
 
+// Ascidoctor Documentation
+:callouts: https://docs.asciidoctor.org/asciidoc/latest/verbatim/callouts/[callouts^,title="AsciiDoc Language Documentation » Callout"]
+:source-code-block: https://docs.asciidoctor.org/asciidoc/latest/verbatim/source-blocks/[source code block^,title="AsciiDoc Language Documentation » Source Code Blocks"]
 // =============================================================================
 //                               Fonts Specimens
 // =============================================================================

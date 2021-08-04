@@ -32,9 +32,9 @@
 
 -- tag::sample[]
 --==============================================================================
--- "Barracks Example" by Tristano Ajmone <1>
+-- "Barracks Example" by Tristano Ajmone
 --==============================================================================
-The canteen IsA LOCATION -- <2>
+The canteen IsA LOCATION
   Name 'The Barrack''s Mess Hall'.
 END The canteen.
 
@@ -58,20 +58,41 @@ End The trolley.
 Start at canteen.
 -- end::sample[]
 
-
 --==============================================================================
 --------------------------------------------------------------------------------
 -- § 1.2 - Short Sample
 --------------------------------------------------------------------------------
 --==============================================================================
+
 -- tag::short_sample[]
+--==============================================================================
+-- "Paradise Lost" a short example in ALAN IF
+--==============================================================================
 The shore IsA location
   Name Shore of Great Sea
-  Description "A beautifyl sea shore, probably Paradise lost."
-End The shore.
+  Description "A beautiful sea shore, probably Paradise lost."
+End the shore.
 
 Start at shore.
 -- end::short_sample[]
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 1.3 - Short Sample with Callouts
+--------------------------------------------------------------------------------
+--==============================================================================
+
+-- tag::short_sample_callouts[]
+--==============================================================================
+-- "Paradise Lost" a short example in ALAN IF <1>
+--==============================================================================
+The shore IsA location -- <2> <3>
+  Name Shore of Great Sea
+  Description "A beautiful sea shore, probably Paradise lost."
+End the shore.
+
+Start at shore.
+-- end::short_sample_callouts[]
 
 
 
