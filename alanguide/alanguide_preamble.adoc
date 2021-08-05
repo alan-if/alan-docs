@@ -1,0 +1,40 @@
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+// Show document info and AsciiDoc conversion version and date...
+
+
+[subs=attributes+]
+..................................
+Doc version: {revnumber}
+Last edited: {revdate}
+..................................
+
+
+image:alan-logo.png[Alan Logo,500,458]
+
+
+.About This Document
+********************************************************************************
+This excellent guide was written by Michael Arnaud back in 2006.
+It was published on the https://alanif.se/files/alanguide/alanguide.html[Alan website], where its still available as a web page, but the original sources were lost.
+The original Guide was written in a format that made it possible to generate various output formats.
+Today the format of choice with those properties is https://asciidoctor.org/[AsciiDoc].
+
+In 2014, Thomas Nilefalk started converting it to AsciiDoc from HTML, the only format in which the Guide had survived.
+The styles and formatting restoration work wasn't completed, and this document takes on from where Thomas left.
+The intention is to recreate the original styles of the Guide, or at least preserve the original intentions of the Guide's author.
+
+Thomas also started updating the contents, for both Alan has and the Standard Library have evolved since the original document (2006).
+
+The library referenced in this guide is no longer current.
+Anssi Räisanen has made huge efforts in creating a newer and better library -- currently at version 2.1, and available on https://github.com/AnssiR66/AlanStdLib[GitHub].
+
+Among the goals of this document reconstruction is updating its contents to the Standard Library v2.1.
+
+- _ALAN 3 Beginner's Guide_ by Michael Arnaud, (C) 2006.
+- Converted to AsciiDoc by Thomas Nilefalk (C) 2014-2017.
+- *The Alan Adventure Language*, created by Thomas Nilefalk.
+********************************************************************************

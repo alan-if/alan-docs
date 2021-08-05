@@ -62,7 +62,8 @@ The reader will also need to download the source files of the __ALAN Library__ r
 
 ## Document Source Files
 
-- [`alanguide.asciidoc`][guide] — _B.Guide_ source doc.
+- [`alanguide.asciidoc`][guide] — _B.Guide_ main source document:
+    + `alanguide_*.adoc` — sub-sources (split modules).
 
 ## Conversion Scripts
 

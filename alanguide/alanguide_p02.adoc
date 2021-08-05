@@ -1,0 +1,767 @@
+= PART TWO: OBJECTS and Attributes
+
+== OBJECTS
+
+There is much more to an IF game than moving around from one LOCATION to another.
+Within the LOCATIONS there are usually various OBJECTS to be found, things the player can look at and in many cases manipulate in some way.
+In our game so far we have told the player that in the TV Room there is a TV, a chair, and a table.
+
+The basic template for an `OBJECT` is:
+
+// @ALAN @EXAMPLE/@PSEUDOCODE:
+// - [x] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [x] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[source,alan]
+--------------------------------------------------------------------------------
+The ? IsA object at ?
+  Name '?'
+
+  <ATTRIBUTES>
+
+  Description
+    "? ? ?"
+
+  <VERBS>
+
+End the ?.
+--------------------------------------------------------------------------------
+////
+----
+THE ? Isa OBJECT AT ?
+    NAME '?'
+    <Attributes>
+    DESCRIPTION
+        "? ? ?"
+    <Verbs>
+END THE ?.
+----
+
+////
+Our first OBJECT in "TV Time!" will be the plasma TV.
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+[green]#The tv IsA object at tv_room
+End the tv.#
+--------------------------------------------------------------------------------
+
+Here we are simply telling the compiler that THE tv Isa (is a) particular _instance_ of the _class,_ OBJECT.
+We are also telling the compiler where to place the tv "AT".
+Pardon the poor grammar, but it is what we are doing: the TV is placed AT the LOCATION tv_room.
+
+This is all that is necessary to create an OBJECT.
+In fact even this little bit of code is more than what is necessary to create an OBJECT, for we could have left it in a true digital limbo by not giving it any LOCATION at all:
+
+// @ALAN @EXAMPLE:
+// - [x] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan]
+--------------------------------------------------------------------------------
+The tv IsA object
+End the tv.
+--------------------------------------------------------------------------------
+
+This would leave the TV unseen, unknown, unreachable.
+That might be where we want some OBJECTS to be at the start, perhaps to be magically transported later into the game.
+For now, however, we will simply place the TV in the TV Room.
+
+It is a good idea to code OBJECTS following their LOCATIONS.
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+The tv_room IsA location
+  Name 'TV Room'
+  Description
+    "This is your favorite room in the house, because you love to
+     watch television. You recently purchased a giant screen
+     plasma TV that is set up in this room, ideally located
+     across from your comfy chair and table. The kitchen is
+     south."
+  Exit south to kitchen
+    Does
+      "You go south, into the kitchen."
+  End exit.
+  Exit north, east, west to tv_room
+    Check
+      "There is only a wall in that direction."
+  End exit.
+End the tv_room.
+-----------------------
+[green]#The tv IsA object at tv_room
+End the tv.#
+-----------------------
+The kitchen IsA location
+  Name 'Kitchen'
+  Description
+    "This is the kitchen. North returns to the TV Room."
+...
+--------------------------------------------------------------------------------
+
+
+// @ARRIVED HERE! //////////////////////////////////////////////////////////////
+
+
+== NAME that OBJECT
+
+[float]
+=== NAME the TV
+
+As it is, the interpreter will identify the TV as, well, the tv; and the player will be able to interact with it (to a limited degree) as the tv.
+Note, however, that we have told the player in the TV Room DESCRIPTION that it is not just a "TV", but it is "a giant screen plasma TV".
+He/She may want to refer to it as "plasma tv", "screen", "television", etc.
+The interpreter will then give the message "I don't know the word television." To preclude that, we can give the TV a NAME.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE tv Isa OBJECT AT tv_room
+     [green]#NAME giant screen plasma TV#
+ END THE tv.
+ ...
+----
+
+This is better, but far from best.
+It will recognize any and all adjectives in front of the word "TV", and so will understand if the player types "plasma tv" or "giant tv".
+But it will not understand "plasma" or "giant" alone, much less "television".
+Another thing we might not be happy with is that every time the interpreter refers to the TV it will be by the full NAME, the "giant screen plasma TV".
+
+There are several ways we can make it cleaner and more co-operative.
+The first is by multiple NAME statements:
+
+// @ALAN @EXAMPLE ????:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE tv Isa OBJECT AT tv_room
+     [green]#NAME TV
+     NAME plasma
+     NAME screen
+     NAME giant#
+     NAME giant screen plasma [green]#television#
+ END THE tv.
+ ...
+----
+
+The interpreter will now refer to the TV by the first NAME statement, "TV".
+But it will understand input by the player in any combination of "giant screen plasma tv/television".
+The interpreter will understand any and all of the adjectives whether applied to "television", "screen", "tv", etc.
+So we only need to include the adjectives in one NAME statement, my preference is to place them in the last one.
+
+Be careful with multiple NAME statements.
+They can make game play easier and more "interactive," but can also lead to problems of disambiguation -- the Alan program may become confused where the same words are used as NAMES for different OBJECTS, especially those in the same LOCATION.
+If necessary, keep a separate list of all your NAME statements to avoid duplication and disambiguation.
+
+Another tool to use here is SYNONYMS, like we did in the
+xref:nowhere[Nowhere LOCATION].
+It is important to note that SYNONYMS must be declared before, not after, the main word is defined.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ [green]#SYNONYMS
+     television = tv.#
+ THE tv Isa OBJECT AT tv_room
+     NAME TV
+     NAME plasma
+     NAME screen
+     NAME giant
+     NAME giant screen plasma tv
+ END THE tv.
+ ...
+----
+
+The advantage of using SYNONYMS is that once you declare them, _they apply everywhere_ in the program or game.
+So later if we create a TV remote control or a TV power cord or a TV antennae (who would use an antennae on a plasma TV!?), the player will always be able to refer to it as the "television remote", "television cord", "television antennae".
+
+== DESCRIPTIONS
+
+[float]
+=== Using DESCRIPTIONS for OBJECTS
+
+Compile and run the game.
+This is what the interpreter will display:
+
+// @TRANSCRIPT
+----
+TV Room
+This is your favorite room in the house, because you love to watch
+television. You recently purchased a giant screen plasma TV that is
+set up in this room, ideally located across from your comfy chair and
+table. The kitchen is south. There is a TV here.
+----
+
+Hmm.
+That's not quite what we want.
+We have already told the player
+about the TV in the DESCRIPTION for the LOCATION.
+It is uncomfortably
+redundant to be told a second time, "There is a TV here."
+
+The fix comes when we understand what happens when the player enters a LOCATION.
+If there are OBJECTS in the LOCATION, they will be described to the player.
+In the case of the TV, and any other OBJECTS that we might not wish to have described immediately, or at all, we can assign a DESCRIPTION for the OBJECT -- a blank DESCRIPTION, that overrides the describing tendency of the LOCATION.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ SYNONYMS
+     television = tv.
+ THE tv Isa OBJECT AT tv_room
+     NAME TV
+     NAME plasma
+     NAME screen
+     NAME giant
+     NAME giant screen plasma tv
+     [green]#DESCRIPTION
+         ""#
+ END THE tv.
+ ...
+----
+
+In fact we do not even need to include the quote marks.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ SYNONYMS
+     television = tv.
+ THE tv Isa OBJECT AT tv_room
+     NAME TV
+     NAME plasma
+     NAME screen
+     NAME giant
+     NAME giant screen plasma tv
+     [green]#DESCRIPTION#
+ END THE tv.
+ ...
+----
+
+Now the TV will only be mentioned in the LOCATION DESCRIPTION and not described a second time in an OBJECT DESCRIPTION.
+As the chair and table are similarly mentioned in the TV Room, let's go ahead and create those too.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ [green]#-----------------------
+ THE chair Isa OBJECT AT tv_room
+     NAME comfy chair NAME comfy
+     DESCRIPTION
+ END THE chair.
+ -----------------------
+ THE table Isa OBJECT AT tv_room
+     DESCRIPTION
+ END THE table.
+ -----------------------#
+ ...
+----
+
+Notice that multiple NAME statements can be on the same line.
+The compiler doesn't care, and it makes for more compact code.
+Also notice that we did not use a NAME at all for the table.
+Since that is all it is described to be in the LOCATION DESCRIPTION, and not for example a "wooden table", it is enough to keep it simply "table" (¶ 4.7.3).
+
+== Attributes
+
+[float]
+=== We've Got to Do Something.
+
+Compile the game and play it. "Look at" the TV, the chair, and the table.
+TV Room This is your favorite room in the house, because you love to watch television.
+You recently purchased a giant screen plasma TV that is set up in this room, ideally located across from your comfy chair and table.
+The kitchen is south.
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _look at the tv_ +
+There is nothing special about the TV.
+
+&gt; _look at the chair_ +
+There is nothing special about the comfy chair.
+
+&gt; _look at the table_ +
+There is nothing special about the table.
+================================================================================
+
+The interpreter recognizes the three OBJECTS we have created in the TV Room and tells us there is "nothing special" about them.
+We will see how to make the response a bit more interesting later, but for now we are satisfied that the OBJECTS are where we want them to be and that we can interact with them, at least to "look at" them.
+
+Since we have a television in the TV Room, let's turn it on and see what happens.
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _turn on the tv_ +
+You can't turn that on.
+================================================================================
+
+[float]
+=== ADDING ATTRIBUTES
+
+We can't turn on the TV because we haven't made it _able_ to be turned on (or off).
+But we can do that with the help of the library and Attributes.
+Before we see how it works, let's see how easy it is to make the TV able to turn on or off.
+Add this line to your code:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ SYNONYMS
+     television = tv.
+ THE tv Isa OBJECT AT tv_room
+     NAME TV
+     NAME plasma
+     NAME screen
+     NAME giant
+     NAME giant screen plasma tv
+     [green]#IS SWITCHABLE. -- Note the full-stop.#
+     DESCRIPTION
+ END THE tv.
+ ...
+----
+
+That's all we have to do to get this result:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _turn on the tv_ +
+You turn on the TV.
+
+&gt; _turn it off_ +
+You turn off the TV.
+================================================================================
+
+Again, the result could be more descriptive, but the point is that now the player can turn the tv on and off.
+It's important now to see how this works, and in the course of doing so to learn a bit about Attributes and VERBS.
+
+It begins with a file in the library called "turn.i", short for "turn on and turn off.i".
+The things to notice at this point are highlighted in [yellow-background]#yellow#.
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -- turn.i -- Library version 0.5.0
+ -- 0.4.1 - converted to ALANv3
+ #Add To Every object#
+     #Is#
+         #Not 'on'.#
+         #Not switchable.#
+ #End Add To object.#
+
+ Syntax
+     turn_on1 = turn on (obj)
+         Where obj Isa object
+             Else "You can't turn that on."
+     turn_on2 = turn (obj) 'on'
+         Where obj Isa object
+             Else "You can't turn that on."
+     switch_on1 = switch 'on' (obj)
+         Where obj Isa object
+             Else "You can't switch that on."
+     switch_on2 = switch (obj) 'on'
+         Where obj Isa object
+             Else "You can't switch that on."
+
+ #Add To Every object#
+     #Verb turn_on1, turn_on2, switch_on1, switch_on2#
+         #Check obj Is switchable#
+              #Else "You can't turn that on."#
+         #And obj Is Not 'on'#
+              #Else "It's already on."#
+              #Does#
+                  #Make obj 'on'.#
+                  #"You turn on" Say The obj. "."#
+     #End Verb.#
+ #End Add To.#
+
+ Syntax
+     turn_off1 = turn off (obj)
+         Where obj Isa object
+             Else "You can't turn that off."
+     turn_off2 = turn (obj) off
+         Where obj Isa object
+             Else "You can't turn that off."
+     switch_off1 = switch off (obj)
+         Where obj Isa object
+             Else "You can't switch that off."
+     switch_off2 = switch (obj) off
+         Where obj Isa object
+             Else "You can't switch that off."
+
+ #Add To Every object#
+     #Verb turn_off1, turn_off2, switch_off1, switch_off2#
+         #Check obj Is switchable#
+             #Else "You can't turn that off."#
+         #And obj Is 'on'#
+             #Else "It's already off."#
+     #Does#
+         #Make obj Not 'on'.#
+         #"You turn off" Say The obj. "."#
+     #End Verb.#
+ #End Add To.#
+----
+
+Let's look at the first section above:
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+----
+ Add To Every object
+     Is
+         Not on.
+         Not switchable.
+ End Add To object.
+----
+
+The words "Add To Every object" mean to Add certain properties (in this case, Attributes) to every instance of an OBJECT in the entire game.
+The word "Is" declares an Attribute.
+
+The word "Is" declares an Attribute, a property that the OBJECT is or is not, like on or off or open or closed or switchable or upsidedown or anything we want at all.
+It only must be something that the OBJECT is, or is not .
+This is called a Boolean Attribute, and can be thought of in terms of a "yes/no, on/off" Attribute .
+
+As you can see in the example from the library, we are Adding To Every OBJECT in the game the Boolean Attributes of being "not on" (we will cover the reason for the single-quote marks later) and "not switchable".
+
+== VERBS and CHECKS
+
+The second and third sections in yellow highlight also Add something To Every OBJECT, this time several VERBS.
+
+// @ALAN @LIBRARY ?????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ Add To Every object
+     #Verb turn_on1, turn_on2, switch_on1, switch_on2#
+         #Check obj Is switchable#
+              #Else "You can't turn that on."#
+         And obj Is Not 'on'
+              Else "It's already on."
+              Does
+                  Make obj 'on'.
+                  "You turn on" Say The obj. "."
+     End Verb.
+ End Add To.
+----
+
+and
+
+// @ALAN @LIBRARY ?????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ Add To Every object
+     #Verb turn_off1, turn_off2, switch_off1, switch_off2#
+         #Check obj Is switchable#
+             #Else "You can't turn that off."#
+         And obj Is 'on'
+             Else "It's already off."
+     Does
+         Make obj Not 'on'.
+         "You turn off" Say The obj. "."
+     End Verb.
+ End Add To.
+----
+
+These two sections tell the interpreter what to do if the player should try to turn on or turn off any OBJECT in the game.
+
+[float]
+=== VERBS and CHECKS for Attributes
+
+Without going into detail right now about how VERBS work, the main thing I want you to see right now is their basic format:
+
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ VERB _do_this, do_that_
+     CHECK _conditions are met_
+         ELSE "You can't do that!"
+     DOES
+         "You do this and that."
+ END VERB.
+----
+
+Notice the first word following the VERB statements: CHECK.
+You have seen that word before, introduced in xref:exits[the section on EXITS].
+
+When we looked at CHECKS before, we said that "a CHECK stops the action that would otherwise take place." However, a CHECK need not only stop the action that would otherwise take place.
+In fact, we will most often use a CHECK conditionally, to see if it should stop the action or not.
+
+When we want to use a CHECK conditionally, we use the format:
+
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ CHECK _whether a certain condition is met_
+     ELSE _stop the action and display an explanation_
+----
+
+If the condition is met, the CHECK will not stop the action.
+
+Very often the condition to be met will be whether an OBJECT'S certain Attribute is true or not.
+If the OBJECT'S Attribute is true (for example), the CHECK passes and the action takes place.
+If the Attribute is not true, the CHECK stops the action that would otherwise take place.
+
+// @ALAN @LIBRARY ????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ Verb turn_on1, turn_on2, switch_on1, switch_on2
+     #Check obj Is switchable#
+          Else "You can't turn that on."
+----
+
+That is why at first we could not turn on the TV.
+We typed "turn on the tv", the interpreter came to the CHECK, saw that the TV was not switchable -- from the first section, remember --
+
+// @ALAN @TV-TIME ?????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ Add To Every OBJECT
+     IS NOT switchable.
+ ...
+----
+
+-- and the CHECK stopped the action: "You can't turn that on."
+
+When we added the line "IS switchable." to the tv, we gave the tv the required Attribute and it passed the CHECK.
+So we got the desired response (the "DOES" part of the VERB): "You turn on the TV."
+
+== NOT takeable
+
+[float]
+=== GET IT?
+
+There are other things besides turning it on and off that the player might want to try with the TV.
+For example, the player might want to pick it up and take it with him.
+And the standard library is set up to let him do just that!
+
+Look in the library folder and find the file "take.i".
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ Synonyms
+     get, carry, obtain, grab, steal, confiscate, hold = take.
+ ...
+----
+
+These are the SYNONYMS in "take.i" for the word "take".
+So if the player types "get the tv" or "grab" or "steal" or "carry the tv", it is all the same to the interpreter as if they had typed "take the tv".
+The interpreter will respond with
+
+[example,role="gametranscript"]
+================================================================================
+Taken.
+
+&gt;
+================================================================================
+
+The tv will be carried with the player everywhere he goes, until he decides to drop it somewhere. (Don't be confused if you play the game and see the TV still listed in the LOCATION DESCRIPTION.
+It isn't really there any more, you are carrying it.
+Type "i" for "inventory"to see what you are carrying.)
+
+Well, what if we don't want the player to be able to pick up the tv?
+We have several options.
+The first and perhaps easiest option is to look at the "take" VERB in the library.
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ Add To Every object
+     Is
+         takeable.
+ End Add To object.
+ ...
+ Add To Every object
+     Verb take, pick_up1, pick_up2
+         #Check obj Is takeable#
+             Else "You can't take that!"
+         ...
+         Does
+             Locate obj In hero.
+             "Taken."
+     End Verb.
+ End Add To.
+ ...
+----
+
+There is a CHECK looking for the Attribute "takeable".
+Also notice that every OBJECT in the game is made "takeable" by default.
+Our tv is an OBJECT, so it has the default Attribute of being takeable.
+We can change the Attribute of the tv from being takeable to being not takeable.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ SYNONYMS
+     television = tv.
+ THE tv Isa OBJECT AT tv_room
+     NAME TV NAME plasma
+     NAME screen NAME giant
+     NAME giant screen plasma tv
+     IS
+         SWITCHABLE.
+         [green]#NOT TAKEABLE.#
+     DESCRIPTION
+ END THE tv.
+ ...
+----
+
+Now the tv cannot be taken because it IS NOT takeable.
+The VERB "take"applies "To Every object".
+The interpreter will see that the tv is an OBJECT.
+The next thing the interpreter will do is "Check obj Is takeable" -- ah ha!
+The tv is no longer takeable!
+So the VERB is CHECKED (stopped) and the message is displayed.
+Here's what we will see in the game:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _take the tv_ +
+You can't take that!
+================================================================================
+
+== Non-Boolean Attributes
+
+There is another option, similar to the first, and gives more explanation than that the player "can't take that." The TV is supposed to be big and heavy.
+It might be too heavy to lift.
+
+ALAN 3 has another sort of Attribute, that is not a Boolean Attribute (on/off, yes/no) but is an Attribute that is measurable, such as weight, color, height, or any measurable thing we can imagine.
+
+These Attributes are rather like variables, assigning values that can change within the game.
+
+To give a measurable Attribute to an OBJECT, we use "HAS" (instead of "IS"), followed by the value, or quality, or how much or what sort of that Attribute the OBJECT has .
+In this case, we want to give the tv the Attribute of weight, and to make its weight more than the player is permitted to "take".
+
+"HAS" can be used for all sorts of measures, of string values as well as numeric values.
+For example, we could make the tv purple with "HAS color purple"; we could make the tv into a musical instrument with "HAS sound music" or whatever we want.
+
+Looking at the VERB in "take.i" again, we see:
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ Add To Every object
+     Verb take, pick_up1, pick_up2
+         Check obj Is takeable
+             Else "You can't take that!"
+         --- etc. ---
+         #And weight Of obj &lt;= 50#
+             #Else "That is too heavy to lift."#
+         Does
+             Locate obj In hero.
+             "Taken."
+     End Verb.
+ End Add To.
+ ...
+----
+
+All we need to do is give the TV the Attribute of weight, and a value
+greater than 50.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ....
+ SYNONYMS
+     television = tv.
+ THE tv Isa OBJECT AT tv_room
+     NAME TV
+     NAME plasma
+     NAME screen
+     NAME giant
+     NAME giant screen plasma tv
+     IS SWITCHABLE.
+     -- NOTE we removed the "NOT takeable."
+     [green]#HAS weight 100.#
+     DESCRIPTION
+ END THE tv.
+ ...
+----
+
+We have made the tv takeable again (allowing the default), so the first CHECK will not stop the VERB action.
+Then the interpreter sees the weight of the tv is greater than 50.
+The second part of the CHECK (not to get bogged in details, but the "And" in the line "And weight Of obj &lt;=50" is like another CHECK) sees a weight of 100 is too heavy.
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _take the tv_ +
+That is too heavy to lift.
+================================================================================
+

@@ -1,0 +1,860 @@
+= PART SEVEN: A Second Puzzle
+
+
+== A PLUG for the GAME
+
+[[plug]]
+[float]
+=== A Plug for Our Game
+
+Let's continue building on our game by making it necessary to plug the tv cord into an electrical outlet in the wall.
+Coding the game in reverse order of solving the puzzle, we need to disable the remote (and tv).
+Then we will create the cord, then the wall and outlet.
+
+[float]
+=== Disable the Remote
+
+We need to keep in mind (or better yet write down somewhere) what we will call the power cord and how we will signal to the remote that it is plugged in.
+In this case we will call the cord, the "cord", and we will have the remote CHECK if the cord "IS PLUGGED_IN".
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ THE remote Isa OBJECT AT Nowhere
+     NAME remote control
+     NAME controller
+     NAME control remote
+     NAME remote
+     NAME button
+     NAME simple push buttons
+     IS SWITCHABLE.
+        PUSHABLE.
+     VERB examine
+         DOES ONLY
+             "It's a very simple push-button remote control."
+     END VERB.
+     VERB turn_on1, turn_on2, switch_on1, switch_on2
+         [green]#CHECK cord IS PLUGGED_IN
+             ELSE
+                 "The TV won't turn on. It isn't getting any power."#
+         DOES ONLY
+             MAKE tv 'on'.
+             "Wow! What a great picture!"
+             SHOW 'plasma.png'.
+             "$n$nYou watch the game and your favorite team wins!"
+             "$n$nAnd so have you..."
+             "$p\*\** You have won! \***"
+             QUIT.
+     END VERB.
+     VERB push
+         [green]#CHECK cord IS PLUGGED_IN
+             ELSE
+                 "The TV won't turn on. It isn't getting any power."#
+         DOES ONLY
+             MAKE tv 'on'.
+             "Wow! What a great picture!"
+             SHOW 'plasma.png'.
+             "$n$nYou watch the game and your favorite team wins!"
+             "$n$nAnd so have you..."
+             "$p\*\** You have won! \***"
+             QUIT.
+     END VERB.
+ END THE remote.
+ -----------------------
+----
+
+Disable the tv in the same way:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ SYNONYMS
+     television = tv.
+ THE tv Isa OBJECT AT tv_room
+ ...
+ VERB turn_on1, turn_on2, switch_on1, switch_on2
+     CHECK remote Here
+         ELSE
+             "There are no knobs, switches or buttons for turning on
+              the TV."
+     [green]#AND cord IS PLUGGED_IN
+         ELSE
+             "The TV won't turn on. It isn't getting any power."#
+     DOES ONLY
+         MAKE tv 'on'.
+         "Wow! What a great picture!"
+         SHOW 'plasma.png'.
+         "$n$nYou watch the game and your favorite team wins!"
+         "$n$nAnd so have you..."
+         "$p\*\** You have won! \***"
+         QUIT.
+ END VERB.
+ ...
+----
+
+[float]
+=== The Power Cord
+
+In the game the cord will be made to appear as part of the tv.
+The easiest way to do that is in the "examine" and other VERBS, rather than trying to code the tv as a CONTAINER just to hold the cord, and then to prevent all other properties of the CONTAINER, and to prevent removing the cord, etc.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ [green]#THE cord Isa OBJECT AT tv_room
+     NAME cord
+     NAME power electric electrical tv cord
+     DESCRIPTION
+     IS PLUGGABLE.
+        NOT PLUGGED_IN.#
+ ...
+----
+
+We are just making up these Attributes, trying to think of terms that will suit the "plug in" VERB we will create in a moment.
+Before we get to that, let's customize the library VERBS "examine" and "take".
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ THE cord Isa OBJECT AT tv_room
+     NAME cord
+     NAME power electric electrical tv cord
+     DESCRIPTION
+     IS PLUGGABLE.
+        NOT PLUGGED_IN.
+     [green]#VERB examine
+         DOES ONLY
+             "The power cord is of the common sort, and just three feet
+              long."
+             IF cord IS PLUGGED_IN THEN
+                 "It is plugged into the electric outlet."
+             END IF.
+     END VERB.#
+ ...
+----
+
+Here you can see how the IF-THEN statement can be used to modify the response to the "examine" VERB.
+The cord is first described, then the IF looks to see whether the cord is plugged in.
+If so, the THEN displays that information to the player.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+     [green]#VERB take, pick_up1, pick_up2
+         CHECK
+             "You can't take it. The power cord is permanently attached
+              to the television set."
+     END VERB.
+ END THE cord.#
+----
+
+== Creating Custom VERBS
+
+[float]
+=== Create the "plug in" VERB
+
+This is the first VERB we have needed that is not already done for us
+in the library.
+We previously solved this for "press" and "click" (in xref:fine_tune[this section]) by making them SYNONYMS for the library "push" VERB.
+It would be very easy and perhaps plausible to do the same thing here, to make "plug" a SYNONYM for "put".
+When the player would type "> _plug cord in outlet_" it would be the same to the computer as though they had typed "> _put cord in outlet_".
+
+But it would probably be best to create the "plug in" VERB on its own so that we can check for "pluggability" we don't necessarily want other "puttable" OBJECTS to be "pluggable" as well.
+Besides, you are doubtless going to need to create a VERB sometime, you may as well learn how to do it now.
+
+The Alan manual is the best place to learn all the technical ins and outs of SYNTAX and VERBS.
+It would be good to read and understand that material to better understand what we are doing here.
+But I will keep the technical ins and outs to a minimum here.
+Our method of creating VERBS will be to "steal" them from the library.
+Heh heh.
+
+We have already been doing that in order to create custom responses; now we are going to do it for the whole VERB.
+I have hinted that the "plug in" VERB we want to create will be very similar to the "put in"VERB in the library.
+That is the first thing to look for when creating a VERB.
+
+Somewhere in the library you will be able to find a VERB that is very similar to the one you have in mind.
+Find it, copy it, and adapt it.
+
+"One step at a time" is one of Thomas Nilsson's favorite maxims, and we would do well to follow it here.
+The first step is to make a new file called "plug.i".
+Save the file in the library folder.
+The next step is to open "std.i" and to include this line in the list of ".i"files there (if you miss this step then "plug.i" will not be imported into your game):
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ IMPORT 'plug.i'.
+----
+
+Now open the "plug.i" and the "put.i" files.
+Most text editors (such as <A HREF="http://www.crimsoneditor.com/">Crimson Editor</A>) will allow you to open multiple files and give you easy access and switching between them.
+
+I have indicated below in [green]#red# the changes to adapt
+"plug.i" for our VERB.
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -- put.i CHANGE TO -- plug.i (Try a Universal Replace of "plug" for "put"!)
+ -- Library version 0.5.2 OMIT
+ -- 0.4.1 - converted to ALANv3 OMIT
+ SYNONYMS
+     place = put. CHANGE TO insert = plug.
+ [green]#SYNTAX -- *OMIT this whole SYNTAX statement, we don't need "plug" by itself.*
+     put = put (obj) *
+         WHERE obj ISA OBJECT
+             ELSE "You can't put that anywhere."
+ Add To Every object -- *OMIT this whole Add To, same reason.*
+     VERB put
+         CHECK obj IN HERO
+             ELSE "You haven't got that."
+         DOES
+             LOCATE obj HERE.
+             "Dropped."
+     END VERB.
+ End Add To.#
+ SYNTAX
+     put_in = put (obj1) 'in' (obj2) plug_in = plug (obj1) 'in' (obj2)
+         WHERE obj1 ISA OBJECT
+             ELSE "You can't put that anywhere." [green]#ELSE "... plug that anywhere."#
+         AND obj2 ISA CONTAINER
+             ELSE "You can't put anything in that." [green]#ELSE "... plug anything in that."#
+  Add To Every object
+      IS NOT PLUGGABLE.
+      NOT PLUGGED_IN.
+      Verb put_in Verb plug_in
+          When obj1
+              Check obj1 Here
+                  Else
+                      "You don't see" Say The obj1. "here."
+              AND obj1 IS PLUGGABLE
+                  ELSE "That isn't something that can be plugged in."
+              AND obj1 IS NOT PLUGGED_IN
+                  ELSE "That is already plugged in."
+              And obj1 &lt;&gt; obj2
+                  Else "You can't put something into itself!" [green]#...plug something ..."#
+              And obj2 &lt;&gt; hero
+                  Else "You can't put" Say obj1. "into yourself!" [green]#...plug" Say obj1...#
+              Does
+                  Locate obj1 In obj2.
+                  MAKE obj1 PLUGGED_IN.
+                  "Done."
+     End Verb.
+ End Add To.
+----
+
+OMIT all the rest.
+We won't need "plug near", "plug behind", "plug on"or "plug under".
+Here it is with the changes:
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -- plug.i
+ SYNONYMS
+     insert = plug.
+ SYNTAX
+     plug_in = plug (obj1) 'in' (obj2)
+         WHERE obj1 ISA OBJECT
+             ELSE "You can't plug that anywhere."
+         AND obj2 ISA CONTAINER
+             ELSE "You can't plug anything in that."
+ Add To Every object
+     IS NOT PLUGGABLE.
+     NOT PLUGGED_IN.
+     Verb plug_in
+         When obj1
+             Check obj1 Here
+                 Else
+                     "You don't see" Say The obj1. "here."
+             AND obj1 IS PLUGGABLE
+                 ELSE "That isn't something that can be plugged in."
+             AND obj1 IS NOT PLUGGED_IN
+                 ELSE "That is already plugged in."
+             And obj1 &lt;&gt; obj2
+                 Else "You can't plug something into itself!"
+             And obj2 &lt;&gt; hero
+                 Else "You can't plug" Say obj1. "into yourself!"
+             Does
+                 Locate obj1 In obj2.
+                 MAKE obj1 PLUGGED_IN.
+                 "Done."
+     End Verb.
+ End Add To.
+----
+
+The player may wish to "unplug" the cord as well.
+Let's include that in "plug.i".
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ Syntax
+     unplug = unplug (obj)
+         Where obj Isa object
+             Else "You can't unplug that!"
+ Add To Every object
+     Verb unplug
+         Check obj Is PLUGGABLE
+             Else "You can't unplug that!"
+         And obj IS PLUGGED_IN
+             Else "It is already unplugged."
+         Does
+             Locate obj in Hero.
+             MAKE obj NOT PLUGGED_IN.
+             "Unplugged."
+     End Verb.
+ End Add To.
+ Syntax
+     unplug_from = unplug (obj) 'from' (holder)
+         Where obj Isa object
+             Else "You can only unplug objects."
+         And holder Isa Container
+             Else "You can't unplug things from that!"
+ Add To Every object
+     Verb unplug_from
+         When obj
+             Check obj Is PLUGGABLE
+                 Else "You can't unplug that!"
+             And obj IS PLUGGED_IN
+                 Else "It is already unplugged."
+             And obj In holder
+                 Else
+                     Say The obj. "is not there."
+             Does
+                 Locate obj In hero.
+                 MAKE obj NOT PLUGGED_IN.
+                 "You unplug" Say The obj. "."
+     End Verb.
+ End Add.
+----
+
+[float]
+=== The Cord Is Finished
+
+We have made the cord PLUGGABLE and NOT PLUGGED_IN.
+The new default "plug in" and "unplug" VERBS will take care of those statements should the player want to try them.
+
+[[practice]]
+== Practice
+
+Now would be a good time to practice creating your own VERBS, copying them from the library and adapting them to do what you want.
+Some VERBS do not require OBJECTS to act upon.
+The player could laugh, for example, without having to laugh at anything.
+See what you can do to create the "laugh" VERB.
+You can search the library for the SYNTAX and VERBS that you need.
+Here's a hint: jump.
+
+Once you have done that, create the "laugh at" VERB (also from "jump.i").
+The "obj" should probably be a THING, not only an OBJECT, just in case the player might want to laugh at an ACTOR (which is also a THING).
+Remember that "AT" is an Alan reserved word.
+
+[float]
+=== Sit
+
+There is a nice comfy chair in the TV Room.
+Create a "sit in" VERB in the library and implement it for the chair.
+Don't forget to make an Attribute to CHECK for "sittability" (I use IS SITABLE) and add it to the chair (as done in xref:compile_and_play[Compile and Play It!]) .
+
+[float]
+=== Pull
+
+Here is a VERB that is not in the standard library but might be useful in many games.
+Use "push.i" as your model.
+Create "pull.i" in the library, using the careful procedure described in xref:plug[this section].
+Include SYNONYMS, SYNTAX, VERBS, CHECKED Attributes, etc.
+
+== Solutions
+
+Don't read this section further until you have completed the practice above.
+
+[WARNING]
+================================================================================
+S O L U T I O N S!
+================================================================================
+
+
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -- laugh \*\** from "jump.i" \***
+ SYNTAX
+     laugh = laugh.
+ VERB laugh
+     DOES
+         "Ha ha hah!"
+ END VERB.
+ -----------------------
+ -- laugh at \*\** also from jump.i \***
+ SYNTAX
+     laugh_at = laugh 'at' (obj)
+         WHERE obj ISA THING
+             ELSE "You can't laugh at that!"
+ Add To Every thing
+     VERB laugh_at
+         DOES
+             "You laugh at " Say The obj. ". Hah hah hah!"
+     END VERB.
+ End Add To.
+ -----------------------
+ -- pull.i \*\** from push.i \***
+ SYNONYMS
+     drag, yank = pull.
+ SYNTAX
+     pull = pull (obj)
+         WHERE obj ISA THING
+             ELSE "You can't push that."
+ Add To Every object
+     Verb pull
+         Check obj Is MOVEABLE -- Already ADDED TO EVERY OBJECT in
+                               -- "push.i"
+             Else "You can't pull that."
+         Does
+             "You pull" Say The obj. "."
+     End Verb.
+ End Add To.
+ Syntax
+     pull_with = pull (obj1) 'with' (obj2)
+         Where obj1 Isa thing
+             Else "You can't pull that."
+         And obj2 Isa object
+             Else "You can use only objects to pull things with."
+ Add To Every object
+     Verb pull_with
+         When obj1
+             Check obj1 IS MOVEABLE
+                 Else "You can't pull that."
+             Does
+                 "Using" Say The obj2. "you pull" Say The obj1. "."
+     End Verb.
+ End Add To.
+ -----------------------
+----
+
+[float]
+=== Advanced Attribute Changes
+
+It seems to me that it isn't necessary to have separate Attributes for "push" and "pull", IS PUSHABLE and IS PULLABLE respectively.
+It makes two Attributes instead of one for every thing in the game that we might want to make moveable or not moveable by pushing and/or pulling.
+I prefer to _change the required library Attribute_ to IS MOVEABLE for both "push" and "pull".
+As always, be mindful of the changes you make to the library.
+
+== Cardinal Rules
+
+[float]
+=== Another New Global VERB
+
+Many Interactive Fiction games generally allow the player to move northeast, northwest, southeast, southwest as well as in the four cardinal directions.
+We have limited travel in our game, however, to the four cardinal directions.
+We can create a global "nodirection"VERB that will take care of the off-cardinal directions without having to code for them in every LOCATION.
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -- nowhere.i
+ -- Library version 0.5.0
+ -- 0.4.1 - converted to ALANv3
+ SYNONYMS
+     n = north.
+     s = south.
+     e = east.
+     w = west.
+     [green]#-- ne = northeast. -- \*\** COMMENTED OUT \***
+     --  se = southeast.
+     --  nw = northwest.
+     -- sw = southwest.#
+
+ -- Useful for placing disappearing things
+ -- Also defines the default directions
+ THE nowhere ISA LOCATION.
+     EXIT north TO nowhere.
+     EXIT south TO nowhere.
+     EXIT west TO nowhere.
+     EXIT east TO nowhere.
+     [green]#-- EXIT northeast TO nowhere. -- \*\** COMMENTED OUT \***
+     -- EXIT southeast TO nowhere.
+     -- EXIT northwest TO nowhere.
+     -- EXIT southwest TO nowhere.#
+     EXIT up TO nowhere.
+     EXIT down TO nowhere.
+ END THE nowhere.
+ SYNONYMS
+     ne,northeast,se,southeast,nw,northwest,sw,southwest = nodirection.
+----
+
+The player is exceedingly unlikely to type "nodirection", but this word stands in for all the others.
+So if the player types "northeast"or "sw", it will be the same to the computer as though they _had_ typed "nodirection".
+
+
+// @ALAN @LIBRARY ????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ SYNTAX
+     nodirection = nodirection.
+ VERB nodirection
+     DOES
+         "The only directions you'll need in this game are
+          north, south, east, west, up, down, in, and out. "
+ END VERB.
+----
+
+Notice that we did not just delete the unwanted directions, but "commented" them out.
+That is because in other games we may want to include some or all of those other directions.
+We will only need to "un-comment" the ones we want and rewrite the SYNONYMS statement for "nodirection" to reflect that change.
+
+[[scenery]]
+== The WALL Isa Scenery
+
+[float]
+=== Hitting the Wall
+
+We have already mentioned the walls in the TV Room and Kitchen.
+Should the player try to go in directions that don't go from one LOCATION to the other, they will get the message:
+
+[example,role="gametranscript"]
+================================================================================
+There is only a wall in that direction.
+================================================================================
+
+Let's create the wall, after which we will create the electrical outlet in the wall.
+We will differentiate between the wall(s) in the TV Room and in the Kitchen.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ [green]#THE tv_wall Isa Scenery AT tv_room#
+ ...
+----
+
+[float]
+=== What "Isa Scenery"?
+
+"Scenery" is the only default Class in the standard library.
+Let's take a look at it in "scenery.i":
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -- scenery.i
+ -- Library version 0.5.0
+ Every scenery Isa object
+     Is
+         Not searchable.
+         Not takeable.
+         Not pushable.
+         Not touchable.
+     Verb examine, take
+         Does Only
+             "That's only scenery."
+     End Verb.
+ End Every scenery.
+ ...
+----
+
+Pretty basic stuff here.
+The Scenery Class prevents searching, taking, pushing or even touching certain OBJECTS in the game.
+This Class is often used for peripheral OBJECTS that promote the atmosphere and realism of the game, but are not meant for any further interaction.
+The only VERB implemented for Scenery is "examine" (the "take" is precluded by the IS NOT TAKEABLE Attribute!).
+
+I for one prefer to explain to the player why something cannot be searched, etc.
+Let's change the Scenery Class to do that.
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ Every scenery Isa object
+     [green]#DESCRIPTION -- \*\** ADDED. It should be in the default! \***
+     -- \*\** REMOVED: \***
+     -- Is
+       -- Not searchable.
+       -- Not takeable.
+       -- Not pushable.
+       -- Not touchable.
+     Verb examine -- \*\** REMOVED take \***
+         Does -- \*\** REMOVED Only, to allow "examine" in Instances \***
+             "That's only scenery."
+     End Verb.
+     -- \*\** ADDED VERBS: \***
+     VERB search
+         CHECK -- Prevent any default DOES responses!
+             "There is nothing to find by searching that."
+     END VERB.
+     VERB take, pick_up1, pick_up2
+         CHECK
+             "There is no need to take that. You won't need it."
+     END VERB.
+     VERB push
+         CHECK
+             "There is no need to push that."
+     END VERB.
+     VERB touch
+         CHECK
+             "There's no need to touch or to feel that."
+     END VERB.#
+ End Every scenery.
+----
+
+[float]
+=== Other Classes of Scenery
+
+You might consider making other Classes of Scenery to include in "scenery.i".
+For example, a Far_Scene Class could be created for OBJECTS that are too far away to touch, get, etc.
+
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ EVERY Far_Scene Isa OBJECT DESCRIPTION
+     VERB take, pick_up1, pick_up2
+         CHECK "That is too far away to reach from here."
+     END VERB.
+     -- etc. --
+ END Every.
+----
+
+I will leave that to you and your imagination.
+
+== The Outlet in the Wall
+
+[float]
+=== Finish Building the Wall
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ [green]#THE tv_wall Isa SCENERY AT tv_room
+     NAME wall
+     NAME walls
+     VERB examine
+         DOES ONLY
+             "One wall in particular has an electric outlet."
+     END VERB
+ END THE tv_wall.#
+----
+
+[float]
+=== The Electrical Outlet
+
+The outlet is part of the wall.
+As explained for the power cord and the tv (xref:plug[here]), there is no need to make the wall into a CONTAINER for the sake of holding the outlet.
+
+We need only describe the outlet as being part of the wall and code the VERB responses accordingly.
+The outlet, however, will have to be a CONTAINER for the power cord to "plug in" to (refer to the "plug in"VERB xref:plug[here]).
+
+Everything here has been covered in this guide to this point:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ [green]#THE outlet Isa SCENERY AT tv_room
+     NAME outlet
+     NAME electrical electric power wall wallplug
+     CONTAINER
+         HEADER ""
+     VERB examine
+         DOES ONLY
+             "It's a three-prong electrical outlet."
+             IF cord IS PLUGGED_IN THEN
+                 "The TV cord is plugged into it."
+             END IF
+     END VERB.
+     VERB plug_in, put_in -- The player might try "put plug in outlet"
+         WHEN obj2 -- (see this section)
+             CHECK obj1 IS PLUGGABLE
+                 ELSE
+                     "Hey, be careful! That doesn't go into an
+                     electrical outlet!"
+             AND cord IS NOT PLUGGED_IN
+                 ELSE
+                     "The cord is already plugged in!"
+             DOES ONLY
+                 MAKE cord PLUGGED_IN.
+                 "You put the power cord snugly into the electrical
+                  outlet."
+     END VERB.
+ END THE outlet.#
+ -----------------------
+----
+
+Some explanation is needed here.
+The default VERB is in reference to obj1, not to obj2 ("plug.i"):
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ Verb plug_in
+     #When obj1#
+         -- CHECKS Removed
+         Does
+             Locate obj1 In obj2.
+             MAKE obj PLUGGED_IN.
+             "Done."
+ End Verb.
+ ...
+----
+
+We are using the VERB for the outlet as obj2, the CONTAINER.
+
+// @ALAN @LIBRARY ????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+     VERB plug_in, put_in
+         #WHEN obj2#
+ ...
+----
+
+There are no default CHECKS for the VERB WHEN obj2 (nor is there a default DOES).
+That is why the CHECKS for the VERB had to be coded here.
+
+Note that we did not code our DOES ONLY to "Locate obj1 In obj2." That is not necessary, since we are using the cord, not the outlet, to test whether the cord is plugged in the outlet (see here).
+The test (CHECKED by the remote control/tv) is whether the cord IS or IS NOT PLUGGED_IN.
+So all we need to do in our DOES ONLY statement is to "MAKE cord PLUGGED_IN" and to tell the player it is done.
+
+This makes it easier as well to program for:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _plug in the tv_
+================================================================================
+
+We have allowed for the player to type "plug in the cord", but what if the player types "plug in the tv"?
+It is a simple matter to _make the tv_ PLUGGABLE (implemented in xref:compile_and_play[Compile and Play It!]).
+And that is all we have to do.
+Note again the "plug_in" VERB for the outlet.
+If obj2 (like the tv) IS PLUGGABLE, then it makes the cord PLUGGED IN.
+
+[float]
+=== Back to the Wall
+
+Remember this important question to ask ourselves: "What else might the player try? " We want to avoid making the player "guess the verb."Put yourself in their place and you guess as the author what other reasonable things they might try to do.
+It seems to me that the player might reasonably be expected to try:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _plug the cord in the wall_
+================================================================================
+
+Not to worry.
+Let's look at what we have for the wall so far.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ THE tv_wall Isa SCENERY AT tv_room
+     NAME wall
+     NAME walls
+     VERB examine
+         DOES ONLY
+             "One wall in particular has an electric outlet."
+     END VERB.
+ END THE tv_wall.
+----
+
+Since we want the same VERB to apply for the wall in the very same way as for the outlet, all we have to do is copy the VERB for the wall and make sure the wall will pass the CHECKS.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE tv_wall Isa SCENERY AT tv_room
+     [green]#CONTAINER -- Required for the wall to be obj2
+         HEADER ""#
+     NAME wall
+     NAME walls
+     VERB examine
+         DOES ONLY
+             "One wall in particular has an electric outlet."
+             [green]#IF cord IS PLUGGED_IN THEN
+                 "The TV cord is plugged into it."
+             END IF.#
+     END VERB.
+     [green]#VERB plug_in, put_in
+         WHEN obj2
+             CHECK obj1 IS PLUGGABLE
+                 ELSE
+                     "Hey, be careful! That doesn't go into an
+                      electrical outlet!"
+             AND cord IS NOT PLUGGED_IN
+                 ELSE
+                     "The cord is already plugged in!"
+             DOES ONLY
+                 MAKE cord PLUGGED_IN.
+                 "You put the power cord snugly into the electrical
+                  outlet."
+     END VERB.#
+ END THE tv_wall.
+ -----------------------
+----
+
+This completes the puzzle.
+The remote control will not work, the tv cannot be turned on, unless the cord is plugged in.
+The player can plug the cord into the outlet, even if they type it as "plug the cord in the wall."

@@ -1,0 +1,922 @@
+= PART SIX: CONTAINERS and Classes
+
+== CONTAINERS
+
+[float]
+=== Is That an Open Container, Son?
+
+There are all sorts of OBJECTS in Interactive Fiction that are CONTAINERS: boxes and baskets, bowls and cups and bottles; of course these are CONTAINERS, as well as cabinets, drawers, trash cans, and so on.
+Many CONTAINERS can be opened and/or closed, locked or unlocked, transparent (such as a wine glass) or not (such as a lead-lined box), empty or with contents inside.
+
+Our game "TV Time!" will have several CONTAINERS, one of which we have already created but not yet given the CONTAINER property.
+No, it's not the chair.
+Even though we will later program the chair for sitting in, the chair is not a CONTAINER.
+In fact, neither the Hero nor any Actor (NPC, or "non-player character") can be inside a CONTAINER. The proto-CONTAINER in our game is the table.
+
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE table Isa OBJECT AT tv_room
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             "It's an ordinary table, set conveniently by your chair."
+     END VERB.
+ END THE table.
+ ...
+----
+
+Oh yes, right now it is only "an ordinary table".
+But it is about to
+be transformed with a single word.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE table Isa OBJECT AT tv_room
+     [green]#CONTAINER#
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             "It's an ordinary table, set conveniently by your chair."
+     END VERB.
+ END THE table.
+ ...
+----
+
+And just like that ( snap! ) it is done.
+Note that being a CONTAINER is not an Attribute. (Though it can be one of the non-Boolean sort if we wish, with "HAS CONTAINER".
+That will not be covered in this guide.)
+
+Now the player can "put <something> in" the table or "take <something> from" it.
+Try it, if you like.
+
+Each of these VERBS requiring a CONTAINER is covered in the library.
+But our table does not have any drawers or anything to put something inside.
+Our table is a simple surface, and all we want is to be able to put something on the table (and take from it).
+Nevertheless, in order to understand what we are going to do with the "put on" VERB, we will first have to understand the "put in" VERB, from "put.i":
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ SYNTAX
+     put_in = put (obj1) 'in' (obj2)
+         WHERE obj1 ISA OBJECT
+             ELSE "You can't put that anywhere."
+         AND obj2 ISA CONTAINER
+             ELSE "You can't put anything in that."
+----
+
+[float]
+=== Sin Tax?
+
+As you can see, the construction of a VERB becomes more complex when it involves not just one, but two or more OBJECTS.
+In this case we have two OBJECTS, represented by obj1 and obj2.
+It is important to figure out which is the CONTAINER and which is being "put in" the CONTAINER.
+
+_The SYNTAX statement_ defines which is which: obj1 ISA OBJECT and obj2 ISA CONTAINER.
+We can think of the SYNTAX statement as _that which defines the parameters of the VERB_.
+It tells us the exact wording of the VERB.
+The single word "put_in" that is used by the VERB equals the two player-input words "put" and "'in'" (another Alan reserved word) in regards to the OBJECT and the CONTAINER.
+
+The SYNTAX statement also often acts as a CHECK.
+It will not allow the VERB if the parameters defined by the SYNTAX statement are not met.
+If the obj1 is not an OBJECT or if the obj2 is not a CONTAINER, the SYNTAX will inform the player that "You can't put...", etc.
+
+[float]
+=== The put_in VERB
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ Add To Every object
+     Verb put_in
+         When obj1
+             Check obj1 In hero
+                 Else
+                     "You haven't got" Say The obj1. "."
+             And obj1 &lt;&gt; obj2
+                 Else "You can't put something into itself!"
+             And obj2 &lt;&gt; hero
+                 Else "You can't put" Say obj1. "into yourself!"
+             Does
+                 Locate obj1 In obj2.
+                 "Done."
+     End Verb.
+ End Add To.
+ ---
+----
+
+Notice that the VERB is in reference to obj1, the OBJECT to be put in the CONTAINER.
+There are two clues to this.
+First, the library is Adding To Every object, not To Every CONTAINER.
+Second, and the main indicator, the line after "Verb put_in" says "When obj1".
+
+"_When_" can be translated to mean, "When you want to do _"this to"_, in this case, "when you want to put this obj1 in something." If the line were to read instead, "When obj2", it would mean, "when you want to put something in this obj2." We are going to use "When obj2" in just a moment, but for now let's look at the VERB as it is in the library.
+
+The next lines CHECK whether the Hero has the obj1 in his/her Inventory.
+Again, I prefer to accommodate the player if the obj1 is present in the same LOCATION.
+So let's change the library VERB to allow that.
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ Add To Every object
+     Verb put_in
+         When obj1
+             Check obj1 [green]#Here -- \*\** CHANGED FROM In Hero, etc. \***#
+                 Else
+                     [green]#"You don't see" Say The obj1. "here."#
+             And obj1 &lt;&gt; obj2
+                 Else "You can't put something into itself!"
+             And obj2 &lt;&gt; hero
+                 Else "You can't put" Say obj1. "into yourself!"
+             Does
+                 Locate obj1 In obj2.
+                 "Done."
+     End Verb.
+ End Add To.
+----
+
+The two "And" statements act as two more CHECKS to the VERB, preventing the player from putting something into itself or into their self.
+Finally there is the "Does", which LOCATES the obj1 IN the obj2.
+
+[float]
+=== The put_on VERB
+
+The library ("put.i") has the "put on" VERB:
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ Syntax put_on = put (obj1) on (obj2)
+     Where obj1 Isa object
+         Else "You can't put that anywhere."
+     And obj2 Isa thing
+         Else "You can't put anything on that."
+ ...
+----
+
+The library SYNTAX has set the parameters for the "put on" VERB for obj1 as an OBJECT and obj2 as a THING.
+This works for us, because a CONTAINER is an OBJECT, and an OBJECT is a THING.
+
+The reason obj2 is a THING and not a CONTAINER is to allow the player to put <something> on himself/herself, i.e., to wear it.
+See "wear.i"in the library.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE table Isa OBJECT AT tv_room
+     CONTAINER
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             "It's an ordinary table, set conveniently by your chair."
+     END VERB.
+     [green]#VERB put_on
+         WHEN obj2
+             DOES ONLY
+                 LOCATE obj1 IN table.
+                 "You set" Say The obj1. "on the table.""
+     END VERB.#
+ END THE table.
+ ...
+----
+
+[float]
+=== Making the VERB Not Work for the Table
+
+There is a VERB that we do not want to apply to the table, and that is the "put in" VERB.
+Our table has no drawers to put anything into.
+So:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE table Isa OBJECT AT tv_room
+     CONTAINER
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             "It's an ordinary table, set conveniently by your chair."
+     END VERB.
+     VERB put_on
+         WHEN obj2
+             DOES ONLY
+                 LOCATE obj1 IN table.
+                 "You set" Say The obj1. "on the table.""
+     END VERB.
+     [green]#VERB put_in
+         WHEN obj2
+             CHECK
+                 "There are no drawers in the table to put anything in."
+     END VERB.#
+ END THE table.
+ ...
+----
+
+_WHEN obj2_ equals "WHEN you want to put something in this table" (see note above).
+The VERB hits the CHECK and displays the explanation.
+There are no drawers in the table to put anything in.
+
+If on the other hand there were another CONTAINER in the game (perhaps a big box), it would be possible to "put the table in the box".
+The WHEN obj2 only CHECKS and stops the VERB when the table is being used as the CONTAINER.
+The player could not "put the box in the table".
+But he/she could "put the box on the table".
+
+[float]
+=== What Does a Surface "Contain"?
+
+When "examined" or otherwise described, CONTAINERS will describe their contents as well (unless programmed not to do so) with the default message, "The <CONTAINER> contains <its contents>." So if the player were for example to "put the remote on the table", this would be the result:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _x the table_ +
+It's an ordinary table, set conveniently by your chair.
+
+&gt; _put the remote on the table_ +
+Done.
+
+&gt; _x the table_ +
+It's an ordinary table, set conveniently by your chair.
+The table contains a remote control.
+================================================================================
+
+We can change the "contains" message to better fit the table, which after all is a surface. To do this, we add a HEADER statement.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE table Isa OBJECT AT tv_room
+     CONTAINER
+         [green]#HEADER
+             "Resting on the table is"#
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             "It's an ordinary table, set conveniently by your chair."
+     END VERB.
+     VERB put_on
+         WHEN obj2
+             DOES ONLY
+                 LOCATE obj1 IN table.
+                 "You set" Say The obj1. "on the table.""
+     END VERB.
+     VERB put_in
+         WHEN obj2
+             CHECK
+                 "There are no drawers in the table to put anything in."
+     END VERB.
+ END THE table.
+ ...
+----
+
+Which gives the desired result:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _x the table_ +
+It's an ordinary table, set conveniently by your chair. Resting on the
+table is a remote control.
+================================================================================
+
+== Classes
+
+[[surfaces]]
+[float]
+=== SURFACES
+
+[float]
+=== A Classy Surface
+
+In the previous section we made the table into a CONTAINER, and further refined it to be a special kind of CONTAINER, a surface.
+Our game has several of these surface-type CONTAINERS.
+Instead of having to program the same Attributes and VERBS for each one, we can create a Sub-Class with the shared Attributes, etc. (¶ 2.4.5), and call it SURFACE (or "Topside" or "Pimpernel" or whatever we want).
+
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ [green]#Every SURFACE Isa OBJECT
+     CONTAINER
+     HEADER
+         "Resting on top is"
+     VERB examine
+         DOES ONLY
+             -- Override default "nothing special" message
+             LIST THIS.
+     END VERB.#
+ ...
+----
+
+Two things to notice here.
+One, we don't want the default "nothing special" message from the library VERB, so we use DOES ONLY.
+Second, we can use "THIS" to good effect in creating Classes.
+It represents the particular subject of the VERB -- in this case the particular SURFACE in question.
+
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+     [green]#VERB put_in  WHEN obj2
+         CHECK
+             "That isn't something you can put anything ""in""."
+     END VERB.
+ END EVERY.#
+----
+
+Perhaps you wonder why we do not include the "put_on" VERB for the Surface Class, since that is the main thing we want the player to be able to do.
+The answer is that "put on" serves as well for clothing etc. that the player might want to "put on" or "wear".
+It would become complicated and tedious to make wearable items into Containers; it is easier simply to implement "put on" for the particular Instances of Surfaces.
+
+Now that we have created a specialized Class of OBJECT-CONTAINER, we can use it for the table and for every other similar OBJECT in the game.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE table Isa [green]#SURFACE# AT tv_room
+     DESCRIPTION
+     VERB examine
+         DOES [green]#BEFORE#
+             "It's an ordinary table, set conveniently by your chair."
+     END VERB.
+ END THE table.
+ ...
+----
+
+Here is something else new: DOES _BEFORE_.
+We do not want to _override_ the DOES ONLY statement in the Class, but we do want to _amend something before_ the Class's "examine" DOES its action.
+The Class VERB will LIST the contents of the Container; the Instance (i.e. the table) will print the "ordinary table" message BEFORE the Class LISTS what is on top.
+
+There is also the xref:closeables[DOES AFTER statement], for when we want some action to occur _after_ the Class and/or default DOES of the library VERB.
+
+This is the power of "object oriented programming" : the ability to create Classes for whole ranges of specialized OBJECTS, ACTORS and LOCATIONS will make it much easier to program, for example, multiple Indoor LOCATIONS with walls, floor, etc., without having to program them for each one; Outdoor LOCATIONS with sky, birds, grass, etc.; xref:doors[Doors]; Teleporters; Lockables; Forests; all sorts of things that might occur to our imagination.
+
+[[closeables]]
+[float]
+=== CLOSEABLES
+
+[float]
+=== An Open and Shut Case
+
+There is another sort of specialized CONTAINER we might find useful (though there will be only one of these in our short game), one that can be opened and closed.
+This would be used for cabinets, treasure chests, drawers, knapsacks, secret compartments, etc.
+I like to call them CLOSEABLES, and here is how we create a Class for them:
+
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ [green]#Every CLOSEABLE Isa OBJECT#
+ ...
+----
+
+Right off we have a conflict with the library file "open.i".
+In that file there are VERBS for "open" and "close", that CHECK for IS OPENABLE and IS CLOSEABLE respectively.
+With CLOSEABLE as a Class as well as an Attribute, we are using the same word to mean two different things to the computer, which could cause problems.
+One remedy of course would be to call our specialized CONTAINER Class something else, like OPEN_CLOSER.
+
+But I prefer to change the library ; to use the single Attribute IS OPENABLE for both the "open" and "close" VERBS.
+After all, I figure if something is closeable it is probably also openable; and if we should need to create an unusual OBJECT that is closeable but not openable (such as a latching lock box to which the player does not have the key), we can MAKE it NOT OPENABLE in its own "close" VERB.
+
+This frees CLOSEABLE for exclusive use as a Class.
+So in "open.i" we make these changes:
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ Add To Every object
+     [green]#-- \*\** REMOVED Is Not closeable. \***#
+     Verb close
+         Check obj Is [green]#OPENABLE -- \*\** CHANGED from closeable \***#
+             Else "You can't close that."
+         And obj Is open
+             Else "It is not open."
+         Does
+             Make obj Not open.
+             Say The obj. "is now closed."
+     End Verb.
+ End Add To.
+ ...
+----
+
+With that resolved, let's return to creating our CLOSEABLE Class.
+
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ [green]#Every CLOSEABLE Isa OBJECT
+     OPAQUE CONTAINER#
+ ...
+----
+
+An OPAQUE CONTAINER is one that the player cannot see into, that is, what it contains while it is closed.
+If we want a CLOSEABLE that the player can see into while closed, we can omit or change the OPAQUE Attribute to make it transparent.
+
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ Every CLOSEABLE Isa OBJECT
+     OPAQUE CONTAINER
+     [green]#HEADER -- For when it is open
+         "It contains"
+     IS OPENABLE. -- see "open.i"
+     VERB open
+         DOES AFTER#
+ ...
+----
+
+This is just like the DOES BEFORE statement.
+We don't want to override the default DOES in the library, but we do want to add something after the default "open" DOES its action.
+The library VERB will MAKE the CLOSEABLE Attribute "Is open" and display the message that it is open.
+
+All we want to do is cause the CLOSEABLE to describe its contents after it has been opened.
+DOES AFTER accomplishes this for us.
+
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ Every CLOSEABLE Isa OBJECT
+     OPAQUE CONTAINER
+     HEADER
+         "It contains"
+     IS OPENABLE.
+     VERB open
+         DOES AFTER
+             [green]#MAKE THIS NOT OPAQUE.#
+ ...
+----
+
+MAKE THIS NOT OPAQUE so that it will reveal its contents and make them accessible to the player.
+
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+     VERB open
+         DOES AFTER
+            MAKE THIS NOT OPAQUE.
+            [green]#LIST THIS.
+     END VERB.#
+ ...
+----
+
+The LIST statement will cause THIS (particular CLOSEABLE) to describe its contents.
+
+Now it is a simple matter to do the same for the "close" VERB.
+
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+     [green]#VERB close
+         DOES AFTER -- the default is in "open.i"
+             MAKE THIS OPAQUE.
+     END VERB.#
+ END EVERY.
+ ...
+----
+
+Just in case you're wondering where to put this code, it might be a good idea to put your custom Classes right after the " import std.i. ":
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------------------------------
+ --             \*\** TV TIME! \***
+ -- An ALAN 3 Interactive Fiction Tutorial Game
+ --        By Michael Arnaud (c) 2006
+ -----------------------------------------------
+ IMPORT 'std.i'.
+ -----------------------
+ -- \*\** CUSTOM CLASSES: \***
+ Every SURFACE Isa OBJECT
+     CONTAINER
+     HEADER
+         "Resting on top is"
+     VERB examine
+         DOES ONLY
+             LIST THIS.
+     END VERB.
+     VERB put_in
+         WHEN obj2
+             CHECK
+                 "That isn't something you can put anything ""in""."
+     END VERB.
+ END EVERY.
+ -----------------------
+ Every CLOSEABLE Isa OBJECT
+     OPAQUE CONTAINER
+     HEADER
+         "It contains"
+     IS OPENABLE.
+     VERB open
+         DOES AFTER
+             MAKE THIS NOT OPAQUE.
+             LIST THIS.
+     END VERB.
+     VERB close
+         DOES AFTER
+             MAKE THIS OPAQUE.
+     END VERB.
+ END Every.
+ -----------------------
+ ...
+----
+
+Some or all of the custom Classes you create might be useful for other games that you write as well.
+You can accumulate these in a file in your custom library instead of in your game file (as above).
+Call the file something like "custom.i" and put it in the library folder.
+Then open "std.i" and add "import 'custom.i'." to the list.
+
+Let's go ahead and put this Class and the SURFACE Class to use in the Kitchen:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ -----------------------
+ THE kitchen Isa LOCATION
+     NAME 'Kitchen'
+     DESCRIPTION
+         "This is the kitchen. [green]#There is a counter and a cupboard here.#
+          $pNorth returns to the TV Room."
+     EXIT north TO tv_room
+         DOES
+             "You return to the TV Room, north."
+     END EXIT.
+     EXIT south, east, west TO kitchen
+         CHECK
+             "There is only a wall in that direction."
+     END EXIT.
+ END THE kitchen.
+ -----------------------
+ [green]#THE counter Isa SURFACE AT kitchen
+     DESCRIPTION
+ END THE counter.
+ -----------------------
+ THE cupboard Isa CLOSEABLE AT kitchen
+     NAME cupboard
+     NAME cabinet
+     DESCRIPTION
+ END THE cupboard.#
+ -----------------------
+----
+
+Try it and see how you can put OBJECTS like the remote control on the counter, you can open and close the cupboard, or put the remote in the cupboard and close it, etc.
+Everything works for the counter and cupboard because they "inherit" the Attributes and VERBS from their respective Classes (see ¶ 4.5.1).
+
+[[doors]]
+[float]
+=== DOORS
+
+Though not as popular in Interactive Fiction as in times past, the Door is still a useful fixture between LOCATIONS.
+It is not much used in games anymore as a simple inconvenience between LOCATIONS (as it is in our tutorial game), but if there are Doors they are usually either integral to the story, and/or they are a puzzle (locked by key or password, etc.), often used to progress the game after certain conditions are met.
+
+Most doors have two sides, in which case it is necessary to program two Doors, one in each LOCATION to represent the two sides of a single Door.
+Here is how we might construct a Door Class:
+
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ [green]#EVERY Door Isa OBJECT
+     NAME door#
+ ...
+----
+
+Notice that the NAME statement can be inherited.
+Every particular Instance of a Door will be called a Door, inherited from the Class, as well as any other NAME(S) we might add in the Instance.
+
+The following table from the manual (without the manual's nice colors, see ¶ 4.7.1) shows how the NAME as well as other properties are inherited by the Instances.
+Some are completely overridden, that is, the property if included in the Instance will replace that of the Class.
+Others are accumulated (as the NAME statement for example), generally appending to the end of the same property in the Class.
+
+// @FIXME: @TABLE
+
+[options="header"]
+|==================================
+| Property | Effect
+| Initial location  | Overridden.
+| Name              | Accumulated, the inherited names are appended at
+the end of the list of Name clauses.
+| Pronoun           | Overridden, each pronoun clause inhibits
+inheriting pronouns from the parent class.
+| Attributes        | Accumulated, you can add further
+attributes in a class or instance.
+| Attribute values  | Overridden, attribute declarations using the same
+name as an inherited can give the attribute a different value but must
+match the type of the inherited.
+| Initialize        | Accumulated. Inherited initialize clauses are
+executed first so that the base classes may do their initialization
+first.
+| Description check | Accumulated.
+| Description       | Overridden.
+| Articles & Forms  | Overridden.
+| Mentioned         | Overridden. Also overrides names.
+| Container         | Overridden, all clauses are overridden.
+| Verb declarations | Accumulated. Verb bodies are accumulated for
+verbs with the same name as the inherited. Use qualifiers (see Verb
+Qualification on page 99) if you don't want them all to execute.
+| Scripts           | Overridden, for same script name.
+| Entered           | Overridden.
+| Exits             | Overridden, for same direction.
+|==================================
+
+
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ EVERY Door Isa OBJECT
+     NAME door
+     [green]#HAS otherside Door.#
+ ...
+----
+
+The point of this line is to indicate the other side of the Door, i.e, first that it HAS the non-Boolean Attribute of an "otherside", and then to assign the Class , "Door" to that other side.
+So every Door has an other side which is also a Door.
+
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ EVERY Door Isa OBJECT
+     NAME door
+     HAS otherside Door
+     [green]#IS OPENABLE. -- So we can open and close it.
+     VERB open
+         DOES AFTER
+             MAKE otherside OF THIS open.
+     END VERB.#
+ ...
+----
+
+The execution of the "open" VERB, after the action of the default DOES to open the Door, will change the Attribute of the Door's other side (which is also a Door) to OPEN.
+The result is similar for the "close"VERB:
+
+// @ALAN ????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+     [green]#VERB close
+         DOES AFTER
+             MAKE otherside OF THIS NOT open.
+     END VERB.
+ END EVERY.#
+----
+
+And here is how we implement "a door" between the TV Room and the Kitchen.
+Note that it is really two doors, the tv_door and the kitchen_door, each having the other as its "otherside".
+The EXITS have been modified to CHECK that the door is open.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ THE tv_room Isa LOCATION
+     NAME TV Room
+     DESCRIPTION
+         "This is your favorite room in the house, because you love to
+          watch television. Your new plasma TV is set up in this room,
+          ideally located across from your comfy chair and table. $pThe
+          [green]#door to the kitchen is south#."
+     EXIT south TO kitchen
+         [green]#CHECK tv_door IS OPEN
+             ELSE
+                 "$t$t&lt;BUMP&gt;$p$t$tOof!$pThe door is closed."#
+         DOES
+             "You go south, into the kitchen."
+     END EXIT.
+     EXIT north, east, west TO tv_room
+         CHECK
+             "There is only a wall in that direction."
+     END EXIT.
+ END THE tv_room.
+ -----------------------
+ [green]#THE tv_door Isa Door AT tv_room
+     HAS otherside kitchen_door.
+ END THE tv_door.
+ -----------------------
+ THE kitchen_door Isa Door AT kitchen
+     HAS otherside tv_door.
+ END THE kitchen_door.#
+ -----------------------
+ THE kitchen Isa LOCATION
+     NAME 'Kitchen'
+     DESCRIPTION
+         "This is the kitchen. There is a counter and a cupboard here.
+          $pNorth returns to the TV Room."
+     EXIT north TO tv_room
+         [green]#CHECK kitchen_door IS OPEN
+             ELSE
+                 "$t$t&lt;BUMP&gt;$p$t$tOof!$pThe door is closed."#
+         DOES
+             "You return to the TV Room, north."
+     END EXIT.
+     EXIT south, east, west TO kitchen
+         CHECK
+             "There is only a wall in that direction."
+     END EXIT.
+ END THE kitchen.
+ -----------------------
+----
+
+== IF-THEN
+
+(¶ 4.16.7) We have previously used the CHECK statement as a conditional statement.
+If certain conditions are met, then the CHECK passes and the action continues.
+If the conditions are not met, the CHECK stops the action that would otherwise take place and displays an explanatory message.
+
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ VERB do_this, do_that
+     CHECK conditions are met
+         ELSE "You can't do that!"
+     DOES
+         "You do this and that."
+ END VERB.
+----
+
+There is another conditional statement in the ALAN language.
+Actually it is a pair of statements, IF and THEN.
+There are basically two differences between CHECK and IF-THEN.
+
+One, unlike the CHECK statement that allows or stops the DOES statement, the IF-THEN statement follows the DOES statement.
+
+Two, CHECK only allows or stops the action, where IF-THEN does not stop the action, but can execute from among multiple actions according to the conditions.
+
+One way to demonstrate the IF-THEN statement is in a VERB format.
+
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ VERB do_this, do_that
+     DOES
+         IF condition "A" is met THEN
+             "You do action A."
+         END IF.
+ END VERB.
+----
+
+The power of the IF-THEN statement increases with the IF-THEN-ELSE combination.
+
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ VERB do_this, do_that
+     DOES
+         IF condition "A" is met THEN
+             "You do action A."
+         ELSE
+             "You do action B."
+         END IF.
+ END VERB.
+----
+
+and
+
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ VERB do_this, do_that
+     DOES
+         IF condition "A" is met THEN
+             "You do action A."
+         ELSIF condition "B" is met THEN
+             "You do action B."
+         ELSE
+             "You do action C."
+         END IF.
+ END VERB.
+----
+
+For every "IF" statement there must be an "END IF."
+
+The IF-THEN statement will prove to be very useful in all sorts of ways.
+It can even be used in LOCATION DESCRIPTIONS to describe changing conditions.
+
+For example:
+
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ THE field Isa LOCATION
+     NAME 'Grassy Field'
+     DESCRIPTION
+         "You are standing in an open field. The sky is"
+         IF weather IS RAINY THEN
+             "heavy with thunder clouds."
+         ELSIF weather IS FOGGY THEN
+             "hidden in the fog. You can barely see three feet ahead
+              of you."
+         ELSE
+             "clear and blue."
+ END IF.
+ ...
+----

@@ -1,0 +1,253 @@
+= PART FOUR: Images and Text Formatting
+
+== The SHOW and QUIT Statements
+
+[float]
+=== SHOW and QUIT
+
+It is very easy to put images in your game with the SHOW statement.
+Here is how it is done for the tv:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ SYNONYMS
+     television = tv.
+ THE tv Isa OBJECT AT tv_room
+     NAME TV
+     NAME plasma
+     NAME screen
+     NAME giant
+     NAME giant screen plasma tv
+     IS SWITCHABLE.
+     DESCRIPTION
+     Verb examine
+         Does ONLY
+             "It's your 52-inch plasma pride and joy."
+     End Verb.
+     Verb take, pick_up1, pick_up2
+         Does ONLY
+             "You try to wrap your arms around the giant screen but it
+              is too wide. You can't get a good grip on the heavy TV to
+              lift it."
+     End Verb.
+     Verb turn_on1, turn_on2, switch_on1, switch_on2
+         Does ONLY
+             Make tv 'on'.
+             [green]#"Wow! What a great picture!"
+             SHOW 'plasma.png'.
+             "You watch the game and your favorite team wins!"
+             "$pAnd so have you..."
+             "$p\*\** You have won! \***" -- The customary IF "win" message
+             QUIT.#
+     End Verb.
+ END THE tv.
+ ...
+----
+
+The format for the SHOW statement is the same as that for the IMPORT statement we did xref:import[earlier].
+The name of the .jpg file must be enclosed in single-quotes and the statement must end with a full-stop.
+It is also important to note that the image file must be in the same folder as the game source file when you compile it.
+
+The "plasma.png" is included in the download of this tutorial.
+Save it in your game folder to use as you follow this beginner's guide.
+
+You will not need to include the image file with the a3c game file (produced by the compiler) when you distribute your game, but you will need to include the a3r file (also produced by the compiler), which holds the media for your game.
+
+QUIT (with a full-stop) is all that we need for the "undo, restart, restore, or quit" message.
+QUIT is a built-in Alan statement (and xref:reserved[reserved word]) that does it all for us.
+
+The "$p" characters are formatting characters and will be explained in the next section.
+
+
+== A START AT Formatting
+
+When starting a game of Interactive Fiction, some sort of introductory information and title is usually displayed before the player is introduced to the first LOCATION.
+We might wish, for example, to start our game with this display:
+
+
+[example,role="gametranscript"]
+================================================================================
+{9tabs}{3ast} TV TIME! {3ast} +
+{6tabs}An ALAN 3 Interactive Fiction Tutorial Game +
+{7tabs}By Michael Arnaud © 2006
+
+(Type "help" if you have not played this kind of game before.)
+
+Joy of joys, you have just purchased a brand new big screen plasma TV
+that was delivered earlier today!
+
+*TV Room* +
+This is your favorite room in the house, because you love to watch
+television.
+You recently purchased a giant screen plasma TV that is
+set up in this room, ideally located across from your comfy chair and
+table. The kitchen is south.
+
+&gt;
+================================================================================
+
+
+[float]
+=== Re-Introducing START AT
+
+We place our introductory information and title conveniently after the
+START AT statement.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+// - [ ] CHECK TV TIME HEADER
+
+[subs="quotes"]
+----
+ ...
+ START AT tv_room.
+     [green]#"$p$t$t$t$t$t$t$t$t$t\*\** TV TIME! \***
+      $n$t$t$t$t$t$tAn ALAN 3 Interactive Fiction Tutorial Game
+      $n$t$t$t$t$t$t$tBy Michael Arnaud © 2006
+      $p(Type ""help"" if you have not played this kind of game before.)
+      $pJoy of joys, you have just purchased a brand new big screen
+      plasma TV that was delivered earlier today!"#
+----
+
+[float]
+=== We Love Those Dollar $igns!
+
+There are some odd-looking figures here... $p, $n, $t.
+They have nothing to do with dollars (too bad).
+They are simple text-formatting symbols, that do the following:
+
+// @FIXME: Convert to table or horizontal desc. list
+----
+$p -- "paragraph"  Prints a blank line to the screen and then begins a new
+                  line of text.
+$n -- "new"        Begins a new line of text without first printing a blank
+                  line.
+$t -- "tab"        Inserts a tab.
+----
+
+(There is more of this in the manual, ¶ 4.16.1).
+Formatting like this is important throughout our game.
+It helps in creating lists, conversation, and general appearance and readability of the text.
+Note that these formatting symbols are within the double-quotes, immediately and without spaces, with the text we want to display.
+These symbols can be placed at the beginning, end, middle, or anywhere we want the formatting to occur.
+
+The compiler does not care about full-stops or returns, sentences or paragraphs in our display statements within double-quotes.
+So to force a line-break ($n) or paragraph ($p), etc., we use these formatting symbols.
+
+Note that we put double-quotes at the beginning ("$p$t$t$t$t$t$t$t$t$t{3ast} TV TIME! {3ast}) and did not close the double-quotes until the end ( …delivered earlier today!").
+That is because the enitre section of code is one block of uninterrupted text to be displayed.
+But we could have just as well put double-quotes in a more logical and easy-to-read way.
+Like this:
+
+// ** (this comment is required to prevent Sublime Text syntax break up)
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+     [green]#"$p$t$t$t$t$t$t$t$t$t\*\** TV TIME! \***"
+     "$n$t$t$t$t$t$tAn ALAN 3 Interactive Fiction Tutorial Game"
+     "$n$t$t$t$t$t$t$tBy Michael Arnaud &#169; 2006"
+     "$p(Type ""help"" if you have not played this kind of game
+      before.)"
+     "$pJoy of joys, you have just purchased a brand new
+      big screen plasma TV that was delivered earlier today!"#
+----
+
+Either of these layouts will print the same information to the screen.
+Just remember: _for every open double-quote there must be a close!_ Compiler errors will surely result from failure to observe this rule, and not just one, but _dozens_ of inexplicable errors! -- from a misplacement, omission or otherwise bad use of double-quotes.
+For this reason, I prefer the single-block quote: the fewer double-quotes, the better.
+
+[NOTE]
+================================================================================
+Anytime you compile a game and get a lot of errors seemingly out of nowhere, the first thing to look for is a problem with double-quotes. (The next thing is a misplaced or missing full-stop.)
+================================================================================
+
+
+[float]
+=== Using Double-Quotes and Double Double-Quotes
+
+Now notice the DOUBLE double-quotes around the word: ""help"".
+ALAN 3 already uses double-quotes to tell the compiler to "say" things to the player, that is, to print it to the screen.
+So if we were to just use double-quotes within the double-quotes like this "help" we would confuse the compiler (which is never a very nice thing to do).
+We will get a result we don't like, and very likely a compiler error.
+
+We can still display double-quotes for conversation and such, by DOUBLE double-quotes.
+These are read by the compiler to print a single set of double-quotes to the screen, just the way we want
+
+The compiler has no problem with single-quotes and other figures within the double-quote marks.
+Notice for example the use of asterisks above.  Formatting with Images The Alan interpreter displays images at the left margin.
+As of this writing, there is no method for displaying images, say, in the center or at the right margin.
+The formatting of text around the image is a little tricky, and trial-and-error is probably the best method to get the display you want.
+
+If you want to display text not only above and below, but to the right of the image, I have found this format effective:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ "Wow! What a great picture!"
+ SHOW 'plasma.png'.
+ "$n$nYou watch the game and your favorite team wins!"
+ "$$n$nAnd so have you..."
+ "$p\*\** You have won! \***"
+ ...
+----
+
+The $n or double $n will print the text to the right of the image, where using a $p would force the text to the line after the image, i.e., below it.
+
+[float]
+=== Change the Starting LOCATION DESCRIPTION
+
+Now that we have given introductory information at the start that the player has "just purchased a brand new big screen plasma TV that was delivered earlier today," it is redundant to repeat that same information in the TV Room.
+It's time to change the TV Room DESCRIPTION.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ THE tv_room Isa LOCATION
+     NAME 'TV Room'
+         DESCRIPTION
+             "This is your favorite room in the house, because you
+              love to watch television. [green]#Your new plasma TV# is
+              set up in this room, ideally located across from your
+              comfy chair and table.  $pThe kitchen is south."
+ ...
+----
+
+While we're at it, since we have added a few adjectives to the tv in our start-up information, let's go back to the tv and add them as well, just in cast the player wants to refer to the tv with them.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ SYNONYMS
+    television = tv.
+ THE tv Isa OBJECT AT tv_room
+     NAME TV
+     NAME plasma
+     [green]#NAME brand
+     NAME new
+     NAME screen
+     NAME giant#
+     NAME [green]#brand new# giant screen plasma tv
+ ...
+----

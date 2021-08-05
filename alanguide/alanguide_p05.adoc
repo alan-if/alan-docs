@@ -1,0 +1,727 @@
+= PART FIVE: A First Puzzle
+
+== A Puzzling Problem
+
+[float]
+=== A Too-Easy Win
+
+There is not much challenge to our game.
+Turn on the tv and win the game.
+Challenges and obstacles often add fun to games; and overcoming obstacles -- "puzzles," in IF vernacular -- may even be the whole point of the game.
+Even so, it is well to make puzzle-solving part of a larger story, and not simply a matter of solving one puzzle after another.
+Suppose we introduce a few puzzles for turning on the tv.
+Our first puzzle might be a simple matter of having to find the remote control by searching the chair, in order to turn on the tv.
+
+When we construct puzzles it is a good idea to work them in the reverse order of solving them.
+That is, whatever the player must do last, we should program first, and so on.
+The order of construction, then, should be first to disable turning on the tv without the remote; second, to create and enable the remote to turn on the tv; and third, searching the chair and finding the remote control.
+
+[float]
+=== Disable the TV
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ Verb turn_on1, turn_on2, switch_on1, switch_on2
+     Does ONLY
+         [green]#-- We removed MAKE tv on.
+         "There are no knobs, switches or buttons for turning on the
+          TV."#
+ End Verb.
+ ...
+----
+
+This overrides the default response from the library with a message explaining why the TV cannot be turned on.
+There is also an implied hint that there must be some other way to turn it on, and it is likely to come to the mind of the player to look for a remote control.
+If we are concerned that the puzzle may be too difficult, we could add a line something like "Perhaps there is a remote control somewhere." But in this case I think the player will not need that much of a hint.
+
+[float]
+=== Create the Remote
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ [green]#THE remote Isa OBJECT AT Nowhere
+     NAME remote control
+     NAME controller
+     NAME tv control remote
+     VERB examine
+         DOES ONLY
+             "It's a very simple push-button remote control."
+     END VERB.
+ END THE remote.#
+ ...
+----
+
+Notice that the remote is "AT Nowhere".
+That is because it will not be introduced into the game proper until it is found by searching the chair.
+Enable the Remote Looking once again to the library for the "turn on" VERB in "turn.i":
+
+// @ALAN @LIBRARY ????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ Verb turn_on1, turn_on2, switch_on1, switch_on2
+     Check obj Is switchable
+         Else "You can't turn that on."
+     And obj Is Not 'on'
+         Else "It's already on."
+     Does
+         Make obj 'on'.
+         "You turn on" Say The obj. "."
+ End Verb.
+ ...
+----
+
+So first thing we will make the remote "switchable".
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE remote Isa OBJECT AT Nowhere
+     NAME remote control
+     NAME controller
+     NAME tv control remote
+     [green]#IS SWITCHABLE.#
+ ...
+----
+
+Remove the CHECKS from the VERB and add DOES ONLY:
+
+// @ALAN @LIBRARY ????:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+     Verb turn_on1, turn_on2, switch_on1, switch_on2
+         Does [green]#ONLY#
+             Make obj 'on'.
+             "You turn on" Say The obj. "."
+     End Verb.
+ ...
+----
+
+Now notice this: "obj" is a stand-in for the remote.
+We don't really want to turn on the remote.
+We want the statement "turn on the remote"to turn on _the tv and win the game._ So:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ....
+ THE remote Isa OBJECT AT Nowhere
+     NAME remote control
+     NAME controller
+     NAME tv control remote
+     IS SWITCHABLE.
+     VERB examine
+         DOES ONLY
+             "It's a very simple push-button remote control."
+     END VERB.
+     Verb turn_on1, turn_on2, switch_on1, switch_on2
+         Does ONLY
+             [green]#Make tv on.
+             "Wow! What a great picture!"
+             SHOW plasma.png.
+             "$n$nYou watch the game and your favorite team wins!"
+             "$n$nAnd so have you…"
+             "$p\*\** You have won! \***"
+             QUIT.#
+     End Verb.
+ END THE remote.
+ ...
+----
+
+[float]
+=== Searching Is Not Examining
+
+This is still an occasional matter of debate on the Interactive Fiction newsgroups.
+Some say that if you are examining something, you are ipso facto searching it as well.
+Others maintain that "examine", or "x", has become a convention in IF meaning only to "look at", not to search in detail.
+This opinion appears to be that of the majority, and is mine as well.
+It is also the way the Alan standard library is set up.
+
+From "examine.i":
+
+// @ALAN ?????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ ADD TO EVERY THING
+     IS
+         examinable.
+         searchable.
+ END ADD TO THING.
+ ...
+----
+
+The chair is a THING, so it is "searchable".
+
+// @ALAN ?????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ VERB search
+     CHECK obj IS searchable
+         ELSE
+             "You can't search" Say The obj. "."
+     DOES
+         "You find nothing of interest."
+ END VERB.
+ ...
+----
+
+Remove the CHECKS and add DOES ONLY:
+
+// @ALAN ?????:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ VERB search
+     DOES [green]#ONLY#
+         "You find nothing of interest."
+ END VERB.
+ ...
+----
+
+Now let's change the default message.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ VERB search
+     DOES ONLY
+         "You find [green]#the lost remote control#."
+ END VERB.
+----
+
+Now bring the remote into the game.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ VERB search
+     DOES ONLY
+         [green]#LOCATE remote Here.#
+         "You find the lost remote control."
+ END VERB.
+ ...
+----
+
+We can use "Here" to represent the LOCATION where the Hero is.
+It is helpful especially in such cases if, for example, the player were to take the chair into the kitchen before searching it.
+If we were to code it this way it would give a rather confusing result:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ VERB search
+     DOES ONLY
+         [green]#LOCATE remote AT tv_room. -- But we're in the kitchen!?#
+         "You find the lost remote control."
+ END VERB.
+ ...
+----
+
+An even better solution than "LOCATE remote Here" whenever the Hero finds a small OBJECT, is to assume that the player would take it upon finding it, and LOCATE the OBJECT IN the Hero, with an explanatory message.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ VERB search
+     DOES ONLY
+         [green]#LOCATE remote in Hero.#
+         "You find the lost remote control, [green]#which you take#."
+ END VERB.
+ ...
+----
+
+[float]
+=== Hint, Hint
+
+It is probably a good idea to give the player a subtle hint to search the chair.
+A good place to do that is in the "examine" VERB for the chair.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ VERB examine
+     DOES ONLY
+         "It's your favorite chair to sit in when you're watching the big
+          game. [green]#It has big soft comfy cushions -- just the kind people
+          lose change in all the time.#"
+ END VERB.
+ ...
+----
+
+By suggesting that there may be some loose change under the cushions, it is likely that the astute player will search the chair.
+It might be a good idea to add the cushions to the NAME of the chair.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE chair Isa OBJECT AT tv_room
+     NAME comfy chair
+     NAME comfy
+     [green]#NAME cushions
+     NAME big soft chair cushion -- includes singular and plural#
+     DESCRIPTION
+ ...
+----
+
+Compile and play what we have so far.
+If you have typed everything correctly, you should have a basic working game that includes searching the chair and turning on the remote to win the game.
+
+== Fine Tune and Finish
+
+[[fine_tune]]
+[float]
+=== Fine Tune
+
+The game "works," that is, the mechanics work properly.
+Now it is time to fine tune it, so that the game plays easily and makes sense for the game world.
+Let's start by tuning up the remote control.
+
+We have told the player via the VERB "examine" that the remote is a "push-button" remote.
+It would be reasonable for the player then to refer to the buttons, and to push or press the buttons to operate the remote.
+
+There are several ways we could accommodate these actions by the player.
+We could program the buttons separately, which might add to the realism.
+But we should also weigh how much realism and detail for such things as the buttons on the remote control is necessary.
+
+For our purposes, we will not program the buttons as a separate OBJECT, but simply include them as part of the remote with NAME statements.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE remote Isa OBJECT AT Nowhere
+     NAME remote control
+     NAME controller
+     NAME remote
+     [green]#NAME button
+     NAME simple push buttons#
+ ...
+----
+
+The next thing to do is accommodate the player's likely attempt to "push the button".
+A look at "push.i" in the library tells us the remote needs to have the Attribute "IS PUSHABLE." Then we are ready to copy and paste the VERB, removing the CHECKS and adding DOES ONLY:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE remote Isa OBJECT AT Nowhere
+     NAME remote control
+     NAME controller
+     NAME remote
+     NAME button
+     NAME simple push buttons
+     IS SWITCHABLE.
+        [green]#PUSHABLE.#
+     [green]#Verb push
+         Does ONLY
+             "You push" Say The obj. "."
+     End Verb.#
+ ...
+----
+
+Further fine tuning at this point means we should put ourself in the place of the player and ask, _What else might it be_ _reasonable for the player to try with the remote or the button?_ And the answer would surely include "press the button" and "click the remote".
+
+But we have no VERB in the library for "press"!
+Or "click"!
+What do we do now?
+
+Before we get to that, we ought to consider that there might well be other OBJECTS in the game that the player may try to "press" or "click" as well as "push".
+To accommodate the VERB to multiple OBJECTS in the game, we are going to make changes to the library, albeit a safe and simple one using SYNONYMS.
+
+And so we have come to the reason why I said at the beginning to copy the standard library for use in the game, and to keep the original library in a separate folder on the computer.
+
+Remember, the changes are done to your copy of the standard library in your "mylib" folder, not the "alanlib" folder.
+
+Some of the changes we will make in the future may be considerable; but for now it will be a very safe and simple one.
+The changes are indicated in [green]#RED#.
+Any time we make changes to the library, it is a good idea to add notes (indicated in this tutorial with [green]#{3ast}#) so the changes can be easily identified.
+
+
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -- push.i
+ -- Library version 0.5.0
+ -- 0.4.1 - converted to ALANv3
+ ADD TO EVERY THING
+     IS
+         pushable.
+ END ADD TO THING.
+ SYNONYMS
+     [green]#press, click = push. -- \***** ADDED \***#
+ SYNTAX
+     push = push (obj)
+         WHERE obj ISA THING
+             ELSE "You can't push that."
+ Add To Every object
+     Verb push
+         Check obj Is pushable
+             Else "You can't push that."
+     Does
+         "You push" Say The obj. "."
+     End Verb.
+ End Add To.
+ ...
+----
+
+
+Now "press the button" or "click the remote" will work the same as "push the button".
+All we need to do now is make the VERB do what we want (i.e., win!) and the fine-tuning for the remote is complete.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ THE remote Isa OBJECT AT Nowhere
+     NAME remote control
+     NAME controller
+     NAME control remote
+     NAME remote
+     NAME button
+     NAME simple push buttons
+     IS SWITCHABLE.
+        [green]#PUSHABLE.#
+     VERB examine
+         DOES ONLY
+             "It's a very simple push-button remote control."
+     END VERB.
+     VERB turn_on1, turn_on2, switch_on1, switch_on2
+         DOES ONLY
+             MAKE tv 'on'.
+             "Wow! What a great picture!"
+             SHOW 'plasma.png'.
+             "$n$nYou watch the game and your favorite team wins!"
+             "$n$nAnd so have you..."
+             "$p\*\** You have won! \*\**"
+             QUIT.
+     END VERB.
+     [green]#VERB push
+         DOES ONLY
+             MAKE tv 'on'.
+             "Wow! What a great picture!"
+             SHOW 'plasma.png'.
+             "$n$nYou watch the game and your favorite team wins!"
+             "$n$nAnd so have you..."
+             "$p\*\** You have won! \***"
+             QUIT.
+     END VERB.#
+ END THE remote.
+----
+
+[float]
+=== Search and Search Again
+
+Now let's turn our fine-tuning attentions to the chair.
+Once the player searches the chair and discovers the remote, he/she might continue to search the cushions for the lost change we suggested they might find.
+What we don't want them to find is this:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _x chair_ +
+It's your favorite chair to sit in when you're watching the big
+game. It has big soft comfy cushions -- just the kind people lose
+change in all the time.
+
+&gt; _search chair_ +
+You find the lost remote control, which you take.
+
+&gt; _i_ +
+You are carrying a remote control.
+
+&gt; _search chair_ +
+You find the lost remote control, which you take.
+================================================================================
+
+Here is one way we might prevent that from happening:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ VERB search
+     [green]#CHECK remote AT Nowhere
+         ELSE
+             "There is nothing else to find by searching the chair."#
+     DOES ONLY
+         LOCATE remote in Hero.
+         "You find the lost remote control, which you take."
+ END VERB.
+ ...
+----
+
+If the player has not found the remote, it will still be "AT Nowhere".
+The CHECK will pass, and the DOES ONLY will LOCATE the remote IN the Hero.
+But once the remote has been found, it will no longer be "AT Nowhere" and the CHECK message will explain "there is nothing else to find".
+
+[float]
+=== Televisions Need Fine-Tuning
+
+Our tv needs fine-tuning, in that even after the player has found the
+remote control, he/she cannot "turn on the tv"!
+We can easily fix that
+in the same way as we fine-tuned the "search" VERB for the chair.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+ VERB turn_on1, turn_on2, switch_on1, switch_on2
+     [green]#CHECK remote Here
+         ELSE
+             "There are no knobs, switches or buttons for turning on
+              the TV."#
+     DOES ONLY
+         MAKE tv on.
+         "Wow! What a great picture!"
+         SHOW plasma.png.
+         "$n$nYou watch the game and your favorite team wins!"
+         "$n$nAnd so have you…"
+         "$p\*\** You have won! \***"
+         QUIT.
+ END VERB.
+ ...
+----
+
+Notice that the preventive message we previously had in the DOES ONLY for the tv has been moved into the CHECK.
+If the CHECK passes, that is, if the remote control is "Here" (in the same LOCATION or in the player's Inventory), then the DOES ONLY executes, and the game is won.
+
+We could have made it so that the remote control has to be held by the player, in other words, "CHECK remote IN Hero".
+The player would then have to "get remote" before turning on the tv.
+But IF players prefer that if the required OBJECT is in the same LOCATION, the "get" action should be assumed and done for them.
+So we require only that the remote is "Here".
+
+[NOTE]
+================================================================================
+We do _not_ write it, "CHECK remote _IS_ Here" or "CHECK remote _IS_ IN Hero".
+Being "Here" or "IN Hero" is not an Attribute!
+================================================================================
+
+
+This completes our first "simple" game.
+
+== Compile and Play It!
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------------------------------
+ --             \*\** TV TIME! \***
+ -- An ALAN 3 Interactive Fiction Tutorial Game
+ --        By Michael Arnaud (c) 2006
+ -----------------------------------------------
+ IMPORT 'std.i'.
+ -----------------------
+ THE tv_room Isa LOCATION
+     NAME 'TV Room'
+         DESCRIPTION
+             "This is your favorite room in the house, because you
+              love to watch television.  Your new plasma TV is set up
+              in this room, ideally located across from your comfy
+              chair and table.  $pThe kitchen is south."
+     EXIT south TO kitchen
+         DOES
+             "You go south, into the kitchen."
+     END EXIT.
+     EXIT north, east, west TO tv_room
+         CHECK
+             "There is only a wall in that direction."
+     END EXIT.
+ END THE tv_room.
+ -----------------------
+ THE remote Isa OBJECT AT Nowhere
+     NAME remote control NAME controller
+     NAME control remote NAME remote
+     NAME button NAME simple push buttons
+     IS SWITCHABLE.
+        PUSHABLE.
+     VERB examine
+         DOES ONLY
+             "It's a very simple push-button remote control."
+     END VERB.
+     VERB turn_on1, turn_on2, switch_on1, switch_on2
+         DOES ONLY
+             MAKE tv 'on'.
+             "Wow! What a great picture!"
+             SHOW 'plasma.png'.
+             "$n$nYou watch the game and your favorite team wins!"
+             "$n$nAnd so have you..."
+             "$p\*\** You have won! \***"
+             QUIT.
+     END VERB.
+     VERB push
+         DOES ONLY
+             MAKE tv 'on'.
+             "Wow! What a great picture!"
+             SHOW 'plasma.png'.
+             "$n$nYou watch the game and your favorite team wins!"
+             "$n$nAnd so have you..."
+             "$p\*\** You have won! \***"
+             QUIT.
+     END VERB.
+ END THE remote.
+ -----------------------
+ SYNONYMS
+     television = tv.
+ THE tv Isa OBJECT AT tv_room
+     NAME TV NAME plasma NAME brand NAME new
+     NAME screen NAME giant
+     NAME brand new giant screen plasma tv
+     IS SWITCHABLE.
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             "It's your 52-inch plasma pride and joy."
+     END VERB.
+     VERB take, pick_up1, pick_up2
+         DOES ONLY
+             "You try to wrap your arms around the giant screen but it
+              is too wide.  You can't get a good grip on the heavy
+              TV to lift it."
+     END VERB.
+     VERB turn_on1, turn_on2, switch_on1, switch_on2
+         CHECK remote Here
+             ELSE
+                 "There are no knobs, switches or buttons for turning on
+                  the TV."
+         DOES ONLY
+             MAKE tv 'on'.
+             "Wow! What a great picture!"
+             SHOW 'plasma.png'.
+             "$n$nYou watch the game and your favorite team wins!"
+             "$n$nAnd so have you..."
+             "$p\*\** You have won! \***"
+             QUIT.
+     END VERB.
+ END THE tv.
+ -----------------------
+ THE chair Isa OBJECT AT tv_room
+     NAME comfy chair NAME comfy
+     NAME cushions NAME big soft chair cushion
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             "It's your favorite chair to sit in when you're watching
+              the big game.  It has big soft comfy cushions -- just
+              the kind people lose change in all the time."
+     END VERB.
+     VERB search
+         CHECK remote AT Nowhere
+             ELSE
+                 "There is nothing else to find by searching the chair."
+         DOES ONLY
+             LOCATE remote in Hero.
+             "You find the lost remote control, which you take."
+     END VERB.
+ END THE chair.
+ -----------------------
+ THE table Isa OBJECT AT tv_room
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             "It's an ordinary table, set conveniently by your chair."
+     END VERB.
+ END THE table.
+ -----------------------
+ THE kitchen Isa LOCATION
+     NAME 'Kitchen'
+     DESCRIPTION
+         "This is the kitchen. North returns to the TV Room."
+     EXIT north TO tv_room
+         DOES
+             "You return to the TV Room, north."
+     END EXIT.
+     EXIT south, east, west TO kitchen
+         CHECK
+             "There is only a wall in that direction."
+     END EXIT.
+ END THE kitchen.
+ -----------------------
+ START AT tv_room.
+     "$p$t$t$t$t$t$t$t$t$t\*\** TV TIME! \***
+      $n$t$t$t$t$t$tAn ALAN 3 Interactive Fiction Tutorial Game
+      $n$t$t$t$t$t$t$tBy Michael Arnaud &#169; 2006
+      $p(Type ""help"" if you have not played this kind of game before.)
+      $pJoy of joys, you have just purchased a brand new big screen
+      plasma TV that was delivered earlier today!"
+----

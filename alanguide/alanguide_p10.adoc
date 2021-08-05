@@ -1,0 +1,595 @@
+= PART TEN: Using EVENTS
+
+[[bomb]]
+== Setting a Bomb
+
+[float]
+=== Timed EVENTS
+
+EVENTS are used to perform an action according to time rather than space; or to put it simply, they act after a certain number of turns have passed.
+They can be set to happen immediately (after zero turns) or timed to happen after many turns; to happen at or to an OBJECT, or the player, or another ACTOR, or in a separate LOCATION.
+
+EVENTS are often used for color and atmosphere and for "time bomb"effects.
+We will program an example of each for our game.
+A "time bomb" effect requires the player to complete a particular goal (i.e. reach a LOCATION or perform an action) before a certain number of turns have passed.
+Failure to complete the goal may result in death or an otherwise lost game.
+
+[float]
+=== A Simple EVENT Example
+
+
+// @FIXME: INLINE STYLING
+
+An EVENT requires three basic parts: 1 - an OBJECT, ACTOR or LOCATION to act upon; 2 - an EVENT statement performing the actions and descriptions; and 3 - a SCHEDULE statement to tell the EVENT when to act, and optionally where .
+
+Here is a simple time bomb EVENT:
+
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -- 1 : THE OBJECT
+ THE bomb Isa OBJECT AT enemy_fort
+ END THE bomb.
+ -- 2 : THE EVENT
+ EVENT bomb_explode
+     "$t$t&lt;KA-BLOOEY!!&gt;
+      $pThe bomb exploded!
+      $p\*\** You have lost. \***"
+     QUIT.
+ END EVENT.
+ -- 3 : THE SCHEDULE STATEMENT
+ SCHEDULE bomb_explode AT bomb AFTER 50.
+----
+
+The SCHEDULE statement is rather like a fuse.
+If not "lit", it will not start counting turns, it will not trigger the EVENT, it will not do anything.
+It must be _told_ to trigger the EVENT.
+So simply setting the SCHEDULE EVENT statement somewhere in the program will not make anything happen.
+It needs to be triggered by something else, like a VERB or in the START AT section.
+
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ THE bomb Isa OBJECT AT enemy_fort
+     VERB touch
+         DOES ONLY
+             "Oh no! Your touch has started the bomb's timer ticking!"
+              #SCHEDULE bomb_explode AT bomb AFTER 50.#
+     END VERB.
+ END THE bomb.
+----
+
+That's really all there is to it.
+After 50 turns the bomb will explode and give the "lose" message.
+
+We can add to the atmosphere and increase the tension with a repeating EVENT.
+This is done simply by embedding a (re-)SCHEDULE statement within the EVENT you want to repeat.
+
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ EVENT bomb_tick
+     "$t&lt;tick... tick...&gt;
+      $pThe bomb is ticking. Time is getting short."
+      #SCHEDULE bomb_tick AFTER 3.#
+ END EVENT.
+----
+
+Every three turns the "tick" message will display until the bomb explodes and the game ends.
+
+But suppose the player is able to defuse the bomb in time.
+We don't want the bomb to explode after being defused, so we CANCEL the EVENT.
+
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ THE bomb Isa OBJECT AT enemy_fort
+     VERB touch
+         DOES ONLY
+             "Oh no! Your touch has started the timer to explode!"
+             SCHEDULE bomb_explode AT bomb AFTER 50.
+     END VERB.
+     VERB defuse
+         "You remove the timer and fuse from the bomb. Whew!"
+         #CANCEL bomb_explode.#
+         #CANCEL bomb_tick.#
+     END VERB.
+ END THE bomb.
+----
+
+EVENTS are very easy to program, and add a great deal of color to the game.
+
+[float]
+=== A Sporting Goal
+
+The "time bomb" in our game will not explode.
+Rather, the player will only have to successfully turn on the tv in time to watch his (her) favorite sports team play for the championship; failure loses the game.
+Here is how we will tell the player what the goal is:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ START AT tv_room.
+     "$p$t$t$t$t$t$t$t$t$t\*\** TV TIME! \***
+      $n$t$t$t$t$t$tAn ALAN 3 Interactive Fiction Tutorial Game
+      $n$t$t$t$t$t$t$tBy Michael Arnaud &#169; 2006
+      $p(Type ""help"" if you have not played this kind of game
+      before.)
+      [green]#$pThe greatest delight in your life is watching tv
+      sports. And the one thing that matters most to you right now is
+      the championship game that your favorite team will play this
+      afternoon.#
+      $pJoy of joys, you have just purchased a brand new big screen
+      plasma TV that was delivered earlier today!"
+----
+
+and...
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ [green]#THE guide Isa OBJECT IN table
+     NAME tv schedule
+     NAME program guide
+     IS READABLE.
+     VERB examine
+         DOES ONLY
+             "It is a listing of tv programming for the week.
+              It is opened to today's schedule."
+     END VERB.
+     VERB read
+         DOES ONLY
+             IF guide NOT IN Hero THEN
+                 LOCATE guide IN Hero.
+                 "(First picking it up)$p"
+             END IF.
+             "The championship game will be played at 4 o'clock this
+              afternoon!"
+     END VERB.
+ END THE guide.#
+ -----------------------
+----
+
+The next thing to do is to tell the player what time it is.
+That is for the next section.
+
+== Finding a Clock
+
+[float]
+=== Searching Outside Resources
+
+Obviously if we want to tell the player what time it is, we need a clock.
+We could invent one to include in our game.
+But there are often another resources to turn to, especially for complex or difficult tasks such as programming an Interactive Fiction clock.
+Such resources
+are the
+link:http://groups.yahoo.com/group/alan-if/?yguid=20632878[ALAN Yahoo!
+Group] and link:http://www.alanif.se[the ALAN website] as well as the
+Google newsgroups
+link:http://groups.google.com/group/rec.arts.int-fiction?lnk=srg&hl=en[r.a.i.f.]
+and
+link:http://groups.google.com/group/rec.games.int-fiction?lnk=srg&hl=en[r.g.i.f.]
+mentioned in the Introduction to this guide.
+
+An invaluable repository for all things Interactive is the link:http://www.ifarchive.org/[IF Archive].
+
+Searching these resources, your humble author found a clock at the Alan website.
+The author of the clock is Steve Griffiths.
+Thank you, Steve, we are all grateful.
+
+Given below is that same clock, only removed from the train platform and schedule, stripped down and rewired.
+I have made it into a rather generic clock to include in this game as well as in others we might wish to write.
+If you like it, I suggest keeping it in a separate folder of library add-ons.
+
+Don't be put off or overwhelmed by what may appear to be complex or advanced programming.
+It is that, but that is why we copied it from elsewhere.
+That is one of the two points I am trying to convey to you the reader: one: outside resources can help in a big way; and two: the clock is still just a simple OBJECT, EVENT, and SCHEDULE statement.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -- clock
+ #The clock Isa object#
+     Has hour 4.  -- set these three attributes
+     Has minute 50. -- to specify the time of day
+     Has ampm "pm". -- you want when the game starts
+     Has timeinminutes 0. -- (the time expressed as minutes past
+                          -- midnight. This is calculated by the game
+                          -- in the START section and updated each
+                          -- turn by the TickTock event so left at the
+                          -- default initial value here)
+     Verb read
+         Does Only
+             -- Display the time on screen
+             "$pThe clock reads"
+             Say hour Of clock.
+             "$$:$$"
+             If minute Of clock &gt;9 Then
+                 Say minute Of clock.
+             Else
+                 "0$$"
+                 Say minute Of clock.
+             End If.
+             Say ampm Of clock.
+     End Verb.
+ End The clock.
+ #Event ticktock#
+     -- Increments The Time By Another Minute
+     -- Convert Time From "Minutes Past Midnight" To
+     -- Hh:Mm Am/Pm Format
+     Set hour Of clock To timeinminutes Of clock / 60.
+     If hour Of clock &gt;=12 Then
+         Set ampm Of clock To "pm".
+         If hour Of clock >12 Then
+             Set hour Of clock To hour Of clock -12.
+         End If.
+     Else
+         Set ampm Of clock To "am".
+         If hour Of clock =0 Then
+             Set hour Of clock To 12.
+         End If.
+     End If.
+     Set minute Of clock To timeinminutes Of clock -((timeinminutes Of
+          clock / 60) * 60).
+     -- Increment time by one minute
+     -- (If its 11:59pm set clock to zero ie:midnight instead)
+     If timeinminutes Of clock &lt; 1439 Then
+         Increase timeinminutes Of clock.
+     Else
+         Set timeinminutes Of clock To 0.
+     End If.
+     #-- schedule this event to happen again next turn#
+     #Schedule ticktock After 1.#
+ End Event ticktock.
+ -- Information for the START AT section
+ Start At starting_location.
+     -- Convert the clock's initial time
+     -- from the hh:mm am/pm format
+     -- used in source-code to "minutes past midnight" format to make
+     -- calculations easier
+     Set timeinminutes Of clock To (hour Of clock * 60) + minute Of
+          clock.
+     If ampm Of clock = "pm" Then
+         If hour Of clock &lt; 12 Then
+             Set timeinminutes Of clock To (timeinminutes Of clock + 720).
+         End If.
+     End If.
+     #Schedule ticktock After 0.       -- start the clock "ticking"#
+----
+
+== Set the Clock
+
+[float]
+=== Set the Clock in the Game
+
+The clock as stripped down in the previous section is no longer an ".alan" (game source) file; neither is it an ".i" file to be imported.
+What it is, is a resource to copy, paste, and set to our particular use.
+Here is how we will use it in our game.
+
+Create the Clock OBJECT in the Kitchen:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+
+ -----------------------
+ [green]#The clock Isa object AT Kitchen
+     IS READABLE.
+     DESCRIPTION
+     Has hour 3.           -- set these three attributes
+     Has minute 15.        -- to specify the time of day
+     Has ampm "pm".        -- you want when the game starts
+     Has timeinminutes 0.  -- (the time expressed as minutes past
+                           -- midnight. This is  calculated by the
+                           -- game  in the START section and
+                           -- updated each turn by the TickTock event
+                           -- so left  at the default initial value
+                           -- here)
+     Verb read
+         Does Only
+             -- Display the time on screen
+             "$pThe clock reads" Say hour Of clock. ":"
+             If minute Of clock >9 Then
+                 Say minute Of clock.
+             Else
+                 "0$$"
+                 Say minute Of clock.
+             End If.
+             Say ampm Of clock.
+     End Verb.
+     VERB examine
+         Does Only
+             -- Display the time on screen
+             "$pThe clock reads" Say hour Of clock. "$$:$$"
+             If minute Of clock >9 Then
+                 Say minute Of clock.
+             Else
+                 "0$$"
+                 Say minute Of clock.
+             End If.
+             Say ampm Of clock.
+         End Verb.
+  End The clock.#
+ -----------------------
+----
+
+SCHEDULE the Clock to "Tick" in START AT
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ START AT tv_room.
+     [green]#Set timeinminutes Of clock To (hour Of clock * 60) + minute
+          Of clock.
+     If ampm Of clock = "pm" Then
+         If hour Of clock &lt; 12 Then
+             Set timeinminutes Of clock To (timeinminutes Of clock + 720).
+         End If.
+     End If.
+     Schedule ticktock After 0.       -- start the clock "ticking"#
+     "$p$t$t$t$t$t$t$t$t$t\*\** TV TIME! \***
+      $n$t$t$t$t$t$tAn ALAN 3 Interactive Fiction Tutorial Game
+      $n$t$t$t$t$t$t$tBy Michael Arnaud &#169; 2006
+      $p(Type ""help"" if you have not played this kind of game
+      before.)
+      $pThe greatest delight in your life is watching tv sports. And
+      the one thing that matters most to you right now is the
+      championship game that your favorite team will play this
+      afternoon.
+      $pJoy of joys, you have just purchased a brand new big screen
+      plasma TV that was delivered earlier today!"
+----
+
+[float]
+=== The "ticktock" EVENT
+
+Nothing new to add to this, just copy and paste.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ [green]#Event ticktock
+     -- Increments The Time By Another Minute
+     -- Convert Time From "Minutes Past Midnight" To Hh:Mm Am/Pm Format
+     Set hour Of clock To timeinminutes Of clock / 60.
+     If hour Of clock &gt;=12 Then
+         Set ampm Of clock To "pm".
+         If hour Of clock &gt;12 Then
+             Set hour Of clock To hour Of clock -12.
+         End If.
+     Else
+         Set ampm Of clock To "am".
+         If hour Of clock =0 Then
+             Set hour Of clock To 12.
+         End If.
+     End If.
+     Set minute Of clock To timeinminutes Of clock -((timeinminutes Of
+          clock / 60) * 60).
+     -- Increment time by one minute
+     -- (If its 11:59pm set clock to zero ie:midnight instead)
+     If timeinminutes Of clock &lt; 1439 Then
+         Increase timeinminutes Of clock.
+     Else
+         Set timeinminutes Of clock To 0.
+     End If.
+     -- schedule this event to happen again next turn
+     Schedule ticktock After 1.
+ End Event ticktock.#
+----
+
+Update the Kitchen DESCRIPTION for the Clock
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ THE kitchen Isa LOCATION
+     NAME 'Kitchen'
+     DESCRIPTION
+         "This is the kitchen. There is a counter and a cupboard here,
+          [green]#as well as a clock#.
+          $pNorth returns to the TV Room."
+     EXIT north TO tv_room
+         CHECK kitchen_door IS OPEN
+             ELSE
+                 "$t$t&lt;BUMP&gt;$p$t$tOof!$pThe door is closed."
+         DOES
+             "You return to the TV Room, north."
+     END EXIT.
+     EXIT south, east, west TO kitchen
+         CHECK
+             "There is only a wall in that direction."
+     END EXIT.
+ END THE kitchen.
+ -----------------------
+----
+
+[float]
+=== Check the Time
+
+When the player successfully turns on the tv, the last thing to check before winning the game is whether he/she turned the tv on in time for the big game.
+Since we created an OBJECT at Nowhere to act as a sub-routine for us when the player turns on the TV, we will check the time there.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ THE win_tv Isa OBJECT AT Nowhere
+     DESCRIPTION
+         [green]#IF timeinminutes OF clock > 960 THEN -- 4 pm in minutes
+             "Ohhh, it's too late!
+              $nYou missed the big game...
+              $p\*\** You have lost. \***"
+             QUIT.
+         ELSE#
+             MAKE tv 'on'.
+             "Wow! What a great picture!"
+             SHOW 'plasma.png'.
+             "$n$nYou watch the game and your favorite team wins!"
+             "$n$nAnd so have you..."
+             "$p\*\** You have won! \***"
+             QUIT.
+         [green]#END IF.#
+ END THE win_tv.
+ -----------------------
+----
+
+The clock "time bomb" EVENT is completed.
+Try it!
+
+== A Colorful EVENT
+
+It often helps to add color and direction to the game to have a repeating EVENT, much like the "time bomb" example xref:bomb[here].
+We will trigger a repeating EVENT reminding the player of time going by, once they read the tv schedule.
+
+First, the EVENT:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ [green]#EVENT time_pass
+     "$pThe clock is ticking..."
+     SCHEDULE time_pass AT Hero AFTER 4.
+ END EVENT.#
+ -----------------------
+----
+
+As we have seen, this will print the "clock is ticking" message to the screen every four turns.
+It would probably be better if this message were not to become obviously routine to the player, i.e., that it will appear every four turns.
+We can vary the interval to whatever we like, say, randomly every four to six turns.
+For this we use the RANDOM statement:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ EVENT time_pass
+     "$pThe clock is ticking..."
+     SCHEDULE time_pass AT Hero AFTER [green]#RANDOM 4 TO 6#.
+ END EVENT.
+ -----------------------
+----
+
+We can vary the message as well, using the RANDOM statement along with DEPENDING ON.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ EVENT time_pass
+     [green]#DEPENDING ON RANDOM 1 to 3
+         = 1 THEN "$pThe time for the big game is getting nearer."
+         = 2 THEN "$pDon't let time get away from you!"
+         = 3 THEN "$pThe clock is ticking..."
+     END DEPEND.#
+     SCHEDULE time_pass AT Hero AFTER RANDOM 4 to 6.
+ END EVENT.
+ -----------------------
+----
+
+The program will generate a "random" number from 1 to 3, and DEPENDING ON what number it is, will print that message to the screen.
+Then it will generate another "random" number from 4 to 6, and SCHEDULE the EVENT to happen again at that interval.
+
+[float]
+=== Trigger the SCHEDULE with a VERB
+
+We will SCHEDULE the time_pass EVENT to begin after the player reads the tv guide.
+But we don't want the EVENT to happen immediately upon their reading it, but a few turns after that.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ THE guide Isa OBJECT IN table
+     NAME tv 'schedule' NAME program guide
+     IS READABLE.
+     VERB examine
+         DOES ONLY
+             "It is a listing of tv programming for the week. It is opened
+              to today's schedule."
+     END VERB.
+     VERB read
+         DOES ONLY
+             IF guide NOT IN Hero THEN
+                 LOCATE guide IN Hero.
+                 "(First picking it up)$p"
+             END IF.
+             [green]#SCHEDULE time_pass AT Hero AFTER 4.#
+             "The championship game will be played at 4 o'clock this
+              afternoon!"
+     END VERB.
+ END THE guide.
+ -----------------------
+----
+
+That completes our game and the tutorial.
+I hope this proves to be a help to you in using the Alan 3 Adventure language.
+
+== Compile and Play It!
+
+Here follows the complete source to the tutorial game.
+
+// @NOTE: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//        We're including an UTF-8 converted version of the "TV TIME!"source
+//        adventure "./alanguide-code/tvtime.alan", because Asciidoctor won't
+//        handle ISO-8859-1 files.
+//        The conversion is done by the "generate-inc-files.sh" script via iconv.
+//        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[source,alan,,linenums,role=tutorial]
+--------------------------------------------------------------------------------
+include::./alanguide-code/tvtime.alan[encoding=iso-8859-1]
+--------------------------------------------------------------------------------

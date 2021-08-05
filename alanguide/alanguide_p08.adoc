@@ -1,0 +1,1298 @@
+= PART EIGHT: A Third Puzzle
+
+== Setting a New Stage
+
+
+[float]
+=== Setting a New Stage
+
+Since we have said in the game that the tv was "just delivered today", let's change the start of the game with the tv still inside its packing carton.
+The player will have to cut the carton open with a knife from the kitchen (in the cupboard we created in a xref:surfaces[previous section]), plug in the cord and turn on the tv with the remote control.
+
+It no longer makes sense to have the remote control lost in the chair cushions.
+Let's start with the remote in the carton with the tv.
+But we will put a battery for the remote control in the chair.
+
+[float]
+=== The Battery In the Cushion
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ [green]#-----------------------
+ THE battery Isa OBJECT AT Nowhere -- until found in the chair
+     VERB examine
+         DOES ONLY
+             "It's a regular household AAA battery."
+     END VERB.
+ END THE battery.#
+ -----------------------
+ THE chair Isa OBJECT AT tv_room
+     NAME comfy chair
+     NAME comfy
+     NAME cushions
+     NAME big soft chair cushion
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             "It's your favorite chair to sit in when you're watching
+              the big game. It has big soft comfy cushions -- just the
+              kind people lose change in all the time."
+     END VERB.
+     VERB search
+         CHECK [green]#battery AT Nowhere#
+             ELSE
+                 "There is nothing else to find by searching the chair."
+         DOES ONLY
+             LOCATE [green]#battery# in Hero.
+             "You find [green]#a small battery#, which you take."
+     END VERB.
+ END THE chair.
+ -----------------------
+----
+
+[float]
+=== CHECK the Remote for the Battery
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ THE remote Isa OBJECT AT Nowhere
+     NAME remote control
+     NAME controller
+     NAME control remote
+     NAME remote
+     NAME button
+     NAME simple push buttons
+     [green]#OPAQUE CONTAINER -- so you can put the battery in it#
+     IS SWITCHABLE.
+        PUSHABLE.
+     VERB examine
+         DOES ONLY
+             "It's a very simple push-button remote control."
+     END VERB.
+     [green]#VERB put_in
+         WHEN obj2
+             CHECK obj1 = battery
+                 ELSE
+                     "Don't be silly. Only a battery goes in there!"
+             DOES AFTER
+                 "You snap the battery into place in the remote."
+     END VERB.#
+ ...
+----
+
+We want to allow only the battery to be put it in the remote control.
+It is a simple matter to CHECK that obj1 is the battery.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+     VERB turn_on1, turn_on2, switch_on1, switch_on2
+         [green]#CHECK battery IN remote
+             ELSE
+                 "Pushing the button on the remote, nothing happens.
+                  The remote won't do anything without a battery."
+                 LOCATE remote IN Hero. -- Assumes remote is "Taken".
+         AND# cord IS PLUGGED_IN
+             ELSE
+                 "The TV won't turn on. It isn't getting any power."
+         DOES ONLY
+             MAKE tv 'on'.
+                 "Wow! What a great picture!"
+                 SHOW 'plasma.png'.
+                 "$n$nYou watch the game and your favorite team wins!"
+                 "$n$nAnd so have you..."
+                 "$p\*\** You have won! \***"
+                 QUIT.
+     END VERB.
+     VERB push
+         [green]#CHECK battery IN remote
+             ELSE
+                 "Pushing the button on the remote, nothing happens.
+                  The remote won't do anything without a battery."
+                 LOCATE remote IN Hero. -- Assumes remote is "Taken".
+         AND# cord IS PLUGGED_IN
+             ELSE
+                 "The TV won't turn on. It isn't getting any power."
+         DOES ONLY
+             MAKE tv 'on'.
+             "Wow! What a great picture!"
+             SHOW 'plasma.png'.
+             "$n$nYou watch the game and your favorite team wins!"
+             "$n$nAnd so have you..."
+             "$p\*\** You have won! \***"
+             QUIT.
+     END VERB.
+ END THE remote.
+ -----------------------
+----
+
+[float]
+=== The TV In the Box
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ SYNONYMS
+    television = tv.
+ THE tv Isa OBJECT AT [green]#Nowhere -- until box is opened#
+ ...
+ VERB turn_on1, turn_on2, switch_on1, switch_on2
+     CHECK remote Here
+         ELSE
+             "There are no knobs, switches or buttons for turning on the
+              TV."
+     [green]#AND battery IN remote
+         ELSE
+            "Pushing the button on the remote, nothing happens.
+             The remote won't do anything without a battery."
+            LOCATE remote IN Hero. -- Assumes remote is "Taken".#
+     AND cord IS PLUGGED_IN
+         ELSE
+             "The TV won't turn on. It isn't getting any power."
+     DOES ONLY
+         MAKE tv 'on'.
+         "Wow! What a great picture!"
+         SHOW 'plasma.png'.
+         "$n$nYou watch the game and your favorite team wins!"
+         "$n$nAnd so have you..."
+         "$p\*\** You have won! \***"
+         QUIT.
+ END VERB.
+ ...
+ -----------------------
+ THE cord Isa OBJECT AT [green]#Nowhere -- it's part of the tv, remember#
+     NAME cord
+     NAME power electric electrical tv cord
+     DESCRIPTION
+     IS PLUGGABLE.
+        NOT PLUGGED_IN.
+     VERB examine
+         DOES ONLY
+             "The power cord is of the common sort, and just three feet
+              long."
+             IF cord IS PLUGGED_IN THEN
+                 "It is plugged into the electric outlet."
+             END IF.
+     END VERB.
+     VERB take, pick_up1, pick_up2
+         CHECK
+             "You can't take it. The power cord is permanently attached
+              to the television set."
+     END VERB.
+ END THE cord.
+ ----------------------
+----
+
+[float]
+=== The Box Before Opening
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ [green]#-----------------------
+ SYNONYMS
+     carton, crate = box.
+ THE box Isa OBJECT AT tv_room
+     NAME packing carton
+     NAME heavy cardboard box
+     NAME label
+     NAME large black letters
+     NAME upward pointing arrow
+     HAS weight 500. -- too heavy to lift
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             "It's quite large, about five feet square. Besides the
+              label (""Ultimo Plasma TV""), there are large black
+              letters that say, ""PUSH WITH CARE"".  $nAn upward
+              pointing arrow indicates ""THIS SIDE UP""."
+              "$pThe box is sitting by a wall."
+     END VERB.
+ END THE box.#
+ -----------------------
+----
+
+[float]
+=== The Knife In the Cupboard
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ [green]#-----------------------
+ THE knife Isa OBJECT IN cupboard#
+ ...
+----
+
+Notice the starting place for the knife is not "AT" but "IN" the cupboard CONTAINER.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ THE knife Isa OBJECT IN cupboard
+     [green]#VERB examine
+         DOES ONLY
+             "It's a sturdy, sharp knife."
+     END VERB.
+ END THE knife.#
+ -----------------------
+----
+
+[float]
+=== The TV Room DESCRIPTION Revisited
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ THE tv_room Isa LOCATION
+     NAME 'TV Room'
+     DESCRIPTION
+         "This is your favorite room in the house, because you love to watch television.
+          [green]#Besides your comfy chair and table,"
+         IF tv Here THEN
+             "your new plasma TV is here."
+         ELSE
+             "there is a large cardboard packing carton here."
+         END IF.#
+         "$pThe door to the kitchen is south."
+     EXIT south TO kitchen
+         CHECK tv_door IS OPEN
+              ELSE
+                  "$t$t&lt;BUMP&gt;$p$t$tOof!$pThe door is closed."
+         DOES
+             "You go south, into the kitchen."
+     END EXIT.
+     EXIT north, east, west TO tv_room
+         CHECK
+             "There is only a wall in that direction."
+     END EXIT.
+ END THE tv_room.
+ -----------------------
+----
+
+== The Cutting Edge
+
+[float]
+=== The Cutting Edge
+
+All the parts are in place.
+The tv and remote control are in the box.
+The battery is hidden in the chair cushions.
+The knife is in the kitchen cupboard.
+Now we have to make the parts work together to solve the puzzle.
+
+We have already programmed most things to do what they are meant to do.
+But we have introduced the packing carton, which must be cut open with the knife.
+
+[IMPORTANT]
+====
+For Which OBJECT?
+It may sometimes be confusing for which OBJECT to implement the VERB to complete a given task.
+For example, should we implement the "cut open" VERB for the knife or for the box?
+
+1. Look for the OBJECT that is changed by the action .
+That is often the result you will want to CHECK for in the progress of the game.
+Here the box is changed, the knife is not.
+
+2. Look for the OBJECT that needs the other to do the action, i.e., the "passive" OBJECT.
+For example, in our tutorial game the box cannot cut anything; it needs the knife for the "cut" VERB.
+The knife does not need the box; it can cut all sorts of things.
+So if you want to implement the VERB generally, as for the knife, implement it in the library (as we have done).
+If you want to implement the VERB for a specific OBJECT (such as the box), implement it there.
+
+3. Look for the passive OBJECT in the library.
+This will most likely satisfy what you are looking for in 1 and 2 above as well.
+====
+
+Implementing "cut open" VERBS for the Box There are VERBS in the library that will be useful.
+From "open.i":
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ Syntax
+     open = open (obj)
+         Where obj Isa object
+             Else "You can't open that."
+ Add To Every object
+     Is
+         Not openable.
+         Not open.
+     Verb open
+     Check obj Is openable
+         Else "You can't open that!"
+     And obj Is Not open
+         Else "It's already open."
+     Does
+         Make obj open.
+         Say The obj. "is now open."
+     End Verb.
+ End Add To.
+----
+
+The box will have to be openable.
+We will add a CHECK to the VERB for the knife and bring the tv, etc. into the TV Room.
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ SYNONYMS
+     carton, crate = box.
+ THE box Isa OBJECT AT tv_room
+     NAME packing carton
+     NAME heavy cardboard box
+     NAME label
+     NAME large black letters
+     NAME upward pointing arrow
+     HAS weight 500.
+     [green]#IS OPENABLE.
+     HAS NOT SCENERY.#
+     DESCRIPTION
+ ...
+----
+
+What we are doing here is a little tricky.
+Once the box has been cut open it may as well be xref:scenery[Scenery].
+However, the Attribute must be assigned to it here as HAS NOT SCENERY (We don't want to make the box BE SCENERY, only to _have the same Attributes_ as SCENERY, a clear distinction for the Alan program but one perhaps without a difference to us). "IS NOT SCENERY" will compile, but does not give the desired result in game play.
+
+An alternate plan would be to create an "opened_box" OBJECT At Nowhere, with appropriate DESCRIPTION and VERBS for the box once cut open.
+When the player successfully cuts the box open, switch the opened_box for the box using LOCATE statements.
+
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ [green]#Verb open
+     CHECK knife Here
+         ELSE
+             "You will need a knife to cut the box open."
+     Does ONLY
+         LOCATE tv Here.
+         LOCATE cord Here.
+         LOCATE remote Here.
+         LOCATE knife IN Hero.
+         MAKE box SCENERY.
+         "Using the sharp blade of the knife, you cut the box open to
+          reveal the plasma TV inside. You cut and tear off the
+          remaining cardboard and cast it aside.
+          $pWow, the TV looks even better in your home than it did on
+          the showroom floor!"
+ End Verb.#
+----
+
+Returning to "open.i" there is another VERB we can (and should) include for the player:
+
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ Syntax
+     open_with = open (obj1) 'with' (obj2)
+         Where obj1 Isa object
+             Else "You can't open that."
+         And obj2 Isa object
+             Else "You can't open anything with that."
+ Add To Every object
+     #Verb open_with#
+          #When obj1#
+              #Check obj2 Here -- \*\** CHANGED In hero, etc. \***#
+                   #Else "You don't see" Say The obj2. "here."#
+              #Does#
+                  #"You can't open" Say The obj1. "with" Say The#
+                    #obj2. "."#
+     #End Verb.#
+ End Add To.
+----
+
+It seems strange to me that this DOES in the default library fails.
+It should read:
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ ...
+          Does
+              [green]#MAKE obj1 OPEN.
+              "You open" Say The obj1. "with" Say The obj2. "."#
+     End Verb.
+ End Add To.
+----
+
+No matter.
+Our DOES ONLY will override the default anyway.
+Adapted for our box (obj1) and knife (obj2) we get this:
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ Verb open_with
+     When obj1
+         [green]#CHECK obj2 = knife
+             ELSE
+                 "You will need something sharper than that to open the box with."
+         Does ONLY
+             LOCATE tv Here.
+             LOCATE cord Here.
+             LOCATE remote Here.
+             LOCATE knife IN Hero.
+             MAKE box SCENERY.
+             "Using the sharp blade of the knife, you cut the box open
+              to reveal the plasma TV inside. You cut and tear off the
+              remaining cardboard and cast it aside.
+              $pWow, the TV looks even better in your home than it did
+              on the showroom floor!"#
+ End Verb.
+----
+
+[float]
+=== Practice Time
+
+It's time for more practice customizing some VERBS.
+You will first need to create the library VERB (used by the knife as "obj1"), after which you should copy-and-paste it for implementation by the box (as "obj2").
+
+Create a new file "cut.i" in your library folder.
+Be sure to import it in "std.i".
+Using the VERBS from "open.i", create some new custom VERBS (complete with SYNONYMS and SYNTAX statements!) to "cut", "cut (obj) open", "cut (obj2) with (obj1)", and "cut (obj2) open with (obj1)".
+
+"WITH" is an Alan reserved word.
+Use single quotes around it to protect its use in your VERB.
+
+TIP: Use an "IS CUTTER" Attribute to CHECK for in the VERB statements.
+
+Remember that the player may word the statement differently.
+Perhaps they will type "cut open the box" or "cut open the box with the knife".
+There is a hint on how to handle this in "wear.i" for the "put on" VERB, i.e., the player may "put the jacket on" or "put on the jacket".
+
+See if you can complete these VERBS yourself before moving on.
+It will be good and necessary practice.
+You will need to create all the default library VERBS and then adapt them for use in the game, cutting the box open with the knife.
+
+== "cut.i"
+
+// @ALAN @LIBRARY:
+// - [ ] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -- cut.i
+ ADD TO EVERY OBJECT
+     IS NOT CUTTER.
+ END ADD.
+ SYNONYMS
+     slash, slice, hack, saw = cut.
+ SYNTAX
+     cut = cut (obj)
+         WHERE obj Isa THING -- so can cut Actors too
+             ELSE
+                 "You can't cut that."
+     cut = cut (obj) 'open'. -- see "wear.i"
+     cut = cut 'open' (obj).
+ ADD TO EVERY THING
+     VERB cut
+         DOES
+             "Please say what you want to cut it with."
+     END VERB.
+ END ADD TO.
+ SYNTAX
+     cut_with = cut (obj1) 'with' (obj2)
+         WHERE obj1 Isa THING
+             ELSE
+                 "You can't cut that."
+         AND obj2 Isa OBJECT
+             ELSE
+                 "You can't cut anything with that."
+     cut_with = cut (obj1) 'open' 'with' (obj2).
+     cut_with = cut 'open' (obj1) 'with' (obj2).
+ ADD TO EVERY OBJECT
+     VERB cut_with
+         WHEN obj1
+             CHECK obj2 Here
+                 ELSE
+                     "You don't see" Say The obj2. "here."
+             AND obj2 IS CUTTER
+                 ELSE
+                     "You can't cut anything with that."
+             AND obj1 &lt;&gt; obj2
+                 ELSE
+                     "You can't cut something with itself."
+             DOES
+                 "You cut" Say The obj1. "with" Say The obj2. "."
+     END VERB.
+ END ADD TO.
+----
+
+[[box]]
+== The Box
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ SYNONYMS
+     carton, crate = box.
+ THE box Isa OBJECT AT tv_room
+     NAME packing carton
+     NAME heavy cardboard box
+     NAME label
+     NAME large black letters
+     NAME upward pointing arrow
+     HAS weight 500.
+     IS OPENABLE.
+     HAS NOT SCENERY.
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             [green]#IF box IS NOT SCENERY THEN
+                 "It's quite large, about five feet square. Besides
+                  the label (""Ultimo Plasma TV""), there are large
+                  black letters that say, ""PUSH WITH CARE"".
+                  $nAn upward pointing arrow indicates ""THIS SIDE UP""."
+                  "$pThe box is sitting by a wall."
+             ELSE
+                 "The carton is in pieces. No need to worry about it
+                  now, you can clean it up later."
+             END IF.#
+     END VERB.
+     Verb open
+         CHECK [green]#box IS NOT SCENERY -- only open the box once!
+             ELSE
+                 "You have done that already."
+         AND# KNIFE Here
+             ELSE
+                 "You will need a knife to cut the box open."
+         Does ONLY
+             LOCATE tv Here.
+             LOCATE cord Here.
+             LOCATE remote Here.
+             LOCATE knife IN Hero.
+             MAKE box SCENERY.
+             "Using the sharp blade of the knife, you cut the box open
+              to reveal the plasma TV inside. You cut and tear off the
+              remaining cardboard and cast it aside.
+              $pWow, the TV looks even better in your home than it did
+              on the showroom floor!"
+     End Verb.
+     Verb open_with
+         When obj1
+             CHECK box IS NOT SCENERY
+                 ELSE
+                     "You have done that already."
+             AND obj2 = knife
+                 ELSE
+                     "You will need something sharper than that to
+                      open the box with."
+             Does ONLY
+                 LOCATE tv Here.
+                 LOCATE cord Here.
+                 LOCATE remote Here.
+                 LOCATE knife IN Hero.
+                 MAKE box SCENERY.
+                 "Using the sharp blade of the knife, you cut the box
+                  open to reveal the plasma TV inside. You cut and
+                  tear off the remaining cardboard and cast it aside.
+                  $pWow, the TV looks even better in your home than it
+                  did on the showroom floor!"
+     End Verb.
+     [green]#VERB cut
+         CHECK box IS NOT SCENERY
+             ELSE
+                 "You have done that already."
+         AND KNIFE Here
+             ELSE
+                 "You will need a knife to cut the box open."
+         Does ONLY
+             LOCATE tv Here.
+             LOCATE cord Here.
+             LOCATE remote Here.
+             LOCATE knife IN Hero.
+             MAKE box SCENERY.
+             "Using the sharp blade of the knife, you cut the box open
+              to reveal the plasma TV inside. You cut and tear off the
+              remaining cardboard and cast it aside.
+              $pWow, the TV looks even better in your home than it did
+              on the showroom floor!"
+     End Verb.
+     VERB cut_with
+         When obj1
+             CHECK box IS NOT SCENERY
+                 ELSE
+                     "You have done that already."
+             AND obj2 = knife
+                 ELSE
+                     "You will need something sharper than that to
+                      open the box with."
+             Does ONLY
+                 LOCATE tv Here.
+                 LOCATE cord Here.
+                 LOCATE remote Here.
+                 LOCATE knife IN Hero.
+                 MAKE box SCENERY.
+                 "Using the sharp blade of the knife, you cut the box
+                  open to reveal the plasma TV inside. You cut and
+                  tear off the remaining cardboard and cast it aside.
+                  $pWow, the TV looks even better in your home than it
+                  did on the showroom floor!"
+     End Verb.#
+ END THE box.
+ -----------------------
+----
+
+== Reducing Repetition
+
+[float]
+=== Cut the Repetition.
+
+Notice the repetition in our code for the box.
+Four different VERBS do the same actions and give the same display of information.
+There are a couple of ways to cut down on the repetition.
+
+First, if the SYNTAX of the library VERBS are basically the same structure, then those statements can be put on the same line, like this:
+
+// @ALAN @EXAMPLE:
+// - [ ] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ THE rock Isa OBJECT AT field
+     VERB look_at, listen_to
+         DOES ONLY
+             "You notice nothing unusual about the rock."
+ END VERB.
+ ...
+----
+
+Our VERBS "cut" and "open" are similar.
+After all, the "cut" VERB was copied and adapted from the "open" VERB. _But we changed the SYNTAX_ for "cut" from "WHERE the (obj) Isa OBJECT" to "WHERE the (obj) Isa THING", and so they cannot be put together on the same VERB statement.
+The same holds true for "cut with" and "open with".
+
+There is another method, useful not only for reducing repetition, but for many other purposes as well.
+Alan 3 provides for a pseudo "subroutine".
+We simply create an invisible OBJECT to perform the same actions as the VERB and DESCRIBE it when we need it.
+Like this:
+
+
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ [green]#THE open_box Isa OBJECT AT Nowhere -- Hence, invisible and unreachable
+     DESCRIPTION
+         LOCATE tv Here.
+         LOCATE cord Here.
+         LOCATE remote Here.
+         LOCATE knife IN Hero.
+         MAKE box SCENERY.
+         "Using the sharp blade of the knife, you cut the box open to
+          reveal the plasma TV inside. You cut and tear off the
+          remaining cardboard and cast it aside.
+          $pWow, the TV looks even better in your home than it did
+          on the showroom floor!"
+ END THE open_box.#
+----
+
+Using this like a subroutine in our program for the box, it is now less cluttered:
+
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ SYNONYMS
+     carton, crate = box.
+ THE box Isa OBJECT AT tv_room
+     NAME packing carton
+     NAME heavy cardboard box
+     NAME label
+     NAME large black letters
+     NAME upward pointing arrow
+     HAS weight 500.
+     IS OPENABLE.
+     HAS NOT SCENERY.
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             IF box IS NOT SCENERY THEN
+                 "It's quite large, about five feet square. Besides
+                  the label (""Ultimo Plasma TV""), there are large
+                  black letters that say, ""PUSH WITH CARE"".
+                  $nAn upward pointing arrow indicates ""THIS SIDE UP""."
+                 "$pThe box is sitting by a wall."
+             ELSE
+                 "The carton is in pieces. No need to worry about it
+                  now, you can clean it up later."
+             END IF.
+     END VERB.
+     Verb open
+         CHECK box IS NOT SCENERY
+             ELSE
+                 "You have done that already."
+         AND knife Here
+             ELSE
+                 "You will need a knife to cut the box open."
+         Does ONLY
+             [green]#DESCRIBE open_box.#
+     End Verb.
+     Verb open_with
+         When obj1
+             CHECK box IS NOT SCENERY
+                 ELSE
+                     "You have done that already."
+             AND obj2 = knife
+                 ELSE
+                     "You will need something sharper than that to
+                      open the box with."
+             Does ONLY
+                 [green]#DESCRIBE open_box.#
+     End Verb.
+     VERB cut
+         CHECK box IS NOT SCENERY
+             ELSE
+                 "You have done that already."
+         AND knife Here
+             ELSE
+                 "You will need a knife to cut the box open."
+         Does ONLY
+             [green]#DESCRIBE open_box.#
+     End Verb.
+     VERB cut_with
+         When obj1
+             CHECK box IS NOT SCENERY
+                 ELSE
+                     "You have done that already."
+             AND obj2 = knife
+                 ELSE
+                     "You will need something sharper than that to
+                      open the box with."
+             Does ONLY
+                 [green]#DESCRIBE open_box.#
+     End Verb.
+ END THE box.
+ -----------------------
+----
+
+The same can be done with the DOES ONLY "win" sequence with the remote and tv. (See this implemented in xref:compile_and_play[Compile and Play It!])
+
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------
+ [green]#THE win_tv Isa OBJECT AT Nowhere
+     DESCRIPTION
+         MAKE tv 'on'.
+         "Wow! What a great picture!"
+         SHOW 'plasma.png'.
+         "$n$nYou watch the game and your favorite team wins!"
+         "$n$nAnd so have you..."
+         "$p\*\** You have won! \***"
+         QUIT.
+ END THE win_tv.#
+ -----------------------
+----
+
+[[compile_and_play]]
+== Compile and Play It!
+
+
+// @ALAN @TV-TIME:
+// - [ ] ENABLE HIGHLIGHTING
+// - [ ] CREATE INCLUDABLE UTF-8 VERSION! (so it can be compiled and tested)
+// - [ ] CHECK CODE
+[subs="quotes"]
+----
+ -----------------------------------------------
+ --             \*\** TV TIME! \***
+ -- An ALAN 3 Interactive Fiction Tutorial Game
+ --        By Michael Arnaud (c) 2006
+ -----------------------------------------------
+ IMPORT 'std.i'.
+ -----------------------
+ -- \*\** CUSTOM CLASSES: \***
+ Every SURFACE Isa OBJECT
+     CONTAINER
+         HEADER
+             "Resting on top is"
+     VERB examine
+         DOES ONLY
+             LIST THIS.
+     END VERB.
+     VERB put_in
+         WHEN obj2
+             CHECK
+                 "That isn't something you can put anything ""in""."
+     END VERB.
+ END EVERY.
+ -----------------------
+ Every CLOSEABLE Isa OBJECT
+     OPAQUE CONTAINER
+         HEADER
+             "It contains"
+     IS OPENABLE.
+     VERB open DOES AFTER
+         MAKE THIS NOT OPAQUE.
+         LIST THIS.
+     END VERB.
+     VERB close DOES AFTER
+         MAKE THIS OPAQUE.
+     END VERB.
+ END EVERY.
+ -----------------------
+ EVERY Door Isa OBJECT
+     NAME door
+     HAS otherside Door.
+     IS OPENABLE.
+     VERB open
+         DOES AFTER
+             MAKE otherside OF THIS open.
+     END VERB.
+     VERB close
+         DOES AFTER
+             MAKE otherside OF THIS closed.
+     END VERB.
+ END EVERY.
+ -----------------------
+ THE tv_room Isa LOCATION
+     NAME 'TV Room'
+     DESCRIPTION
+         "This is your favorite room in the house, because you love to
+          watch television.  Besides your comfy chair and table,"
+         IF tv Here THEN
+             "your new plasma TV is here."
+         ELSE
+             "there is a large cardboard packing carton here."
+         END IF.
+         "$pThe door to the kitchen is south."
+     EXIT south TO kitchen
+         CHECK tv_door IS OPEN
+             ELSE
+                 "$t$t&lt;BUMP&gt;$p$t$tOof!$pThe door is closed."
+         DOES
+             "You go south, into the kitchen."
+     END EXIT.
+     EXIT north, east, west TO tv_room
+         CHECK
+             "There is only a wall in that direction."
+     END EXIT.
+ END THE tv_room.
+ -----------------------
+ SYNONYMS
+     crate = box.
+ THE box Isa OBJECT AT tv_room
+     NAME packing carton
+     NAME heavy cardboard box
+     NAME label
+     NAME large black letters
+     NAME upward pointing arrow
+     HAS weight 500.
+     IS OPENABLE.
+     HAS NOT SCENERY.
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             IF box IS NOT SCENERY THEN
+                 "It's quite large, about five feet square. Besides
+                  the label (""Ultimo Plasma TV""), there are large
+                  black letters that say, ""PUSH WITH CARE"".
+                  $nAn upward pointing arrow indicates ""THIS SIDE UP""."
+                 "$pThe box is sitting by a wall."
+             ELSE
+                 "The carton is in pieces. No need to worry about it
+                  now, you can clean it up later."
+             END IF.
+     END VERB.
+     Verb open
+         CHECK box IS NOT SCENERY
+             ELSE
+                 "You have done that already."
+         AND knife Here
+             ELSE
+                 "You will need a knife to cut the box open."
+         Does ONLY
+             DESCRIBE open_box.
+     End Verb.
+     Verb open_with
+         When obj1
+             CHECK box IS NOT SCENERY
+                 ELSE
+                     "You have done that already."
+             AND obj2 = knife
+                 ELSE
+                     "You will need something sharper than that to
+                      open the box with."
+             Does ONLY
+                 DESCRIBE open_box.
+     End Verb.
+     VERB cut
+         CHECK box IS NOT SCENERY
+             ELSE
+                 "You have done that already."
+         AND knife Here
+             ELSE
+                 "You will need a knife to cut the box open."
+         Does ONLY
+             DESCRIBE open_box.
+     End Verb.
+     VERB cut_with
+         When obj1
+             CHECK box IS NOT SCENERY
+                 ELSE
+                     "You have done that already."
+             AND obj2 = knife
+                 ELSE
+                     "You will need something sharper than that to
+                      open the box with."
+             Does ONLY
+                 DESCRIBE open_box.
+     End Verb.
+ END THE box.
+ -----------------------
+ THE open_box Isa OBJECT AT Nowhere
+     DESCRIPTION
+         LOCATE tv Here.
+         LOCATE cord Here.
+         LOCATE remote Here.
+         LOCATE knife IN Hero.
+         MAKE box SCENERY.
+         "Using the sharp blade of the knife, you cut the box open to
+          reveal the plasma TV inside. You cut and tear off the
+          remaining cardboard and cast it aside.
+          $pWow, the TV looks even better in your home than it did on
+          the showroom floor!"
+ END THE open_box.
+ -----------------------
+ THE remote Isa OBJECT AT Nowhere
+     NAME remote control
+     NAME controller
+     NAME control remote
+     NAME remote
+     NAME button
+     NAME simple push buttons
+     OPAQUE CONTAINER -- so you can put the battery in it
+     IS SWITCHABLE.
+        PUSHABLE.
+     VERB examine
+         DOES ONLY
+             "It's a very simple push-button remote control."
+     END VERB.
+     VERB put_in
+         WHEN obj2
+             CHECK obj1 = battery
+                 ELSE
+                     "Don't be silly. Only a battery goes in there!"
+             DOES AFTER
+                 "You snap the battery into place in the remote."
+     END VERB.
+     VERB turn_on1, turn_on2, switch_on1, switch_on2
+         CHECK battery IN remote
+             ELSE
+                 "Pushing the button on the remote, nothing happens.
+                  The remote won't do anything without a battery."
+                  LOCATE remote IN Hero. -- Assumes remote is "Taken".
+         AND cord IS PLUGGED_IN
+             ELSE
+                 "The TV won't turn on. It isn't getting any power."
+         DOES ONLY
+             DESCRIBE win_tv.
+     END VERB.
+     VERB push
+         CHECK battery IN remote
+             ELSE
+                 "Pushing the button on the remote, nothing happens.
+                  The remote won't do anything without a battery."
+                  LOCATE remote IN Hero. -- Assumes remote is "Taken".
+         AND cord IS PLUGGED_IN
+             ELSE
+                 "The TV won't turn on. It isn't getting any power."
+         DOES ONLY
+             DESCRIBE win_tv.
+     END VERB.
+ END THE remote.
+ -----------------------
+ SYNONYMS
+     television = tv.
+ THE tv Isa OBJECT AT Nowhere -- until box is opened
+     NAME TV
+     NAME plasma
+     NAME brand
+     NAME new
+     NAME screen
+     NAME giant
+     NAME brand new giant screen plasma tv
+     IS SWITCHABLE.
+        PLUGGABLE.
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             "It's your 52-inch plasma pride and joy."
+     END VERB.
+     VERB take, pick_up1, pick_up2
+         DOES ONLY
+             "You try to wrap your arms around the giant screen but it
+              is too wide.  You can't get a good grip on the heavy TV
+              to lift it."
+     END VERB.
+     VERB turn_on1, turn_on2, switch_on1, switch_on2
+         CHECK remote Here
+             ELSE
+                 "There are no knobs, switches or buttons for turning
+                  on the TV."
+         AND battery IN remote
+             ELSE
+                 "Pushing the button on the remote, nothing happens.
+                  The remote won't do anything without a battery."
+                 LOCATE remote IN Hero. -- Assumes remote is "Taken".
+         AND cord IS PLUGGED_IN
+             ELSE
+                 "The TV won't turn on. It isn't getting any power."
+         DOES ONLY
+             DESCRIBE win_tv.
+     END VERB.
+ END THE tv.
+ -----------------------
+ THE win_tv Isa OBJECT AT Nowhere
+     DESCRIPTION
+         MAKE tv 'on'.
+         "Wow! What a great picture!"
+         SHOW 'plasma.png'.
+         "$n$nYou watch the game and your favorite team wins!"
+         "$n$nAnd so have you..."
+         "$p\*\** You have won! \***"
+         QUIT.
+ END THE win_tv.
+ -----------------------
+ THE cord Isa OBJECT AT Nowhere
+     NAME cord
+     NAME power electric electrical tv cord
+     DESCRIPTION
+     IS PLUGGABLE.
+        NOT PLUGGED_IN.
+     VERB examine
+         DOES ONLY
+             "The power cord is of the common sort, and just three
+              feet long."
+             IF cord IS PLUGGED_IN THEN
+                 "It is plugged into the electric outlet."
+             END IF.
+     END VERB.
+     VERB take, pick_up1, pick_up2
+         CHECK
+             "You can't take it. The power cord is permanently
+              attached to the television set."
+     END VERB.
+ END THE cord.
+ ----------------------
+ THE battery Isa OBJECT AT Nowhere
+     VERB examine
+         DOES ONLY
+             "It's a regular household AAA battery."
+     END VERB.
+ END THE battery.
+ -----------------------
+ THE chair Isa OBJECT AT tv_room
+     NAME comfy chair
+     NAME comfy
+     NAME cushions
+     NAME big soft chair cushion
+     IS SITABLE.
+     DESCRIPTION
+     VERB examine
+         DOES ONLY
+             "It's your favorite chair to sit in when you're watching
+              the big game. It has big soft comfy cushions -- just
+              the kind people lose change in all the time."
+     END VERB.
+     VERB search
+         CHECK battery AT Nowhere
+             ELSE
+                 "There is nothing else to find by searching the chair."
+         DOES ONLY
+             LOCATE battery in Hero.
+             "You find a small battery, which you take."
+         END VERB.
+ END THE chair.
+ -----------------------
+ THE table Isa SURFACE AT tv_room
+     DESCRIPTION
+     VERB examine
+         DOES BEFORE
+             "It's an ordinary table, set conveniently by your chair."
+     END VERB.
+     VERB put_on
+         WHEN obj2
+             DOES ONLY
+                 LOCATE obj1 IN table.
+                 "You set" Say The obj1. "on the table.""
+     END VERB.
+ END THE table.
+ -----------------------
+ THE tv_wall Isa SCENERY AT tv_room
+     CONTAINER
+         HEADER ""
+     NAME wall
+     NAME walls
+     VERB examine
+         DOES ONLY
+             "One wall in particular has an electric outlet."
+                 IF cord IS PLUGGED_IN THEN
+                     "The TV cord is plugged into it."
+                 END IF.
+     END VERB.
+     VERB plug_in, put_in
+         WHEN obj2
+             CHECK obj1 IS PLUGGABLE
+                 ELSE
+                     "Hey, be careful! That doesn't go into an
+                      electrical outlet!"
+             AND cord IS NOT PLUGGED_IN
+                 ELSE
+                     "The cord is already plugged in!"
+             DOES ONLY
+                 MAKE cord PLUGGED_IN.
+                     "You put the power cord snugly into the
+                      electrical outlet."
+     END VERB.
+ END THE tv_wall.
+ -----------------------
+ THE outlet Isa SCENERY AT tv_room
+     NAME outlet
+     NAME electrical electric power wall wallplug
+     CONTAINER
+         HEADER ""
+     VERB examine
+         DOES ONLY
+             "It's a three-prong electrical outlet."
+             IF cord IS PLUGGED_IN THEN
+                 "The TV cord is plugged into it."
+             END IF.
+     END VERB.
+     VERB plug_in, put_in -- The player might try
+                          -- "put plug in outlet"
+         WHEN obj2
+             CHECK obj1 IS PLUGGABLE
+                 ELSE
+                     "Hey, be careful! That doesn't go into an
+                     electrical outlet!"
+             AND cord IS NOT PLUGGED_IN
+                 ELSE
+                     "The cord is already plugged in!"
+             DOES ONLY
+                 MAKE cord PLUGGED_IN.
+                 "You put the power cord snugly into the electrical
+                  outlet."
+     END VERB.
+ END THE outlet.
+ -----------------------
+ THE tv_door Isa Door AT tv_room
+     HAS otherside kitchen_door.
+ END THE tv_door.
+ -----------------------
+ THE kitchen_door Isa Door AT kitchen
+     HAS otherside tv_door.
+ END THE kitchen_door.
+ -----------------------
+ THE kitchen Isa LOCATION
+     NAME 'Kitchen'
+     DESCRIPTION
+         "This is the kitchen. There is a counter and a cupboard here.
+          $pNorth returns to the TV Room."
+     EXIT north TO tv_room
+         CHECK kitchen_door IS OPEN
+             ELSE
+                 "$t$t&lt;BUMP&gt;$p$t$tOof!$pThe door is closed."
+         DOES
+             "You return to the TV Room, north."
+     END EXIT.
+     EXIT south, east, west TO kitchen
+         CHECK
+             "There is only a wall in that direction."
+     END EXIT.
+ END THE kitchen.
+ -----------------------
+ THE counter Isa SURFACE AT kitchen
+     DESCRIPTION
+ END THE counter.
+ -----------------------
+ THE cupboard Isa CLOSEABLE AT kitchen
+     NAME cupboard
+     NAME cabinet
+     DESCRIPTION
+ END THE cupboard.
+ -----------------------
+ THE knife Isa OBJECT IN cupboard
+     VERB examine
+         DOES ONLY
+             "It's a sturdy, sharp knife."
+     END VERB.
+ END THE knife.
+ -----------------------
+ START AT tv_room.
+           "$p$t$t$t$t$t$t$t$t$t\*\** TV TIME! \***
+           $n$t$t$t$t$t$tAn ALAN 3 Interactive Fiction Tutorial Game
+           $n$t$t$t$t$t$t$tBy Michael Arnaud &#169; 2006
+           $p(Type ""help"" if you have not played this kind of game
+           before.)
+           $pJoy of joys, you have just purchased a brand new big
+           screen plasma TV that was delivered earlier today!"
+----

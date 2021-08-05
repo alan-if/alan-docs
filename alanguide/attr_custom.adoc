@@ -1,0 +1,26 @@
+// =============================================================================
+//                         Custom Attributes Definition
+// =============================================================================
+// Some attributes for custom substitution of multiple occurences of same text.
+
+// Path to shared images:
+:assets-img: ../_assets/images/
+
+// INDENTATION: We'll use some custom macros here to reproduce the indentantion
+// of the original output via non-breaking spaces:
+//
+//      $t$t$t$t$t$t$t$t$t*** TV TIME! ***
+//      $t$t$t$t$t$tAn ALAN 3 Interactive Fiction Tutorial Game
+//      $t$t$t$t$t$t$t By Michael Arnaud © 2006
+//
+:tab: {nbsp}{nbsp}{nbsp}{nbsp}
+:6tabs: {tab}{tab}{tab}{tab}{tab}{tab}
+:7tabs: {tab}{tab}{tab}{tab}{tab}{tab}{tab}
+:9tabs: {tab}{tab}{tab}{tab}{tab}{tab}{tab}{tab}{tab}
+
+// ASTERISKS: We'll also define the 'ast' and 3ast' attributes for substituting
+// occurences of one or three asterisks ('***') in the text, because they tend
+// to break up syntax highlighting in many editors.
+//
+:ast: {asterisk}
+:3ast: {ast}{ast}{ast}

@@ -1,0 +1,760 @@
+= PART ONE: LOCATIONS and EXITS
+
+== LOCATIONS and the START AT Statement.
+
+`LOCATION` are just "where" the player is located in the game map.
+Even though we usually think of `LOCATIONs` in terms of (as other IF languages might call them) "Rooms", they can be outdoors or indoors, under water, in outer space, or anywhere at all.
+
+The basic template for a `LOCATION` is:
+
+// @ALAN @EXAMPLE:
+// - [x] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [x] CHECK CODE
+
+[source,alan]
+--------------------------------------------------------------------------------
+The ? IsA location
+  Name '?'
+  Description
+    "? ? ?"
+  Exit ? to ?.
+End the ?.
+--------------------------------------------------------------------------------
+
+
+Following the format of the ALAN manual, we are using "?" as a stand-in or place-holder.
+
+The word `THE` is used to introduce specific instances (¶ 2.4.5) of `LOCATIONs`, `OBJECTs`,`ACTORs`, etc.
+In other words, with "`THE`", we are creating a particular `LOCATION` or a particular `OBJECT`, etc.
+
+The word "`Isa`" is an ALAN 3 programming word to identify what class THE (instance) IS.
+In this case, THE (instance) Isa (particular member of the class) `LOCATION`.
+
+The beginning `LOCATION` for our tutorial game is the TV Room.
+A completed `LOCATION` appropriately ends with an END statement, which itself ends with a full-stop (or period ".").
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+[green]#The tv_room IsA location
+End the tv_room.#
+--------------------------------------------------------------------------------
+
+The word "tv_room" is our programming word (using an underscore in the place of a space makes it a single word) for the first `LOCATION`.
+We could have called it "in_a_house", "spaceship", "gertrude", or anything at all.
+
+[float]
+=== START AT the End.
+
+Every game must tell the compiler where to start, using the `START AT` statement.
+The `START AT` statement always comes at the very end of your program.
+
+This is a complete game that will compile and run, though very limited in description or action.
+Try it.
+
+// @ALAN @EXAMPLE:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,subs=quotes]
+--------------------------------------------------------------------------------
+The tv_room IsA location
+End the tv_room.
+
+[green]#Start at tv_room.#
+--------------------------------------------------------------------------------
+
+
+[float]
+=== Adding a NAME and DESCRIPTION
+
+If we were to play the game at this point, we would not see anything about the TV Room, except "Tv_room" (note that the interpreter capitalized the first letter! ¶ 2.4.8).
+Following the template at the top of the page, we can add a `NAME` and `DESCRIPTION`.
+Type in the `NAME` statement followed by what you want the game to display as the NAME of the LOCATION.
+Be sure to enclose it in single (not double) quotes.
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+The tv_room IsA location
+  [green]#Name 'TV Room'#
+...
+--------------------------------------------------------------------------------
+
+(We sometimes use the ellipsis, "...", in this guide to indicate that there is more code preceding and/or following.)
+
+Now fill out a brief `DESCRIPTION` of the `LOCATION`, basically telling the player what he/she sees when entering. `DESCRIPTIONS`, as information displayed to the player, are placed within double quotes.
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+The tv_room IsA location
+  Name 'TV Room'
+  [green]#Description
+    "This is your favorite room in the house, because you love to
+     watch television. You recently purchased a giant screen
+     plasma TV that is set up in this room, ideally located
+     across from your comfy chair and table."#
+End the tv_room.
+...
+--------------------------------------------------------------------------------
+
+Compile and run the game to see how this is displayed to the player.
+
+[float]
+=== Another LOCATION.
+
+Using the same basic template, let's make a second simple `LOCATION`:
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+[green]#The kitchen IsA location
+  Name 'Kitchen'
+  Description
+    "This is the kitchen."
+End the kitchen.#
+...
+--------------------------------------------------------------------------------
+
+== EXITS
+
+[float]
+=== We need an EXIT strategy.
+
+In game play, the player starts in the TV Room and is locked in.
+He/She cannot see or go into the Kitchen.
+They need some way to move from the TV Room to the Kitchen.
+This is most often accomplished with an `EXIT`.
+
+Note that `EXITs` are always one-way.  If we want the `EXIT` to work in both directions (for example, "south" to the Kitchen, and "north"back to the TV Room), we need to put an `EXIT` in the other `LOCATION`.
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+The tv_room IsA location
+  Name 'TV Room'
+  Description
+    "This is your favorite room in the house, because you love to
+     watch television. You recently purchased a giant screen
+     plasma TV that is set up in this room, ideally located
+     across from your comfy chair and table."
+  [green]#Exit south to kitchen. -- Note the full-stop.#
+End the tv_room.
+-----------------------
+The kitchen IsA location
+  Name 'Kitchen'
+  Description
+    "This is the kitchen."
+  [green]#Exit north to tv_room.#
+End the kitchen.
+-----------------------
+Start at tv_room.
+--------------------------------------------------------------------------------
+
+Compile and run the game.
+You can go back and forth from the TV Room to the Kitchen.
+
+[[nowhere]]
+== DIRECTIONS TO Nowhere
+
+In our game so far, we have programmed EXITS "south" from the TV Room and "north" from the Kitchen.
+But suppose the player would like to go east or west or up or down?
+The interpreter does not know what any of those words mean, and will tell the player so.
+
+TIP: In game transcripts we'll use _this type face_ to indicate what the player types.
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _west_ +
+I don't know the word 'west'.
+================================================================================
+
+The remedy is to include in our program every different direction we might use in our game.
+We need not use any of the standard directional words at all.
+We can use "thisaway", "thataway", "moonward", or anything we want.
+However, most players of Interactive Fiction are used to playing with at least the four cardinal directions, plus "up"and "down".
+They will need some instruction within the game if we want them to try such directions as "moonward".
+
+[float]
+=== This Is Going NOWHERE
+
+One of the most convenient devices we can use in the Alan adventure language is what the manual calls a "limbo" LOCATION (¶ 2.4.6).
+That is, a LOCATION that the player never sees or knows anything about, he cannot travel there or back again.
+We can use such a limbo LOCATION to establish any directional or EXIT words we want.
+We could call our limbo LOCATION "limbo", "bimbo", or anything else, but for our game we will call it "Nowhere".
+Put these lines before the code for the tv_room:.
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+[green]#The nowhere IsA location
+  Exit north to nowhere.
+  Exit south to nowhere.
+  Exit west to nowhere.
+  Exit east to nowhere.
+  Exit up to nowhere.
+  Exit down to nowhere.
+End the nowhere.#
+
+The tv_room IsA location
+  Name 'TV Room'
+...
+--------------------------------------------------------------------------------
+
+Now compile and play the game.
+Try to go "west" in the TV Room, and instead of getting the message "I don't know the word west" you get the somewhat more reasonable response:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _west_ +
+You can't go that way.
+================================================================================
+
+[float]
+=== N, S, W, E
+
+It is an IF convention that the player need only type "n" for north, "s" for south, and so on.
+But at this point if we type n, s, w, or e, we are back to "I don't know the word n".
+We could program these single-letter words as we did the full words above:
+
+// @ALAN @EXAMPLE:
+// - [x] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,subs=quotes]
+--------------------------------------------------------------------------------
+The nowhere IsA location
+  Exit north to nowhere.
+  Exit south to nowhere.
+  Exit west to nowhere.
+  Exit east to nowhere.
+  Exit up to nowhere.
+  Exit down to nowhere.
+  [green]#Exit n to nowhere.
+  Exit s to nowhere.
+  Exit w to nowhere.
+  Exit e to nowhere.#
+End the nowhere.
+--------------------------------------------------------------------------------
+
+
+The problem with this is, both "north" and "n" are two separate directions.
+We would have to program the Kitchen, for example, with both of them to go to the same place:
+
+// @ALAN @EXAMPLE:
+// - [x] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,subs=quotes]
+--------------------------------------------------------------------------------
+...
+The kitchen IsA location
+  Name 'Kitchen'
+  Description
+    "This is the kitchen."
+  Exit north to tv_room.
+  [green]#Exit n to tv_room.#
+End the kitchen.
+...
+--------------------------------------------------------------------------------
+
+If we had four or more directions to program from the Kitchen, we would also have to double that number just to have the abbreviations for each one.
+There is, however, a much easier way: use the `SYNONYMS` statement.
+
+== SYNONYMS
+
+[float]
+=== SYNONYMS Mean the Same Thing
+
+It is a very simple matter to create synonyms, words (or letters) that the player can type and that will be understood by the interpreter to mean the same thing as the main original word.
+
+To create a synonym, simply use the `SYNONYMS` statement, then first the synonym word; then an equals sign followed by the word you want the synonym to equal.
+Be sure to end each synonym with a full-stop.
+
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+[green]#Synonyms
+  n = north.
+  s = south.
+  e = east.
+  w = west.
+  u = up.
+  d = down.#
+
+The nowhere IsA location
+  Exit north to nowhere.
+  Exit south to nowhere.
+  Exit west to nowhere.
+  Exit east to nowhere.
+  Exit up to nowhere.
+  Exit down to nowhere.
+End the nowhere.
+--------------------------------------------------------------------------------
+
+
+Now the player can indicate which direction he/she would like to go with a single letter, rather than typing the full word.
+Try it.
+
+[[import]]
+== Nowhere in the Library
+
+Now we are going to look at a big time-and-trouble saver, the standard library (see the xref:tools[Introduction]).
+If you have downloaded the library you will find a folder called (as of this writing) "alanlib_6_1dev".
+The exact name of the folder may vary as later developments of ALAN and/or the library are released, but it will probably always begin at least with "alanlib".
+
+I highly recommend keeping the alanlib folder in a separate place on your computer from the ALAN V3 folder.
+Copy the alanlib folder into the ALAN V3 folder and rename it something like "my_lib" or "tv_lib"or whatever you like.
+
+Inside the folder is the standard library: a collection of files, most of which carry the extension, ".i".
+The letter "i" here stands for "import".
+
+These are files that you are going to import into your main game file (which will be explained in a moment).
+For now, let's look at one of these ".i" files in particular, which you should be able to open with your text xref:tools[editor].
+
+The file to open is called "nowhere.i".
+It should look very familiar to you:
+
+// @ALAN @LIBRARY:
+// - [x] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [x] CREATE & INCLUDE UTF-8 VERSION OF "lib/nowhere.i"
+// - [x] CHECK CODE
+
+[source,alan,role=lib]
+--------------------------------------------------------------------------------
+include::./alanguide-code/lib/nowhere.i[encoding=iso-8859-1]
+--------------------------------------------------------------------------------
+
+This is the same section of code we needed to establish various directions in our game, already written for us.
+The library has quite a few files of this sort, which you can explore with your text editor.
+Many of the library files may seem strange to you, but the system is really very simple and you will soon understand and use it all, quickly and easily.
+
+== IMPORTING the Library
+
+[float]
+=== Importing Is Important
+
+How do we get all those library files into our game?
+Well, one way would be to open each one with the text editor and copy-and-paste it into our main game file.
+However, that would be tedious, it would add a lot of code for us to wade through in our source file, and it would be entirely unnecessary.
+
+All we need to do is put the following line in our source code (I recommend putting it right after the introductory comment statements):
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [ ] CHECK CODE:
+//       [ ] Needs to be checked again:!
+
+// @NOTE: I've added the lines:
+// ~~~~~~~~~~~~~
+// Synonyms
+//   n = north.
+// ~~~~~~~~~~~~~
+// instead of 'THE tv_room Isa LOCATION' because that is how the file would
+// look like by following the tutorial instructions!
+
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+-----------------------------------------------
+--             \*\** TV TIME! \***
+-- An ALAN 3 Interactive Fiction Tutorial Game
+--        By Michael Arnaud (c) 2006
+-----------------------------------------------
+
+[green]#Import 'std.i'.#
+
+Synonyms
+  n = north.
+...
+--------------------------------------------------------------------------------
+
+// @NOTE: The original code was...
+
+////
+ ----------------------------------------------
+ -             \*\** TV TIME! \***
+ - An ALAN 3 Interactive Fiction Tutorial Game
+ -        By Michael Arnaud (c) 2006
+ ----------------------------------------------
+ [green]#IMPORT 'std.i'.#
+
+ THE tv_room Isa LOCATION
+ ..
+////
+
+// .. but the `THE tv_room Isa LOCATION` line shouldn't be there, but below!
+
+
+Be sure to type it just this way, with the single-quotes around the name of the file and a full-stop at the end.
+
+How does that get "nowhere.i" into our game?
+Let's take a look.
+Open another file in the library, this one called "std.i" -- the one we are importing into our source file.
+
+
+// @ALAN @LIBRARY:
+// - [x] ENABLE HIGHLIGHTING FOR LIBRARY
+// - [x] CREATE & INCLUDE UTF-8 VERSION OF "lib/std.i"
+// - [x] YELLOW: line 51 (import 'nowhere.i'.) should be in '<mark>'.
+// - [x] CHECK CODE.
+
+[source,alan,role=lib,subs=quotes]
+--------------------------------------------------------------------------------
+include::./alanguide-code/lib/std.i[encoding=iso-8859-1,lines=1..50]
+#import 'nowhere.i'.#
+include::./alanguide-code/lib/std.i[encoding=iso-8859-1,lines=52..-1]
+--------------------------------------------------------------------------------
+
+
+[float]
+=== Here's How
+
+In the std.i file there is a lengthy string of "import" statements.
+So here is how "nowhere.i" and a large collection of other pre-programmed files from the library are included in our program.
+When we typed that single line
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] CHECK CODE
+
+[source,alan,role=tutorial]
+--------------------------------------------------------------------------------
+Import 'std.i'.
+--------------------------------------------------------------------------------
+
+
+we also imported all those other _.i_-files in the library that are _imported by the std.i file._ This will save us a lot of time and trouble as we write our game.
+The remainder of this beginner's guide will assume that you have imported std.i and all its library files.
+
+Compile and play the game with the imported library.
+In the play of the game, type "help".
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _help_
+================================================================================
+
+You will see some helpful information displayed.
+This demonstrates the power of importing the library files.
+
+
+[[exits]]
+== CHECKING EXITS
+
+Let's return to our source file and the TV Room and Kitchen.
+We have imported the library files, so now while playing the game and in the TV Room we type ">w" or ">west", the interpreter will not tell us "I don't know the word west", but will tell us
+
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _west_ +
+You can't go that way!
+================================================================================
+
+It is generally desirable to tell the player why he/she "can't go that way", perhaps because there is a wall in that direction.
+Here's how we would do that:
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+The tv_room IsA location
+  Name 'TV Room'
+  Description
+    "This is your favorite room in the house, because you love to
+     watch television. You recently purchased a giant screen
+     plasma TV that is set up in this room, ideally located
+     across from your comfy chair and table."
+  Exit south to kitchen.
+  [green]#Exit north, east, west to tv_room
+    Check
+      "There is only a wall in that direction."
+  End exit.#
+End the tv_room.
+...
+--------------------------------------------------------------------------------
+
+[float]
+=== CHECK Means STOP
+
+Here a new and important statement is introduced: the CHECK statement.
+
+Basically, _a CHECK stops the action that would otherwise take place._
+In our example, when the player types
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _west_
+================================================================================
+
+the interpreter sees the CHECK and does not carry out whatever typing "west" would otherwise do.
+It stops the action and displays an explanation to the player, adding to the illusion of realism.
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _west_ +
+There is only a wall in that direction.
+================================================================================
+
+Also notice that several directions are included on the same line:
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] CHECK CODE
+
+[source,alan,role=tutorial]
+-----------------------------------
+  Exit north, east, west to tv_room
+-----------------------------------
+
+so that we do not have to make separate EXITS for north, east, and west.
+If they all have the same result, i.e. a wall in that direction, they can all be included in the same EXIT statement.
+
+Every EXIT must have a destination ("TO" a LOCATION) even if it is CHECKED.
+
+[float]
+=== What About a Really Big Room?
+
+If our game were in a larger room, say, a banquet hall, we might want to give a different illusion of realism with our CHECK statement.
+We might want the player to feel, not stopped by a wall or obstacle, but that they are moving around, when they are in fact not going anywhere.
+Like this:
+
+// @ALAN @EXAMPLE:
+// - [x] ENABLE HIGHLIGHTING FOR EXAMPLES
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+
+[source,alan]
+--------------------------------------------------------------------------------
+The hall isa location
+  Name Banquet Hall
+  Description
+    "This is a magnificent banquet hall with many things to see."
+  Exit south to kitchen.
+  Exit north, east, west to hall
+    Check
+      "You move about in the great hall, examining various things."
+  End exit.
+End the hall.
+--------------------------------------------------------------------------------
+
+So we have still stopped the player from going in that direction, but instead of giving the sense of being stopped, we give the illusion of moving about.
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _west_ +
+You move about in the great hall, examining various things.
+================================================================================
+
+Our little tutorial game only has little rooms, so we will simply put "a wall in that direction".
+
+== Transitions with DOES
+
+[float]
+=== A Few Words of Transition
+
+In our game so far if the player in the TV Room types "south", this is the response:
+
+[example,role="gametranscript"]
+================================================================================
+*TV Room* +
+This is your favorite room in the house, because you love to watch
+television.
+You recently purchased a giant screen plasma TV that is
+set up in this room, ideally located across from your comfy chair and
+table.
+
+&gt; _south_
+
+*Kitchen* +
+This is the kitchen.
+================================================================================
+
+We might prefer to have a bit more descriptive move from one room to another.
+We can do that within the EXIT statements.
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+The tv_room IsA location
+  Name 'TV Room'
+  Description
+    "This is your favorite room in the house, because you love to
+     watch television. You recently purchased a giant screen
+     plasma TV that is set up in this room, ideally located
+     across from your comfy chair and table."
+  Exit south to kitchen
+    [green]#Does
+      "You go south, into the kitchen."
+  End exit.#
+  Exit north, east, west to tv_room
+    Check
+      "There is only a wall in that direction."
+  End exit.
+End the tv_room.
+-----------------------
+The kitchen IsA location
+  Name 'Kitchen'
+  Description
+    "This is the kitchen."
+  Exit north to tv_room
+    [green]#Does
+      "You return to the TV Room, north."
+  End exit.
+  Exit south, east, west to kitchen
+    Check
+      "There is only a wall in that direction."
+  End exit.#
+End the kitchen.
+-----------------------
+...
+--------------------------------------------------------------------------------
+
+
+[float]
+=== DOES Means GO! …er, DO!
+
+A very important statement, DOES, tells the interpreter, well, to do something, and what to do.
+We do not want the interpreter only to carry out the EXIT statement, but to do something more before the EXIT statement is completed.
+We want the interpreter to display a transition message as the player is EXITED from one LOCATION to another.
+
+Note the change in format whenever we put a CHECK or DOES in the EXIT statement.
+It is no longer only
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+
+// @FIXME: Add to remove code indentation because the indentation of the 1st
+//         line is always flattened out.
+
+[source,alan,role=tutorial]
+--------------------------------------------------------------------------------
+Exit south to kitchen. -- Note the full-stop.
+--------------------------------------------------------------------------------
+
+but now we write it like this:
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+
+// @FIXME: Add to remove code indentation because the indentation of the 1st
+//         line is always flattened out.
+
+[source,alan,role=tutorial]
+--------------------------------------------------------------------------------
+Exit south to kitchen -- The full-stop is moved to after the END.
+  Does -- (or CHECK)
+    "You go south, into the kitchen."
+End exit. -- We added the END statement with a full-stop.
+--------------------------------------------------------------------------------
+////
+
+ EXIT south TO kitchen -- The full-stop is moved to after the END.
+    DOES -- (or CHECK)
+        "You go south, into the kitchen."
+ END EXIT. -- We added the END statement with a full-stop.
+
+////
+
+[float]
+=== Tell the Player Which Way to Go
+
+Better than having to guess, it is often good to tell the player which directions are open to him/her.
+This is often done within the LOCATION DESCRIPTION.
+
+// @ALAN @TV-TIME:
+// - [x] ENABLE HIGHLIGHTING
+// - [x] RESTORE COLOR NOTATION
+// - [x] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+--------------------------------------------------------------------------------
+...
+The tv_room IsA location
+  Name 'TV Room'
+  Description
+    "This is your favorite room in the house, because you love to
+     watch television. You recently purchased a giant screen
+     plasma TV that is set up in this room, ideally located
+     across from your comfy chair and table. [green]#The kitchen is#
+     [green]#south.#"
+...
+The kitchen IsA location
+  Name 'Kitchen'
+  Description
+    "This is the kitchen. [green]#North returns to the TV Room.#"
+...
+--------------------------------------------------------------------------------
+
+
+Here is the result:
+
+[example,role="gametranscript"]
+================================================================================
+*TV Room* +
+This is your favorite room in the house, because you love to watch
+television. You recently purchased a giant screen plasma TV that is
+set up in this room, ideally located across from your comfy chair and
+table. The kitchen is south.
+
+&gt; _west_ +
+There is only a wall in that direction.
+
+&gt; _south_ +
+You go south, into the kitchen.
+
+*Kitchen* +
+This is the kitchen. North returns to the TV Room.
+
+&gt; _west_ +
+There is only a wall in that direction.
+
+&gt; _south_ +
+There is only a wall in that direction.
+
+&gt; _north_ +
+You return to the TV Room, north.
+
+*TV Room* +
+This is your favorite room in the house, because you love to watch
+television. You recently purchased a giant screen plasma TV that is
+set up in this room, ideally located across from your comfy chair and
+table. The kitchen is south.
+================================================================================

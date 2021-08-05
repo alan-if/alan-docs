@@ -1,0 +1,130 @@
+[[introduction]]
+== Introduction
+
+=== Introduction to Alan 3
+
+From the ALAN website (https://www.alanif.se):
+
+[quote,https://www.alanif.se]
+____
+Alan is one of the most easy to use tools specialized for creating
+works of Interactive Fiction, a.k.a text adventures.
+It's focus has
+always been on the authoring aspects.
+____
+
+According to the
+http://groups-beta.google.com/group/rec.arts.int-fiction/browse_thread/thread/7ab9ece381198e00/8fa96802f44c4c73?q=faq+%22tier+i%22+alan&rnum=6#8fa96802f44c4c73[rec-arts.int.fiction]
+FAQ, ALAN version 2 is included in the "Tier I" of Interactive Fiction programming languages, along with Inform, TADS, and Hugo.
+That is very good company.
+
+Recently, TADS has been updated with TADS 3 -- not just a revision, but an essentially new language, which may well be the most powerful "Adventure Development System" out there.
+There are rumors at the time of this writing of a similar update -- more than mere revision -- of Inform as well, with promises of greater power and versatility in this already excellent and popular language.
+
+Interestingly, ALAN has undergone the revision process as well (I don't know if Thomas Nilsson saw the other languages revising and decided, "Me too!", though I tend to think not.
+On the ALAN website he describes this revision process as beginning "_a couple of years ago…_").
+
+Like TADS 3 (and if the rumors are true "Inform 7"), ALAN 3 is not just a revision or update of ALAN version 2.
+ALAN 3 incorporates "object oriented programming" (OOP) and is much more powerful, more versatile and capable than ALAN 2.
+It will surprise those who are unfamiliar with ALAN how very powerful it is; and those who are familiar only with ALAN 2 ought to be very pleased with the new ALAN 3 language.
+
+Every programming language has its distinct advantages.
+TADS 3, for example, has a completely programmable parser.
+Inform is ported for just about any machine out there, including handhelds.
+Hugo can implement nearly every kind of multimedia an author might wish to put into his or her game.
+
+ALAN 3's most notable distinction from the other adventure languages is _its ease of use and lower learning-curve_.
+Even though it is a powerful Tier I language, ALAN 3 is considerably easier for an inexperienced or "non-programming" author to use than the other languages.
+It is a "higher" language; that is, it is much more like English than "computerese".
+ALAN 3 does not use confusing brackets and braces, semicolons, or other C, C++, Pascal and other such programming conventions as used in TADS, Inform, and Hugo.
+
+=== Introduction to This Beginner's Guide
+
+This material is _not_ a manual.
+This is only a primer, a beginner's guide.
+The focus of this guide is on writing a game with the ALAN 3 adventure language.
+Technical questions and those concerning software issues such as compiler switches or debugging are best addressed by the manual.
+This guide does not cover everything that ALAN 3 is capable of, nor is its claim to _exhaustively_ cover _anything_ ALAN 3 is capable of.
+Therefore I highly recommend familiarity with the ALAN 3 manual as your main source of information.
+
+[TIP]
+================================================================================
+Paragraph symbols ( ¶ ) throughout this guide refer to paragraph numbers in the Alan Manual.
+================================================================================
+
+Another thing I recommend is browsing the archived messages at the http://groups.yahoo.com/group/alan-if/?yguid=20632878[ALAN Yahoo! Group].
+You can learn about the development of ALAN 3 as it has progressed, hitting snags and bugs that were fixed along the way.
+You can find programming help for more advanced and tricky techniques in ALAN 3 that we will not go into in this beginner's guide.
+
+If you are new to writing Interactive Fiction games or new to programming, I recommend that you read this guide through from beginning to end to get a full overview of what it covers.
+Then go through it again more slowly, working through the steps one at a time to master them.
+
+As has been done in primers for other IF languages such as Inform and TADS, we will build a complete though simple game one step at a time and then develop it into one somewhat more complex.
+Before we get to that, however, there are a few things you will need besides this beginner's guide.
+
+[[tools]]
+=== Tools You Will Need
+
+(¶ 2.3.1) You need the ALAN 3 programming system (available for Windows, Mac, and Linux), which includes the ALAN manual in PDF format, the compiler, and the interpreter. (I also recommend the third-party http://ghostscript.com/~tor/software/gargoyle/[Gargoyle interpreter], which has a very pleasant display for ALAN and other game files.)
+You will also need the __standard library__.
+The library is a set of preprogrammed basic verbs and classes.
+The standard library is not included with the ALAN programming system and must be downloaded separately.
+You can download both the programming system and the standard library from http://www.alanif.se/[the ALAN website].
+
+[float]
+==== Text Editor
+
+It is also very highly desirable to use a text editor rather than a word processor to write your source code.
+First and foremost, source code must be in plain text format, without the special formatting that word processors use.
+Second, it is helpful to have quick and easy access to multiple files (such as the standard library files) that most text editors provide.
+Most text editors will also provide means within the program itself to compile the source code into a game file.
+
+There are several good text editors available free online.
+The ALAN 3 website and manual suggest
+http://www.imaginate.free-online.co.uk/[Imaginate], which has syntax highlighting that some people find helpful. _I_ prefer
+http://www.crimsoneditor.com/[Crimson Editor], available as freeware.
+(At the time of this writing, Imaginate supports version 2 but not yet version 3.)
+
+[float]
+==== Image Editor
+
+ALAN 3 supports jpeg images (and some audio formats).
+Our tutorial game will include such an image.
+You might wish to convert, resize, or otherwise manipulate images to include in your game.
+An excellent freeware program, http://www.irfanview.com/[Irfanview], is available that can help you do these things.
+If you plan to release your game to the public, be sure the images used are free of copyright.
+
+=== Comments in the Code
+
+[float]
+==== The First Few Lines
+
+Okay, let's get started.
+Start a new file in the text editor and save it as "tvtime.alan". (Actually, you can name it "mygame.alan" or whatever you want, but the compiler will be looking for that .alan extension.)
+
+The first couple of lines of your source file should probably be something to identify what it is.
+In this beginner's guide we will do it this way (note than whenever new code is displayed in this guide it will be in [green]#GREEN BACKGROUND#):
+
+
+// @ALAN @TV-TIME:
+// - [X] ENABLE HIGHLIGHTING
+// - [X] RESTORE COLOR NOTATION
+// - [X] CHECK CODE
+[source,alan,role=tutorial,subs=quotes]
+-------------------------
+[green]#-----------------------------------------------
+--             \*\** TV TIME! \***
+-- An ALAN 3 Interactive Fiction Tutorial Game
+--        By Michael Arnaud (c) 2006
+-----------------------------------------------#
+-------------------------
+
+
+These lines won't do anything to, for, or in the game.
+They are just there for anyone who happens to read the source file.
+These are called "comment" statements (in some computer languages they are called "REMARK" statements), and are written in ALAN 3 with a double-hyphen (--) at the beginning of _every comment_.
+
+Whenever the compiler sees a double-hyphen, it ignores everything that follows on that line.
+We can make notes, reminders, and explain things throughout our program this way.
+
+Now we are ready to program our beginning `LOCATION` -- what other IF languages usually refer to as a "Room".
