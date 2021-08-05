@@ -63,7 +63,6 @@ The reader will also need to download the source files of the __ALAN Library__ r
 ## Document Source Files
 
 - [`alanguide.asciidoc`][guide] — _B.Guide_ source doc.
-- [`docinfo.html`][docinfo] — [docinfo header file] for custom CSS inclusion.
 
 ## Conversion Scripts
 
@@ -83,6 +82,18 @@ Unfortunately, the `pdf_build.sh` script doesn't currently work under Bash for W
 Now the HTML toolchain uses [Highlight] instead of [highlight.js], therefore you'll need André Simon's Highlight command line tool to be available on the system `%Path%`:
 
 - http://www.andre-simon.de/
+
+> **NOTE** — (2021/08/05) This document can't use the Rouge highlighter because it uses [highlight/marker formatting] in code blocks (and _lots_ of them), which are currently not supported by the native Asciidoctor Rouge adapter.
+> E.g.
+>
+> ```asciidoc
+> [source,alansubs=quotes]
+> -------------------------
+> The tv_room IsA location
+>   [green]#Name 'TV Room'#
+> -------------------------
+> ```
+
 
 ### PDF Toolchain Dependencies
 
@@ -188,7 +199,8 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 
 <!-- AsciiDoctor Manual -->
 
-[docinfo header file]: https://asciidoctor.org/docs/user-manual/#docinfo-file "See Asciidoctor Manual on docinfo files"
+[docinfo header file]: https://docs.asciidoctor.org/asciidoctor/latest/docinfo/ "AsciiDoc Language Documentation » Docinfo Files"
+[highlight/marker formatting]: https://docs.asciidoctor.org/asciidoc/latest/text/highlight/ "AsciiDoc Language Documentation » Highlight syntax"
 
 <!-- Project Files -->
 
@@ -199,8 +211,6 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 [PDF_BUILD.bat]: ./PDF_BUILD.bat "Batch script to convert the Alan Guide to PDF document."
 [pdf_build.sh]: ./pdf_build.sh "Batch script to convert the Alan Guide to PDF document."
 [TODO]: ./TODO.md "View the TODO document"
-
-[docinfo]: ./docinfo.html "View docinfo source"
 
 <!-- Tutorial code assets -->
 

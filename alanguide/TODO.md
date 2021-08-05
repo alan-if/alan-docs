@@ -34,9 +34,9 @@ Laying out a ground plan and noting down the pending tasks to finish porting to 
     - [Enforce Consistent Code Casing](#enforce-consistent-code-casing)
 - [3. Replay Tutorial](#3-replay-tutorial)
 - [Editing Notes and Guidelines](#editing-notes-and-guidelines)
-    - [Color Coding Conventions](#color-coding-conventions)
+    - [Colour Coding Conventions](#colour-coding-conventions)
         - [The AsciiDoc Solution](#the-asciidoc-solution)
-        - [Original Colors](#original-colors)
+        - [Original Colours](#original-colours)
 
 <!-- /MarkdownTOC -->
 
@@ -55,13 +55,13 @@ Also, we must check that all the tutorial steps work as expected:
 
 - [ ] 3. __Replay tutorial__ — try the whole tutorial locally, step by step, to ensure that the code will compile at each step.
 
-The AsciiDoc formatting still needs some cleaning up, and the document should be adapted to the [styling conventions] adopted in this project. At that point the document can be made puclily available again.
+The AsciiDoc formatting still needs some cleaning up, and the document should be adapted to the [styling conventions] adopted in this project. At that point the document can be made publicly available again.
 
-This document serves as a guide to plan how to approach the adaption, establish some standards and then subdvide the work in isolate prending tasks.
+This document serves as a guide to plan how to approach the adaption, establish some standards and then subdivide the work in isolate pending tasks.
 
 ## Original HTML Document
 
-Because the original document employed a custom color-coding convention, a copy of the original HTML version of the _Beginner's Guide_ has been stored in the project for visual comparison:
+Because the original document employed a custom colour-coding convention, a copy of the original HTML version of the _Beginner's Guide_ has been stored in the project for visual comparison:
 
 - [`../_assets-src/original-docs/alanguide.html`][alanguide.html]
 
@@ -78,7 +78,7 @@ The AsciiDoc reconstruction of this document takes on from where Thomas Nilefalk
 - [x] Enable `experimental`
 - [x] Enable font-icons.
 - [x] Enable syntax highlighting:
-    + [x] via highlight.js
+    + [x] via ~~highlight.js~~ Highlight.
 
 
 ## Document Layout
@@ -95,9 +95,9 @@ This document is actually a book with parts, so its structure should be reorgani
 - [x] Substitute thin-spaces with normal spaces.
 - [ ] Add non-breaking spaces in "ALAN 2/3" to prevent wrapping from splitting ALAN from its version number (looks bad).
 - [ ] Smart typography:
-    + [x] Fix all occurences of `--` by adding surrounding spaces.
+    + [x] Fix all occurrences of `--` by adding surrounding spaces.
     + [ ] Make double quotes curly.
-- [ ] Fix inline code occurences:
+- [ ] Fix inline code occurrences:
     + [ ] ALAN keywords.
     + [ ] File names.
 
@@ -111,18 +111,22 @@ The _B.Guide_ references explicit Chapters and sections of the _Alan Manual_, bu
 
 - [ ] Check (and fix) numbered references to _Alan Manual_ Ch/Sect.
 
-> __NOTE__ — i should look into using some cross-book references, which could also make the HTML doc cross-link to the actual _Manual_.
+> __NOTE__ — I should look into using some cross-book references, which could also make the HTML doc cross-link to the actual _Manual_.
+>
+> The problem with direct linking to the _ALAN Manual_ right now is that it lacks anchors integrity guarantees, because it's using the auto-generated anchors IDs from titles, which might change in time.
+>
+> Also, currently its anchors are using the default settings that adds an `_` prefix, which might soon be suppressed.
 
 ## Examples Code
 
-- [x] Mark all ALAN code occurences with `// @ALAN`
+- [x] Mark all ALAN code occurrences with `// @ALAN`
 - [ ] Enable syntax highlighting on all code blocks.
-- [ ] Preserve custom coloring in source code:
+- [ ] Preserve custom colouring in source code:
     + [x] Red code — using `[green]#`...`#`.
     + [ ] Yellow code — using `#`...`#`.
-- [ ] Fix description of color conventions in Guide text:
+- [ ] Fix description of colour conventions in Guide text:
     + [x] "RED" to "GREEN BACKGROUND"
-    + [ ] "YELLOW" to "YELLO BACKGROUND"
+    + [ ] "YELLOW" to "YELLOW BACKGROUND"
 
 ### Syntax Highlighting
 
@@ -130,9 +134,9 @@ Since this document doesn't use call-outs, we can use Highlight instead of highl
 
 - [x] Switch from highlight.js to Highlight.
 
-Also, the tutorial contains code from both the Library and from the _TV TIME!_ adventure, as well as some example code snippets not belonging to either. I should use different color themes to make it easier to distinguish between them.
+Also, the tutorial contains code from both the Library and from the _TV TIME!_ adventure, as well as some example code snippets not belonging to either. I should use different colour themes to make it easier to distinguish between them.
 
-- [ ] Tutorial code (ie. _TV TIME!_):
+- [ ] Tutorial code (i.e. _TV TIME!_):
     + [ ] Use default Alan scheme.
     + [ ] Apply to all _TV Time!_ code blocks.
 - [ ] Library code (via `role=lib`):
@@ -160,7 +164,7 @@ Provide in the _B.Guide_ a link to download a Zip archive of the `alanguide/alan
 - [ ] Add a script to create/update the Zip archive.
 - [ ] Add a (raw) download link to get a Zipped file with all the tutorial assets.
 - [ ] Include in the Zip file a fully standalone copy of the tutorial:
-    + [ ] Could inject `alanguide.css` into `docinfo.html` so it won't require an external CSS file and would be truely standalone.
+    + [x] Could inject `alanguide.css` into `docinfo.html` so it won't require an external CSS file and would be truly standalone.
 
 I've also considered other ways then using a script to create a Zip archive and store in the repository, via some service that could create the Zip file on the demand:
 
@@ -169,7 +173,7 @@ I've also considered other ways then using a script to create a Zip archive and 
     + [ ]  [JsDelivr]
     + [ ]  [unpkg]
 
-But I need to look better into these, for some of them depend on GitHub release tags, others can't target specif folders, etc. Right now keeping a zip archive in the repository would be the easiest solution, after all once the _Guide_ is ready it won't be updated any more (or, at least, not often).
+But I need to look better into these, for some of them depend on GitHub release tags, others can't target specific folders, etc. Right now keeping a zip archive in the repository would be the easiest solution, after all once the _Guide_ is ready it won't be updated any more (or, at least, not often).
 
 [GitZip]: https://github.com/KinoLien/gitzip
 [RawGit]: https://rawgit.com/
@@ -189,7 +193,7 @@ Tasks list:
 
 - [x] Create `alanguide-code/` folder.
 - [x] Add StdLib v0.6.2 in `alanguide-code/lib/` folder.
-    + [x] Cleanup folder contents.
+    + [x] Clean-up folder contents.
     + [x] Add `alanguide-code/README.md`.
     + [ ] Tweak any references to v0.6.1 accordingly.
     + [x] Rename `alanguide-code/lib/` folder to `alanguide-code/mylib/` (as indicated in tutorial).
@@ -259,7 +263,7 @@ At the same time, I've preserved some default attributes and CHECKS from v0.6.1 
         * Customized `Description` based on `named` attribute.
 - `lib/talk.i`
     + Replaced `$o` with `$1`, for the former parameter special symbol is now
-      depracated and might not be safe to use in future versions of Alan.
+      deprecated and might not be safe to use in future versions of Alan.
 
 
 ### Obsolete Links and Info
@@ -273,7 +277,7 @@ In `help.i`, the text of the `credits` verb contains some obsolete info which mi
 
 ### Lib Integrity Tests
 
-Create a test adventure to check that the Library integrity is not compromised by the adaptation editings:
+Create a test adventure to check that the Library integrity is not compromised by the adaptation editing:
 
 - [x]  [`tests/lib-test.alan`](./tests/lib-test.alan)
 
@@ -281,11 +285,11 @@ Since both the tutorial and the required Library are over 12 years old, it's a g
 
 ## Fix Compiler Errors
 
-The code as found at the end of the _B.Guide_ doesn't compile out of the box with Lib 0.6.2. There are many compiler errors. Probably the library files need to be manually twaked according to the tutorial.
+The code as found at the end of the _B.Guide_ doesn't compile out of the box with Lib 0.6.2. There are many compiler errors. Probably the library files need to be manually tweaked according to the tutorial.
 
 ### Mylib Tweaks
 
-The tutorial requires changing the original library files, so a copy of Lib 0.6.2 was created with name `mylib`, and all indicated changes and addition were carried out thereing:
+The tutorial requires changing the original library files, so a copy of Lib 0.6.2 was created with name `mylib`, and all indicated changes and addition were carried out therein:
 
 - [x] __EDIT THE LIBRARY FILEs__ according to the tutorial instructions.
     + `mylib/examine.i`
@@ -325,9 +329,9 @@ Currently, the tutorial code contains a mixture of Alan keywords letter-casing c
 
 Since the new reprint benefits from syntax highlighting, there isn't any more a need to resort to letter-casing to distinguish Alan keywords — neither in the tutorial nor in the Library. Therefore, it makes sense to enforce a consistent casing convention in both the Library and the tutorial.
 
-The best choice (as discussed on the Yahoo list) seems to use __prose casing__ for it maked the code look more like plain English — and chances are that most users will be typing the code that way anyhow, as it comes more natural than having to constantly turn on/off Caps Lock.
+The best choice (as discussed on the Yahoo list) seems to use __prose casing__ for it makes the code look more like plain English — and chances are that most users will be typing the code that way anyhow, as it comes more natural than having to constantly turn on/off Caps Lock.
 
-Enforcing a consistent casing is also important from a document maintainance point of view, because whenever possible we shall include source code in the document directly from the Alan source files (via `include::` directive). This makes it easier to ensure that the code in the document mirrors the actual code in the source files, at all times.
+Enforcing a consistent casing is also important from a document maintenance point of view, because whenever possible we shall include source code in the document directly from the Alan source files (via `include::` directive). This makes it easier to ensure that the code in the document mirrors the actual code in the source files, at all times.
 
 
 # 3. Replay Tutorial
@@ -344,7 +348,7 @@ The tutorial presents the reader with the following versions of the _TV TIME!_ a
 + [ ]  [_§50. Compile and Play It!_][§50] — the final adventure:
     * [ ]  [`./alanguide-code/tvtime.alan`][tvtime.alan]
 
-But there are actually many other points in the tutorial where the reader is asked to compile adn run the edited code.
+But there are actually many other points in the tutorial where the reader is asked to compile and run the edited code.
 
 -------------------------------------------------------------------------------
 
@@ -353,19 +357,19 @@ But there are actually many other points in the tutorial where the reader is ask
 
 Some notes on how the original document is organized, its conventions, and how to adapt it to AsciiDoc.
 
-## Color Coding Conventions
+## Colour Coding Conventions
 
-The original document uses a custom color-coding convention to simplify visually sifiting through the text and source code examples.
+The original document uses a custom colour-coding convention to simplify visually sifting through the text and source code examples.
 
-The main challenge here is to introduce syntax highlighting of Alan source code and at the same time preserve the original color notation. This is achievable but it will require some changes:
+The main challenge here is to introduce syntax highlighting of Alan source code and at the same time preserve the original colour notation. This is achievable but it will require some changes:
 
-- Use background coloring instead (highlighter marker style).
-- Change colors to fit the syntax theme and preserve code readability.
-- Update all references to the original color system in the document.
+- Use background colouring instead (highlighter marker style).
+- Change colours to fit the syntax theme and preserve code readability.
+- Update all references to the original colour system in the document.
 
 ### The AsciiDoc Solution
 
-I've managed to achieve both syntax highlighting and custom color-marking of code via custom styling using the `#` element (see Asciidoctor Manual [§19.5 _Custom Styling With Attributes_][ADoc §19.5]):
+I've managed to achieve both syntax highlighting and custom colour-marking of code via custom styling using the `#` element (see Asciidoctor Manual [§19.5 _Custom Styling With Attributes_][ADoc §19.5]):
 
 - `#`...`#` — for yellow highlighting.
 - `[green]#`...`#` — for green highlighting.
@@ -375,7 +379,7 @@ This solution overlaps neatly with Alan syntax highlighting, and it only require
 ```asciidoc
 [source,alan,subs="quotes"]
 -------------------------------------------
--- Custom coloring.
+-- Custom colouring.
 -- Example 1: #Yellow highlighting#.
 -- Example 2: [green]#green highlighting#.
 Every book IsA object.
@@ -387,16 +391,20 @@ End Every.
 
 > __PDF WARNING!__ — The above solution currently works only with the HTML backend; I still need to work out how to adapt the FOP XSL template to support it.
 
+<!-- sep -->
 
-### Original Colors
+> __HTML WARNING!__ — The above solution for the HTML backend currently works only with Highlight (or highlight.js) but not with Rouge, which isn't able to syntax highlight code containing [highlight/marker formatting].
 
-The first step is to track down all the colors used in the original document, and what purpose they serve.
+
+### Original Colours
+
+The first step is to track down all the colours used in the original document, and what purpose they serve.
 
 #### Cyan Highlighted Text
 
 Cyan highlighting is used in the original text to mark notes and tip:
 
-![cyan color][screenshot cyan]
+![cyan colour][screenshot cyan]
 
 As a general rule, cyan-highlighted text is being converted to an admonition block of some type in the ported AsciiDoc document.
 
@@ -404,17 +412,17 @@ As a general rule, cyan-highlighted text is being converted to an admonition blo
 
 In the original doc, __red__ is used to indicate new code added to the examples:
 
-![red color][screenshot red]
+![red colour][screenshot red]
 
 This makes it easier for the reader to follow the step-by-step tutorial and visually track the changes introduced at each step.
 
-> __NOTE__ — In the ported version we shall use green instead, because a red background would make the code less readable, and also because green background coloring is also used in diff logs to indicate additions (whereas red is usually associated with deletions).
+> __NOTE__ — In the ported version we shall use green instead, because a red background would make the code less readable, and also because green background colouring is also used in diff logs to indicate additions (whereas red is usually associated with deletions).
 
 #### Yellow Highlighting
 
 In some places, code is highlighted in yellow as a means to draw attention to specific lines:
 
-![yellow color][screenshot yellow]
+![yellow colour][screenshot yellow]
 
 
 <!-----------------------------------------------------------------------------
@@ -448,13 +456,15 @@ In some places, code is highlighted in yellow as a means to draw attention to sp
 [alanguide.html]: ../_assets-src/original-docs/alanguide.html "View source file"
 <!-- screenshots ------------------------------------------------------------->
 
-[screenshot cyan]: ./screenshots/cyan-highlighting.png "Example of cyan coloring of text in original document"
-[screenshot red]: ./screenshots/red-code.png "Example of red coloring of code in original document"
+[screenshot cyan]: ./screenshots/cyan-highlighting.png "Example of cyan colouring of text in original document"
+[screenshot red]: ./screenshots/red-code.png "Example of red colouring of code in original document"
 [screenshot yellow]: ./screenshots/yellow-highlighting.png "Example of yellow highlighting of code in original document"
 
 <!-- Asciidoctor Manual references ------------------------------------------->
 
-[ADoc §19.5]: https://asciidoctor.org/docs/user-manual/#custom-styling-with-attributes "Read the Asciidoctor Manual on this topic..."
+[ADoc §19.5]: https://docs.asciidoctor.org/asciidoc/latest/text/custom-inline-styles/ "AsciiDoc Language Documentation » Using Custom Inline Styles"
+
+[highlight/marker formatting]: https://docs.asciidoctor.org/asciidoc/latest/text/highlight/ "AsciiDoc Language Documentation » Highlight syntax"
 
 <!-- B.Guide Sources --------------------------------------------------------->
 
