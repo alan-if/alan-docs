@@ -1,7 +1,7 @@
 include::inc/attr_header.adoc[]
 = Syntax Highlighting via {highlighter}
 Tristano Ajmone <tajmone@gmail.com>
-v3.0, August 8, 2021
+v3.0, August 5, 2021
 :doctype: book
 :toclevels: 5
 :sectnums!:
@@ -19,24 +19,33 @@ include::inc/attr_custom.adoc[]
 // *                                                                           *
 // *****************************************************************************
 
-This document is for previewing how source code and other verbatim blocks will be rendered and styled in the final documentation, and for comparing quality and differences across all the supported output formats.
+This document is for previewing how source code and other verbatim blocks will be rendered and styled in the final documentation, and for comparing quality and differences across all the supported output formats and using different syntax highlighters.
 
 Some contents are format dependent and will vary according to the document's output format and the backend employed, providing additional information specific to that format and/or backend.
 
 // ==================
 // HTML Backend Only:
 // ==================
-////
 ifeval::["{backend}" == "html5"]
 
 [NOTE]
 ================================================================================
-For syntax highlighting in the HTML5 backend we use a custom build of https://highlightjs.org/[highlight.js^] for which we've created an
-https://github.com/tajmone/highlight.js/blob/Alan/src/languages/alan.js[Alan syntax definition^] from scratch.
+This HTML document is using
+ifeval::["{source-highlighter}" == "rouge"]
+{Rouge}
+endif::[]
+ifeval::["{source-highlighter}" == "highlight"]
+{Highlight}
+endif::[]
+ifeval::["{source-highlighter}" == "highlightjs"]
+{hljs}
+endif::[]
+for syntax highlighting code blocks.
+
+We've created our custom ALAN syntax definition to support ALAN highlighting.
 ================================================================================
 
 endif::[]
-////
 
 // =================
 // PDF Backend Only:
@@ -153,6 +162,7 @@ ifeval::["{source-highlighter}" == "highlight"]
 [WARNING]
 ======================
 Highlight doesn't currently support callouts in highlighted code blocks!
+(See https://github.com/alan-if/alan-docs/issues/36[Issue #36^])
 
 As you can see from the example below, the callout numbers in the code block are not rendered as expected.
 ======================
@@ -171,47 +181,63 @@ include::inc/snippets.alan[tag=short_sample_callouts]
 
 [NOTE]
 ================================================================================
-Currently, there aren't any Alan sourcecode examples with callouts in the _Alan Manual_.
+Currently, there aren't any Alan sourcecode examples with callouts in the _Alan Manual_, partly because the original document format (Word) didn't support them, but also because until we were able to create an ALAN syntax for Rouge we were avoiding using them.
+
+Now that we can finally use Rouge for syntax highlighting, we'll be able to use callouts in the _Alan Manual_.
 ================================================================================
+
+=== Block Comments
+
+ALAN Beta8 introduces
+https://alan-if.github.io/alan-docs/manual-alpha/manual.html#_comments[block comments^,title="The ALAN Manual » §4.1. Comments"],
+a new feature not yet supported by all syntax highlighters.
+
+ifeval::["{source-highlighter}" != "rouge"]
+[WARNING]
+============
+Our ALAN syntax definition for {highlighter} doesn't yet support block comments!
+
+As you can see from the example below, block comments are being wrongly parsed by the highlighter.
+============
+endif::[]
+
+
+[source,alan]
+--------------------
+include::inc/snippets.alan[tag=short_sample_blockcomment]
+--------------------
+
 
 
 == BNF
 
-BNF rules are styles as `bnf` source blocks.
+BNF rules are styled as `bnf` source blocks:
 
-[source,bnf,subs="macros"]
---------------------------------------------------------------------------------
-class = 'EVERY' id
-            [inheritance]
-            {property}
-        'END' 'EVERY' [id] ['.']
---------------------------------------------------------------------------------
+[source,asciidoc]
+-----------------
+[source,bnf]
+--------------
+--------------
+-----------------
 
-.BNF Rules Block With Title
-[source,bnf,subs="macros"]
---------------------------------------------------------------------------------
-class = 'EVERY' id
-            [inheritance]
-            {property}
-        'END' 'EVERY' [id] ['.']
---------------------------------------------------------------------------------
+Whether they block is actually highlighted or not depends on whether the syntax highlighter being used has a syntax definition for BNF grammars.
+In any case, our template styles don't cover colouring BNF tokens, so regardless of whether BNF blocks are highlighted or not, they'll look the same.
 
 [NOTE]
-================================================================================
-Currently, there aren't any BNF rules with callouts in the _Alan Manual_.
-================================================================================
+==========
+The reason for this is that we initially planned to add a BNF grammar for each highlighter, but then we didn't follow up with this.
+(See https://github.com/alan-if/alan-docs/discussions/119[Discussion #119^])
+==========
 
-[IMPORTANT]
-.CALLOUTS NOT SUPPORTED
-================================================================================
-Neither the HTML nor the PDF syntax highlighters are currently set to support BNF syntax.
-This means that callouts are not currently being processed and can't be used.
+.BNF Rule Example
+[source,bnf]
+--------------------------------
+class = 'EVERY' id
+            [inheritance]
+            {property}
+        'END' 'EVERY' [id] ['.']
+--------------------------------
 
-If callouts need to be used inside BNF rules, we need to either:
-
-* Add a BNF syntax to the highlighters.
-* Use a different type of verbatim block.
-================================================================================
 
 
 == Game Transcripts
@@ -308,6 +334,26 @@ Possible solutions to this problem:
 ================================================================================
 endif::[]
 
+
+== Other Syntaxes
+
+Here you can see how other syntaxes not covered by our custom themes are highlighted, i.e. using the default theme.
+Which languages/syntaxes are supported depends on the specific syntax highlighter, but since ALAN documentation doesn't usually involve syntaxes other than those covered in our custom themes, this shouldn't be a problem.
+
+.Ruby Example
+[source,ruby]
+-------------------
+include::../../_assets/rouge/custom-rouge-adapter.rb[]
+-------------------
+
+
+.XML Example
+[source,xml]
+-------------------
+include::../../_assets/alan-xsl-fopub/xsl-fopub/fop-config.xml[]
+-------------------
+
+
 // *****************************************************************************
 // *                                                                           *
 // *                        PART II. SYNTAXES DETAILS                          *
@@ -333,20 +379,7 @@ Different conversion toolchains use different tools for syntax highlighting.
 For HTML format conversion, various highlighters are natively supported by Asciidoctor.
 For PDF conversion, the usable highlighting tool(s) will be dictated by the third party backend employed.
 
-In all cases, a custom Alan syntax definiton would have to be created for the highlighter tool used with each backend, as none of them ships with a native Alan definition (the sole exception being {Highlight}, which is not natively supported in any of the backends, but could be integrated into some of them).
-
-// ==================
-// HTML Backend Only:
-// ==================
-ifeval::["{backend}" == "html5"]
-
-[WARNING]
-================================================================================
-Currently no syntax highlighters have been integrated into the HTML conversion toolchain.
-I've created an Alan language definition for André Simon's {Highlight} tool, but haven't yet got around to integrate it into the toolchain.
-Although it's not among the natively supported highlighters, it should be possible to integrate it into the HTML backend.
-================================================================================
-endif::[]
+In all cases, a custom Alan syntax definiton would have to be created for the highlighter tool used with each backend, as none of them ships with a native Alan definition (the sole exception being {Highlight}, which is not natively supported in any of the backends, but we've integrated it via a custom Asciidoctor extension).
 
 // =================
 // PDF Backend Only:

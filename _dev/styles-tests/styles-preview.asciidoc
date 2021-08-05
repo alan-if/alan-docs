@@ -1,7 +1,7 @@
 include::inc/attr_header.adoc[]
 = Templates Styles
 Tristano Ajmone <tajmone@gmail.com>
-v2.0, August 8, 2021
+v2.0, August 5, 2021
 :toclevels: 5
 :doctype: book
 :sectnums:

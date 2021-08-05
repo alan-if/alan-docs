@@ -10,8 +10,9 @@
 // =============================================================================
 
 :fopub: https://github.com/asciidoctor/asciidoctor-fopub[asciidoctor-fopub^]
-:Highlight: http://www.andre-simon.de/[Highlight^]
-:hljs: https://highlightjs.org/[highlight.js^]
+:Highlight: http://www.andre-simon.de/[Highlight^,title="Visit Highlight website"]
+:hljs: https://highlightjs.org[highlight.js^,title="Visit highlight.js website"]
+:Rouge: http://rouge.jneen.net[Rouge^,title="Visit Rouge website"]
 
 // Ascidoctor Documentation
 :callouts: https://docs.asciidoctor.org/asciidoc/latest/verbatim/callouts/[callouts^,title="AsciiDoc Language Documentation » Callout"]

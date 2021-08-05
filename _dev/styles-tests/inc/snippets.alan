@@ -65,12 +65,14 @@ Start at canteen.
 --==============================================================================
 
 -- tag::short_sample[]
---==============================================================================
+--===========================================
 -- "Paradise Lost" a short example in ALAN IF
---==============================================================================
+--===========================================
 The shore IsA location
   Name Shore of Great Sea
-  Description "A beautiful sea shore, probably Paradise lost."
+  Description
+    "A beautiful sea shore,
+     probably Paradise lost."
 End the shore.
 
 Start at shore.
@@ -83,17 +85,38 @@ Start at shore.
 --==============================================================================
 
 -- tag::short_sample_callouts[]
---==============================================================================
+--===========================================
 -- "Paradise Lost" a short example in ALAN IF <1>
---==============================================================================
+--===========================================
 The shore IsA location -- <2> <3>
   Name Shore of Great Sea
-  Description "A beautiful sea shore, probably Paradise lost."
+  Description
+    "A beautiful sea shore,
+     probably Paradise lost."
 End the shore.
 
 Start at shore.
 -- end::short_sample_callouts[]
 
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 1.4 - Short Sample with Block Comment
+--------------------------------------------------------------------------------
+--==============================================================================
+
+-- tag::short_sample_blockcomment[]
+//// Paradise Lost /////////////
+// A short example in ALAN IF //
+////////////////////////////////
+The shore IsA location
+  Name Shore of Great Sea
+  Description
+    "A beautiful sea shore,
+     probably Paradise lost."
+End the shore.
+
+Start at shore.
+-- end::short_sample_blockcomment[]
 
 
 --=============================================================================

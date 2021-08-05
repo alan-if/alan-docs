@@ -1,7 +1,7 @@
 include::inc/attr_header.adoc[]
 = Typography in Alan Documentation
 Tristano Ajmone <tajmone@gmail.com>
-v3.0, August 8, 2021
+v3.0, August 5, 2021
 :sectnums:
 :sectnumlevels: 2
 
