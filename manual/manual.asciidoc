@@ -69,73 +69,73 @@ image::alan-logo.png[Alan Logo,{logo_width},align="center"]
 
 // 1. Introduction
 // ===============
-include::manual_01.asciidoc[]
+include::manual_01.adoc[]
 
 // 2. Concepts
 // ===========
-include::manual_02.asciidoc[]
+include::manual_02.adoc[]
 
 // 3. Lexical Definitions
 // ======================
-include::manual_03.asciidoc[]
+include::manual_03.adoc[]
 
 // 4. Language Reference
 // =====================
-include::manual_04.asciidoc[]
+include::manual_04.adoc[]
 
 // 5. Running An Adventure
 // =======================
-include::manual_05.asciidoc[]
+include::manual_05.adoc[]
 
 // 6. Hints and Tips
 // =================
-include::manual_06.asciidoc[]
+include::manual_06.adoc[]
 
 // 7. Adventure Construction
 // =========================
-include::manual_07.asciidoc[]
+include::manual_07.adoc[]
 
 // Appendix A: How to Use the System
 // =================================
-include::manual_a.asciidoc[]
+include::manual_a.adoc[]
 
 // Appendix B: A Sample Interaction
 // ================================
-include::manual_b.asciidoc[]
+include::manual_b.adoc[]
 
 // Appendix C: Run-Time Messages
 // =============================
-include::manual_c.asciidoc[]
+include::manual_c.adoc[]
 
 // Appendix D: Language Grammar
 // ===========================
-include::manual_d.asciidoc[]
+include::manual_d.adoc[]
 
 // Appendix E: Predefined player words
 // ===================================
-include::manual_e.asciidoc[]
+include::manual_e.adoc[]
 
 // Appendix F: Compiler Messages
 // =============================
-include::manual_f.asciidoc[]
+include::manual_f.adoc[]
 
 // Appendix G: Localization
 // ========================
-include::manual_g.asciidoc[]
+include::manual_g.adoc[]
 
 // Appendix H: Portability of Games
 // ================================
-include::manual_h.asciidoc[]
+include::manual_h.adoc[]
 
 // Appendix I: Copying Conditions
 // ==============================
-include::manual_i.asciidoc[]
+include::manual_i.adoc[]
 
 :sectnums!:
 
 // Glossary
 // ========
-include::manual_z.asciidoc[]
+include::manual_z.adoc[]
 
 // Index
 // =====
