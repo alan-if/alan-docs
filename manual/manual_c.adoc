@@ -39,7 +39,7 @@ See <<MESSAGEs>> for details.
 ================================================================================
 
 ////
-MESSAGES LAST UPDATED 2021/07/19 by comparing them with ALAN 3beta7 source file:
+MESSAGES LAST UPDATED 2021/08/19 by comparing them with ALAN 3beta8 source file:
 https://github.com/alan-if/alan/blob/master/compiler/msg.c
 ////
 
@@ -56,9 +56,9 @@ A word not in the dictionary was used by the player.
 --
 
 
-............................
-WHAT : "I don't understand."
-............................
+.................................
+WHAT : "I don't understand that."
+.................................
 
 [role="commentary"]
 --
@@ -67,9 +67,9 @@ I.e. the input could not be matched to any of the defined syntaxes.
 --
 
 
-.................................................
-WHAT_WORD : "I don't know what you mean by '$1'."
-.................................................
+.......................................................
+WHAT_WORD : "I don't understand what you mean by '$1'."
+.......................................................
 
 [role="commentary"]
 --
@@ -99,9 +99,9 @@ The player started to specify an object or actor but only supplied the adjective
 --
 
 
-...........................................................
-AFTER_BUT : "You must give at least one object after '$1'."
-...........................................................
+.............................................................
+AFTER_BUT : "I was expecting at least one object after '$1'."
+.............................................................
 
 [role="commentary"]
 --
@@ -136,7 +136,7 @@ The player used an (((ALL (player input)))) (((BUT (player input)))) *ALL BUT* c
 
 
 ............................................
-WHICH_START : "I don't know if you mean $+1"
+WHICH_START : "I'm not sure if you mean $+1"
 WHICH_COMMA : ", $+1"
 WHICH_OR : "or $+1."
 ............................................
@@ -153,10 +153,10 @@ For each message, *parameter1* is a reference to the alternative instance.
 --
 
 
-...........................................................
-WHICH_PRONOUN_START : "I don't know what you mean by '$1',"
+.............................................................
+WHICH_PRONOUN_START : "I'm not sure whether by '$1' you mean"
 WHICH_PRONOUN_FIRST : "$+1"
-...........................................................
+.............................................................
 
 [role="commentary"]
 --
@@ -270,9 +270,9 @@ The default messages for empty ``container``s.
 --
 
 
-.....................................
-EMPTY_HANDED : "$+1 is empty-handed."
-.....................................
+..............................................
+EMPTY_HANDED : "$+1 is not carrying anything."
+..............................................
 
 [role="commentary"]
 --
@@ -315,6 +315,7 @@ AGAIN : "(again)"
 --
 This message is presented immediately after the `location` name if the `location` has been visited before to give the player the information that he has visited this `location` before (a good thing in some adventures).
 If you wish to disable this, set this message to an empty string.
+You can also control how often this message appears using the `Visits` statement (See <<Special Statements,_Special Statements_>>)
 --
 
 
@@ -329,9 +330,9 @@ The name used in the previous `Save` is used as a default.
 --
 
 
-...........................................................................
-SAVE_OVERWRITE : "That file already exists, overwrite (RETURN confirms) ? "
-...........................................................................
+...............................................................................
+SAVE_OVERWRITE : "A file with that name exists, overwrite (RETURN confirms) ? "
+...............................................................................
 
 [role="commentary"]
 --
@@ -470,9 +471,9 @@ This message reliefs the author from the responsiblility to check for every poss
 --
 
 
-................................................................................
-CONTAINMENT_LOOP2 : "Putting $+1 in $+2 is impossible since $+2 already is inside $+1."
-................................................................................
+...........................................................................................
+CONTAINMENT_LOOP2 : "It is impossible to put $+1 in $+2 because $+2 is already inside $+1."
+...........................................................................................
 
 [role="commentary"]
 --
