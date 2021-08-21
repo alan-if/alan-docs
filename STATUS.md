@@ -57,7 +57,7 @@ The following table shows the features supported by each highlighter.
 |  highlighter   |  ALAN block comments  |       alt themes      |     callouts    | marked code |
 |----------------|-----------------------|-----------------------|-----------------|-------------|
 | [Rouge]        | &check;               | &check;               | &check;         | &cross;     |
-| [Highlight]    | &cross; (WIP: [#122]) | &check;               | &cross; ([#36]) | &check;     |
+| [Highlight]    | &check;               | &check;               | &cross; ([#36]) | &check;     |
 | [highlight.js] | &cross; (TBD: [#121]) | &cross; (TBD: [#120]) | &check;         | &check;     |
 | [XSLTHL]       | &cross;               | &cross; (TBD: [#123]) | &check;         | &cross;     |
 

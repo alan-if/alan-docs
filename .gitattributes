@@ -99,6 +99,12 @@
 COPYING      text
 LICENSE      text
 
+## Highlight LangDefs & Themes
+##############################
+[attr]Hihglight text linguist-language=Lua gitlab-language=Lua
+*.lang    Hihglight
+*.theme   Hihglight
+
 ## Archives
 ###########
 *.7z    binary

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 highlightDir=$(cd ../_assets/hl/; pwd)
+export HIGHLIGHT_DATADIR="$highlightDir"
 
 echo "======================================================================"
 echo "Converting the \"ALAN Author's Guide\" to a standalone HTML5 document..."

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# "_dev/styles-tests/html_build.sh"     v1.0.0 | 2021/08/04 | by Tristano Ajmone
+# "_dev/styles-tests/html_build.sh"     v1.1.0 | 2021/08/22 | by Tristano Ajmone
 # ==============================================================================
 # This script is released into public domain via the Unlicense:
 #     http://unlicense.org/
@@ -24,6 +24,8 @@ echo -e   "====================================================\n"
 rougeDir=$(cd ../../_assets/rouge/; pwd)
 highlightDir=$(cd ../../_assets/hl/; pwd)
 hljsDir=$(cd ../../_assets/hjs/; pwd)
+
+export HIGHLIGHT_DATADIR="$highlightDir"
 
 HtmlConvRouge() {
 	outname="${1%.*}_rouge.html"

@@ -192,7 +192,16 @@ ALAN Beta8 introduces
 https://alan-if.github.io/alan-docs/manual-alpha/manual.html#_comments[block comments^,title="The ALAN Manual » §4.1. Comments"],
 a new feature not yet supported by all syntax highlighters.
 
-ifeval::["{source-highlighter}" != "rouge"]
+// Manually define which highlighters support block comments:
+ifeval::["{highlighter}" == "Rouge"]
+:alan-block-comments: true
+endif::[]
+ifeval::["{highlighter}" == "Highlight"]
+:alan-block-comments: true
+endif::[]
+
+
+ifndef::alan-block-comments[]
 [WARNING]
 ============
 Our ALAN syntax definition for {highlighter} doesn't yet support block comments!

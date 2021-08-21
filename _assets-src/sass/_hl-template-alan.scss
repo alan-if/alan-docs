@@ -1,12 +1,12 @@
-// "_hl-template-alan.scss"             v3.0.0 | 2021/07/30 | by Tristano Ajmone
+// "_hl-template-alan.scss"  v3.1.0 (2021/08/21) ALAN Beta8 | by Tristano Ajmone
 // *****************************************************************************
 // *                                                                           *
 // *             Highlight 4.1 Alan Theme Template for Asciidoctor             *
 // *                                                                           *
 // *****************************************************************************
 // A reusable variables-based '@import' template to quickly define Highlight
-// Asciidoctor themes for Alan code. It can create both generic themes as well as
-// themes targetting a specific role/class, via the $HL-Role variable.
+// Asciidoctor themes for Alan code. It can create both generic themes as well
+// as themes targetting a specific role/class, via the $HL-Role variable.
 
 // =============================================================================
 // Default Values
@@ -111,6 +111,10 @@ $ref_role:  null;
     }
     &.slc {
       // Single-line comments
+      color: $HL-Comment;
+    }
+    &.com {
+      // Block comments
       color: $HL-Comment;
     }
     &.lin {
