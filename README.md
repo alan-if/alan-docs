@@ -8,6 +8,8 @@ This repository contains the [AsciiDoc] sources of the ALAN Documentation publis
 
 Help and contributions are welcome (see [`CONTRIBUTING.md`][CONTRIBUTING]).
 
+For a quick overview of the status of the documents in this project, see the [`STATUS.md`][STATUS] document.
+
 > __SUBMODULES NOTE__ — This repository contains Git submodules; clone with:
 >
 >     $ git clone --recursive https://github.com/alan-if/alan-docs
@@ -123,6 +125,7 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 - [`CONTRIBUTING.md`][CONTRIBUTING] — Guidelines for contributing to this project.
 - [`CONVENTIONS.md`][CONVENTIONS] — Editors' formatting and styles guidelines.
 - [`LICENSE`](./LICENSE) — the [Artistic License 2.0].
+- [`STATUS.md`][STATUS] — Info about the various docs, highlighters and backends.
 
 
 ### Git Submodules
@@ -171,6 +174,8 @@ This project provides all the required assets to highlight AsciiDoc documents co
 | [highlight.js] | HTML     | [Asciidoctor]                    |
 | [Rouge]        | HTML/PDF | [Asciidoctor], [asciidoctor-pdf] |
 | [XSLTHL]       | PDF      | [asciidoctor-fopub]              |
+
+For more info on the various features supported by each highlighter, and how these might affect which highlighter to use for a new document, see the [`STATUS.md`][STATUS] document.
 
 
 ## Project Dependencies
@@ -355,6 +360,7 @@ The Asciidoctor package adds to Sublime Text 3 AsciiDoc syntax highlighting.
 
 [CONVENTIONS]: ./CONVENTIONS.md "Read the 'Formatting and Styling Conventions' guidelines adopted in Alan-Docs"
 [CONTRIBUTING]: ./CONTRIBUTING.md "Read the guidelines for contributing to Alan-Docs"
+[STATUS]: ./STATUS.md "Status info about the docs and assets in this project"
 
 <!-- Project Folders --------------------------------------------------------->
 
