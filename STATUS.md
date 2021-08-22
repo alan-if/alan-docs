@@ -2,15 +2,13 @@
 
 Info about the status of the various documents and project features.
 
-> **WIP** — this document is still work-in-progress; we still need to add a section about all the project documents, their status and info about their output formats, the AsciiDoc features they use, and which highlighters they require.
-
-
 -----
 
 **Table of Contents**
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Project Documents](#project-documents)
 - [Syntax Highlighters](#syntax-highlighters)
     - [Highlighters for HTML Backend](#highlighters-for-html-backend)
     - [Highlighters for PDF Backend](#highlighters-for-pdf-backend)
@@ -19,6 +17,48 @@ Info about the status of the various documents and project features.
 <!-- /MarkdownTOC -->
 
 -----
+
+# Project Documents
+
+The following table provides status info on all the documents available in this repository:
+
+|           document          |              folder              | highlighter |   HTML  |   PDF   |   status  | on website |
+|-----------------------------|----------------------------------|-------------|---------|---------|-----------|------------|
+| [Actors in containers]      | [`/alan-design/`][/alan-design/] | Rouge       | &check; | &cross; | WIP draft | &check;    |
+| [ALAN 3 Beginner's Guide]   | [`/alanguide/`][/alanguide/]     | Highlight   | &check; | &check; | ADoc WIP  | &check;    |
+| [Alan Design Documentation] | [`/alan-design/`][/alan-design/] | Rouge       | &check; | &cross; | WIP draft | &check;    |
+| [Alan IDE Reference Guide]  | [`/ideguide/`][/ideguide/]       | _none_      | &check; | &cross; | final     | &check;    |
+| [Alan Rules]                | [`/alan-design/`][/alan-design/] | Rouge       | &check; | &cross; | WIP draft | &check;    |
+| Conversion Guide            | [`/conversion/`][/conversion/]   | Rouge       | &check; | &cross; | ADoc WIP  | &cross;    |
+| The ALAN Author's Guide     | [`/writing/`][/writing/]         | Highlight   | &check; | &cross; | WIP draft | &cross;    |
+| [The ALAN Manual]           | [`/manual/`][/manual/]           | Rouge       | &check; | &check; | ongoing   | &check;    |
+
+<!-- website links to docs -->
+
+[Actors in containers]: https://alan-if.github.io/alan-docs/design/actors-in-containers.html "View live HTML document on website"
+[ALAN 3 Beginner's Guide]: https://alan-if.github.io/alan-docs/alanguide/alanguide.html "View live HTML document on website"
+[Alan Design Documentation]: https://alan-if.github.io/alan-docs/design/design.html "View live HTML document on website"
+[Alan IDE Reference Guide]: https://alan-if.github.io/alan-docs/ideguide/ideguide.pdf "View PDF document on website"
+[Alan Rules]: https://alan-if.github.io/alan-docs/design/rules.html "View live HTML document on website"
+[The ALAN Manual]: https://alan-if.github.io/alan-docs/manual-beta/manual.html "View live HTML document on website"
+
+The "status" columns values indicate:
+
+- __ADoc WIP__ — document is not fully ported to AsciiDoc, and still needs adaptation to make full use of our toolchain, templates features, and styling conventions.
+- __final__ — there are no plans to update the document.
+- __ongoing__ — document is productions ready, but still being regularly updated and improved.
+- __WIP draft__ — document is still being written.
+
+As you might notice from the above table, none of the documents is currently using [highlight.js] for syntax highlighting, but they are either using [Rouge] or [Highlight].
+
+[Rouge] is the number one highlighter choice in this project, because it supports [callouts] in code blocks, it's powerful, and it's natively supported by Asciidoctor's HTML backend as well as by [asciidoctor-pdf]  (which we're planning to use once some current problems are fixed).
+So we've migrated to Rouge all the documents we could.
+
+Documents still using [Highlight] are doing so because they contain custom styling selections within a code block using the `#` delimiters for [text span] or [highlight syntax], which is currently not supported with the Rouge highlighter (when these elements are present, syntax highlighting is disabled).
+This is a problem with the native Rouge adapter that ships with Asciidoctor (Ruby).
+Note that these documents can't be properly converted to PDF either, because our custom templates for [asciidoctor-fopub] currently don't render properly [highlight syntax] or [text span]s in code blocks.
+
+For example, the [ALAN 3 Beginner's Guide] makes heavy use of [text span]s and [highlight syntax] in code blocks, which won't allow us to use [Rouge] with it until the problem is fixed in the Asciidoctor application.
 
 # Syntax Highlighters
 
@@ -147,6 +187,15 @@ The above columns refer to:
 <!-- project files and folders -->
 
 [/styles-tests/]: ./_dev/styles-tests/ "Navigate to documents tests folder"
+
+<!-- docs folders -->
+
+[/alan-design/]: ./alan-design/
+[/alanguide/]: ./alanguide/
+[/conversion/]: ./conversion/
+[/ideguide/]: ./ideguide/
+[/manual/]: ./manual/
+[/writing/]: ./writing/
 
 <!-- Issues -->
 
