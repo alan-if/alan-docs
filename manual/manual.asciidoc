@@ -1,7 +1,7 @@
 :doctitle:  The ALAN Adventure Language Reference Manual
 :version-label: ALAN
-:revnumber: Beta8-snapshot
-:revdate:   September 22, 2020
+:revnumber: Beta7
+:revdate:   August 27, 2021
 :revremark: New AsciiDoc Reprint
 :author:    Thomas Nilefalk
 :email:     thomas@alanif.se
@@ -46,8 +46,9 @@
 // Show document info and AsciiDoc conversion version and date...
 
 // .About This Document
-This is the first public release of the new version of the _ALAN Manual_, ported to AsciiDoc by link:https://github.com/tajmone[Tristano Ajmone^,title="Visit Tristano Ajmone's profile on GitHub"].
-The new edition is now availble in HTML and PDF format, featuring contents updates and many improvements, like syntax highlighting of Alan code examples. +
+This is the _ALAN Manual_, the reference documentation for the Alan IF Language System.
+The current documentation is written in the AsciiDoc format thanks to substantial conversion work by link:https://github.com/tajmone[Tristano Ajmone^,title="Visit Tristano Ajmone's profile on GitHub"].
+It can now be provided in HTML and PDF formats, with better presentation, like syntax highlighting of Alan code examples. +
 This document is subjected to the <<Copying Conditions,Artistic License 2.0>> terms.
 
 // >>> Alan Logo >>>
