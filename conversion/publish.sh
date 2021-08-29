@@ -13,4 +13,4 @@ cp $source/conversion/conversion.html conversion/
 git commit -am"Publishing new version of conversion guide"
 git push
 cd ..
-#rm -rf alan-docs
+rm -rf alan-docs
