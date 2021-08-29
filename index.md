@@ -34,7 +34,7 @@ Michael Arnaud's _Alan 3 Beginner's Guide_ (2006) is an excellent step-by-step t
     + [tutorial source files][alanguide files]
 
 
-## Alan Conversion Guide
+## Alan Conversion Guide - v2 to v3
 
 This document tries to ease the transition from Alan v2 to Alan v3.
 It discusses both differences and gives some hands-on tips on how to do the transition.
