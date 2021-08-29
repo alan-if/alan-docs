@@ -34,6 +34,15 @@ Michael Arnaud's _Alan 3 Beginner's Guide_ (2006) is an excellent step-by-step t
     + [tutorial source files][alanguide files]
 
 
+## Alan Conversion Guide
+
+This document tries to ease the transition from Alan v2 to Alan v3.
+It discusses both differences and gives some hands-on tips on how to do the transition.
+
+- _Alan Conversion Guide from v2 to v3_
+    + [HTML](conversion/conversion.html)
+
+
 ## Alan IDE Reference Guide
 
 An excellent guide by Robert DeFord on how to install, configure and use the [Alan IDE] to craft text adventure in ALAN IF.
@@ -41,9 +50,10 @@ An excellent guide by Robert DeFord on how to install, configure and use the [Al
 - _Alan IDE Reference Guide_ — v1.0 (2018. final)
     + [PDF](ideguide/ideguide.pdf)
 
+
 ## Alan Design Documents (VERY RUDIMENTARY AND PRELIMINARY!)
 
-These documents are still incomplete, but the might be helpful to better understand technical aspects about Alan and its design principles.
+These documents are still incomplete, but might be helpful to better understand technical aspects about Alan and its design principles.
 
 > **NOTE:** These documents may be inaccurate in details.
 
