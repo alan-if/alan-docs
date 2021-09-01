@@ -1,27 +1,24 @@
 // ******************************************************************************
 // *                                                                            *
-// *                          5. Running An Adventure                           *
+// *                          5. Running an Adventure                           *
 // *                                                                            *
 // ******************************************************************************
-// The porting to AsciiDoc of this chapter is ultimated, but its contents need
-// to be revised and polished here and there (see comments).
 
-= Running An Adventure
+= Running an Adventure
 
 
 == A Turn of Events
 
-// @NOTE: In the following paragraphs there are many Alan keywords, which should
-//        be styled as inline code. Maybe it's better not overdoing it, and just
-//        style a few keywords here and there, to clarify the context to reader
-//        and allow quickly spotting keywords in the page, but once a keyword has
-//        been styled as code in a sentence, further occurences don't need to be
-//        styled when the English meaning and the keyword overlap in that context.
-
 The player controls the (((execution, of an adventure))) execution of an Alan adventure.
-Each of his inputs are taken care of and acted upon by the run-time system in the interpreter.
-The execution of an Alan adventure starts by executing the `Start` section.
-The player is then placed in the `location` indicated in the `Start` section, the location is described, and the player is prompted for a command.
+Each player input is taken care of and acted upon by the run-time system of the interpreter.
+The execution of every Alan adventure begins from the `Start` section: the player is placed at the location indicated in the `Start` section, the location is described, and the player is prompted for a command.
+
+// Q: * After all the above has happened, what turn are we in? Turn 0 or 1?
+//    * Does the initial Start statement count as a turn?
+//    * Are any events executed during the Start section?
+// The above questions should be covered in the initial paragraph(s),
+// so that the reader is not left wondering about them (and not knowing
+// where to look for their answers).
 
 The player input is analysed according to the explicit and implicit `Syntax` rules and converted to an execution of verb checks and bodies.
 Global `Verb` ``Check``s and bodies are used for verbs taking no parameters, otherwise the verb bodies are found in the parameter instances or their classes.
@@ -34,22 +31,23 @@ Finally the player is prompted for another command.
 
 So, to summarise:
 
-// @TODO: Could improve styling and layout of the following block:
+// @NOTE: The following scheme could be improved upon in various ways.
+//        It could benefit from having clear markers for PLAYER INPUT, RULES,
+//        SCRIPTS, EVENTS. We could also convert it to a flow chart using Dia,
+//        which would also allow us to illustrate player input branching. e.g.
+//        when the input didn't parse correctly, or when a CHECK fails, etc.,
+//        which would make much clearer when a turn is aborted!
 
-[literal, role="plaintext", subs="normal"]
-................................................................................
-get and execute a player command
-evaluate all rules
-for each actor
-   execute one step (if active)
-   evaluate all rules as above
-end for
-for each pending event
-   execute it
-   evaluate all rules
-end for
-................................................................................
-
+* get and execute a player command
+* evaluate all rules
+* for each actor
+** execute one step (if active)
+** evaluate all rules as above
+* end for
+* for each pending event
+** execute it
+** evaluate all rules
+* end for
 
 A player command may be either a verb command or a directional command.
 A verb command is executed by checking the syntax of the input, performing any preconditions (``Check``s) and then executing the verb bodies (as described in <<VERBs,_Verbs_>> and <<Scope,_Scope_>>).
@@ -74,11 +72,6 @@ The exact list of these words, for every language natively supported in Alan, is
 ================================================================================
 
 The following built-in syntax variations are available to the player:
-
-// @NOTE: I've styled in ALL-CAPS the player-words in the examples, to highlight
-//        them. It makes sense, because often there are multiple player-words in
-//        in an input command, and we want the reader to focus only on the ones
-//        being exemplified.
 
 * Concatenation of commands via (((AND (player input)))) (((THEN (player input)))) *AND*-words, like:
 +
@@ -137,16 +130,24 @@ This allows:
 &gt; _remove the hat and the scarf then drop THEM_
 ================================================================================
 
-// FIXME: The first sentence below could be polished a bit!
+Referencing multiple instances (objects or actors) in a given command position is only possible if the adventure author has allowed it by using a
+(((multiple indicator))) (((parameter, indicators, multiple)))
+multiple `*` indicator in the `Syntax` definition (see <<SYNTAX Definitions>>).
+All the above variations are built-into the interpreter and automatically handled by the run-time system.
 
-The reference to multiple objects (or actors) in a position is only possible if the adventure author has allowed it by using a ((multiple indicator)) (((parameter, indicators, multiple))) in the `Syntax` definition (see <<SYNTAX Definitions>>).
-All the variations above are built-in and handled automatically by the run-time system.
-
-The interpreter also automatically restricts (((parameter, referencing))) parameter references to things which are reachable according to the semantic rules of each built-in base class (see <<Instances>> for the complete details).
-For example, objects can only be referred to if they are present at the current location, except if the `Syntax` for the command uses the (((omnipotent indicator))) (((parameter, indicators, omnipotent))) omnipotent `!` indicator (see <<SYNTAX Definitions>> for details).
+The interpreter also restricts (((parameter, referencing))) parameter references to things which are reachable according to the semantic rules of each built-in base class (see <<Instances>> for the complete details).
+For example, objects can only be referred to if they are present at the current location, except if the `Syntax` for the command uses the (((omnipotent indicator))) (((parameter, indicators, omnipotent)))
+omnipotent `!` indicator (see <<SYNTAX Definitions>> for details).
 For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to <<Distant and Imaginary Objects,_Distant & Imaginary Objects_>>.
 
 If the player uses *ALL* instead of a reference to an instance in his command, the verb will be applied to all appropriate instances at the current location, _except_ the ones that do not pass all checks for the verb (see <<VERBs>> for further details on this).
+
+// @NOTE: The above paragraph could be clearer about the difference of VERBs
+//    which are attempted and those which simply fail, when using ALL.
+//    Q: * How do the SYNTAX WHERE and VERB CHECKs differ here?
+
+A restriction placed on the player input by the interpreter is that the words the player is allowed to use can only contain alphanumeric characters, underscores and dash.
+This must be kept in mind when naming verbs that use the default syntax (an explicit `Syntax` statement can always specify other player words to trigger the verb).
 
 // @TODO:  Could add xref to "4.2. Words, Identifiers and Names"!
 
@@ -163,9 +164,6 @@ If the player uses *ALL* instead of a reference to an instance in his command, t
 //         either since Alan will also allow any alphabet letters of the adventure's
 //         encoding (ISO-8859-1, or others). It might be better to specify
 //         "letters, numbers, underscores and hyphens"
-
-A restriction placed on the player input by the interpreter is that the words the player is allowed to use can only contain alphanumeric characters, underscores and dash.
-This must be kept in mind when naming verbs that use the default syntax (an explicit `Syntax` statement can always specify other player words to trigger the verb).
 
 == Player Words
 
@@ -214,7 +212,7 @@ This makes it possible to use natural words as nouns and create "`{nbsp}l`'{nbsp
 
 // @NOTE: Instead of "adventure DESCRIPTION (source)" we could use:
 //        "adventure GRAMMAR (source)"? or "DEFINITION"?
-//        In any case, in this particulare sentence using DESCRIPTION and DESCRIBED
+//        In any case, in this particular sentence using DESCRIPTION and DESCRIBED
 //        so close to each other doesn't sound good. But I like GRAMMAR because
 //        the term is used in BNF contexts, so it might be adopted in the Manual
 //        (not just here, but elsewhere too).
@@ -253,7 +251,11 @@ So, the execution of various parts of the adventure source can also be said to h
 * *A rule* -- rules are executed after each actor (including the hero) and after each event, with the focus set to the complete game world.
 
 
-
+// @NOTE: "Moving Actors" is an ambiguous title -- does it mean "actors that are moving"
+//        or "how to move around actors?". Possibly "Actors Movement" would be better.
+// BEWARE that before changing the title we need to search through all sources for
+// possible XRefs that also need to be changed accordingly (since we're still using
+// the actual title as the XRef)!
 
 == Moving Actors
 
@@ -282,7 +284,13 @@ The command history is saved automatically, and as many states as memory permits
 The player command to restore a previous game state is handled directly by the interpreter.
 It must consist of the single word `undo`.
 
-
+// Q: * Is therefore the UNDO command hard coded into the interpreter?
+//      if so, it would be the only hard-coded command in ALAN, something
+//      worth mentioning. (the UNDO, RESTART and QUIT commands when a game ends
+//      don't count, for they apply only to a special out-of-game context)
+//    * Is it possible to translate UNDO to other locales?
+//    * Would a custom UNDO VERB override the UNDO command?
+//    * Is it possible to execute/invoke UNDO from ALAN source code?
 
 == Scripting and Commenting
 
@@ -297,11 +305,8 @@ It must consist of the single word `undo`.
 //        this section with the wider world of Interactive Fiction, games distribution
 //        common practices, etc.
 
-// @TODO: File extensions of transcripts and solution files? Arun seems to use
-//        ".log" as default extension. Might be worth mentioning that file extensions
-//        are not important here, and that usually the convention is to use ".sol"
-//        for solution files, and the various extensions used for transcripts (by
-//        other terps as well!).
+// @TODO: ALAN now adopts the new official '.a3s' and '.a3t' extensions, so we
+//        should mention them here!
 
 Most versions of the Alan interpreter, Arun, supports both the creation of a transcript for the game in progress, as well as playing back a saved transcript as input passed to the interpreter.
 
