@@ -20,6 +20,7 @@ We ask you to take just a few minutes to read through the following guidlines.
 - [Documents Features](#documents-features)
     - [Document Index](#document-index)
     - [Glossaries](#glossaries)
+    - [Dynamic Code Examples](#dynamic-code-examples)
 
 <!-- /MarkdownTOC -->
 
@@ -117,6 +118,13 @@ Asciidoctor allows adding a Glossary to any document, and it's available in both
 
 Whenever possible, consider adding a glossary to your document, for it can provide a better studying experience to the reader.
 
+## Dynamic Code Examples
+
+Some documents will rely on external libraries, source adventures and transcripts being compiled at build time to ensure that the source excerpts and generated transcripts always mirror the latest state of the actual sources.
+
+To achieve this, they adopt a techniques known as "Dynamic Examples and Transcripts", which is described in the _[Dynamic Examples]_ article on the Wiki.
+
+
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
@@ -146,5 +154,9 @@ Whenever possible, consider adding a glossary to your document, for it can provi
 [Formatting and Styling Conventions]: ./CONVENTIONS.md "Read the 'Formatting and Styling Conventions' guidelines adopted in Alan-Docs"
 
 [Index guidelines]: ./CONVENTIONS.md#the-index
+
+<!-- Wiki -->
+
+[Dynamic Examples]: https://github.com/alan-if/alan-docs/wiki/Dynamic-Examples "Wiki Page: Dynamic Examples"
 
 <!-- EOF -->

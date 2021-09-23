@@ -59,6 +59,8 @@ The reader will also need to download the source files of the __ALAN Library__ r
 > __IMPORTANT__ — Some Alan sources are included in the AsciiDoc source via the `include::[]` directive targetting specific line ranges. If you need to edit those source files you'll then need to adjust the line ranges accordingly to prevent the document from showing the wrong lines of code. These are the files included by line ranges:
 >
 > - [`./alanguide-code/lib/std.i`](./alanguide-code/lib/std.i)
+>
+> Refer to the _[Dynamic Examples]_ Wiki article for more info.
 
 ## Document Source Files
 
@@ -238,5 +240,9 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 
 [Issue #66]: https://github.com/alan-if/alan-docs/issues/66 "Issue #66 — Shell Scripts Produce Corrupt PDFs under Bash for Windows"
 [Issue #84]: https://github.com/alan-if/alan-docs/issues/84 "Issue #84 — Use New encoding Option with include:: Directives"
+
+<!-- Wiki -->
+
+[Dynamic Examples]: https://github.com/alan-if/alan-docs/wiki/Dynamic-Examples "Wiki Page: Dynamic Examples"
 
 <!-- EOF -->
