@@ -1,4 +1,4 @@
-// "_color-scheme.scss"                 v3.0.0 | 2021/07/30 | by Tristano Ajmone
+// "_color-scheme.scss"                 v3.1.0 | 2021/10/20 | by Tristano Ajmone
 // *****************************************************************************
 // *                                                                           *
 // *                          Alan-Docs Color-Scheme                           *
@@ -40,6 +40,8 @@ $BNF-normal:     #492E11;
 $Transcript-background: #F7FDFF;
 $Transcript-normal:     #0089B6;
 $Transcript-border:     #CCF2FF;
+$Transcript-command:    #D90000; // RED  -- Player input
+$Transcript-comment:    #BCBCBC; // GREY -- Player input comment (i.e. ";")
 
 // --------------
 // Shell Examples

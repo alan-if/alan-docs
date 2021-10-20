@@ -1,7 +1,7 @@
 include::inc/attr_header.adoc[]
 = Syntax Highlighting via {highlighter}
 Tristano Ajmone <tajmone@gmail.com>
-v3.0, August 5, 2021
+v3.1, October 20, 2021
 :doctype: book
 :toclevels: 5
 :sectnums!:
@@ -269,6 +269,11 @@ I see nothing special about the mailbox.
 The small mailbox is now open. The small mailbox contains a leaflet.
 ================================================================================
 
+[NOTE]
+==============
+In the above example
+==============
+
 .Game Transcript With Title
 [example,role="gametranscript"]
 ================================================================================
@@ -280,6 +285,72 @@ The small mailbox is now open. The small mailbox contains a leaflet.
 ================================================================================
 Game transcripts are not verbatim blocks, so callouts are not supported.
 ================================================================================
+
+
+=== Advanced Transcripts Styling
+
+// ===================
+// FOPUB Backend Only:
+// ===================
+ifeval::["{toolchain}" == "asciidoctor-fopub"]
+WARNING: These styles are currently unsupported by the template of the asciidoctor-fopub toolchain!
+endif::[]
+
+Game transcripts allow extra styling for player input by using emphasis:
+
+[source,asciidoc]
+-------------------------------
+[example,role="gametranscript"]
+===============================
+&gt; _examine apple_
+===============================
+-------------------------------
+
+which styles the player command in emphasis and red, to make it stand out from the parser responses and game descriptions:
+
+[example,role="gametranscript"]
+===============================
+&gt; _examine apple_
+===============================
+
+Comments in player input can be styles using text spans with the `comment` role:
+
+[source,asciidoc]
+---------------------------------------------
+[example,role="gametranscript"]
+=============================================
+&gt; [.comment]#; a commented player input# +
+&gt; _x apple_ [.comment]#; some comment#
+=============================================
+---------------------------------------------
+
+which will style the comment in light grey colour:
+
+[example,role="gametranscript"]
+=============================================
+&gt; [.comment]#; a commented player input# +
+&gt; _x apple_ [.comment]#; some comment#
+=============================================
+
+These extra styles are provided for the auto-generated transcripts, which in some toolchains are also processed to add extra styling during their sanitation stage.
+
+=== Inline Transcripts
+
+// ===================
+// FOPUB Backend Only:
+// ===================
+ifeval::["{toolchain}" == "asciidoctor-fopub"]
+WARNING: These styles are currently unsupported by the template of the asciidoctor-fopub toolchain!
+endif::[]
+
+There's also an inline style for game transcripts, using the `play` role, which can be used to format short transcripts responses or player input inside paragraphs. E.g.
+
+[source,asciidoc]
+When the player types [.play]#&gt; _eat object_# the game will print [.play]#You can't eat the object.#
+
+will be rendered as:
+
+When the player types [.play]#&gt; _eat object_# the game will print [.play]#You can't eat the object.#
 
 
 
