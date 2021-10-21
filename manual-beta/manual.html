@@ -921,8 +921,8 @@ pre[lang=bnf] > code.language-bnf[data-lang=bnf] {
 <div class="details">
 <span id="author" class="author">Thomas Nilefalk</span><br>
 <span id="email" class="email"><a href="mailto:thomas@alanif.se">thomas@alanif.se</a></span><br>
-<span id="revnumber">alan Beta7,</span>
-<span id="revdate">August 27, 2021</span>
+<span id="revnumber">alan Beta8,</span>
+<span id="revdate">October 21, 2021</span>
 <br><span id="revremark">New AsciiDoc Reprint</span>
 </div>
 <div id="toc" class="toc2">
@@ -1271,8 +1271,13 @@ pre[lang=bnf] > code.language-bnf[data-lang=bnf] {
 <ul class="sectlevel2">
 <li><a href="#_compiling">A.1. Compiling</a></li>
 <li><a href="#_compiler_switches">A.2. Compiler Switches</a></li>
-<li><a href="#_running_the_adventure">A.3. Running the Adventure</a></li>
-<li><a href="#_interpreter_switches">A.4. Interpreter Switches</a></li>
+<li><a href="#_encodings_and_character_sets">A.3. Encodings and Character Sets</a></li>
+<li><a href="#_running_the_adventure">A.4. Running the Adventure</a></li>
+<li><a href="#_interpreter_switches">A.5. Interpreter Switches</a>
+<ul class="sectlevel3">
+<li><a href="#_logging_options">Logging options</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_a_sample_interaction">Appendix B: A Sample Interaction</a></li>
@@ -2824,7 +2829,7 @@ It is completely possible to write in other languages, but then you must customi
 See <a href="#_run_time_messages">Appendix C</a>, <a href="#_input_response_messages">Sect. C.1</a>, for a complete list of such messages.</p>
 </div>
 <div class="paragraph">
-<p>The Alan compiler and interpreter will always allow multinational  8-bit characters as input and the default messages are generated for 8-bit character sets, internally representing national characters according to the ISO multinational character set (ISO8859-1) requiring 8 bits.
+<p>The Alan compiler and interpreter will always allow multinational  8-bit characters as input and the default messages are generated for 8-bit character sets, internally representing national characters according to the ISO multinational character set (ISO-8859-1) requiring 8 bits.
 On output, this is converted to the native character set of the machine (whenever possible).
 This means that portability between platforms should be good even for text containing multinational (non-ASCII) characters.</p>
 </div>
@@ -10033,7 +10038,7 @@ Such a log file contains both player input and the game output.</p>
 </div>
 <div class="paragraph">
 <p>Both kinds of log files are created in the directory which was current when the interpreter was started, the name of the log file will begin with the game name.
-They will have the extension <strong>.a3i</strong>, for "Alan v3 Input", or <strong>.a3t</strong>, for "Alan v3 Transcript", respectively.</p>
+They will have the extension <strong>.a3s</strong>, for "Alan v3 Solution", or <strong>.a3t</strong>, for "Alan v3 Transcript", respectively.</p>
 </div>
 </div>
 <div class="sect3">
@@ -10618,9 +10623,11 @@ The option <code>-help</code> will give a brief help on other options to the com
 </div>
 <div class="paragraph">
 <p>An identifying file, <strong><em>adventure</em>.ifid</strong>, is also produced.
-This file contains a unique identification of your game for bibliographical purposes.
-The content of it will be compiled into the adventure code file, which makes your game identifiable by electronic means.
-As long as this file exist the same identification (IFID) will be used.
+This is a text file containing a unique identification string of your game, for bibliographical purposes; you can open it with a text editor, in case you&#8217;re curious.
+Its content will be compiled into the adventure code file, which makes your game identifiable by electronic means.</p>
+</div>
+<div class="paragraph">
+<p>As long as this file exists, the same identification (IFID) will be used.
 If it does not exist, a new one will automatically be generated.</p>
 </div>
 </div>
@@ -10644,9 +10651,14 @@ If you run the compiler from a command line you can get information about which 
 <p><code>-version</code> shows the version of the compiler</p>
 </li>
 <li>
-<p><code>-charset</code> select the character set of the input files.
-This can be handy when you get a source file written on another platform, or for Windows where you edit in a Windows editor (ISO characters) and use the compiler in a DOS window (DOS characters).
-The option should be followed with one of the keywords <code>iso</code>, <code>mac</code> or <code>dos</code></p>
+<p><code>-encoding</code> assume source files are in this encoding.
+The option should be followed with one of the keywords <code>iso</code> or <code>utf-8</code>.
+This is required when your source files written using an encoding which isn&#8217;t Alan&#8217;s default..
+Many terminals and editors today use the UTF-8 encoding but historically Alan only supported the ISO-8859-1 encoding for non-ASCII characters.
+Currently the Alan compiler will default to <code>-encoding iso</code> but in the near future UTF-8 will be the default encoding for Alan source files.</p>
+</li>
+<li>
+<p><code>-charset</code> backwards compatible alias for <code>-encoding</code></p>
 </li>
 <li>
 <p><code>-verbose</code> print compiler version and other verbose messages</p>
@@ -10665,13 +10677,13 @@ This switch can be used multiple times, each adding a new directory</p>
 <p><code>-full</code> will produce a complete listing of the source on the screen, or if combined with the <code>-listing</code> option, in the listing file</p>
 </li>
 <li>
-<p><code>-debug</code> include debugging information in the produced adventure files (same as the debug option, see <a href="#_options">Sect. 3.3</a>)</p>
+<p><code>-debug</code> include debugging information in the produced adventure files (same as using the <code>debug</code> option in the Alan source, see <a href="#_options">Sect. 3.3</a>)</p>
 </li>
 <li>
-<p><code>-pack</code> encode and compress the text data (same as the pack option, see <a href="#_options">Sect. 3.3</a>)</p>
+<p><code>-pack</code> encode and compress the text data (same as using the <code>pack</code> option in the Alan source, see <a href="#_options">Sect. 3.3</a>)</p>
 </li>
 <li>
-<p><code>-summary</code> produce a summary about number of actors, size of adventure files, timing information etc.</p>
+<p><code>-summary</code> produce a summary about number of actors, size of adventure files, timing information, etc.</p>
 </li>
 <li>
 <p><code>-dump</code> print the internal form (developers use mainly)</p>
@@ -10684,7 +10696,36 @@ Switches may be abbreviated as long as they are unambiguous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_running_the_adventure"><a class="anchor" href="#_running_the_adventure"></a>A.3. Running the Adventure</h3>
+<h3 id="_encodings_and_character_sets"><a class="anchor" href="#_encodings_and_character_sets"></a>A.3. Encodings and Character Sets</h3>
+<div class="paragraph">
+<p>If you are interested in writing adventures in anything other than English, then this section is important to you.
+Else you can continue to live in oblivion of the multitude of other languages that need to be supported by computer programs these days, and skip to the next section.</p>
+</div>
+<div class="paragraph">
+<p>Alan uses a single byte character encoding known as ISO-8859-1, both internally and in game files.
+This makes game files completely portable across various platforms and still able to support most of the glyphs (&#8220;characters&#8221;) of most Western languages.
+Historically though, different operating systems and environments have used different encodings for text files, so when you created Alan source code the files were encoded differently depending on the platform (Mac, DOS, Unix, Windows, &#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>There is (still) no standardized way to deduce in which encoding a text file is, so in an attempt to handle &#8220;national characters&#8221; in the game source (particularly in Swedish), the <code>-charset</code> option was devised.
+Using this option an author could indicate to the compiler how to interpret, and possibly convert, the characters in the source file(s) created on another platform.</p>
+</div>
+<div class="paragraph">
+<p>This has changed and an encoding called UTF-8 is becoming almost the standard encoding for text on many platforms, including Windows.</p>
+</div>
+<div class="paragraph">
+<p>The Alan compiler is capable of reading and converting source files in UTF-8 (which probably is the default when you create a text file these days).
+You can instruct the compiler to assume UTF-8 encoding using the <code>-charset utf-8</code> option, but if the text file is encoded using a BOM (a special, invisible marker at the beginning of the file) the Alan compiler will automatically assume that the file is encoded in UTF-8.</p>
+</div>
+<div class="paragraph">
+<p>This should make the creation and editing of Alan source files a more streamlined experience than before.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="#_compiler_switches">Sect. A.2</a> and <a href="#_interpreter_switches">Sect. A.5</a> for ways to control how the compiler and interpreter interpret encoding of source files and log input and output.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_running_the_adventure"><a class="anchor" href="#_running_the_adventure"></a>A.4. Running the Adventure</h3>
 <div class="paragraph">
 <p>To play the generated adventure the  Alan interpreter, <strong>arun</strong>, is executed with the adventure name as a parameter.
 For example:</p>
@@ -10695,14 +10736,14 @@ For example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>No extension on the adventure name is allowed, the <strong>.a3c</strong> and, if applicable, <strong>.a3r</strong> files are found automatically from that name.</p>
+<p>No extension on the adventure name is allowed, the <strong>.a3c</strong> and, if applicable, <strong>.a3r</strong> files are inferred and found automatically from the base name.</p>
 </div>
 <div class="paragraph">
-<p>On platforms with graphical user interfaces to which <strong>arun</strong> has been natively ported will allow double clicking a game file to start a game, or double clicking the interpreter application icon, in which case a dialogue requesting a game will appear.</p>
+<p>On platforms with graphical user interfaces to which <strong>arun</strong> has been natively ported, you can double click on a game file to start a game, or double click on the interpreter application icon, in which case a dialogue requesting a game file will appear.</p>
 </div>
 <div class="paragraph">
 <p>If the interpreter program is copied to a different name, it will automatically look for a game file with the same name.
-Any parameters or switches will be ignored.
+Any parameters or switches will then be ignored.
 For example, by copying the <strong>arun</strong> program to <strong>adventure</strong> the interpreter will, when started under the new name, directly look for the file <strong>adventure.a3c</strong>.
 The files <strong>adventure</strong> and <strong>adventure.a3c</strong> thus make a complete game package, which is easy to start using the single command:</p>
 </div>
@@ -10713,9 +10754,9 @@ The files <strong>adventure</strong> and <strong>adventure.a3c</strong> thus mak
 </div>
 </div>
 <div class="sect2">
-<h3 id="_interpreter_switches"><a class="anchor" href="#_interpreter_switches"></a>A.4. Interpreter Switches</h3>
+<h3 id="_interpreter_switches"><a class="anchor" href="#_interpreter_switches"></a>A.5. Interpreter Switches</h3>
 <div class="paragraph">
-<p>interpreter, switches
+<p>
 The interpreter supports the following switches:</p>
 </div>
 <div class="ulist">
@@ -10727,13 +10768,19 @@ The interpreter supports the following switches:</p>
 <p><code>-v</code> verbose mode</p>
 </li>
 <li>
-<p><code>-l</code> log game transcript to a file ('.a3t')</p>
+<p><code>-u</code> use UTF-8 encoding for input and output including logs and command scripts</p>
 </li>
 <li>
-<p><code>-c</code> log player command input to a file ('.a3i')</p>
+<p><code>-l</code> log complete game transcript to a file (&#8216;.a3t&#8217;)</p>
+</li>
+<li>
+<p><code>-c</code> log all player commands to a file (&#8216;.a3s&#8217; for &#8220;solution&#8221;)</p>
 </li>
 <li>
 <p><code>-n</code> no Status Line</p>
+</li>
+<li>
+<p><code>-p</code> don&#8217;t break the output for paging</p>
 </li>
 <li>
 <p><code>-d</code> print the version of interpreter and enter debug mode</p>
@@ -10754,6 +10801,71 @@ The interpreter supports the following switches:</p>
 </div>
 <div class="paragraph">
 <p>Debugging support is described in <a href="#_debugging">Sect. 6.14</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_logging_options"><a class="anchor" href="#_logging_options"></a>Logging options</h4>
+<div class="paragraph">
+<p>The logging options, <code>-l</code> and <code>-c</code>, will each create a new file with a name that is the combination of the game name, a time stamp and the appropriate extension in the current directory, and write the log in it.
+The options can be used simultaneously and will then create two files with differing extensions for the two types of logs.
+For example</p>
+</div>
+<div class="literalblock shell">
+<div class="content">
+<pre>$ arun -c adventure</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will give you a file named <code>adventure&lt;timestamp&gt;.a3s</code> which will contain all commands the player entered.
+It may later be used as the so called &#8220;solution file&#8221; which can be followed manually to &#8220;replay&#8221; that session, or even used as a command script that can be feed to the interpreter using</p>
+</div>
+<div class="exampleblock gametranscript">
+<div class="content">
+<div class="paragraph">
+<p>&gt; <em>@adventure&lt;datestamp&gt;.a3s</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>On the other hand, using</p>
+</div>
+<div class="literalblock shell">
+<div class="content">
+<pre>$ arun -l adventure</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>will log the complete game transcript to a file named <code>adventure&lt;timestamp&gt;.a3t</code>.
+This option can be useful when collecting information from playtesters to analyse their progress, e.g. to improve the game.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When you&#8217;re gathering feedback from beta testers, the timestamp will help collecting many such files in the same directory for analysis.
+You can avoid the timestamp in filenames via the <code>-r</code> switch, e.g. to simplify scripting; but beware that doing so will overwrite the same file at each run.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Some interpreters, particularly the Glk-based ones, will have their own file naming conventions, and may therefore not abide to these standardised extensions for command scripts or transcripts.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -10951,7 +11063,7 @@ See <a href="#_messages">Sect. 3.15</a> for details.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>WHAT : "I don't understand."</pre>
+<pre>WHAT : "I don't understand that."</pre>
 </div>
 </div>
 <div class="openblock commentary">
@@ -10964,7 +11076,7 @@ I.e. the input could not be matched to any of the defined syntaxes.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>WHAT_WORD : "I don't know what you mean by '$1'."</pre>
+<pre>WHAT_WORD : "I don't understand what you mean by '$1'."</pre>
 </div>
 </div>
 <div class="openblock commentary">
@@ -11003,7 +11115,7 @@ I.e. the input could not be matched to any of the defined syntaxes.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>AFTER_BUT : "You must give at least one object after '$1'."</pre>
+<pre>AFTER_BUT : "I was expecting at least one object after '$1'."</pre>
 </div>
 </div>
 <div class="openblock commentary">
@@ -11048,7 +11160,7 @@ I.e. the input could not be matched to any of the defined syntaxes.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>WHICH_START : "I don't know if you mean $+1"
+<pre>WHICH_START : "I'm not sure if you mean $+1"
 WHICH_COMMA : ", $+1"
 WHICH_OR : "or $+1."</pre>
 </div>
@@ -11069,7 +11181,7 @@ The first message is used for the first alternative, the last for the last alter
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>WHICH_PRONOUN_START : "I don't know what you mean by '$1',"
+<pre>WHICH_PRONOUN_START : "I'm not sure whether by '$1' you mean"
 WHICH_PRONOUN_FIRST : "$+1"</pre>
 </div>
 </div>
@@ -11210,7 +11322,7 @@ The messages are used according to the pattern "<em>&lt;header for container&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>EMPTY_HANDED : "$+1 is empty-handed."</pre>
+<pre>EMPTY_HANDED : "$+1 is not carrying anything."</pre>
 </div>
 </div>
 <div class="openblock commentary">
@@ -11263,7 +11375,8 @@ The player should press <kbd>RETURN</kbd> to proceed.</p>
 <div class="content">
 <div class="paragraph">
 <p>This message is presented immediately after the <code>location</code> name if the <code>location</code> has been visited before to give the player the information that he has visited this <code>location</code> before (a good thing in some adventures).
-If you wish to disable this, set this message to an empty string.</p>
+If you wish to disable this, set this message to an empty string.
+You can also control how often this message appears using the <code>Visits</code> statement (See <a href="#_special_statements"><em>Special Statements</em></a>)</p>
 </div>
 </div>
 </div>
@@ -11282,7 +11395,7 @@ The name used in the previous <code>Save</code> is used as a default.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>SAVE_OVERWRITE : "That file already exists, overwrite (RETURN confirms) ? "</pre>
+<pre>SAVE_OVERWRITE : "A file with that name exists, overwrite (RETURN confirms) ? "</pre>
 </div>
 </div>
 <div class="openblock commentary">
@@ -11458,7 +11571,7 @@ This message reliefs the author from the responsiblility to check for every poss
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>CONTAINMENT_LOOP2 : "Putting $+1 in $+2 is impossible since $+2 already is inside $+1."</pre>
+<pre>CONTAINMENT_LOOP2 : "It is impossible to put $+1 in $+2 because $+2 is already inside $+1."</pre>
 </div>
 </div>
 <div class="openblock commentary">
@@ -13537,7 +13650,7 @@ For more info on stropping, see <a href="https://en.wikipedia.org/wiki/Stropping
 </div>
 <div id="footer">
 <div id="footer-text">
-ALAN Beta7<br>
+ALAN Beta8<br>
 </div>
 </div>
 </body>
