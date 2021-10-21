@@ -19,7 +19,7 @@ case "`git branch --show-current`" in
 		;;
 esac
 echo Publishing manual for $stream stream...
-cd /tmp
+pushd /tmp
 git clone -b published git@github.com:alan-if/alan-docs --single-branch
 cd alan-docs
 cp $source/manual/manual.html manual-$stream/
@@ -28,3 +28,4 @@ git commit -am"Publishing new version of $stream manual"
 git push
 cd ..
 rm -rf alan-docs
+popd
