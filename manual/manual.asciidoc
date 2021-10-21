@@ -2,7 +2,6 @@
 :version-label: ALAN
 :revnumber: Beta8
 :revdate:   October 21, 2021
-:revremark: New AsciiDoc Reprint
 :author:    Thomas Nilefalk
 :email:     thomas@alanif.se
 :doctype: book
