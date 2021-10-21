@@ -87,7 +87,7 @@ Here are some examples of other switches:
 * `-version` shows the version of the compiler
 * `-encoding` assume source files are in this encoding.
 The option should be followed with one of the keywords `iso` or `utf-8`.
-This is required when your source files written using an encoding which isn't Alan's default..
+This is required when your source files written using an encoding which isn't Alan's default.
 Many terminals and editors today use the UTF-8 encoding but historically Alan only supported the ISO-8859-1 encoding for non-ASCII characters.
 Currently the Alan compiler will default to `-encoding iso` but in the near future UTF-8 will be the default encoding for Alan source files.
 * `-charset` backwards compatible alias for `-encoding`
@@ -115,6 +115,7 @@ This makes game files completely portable across various platforms and still abl
 Historically though, different operating systems and environments have used different encodings for text files, so when you created Alan source code the files were encoded differently depending on the platform (Mac, DOS, Unix, Windows, ...).
 
 There is (still) no standardized way to deduce in which encoding a text file is, so in an attempt to handle "`national characters`" in the game source (particularly in Swedish), the `-charset` option was devised.
+The options is now more appropriately called `-encoding`.
 Using this option an author could indicate to the compiler how to interpret, and possibly convert, the characters in the source file(s) created on another platform.
 
 This has changed and an encoding called UTF-8 is becoming almost the standard encoding for text on many platforms, including Windows.
@@ -130,7 +131,9 @@ This has changed and an encoding called UTF-8 is becoming almost the standard en
 //         Adding a few external links and footnotes wouldn't hurt either!
 
 The Alan compiler is capable of reading and converting source files in UTF-8 (which probably is the default when you create a text file these days).
-You can instruct the compiler to assume UTF-8 encoding using the `-charset utf-8` option, but if the text file is encoded using a BOM (a special, invisible marker at the beginning of the file) the Alan compiler will automatically assume that the file is encoded in UTF-8.
+You can instruct the compiler to assume UTF-8 encoding using the `-encoding utf-8` option, but if the text file is encoded using a BOM (a special, invisible marker that may be used at the beginning of UTF-8 encoded files) the Alan compiler will automatically assume that the file is encoded in UTF-8.
+If there is no BOM, Alan will assume the default encoding or as instructed by the `-encoding` option.
+So it is safest to always use the `-encoding` option.
 
 This should make the creation and editing of Alan source files a more streamlined experience than before.
 
