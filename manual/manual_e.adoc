@@ -37,7 +37,7 @@ The lists below contain those player words for the currently defined languages.
 *AND*:   och
 *BUT*:   förutom utom
 *THEM*:  dem dom
-*NOISE*: gå
+*NOISE*: de den det gå
 ................................................................................
 
 
