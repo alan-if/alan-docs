@@ -6,6 +6,10 @@
 // NOTE: The error description paragraphs are enclosed in openblocks with role
 //       "commentary" to allow styling them with left margin, as in original!
 
+// !!! IMPORTANT !!! If you need to add an anchor to a specific Input Response
+//     Message, use the prefix 'msg_' followed by the messaged ID in all-caps.
+//     E.g.: [[msg_AGAIN]]
+
 [appendix]
 = Run-Time Messages
 
@@ -307,15 +311,18 @@ The player should press kbd:[RETURN] to proceed.
 --
 
 
+[[msg_AGAIN]]
 .................
 AGAIN : "(again)"
 .................
 
 [role="commentary"]
 --
-This message is presented immediately after the `location` name if the `location` has been visited before to give the player the information that he has visited this `location` before (a good thing in some adventures).
-If you wish to disable this, set this message to an empty string.
-You can also control how often this message appears using the `Visits` statement (See <<Special Statements,_Special Statements_>>)
+When the description of a `location` is suppressed due to `Visits` having a value other than zero (aka "`brief mode`"), this message is presented immediately after the name of locations which have been already visited by the player.
+In some games this might be a desirable feature, to remind the player that the location was already visited, and that its description is currently being omitted as a consequence.
+
+If you wish to disable this message, set it to an empty string.
+See the <<VISITS Statement,`Visits` statement>> for more details on how this message is related to and affected by the value of `Visits`.
 --
 
 

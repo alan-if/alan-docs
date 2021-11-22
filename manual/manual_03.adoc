@@ -4252,12 +4252,12 @@ Visits 0.
 
 will always show full descriptions (which is also the initial setting).
 
-
 [TIP]
 ================================================================================
 The classic and familiar commands *verbose*, *brief*, etc. can be imitated using different values in the `Visits` statement.
 ================================================================================
 
+When the description of a location already visited by the player is being omitted as a result of `Visits`, the <<msg_AGAIN,`AGAIN` run-time message>> will be shown after the location name.
 
 
 [IMPORTANT]
