@@ -1,7 +1,7 @@
 :doctitle:  The ALAN Adventure Language Reference Manual
 :version-label: ALAN
 :revnumber: Beta8
-:revdate:   October 21, 2021
+:revdate:   December 05, 2021
 :author:    Thomas Nilefalk
 :email:     thomas@alanif.se
 :doctype: book

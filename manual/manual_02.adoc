@@ -1,8 +1,8 @@
-// ******************************************************************************
-// *                                                                            *
-// *                                2. Concepts                                 *
-// *                                                                            *
-// ******************************************************************************
+// *****************************************************************************
+// *                                                                           *
+// *                               2. Concepts                                 *
+// *                                                                           *
+// *****************************************************************************
 
 = Concepts
 
@@ -346,17 +346,18 @@ Unless you plan to provide other means for transportation from a location, you s
 In fact, this is all that is necessary in a `location`, so lets look at an example.
 
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-The kitchen IsA location
-  Exit east To hallway.
-End The Kitchen.
+The Kitchen IsA location
+  Exit East to hallway.
+End the kitchen.
 
-The hallway IsA location
-  Exit west To kitchen.
-End The hallway.
+The Hallway IsA location
+  Exit West to kitchen.
+End the hallway.
 
-Start At kitchen.
+Start at Kitchen.
 --------------------------------------------------------------------------------
 
 
@@ -392,16 +393,24 @@ However, just the name of the location is not much of a description.
 So in order to provide the "`purple prose`" descriptions often found in many adventures there is an optional `Description` clause (((DESCRIPTION, of locations))) that you can use.
 Let us describe the Hallway.
 
+
+// @FIXME @tajmone: The English in the code example below should be improved!
+//   * [ ] Fix: "In one end is" -> "At one end there's"
+//   * [ ] Fix: "in the other"  -> "at the other"
+//   * [ ] Fix: "From the smell of things"  -> rephrase!
+//   * [ ] Check if example occurs again elsewhere!
+
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-The hallway IsA location
+The Hallway IsA location
   Description
     "In front of you is a long hallway. In one end
-     is the front door, in the other a doorway. From
-     the smell of things the doorway leads to the
-     Kitchen."
-  Exit west To kitchen.
-End The hallway.
+     is the front door, in the other a doorway.
+     From the smell of things the doorway leads
+     to the Kitchen."
+  Exit West to kitchen.
+End the hallway.
 --------------------------------------------------------------------------------
 
 We introduce another feature in this example, namely the text enclosed in double quotation marks (`"`) which is called a ((*string*)) or, when used on its own like this, an output statement.
@@ -415,15 +424,16 @@ This type of output statement is just one of the statements in the Alan Language
 
 It is also possible to have conditions and statements in the `Exit` clauses of a `location` to restrict the access to the next location or to describe what happens during this movement.
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-Exit west To kitchen
+Exit West to kitchen
   Check kitchen_door Is open
     Else "The door is closed."
   Does
     "As you enter the kitchen the smell of
      something burning is getting stronger."
-End Exit west.
+End exit West.
 --------------------------------------------------------------------------------
 
 
@@ -436,18 +446,19 @@ A large number of objects that can be examined and manipulated make a game so mu
 
 ``Object``s, like ``location``s, have an identifier and a `Description`, so you might guess the general structure of an object:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-The door IsA object At hallway
+The door IsA object at hallway
   Is closed.
   Description
     "The door to the kitchen is a sliding door."
-    If door Is closed Then
+    If door is closed then
       "It is closed."
     Else
       "It is open."
-    End If.
-End The door.
+    End if.
+End the door.
 --------------------------------------------------------------------------------
 
 An `object` may initially be located at a particular ((`location`)).
@@ -471,13 +482,15 @@ It must of course be possible to change the attributes value of an object.
 You can do this using the (((MAKE, statement))) `Make` or the (((SET, statement))) `Set` statements.
 For example, if the door should be opened (the player having said "`open door`", perhaps) this could be performed by stating:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-Make door Not closed.
+Make door not closed.
 --------------------------------------------------------------------------------
 
 To close it (i.e. setting the `closed` attribute to TRUE again) you write:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Make door closed.
@@ -486,9 +499,10 @@ Make door closed.
 The `Make` statement changes Boolean (or True/False) attributes.
 The `Set` statement changes numeric or string attributes, for example:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-Set level Of bottle To 4.
+Set level of bottle to 4.
 --------------------------------------------------------------------------------
 
 
@@ -516,16 +530,18 @@ Another manipulation statement is the (((LOCATE, statement))) `Locate` statement
 This is the statement to use when moving objects from one location to another.
 Opening a lid might cause a previously hidden object to fall to the floor, something that could be performed by moving the object from limbo to the current location with:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-Locate treasure Here.
+Locate treasure here.
 --------------------------------------------------------------------------------
 
 You could also relocate it to a particular place using the statement:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-Locate vase At hallway.
+Locate vase at hallway.
 --------------------------------------------------------------------------------
 
 
@@ -538,16 +554,18 @@ An `actor` may have a `Description` and attributes, like ``object``s and ``locat
 An actor performs his movements by following ``Script``s, each having a number of ``Step``s.
 Each step corresponds to one player move.
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-The charlie_chaplin IsA actor Name charlie chaplin
+The charlie_chaplin IsA actor
+  Name Charlie Chaplin
   Script going_out
     Step
-      Locate Actor At outside_house.
+      Locate actor at outside_house.
     Step
-      Locate Actor At hallway.
-      Use Script going_out.
-End The charlie_chaplin.
+      Locate actor at hallway.
+      Use script going_out.
+End the charlie_chaplin.
 --------------------------------------------------------------------------------
 
 
@@ -595,6 +613,7 @@ This flexibility, know as ((polymorphism)), is possible in programming only thro
 The Alan language supports object-orientation and inheritance via two constructs:
 
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Every mammal IsA vertebrate ...
@@ -637,7 +656,12 @@ Those examples show how to do it from the predefined classes.
 However, it is the identical if you have defined the class yourself.
 In general the format is:
 
+// @FIXME @tajmone: These code-templates are not rendered nicely due to the '<'
+//      and '>' symbols being highlighted as operators ('o')!
+//      I should check the Rouge CSS and see why operators are being shown in
+//      cyan colour here!!!
 
+// @FIXED-CASING!!!
 [source,alan, subs="+quotes"]
 --------------------------------------------------------------------------------
 The _<instance identifier>_ IsA _<class identifier>_ ...
@@ -645,6 +669,7 @@ The _<instance identifier>_ IsA _<class identifier>_ ...
 
 Defining a class is pretty much as you would expect it to be:
 
+// @FIXED-CASING!!!
 [source,alan, subs="+quotes"]
 --------------------------------------------------------------------------------
 Every _<class identifier>_ ...
@@ -653,17 +678,18 @@ Every _<class identifier>_ ...
 After this, declarations of all the properties for that class follow.
 This could include inheriting from another class, e.g.:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Every door IsA object
-End Every.
+End every.
 
 Every openable_door IsA door
   Is open.
-End Every.
+End every.
 
 The kitchen_door IsA openable_door
-End The kitchen_door.
+End the kitchen_door.
 --------------------------------------------------------------------------------
 
 
@@ -680,11 +706,12 @@ In the example above, ``openable_door``s are specialisations of ``door``s since 
 However, a sub-class can also redefine a feature.
 In the example above a class named `closed_openable_door` could be defined as:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Every closed_openable_door IsA openable_door
-  Is Not open.
-End Every.
+  Is not open.
+End every.
 --------------------------------------------------------------------------------
 
 This makes all instances of the new class have the same attribute but it is set to _false_ instead.
@@ -713,18 +740,19 @@ If you want to consider everything inside a container recursively, you might act
 As an example, let's consider a container named `cont`, that takes a subclass of `object`, named `subobject`.
 Assume there is also an instance of that class, named `inst`, which is also a container, but takes `object` instead.
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Every subobject IsA object
-End Every subobject.
+End every subobject.
 
 The cont IsA object
-  Container Taking subobject.
-End The cont.
+  Container taking subobject.
+End the cont.
 
 The inst IsA subobject
-  Container Taking object.
-End The inst.
+  Container taking object.
+End the inst.
 --------------------------------------------------------------------------------
 
 
@@ -785,12 +813,13 @@ You must also decide which effects this verb should have under various circumsta
 
 If we want to implement the `Verb` '`open`' for the `door` we could use the following code:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Verb open
   Does
     Make door open.
-End Verb open.
+End verb open.
 --------------------------------------------------------------------------------
 
 
@@ -802,14 +831,15 @@ For example, if a verb will handle objects it should be declared in the object c
 The example above should probably best be placed in the door object itself.
 
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The kitchen_door IsA object
   Verb open
     Does
       Make kitchen_door open.
-  End Verb open.
-End The kitchen_door.
+  End verb open.
+End the kitchen_door.
 --------------------------------------------------------------------------------
 
 
@@ -817,14 +847,15 @@ This defines the effects of applying the `open` verb to that specific door.
 The implementation makes direct references to the `kitchen_door`, so to make the verb more general it should be possible to apply to all ``door``s.
 So let's move the definition from the `kitchen_door` instance to the `door` class:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Every door IsA object
   Verb open
     Does
-      Make This open.
-  End Verb open.
-End Every door.
+      Make this open.
+  End verb open.
+End every door.
 --------------------------------------------------------------------------------
 
 With this definition it is possible to apply the verb to all doors.
@@ -844,14 +875,15 @@ Therefore, ``Verb``s may have ``Check``s, as we will see next.
 In order to ascertain that the correct conditions are fulfilled before the body of a `Verb` is actually executed, the verb may have an optional `Check` (((CHECK, in verbs))) part.
 
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Verb open
-  Check o Is openable
+  Check o is openable
     Else "You can't open the $o."
   Does
     Make o open.
-End Verb open.
+End verb open.
 --------------------------------------------------------------------------------
 
 
@@ -863,16 +895,17 @@ If this is not the case the `Else` part is executed instead (normally showing so
 A `Check` may have multiple conditions, as the following code shows:
 
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Verb take
   Check o takeable
     Else "You can't take that."
-  And o Not In hero
+  And o not in hero
     Else "You already have it."
   Does
-    Locate o In hero.
-End Verb take.
+    Locate o in hero.
+End verb take.
 --------------------------------------------------------------------------------
 
 // @NOTE @thoni56:
@@ -919,6 +952,7 @@ This form, or syntax, is the default form if you don't specify anything else.
 The default syntax (((SYNTAX, default))) might thus be described as:
 
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Syntax
@@ -933,6 +967,7 @@ In order to allow different and more complex player input the (((SYNTAX, constru
 The `Syntax` construct is a way to describe the words and parameters the player may use in order to execute a particular verb (its global and more specialised parts).
 Below is the syntax for `put_in`, the verb to put something inside a container.
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Syntax
@@ -953,13 +988,14 @@ This will bind the parameter `obj` to the instance that represents the green pea
 
 It is also possible to restrict the types of the parameters:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Syntax
   put_in = 'put' (obj) 'in' (cont)
     Where obj IsA object
       Else "You can't put that into anything."
-    And cont IsA Container
+    And cont IsA container
       Else "Nothing fits inside that."
 --------------------------------------------------------------------------------
 
@@ -996,7 +1032,7 @@ Secondly, a few special cases are also handled automatically:
 +
 [source,alan]
 --------------------------------------------------------------------------------
-The postmen IsA actor At postoffice ...
+The postmen IsA actor at postoffice ...
 
 The postoffice IsA location
   Description
@@ -1022,7 +1058,7 @@ If an output is immediately followed by another output starting with a full stop
 +
 [source,alan]
 --------------------------------------------------------------------------------
-  "You can't take" Say p. "."
+  "You can't take" say p. "."
 --------------------------------------------------------------------------------
 
 
@@ -1041,16 +1077,17 @@ A simple example is
 //      Postpone to when Highlight will be integrated instead of Highlight.js (i.e.
 //      when an extension supporting callouts is available).
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 1. Every animal IsA object
 2.   Has fur.
-3. End Every animal.
+3. End every animal.
 4.
 5. The house_cat IsA object ...
 6.   ...
 7.
-8.   If house_cat Has fur Then ...
+8.   If house_cat has fur then ...
 --------------------------------------------------------------------------------
 
 At line 8 we will get an error saying that the `house_cat` does not have the attribute `fur`.
@@ -1065,22 +1102,23 @@ Other examples include trying to use a script for an actor (or actor subclass) t
 Here is a more complicated example:
 
 // @FIXME @tajmone: Code With Line-Numbers (see above)
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
  1. The cont IsA object
- 2.   Container Taking thing.
- 3. End The cont.
+ 2.   Container taking thing.
+ 3. End the cont.
  4.
- 5. Add To Every object
+ 5. Add to every object
  6.   Has someAttribute.
- 7. End Add.
+ 7. End add.
  8.
  9. The box IsA object
-10.   Container Taking object.
-11. End The.
+10.   Container taking object.
+11. End the.
 12. ...
-13.   For Each f In box Do
-14.     If f Has someAttribute Then
+13.   For each f in box do
+14.     If f has someAttribute then
 15.     ...
 --------------------------------------------------------------------------------
 

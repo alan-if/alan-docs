@@ -1,8 +1,8 @@
-// ******************************************************************************
-// *                                                                            *
-// *                       Appendix C: Run-Time Messages                        *
-// *                                                                            *
-// ******************************************************************************
+// *****************************************************************************
+// *                                                                           *
+// *                      Appendix C: Run-Time Messages                        *
+// *                                                                           *
+// *****************************************************************************
 // NOTE: The error description paragraphs are enclosed in openblocks with role
 //       "commentary" to allow styling them with left margin, as in original!
 

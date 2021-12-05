@@ -1,3 +1,9 @@
+// *****************************************************************************
+// *                                                                           *
+// *                         7. Adventure Construction                         *
+// *                                                                           *
+// *****************************************************************************
+
 = Adventure Construction
 
 This chapter will give a few clues on how to be a successful adventure author, because creating a _good_ adventure is more like writing a book than writing a program (although Alan can be viewed as a kind of programming language).

@@ -71,14 +71,19 @@ These guidelines pertain how code and language keywords should be formatted in t
 
 Code examples blocks in the document should be formatted according to the following guidelines.
 
-In the final document all Alan code examples will be syntax highlighted (not yet implemented), therefore colors will help the reader distinguish between keywords, predefined classes and user defined classes and instances.
+In the final document all Alan code block are syntax highlighted, therefore colours will help the reader distinguish between keywords, predefined classes and user defined classes and instances.
 
 ## Letter Casing
 
-- __keywords__ should be capitalized (eg, `If`, `Then`, `Every`).
-- __keywords__ which consist of multiple words should be capitalized as if there was a space between them (eg, `IsA`, `ElsIf`).
+All code should follow _prose case_ rules, i.e. use capital letters only when at the beginning of an independent line, or when it makes sense to do so (e.g. a proper name that in natural English would be capitalized), although the last rule is at the author discretion.
+
+The goal is to provide a fluid text that looks natural, without emphasizing the programming language aspect.
+
+- __keywords__ should be capitalized only when beginning or closing a block, or when on an independent line or sub-construct (eg, `If`/`End if`, `The`/`End the`, `Every`/`End every`, etc.), with the exception of:
+    + __compound keywords__ which consist of multiple words should be capitalized as if there was a space between them (eg, `IsA`, `ElsIf`), to make them easier to read.
 - __predefined classes__ should be lowercase (eg, `thing`, `actor`).
 - __indentation__: 1 Tab = 2 spaces.
+
 
 ## Truncated Code
 

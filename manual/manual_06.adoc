@@ -1,3 +1,9 @@
+// *****************************************************************************
+// *                                                                           *
+// *                             6. Hints and Tips                             *
+// *                                                                           *
+// *****************************************************************************
+
 = Hints and Tips
 
 This chapter will give you some ideas about how the various features of Alan may be used to implement common features in an adventure game.
@@ -26,33 +32,35 @@ The following examples, hints and tips do _not_ use any library, only plain vani
 Attributes are primarily used for holding status information about the instance to which they belong.
 This allows, for example, a water bottle to contain three levels of water:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The bottle IsA object
   Has level 3.
   Verb drink
     Does
-    If level Of bottle > 0 Then
-      "You take sip from the bottle."
-      Decrease level Of bottle.
-    Else
-      "There is no more water in the bottle."
-    End If.
-  End Verb drink.
+      If level of bottle > 0 then
+        "You take sip from the bottle."
+        Decrease level of bottle.
+      else
+        "There is no more water in the bottle."
+      End if.
+  End verb drink.
 End The bottle.
 --------------------------------------------------------------------------------
 
 Another example is a breakable mirror:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The mirror IsA object
-  Is Not broken.
+  Is not broken.
   Verb break
     Does
       Make mirror broken.
-  End Verb break.
-End The mirror.
+  End verb break.
+End the mirror.
 --------------------------------------------------------------------------------
 
 The appropriate verbs defined in the instances may then modify the attributes and thus update the status information.
@@ -61,23 +69,25 @@ Attributes defined for a whole class of instances also allow an extra dimension 
 If the following declaration is made:
 
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-Add To Every object
- Is Not takeable.
+Add to every object
+ Is not takeable.
 --------------------------------------------------------------------------------
 
 then all objects receive the attribute `takeable` and unless the attribute is specifically redeclared for a particular instance they will not be takeable.
 Note however that the semantic meaning of '`takeable`' (i.e. what actually happens, such as preventing the '`taking`' action) must be implemented e.g. in the verb '`take`':
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Verb take
-  Check Object Is takeable
+  Check object is takeable
     Else "You can't take the $o."
   Does
-    Locate Object In inventory.
-End Verb take.
+    Locate object in inventory.
+End verb take.
 --------------------------------------------------------------------------------
 
 Similarly, restrictions concerning what is possible to eat, drink, open, etc. may also be implemented.
@@ -86,18 +96,19 @@ This use of attributes to classify instances is "`action-oriented`", i.e. they i
 An alternative approach is to use attributes to classify instances according to their characteristics.
 Consider:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Verb take
-  Check o Is Not heavy
+  Check o is not heavy
     Else "That is too heavy."
-  And o Is Not animal
+  And o is not animal
     Else "$+1 moves quickly away, just far enough
           for you not to reach it."
   Does
-    Locate o In hero.
-    "You take" Say The o. "."
-End Verb take.
+    Locate o in hero.
+    "You take" say the o. "."
+End verb take.
 --------------------------------------------------------------------------------
 
 
@@ -111,25 +122,26 @@ Often, the need for an attribute disappears.
 Further more, you don't need to define a syntax for a single parameter verb if it only accepts instances from a particular class.
 Consider the following definitions:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Every vehicle IsA object
-End Every vehicle.
+End every vehicle.
 
 Every car IsA vehicle
   Verb drive
     Does "Yoooohooooo!"
-  End Verb.
-End Every car.
+  End verb.
+End every car.
 
 Every bus IsA vehicle
-End Every bus.
+End every bus.
 
-The car1 IsA car At l
-End The car1.
+The car1 IsA car at l
+End the car1.
 
-The bus1 IsA bus At l
-End The bus1.
+The bus1 IsA bus at l
+End the bus1.
 --------------------------------------------------------------------------------
 
 
@@ -161,38 +173,46 @@ The attributes can be tested in (((IF, statement))) `If` statements to modify th
 
 For example:
 
+// @FIXME @thoni56: The example below needs some fixing:
+//  * "Some moron" -> I'd use another word here in the Manual, something less
+//    susceptible of being viewed as "politically incorrect".
+//  * "broken the glass in it" -> "broken its glass"?
+
+
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The mirror IsA object
-  Is Not broken.
+  Is not broken.
   Description
-    "On the wall there is a beautiful mirror with an
-     elaborate golden frame."
-    If mirror Is broken Then
+    "On the wall there is a beautiful mirror
+     with an elaborate golden frame."
+    If mirror is broken then
       "Some moron has broken the glass in it."
-    End If.
+    End if.
   Verb break
     Does
       Make mirror broken.
-  End Verb break.
-End The mirror.
+  End verb break.
+End the mirror.
 --------------------------------------------------------------------------------
 
 
 If you also use this feature with the short descriptions will make the adventure feel a bit more consistent.
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The bottle IsA object
   Has level 3.
   Article ""
   Mentioned
-    If level Of bottle > 0 Then
+    If level of bottle > 0 then
       "a bottle of water"
     Else
       "an empty bottle"
-    End IF.
-End The bottle.
+    End if.
+End the bottle.
 --------------------------------------------------------------------------------
 
 
@@ -230,6 +250,7 @@ It also includes a lot of other features common to most adventure games.
 (((EVENT, distant events)))
 An effect of the feature that output is not visible unless the hero is present is that the description of an `Event` might not always be presented to the player.
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Event explosion
@@ -239,20 +260,21 @@ Event explosion
    widening fast, stones and debris falling in
    increasing size and numbers until finally the
    complete roof falls down from the heavy explosion."
-  Make Location destroyed.
-End Event.
+  Make location destroyed.
+End event.
 --------------------------------------------------------------------------------
 
 If the hero isn't at the location where the event is executed, he will never know anything about what happened.
 The solution is to create an `Event` that goes off where the hero is.
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Event distant_explosion
   "Somewhere far away you can hear an explosion."
 End Event.
 ...
-If Hero Nearby Then
+If Hero nearby then
   Schedule distant_explosion At Hero After 0.
 ...
 --------------------------------------------------------------------------------
@@ -265,41 +287,42 @@ If Hero Nearby Then
 A common feature in adventure games is the closed door.
 Here's one way implement it:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-The treasury_door IsA object At hallway
+The treasury_door IsA object at hallway
   Name treasury door
-  Is Not open.
+  Is not open.
   Verb open
     Does
       Make treasury_door open.
       Make hallway_door open.
-  End Verb open.
-End The treasury_door.
+  End verb open.
+End the treasury_door.
 
 The hallway IsA location
-  Exit east To treasury
-    Check treasury_door Is open
+  Exit East to treasury
+    Check treasury_door is open
       Else "The door to the treasury is closed."
-  End Exit.
-End The hallway.
+  End exit.
+End the hallway.
 
-The hallway_door IsA object At treasury
+The hallway_door IsA object at treasury
   Name hallway door
-  Is Not open.
+  Is not open.
   Verb open
     Does
       Make treasury_door open.
       Make hallway_door open.
-  End Verb open.
-End The hallway_door.
+  End verb open.
+End the hallway_door.
 
 The treasury IsA location
-  Exit west To hallway
-    Check hallway_door Is open
+  Exit West to hallway
+    Check hallway_door is open
       Else "The door to the hallway is closed."
-  End Exit.
-End The treasury.
+  End exit.
+End the treasury.
 --------------------------------------------------------------------------------
 
 
@@ -314,11 +337,12 @@ Sometimes it may be necessary to ask the player for an answer to some question.
 One example is if you want to confirm an action.
 The following example delineates one simple way to do this, which could be adopted for various circumstances.
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The hero IsA actor
-  Is Not quitting.
-End The hero.
+  Is not quitting.
+End the hero.
 
 Syntax
   'quit' = 'quit'.
@@ -333,18 +357,18 @@ Verb 'quit'
         Type 'yes' to quit, or to carry on just
         type your next command."
   Make hero quitting.
-  Schedule unquit After 1.
-End Verb 'quit'.
+  Schedule unquit after 1.
+End verb 'quit'.
 
 Verb yes
-  Check hero Is quitting
+  Check hero is quitting
     Else "That does not seem to answer any question."
-  Does Quit.
-End Verb yes.
+  Does quit.
+End verb yes.
 
 Event unquit
-  Make hero Not quitting.
-End Event unquit.
+  Make hero not quitting.
+End event unquit.
 --------------------------------------------------------------------------------
 
 
@@ -364,13 +388,14 @@ This means that for every actor action, especially movement, you need to first d
 An example is the movement of an actor from one location to another.
 In this case the step could look something like:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 "Charlie Chaplin goes down the stairs to the hallway."
-Locate charlie_chaplin At hallway.
+Locate charlie_chaplin at hallway.
 "Charlie Chaplin comes down the stairs and
  leaves the house through the front door."
-Locate charlie_chaplin At outside_house.
+Locate charlie_chaplin at outside_house.
 "Charlie Chaplin comes out from the nearest house."
 --------------------------------------------------------------------------------
 
@@ -378,6 +403,7 @@ An actor is described, for example, when a location is entered or as the result 
 This means that a good idea is to include the description of an actor's activities in its `Description`.
 One way to do this would be to use attributes to keep track of the actor's state and test these in the `Description` clause.
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The george IsA actor
@@ -386,13 +412,13 @@ The george IsA actor
     Not cleaning_windows.
     Not tuning.
   Description
-    If george Is cleaning_windows Then
+    If george is cleaning_windows then
       "George Formby is here cleaning windows."
-    ElsIf george Is tuning Then
+    ElsIf george is tuning then
       "George Formby is tuning his ukelele."
     Else
       "George Formby is here."
-    End If.
+    End if.
 ...
 --------------------------------------------------------------------------------
 
@@ -401,6 +427,7 @@ Since the actor's state is partlyt indicated by the script the actor is executin
 The optional (((DESCRIPTION, of actor scripts))) descriptions tied to each script will be executed instead of the main description when the actor is following that script.
 So this would allow us to simplify to:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The george IsA actor
@@ -423,12 +450,13 @@ The george IsA actor
 This makes it easier to keep track of what an actor is doing.
 Another hint here is to describe the change in an actor's activities at the same time as executing the `Use` statement, like
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Event start_cleaning
-  Use Script cleaning For george.
+  Use script cleaning for george.
   "All of a sudden, George starts to clean the windows."
-End Event.
+End event.
 --------------------------------------------------------------------------------
 
 This makes the descriptions of changes to be shown when they take place, and the description of the actor is always consistent.
@@ -443,78 +471,83 @@ However, since the reader/player does not need to know how the output is generat
 
 Let's start with the geography:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The garage IsA location
-End The garage.
+End the garage.
 
 The parking_lot IsA location Name 'Large Parking Lot'
-End The parking_lot.
+End the parking_lot.
 --------------------------------------------------------------------------------
 
 Then we implement the actual car:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The car IsA object Name little red sporty ferrari Name car
   At garage
-  Is Not running.
+  Is not running.
   Has position 0.
 
   Verb enter
     Does
-      Locate hero At inside_car.
-  End Verb enter.
+      Locate hero at inside_car.
+  End verb enter.
 
-End The car.
+End the car.
 --------------------------------------------------------------------------------
 
 We also need a description for the inside of the car.
 We will use another location for this:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The inside_car IsA location Name 'Inside the Ferrari'
   Description
-    "This sporty little red vehicle can really take you
-     places..."
-  Exit out To inside_car
-    Check car Is Not running
-      Else "I think you should stop the car before getting
-            out..."
+    "This sporty little red vehicle
+     can really take you places..."
+  Exit out to inside_car
+    Check car is not running
+      Else "I think you should stop the car
+            before getting out..."
     Does
-      Depending On position Of car
-        = 0 Then Locate hero At garage.
-        = 1 Then Locate hero At parking_lot.
-        --- Etc.
-    End Depend.
-  End Exit.
+      Depending on position of car
+        = 0 then locate hero at garage.
+        = 1 then locate hero at parking_lot.
+        -- etc.
+    End depend.
+  End exit.
 
   Verb drive
-    Check car Is Not running
+    Check car is not running
       Else "You are already driving it!"
     Does
       Make car running.
-      If car At garage Then Schedule drive_to_parking After 0.
-      Else Schedule drive_to_garage After 0.
+      If car at garage
+        then schedule drive_to_parking after 0.
+        else schedule drive_to_garage after 0.
       End If.
-  End Verb drive.
+  End verb drive.
 
   Verb park
-    Check car Is running
+    Check car is running
       Else "You are not driving it!"
     Does
       "You slow to a stop and turn the engine off."
-      Make car Not running.
+      Make car not running.
       Cancel drive_to_parking. Cancel drive_to_garage.
-  End Verb park.
+  End verb park.
 
-End The inside_car.
+End the inside_car.
 --------------------------------------------------------------------------------
 
 
 We must ensure that the player can say just "`drive`" and "`park`" by defining the `Syntax` for those single word commands:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Syntax drive = drive.
@@ -524,23 +557,24 @@ Syntax park = park.
 You can also see from the above code that there are (at least) two events that need to be defined too.
 They handle the movement of the car from one place to another:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Event drive_to_parking
-  "You drive out from your garage and approach
-   a large parking lot."
-  Set position Of car To 1.
-  Locate car At parking_lot.
-  Schedule drive_to_garage After 1.
-End Event drive_to_parking.
+  "You drive out from your garage
+   and approach a large parking lot."
+  Set position of car to 1.
+  Locate car at parking_lot.
+  Schedule drive_to_garage after 1.
+End event drive_to_parking.
 
 Event drive_to_garage
-  "You drive out from the parking lot and approach
-   your own garage."
-  Set position Of car To 0.
-  Locate car At garage.
-  Schedule drive_to_parking After 1.
-End Event drive_to_garage.
+  "You drive out from the parking lot
+   and approach your own garage."
+  Set position of car to 0.
+  Locate car at garage.
+  Schedule drive_to_parking after 1.
+End event drive_to_garage.
 --------------------------------------------------------------------------------
 
 The main idea is that the player/reader is inside the car, and the events are executed at this location, thus emulating movement.
@@ -572,48 +606,53 @@ Such an entity can of course have the container property to allow it to contain 
 
 So to have the hero's body parts available wherever the hero goes you can use:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The body_parts IsA entity
   Container
-End The body_parts.
+End the body_parts.
 
-The right_arm IsA object Name right arm In body_parts ...
-The head IsA object Name head In body_parts ...
+The right_arm IsA object Name right arm in body_parts ...
+The head IsA object Name head in body_parts ...
 --------------------------------------------------------------------------------
 
 
 Using entity containers is also a simple way to create other compartments on the hero, such as a belt:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The belt IsA entity
   Container
     Header
-      If Count In hero > 0 Then "and"
-      Else "but" End If.
-        "in your belt you have"
-      Else
-        ""
-End The belt.
+      If count in hero > 0
+        then "and"
+        else "but"
+      End if.
+      "in your belt you have"
+    Else
+      ""
+End the belt.
 --------------------------------------------------------------------------------
 
 You can combine that with the following definitions of the hero and the *inventory* verb:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The hero IsA actor
   Container
     Header "You are carrying"
     Else "You are empty-handed"
-      If Count In belt = 0 Then "." End If.
-End The hero.
+      If count in belt = 0 then "." End if.
+End the hero.
 
 Verb inventory
   Does
     List hero.
     List belt.
-End Verb inventory.
+End verb inventory.
 --------------------------------------------------------------------------------
 
 And the following output could result:
@@ -642,23 +681,24 @@ Of course, you would not want outdoor things to be available when you are indoor
 To solve this, simply create yet another container object where we can store the outdoor things when they should not be accessible and place it where the hero can never be.
 Now we only need to make sure that the objects are transferred between the two storages:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The outdoor_things IsA entity
   Container
-End The outdoor_things.
+End the outdoor_things.
 
-The outdoor_things_storage IsA object At limbo
+The outdoor_things_storage IsA object at limbo
   Container
-End The outdoor_things_storage.
+End the outdoor_things_storage.
 
-The air IsA object In outdoor_things_storage ...
-The sky IsA object In outdoor_things_storage ...
+The air IsA object in outdoor_things_storage ...
+The sky IsA object in outdoor_things_storage ...
 
-When location Of hero Is outdoors =>
-  Empty outdoor_things_storage In outdoor_things.
-When location Of hero Is Not outdoors =>
-  Empty outdoor_things In outdoor_things_storage.
+When location of hero is outdoors =>
+  Empty outdoor_things_storage in outdoor_things.
+When location of hero is not outdoors =>
+  Empty outdoor_things in outdoor_things_storage.
 --------------------------------------------------------------------------------
 
 
@@ -676,10 +716,11 @@ An alternative to the location attribute is to use classes.
 Define an `outdoor_location` class and an `indoor_location` class.
 Then inherit as appropriate, and the rules could instead look like:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-When location Of hero IsA outdoors_location => ...
-When location Of hero IsA indoors_location => ...
+When location of hero IsA outdoors_location => ...
+When location of hero IsA indoors_location => ...
 --------------------------------------------------------------------------------
 ================================================================================
 
@@ -689,13 +730,14 @@ When location Of hero IsA indoors_location => ...
 Yet another option would be to make use of the ((nested locations)) feature.
 Put all your outdoor locations in a outdoor location where the `outdoor_storage` entity is also present (this is just a hint):
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The outdoor_region IsA location
-End The outdoor_region.
+End the outdoor_region.
 
-The park IsA location At outdoor_region
-End The park.
+The park IsA location at outdoor_region
+End the park.
 --------------------------------------------------------------------------------
 
 
@@ -715,11 +757,12 @@ If you want to have a look at one solution, you can study the Alan Standard Libr
 First we need an attribute owned by all objects.
 We know we only need to consider objects because light sources need to be transported by the player, so they can not just be anywhere, like entities.
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-Add To Every object
-  Is Not lightsource.
-End Add To.
+Add to every object
+  Is not lightsource.
+End add to.
 --------------------------------------------------------------------------------
 
 
@@ -729,11 +772,12 @@ For some instances this attribute might change value dynamically, e.g. when the 
 
 Locations then must declare themselves as lit or not:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-Add To Every location
+Add to every location
   Is lit.
-End Add To.
+End add to.
 --------------------------------------------------------------------------------
 
 Here we assume most locations are lit, dark locations need to declare themselves `Not lit`.
@@ -741,16 +785,17 @@ Here we assume most locations are lit, dark locations need to declare themselves
 We can now count the number of instances at the current location having the attribute `lightsource` set, and if there are one or more there is some light provided.
 So, the *look* verb could be reworked to:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Verb 'look'
-  Check Current Location Is lit
-    Or Count IsA object, Is lightsource, Here > 0
+  Check current location is lit
+    or count IsA object, is lightsource, here > 0
   Else
     "You cannot see anything without any light."
   Does
     Look.
-End Verb.
+End verb.
 --------------------------------------------------------------------------------
 
 
@@ -759,18 +804,17 @@ The `Check` of the `'look'` verb now checks the current locations need for light
 Of course, we must also modify the dark locations so that they don't display their descriptions upon entrance.
 This is easy to do using another addition to every location, a description check, similar to the check in the `'look'` verb:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-Add To Every location
+Add to every location
   Description
-    Check Current Location Is lit
-      Or Count IsA object, Is lightsource, Here > 0
+    Check current location is lit
+      or count IsA object, is lightsource, here > 0
     Else
       "You cannot see anything without any light."
-End Add To.
+End add to.
 --------------------------------------------------------------------------------
-
-
 
 
 
@@ -789,25 +833,26 @@ For objects that need to be visible from a distance, the easiest method is to in
 This is a second object acting on behalf of, or representing, the distant object at the locations where it should be possible to refer to it.
 For example:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The hills IsA location
   :
-End The hills.
+End the hills.
 
-The mountain IsA object At hills
+The mountain IsA object at hills
   :
-End The mountain.
+End the mountain.
 
 The scenic_vista IsA location Name Scenic Vista
-End The scenic_vista.
+End the scenic_vista.
 
-The shadow_mountain IsA object AT scenic_vista
+The shadow_mountain IsA object at scenic_vista
   Name distant mountain
   Description
     "Far in the distance you can see the Pebbly
      Mountain raising towards the sky."
-End The shadow_mountain.
+End the shadow_mountain.
 --------------------------------------------------------------------------------
 
 
@@ -828,10 +873,11 @@ Far in the distance you can see the Pebbly Mountain raising towards the sky. +
 If the mountain must be visible and possible to manipulate from a number of locations, you might implement one shadow object for each location, but this might become a bit tedious if they are many.
 If they are identical you can use a simple rule like the following:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
-When hero At scenic_vista Or hero At hill_road =>
-  Locate shadow_mountain At hero.
+When hero at scenic_vista or hero at hill_road =>
+  Locate shadow_mountain at hero.
 --------------------------------------------------------------------------------
 
 This will ensure that whenever the hero moves to any of the places from where the mountain is visible, the `shadow_mountain` will surely follow.
@@ -839,14 +885,15 @@ However, as the rules are executed _after_ the hero has already moved, a better 
 Instead, its description should be embedded in the description of the adjacent locations.
 Yet, another possibility would be to move the pseudo-object around using statements in the ``Exit``s, like:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The scenic_vista IsA location Name Scenic Vista
-  Exit east To path
+  Exit East to path
     Does
-      Locate shadow_mountain At path.
-  End Exit east.
-End The scenic_vista.
+      Locate shadow_mountain at path.
+  End exit East.
+End the scenic_vista.
 --------------------------------------------------------------------------------
 
 Regardless of which of these strategies you chose, you need to take care that the shadow object is not present when the real object is.
@@ -859,6 +906,7 @@ In this particular case, it should not be moved to the `hills`.
 To allow the player to '`whistle the melody`' for example, there are two different tactics that can be employed.
 One choice is to make the melody an `entity` (or some subclass thereof that you have defined), because, as we have seen, those can be manipulated from everywhere:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The melody IsA entity ...
@@ -869,6 +917,7 @@ Syntax whistle = whistle (m) ...
 The other route would be to make it an actual `object`.
 In this case the `Syntax` for the `whistle` verb would need to indicate omnipotence -- i.e. that the player can refer in the parameter to instances which are far away, including istances inheriting from `object`. (See <<Indicators>> for more details on the _omnipotent indicator_.)
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The melody IsA object ...

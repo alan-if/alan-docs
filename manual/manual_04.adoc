@@ -1,8 +1,8 @@
-// ******************************************************************************
-// *                                                                            *
-// *                           4. Lexical Definitions                           *
-// *                                                                            *
-// ******************************************************************************
+// *****************************************************************************
+// *                                                                           *
+// *                          4. Lexical Definitions                           *
+// *                                                                           *
+// *****************************************************************************
 
 
 = Lexical Definitions
@@ -15,6 +15,7 @@ There are two types of comments, a line comment and a block comment.
 
 A line comment starts with double hyphens (`--`) and extends to the end of the line.
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 -- This is a comment
@@ -25,6 +26,7 @@ The first (ignored) line of a block comment is a line where the first four chara
 The block comment ends with the first line that has four slashes in the first columns.
 It may be follwed by more slashes, but nothing else.
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 //// This line starts a block comment ////
@@ -64,6 +66,7 @@ The first character must be a letter.
 identifier = letter {letter | digit | underscore}
 --------------------------------------------------------------------------------
 
+
 === Quoted Identifiers
 
 There is also a second kind of identifier, namely the quoted identifier.
@@ -83,6 +86,7 @@ A ((quoted identifier)) starts and ends with single quotes and may contain any c
 // @TODO: Add xred to glossary "escaping" in above sentence ("must escape it"),
 // 		  when the entry is available.
 
+// @FIXED-CASING!!!
 [source,alan, subs="+quotes"]
 --------------------------------------------------------------------------------
 The #'Bob''s House'# IsA location. -- ID will be printed as "Bob's House"
@@ -110,12 +114,13 @@ This practice is known as _<<gloss_stropping,((stropping))>>_, and it allows the
 
 This is useful (indeed, required), for example, in the definition of the verb '`look`':
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 Verb 'look'
   Does
     Look.
-End Verb 'look'.
+End verb 'look'.
 --------------------------------------------------------------------------------
 
 [IMPORTANT]
@@ -125,11 +130,12 @@ Whenever an identifier contains an Alan keyword, it's mandatory to use a quoted 
 
 In the following example, the `'The Empty Room'` name needs to be enclosed within single quotes because it contains two Alan keywords (`The` and `Empty`), but there's no need to do so with the `empty_room` identifier because the word `empty` doesn't appear in isolated form (i.e. surrounded by spaces):
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The empty_room IsA location   --> No need to stropp 'empty_room'.
-  NAME 'The Empty Room'.      --> Keywords 'THE' and 'EMPTY' stropped.
-End The.
+  Name 'The Empty Room'.      --> Keywords 'THE' and 'EMPTY' stropped.
+End the.
 --------------------------------------------------------------------------------
 
 [NOTE]
@@ -144,6 +150,7 @@ Since in Alan it's always permissible to enclose an identifier within single quo
 Quoted identifiers retain their exact content.
 They may contain spaces and other special characters, which make them useful as long names for locations as in:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The pluto IsA location Name 'At the Rim of Pluto Crater'
@@ -157,6 +164,7 @@ One single-quoted identifier is used as the whole (((NAME, of locations))) name 
 Identifiers and words retain their capitalization.
 An example is:
 
+// @FIXED-CASING!!!
 [source,alan]
 --------------------------------------------------------------------------------
 The eiffel_tower Name Eiffel tower ...
