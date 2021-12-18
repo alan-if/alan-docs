@@ -20,7 +20,8 @@ case "`git branch --show-current`" in
 esac
 echo Publishing manual for $stream stream...
 pushd /tmp
-git clone -b published git@github.com:alan-if/alan-docs --single-branch
+git clone -b published https://github.com/alan-if/alan-docs --single-branch
+# git clone -b published git@github.com:alan-if/alan-docs --single-branch
 cd alan-docs
 cp $source/manual/manual.html manual-$stream/
 cp $source/manual/manual.pdf manual-$stream/
