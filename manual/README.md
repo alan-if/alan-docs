@@ -71,13 +71,13 @@ The original files of the _Alan Manual_ used for AsciiDoc conversion are availab
 ## Manual Source Files
 
 - [`manual.asciidoc`][man] — The main Alan Manual file that imports all other chapters:
-    + [`manual_01.adoc`][man 01] — _1. Introduction_
-    + [`manual_02.adoc`][man 02] — _2. Concepts_
-    + [`manual_03.adoc`][man 03] — _3. Lexical Definitions_
-    + [`manual_04.adoc`][man 04] — _4. Language Reference_
-    + [`manual_05.adoc`][man 05] — _5. Running An Adventure_
-    + [`manual_06.adoc`][man 06] — _6. Hints And Tips_
-    + [`manual_07.adoc`][man 07] — _7. Adventure Construction_
+    + [`manual_00.adoc`][man 00] — _Introduction_
+    + [`manual_01.adoc`][man 01] — _Part I. Concepts_
+    + [`manual_02.adoc`][man 02] — _Part II. Lexical Definitions_
+    + [`manual_03.adoc`][man 03] — _Part II. Language Reference_
+    + [`manual_04.adoc`][man 04] — _Part IV. Running An Adventure_
+    + [`manual_05.adoc`][man 05] — _Part V. Hints And Tips_
+    + [`manual_06.adoc`][man 06] — _Part VI. Adventure Construction_
     + [`manual_a.adoc`][man a] — _Appendix A: How To Use The System_
     + [`manual_b.adoc`][man b] — _Appendix B: A Sample Interaction_
     + [`manual_c.adoc`][man c] — _Appendix C: Run-Time Messages_
@@ -104,7 +104,6 @@ For more info, see:
 
 - [`/src_scripts/README.md`](./src_scripts/README.md).
 
-[F.1. Format of messages]: https://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#_format_of_messages "Click for a live HTML preview of 'F.1. Format of messages'"
 
 ## Conversion Scripts
 
@@ -270,8 +269,6 @@ If you wish to contribute to its development, read the rest of this document and
 - [Milestones » Appendix G: Localization] — Update _[Appendix G: Localization]_.
 - [Project » Alan Manual (dev)] — Planning future changes and improvements to the _ALAN Manual_.
 
-[Appendix G: Localization]: https://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/AppG-i18n/manual/manual.html#_localization "Live preview of the Appendix WIP in AppG-i18n branch"
-
 [Milestones » Alan Manual Improve Contents]: https://github.com/alan-if/alan-docs/milestone/12
 [Milestones » Appendix G: Localization]: https://github.com/alan-if/alan-docs/milestone/11
 [Project » Alan Manual (dev)]: https://github.com/alan-if/alan-docs/projects/6
@@ -367,13 +364,13 @@ The single source document was then split into multiple files according to chapt
 <!-- Project Files ----------------------------------------------------------->
 
 [man]: ./manual.asciidoc
-[man 01]: ./manual_01.adoc "Source file of Chapter 1. Introduction"
-[man 02]: ./manual_02.adoc "Source file of Chapter 2. Concepts"
-[man 03]: ./manual_03.adoc "Source file of Chapter 3. Lexical Definitions"
-[man 04]: ./manual_04.adoc "Source file of Chapter 4. Language Reference"
-[man 05]: ./manual_05.adoc "Source file of Chapter 5. Running An Adventure"
-[man 06]: ./manual_06.adoc "Source file of Chapter 6. Hints And Tips"
-[man 07]: ./manual_07.adoc "Source file of Chapter 7. Adventure Construction"
+[man 00]: ./manual_00.adoc "Source file of book Introduction"
+[man 01]: ./manual_01.adoc "Source file of Part 1. Concepts"
+[man 02]: ./manual_02.adoc "Source file of Part 2. Lexical Definitions"
+[man 03]: ./manual_03.adoc "Source file of Part 3. Language Reference"
+[man 04]: ./manual_04.adoc "Source file of Part 4. Running An Adventure"
+[man 05]: ./manual_05.adoc "Source file of Part 5. Hints And Tips"
+[man 06]: ./manual_06.adoc "Source file of Part 6. Adventure Construction"
 [man a]: ./manual_a.adoc "Source file of Appendix A: How To Use The System"
 [man b]: ./manual_b.adoc "Source file of Appendix B: A Sample Interaction"
 [man c]: ./manual_c.adoc "Source file of Appendix C: Run-Time Messages"
@@ -402,6 +399,11 @@ The single source document was then split into multiple files according to chapt
 <!-- SCREENSHOTS -->
 
 [PDF footnotes]: ./_pdf-footnotes.problem.png "Screenshots of how footnotes inside a Table are not rendered correctly with Asciidoctor PDF backend"
+
+<!-- Manual Live Links ------------------------------------------------------->
+
+[F.1. Format of messages]: https://alan-if.github.io/alan-docs/manual-alpha/manual.html#format_of_messages "Live HTML preview of 'F.1. Format of messages'"
+[Appendix G: Localization]:  https://alan-if.github.io/alan-docs/manual-alpha/manual.html#localization "Live HTML preview of 'App. G: Localization'"
 
 <!-- Document Cross-References ----------------------------------------------->
 

@@ -73,7 +73,9 @@ CALL alan ZILexample 1> ZILexample.log
                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
-[F.1. Format of messages]: https://htmlpreview.github.io/?https://github.com/alan-if/alan-docs/blob/master/manual/manual.html#_format_of_messages "Click for a live HTML preview of 'F.1. Format of messages'"
+<!-- Manual Live Links -->
+
+[F.1. Format of messages]: https://alan-if.github.io/alan-docs/manual-alpha/manual.html#format_of_messages "Click for a live HTML preview of 'F.1. Format of messages'"
 
 <!-- Issues -->
 

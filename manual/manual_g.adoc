@@ -126,7 +126,6 @@ Some languages have many different articles forms, one for each number and gende
 If you're adventure uses English as the base language, then you can define your noise words by making them synonyms of a known English noise word (e.g. "`the`" or "`go`").
 For example, with the Italian language we would define all possible articles as noise this way:
 
-// @FIXED-CASING!!!
 [source,alan]
 -----------------------------------------------
 Synonyms il, lo, la, 'l''', i, gli, le = 'the'.
@@ -144,7 +143,6 @@ If you can use English without conflicts, then go for it since it's the default 
 To use another natively supported language (i.e. German or Swedish), just enable it via the `Language` option.
 E.g.:
 
-// @FIXED-CASING!!!
 [source,alan]
 ----------------
 Language German.
@@ -190,7 +188,6 @@ For example, in German the command for "`take the book`" would have the noun pre
 
 (literally, "`the book take [it]`") where the parameter occurs in first position, requiring the following `Syntax` definition:
 
-// @FIXED-CASING!!!
 [source,alan]
 Syntax take = (o) nehmen.
 

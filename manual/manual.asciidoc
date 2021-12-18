@@ -1,7 +1,7 @@
 :doctitle:  The ALAN Adventure Language Reference Manual
 :version-label: ALAN
 :revnumber: Beta8
-:revdate:   December 05, 2021
+:revdate:   December 17, 2021
 :author:    Thomas Nilefalk
 :email:     thomas@alanif.se
 :doctype: book
@@ -11,9 +11,14 @@
 :toc: left
 :toclevels: 5
 // Sections Numbering:
-:sectanchors:
+:partnums:
+:part-signifier: Part
+:!chapter-signifier:
 :sectnums:
 :sectnumlevels: 2
+:sectanchors:
+:idprefix:
+:idseparator: _
 // Cross References:
 :xrefstyle: short
 :section-refsig: Sect.
@@ -30,9 +35,10 @@
 // =============================================================================
 //                         Custom Attributes Definition
 // =============================================================================
-// Some attributes for custom substitution of multiple occurences of same text.
+// Some attributes for custom substitution of multiple occurrences of same text.
 
-:alan-www: http://www.alanif.se/[www.alanif.se^]
+:alan-www: https://www.alanif.se[www.alanif.se^, title="Visit the ALAN IF website"]
+:alan-list: https://groups.google.com/g/alan-if/[Alan IF mailing list^, title="Visit the 'Alan IF discussions' list at Google Groups"]
 
 // Path to shared images:
 :assets-img: ../_assets/images/
@@ -61,39 +67,44 @@ image::alan-logo.png[Alan Logo,{logo_width},align="center"]
 // <<< Alan Logo <<<
 
 
-// ==============================================================================
-//                             Include Book Chapters
-// ==============================================================================
+// =============================================================================
+//                            Include Book Parts
+// =============================================================================
 
-:leveloffset: +1
 
-// 1. Introduction
-// ===============
+// Introduction
+// ============
+include::manual_00.adoc[]
+
+// Part I. Concepts
+// ================
 include::manual_01.adoc[]
 
-// 2. Concepts
-// ===========
+// Part II. Lexical Definitions
+// ============================
 include::manual_02.adoc[]
 
-// 3. Lexical Definitions
-// ======================
+// Part III. Language Reference
+// ============================
 include::manual_03.adoc[]
 
-// 4. Language Reference
-// =====================
+// Part IV. Running An Adventure
+// =============================
 include::manual_04.adoc[]
 
-// 5. Running An Adventure
-// =======================
+// Part V. Hints and Tips
+// ======================
 include::manual_05.adoc[]
 
-// 6. Hints and Tips
-// =================
+// Part VI. Adventure Construction
+// ===============================
 include::manual_06.adoc[]
 
-// 7. Adventure Construction
-// =========================
-include::manual_07.adoc[]
+
+
+= Appendices
+
+:leveloffset: +1
 
 // Appendix A: How to Use the System
 // =================================

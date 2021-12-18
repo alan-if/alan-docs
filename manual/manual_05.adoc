@@ -1,324 +1,1364 @@
 // *****************************************************************************
 // *                                                                           *
-// *                         5. Running an Adventure                           *
+// *                          Part V. Hints and Tips                           *
 // *                                                                           *
 // *****************************************************************************
 
-= Running an Adventure
+= Hints and Tips
+
+This chapter will give you some ideas about how the various features of Alan may be used to implement common features in an adventure game.
+These are only suggestions and you are, of course, welcome to invent your own, but these are probably some ideas that can get you started.
+
+Using the `Import` mechanism of the Alan language (see <<IMPORT>>) you can reuse snippets that you invent in multiple games or works.
+By building such a library you don't have to reinvent the same thing every time.
+
+A very easy way to get a lot of functionality, and learn about using the language, is to use the Alan Standard Library.
+You you can download it from the Alan website.
+The library implements many of the things described below, and loads of other handy things for you to use directly.
+For details on how to use that library, refer to its documentation.
 
 
-== A Turn of Events
-
-The player controls the (((execution, of an adventure))) execution of an Alan adventure.
-Each player input is taken care of and acted upon by the run-time system of the interpreter.
-The execution of every Alan adventure begins from the `Start` section: the player is placed at the location indicated in the `Start` section, the location is described, and the player is prompted for a command.
-
-// Q: * After all the above has happened, what turn are we in? Turn 0 or 1?
-//    * Does the initial Start statement count as a turn?
-//    * Are any events executed during the Start section?
-// The above questions should be covered in the initial paragraph(s),
-// so that the reader is not left wondering about them (and not knowing
-// where to look for their answers).
-
-The player input is analysed according to the explicit and implicit `Syntax` rules and converted to an execution of verb checks and bodies.
-Global `Verb` ``Check``s and bodies are used for verbs taking no parameters, otherwise the verb bodies are found in the parameter instances or their classes.
-In case the player typed a directional command the corresponding `Exit` check and code is executed.
-
-After the (((player commands))) player's command has been taken care of, all _rules_ are evaluated and possibly executed.
-Then each of the other ``actor``s executes one step in its ``Script`` (if active) and for each actor the rules are evaluated again.
-Finally, each `Event` that is scheduled for this round is fired, and then rules are evaluated yet again.
-Finally the player is prompted for another command.
-
-So, to summarise:
-
-// @NOTE: The following scheme could be improved upon in various ways.
-//        It could benefit from having clear markers for PLAYER INPUT, RULES,
-//        SCRIPTS, EVENTS. We could also convert it to a flow chart using Dia,
-//        which would also allow us to illustrate player input branching. e.g.
-//        when the input didn't parse correctly, or when a CHECK fails, etc.,
-//        which would make much clearer when a turn is aborted!
-
-* get and execute a player command
-* evaluate all rules
-* for each actor
-** execute one step (if active)
-** evaluate all rules as above
-* end for
-* for each pending event
-** execute it
-** evaluate all rules
-* end for
-
-A player command may be either a verb command or a directional command.
-A verb command is executed by checking the syntax of the input, performing any preconditions (``Check``s) and then executing the verb bodies (as described in <<VERBs,_Verbs_>> and <<Scope,_Scope_>>).
-A directional command is executed by finding any `Exit` in that direction, evaluating the ``Check``s and the body (if any) of that exit and locating the _hero_ at the new location.
-
-If the player enters an empty command, this is equivalent to forfeiting the turn.
-The empty command will result in no action from the hero, but counted as a player turn.
-Pending events will run and other actors will move as usual.
-
-
-
-== Player Input
-
-The `Syntax` defined in the Alan source is the basis for what verb commands the player is allowed to input.
-If the syntax statement allowed referencing an instance (such as an object), then the syntax declares the basic form of that statement.
-In addition, other combinations and variations are possible using special characters and words.
 
 [NOTE]
 ================================================================================
-Obviously these words are different in each language, but here we'll use generic English words, like "`*AND*-word`", to denote all the words that can be used in the same manner.
-The exact list of these words, for every language natively supported in Alan, is available in <<Predefined Player Words>>.
-================================================================================
-
-The following built-in syntax variations are available to the player:
-
-* Concatenation of commands via (((AND (player input)))) (((THEN (player input)))) *AND*-words, like:
-+
-[example,role="gametranscript"]
-================================================================================
-&gt; _open the door THEN enter_ +
-&gt; _take the book AND read it_ +
-&gt; _west. north. east_
-================================================================================
-
-* The use of pronouns (((IT (player input)))) to refer to the last object mentioned in the previous command, e.g.:
-+
-[example,role="gametranscript"]
-================================================================================
-&gt; _take the book and read IT_ +
-&gt; _give key to guard and ask HIM to open the door with IT_
-================================================================================
-+
-The pronouns have to be defined by the author in the source (see <<PRONOUNs>>) or by a library.
-The only built-in pronoun is the *IT*-word, which is automatically defined for the class `thing`.
-
-
-* References to (((multiple parameters))) multiple objects using (((AND (player input)))) *AND*-word.
-This allows:
-+
-[example,role="gametranscript"]
-================================================================================
-&gt; _take the blue vase AND the pillow_ +
-&gt; _examine the red key, the glass bowl AND the compass_
+The following examples, hints and tips do _not_ use any library, only plain vanilla Alan code.
 ================================================================================
 
 
 
-* Reference to multiple objects using (((ALL (player input)))) (((EVERYTHING (player input)))) *ALL*-word:
-+
-[example,role="gametranscript"]
-================================================================================
-&gt; _drop ALL_
-================================================================================
+== Use of Attributes
 
-// @TODO: Could provide also an example with BUT!
+(((attributes)))
+Attributes are primarily used for holding status information about the instance to which they belong.
+This allows, for example, a water bottle to contain three levels of water:
 
-* Excluding objects using a (((BUT (player input)))) (((EXCEPT (player input)))) *BUT*-word, like:
-+
-[example,role="gametranscript"]
-================================================================================
-&gt; _wear everything EXCEPT the bowler hat_
-================================================================================
+[source,alan]
+--------------------------------------------------------------------------------
+The bottle IsA object
+  Has level 3.
+  Verb drink
+    Does
+      If level of bottle > 0 then
+        "You take sip from the bottle."
+        Decrease level of bottle.
+      else
+        "There is no more water in the bottle."
+      End if.
+  End verb drink.
+End The bottle.
+--------------------------------------------------------------------------------
+
+Another example is a breakable mirror:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The mirror IsA object
+  Is not broken.
+  Verb break
+    Does
+      Make mirror broken.
+  End verb break.
+End the mirror.
+--------------------------------------------------------------------------------
+
+The appropriate verbs defined in the instances may then modify the attributes and thus update the status information.
+
+Attributes defined for a whole class of instances also allow an extra dimension of classification of the instances.
+If the following declaration is made:
 
 
+[source,alan]
+--------------------------------------------------------------------------------
+Add to every object
+ Is not takeable.
+--------------------------------------------------------------------------------
 
-* The use of a (((THEM (player input)))) *THEM*–word to refer to the (((multiple parameters))) multiple objects referenced in the previous command, e.g.:
-+
-[example,role="gametranscript"]
-================================================================================
-&gt; _remove the hat and the scarf then drop THEM_
-================================================================================
+then all objects receive the attribute `takeable` and unless the attribute is specifically redeclared for a particular instance they will not be takeable.
+Note however that the semantic meaning of '`takeable`' (i.e. what actually happens, such as preventing the '`taking`' action) must be implemented e.g. in the verb '`take`':
 
-Referencing multiple instances (objects or actors) in a given command position is only possible if the adventure author has allowed it by using a
-(((multiple indicator))) (((parameter, indicators, multiple)))
-multiple `*` indicator in the `Syntax` definition (see <<SYNTAX Definitions>>).
-All the above variations are built-into the interpreter and automatically handled by the run-time system.
+[source,alan]
+--------------------------------------------------------------------------------
+Verb take
+  Check object is takeable
+    Else "You can't take the $o."
+  Does
+    Locate object in inventory.
+End verb take.
+--------------------------------------------------------------------------------
 
-The interpreter also restricts (((parameter, referencing))) parameter references to things which are reachable according to the semantic rules of each built-in base class (see <<Instances>> for the complete details).
-For example, objects can only be referred to if they are present at the current location, except if the `Syntax` for the command uses the (((omnipotent indicator))) (((parameter, indicators, omnipotent)))
-omnipotent `!` indicator (see <<SYNTAX Definitions>> for details).
-For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to <<Distant and Imaginary Objects,_Distant & Imaginary Objects_>>.
+Similarly, restrictions concerning what is possible to eat, drink, open, etc. may also be implemented.
+This use of attributes to classify instances is "`action-oriented`", i.e. they imply that a particular action (verb) is applicable to the instance.
 
-If the player uses *ALL* instead of a reference to an instance in his command, the verb will be applied to all appropriate instances at the current location, _except_ the ones that do not pass all checks for the verb (see <<VERBs>> for further details on this).
+An alternative approach is to use attributes to classify instances according to their characteristics.
+Consider:
 
-// @NOTE: The above paragraph could be clearer about the difference of VERBs
-//    which are attempted and those which simply fail, when using ALL.
-//    Q: * How do the SYNTAX WHERE and VERB CHECKs differ here?
+[source,alan]
+--------------------------------------------------------------------------------
+Verb take
+  Check o is not heavy
+    Else "That is too heavy."
+  And o is not animal
+    Else "$+1 moves quickly away, just far enough
+          for you not to reach it."
+  Does
+    Locate o in hero.
+    "You take" say the o. "."
+End verb take.
+--------------------------------------------------------------------------------
 
-A restriction placed on the player input by the interpreter is that the words the player is allowed to use can only contain alphanumeric characters, underscores and dash.
-This must be kept in mind when naming verbs that use the default syntax (an explicit `Syntax` statement can always specify other player words to trigger the verb).
 
-// @TODO:  Could add xref to "4.2. Words, Identifiers and Names"!
+With this approach you need to keep track of which properties a particular verb will accept or require.
+This could be extended one step further, having verbs check actual dimensions, such as weight or size, instead.
 
-// @CHECK: Here it mentions "underscores and DASH", but it doesn't sound right.
-//         Maybe "hyphen"? "Dash" is ambiguos here, as it usually refers to em-
-//         or en-dashes, which are long dashes.
+And while we are talking about classification, the Alan 3 class concept can help.
+Often a classification can be made, clearly and succinctly, by defining a sub-class, for which every property pertaining to that type of instances can be collected.
+Often, the need for an attribute disappears.
 
-// @CHECK2: What about single and double quotes? After all, identifiers can contain
-//          escaped single quotes (eg: rock'n'roll), and player input could consist
-//          in a string (eg: say "Hello!").
+Further more, you don't need to define a syntax for a single parameter verb if it only accepts instances from a particular class.
+Consider the following definitions:
 
-// @FIXME: That "alphanumeric characters" doesn't really help the reader; we should
-//         include something like (a-z, A-Z, 0-9), but again this wouldn't help
-//         either since Alan will also allow any alphabet letters of the adventure's
-//         encoding (ISO-8859-1, or others). It might be better to specify
-//         "letters, numbers, underscores and hyphens"
+[source,alan]
+--------------------------------------------------------------------------------
+Every vehicle IsA object
+End every vehicle.
 
-== Player Words
+Every car IsA vehicle
+  Verb drive
+    Does "Yoooohooooo!"
+  End verb.
+End every car.
 
-You use `Syntax` statements to define the structure of available player commands.
-The actual player input consists of "`tokens`" which are matched to those structures.
-The most prominent part of that are the words.
-The allowed words comes from
+Every bus IsA vehicle
+End every bus.
 
-* the syntax statement -- the verb word itself and any "`filler`" words, in Alan generalized to "`prepositions`"
-* the special words mentioned above, to allow variations in reference forms
-* synonyms -- directly from the `Synonyms` statements
-* instance names -- adjectives and nouns
+The car1 IsA car at l
+End the car1.
 
-All those words are collected by the Alan compiler into a dictionary of known words.
+The bus1 IsA bus at l
+End the bus1.
+--------------------------------------------------------------------------------
 
-Words in the player's input are separated into tokens by space or by characters not allowed inside words (see above).
 
-Other characters are considered separate tokens.
-Some of those tokens are used in some forms of player input, such as comma and period, as seen above.
-Unrecognized characters will just result in an error.
+Without any `Syntax` definition whatsoever, Alan will supply a default syntax for the `drive` verb which restricts its use to car instances only:
 
-=== Contractions
-
-(((apostrophe, contraction)))(((apostrophe, elision)))
-One special case is the apostrophe ("`{nbsp}`'{nbsp}`").
-It is allowed inside words.
-But in many languages this is also used for ((contractions)), or ((elisions)), such as (English) "`can't`", or (Italian) "`l'acqua`" for the contraction of the definite article and the noun, leaving out some other characters and sounds.
-
-In order to support the contraction of multiple words using the apostrophe, Alan does some special handling of word tokens containing an apostrophe.
-The complete word will first be looked up, but if that is not defined the separate parts will be looked up.
-E.g.
 
 [example,role="gametranscript"]
 ================================================================================
-&gt; _prendi l'acqua_
+&gt; _look_
+
+There is a car1 and a bus1 here.
+
+&gt; _drive bus1_ +
+You can't do that.
+
+&gt; _drive car1_ +
+Yoooohooooo!
 ================================================================================
 
-In this example the word "`l'acqua`" will first be tried as a complete word, and if found in the dictionary, the input will be interpreted as using that word (perhaps a noun).
-If it isn't found, the command parser will split at the apostrophe, first trying "`{nbsp}l`'{nbsp}`" (the contracted definite article) as a separate word.
-Then the second part will be tried, in this case "`acqua`".
 
-This makes it possible to use natural words as nouns and create "`{nbsp}l`'{nbsp}`" as a synonym for the (((article, definite, contracted))) definite article.
-
-
-== Run-Time Contexts
-
-// @NOTE: Instead of "adventure DESCRIPTION (source)" we could use:
-//        "adventure GRAMMAR (source)"? or "DEFINITION"?
-//        In any case, in this particular sentence using DESCRIPTION and DESCRIBED
-//        so close to each other doesn't sound good. But I like GRAMMAR because
-//        the term is used in BNF contexts, so it might be adopted in the Manual
-//        (not just here, but elsewhere too).
-
-When the player enters a command, the Alan run-time system evaluates the various constructs from the adventure description (source) as described above.
-Depending on the player's command evaluation, different parts of the adventure may be triggered.
-These parts all have different conditions under which they are evaluated and have different contexts.
-Five different (((execution, contexts))) execution contexts can be identified:
-
-* *Execution of verbs* -- (((VERB, execution context)))
-  During the execution of a verb (the syntax and verb checks and the verb bodies), which is the result of the player entering a command that was not a directional command, parameters are defined and may be referenced in statements and expressions.
-  In addition, the `Current Actor` is set to the hero and `Current Location` to the location where the hero is (`Here` refers to the location of the hero).
-* *Execution of descriptions* -- (((DESCRIPTION, execution context)))
-  These are triggered as responses to a directional command, a `Look` or `Describe` statement, or a `Locate` statement operating on the hero.
-  During this execution context, no parameters are defined, `Current Actor` is set to the hero, and `Current Location` of course to the location being described.
-  The description clauses for objects and locations, as well as the `Entered` clause of locations, are evaluated in this context.
-  `Entered` clauses are executed for all actors entering a location with `Current Actor` set to the moving actor.
-* *Execution of actors* -- (((ACTOR, execution context)))
-  When an actor performs his script step there are no parameters defined but `Current Actor` is set to the actor currently executing.
-  `Current Location` is set to that of the executing actor (`Here` refers to where the executing actor is).
-* *Execution of events* -- (((EVENT, execution context)))
-  No parameters and no actor are defined.
-  The location is set to where the event was scheduled to execute.
-* *Execution of rules* -- (((RULE, execution context)))
-  Rules are executed without location, so neither parameters, `Current Location` nor `Current Actor` are defined.
-  Any output statement in this context will be completely useless since the hero can never be at the same location of an executing rule.
-
-
-So, the execution of various parts of the adventure source can also be said to have a number of different focuses, meaning where the action is considered to take place:
-
-// @FIMXE: The text for "Rules" must be polished, it's entangled and not very clear!
-
-* *The hero* -- the actions of the player are always focused on the hero, and their execution is always relative to the hero's location.
-* *An actor* -- steps executed by an actor are always focused where the actor is.
-* *An event* -- code executed in events is focused where the event was specified to take place.
-* *A rule* -- rules are executed after each actor (including the hero) and after each event, with the focus set to the complete game world.
-
-
-// @NOTE: "Moving Actors" is an ambiguous title -- does it mean "actors that are moving"
-//        or "how to move around actors?". Possibly "Actors Movement" would be better.
-// BEWARE that before changing the title we need to search through all sources for
-// possible XRefs that also need to be changed accordingly (since we're still using
-// the actual title as the XRef)!
-
-== Moving Actors
-
-(((ACTOR, movement of actors)))
-The main way to (((HERO, movement of))) move the hero around the adventure's world is through (((EXIT))) ``Exit``s (see <<EXITs>>).
-They are executed if the player inputs a directional command, i.e. a word defined as the name for an `Exit` in any location.
-First, the current location is investigated for an `Exit` in the indicated direction, if there is none an error message is printed.
-Otherwise, that exit is examined for ``Check``s, which are run according to normal rules (see <<Verb CHECKs>>).
-If there was no (((CHECK, in exits))) `Check`, or if the checks passed, the statements in the body (the (((DOES, in exits))) `Does`-part) is executed.
-The (((HERO, traversing EXITs))) hero is then located at the `location` indicated in the `Exit` header, which will result in the description of the location (by executing the `Description`-clause of the location) and any objects or actors present (by executing their ``Description``s, explicit or implicit).
-
-When any actor (including the hero) gets located at a `location`, the (((ENTERED, in locations))) `Entered` clause of that location is executed as if the actor had actually entered it by movement.
-The actor being located will be the `Current Actor` even if the movement was not caused by him (but was the result of an event, for example).
-Therefore, this is also the last step in the sequence of events caused by locating the hero somewhere.
+So the class mechanism not only allows for another way to classify your instances, but also makes it much easier to handle player input correctly.
 
 
 
-== Undoing
+== Descriptions
+
+Attributes come in handy when presenting information about instances to the player.
+The attributes can be tested in (((IF, statement))) `If` statements to modify the ``Description``s and possibly even the short description in the `Mentioned` sections.
+
+For example:
+
+// @FIXME @thoni56: The example below needs some fixing:
+//  * "Some moron" -> I'd use another word here in the Manual, something less
+//    susceptible of being viewed as "politically incorrect".
+//  * "broken the glass in it" -> "broken its glass"?
 
 
-A player might occasionally regret a typed command, perhaps realising that it was not the correct one.
-The Alan interpreter supports such undoing of commands.
-The interpreter stores each game state as soon as it has changed, and an (((UNDO command))) `undo` command resets the game state to the last saved one.
-The command history is saved automatically, and as many states as memory permits are saved, providing almost unlimited `undo` capability.
+[source,alan]
+--------------------------------------------------------------------------------
+The mirror IsA object
+  Is not broken.
+  Description
+    "On the wall there is a beautiful mirror
+     with an elaborate golden frame."
+    If mirror is broken then
+      "Some moron has broken the glass in it."
+    End if.
+  Verb break
+    Does
+      Make mirror broken.
+  End verb break.
+End the mirror.
+--------------------------------------------------------------------------------
 
-The player command to restore a previous game state is handled directly by the interpreter.
-It must consist of the single word `undo`.
 
-// Q: * Is therefore the UNDO command hard coded into the interpreter?
-//      if so, it would be the only hard-coded command in ALAN, something
-//      worth mentioning. (the UNDO, RESTART and QUIT commands when a game ends
-//      don't count, for they apply only to a special out-of-game context)
-//    * Is it possible to translate UNDO to other locales?
-//    * Would a custom UNDO VERB override the UNDO command?
-//    * Is it possible to execute/invoke UNDO from ALAN source code?
+If you also use this feature with the short descriptions will make the adventure feel a bit more consistent.
 
-== Scripting and Commenting
+[source,alan]
+--------------------------------------------------------------------------------
+The bottle IsA object
+  Has level 3.
+  Article ""
+  Mentioned
+    If level of bottle > 0 then
+      "a bottle of water"
+    Else
+      "an empty bottle"
+    End if.
+End the bottle.
+--------------------------------------------------------------------------------
 
-// @TODO: Might be worth mentioning that command scripts are also often referred to
-//        as "solution" files, which are used as walkthroughs and are often included
-//        in the adventure distribution as a fallback to complete the game (especially
-//        in adventure contents, where the judges might need to complete the game
-//        before voting). It might also be worth adding here some instructions on
-//        how to create a solution file. Also, mention the various conventions
-//        in naming these file (eg "walktrhough", "walktrhough.sol" and
-//        "<adventure>.sol", etc). The point being that it would be nice to connect
-//        this section with the wider world of Interactive Fiction, games distribution
-//        common practices, etc.
 
-// @TODO: ALAN now adopts the new official '.a3s' and '.a3t' extensions, so we
-//        should mention them here!
+If the bottle had `level` 0 and was in the hero container, this would result in:
 
-Most versions of the Alan interpreter, Arun, supports both the creation of a transcript for the game in progress, as well as playing back a saved transcript as input passed to the interpreter.
 
-These feature are very useful during the development of a game, allowing to play through the game up to a desired point and start from there, or even to automatically test your game.
+[example,role="gametranscript"]
+================================================================================
+&gt; _inventory_ +
+You are carrying an empty bottle.
+================================================================================
 
-// @TODO: Add practical examples (transcipt blocks)!
 
-To make Arun read input from a script file, you can use the special command character '```@```', which should be followed by the name of the text file in which your commands are listed.
 
-You can add comments to each line in a script file.
-The interpreter will not read beyond a semicolon ('```;```'), so anything after it can be seen as a comment.
-Note that this also works for direct player input.
+== Common Verbs
+
+As your adventures library grows, you will find that (((VERB, reusing common verbs))) some verbs are needed often, and always function the same way.
+Examples are '`take`', '`drop`', '`inventory`', '`look`', '`quit`' and so on.
+It is advisable to put them in a file which may then be (((IMPORT, importing files in adventure))) (((including files))) (((file, importing files in adventure))) imported into your games.
+See <<IMPORT>> about the `Import` mechanism.
+The files may then contain these common verbs as well as their syntax definitions and any synonyms.
+Attributes needed for these particular verbs could also be placed in a (((default, attributes))) default attribute declaration in this file.
+
+All your adventures may then import this file (or files), making these features immediately accessible when you start a new adventure.
+All it takes is some thought on what names to use for the attributes, as discussed in <<Use of Attributes>>.
+
+And of course there is already an extensive library available from the Alan website, {alan-www}.
+It also includes a lot of other features common to most adventure games.
+
+
+
+== Distant Events
+
+(((events, hints about)))
+(((EVENT, distant events)))
+An effect of the feature that output is not visible unless the hero is present is that the description of an `Event` might not always be presented to the player.
+
+[source,alan]
+--------------------------------------------------------------------------------
+Event explosion
+  "A gigantic explosion fills the whole room with smoke
+   and dust. Your ears ring from the loud noise. After
+   a while cracks start to show in the ceiling,
+   widening fast, stones and debris falling in
+   increasing size and numbers until finally the
+   complete roof falls down from the heavy explosion."
+  Make location destroyed.
+End event.
+--------------------------------------------------------------------------------
+
+If the hero isn't at the location where the event is executed, he will never know anything about what happened.
+The solution is to create an `Event` that goes off where the hero is.
+
+[source,alan]
+--------------------------------------------------------------------------------
+Event distant_explosion
+  "Somewhere far away you can hear an explosion."
+End Event.
+...
+If Hero nearby then
+  Schedule distant_explosion At Hero After 0.
+...
+--------------------------------------------------------------------------------
+
+
+
+== Doors
+
+(((doors, hints about)))
+A common feature in adventure games is the closed door.
+Here's one way implement it:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The treasury_door IsA object at hallway
+  Name treasury door
+  Is not open.
+  Verb open
+    Does
+      Make treasury_door open.
+      Make hallway_door open.
+  End verb open.
+End the treasury_door.
+
+The hallway IsA location
+  Exit East to treasury
+    Check treasury_door is open
+      Else "The door to the treasury is closed."
+  End exit.
+End the hallway.
+
+The hallway_door IsA object at treasury
+  Name hallway door
+  Is not open.
+  Verb open
+    Does
+      Make treasury_door open.
+      Make hallway_door open.
+  End verb open.
+End the hallway_door.
+
+The treasury IsA location
+  Exit West to hallway
+    Check hallway_door is open
+      Else "The door to the hallway is closed."
+  End exit.
+End the treasury.
+--------------------------------------------------------------------------------
+
+
+Note that we need two doors, one at each location, but they are synchronised by always making them both opened or closed at the same time.
+The check in the ``Exit``s makes sure that the hero cannot pass through a closed door.
+
+
+
+== Questions and Answers
+
+Sometimes it may be necessary to ask the player for an answer to some question.
+One example is if you want to confirm an action.
+The following example delineates one simple way to do this, which could be adopted for various circumstances.
+
+[source,alan]
+--------------------------------------------------------------------------------
+The hero IsA actor
+  Is not quitting.
+End the hero.
+
+Syntax
+  'quit' = 'quit'.
+  yes = yes.
+
+Synonyms
+  y = yes.
+  q = 'quit'.
+
+Verb 'quit'
+  Does "Do you really want to give up?
+        Type 'yes' to quit, or to carry on just
+        type your next command."
+  Make hero quitting.
+  Schedule unquit after 1.
+End verb 'quit'.
+
+Verb yes
+  Check hero is quitting
+    Else "That does not seem to answer any question."
+  Does quit.
+End verb yes.
+
+Event unquit
+  Make hero not quitting.
+End event unquit.
+--------------------------------------------------------------------------------
+
+
+
+
+== Actors
+
+(((actors, hints about)))
+Actors are vital components to make a story dynamic.
+They move around and act according to their ``Script``s.
+To make the player aware of the actions of other actors they need to be described.
+This must be done so that the player always gets the correct perspective on the actors' actions.
+
+A way to ensure this is to rely on the fact that output statements are not shown unless the hero is at the location where the output is taking place.
+This means that for every actor action, especially movement, you need to first describe the actions, then let the actor perform them and, finally, possibly describe the effects.
+
+An example is the movement of an actor from one location to another.
+In this case the step could look something like:
+
+[source,alan]
+--------------------------------------------------------------------------------
+"Charlie Chaplin goes down the stairs to the hallway."
+Locate charlie_chaplin at hallway.
+"Charlie Chaplin comes down the stairs and
+ leaves the house through the front door."
+Locate charlie_chaplin at outside_house.
+"Charlie Chaplin comes out from the nearest house."
+--------------------------------------------------------------------------------
+
+An actor is described, for example, when a location is entered or as the result of a *look* command, in the same way as objects are.
+This means that a good idea is to include the description of an actor's activities in its `Description`.
+One way to do this would be to use attributes to keep track of the actor's state and test these in the `Description` clause.
+
+[source,alan]
+--------------------------------------------------------------------------------
+The george IsA actor
+  Name George Formby
+  Is
+    Not cleaning_windows.
+    Not tuning.
+  Description
+    If george is cleaning_windows then
+      "George Formby is here cleaning windows."
+    ElsIf george is tuning then
+      "George Formby is tuning his ukelele."
+    Else
+      "George Formby is here."
+    End if.
+...
+--------------------------------------------------------------------------------
+
+Although quite feasible, this is a bit tedious.
+Since the actor's state is partlyt indicated by the script the actor is executing, this could be used to avoid the potentially large `If` chain.
+The optional (((DESCRIPTION, of actor scripts))) descriptions tied to each script will be executed instead of the main description when the actor is following that script.
+So this would allow us to simplify to:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The george IsA actor
+  Name George Formby
+  Description
+    "George Formby is here."
+  Script cleaning.
+    Description
+      "George Formby is here cleaning windows."
+    Step
+      ...
+  Script tuning.
+    Description
+      "George Formby is tuning his ukelele."
+    Step
+      ...
+...
+--------------------------------------------------------------------------------
+
+This makes it easier to keep track of what an actor is doing.
+Another hint here is to describe the change in an actor's activities at the same time as executing the `Use` statement, like
+
+[source,alan]
+--------------------------------------------------------------------------------
+Event start_cleaning
+  Use script cleaning for george.
+  "All of a sudden, George starts to clean the windows."
+End event.
+--------------------------------------------------------------------------------
+
+This makes the descriptions of changes to be shown when they take place, and the description of the actor is always consistent.
+You can, of course, still have attributes describing the actor's state to customize the description of the actor on an even more detailed level, but it generally suffices to describe an actor in terms of what script he is executing.
+
+
+
+== Vehicles
+
+The current version of Alan does not support actors being inside containers or inside other actors, which could be a straight forward way to implement vehicles.
+However, since the reader/player does not need to know how the output is generated, we can use a location and a chain of events to substitute for the vehicle.
+
+Let's start with the geography:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The garage IsA location
+End the garage.
+
+The parking_lot IsA location Name 'Large Parking Lot'
+End the parking_lot.
+--------------------------------------------------------------------------------
+
+Then we implement the actual car:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The car IsA object Name little red sporty ferrari Name car
+  At garage
+  Is not running.
+  Has position 0.
+
+  Verb enter
+    Does
+      Locate hero at inside_car.
+  End verb enter.
+
+End the car.
+--------------------------------------------------------------------------------
+
+We also need a description for the inside of the car.
+We will use another location for this:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The inside_car IsA location Name 'Inside the Ferrari'
+  Description
+    "This sporty little red vehicle
+     can really take you places..."
+  Exit out to inside_car
+    Check car is not running
+      Else "I think you should stop the car
+            before getting out..."
+    Does
+      Depending on position of car
+        = 0 then locate hero at garage.
+        = 1 then locate hero at parking_lot.
+        -- etc.
+    End depend.
+  End exit.
+
+  Verb drive
+    Check car is not running
+      Else "You are already driving it!"
+    Does
+      Make car running.
+      If car at garage
+        then schedule drive_to_parking after 0.
+        else schedule drive_to_garage after 0.
+      End If.
+  End verb drive.
+
+  Verb park
+    Check car is running
+      Else "You are not driving it!"
+    Does
+      "You slow to a stop and turn the engine off."
+      Make car not running.
+      Cancel drive_to_parking. Cancel drive_to_garage.
+  End verb park.
+
+End the inside_car.
+--------------------------------------------------------------------------------
+
+
+We must ensure that the player can say just "`drive`" and "`park`" by defining the `Syntax` for those single word commands:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax drive = drive.
+Syntax park = park.
+--------------------------------------------------------------------------------
+
+You can also see from the above code that there are (at least) two events that need to be defined too.
+They handle the movement of the car from one place to another:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Event drive_to_parking
+  "You drive out from your garage
+   and approach a large parking lot."
+  Set position of car to 1.
+  Locate car at parking_lot.
+  Schedule drive_to_garage after 1.
+End event drive_to_parking.
+
+Event drive_to_garage
+  "You drive out from the parking lot
+   and approach your own garage."
+  Set position of car to 0.
+  Locate car at garage.
+  Schedule drive_to_parking after 1.
+End event drive_to_garage.
+--------------------------------------------------------------------------------
+
+The main idea is that the player/reader is inside the car, and the events are executed at this location, thus emulating movement.
+
+There are a multitude of different solutions to this problem.
+One possibility is to exchange the car object for an actor and the events for script steps.
+However, in this solution the car object is not where the hero is (`inside_car`) so the output from the scripts for the car will not automatically be shown to the player.
+There are (at least) two different ways to deal with this (one involving attributes, the other involving an extra object), but the solutions are left as an exercise to the reader!
+
+As Alan allows nesting locations (locating a location at another as if it was an object or actor), yet another solution would be to actually move the car location between the garage and the parking lot.
+
+Sincere thanks go to Walt (sandsquish@aol.com) for inspiring communication that brought this example to life.
+
+
+
+== Floating Objects
+
+Floating objects is a term used for objects that are available everywhere, or at least at many places.
+Usually they are available wherever the hero is, and we want to avoid creating duplicate objects, so in a way we make them "`float`" along with the hero, or some other actor, instead.
+
+
+
+=== Body Parts
+
+One example of floating objects is the various parts of the hero's body.
+
+To create floating objects you can use a particular feature of entities, namely the fact that they are always located where the hero is.
+Such an entity can of course have the container property to allow it to contain a number of other instances.
+
+So to have the hero's body parts available wherever the hero goes you can use:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The body_parts IsA entity
+  Container
+End the body_parts.
+
+The right_arm IsA object Name right arm in body_parts ...
+The head IsA object Name head in body_parts ...
+--------------------------------------------------------------------------------
+
+
+Using entity containers is also a simple way to create other compartments on the hero, such as a belt:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The belt IsA entity
+  Container
+    Header
+      If count in hero > 0
+        then "and"
+        else "but"
+      End if.
+      "in your belt you have"
+    Else
+      ""
+End the belt.
+--------------------------------------------------------------------------------
+
+You can combine that with the following definitions of the hero and the *inventory* verb:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The hero IsA actor
+  Container
+    Header "You are carrying"
+    Else "You are empty-handed"
+      If count in belt = 0 then "." End if.
+End the hero.
+
+Verb inventory
+  Does
+    List hero.
+    List belt.
+End verb inventory.
+--------------------------------------------------------------------------------
+
+And the following output could result:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _inventory_ +
+You are empty-handed but in your belt you have a knife.
+================================================================================
+
+
+
+[NOTE]
+================================================================================
+The example uses the `Count` aggregate to see if the other container is empty or not, and select the appropriate output accordingly.
+================================================================================
+
+
+
+=== Outdoors and Indoors
+
+Another example of floating objects are semi-abstract objects like air, ground and walls.
+Some of these add some extra complexity for they should be available only under certain conditions.
+
+Of course, you would not want outdoor things to be available when you are indoors.
+To solve this, simply create yet another container object where we can store the outdoor things when they should not be accessible and place it where the hero can never be.
+Now we only need to make sure that the objects are transferred between the two storages:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The outdoor_things IsA entity
+  Container
+End the outdoor_things.
+
+The outdoor_things_storage IsA object at limbo
+  Container
+End the outdoor_things_storage.
+
+The air IsA object in outdoor_things_storage ...
+The sky IsA object in outdoor_things_storage ...
+
+When location of hero is outdoors =>
+  Empty outdoor_things_storage in outdoor_things.
+When location of hero is not outdoors =>
+  Empty outdoor_things in outdoor_things_storage.
+--------------------------------------------------------------------------------
+
+
+You need to add the boolean attribute `outdoors` to every location to the make the rules work, of course.
+
+And, _voilà_, every time the hero arrives at an outdoor location he will find the air and the sky.
+And every time he enters a location that has the attribute `outdoors` set to false he will not find them available.
+
+Well, perhaps he would like to have the air available indoors too, but that is left as an exercise for the reader!
+
+
+[TIP]
+================================================================================
+An alternative to the location attribute is to use classes.
+Define an `outdoor_location` class and an `indoor_location` class.
+Then inherit as appropriate, and the rules could instead look like:
+
+[source,alan]
+--------------------------------------------------------------------------------
+When location of hero IsA outdoors_location => ...
+When location of hero IsA indoors_location => ...
+--------------------------------------------------------------------------------
+================================================================================
+
+
+=== Nested Locations as a Solution
+
+Yet another option would be to make use of the ((nested locations)) feature.
+Put all your outdoor locations in a outdoor location where the `outdoor_storage` entity is also present (this is just a hint):
+
+[source,alan]
+--------------------------------------------------------------------------------
+The outdoor_region IsA location
+End the outdoor_region.
+
+The park IsA location at outdoor_region
+End the park.
+--------------------------------------------------------------------------------
+
+
+Then the outdoor items can stay at this "`region`" location, no need for rules or extra containers.
+
+
+
+== Darkness and Light Sources
+
+A very common puzzle in old time adventures (so much so that it has possibly been exploited beyond its potential) is the problem of dark locations and finding a source of light.
+
+Darkness and light sources can be implemented in Alan in different ways.
+Again, we basically have the choice between attributes and classes.
+The solutions are both general and rather similar, so we will have a look at the solution using attributes and leave the other solution to the reader. (A good exercise to really understand the Alan class concept, so please take a stab at it.
+If you want to have a look at one solution, you can study the Alan Standard Library, which uses classes to implement light sources.)
+
+First we need an attribute owned by all objects.
+We know we only need to consider objects because light sources need to be transported by the player, so they can not just be anywhere, like entities.
+
+[source,alan]
+--------------------------------------------------------------------------------
+Add to every object
+  Is not lightsource.
+End add to.
+--------------------------------------------------------------------------------
+
+
+This ensures that all objects have the boolean (true/false valued) attribute `lightsource` with the default not being a light source.
+Any objects that provide light need to explicitly state that they are instead.
+For some instances this attribute might change value dynamically, e.g. when the lamp is lit and extinguished.
+
+Locations then must declare themselves as lit or not:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Add to every location
+  Is lit.
+End add to.
+--------------------------------------------------------------------------------
+
+Here we assume most locations are lit, dark locations need to declare themselves `Not lit`.
+
+We can now count the number of instances at the current location having the attribute `lightsource` set, and if there are one or more there is some light provided.
+So, the *look* verb could be reworked to:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb 'look'
+  Check current location is lit
+    or count IsA object, is lightsource, here > 0
+  Else
+    "You cannot see anything without any light."
+  Does
+    Look.
+End verb.
+--------------------------------------------------------------------------------
+
+
+The `Check` of the `'look'` verb now checks the current locations need for light and then counts instances of object which are both light sources and present, to see if there is light.
+
+Of course, we must also modify the dark locations so that they don't display their descriptions upon entrance.
+This is easy to do using another addition to every location, a description check, similar to the check in the `'look'` verb:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Add to every location
+  Description
+    Check current location is lit
+      or count IsA object, is lightsource, here > 0
+    Else
+      "You cannot see anything without any light."
+End add to.
+--------------------------------------------------------------------------------
+
+
+
+== Distant and Imaginary Objects
+
+Sometimes you need to make it possible for the player to refer to things either far away, that are not really objects or that may be at many places at once.
+Examples of these are a distant mountain that may be examined through a set of binoculars, the melody in "`whistle the melody`", and water or walls.
+One way of handling this is to use entities, since they are "`everywhere`".
+But sometimes you need better control over when they are available and when not.
+
+
+
+=== A Mountain
+
+For objects that need to be visible from a distance, the easiest method is to introduce a (((object, shadow objects))) (((shadow objects))) "`shadow object`".
+This is a second object acting on behalf of, or representing, the distant object at the locations where it should be possible to refer to it.
+For example:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The hills IsA location
+  :
+End the hills.
+
+The mountain IsA object at hills
+  :
+End the mountain.
+
+The scenic_vista IsA location Name Scenic Vista
+End the scenic_vista.
+
+The shadow_mountain IsA object at scenic_vista
+  Name distant mountain
+  Description
+    "Far in the distance you can see the Pebbly
+     Mountain raising towards the sky."
+End the shadow_mountain.
+--------------------------------------------------------------------------------
+
+
+This would allow for example at `scenic_vista`:
+
+
+[example,role="gametranscript"]
+================================================================================
+*Scenic Vista.* +
+Far in the distance you can see the Pebbly Mountain raising towards the sky. +
+
+&gt; _look at mountain through the binoculars_ +
+...
+================================================================================
+
+
+
+If the mountain must be visible and possible to manipulate from a number of locations, you might implement one shadow object for each location, but this might become a bit tedious if they are many.
+If they are identical you can use a simple rule like the following:
+
+[source,alan]
+--------------------------------------------------------------------------------
+When hero at scenic_vista or hero at hill_road =>
+  Locate shadow_mountain at hero.
+--------------------------------------------------------------------------------
+
+This will ensure that whenever the hero moves to any of the places from where the mountain is visible, the `shadow_mountain` will surely follow.
+However, as the rules are executed _after_ the hero has already moved, a better strategy might be to make the `shadow_mountain` '`silent`', i.e. to have no description.
+Instead, its description should be embedded in the description of the adjacent locations.
+Yet, another possibility would be to move the pseudo-object around using statements in the ``Exit``s, like:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The scenic_vista IsA location Name Scenic Vista
+  Exit East to path
+    Does
+      Locate shadow_mountain at path.
+  End exit East.
+End the scenic_vista.
+--------------------------------------------------------------------------------
+
+Regardless of which of these strategies you chose, you need to take care that the shadow object is not present when the real object is.
+In this particular case, it should not be moved to the `hills`.
+
+
+
+=== The Melody
+
+To allow the player to '`whistle the melody`' for example, there are two different tactics that can be employed.
+One choice is to make the melody an `entity` (or some subclass thereof that you have defined), because, as we have seen, those can be manipulated from everywhere:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The melody IsA entity ...
+Syntax whistle = whistle (m) ...
+--------------------------------------------------------------------------------
+
+
+The other route would be to make it an actual `object`.
+In this case the `Syntax` for the `whistle` verb would need to indicate omnipotence -- i.e. that the player can refer in the parameter to instances which are far away, including istances inheriting from `object`. (See <<Indicators>> for more details on the _omnipotent indicator_.)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The melody IsA object ...
+Syntax whistle = whistle (m)! ...
+--------------------------------------------------------------------------------
+
+The melody then does not have to be reachable, near or even be at any location at all, for the player to be able to refer to it.
+
+In both cases you would most likely need to restrict the parameters for the syntax so that the player can't '`whistle the chair`'.
+Which of the two strategies you would chose depends mainly on things like:
+
+* are there many things that this applies to (many '`melodies`', perhaps)?
+* should the player be able to manipulate this instance in other ways?
+* do you need many different entities for various purposes?
+
+
+== Using Events as Functions
+
+[WARNING]
+================================================================================
+TBD.
+================================================================================
+
+
+== Structure
+
+
+A good thing to do when designing an interactive fiction story is to separate the geography from the story.
+In Alan, you can use the `Import` facility to structure your Alan source.
+One approach could be to place the description of each location in a separate file along with any objects that could be considered part of the scenery and other related items.
+These files can then all be included in a '`map`' file, which in turn is included by the top-level file.
+
+The story line can be divided into files too, one for each '`scene`' -- a scene being comments describing the important things that are suppose to happen, any prerequisites and objects, events, rules, etc. which are specific for this part of the story.
+
+This strategy will both give you a better structure of your adventure as well as help you design a better story, much like the storyboarding technique used in making movies or plays.
+
+
+
+== Debugging
+
+Occasionally your Alan code is flawed and you really can't understand what is actually happening.
+To aid in discovering which part of your code is run when, the interpreter ((Arun)) incorporates some ((debugging)) features.
+There are a few (((debugging, switches))) debugging switches available when starting the interpreter from the command line:
+
+
+[literal, role="plaintext", subs="normal"]
+................................................................................
+*-c*       Log the commands input by the player
+*-l*       Log a complete transcript of the game
+*-t<n>*    Enable trace mode (<n> = level 1,2,3 or 4)
+*-d*       Enter the debugger when the game starts
+................................................................................
+
+[IMPORTANT]
+================================================================================
+The `-t` and `-d` switches cannot be used unless the adventure has been compiled with the `Debug` option set (see <<Options>>).
+================================================================================
+
+
+
+=== Command Logs and Game Transcripts
+
+For various purposes, such as debugging, a log of the game play can be handy.
+
+There are two such options available.
+One is a command input log and it is created when the option `-c` is given to the interpreter when starting a game.
+Such a file is also sometimes called a "solution file" since it can be used to show the solution to a game.
+
+A command input log can sometimes be used as input to the interpreter, and thus automate the execution of the exact player experience.
+
+The other options is to create a complete transcript of the game play and is created when the option `-l` is used.
+Such a log file contains both player input and the game output.
+
+Both kinds of log files are created in the directory which was current when the interpreter was started, the name of the log file will begin with the game name.
+They will have the extension *.a3s*, for "Alan v3 Solution", or *.a3t*, for "Alan v3 Transcript", respectively.
+
+
+
+=== Interpreter and Instruction Trace
+
+(((interpreter)))
+Trace mode can also be helpful when debugging.
+Level 1 of tracing will show each section, verb, exit, description etc., the interpreter is invoked on, making it easier to see which parts of the code are executed.
+
+Trace level 2, instruction trace, will in addition also trace the execution of each operation in the generated code.
+Level 3 shows the execution of all steps, also those only pushing to or popping from stack.
+Level 4 dumps the content of the stack between each instruction.
+So higher numbers gives more information but is probably also less and less useful for normal debugging.
+
+
+
+=== Debug Mode
+
+Finally, and usually most useful, there is the debug mode.
+If the interpreter is started with this option, it will execute the start up sequence and then prompt for a debug command with:
+
+
+[example,role="gametranscript"]
+================================================================================
+adbg&gt;
+================================================================================
+
+
+
+=== Using the Debugger
+
+((Abug)) may also be entered during the execution of an adventure.
+To do this you simply give the following player command (type it at the game prompt):
+
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _debug_
+================================================================================
+
+
+The game must have been compiled with the debug option or the command will be sent to the game which probably does not recognize it.
+
+Typing a question mark or *help* in response to the debug prompt will give a brief listing of the commands available in Abug:
+
+
+................................................................................
+break [[file]:[n]]   -- set breakpoint at source line [n] in [file]
+delete [[file]:[n]]  -- delete breakpoint at source line [n] in [file]
+files                -- list source files
+events               -- show events
+classes              -- show class hierarchy
+instances [n]        -- show instance(s)
+objects [n]          -- show instance(s) that are objects
+actors [n]           -- show instance(s) that are actors
+locations [n]        -- show instances that are locations
+trace ('source'|'section'|'instruction'|'push'|'stack')
+                     -- toggle various traces
+next                 -- execute to next source line
+go                   -- go another player turn
+exit                 -- exit debug mode and return to game, enter again using 'debug' as input
+x                    -- d:o
+quit                 -- quit game
+................................................................................
+
+
+[TIP]
+================================================================================
+Any command may be abbreviated as long as it is unambiguous.
+Typing *b* for *break* will work, for example.
+================================================================================
+
+
+
+The display commands, *actors*, *locations*, *objects* and *events*, may optionally be followed by a number.
+Abug will then display detailed information about the entity requested, such as values of attributes, its present location, etc.
+Currently there is no way to modify anything using Abug.
+
+You can run the adventure to the next source line by using the *next* command.
+If the source file is available, the interpreter will also show the source line.
+
+Breakpoints can be set on a source line.
+Enter the *break* command followed by the number of the source line.
+Alan allows the source to be separated into multiple files, so the interpreter always indicate which file the source line is in, e.g. when hitting a breakpoint or stepping to the next source line.
+When setting a breakpoint, the current file is always assumed.
+You can currently set a breakpoint in another source file by preceding the line number with the file name delimited by a colon.
+
+Breakpoints can be deleted.
+The *delete* command without a line number will remove any breakpoint at the current line.
+You can specify which breakpoint to delete by giving the line number (and optionally the file name).
+
+
+[NOTE]
+================================================================================
+The debugger knows on which source lines it is possible to place a breakpoint.
+If you attempt to put a breakpoint at some line where it is not possible, it will attempt to place one at a line which is numerically higher but as close a possible.
+This will sometimes cause a breakpoint to be placed in a context that will not be what you expected.
+================================================================================
+
+
+The *trace* command and its options correspond to the types of traces described in the section on <<Command Logs and Game Transcripts,_Command Logs and Game Transcripts_>> above.
+
+Wherever different output styles are available, e.g. in GLK based interpreters like WinArun, the Alan debugger tries to use them to distinguish the debugger output from the output of your game by using the pre-formatted style (see the section on styles in <<Output Statements>>).
+
+// @NOTE STYLES:
+//    For the following transcript session I've dropped the "gametranscript"
+//    style (role) in favour of a verbatim block (with role="shell") because
+//    the "gametranscript" style was meant to mimick Gargoyle, and it was
+//    difficoult to preserve the monospaced debugging style along with the
+//    serif fonts.
+
+// @CHANGED STYLES: Dropped bold.
+//    Also, I've only kept the italic for player input, and dropped the bold
+//    for output -- which was mentioned in the text but not actually present
+//    in the PDF document either!
+
+The following is a short excerpt from a command line debugging session (user input in
+italics):
+
+// @TODO RISK FOR OBSOLETE DEBUG TRANSCRIPT:
+//   This should really be generated from a real game using a commands script,
+//   and then imported in the document. But since there are some abbreviated passages
+//   and the styling that would take some effort. It is possible that this does
+//   not actually change significantly often enough to warrant the effort of
+//   automating it.
+
+[literal, role="shell", subs="+quotes"]
+................................................................................
+<Arun - Adventure Language Interpreter version 3.0beta8 (2021-04-05 21:19:57)>
+<Version of 'saviour.a3c' is 3.0beta8!>
+<Hmm, this is a little-endian machine, fixing byte ordering....OK.>
+<'saviour' contains the following IFIDs:
+  IFID:	UUID://c065a752-a476-a252-731f-e9fe96fcdc6d//
+>
+adbg> _n_
+
+adbg:  Stepping to saviour.alan:1346
+<01346>:     "$pWelcome to the game of SAVIOUR!$pIn this game your mission
+adbg> _n_
+
+Welcome to the game of SAVIOUR!
+
+<<Game output deleted for breivity>>
+
+adbg:  Stepping to saviour.alan:1354
+<01354>:     Show 'logo.png'.
+adbg> _n_
+
+adbg:  Stepping to saviour.alan:1355
+<01355>:     "$iVisit the Alan Home Pages at:"
+
+adbg> _break 1357_
+Line 1357 not available, breakpoint instead set at saviour.alan:1358
+<01358>:     Visits 2.
+
+adbg> _g_
+
+    Visit the Alan Home Pages at:
+
+
+    http://www.alanif.se
+
+adbg:  Breakpoint hit at saviour.alan:1358
+<01358>:     Visits 2.
+adbg> _n_
+
+Outside The Tall Building
+
+adbg:  Stepping to saviour.alan:318
+<00318>:         "To the north is a tall ancient building with a large entrance.
+adbg> _n_
+To the north is a tall ancient building with a large entrance. On
+the top there is a clock tower. Most of the windows in the building are
+broken, and a sign with three oval objects are hanging lose from the wall.
+
+> _north_
+adbg:  Stepping to saviour.alan:325
+<00325>:             Score 5.
+
+adbg> _?_
+Alan 3.0beta8 -- Adventure Language System (2021-04-05 21:19)
+ADBG Commands (can be abbreviated):
+    help               -- this help
+    ?                  -- d:o
+    break [[file:]n]   -- set breakpoint at source line [n] (optionally in [file])
+    delete [[file:]n]  -- delete breakpoint at source line [n] (optionally in [file])
+    files              -- list source files
+    events             -- list events
+    classes            -- list class hierarchy
+    instances [n]      -- list instance(s), all, wildcard, number or name
+    objects [n]        -- list instance(s) that are objects
+    actors [n]         -- list instance(s) that are actors
+    locations [n]      -- list instances that are locations
+    trace ('source'|'section'|'instruction'|'push'|'stack')
+                       -- toggle various traces
+    next               -- continue game and stop at next source line
+    go                 -- go another player turn
+    exit               -- exit to game, enter 'debug' to get back
+    x                  -- d:o
+    quit               -- quit game
+
+adbg> _trace section_
+Section trace on.
+adbg> _n_
+
+<EXIT north[1] from Outside The Tall Building[4], Moving:>
+<ENTERED in class entity[1] is empty>
+<ENTERED in class location[2] is empty>
+<ENTERED in instance Hall[5] is empty>
+
+Hall
+
+adbg:  Stepping to saviour.alan:332
+<00332>:         "Inside the entrance is a hallway full of dust and pieces of
+adbg> instances
+Instances:
+    [1] #nowhere ("#nowhere")
+    [2] pseudowords ("pseudowords") (container), at [1] #nowhere ("#nowhere")
+    [3] nowhere ("nowhere")
+    [4] outside ("Outside The Tall Building")
+    [5] Hall ("Hall")
+    [6] door ("door"), at [5] Hall ("Hall")
+    [7] stairs ("Stairs")
+    [8] cellar ("cellar")
+    [9] rats ("rats"), at [8] cellar ("cellar")
+    [10] store ("store")
+    [11] tape ("spool of computer tape"), at [10] store ("store")
+    [12] first_floor ("First Floor")
+    [13] book ("old book"), at [12] first_floor ("First Floor")
+<<list abbreviated>>
+
+adbg> instance 13
+The [13] book ("old book") Isa object[4]
+    Location: at [12] first_floor ("First Floor")
+    Attributes:
+        Takeable[2] = 1
+        Readable[3] = 1
+        openable[4] = 0
+        startable[5] = 0
+        examinable[6] = 1
+
+adbg> _g_
+Inside the entrance is a hallway full of dust and pieces of the
+ceiling has fallen to the floor. At the west end is a staircase, and to
+the south is the exit. To the east is a folding door. It is closed.
+
+> _west_
+
+<EXIT west[3] from Hall[5], Moving:>
+<ENTERED in class entity[1] is empty>
+<ENTERED in class location[2] is empty>
+<ENTERED in instance Stairs[7] is empty>
+
+Stairs
+You are at the landing of an old staircase. It seem steady enough to walk
+in, but be careful if you are going to use it. There is a passage leading
+up, and another leading down into a dark cellar. To the east is the
+hallway. A strange smell emerges from below.
+
+> _up_
+
+<EXIT up[5] from Stairs[7], Moving:>
+<ENTERED in class entity[1] is empty>
+<ENTERED in class location[2] is empty>
+<ENTERED in instance First Floor[12] is empty>
+
+First Floor
+The landing on the first floor is as dirty as all the others. Meters and
+meters of old cables are laying around, leading into a room to the east.
+The stairs leads up and down. They still seem alright. Through the dirty
+windows the barren field outside the building can be seen. Almost
+completely covered by dust, there is an old book laying on the floor here.
+
+> _take book and read it_
+
+<VERB 21, in parameter str(#1)=old book[13], inherited from object[4], CHECK:>
+<VERB 21, in parameter str(#1)=old book[13], inherited from object[4], DOES:>
+Taken.
+
+<VERB 5, in parameter object(#1)=old book[13], inherited from object[4], CHECK:>
+<VERB 5, in parameter object(#1)=old book[13], DOES:>
+As you carefully try to open the book it falls apart into dust and falls
+to the floor through your fingers.
+
+> _debug_
+
+adbg> _instance 13_
+The [13] book ("old book") Isa object[4]
+    Location: at [3] nowhere ("nowhere")
+    Attributes:
+        Takeable[2] = 1
+        Readable[3] = 1
+        openable[4] = 0
+        startable[5] = 0
+        examinable[6] = 1
+
+adbg> _trace instruction_
+Instruction trace on.
+adbg> _n
+> _north_
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+1f85: PRINT        10048,     22                  "You can't go that way."
+1f86: RETURN
+--------------------------------------------------
+
+> _west_
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+1f85: PRINT        10048,     22                  "You can't go that way."
+1f86: RETURN
+--------------------------------------------------
+
+> _east_
+
+<EXIT east[2] from First Floor[12], Moving:>
+<ENTERED in class entity[1] is empty>
+<ENTERED in class location[2] is empty>
+<ENTERED in instance office[14] is empty>
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+ fcb: LINE             0,      0
+ fce: PRINT         3479,      6                  "Office"
+ fcf: RETURN
+--------------------------------------------------
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+ fd2: LINE             0,    598
+adbg:  Stepping to saviour.alan:598
+<00598>:         "In front of you is a deserted office area. Desks and chairs
+
+adbg> _g_
+
+ fd5: PRINT         3485,    404                  "In front of you is a deserted
+office area. Desks and chairs are piled up in one corner. The ventilation
+system has partly fallen to the floor, tearing part of the ceiling down
+with it. Under the twisted tubing a couple of old coffee makers are
+crushed to pieces. One shelf, having some kind of lettering, no longer
+readable, is thrown to one side, and another is still standing in a
+corner, full of dust."
+ fd6: RETURN
+--------------------------------------------------
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+100c: LINE             0,    616
+100f: ATTRIBUTE       15,     17                 =0
+1010: NOT           FALSE                        =TRUE
+1011: IF             TRUE
+1014: LINE             0,    617
+1017: PRINT         3711,     43                  " There is a ladder laying on the
+floor here."
+1018: ELSE
+    :
+1029: RETURN
+--------------------------------------------------
+
+> _look_
+
+<VERB 19, GLOBAL, DOES:>
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+ 7dc: LINE             0,    199
+ 7dd: LOOK
+++++++++++++++++++++++++++++++++++++++++++++++++++
+ fcb: LINE             0,      0
+ fce: PRINT         3479,      6                  "Office"
+ fcf: RETURN
+--------------------------------------------------
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+ fd2: LINE             0,    598
+ fd5: PRINT         3485,    404                  "In front of you is a deserted
+office area. Desks and chairs are piled up in one corner. The ventilation
+system has partly fallen to the floor, tearing part of the ceiling down
+with it. Under the twisted tubing a couple of old coffee makers are
+crushed to pieces. One shelf, having some kind of lettering, no longer
+readable, is thrown to one side, and another is still standing in a
+corner, full of dust."
+ fd6: RETURN
+--------------------------------------------------
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+100c: LINE             0,    616
+100f: ATTRIBUTE       15,     17                 =0
+1010: NOT           FALSE                        =TRUE
+1011: IF             TRUE
+1014: LINE             0,    617
+1017: PRINT         3711,     43                  " There is a ladder
+laying on the floor here."
+1018: ELSE
+    :
+1029: RETURN
+--------------------------------------------------
+ 7de: RETURN
+--------------------------------------------------
+
+> _q_
+................................................................................
+
+
+In the instruction trace, lines of `+` characters indicates the start of interpretation, thus they can be present inside other single step traces (like the `Look` in the example above).
+Lines of dashes, indicates the return from one such level of interpretation.
 
 
 // EOF //

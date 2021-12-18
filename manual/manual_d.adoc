@@ -116,7 +116,7 @@ The reserved words `Random` and `In` must be followed by an expression (which, t
 == Keywords
 
 The following is a complete list of all keywords in the Alan language.
-Note that they can still be used as identifiers in a source file if the rules described in <<_words_identifiers_and_names>> are followed.
+Note that they can still be used as identifiers in a source file if the rules described in <<words_identifiers_and_names>> are followed.
 Basically this means that if you surround them by single quotes they can be used as identifiers in your source code anyway.
 This might be especially important if you want to use any of these words as words the player might want to input, such as part of a name for an item.
 

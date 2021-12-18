@@ -1,276 +1,324 @@
 // *****************************************************************************
 // *                                                                           *
-// *                          4. Lexical Definitions                           *
+// *                       Part IV. Running an Adventure                       *
 // *                                                                           *
 // *****************************************************************************
 
-
-= Lexical Definitions
-
-
-== Comments
-
-Comments may be placed anywhere in the Alan source.
-There are two types of comments, a line comment and a block comment.
-
-A line comment starts with double hyphens (`--`) and extends to the end of the line.
-
-// @FIXED-CASING!!!
-[source,alan]
---------------------------------------------------------------------------------
--- This is a comment
---------------------------------------------------------------------------------
-
-A block comment can be used to comment out longer sections of Alan code.
-The first (ignored) line of a block comment is a line where the first four characters are forward slashes, it may then be followed by anything.
-The block comment ends with the first line that has four slashes in the first columns.
-It may be follwed by more slashes, but nothing else.
-
-// @FIXED-CASING!!!
-[source,alan]
---------------------------------------------------------------------------------
-//// This line starts a block comment ////
-These lines will be
-completely ignored.
-//// So will this line ////
-The block comment will end after the following line
-////////////////////////////////
---------------------------------------------------------------------------------
+= Running an Adventure
 
 
-== Words, Identifiers and Names
+== A Turn of Events
 
-// @IMPROVE @thoni56: Accented Letters in Identifiers.
-//   Might be worth mentioning that letters also include letters with accents,
-//   diacritics, etc., which are supported by the encoding set for the adventure.
-//   This is an important topic for users authoring in languages other than English
-//   which use special letters, as they'd naturally use them in identifiers too.
-//   The whole topic of the different encodings supported by Alan in source files,
-//   compiler switches, etc., is not covered at all in the Manual, and can lead
-//   to confusion and problems. Some important questions to address:
-//
-//      * How do encoding settings affect the range of usable chars in identifiers?
-//      * Which are the usable characters in identifiers?
-//
-//   The BNF rule and the text below mention "letter", but the term is rather
-//   generic as it could mean many different things in different contexts -- e.g.
-//   in RegEx it could be just Ascii letters, or any letter in the Unicode range.
+The player controls the (((execution, of an adventure))) execution of an Alan adventure.
+Each player input is taken care of and acted upon by the run-time system of the interpreter.
+The execution of every Alan adventure begins from the `Start` section: the player is placed at the location indicated in the `Start` section, the location is described, and the player is prompted for a command.
 
-An identifier is a word in the Alan source, which is used as a reference to a construct, such as an instance.
-Identifiers (((identifier, lexical definition))) may only be composed of letters, digits and underscores.
-The first character must be a letter.
-(((BNF, rules of, identifier)))
+// Q: * After all the above has happened, what turn are we in? Turn 0 or 1?
+//    * Does the initial Start statement count as a turn?
+//    * Are any events executed during the Start section?
+// The above questions should be covered in the initial paragraph(s),
+// so that the reader is not left wondering about them (and not knowing
+// where to look for their answers).
 
-[source,bnf]
---------------------------------------------------------------------------------
-identifier = letter {letter | digit | underscore}
---------------------------------------------------------------------------------
+The player input is analysed according to the explicit and implicit `Syntax` rules and converted to an execution of verb checks and bodies.
+Global `Verb` ``Check``s and bodies are used for verbs taking no parameters, otherwise the verb bodies are found in the parameter instances or their classes.
+In case the player typed a directional command the corresponding `Exit` check and code is executed.
+
+After the (((player commands))) player's command has been taken care of, all _rules_ are evaluated and possibly executed.
+Then each of the other ``actor``s executes one step in its ``Script`` (if active) and for each actor the rules are evaluated again.
+Finally, each `Event` that is scheduled for this round is fired, and then rules are evaluated yet again.
+Finally the player is prompted for another command.
+
+So, to summarise:
+
+// @NOTE: The following scheme could be improved upon in various ways.
+//        It could benefit from having clear markers for PLAYER INPUT, RULES,
+//        SCRIPTS, EVENTS. We could also convert it to a flow chart using Dia,
+//        which would also allow us to illustrate player input branching. e.g.
+//        when the input didn't parse correctly, or when a CHECK fails, etc.,
+//        which would make much clearer when a turn is aborted!
+
+* get and execute a player command
+* evaluate all rules
+* for each actor
+** execute one step (if active)
+** evaluate all rules as above
+* end for
+* for each pending event
+** execute it
+** evaluate all rules
+* end for
+
+A player command may be either a verb command or a directional command.
+A verb command is executed by checking the syntax of the input, performing any preconditions (``Check``s) and then executing the verb bodies (as described in <<VERBs,_Verbs_>> and <<Scope,_Scope_>>).
+A directional command is executed by finding any `Exit` in that direction, evaluating the ``Check``s and the body (if any) of that exit and locating the _hero_ at the new location.
+
+If the player enters an empty command, this is equivalent to forfeiting the turn.
+The empty command will result in no action from the hero, but counted as a player turn.
+Pending events will run and other actors will move as usual.
 
 
-=== Quoted Identifiers
 
-There is also a second kind of identifier, namely the quoted identifier.
-(((BNF, rules of, quoted identifier)))
-(((BNF, rules of, identifier, quoted)))
+== Player Input
 
-[source,bnf]
---------------------------------------------------------------------------------
-id = identifier
-   | quoted_identifier
-
-quoted_identifier = quote {any_character} quote
---------------------------------------------------------------------------------
-
-A ((quoted identifier)) starts and ends with single quotes and may contain any character (including spaces) except single quotes -- if you need to include a single quote inside a quoted identifier, you must _escape it_ by doubling it, e.g.:
-
-// @TODO: Add xred to glossary "escaping" in above sentence ("must escape it"),
-// 		  when the entry is available.
-
-// @FIXED-CASING!!!
-[source,alan, subs="+quotes"]
---------------------------------------------------------------------------------
-The #'Bob''s House'# IsA location. -- ID will be printed as "Bob's House"
-End the.
---------------------------------------------------------------------------------
-
-When the Alan compiler encounters two consecutive single quotes inside a quoted identifier, it will treat them as if they were one single quote which is part of the identifier, and not as a the single quote _delimiter_ indicating the end of the identifier.
-
-In the above example, the identifier will be printed as "`Bob's House`" in the actual game -- the enclosing single quote delimiters being ignored in print, and the two consecutive single quotes printed as one single quote.
-
-Any sequence of characters enclosed within single quotes can become an identifier, except inside strings (where single quotes are treated as ordinary printable characters).
-
+The `Syntax` defined in the Alan source is the basis for what verb commands the player is allowed to input.
+If the syntax statement allowed referencing an instance (such as an object), then the syntax declares the basic form of that statement.
+In addition, other combinations and variations are possible using special characters and words.
 
 [NOTE]
 ================================================================================
-A single-word identifier can be written within or without single quotes, indifferently (unless it's a keyword).
-Therefore, `'someID'` and `someID` both refer to the same identifier in the source code.
+Obviously these words are different in each language, but here we'll use generic English words, like "`*AND*-word`", to denote all the words that can be used in the same manner.
+The exact list of these words, for every language natively supported in Alan, is available in <<Predefined Player Words>>.
 ================================================================================
 
-=== Keywords as Identifiers
+The following built-in syntax variations are available to the player:
 
-// (((stropping)))
-Quoted identifiers may also be used to create an identifier out of a reserved word such as `Look`, `The`, etc.
-This practice is known as _<<gloss_stropping,((stropping))>>_, and it allows the Alan compiler to distinguish between user-created identifiers and keywords in the source code, thus avoiding clashes that would lead to a compiler error.
-
-This is useful (indeed, required), for example, in the definition of the verb '`look`':
-
-// @FIXED-CASING!!!
-[source,alan]
---------------------------------------------------------------------------------
-Verb 'look'
-  Does
-    Look.
-End verb 'look'.
---------------------------------------------------------------------------------
-
-[IMPORTANT]
+* Concatenation of commands via (((AND (player input)))) (((THEN (player input)))) *AND*-words, like:
++
+[example,role="gametranscript"]
 ================================================================================
-Whenever an identifier contains an Alan keyword, it's mandatory to use a quoted identifier.
+&gt; _open the door THEN enter_ +
+&gt; _take the book AND read it_ +
+&gt; _west. north. east_
 ================================================================================
 
-In the following example, the `'The Empty Room'` name needs to be enclosed within single quotes because it contains two Alan keywords (`The` and `Empty`), but there's no need to do so with the `empty_room` identifier because the word `empty` doesn't appear in isolated form (i.e. surrounded by spaces):
-
-// @FIXED-CASING!!!
-[source,alan]
---------------------------------------------------------------------------------
-The empty_room IsA location   --> No need to stropp 'empty_room'.
-  Name 'The Empty Room'.      --> Keywords 'THE' and 'EMPTY' stropped.
-End the.
---------------------------------------------------------------------------------
-
-[NOTE]
+* The use of pronouns (((IT (player input)))) to refer to the last object mentioned in the previous command, e.g.:
++
+[example,role="gametranscript"]
 ================================================================================
-Stropping occurs only when the quoted identifier contains at least one Alan keyword.
-Since in Alan it's always permissible to enclose an identifier within single quotes (where `'someID'` and `someID` both refer to the same identifier), not every quoted identifier implies stropping, but stropping _always_ requires a quoted identifier.
+&gt; _take the book and read IT_ +
+&gt; _give key to guard and ask HIM to open the door with IT_
 ================================================================================
++
+The pronouns have to be defined by the author in the source (see <<PRONOUNs>>) or by a library.
+The only built-in pronoun is the *IT*-word, which is automatically defined for the class `thing`.
 
 
-=== Names Containing Multiple Words
-
-Quoted identifiers retain their exact content.
-They may contain spaces and other special characters, which make them useful as long names for locations as in:
-
-// @FIXED-CASING!!!
-[source,alan]
---------------------------------------------------------------------------------
-The pluto IsA location Name 'At the Rim of Pluto Crater'
-  Description
-    ...
---------------------------------------------------------------------------------
-
-One single-quoted identifier is used as the whole (((NAME, of locations))) name of the location to preserve editing and avoiding clashes with the reserved words `At` and `Of`.
-(This could also have been avoided by quoting just those words.)
-
-Identifiers and words retain their capitalization.
-An example is:
-
-// @FIXED-CASING!!!
-[source,alan]
---------------------------------------------------------------------------------
-The eiffel_tower Name Eiffel tower ...
---------------------------------------------------------------------------------
-
-The first word in the name will always be printed with a capital '`E`'.
-However, when comparing the word to player input and other occurrences of the same word in the source, letter casing will be ignored (i.e. comparison is case insensitive).
-This means that you cannot have two words or identifiers that differ only in case, they will be the same and stored in the game data as one of the occurrences, which one is implementation dependent.
-
-
-[WARNING]
+* References to (((multiple parameters))) multiple objects using (((AND (player input)))) *AND*-word.
+This allows:
++
+[example,role="gametranscript"]
 ================================================================================
-Do _NOT_ use a single quoted identifier with spaces or special characters in them as the name for anything other than locations, as the words in names are analysed separately and are assumed to be adjectives and nouns (where it is assumed that the last is the noun).
-Except for this you should only quote single words to avoid clashes with reserved words.
-================================================================================
-
-
-[CAUTION]
-================================================================================
-Any one of the occurrences of a word might define its capitalization, which one is unspecified.
-This might affect the output if you use capitalization for names of locations, such as "```Name Shore of Great Sea```".
-Such names can inadvertently make the game use "`Great`" for all "`great`" things in your game.
-You can avoid this by using a quoted identifier for the complete name of the location.
+&gt; _take the blue vase AND the pillow_ +
+&gt; _examine the red key, the glass bowl AND the compass_
 ================================================================================
 
 
 
-Be careful when using quoted identifiers, especially if the player is supposed to use the word.
-A player cannot refer in the typed input to words which are defined in the code as single words containing spaces or other special characters or separators (the only exception being underscores and dashes).
-
-Also, remember that a player input word must start with a letter; so the player won't be able to refer to identifiers or names like "```1st```", "```'70s```", etc.
-
-.Escaping Single Quotes Inside Quoted Identifiers
-[TIP]
+* Reference to multiple objects using (((ALL (player input)))) (((EVERYTHING (player input)))) *ALL*-word:
++
+[example,role="gametranscript"]
 ================================================================================
-(((escaping, single quotes in quoted identifiers)))
-To include a (((single quotes))) single quote as part of a quoted identifier, double it (e.g. `'Tom''s Diner'`).
-Inside the adventure, it will be printed as a single quote ("`Tom's Diner`").
-
-This technique is known as _escaping_, for it allows the Alan compiler to distinguish between the quote character as delimiters of the quoted identifier and its occurrence within the identifier as a printable character.
+&gt; _drop ALL_
 ================================================================================
 
+// @TODO: Could provide also an example with BUT!
 
-Some of the identifiers in the source of an Alan game are used by default as player words.
-This is for example the case with verb names (unless a `Syntax` statement has been declared for the `Verb`) and object names (unless a `Name` clause has been used).
-If these contain special characters, the player won't be able to refer to them in the typed input.
-
-
-== Numbers
-
-(((numbers, lexical definition)))
-Numbers in Alan are only integers and thus may consist only of digits.
-(((BNF, rules of, numbers)))
-
-[source,bnf]
---------------------------------------------------------------------------------
-number = digit {digit}
---------------------------------------------------------------------------------
-
-
-== Strings
-
-(((string, lexical definition)))
-The string is the main lexical component in an Alan source.
-This is how you describe the surroundings and events to the player.
-Strings, therefore, are easy to enter and consist simply of a pair of double quotes surrounding any number of characters.
-The text may include newline characters and thus may cover multiple lines in the source.
-(((BNF, rules of, strings)))
-
-[source,bnf]
---------------------------------------------------------------------------------
-string = double_quote {any_character} double_quote
---------------------------------------------------------------------------------
-
-When processed by the Alan compiler, any multiple spaces, newlines and tabs will be compressed to one ((("spacing, in strings"))) single space as the formatting to fit the screen is done automatically during execution of the game (except for embedded formatting information, as specified in <<Output Statements>>).
-You may therefore write your strings any way you like; they will always be neatly formatted on the player's screen.
-You can use special codes (see <<String Statement>> for a list) to indicate (but not precisely control) the formatting.
-
-
-[WARNING]
+* Excluding objects using a (((BUT (player input)))) (((EXCEPT (player input)))) *BUT*-word, like:
++
+[example,role="gametranscript"]
 ================================================================================
-As strings may contain any character, a missing double quote may lead to many seemingly strange error messages.
-If the compiler points to the first word after a double quote and indicates that it has deleted a lot if IDs (identifiers), this is probably due to a missing end quote in the previous string.
+&gt; _wear everything EXCEPT the bowler hat_
 ================================================================================
 
 
-[TIP]
+
+* The use of a (((THEM (player input)))) *THEM*–word to refer to the (((multiple parameters))) multiple objects referenced in the previous command, e.g.:
++
+[example,role="gametranscript"]
 ================================================================================
-To get a (((double quotes))) double quote within strings repeat it (``"The sailor said ""Hello!""."``).
+&gt; _remove the hat and the scarf then drop THEM_
 ================================================================================
 
+Referencing multiple instances (objects or actors) in a given command position is only possible if the adventure author has allowed it by using a
+(((multiple indicator))) (((parameter, indicators, multiple)))
+multiple `*` indicator in the `Syntax` definition (see <<SYNTAX Definitions>>).
+All the above variations are built-into the interpreter and automatically handled by the run-time system.
 
-== Filenames
+The interpreter also restricts (((parameter, referencing))) parameter references to things which are reachable according to the semantic rules of each built-in base class (see <<Instances>> for the complete details).
+For example, objects can only be referred to if they are present at the current location, except if the `Syntax` for the command uses the (((omnipotent indicator))) (((parameter, indicators, omnipotent)))
+omnipotent `!` indicator (see <<SYNTAX Definitions>> for details).
+For some hints on ways to allow the player to refer to objects and actors that are not at the current location, refer to <<Distant and Imaginary Objects,_Distant & Imaginary Objects_>>.
 
-It is possible to write one adventure using many source files, having different parts in different files, and thus giving an opportunity for some rudimentary kind of modularisation.
-The method for this is the `import` statement.
-(((BNF, rules of, IMPORT)))
-(((BNF, rules of, filenames)))
+If the player uses *ALL* instead of a reference to an instance in his command, the verb will be applied to all appropriate instances at the current location, _except_ the ones that do not pass all checks for the verb (see <<VERBs>> for further details on this).
 
-[source,bnf]
---------------------------------------------------------------------------------
-import = 'IMPORT' quoted_identifier '.'
---------------------------------------------------------------------------------
+// @NOTE: The above paragraph could be clearer about the difference of VERBs
+//    which are attempted and those which simply fail, when using ALL.
+//    Q: * How do the SYNTAX WHERE and VERB CHECKs differ here?
 
-The `Import` statement requires a filename, which must be given as a quoted
-identifier (see <<_words_identifiers_and_names>>).
+A restriction placed on the player input by the interpreter is that the words the player is allowed to use can only contain alphanumeric characters, underscores and dash.
+This must be kept in mind when naming verbs that use the default syntax (an explicit `Syntax` statement can always specify other player words to trigger the verb).
+
+// @TODO:  Could add xref to "4.2. Words, Identifiers and Names"!
+
+// @CHECK: Here it mentions "underscores and DASH", but it doesn't sound right.
+//         Maybe "hyphen"? "Dash" is ambiguos here, as it usually refers to em-
+//         or en-dashes, which are long dashes.
+
+// @CHECK2: What about single and double quotes? After all, identifiers can contain
+//          escaped single quotes (eg: rock'n'roll), and player input could consist
+//          in a string (eg: say "Hello!").
+
+// @FIXME: That "alphanumeric characters" doesn't really help the reader; we should
+//         include something like (a-z, A-Z, 0-9), but again this wouldn't help
+//         either since Alan will also allow any alphabet letters of the adventure's
+//         encoding (ISO-8859-1, or others). It might be better to specify
+//         "letters, numbers, underscores and hyphens"
+
+== Player Words
+
+You use `Syntax` statements to define the structure of available player commands.
+The actual player input consists of "`tokens`" which are matched to those structures.
+The most prominent part of that are the words.
+The allowed words comes from
+
+* the syntax statement -- the verb word itself and any "`filler`" words, in Alan generalized to "`prepositions`"
+* the special words mentioned above, to allow variations in reference forms
+* synonyms -- directly from the `Synonyms` statements
+* instance names -- adjectives and nouns
+
+All those words are collected by the Alan compiler into a dictionary of known words.
+
+Words in the player's input are separated into tokens by space or by characters not allowed inside words (see above).
+
+Other characters are considered separate tokens.
+Some of those tokens are used in some forms of player input, such as comma and period, as seen above.
+Unrecognized characters will just result in an error.
+
+=== Contractions
+
+(((apostrophe, contraction)))(((apostrophe, elision)))
+One special case is the apostrophe ("`{nbsp}`'{nbsp}`").
+It is allowed inside words.
+But in many languages this is also used for ((contractions)), or ((elisions)), such as (English) "`can't`", or (Italian) "`l'acqua`" for the contraction of the definite article and the noun, leaving out some other characters and sounds.
+
+In order to support the contraction of multiple words using the apostrophe, Alan does some special handling of word tokens containing an apostrophe.
+The complete word will first be looked up, but if that is not defined the separate parts will be looked up.
+E.g.
+
+[example,role="gametranscript"]
+================================================================================
+&gt; _prendi l'acqua_
+================================================================================
+
+In this example the word "`l'acqua`" will first be tried as a complete word, and if found in the dictionary, the input will be interpreted as using that word (perhaps a noun).
+If it isn't found, the command parser will split at the apostrophe, first trying "`{nbsp}l`'{nbsp}`" (the contracted definite article) as a separate word.
+Then the second part will be tried, in this case "`acqua`".
+
+This makes it possible to use natural words as nouns and create "`{nbsp}l`'{nbsp}`" as a synonym for the (((article, definite, contracted))) definite article.
+
+
+== Run-Time Contexts
+
+// @NOTE: Instead of "adventure DESCRIPTION (source)" we could use:
+//        "adventure GRAMMAR (source)"? or "DEFINITION"?
+//        In any case, in this particular sentence using DESCRIPTION and DESCRIBED
+//        so close to each other doesn't sound good. But I like GRAMMAR because
+//        the term is used in BNF contexts, so it might be adopted in the Manual
+//        (not just here, but elsewhere too).
+
+When the player enters a command, the Alan run-time system evaluates the various constructs from the adventure description (source) as described above.
+Depending on the player's command evaluation, different parts of the adventure may be triggered.
+These parts all have different conditions under which they are evaluated and have different contexts.
+Five different (((execution, contexts))) execution contexts can be identified:
+
+* *Execution of verbs* -- (((VERB, execution context)))
+  During the execution of a verb (the syntax and verb checks and the verb bodies), which is the result of the player entering a command that was not a directional command, parameters are defined and may be referenced in statements and expressions.
+  In addition, the `Current Actor` is set to the hero and `Current Location` to the location where the hero is (`Here` refers to the location of the hero).
+* *Execution of descriptions* -- (((DESCRIPTION, execution context)))
+  These are triggered as responses to a directional command, a `Look` or `Describe` statement, or a `Locate` statement operating on the hero.
+  During this execution context, no parameters are defined, `Current Actor` is set to the hero, and `Current Location` of course to the location being described.
+  The description clauses for objects and locations, as well as the `Entered` clause of locations, are evaluated in this context.
+  `Entered` clauses are executed for all actors entering a location with `Current Actor` set to the moving actor.
+* *Execution of actors* -- (((ACTOR, execution context)))
+  When an actor performs his script step there are no parameters defined but `Current Actor` is set to the actor currently executing.
+  `Current Location` is set to that of the executing actor (`Here` refers to where the executing actor is).
+* *Execution of events* -- (((EVENT, execution context)))
+  No parameters and no actor are defined.
+  The location is set to where the event was scheduled to execute.
+* *Execution of rules* -- (((RULE, execution context)))
+  Rules are executed without location, so neither parameters, `Current Location` nor `Current Actor` are defined.
+  Any output statement in this context will be completely useless since the hero can never be at the same location of an executing rule.
+
+
+So, the execution of various parts of the adventure source can also be said to have a number of different focuses, meaning where the action is considered to take place:
+
+// @FIMXE: The text for "Rules" must be polished, it's entangled and not very clear!
+
+* *The hero* -- the actions of the player are always focused on the hero, and their execution is always relative to the hero's location.
+* *An actor* -- steps executed by an actor are always focused where the actor is.
+* *An event* -- code executed in events is focused where the event was specified to take place.
+* *A rule* -- rules are executed after each actor (including the hero) and after each event, with the focus set to the complete game world.
+
+
+// @NOTE: "Moving Actors" is an ambiguous title -- does it mean "actors that are moving"
+//        or "how to move around actors?". Possibly "Actors Movement" would be better.
+// BEWARE that before changing the title we need to search through all sources for
+// possible XRefs that also need to be changed accordingly (since we're still using
+// the actual title as the XRef)!
+
+== Moving Actors
+
+(((ACTOR, movement of actors)))
+The main way to (((HERO, movement of))) move the hero around the adventure's world is through (((EXIT))) ``Exit``s (see <<EXITs>>).
+They are executed if the player inputs a directional command, i.e. a word defined as the name for an `Exit` in any location.
+First, the current location is investigated for an `Exit` in the indicated direction, if there is none an error message is printed.
+Otherwise, that exit is examined for ``Check``s, which are run according to normal rules (see <<Verb CHECKs>>).
+If there was no (((CHECK, in exits))) `Check`, or if the checks passed, the statements in the body (the (((DOES, in exits))) `Does`-part) is executed.
+The (((HERO, traversing EXITs))) hero is then located at the `location` indicated in the `Exit` header, which will result in the description of the location (by executing the `Description`-clause of the location) and any objects or actors present (by executing their ``Description``s, explicit or implicit).
+
+When any actor (including the hero) gets located at a `location`, the (((ENTERED, in locations))) `Entered` clause of that location is executed as if the actor had actually entered it by movement.
+The actor being located will be the `Current Actor` even if the movement was not caused by him (but was the result of an event, for example).
+Therefore, this is also the last step in the sequence of events caused by locating the hero somewhere.
+
+
+
+== Undoing
+
+
+A player might occasionally regret a typed command, perhaps realising that it was not the correct one.
+The Alan interpreter supports such undoing of commands.
+The interpreter stores each game state as soon as it has changed, and an (((UNDO command))) `undo` command resets the game state to the last saved one.
+The command history is saved automatically, and as many states as memory permits are saved, providing almost unlimited `undo` capability.
+
+The player command to restore a previous game state is handled directly by the interpreter.
+It must consist of the single word `undo`.
+
+// Q: * Is therefore the UNDO command hard coded into the interpreter?
+//      if so, it would be the only hard-coded command in ALAN, something
+//      worth mentioning. (the UNDO, RESTART and QUIT commands when a game ends
+//      don't count, for they apply only to a special out-of-game context)
+//    * Is it possible to translate UNDO to other locales?
+//    * Would a custom UNDO VERB override the UNDO command?
+//    * Is it possible to execute/invoke UNDO from ALAN source code?
+
+== Scripting and Commenting
+
+// @TODO: Might be worth mentioning that command scripts are also often referred to
+//        as "solution" files, which are used as walkthroughs and are often included
+//        in the adventure distribution as a fallback to complete the game (especially
+//        in adventure contents, where the judges might need to complete the game
+//        before voting). It might also be worth adding here some instructions on
+//        how to create a solution file. Also, mention the various conventions
+//        in naming these file (eg "walktrhough", "walktrhough.sol" and
+//        "<adventure>.sol", etc). The point being that it would be nice to connect
+//        this section with the wider world of Interactive Fiction, games distribution
+//        common practices, etc.
+
+// @TODO: ALAN now adopts the new official '.a3s' and '.a3t' extensions, so we
+//        should mention them here!
+
+Most versions of the Alan interpreter, Arun, supports both the creation of a transcript for the game in progress, as well as playing back a saved transcript as input passed to the interpreter.
+
+These feature are very useful during the development of a game, allowing to play through the game up to a desired point and start from there, or even to automatically test your game.
+
+// @TODO: Add practical examples (transcipt blocks)!
+
+To make Arun read input from a script file, you can use the special command character '```@```', which should be followed by the name of the text file in which your commands are listed.
+
+You can add comments to each line in a script file.
+The interpreter will not read beyond a semicolon ('```;```'), so anything after it can be seen as a comment.
+Note that this also works for direct player input.
 
 
 // EOF //

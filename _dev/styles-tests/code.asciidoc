@@ -189,7 +189,7 @@ Now that we can finally use Rouge for syntax highlighting, we'll be able to use 
 === Block Comments
 
 ALAN Beta8 introduces
-https://alan-if.github.io/alan-docs/manual-alpha/manual.html#_comments[block comments^,title="The ALAN Manual » §4.1. Comments"],
+https://alan-if.github.io/alan-docs/manual-alpha/manual.html#comments[block comments^,title="The ALAN Manual » §4.1. Comments"],
 a new feature not yet supported by all syntax highlighters.
 
 // Manually define which highlighters support block comments:
@@ -391,7 +391,7 @@ D:\>dir
 [NOTE]
 ================================================================================
 The _Alan Manual_ contains shell examples with callouts in
-link:../../manual/manual.html#_format_of_messages[App. F.1. Format of Messages^].
+https://alan-if.github.io/alan-docs/manual-alpha/manual.html#format_of_messages[App. F.1. Format of Messages^].
 ================================================================================
 
 // =================
