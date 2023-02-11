@@ -1,0 +1,431 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          3. Actors (NPCs)                                 *
+// *                                                                           *
+// *****************************************************************************
+
+= Actors (NPCs)
+
+== Implement a Basic Actor
+
+[source,alan]
+--------------------------------------------------------------------------------
+The cat IsA Actor At garden
+End The cat.
+--------------------------------------------------------------------------------
+
+The default description for an actor is "A cat is here." This description will display after the location description.
+
+
+
+== Implement an Actor with your Own Description
+
+[source,alan]
+--------------------------------------------------------------------------------
+The cat IsA Actor At garden
+  Description "A grey cat is sneaking about in the garden."
+End The cat.
+--------------------------------------------------------------------------------
+
+This description will display after the location description. You can also do:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The cat IsA Actor At garden
+  Description ""
+End The.
+--------------------------------------------------------------------------------
+
+And then include the description of the cat in the location description itself.
+
+
+
+== Implement a Person (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The bob IsA Person At street
+End The bob.
+--------------------------------------------------------------------------------
+
+
+
+== Implement Actors that are able to Talk (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The bob IsA Person At street
+End The bob.
+--------------------------------------------------------------------------------
+
+[NOTE]
+================================================================================
+A `Person` is able to talk (library verbs `Ask`, `Tell`, and `Talk`, amongst others, will work)
+================================================================================
+
+
+
+== Implement Males and Females (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The bob IsA Male
+End The bob.
+
+The helen IsA Female
+End The helen.
+--------------------------------------------------------------------------------
+
+Males and females are subclasses of `Person`, so they have the ability to talk. If you wish to have an animal of a specific sex, you should declare:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The cat IsA Female
+  Can Not talk.
+  ...
+End The cat.
+--------------------------------------------------------------------------------
+
+
+
+== Make Actors Act According to Scripts
+
+[source,alan]
+--------------------------------------------------------------------------------
+The bob IsA Actor At street
+  Description "Bob is standing near you."
+  Script going_to_house.
+    Step "Bob approaches the door of one of the houses along the street."
+    Step "Bob rings the doorbell of the house."
+    Step "The door opens and Bob goes in."
+      Locate bob At inside_house.
+End The bob.
+--------------------------------------------------------------------------------
+
+A script will execute one step for one player turn and stop when all steps are executed.
+
+
+
+== Start a Script for an Actor
+
+[source,alan]
+--------------------------------------------------------------------------------
+Use Script going_to_house For bob
+--------------------------------------------------------------------------------
+
+
+
+== Change the Description of an Actor While (S)he is Acting Out a Script
+
+[source,alan]
+--------------------------------------------------------------------------------
+The bob IsA Actor At street
+  Description "Bob is not up to anything special at the moment."
+  Script going_to_house.
+    Description "Bob is up to something but you are not quite sure what."
+    Step "Bob is here, looking around."
+    Step "Bob rings the doorbell of one of the houses along the street."
+    Step "The door opens and Bob goes in."
+      Locate bob At house.
+End The bob.
+--------------------------------------------------------------------------------
+
+When the script is executing, the script description of Bob will be shown in the location description rather than the normal description of Bob.
+
+
+
+== Make an Actor Act Out a Script over and over
+
+Put `Use` for the current script into its last step.
+
+[source,alan]
+--------------------------------------------------------------------------------
+...
+  Script going_to_house.
+    Description "Bob is up to something but you are not quite sure what."
+    Step "Bob is here, looking around."
+    Step "Bob rings the doorbell of one of the houses along the street."
+    Step "The door opens and Bob goes in."
+      Locate bob At house.
+    Step "The door opens again and Bob comes out."
+      Locate bob At street.
+      Use Script going_to_house For bob.
+...
+--------------------------------------------------------------------------------
+
+Here, Bob is continuously going in and out of the house.
+
+
+
+== Make an Actor Act Out a Script Only if a Condition is Fulfilled
+
+. Here, the hero will be lead to a treasure if he keeps following a non-player character. The character will wait for the hero when needed. 
+
+[source,alan]
+--------------------------------------------------------------------------------
+The harry IsA Actor At cave_entrance.
+  ...
+  Script harry_leads_the_hero_to_the_treasure_vault.
+    Step
+      Wait Until hero Here. -- The actor won't act out the script before the hero is at the same location with him.
+      "Harry walks deeper into the cave."
+
+      If harry At cave_entrance
+        Then Locate harry At cave_1.
+      Elsif harry At cave_1
+        Then Locate harry At cave_2.
+      Elsif harry At cave_2
+        Then Locate harry At cave_3.
+      Elsif harry At cave_3
+        Then Locate harry At treasure_vault.
+      End If.
+
+      If harry Not At treasure_vault.
+        Then Use Script harry_leads_the_hero_to_the_treasure_vault For harry.
+      End If.
+End The.
+--------------------------------------------------------------------------------
+
+. Here, Harry is made to follow the hero. The condition to be fulfilled is then, of course, that the hero is no longer at the same location as Harry.
+
+[source,alan]
+--------------------------------------------------------------------------------
+The harry IsA Actor At livingroom
+  ...
+  Script following_hero.
+    Step Wait Until hero Not Here. -- Harry won't act until the hero goes to another location.
+      Locate harry At hero. -- Here, Harry is made to follow the hero immediately.
+        "Harry follows you."
+      Use Script following_hero For harry.
+End The.
+--------------------------------------------------------------------------------
+
+Following the hero is made automatic in the standard library, see 'Make a Non-Player Character Follow the Hero' below.
+
+. Here, Harry will stop following the hero around if a location is not lit:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The harry IsA Actor At livingroom
+  ...
+  Step Wait Until hero Not Here.
+    Locate harry At hero.
+    "Harry follows you."
+    If Current Location Is Not lit
+      Then "He becomes afraid because of the darkness and stops."
+        Stop harry.
+      Else Use Script following_hero For harry.
+    End If.
+End The.
+--------------------------------------------------------------------------------
+
+`Current Location` refers to the location where an actor acting out a script is located. Usually Current Location is the location of the hero, because in the majority of all cases it is the hero who does the acting, but an active script for a non-player character overrides this.
+
+
+
+== Make Actors Go Randomly Around the Game Map Using Scripts
+
+In this example, Bob is moving around randomly in a 3x3 grid (vertically and horizontally, not diagonally). The upper leftmost corner of the grid is L11 and the lower rightmost corner is L33. He is in location L11 to begin with.
+
+[source,alan]
+--------------------------------------------------------------------------------
+-- L11 L12 L13
+-- L21 L22 L23
+-- L31 L32 L33
+
+The bob IsA Actor
+  Description ...
+  Script going_around_randomly.
+    Step
+      "Bob leaves."
+      -- Outputs from events (such as actors moving) will only be printed if the
+      -- hero can "see" them, so the author can output descriptions of all
+      -- movements and actions without being concerned about them being
+      -- displayed at the wrong place or the wrong time.
+      If bob At L11
+        Then
+          If Random 1 To 2 = 1
+            Then Locate bob At L12.
+            Else Locate bob At L21.
+          End If.
+      Elsif bob At L12
+        Then
+          Depending On Random 1 To 3
+          = 1 Then Locate bob At L11.
+          = 2 Then Locate bob At L13.
+          = 3 Then Locate bob At L22.
+          End Depend.
+      Elsif bob At L13
+        Then
+          If Random 1 to 2 = 1
+            Then Locate bob At L12.
+            Else Locate bob At L23.
+          End If.
+      Elsif ...
+        -- continue in the same vein
+      End If.
+      "Bob enters."
+      Use Script going_around_randomly For bob.
+      End The bob.
+--------------------------------------------------------------------------------
+
+
+
+== Stop an Actor from Executing a Script
+
+[source,alan]
+--------------------------------------------------------------------------------
+Stop bob.
+
+Stop cat.
+--------------------------------------------------------------------------------
+
+
+
+== Check the number of Actors at a Given Location
+
+[source,alan]
+--------------------------------------------------------------------------------
+If Count IsA Actor, At room_1 = 5
+  Then "It seems everybody has arrived. The meeting can begin."
+End If.
+--------------------------------------------------------------------------------
+
+
+
+== Change the Attribute of an Actor
+
+[source,alan]
+--------------------------------------------------------------------------------
+Make hero hungry.
+
+Set tired_level Of bob To 3.
+--------------------------------------------------------------------------------
+
+
+
+== Make actors sitting, standing, or Lying down (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+Make hero sitting.
+
+Make dog lying_down.
+
+Make hero Not sitting. -- i.e. the hero stands up
+
+The patient IsA Actor In bed
+  Is lying_down.
+End The patient.
+--------------------------------------------------------------------------------
+
+An Actor is Standing by default if it doesn't have the attributes 'sitting' or 'lying_down'.
+
+
+
+== Modify the Hero Character
+
+Using the standard library:
+
+Find the code for the hero character at the bottom of the file `classes.i` and make needed adjustments (add attributes, modify the outcome for the `examine` command, etc.)
+
+Without the standard library:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The hero IsA Actor
+  Has health 5.
+  Verb examine
+    Does Only "How handsome."
+  End Verb.
+End The hero.
+--------------------------------------------------------------------------------
+
+The hero is predefined in the Alan system but it can be modified through declaring it again, like in the example above.
+
+
+
+== Make a Non-Player Character Follow the Hero (L)
+
+Mid-game:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Make harry following.
+--------------------------------------------------------------------------------
+
+From the start of the game:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The servant IsA Person
+  Is following.
+End The servant.
+--------------------------------------------------------------------------------
+
+
+
+== Stop a Non-Player Character from Following the Hero (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+Make harry Not following.
+
+Make servant Not following.
+--------------------------------------------------------------------------------
+
+
+
+== Communicating with Actors (L)
+
+The library makes communicating with actors automatic using the verbs 'ask a person about thing', 'ask person for thing', and 'tell person about thing'.
+
+An example of changing the default response:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The ball IsA Object
+  ...
+  Verb ask
+    When topic
+    Does Only
+      If act = child
+        Then """It's my ball; don't take it!"", the child says."
+      Elsif act = old_man
+        Then ...
+      End If.
+  End Verb.
+End The.
+--------------------------------------------------------------------------------
+
+
+
+== Commanding Actors
+
+It is not possible for the player to insert a comma in the input, in the style of "Tom, take book". Use either a formulation without a comma, or some other kind of verb construction.
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax act_take = (act) take (obj)
+  Where ...
+--------------------------------------------------------------------------------
+
+Enables player input such as:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; tom take book
+================================================================================
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax command_take = tell (act) 'to' take (obj)
+  Where ...
+--------------------------------------------------------------------------------
+
+Enables player input such as:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; tell tom to take book
+================================================================================

@@ -1,0 +1,254 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          4. Names                                         *
+// *                                                                           *
+// *****************************************************************************
+
+= Names
+
+== Determine the Player-Referable Name of an Instance
+
+The word after `The` will be the name of an instance if nothing else is declared:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The ball IsA Object At garden
+End The ball.
+--------------------------------------------------------------------------------
+
+The player will be able to refer to this instance by the name "ball".
+
+However, if you want to use a different name for the instance in your code from the one you will allow, you should use the `Name` construction. This is advisable when the name of the instance is long or when the instance name consists of two or more words:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The bbr IsA Location
+  Name blue bedroom
+  Description "..."
+  ...
+End The bbr.
+
+The button_1 IsA Object At room_1
+  Name first button
+  Description "..."
+End The button_1.
+
+The aunt_betty IsA Actor At garden
+  Name aunt betty
+  Description "..."
+End The aunt_betty.
+--------------------------------------------------------------------------------
+
+
+
+== Allow Objects to Have Distinguishing Adjectives in Front of Them
+
+[source,alan]
+--------------------------------------------------------------------------------
+The pillow IsA Object At bedroom
+  Name small white soft feather pillow
+  Mentioned "white pillow"
+  ...
+End The pillow.
+--------------------------------------------------------------------------------
+
+Here, the player can refer to the pillow with e.g. "small pillow", "white pillow", "soft feather pillow" etc. The rightmost word in a name is understood as the noun of the object. It is required in player input. All other words in front of it are voluntary attributes. This object will be mentioned by the game as "white pillow" (e.g. in the inventory listing and other places) because it was programmed that way after `Mentioned`. If `Mentioned` had been left out, the inventory listing of the object would be "small white soft feather pillow".
+
+
+
+== Allow Reference to Objects with an Adjective Only
+
+For example, instead of the player having to write "push red button", "push blue button" and "push the yellow button", (s)he should be able to just type "push red", "push blue", and "push yellow". Here is how it's allowed:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The red_button IsA Object At room_1
+  Name red button Name red
+End The red_button.
+
+The blue_button IsA Object At room_1
+  Name blue button Name blue
+End The blue_button.
+
+The yellow_button IsA Object At room_1
+  Name yellow button Name yellow
+End The yellow_button.
+--------------------------------------------------------------------------------
+
+Here, 'red', 'blue' and 'yellow' are actually made into nouns from the game's perspective. Note, then, that the same word can function as an adjective or noun for one and the same instance.
+
+
+
+== Use Articles in Front of Names
+
+The indefinite article for an instance is "a" by default. The definite article is usually "the". They can be printed before object and actor names in-game by using `An` and `The`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb examine
+  Does "You see nothing special about" Say The obj. "."
+End Verb.
+--------------------------------------------------------------------------------
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; x book +
+You see nothing special about the book.
+================================================================================
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb take
+  Check obj Is useful
+    Else "You don't need" Say An obj. "."
+  Does ...
+End Verb.
+--------------------------------------------------------------------------------
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; take candy +
+You don't need a candy.
+================================================================================
+
+If you need to change the article (for example, if you need "an"), declare it within the instance:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The owl IsA Actor At woods
+  Indefinite Article "an"
+End The.
+--------------------------------------------------------------------------------
+
+Other alternatives are `Definite Article` (by default "the"), `Negative Article` (by default "any"), and/or just `Article`, which is equal to `Indefinite Article`.
+
+If you need "some", such as with some uncountable nouns, you have two ways to go:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The money IsA Object In wallet
+  Article "some"  -- or: Indefinite Article "some"
+End The money.
+--------------------------------------------------------------------------------
+
+Or:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The money IsA Object In wallet
+  Name some money
+  Article ""
+End The.
+--------------------------------------------------------------------------------
+
+
+
+== Display Apostrophes in Names
+
+[source,alan]
+--------------------------------------------------------------------------------
+The joesbar IsA Location
+  Name Joe''s bar -- put two single apostrophes in a row!
+End The joesbar.
+--------------------------------------------------------------------------------
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+Joe's bar +
+&gt;
+================================================================================
+
+
+
+== Allow Several Alternatives for How to Refer to an Instance
+
+[source,alan]
+--------------------------------------------------------------------------------
+The note IsA Object In table
+  Name note Name paper Name parchment
+  Description "..."
+End The note.
+--------------------------------------------------------------------------------
+
+Or:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The note IsA Object In table
+  Description "..."
+End The note.
+
+Synonyms paper, parchement = note.
+--------------------------------------------------------------------------------
+
+The difference with these two methods is that the first one only involves the specific instance at hand, while in the second case, all possible notes in the game can be referred to as the synonyms. If this behavior is unwanted, stick to the first method.
+
+
+
+== Use Reserved Words in the Alan Language in Instance or Location Names
+
+[source,alan]
+--------------------------------------------------------------------------------
+The empty_location IsA Location
+  Name 'empty' 'location'
+End The.
+--------------------------------------------------------------------------------
+
+Both `empty` and `location` are reserved words in the Alan language. The compiler will misinterpret them if you don't put them inside single quotes in the `Name` section.
+
+
+
+== Control How an Instance is Referred to In-Game
+
+Use `Mentioned`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The button_1 IsA Object At room_1
+  Name big red alarm button
+  Mentioned "red button"
+  ...
+End The button_1.
+--------------------------------------------------------------------------------
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; x button +
+There is nothing special about the red button - but looks may deceive.
+================================================================================
+
+If an instance has several `Name`s but no `Mentioned` section, the first name is used to refer to the instance in-game:
+
+[source,alan]
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; x note +
+There is nothing special about the note.
+================================================================================
+
+Note that in a `Name` statement, single quotes are used (when using reserved words in the Alan language):
+
+[source,alan]
+--------------------------------------------------------------------------------
+The empty_location IsA Location
+  Name 'empty' 'location'
+End The.
+--------------------------------------------------------------------------------
+
+However, in a `Mentioned` statement, double quotes are used.
+
+The principle is that all words to be typed by a player are put inside single quotes in an Alan code when needed, and all words mentioned by the game itself are placed inside double quotes in an Alan code.

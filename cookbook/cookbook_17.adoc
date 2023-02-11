@@ -1,0 +1,40 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          17. Scoring                                      *
+// *                                                                           *
+// *****************************************************************************
+
+= Scoring
+
+== Change the Player's Score
+
+[source,alan]
+--------------------------------------------------------------------------------
+The diamond IsA object At vault
+  ...
+  Verb take
+    Does Score 10.
+  End Verb.
+End The.
+--------------------------------------------------------------------------------
+
+There is no negative score. If you want to reduce the player's score, make a numerical attribute that can be increased and decreased:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The hero IsA Actor
+  Has 'score' 0.
+  ...
+End The hero.
+
+Verb 'score'
+  Does Only "Your score is" Say 'score' Of hero. "."
+End Verb.
+
+The cliff IsA Location
+  ...
+  Verb jump_off
+    Does Decrease 'score' Of hero By 5.
+  End Verb.
+End The cliff.
+--------------------------------------------------------------------------------

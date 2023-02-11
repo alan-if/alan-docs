@@ -1,0 +1,51 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          13. Rules                                        *
+// *                                                                           *
+// *****************************************************************************
+
+= Rules
+
+== Use Rules in General
+
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+When speed Of car = 240
+  Then Make car overheated.
+--------------------------------------------------------------------------------
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+When hero At home And dishes Are washed And livingroom_floor Is vacuumed
+  Then Make hero sleepy.
+--------------------------------------------------------------------------------
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+When dishes Are washed Or livingroom_floor Is vacuumed
+  Then Make doorbell ringing.
+--------------------------------------------------------------------------------
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+When (mr_benson At garden Or mrs_benson At garden) And postman At street
+  Then Schedule conversation At garden After 0.
+--------------------------------------------------------------------------------
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+When hero At forest_clearing And bear Is hungry
+  Then Schedule bear_approaching_message At hero After 0.
+
+Event bear_approaching_message
+  "$pA hungry bear approaches you!"
+End Event.
+--------------------------------------------------------------------------------
+
+Rules cannot trigger messages in-game, they just alter game state to have messages triggered after rules, use `Schedule` and put the message into an `Event`.

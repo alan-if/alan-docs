@@ -1,0 +1,102 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          18. Narration Gimmicks                           *
+// *                                                                           *
+// *****************************************************************************
+
+= Narration Gimmicks
+
+== Modify the Prompt
+
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+Start At kitchen.
+  Prompt "What do you want to do next, Bob?> ".
+--------------------------------------------------------------------------------
++
+Yields:
++
+[example,role="gametranscript"]
+================================================================================
+Kitchen +
+What do you want to do next, Bob?&gt; _
+================================================================================
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+Verb enter_www_address
+  Does
+    Prompt "http://".
+End Verb.
+--------------------------------------------------------------------------------
++
+Yields:
++
+[example,role="gametranscript"]
+================================================================================
+\http://_
+================================================================================
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+Start At kitchen.
+  Schedule prompt_change At hero After 15.
+
+Event prompt_change
+  Prompt "Let's try this kind of prompt from now on > ".
+End Event.
+--------------------------------------------------------------------------------
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+Prompt
+  Depending On Random 1 To 2
+  = 1 Then "What next? > ".
+  = 2 Then "What now? > ".
+  End Depend.
+--------------------------------------------------------------------------------
+
+
+
+== Ignore What the Player Typed and Carry on the Story
+
+* Use the extension "Restricted verbs" available on the Alan website.
+* Declare the location where you wish to ignore the player's command as a `Restricted_Location`.
+* Edit the Restricted_Message in the extension so that it is an empty string: `""` or `"$$"`.
+* See the list of verbs in the extension code and add any you feel are missing (e.g. `Look`, `Restart`, etc.)
+* Schedule an event to trigger at the point where you wish to ignore the player commands:
++
+[source,alan]
+--------------------------------------------------------------------------------
+The void IsA Restricted_Location
+  Entered Schedule event_1 At void After 1.
+End The.
+
+Event event_1
+  "$$This message displays instead of the usual response to the player's command."
+  Schedule event_1 At void After 1.
+End Event.
+--------------------------------------------------------------------------------
+
+To stop ignoring commands, give the `Restricted_Location` the attribute `Not restricted`.
+
+
+
+== Change the Person of the Narrative
+
+For example, "She sees nothing special about the book."
+
+This can't be done easily at present. You should change all the verb responses, checks, and error messages manually. An extension might appear later to accomplish this feat automatically.
+
+
+
+== Change the Tense of the Narrative
+
+For example, "He found nothing interesting there."
+
+This can't be done easily at present. You should change all the verb responses, checks, and error messages manually. An extension might appear later to accomplish this feat automatically.

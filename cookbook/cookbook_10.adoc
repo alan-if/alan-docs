@@ -1,0 +1,71 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          10. Conditional Statements                       *
+// *                                                                           *
+// *****************************************************************************
+
+= Conditional Statements
+
+== Use If-Statements
+
+If-statements cannot be used independently. They are found only in verb definitions, checks, descriptions, etc.
+
+.Example 1
+[source,alan]
+--------------------------------------------------------------------------------
+Verb jump
+  Does
+    If hero At basement
+      Then "The ceiling is too low here."
+      Else "You make a jump."
+    End If.
+End Verb.
+--------------------------------------------------------------------------------
+
+.Example 2
+[source,alan]
+--------------------------------------------------------------------------------
+The house IsA Object At garden
+  Description
+    If house Is Not 'entered'
+      Then "..."
+      Else "..."
+    End If.
+End The house.
+--------------------------------------------------------------------------------
+
+.Example 3
+[source,alan]
+--------------------------------------------------------------------------------
+Verb attack
+  Check monster Is asleep
+    Else
+      If monster Is hungry
+        Then ...
+        Else ...
+      End If.
+    Does ...
+End Verb.
+--------------------------------------------------------------------------------
+
+The logic operators `And` and `Or` can be used in `If`-statements:
+
+[source,alan]
+--------------------------------------------------------------------------------
+If mr_burton At offic Or mr_burton At street
+  Then ...
+End If.
+
+If floor Is vacuumed And dishes Are washed And livingroom Is cleaned
+  Then ...
+End If.
+--------------------------------------------------------------------------------
+
+Parentheses can be used to affect the order of execution:
+
+[source,alan]
+--------------------------------------------------------------------------------
+If (mr_burton At office Or mr_smith At office) And ms_stanton At office
+  Then ...
+End If.
+--------------------------------------------------------------------------------

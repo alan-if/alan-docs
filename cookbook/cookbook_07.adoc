@@ -1,0 +1,79 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          7. Sets                                          *
+// *                                                                           *
+// *****************************************************************************
+
+= Sets
+
+== Use Sets in General
+
+[source,alan]
+--------------------------------------------------------------------------------
+The cathy IsA Person
+  Has friends {tim, tom, helen, tammy}.
+  Description ...
+  ...
+End The cathy.
+--------------------------------------------------------------------------------
+
+The members of a set must be listed inside curly brackets `{}`. The members of a set must be instances declared elsewhere in the code. A set must have at least one member. Each member can only occur once in the same set, but a member can occur in multiple sets.
+
+
+
+== Include Something in a Set
+
+[source,alan]
+--------------------------------------------------------------------------------
+Include greg In friends Of cathy.
+--------------------------------------------------------------------------------
+
+
+
+== Exclude Something from a Set
+
+[source,alan]
+--------------------------------------------------------------------------------
+Exclude greg From friends Of cathy.
+--------------------------------------------------------------------------------
+
+
+
+== To Check That Something is in a Certain Set
+
+[source,alan]
+--------------------------------------------------------------------------------
+If greg (Not) In friends Of cathy.
+  Then ...
+End If.
+--------------------------------------------------------------------------------
+
+
+
+== Make Something to Happen Only to the Members of a Set
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb test
+  Does
+    For Each act IsA Actor, In friends Of cathy
+      Do
+        Make act invited_to_party.
+    End For.
+End Verb.
+--------------------------------------------------------------------------------
+
+
+
+== Make Something Happen to a Random Member of a Set
+
+Here, the game chooses a random member of a group of suspects and makes him/her the criminal.
+
+[source,alan]
+--------------------------------------------------------------------------------
+The detective IsA Actor At livingroom
+  Has suspects {abe, bill, mary, tom, vivian}.
+  Initialize
+    Make Random In suspects Of detective guilty.
+End The detective.
+--------------------------------------------------------------------------------

@@ -1,0 +1,56 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          22. Importing Other Files                        *
+// *                                                                           *
+// *****************************************************************************
+
+= Importing Other Files
+
+== Import the Standard Library
+
+Download the library from the Alan website. The library contains four files. In your game code, declare:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Import 'classes.i'.
+Import 'locations.i'.
+Import 'messages.i'.
+Import 'verbs.i'.
+--------------------------------------------------------------------------------
+
+All these files will have to be in the same folder as your game code file. You can also just:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Import 'library.i'.
+--------------------------------------------------------------------------------
+
+which is a file in the library distribution package which in its turn imports all the four library files.
+
+
+
+== Import Extensions
+
+[source,alan]
+--------------------------------------------------------------------------------
+Import 'ext1.i'.
+--------------------------------------------------------------------------------
+
+This file would have to be in the same folder as your game file.
+
+
+
+== Import Your Own Supporting Code Files
+
+[source,alan]
+--------------------------------------------------------------------------------
+Import 'gamefile2.i'
+--------------------------------------------------------------------------------
+
+This file would have to be in the same folder as your game file.
+
+[IMPORTANT]
+================================================================================
+* Don't give the supporting game file the extension `.alan` -- reserve this extension to your main game file!
+* It is fine for the supporting file to have an extension such as .txt, .i, etc.
+================================================================================

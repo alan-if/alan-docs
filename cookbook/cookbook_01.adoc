@@ -1,0 +1,874 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          1. Locations                                     *
+// *                                                                           *
+// *****************************************************************************
+
+// @NOTE:	Once this document has been ported, it might be
+//		    beneficial to have a short summary of each main topic.
+//		    There are currently 25 topics, which may be
+//		    combined/restructured in the future.
+
+= Locations
+
+== Implement a Basic Location
+
+[source,alan]
+--------------------------------------------------------------------------------
+The kitchen IsA Location
+  Description "This is the kitchen of your house."
+  Exit west To livingroom.
+End The kitchen.
+--------------------------------------------------------------------------------
+
+[TIP]
+================================================================================
+It is possible to use `End The.` for brevity's sake. This applies to all instances, including locations, actors, and objects.
+================================================================================
+
+
+
+== Implement an Indoor Location (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The kitchen IsA Room
+  Description "This is the kitchen o your house."
+  Exit west To livingroom.
+End The.
+--------------------------------------------------------------------------------
+
+[NOTE]
+================================================================================
+When you declare a location a `Room`, it will automatically have a floor, a ceiling, and walls.
+================================================================================
+
+
+
+== Implement an Outdoor Location (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The Garden IsA Site
+  Description "This is your garden."
+  Exit 'in' To house.
+End The garden.
+--------------------------------------------------------------------------------
+
+[NOTE]
+================================================================================
+When you declare a location a `Site`, the ground and the sky will automatically be present.
+================================================================================
+
+
+
+== Implement a Dark Location (L)
+
+All locations are lit by default. All dark locations are NOT lit by default (this is declared in the standard library).
+
+[source,alan]
+--------------------------------------------------------------------------------
+The basement IsA Dark_Location
+  Exit up To kitchen
+End The basement.
+--------------------------------------------------------------------------------
+
+* All actions requiring vision are disabled in a dark location.
+If you intend to make a `Dark_Location` lighted at some point in the game, add a description:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The basement IsA Dark_Location
+  Description "Cobwebs and useless junk are the only things you see here."
+  Exit up To kitchen.
+End The basement.
+--------------------------------------------------------------------------------
+
+* This description will be shown only when the `Dark_Location` is lit.
+
+
+
+== Make a Dark Location Lit (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The basement IsA Dark_Location
+  Description "Cobwebs and useless junk are the only things you see here."
+  Exit up To kitchen.
+
+  Verb switch_on
+    Check basement Is Not lit
+      Else "The lights are already on."
+    Does Only
+      If obj = lightswitch
+        Then "You turn on the lights."
+          Make basement lit.
+        Else "That's not possible."
+      End If.
+  End Verb.
+End The basement.
+--------------------------------------------------------------------------------
+
+
+
+== Make a Location That Starts Lit but Gets Dark Later (L)
+
+Say you have a location split into multiple parts; the *West End Of The Great Hall* and the *East End Of The Great Hall*. There are two ways this can be implemented:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The basement IsA Dark_Location
+  Is lit.
+  Entered
+    Schedule light_off At basement After 3.
+    Description "The flickering light here might go out at any moment."
+End The basement.
+
+Event light_goes_off
+  "The light goes out!"
+  Make basement Not lit.
+End Event.
+--------------------------------------------------------------------------------
+
+
+
+== Make All Dark Locations Lit at the Same Time
+
+[source,alan]
+--------------------------------------------------------------------------------
+The main_power_switch IsA device At lab
+    ...
+  Verb switch_on
+    Does Only
+      For Each dl IsA Dark_Location
+        Do
+          Make dl lit.
+      End For.
+  End Verb.
+...
+End The.
+--------------------------------------------------------------------------------
+
+
+
+== Implement a Location with No Floor/Ground
+
+Declare the location a normal `Location` (and not e.g. a `Site`).
+
+Mainly it is important to ensure that every dropped item ends up on the ground below instead of in the treetop:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The treetop IsA Location
+  Exit down To under_the_tree.
+  ...
+  Verb drop
+    Does Only Locate obj At under_the_tree.
+      "You drop" Say The obj. "to the ground."
+  End Verb.
+...
+End The treetop.
+
+The under_the_tree IsA Location
+  Name Under 'the' tree
+  Exit up To treetop.
+End The under_the_tree.
+--------------------------------------------------------------------------------
+
+
+
+== Implement a Location with Multiple Sections
+
+Say you have a big location split in two; e.g. "The West End Of The Great Hall" and "The East End Of The Great Hall". There are two ways this can be implemented:
+
+.Method 1
+Implement them as independent locations that stand next to each other:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The west_hall IsA Location
+  Name 'West' 'End' 'Of' 'The' Great Hall
+  Description "This is a vast hall continuing to the East."
+  Exit east To east_hall.
+End The west_hall.
+
+The east_hall IsA Location At great_hall
+  Name 'East' 'End' 'Of' 'The' Great Hall
+  Description "This is a vast hall continuing to the west."
+  Exit west To west_hall.
+End The east_hall.
+--------------------------------------------------------------------------------
+
+[NOTE]
+================================================================================
+With this method, the objects or actors in the other end of the hall are not in scope.
+================================================================================
+
+
+.Method 2
+Make a metalocation, `great_hall`, and nest the eastern and western parts into it:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The great_hall IsA Location
+End The.
+
+The west_hall IsA Location At great_hall
+  Name 'West' 'End' 'Of' 'The' Great Hall
+  Description "This is a vast hall continuing to the east."
+  Exit east To east_hall.
+End The west_hall.
+
+The west_hall IsA Location At great_hall
+  Name 'East' 'End' 'Of' 'The' Great Hall
+  Description "This is a vast hall continuing to the west"
+  Exit west To west_hall.
+End The east_hall.
+--------------------------------------------------------------------------------
+
+[NOTE]
+================================================================================
+With this method, all objects or actors in the metalocation `great_hall` will also be available in the eastern and western halls.
+
+This is useful if you have objects that are present in both ends of the hall, such as a red carpet. An object implemented into `west_hall`, however, won't be present in the `east_hall` (and vice versa).
+================================================================================
+
+
+
+== Implement Nested Locations
+
+[source,alan]
+--------------------------------------------------------------------------------
+The garden IsA Location
+End The garden.
+
+The fruit_trees IsA Scenery At garden
+End The garden.
+
+The by_the_pond IsA Location At garden
+End The by_the_pond.
+--------------------------------------------------------------------------------
+* Here, the fruit trees will be in scope in the `by_the_pond` area as well.
+
+
+
+== Implement Groups of Locations ("Areas" or "Regions")
+
+Use the nested locations feature. Here, the locations *First Street*, *Second Street*, and *Third Street* belong to the town area and the Highway is outside the town.
+
+[source,alan]
+--------------------------------------------------------------------------------
+The town IsA Location -- the area, or the region
+End The town.
+
+The first_street IsA Location At town
+  Name first street
+  Exit North To second_street.
+End The first_street.
+
+The second_street IsA Location At town
+  Name second street
+  Exit south To first_street.
+  Exit west To third_street.
+End The second_street.
+
+The third_street IsA Location At town
+  Name third street
+  Exit east To second_street.
+  Exit north To highway.
+End The third_street.
+
+The highway IsA Location -- not in the town!
+  Exit south To third_street.
+End The highway.
+--------------------------------------------------------------------------------
+
+
+
+== Make an Event Happen When the Hero is in an Area/Region
+
+Change an attribute of the hero when he is in a certain area or region, and check the value of this attribute:
+
+.Step 1
+[source,alan]
+--------------------------------------------------------------------------------
+The highway IsA Location
+  Exit south To third_street
+  Does Make hero in_town.
+End The highway.
+--------------------------------------------------------------------------------
+
+.Step 2
+[source,alan]
+--------------------------------------------------------------------------------
+If hero Is in_town
+  Then "..."
+End If.
+--------------------------------------------------------------------------------
+
+.Step 3
+[source,alan]
+--------------------------------------------------------------------------------
+Verb windowshop
+  Check hero Is in_town
+    Else "There are no shops here!"
+  Does "You admire the items for sale in the shop windows. If only you had the money."
+End Verb.
+--------------------------------------------------------------------------------
+
+
+
+== Connect Locations to Each Other Using Exits
+
+[source,alan]
+--------------------------------------------------------------------------------
+The kitchen IsA Location
+  Description "This is your kitchen."
+  Exit west To livingroom.
+End The kitchen.
+
+The livingroom IsA Location
+  Description "This is your livingroom."
+  Exit east To kitchen.
+End The livingroom.
+--------------------------------------------------------------------------------
+[CAUTION]
+================================================================================
+Exits must be manually programmed both ways. When you declare an exit from one location to another, there will be no exit automatically back to the first location.
+================================================================================
+
+
+
+== Make Exits Do Other Things Besides Relocating the Hero
+
+[source,alan]
+--------------------------------------------------------------------------------
+The bedroom IsA Location
+  Description "This is your bedroom."
+  Exit north To corridor
+    Does "You decide to dress up quickly and make your bed before leaving your bedroom."
+      Locate pajamas In bed.
+      Locate suit In hero.
+      Locate shoes In hero.
+      Make bed made.
+  End Exit.
+End The bedroom.
+--------------------------------------------------------------------------------
+
+
+
+== Implement Restricted Exits
+
+[source,alan]
+--------------------------------------------------------------------------------
+The bedroom IsA Location
+  Description "This is your bedroom. A closet lies to the east."
+  Exit east To closet
+    Check closet_door Is Not closed
+      Else "The door to the closet is presently closed."
+  End Exit.
+End The bedroom.
+--------------------------------------------------------------------------------
+Here, the `Exit` statement will be carried out only if the closet door is not closed.
+
+A `Does` statement is not needed; if the check is passed, the `Exit` will automatically relocate the hero.
+
+
+
+== Implement Fake Exits
+
+[source,alan]
+--------------------------------------------------------------------------------
+The bedroom IsA Location
+  Description "This is your bedroom. A closet lies to the east."
+  Exit east To nowhere
+    Check "The closet is closed and locked. There's no way in this game for you to get in there."
+  End Exit.
+End The bedroom.
+
+The nowhere IsA Location
+End The nowhere.
+--------------------------------------------------------------------------------
+An unconditional `Check` (without an `Else` or `Does` following) will block the `Exit` from executing.
+
+
+
+== Implement Random Exits
+
+In this example, typing 'east' in the main cave will place the hero in one of three alternative locations at random:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The main_cave IsA Location
+  Description "There seem to be some small passages to the east."
+  Exit east To nowhere
+    Check
+      Depending On Random 1 To 3
+        = 1 Then Locate hero At cave1.
+        = 2 Then Locate hero At cave2.
+        = 3 Then Locate hero At cave3.
+      End Depend.
+  End Exit.
+End The main_cave.
+
+The cave_1 IsA Location
+End The cave_1.
+
+The cave_2 IsA Location
+End The cave_2.
+
+The cave_3 IsA Location
+End The cave_3.
+--------------------------------------------------------------------------------
+
+
+
+== Implement New Directions
+
+A direction can have any arbitrary name defined after `Exit`.
+
+Usage:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The place_1 IsA Location
+  Exit direction_name To place_2
+End The place_1.
+--------------------------------------------------------------------------------
+
+In this example, typing the ship directions `aft` or `starboard` will relocate the hero in another room just as the usual cardinal directions would.
+
+[source,alan]
+--------------------------------------------------------------------------------
+The cabin IsA Room
+  Exit aft To storage.
+  Exit starboard To corridor.
+End The cabin.
+--------------------------------------------------------------------------------
+
+
+
+== Implement Doors Between Locations (L)
+
+All `Doors` are closeable, closed, lockable, and not locked by default.
+
+A door object will automatically be described as being opened or closed when examined.
+
+[source,alan]
+--------------------------------------------------------------------------------
+The kitchen IsA Location
+  ...
+  Exit west To livingroom
+    Check kitchen_door Is Not closed
+      Else "The door to the living-room is closed."
+  End Exit.
+End The kitchen.
+
+The kitchen_door IsA Door At kitchen
+  Verb open
+    Does Make livingroom_door Not closed. -- the same door but from the other side
+  End Verb.
+
+  Verb close
+    Does Make livingroom_door closed. -- the same door but from the other side
+  End Verb.
+End The kitchen_door.
+
+The livingroom IsA Location
+  ...
+  Exit east To kitchen
+    Check livingroom_door Is Not closed
+      Else "The door to the living-room is closed."
+  End Exit.
+End The livingroom.
+
+The livingroom_door IsA Door At livingroom
+  Verb open
+    Does Make kitchen_door Not closed. -- the same door but from the other side
+  End Verb.
+
+  Verb close
+    Does Make kitchen_door closed. -- the same door but from the other side
+  End Verb.
+End The livingroom_door.
+--------------------------------------------------------------------------------
+
+
+
+== Implement Exits That Weren't There Before
+
+[source,alan]
+--------------------------------------------------------------------------------
+The cave IsA Location
+  ...
+  Exit out To outside_cave.
+    Exit west To treasure_chamber -- through a secret door
+      Check secret_door At cave
+        Else "You can't go that way."
+  End Exit.
+End The cave.
+--------------------------------------------------------------------------------
+
+
+
+== Make Something Happen When a Location Is Entered
+
+Use `Entered`
+
+[source,alan]
+--------------------------------------------------------------------------------
+The room_1 IsA Location
+  Entered
+    Schedule phone_ringing At room_1 After 0
+--------------------------------------------------------------------------------
+[WARNING]
+================================================================================
+If a non-player character is moving in the game map, `Entered` will be executed also when this character enters the location.
+================================================================================
+
+[TIP]
+================================================================================
+It's handy to check if the executing actor is the hero or somebody else. This is achieved through using `Current Actor`:
+================================================================================
+
+[source,alan]
+--------------------------------------------------------------------------------
+The room_1 IsA Location
+  Entered
+    If Current Actor <> hero
+      Then Schedule notifying_message At room_1 After 0.
+    End If.
+End The room_1.
+
+Event notifying_message
+  If Current Actor = lisa
+    Then "Lisa enters the room!"
+  ElsIf Current Actor = tom
+    Then "Tom walks in!"
+  ElsIf...
+  End If.
+End Event.
+--------------------------------------------------------------------------------
+
+Or:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Event notifying_message
+  Say Current Actor. "enters the room!"
+End Event.
+--------------------------------------------------------------------------------
+
+
+
+== Do Not Display a Location Name When Entering or Looking
+
+[source,alan]
+--------------------------------------------------------------------------------
+The kitchen IsA Location
+  Name ''
+  Description "? ? ?"
+End The kitchen
+--------------------------------------------------------------------------------
+
+
+
+== Do Not Display a Location Description When Entering or Looking
+
+Just leave the description out altogether:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The kitchen IsA Location
+End The kitchen.
+--------------------------------------------------------------------------------
+
+
+
+== Do Not Display neither a Location Name nor a Description When Entering or Looking
+
+[source,alan]
+--------------------------------------------------------------------------------
+The kitchen IsA Location
+  Name ''
+End The kitchen.
+--------------------------------------------------------------------------------
+
+
+
+== Display a Message Before the Location Name and Description Upon Entering a Location
+
+Put the message into the `Does` part of the `Exit` of the previous location:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The place_1 IsA Location
+  exit east To place_2
+    Does "When you enter, a strange odor catches your attention."
+  End Exit.
+End The place_1.
+--------------------------------------------------------------------------------
+
+
+
+== Display a Message After the Location Description Upon Entering a Location
+
+Have an event trigger when the location is entered:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The livingroom IsA Location
+  Description "? ? ?"
+  Entered
+    Schedule livingroom_afterdesc After 0.
+End The livingroom.
+
+Event livingroom_afterdesc
+  "$pThis message will be shown after the description of the living-room."
+--------------------------------------------------------------------------------
+
+
+
+== Display a Message After the Location Name but Before the Location Description Upon Entering a Location
+
+Put the message in the location description itself:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The kitchen IsA Location
+	Description
+	"(Wow, what an ingenious name for this location. Before going to the description part, you taste the word in your mouth for a while.)$p"
+	"You are in the kitchen."
+End The kitchen.
+--------------------------------------------------------------------------------
+
+If you wish to have the special message displayed for only the first time the kitchen is visited, you can add the following code if you are using the standard library:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Description
+	If visited Of kitchen = 1
+		Then "(Wow, what..."
+	End If.
+	"You are in the kitchen."
+--------------------------------------------------------------------------------
+
+
+
+== Display a Message Upon Exiting a Location
+
+Put the message into the `Does` part of an `Exit`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The loc1 IsA Location
+	Exit east To loc2
+		Does "When you leave, you have the feeling that you forgot to pick up something crucial."
+	End Exit.
+End The loc1.
+--------------------------------------------------------------------------------
+
+
+
+== Vary the Location Description (L)
+
+For example, so that the first-time description is different from the subsequent times.
+
+Use the 'visited' or 'described' attributes:
+
+.Example 1
+[source,alan]
+--------------------------------------------------------------------------------
+The kitchen IsA Location
+	Description
+		"You are in the kitchen"
+		If visited Of kitchen = 1 -- (= your first time here)
+			Then "This is your first time here."
+			Else "You remember you've been here before."
+		End If.
+End The kitchen.
+--------------------------------------------------------------------------------
+
+.Example 2
+[source,alan]
+--------------------------------------------------------------------------------
+The library IsA Room
+	Description
+		If described Of library = 1 -- (= the first-time description)
+			Then "There is an old man reading at a table in one of the corners."
+			Else "The old man keeps on reading at his table."
+		End If.
+End The library.
+--------------------------------------------------------------------------------
+
+
+
+== Change the Attribute of a Location
+
+[source,alan]
+--------------------------------------------------------------------------------
+The bedroom IsA Location
+	Is Not cleaned.
+
+	Verb clean
+		Check bedroom Is Not cleaned
+			Else "The bedroom is already cleaned."
+		Does "You clean the bedroom."
+			Make bedroom cleaned.
+	End Verb.
+End The bedroom.
+--------------------------------------------------------------------------------
+
+
+
+== Check an Attribute of the Current Location
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb read
+	Check Current Location Is lit
+		Else "It's too dark to see!"
+	Does "You read."
+End Verb.
+--------------------------------------------------------------------------------
+
+
+
+== Keep Track of Whether or How Many Times a Location Has Been Visited (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The king IsA Actor
+	...
+	Verb ask
+		When act
+		If topic = treasure_chamber
+			Then
+				If visited Of treasure_chamber = 0
+					Then "You are not supposed to know anything about the treasure chamber - you haven't found it yet."
+					Else """Just take what you want from the chamber"", the king smiles."
+				End If.
+		...
+		End If.
+	End Verb.
+End The king.
+--------------------------------------------------------------------------------
+
+
+
+== Keep track of How Many Times a Location Has Been Described (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The library IsA Room
+	Description
+		If described Of This = 1
+			Then "There is an old man reading at a table in one of the corners."
+		Elsif described Of This < 5
+			Then "The old man keeps on reading at his table."
+		Else "The old man seems to never get tired of reading."
+		End If.
+End The.
+--------------------------------------------------------------------------------
+
+
+
+== Make a Verb Behave Differently in a Given Location
+
+For example:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; jump +
+The ceiling is too low here.
+================================================================================
+
+[source,alan]
+--------------------------------------------------------------------------------
+The basement IsA Location
+	Description ...
+	Verb jump
+		Does Only "The ceiling is too low here."
+	End Verb.
+
+	Verb take
+		Does Only "There is nothing worth taking among the old junk here."
+	End Verb.
+End The basement.
+--------------------------------------------------------------------------------
+
+
+
+== Implement a Location or Situation where All or Some Verbs and Commands Are Restricted So That They Display the Same Message
+
+For example:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; jump +
+But you're tied up! +
+&gt; take keys +
+But you're tied up! +
+&gt; attack guard +
+But you're tied up!
+================================================================================
+
+Use the extension "Restricted verbs" available on the Alan website.
+
+
+
+== Allow the Player to Refer to the Location
+
+You can't refer to the location instance directly in a player command. Make a reference object instead:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The kitchen_object IsA Object At kitchen
+	Name kitchen
+
+	Verb examine
+		Does Only "A modern kitchen with many appliances."
+	End Verb.
+
+	Verb 'exit'
+		Does Only Locate hero At living_room.
+	End Verb.
+	...
+End The kitchen_object.
+--------------------------------------------------------------------------------
+
+
+== Check the Location of an Object or Actor
+
+.Example 1
+[source,alan]
+--------------------------------------------------------------------------------
+If hero At treasure_chamber
+	Then ...
+End If.
+--------------------------------------------------------------------------------
+
+.Example 2
+[source,alan]
+--------------------------------------------------------------------------------
+If ball At tom -- at the same location as Tome
+	Then ...
+End If.
+--------------------------------------------------------------------------------
+
+.Example 3
+In verb checks:
+[source,alan]
+--------------------------------------------------------------------------------
+Check hero At treasure_chamber
+	Else ...
+Does ...
+--------------------------------------------------------------------------------
+
+.Example 4
+[source,alan]
+--------------------------------------------------------------------------------
+If Location Of ball Is Not lit
+	Then ...
+End If.
+--------------------------------------------------------------------------------

@@ -1,0 +1,227 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          16. Text Formatting                              *
+// *                                                                           *
+// *****************************************************************************
+
+= Text Formatting
+
+== Attach Text Right After Previous Text
+
+Nothing special needs to be taken into account. Sentences follow each other naturally. There is no need to leave any extra spaces anywhere; the next sentence continues so that a space is automatically left:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The door IsA Object At room_1
+  Is closable. closed.
+
+  Verb examine
+    Does Only "It's a white door."
+      If door Is closed
+        Then "It is closed."
+        Else "It is open."
+      End If.
+  End Verb.
+End The door.
+--------------------------------------------------------------------------------
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; x door +
+It's a white door. It is closed.
+================================================================================
+
+There will be no space before a full stop or a comma:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The door IsA Object At room_1
+  Is closable. closed.
+
+  Verb examine
+    Does Only "It's a white door which is"
+      If door Is closed
+        Then "closed"
+        Else "open"
+      End If.
+      "."
+  End Verb.
+End The door.
+
+The door IsA Object At room_1
+  Is closable. closed.
+
+  Verb examine
+    Does Only "A white door"
+      If door Is closed
+        Then ", currently closed,"
+        Else ", currently open,"
+      End If.
+      "leads into room_2."
+  End Verb.
+End The door.
+--------------------------------------------------------------------------------
+
+If you need no space in some cases, use `$$`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Every Document IsA Object
+  Mentioned "document"
+    If Count, IsA Document, In folder > 1
+      Then "$$s"
+    End If.
+End Every.
+--------------------------------------------------------------------------------
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; x folder +
+In the folder you see some documents.
+================================================================================
+
+
+
+== Make a Body of Text Start at a New Line
+
+Insert `$n` before the text you wish to start at a new line:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The ball IsA Object
+  Verb examine
+    Does "It is an ordinary basketball.$nRound.$nSmooth.$nOrange."
+  End Verb.
+End The.
+--------------------------------------------------------------------------------
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; x ball +
+It is an ordinary basketball. +
+Round. +
+Smooth. +
+Orange.
+================================================================================
+
+
+
+== Start a New Paragraph
+
+Insert `$p` before the text you wish to continue after one empty line:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The outside_house IsA Location
+  Description "A white wooden house stands on the top of a hill.
+    $pChildren are playing in the garden."
+End The outside_house.
+--------------------------------------------------------------------------------
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; look +
+House
+A white wooden house stands on the top of a hill.
+
+Children are playing in the garden.
+================================================================================
+
+
+
+== Indent the Text on a New Line
+
+Insert `$i` before the intended indentation:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Start At garden.
+"You thought today would be just another ordinary day.$iYou couldn't have been more wrong."
+--------------------------------------------------------------------------------
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+You thought that today would be just another ordinary day. +
+&ensp; You couldn't have been more wrong.
+================================================================================
+
+
+
+== Display Quoted Passages In-Game
+
+[source,alan]
+--------------------------------------------------------------------------------
+The man IsA Actor At street
+  ...
+  Verb ask
+    When act
+    Does Only
+      """Whatever you ask me, I won't tell you,"" The man says arrogantly."
+  End Verb.
+End The man.
+--------------------------------------------------------------------------------
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+"Whatever you ask me, I won't tell you," the man says arrogantly.
+================================================================================
+
+
+
+== Begin the Response to a Command with a Small Letter
+
+[source,alan]
+--------------------------------------------------------------------------------
+The man IsA Person At street
+  Verb talk_to
+    Does "$$blah blah..."
+  End Verb.
+End The man.
+--------------------------------------------------------------------------------
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; talk to man +
+blah blah...
+================================================================================
+
+Instead of:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; talk to man +
+Blah blah...
+================================================================================
+
+The interpreter usually prints the first letter of a quote with a capital letter if it's written with a small letter. `$$` overrides this.
+
+
+
+== Change the Style (appearance) of the text
+
+Use the `Style` keyword. The five alternatives to use are:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Style normal.
+Style emphasized.
+Style alert.
+Style preformatted.
+Style quote.
+--------------------------------------------------------------------------------
+
+The actual outcome of the text is hugely interpreter-dependant. Experiment and see the various effects to determine which effect best suits your purposes.
