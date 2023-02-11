@@ -1,0 +1,57 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          21. Runtime Messages                             *
+// *                                                                           *
+// *****************************************************************************
+
+= Runtime Messages
+
+== Change the Default Runtime Messages
+
+For example, "You can't go that way." or "I don't know the word 'taek'."
+
+[source,alan]
+--------------------------------------------------------------------------------
+Message NoWay: "There is nothing of interest in that direction."
+
+Message Unknown_Word: "The word '$1' is not needed in this story."
+--------------------------------------------------------------------------------
+
+All default messages are listed in the manual and in the library file `messages.i`.
+
+
+
+== Use Parameters in Runtime Messages
+
+When you look through the list of default error messages, you'll notice that some of them contain parameters: "I don't know the word '$1'.", "$+1 contains", etc. The parameters vary from message to message, put they can be referred to with "parameter1", "parameter2", etc. These parameters can then be used like in verb definitions.
+
+[source,alan]
+--------------------------------------------------------------------------------
+Message No_Such: "I can't see any $1 here."
+  If parameter1 = keys
+    Then "I think you left them at the office."
+  Elsif parameter1 = flashlight
+    Then "You forgot to take it with you from the bedroom."
+  End If.
+
+Message Have_Scored: "You have scored $1 points out of $2."
+  If parameter1 < 5
+    Then "That gives you the rank Beginner."
+  Elsif parameter1 Between 5 and 10
+    Then ...
+  Elsif parameter2 / 2 > parameter1
+    Then "You haven't even reached halfway yet!"
+  Else ...
+  End If.
+
+Message Unknown_Word:
+  If parameter1 = "d*mn" Or parameter1 = "sh*t" Or parameter1 = "f*ck"
+    Then "No dirty language please!"
+  Else "I don't know the word '$1'."
+  End If
+--------------------------------------------------------------------------------
+
+[NOTE]
+================================================================================
+The `Check-Else-Does` construction is not possible in runtime message definitions.
+================================================================================

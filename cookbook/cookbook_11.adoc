@@ -1,0 +1,385 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          11. Events                                       *
+// *                                                                           *
+// *****************************************************************************
+
+= Events
+
+== Use Events in General
+
+An event must be triggered by `Schedule` outside the event code itself.
+
+If you want the event to repeat over several turns, you must put `Schedule` inside the event code, too.
+
+Events are cancelled using `Cancel`.
+
+The code for an event stands independently, outside any instance or verb definitions.
+
+
+
+== Implement a Single One-Time Event
+
+In this example, an explosion takes place five turns after the game start:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The street IsA Location
+End The street.
+
+Event explosion
+  "$pYou hear a big bang somewhere nearby."
+End Event.
+
+Start At street.
+  Schedule explosion At hero After 5.
+--------------------------------------------------------------------------------
+
+The `At hero` ensures that wherever the hero is at the fifth turn, they will hear the explosion. If you said "Schedule explosion At street After 5", the hero wouldn't hear the explosion if they weren't in the street at that moment.
+
+
+
+== Implement a One-Time Event that Takes Place Right at the Beginning of the Game
+
+[source,alan]
+--------------------------------------------------------------------------------
+The street IsA Location
+End The street
+
+Event explosion
+  "$pYou hear a big bang somewhere nearby."
+End Event.
+
+Start At street.
+  Schedule explosion At street After 0.
+--------------------------------------------------------------------------------
+
+
+
+== Make an Event Be Triggered by an Action
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb jump
+  Check hero At kitchen
+    Else "Nothing happens."
+  And floor Not broken
+    Else "You've wrecked the floor here already."
+  Does Schedule floor_collapse At room_1 After 0.
+End Verb.
+
+Event floor_collapse
+  "The floor collapses under you! You fall into the basement."
+  Locate hero At basement.
+  Make floor broken.
+  Make basement lit.
+End Event.
+--------------------------------------------------------------------------------
+
+
+
+== Implement Repeated Events with the Same Message Displaying Every Time
+
+[source,alan]
+--------------------------------------------------------------------------------
+Event phone_ringing
+  "$pThe phone keeps ringing."
+  Schedule phone_ringing At office After 1.
+End Event.
+
+Start At office.
+  "You were having a pleasant afternoon nap in your office when you were rudely woken up by the irritating ringing of your work phone. Bemused, you rub your eyes and sit up in your chair."
+    Schedule phone_ringing At office After 1.
+--------------------------------------------------------------------------------
+
+
+
+== Implement Repeated Events with Varying Messages
+
+. After the messages have each appeared once, the event stops
++
+[source,alan]
+--------------------------------------------------------------------------------
+Event walls_approach
+  If value Of walls = 0
+    Then "The walls of the room start moving, approaching you!"
+  Elsif value Of walls = 1
+    Then "The walls keep approaching you! The free space in the room gets smaller and smaller."
+  Elsif value Of walls = 2
+    Then "There is only a narrow passage left in the middle of the room. You had better do something quickly!"
+  Elsif value Of walls = 3
+    Then "The walls crush you!"
+      Cancel walls_approach. -- this is not really needed because of the Quit following below
+      Quit.
+  End If.
+  Increase value Of walls.
+  Schedule walls_approach At hero After 1.
+End Event.
+
+The walls IsA Object At room_1
+  Has value 0.
+  ...
+  Verb touch
+    Does
+      If value Of walls = 0
+        Then Schedule walls_approach At hero After 0.
+        Else "Nothing special happens."
+      End If.
+  End Verb.
+End The walls.
+--------------------------------------------------------------------------------
++
+To make the walls stop, just do:
++
+[source,alan]
+--------------------------------------------------------------------------------
+Verb simsalabim
+  Does "That helped! The walls retreat to their original position. You are safe."
+    Cancel walls_approach.
+End Verb.
+--------------------------------------------------------------------------------
+. After the messages have each appeared once, the whole cycle is repeated over and over again:
++
+[source,alan]
+--------------------------------------------------------------------------------
+Event streetlife
+  If value Of street = 1
+    Then "A neverending line of cars passes by."
+  Elsif value Of street = 2
+    Then "Busy people going to work rush past you."
+  Elsif value Of street = 3
+    Then "A street vendor is striving to sell hotdogs to the busy passers-by."
+  Elsif value Of street = 4
+    Then "The noise of the traffic together with the almost unbearable heat really starts getting on your nerves."
+      Set value of street To 0.
+  End If.
+  Increase value Of street.
+  Schedule streetlife At hero After 1.
+End Event.
+
+The street IsA Object At town
+  Has value 1.
+End The street.
+
+Start At town.
+  Schedule streetlife At town After 0.
+--------------------------------------------------------------------------------
+. A number of messages is displayed in random order, and after all of them have been displayed at least once, the event stops.
++
+Here, all five atmospheric messages in a forest must display at least once before the event stops:
++
+[source,alan]
+--------------------------------------------------------------------------------
+Event forest_messages
+  Depending On Random 1 To 5
+  = 1 Then "In the distance you hear the chirping of a songbird."
+    Increase 1_message_value Of forest.
+  = 2 Then "A small fox peeks from under one of the bushes and disappears a moment later."
+    Increase 2_message_value Of forest.
+  = 3 Then "You feel a light, welcome breeze on your face."
+    Increase 3_message_value Of forest.
+  = 4 Then "A white butterfly flutters past."
+    Increase 4_message_value Of forest.
+  =5 Then "A wasp circles you for a couple of times and flies away."
+    Increase 5_message_value Of forest.
+  End Depend.
+  Schedule forest_messages At hero After 1.
+End Event.
+
+The forest IsA Location
+  Has 1_message_value 0.
+  Has 2_message_value 0.
+  Has 3_message_value 0.
+  Has 4_message_value 0.
+  Has 5_message_value 0.
+  Entered
+    Schedule forest_messages At hero At forest After 0.
+    ...
+End The forest.
+
+When 1_message_value Of forest >= 1
+  And 2_message_value Of forest >= 1
+  And 3_message_value Of forest >= 1
+  And 4_message_value Of forest >= 1
+  And 5_message_value Of forest >= 1
+    Then Cancel forest_messages.
+--------------------------------------------------------------------------------
+. Messages are displayed in random order for a number of turns, and even if all of them haven't necessarily been displayed yet, the event stops
++
+In this example, five different messages are displayed randomly for 12 turns.
++
+[source,alan]
+--------------------------------------------------------------------------------
+Event forest_messages
+  Depending On Random 1 To 5
+  = 1 Then "In the distance you hear the chirping of a songbird."
+  = 2 Then "A small fox peeks from under one of the bushes and disappears a moment later."
+  = 3 Then "You feel a light, welcome breeze on your face."
+  = 4 Then "A white butterfly flutters past."
+  = 5 Then "A wasp circles you for a couple of times and flies away."
+  End Depend.
+  Schedule forest_messages At hero After 1.
+  Increase value Of forest_messages_counter.
+  If value Of forest_messages_counter > 12
+    Then Cancel forest_messages.
+      "You feel tired of observing your surroundings and concentrate on finding the way out of the forest."
+  End If.
+End Event.
+
+The forest_messages_counter IsA Object
+  Has value 1.
+End The.
+
+The forest IsA Location
+  Entered
+    Schedule forest_messages At hero At forest After 0.
+    ...
+End The forest.
+--------------------------------------------------------------------------------
+. Messages are displayed in random order over and over again
++
+[source,alan]
+--------------------------------------------------------------------------------
+Event forest_messages
+  Depending On Random 1 To 5
+  = 1 Then "In the distance you hear the chirping of a songbird."
+  = 2 Then "A small fox peeks from under one of the bushes and disappears a moment later."
+  = 3 Then "You feel a light, welcome breeze on your face."
+  = 4 Then "A white butterfly flutters past."
+  = 5 Then "A wasp circles you for a couple of times and flies away."
+  End Depend.
+  Schedule forest_messages At hero After 1.
+End Event.
+--------------------------------------------------------------------------------
+
+
+
+== Control the Frequency of How Often the Messages in a Repeated Event Are Displayed
+
+. Every turn:
++
+Schedule the event to happen again on the next turn like this:
++
+[source,alan]
+--------------------------------------------------------------------------------
+Event event_1
+  "This message is displayed every turn."
+  Schedule event_1 At room_1 After 1.
+End Event.
+--------------------------------------------------------------------------------
+. Every 3 turns:
++
+[source,alan]
+--------------------------------------------------------------------------------
+Event event_1
+  "This message is displayed every three turns."
+  Schedule event_1 At room_1 After 3.
+End Event.
+--------------------------------------------------------------------------------
+. Every 2 to 5 turns:
++
+[source,alan]
+--------------------------------------------------------------------------------
+Event event_1
+  "This message is displayed every two to five turns."
+  Schedule event_1 At room_1 After Random 2 To 5.
+End Event.
+--------------------------------------------------------------------------------
+. Waiting for something to happen before the next message in an event is displayed:
++
+In this example, an event occurs only if a button is pushed:
++
+[source,alan]
+--------------------------------------------------------------------------------
+Event what_the_heck
+  If value Of button = 1
+    Then "A pink ghost emerges from the closet!"
+  Elsif value Of button = 2
+    Then "A bowl of ice cream appears on the table!"
+  Elsif value Of button = 3
+    Then "An ominous, maniacal laughter fills the room."
+  Elsif value Of button = 5
+    Then "The button itself vanishes!"
+    Locate button At nowhere.
+  End If.
+  Increase value Of button.
+End Event.
+
+The button IsA Object At room_1
+  Has value 1.
+
+  Verb push
+    Does Only
+      Schedule what_the_heck At room_1 After 0.
+  End Verb.
+End The button.
+--------------------------------------------------------------------------------
+
+
+
+== Stop a Repeated Event or Cancel an Event Before it Has Happened
+
+[source,alan]
+--------------------------------------------------------------------------------
+Cancel phone_ringing.
+
+Cancel explosion.
+--------------------------------------------------------------------------------
+
+
+
+== Determine Whether an Event Has Already Happened
+
+Events cannot have attributes, such as 'happened' or 'Not happened'.
+
+Make a control object that changes its value when the event executes and check its value when needed:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Event event_1
+  "You approach Bob in order to pop the question but he gives the appearance of not wanting to cooperate in the least. You decide it's better to leave him be."
+  Increase value Of event_1_object.
+End Event.
+
+The event_1_object IsA Object
+  Has value 0.
+End The event_1_object.
+
+The bob IsA Object
+  Verb ask
+    When person
+    Check value Of event_1_object = 0
+      Else "It seems there is no help to be expected from Bob."
+    Does Schedule event_1 At hero After 0.
+  End Verb.
+End The bob.
+--------------------------------------------------------------------------------
+
+
+
+== Determine How Many Times a Certain Event Has Executed
+
+The following example implements a secret passage that opens when a piano is played, but only for the first two tries.
+
+[source,alan]
+--------------------------------------------------------------------------------
+Event event_1
+  "You press a few keys of the piano. A secret door opens in the wall!"
+  Make secret_door Not closed.
+  Increase value Of event_1_object.
+End Event.
+
+The event_1_object IsA Object
+  Has value 0
+End The event_1_object.
+
+The piano IsA Object At livingroom
+  Verb 'play'
+    Does Only
+      If value Of event_1_object > 2
+        Then "The secret door won't open anymore. I guess the trick only worked for a couple of times."
+        Else Schedule event_1 At hero After 0.
+      End If.
+  End Verb.
+End The piano.
+--------------------------------------------------------------------------------

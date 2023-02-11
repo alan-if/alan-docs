@@ -1,0 +1,41 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          12. Loops                                        *
+// *                                                                           *
+// *****************************************************************************
+
+= Loops
+
+== Use For Each formulations
+
+You can affect a group of instances simultaneously by using `For Each`. The affected group can be a class, or instances sharing an attribute or a location, or the members of a set.
+
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+For Each ani IsA Animal
+  Do
+    Make ani sleepy.
+End For Each. -- or: End For. / End Each.
+--------------------------------------------------------------------------------
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+For Each p IsA Person, In livingroom
+  Do
+    Make p suspect Of detective.
+End Each.
+--------------------------------------------------------------------------------
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+For Each o IsA Object, Is Not reachable, In storage
+  Do
+  Make o reachable.
+End For.
+--------------------------------------------------------------------------------
+
+A temporary variable is needed in the `For Each` formulation. In the above examples, these variables are `ani`, `p`, and `o`. The variables can be named in any way the game author chooses to name them.

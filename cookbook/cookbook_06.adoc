@@ -1,0 +1,281 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          6. Attributes                                    *
+// *                                                                           *
+// *****************************************************************************
+
+= Attributes
+
+== Give an Attribute to an Object, Actor, or Location
+
+An attribute is a word or a literal that describes the characteristics of the instance. The attribute can be anything descriptive of the instance. An attribute is preceded by `Is`, `Are`, `Has` or `Can`; any of these can be used interchangeably to make the code the most readable. `Not` can additionally be used after these four words.
+
+[source,alan]
+--------------------------------------------------------------------------------
+The monster IsA Actor At cave
+  Is sleeping.
+  Is Not hungry.
+  ...
+End The monster.
+
+The boy IsA Person At garden
+  Has play_level 0.
+  Is Not discovered.
+  ...
+End The ball.
+
+The park IsA Location
+  Is open.
+  Has searched_level 0.
+  ...
+End The park.
+--------------------------------------------------------------------------------
+
+An attribute must not have any spaces in it. If you wish to have two or more words in an attribute, use either an symbol such as an underscore to connect the words together or use _camelCase_:
+
+[source,alan]
+--------------------------------------------------------------------------------
+-- WRONG:
+  Has Not been talked to.
+  Is Not extremely busy.
+-- RIGHT:
+  Has Not been_talked_to.
+  Is Not extremely#busy.
+  Is Not extremelyBusy.
+--------------------------------------------------------------------------------
+
+
+
+== Know What Attributes are Already Built-In (L)
+
+There are no built-in attributes in the Alan language, per se. If you are using the standard library, the attributes that are defined there are listed at the top of the file `verbs.i`. Otherwise there are no limits to conjuring your own attributes:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The wolf IsA Actor At forest
+  Is very_hungry.
+  Is hunting_for_food.
+End The wolf.
+--------------------------------------------------------------------------------
+
+
+
+== Change the Attribute of an Object, Actor, or Location
+
+[source,alan]
+--------------------------------------------------------------------------------
+The tv IsA Object At lounge
+  Is broken
+
+  Verb fix
+    Does Make tv Not broken.
+  End Verb.
+End The tv.
+
+The jack IsA Actor At street
+  Is Not friendly.
+  Can Not sing.
+
+  Verb give
+    When act
+      Does
+        If obj = letter
+          Then "Jack accepts it readily."
+            Make jack friendly.
+          Else "Jack continues to sulk."
+        End If.
+  End Verb.
+
+  Verb teach
+    Does Make jack sing.
+  End Verb.
+End The jack.
+
+The bedroom IsA Location
+  Has value 1.
+  Is Not cleaned.
+
+  Verb clean
+    Does "You clean the bedroom."
+      Make bedroom cleaned.
+    End Verb.
+
+    Verb jump
+      Does Increase value Of bedroom.
+    End Verb.
+
+    Verb sing
+      Does Decrease value Of bedroom.
+    End Verb.
+End The bedroom.
+--------------------------------------------------------------------------------
+
+
+
+== Make an Instance Behave Differently When an Attribute Changes
+
+[source,alan]
+--------------------------------------------------------------------------------
+The tv IsA Object At lounge
+  Is broken.
+
+  Verb watch
+    Does
+      If tv Is broken
+        Then "You can't; the TV is broken."
+        Else "You watch the TV."
+      End If.
+  End Verb.
+End The tv.
+--------------------------------------------------------------------------------
+
+
+
+== Increase a Numeric Attribute
+
+[source,alan]
+--------------------------------------------------------------------------------
+The hero IsA Actor
+  Has strength 10.
+End The hero.
+
+The magic_potion IsA Object At cottage
+  Verb drink
+    Does Increase strength Of hero.
+  End Verb.
+End The magic_potion.
+--------------------------------------------------------------------------------
+
+By default, `Increase` increases the numeric attribute by 1. To have it some other way, use `By`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Increase strength Of hero By 3.
+Increase difficulty Of game By 5.
+--------------------------------------------------------------------------------
+
+
+
+== Decrease a Numeric Attribute
+
+[source,alan]
+--------------------------------------------------------------------------------
+The bottle IsA Object At basement
+  Has level 5.
+
+  Verb drink
+    Does Only
+      If level Of bottle >= 1
+        Then
+          "You take a sip from the bottle."
+          Decrease level Of bottle.
+      End If.
+      If level Of bottle = 0
+        Then "It is now empty."
+      End If.
+  End Verb.
+End The bottle.
+--------------------------------------------------------------------------------
+
+By default, `Decrease` reduces the numeric attribute by 1. To have it some other way, use `By`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Decrease level Of bottle By 2.
+Decrease power Of monster By 5.
+--------------------------------------------------------------------------------
+
+
+
+== Check the Value of a Numeric Attribute
+
+.Example 1
+[source,alan]
+--------------------------------------------------------------------------------
+If level Of bottle = 0
+  Then "The bottle is empty!"
+End If.
+--------------------------------------------------------------------------------
+
+.Example 2
+[source,alan]
+--------------------------------------------------------------------------------
+When tiredness Of hero > 5
+  Then Make hero asleep.
+    "You fall asleep on the spot."
+--------------------------------------------------------------------------------
+
+.Example 3
+[source,alan]
+--------------------------------------------------------------------------------
+Verb jump
+  Does
+    If strength Of hero >= 5
+      Then "You jump easily over the fence."
+    End If.
+End Verb.
+--------------------------------------------------------------------------------
+
+.Example 4
+[source,alan]
+--------------------------------------------------------------------------------
+Depending On weight Of obj
+  = 1 Then "light as a feather"
+  Between 2 and 10 Then "carryable"
+  Between 11 And 20 Then "heavy"
+  > 20 Then "immobile"
+  Else "weightless"
+End Depend.
+--------------------------------------------------------------------------------
+
+
+
+== Use Random Values
+
+.Example 1
+[source,alan]
+--------------------------------------------------------------------------------
+Set value Of dice To Random 1 To 6.
+--------------------------------------------------------------------------------
+
+.Example 2
+[source,alan]
+--------------------------------------------------------------------------------
+Depending On Random 1 To 3
+  = 1 Then "This is the first alternative message."
+  = 2 Then "This is the second alternative message."
+  = 3 Then "This is the third alternative message."
+End Depend.
+--------------------------------------------------------------------------------
+
+.Example 3
+[source,alan]
+--------------------------------------------------------------------------------
+If Random 1 To 2 = 1
+  Then "Yippee!"
+  Else "Oh well."
+End If.
+--------------------------------------------------------------------------------
+
+.Example 4
+Random values cannot be used in attributes:
+
+WRONG:
+[source,alan]
+--------------------------------------------------------------------------------
+-- WRONG
+The hero IsA Actor
+  Has health Random 3 to 6.
+End The hero.
+--------------------------------------------------------------------------------
+
+Use `Initialize` instead:
+[source,alan]
+--------------------------------------------------------------------------------
+-- RIGHT
+The hero IsA Actor
+  Has health 0.
+  Initialize
+    Set health Of hero To Random 3 to 6.
+End The hero.
+--------------------------------------------------------------------------------

@@ -1,0 +1,39 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          20. Comments                                     *
+// *                                                                           *
+// *****************************************************************************
+
+= Comments
+
+== Add Comments to the Code
+
+Every line of code starting with two dashes (--) is regarded as a comment. WHen these two dashes appear in the middle of the line, everything after the dashes on that line will be regarded as a comment:
+
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+-- This is a comment.
+--------------------------------------------------------------------------------
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+The cave IsA Location -- don't forget to add a description later!
+  Description "..."
+End The cave.
+--------------------------------------------------------------------------------
+
+
+
+== Add Comments in the Game
+
+If you want to make comments in-game, for example for a transcript file, use a semicolon `;` before the intended comment:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; wipe snow +
+You wipe out the snow, which reveals a compass rose carved into the ice. +
+&gt; ;That was clever!
+================================================================================

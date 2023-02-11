@@ -1,0 +1,1273 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          2. Objects                                       *
+// *                                                                           *
+// *****************************************************************************
+
+= Objects
+
+== Implement a Basic Object
+[source,alan]
+--------------------------------------------------------------------------------
+The ball IsA Object At room1
+  Name red ball
+  Description "A red ball lies to one side."
+
+  Verb examine
+    Does Only "It is an ordinary red ball."
+  End Verb.
+End The ball.
+--------------------------------------------------------------------------------
+
+
+
+== Have the Default Object Description Show Up After the Location Description When Looking or Entering
+
+For example:
+[example,role="gametranscript"]
+================================================================================
+&gt; look +
+There is a ball here.
+================================================================================
+
+[source,alan]
+--------------------------------------------------------------------------------
+The ball IsA Object At garden
+End The ball.
+--------------------------------------------------------------------------------
+
+* leaving any description of your own out altogether will result in the object being described after the location
+
+* description with the default sentence "There is a [object] here."
+
+
+
+== Have Your Own Object Description, Instead of the Default, Show Up After the Location Description When Looking or Entering
+
+Usually, an object is described in the location with the sentence "There is a (X) here." after the location description.
+
+You have three other alternatives:
+
+. edit this message
+. remove it altogether (and include the object in the location description in your own words)
+. edit the default runtime message that mentions the object in the location. (However, this will affect all objects in the game.)
+
+.Method 1
+To just edit "There is a (X) here.", you can do:
+[source,alan]
+--------------------------------------------------------------------------------
+The ball IsA Object
+  Description "A red ball lies on the floor."
+End The ball.
+--------------------------------------------------------------------------------
+
+This sentence will then display after the location description, instead of "There is a ball here."
+
+[NOTE]
+================================================================================
+This sentence will also display if the ball is dropped in any other location, including outdoors; that's why it is a good idea to take into account all possible alternatives and provide multiple descriptions as needed; or then make the description generic enough to suit all possible locations.
+================================================================================
+
+.Method 2
+To remove this description, do this:
+[source,alan]
+--------------------------------------------------------------------------------
+The ball IsA Object
+  Description ""
+End The ball.
+--------------------------------------------------------------------------------
+
+Leave the description empty. You can then include the object in the location description itself, using your own words.
+
+[CAUTION]
+================================================================================
+Remember to remove the object from the location description if it is picked up.
+================================================================================
+
+.Method 3
+To edit the default runtime message:
+[source,alan]
+--------------------------------------------------------------------------------
+Message SEE_START: "You see $01"
+--------------------------------------------------------------------------------
+
+Yields `You see a ball here.` instead of the default `There is a ball here.`
+
+This will, however, affect all objects in the game the same way.
+
+
+
+== Implement an Opaque Container Object
+
+[source,alan]
+--------------------------------------------------------------------------------
+The closed_box IsA Object At storage
+  Name box
+  Opaque Container
+End The closed_box.
+
+The ball IsA Object In closed_box
+End The ball.
+--------------------------------------------------------------------------------
+
+The ball won't be visible to the player, and it can't be interacted with.
+
+
+
+== Implement a Transparent Container Object
+
+[source,alan]
+--------------------------------------------------------------------------------
+The glass_bowl IsA object At kitchen
+  Name glass bowl
+  Container
+End The glass_bowl.
+
+The apple IsA Object In glass_bowl
+End The apple.
+--------------------------------------------------------------------------------
+
+Something in a normal (transparent) container object won't be listed automatically when the container is described (after `Look` or `Examine`) - only the verb `Look in` will work. If you wish that the contents of a container object are automatically listed after `Look` or `Examine`, use the standard library and declare the container a `LISTABLE_CONTAINER`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The glass_bowl IsA LISTABLE_CONTAINER At kitchen
+End The.
+--------------------------------------------------------------------------------
+
+
+
+== Implement Open and Closed Containers (L)
+
+.Method 1
+[source,alan]
+--------------------------------------------------------------------------------
+The box IsA Object At basement
+  Container
+  Is closable. Is closed.
+  ...
+End The box.
+--------------------------------------------------------------------------------
+
+.Method 2
+[source,alan]
+--------------------------------------------------------------------------------
+The jar IsA LISTABLE_CONTAINER In kitchen
+  Is closable. Is Not closed.
+  ...
+End The jar.
+--------------------------------------------------------------------------------
+
+
+
+== Make Opaque Containers Show their Contents When Opened
+
+[source,alan]
+--------------------------------------------------------------------------------
+The box IsA LISTABLE_CONTAINER At basement
+  Opaque
+  Is closable. Is closed.
+  ...
+
+  Verb open
+    Does Only Make box Not closed. Make box Not Opaque.
+  End Verb.
+End The box.
+--------------------------------------------------------------------------------
+
+[NOTE]
+================================================================================
+This is handled automatically by the standard library.
+================================================================================
+
+
+
+== Edit the Description of What a Container Is Holding
+
+[source,alan]
+--------------------------------------------------------------------------------
+The sack IsA Object
+  Container
+    Header "Your sack currently contains"
+    Else "Your sack is currently empty."
+    ...
+End The sack.
+--------------------------------------------------------------------------------
+
+The `Header` part of an instance's `Container` section replaces the default runtime message `CONTAINS_START` for that instance.
+
+The `Empty` part of an instance's `Container` section replaces the default runtime message `EMPTY_HANDED` for that instance.
+
+
+
+== Limit the Amount a Container Can Hold
+
+.Method 1
+[source,alan]
+--------------------------------------------------------------------------------
+The sack IsA Object
+  Container
+    Limits
+      Count 10
+        Else "The sack is already full."
+End The sack.
+--------------------------------------------------------------------------------
+
+.Method 2
+[source,alan]
+--------------------------------------------------------------------------------
+The sack IsA Object
+  Container
+    Limits
+      weight 30
+        Else "You can't carry anything more."
+End The sack.
+--------------------------------------------------------------------------------
+
+The standard library defines that every object has the numerical weight attribute 5 and every actor has the weight attribute 50.
+
+Containers are not limited in any way in the standard library. The game author must set the limits. The library only limits how much the hero can carry at one time (= weight 50).
+
+
+
+== Check How Much a Container Is Currently Holding
+
+[source,alan]
+--------------------------------------------------------------------------------
+If Count IsA Object, In sack = 5
+  Then "Bingo! The sack now contains 5 items. You now have enough equipment to embark on your adventure."
+End If.
+--------------------------------------------------------------------------------
+
+
+
+== Report How Much a Container Is Currently Holding
+
+[source,alan]
+--------------------------------------------------------------------------------
+The sack IsA Object
+  Container
+  ...
+
+  Verb examine
+    Does Only "The sack currently contains" Say Count IsA Object, In sack. "items."
+  End Verb.
+End The sack
+--------------------------------------------------------------------------------
+
+
+
+== List the Contents of Container Objects in the Hero's Inventory
+
+Edit the verb `inventory` in the file *verbs.i*:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb inventory
+  Does List hero.
+  If box In hero
+    Then List box.
+  End If.
+  If bag In hero
+    Then List bag.
+  End If.
+End Verb.
+--------------------------------------------------------------------------------
+
+
+
+== Control the Order that Objects Are Listed When Taking Inventory or Describing the Contents of a Container
+
+.Example 1
+If you wish to have the initial contents of a container listed in a certain order, first locate the contents in the container by using `Initialize` and `Locate`:
+[source,alan]
+--------------------------------------------------------------------------------
+The folder IsA Object
+  Container
+    Initialize
+      Locate material1 In folder.
+      Locate material2 In folder.
+      Locate material3 In folder.
+End The folder.
+
+The material1 IsA Object
+End The.
+
+The material2 IsA Object
+End The.
+
+The material3 IsA Object
+End The.
+--------------------------------------------------------------------------------
+
+The three materials will be listed in this order when the contents of the folder are described.
+
+.Example 2
+Here is an example where the tools the hero is carrying are listed first, and all other items are listed thereafter. The example objects are a key, a book, a hat, a hammer, a screwdriver, and a saw (the three first ones being generic objects, the latter three being tools). Regardless of the order in which the hero picks these objects up, the tools are always listed first when taking inventory:
+[source,alan]
+--------------------------------------------------------------------------------
+Every tool IsA Object
+End Every.
+
+The key IsA Object at room1
+End The.
+
+The book IsA Object At room1
+End The.
+
+The hammer IsA Tool at room1
+End The.
+
+The screwdriver IsA Tool At room1
+End The.
+
+The saw IsA Tool At room1
+End The.
+
+Verb inventory
+  Does
+    Empty hero In rearranging_inventory
+    For Each o IsA Tool, In rearranging_inventory
+      Do
+      Locate o In hero.
+    End For.
+    Empty rearranging_inventory In hero.
+    List hero.
+End Verb.
+
+The rearranging_inventory IsA Object
+  Container
+End The.
+--------------------------------------------------------------------------------
+
+Here, the possessions of the hero are all located in another container first (= the hero's inventory is emptied to be arranged anew). After that, the tool objects are first located back in the hero's inventory, using the `For Each` loop. Finally, all other objects are located back, as well. All of this is invisible to the player, and the tools will always be listed first when taking inventory.
+
+
+
+== Vary How the Hero's Inventory Is Listed
+
+Edit the runtime messages that control the listing of containers. Here is an example:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Messages
+  Contains_Comma: "$i$01"
+  Contains_And: "$i$01"
+  Contains_End: "$i$01"
+--------------------------------------------------------------------------------
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; inventory +
+You are carrying +
+&ensp;&ensp; a set of keys +
+&ensp;&ensp; a remote control +
+&ensp;&ensp; an umbrella +
+&ensp;&ensp; a newspaper +
+&ensp;&ensp; a note +
+&ensp;&ensp; some coins.
+================================================================================
+
+
+
+== Control Which Objects Can Be Put Into a Container
+
+Sometimes we wish to limit what can be put into a certain container. Commands like 'put book in coffee cup' should not have successful outcomes. Similarly, in a game we might have a folder object in which we should only be able to put papers or documents, but not, say, keys or fruit. Here are a couple of examples to show how to accomplish this:
+
+.Example 1
+[source,alan]
+--------------------------------------------------------------------------------
+Every liquid IsA Object
+End The.
+
+The coffee IsA Liquid At room1
+End The.
+
+The book IsA Object At room1
+End The.
+
+The coffee_cup IsA Object At room1
+  Container Taking Liquid.
+  Name coffee cup
+End The.
+--------------------------------------------------------------------------------
+
+.Example 2
+[source,alan]
+--------------------------------------------------------------------------------
+Every document IsA Object
+  Is readable.
+End The.
+
+The newspaper_article IsA Document At office
+End The.
+
+The letter IsA Document At office
+End The.
+
+The job_application IsA Document At office
+End The.
+
+The apple IsA Object At office
+End The.
+
+The folder IsA Object
+  Container Taking Document.
+End The folder.
+--------------------------------------------------------------------------------
+
+[NOTE]
+================================================================================
+`Taking`, after `Container`, specifies which kind of objects the container can hold. After `Taking`, any instance class or subclass may follow.
+================================================================================
+
+.Method 3
+Sometimes the methods described above are not sufficient. What if we need to restrict a desk drawer not accepting a chair or a suitcase, and similar cases?
+
+Every object has a default weight attribute 5, defined in the standard library. We can make use of this feature by giving a high weight attribute to all objects that shouldn't go in a container:
+[source,alan]
+--------------------------------------------------------------------------------
+The drawer IsA Object At bedroom
+  Container
+
+  Verb put_in
+    When cont
+    Check weight Of obj <= 5
+      Else "That doesn't fit into the drawer."
+  End Verb.
+End The.
+
+The chair IsA Object At bedroom
+  Has weight 10.
+End The.
+
+The suitcase IsA Object At lobby
+  Has weight 10.
+End The.
+--------------------------------------------------------------------------------
+
+[TIP]
+================================================================================
+Additionally, you can use an attribute of your own, e.g., 'size', in a similar way.
+================================================================================
+
+Alternatively, you can restrict to explicitly named objects:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The drawer IsA Object
+  Container
+  Has allowed {diary, watch, keys}.
+
+  Verb put_in
+    Check obj In allowed Of drawer
+      Else "That doesn't belong in the drawer."
+  End Verb.
+End The.
+--------------------------------------------------------------------------------
+
+
+
+== Allow Actors Inside a Container
+
+By default, actors cannot be located inside a container object. To change this, use `Taking`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The bed IsA Object At bedroom
+  Container Taking Actor.
+  ...
+End The bed.
+--------------------------------------------------------------------------------
+
+
+
+== Make Something Happen When an Object Is Taken Out of a Container
+
+`Extract` defines what happens when something is taken out of a container, for example, when the player types "take apple from bowl" or "take book from man". `Extract` needs to be placed in the `Container` section of an instance:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The man IsA Actor at street
+  ...
+    Container
+      Header "The man is carrying"
+      Else "The man is empty-handed."
+      Extract "$p""Hey!"", the man snaps at you, ""give it back to me!"""
+        Make man angry.
+End The man.
+--------------------------------------------------------------------------------
+
+What is defined in `Extract` will be carried out after the default outcome for the verb used.
+
+[example,role="gametranscript"]
+================================================================================
+&gt; take book from man +
+You take the book from the man. +
+"Hey!", the man snaps at you, "give it back to me!"
+================================================================================
+
+An optional `Check` in the `Extract` section prohibits the extraction from taking place under a certain condition:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The man IsA actor At street
+  ...
+  Container
+    Header "The man is carrying"
+    Else "The man is empty-handed."
+    Extract
+      Check book In man
+        Else "It's not worth trying to snatch anything from the man at present."
+      Does """Hey!"", the man snaps at you, ""give it back, to me!"
+        Make man angry.
+End The man.
+--------------------------------------------------------------------------------
+
+here, trying to take something from the man (when he's not carrying the book) would stop the `take_from` verb from executing and print out the check message:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; take keys from man +
+It's not worth trying to snatch anything from the man at present.
+================================================================================
+
+An `Extract` with a mere `Check`, with no `Else` or `Does`, stops the action in all cases:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Extract
+  Check "It's not worth trying to snatch anything from this guy."
+--------------------------------------------------------------------------------
+
+This is equivalent to:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The man IsA Actor At street
+  ...
+  Verb take_from
+      When holder
+    Does Only "It's not worth trying to snatch anything from this guy."
+  End Verb.
+End The man.
+--------------------------------------------------------------------------------
+
+But `Extract` is more flexible in that it will stop the action with all imaginable verbs (and not just `take_from`) that the player might use to get an item from the man.
+
+
+
+== Check the Location of an Object which Might Be in a Container
+
+There are two ways to check if a thing is at a certain location:
+
+.Method 1
+[source,alan]
+--------------------------------------------------------------------------------
+If ball At room_1
+  Then ...
+End If.
+--------------------------------------------------------------------------------
+
+If the ball is in `room_1`, this check will find the ball whether it is on the floor, in a box, or in a drawer -- regardless of whether the ball is in a container or not -- as long as it is in `room_1`.
+
+.Method 2
+[source,alan]
+--------------------------------------------------------------------------------
+If ball Directly At room_1
+  Then ...
+End If.
+--------------------------------------------------------------------------------
+
+`Directly` checks if the location of the object is _directly_ at the checked location. That is to say that if the ball is in a box, this check will fail. Only if the ball is found directly in the room (e.g. "You see a red ball on the floor") will the check be successful, and the `Then` statement will be carried out.
+
+
+
+== Take a Random Object Out of a Container
+
+Here, the hero encounters a thief who steals one random object from their inventory:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Event thief_appears.
+  "A thief suddenly appears and takes one of your possessions! He disappears as quickly as he emerged."
+  Locate Random In hero In thief.
+End Event.
+--------------------------------------------------------------------------------
+
+
+
+== Empty a Container Object or the Hero's Inventory
+
+.Example 1
+[source,alan]
+--------------------------------------------------------------------------------
+The bowl IsA LISTABLE_CONTAINER At kitchen
+  ...
+  Verb pour
+    Does Only Empty bowl Here.
+    "You pour the contents of the bowl onto the floor."
+  End Verb.
+End The bowl.
+--------------------------------------------------------------------------------
+
+[NOTE]
+================================================================================
+This is handled automatically by the standard library; see verbs `pour` and `empty` in `verbs.i`
+================================================================================
+
+.Example 2
+[source,alan]
+--------------------------------------------------------------------------------
+Event earthquake
+  "The ground shakes violently. Everything you were carrying drops to the ground!"
+  Empty hero Here.
+End Event.
+--------------------------------------------------------------------------------
+
+
+
+== Take One Object Out of a Group of Many Identical Ones
+
+For example, take a spoon out of a kitchen drawer so that there are still spoons left in the drawer.
+
+[source,alan]
+--------------------------------------------------------------------------------
+The spoons IsA Object In drawer
+  Is plural.
+
+  Verb take
+    Does Only
+      If spoon Not In hero
+        Then "You take one spoon."
+          Locate spoon In hero.
+        Else "You already have a spoon."
+      End If.
+  End Verb.
+End The spoons.
+
+The spoon IsA Object -- declare no location for this instance to begin with!
+  ...
+End The spoon.
+--------------------------------------------------------------------------------
+
+
+
+== Drop a Certain Item When You Are Carrying Many Similar Ones
+
+In this example, the hero is carrying ten newspapers to begin with. This example shows the crudest way to accomplish the trick. No distinction is made between the singular and the plural, and once a newspaper has been delivered, it is not possible to refer to it.
+
+[source,alan]
+--------------------------------------------------------------------------------
+The newspapers IsA Object In hero
+  Name newspaper Name newspapers
+  Mentioned
+    If amount Of newspapers > 1
+      Then Say amount Of newspapers. "newspapers"
+      Else Say "one newspaper"
+    End If.
+  Has amount 10.
+
+  Verb examine
+    Does Only "You are carrying" Say amount Of newspapers.
+      If amount Of newspapers = 1
+        Then "newspaper."
+        Else "newspapers."
+      End If.
+  End Verb.
+
+  Verb deliver
+    Does Only
+      If amount Of newspapers > 1
+        Then "You deliver a newspaper."
+          Decrease amount Of newspapers.
+      Elsif amount Of newspapers = 1
+        Then "You deliver the last newspaper. You don't have any more left."
+          Locate newspapers At nowhere.
+      End If.
+  End Verb.
+End The newspapers.
+--------------------------------------------------------------------------------
+
+
+
+== Implement a Scenery Object (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The flowerpot IsA Scenery At livingroom
+End The flowerpot.
+--------------------------------------------------------------------------------
+
+Scenery objects can be manipulated like other objects but the default `Examine` and `Take` actions report that the object is not interesting. A scenery object doesn't appear in location descriptions by default, and it can't be taken.
+
+
+
+== Implement a Background Object (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The mountain IsA Background At valley
+End The mountain.
+--------------------------------------------------------------------------------
+
+Background objects are out of reach of the player character. They don't appear in location descriptions by default. A background object differs from a scenery object in that a scenery object is within reach.
+
+
+
+== Implement a Background Object that is Present in Multiple Locations Simultaneously
+
+It is possible to create an impression of an object being found in multiple locations. However, in reality this will be one and the same object all through, and not several different objects. This must be born in mind in case the object is made takeable or it is meant to be manipulated in any manner.
+
+In this example a ceiling lamp is found in the lobby, the bedroom and the living-room of a house, but not in other locations:
+
+First, define the area where the object(s) should be found:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The lamp_rooms IsA Location -- i.e. the area in which we'll nest
+End The.                    -- the three rooms mentioned above
+--------------------------------------------------------------------------------
+
+Then, define which locations belong to that area:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The lobby IsA Location In lamp_rooms
+End The.
+
+The bedroom IsA Location In lamp_rooms
+End The.
+
+The livingroom IsA Location In lamp_rooms
+End The..
+--------------------------------------------------------------------------------
+
+Lastly, place the background object in the area:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The ceiling_lamp IsA Background In lamp_rooms
+  Name ceiling lamp
+End The.
+--------------------------------------------------------------------------------
+
+Now, a lamp is present in all of the above locations (even though in reality it is one and the same lamp). Note above that a description of the lamp will be only visible by default at the location 'lamp_rooms' (which the player doesn't visit in-game). That's why the description of the lamp must be manually included in the room descriptions of the lobby, the bedroom and the living-room. An object's being in scope means that the object can be referred to and manipulated, but its description won't appear in the location description by default.
+
+Naturally, you could also define a scenery object or a normal object to be in several locations at once, in the same way. Note, however, that if you define a takeable object in this manner, it will disappear from the other locations once you take it in one location. Also, when manipulated (e.g. broken), the object will be affected in all of the locations it is found.
+
+
+
+== Implement a Device (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The radio IsA Device At livingroom
+End The radio.
+--------------------------------------------------------------------------------
+
+A device object can be switched on and off, if it is not broken.
+
+
+
+== Implement a Piece of Clothing (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The hat IsA Clothing In worn -- worn by the player character
+  Is headcover 2.
+End The hat.
+
+The coat IsA Clothing In wardrobe
+  Is topcover 64. botcover 64.
+End The jacket.
+--------------------------------------------------------------------------------
+
+A clothing object will need an attribute from the following table:
+
+[options="header"]
+|===============================================================================
+| Clothing | Headcover | Topcover | Botcover | Footcover | Handcover
+| Hat | 2 | 0 | 0 | 0 | 0
+| Vest/Bra | 0 | 2 | 0 | 0 | 0
+| Undies/Panties | 0 | 0 | 2 | 0 | 0
+| Teddy | 0 | 4 | 4 | 0 | 0
+| Blouse/Shirt/T-shirt | 0 | 8 | 0 | 0 | 0
+| Dress/Coveralls | 0 | 8 | 32 | 0 | 0
+| Skirt | 0 | 0 | 32 | 0 | 0
+| Trousers/Shorts | 0 | 0 | 16 | 0 | 0
+| Sweater/Pullover | 0 | 16 | 0 | 0 | 0
+| Jacket | 0 | 32 | 0 | 0 | 0
+| Coat | 0 | 64 | 64 | 0 | 0
+| Socks/Stockings | 0 | 0 | 0 | 2 | 0
+| Tights/Pantyhose | 0 | 0 | 8 | 2 | 0
+| Shoes/Boots | 0 | 0 | 0 | 4 | 0
+| Gloves | 0 | 0 | 0 | 0 | 2
+|===============================================================================
+
+
+
+== Implement a Piece of Clothing Worn by a Non-Player Character
+
+[source,alan]
+--------------------------------------------------------------------------------
+The mr_smith IsA Actor
+  Description
+    "blah blah" List mr_smith_worn. -- Leave the List section out if you don't
+                                    -- want to have the actor's clothing listed
+                                    -- after 'look'.
+  Verb examine
+    Does Only "blah blah"
+      List mr_smith. -- This lists what Mr Smith is carrying
+      List mr_smith_worn. -- This lists what Mr Smith is wearing.
+  End Verb.
+End The.
+
+The mr_smith_worn IsA NPC_WORN  -- All containers for clothing worn by NPCs 
+                                -- should be declared IsA NPC_WORN
+  Has carrier mr_smith. -- The value of the 'carrier' attribute is the actor
+                        -- wearing the clothes.
+  End The.
+
+  The bowler_hat IsA Clothing In mr_smith_worn  -- now the hat will be described
+                                                -- as being worn by Mr Smith.
+    Is headcover 2. -- this attribute must be taken from the clothing table
+  End The.
+--------------------------------------------------------------------------------
+
+[IMPORTANT]
+================================================================================
+Remember to declare the piece of clothing _not_ takeable if the hero is not supposed to be able to take it!
+================================================================================
+
+
+
+== Implement a Lightsource (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The lamp IsA Lightsource
+  Is Not natural.
+End The.
+
+The candle IsA lightsource
+End The.
+--------------------------------------------------------------------------------
+
+Lightsources are natural or _not_ natural. _Not_ natural lightsources can be turned on and off, lighted and extinguished. Natural lightsources can only be lighted and extinguished.
+
+
+
+== Implement a Liquid (L)
+
+.Example 1
+[source,alan]
+--------------------------------------------------------------------------------
+The puddle IsA Liquid At path
+  Name muddy water Name puddle
+End The puddle.
+--------------------------------------------------------------------------------
+
+.Example 2
+[source,alan]
+--------------------------------------------------------------------------------
+The juice IsA Liquid In glass
+  Has vessel glass.
+  Is drinkable.
+End The juice.
+
+The glass IsA Listable_Container At bedroom
+End The glass.
+--------------------------------------------------------------------------------
+
+An amount of liquid can be taken only if it is in a container.
+
+Note that the container must be stated twice in the code for a liquid:
+
+[source,alan]
+--------------------------------------------------------------------------------
+In glass.
+Has vessel glass.
+--------------------------------------------------------------------------------
+
+To ensure that all commands behave correctly, liquids are _not_ drinkable by default.
+
+
+
+== Implement a Door (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The white_door IsA Door At kitchen
+  Name white door
+End The white_door.
+--------------------------------------------------------------------------------
+
+A door is by default closeable and closed, lockable but not locked. It can be opened and closed if it is not locked.
+
+
+
+== Implement a Door Between Two Rooms so that it Opens and Closes Properly On Both Sides (L)
+
+In these examples a door is implemented between a bedroom and a corridor:
+
+.Example 1
+[source,alan]
+--------------------------------------------------------------------------------
+The bedroom_door_1 IsA Door At bedroom
+  Name door
+  ...
+  Verb open
+    Does Make bedroom_door_2 open.
+  End Verb.
+End The bedroom_door_1.
+
+The bedroom_door_2 IsA Door At corridor -- the corridor side of the door
+  Name bedroom door
+  ...
+  Verb open
+    Does Make bedroom_door_1 open.
+  End Verb.
+End The bedroom_door_2.
+--------------------------------------------------------------------------------
+
+And similarly for the verb 'close'.
+
+You can also locate one and the same door object at the two locations when the hero moves about:
+
+.Example 2
+[source,alan]
+--------------------------------------------------------------------------------
+The bedroom_door IsA Door At bedroom
+  Name door
+  ...
+End The bedroom_door.
+
+The bedroom IsA Location
+  Entered
+  Locate bedroom_door At bedroom.
+End The bedroom.
+
+The corridor IsA Location
+  Entered
+  Locate bedroom_door At corrider.
+End The corridor.
+--------------------------------------------------------------------------------
+
+The library takes care of the opening and closing verbs working properly.
+
+.Example 3
+[source,alan]
+--------------------------------------------------------------------------------
+Every door IsA Object
+  Has otherside door. -- here it is stated that every door has another side which is also an object belonging to the door class
+
+  Verb open
+    Does Make otherside Of This Not closed. -- opens the other side of the door as well
+  End Verb.
+
+  Verb close
+    Does Make otherside Of This closed. -- closes the other side of the door as well
+  End Verb.
+
+End Every.
+--------------------------------------------------------------------------------
+
+And then, as an example:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The kitchen_door IsA Door At kitchen
+  Has otherside kitchen_door_2. -- the other side of the kitchen door
+End The.
+
+The kitchen_door_2 IsA Door At livingroom
+  Has otherside kitchen_door.
+End The.
+--------------------------------------------------------------------------------
+
+
+
+== Implement a Window (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The bedroom_window IsA Window At bedroom
+  Name bedroom window
+End The bedroom_window.
+--------------------------------------------------------------------------------
+
+A window is by default closable and closed. It can be opened and closed, looked through and out of.
+
+
+
+== Implement a Supporter (L)
+
+.Example 1
+[source,alan]
+--------------------------------------------------------------------------------
+The tray IsA Supporter At kitchen
+End The tray.
+
+The coffee_cup IsA Object In tray -- note the 'In'
+End The coffee_cup.
+--------------------------------------------------------------------------------
+
+.Example 2
+[source,alan]
+--------------------------------------------------------------------------------
+The table IsA Supporter At bedroom
+End The table.
+--------------------------------------------------------------------------------
+
+
+
+== Implement a Supporter that is a Container at the Same Time (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The table IsA Supporter At bedroom
+  Has components (drawer_1, drawer_2).
+  ...
+  Verb examine
+    Does
+      List table.
+      For Each c In components Of This
+        Do
+        Say "The table has". Say An c. "."
+          If c Is Not closed
+            Then List c.
+            Else Say The c. "is closed."
+          End If.
+      End For.
+  End Verb.
+  ...
+End The.
+
+The drawer_1 IsA Listable_Container
+  Opaque Container
+  Name top drawer
+  At bedroom
+  Is closed.
+End The.
+
+The drawer_2 IsA Listable_Container
+  Name bottom drawer
+  At bedroom
+  Is closed.
+End The.
+
+The book IsA Object In table -- not the 'In'
+  ...
+End The book.
+
+The diary IsA Object In drawer_1
+  ...
+End The diary.
+--------------------------------------------------------------------------------
+
+In other words, declare the drawer's components of the table, in the manner described above. The result will then be something like this:
+
+[example,role="gametranscript"]
+================================================================================
+You see a table here. There is a book on the table. The table has a top
+drawer. The top drawer is closed. +
+The table has a bottom drawer. The bottom drawer is empty.
+================================================================================
+
+
+
+== Implement a Readable Object (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The book IsA Object At room_1
+  Is readable.
+  Has text "blah blah".
+End The. 
+--------------------------------------------------------------------------------
+
+
+
+== Implement an Object that can be Written In or ON (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The notebook IsA Object At room_1
+  Is writeable.
+End The notebook.
+--------------------------------------------------------------------------------
+
+The players command should be in the form:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; write "text" on blackboard
+================================================================================
+
+or
+
+[example,role="gametranscript"]
+================================================================================
+&gt; write "text" in notebook
+================================================================================
+
+with the text to be written in double quotes.
+
+The player can write text again and again in the same place. The earlier writings are not erased. Thus:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; write "The butler might be the murderer." in notebook
+================================================================================
+
+And, later on:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; write "But would that be too easy a solution?" in notebook
+================================================================================
+
+Yields:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; read notebook +
+The notebook says: "The butler might be the murderer. But would that be too easy a solution?"
+================================================================================
+
+
+
+== Change the Attribute of an Object
+
+[source,alan]
+--------------------------------------------------------------------------------
+Make man hungry.
+Make monster attack. -- attributes can be identical to verbs.
+Make hero Not sleepy.
+Set value Of dial To 2.
+Set bullets_left Of gun To 1.
+--------------------------------------------------------------------------------
+
+
+
+== Bring Objects In and Out of Play
+
+To bring an object into play, locate the object to the location:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The livingroom IsA Location
+End The livingroom.
+
+The carpet IsA Object At livingroom
+  Verb look_under
+    Does Only
+      If trapdoor Not At livingroom
+        Then Locate trapdoor At livingroom.
+          "There is a trapdoor under the carpet!"
+        Else "You see nothing else under the carpet."
+      End If.
+  End Verb.
+End The carpet.
+
+The trapdoor IsA Object -- declare no location for the trapdoor initially!
+End The trapdoor.
+--------------------------------------------------------------------------------
+
+To take an object out of play, locate the object at a location that isn't used in-game:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The nowhere IsA Location
+End The nowhere.
+
+The mirror IsA Object At livingroom
+  ...
+  Verb break
+    Does Only "You break the mirror into thousands of small pieces."
+      Locate mirror At nowhere.
+  End Verb.
+  ...
+End The mirror.
+--------------------------------------------------------------------------------
+
+
+
+== Locate Objects Somewhere
+
+[source,alan]
+--------------------------------------------------------------------------------
+Locate diamond Here. -- Here = the current location where the command is executed
+Locate diamond At treasure_chamber.
+Locate diamond At hero. -- = where the hero is at the moment
+Locate diamond In hero. -- = in the inventory of the hero
+Locate diamond At tom.  -- = where Tom is at the moment
+Locate diamond In chest.
+--------------------------------------------------------------------------------
+
+
+
+== Enable References to Immaterial or Implied Objects
+
+For example, to whistle a melody, with "melody" being the object referred to:
+
+.Example 1
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax whistle_melody = whistle melody.
+  whistle_melody = whistle 'a' melody.
+
+Verb whistle_melody
+  Does "You whistle a little melody."
+End Verb.
+--------------------------------------------------------------------------------
+
+.Example 2
+[source,alan]
+--------------------------------------------------------------------------------
+The melody IsA Object -- delcare no location for this object!
+  ...
+  Verb whistle
+    Does Only "You whistle a little melody."
+  End Verb.
+End The melody.
+
+Syntax whistle = whistle (obj)!
+  Where obj IsA Object
+    Else "That's not something you can whistle."
+
+Verb whistle
+  Does "That's not something you can whistle."
+End Verb.
+--------------------------------------------------------------------------------
+
+.Example 3
+[source,alan]
+--------------------------------------------------------------------------------
+The melody IsA Entity
+  ...
+  Verb whistle
+    Does Only "You whistle a little melody."
+  End Verb.
+End The melody.
+
+Syntax whistle = whistle (ent)
+  Where ent IsA Entity
+    Else "That's not something you can whistle."
+--------------------------------------------------------------------------------
+
+Entites are present (but invisible) everywhere, so you don't need the ! sign in this last example.
+
+
+
+== Make Distant and Out-Of-Reach Objects (L)
+
+[source,alan]
+--------------------------------------------------------------------------------
+The book IsA Object In shelf
+  Is Not reachable
+End The.
+--------------------------------------------------------------------------------

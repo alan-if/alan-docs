@@ -1,0 +1,190 @@
+:doctitle:      The Alan Language Cookbook
+:version-label: ALAN
+:revnumber:     Version 2.2
+:revdate:       February 10, 2023
+:author:        Anssi Räisänen
+:email:
+:doctype: book
+:encoding: utf-8
+:lang: en
+// TOC Settings:
+:toc: left
+:toclevels: 5
+// Sections Numbering:
+:!partnums:
+:!part-signifier:
+:!chapter-signifier:
+:sectnums:
+:sectnumlevels: 2
+:sectanchors:
+:idprefix:
+:idseparator: _
+// Cross References:
+:xrefstyle: short
+:section-refsig: Sect.
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+// HTML METADATA
+:keywords: alan, if, interactive fiction, game, text adventures, programming
+:description: pass:q,r[*The ALAN IF Cookbook*.]
+
+// =============================================================================
+//                         Custom Attributes Definition
+// =============================================================================
+// Some attributes for custom substitution of multiple occurences of same text.
+
+:alan-www: http://www.alanif.se/[www.alanif.se^]
+:alan-list: https://groups.google.com/g/alan-if/[Alan IF mailing list^, title="Visit the 'Alan IF discussions' list at Google Groups"]
+
+// Path to shared images:
+:assets-img: ../_assets/images/
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+// Show document info and AsciiDoc conversion version and date...
+
+by Anssi Räisänen
+
+[subs=attributes+]
+..................................
+Doc version: {revnumber}
+Last edited: {revdate}
+Converted to AsciiDoc by Christian X. Winslett
+..................................
+
+// @TODO Need to figure out how to best convey this info
+
+
+// >>> Alan Logo >>>
+:logo_width: width=500
+
+ifeval::["{backend}" != "html5"]
+:logo_width: scaledwidth=70%
+endif::[]
+
+image::alan-logo.png[Alan Logo,{logo_width},align="center"]
+// <<< Alan Logo <<<
+
+
+// =============================================================================
+//                             Cookbook Topics
+// =============================================================================
+
+[preface]
+= Introduction
+This document provides coding examples that show how to implement many of the things commonly required to create interactive fiction using the Alan language. Since the examples have minimal explanations, you should probably read through the first three chapters in the Alan Adventure Language Reference Manual prior to adapting them for use in your own source code.
+
+An *(L)* after the line indicates that the standard library must be imported by your source code in order for the example to work.
+
+// 1. Locations
+// ============
+include::cookbook_01.adoc[]
+
+// 2. Objects
+// ==========
+include::cookbook_02.adoc[]
+
+// 3. Actors (NPCs)
+// ===================
+include::cookbook_03.adoc[]
+
+// 4. Names
+// ========
+include::cookbook_04.adoc[]
+
+// 5. Classes
+// ==========
+include::cookbook_05.adoc[]
+
+// 6. Attributes
+// =============
+include::cookbook_06.adoc[]
+
+// 7. Sets
+// =======
+include::cookbook_07.adoc[]
+
+// 8. Operators
+// ============
+include::cookbook_08.adoc[]
+
+// 9. Verbs
+// ========
+include::cookbook_09.adoc[]
+
+// 10. Conditional Statements
+// ==========================
+include::cookbook_10.adoc[]
+
+// 11. Events
+// ==========
+include::cookbook_11.adoc[]
+
+// 12. Loops
+// =========
+include::cookbook_12.adoc[]
+
+// 13. Rules
+// =========
+include::cookbook_13.adoc[]
+
+// 14. Scripts
+// ===========
+include::cookbook_14.adoc[]
+
+// 15. Strings
+// ===========
+include::cookbook_15.adoc[]
+
+// 16. Text Formatting
+// ===================
+include::cookbook_16.adoc[]
+
+// 17. Scoring
+// ===========
+include::cookbook_17.adoc[]
+
+// 18. Narration Gimmicks
+// ======================
+include::cookbook_18.adoc[]
+
+// 19. Out-Of-Game Actions
+// =======================
+include::cookbook_19.adoc[]
+
+// 20. Comments
+// ============
+include::cookbook_20.adoc[]
+
+// 21. Runtime Messages
+// ====================
+include::cookbook_21.adoc[]
+
+// 22. Importing Other Files
+// =========================
+include::cookbook_22.adoc[]
+
+// 23. Using Multimedia
+// ====================
+include::cookbook_23.adoc[]
+
+// 24. Start Section
+// =================
+include::cookbook_24.adoc[]
+
+// 25. Ending The Game
+// ===================
+include::cookbook_25.adoc[]
+
+:sectnums!:
+
+// ...
+
+:leveloffset: -1
+
+// EOF //

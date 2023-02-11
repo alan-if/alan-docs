@@ -1,0 +1,102 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          24. Start Section                                *
+// *                                                                           *
+// *****************************************************************************
+
+= Start Section
+
+== Determine the Starting Location of the Game
+
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+Start At forest_clearing.
+--------------------------------------------------------------------------------
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+Start At kitchen.
+  Schedule burning_smell At kitchen After 3.
+--------------------------------------------------------------------------------
+
+* `Start At` must always refer to a location instance.
+* This must always be the _last_ section in your game code -- don't put it, for example, in the beginning of the code!
+* The start section can contain some other sections, such as `Schedule` that triggers events, or `Message` statements.
+* It can also contain some introductory text to be displayed before the first location.
+
+
+
+== Add an Introductory Text Before the First Location
+
+[source,alan]
+--------------------------------------------------------------------------------
+Start At kitchen.
+  "This is the introductory text that is shown before the first location, the kitchen in this example."
+--------------------------------------------------------------------------------
+
+
+
+== Display No Location Name or Description at the Start of a Game
+
+[source,alan]
+--------------------------------------------------------------------------------
+The kitchen IsA Location
+  Name ''
+End The kitchen.
+
+Start At kitchen.
+  "Only this (optional) text and no location at all will display at the start of the game in this example"
+--------------------------------------------------------------------------------
+
+
+
+== Display the Game Title Together with Extra Info
+
+For example, info about the author, version, and copyright issues at the start of the game:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Start At kitchen.
+  "One day, when you planned to make a delicious dinner, you noticed that something crucial was missing..."
+  Style alert. "$pThe Mystery Of The Missing Salt Dispenser" Style normal.
+  "$nby An Author"
+  "$nVersion 1"
+  "$nProgrammed with Alan version 3 beta 8"
+  "$nAll rights reserved.$p"
+--------------------------------------------------------------------------------
+
+
+
+== Use Initialize
+
+You can use `Initialize`within instances to make an instance behave in a certain way from the start of the game without using the `Start` section:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The dice IsA Object At livingroom
+  Has value 0.
+  Description ...
+  Initialize
+  Set value Of dice To Random 1 To 6.
+  Verb examine
+    Does Only "The dice is showing the value" Say value Of dice. "."
+  End Verb.
+End The dice.
+--------------------------------------------------------------------------------
+
+You cannot declare `Has value Random 1 To 6.`; that's why using Initialize is the way to go here.
+
+When you examine the dice, it will have the random value set at the start of the game by `Initialize`. You can also make actors act according to scripts using `Initialize`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Add To Every Actor
+  Initialize
+    Use Script walking_randomly_round_game_map For This.
+End Add To.
+--------------------------------------------------------------------------------
+
+Here, every actor would act out the script from the start of the game.

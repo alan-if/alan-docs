@@ -1,0 +1,39 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          15. Strings                                      *
+// *                                                                           *
+// *****************************************************************************
+
+= Strings
+
+== Use Strings in Commands
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax answer = answer (str)
+  Where str IsA String
+    Else "That's not something you can answer."
+  
+  Verb answer
+    Does
+      If str = "ball"
+        Then "That's correct! Congrats!"
+        Else "Sorry, that was wrong."
+      End If.
+  End Verb.
+--------------------------------------------------------------------------------
+
+
+
+== Check if There is a Certain Word or Character in a String
+
+[source,alan]
+--------------------------------------------------------------------------------
+If str Contains "why"
+  Then "Because I say so."
+End If.
+
+If str Not Contains "10"
+  Then "Sorry, that was wrong."
+End If.
+--------------------------------------------------------------------------------

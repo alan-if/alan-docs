@@ -1,0 +1,77 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          25. Ending The Game                              *
+// *                                                                           *
+// *****************************************************************************
+
+= Ending The Game
+
+== End the Game
+
+[source,alan]
+--------------------------------------------------------------------------------
+Quit.
+--------------------------------------------------------------------------------
+
+This will be default yield:
+
+[example,role="gametranscript"]
+================================================================================
+Do you want to RESTART, RESTORE, QUIT or UNDO? &gt;
+================================================================================
+
+You can change this default by doing:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Message Quit_Action: "RESTART/RESTORE/QUIT/UNDO?"
+--------------------------------------------------------------------------------
+
+
+
+== Code an Ending Message to the Game
+
+For example, whether winning or losing:
+
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+Verb jump
+  Does
+    If hero At cliff_edge
+      Then "That wasn't such a clever idea."
+        "$p$p$p* * * You have died. * * *$p"
+        Quit.
+      Else "You make a jump."
+    End If.
+End Verb.
+--------------------------------------------------------------------------------
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+Event winning
+  "Opening the treasure chest, you see a wealth of jewelry and gold coins. Congratulations! You have solved the game!"
+  Quit.
+End Event.
+
+The treasure_chest IsA Object At cave
+  ...
+  Verb open
+    Does Only
+      Schedule winning At cave After 0.
+  End Verb.
+End The treasure_chest.
+--------------------------------------------------------------------------------
+. {empty}
++
+[source,alan]
+--------------------------------------------------------------------------------
+Message Quit_Action
+  If hero Is killed
+    Then "$p$p$p* * * You have died. * * *$p"
+    Else "$p$p$p* * * You have won! * * *$p"
+  End If.
+  "Would you like to RESTART, RESTORE, QUIT OR UNDO? > "
+--------------------------------------------------------------------------------

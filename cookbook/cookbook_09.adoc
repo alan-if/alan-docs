@@ -1,0 +1,615 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          9. Verbs                                         *
+// *                                                                           *
+// *****************************************************************************
+
+= Verbs
+
+== Implement New Verbs
+
+Verbs with no objects (e.g. dream):
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax dream = dream.
+
+Verb dream
+  Does "You dream."
+End Verb.
+--------------------------------------------------------------------------------
+
+Verbs with one object (e.g. paint wall)
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax paint = paint (obj)
+  Where obj IsA Object
+    Else "That's not something you can paint."
+
+Add To Every Object
+  Verb paint
+    Does "You paint" Say The obj. "."
+    -- Make obj painted.
+    -- Decrease amount_left Of red_paint By 2.
+  End Verb.
+End Add To.
+--------------------------------------------------------------------------------
+
+In addition to the verb having been restricted to only apply to objects in the syntax, the `Add To` construction is needed in connection with the verb definition, as well:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax find_out = find 'out' about (act)
+  Where act IsA Actor
+    Else "That's not a thing you can find something out about."
+
+Add To Every Actor
+  Verb find_out
+    Does "You can't find out anything new about" Say The act. "."
+  End Verb.
+End Add To.
+--------------------------------------------------------------------------------
+
+Verbs with two objects (e.g. point wand at monster)
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax point = point (obj) 'at' (target)
+  Where obj IsA Object
+    Else "That's not something you can point."
+  And target IsA Thing
+    Else "You can't point anything at that."
+Add To Every Thing
+  Verb point
+    Does "You point" Say The obj. "At" Say The target. "."
+  End Verb.
+End Add To.
+--------------------------------------------------------------------------------
+
+`Thing` refers to both objects and actors
+
+In these examples, the parameters (`act`, `obj`, `target`) could have been named in any other way; there is no reason (except for the sake of easily readable code) that they were named this way above.
+
+You could just as well have:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax point = point (ghg) 'at' (df22)
+  Where ghg IsA Object
+    Else "That's not something you can point."
+  And df22 IsA Thing
+    Else "You can't point anything at that."
+Add To Every Thing
+  Verb point
+    Does "You point" Say The ghg. "At" Say The df22. "."
+  End Verb.
+End Add To.
+--------------------------------------------------------------------------------
+
+However, `Object`, `Actor`, and `Thing` must be exactly stated the way they are in the examples.
+
+== Use Multiple Syntaxes for the Same Verb
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax give = give (obj) to (act) -- e.g. "give the ball to the boy"
+  Where obj IsA Object
+    Else ...
+  And act IsA Actor
+    Else ...
+  give = give (act) (obj)
+
+Syntax take = take (obj)
+  Where obj IsA Object
+    Else ...
+  
+  take = pick 'up' (obj).
+
+  take = pick (obj) 'up'.
+--------------------------------------------------------------------------------
+
+The parameters need to be explained only in the first syntax; the same parameters used in other syntax formulations don't require explanations.
+
+== Make Two or More Verbs Have Similar Outcomes
+
+[source,alan]
+--------------------------------------------------------------------------------
+Every Scenery IsA Object
+  Verb examine, take
+    Does Say The obj. "is not interesting."
+  End Verb.
+End Every.
+--------------------------------------------------------------------------------
+
+In order for this to work, the verbs in these constructs should have similar syntaxes (that is to say, the number of parameters should be equal and they should be named in the same way).
+
+
+
+== Create Synonyms for Verbs
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb take
+  Does Locate obj In hero.
+    "Taken."
+End Verb.
+
+Synonyms get, grab, confiscate = take.
+--------------------------------------------------------------------------------
+
+It is not possible for a synonym to have two elements. For example, 'pick up' would not be acceptable in the above example. You would have to make 'pick up' an alternative syntax for the 'take' verb (see 'Use Multiple Syntaxes for the Same Verb' above.)
+
+
+
+== Use Default Syntaxes to Ease Programming
+
+If you declare a verb inside an instance, the verb will automatically have the syntax `verb (instance)`. The verb will then work only with that instance and no other ones. E.g. this coding enables the player to type `> cross street` and get a response:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The street IsA Object At town
+  ...
+  Verb cross
+    Does "There's too much traffic."
+  End Verb.
+End The street.
+--------------------------------------------------------------------------------
+
+Note that this doesn't apply to locations. If you declare:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The basement IsA Location
+  Description ...
+
+  Verb take
+    Does Only "There's nothing worth taking among the old junk here."
+  End Verb.
+End The.
+--------------------------------------------------------------------------------
+
+The `take` verb applies to objects in the basement, not to the basement itself.
+
+If a verb is declared without a syntax and outside any instances, it will have the syntax `verb`.
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb test
+  Does "Test successful."
+End Verb.
+--------------------------------------------------------------------------------
+
+Here, if the player types `test` in-game, they would get the following result:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; test +
+Test successful.
+================================================================================
+
+
+
+== Program Ditransitive Verbs
+
+Sometimes an instance might be either one of two parameters of a ditransitive verb. Then the two different cases need to be singled out seperately:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax ask_about = (act) about (topic)
+  Where act IsA Actor
+    Else ...
+  And topic IsA Thing
+    Else ...
+
+The man IsA Actor At street
+  ...
+  Verb ask
+    When act  -- When the 'man' is the one asked
+      Does Only "The man doesn't seem to know anything about" Say The topic. "."
+        When topic  -- When the 'man' is the topic asked about
+      Does Only Say The act. "doesn't seem to know much about the man."
+  End Verb.
+End The man.
+--------------------------------------------------------------------------------
+
+
+
+== Enable Verbs to Refer to Instances that are Not Present
+
+Use an exclamation mark after the instance in the syntax.
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax think_about = think about (obj)!
+  Where obj IsA Thing
+    Else "That's not something you can think about."
+--------------------------------------------------------------------------------
+
+The inclusion of the exclamation mark ensures that the verb will then take into account objects in other locations as well, and not just those at the present location of the hero.
+
+
+
+== Enable Verbs to Refer to Multiple Objects, or to All
+
+Use an asterisk after the instance in the syntax.
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax take = take (obj)*
+  Where obj IsA Object
+    Else "That's not something you can take."
+--------------------------------------------------------------------------------
+
+This allows:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; take the vase and the plate +
+(vase) Taken. +
+(plate) Taken. +
+
+&gt; take all +
+(vase) Taken. +
+(plate) Taken.
+================================================================================
+
+If you leave the asterisk out, the outcome will be:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; take the vase and the plate +
+You can't refer to multiple objects with 'take'.
+================================================================================
+
+
+
+== Make Verbs Act Differently in a Given Location
+
+[source,alan]
+--------------------------------------------------------------------------------
+The basement IsA Location
+  Description ...
+
+  Verb jump
+    Does Only "The ceiling is too low here."
+  End Verb.
+
+  Verb take
+    Does Only "There is nothing worth taking here; everything around you is old junk."
+  End Verb.
+End The basement.
+--------------------------------------------------------------------------------
+
+
+
+== Make Verbs Act Differently in a Given Situation
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb jump
+  Does
+    If hero Is sleepy
+      Then "You're too sleepy for that."
+      Else "You make a jump."
+    End If.
+End Verb.
+--------------------------------------------------------------------------------
+
+
+
+== Change the Default Outcomes for Actions As They are Defined (L)
+
+You should open the library file (e.g. `verbs.i`) and change the default outcome message for the action (i.e., the message after `Does`).
+
+Here is an example for `jump`:
+
+First, locate this verb in the file `verbs.i`. Its definition looks like this:
+
+[source,alan]
+--------------------------------------------------------------------------------
+--snip--
+Verb jump
+  Check hero Is Not sitting
+    Else "It is difficult to jump while sitting down."
+  And hero Is Not lying_down
+    Else "It is difficult to jump while lying down."
+  Does
+    "You jump on the spot, to no avail."
+End Verb
+--snip--
+--------------------------------------------------------------------------------
+
+Then, change the line "You jump on the spot, to no avail." to your own liking, for example, "You make a jump but nothing happens."
+
+[source,alan]
+--------------------------------------------------------------------------------
+--snip--
+Verb jump
+  Check hero Is Not sitting
+    Else "It is difficult to jump while sitting down."
+  And hero Is Not lying_down
+    Else "It is difficult to jump while lying down."
+  Does
+    "You make a jump but nothing happens."
+End Verb
+--snip--
+--------------------------------------------------------------------------------
+
+And that's it!
+
+
+
+== Change the Default Outcome of a Command for a Specific Object so that it Differs From the One Defined (L)
+
+Use `Does Only`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The ball IsA Object At garden
+  ...
+  Verb kick
+    Does Only "You kick the ball. It lands on the other side of the fence."
+      Locate ball At greener_lawn.
+    End Verb.
+End The ball.
+--------------------------------------------------------------------------------
+
+
+
+== Restrict Verbs so that All or a Number of Actions Yield the Same Message in a Given Situation
+
+// Is this still applicable?
+Use the extension "Restricted Verbs" available on the Alan website.
+
+
+
+== Make Checks for Verbs
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb sing
+  Check aunt_mary Not At hero
+    Else "You know very well that aunt Mary doesn't approve of your singing."
+  And throat Is Not sore
+    Else "You still haven't found the sheet music."
+  Does "You sing."
+End Verb.
+--------------------------------------------------------------------------------
+
+If a verb has a `Check` only and no `Else` or `Does`, the action will stop in all cases:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The ball IsA Object At garden
+  Verb kick
+    Check "You're not interested."
+  End Verb.
+End The.
+--------------------------------------------------------------------------------
+
+In practice, this is similar to using `Does Only`.
+
+
+
+== Check Where an Instance Is
+
+[source,alan]
+--------------------------------------------------------------------------------
+Check diamond (Not) At treasure_chamber
+  Else ...
+And spellbook In hero -- in the hero's inventory
+  Else ...
+And servant At hero -- in the same location as the hero
+  Else ...
+And princess Nearby -- any adjacent location connected by an exit to the current location
+  Else ...
+And horse Near main_gate -- any adjacent location to the one mentioned, and connected by an exit to it
+  Else ...
+--------------------------------------------------------------------------------
+
+
+
+== Check an Attribute of the Current Location
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb read
+  Check Current Location Is lit
+    Else "It's too dark to see!"
+  Does "You read."
+End Verb.
+--------------------------------------------------------------------------------
+
+
+
+== Add or Edit Checks for Verbs in the Standard Library (L)
+
+Most verbs and commands are in the file `verbs.i`. Scroll down the alphabetical list to the verb you wish to edit. Look if the existing checks are enough, or add one to a convenient place in the code. For example, here is an example with the verb `jump` where we add a check that verifies that the hero is fit enough to make the jump. Our additional check is here placed after the two default checks in the library:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb jump
+  Check hero Is Not sitting
+    Else "It is difficult to jump while sitting down."
+  And hero Is Not lying_down
+    Else "It is difficult to jump while lying down."
+  And strength Of hero > 3
+    Else "You don't feel strong enough."
+  Does
+    "You jump on the spot, to no avail."
+End Verb
+--------------------------------------------------------------------------------
+
+In the following example, the two default checks for the verb `jump` are modified:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb jump
+  Check hero Is Not sitting
+    Else "How about getting off the chair first?"
+  And hero Is Not lying_down
+    Else "Making a jump while lying down is a different feat to accomplish."
+  Does
+    "You jump on the spot, to no avail."
+End Verb.
+--------------------------------------------------------------------------------
+
+If you wish to have a check apply to one instance only, place the check in the verb under that instance:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The soup IsA Object At kitchen
+  Is Not hot.
+
+  Verb eat  -- declared in the library
+    Check soup Is hot
+      Else "You'll have to heat the soup before eating it."
+  End Verb.
+End The.
+--------------------------------------------------------------------------------
+
+Notice that there is no `Does` section above. If the above check is passed, the `Does` section of the `eat` verb, as it is declared in the standard library, will be carried out.
+
+
+
+== Make a Verb Yield Varied Outcome Messages
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb take
+  Check ...
+Does
+  Depending On Random 1 To 3
+    = 1 Then "Taken."
+    = 2 Then "You take" Say The obj. "."
+    = 3 Then "You pick up" Say The obj. "."
+  End Depend.
+End Verb.
+--------------------------------------------------------------------------------
+
+
+
+== Make Something Happen Before the Default Outcome of a Verb
+
+For example:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; read parchment +
+(first unfolding the parchment) +
+You read the parchment.
+================================================================================
+
+Use `Does Before`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The parchment IsA Object
+  Is readable.
+  ...
+  Verb read
+    Does Before "(first unfolding the parchment)"
+  End Verb.
+  ...
+End The parchment.
+--------------------------------------------------------------------------------
+
+
+
+== Make Something Happen After the Default Outcome of a Verb
+
+For example:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; read parchment +
+You read the parchment. +
+After reading it you fold it again and put it back to where you found it.
+================================================================================
+
+Use `Does After`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The parchment IsA Object
+  Is readable.
+  ...
+  Verb read
+    Does After "After reading it you fold it again and put it back to where you found it."
+  End Verb.
+  ...
+End The parchment.
+--------------------------------------------------------------------------------
+
+
+
+== Implement Implicit Taking (L)
+
+For example:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; eat apple +
+(first taking the apple) +
+You eat the apple. It tastes deliciious.
+================================================================================
+
+This is handled automatically by the standard library.
+
+
+
+== Override Automatic Implicit Taking (L)
+
+You have to delete the implicit taking code manually for each verb that you wish to delete it for. The implicit taking code typically looks like this:
+
+[source,alan]
+--------------------------------------------------------------------------------
+-- implicit taking:
+If obj Not Directly In hero
+  Then "(taking" Say The obj. "first)$n"
+  Locate obj In hero.
+End If.
+-- end of implicit taking.
+--------------------------------------------------------------------------------
+
+Delete this from the `Does` section of the verb(s) in question. Moreover, you'll have to add an extra check to the verb:
+
+[source,alan]
+--------------------------------------------------------------------------------
+And obj Not In hero
+  Else "You don't have" Say The obj. "."
+--------------------------------------------------------------------------------
+
+Thus, for example, the verb `eat` from `verbs.i` would look like this, with the implicit taking removed:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Add To Every Object
+  Verb eat
+    Check food Is edible
+      Else
+        If food Is Not plural
+          Then "That's not"
+          Else "Those are not"
+        End If.
+          "something you can eat."
+      And food Is takeable
+        Else "You don't have" Say The food. "."
+      And Current Location Is lit
+        Else "It is too dark to see."
+      And food Is reachable
+        Else Say The food.
+          If food Is Not plural
+            Then "is"
+            Else "are"
+          End If.
+          "out of your reach."
+      And obj Not In hero
+        Else "You don't have" Say The obj. "."
+      Does
+        "You eat all of" Say The food. "."
+        Locate food At nowhere.
+  End Verb.
+End Add.
+--------------------------------------------------------------------------------

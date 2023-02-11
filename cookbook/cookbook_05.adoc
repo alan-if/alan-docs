@@ -1,0 +1,123 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          5. Classes                                       *
+// *                                                                           *
+// *****************************************************************************
+
+= Classes
+
+== Make Object, Actor, or Location Classes
+
+.Example 1
+[source,alan]
+--------------------------------------------------------------------------------
+Every animal IsA Actor
+End Every.
+
+The cat IsA Animal
+End The cat.
+
+The lion IsA Animal
+End The lion.
+
+Add To Every Animal
+  Verb stroke
+    Does
+      If This = cat
+        Then "She purrs."
+        Else "That might be dangerous."
+      End If.
+  End Verb.
+End Add To.
+--------------------------------------------------------------------------------
+
+.Example 2
+[source,alan]
+--------------------------------------------------------------------------------
+Every door IsA Object
+  Is closable. Is closed. Is lockable. Is Not locked.
+
+  Verb open
+    Does Make This Not closed.  -- This refers to each instance defined as belonging to the class 'door'.
+  End Verb.
+
+  Verb close
+    Does Make This closed.
+  End Verb.
+
+  Verb knock
+    Does "You knock on" Say The This. "There is no reply."
+  End Verb.
+  
+  -- The verbs above would only apply to all door objects but not other kinds of objects.
+
+End Every.
+
+The kitchen_door IsA Door At kitchen
+End The.
+
+The bathroom_door IsA Door At bedroom
+End The.
+--------------------------------------------------------------------------------
+
+.Example 3
+[source,alan]
+--------------------------------------------------------------------------------
+Every street IsA Location
+  ...
+  Verb cross
+    Does "There's too much traffic; better stay on this side for now."
+  End Verb.
+End Every.
+
+The 6th_avenue IsA Street
+  Name 6th avenue Name street
+End The.
+
+The broadway IsA Street
+  Name broadway Name street
+End The.
+--------------------------------------------------------------------------------
+
+A member of a class can have the same name as the class itself.
+
+
+
+== Add properties to a Class After it Has Been Defined
+
+[source,alan]
+--------------------------------------------------------------------------------
+Add to Every Animal
+  Is hungry.
+End Add To.
+--------------------------------------------------------------------------------
+
+The above example gives the same results as defining a new class with the property:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Every animal IsA Actor
+  Is hungry.
+End Every.
+--------------------------------------------------------------------------------
+
+The `Add To` alternative is the more convenient one when using several game files, for example, extensions.
+
+
+
+== Check if an Instance Belongs to a Class
+
+.Example 1
+[source,alan]
+--------------------------------------------------------------------------------
+If obj IsA Scenery
+  Then "That's not important."
+End If.
+--------------------------------------------------------------------------------
+
+.Example 2
+[source,alan]
+--------------------------------------------------------------------------------
+Check obj IsA Person
+  Else "That's not something you can talk to."
+--------------------------------------------------------------------------------

@@ -1,0 +1,43 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          23. Using Multimedia                             *
+// *                                                                           *
+// *****************************************************************************
+
+= Using Multimedia
+
+== Add Images to Your Game
+
+[source,alan]
+--------------------------------------------------------------------------------
+Show 'pic1.jpg'.
+--------------------------------------------------------------------------------
+
+An image file must be in the same folder as the other game code files when you compile the game.
+
+[source,alan]
+--------------------------------------------------------------------------------
+The boy IsA Actor At street
+  ...
+  Verb examine
+    Does Only Show 'boy_1.jpg'.
+  End Verb.
+End The boy.
+--------------------------------------------------------------------------------
+
+
+
+== Add Sounds to Your Game
+
+[source,alan]
+--------------------------------------------------------------------------------
+Play 'sample1.aiff'.
+--------------------------------------------------------------------------------
+
+A sound file must be in the same folder as the other game code files when you compile the game.
+
+
+
+== Ensure that the Images and Sounds are Displayed in the Distributed Game
+
+When you compile a game that uses multimedia, two files are created -- `mygame.a3c` and `mygame.a3r`. Make sure that both files are included in the distributed game. The original sound or image files don't have to be included.

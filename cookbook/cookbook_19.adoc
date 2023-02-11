@@ -1,0 +1,120 @@
+// *****************************************************************************
+// *                                                                           *
+// *                          19. Out-Of-Game Actions                          *
+// *                                                                           *
+// *****************************************************************************
+
+= Out-Of-Game Actions
+
+== Undo a Command
+
+This action is built-in and doesn't need any programming. (It can neither be edited nor cancelled by the game programmer.) The command to be issued by the player is always `Undo`; it won't allow any synonyms.
+
+
+
+== Repeat a Command
+
+Alan doesn't currently recognize the `Again` command; the player can't have a command repeated in-game without writing it in full again. There is a workaround: use the arrow keys of the keyboard to scroll through the previously issued commands; this is also mentioned in the library default response for the command `Again`.
+
+== Pause the Game
+
+There is no actual way to pause a game (e.g. "Press any key to continue.") or to clear the screen. To achieve this effect, workarounds must be used. Here is one:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Event garden_dreaming
+  Make hero asleep.
+    "You fall asleep under a bush and start dreaming....
+    $p$p$p$p$p$p$p$p$p$p$p$p$p$p"
+  Locate hero At dreamland.
+End Event.
+
+Start At garden.
+
+Messages More:
+  If hero Is asleep
+    Then "(Please press SPACE to continue.)"
+    Else "<More>"
+  End If.
+--------------------------------------------------------------------------------
+
+
+
+== Allow Saving the Game
+
+This is handled automatically by the standard library when the player types `save`.
+
+The command to use to force the game to be saved is `Save`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb 'save'
+  Does Save.
+End Verb.
+--------------------------------------------------------------------------------
+
+
+
+== Make Automatic Saves
+
+Here a save prompt appears automatically when the hero enters a cave:
+
+[source,alan]
+--------------------------------------------------------------------------------
+The cave IsA Location
+  Entered
+    Save.
+  Description "..."
+End The cave.
+--------------------------------------------------------------------------------
+
+Further coding would be needed to make sure that the save prompt appears only the first time the hero enters the cave.
+
+[NOTE]
+================================================================================
+Automatic saves are not commonly used in Interactive Fiction.
+================================================================================
+
+
+
+== Allow Restoring the Game
+
+This is handled automatically by the standard library when the player types `restore`.
+
+The command to use to make a restore prompt appear is `Restore`:
+
+[source,alan]
+--------------------------------------------------------------------------------
+Verb 'restore'
+  Does Restore.
+End Verb.
+--------------------------------------------------------------------------------
+
+
+
+== Restart a Game
+
+[source,alan]
+--------------------------------------------------------------------------------
+Syntax 'restart' = 'restart'
+
+Verb 'restart'
+  Does
+    Restart.
+End Verb.
+--------------------------------------------------------------------------------
+
+When the player types:
+
+[example,role="gametranscript"]
+================================================================================
+&gt; restart
+================================================================================
+
+The game will ask him (by default):
+
+[example,role="gametranscript"]
+================================================================================
+"Are you sure (RETURN confirms)?"
+Pressing RETURN (=ENTER) will then restart the game.
+================================================================================
