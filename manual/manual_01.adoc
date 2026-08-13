@@ -348,15 +348,15 @@ In fact, this is all that is necessary in a `location`, so lets look at an examp
 
 [source,alan]
 --------------------------------------------------------------------------------
-The Kitchen IsA location
-  Exit East to hallway.
-End the kitchen.
+The kitchen IsA location
+  Exit east To hallway.
+End The kitchen.
 
-The Hallway IsA location
-  Exit West to kitchen.
-End the hallway.
+The hallway IsA location
+  Exit West To kitchen.
+End The hallway.
 
-Start at Kitchen.
+Start At Kitchen.
 --------------------------------------------------------------------------------
 
 
@@ -407,8 +407,8 @@ The Hallway IsA location
      is the front door, in the other a doorway.
      From the smell of things the doorway leads
      to the Kitchen."
-  Exit West to kitchen.
-End the hallway.
+  Exit west To kitchen.
+End The hallway.
 --------------------------------------------------------------------------------
 
 We introduce another feature in this example, namely the text enclosed in double quotation marks (`"`) which is called a ((*string*)) or, when used on its own like this, an output statement.
@@ -424,13 +424,13 @@ It is also possible to have conditions and statements in the `Exit` clauses of a
 
 [source,alan]
 --------------------------------------------------------------------------------
-Exit West to kitchen
+Exit west To kitchen
   Check kitchen_door Is open
     Else "The door is closed."
   Does
     "As you enter the kitchen the smell of
      something burning is getting stronger."
-End exit West.
+End Exit west.
 --------------------------------------------------------------------------------
 
 
@@ -445,16 +445,16 @@ A large number of objects that can be examined and manipulated make a game so mu
 
 [source,alan]
 --------------------------------------------------------------------------------
-The door IsA object at hallway
+The door IsA object At hallway
   Is closed.
   Description
     "The door to the kitchen is a sliding door."
-    If door is closed then
+    If door Is closed Then
       "It is closed."
     Else
       "It is open."
-    End if.
-End the door.
+    End If.
+End The door.
 --------------------------------------------------------------------------------
 
 An `object` may initially be located at a particular ((`location`)).
@@ -480,7 +480,7 @@ For example, if the door should be opened (the player having said "`open door`",
 
 [source,alan]
 --------------------------------------------------------------------------------
-Make door not closed.
+Make door Not closed.
 --------------------------------------------------------------------------------
 
 To close it (i.e. setting the `closed` attribute to TRUE again) you write:
@@ -495,7 +495,7 @@ The `Set` statement changes numeric or string attributes, for example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Set level of bottle to 4.
+Set level Of bottle To 4.
 --------------------------------------------------------------------------------
 
 
@@ -525,14 +525,14 @@ Opening a lid might cause a previously hidden object to fall to the floor, somet
 
 [source,alan]
 --------------------------------------------------------------------------------
-Locate treasure here.
+Locate treasure Here.
 --------------------------------------------------------------------------------
 
 You could also relocate it to a particular place using the statement:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Locate vase at hallway.
+Locate vase At hallway.
 --------------------------------------------------------------------------------
 
 
@@ -551,11 +551,11 @@ The charlie_chaplin IsA actor
   Name Charlie Chaplin
   Script going_out
     Step
-      Locate actor at outside_house.
+      Locate actor At outside_house.
     Step
-      Locate actor at hallway.
-      Use script going_out.
-End the charlie_chaplin.
+      Locate actor At hallway.
+      Use Script going_out.
+End The charlie_chaplin.
 --------------------------------------------------------------------------------
 
 
@@ -668,14 +668,14 @@ This could include inheriting from another class, e.g.:
 [source,alan]
 --------------------------------------------------------------------------------
 Every door IsA object
-End every.
+End Every.
 
 Every openable_door IsA door
   Is open.
-End every.
+End Every.
 
 The kitchen_door IsA openable_door
-End the kitchen_door.
+End The kitchen_door.
 --------------------------------------------------------------------------------
 
 
@@ -695,8 +695,8 @@ In the example above a class named `closed_openable_door` could be defined as:
 [source,alan]
 --------------------------------------------------------------------------------
 Every closed_openable_door IsA openable_door
-  Is not open.
-End every.
+  Is Not open.
+End Every.
 --------------------------------------------------------------------------------
 
 This makes all instances of the new class have the same attribute but it is set to _false_ instead.
@@ -728,15 +728,15 @@ Assume there is also an instance of that class, named `inst`, which is also a co
 [source,alan]
 --------------------------------------------------------------------------------
 Every subobject IsA object
-End every subobject.
+End Every subobject.
 
 The cont IsA object
-  Container taking subobject.
-End the cont.
+  Container Taking subobject.
+End The cont.
 
 The inst IsA subobject
-  Container taking object.
-End the inst.
+  Container Taking object.
+End The inst.
 --------------------------------------------------------------------------------
 
 
@@ -807,7 +807,7 @@ If we want to implement the `Verb` '`open`' for the `door` we could use the foll
 Verb open
   Does
     Make door open.
-End verb open.
+End Verb open.
 --------------------------------------------------------------------------------
 
 
@@ -825,8 +825,8 @@ The kitchen_door IsA object
   Verb open
     Does
       Make kitchen_door open.
-  End verb open.
-End the kitchen_door.
+  End Verb open.
+End The kitchen_door.
 --------------------------------------------------------------------------------
 
 
@@ -840,8 +840,8 @@ Every door IsA object
   Verb open
     Does
       Make this open.
-  End verb open.
-End every door.
+  End Verb open.
+End Every door.
 --------------------------------------------------------------------------------
 
 With this definition it is possible to apply the verb to all doors.
@@ -864,11 +864,11 @@ In order to ascertain that the correct conditions are fulfilled before the body 
 [source,alan]
 --------------------------------------------------------------------------------
 Verb open
-  Check o is openable
+  Check o Is openable
     Else "You can't open the $o."
   Does
     Make o open.
-End verb open.
+End Verb open.
 --------------------------------------------------------------------------------
 
 
@@ -885,11 +885,11 @@ A `Check` may have multiple conditions, as the following code shows:
 Verb take
   Check o takeable
     Else "You can't take that."
-  And o not in hero
+  And o Not In hero
     Else "You already have it."
   Does
-    Locate o in hero.
-End verb take.
+    Locate o In hero.
+End Verb take.
 --------------------------------------------------------------------------------
 
 // @NOTE @thoni56:
@@ -1013,7 +1013,7 @@ Secondly, a few special cases are also handled automatically:
 +
 [source,alan]
 --------------------------------------------------------------------------------
-The postmen IsA actor at postoffice ...
+The postmen IsA actor At postoffice ...
 
 The postoffice IsA location
   Description
@@ -1039,7 +1039,7 @@ If an output is immediately followed by another output starting with a full stop
 +
 [source,alan]
 --------------------------------------------------------------------------------
-  "You can't take" say p. "."
+  "You can't take"  Say p. "."
 --------------------------------------------------------------------------------
 
 
@@ -1062,12 +1062,12 @@ A simple example is
 --------------------------------------------------------------------------------
 1. Every animal IsA object
 2.   Has fur.
-3. End every animal.
+3. End Every animal.
 4.
 5. The house_cat IsA object ...
 6.   ...
 7.
-8.   If house_cat has fur then ...
+8.   If house_cat Has fur Then ...
 --------------------------------------------------------------------------------
 
 At line 8 we will get an error saying that the `house_cat` does not have the attribute `fur`.
@@ -1085,19 +1085,19 @@ Here is a more complicated example:
 [source,alan]
 --------------------------------------------------------------------------------
  1. The cont IsA object
- 2.   Container taking thing.
- 3. End the cont.
+ 2.   Container Taking thing.
+ 3. End The cont.
  4.
- 5. Add to every object
+ 5. Add To Every object
  6.   Has someAttribute.
- 7. End add.
+ 7. End Add.
  8.
  9. The box IsA object
-10.   Container taking object.
-11. End the.
+10.   Container Taking object.
+11. End The.
 12. ...
-13.   For each f in box do
-14.     If f has someAttribute then
+13.   For Each f In box Do
+14.     If f Has someAttribute Then
 15.     ...
 --------------------------------------------------------------------------------
 

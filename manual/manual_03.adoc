@@ -87,7 +87,7 @@ A ((quoted identifier)) starts and ends with single quotes and may contain any c
 [source,alan, subs="+quotes"]
 --------------------------------------------------------------------------------
 The #'Bob''s House'# IsA location. -- ID will be printed as "Bob's House"
-End the.
+End The.
 --------------------------------------------------------------------------------
 
 When the Alan compiler encounters two consecutive single quotes inside a quoted identifier, it will treat them as if they were one single quote which is part of the identifier, and not as a the single quote _delimiter_ indicating the end of the identifier.
@@ -116,7 +116,7 @@ This is useful (indeed, required), for example, in the definition of the verb '`
 Verb 'look'
   Does
     Look.
-End verb 'look'.
+End Verb 'look'.
 --------------------------------------------------------------------------------
 
 [IMPORTANT]
@@ -130,7 +130,7 @@ In the following example, the `'The Empty Room'` name needs to be enclosed withi
 --------------------------------------------------------------------------------
 The empty_room IsA location   --> No need to stropp 'empty_room'.
   Name 'The Empty Room'.      --> Keywords 'THE' and 'EMPTY' stropped.
-End the.
+End The.
 --------------------------------------------------------------------------------
 
 [NOTE]
@@ -160,7 +160,7 @@ An example is:
 
 [source,alan]
 --------------------------------------------------------------------------------
-The eiffel_tower Name Eiffel tower ...
+The eiffel_tower Name Eiffel Tower ...
 --------------------------------------------------------------------------------
 
 The first word in the name will always be printed with a capital '`E`'.

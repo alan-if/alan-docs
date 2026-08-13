@@ -52,17 +52,17 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Exit East to Kitchen.
+Exit east To Kitchen.
 --------------------------------------------------------------------------------
 
 But:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Exit East to Kitchen
-  Check kitchenDoor is open
+Exit east To Kitchen
+  Check kitchenDoor Is open
   ...
-End exit.
+End Exit.
 --------------------------------------------------------------------------------
 
 
@@ -115,8 +115,8 @@ The `Start` section is mandatory.
 
 [source,alan]
 --------------------------------------------------------------------------------
-Start at bedroom.
-  Schedule alarm_clock after 2.
+Start At bedroom.
+  Schedule alarm_clock After 2.
     "Slowly you come to your senses, your numb limbs
      starting to feel the blood flowing through them..."
 --------------------------------------------------------------------------------
@@ -348,7 +348,7 @@ Import 'harbor.i'.
 Import 'city.i'.
 Import 'desert.i'.
 Import 'actors.i'.
-Start at city.
+Start At city.
 --------------------------------------------------------------------------------
 
 
@@ -443,14 +443,14 @@ The red_ball
   Name red ball
   Is hidden.
   Description
-    If this is not hidden then
+    If this Is Not hidden Then
       "An ordinary ball is laying under the bed."
-    End if.
+    End If.
   Verb roll
     Does
       "You roll the ball a bit. Nothing exciting happens."
-  End verb.
-End the red_ball.
+  End Verb.
+End The red_ball.
 
 The mr_brown
   IsA actor
@@ -459,7 +459,7 @@ The mr_brown
   Pronoun him.
   Is working.
   Description "Mr. Brown is here, working at his desk."
-End the mr_brown.
+End The mr_brown.
 --------------------------------------------------------------------------------
 
 
@@ -547,7 +547,7 @@ The kirk IsA actor Name Captain Kirk at control_room
     Else "Captain Kirk is not carrying anything."
   Description
     "Your superior, Captain Kirk, is in the room."
-End the kirk.
+End The kirk.
 
 The george IsA actor
   Name George Formby
@@ -580,15 +580,15 @@ A declaration like the following can then be used:
 --------------------------------------------------------------------------------
 The hero IsA actor
   Name me
-  Is not hungry.
-  Verb examine does
-    If hero is hungry then
+  Is Not hungry.
+  Verb examine Does
+    If hero Is hungry Then
       "Examining yourself reveals a poor, hungry soul."
     Else
       "You find nothing but a poor beggar."
-    End if.
-  End verb examine.
-End the hero.
+    End If.
+  End Verb examine.
+End The hero.
 --------------------------------------------------------------------------------
 
 The hero is predefined with a simple `Container` property taking ``object``s with no `Limits`.
@@ -765,7 +765,7 @@ Only the `At what` and `In what` forms of the *WHERE* construct (see <<WHERE Spe
 
 [source,alan]
 --------------------------------------------------------------------------------
-The chest IsA object at treasury
+The chest IsA object At treasury
 ...
 --------------------------------------------------------------------------------
 
@@ -803,7 +803,7 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-The south_door IsA object at south_of_house
+The south_door IsA object At south_of_house
   Name door
 ...
 The south_of_house IsA location
@@ -859,7 +859,7 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-The rod IsA object at grate
+The rod IsA object At grate
   Name rusty rod
   Name dynamite
   ...
@@ -1022,10 +1022,10 @@ Combining the keywords with well chosen attribute names can give natural reading
 
 [source,alan]
 --------------------------------------------------------------------------------
-The rats are hungry
+The rats Are hungry
 The cowboy Can shoot
-The chest is heavy
-The combination_lock has numbers {1,2,4,8}
+The chest Is heavy
+The combination_lock Has numbers {1,2,4,8}
 --------------------------------------------------------------------------------
 
 
@@ -1099,12 +1099,12 @@ Such an attribute is declared by giving the identifier of an event as its initia
 --------------------------------------------------------------------------------
 Event e1
   "This is e1 running."
-  Set e of l to e2.
-End event.
+  Set e Of l To e2.
+End Event.
 
 The l IsA location
   Has e e1.
-End the l.
+End The l.
 --------------------------------------------------------------------------------
 
 An attribute of the event type can for example be used to dynamically remember which event is scheduled, so that it can be cancelled.
@@ -1190,19 +1190,19 @@ An example:
 --------------------------------------------------------------------------------
 Every door IsA object
   Has otherside someDoor.
-End every door.
+End Every door.
 
 Every lockable_door IsA door.
   Has otherside someLockableDoor.
-End every lockable_door.
+End Every lockable_door.
 
 The someDoor IsA door
   Has otherside someLockableDoor.
-End the someDoor.
+End The someDoor.
 
 The someLockableDoor IsA lockable_door
   Has otherside someDoor.
-End the someLockableDoor.
+End The someLockableDoor.
 --------------------------------------------------------------------------------
 
 
@@ -1218,19 +1218,19 @@ As a contrast, the same example can be used with abstract reference attributes (
 --------------------------------------------------------------------------------
 Every door IsA object
   Has otherside door.
-End every door.
+End Every door.
 
 Every lockable_door IsA door.
   Has otherside lockable_door.
-End every lockable_door.
+End Every lockable_door.
 
 The someDoor IsA door
   Has otherside someLockableDoor.
-End the someDoor.
+End The someDoor.
 
 The someLockableDoor IsA lockable_door
   Has otherside someDoor.
-End the someLockableDoor.
+End The someLockableDoor.
 --------------------------------------------------------------------------------
 
 Now the class declarations refer to classes instead of instances in their declaration of the `otherside` attribute.
@@ -1260,9 +1260,9 @@ Of course general statements are also allowed so any prerequisites can be catere
 [source,alan]
 --------------------------------------------------------------------------------
 Initialize
-  Set first_course of this to random in first_courses of menu.
-  Set second_course of this to random in main_courses of menu.
-  Set third_course of this to random in desserts of menu.
+  Set first_course Of this To Random In first_courses Of menu.
+  Set second_course Of this To random In main_courses Of menu.
+  Set third_course Of this To random In desserts Of menu.
 --------------------------------------------------------------------------------
 
 
@@ -1322,9 +1322,9 @@ The south_of_house IsA location
 The door IsA object
   Description
     "In the north wall there is a large wooden door."
-    If door is closed then
+    If door Is closed Then
       "It is closed."
-    End if.
+    End If.
   ...
 --------------------------------------------------------------------------------
 
@@ -1352,7 +1352,7 @@ Every dark_location IsA location
     Check sum of light_source here > 1
       Else "It is pitch black. You are likely
             to be eaten by a grue."
-End every dark_location.
+End Every dark_location.
 --------------------------------------------------------------------------------
 
 
@@ -1454,7 +1454,7 @@ For example:
 [source,alan]
 --------------------------------------------------------------------------------
 The owl IsA object
-  Indefinite article "an"
+  Indefinite Article "an"
   ...
 --------------------------------------------------------------------------------
 
@@ -1569,9 +1569,9 @@ For example:
 [source,alan]
 --------------------------------------------------------------------------------
 Mentioned
-  If mirror is broken then
+  If mirror Is broken Then
     "broken"
-  End if.
+  End If.
   "mirror"
 ...
 --------------------------------------------------------------------------------
@@ -1624,7 +1624,7 @@ The chest IsA object
     Header ...
   Description ...
   :
-End the chest.
+End The chest.
 --------------------------------------------------------------------------------
 
 
@@ -1645,14 +1645,14 @@ For example:
 [source,alan]
 --------------------------------------------------------------------------------
 The drawer IsA object
-  With opaque container
+  With Opaque Container
     Header "The drawer contains"
   Verb open
     Does
-      Make drawer not opaque.
+      Make drawer Not opaque.
       List drawer.
-  End verb.
-End the drawer.
+  End Verb.
+End The drawer.
 --------------------------------------------------------------------------------
 
 
@@ -1712,8 +1712,8 @@ As for the special attribute `Count`(((COUNT, in LIMITS))), it defines a limitat
 --------------------------------------------------------------------------------
 Container
   Limits
-    weight 50 else "You can not lift that much."
-    Count 2 else "You only have two hands!"
+    weight 50 Else "You can not lift that much."
+    count 2 Else "You only have two hands!"
 --------------------------------------------------------------------------------
 
 
@@ -1811,19 +1811,19 @@ An example use of the `Extract` clause is to prohibit, put restrictions on, or m
 --------------------------------------------------------------------------------
 The waiter IsA actor
   At bar.
-  Is not annoyed.
+  Is Not annoyed.
   Description
     "A slow-moving, traditionally dressed waiter is here."
     List waiter.
-    If waiter is annoyed then
+    If waiter Is annoyed Then
       "He is rather annoyed."
-    End if.
+    End If.
   Container
     Header "The waiter is carrying"
     Else "The waiter is empty-handed."
-    Extract does "The waiter is annoyed by your presupposition."
+    Extract Does "The waiter is annoyed by your presupposition."
       Make waiter annoyed.
-End the waiter.
+End The waiter.
 --------------------------------------------------------------------------------
 
 [WARNING]
@@ -1932,16 +1932,16 @@ The east_end IsA location Name 'East End of Hall'
   Description
     "This is the east end of a vast hall. Far
      away to the west you can see the west end."
-  Exit w to west_end.
-End the east_end.
+  Exit w To west_end.
+End The east_end.
 
 The west_end IsA location Name 'West End of Hall'
   Description
     "From this western end of the large hall it
      is almost impossible to discern the
      opposite end to the east."
-  Exit e to east_end.
-End the west_end.
+  Exit e To east_end.
+End The west_end.
 --------------------------------------------------------------------------------
 
 
@@ -2033,11 +2033,11 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Step wait until hero here
+Step Wait Until hero here
   Locate waiter here.
   "From the shadows a waiter emerges: $p
    '-Bonjour, monsieur', he says."
-Step after ticksleft of train
+Step After ticksleft Of train
   "The train driver enters the train, and after
    a brief moment the train starts to move."
 --------------------------------------------------------------------------------
@@ -2112,7 +2112,7 @@ Any references to attributes, etc., will be done in the instance referred by the
 --------------------------------------------------------------------------------
 Syntax open = open (obj).
   ...
-  If obj is open then ...
+  If obj Is open Then ...
   ...
 --------------------------------------------------------------------------------
 
@@ -2317,9 +2317,9 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Where obj IsA object else ...
-  And obj IsA openable_object else ...
-  And obj IsA door else ...
+Where obj IsA object Else ...
+  And obj IsA openable_object Else ...
+  And obj IsA door Else ...
 --------------------------------------------------------------------------------
 
 
@@ -2342,7 +2342,7 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Syntax give = give (o) to (p) ...
+Syntax give = give (o) 'to' (p) ...
 Syntax give = give (p) (o) ...
 --------------------------------------------------------------------------------
 The syntaxes must be compatible in the sense that the parameters must be named the same.
@@ -2451,7 +2451,7 @@ simple_verb_body = [check] [does]
 --------------------------------------------------------------------------------
 Verb take, get
   ...
-End verb take.
+End Verb take.
 --------------------------------------------------------------------------------
 
 Verbs can be declared at two different levels:
@@ -2499,7 +2499,7 @@ You can achieve this by attaching (((META))) `Meta` in front of the verb definit
 Meta Verb 'score'
   Does
     Score.
-End verb.
+End Verb.
 --------------------------------------------------------------------------------
 
 
@@ -2529,10 +2529,10 @@ Anything dropped at the following location will disappear:
 --------------------------------------------------------------------------------
 The high_wire IsA location
   Verb drop
-    Does only
+    Does Only
       Locate o at limbo. –- Instead of "here".
-  End verb.
-End the.
+  End Verb.
+End The.
 --------------------------------------------------------------------------------
 
 
@@ -2564,10 +2564,10 @@ A typical use of `Check` is to verify if the parameter has a particular property
 [source,alan]
 --------------------------------------------------------------------------------
 Verb take
-  Check obj is moveable
+  Check obj Is moveable
     Else "You can't take that."
   ...
-End verb take.
+End Verb take.
 --------------------------------------------------------------------------------
 
 If no expression is specified for a `Check`, that check will always fail, in effect becoming an (((CHECK, unconditional))) unconditional `Check`.
@@ -2578,8 +2578,8 @@ This is useful for preventing certain actions, for example at specific locations
 The jumpless IsA Location
   Verb jump
     Check "You can't do that here."
-  End verb jump.
-End the jumpless.
+  End Verb jump.
+End The jumpless.
 --------------------------------------------------------------------------------
 
 If any check should fail, the execution of the current verb is interrupted and the statements following the failing check are executed.
@@ -2643,11 +2643,11 @@ A simple verb example:
 [source,alan]
 --------------------------------------------------------------------------------
 Verb take
-  Check obj not in inventory
+  Check obj Not In inventory
     Else "You already have that."
   Does
-    Locate obj in inventory.
-End verb take.
+    Locate obj In inventory.
+End Verb take.
 --------------------------------------------------------------------------------
 
 
@@ -2691,8 +2691,8 @@ The feather IsA object
       Make feather flat.
     When w Does
       "There is not much that you can break with a feather!"
-  End verb break_with.
-End the feather.
+  End Verb break_with.
+End The feather.
 --------------------------------------------------------------------------------
 
 If no alternative is explicitly specified the verb body will be considered for all positions in the syntax.
@@ -2820,12 +2820,12 @@ An example of the use of qualifiers is to ensure that only the verb body within 
 --------------------------------------------------------------------------------
 The bomb IsA object
   Verb examine
-    Does only
+    Does Only
       "Your curious fingering at the intricate
        mechanism sets it of. BOOOM!"
       Quit.
-  End verb examine.
-End the bomb.
+  End Verb examine.
+End The bomb.
 --------------------------------------------------------------------------------
 
 
@@ -2844,8 +2844,8 @@ An event can e.g. be used to create an explosion where the bomb is three moves f
 Event nearby_explosion
   "Somewhere in the distance there is an explosion."
   Make bomb gone_off.
-  Schedule small_avalanche after 2.
-End event.
+  Schedule small_avalanche After 2.
+End Event.
 --------------------------------------------------------------------------------
 
 The body of an event can be any sequence of statements.
@@ -2879,21 +2879,21 @@ Here is an example that investigates if the hero is in the cave and if so, activ
 
 [source,alan]
 --------------------------------------------------------------------------------
-When hero at cave and monster not active then
-  Use script hunting for monster.
-End when.
+When hero At cave And monster Not active Then
+  Use Script hunting For monster.
+End When.
 --------------------------------------------------------------------------------
 
 The expression that is tested may of course have any level of complexity:
 
 [source,alan]
 --------------------------------------------------------------------------------
-When hero at cave
-  And (monster is hungry or monster is angry)
-  And sword not in hero
+When hero At cave
+  And (monster Is hungry Or monster Is angry)
+  And sword Not In hero
 =>
-  Use script eat_hero for monster.
-End when.
+  Use Script eat_hero For monster.
+End When.
 --------------------------------------------------------------------------------
 
 Each actor action and event execution is considered atomic (it can't be divided into smaller parts).
@@ -2918,18 +2918,18 @@ The following is a complete game using a rule:
 [source,alan, subs="+quotes"]
 --------------------------------------------------------------------------------
 The kitchen IsA location
-  Exit x to kitchen.
-End the kitchen.
+  Exit x To kitchen.
+End The kitchen.
 
-When count isa actor, at kitchen = 1
-  then schedule whee at actor after 0.
-End when.
+When count Isa actor, At kitchen = 1
+  Then Schedule whee At actor After 0.
+End When.
 
 Event whee
   "Whee!"
-End event.
+End Event.
 
-Start at kitchen.
+Start At kitchen.
 --------------------------------------------------------------------------------
 
 
@@ -3045,11 +3045,11 @@ The `Message` constructs allows general statements following the message identif
 [source,alan]
 --------------------------------------------------------------------------------
 Message NOWAY:
-  If random 1 to 2 = 1 then
+  If Random 1 To 2 = 1 Then
     "There is no way in that direction."
   Else
     "You can't go there."
-  End if.
+  End If.
 --------------------------------------------------------------------------------
 
 
@@ -3123,9 +3123,9 @@ So you can have the prompt change during the game.
 [source,alan]
 --------------------------------------------------------------------------------
 Prompt
-  "Hello" say hero. "!$n"
+  "Hello" Say hero. "!$n"
   "Where do you want to go from"
-  Say current location. "?"
+  Say Current Location. "?"
 --------------------------------------------------------------------------------
 
 This will give the following output:
@@ -3164,8 +3164,8 @@ An example would be:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Start at outside_house.
-  Schedule bird_chirp after 5.
+Start At outside_house.
+  Schedule bird_chirp After 5.
 --------------------------------------------------------------------------------
 
 Only the `At What` form of the *WHERE* construct (see <<WHERE Specifications>>) is allowed in the `Start` section.
@@ -3189,9 +3189,9 @@ This might for example occur between two output strings:
 [source,alan]
 --------------------------------------------------------------------------------
 "There is a door into the kitchen."
-If kitchenDoor is open then
+If kitchenDoor Is open Then
   "It is open."
-End if.
+End If.
 --------------------------------------------------------------------------------
 
 If handled simple-mindedly the two texts would be adjoined and you as an author would need to cater for this.
@@ -3201,7 +3201,7 @@ This is also the case if the output from a `Say` statement is followed by an out
 
 [source,alan]
 --------------------------------------------------------------------------------
-"Your wristwatch shows" say hours of watch.
+"Your wristwatch shows" Say hours Of watch.
 ". Time to go."
 --------------------------------------------------------------------------------
 
@@ -3217,7 +3217,7 @@ It can be used in the following way:
 [source,alan]
 --------------------------------------------------------------------------------
 "Charlie Chaplin leaves the house through the front door."
-Locate charlie_chaplin at outside_house.
+Locate charlie_chaplin At outside_house.
 "Charlie Chaplin comes out from the nearest house."
 --------------------------------------------------------------------------------
 
@@ -3405,13 +3405,13 @@ Parameter names are also allowed in the `Say` statement, which, of course will r
 
 [source,alan]
 --------------------------------------------------------------------------------
-If contents of bottle > 0 then
+If contents Of bottle > 0 Then
   "In the bottle there are still"
-  Say contents of bottle.
+  Say contents Of bottle.
   "litres of water left."
 Else
   "The bottle is empty."
-End if.
+End If.
 --------------------------------------------------------------------------------
 
 
@@ -3442,9 +3442,9 @@ If the container is empty, the statements in the `Empty` clause of the container
 [source,alan]
 --------------------------------------------------------------------------------
 "The chest is heavy."
-If chest is open then
+If chest Is open Then
   List chest.
-End if.
+End If.
 --------------------------------------------------------------------------------
 
 Of course, the instance being listed must be an instance that has the `Container` property, which may be inherited.
@@ -3537,8 +3537,8 @@ Event explosion
    open throwing rocks and splinters everywhere. The
    impact of the explosion literally throws you back
    out in the hallway."
-  Locate hero at hallway.
-End event explosion.
+  Locate hero At hallway.
+End Event explosion.
 --------------------------------------------------------------------------------
 
 In this case, the new location will be described and the `Does` clause of that location executed.
@@ -3571,7 +3571,7 @@ If it is not specified the instances will be placed at the current location.
 Empty inventory here.
 "You seem to have lost most of your possessions. Well,
  you can't have everything."
-Locate hero at restart_point.
+Locate hero At restart_point.
 --------------------------------------------------------------------------------
 
 
@@ -3617,12 +3617,12 @@ The eliza IsA actor
   Has topic "".
   Verb talk_to
     Does
-      Set topic of eliza to "sailing music cooking reading".
-      Strip random 0 to 2 words from topic of eliza.
-      Strip first word from topic into topic.
-      "And how do you feel about" say topic of eliza. "?"
-  End verb.
-End the eliza.
+      Set topic Of eliza To "sailing music cooking reading".
+      Strip Random 0 To 2 Words From topic Of eliza.
+      Strip First Word From topic Into topic.
+      "And how do you feel about" Say topic Of eliza. "?"
+  End Verb.
+End The eliza.
 --------------------------------------------------------------------------------
 
 
@@ -3644,7 +3644,7 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Schedule ringing at clock after 60 - minutes of clock.
+Schedule ringing At clock After 60 - minutes Of clock.
 --------------------------------------------------------------------------------
 
 The number of moves can be zero, i.e. `After 0` means that the event will occur now (during this player turn, probably last, though).
@@ -3662,8 +3662,8 @@ There is an interesting difference between the following two statements:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Schedule explosion at hero after 1.
-Schedule explosion at location of hero after 1.
+Schedule explosion At hero After 1.
+Schedule explosion At location Of hero After 1.
 --------------------------------------------------------------------------------
 
 The first statement will schedule the event at the hero and will execute where the hero is after one turn.
@@ -3699,24 +3699,24 @@ Canceling an `Event` which is not currently scheduled is not considered an error
 --------------------------------------------------------------------------------
 Event ticking
   "Tick..."
-  If timer of bomb = 0 then
-    Schedule explosion after 1.
+  If timer Of bomb = 0 Then
+    Schedule explosion After 1.
   Else
-    Decrease timer of bomb.
-    Schedule ticking after 1.
-  End if.
-End event ticking.
+    Decrease timer Of bomb.
+    Schedule ticking After 1.
+  End If.
+End Event ticking.
 
 Verb defuse
   Does
     Cancel ticking.
     Cancel explosion.
     "Phuuui! That was close."
-End verb defuse.
+End Verb defuse.
 
-Start at office.
+Start At office.
   "The bomb is ticking..."
-  Schedule ticking after 1.
+  Schedule ticking After 1.
 --------------------------------------------------------------------------------
 
 // @TODO @thoni56:
@@ -3748,7 +3748,7 @@ Examples:
 [source,alan]
 --------------------------------------------------------------------------------
 Make door open.
-Make door not open.
+Make door Not open.
 --------------------------------------------------------------------------------
 
 
@@ -3773,8 +3773,8 @@ If no `By` clause is specified the attribute is changed by one.
 
 [source,alan]
 --------------------------------------------------------------------------------
-Increase level of bottle by contents of mug.
-Decrease lives of hero.
+Increase level Of bottle By contents Of mug.
+Decrease lives Of hero.
 --------------------------------------------------------------------------------
 
 
@@ -3793,8 +3793,8 @@ Examples:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Set mood of king_tut to 3.
-Set hour of clock to hour of clock + 1.
+Set mood Of king_tut To 3.
+Set hour Of clock To hour Of clock + 1.
 --------------------------------------------------------------------------------
 
 Setting attributes of reference or set type requires that the expression follows the type and subclass compatibility rules.
@@ -3805,8 +3805,8 @@ For example, you can only assign:
 --
 [source,alan]
 --------------------------------------------------------------------------------
-Set intAttr to 4. -- Correct if intAttr is of Integer type
-Set intAttr to "hi". -- Incorrect
+Set intAttr To 4. -- Correct if intAttr is of Integer type
+Set intAttr To "hi". -- Incorrect
 --------------------------------------------------------------------------------
 --
 * *instance type expressions* to a ((reference attribute)) whose class is a parent of the instance in the expression:
@@ -3815,7 +3815,7 @@ Set intAttr to "hi". -- Incorrect
 [source,alan]
 --------------------------------------------------------------------------------
 Has suspect butler.
-Set suspect of detective to someLocation. -- Incorrect
+Set suspect Of detective To someLocation. -- Incorrect
 --------------------------------------------------------------------------------
 --
 * *set type expressions* to a Set type attribute if all members in the expression are instances of a subclass of the member class of the target attribute.
@@ -3825,9 +3825,9 @@ Here are some examples, given the natural types of the instances:
 [source,alan]
 --------------------------------------------------------------------------------
 Has friends {monica, ross, chandler, rachel, phoebe, joey}. -- 'person's
-Set friends of mine to {book}. -- Incorrect, probably not a 'person'
-Set friends of mine to {}. -- Correct, an empty set is always OK
-Set friends of mine to {suspect Of detective}. -- Maybe correct
+Set friends Of mine To {book}. -- Incorrect, probably not a 'person'
+Set friends Of mine To {}. -- Correct, an empty set is always OK
+Set friends Of mine To {suspect Of detective}. -- Maybe correct
 --------------------------------------------------------------------------------
 --
 
@@ -3850,7 +3850,7 @@ The Set may be identified using an expression involving (((reference attribute))
 
 [source,alan]
 --------------------------------------------------------------------------------
-Include hitchhiker in friends of driver of car.
+Include hitchhiker In friends Of driver Of car.
 --------------------------------------------------------------------------------
 
 
@@ -3858,7 +3858,7 @@ And vice versa:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Include driver of car in friends of hitchhiker.
+Include driver Of car In friends Of hitchhiker.
 --------------------------------------------------------------------------------
 
 
@@ -3920,19 +3920,19 @@ The `Else` clause is optional.
 
 [source,alan]
 --------------------------------------------------------------------------------
-If minute of clock = 59 then
-  Set minute of clock to 0.
-  Increase hour of clock.
+If minute Of clock = 59 Then
+  Set minute Of clock To 0.
+  Increase hour Of clock.
 Else
-  Increase minute of clock.
-End if.
-If level of bottle = 0 then
+  Increase minute Of clock.
+End If.
+If level Of bottle = 0 Then
   "You have no water."
-ElsIf level of bottle < 5 then
+Elsif level Of bottle < 5 Then
   "You have almost no water left."
 Else
   "You have plenty of water."
-End if.
+End If.
 --------------------------------------------------------------------------------
 
 `If` statements which have an `IsA` expression (see <<Class Expressions>>) are particularly important.
@@ -3940,7 +3940,7 @@ As an `IsA` expression test for the class of an instance, an `If` statement like
 
 [source,alan]
 --------------------------------------------------------------------------------
-If i IsA actor then ...
+If i IsA actor Then ...
 --------------------------------------------------------------------------------
 
 // @FIXME @thoni56:
@@ -3959,11 +3959,11 @@ Another example would be looping over a set of unknown instances:
 
 [source,alan]
 --------------------------------------------------------------------------------
-For each e IsA entity, here do
-  If e IsA actor then ...
-  If e IsA object then ...
-  If e IsA container_object then ...
-End for.
+For Each e IsA entity, here Do
+  If e IsA actor Then ...
+  If e IsA object Then ...
+  If e IsA container_object Then ...
+End For.
 --------------------------------------------------------------------------------
 
 
@@ -3995,13 +3995,13 @@ A simple example of the `Depending On` statement:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Depending on weight of obj
-  = 1 then "light as a feather"
-  Between 2 and 10 then "carryable"
-  Between 10 and 20 then "heavy"
-  > 20 then "immobile"
+Depending On weight Of obj
+  = 1 Then "light as a feather"
+  Between 2 And 10 Then "carryable"
+  Between 10 And 20 Then "heavy"
+  > 20 Then "immobile"
   Else "weightless"
-End depend.
+End Depend.
 --------------------------------------------------------------------------------
 
 The purpose of this example is to test the `weight Of obj` and select one of the cases depending on its value.
@@ -4016,12 +4016,12 @@ The above tests are thus equivalent to:
 
 [source,alan]
 --------------------------------------------------------------------------------
-If weight of object = 1 then "light as a feather"
-ElsIf weight of object between 2 and 10 then "carryable"
-ElsIf weight of object between 10 and 20 then "heavy"
-ElsIf weight of object > 20 then "immobile"
+If weight Of object = 1 Then "light as a feather"
+Elsif weight Of object Between 2 And 10 Then "carryable"
+Elsif weight Of object Between 10 And 20 Then "heavy"
+Elsif weight Of object > 20 Then "immobile"
 Else "weightless"
-End if.
+End If.
 --------------------------------------------------------------------------------
 
 
@@ -4047,7 +4047,7 @@ The `For actor` clause is optional when writing code within a certain actor -- i
 
 [source,alan]
 --------------------------------------------------------------------------------
-Use script playing for george.
+Use Script playing For george.
 --------------------------------------------------------------------------------
 
 
@@ -4115,11 +4115,11 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-For each creature IsA actor do
-  If creature here then
+For Each creature IsA actor Do
+  If creature here Then
     ...
-  End if.
-End for.
+  End If.
+End For.
 --------------------------------------------------------------------------------
 
 
@@ -4176,7 +4176,7 @@ Verb 'restore'
   Does
     Restore.
     Look.
-End verb 'restore'.
+End Verb 'restore'.
 --------------------------------------------------------------------------------
 
 [NOTE]
@@ -4283,9 +4283,9 @@ For example:
 The secret_cave IsA location
   Description
     "This is the secret cave. You have visited it"
-    Say visits of this.
+    Say visits Of this.
     "times before."
-End the secret_cave.
+End The secret_cave.
 --------------------------------------------------------------------------------
 
 
@@ -4316,16 +4316,16 @@ To enable player access to the transcripting function you need to implement glob
 Syntax script_on = 'script' 'on'.
 Verb script_on
   Does
-    Transcript on.
+    Transcript On.
     "Transcript turned on."
-End verb.
+End Verb.
 
 Syntax script_off = 'script' 'off'.
 Verb script_off
   Does
-    Transcript off.
+    Transcript Off.
     "Transcript turned off."
-End verb.
+End Verb.
 --------------------------------------------------------------------------------
 
 
@@ -4458,7 +4458,7 @@ A string is an expression and represents a string value, e.g.:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Set password of terminal to "xyzzy".
+Set password Of terminal To "xyzzy".
 --------------------------------------------------------------------------------
 
 A value of the Set type can be constructed directly as an expression.
@@ -4467,7 +4467,7 @@ E.g.:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Set suspectedWeapons of detective to {gun, bat, axe}.
+Set suspectedWeapons Of detective To {gun, bat, axe}.
 --------------------------------------------------------------------------------
 
 Each member in the `Set` expression can be an expression of integer or reference type in itself.
@@ -4491,7 +4491,7 @@ There are two formats available; the first one resembles plain English:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Set password of terminal to password of manual.
+Set password Of terminal To password Of manual.
 --------------------------------------------------------------------------------
 
 The second format is more compact, which might be preferable when referring to chains of attributes referring to other attributes.
@@ -4508,7 +4508,7 @@ It would be the same as:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Say weapon of suspect of detective.
+Say weapon Of suspect Of detective.
 --------------------------------------------------------------------------------
 
 You can test Boolean attributes of an instance by following the pattern:
@@ -4524,14 +4524,14 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-If bottle is empty then ...
+If bottle Is empty Then ...
 --------------------------------------------------------------------------------
 
 The test can be reversed by adding a `Not`:
 
 [source,alan]
 --------------------------------------------------------------------------------
-If hero is not hungry then ...
+If hero Is Not hungry Then ...
 --------------------------------------------------------------------------------
 
 
@@ -4545,7 +4545,7 @@ There is a particularly useful predefined ((pseudo-attribute)), `location`, that
 
 [source,alan]
 --------------------------------------------------------------------------------
-Make location of magic_lantern lit.
+Make location Of magic_lantern lit.
 --------------------------------------------------------------------------------
 
 
@@ -4570,8 +4570,8 @@ Arbitrary expressions yielding an integer value can be used as the boundary expr
 
 [source,alan]
 --------------------------------------------------------------------------------
-Set eyes of first_die to random 1 to 6.
-Decrease temp of room by random 0 to temp of room.
+Set eyes Of first_die To Random 1 To 6.
+Decrease temp Of room By Random 0 To temp Of room.
 --------------------------------------------------------------------------------
 
 
@@ -4636,9 +4636,9 @@ Otherwise the expression will be evaluated to false.
 
 [source,alan]
 --------------------------------------------------------------------------------
-If kalif here and mood of sultan is 0 then ...
-If o IsA treasure and (size of o > capacity of c
-  Or thief is greedy) then ...
+If kalif here And mood Of sultan Is 0 Then ...
+If o IsA treasure And (size Of o > capacity Of c
+  Or thief Is greedy) Then ...
 --------------------------------------------------------------------------------
 
 
@@ -4659,8 +4659,8 @@ Example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-If p IsA object then ...
-If opponent IsA enemy then ...
+If p IsA object Then ...
+If opponent IsA enemy Then ...
 --------------------------------------------------------------------------------
 
 
@@ -4693,7 +4693,7 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-age of golden_child + 4
+age Of golden_child + 4
 --------------------------------------------------------------------------------
 
 The plus operator (`+`) may also be used on strings for (((concatenation, of strings))) concatenation.
@@ -4714,8 +4714,8 @@ The result is true or false and may be negated by using an optional `Not`.
 
 [source,alan]
 --------------------------------------------------------------------------------
-If temperature of oven not > 100 then ...
-If weather of world not < protection of hero then ...
+If temperature Of oven Not > 100 Then ...
+If weather Of world Not < protection Of hero Then ...
 --------------------------------------------------------------------------------
 
 Comparing (((comparisons, equality))) two string expressions (((string, comparisons))) using the binary equality operator `=` will make a case insensitive comparison, i.e. it will give a true value if the strings are the same without considering the case of the characters.
@@ -4745,7 +4745,7 @@ For example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-If level of water between 2 and capacity of bottle then ...
+If level Of water Between 2 And capacity Of bottle Then ...
 --------------------------------------------------------------------------------
 
 
@@ -4758,14 +4758,14 @@ An example of an expression that is true is:
 
 [source,alan]
 --------------------------------------------------------------------------------
-"A string" contains "a S"
+"A string" Contains "a S"
 --------------------------------------------------------------------------------
 
 An optional `Not` (before `Contains`) can be used to reverse the test.
 
 [source,alan]
 --------------------------------------------------------------------------------
-"A string" not contains "a S"
+"A string" Not Contains "a S"
 --------------------------------------------------------------------------------
 
 The expression yields a Boolean value.
@@ -4805,16 +4805,16 @@ An example is the code for objects that can be opened:
 [source,alan]
 --------------------------------------------------------------------------------
 Every openable IsA object
-  Is not open.
+  Is Not open.
   Verb open
     Check ...
     Does
       Make this open.
-  End verb.
-End every openable.
+  End Verb.
+End Every openable.
 
 The door IsA openable
-End the door.
+End The door.
 --------------------------------------------------------------------------------
 
 [example,role="gametranscript"]
@@ -4841,14 +4841,14 @@ Example:
 
 [source,alan]
 --------------------------------------------------------------------------------
-If bottle in inventory then ...
+If bottle In inventory Then ...
 --------------------------------------------------------------------------------
 
 or
 
 [source,alan]
 --------------------------------------------------------------------------------
-If hero not nearby then ...
+If hero Not Nearby Then ...
 --------------------------------------------------------------------------------
 
 The forms available for the *WHERE* expression are described in detail in <<WHERE Specifications>>.
@@ -4876,7 +4876,7 @@ To test if an instance is at a particular location but not in a container at tha
 
 [source,alan]
 --------------------------------------------------------------------------------
-If key directly at treasury then ...
+If key Directly At treasury Then ...
 --------------------------------------------------------------------------------
 
 The qualifying keyword `Directly` works in the same way with all *WHERE* expressions.
@@ -4917,7 +4917,7 @@ See <<Filters>> for an explanation of filters.
 [source,alan]
 --------------------------------------------------------------------------------
 "You are carrying"
-Say count IsA object, in inventory, is big.
+Say Count IsA object, In inventory, Is big.
 "big objects."
 --------------------------------------------------------------------------------
 
@@ -4948,11 +4948,11 @@ Some examples:
 
 [source,alan]
 --------------------------------------------------------------------------------
-If sum of weight at bridge > 500 then ...
-If max of size in inventory > size of small_door then ...
-If count IsA lightsource, is lit, here > 0 then
+If Sum Of weight At bridge > 500 Then ...
+If Max Of size In inventory > size Of small_door Then ...
+If Count IsA lightsource, Is lit, here > 0 Then
   "Let there be light..."
-End if.
+End If.
 --------------------------------------------------------------------------------
 
 
