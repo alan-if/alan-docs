@@ -746,6 +746,11 @@ This might lead to, completely correct, but surprising, error messages from the 
 Especially surprising is perhaps the case where the classes are not even decendants of each other.
 In this case the contained instances can only be guaranteed to be their common ancestor, which might be a quite general class like `thing` or even `entity`.
 
+The `Sum`, `Min` and `Max` aggregates are an exception.
+Rather than requiring the attribute on that common ancestor, they look for it among the classes that the container might contain, and aggregate over the instances of the class that has it, ignoring the rest.
+See <<Aggregates>>.
+Everywhere else, `Count` filters and `For Each` loops included, the common ancestor is still what you get.
+
 
 
 ==== Transitivity

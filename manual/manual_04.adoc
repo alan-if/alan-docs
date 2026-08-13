@@ -79,8 +79,11 @@ The following built-in syntax variations are available to the player:
 ================================================================================
 &gt; _open the door THEN enter_ +
 &gt; _take the book AND read it_ +
+&gt; _take the stone AND THEN drop it_ +
 &gt; _west. north. east_
 ================================================================================
++
+Two *AND*-words in a row are accepted, so "`AND THEN`" works just as well as either of them on its own.
 
 * The use of pronouns (((IT (player input)))) to refer to the last object mentioned in the previous command, e.g.:
 +

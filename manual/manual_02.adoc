@@ -530,7 +530,9 @@ The predefined class `actor` (((ACTOR, predefined class))) is intended for provi
 Like the player, they can move around but to do this they have to be scripted, i.e. programmed with some behaviour using scripts.
 
 An instance inheriting from the `actor` class will be described when encountered.
-Actors can be located, as can any `thing`, but not be inside a container.
+Actors can be located, as can any `thing`.
+Giving an actor an initial location inside a container is an error, but a `Locate` statement may put one there.
+The behaviour of an actor inside a container is not yet completely well-defined and might change in future versions, so the compiler warns about it, and about containers declared to take ``actor``s.
 In addition, they can have scripts.
 
 Actors also exhibit special behaviour when they are described, e.g. when they are encountered.

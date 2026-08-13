@@ -450,7 +450,8 @@ You can, of course, still have attributes describing the actor's state to custom
 
 == Vehicles
 
-The current version of Alan does not support actors being inside containers or inside other actors, which could be a straight forward way to implement vehicles.
+The current version of Alan does not properly support actors being inside containers or inside other actors, which could be a straight forward way to implement vehicles.
+A `Locate` statement will put an actor in a container, but the compiler warns about it: the behaviour is not yet completely well-defined, may have strange side-effects, and might change in future versions.
 However, since the reader/player does not need to know how the output is generated, we can use a location and a chain of events to substitute for the vehicle.
 
 Let's start with the geography:
