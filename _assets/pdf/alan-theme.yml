@@ -1,0 +1,172 @@
+##########################################
+#  Alan IF Documentation Project         #
+#  https://github.com/alan-if/alan-docs  #
+##########################################
+#
+# Asciidoctor PDF theme for the ALAN documentation.
+#
+# Reproduces the look of the legacy DocBook/FOP output, whose colours are
+# defined in "_assets/alan-xsl-fopub/xsl-fopub/color-scheme.xsl" and whose
+# typefaces are Noto Sans (body), Fira Sans Condensed (headings) and Roboto
+# Mono (code) -- the same three families, taken from the same font files.
+#
+# Syntax highlighting colours are NOT set here: they live in the Rouge theme
+# "_assets/pdf/alan-rouge-theme.rb", which also registers the ALAN lexer.
+#
+# Usage (see "manual/pdf_build_adpdf.sh"):
+#
+#   asciidoctor-pdf -a pdf-theme=../_assets/pdf/alan-theme.yml \
+#                   -a pdf-fontsdir=../_assets/pdf/fonts \
+#                   ...
+#
+extends: default
+
+# ==============================================================================
+#                                    Fonts
+# ==============================================================================
+# The TTFs in "_assets/pdf/fonts/" are the same ones the DocBook/FOP toolchain
+# embeds, copied out of the "alan-xsl-fopub" submodule so that this toolchain
+# stands on its own. `merge: true` keeps Asciidoctor PDF's own bundled fonts
+# available as fallbacks.
+font:
+  catalog:
+    merge: true
+    Noto Sans:
+      normal: Noto_Sans/NotoSans-Regular.ttf
+      italic: Noto_Sans/NotoSans-Italic.ttf
+      bold: Noto_Sans/NotoSans-Bold.ttf
+      bold_italic: Noto_Sans/NotoSans-BoldItalic.ttf
+    Fira Sans Condensed:
+      normal: Fira_Sans_Condensed/FiraSansCondensed-Regular.ttf
+      italic: Fira_Sans_Condensed/FiraSansCondensed-Italic.ttf
+      bold: Fira_Sans_Condensed/FiraSansCondensed-Bold.ttf
+      bold_italic: Fira_Sans_Condensed/FiraSansCondensed-BoldItalic.ttf
+    Roboto Mono:
+      normal: Roboto_Mono/RobotoMono-Regular.ttf
+      italic: Roboto_Mono/RobotoMono-Italic.ttf
+      bold: Roboto_Mono/RobotoMono-Bold.ttf
+      bold_italic: Roboto_Mono/RobotoMono-BoldItalic.ttf
+
+# ==============================================================================
+#                                   Base Text
+# ==============================================================================
+base:
+  font-family: Noto Sans
+  font-size: 10
+  font-color: #222222
+  line-height-length: 15
+  text-align: justify
+
+page:
+  size: A4
+  margin: [20mm, 20mm, 20mm, 20mm]
+
+link:
+  font-color: #005498
+
+# ==============================================================================
+#                                   Headings
+# ==============================================================================
+# `title.color` in the FOP scheme; `header.font-weight` there is "normal", so
+# the condensed face carries the emphasis rather than a bold weight.
+heading:
+  font-family: Fira Sans Condensed
+  font-color: #BA3925
+  font-style: normal
+  line-height: 1.2
+  h1-font-size: 30
+  h2-font-size: 24
+  h3-font-size: 19
+  h4-font-size: 15
+  h5-font-size: 12
+  h6-font-size: 10
+  margin-top: 14
+  margin-bottom: 8
+
+title-page:
+  title:
+    font-family: Fira Sans Condensed
+    font-color: #BA3925
+    font-size: 36
+  subtitle:
+    font-family: Fira Sans Condensed
+    font-color: #BA3925
+    font-size: 20
+  authors:
+    font-color: #222222
+
+caption:
+  font-color: #7A2518
+  font-style: italic
+
+# ==============================================================================
+#                                     Code
+# ==============================================================================
+# Inline literals -- `inline_code.*` in the FOP scheme.
+codespan:
+  font-family: Roboto Mono
+  font-size: 0.9em
+  font-color: #222222
+  background-color: #F5F5F5
+
+# Listing and literal blocks -- `AlanHL.background` in the FOP scheme, which is
+# borderless there; a hairline border is kept here because the block sits on
+# white paper without the surrounding page tint the FOP layout provides.
+code:
+  font-family: Roboto Mono
+  font-size: 8.5
+  font-color: #222222
+  background-color: #F8F8F8
+  border-color: #E6E6E6
+  border-width: 0.25
+  border-radius: 3
+  line-height: 1.3
+  padding: [8, 9, 8, 9]
+
+# ==============================================================================
+#                                    Blocks
+# ==============================================================================
+# Example blocks ARE the IF game transcripts: every `====` example block in the
+# manual is tagged `[example,role="gametranscript"]`, so the whole category can
+# carry the `IFPlay.*` colours of the FOP scheme. Block roles cannot set a
+# background in Asciidoctor PDF (they only carry text alignment), but
+# `convert_example` runs its content through `theme_font :example`, so the font
+# colour below does reach the transcript text.
+#
+# If a plain, non-transcript example block is ever added to a document, this is
+# the setting to revisit.
+example:
+  background-color: #F7FDFF
+  border-color: #CCF2FF
+  border-width: 0.5
+  border-radius: 3
+  font-color: #0089B6
+  padding: [10, 10, 10, 10]
+
+quote:
+  border-color: #DDDDDD
+
+thematic-break:
+  border-color: #DDDDDD
+
+ulist:
+  marker:
+    font-color: #FD7070
+
+admonition:
+  column-rule-color: #DDDDDD
+  label:
+    font-family: Fira Sans Condensed
+
+# ==============================================================================
+#                                    Notes
+# ==============================================================================
+# BNF grammar blocks (`BNF.*` in the FOP scheme) are NOT themed here: block
+# backgrounds are resolved per category, so `[source,bnf]` cannot be told apart
+# from `[source,alan]` by the theme alone. Their colours live in
+# "_assets/pdf/alan-pdf-extensions.rb" instead.
+#
+# Syntax highlighting colours (`AlanHL.*`) live in
+# "_assets/pdf/alan-rouge-theme.rb".
+
+# EOF #
