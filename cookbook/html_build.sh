@@ -5,7 +5,7 @@ echo "Converting \"The ALAN Language Cookbook\" to a standalone HTML5 document..
 echo "=============================================================================="
 
 asciidoctor \
-	-r ../_assets/adoc/git-revdate.rb \
+	-r ../_assets/adoc/doc-revision.rb \
 	--safe-mode unsafe \
 	--verbose \
 	-a data-uri \

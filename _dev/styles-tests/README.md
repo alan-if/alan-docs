@@ -31,20 +31,19 @@ For each source file `<fname>.asciidoc` the build scripts will produce:
     + `<fname>_rouge.html` — using [Rouge] for code highlighting.
     + `<fname>_highlight.html` — using [Highlight] for code highlighting.
     + `<fname>_hljs.html` — using [highlight.js] for code highlighting.
-- PDF Format:
-    + `<fname>.pdf` — via [asciidoctor-fopub].
 
 # Build Scripts
 
 - [`html_build.sh`][html_build.sh] — all OSs.
-- [`pdf_build.sh`][pdf_build.sh] — Linux and macOS only.
-- [`PDF_BUILD.bat`][PDF_BUILD.bat] — Windows only.
+
+> __NOTE__ — (2026/08/15) The PDF build scripts were removed with the rest of the
+> DocBook/FOP toolchain. These are HTML styling tests; if PDF styling ever needs
+> testing again, model the script on [`manual/pdf_build.sh`](../../manual/pdf_build.sh).
 
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
-[asciidoctor-fopub]: https://github.com/asciidoctor/asciidoctor-fopub "Visit the asciidoctor-fopub repository on GitHub"
 
 [highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
 [Highlight]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
@@ -57,9 +56,7 @@ For each source file `<fname>.asciidoc` the build scripts will produce:
 [styles adoc]: ./styles-preview.asciidoc
 [code adoc]: ./code.asciidoc
 
-[pdf_build.sh]: ./pdf_build.sh
 [html_build.sh]: ./html_build.sh
-[PDF_BUILD.bat]: ./PDF_BUILD.bat
 
 
 <!-- EOF -->

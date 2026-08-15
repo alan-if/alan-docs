@@ -152,7 +152,7 @@ Yields:
 [example,role="gametranscript"]
 ================================================================================
 You thought that today would be just another ordinary day. +
-&ensp; You couldn't have been more wrong.
+&#8194; You couldn't have been more wrong.
 ================================================================================
 
 

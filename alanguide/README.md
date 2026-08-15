@@ -19,7 +19,6 @@ AsciiDoc reconstruction of _Alan 3 Beginner's Guide_ by Michael Arnaud, 2006 ([W
         - [PDF Toolchain Dependencies](#pdf-toolchain-dependencies)
     - [Maintainers Stuff](#maintainers-stuff)
 - [Original Guide Documents](#original-guide-documents)
-- [DocBook XSL Stylesheets](#docbook-xsl-stylesheets)
 - [Document Status](#document-status)
 - [Document History](#document-history)
 - [Changes List](#changes-list)
@@ -72,10 +71,8 @@ The reader will also need to download the source files of the __ALAN Library__ r
 |              script              |      output      | supported OSs |
 |----------------------------------|------------------|---------------|
 | [`html_build.sh`][html_build.sh] | `alanguide.html` | all           |
-| [`pdf_build.sh`][pdf_build.sh]   | `alanguide.pdf`  | Linux, macOS  |
-| [`PDF_BUILD.bat`][PDF_BUILD.bat] | `alanguide.pdf`  | Windows       |
 
-Unfortunately, the `pdf_build.sh` script doesn't currently work under Bash for Windows due to paths resolution problems ([Issue #66]), so we need to keep also a batch version (`PDF_BUILD.bat`).
+There is no PDF build for this document; see [PDF Toolchain Dependencies](#pdf-toolchain-dependencies) below.
 
 
 > **NOTE** — (2020/12/27) Now the AsciiDoc sources exploit the new (and undocumented) `encoding` option for the `include::` directive, so the toolchain no longer needs to first convert external ALAN sources and transcripts to UTF-8 before their inclusion in the source documents (see [Issue #84]).
@@ -102,8 +99,15 @@ Now the HTML toolchain uses [Highlight] instead of [highlight.js], therefore you
 
 > __PDF WARNING__ — There are some difficulties in rendering in the PDF output the code coloring notation used in the _B.Guide_, therefore there won't be any PDF releases of this document until the problem is solved.
 
+__(2026/08/15)__ The PDF build scripts have been removed along with the rest of the DocBook/FOP toolchain. They are preserved in the Git history should anyone want them back.
 
-The [`PDF_BUILD.bat`][PDF_BUILD.bat] script now uses [asciidoctor-fopub] to create the PDF version of the Manual. You'll need to setup it up on your machine and add it to your system Path in order to run the conversion script.
+The obstacle is the `[green]#...#` change-marking that gives this guide its character, and which the FOP output never rendered correctly either. What we know about reproducing it with [Asciidoctor PDF]:
+
+- With Rouge active on a `[source]` block, the spans are __silently swallowed__ — no colour, no error, and no literal text in the output. This is the Asciidoctor limitation noted above.
+- A `[listing,subs="+quotes"]` block with a `green` role defined in the PDF theme renders the marking __correctly, including mid-line fragments__ — but no highlighter runs, so those blocks lose their ALAN keyword colouring.
+- Rouge's `highlight=<lines>` attribute keeps the keyword colouring and marks whole lines only, so every span would have to be rewritten as line ranges, and the mid-line cases would lose precision.
+
+Having both at once would mean writing a custom Asciidoctor PDF syntax-highlighter adapter that tokenises with Rouge while honouring inline spans — the Prawn-side equivalent of what [`/_assets/hl/`](../_assets/hl/) does for HTML. Until someone does that, or picks one of the trade-offs above, this guide stays HTML-only.
 
 
 ## Maintainers Stuff
@@ -120,18 +124,6 @@ The original files of the _Alan Beginner's Guide_ used as base document are avai
     + [`/images/`][images] — original images.
     + [`alanguide.html`][alanguide.html] — survived HTML version of original document.
     + [`alanguide.adoc`][alanguide.adoc] — AsciiDoc port of the HTML version, by Thomas Nilefalk, 2014.
-
-# DocBook XSL Stylesheets
-
-For the conversion to PDF (from DocBook 5), asciidoc-fopub is set to use the customized XSL stylesheets in this folder:
-
-- [`../_assets/alan-xsl-fopub/xsl-fopub/`](../_assets/alan-xsl-fopub/xsl-fopub/)
-
-These stylesheets are part of the [alan-xsl-fopub] template project, included in this repository as a Git submodule. Its XSL stylesheets were adapted from the [asciidoctor-fopub] project, Copyright (C) 2013 Dan Allen ([MIT License](../_assets/alan-xsl-fopub/xsl-fopub/LICENSE)).
-
-[alan-xsl-fopub]: https://github.com/alan-if/alan-xsl-fopub "Visit the alan-xsl-fopub repository on GitHub"
-
--------------------------------------------------------------------------------
 
 # Document Status
 
@@ -192,7 +184,6 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 
 [Asciidoctor]: https://asciidoctor.org/ "Visit AsciiDoctor website (Ruby implementation)"
 [Asciidoctor PDF]: https://github.com/asciidoctor/asciidoctor-pdf "Visit the Asciidoctor PDF repository"
-[asciidoctor-fopub]: https://github.com/asciidoctor/asciidoctor-fopub "Visit the asciidoctor-fopub repository"
 
 [AsciiDoc Python]: http://asciidoc.org/ "Visit AsciiDoc website (original Python implementation)"
 
@@ -211,8 +202,6 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 
 
 [html_build.sh]: ./html_build.sh "Bash script to convert the Alan Guide to a single-file standalone HTML5 document."
-[PDF_BUILD.bat]: ./PDF_BUILD.bat "Batch script to convert the Alan Guide to PDF document."
-[pdf_build.sh]: ./pdf_build.sh "Batch script to convert the Alan Guide to PDF document."
 [TODO]: ./TODO.md "View the TODO document"
 
 <!-- Tutorial code assets -->
@@ -238,7 +227,6 @@ The original `plasma.jpg` image was converted to `plasma.png`, a PNG with transp
 
 <!-- Repo Issues -->
 
-[Issue #66]: https://github.com/alan-if/alan-docs/issues/66 "Issue #66 — Shell Scripts Produce Corrupt PDFs under Bash for Windows"
 [Issue #84]: https://github.com/alan-if/alan-docs/issues/84 "Issue #84 — Use New encoding Option with include:: Directives"
 
 <!-- Wiki -->

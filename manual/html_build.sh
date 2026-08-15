@@ -7,7 +7,7 @@ echo "================================================================="
 rougeDir=$(cd ../_assets/rouge/; pwd)
 
 asciidoctor \
-	-r ../_assets/adoc/git-revdate.rb \
+	-r ../_assets/adoc/doc-revision.rb \
 	--safe-mode unsafe \
 	--verbose \
 	-r asciidoctor-diagram \

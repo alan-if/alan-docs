@@ -2,7 +2,7 @@
 :version-label: ALAN
 :revnumber:     Version 2.2
 // NOTE: `revdate` is set at build time from the last Git commit that touched
-//       this document; see "_assets/adoc/git-revdate.rb". The value below is
+//       this document; see "_assets/adoc/doc-revision.rb". The value below is
 //       only a fallback for builds that do not load that extension.
 :revdate:       February 10, 2023
 :author:        Anssi Räisänen

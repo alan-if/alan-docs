@@ -10,14 +10,6 @@ Help and contributions are welcome (see [`CONTRIBUTING.md`][CONTRIBUTING]).
 
 For a quick overview of the status of the documents in this project, see the [`STATUS.md`][STATUS] document.
 
-> __SUBMODULES NOTE__ — This repository contains Git submodules; clone with:
->
->     $ git clone --recursive https://github.com/alan-if/alan-docs
->
-> If you've already cloned it, update via:
->
->     $ git submodule update --init
-
 -----
 
 **Table of Contents**
@@ -31,13 +23,12 @@ For a quick overview of the status of the documents in this project, see the [`S
 - [About This Project](#about-this-project)
     - [License Terms](#license-terms)
     - [Project Structure and Contents](#project-structure-and-contents)
-        - [Git Submodules](#git-submodules)
         - [File Extensions Conventions](#file-extensions-conventions)
     - [Development Enviroment Info](#development-enviroment-info)
     - [Syntax Highlighting](#syntax-highlighting)
     - [Project Dependencies](#project-dependencies)
         - [Asciidoctor](#asciidoctor)
-        - [Asciidoctor-fopub](#asciidoctor-fopub)
+        - [Asciidoctor PDF](#asciidoctor-pdf)
         - [Asciidoctor Diagram](#asciidoctor-diagram)
         - [Dia Diagram Editor](#dia-diagram-editor)
         - [Highlight](#highlight)
@@ -100,9 +91,9 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 ## Project Structure and Contents
 
 - [`/_assets/`][/_assets/] — shared assets:
-    + [`/alan-xsl-fopub/`][/alan-xsl-fopub/] — submoduled [alan-xsl-fopub] repository, for XSL FOP template:
-        * [`/xsl-fopub/`][/xsl-fopub/] — XSL Stylesheets for PDF conversion via asciidoctor-fopub.
-        * [`/fonts/`][/fonts/] — required fonts for PDF conversion.
+    + [`/adoc/`][/adoc/] — Asciidoctor extensions shared by all documents.
+    + [`/pdf/`][/pdf/] — assets for the [Asciidoctor PDF] toolchain:
+        * [`/fonts/`][/fonts/] — the fonts embedded in the PDFs.
     + [`/hjs/`][/hjs/] — custom [highlight.js] build for Alan.
     + [`/hl/`][/hl/] — assets for the Asciidoctor Highlight toolchain.
     + [`/images/`][/images/]
@@ -128,19 +119,6 @@ The Alan System is distributed under the [Artistic License 2.0], which includes 
 - [`STATUS.md`][STATUS] — Info about the various docs, highlighters and backends.
 
 
-### Git Submodules
-
-Please, be aware of the presence of a Git submodule inside the [`/alan-xsl-fopub/`](./alan-xsl-fopub/) folder, and make sure you properly update it in your local clone of the repository to avoid regressions when commiting to the project.
-
-For a tutorial on the common pitfalls of submodules, refer to Christophe Porteneuve's article [_Mastering Git submodules_] » [The dangers we face].
-
-For detailed info on how to use Git submodules, see:
-
-- [_Pro Git_ book » Git Submodules][Git Submodules] — by Scott Chacon and Ben Straub.
-- [_Learn Version Control with Git_ » Submodules] — by Git Tower.
-- [Using submodules in Git - Tutorial] — by Lars Vogel.
-
-
 
 ### File Extensions Conventions
 
@@ -158,11 +136,14 @@ This is the environemnt setup used for the project by its maintainer:
 
     ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x64-mingw32]
     Asciidoctor 2.0.15
-    asciidoctor-fopub
+    asciidoctor-pdf 2.3.24
     asciidoctor-diagram 2.1.2
     Rouge 3.26.0
     Asciidoc FX v1.6.8
     Dia Diagram Editor v0.97
+
+The versions the CI workflows install, which are the ones the published
+documents are built with, are pinned in [`.github/workflows/`](./.github/workflows/).
 
 ## Syntax Highlighting
 
@@ -173,7 +154,6 @@ This project provides all the required assets to highlight AsciiDoc documents co
 | [Highlight]    | HTML     | [Asciidoctor]                    |
 | [highlight.js] | HTML     | [Asciidoctor]                    |
 | [Rouge]        | HTML/PDF | [Asciidoctor], [asciidoctor-pdf] |
-| [XSLTHL]       | PDF      | [asciidoctor-fopub]              |
 
 For more info on the various features supported by each highlighter, and how these might affect which highlighter to use for a new document, see the [`STATUS.md`][STATUS] document.
 
@@ -191,19 +171,17 @@ Once you've installed Ruby, you can install the Asciidoctor gem via CLI:
     gem install asciidoctor
 
 
-### Asciidoctor-fopub
+### Asciidoctor PDF
 
-- https://github.com/asciidoctor/asciidoctor-fopub
+- https://github.com/asciidoctor/asciidoctor-pdf
 
-The AsciiDoc to PDF toolchain also requires setting up asciidoctor-fopub on your machine; this tool is required to convert from DocBook to PDF.
+The PDF documents are built with [Asciidoctor PDF], which needs no setup beyond the gem itself:
 
-For guidelines on setting up the asciidoctor-fopub toolchain, refer to documentation of the [alan-xsl-fopub] submodule:
+    gem install asciidoctor-pdf
 
-- https://github.com/alan-if/alan-xsl-fopub/blob/master/README.md
+The look of the PDFs is defined by the assets in [`/_assets/pdf/`][/pdf/] — a theme, a Rouge theme carrying the ALAN colour scheme, a small extension for BNF blocks, and the fonts. Each is documented in its own header.
 
-Also available locally at:
-
-- `_assets/alan-xsl-fopub/README.md`
+> __NOTE__ — Until August 2026 the PDFs were built through DocBook and [asciidoctor-fopub], using the XSL stylesheets in the `alan-xsl-fopub` submodule. That toolchain needed Java, Gradle and the DocBook XSL, could not be set up unattended, and silently indexed only the appendices. It has been retired along with its submodule; both remain in the Git history, and the [alan-xsl-fopub] repository is untouched.
 
 
 ### Asciidoctor Diagram
@@ -331,6 +309,7 @@ The Asciidoctor package adds to Sublime Text 3 AsciiDoc syntax highlighting.
 
 [asciidoctor-fopub]: https://github.com/asciidoctor/asciidoctor-fopub "Visit the asciidoctor-fopub repository on GitHub"
 [asciidoctor-pdf]: https://github.com/asciidoctor/asciidoctor-pdf "Visit the asciidoctor-pdf repository on GitHub"
+[Asciidoctor PDF]: https://github.com/asciidoctor/asciidoctor-pdf "Visit the asciidoctor-pdf repository on GitHub"
 
 <!-- External Tools and Dependencies -->
 
@@ -354,7 +333,6 @@ The Asciidoctor package adds to Sublime Text 3 AsciiDoc syntax highlighting.
 [Ruby Sass]: https://sass-lang.com/ruby-sass "Visit Ruby Sass homepage"
 [Choco Sass]: https://chocolatey.org/packages/sass "View the Chocolatey package for Dart Sass"
 
-[XSLTHL]: https://github.com/xmlark/xslthl "Visit XSLTHL repository on GitHub"
 
 <!-- Project Files ----------------------------------------------------------->
 
@@ -365,9 +343,9 @@ The Asciidoctor package adds to Sublime Text 3 AsciiDoc syntax highlighting.
 <!-- Project Folders --------------------------------------------------------->
 
 [/_assets/]: ./_assets/
-[/alan-xsl-fopub/]: https://github.com/alan-if/alan-xsl-fopub/
-[/xsl-fopub/]: https://github.com/alan-if/alan-xsl-fopub/tree/master/xsl-fopub/
-[/fonts/]: https://github.com/alan-if/alan-xsl-fopub/tree/master/fonts/
+[/adoc/]: ./_assets/adoc/
+[/pdf/]: ./_assets/pdf/
+[/fonts/]: ./_assets/pdf/fonts/
 [/hjs/]: ./_assets/hjs/
 [/hl/]: ./_assets/hl/
 [/images/]: ./_assets/images/
@@ -391,13 +369,8 @@ The Asciidoctor package adds to Sublime Text 3 AsciiDoc syntax highlighting.
 <!-- Git references -->
 
 [Pro Git]: https://git-scm.com/book "'Pro Git' book online"
-[Git Submodules]: https://git-scm.com/book/en/v2/Git-Tools-Submodules "Read the chapter on Git Submodules from the 'Pro Git' book"
 
-[Using submodules in Git - Tutorial]: https://www.vogella.com/tutorials/GitSubmodules/article.html "Read tutorial"
-[_Learn Version Control with Git_ » Submodules]: https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/submodules#start
 
-[_Mastering Git submodules_]: https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407 "Read article"
-[The dangers we face]: https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#6b21 "Jump to section 'The dangers we face' of the 'Mastering Git submodules' article"
 
 <!-- Repo Issues -->
 

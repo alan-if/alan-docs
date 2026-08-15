@@ -13,8 +13,6 @@
 !docinfo.html
 !/_assets-src/original-docs/**.html
 !/_assets-src/original-docs/**.pdf
-# DocBook intermediate file used in the PDF conversion:
-*.xml
 
 ## ==========
 ## Alan Files
@@ -28,11 +26,6 @@
 ## AlanIDE Files
 ## =============
 .project
-
-## =================
-## Asciidoctor fopub
-## =================
-.gradle/
 
 ## ==========
 ## Sass cache

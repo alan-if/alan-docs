@@ -17,12 +17,12 @@ Although Alan is designed to be usable by non-programmers, knowing the terms of 
 ** PDF BEWARE!! **
 ******************
 
-The PDF backend (via DocBook + asciidoctor-fopub) is really prickly about
-Glossary entries -- what might look fine in HTML could actually be rendered
-very ugly in PDF (if not entirely broken)!!!
+The DocBook + asciidoctor-fopub backend used to be really prickly about Glossary
+entries -- what looked fine in HTML could be rendered very ugly in PDF, if not
+broken outright. That backend was retired in August 2026 and the PDF is now
+built by asciidoctor-pdf, which does not share the quirk.
 
-Always double check any changes with the PDF doc, for a slight change in source
-formatting could break an entry in the PDF Glossary (but not in the HTML doc).
+Still worth checking the PDF after changes here, but no longer a minefield.
 
 ******************
 ** ANCHORS NOTE **

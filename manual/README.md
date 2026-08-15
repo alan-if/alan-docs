@@ -107,21 +107,17 @@ For more info, see:
 
 ## Conversion Scripts
 
-Under Windows:
+Bash scripts, for any OS (under Windows, use WSL):
 
-- [`PDF_BUILD.bat`][PDF_BUILD.bat] — batch script to create `manual.pdf` document (currently ignored in repository).
+- [`html_build.sh`][html_build.sh] — creates the `manual.html` document (single file document).
+- [`pdf_build.sh`][pdf_build.sh] — creates the `manual.pdf` document.
 
-Bash scripts for Linux, macOS or Bash for Windows:
+Both outputs are ignored by Git; they are published from CI, see [`.github/workflows/`](../.github/workflows/).
 
-- [`html_build.sh`][html_build.sh] — bash script to create `manual.html` document (single file document).
-- [`pdf_build.sh`][pdf_build.sh] — bash script to create `manual.pdf` document (currently ignored in repository).
+> __PDF CONVERSION NOTE__ — [`pdf_build.sh`][pdf_build.sh] uses [Asciidoctor PDF] (`gem install asciidoctor-pdf`) with the shared assets in [`/_assets/pdf/`](../_assets/pdf/). It replaced the DocBook/FOP toolchain in August 2026; see [Asciidoctor PDF][Instructions on setting up Asciidoctor PDF] in the project README for what changed and why.
 
-
-> __PDF CONVERSION NOTE__ — The [`PDF_BUILD.bat`][PDF_BUILD.bat] script now uses [asciidoctor-fopub] to create the PDF version of the Manual. You'll need to setup it up on your machine and add it to your system Path in order to run the conversion script.
->
-> See: [Instructions on setting up asciidoctor-fopub].
-
-[Instructions on setting up asciidoctor-fopub]: ../README.md#asciidoctor-fopub
+[Instructions on setting up Asciidoctor PDF]: ../README.md#asciidoctor-pdf
+[Asciidoctor PDF]: https://github.com/asciidoctor/asciidoctor-pdf "Visit the asciidoctor-pdf repository on GitHub"
 
 
 ## Helper Files
@@ -157,19 +153,9 @@ After running the PDF conversion script, you'll get the following file:
 
 - `manual.pdf`
 
-The PDF toolchain uses [asciidoctor-fopub] to convert from DocBook to PDF, and a custom DocBook XSL template.
+The PDF is built with [Asciidoctor PDF], styled by the shared assets in [`/_assets/pdf/`](../_assets/pdf/) — a theme, a Rouge theme carrying the ALAN colour scheme, a small extension for BNF blocks, and the embedded fonts.
 
-The DocBook XSL template is now looking good and the output PDF documents are ready for distribution.
-
-The DocBook template and its assets have now been moved to an independent repository so that other Alan projects can use it too:
-
-- https://github.com/alan-if/alan-xsl-fopub
-
-The template is now included in this project via Git submodules, so you'll need to make sure that the submodule is correctly initialized in your local copy of the repository.
-
-For full instructions on how to setup the PDF toolchain and all its dependencies, see:
-
-- https://github.com/alan-if/alan-xsl-fopub#instructions
+See [_PDF Toolchain Setup_](#pdf-toolchain-setup) below.
 
 ### HTML Version
 
@@ -197,13 +183,7 @@ To build the HTML _Manual_ under any OS, open a Bash terminal in this folder and
 ./html_build.sh
 ```
 
-To build the PDF _Manual_ under Windows, open a command prompt in this folder and type:
-
-```batch
-PDF_BUILD.bat
-```
-
-To build the PDF _Manual_ under Linux or macOS, you'll have to open a Bash terminal in this folder and type:
+To build the PDF _Manual_, in the same terminal type:
 
 ```bash
 ./pdf_build.sh
@@ -232,20 +212,15 @@ The latter solution is the advised way to proceed because (although it requires 
 
 ## PDF Toolchain Setup
 
-The PDF toolchain requires [asciidoctor-fopub] to convert from DocBook to PDF.
+The PDF toolchain needs only the [Asciidoctor PDF] gem:
 
-The DocBook XSL template is now looking good and the output PDF documents are ready for distribution.
+    gem install asciidoctor-pdf
 
-The DocBook template and its assets have now been moved to an independent repository so that other Alan projects can use it too:
+Everything else it uses — theme, Rouge colour scheme, BNF extension and fonts — is in [`/_assets/pdf/`](../_assets/pdf/) and needs no setup.
 
-- https://github.com/alan-if/alan-xsl-fopub
+You can then build the PDF document via:
 
-The template is now included in this project via Git submodules. See the [_DocBook XSL Stylesheets_](#docbook-xsl-stylesheets) section for more details.
-
-Once the PDF toolchain is correctly setup, you can then build the PDF document via the following scripts:
-
-- [`PDF_BUILD.bat`][PDF_BUILD.bat] — batch script for Windows.
-- [`pdf_build.sh`][pdf_build.sh] — bash script for Linux and macOS.
+- [`pdf_build.sh`][pdf_build.sh] — bash script, any OS.
 
 
 ## HTML Toolchain Setup
@@ -295,7 +270,7 @@ In some tasks I've also added either `@thoni56` or `@tajmone`, to indicate the u
 
 ## Syntax Highlighting
 
-The HTML version uses __[Rouge]__ for syntax highlighting the code in the _Manual_, while the PDF version uses __[XSLTHL]__ (included in __[asciidoctor-fopub]__).
+Both the HTML and the PDF version use __[Rouge]__ for syntax highlighting the code in the _Manual_, through the shared ALAN lexer in [`/_assets/rouge/`](../_assets/rouge/).
 
 
 ## Conversion from ODT to AsciiDoc
@@ -328,7 +303,6 @@ The single source document was then split into multiple files according to chapt
 <!-- Alan -->
 
 [Alan SDK]: https://www.alanif.se/download-alan-v3/development-kits "Visit the Development Kits page on ALAN website"
-[alan-xsl-fopub]: https://github.com/alan-if/alan-xsl-fopub "Visit the alan-xsl-fopub repository on GitHub"
 [development snapshots]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots "Visit the development snapshots page on Alan website"
 
 <!-- 3r party tools -->
@@ -336,13 +310,11 @@ The single source document was then split into multiple files according to chapt
 [Font Awesome]: https://fontawesome.com/ "Visit Font Awesome website"
 [highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
 [Highlight]: http://www.andre-simon.de/ "Visit Highlight website"
-[XSLTHL]: https://sourceforge.net/projects/xslthl/ "Visit the XSLTHL project on SourceForge"
 
 <!-- AsciiDoctor ------------------------------------------------------------->
 
 [Asciidoctor]: https://asciidoctor.org/ "Visit AsciiDoctor website (Ruby implementation)"
 [Asciidoctor PDF]: https://github.com/asciidoctor/asciidoctor-pdf "Visit the Asciidoctor PDF repository"
-[asciidoctor-fopub]: https://github.com/asciidoctor/asciidoctor-fopub "Visit the asciidoctor-fopub repository"
 
 [AsciiDoc Python]: http://asciidoc.org/ "Visit AsciiDoc website (original Python implementation)"
 
@@ -383,7 +355,6 @@ The single source document was then split into multiple files according to chapt
 [man z]: ./manual_z.adoc "Source file of Glossary"
 
 
-[PDF_BUILD.bat]: ./PDF_BUILD.bat   "Batch script to convert Alan Manual to PDF document."
 
 [html_build.sh]: ./html_build.sh   "Bash script to convert Alan Manual to a single-file HTML5 document."
 [pdf_build.sh]:  ./pdf_build.sh    "Bash script to convert Alan Manual to PDF document."

@@ -56,7 +56,7 @@ jobs:
 
       - name: Build "The ALAN Manual"
         working-directory: manual
-        run: ./pdf_build_adpdf.sh
+        run: ./pdf_build.sh
 
       # A PDF that Prawn wrote but that no reader can parse would still leave a
       # file behind, so check that it opens and has a plausible page count:
@@ -65,7 +65,7 @@ jobs:
         run: |
           ruby -e '
             require "pdf-reader"
-            pages = PDF::Reader.new("manual-asciidoctor-pdf.pdf").page_count
+            pages = PDF::Reader.new("manual.pdf").page_count
             puts "The manual built to #{pages} pages."
             abort "Suspiciously short, something went wrong." if pages < 200
           '
@@ -75,6 +75,6 @@ jobs:
         with:
           name: manual-pdf
           if-no-files-found: error
-          path: manual/manual-asciidoctor-pdf.pdf
+          path: manual/manual.pdf
 
 # EOF #

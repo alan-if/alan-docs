@@ -6,9 +6,10 @@ These are the typefaces used by [`../alan-theme.yml`](../alan-theme.yml) for the
 Asciidoctor PDF toolchain: Noto Sans for body text, Fira Sans Condensed for
 headings and Roboto Mono for code.
 
-They are copies of the fonts in the [alan-xsl-fopub] submodule, which the legacy
-DocBook/FOP toolchain embeds, duplicated here so that the PDF build does not
-depend on that submodule being checked out.
+They came from the [alan-xsl-fopub] repository, which the retired DocBook/FOP
+toolchain used as a submodule and which embedded these same three families. They
+were copied here in August 2026 so the PDF build stands on its own; the submodule
+has since been removed from this repository.
 
 [alan-xsl-fopub]: https://github.com/alan-if/alan-xsl-fopub "Visit the alan-xsl-fopub repository on GitHub"
 

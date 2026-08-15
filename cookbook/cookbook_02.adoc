@@ -362,12 +362,12 @@ Yields:
 ================================================================================
 &gt; inventory +
 You are carrying +
-&ensp;&ensp; a set of keys +
-&ensp;&ensp; a remote control +
-&ensp;&ensp; an umbrella +
-&ensp;&ensp; a newspaper +
-&ensp;&ensp; a note +
-&ensp;&ensp; some coins.
+&#8194;&#8194; a set of keys +
+&#8194;&#8194; a remote control +
+&#8194;&#8194; an umbrella +
+&#8194;&#8194; a newspaper +
+&#8194;&#8194; a note +
+&#8194;&#8194; some coins.
 ================================================================================
 
 

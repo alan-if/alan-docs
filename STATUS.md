@@ -51,12 +51,14 @@ The "status" columns values indicate:
 
 As you might notice from the above table, none of the documents is currently using [highlight.js] for syntax highlighting, but they are either using [Rouge] or [Highlight].
 
-[Rouge] is the number one highlighter choice in this project, because it supports [callouts] in code blocks, it's powerful, and it's natively supported by Asciidoctor's HTML backend as well as by [asciidoctor-pdf]  (which we're planning to use once some current problems are fixed).
+[Rouge] is the number one highlighter choice in this project, because it supports [callouts] in code blocks, it's powerful, and it's natively supported by Asciidoctor's HTML backend as well as by [asciidoctor-pdf].
 So we've migrated to Rouge all the documents we could.
+Since August 2026 [asciidoctor-pdf] is also the PDF backend, so a Rouge document is highlighted the same way in both formats.
 
 Documents still using [Highlight] are doing so because they contain custom styling selections within a code block using the `#` delimiters for [text span] or [highlight syntax], which is currently not supported with the Rouge highlighter (when these elements are present, syntax highlighting is disabled).
 This is a problem with the native Rouge adapter that ships with Asciidoctor (Ruby).
-Note that these documents can't be properly converted to PDF either, because our custom templates for [asciidoctor-fopub] currently don't render properly [highlight syntax] or [text span]s in code blocks.
+Note that these documents have no PDF build at all: the retired [asciidoctor-fopub] templates never rendered [highlight syntax] or [text span]s properly either, and [asciidoctor-pdf] swallows them silently when Rouge is active.
+See the [_PDF Toolchain Dependencies_][bguide-pdf] section of the Beginner's Guide README for the three known ways forward and what each costs.
 
 For example, the [ALAN 3 Beginner's Guide] makes heavy use of [text span]s and [highlight syntax] in code blocks, which won't allow us to use [Rouge] with it until the problem is fixed in the Asciidoctor application.
 
@@ -81,11 +83,13 @@ Maintainers of a document in HTML format for this project should try to pick the
 
 ## Highlighters for PDF Backend
 
-As for the PDF format, we currently support only the [asciidoctor-fopub] backend, which can only use its own syntax highlighter:
+PDFs are built with [asciidoctor-pdf], which uses:
 
-1. [XSLTHL]
+1. [Rouge]
 
-Custom styles and our own ALAN syntax definition are provided via the [alan-xsl-fopub] repository, included as a Git submodule in this project.
+The ALAN lexer is shared with the HTML toolchain ([`/_assets/rouge/alan3.rb`](./_assets/rouge/alan3.rb)); the colour scheme is in [`/_assets/pdf/alan-rouge-theme.rb`](./_assets/pdf/alan-rouge-theme.rb).
+
+> __NOTE__ — Until August 2026 PDFs went through DocBook and [asciidoctor-fopub], whose only highlighter was [XSLTHL], with styles from the `alan-xsl-fopub` submodule. Both are gone; see the project [`README.md`](./README.md#asciidoctor-pdf).
 
 ## Highlighters Features Support
 
@@ -99,7 +103,8 @@ The following table shows the features supported by each highlighter.
 | [Rouge]        | &check;               | &check;               | &check;         | &cross;     |
 | [Highlight]    | &check;               | &check;               | &cross; ([#36]) | &check;     |
 | [highlight.js] | &cross; (TBD: [#121]) | &cross; (TBD: [#120]) | &check;         | &check;     |
-| [XSLTHL]       | &cross;               | &cross; (TBD: [#123]) | &check;         | &cross;     |
+
+[XSLTHL] is no longer listed: it was only reachable through the retired DocBook/FOP backend.
 
 The above columns refer to:
 
@@ -171,6 +176,7 @@ The above columns refer to:
 [Rouge]: http://rouge.jneen.net "Visit Rouge website"
 [Highlight]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
 [highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
+[bguide-pdf]: ./alanguide/README.md#pdf-toolchain-dependencies "Read about the Beginner's Guide PDF situation"
 [XSLTHL]: https://github.com/xmlark/xslthl "Visit XSLTHL repository on GitHub"
 
 <!-- backends -->

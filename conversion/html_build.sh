@@ -6,7 +6,7 @@ echo "========================================================================"
 echo "Converting the \"ALAN Conversion Guide\" to a standalone HTML5 document..."
 echo "========================================================================"
 asciidoctor \
-	-r ../_assets/adoc/git-revdate.rb \
+	-r ../_assets/adoc/doc-revision.rb \
 	--safe-mode unsafe \
 	--verbose \
 	-r $rougeDir/custom-rouge-adapter.rb \
