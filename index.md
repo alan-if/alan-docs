@@ -15,6 +15,10 @@ It exists in two versions matching the two current development flows:
     + [HTML](manual-alpha/manual.html)
     + [PDF](manual-alpha/manual.pdf)
 
+The Alpha Manual is rebuilt and republished whenever the documentation changes, so it is always the most recent text.
+You can tell the two apart by the revision line under the title: the Alpha Manual is marked **+dev** (e.g. "ALAN Beta8+dev"), meaning it describes a development snapshot rather than a released SDK.
+The Beta Manual carries the plain release number and is updated only when a new Beta of the SDK is released.
+
 
 ## Alan Cookbook
 
