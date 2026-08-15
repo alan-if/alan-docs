@@ -1,0 +1,51 @@
+##########################################
+#  Alan IF Documentation Project         #
+#  https://github.com/alan-if/alan-docs  #
+##########################################
+#
+# Publishes the official (beta) manual, to be run when a Beta of the ALAN SDK
+# is released.
+#
+# The beta stream describes the released SDK, so it is deliberately NOT updated
+# on every commit -- that is what the alpha stream is for. Running this workflow
+# takes the current state of `master` and makes it the official manual.
+#
+# BEFORE RUNNING
+# --------------
+# Make sure `:revnumber:` in "manual/manual.asciidoc" names the release being
+# published. The workflow asks for that number and refuses to publish if the
+# document disagrees, so a release cannot go out labelled with the previous
+# version.
+#
+# Use "Dry run" first if you want to see what would change without touching the
+# website.
+#
+name: Publish release
+
+on:
+  workflow_dispatch:
+    inputs:
+      revnumber:
+        description: "The release being published, exactly as it appears in the manual's `:revnumber:` (e.g. Beta8)"
+        required: true
+        type: string
+      dry-run:
+        description: 'Dry run: build and report the changes, but publish nothing'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+
+  beta:
+    name: Release
+    uses: ./.github/workflows/publish.yml
+    with:
+      stream: beta
+      expect-revnumber: ${{ inputs.revnumber }}
+      dry-run: ${{ inputs.dry-run }}
+
+# EOF #

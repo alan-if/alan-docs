@@ -3,33 +3,51 @@
 #  https://github.com/alan-if/alan-docs  #
 ##########################################
 #
-# Builds "The ALAN Manual" and commits the result to the `published` branch,
-# which GitHub Pages serves at https://alan-if.github.io/alan-docs/
+# Builds "The ALAN Manual" and commits it to the `published` branch, which
+# GitHub Pages serves at https://alan-if.github.io/alan-docs/
 #
-# This is the CI equivalent of building locally and running `manual/publish.sh`,
-# except that it builds the document itself instead of copying whatever happens
-# to be lying around in your working directory.
+# This workflow is not triggered directly. It is called by:
 #
-# Deliberately manual: publishing stays an explicit act, as it is today. Run it
-# from the "Actions" tab, from the branch whose stream you want to publish:
+#   publish-alpha.yml    on every push that changes the documents
+#   publish-release.yml  by hand, when a Beta of the SDK is released
 #
-#     master             ->  manual-beta/
-#     alan-manual-alpha  ->  manual-alpha/
+# THE TWO STREAMS
+# ---------------
+# alpha  Tracks `master`. Its `revnumber` is marked "+dev" (see
+#        "_assets/adoc/doc-revision.rb") to say that it describes a development
+#        snapshot rather than a released SDK.
+# beta   The official manual, matching the released SDK. Only ever updated
+#        deliberately, so it stays in step with the release it describes.
 #
-# HTML ONLY. The PDFs still have to be built and published by hand via
-# `manual/pdf_build.sh` + `manual/publish.sh`, because asciidoctor-fopub cannot
-# currently be set up unattended.
+# Both streams are built from `master`; the stream decides the destination
+# folder and whether the "+dev" mark is applied. Nothing depends on branches
+# any more -- the old `alan-manual-alpha` branch is not involved.
 #
 name: Publish
 
 on:
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      stream:
+        description: 'alpha or beta'
+        required: true
+        type: string
+      expect-revnumber:
+        description: "If set, the build fails unless the manual's `:revnumber:` matches. Guards releases against a stale version."
+        required: false
+        default: ''
+        type: string
+      dry-run:
+        description: 'Build and report, but do not touch the `published` branch.'
+        required: false
+        default: false
+        type: boolean
 
 # Needed to push the built document back to the `published` branch:
 permissions:
   contents: write
 
-# Never let two publishing runs race for the same branch:
+# One publish at a time, whichever stream: they write to the same branch.
 concurrency:
   group: publish
   cancel-in-progress: false
@@ -37,32 +55,44 @@ concurrency:
 jobs:
 
   publish:
-    name: Publish the manual
+    name: Publish the ${{ inputs.stream }} manual
     runs-on: ubuntu-latest
+    env:
+      # Read by "_assets/adoc/doc-revision.rb":
+      ALAN_DOCS_STREAM: ${{ inputs.stream }}
     steps:
 
-      - name: Determine the publishing stream
-        id: stream
+      - name: Check the stream
         env:
-          BRANCH: ${{ github.ref_name }}
+          STREAM: ${{ inputs.stream }}
         run: |
-          case "$BRANCH" in
-            master)
-              echo "name=beta" >> "$GITHUB_OUTPUT" ;;
-            alan-manual-alpha)
-              echo "name=alpha" >> "$GITHUB_OUTPUT" ;;
+          case "$STREAM" in
+            alpha|beta) echo "Publishing the $STREAM stream." ;;
             *)
-              echo "::error::Unknown branch '$BRANCH', can't publish."
+              echo "::error::Unknown stream '$STREAM'; expected 'alpha' or 'beta'."
               exit 1 ;;
           esac
 
       - name: Checkout the sources
         uses: actions/checkout@v5
         with:
-          # Full history: "git-revdate.rb" dates each document from the last
+          # Full history: "doc-revision.rb" dates each document from the last
           # commit that touched it, which a shallow clone cannot see.
           fetch-depth: 0
           path: src
+
+      - name: Check the manual's revision number
+        if: inputs.expect-revnumber != ''
+        working-directory: src
+        env:
+          EXPECTED: ${{ inputs.expect-revnumber }}
+        run: |
+          actual=$(sed -n 's/^:revnumber:[[:space:]]*//p' manual/manual.asciidoc | head -1)
+          if [ "$actual" != "$EXPECTED" ] ; then
+            echo "::error::The manual declares ':revnumber: $actual', but this release was requested as '$EXPECTED'. Update the document header, or re-run with the right number."
+            exit 1
+          fi
+          echo "The manual declares '$actual', as expected."
 
       - name: Checkout the 'published' branch
         uses: actions/checkout@v5
@@ -75,37 +105,62 @@ jobs:
         with:
           ruby-version: '3.3'
 
-      # Rouge is pinned because our custom adapter
-      # ("_assets/rouge/custom-rouge-adapter.rb") and the ALAN lexer
-      # ("_assets/rouge/alan3.rb") are written against Rouge 3.26.0 and hook
-      # internals that move between versions.
+      # Rouge is pinned because "_assets/pdf/alan-rouge-theme.rb" and the ALAN
+      # lexer "_assets/rouge/alan3.rb" are written against Rouge 3.26.0.
       - name: Install the Asciidoctor toolchain
         run: |
           gem install asciidoctor         -v 2.0.17
           gem install asciidoctor-diagram -v 2.2.3
           gem install rouge               -v 3.26.0
+          gem install asciidoctor-pdf     -v 2.3.24
 
-      - name: Build "The ALAN Manual"
+      - name: Build "The ALAN Manual" as HTML
         working-directory: src/manual
         run: ./html_build.sh
 
+      - name: Build "The ALAN Manual" as PDF
+        working-directory: src/manual
+        run: ./pdf_build.sh
+
+      - name: Report what was built
+        working-directory: src/manual
+        run: |
+          ruby -e '
+            require "pdf-reader"
+            pages = PDF::Reader.new("manual.pdf").page_count
+            puts "PDF: #{pages} pages"
+            abort "Suspiciously short, something went wrong." if pages < 200
+          '
+          grep -oE '<span id="rev(number|date)">[^<]*</span>' manual.html | head -2
+
       - name: Copy the manual into the 'published' branch
         env:
-          STREAM: ${{ steps.stream.outputs.name }}
-        run: cp src/manual/manual.html "published/manual-$STREAM/manual.html"
+          STREAM: ${{ inputs.stream }}
+        run: |
+          cp src/manual/manual.html "published/manual-$STREAM/manual.html"
+          cp src/manual/manual.pdf  "published/manual-$STREAM/manual.pdf"
 
       - name: Commit and push
         working-directory: published
         env:
-          STREAM: ${{ steps.stream.outputs.name }}
+          STREAM: ${{ inputs.stream }}
+          DRY_RUN: ${{ inputs.dry-run }}
         run: |
           if git diff --quiet ; then
             echo "The published $STREAM manual is already up to date, nothing to do."
             exit 0
           fi
+
+          git --no-pager diff --stat
+
+          if [ "$DRY_RUN" = "true" ] ; then
+            echo "::notice::Dry run: the $STREAM manual would have been updated as shown above, but nothing was pushed."
+            exit 0
+          fi
+
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "manual-$STREAM/manual.html"
+          git add "manual-$STREAM/manual.html" "manual-$STREAM/manual.pdf"
           git commit -m "Publishing new version of $STREAM manual (${GITHUB_SHA:0:7})"
           git push
 

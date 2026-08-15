@@ -53,9 +53,14 @@ The new AsciiDoc port of _The ALAN Manual_ is now the official version of the ma
 _The ALAN Manual_ is available in two different versions, Beta and Alpha:
 
 - The __Beta Manual__ describes the latest Beta release of the [Alan SDK].
-- The __Alpha Manual__ includes changes that are only in the [development snapshots], which will make it into the next beta release.
+- The __Alpha Manual__ includes changes that are only in the [development snapshots], which will make it into the next beta release. Its title page carries a `+dev` mark, e.g. "ALAN Beta8+dev".
 
-Development of the Beta version takes place in `master` branch, whereas development of the Alpha version takes place in the `alan-manual-alpha` branch.
+Both are built from `master`; what differs is when each is published:
+
+- The __Alpha Manual__ is republished automatically by [`publish-alpha.yml`](../.github/workflows/publish-alpha.yml) on every push that changes the manual or the shared assets, so it always matches `master`.
+- The __Beta Manual__ is published only when a Beta of the SDK is released, by running [`publish-release.yml`](../.github/workflows/publish-release.yml) from the _Actions_ tab. That workflow asks for the release number and refuses to publish if `:revnumber:` in [`manual.asciidoc`][man] disagrees, so the official manual cannot go out mislabelled. It also offers a dry run.
+
+> __NOTE__ — Until August 2026 the two versions lived on separate branches, `master` and `alan-manual-alpha`, and the stream was chosen by the branch a publish ran from. In practice the alpha branch never diverged — the published alpha and beta manuals of December 2021 were byte-identical — so it was retired in favour of the scheme above.
 
 
 -------------------------------------------------------------------------------

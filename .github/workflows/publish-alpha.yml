@@ -1,0 +1,43 @@
+##########################################
+#  Alan IF Documentation Project         #
+#  https://github.com/alan-if/alan-docs  #
+##########################################
+#
+# Keeps the alpha manual on the website in step with `master`.
+#
+# Every push that changes the manual or the shared assets rebuilds and
+# republishes it, so the alpha stream is always the latest documentation. The
+# beta stream is left alone; that one is published deliberately, at release
+# time, by "publish-release.yml".
+#
+# Builds are byte-stable (the revision date comes from Git rather than from the
+# clock), so a push that does not change the rendered document publishes
+# nothing.
+#
+name: Publish alpha
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'manual/**'
+      # The shared assets decide how the document renders, so a change there
+      # can change the output even when no prose has been touched:
+      - '_assets/**'
+      - '.github/workflows/publish*.yml'
+  # Also runnable by hand, e.g. after fixing something in the workflow itself:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+
+  alpha:
+    name: Alpha
+    uses: ./.github/workflows/publish.yml
+    with:
+      stream: alpha
+
+# EOF #
