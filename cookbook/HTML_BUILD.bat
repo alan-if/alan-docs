@@ -15,6 +15,7 @@
 :: To run this script the following Ruby Gems must be installed on your system:
 ::    https://github.com/asciidoctor/asciidoctor
 asciidoctor^
+  -r ../_assets/adoc/git-revdate.rb^
   --safe-mode unsafe^
   --verbose^
   -a data-uri^

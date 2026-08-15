@@ -22,6 +22,7 @@ SET "CURRDIR=%CD%"
 SET "FOPUB_DIR=..\_assets\alan-xsl-fopub\"
 
 CALL asciidoctor^
+  -r ../_assets/adoc/git-revdate.rb^
   -b docbook^
   -d book^
   -a data-uri!^

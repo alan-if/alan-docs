@@ -1,6 +1,9 @@
 :doctitle:  ALAN 3 Beginner's Guide
 :author:    Michael Arnaud
 :revnumber: 0.2.0
+// NOTE: `revdate` is set at build time from the last Git commit that touched
+//       this document; see "_assets/adoc/git-revdate.rb". The value below is
+//       only a fallback for builds that do not load that extension.
 :revdate:   December 27, 2020
 :revremark: AsciiDoc reconstruction work
 :doctype: book

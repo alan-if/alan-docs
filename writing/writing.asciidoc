@@ -1,5 +1,8 @@
 :doctitle:  The ALAN Adventure Language Author's Guide
 :revnumber: 0.0.5
+// NOTE: `revdate` is set at build time from the last Git commit that touched
+//       this document; see "_assets/adoc/git-revdate.rb". The value below is
+//       only a fallback for builds that do not load that extension.
 :revdate:   February 05, 2017
 :revremark: AsciiDoc conversion work
 :doctype: book

@@ -1,6 +1,8 @@
 = The ALAN Adventure Language: Conversion Guide from v2 to v3
 :version-label: ALAN
 :revnumber: 3.0beta2
+// NOTE: `revdate` is set at build time from the last Git commit that touched
+//       this document; see "_assets/adoc/git-revdate.rb".
 // :revdate:   September 22, 2020
 :revremark: New AsciiDoc Reprint
 :author:    Thomas Nilefalk

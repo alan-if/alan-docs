@@ -31,6 +31,7 @@ CURRDIR=$PWD
 ASSETSDIR="../_assets/alan-xsl-fopub"
 
 asciidoctor \
+	-r ../_assets/adoc/git-revdate.rb \
 	--safe-mode unsafe \
 	--verbose \
 	-b docbook \

@@ -7,6 +7,7 @@ echo "========================================================================"
 echo "Converting the \"ALAN Beginner's Guide\" to a standalone HTML5 document..."
 echo "========================================================================"
 asciidoctor \
+	-r ../_assets/adoc/git-revdate.rb \
 	--safe-mode unsafe \
 	--verbose \
 	--template-dir $highlightDir/haml \

@@ -25,6 +25,7 @@ echo "==========================================================================
 assetsDir=$(cd ../_assets/; pwd)
 
 asciidoctor-pdf \
+	-r $assetsDir/adoc/git-revdate.rb \
 	--safe-mode unsafe \
 	--verbose \
 	-r $assetsDir/pdf/alan-rouge-theme.rb \
