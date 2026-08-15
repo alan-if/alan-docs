@@ -1,0 +1,109 @@
+##########################################
+#  Alan IF Documentation Project         #
+#  https://github.com/alan-if/alan-docs  #
+##########################################
+#
+# Builds "The ALAN Manual" and commits the result to the `published` branch,
+# which GitHub Pages serves at https://alan-if.github.io/alan-docs/
+#
+# This is the CI equivalent of building locally and running `manual/publish.sh`,
+# except that it builds the document itself instead of copying whatever happens
+# to be lying around in your working directory.
+#
+# Deliberately manual: publishing stays an explicit act, as it is today. Run it
+# from the "Actions" tab, from the branch whose stream you want to publish:
+#
+#     master             ->  manual-beta/
+#     alan-manual-alpha  ->  manual-alpha/
+#
+# HTML ONLY. The PDFs still have to be built and published by hand via
+# `manual/pdf_build.sh` + `manual/publish.sh`, because asciidoctor-fopub cannot
+# currently be set up unattended.
+#
+name: Publish
+
+on:
+  workflow_dispatch:
+
+# Needed to push the built document back to the `published` branch:
+permissions:
+  contents: write
+
+# Never let two publishing runs race for the same branch:
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+
+  publish:
+    name: Publish the manual
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Determine the publishing stream
+        id: stream
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          case "$BRANCH" in
+            master)
+              echo "name=beta" >> "$GITHUB_OUTPUT" ;;
+            alan-manual-alpha)
+              echo "name=alpha" >> "$GITHUB_OUTPUT" ;;
+            *)
+              echo "::error::Unknown branch '$BRANCH', can't publish."
+              exit 1 ;;
+          esac
+
+      - name: Checkout the sources
+        uses: actions/checkout@v4
+        with:
+          path: src
+
+      - name: Checkout the 'published' branch
+        uses: actions/checkout@v4
+        with:
+          ref: published
+          path: published
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      # Rouge is pinned because our custom adapter
+      # ("_assets/rouge/custom-rouge-adapter.rb") and the ALAN lexer
+      # ("_assets/rouge/alan3.rb") are written against Rouge 3.26.0 and hook
+      # internals that move between versions.
+      - name: Install the Asciidoctor toolchain
+        run: |
+          gem install asciidoctor         -v 2.0.17
+          gem install asciidoctor-diagram -v 2.2.3
+          gem install rouge               -v 3.26.0
+
+      - name: Build "The ALAN Manual"
+        working-directory: src/manual
+        run: ./html_build.sh
+
+      - name: Copy the manual into the 'published' branch
+        env:
+          STREAM: ${{ steps.stream.outputs.name }}
+        run: cp src/manual/manual.html "published/manual-$STREAM/manual.html"
+
+      - name: Commit and push
+        working-directory: published
+        env:
+          STREAM: ${{ steps.stream.outputs.name }}
+        run: |
+          if git diff --quiet ; then
+            echo "The published $STREAM manual is already up to date, nothing to do."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "manual-$STREAM/manual.html"
+          git commit -m "Publishing new version of $STREAM manual (${GITHUB_SHA:0:7})"
+          git push
+
+# EOF #
