@@ -1978,7 +1978,7 @@ If it is not present, the general description is used.
 
 [source,alan]
 --------------------------------------------------------------------------------
-Actor george
+The george Isa actor
   Name George Formby
   Description "George Formby is here."
   Script cleaning.
