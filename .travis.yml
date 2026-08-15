@@ -3,7 +3,7 @@
 #  https://github.com/alan-if/alan-docs  #
 ##########################################
 
-dist: trusty
+dist: jammy
 
 git:
   depth: false
