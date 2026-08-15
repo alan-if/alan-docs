@@ -46,6 +46,13 @@ Laying out a ground plan and noting down the pending tasks to finish porting to 
 
 The original source document of the _Alan 3 Beginner's Guide_ was lost and only [the HTML converted version survived on Alan website][alanguide www]. In 2014, Thomas Nilefalk [converted to AsciiDoc][alanguide.adoc] the survived HTML version and began to clean up and restyle the ported document, but the work is far from complete.
 
+> __STATUS (2026/08/15)__ — This is the original porting plan, written when the AsciiDoc reconstruction began, and its checkboxes reflect that effort rather than today's state. What has changed since:
+>
+> - The _Guide_ is published in __HTML only__, at https://alan-if.github.io/alan-docs/alanguide/alanguide.html
+> - There is __no PDF__ and no PDF build script. The 2021 PDF edition was withdrawn from the website in August 2026: it was produced by the retired DocBook/FOP toolchain, so nothing can regenerate it, and it rendered the colour-marked code incorrectly anyway. See the __PDF WARNING__ under [_The AsciiDoc Solution_](#the-asciidoc-solution).
+> - The document still uses [Highlight] rather than Rouge, for the reason given in the __HTML WARNING__ below.
+> - The unticked boxes below have not been re-verified; treat them as the state of play in 2021.
+
 The _Guide_ still requires some adaptation work:
 
 + [ ] 1. __AsciiDoc porting__ — fixing/improving AsciiDoc elements and adapting it to the [styling conventions] of this project.
@@ -389,7 +396,15 @@ End Every.
 -------------------------------------------
 ```
 
-> __PDF WARNING!__ — The above solution currently works only with the HTML backend; I still need to work out how to adapt the FOP XSL template to support it.
+> __PDF WARNING!__ — (updated 2026/08/15) The above solution still works only with the HTML backend, and the FOP XSL template it referred to is gone: the DocBook/FOP toolchain was retired in August 2026 and PDFs are now built with Asciidoctor PDF.
+>
+> Three routes were tested there, none of which gives both syntax highlighting and colour marking at once:
+>
+> - Rouge on a `[source]` block __swallows the spans silently__ — no colour, no error, no literal text.
+> - A `[listing,subs="+quotes"]` block with a `green` role in the PDF theme renders the marking __correctly, mid-line fragments included__, but no highlighter runs, so those blocks lose their Alan keyword colouring.
+> - Rouge's `highlight=<lines>` attribute keeps the colouring but marks whole lines only, so every span would have to be rewritten as a line range.
+>
+> Getting both would mean writing a custom Asciidoctor PDF highlighter adapter that tokenises with Rouge while honouring inline spans. See [`README.md`](./README.md#pdf-toolchain-dependencies).
 
 <!-- sep -->
 
@@ -429,6 +444,7 @@ In some places, code is highlighted in yellow as a means to draw attention to sp
                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
+[Highlight]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit the Highlight website"
 [ALAN Standard Library 2]: https://github.com/AnssiR66/AlanStdLib "Visit the official repository of the ALAN Standard Library 2"
 
 <!-- project files ----------------------------------------------------------->
