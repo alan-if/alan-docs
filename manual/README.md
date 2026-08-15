@@ -129,7 +129,7 @@ Some files to help editing the manual:
 - [`Manual_Index.txt`][Index txt] — Manual Index in plaintext (for reference).
 - [`Manual_TOC.txt`][TOC txt] — Manual TOC in plaintext (for reference).
 - [`RegExs.txt`](./RegExs.txt) — frequently needed regular expressions for S&R operations.
-- [`SNIPPTES.adoc`](./SNIPPTES.adoc) — useful snippets to copy and paste.
+- [`SNIPPETS.adoc`](./SNIPPETS.adoc) — useful snippets to copy and paste.
 
 ## Available Formats
 
