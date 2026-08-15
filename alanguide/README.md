@@ -101,6 +101,8 @@ Now the HTML toolchain uses [Highlight] instead of [highlight.js], therefore you
 
 __(2026/08/15)__ The PDF build scripts have been removed along with the rest of the DocBook/FOP toolchain. They are preserved in the Git history should anyone want them back.
 
+Note that a PDF of this guide __is__ live on the website, at [`alanguide/alanguide.pdf`](https://alan-if.github.io/alan-docs/alanguide/alanguide.pdf): 232 pages, built with Apache FOP on 2021/04/29. Nothing can regenerate it now, so it is frozen until the colouring problem below is solved. It is also the output the warning above refers to, so treat its code blocks with suspicion.
+
 The obstacle is the `[green]#...#` change-marking that gives this guide its character, and which the FOP output never rendered correctly either. What we know about reproducing it with [Asciidoctor PDF]:
 
 - With Rouge active on a `[source]` block, the spans are __silently swallowed__ — no colour, no error, and no literal text in the output. This is the Asciidoctor limitation noted above.
