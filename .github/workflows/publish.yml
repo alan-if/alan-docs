@@ -57,12 +57,12 @@ jobs:
           esac
 
       - name: Checkout the sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           path: src
 
       - name: Checkout the 'published' branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: published
           path: published

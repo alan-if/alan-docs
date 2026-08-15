@@ -1,0 +1,77 @@
+##########################################
+#  Alan IF Documentation Project         #
+#  https://github.com/alan-if/alan-docs  #
+##########################################
+#
+# Builds "The ALAN Manual" as PDF via Asciidoctor PDF, from a clean checkout.
+#
+# The point of this workflow is to prove that the PDF can be built unattended:
+# no Java, no Gradle, no DocBook XSL, and -- since the fonts now live in
+# "_assets/pdf/fonts/" -- no submodule checkout either. The FOP toolchain can do
+# none of that, which is why the publishing workflow is HTML-only.
+#
+# The result is kept as a downloadable artifact rather than published.
+#
+name: Build PDF
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'manual/**'
+      - '_assets/pdf/**'
+      - '.github/workflows/build-pdf.yml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  pdf:
+    name: Build the manual as PDF
+    runs-on: ubuntu-latest
+    steps:
+
+      # NOTE: no `submodules:` here on purpose -- see the header comment.
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      # Rouge is pinned because "_assets/pdf/alan-rouge-theme.rb" and the ALAN
+      # lexer "_assets/rouge/alan3.rb" are written against Rouge 3.26.0.
+      - name: Install the Asciidoctor toolchain
+        run: |
+          gem install asciidoctor         -v 2.0.17
+          gem install asciidoctor-diagram -v 2.2.3
+          gem install rouge               -v 3.26.0
+          gem install asciidoctor-pdf     -v 2.3.24
+
+      - name: Build "The ALAN Manual"
+        working-directory: manual
+        run: ./pdf_build_adpdf.sh
+
+      # A PDF that Prawn wrote but that no reader can parse would still leave a
+      # file behind, so check that it opens and has a plausible page count:
+      - name: Verify the PDF
+        working-directory: manual
+        run: |
+          ruby -e '
+            require "pdf-reader"
+            pages = PDF::Reader.new("manual-asciidoctor-pdf.pdf").page_count
+            puts "The manual built to #{pages} pages."
+            abort "Suspiciously short, something went wrong." if pages < 200
+          '
+
+      - name: Upload the PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: manual-pdf
+          if-no-files-found: error
+          path: manual/manual-asciidoctor-pdf.pdf
+
+# EOF #
