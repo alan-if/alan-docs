@@ -59,6 +59,9 @@ jobs:
       - name: Checkout the sources
         uses: actions/checkout@v5
         with:
+          # Full history: "git-revdate.rb" dates each document from the last
+          # commit that touched it, which a shallow clone cannot see.
+          fetch-depth: 0
           path: src
 
       - name: Checkout the 'published' branch

@@ -36,6 +36,9 @@ jobs:
       # NOTE: no `submodules:` here on purpose -- see the header comment.
       - name: Checkout repository
         uses: actions/checkout@v5
+        with:
+          # Full history, so "git-revdate.rb" can date the document.
+          fetch-depth: 0
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
