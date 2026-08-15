@@ -34,8 +34,10 @@ Michael Arnaud's _Alan 3 Beginner's Guide_ (2006) is an excellent step-by-step t
 
 - _Alan 3 Beginner's Guide_
     + [HTML](alanguide/alanguide.html)
-    + [PDF](alanguide/alanguide.pdf)
     + [tutorial source files][alanguide files]
+
+> **NOTE:** This guide is available in HTML only.
+> Its step-by-step colour marking of changed code cannot currently be reproduced in PDF, so the old PDF edition — which rendered that marking incorrectly — has been withdrawn.
 
 
 ## Alan Conversion Guide - v2 to v3
