@@ -48,7 +48,7 @@ Every door IsA Object
   Verb knock
     Does "You knock on" Say The This. "There is no reply."
   End Verb.
-  
+
   -- The verbs above would only apply to all door objects but not other kinds of objects.
 
 End Every.

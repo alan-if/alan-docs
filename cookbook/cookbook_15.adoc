@@ -13,7 +13,7 @@
 Syntax answer = answer (str)
   Where str IsA String
     Else "That's not something you can answer."
-  
+
   Verb answer
     Does
       If str = "ball"

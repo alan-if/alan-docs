@@ -825,7 +825,7 @@ The mr_smith IsA Actor
   End Verb.
 End The.
 
-The mr_smith_worn IsA NPC_WORN  -- All containers for clothing worn by NPCs 
+The mr_smith_worn IsA NPC_WORN  -- All containers for clothing worn by NPCs
                                 -- should be declared IsA NPC_WORN
   Has carrier mr_smith. -- The value of the 'carrier' attribute is the actor
                         -- wearing the clothes.
@@ -1086,7 +1086,7 @@ The table has a bottom drawer. The bottom drawer is empty.
 The book IsA Object At room_1
   Is readable.
   Has text "blah blah".
-End The. 
+End The.
 --------------------------------------------------------------------------------
 
 

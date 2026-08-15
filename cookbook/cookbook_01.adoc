@@ -636,9 +636,9 @@ Put the message in the location description itself:
 [source,alan]
 --------------------------------------------------------------------------------
 The kitchen IsA Location
-	Description
-	"(Wow, what an ingenious name for this location. Before going to the description part, you taste the word in your mouth for a while.)$p"
-	"You are in the kitchen."
+  Description
+  "(Wow, what an ingenious name for this location. Before going to the description part, you taste the word in your mouth for a while.)$p"
+  "You are in the kitchen."
 End The kitchen.
 --------------------------------------------------------------------------------
 
@@ -647,10 +647,10 @@ If you wish to have the special message displayed for only the first time the ki
 [source,alan]
 --------------------------------------------------------------------------------
 Description
-	If visited Of kitchen = 1
-		Then "(Wow, what..."
-	End If.
-	"You are in the kitchen."
+  If visited Of kitchen = 1
+    Then "(Wow, what..."
+  End If.
+  "You are in the kitchen."
 --------------------------------------------------------------------------------
 
 
@@ -662,9 +662,9 @@ Put the message into the `Does` part of an `Exit`:
 [source,alan]
 --------------------------------------------------------------------------------
 The loc1 IsA Location
-	Exit east To loc2
-		Does "When you leave, you have the feeling that you forgot to pick up something crucial."
-	End Exit.
+  Exit east To loc2
+    Does "When you leave, you have the feeling that you forgot to pick up something crucial."
+  End Exit.
 End The loc1.
 --------------------------------------------------------------------------------
 
@@ -680,12 +680,12 @@ Use the 'visited' or 'described' attributes:
 [source,alan]
 --------------------------------------------------------------------------------
 The kitchen IsA Location
-	Description
-		"You are in the kitchen"
-		If visited Of kitchen = 1 -- (= your first time here)
-			Then "This is your first time here."
-			Else "You remember you've been here before."
-		End If.
+  Description
+    "You are in the kitchen"
+    If visited Of kitchen = 1 -- (= your first time here)
+      Then "This is your first time here."
+      Else "You remember you've been here before."
+    End If.
 End The kitchen.
 --------------------------------------------------------------------------------
 
@@ -693,11 +693,11 @@ End The kitchen.
 [source,alan]
 --------------------------------------------------------------------------------
 The library IsA Room
-	Description
-		If described Of library = 1 -- (= the first-time description)
-			Then "There is an old man reading at a table in one of the corners."
-			Else "The old man keeps on reading at his table."
-		End If.
+  Description
+    If described Of library = 1 -- (= the first-time description)
+      Then "There is an old man reading at a table in one of the corners."
+      Else "The old man keeps on reading at his table."
+    End If.
 End The library.
 --------------------------------------------------------------------------------
 
@@ -708,14 +708,14 @@ End The library.
 [source,alan]
 --------------------------------------------------------------------------------
 The bedroom IsA Location
-	Is Not cleaned.
+  Is Not cleaned.
 
-	Verb clean
-		Check bedroom Is Not cleaned
-			Else "The bedroom is already cleaned."
-		Does "You clean the bedroom."
-			Make bedroom cleaned.
-	End Verb.
+  Verb clean
+    Check bedroom Is Not cleaned
+      Else "The bedroom is already cleaned."
+    Does "You clean the bedroom."
+      Make bedroom cleaned.
+  End Verb.
 End The bedroom.
 --------------------------------------------------------------------------------
 
@@ -726,9 +726,9 @@ End The bedroom.
 [source,alan]
 --------------------------------------------------------------------------------
 Verb read
-	Check Current Location Is lit
-		Else "It's too dark to see!"
-	Does "You read."
+  Check Current Location Is lit
+    Else "It's too dark to see!"
+  Does "You read."
 End Verb.
 --------------------------------------------------------------------------------
 
@@ -739,18 +739,18 @@ End Verb.
 [source,alan]
 --------------------------------------------------------------------------------
 The king IsA Actor
-	...
-	Verb ask
-		When act
-		If topic = treasure_chamber
-			Then
-				If visited Of treasure_chamber = 0
-					Then "You are not supposed to know anything about the treasure chamber - you haven't found it yet."
-					Else """Just take what you want from the chamber"", the king smiles."
-				End If.
-		...
-		End If.
-	End Verb.
+  ...
+  Verb ask
+    When act
+    If topic = treasure_chamber
+      Then
+        If visited Of treasure_chamber = 0
+          Then "You are not supposed to know anything about the treasure chamber - you haven't found it yet."
+          Else """Just take what you want from the chamber"", the king smiles."
+        End If.
+    ...
+    End If.
+  End Verb.
 End The king.
 --------------------------------------------------------------------------------
 
@@ -761,13 +761,13 @@ End The king.
 [source,alan]
 --------------------------------------------------------------------------------
 The library IsA Room
-	Description
-		If described Of This = 1
-			Then "There is an old man reading at a table in one of the corners."
-		Elsif described Of This < 5
-			Then "The old man keeps on reading at his table."
-		Else "The old man seems to never get tired of reading."
-		End If.
+  Description
+    If described Of This = 1
+      Then "There is an old man reading at a table in one of the corners."
+    Elsif described Of This < 5
+      Then "The old man keeps on reading at his table."
+    Else "The old man seems to never get tired of reading."
+    End If.
 End The.
 --------------------------------------------------------------------------------
 
@@ -786,14 +786,14 @@ The ceiling is too low here.
 [source,alan]
 --------------------------------------------------------------------------------
 The basement IsA Location
-	Description ...
-	Verb jump
-		Does Only "The ceiling is too low here."
-	End Verb.
+  Description ...
+  Verb jump
+    Does Only "The ceiling is too low here."
+  End Verb.
 
-	Verb take
-		Does Only "There is nothing worth taking among the old junk here."
-	End Verb.
+  Verb take
+    Does Only "There is nothing worth taking among the old junk here."
+  End Verb.
 End The basement.
 --------------------------------------------------------------------------------
 
@@ -824,16 +824,16 @@ You can't refer to the location instance directly in a player command. Make a re
 [source,alan]
 --------------------------------------------------------------------------------
 The kitchen_object IsA Object At kitchen
-	Name kitchen
+  Name kitchen
 
-	Verb examine
-		Does Only "A modern kitchen with many appliances."
-	End Verb.
+  Verb examine
+    Does Only "A modern kitchen with many appliances."
+  End Verb.
 
-	Verb 'exit'
-		Does Only Locate hero At living_room.
-	End Verb.
-	...
+  Verb 'exit'
+    Does Only Locate hero At living_room.
+  End Verb.
+  ...
 End The kitchen_object.
 --------------------------------------------------------------------------------
 
@@ -844,7 +844,7 @@ End The kitchen_object.
 [source,alan]
 --------------------------------------------------------------------------------
 If hero At treasure_chamber
-	Then ...
+  Then ...
 End If.
 --------------------------------------------------------------------------------
 
@@ -852,7 +852,7 @@ End If.
 [source,alan]
 --------------------------------------------------------------------------------
 If ball At tom -- at the same location as Tome
-	Then ...
+  Then ...
 End If.
 --------------------------------------------------------------------------------
 
@@ -861,7 +861,7 @@ In verb checks:
 [source,alan]
 --------------------------------------------------------------------------------
 Check hero At treasure_chamber
-	Else ...
+  Else ...
 Does ...
 --------------------------------------------------------------------------------
 
@@ -869,6 +869,6 @@ Does ...
 [source,alan]
 --------------------------------------------------------------------------------
 If Location Of ball Is Not lit
-	Then ...
+  Then ...
 End If.
 --------------------------------------------------------------------------------

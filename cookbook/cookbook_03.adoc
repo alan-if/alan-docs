@@ -159,7 +159,7 @@ Here, Bob is continuously going in and out of the house.
 
 == Make an Actor Act Out a Script Only if a Condition is Fulfilled
 
-. Here, the hero will be lead to a treasure if he keeps following a non-player character. The character will wait for the hero when needed. 
+. Here, the hero will be lead to a treasure if he keeps following a non-player character. The character will wait for the hero when needed.
 
 [source,alan]
 --------------------------------------------------------------------------------

@@ -103,7 +103,7 @@ Syntax give = give (obj) to (act) -- e.g. "give the ball to the boy"
 Syntax take = take (obj)
   Where obj IsA Object
     Else ...
-  
+
   take = pick 'up' (obj).
 
   take = pick (obj) 'up'.
