@@ -12,6 +12,7 @@ Documents:
 
 - [`actors-in-containers.asciidoc`][actors.adoc] — _Actors in containers_.
 - [`design.asciidoc`][design.adoc] — _Alan Design Documentation_.
+- [`encoding.asciidoc`][encoding.adoc] — _Character encoding_.
 - [`rules.asciidoc`][rules.adoc] — _Alan Rules_.
 
 Scripts:
@@ -46,6 +47,7 @@ Scripts:
 
 [actors.adoc]: ./actors-in-containers.asciidoc "View source document"
 [design.adoc]: ./design.asciidoc "View source document"
+[encoding.adoc]: ./encoding.asciidoc "View source document"
 [rules.adoc]: ./rules.asciidoc "View source document"
 
 [build.sh]: ./build.sh "View source script"

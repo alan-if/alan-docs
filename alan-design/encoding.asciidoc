@@ -1,0 +1,170 @@
+= Character encoding
+Thomas Nilefalk <thomas@nilefalk.se>
+2026-09-08: Alan 3.0beta9
+:lang: en
+// TOC Settings:
+:toc: left
+:toclevels: 5
+// Sections Numbering:
+:sectnums!:
+:sectnumlevels: 2
+// Cross References:
+:xrefstyle: short
+:section-refsig: Sect.
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+:reproducible:
+:sectanchors:
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+
+This document describes how Alan handles character encodings today, why it was designed that way, and what it would take to make the system handle UTF-8 the way a user would expect.
+
+It exists because the current design is easily mistaken for an oversight.
+It is not.
+The single internal encoding is load-bearing, and a great deal of code that looks naive is correct only because of it.
+Anyone planning to "add UTF-8 support" should read this first, and in particular the section on the Acode version gate, which constrains the cheapest approach more than one would expect.
+
+The live list of open encoding issues is kept on GitHub under the
+link:https://github.com/alan-if/alan/labels/%3Astar%3A%20encoding[`:star: encoding`^] label, rather than in this document, so that it cannot go stale.
+
+== The current design
+
+The rule is stated at the top of both `compiler/sysdep.c` and `interpreter/sysdep.c`:
+
+[quote]
+____
+Internal is always ISO-8859-1.
+____
+
+Everything else is a boundary conversion.
+The compiler option `-encoding utf8` transcodes source in through `iconv`, and import files carrying a UTF-8 BOM are read as UTF-8 irrespective of any option.
+The interpreter switch `-u` transcodes terminal input and output, command logs, transcripts and solution files back out at the last moment.
+In between, in the compiler, in the Acode and in the interpreter, a character is one byte of ISO-8859-1.
+
+=== The encoding is a property of the terminal, not of the game
+
+The `.a3c` file stores Latin-1, and its header carries no encoding field.
+This means the two halves of the system are unconnected: nothing the compiler knows about the source encoding reaches the interpreter, and `arun` decides how to render text purely from its own switches and the terminal it happens to be running on.
+The same game file renders correctly or as mojibake depending on where it is played.
+
+=== What depends on a fixed-width encoding
+
+The design is deliberately fixed-width, and much depends on that:
+
+* Line justification and column arithmetic, which count bytes as columns.
+* The `Strip N characters` instruction, where a character is a byte.
+* The parser's case-folding tables and dictionary matching, which are 256-entry tables.
+* The Glk backends, which use Glk's Latin-1 character API.
+
+This is why code such as `strlen()` used for a column count is not a bug.
+Removing the invariant piecemeal would break working code for no gain.
+
+=== The real limitation
+
+It is worth being precise about what is actually wrong today, because it is not what it first appears to be.
+
+Alan can already read UTF-8 source.
+The limitation is that Latin-1 is a lossy funnel: whatever the source encoding, a Polish _ł_ or a curly quote cannot survive into a game, because there is no internal representation for it.
+Widening the repertoire is therefore a different, and much larger, task than fixing the input path.
+
+== Three levels of change
+
+The work can be taken at three levels, in increasing order of cost.
+
+Boundary-only::
+Default to UTF-8 and record the game's encoding in the `.a3c` header so that `arun` stops guessing.
+Fixes the mojibake-by-default class of bug, and the case where an editor reads a Latin-1 source file as UTF-8 and silently transcodes it.
+It does *not* widen the character repertoire.
+This would be days of work, were it not for the Acode version gate described below, which is the real obstacle.
+
+Unicode internally::
+Replace the invariant outright.
+This breaks fixed width, so column arithmetic, `Strip`, case folding and dictionary matching all need work, as do the Glk backends — and the Glk part is on someone else's schedule.
+
+The middle, and the recommended sequencing::
+Introduce character primitives — `charLength`, `charAt`, `displayWidth`, `foldCase` — *while* the internal encoding is still Latin-1.
+At that point each is a one-liner, and the existing test suite already proves them.
+Convert the call sites to use the primitives, and only then flip the invariant underneath.
+This turns a single flag-day change into a sequence of individually testable ones.
+
+== The Acode version gate
+
+It is natural to assume that the version marking in the `.a3c` header already prevents an old interpreter from running a game built by a newer compiler, and that a format change is therefore safe.
+It was checked against 3.0beta9, and it does not hold.
+
+=== What is actually compared
+
+`checkVersion()` in `interpreter/main.c` compares a four byte version — major, revision, correction and state (`d`, `a`, `b` or `r`) — written by the compiler in `compiler/emit.c`:
+
+[source,c]
+----
+compareLength = (developmentVersion ? 3 : 2);
+memcmp(header->version, interpreterVersion, compareLength)
+----
+
+A beta or release interpreter therefore compares *only major and revision*, that is `3.0`.
+The correction level is compared only when the interpreter itself is in `dev` state.
+A 3.0beta9 `arun` will run any 3.0beta game silently, in either direction, so raising the correction level buys no protection at all.
+
+Two further rules apply.
+A game built by a `dev` state compiler is refused by any non-`dev` interpreter.
+An alpha interpreter running a beta or release game only warns.
+
+The escape hatch is the `-e` switch, which downgrades both a version mismatch and a checksum error to a warning.
+It is not `-debug`, which is an unrelated gate refusing to debug a game that was not compiled with `-debug`.
+
+=== Compatibility handling runs backwards only
+
+Format evolution within 3.0 is handled by the predicates in `interpreter/compatibility.c` — `isPreAlpha5`, `isPreBeta2` and so on — which are consulted by `crcStart()`, `setupHeader()` and by code in `instance.c`, `rules.c` and `reverse.c`.
+
+Every one of these serves the *backward* direction: a new interpreter reading an old game.
+The direction a format change needs is the opposite one, an old interpreter refusing a new game, and no mechanism for that exists.
+
+=== The header cannot grow
+
+`ACodeHeader` in `interpreter/acode.h` has no reserved fields.
+It has only ever grown by appending, as with `ifids` and `prompt`, with the older layouts kept as separate structs for compatibility.
+
+The checksum is calculated over everything after the header, and `crcStart()` returns `sizeof(ACodeHeader)` *as the running interpreter knows it*.
+Appending a field therefore makes an older interpreter begin its checksum loop one word early, and it fails with a checksum error rather than a version error.
+
+The consequence is worth stating plainly, because it removes the obvious cheap option.
+Even a purely additive header field — content still Latin-1, so that an old interpreter would render every string perfectly — cannot be loaded by an old interpreter at all, because the header size is welded to the checksum start offset.
+
+=== Consequences
+
+Two levers exist, and neither is free:
+
+* Bump the revision, `3.0` to `3.1`.
+  This is the only existing mechanism that makes older interpreters fail on purpose, since the two byte comparison then misses.
+  It is a whole minor release, and every later interpreter carries an `is3_0()` branch from then on.
+* Break the coupling between header size and the checksum start offset, so that the header can grow additively.
+  This is the smaller change of the two, and it is what would make the boundary-only level cheap again.
+
+== Decisions required before any code
+
+Does `.a3c` become a UTF-8 format?::
+If it does, old interpreters must refuse new games rather than render garbage, and as shown above the existing version gate does not do this.
+Decide which of the two levers to use before designing the header change, not after.
+
+Does display width mean characters or terminal columns?::
+The two differ for combining marks and for East Asian wide characters.
+Line justification needs one answer, and the choice determines what `displayWidth` means and whether `Strip N characters` counts the same units as the formatter.
+
+== Existing test coverage
+
+A safety net already exists for the boundary combinations, and should be the starting point for any change:
+
+* `regression/utf8`, `utf8_compile_utf8_run` and `utf8_compile_iso_run` — the compiler and interpreter encoding combinations.
+* `regression/glkutf8` — the Glk backend.
+* `compiler/testing/utf8` — compiler-side source encoding.
+* `interpreter/compatibility_tests.c` — the version predicates described above.
+
+// EOF
